@@ -7,6 +7,18 @@
 
 > **Implementation companion documents:** `CODEX_TASK.md` (task), `XP_MILESTONE_SPEC.md` (approved milestone mathematics), `WEEK1_CONTENT_BLUEPRINT.md` (authored lessons and question scenarios), `CODE_AUDIT.md` (reference HTML functions), and `ACCEPTANCE_TESTS.md` (test contracts). Read together; the added companion documents are more detailed and supersede any purely illustrative pseudocode below where necessary.
 
+## Implemented Week 1 update — 23 October 2026
+
+The pending runtime requirements below are now implemented in `index.html`; the supplied reference remains unchanged. The design tables and companion documents remain the acceptance contract, while their original “to implement” labels describe the pre-change baseline.
+
+- Day 6: Saleha/Mina lake opening with interactive speaker-group identification and sentence construction, five authored sentences per location, contextual vocabulary and the illustrated Hills-only final event (15 questions, 12 to pass).
+- Day 7: Edris’s market opening and two-group practice, five authored sentences per location, separate Ms Hameed School exam with 25 unique items (five each: pronouns, verb forms, SOV, compounds, dialogue), 20 to pass and graduation dialogue.
+- Newcomer/New Resident progression: 200-XP nominal levels, contiguous-day display caps, one-time checkpoint floors, explicit version-2 exam graduation, banked-XP messaging, atomic reward/pass persistence and idempotent legacy migration. Old generic Day 7 clears are retained as history and do not graduate the player.
+- Days 1–5 records/courses, daily skipping, four map zones, SRS, offline text play and Pashto-only audio fallback are retained. Challenge counters, end conditions, results and replays use the active assessment length.
+- Automated checks and browser flows are in `tests/week1.test.mjs`; execution details are in `tests/README.md` and `IMPLEMENTATION_NOTES.md`.
+
+**Still outstanding before a language-certified release:** qualified native Laghman review and an actual verified audio pack. No MP3s are included. Existing duplicate historical ID `a-clean` remains unchanged to preserve earlier course/save identity; a separate deliberate migration is needed to disambiguate it. Alternate written pronouns `مونږ/موږ` and `تاسو/تاسې` normalize for grading; arbitrary alternate word orders remain unapproved. iPhone-specific file/storage/TTS behaviour still needs real-device verification. Week 2 is not implemented.
+
 ## Product identity and non-negotiables
 
 Pashto Quest is a mobile-friendly, standalone HTML/CSS/JavaScript language-learning game set in a living village in **Laghman, Afghanistan**. The player is a new arrival; a recurring cast teaches vocabulary through relationships and locally meaningful contexts. Prefer Laghman usage. Preserve conventional Pashto orthography and existing speaker buttons; flag questionable regional pronunciation and translations for local native review. Week 1 teaches **present tense** only, moving through things/description, he/she, I, informal you, polite/plural you, we, and they.

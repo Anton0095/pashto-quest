@@ -2,7 +2,9 @@
 
 **Scope:** Codex implementation of the agreed Week 1 finish: Day 6 with Saleha/Mina and the Hills, Day 7 with Edris and Ms Hameed's 25-question exam, and a seven-day **Level 1 → Level 10 / Newcomer → New Resident** milestone system. Existing Days 1–5 are to be preserved.
 
-**This package is a development handoff, not a finished or modified playable game.** `reference/pashto_quest_days_1_5_narrative.html` is an unchanged reference snapshot. The user's GitHub repository remains the source of truth. Compare repository HEAD with the reference first; never blindly replace newer GitHub work with this copy.
+**Week 1 is now implemented in `index.html`.** Open it directly in a modern browser; no build or backend is needed. See `IMPLEMENTATION_NOTES.md` for changes and verification, and `tests/README.md` for test commands. Language review and actual audio recordings remain outstanding.
+
+**Original handoff context:** `reference/pashto_quest_days_1_5_narrative.html` is an unchanged reference snapshot. The user's GitHub repository remains the source of truth. Compare repository HEAD with the reference first; never blindly replace newer GitHub work with this copy.
 
 ## Start here
 
