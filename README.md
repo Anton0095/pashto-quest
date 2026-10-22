@@ -1,37 +1,42 @@
-# Pashto Quest — Codex transfer
+# Pashto Quest — Codex Week 1 handoff
 
-**Start here.** This directory is a handoff of the latest recovered Pashto Town HTML game plus documentation. **The game itself has not been changed.**
+**Scope:** Codex implementation of the agreed Week 1 finish: Day 6 with Saleha/Mina and the Hills, Day 7 with Edris and Ms Hameed's 25-question exam, and a seven-day **Level 1 → Level 10 / Newcomer → New Resident** milestone system. Existing Days 1–5 are to be preserved.
 
-## Run the game
+**This package is a development handoff, not a finished or modified playable game.** `reference/pashto_quest_days_1_5_narrative.html` is an unchanged reference snapshot. The user's GitHub repository remains the source of truth. Compare repository HEAD with the reference first; never blindly replace newer GitHub work with this copy.
 
-Open **`index.html`** in a modern desktop browser. On iPhone you can transfer this HTML file to Files and open it in a supported browser/Shortcuts flow; exact file access and save behaviour depend on iOS and browser. No installation, web host, Node, npm or online account is needed for text/quiz play.
+## Start here
 
-**Audio notice:** Speaker buttons are wired but **no actual Pashto MP3 pack is included**. Playback works only if you later add a valid `audio/<id>.mp3` pack or the device has its own true Pashto browser voice. Audio cannot be promised offline from the current package.
+1. Open the existing **Pashto Quest GitHub repository** in Codex.
+2. Add the root documents (`AGENTS.md`, `GAME_SPEC.md`, `CODEX_TASK.md`, `XP_MILESTONE_SPEC.md`, `WEEK1_CONTENT_BLUEPRINT.md`, `CODE_AUDIT.md`, `ACCEPTANCE_TESTS.md`) to the repository. Put the HTML from `reference/` in a reference-only folder if helpful; it is not a replacement for the repo's main page.
+3. Give Codex `CODEX_TASK.md` as the task. The file tells Codex what to implement and test.
+4. Have Codex modify the real application code and automated tests, then inspect a browser build on desktop and mobile before merging.
 
-## Transfer to ChatGPT Codex
+## File map
 
-1. Download and extract **`Pashto_Quest_Codex_Transfer.zip`** in a normal local folder (e.g., `Pashto-Quest`).
-2. Open that extracted folder in Codex.
-3. Ask Codex: *“Read `AGENTS.md` and `GAME_SPEC.md` and inspect `index.html`. This is an existing prototype. Do not change any source until I request a specific feature. Summarise the current implementation and the next priority.”*
-4. When you decide on a feature, specify it and ask Codex to change only that scope and run the relevant tests from `qa/SMOKE_TESTS.md`.
-
-## What's in the bundle
-
-| File / folder | Purpose |
+| File | Purpose |
 |---|---|
-| `index.html` | **Authoritative playable game; unchanged copy** |
-| `GAME_SPEC.md` | Detailed story, characters, language curriculum, challenges, implementation status and proposed backlog |
-| `AGENTS.md` | Coding assistant guardrails and source precedence |
-| `audio_manifest.json` | Planned audio-file path for each original content record; **no MP3s** |
-| `audio/README.md` | How to supply and validate future audio |
-| `qa/SMOKE_TESTS.md` | Regression/acceptance test checklist |
-| `history/*.html` | Recoverable earlier versions; **archive only** |
-| `TRANSFER_MANIFEST.json` | Hashes verifying transfer copies |
+| `GAME_SPEC.md` | **Authoritative project-wide requirements** and implemented-versus-planned status |
+| `CODEX_TASK.md` | Copy/paste implementation instruction and definition of done |
+| `XP_MILESTONE_SPEC.md` | Exact 200-XP levels, checkpoint floors, caps, graduation, migration, replay rules |
+| `WEEK1_CONTENT_BLUEPRINT.md` | Day 6/7 scenes, characters, lesson banks and question-by-question challenge blueprint |
+| `CODE_AUDIT.md` | Findings in the latest reference HTML, with specific function names |
+| `ACCEPTANCE_TESTS.md` | Manual and automated regression scenarios; skip-only path is mandatory |
+| `AGENTS.md` | Constraints Codex should retain while editing |
+| `tests/acceptance_fixtures.json` | Machine-readable expected levels, scores and challenge lengths |
+| `tests/check_handoff.mjs` | Tests fixture integrity only; does **not** certify a working game |
+| `reference/pashto_quest_days_1_5_narrative.html` | Historical working baseline (Days 1–5); **do not overwrite HEAD** |
 
-The bundled HTML's inline scripts and styles require no other runtime file; audio is the only referenced optional local asset folder. The source contains 230 lexical/sentence records, with a known duplicate ID `a-clean` recorded in the spec (not changed).
+## Agreed game decisions
 
-## Status clarification
+- Day 1 only tutorial is truly compulsory; from Days 2–7 story openings are required for the **normal story path** but can be bypassed via the day challenge immediately.
+- Day 6: `we / موږ`, Saleha meets the player at the Lake with her sister Mina; 15-turn final challenge takes place in the **Hills** as a special scene only (no fifth explorable map location).
+- Day 7: `they / هغوی`, Edris introduces it among market shoppers; Ms Hameed conducts a **25-question** end-of-week examination at School, **20/25** to pass.
+- Day 7 first-time pass is the **only** event unlocking Level 10 and **New Resident**. The user begins as **Level 1 · Newcomer**.
+- A player who skips all optional visits, but passes daily assessments at the minimum thresholds, must still finish at **Level 10**.
+- Keep character speaker and addressee labels, mobile-friendly offline HTML, Pashto pronunciation affordances and Laghman-focused language review.
 
-**Already present:** Basic Day 1–7 game, location lessons, character guidance, skip-to-challenge, 15-question daily checkpoints, Day 3 shopping, Day 4 informal-you compound-sentence tasks, Day 5 multiple-audience politeness check, local progress and review UI.
+## Important limitation
 
-**Still proposals / not completed:** Native-reviewed Laghman pronunciations and real audio recordings, richer narrative Days 6–7, fuller conversations, more robust variation-aware assessments. See status labels in `GAME_SPEC.md`.
+Lesson wording in the content blueprint is an **English semantic plan**, not a fully native-verified Pashto translation library. Codex must make Pashto content complete, internally consistent and meaningful, flag any uncertain local forms for review, and must not claim that generated audio is a native recording unless one is actually bundled.
+
+**Language references:** See `LANGUAGE_REVIEW.md` for grammar resources and the native-review checklist.

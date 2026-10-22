@@ -1,0 +1,36 @@
+{
+  "version": "week1-milestone-v2",
+  "notes": "Acceptance expectations for Codex-created tests in the real app. Values are minimum XP floors, not fixed final balances.",
+  "xpPerLevel": 200,
+  "newcomerTitle": "Newcomer",
+  "graduateTitle": "New Resident",
+  "weeklyExamVersion": 2,
+  "starting": {
+    "level": 1,
+    "title": "Newcomer",
+    "xp": 0,
+    "mapLocations": ["house", "river", "market", "school"]
+  },
+  "dayProgression": [
+    {"day": 1, "focus": "things", "opening": "house", "examScene": "house", "questions": 15, "passingScore": 12, "minCumulativeXp": 200, "levelCap": 2, "title": "Newcomer"},
+    {"day": 2, "focus": "he-she-sov", "opening": "school", "examScene": "house", "questions": 15, "passingScore": 12, "minCumulativeXp": 400, "levelCap": 3, "title": "Newcomer"},
+    {"day": 3, "focus": "i", "opening": "river", "examScene": "market", "questions": 15, "passingScore": 12, "minCumulativeXp": 600, "levelCap": 4, "title": "Newcomer"},
+    {"day": 4, "focus": "you-informal-and-compounds", "opening": "house", "examScene": "house", "questions": 15, "passingScore": 12, "minCumulativeXp": 800, "levelCap": 5, "title": "Newcomer"},
+    {"day": 5, "focus": "you-polite-plural", "opening": "school", "examScene": "river", "questions": 15, "passingScore": 12, "minCumulativeXp": 1200, "levelCap": 7, "title": "Newcomer"},
+    {"day": 6, "focus": "we", "opening": "river", "examScene": "hills-story-only", "questions": 15, "passingScore": 12, "minCumulativeXp": 1600, "levelCap": 9, "title": "Newcomer"},
+    {"day": 7, "focus": "they-cumulative", "opening": "market", "examScene": "school", "questions": 25, "passingScore": 20, "minCumulativeXp": 1800, "levelCap": 10, "title": "New Resident"}
+  ],
+  "requiredCases": [
+    "skip-all-locations-minimum-passing-score",
+    "normal-day6-lake-sisters-hills-scene",
+    "normal-day7-market-then-school-exam",
+    "early-xp-cap-and-title-lock",
+    "failure-and-retry-no-duplicate-first-pass-rewards",
+    "legacy-day7-generic-challenge-not-graduation",
+    "localstorage-migration-idempotence",
+    "speaker-and-recipient-identified",
+    "map-remains-exactly-four-locations",
+    "day7-all-25-questions-presented",
+    "offline-reading-and-mobile-layout"
+  ]
+}
