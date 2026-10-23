@@ -36,3 +36,9 @@ Qualified Laghman review, including spelling, inflection, naturalness, romanizat
 No Week 2 level/title schedule is activated. [The separate XP proposal](content/WEEK2_XP_PROPOSAL.md) is a design option for later approval, not implemented behaviour. No Week 3, inventory, new map node, login or backend was introduced.
 
 Tested standalone runtime SHA-256: `9846621c36096ba44e915cacb5dcb2c713be91c41c15a70b0d3dc46932cb5ca9`.
+
+## Publication
+
+The implementation is published on `codex/week2-development`. Automatic draft PR creation targeting `main` was attempted with `gh pr create --draft` and blocked by `Post https://api.github.com/graphql: Forbidden`; a read-only repository API request was also denied. Git push succeeds, but available API access does not permit opening the PR in this environment. `main` is unchanged and no force-push was used.
+
+[Open the comparison / PR form](https://github.com/Anton0095/pashto-quest/compare/main...codex/week2-development?expand=1). The title and complete proposed description are in [PULL_REQUEST_WEEK2.md](PULL_REQUEST_WEEK2.md).
