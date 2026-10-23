@@ -1,44 +1,32 @@
-# Pashto Quest — Codex Week 1 handoff
+# Pashto Quest Week 2 — Codex/GitHub patch preparation
 
-**Scope:** Codex implementation of the agreed Week 1 finish: Day 6 with Saleha/Mina and the Hills, Day 7 with Edris and Ms Hameed's 25-question exam, and a seven-day **Level 1 → Level 10 / Newcomer → New Resident** milestone system. Existing Days 1–5 are to be preserved.
+This is **a development patch package, not a finished playable Week 2**. The patch contains a working code-injection script for the requested new interaction mechanics plus the complete Days 8–14 English/narrative lesson plan. **The playable repository is not modified by creating this package.** The new `dialogue` exercise type is dormant until Codex integrates validated Week 2 questions into the actual challenge bank and adds Week 2 days. The 140 sentence targets in the content file are **English intentions**, only 35 draft Pashto model sentences; the translations need review before full in-game use.
 
-**Week 1 is now implemented in `index.html`.** Open it directly in a modern browser; no build or backend is needed. See `IMPLEMENTATION_NOTES.md` for changes and verification, and `tests/README.md` for test commands. Language review and actual audio recordings remain outstanding.
+## Which GitHub branch?
 
-**Original handoff context:** `reference/pashto_quest_days_1_5_narrative.html` is an unchanged reference snapshot. The user's GitHub repository remains the source of truth. Compare repository HEAD with the reference first; never blindly replace newer GitHub work with this copy.
+Use `Anton0095/pashto-quest` **`codex/complete-week1-23850c7`**, because (as of the 23 October inspection) `main` is older and lacks Mina/Hills and the updated Week 1 exam. If Week 1 has since been merged, compare and use the *newer* merged version instead. Do not paste the older build over Codex work.
 
-## Start here
+## Files
 
-1. Open the existing **Pashto Quest GitHub repository** in Codex.
-2. Add the root documents (`AGENTS.md`, `GAME_SPEC.md`, `CODEX_TASK.md`, `XP_MILESTONE_SPEC.md`, `WEEK1_CONTENT_BLUEPRINT.md`, `CODE_AUDIT.md`, `ACCEPTANCE_TESTS.md`) to the repository. Put the HTML from `reference/` in a reference-only folder if helpful; it is not a replacement for the repo's main page.
-3. Give Codex `CODEX_TASK.md` as the task. The file tells Codex what to implement and test.
-4. Have Codex modify the real application code and automated tests, then inspect a browser build on desktop and mobile before merging.
+- `CODEX_TASK.md`: definitive task to give Codex, including Week 2 route, lessons, and score requirements.
+- `ACCEPTANCE_TESTS.md`: QA expectations and full Week 1 regression protection.
+- `patch/apply_week2_interactions.py`: strict source-to-source modification of the current Week 1 single-file HTML; does not change main until you run it.
+- `patch/test_patch.py`: repeatable static/synthetic JS syntax and scoring checks.
+- `examples/week2_dialogue_examples.json`: 12 draft, **not native-reviewed** conversation questions with answer/dud tiles and speaker/addressee details.
+- `content/WEEK2_LESSON_DATA.json`: 7 days × 4 places × five sentence targets = 140 English targets; 35 provisional Pashto models.
+- `content/WEEK2_DETAILED_LESSONS.md`: narrative dialogue, grammar and learning objectives for all seven days.
+- `content/WEEK2_IMPLEMENTATION_NOTES.md`: earlier content-stage assumptions, superseded by CODEX_TASK.md on feature mechanics.
 
-## File map
+## Quick start: easiest workflow for a new GitHub user
 
-| File | Purpose |
-|---|---|
-| `GAME_SPEC.md` | **Authoritative project-wide requirements** and implemented-versus-planned status |
-| `CODEX_TASK.md` | Copy/paste implementation instruction and definition of done |
-| `XP_MILESTONE_SPEC.md` | Exact 200-XP levels, checkpoint floors, caps, graduation, migration, replay rules |
-| `WEEK1_CONTENT_BLUEPRINT.md` | Day 6/7 scenes, characters, lesson banks and question-by-question challenge blueprint |
-| `CODE_AUDIT.md` | Findings in the latest reference HTML, with specific function names |
-| `ACCEPTANCE_TESTS.md` | Manual and automated regression scenarios; skip-only path is mandatory |
-| `AGENTS.md` | Constraints Codex should retain while editing |
-| `tests/acceptance_fixtures.json` | Machine-readable expected levels, scores and challenge lengths |
-| `tests/check_handoff.mjs` | Tests fixture integrity only; does **not** certify a working game |
-| `reference/pashto_quest_days_1_5_narrative.html` | Historical working baseline (Days 1–5); **do not overwrite HEAD** |
+1. Download and extract this ZIP locally.
+2. Open your GitHub repository and switch to the **Week 1 Codex branch**, not old `main` (unless it has been merged since).
+3. Upload the files into matching folders on that branch, or ask Codex to add these files to the repository from the ZIP.
+4. Open a new Codex task with this repository selected. Paste: **“Read `CODEX_TASK.md` and implement it. First check whether the Week 1 branch is already merged and base changes on the newest existing game. Apply the supplied patch to `index.html` after verifying applicability; then integrate the Week 2 narrative lessons and question banks, review translations, run acceptance tests, and prepare a pull request. Do not overwrite Days 1–7, reset progress or force-push main.”**
+5. Review the PR and the mobile/desktop playthrough before merging into main.
 
-## Agreed game decisions
+If Codex wants a direct script command: `python3 patch/apply_week2_interactions.py index.html --output index.week2-preview.html`; after review, `python3 patch/apply_week2_interactions.py index.html --in-place`. This script purposely **fails fast** if the repository's current HTML has incompatible changes; Codex must then port equivalent code manually.
 
-- Day 1 only tutorial is truly compulsory; from Days 2–7 story openings are required for the **normal story path** but can be bypassed via the day challenge immediately.
-- Day 6: `we / موږ`, Saleha meets the player at the Lake with her sister Mina; 15-turn final challenge takes place in the **Hills** as a special scene only (no fifth explorable map location).
-- Day 7: `they / هغوی`, Edris introduces it among market shoppers; Ms Hameed conducts a **25-question** end-of-week examination at School, **20/25** to pass.
-- Day 7 first-time pass is the **only** event unlocking Level 10 and **New Resident**. The user begins as **Level 1 · Newcomer**.
-- A player who skips all optional visits, but passes daily assessments at the minimum thresholds, must still finish at **Level 10**.
-- Keep character speaker and addressee labels, mobile-friendly offline HTML, Pashto pronunciation affordances and Laghman-focused language review.
+## Important scope boundary
 
-## Important limitation
-
-Lesson wording in the content blueprint is an **English semantic plan**, not a fully native-verified Pashto translation library. Codex must make Pashto content complete, internally consistent and meaningful, flag any uncertain local forms for review, and must not claim that generated audio is a native recording unless one is actually bundled.
-
-**Language references:** See `LANGUAGE_REVIEW.md` for grammar resources and the native-review checklist.
+Do not silently unlock content with untranslated or unchecked Pashto. Do not invent a Week 2 XP leveling ladder yet. Maintain Week 1's Level 10 graduation and New Resident title. Extra features (inventory, new locations, dialogue branching, drag-and-drop animations) are not required and remain for later planning.
