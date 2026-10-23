@@ -1,3 +1,5 @@
+> **Week 2 development preview:** `index.html` now includes Days 8–14 on the completed Week 1 baseline. Open it directly in a browser; no backend/build is needed for play. Week 2 Pashto and romanization remain draft and need local native review. See [content review](content/WEEK2_REVIEW.md), [implementation notes](WEEK2_IMPLEMENTATION.md) and [tests](tests/README.md).
+
 # Pashto Quest Week 2 — Codex/GitHub patch preparation
 
 This is **a development patch package, not a finished playable Week 2**. The patch contains a working code-injection script for the requested new interaction mechanics plus the complete Days 8–14 English/narrative lesson plan. **The playable repository is not modified by creating this package.** The new `dialogue` exercise type is dormant until Codex integrates validated Week 2 questions into the actual challenge bank and adds Week 2 days. The 140 sentence targets in the content file are **English intentions**, only 35 draft Pashto model sentences; the translations need review before full in-game use.

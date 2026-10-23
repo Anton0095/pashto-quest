@@ -175,3 +175,13 @@ Retain `xp`, `tutorialDone`, `stats`, lesson completions, and legitimate Day 1�
 ## Paste into Codex
 
 > Read `GAME_SPEC.md` and inspect the current repository version of Pashto Quest. Implement the **pending** Week 1 items, especially Day 6's Saleha/Mina storyline and Hills challenge, Day 7's Edris opening and 25-question Ms Hameed examination, and the specified XP/level/title system. Preserve implemented Days 1–5 features and immediate challenge skipping. Do not confuse the generic older Day 7 clear with the new weekly examination. Run the acceptance tests in the spec, fix regressions, and report files changed, tests performed, and any translation/pronunciation content needing Laghmani native review.
+
+## Week 2 development preview — 23 October 2026
+
+Days 8–14 now extend the completed Week 1 implementation. The original Week 1 data/courses, 12/15 daily gates, 20/25 Week 1 exam, save migration and New Resident milestone are retained. Day 8 requires a valid version-2 Week 1 examination and the Level 10 milestone. Normal Week 2 routes begin at the designated teacher/location; Skip bypasses visits immediately and never marks them complete.
+
+The preview includes 140 authored Pashto sentence cards with romanization, contextual vocabulary, moving villagers, grammar/model openings and the approved seven-day narrative. Daily assessments mix word recall, recognition, guided construction and NPC-question replies. Dialogue counts are 4, 5, 6, 6, 7, 8 and 12; Days 8–13 have 15 turns/12 required and Day 14 has 25/20. Scavenger-hunt clues remain dialogue; the map still has exactly four locations.
+
+The supplied patch adds indexed dud tiles, unused-tile submission, first-response scoring, explicitly scoped alternative answers and readable mixed-script displays. No unreviewed alternate answer allowlists are populated. English glosses remain visible and become less prominent in the final exam.
+
+**Unverified:** every new Pashto item and romanization still needs qualified local review; Week 2 is labelled draft rather than a certified release. No audio assets are added. **Deferred:** Week 2 levels, floors and further titles; Level 10/New Resident persists with XP banked. See `content/WEEK2_REVIEW.md` and `content/WEEK2_XP_PROPOSAL.md`.
