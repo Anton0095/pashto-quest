@@ -20,3 +20,22 @@ This is a **quality checklist**, not a statement that all in-game phrases were v
 7. **Assessment fairness:** allow objectively equivalent dialect spelling or acceptable word order where grammatically and contextually valid, or revise the prompt to make exactly one intended answer unambiguous. Tile construction should not reject meaningful alternatives without an explicit teaching rationale.
 
 A release-quality language review should record each disputed phrase's word ID, current Pashto string, meaning, local alternative, reviewed speaker/date, and accepted quiz answers. Codex must not invent a native speaker validation record.
+
+## New implementation review queue — 23 October 2026
+
+No native-speaker sign-off has been obtained. All added `w6-*`, `w7-*` and `vocab6-*`/`vocab7-*` records include Pashto and approximate reading aids and remain review candidates. Particular priorities:
+
+| IDs / pattern | Pashto examples | Review focus |
+|---|---|---|
+| `w6-river-run`, `w6-river-mina-run`, `w6-we-run` | زه د جهیل تر څنګ منډې وهم؛ مینا او زه یو ځای منډې وهو | Lake terminology, running collocation, singular/plural forms and romanisation |
+| `w6-river-you-walk`, `w6-walk` | تاسې دواړه د سیند تر څنګ ګرځئ؛ موږ د جهیل تر څنګ یو ځای ګرځو | “You both” audience, walking expression and local lake/river terminology |
+| `w6-house-help`, `w7-house-help` | له محمد جان سره مرسته کوئ / کوي | Help construction, respectful reference and present forms |
+| `w6-house-chairs`, `w7-house-chairs` | پر څوکیو کښېنو / کښېني | Chair plural/oblique and sitting verb forms |
+| `w6-market-*`, `w7-market-*` | ټوکرۍ وړو / وړي؛ تازه سابه غوره کوي | Carrying/choosing forms, baskets, vegetables and dinner vocabulary |
+| `w6-school-answer`, `w7-school-answer` | پوښتنو ته ځوابونه ورکوو / ورکوي | Natural answer collocation, obliques and inflection |
+| `w6-compound` | زه سیند وینم او موږ غونډۍ وینو | Hills noun/number and clause coordination |
+| `w7-compound-*` | موږ سابه اخلو او هغوی ډوډۍ اخلي | Person agreement, natural compound wording and canonical tile order |
+| `w7-i-read`, `w7-you-read`, `w7-all-read` and exam clozes | لولم / لولې / لولو / لولئ / لولي | Reading forms and consistency of learner romanisation |
+| Grammar openings / choice distractors | موږ / مونږ؛ تاسې / تاسو؛ هغوی | Consistent written standard, shared third-person endings, unambiguous distractors |
+
+The renderer identifies NPC teaching prompts separately from the player's model responses: “Mina and I” has the player as “I”. Day 7 observed groups are explicitly outside the speaker/player conversation. Review these referents alongside the text. Audio filenames are attempted at `audio/<id>.mp3`; there are no bundled recordings, synthesized pronunciation claims or dialect certification.
