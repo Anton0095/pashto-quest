@@ -1,6 +1,8 @@
 /* Pure vocabulary state and planning. Content identities are editorial, never stems/glosses. */
 const LibraryEngine=(()=>{
  const presets=[8,12,16,20,24], places=['house','market','river','school'];
+ const legacyToDistrict={house:'residential',river:'nature',market:'business',school:'school'};
+ const matchesPlace=(entry,place)=>!!entry&&(Array.isArray(entry.suitableDistricts)?entry.suitableDistricts.includes(legacyToDistrict[place]):entry.suitableLocations.includes(place));
  const object=v=>v&&typeof v==='object'&&!Array.isArray(v)?v:{};
  const unique=values=>[...new Set(values)];
  function state(){return {schemaVersion:1,requestedDailyTarget:20,seed:2401024,plans:{},legacyDays:{},acquired:{},phrases:{},grammar:{},events:{},attemptSequence:0};}
@@ -77,7 +79,7 @@ const LibraryEngine=(()=>{
   const required=unique(Object.values(data.storyRequirements?.[day]||{}).flat()).filter(id=>!p.library.acquired[id]);
   const mandatory=required.filter(id=>byId[id]).sort((a,b)=>byId[a].suitableLocations.length-byId[b].suitableLocations.length||a.localeCompare(b));
   function assign(id,visited=new Set()){
-   for(const place of places.filter(place=>byId[id].suitableLocations.includes(place))){
+   for(const place of places.filter(place=>matchesPlace(byId[id],place))){
     if(visited.has(place))continue;visited.add(place);
     if(assignments[place].length<quota){assignments[place].push(id);return true;}
     for(let i=0;i<assignments[place].length;i++){const prior=assignments[place][i];if(assign(prior,visited)){assignments[place][i]=id;return true;}}
@@ -106,5 +108,5 @@ const LibraryEngine=(()=>{
   p.library.requestedDailyTarget=target;return {ok:true,day:next};
  }
  function unlock(p,day,source){if(day>=1&&day<=14)p.library.grammar['grammar-day-'+day]||={day,source};}
- return {presets,places,state,migrate,encounter,expose,practise,status,summary,available,allocation,supported,ensurePlan,setPace,unlock};
+ return {presets,places,matchesPlace,state,migrate,encounter,expose,practise,status,summary,available,allocation,supported,ensurePlan,setPace,unlock};
 })();
