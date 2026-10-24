@@ -1,0 +1,5495 @@
+{
+  "schemaVersion": 1,
+  "reviewStatus": "requiresNativeLaghmanReview",
+  "activeInGame": false,
+  "editorialWarning": "English lemma candidates only. pashtoDraft/romanisationDraft are null, no audio or inflected forms are invented. Do not count or serve these in player lessons until a reviewer approves a distinct Pashto lemma, forms and contextual examples.",
+  "districtModel": {
+    "schemaVersion": 1,
+    "designRule": "Canonical residential, nature, business and school district IDs are used directly in content, navigation and save format 4. Library is a reference scene; Hills belongs to Nature.",
+    "districts": [
+      {
+        "id": "residential",
+        "label": "Residential district",
+        "playerMapLabel": "Home",
+        "sceneFamilies": [
+          "home",
+          "apartment",
+          "courtyard",
+          "garden",
+          "neighbourhood",
+          "guesthouse",
+          "family gathering"
+        ]
+      },
+      {
+        "id": "nature",
+        "label": "Nature district",
+        "playerMapLabel": "Lake",
+        "sceneFamilies": [
+          "lake",
+          "river",
+          "hills",
+          "mountain",
+          "valley",
+          "forest",
+          "field",
+          "orchard",
+          "pasture",
+          "waterfall"
+        ]
+      },
+      {
+        "id": "business",
+        "label": "Business district",
+        "playerMapLabel": "Market",
+        "sceneFamilies": [
+          "market",
+          "bazaar",
+          "grocer",
+          "bakery",
+          "pharmacy",
+          "tailor shop",
+          "cafe",
+          "workshop",
+          "post office"
+        ]
+      },
+      {
+        "id": "school",
+        "label": "School district",
+        "playerMapLabel": "School",
+        "sceneFamilies": [
+          "classroom",
+          "school library",
+          "playground",
+          "science room",
+          "sports field",
+          "assembly hall",
+          "art room"
+        ]
+      }
+    ],
+    "districtByLegacyPlaceKey": {
+      "residential": "residential",
+      "nature": "nature",
+      "business": "business",
+      "school": "school"
+    }
+  },
+  "summary": {
+    "existingContentLemmas": 108,
+    "newCandidateLemmas": 360,
+    "maximumAfterReview": 468
+  },
+  "candidates": [
+    {
+      "candidateId": "candidate:noun:mother",
+      "englishLemma": "mother",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:father",
+      "englishLemma": "father",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:brother",
+      "englishLemma": "brother",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sister",
+      "englishLemma": "sister",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:child",
+      "englishLemma": "child",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:baby",
+      "englishLemma": "baby",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:grandmother",
+      "englishLemma": "grandmother",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:grandfather",
+      "englishLemma": "grandfather",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:uncle",
+      "englishLemma": "uncle",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:aunt",
+      "englishLemma": "aunt",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:cousin",
+      "englishLemma": "cousin",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:neighbour",
+      "englishLemma": "neighbour",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:parent",
+      "englishLemma": "parent",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:husband",
+      "englishLemma": "husband",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:wife",
+      "englishLemma": "wife",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:kitchen",
+      "englishLemma": "kitchen",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bedroom",
+      "englishLemma": "bedroom",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bathroom",
+      "englishLemma": "bathroom",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:courtyard",
+      "englishLemma": "courtyard",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:roof",
+      "englishLemma": "roof",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:wall",
+      "englishLemma": "wall",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:ceiling",
+      "englishLemma": "ceiling",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:floor",
+      "englishLemma": "floor",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:stair",
+      "englishLemma": "stair",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:step",
+      "englishLemma": "step",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:gate",
+      "englishLemma": "gate",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:fence",
+      "englishLemma": "fence",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:garden",
+      "englishLemma": "garden",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:pillow",
+      "englishLemma": "pillow",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:blanket",
+      "englishLemma": "blanket",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bed",
+      "englishLemma": "bed",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:mattress",
+      "englishLemma": "mattress",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:carpet",
+      "englishLemma": "carpet",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:curtain",
+      "englishLemma": "curtain",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:key",
+      "englishLemma": "key",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:lock",
+      "englishLemma": "lock",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:lamp",
+      "englishLemma": "lamp",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:candle",
+      "englishLemma": "candle",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:mirror",
+      "englishLemma": "mirror",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:soap",
+      "englishLemma": "soap",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:towel",
+      "englishLemma": "towel",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:toothbrush",
+      "englishLemma": "toothbrush",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:toothpaste",
+      "englishLemma": "toothpaste",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:plate",
+      "englishLemma": "plate",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bowl",
+      "englishLemma": "bowl",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:spoon",
+      "englishLemma": "spoon",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:fork",
+      "englishLemma": "fork",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:pot",
+      "englishLemma": "pot",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:pan",
+      "englishLemma": "pan",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:kettle",
+      "englishLemma": "kettle",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:stove",
+      "englishLemma": "stove",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sink",
+      "englishLemma": "sink",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:broom",
+      "englishLemma": "broom",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bucket",
+      "englishLemma": "bucket",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:shirt",
+      "englishLemma": "shirt",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:trousers",
+      "englishLemma": "trousers",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:shoe",
+      "englishLemma": "shoe",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sock",
+      "englishLemma": "sock",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:wake",
+      "englishLemma": "wake",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:sleep",
+      "englishLemma": "sleep",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:rest",
+      "englishLemma": "rest",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:cook",
+      "englishLemma": "cook",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:boil",
+      "englishLemma": "boil",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:fry",
+      "englishLemma": "fry",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:stir",
+      "englishLemma": "stir",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:serve",
+      "englishLemma": "serve",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:wash",
+      "englishLemma": "wash",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:rinse",
+      "englishLemma": "rinse",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:sweep",
+      "englishLemma": "sweep",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:mop",
+      "englishLemma": "mop",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:fold",
+      "englishLemma": "fold",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:tidy",
+      "englishLemma": "tidy",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:invite",
+      "englishLemma": "invite",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:visit",
+      "englishLemma": "visit",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:knock",
+      "englishLemma": "knock",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:enter",
+      "englishLemma": "enter",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:leave",
+      "englishLemma": "leave",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:lock",
+      "englishLemma": "lock",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:comfortable",
+      "englishLemma": "comfortable",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:soft",
+      "englishLemma": "soft",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:hard",
+      "englishLemma": "hard",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:quiet",
+      "englishLemma": "quiet",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:noisy",
+      "englishLemma": "noisy",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:tidy",
+      "englishLemma": "tidy",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:messy",
+      "englishLemma": "messy",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:empty",
+      "englishLemma": "empty",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:full",
+      "englishLemma": "full",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:wet",
+      "englishLemma": "wet",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:dry",
+      "englishLemma": "dry",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:bright",
+      "englishLemma": "bright",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "residential",
+      "suitableDistricts": [
+        "residential"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "aliasOfLemmaId": "lemma:a-clear",
+      "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+    },
+    {
+      "candidateId": "candidate:noun:forest",
+      "englishLemma": "forest",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:tree",
+      "englishLemma": "tree",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:branch",
+      "englishLemma": "branch",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:leaf",
+      "englishLemma": "leaf",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:root",
+      "englishLemma": "root",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:flower",
+      "englishLemma": "flower",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:seed",
+      "englishLemma": "seed",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:grass",
+      "englishLemma": "grass",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:soil",
+      "englishLemma": "soil",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:mud",
+      "englishLemma": "mud",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:pebble",
+      "englishLemma": "pebble",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:rock",
+      "englishLemma": "rock",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:hill",
+      "englishLemma": "hill",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:mountain",
+      "englishLemma": "mountain",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:valley",
+      "englishLemma": "valley",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:meadow",
+      "englishLemma": "meadow",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:field",
+      "englishLemma": "field",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:orchard",
+      "englishLemma": "orchard",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:forest-path",
+      "englishLemma": "forest path",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:stream",
+      "englishLemma": "stream",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:waterfall",
+      "englishLemma": "waterfall",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:spring",
+      "englishLemma": "spring",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:shore",
+      "englishLemma": "shore",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:riverbank",
+      "englishLemma": "riverbank",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:cloud",
+      "englishLemma": "cloud",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:fog",
+      "englishLemma": "fog",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:wind",
+      "englishLemma": "wind",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:snow",
+      "englishLemma": "snow",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:ice",
+      "englishLemma": "ice",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sunlight",
+      "englishLemma": "sunlight",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:shade",
+      "englishLemma": "shade",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:star",
+      "englishLemma": "star",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:moon",
+      "englishLemma": "moon",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sun",
+      "englishLemma": "sun",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sky",
+      "englishLemma": "sky",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:weather",
+      "englishLemma": "weather",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:season",
+      "englishLemma": "season",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:summer",
+      "englishLemma": "summer",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:winter",
+      "englishLemma": "winter",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:autumn",
+      "englishLemma": "autumn",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:springtime",
+      "englishLemma": "springtime",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:goat",
+      "englishLemma": "goat",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sheep",
+      "englishLemma": "sheep",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:cow",
+      "englishLemma": "cow",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:horse",
+      "englishLemma": "horse",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:donkey",
+      "englishLemma": "donkey",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:chicken",
+      "englishLemma": "chicken",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:rooster",
+      "englishLemma": "rooster",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:duck",
+      "englishLemma": "duck",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:eagle",
+      "englishLemma": "eagle",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:butterfly",
+      "englishLemma": "butterfly",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bee",
+      "englishLemma": "bee",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:ant",
+      "englishLemma": "ant",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:rabbit",
+      "englishLemma": "rabbit",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:frog",
+      "englishLemma": "frog",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:snake",
+      "englishLemma": "snake",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:spider",
+      "englishLemma": "spider",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:insect",
+      "englishLemma": "insect",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:grow",
+      "englishLemma": "grow",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:bloom",
+      "englishLemma": "bloom",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:fall",
+      "englishLemma": "fall",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:rise",
+      "englishLemma": "rise",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:climb",
+      "englishLemma": "climb",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:hike",
+      "englishLemma": "hike",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:swim",
+      "englishLemma": "swim",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "aliasOfLemmaId": "lemma:v-swim",
+      "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+    },
+    {
+      "candidateId": "candidate:verb:float",
+      "englishLemma": "float",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:fly",
+      "englishLemma": "fly",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:jump",
+      "englishLemma": "jump",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:plant",
+      "englishLemma": "plant",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:harvest",
+      "englishLemma": "harvest",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:feed",
+      "englishLemma": "feed",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:dig",
+      "englishLemma": "dig",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:collect",
+      "englishLemma": "collect",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:follow",
+      "englishLemma": "follow",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:hide",
+      "englishLemma": "hide",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:cross",
+      "englishLemma": "cross",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:flow",
+      "englishLemma": "flow",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:snow",
+      "englishLemma": "snow",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:tall",
+      "englishLemma": "tall",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:shallow",
+      "englishLemma": "shallow",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:steep",
+      "englishLemma": "steep",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:slippery",
+      "englishLemma": "slippery",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:wild",
+      "englishLemma": "wild",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:clear",
+      "englishLemma": "clear",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature",
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "aliasOfLemmaId": "lemma:a-clear",
+      "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+    },
+    {
+      "candidateId": "candidate:adjective:cloudy",
+      "englishLemma": "cloudy",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:muddy",
+      "englishLemma": "muddy",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:windy",
+      "englishLemma": "windy",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:rocky",
+      "englishLemma": "rocky",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:grassy",
+      "englishLemma": "grassy",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:flowing",
+      "englishLemma": "flowing",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "nature",
+      "suitableDistricts": [
+        "nature"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bazaar",
+      "englishLemma": "bazaar",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bakery",
+      "englishLemma": "bakery",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:butcher",
+      "englishLemma": "butcher",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:pharmacy",
+      "englishLemma": "pharmacy",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:tailor",
+      "englishLemma": "tailor",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:carpenter",
+      "englishLemma": "carpenter",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:mechanic",
+      "englishLemma": "mechanic",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:post-office",
+      "englishLemma": "post office",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:cafe",
+      "englishLemma": "cafe",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:restaurant",
+      "englishLemma": "restaurant",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:counter",
+      "englishLemma": "counter",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:shelf",
+      "englishLemma": "shelf",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:cash-register",
+      "englishLemma": "cash register",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:receipt",
+      "englishLemma": "receipt",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bill",
+      "englishLemma": "bill",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:change",
+      "englishLemma": "change",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:coin",
+      "englishLemma": "coin",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bank",
+      "englishLemma": "bank",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:banknote",
+      "englishLemma": "banknote",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:wallet",
+      "englishLemma": "wallet",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:purse",
+      "englishLemma": "purse",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:price",
+      "englishLemma": "price",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:discount",
+      "englishLemma": "discount",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:profit",
+      "englishLemma": "profit",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:tax",
+      "englishLemma": "tax",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:wage",
+      "englishLemma": "wage",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:order",
+      "englishLemma": "order",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:delivery",
+      "englishLemma": "delivery",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:parcel",
+      "englishLemma": "parcel",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:box",
+      "englishLemma": "box",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:crate",
+      "englishLemma": "crate",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sack",
+      "englishLemma": "sack",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:customer",
+      "englishLemma": "customer",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:seller",
+      "englishLemma": "seller",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:buyer",
+      "englishLemma": "buyer",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:queue",
+      "englishLemma": "queue",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:scale",
+      "englishLemma": "scale",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:kilogram",
+      "englishLemma": "kilogram",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:litre",
+      "englishLemma": "litre",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:dozen",
+      "englishLemma": "dozen",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:spice",
+      "englishLemma": "spice",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:rice",
+      "englishLemma": "rice",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:flour",
+      "englishLemma": "flour",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sugar",
+      "englishLemma": "sugar",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:salt",
+      "englishLemma": "salt",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:coffee",
+      "englishLemma": "coffee",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:egg",
+      "englishLemma": "egg",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:vegetable",
+      "englishLemma": "vegetable",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:tomato",
+      "englishLemma": "tomato",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:cucumber",
+      "englishLemma": "cucumber",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:grape",
+      "englishLemma": "grape",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:banana",
+      "englishLemma": "banana",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:lemon",
+      "englishLemma": "lemon",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:melon",
+      "englishLemma": "melon",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:bean",
+      "englishLemma": "bean",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:lentil",
+      "englishLemma": "lentil",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:nut",
+      "englishLemma": "nut",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:almond",
+      "englishLemma": "almond",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:pay",
+      "englishLemma": "pay",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:exchange",
+      "englishLemma": "exchange",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:bargain",
+      "englishLemma": "bargain",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:choose",
+      "englishLemma": "choose",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "aliasOfLemmaId": "lemma:vocab6-market-choose",
+      "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+    },
+    {
+      "candidateId": "candidate:verb:count",
+      "englishLemma": "count",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:weigh",
+      "englishLemma": "weigh",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:measure",
+      "englishLemma": "measure",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business",
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:pack",
+      "englishLemma": "pack",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:unpack",
+      "englishLemma": "unpack",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:order",
+      "englishLemma": "order",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:deliver",
+      "englishLemma": "deliver",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:spend",
+      "englishLemma": "spend",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:earn",
+      "englishLemma": "earn",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:charge",
+      "englishLemma": "charge",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:repair",
+      "englishLemma": "repair",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:bake",
+      "englishLemma": "bake",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:grind",
+      "englishLemma": "grind",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:cut",
+      "englishLemma": "cut",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:sew",
+      "englishLemma": "sew",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:negotiate",
+      "englishLemma": "negotiate",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:cheap",
+      "englishLemma": "cheap",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "aliasOfLemmaId": "lemma:a-cheap",
+      "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+    },
+    {
+      "candidateId": "candidate:adjective:free",
+      "englishLemma": "free",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:costly",
+      "englishLemma": "costly",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:stale",
+      "englishLemma": "stale",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:ripe",
+      "englishLemma": "ripe",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "aliasOfLemmaId": "lemma:a-ripe",
+      "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+    },
+    {
+      "candidateId": "candidate:adjective:raw",
+      "englishLemma": "raw",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:cooked",
+      "englishLemma": "cooked",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "aliasOfLemmaId": "lemma:a-ripe",
+      "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+    },
+    {
+      "candidateId": "candidate:adjective:available",
+      "englishLemma": "available",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:heavy",
+      "englishLemma": "heavy",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:lightweight",
+      "englishLemma": "lightweight",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:fair",
+      "englishLemma": "fair",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:unfair",
+      "englishLemma": "unfair",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "business",
+      "suitableDistricts": [
+        "business"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:classroom",
+      "englishLemma": "classroom",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:timetable",
+      "englishLemma": "timetable",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:teacher",
+      "englishLemma": "teacher",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:pupil",
+      "englishLemma": "pupil",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:principal",
+      "englishLemma": "principal",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:desk",
+      "englishLemma": "desk",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:blackboard",
+      "englishLemma": "blackboard",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:whiteboard",
+      "englishLemma": "whiteboard",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:chalk",
+      "englishLemma": "chalk",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:marker",
+      "englishLemma": "marker",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:eraser",
+      "englishLemma": "eraser",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:pencil",
+      "englishLemma": "pencil",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sharpener",
+      "englishLemma": "sharpener",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:ruler",
+      "englishLemma": "ruler",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:textbook",
+      "englishLemma": "textbook",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:workbook",
+      "englishLemma": "workbook",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:folder",
+      "englishLemma": "folder",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:page",
+      "englishLemma": "page",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:chapter",
+      "englishLemma": "chapter",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:paragraph",
+      "englishLemma": "paragraph",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:letter",
+      "englishLemma": "letter",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:alphabet",
+      "englishLemma": "alphabet",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:vowel",
+      "englishLemma": "vowel",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:consonant",
+      "englishLemma": "consonant",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:number",
+      "englishLemma": "number",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:sum",
+      "englishLemma": "sum",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:equation",
+      "englishLemma": "equation",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:answer",
+      "englishLemma": "answer",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:exam",
+      "englishLemma": "exam",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:quiz",
+      "englishLemma": "quiz",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:homework",
+      "englishLemma": "homework",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:grade",
+      "englishLemma": "grade",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:mark",
+      "englishLemma": "mark",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:subject",
+      "englishLemma": "subject",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:recess",
+      "englishLemma": "recess",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:library",
+      "englishLemma": "library",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:dictionary",
+      "englishLemma": "dictionary",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:computer",
+      "englishLemma": "computer",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:keyboard",
+      "englishLemma": "keyboard",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:screen",
+      "englishLemma": "screen",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:projector",
+      "englishLemma": "projector",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:globe",
+      "englishLemma": "globe",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:map",
+      "englishLemma": "map",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:science",
+      "englishLemma": "science",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:experiment",
+      "englishLemma": "experiment",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:graph",
+      "englishLemma": "graph",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:chart",
+      "englishLemma": "chart",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:calendar",
+      "englishLemma": "calendar",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:clock",
+      "englishLemma": "clock",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:schedule",
+      "englishLemma": "schedule",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:break",
+      "englishLemma": "break",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:uniform",
+      "englishLemma": "uniform",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:backpack",
+      "englishLemma": "backpack",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:art",
+      "englishLemma": "art",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:paintbrush",
+      "englishLemma": "paintbrush",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:colour",
+      "englishLemma": "colour",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:paint",
+      "englishLemma": "paint",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:noun:scissors",
+      "englishLemma": "scissors",
+      "partOfSpeech": "noun",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:study",
+      "englishLemma": "study",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:practise",
+      "englishLemma": "practise",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:revise",
+      "englishLemma": "revise",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:explain",
+      "englishLemma": "explain",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:repeat",
+      "englishLemma": "repeat",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:ask",
+      "englishLemma": "ask",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:answer",
+      "englishLemma": "answer",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:compare",
+      "englishLemma": "compare",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:classify",
+      "englishLemma": "classify",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:sort",
+      "englishLemma": "sort",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:estimate",
+      "englishLemma": "estimate",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:calculate",
+      "englishLemma": "calculate",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:solve",
+      "englishLemma": "solve",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:draw",
+      "englishLemma": "draw",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:copy",
+      "englishLemma": "copy",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:correct",
+      "englishLemma": "correct",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:check",
+      "englishLemma": "check",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:memorise",
+      "englishLemma": "memorise",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:discuss",
+      "englishLemma": "discuss",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:verb:listen",
+      "englishLemma": "listen",
+      "partOfSpeech": "verb",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:correct",
+      "englishLemma": "correct",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:incorrect",
+      "englishLemma": "incorrect",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:careful",
+      "englishLemma": "careful",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:creative",
+      "englishLemma": "creative",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:interesting",
+      "englishLemma": "interesting",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:late",
+      "englishLemma": "late",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:early",
+      "englishLemma": "early",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:absent",
+      "englishLemma": "absent",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:present",
+      "englishLemma": "present",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:finished",
+      "englishLemma": "finished",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:unfinished",
+      "englishLemma": "unfinished",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    },
+    {
+      "candidateId": "candidate:adjective:neat",
+      "englishLemma": "neat",
+      "partOfSpeech": "adjective",
+      "primaryDistrict": "school",
+      "suitableDistricts": [
+        "school"
+      ],
+      "pashtoDraft": null,
+      "romanisationDraft": null,
+      "reviewStatus": "needsNativeTranslation",
+      "countsTowardDailyQuota": false,
+      "source": "district expansion 2026-10-24",
+      "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+    }
+  ]
+}

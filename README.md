@@ -1,38 +1,48 @@
-> **Week 2 development preview:** `index.html` now includes Days 8–14 on the completed Week 1 baseline. Open it directly in a browser; no backend/build is needed for play. Week 2 Pashto and romanization remain draft and need local native review. See [content review](content/WEEK2_REVIEW.md), [implementation notes](WEEK2_IMPLEMENTATION.md) and [tests](tests/README.md).
+# Pashto Quest
 
-# Pashto Quest Week 2 — Codex/GitHub patch preparation
+An offline Pashto learning game with fourteen authored story days, four teaching districts, and an always-open Library. Week 1 finishes with the Level 10 / New Resident examination. Week 2 adds contextual dialogue, grammar and cumulative review; its language remains a draft awaiting local Laghman review.
 
-This is **a development patch package, not a finished playable Week 2**. The patch contains a working code-injection script for the requested new interaction mechanics plus the complete Days 8–14 English/narrative lesson plan. **The playable repository is not modified by creating this package.** The new `dialogue` exercise type is dormant until Codex integrates validated Week 2 questions into the actual challenge bank and adds Week 2 days. The 140 sentence targets in the content file are **English intentions**, only 35 draft Pashto model sentences; the translations need review before full in-game use.
+Open `index.html` in a modern browser, or serve the checkout with `python3 -m http.server 8000`. No backend, API key, runtime JSON request or package installation is needed to play. Audio uses an available Pashto asset/device voice and reports missing pronunciation support honestly.
 
-## Which GitHub branch?
+## Edit and build
 
-Use `Anton0095/pashto-quest` **`codex/complete-week1-23850c7`**, because (as of the 23 October inspection) `main` is older and lacks Mina/Hills and the updated Week 1 exam. If Week 1 has since been merged, compare and use the *newer* merged version instead. Do not paste the older build over Codex work.
+The HTML release is generated. Edit these authoritative files:
 
-## Files
+- `src/app.html`, `src/app.css`, `src/app.js`: interface, authored scenes, assessment rendering and save I/O.
+- `src/progression.js`: current save version/factory, authoritative challenge results, XP transactions and level gates.
+- `src/library-engine.js`: lemma acquisition, form/unit SRS, deterministic district plans and bank selection.
+- `src/library-ui.js`: Library and its integration with lessons/assessments.
+- `content/WEEK1_RUNTIME.json`, `content/WEEK2_RUNTIME.json`: curriculum cards and narrative data.
+- `content/LIBRARY_LEXICON.json`: lexical identities, forms, mappings, grammar notes and review metadata.
 
-- `CODEX_TASK.md`: definitive task to give Codex, including Week 2 route, lessons, and score requirements.
-- `ACCEPTANCE_TESTS.md`: QA expectations and full Week 1 regression protection.
-- `patch/apply_week2_interactions.py`: strict source-to-source modification of the current Week 1 single-file HTML; does not change main until you run it.
-- `patch/test_patch.py`: repeatable static/synthetic JS syntax and scoring checks.
-- `examples/week2_dialogue_examples.json`: 12 draft, **not native-reviewed** conversation questions with answer/dud tiles and speaker/addressee details.
-- `content/WEEK2_LESSON_DATA.json`: 7 days × 4 places × five sentence targets = 140 English targets; 35 provisional Pashto models.
-- `content/WEEK2_DETAILED_LESSONS.md`: narrative dialogue, grammar and learning objectives for all seven days.
-- `content/WEEK2_IMPLEMENTATION_NOTES.md`: earlier content-stage assumptions, superseded by CODEX_TASK.md on feature mechanics.
+```sh
+python3 tools/build.py
+python3 tools/build.py --check
+```
 
-## Quick start: easiest workflow for a new GitHub user
+The single Python-standard-library builder bundles the complete game. Do not edit generated `index.html` independently. The internal district keys are `residential`, `nature`, `business`, `school`. Home, Lake, Market and School remain the player-facing map labels; Library is a reference scene and Hills belongs to Nature.
 
-1. Download and extract this ZIP locally.
-2. Open your GitHub repository and switch to the **Week 1 Codex branch**, not old `main` (unless it has been merged since).
-3. Upload the files into matching folders on that branch, or ask Codex to add these files to the repository from the ZIP.
-4. Open a new Codex task with this repository selected. Paste: **“Read `CODEX_TASK.md` and implement it. First check whether the Week 1 branch is already merged and base changes on the newest existing game. Apply the supplied patch to `index.html` after verifying applicability; then integrate the Week 2 narrative lessons and question banks, review translations, run acceptance tests, and prepare a pull request. Do not overwrite Days 1–7, reset progress or force-push main.”**
-5. Review the PR and the mobile/desktop playthrough before merging into main.
+## Save format
 
-If Codex wants a direct script command: `python3 patch/apply_week2_interactions.py index.html --output index.week2-preview.html`; after review, `python3 patch/apply_week2_interactions.py index.html --in-place`. This script purposely **fails fast** if the repository's current HTML has incompatible changes; Codex must then port equivalent code manually.
+This release uses **save schema 4 only**. It deliberately does not migrate older formats. An incompatible or corrupt save produces a blocking explanation and an explicit reset button. The stored value remains unchanged until the player chooses reset. Current-version progress, frozen plans, SRS and challenge attempts persist normally.
 
-## Important scope boundary
+Vocabulary acquisition and SRS have one authority in `progress.library`. Sentences and expressions have distinct learning units using the same scheduler; lexical card aliases read the corresponding form record and store no mirrored counters. XP uses persistent reward identities to prevent immediate lesson replay farming.
 
-Do not silently unlock content with untranslated or unchecked Pashto. Do not invent a Week 2 XP leveling ladder yet. Maintain Week 1's Level 10 graduation and New Resident title. Extra features (inventory, new locations, dialogue branching, drag-and-drop animations) are not required and remain for later planning.
+## Verification
 
-## Library development feature
+Requires Python 3, Node.js, Playwright and Chromium. The cloud image supplies these; local installations can use `playwright` and set `CHROMIUM_PATH` where necessary.
 
-The Library implementation adds a fifth reference location, cumulative lemma/form records, a Grammar Journal, frozen pace plans, preserved challenge attempts and Muhammad Jan's Day 1 Library/home-handover story. It retains the Week 2 game and offline single-file release. See [implementation and content limitations](docs/LIBRARY_IMPLEMENTATION.md) and [test commands](tests/README.md). The existing 108-content-lemma draft cannot supply every requested pace across all fourteen days; unsupported settings/content gaps are explicit and native review is pending.
+```sh
+python3 tools/verify.py          # all syntax/model/build checks and all browser suites
+python3 tools/verify.py --quick  # explicitly excludes browser suites
+node tools/district-inventory.mjs       # refresh capacity report after content/model changes
+node tools/district-inventory.mjs --check
+```
+
+Browser coverage includes public-UI-only checks at 1280px/375px, detailed Week 1/2 and Library flows, and twelve complete normal/skip curriculum profiles at 4/8/12/16/20/24 assigned lemmas. See [cleanup findings and limits](docs/CLEANUP_REVIEW.md) and [test evidence](docs/CLEANUP_TEST_RESULTS.md).
+
+## Language and capacity
+
+The 127 draft lemma records contain 108 quota-counting content lemmas. All 360 untranslated candidates remain inactive. Pace settings work below 20 from Day 1; incidental story vocabulary is counted separately. Day 14 always schedules zero compulsory new words. The current inventory cannot sustain a full standard/intensive new-word quota throughout the curriculum: shortages are displayed and tested, never filled with repeats or fabricated Pashto.
+
+[Language review](LANGUAGE_REVIEW.md), [Week 2 review checklist](content/WEEK2_REVIEW.md), [district model](docs/DISTRICT_MODEL.md), and [curriculum specification](GAME_SPEC.md) describe the remaining editorial/native-review work. Automated Chromium tests do not establish physical iPhone Safari compatibility or linguistic certification.

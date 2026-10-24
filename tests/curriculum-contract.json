@@ -1,0 +1,3420 @@
+{
+  "words": [
+    {
+      "id": "g-hello",
+      "ps": "سلام",
+      "roman": "salaam",
+      "en": "Hello",
+      "loop": 0
+    },
+    {
+      "id": "g-how",
+      "ps": "څنګه یې؟",
+      "roman": "tsanga ye?",
+      "en": "How are you?",
+      "loop": 0
+    },
+    {
+      "id": "g-thanks",
+      "ps": "مننه",
+      "roman": "manana",
+      "en": "Thank you",
+      "loop": 0
+    },
+    {
+      "id": "g-bye",
+      "ps": "خدای پامان",
+      "roman": "khudaay paamaan",
+      "en": "Goodbye",
+      "loop": 0
+    },
+    {
+      "id": "n-house",
+      "ps": "کور",
+      "roman": "kor",
+      "en": "House",
+      "loop": 1
+    },
+    {
+      "id": "n-door",
+      "ps": "دروازه",
+      "roman": "darwaaza",
+      "en": "Door",
+      "loop": 1
+    },
+    {
+      "id": "n-room",
+      "ps": "کوټه",
+      "roman": "koṭa",
+      "en": "Room",
+      "loop": 1
+    },
+    {
+      "id": "v-open",
+      "ps": "خلاصول",
+      "roman": "khlaasawul",
+      "en": "To open",
+      "loop": 2
+    },
+    {
+      "id": "a-big",
+      "ps": "لوی",
+      "roman": "loy",
+      "en": "Big",
+      "loop": 1
+    },
+    {
+      "id": "s3-door",
+      "ps": "هغه دروازه خلاصوي.",
+      "roman": "hagha darwaaza khlaasawi",
+      "en": "He/she opens the door.",
+      "loop": 2
+    },
+    {
+      "id": "s3-house",
+      "ps": "کور لوی دی.",
+      "roman": "kor loy day",
+      "en": "The house is big.",
+      "loop": 1
+    },
+    {
+      "id": "n-water",
+      "ps": "اوبه",
+      "roman": "oba",
+      "en": "Water",
+      "loop": 1
+    },
+    {
+      "id": "n-river",
+      "ps": "سیند",
+      "roman": "seend",
+      "en": "River",
+      "loop": 1
+    },
+    {
+      "id": "v-drink",
+      "ps": "څښل",
+      "roman": "ts-khal",
+      "en": "To drink",
+      "loop": 2
+    },
+    {
+      "id": "a-cold",
+      "ps": "سوړ",
+      "roman": "soṛ",
+      "en": "Cold",
+      "loop": 1
+    },
+    {
+      "id": "s3-water",
+      "ps": "هغه اوبه څښي.",
+      "roman": "hagha oba ts-khee",
+      "en": "He/she drinks water.",
+      "loop": 2
+    },
+    {
+      "id": "s3-cold",
+      "ps": "اوبه سړې دي.",
+      "roman": "oba saṛe dee",
+      "en": "The water is cold.",
+      "loop": 1
+    },
+    {
+      "id": "n-market",
+      "ps": "بازار",
+      "roman": "baazaar",
+      "en": "Market",
+      "loop": 1
+    },
+    {
+      "id": "n-bread",
+      "ps": "ډوډۍ",
+      "roman": "ḍoḍay",
+      "en": "Bread / food",
+      "loop": 1
+    },
+    {
+      "id": "n-shop",
+      "ps": "دوکان",
+      "roman": "dukaan",
+      "en": "Shop",
+      "loop": 1
+    },
+    {
+      "id": "v-eat",
+      "ps": "خوړل",
+      "roman": "khoṛal",
+      "en": "To eat",
+      "loop": 2
+    },
+    {
+      "id": "a-fresh",
+      "ps": "تازه",
+      "roman": "taaza",
+      "en": "Fresh",
+      "loop": 1
+    },
+    {
+      "id": "s3-eat",
+      "ps": "هغه ډوډۍ خوري.",
+      "roman": "hagha ḍoḍay khoree",
+      "en": "He/she eats bread.",
+      "loop": 2
+    },
+    {
+      "id": "s3-fresh",
+      "ps": "ډوډۍ تازه ده.",
+      "roman": "ḍoḍay taaza da",
+      "en": "The bread is fresh.",
+      "loop": 1
+    },
+    {
+      "id": "n-book",
+      "ps": "کتاب",
+      "roman": "kitaab",
+      "en": "Book",
+      "loop": 1
+    },
+    {
+      "id": "n-school",
+      "ps": "ښوونځی",
+      "roman": "khwunzay",
+      "en": "School",
+      "loop": 1
+    },
+    {
+      "id": "v-read",
+      "ps": "لوستل",
+      "roman": "lwastal",
+      "en": "To read",
+      "loop": 2
+    },
+    {
+      "id": "a-new",
+      "ps": "نوی",
+      "roman": "naway",
+      "en": "New",
+      "loop": 1
+    },
+    {
+      "id": "s3-read",
+      "ps": "هغه کتاب لولي.",
+      "roman": "hagha kitaab lolee",
+      "en": "He/she reads a book.",
+      "loop": 2
+    },
+    {
+      "id": "s3-new",
+      "ps": "کتاب نوی دی.",
+      "roman": "kitaab naway day",
+      "en": "The book is new.",
+      "loop": 1
+    },
+    {
+      "id": "n-window",
+      "ps": "کړکۍ",
+      "roman": "kəṛkəy",
+      "en": "Window",
+      "loop": 2
+    },
+    {
+      "id": "v-live",
+      "ps": "اوسېدل",
+      "roman": "osedal",
+      "en": "To live / reside",
+      "loop": 3
+    },
+    {
+      "id": "a-small",
+      "ps": "کوچنی",
+      "roman": "kochnay",
+      "en": "Small",
+      "loop": 3
+    },
+    {
+      "id": "s1-live",
+      "ps": "زه په کور کې اوسېږم.",
+      "roman": "za pa kor ke osegam",
+      "en": "I live in a house.",
+      "loop": 3
+    },
+    {
+      "id": "s1-window",
+      "ps": "زه کړکۍ خلاصوم.",
+      "roman": "za kəṛkəy khlaasawum",
+      "en": "I open the window.",
+      "loop": 3
+    },
+    {
+      "id": "s1-small",
+      "ps": "دا کوټه کوچنۍ ده.",
+      "roman": "daa koṭa kochnay da",
+      "en": "This room is small.",
+      "loop": 3
+    },
+    {
+      "id": "n-fish",
+      "ps": "کب",
+      "roman": "kab",
+      "en": "Fish",
+      "loop": 2
+    },
+    {
+      "id": "v-see",
+      "ps": "لیدل",
+      "roman": "leedal",
+      "en": "To see",
+      "loop": 2
+    },
+    {
+      "id": "a-clean",
+      "ps": "پاک",
+      "roman": "paak",
+      "en": "Clean",
+      "loop": 1
+    },
+    {
+      "id": "s1-see",
+      "ps": "زه کب وینم.",
+      "roman": "za kab weenum",
+      "en": "I see a fish.",
+      "loop": 3
+    },
+    {
+      "id": "s1-water",
+      "ps": "زه اوبه څښم.",
+      "roman": "za oba ts-khum",
+      "en": "I drink water.",
+      "loop": 3
+    },
+    {
+      "id": "s1-clean",
+      "ps": "اوبه پاکې دي.",
+      "roman": "oba paake dee",
+      "en": "The water is clean.",
+      "loop": 3
+    },
+    {
+      "id": "n-apple",
+      "ps": "مڼه",
+      "roman": "maṇa",
+      "en": "Apple",
+      "loop": 2
+    },
+    {
+      "id": "v-buy",
+      "ps": "اخیستل",
+      "roman": "akheestal",
+      "en": "To buy / take",
+      "loop": 2
+    },
+    {
+      "id": "a-expensive",
+      "ps": "ګران",
+      "roman": "graan",
+      "en": "Expensive",
+      "loop": 3
+    },
+    {
+      "id": "s1-buy",
+      "ps": "زه مڼه اخلم.",
+      "roman": "za maṇa akhlum",
+      "en": "I buy an apple.",
+      "loop": 3
+    },
+    {
+      "id": "s1-eat",
+      "ps": "زه ډوډۍ خورم.",
+      "roman": "za ḍoḍay khorum",
+      "en": "I eat bread.",
+      "loop": 3
+    },
+    {
+      "id": "s1-price",
+      "ps": "دا مڼه ګرانه ده.",
+      "roman": "daa maṇa graana da",
+      "en": "This apple is expensive.",
+      "loop": 3
+    },
+    {
+      "id": "n-pen",
+      "ps": "قلم",
+      "roman": "qalam",
+      "en": "Pen",
+      "loop": 3
+    },
+    {
+      "id": "v-write",
+      "ps": "لیکل",
+      "roman": "leekal",
+      "en": "To write",
+      "loop": 2
+    },
+    {
+      "id": "a-easy",
+      "ps": "اسانه",
+      "roman": "asaana",
+      "en": "Easy",
+      "loop": 3
+    },
+    {
+      "id": "s1-write",
+      "ps": "زه په کتاب کې لیکم.",
+      "roman": "za pa kitaab ke leekum",
+      "en": "I write in a book.",
+      "loop": 3
+    },
+    {
+      "id": "s1-read",
+      "ps": "زه کتاب لولم.",
+      "roman": "za kitaab lolum",
+      "en": "I read a book.",
+      "loop": 3
+    },
+    {
+      "id": "s1-easy",
+      "ps": "دا کتاب اسانه دی.",
+      "roman": "daa kitaab asaana day",
+      "en": "This book is easy.",
+      "loop": 3
+    },
+    {
+      "id": "n-table",
+      "ps": "مېز",
+      "roman": "mez",
+      "en": "Table",
+      "loop": 4
+    },
+    {
+      "id": "v-clean",
+      "ps": "پاکول",
+      "roman": "paakawul",
+      "en": "To clean",
+      "loop": 4
+    },
+    {
+      "id": "a-old",
+      "ps": "زوړ",
+      "roman": "zoṛ",
+      "en": "Old",
+      "loop": 4
+    },
+    {
+      "id": "s2-table",
+      "ps": "ته مېز پاکوې.",
+      "roman": "ta mez paakawe",
+      "en": "You clean the table.",
+      "loop": 4
+    },
+    {
+      "id": "s2-door",
+      "ps": "ته دروازه خلاصوې.",
+      "roman": "ta darwaaza khlaasawe",
+      "en": "You open the door.",
+      "loop": 4
+    },
+    {
+      "id": "s2-old",
+      "ps": "دا مېز زوړ دی.",
+      "roman": "daa mez zoṛ day",
+      "en": "This table is old.",
+      "loop": 4
+    },
+    {
+      "id": "n-pond",
+      "ps": "ډنډ",
+      "roman": "ḍanḍ",
+      "en": "Pond",
+      "loop": 4
+    },
+    {
+      "id": "v-swim",
+      "ps": "لامبو وهل",
+      "roman": "laambo wahal",
+      "en": "To swim",
+      "loop": 4
+    },
+    {
+      "id": "a-deep",
+      "ps": "ژور",
+      "roman": "zhor",
+      "en": "Deep",
+      "loop": 4
+    },
+    {
+      "id": "s2-swim",
+      "ps": "ته په ډنډ کې لامبو وهې.",
+      "roman": "ta pa ḍanḍ ke laambo wahe",
+      "en": "You swim in the pond.",
+      "loop": 4
+    },
+    {
+      "id": "s2-water",
+      "ps": "ته اوبه څښې.",
+      "roman": "ta oba ts-khe",
+      "en": "You drink water.",
+      "loop": 4
+    },
+    {
+      "id": "s2-deep",
+      "ps": "دا ډنډ ژور دی.",
+      "roman": "daa ḍanḍ zhor day",
+      "en": "This pond is deep.",
+      "loop": 4
+    },
+    {
+      "id": "n-money",
+      "ps": "پیسې",
+      "roman": "pese",
+      "en": "Money",
+      "loop": 4
+    },
+    {
+      "id": "v-give",
+      "ps": "ورکول",
+      "roman": "warkawul",
+      "en": "To give",
+      "loop": 4
+    },
+    {
+      "id": "a-cheap",
+      "ps": "ارزان",
+      "roman": "arzaan",
+      "en": "Cheap / inexpensive",
+      "loop": 4
+    },
+    {
+      "id": "s2-money",
+      "ps": "ته پیسې ورکوې.",
+      "roman": "ta pese warkawe",
+      "en": "You give money.",
+      "loop": 4
+    },
+    {
+      "id": "s2-buy",
+      "ps": "ته مڼه اخلې.",
+      "roman": "ta maṇa akhle",
+      "en": "You buy an apple.",
+      "loop": 4
+    },
+    {
+      "id": "s2-cheap",
+      "ps": "دا ډوډۍ ارزانه ده.",
+      "roman": "daa ḍoḍay arzaana da",
+      "en": "This bread is cheap.",
+      "loop": 4
+    },
+    {
+      "id": "n-lesson",
+      "ps": "درس",
+      "roman": "dars",
+      "en": "Lesson",
+      "loop": 4
+    },
+    {
+      "id": "v-learn",
+      "ps": "زده کول",
+      "roman": "zda kawul",
+      "en": "To learn",
+      "loop": 4
+    },
+    {
+      "id": "a-good",
+      "ps": "ښه",
+      "roman": "kha",
+      "en": "Good",
+      "loop": 4
+    },
+    {
+      "id": "s2-learn",
+      "ps": "ته درس زده کوې.",
+      "roman": "ta dars zda kawe",
+      "en": "You learn a lesson.",
+      "loop": 4
+    },
+    {
+      "id": "s2-read",
+      "ps": "ته کتاب لولې.",
+      "roman": "ta kitaab lole",
+      "en": "You read a book.",
+      "loop": 4
+    },
+    {
+      "id": "s2-good",
+      "ps": "دا درس ښه دی.",
+      "roman": "daa dars kha day",
+      "en": "This lesson is good.",
+      "loop": 4
+    },
+    {
+      "id": "n-family",
+      "ps": "کورنۍ",
+      "roman": "koranay",
+      "en": "Family",
+      "loop": 6
+    },
+    {
+      "id": "v-talk",
+      "ps": "خبرې کول",
+      "roman": "khabare kawul",
+      "en": "To talk",
+      "loop": 6
+    },
+    {
+      "id": "a-happy",
+      "ps": "خوشحاله",
+      "roman": "khoshhaala",
+      "en": "Happy",
+      "loop": 6
+    },
+    {
+      "id": "s4-talk",
+      "ps": "موږ په کور کې خبرې کوو.",
+      "roman": "moong pa kor ke khabare kawoo",
+      "en": "We talk at home.",
+      "loop": 6
+    },
+    {
+      "id": "s4-live",
+      "ps": "موږ په کور کې اوسېږو.",
+      "roman": "moong pa kor ke osegoo",
+      "en": "We live in the house.",
+      "loop": 6
+    },
+    {
+      "id": "n-tea",
+      "ps": "چای",
+      "roman": "chaay",
+      "en": "Tea",
+      "loop": 6
+    },
+    {
+      "id": "v-go",
+      "ps": "تلل",
+      "roman": "tlal",
+      "en": "To go",
+      "loop": 6
+    },
+    {
+      "id": "a-hot",
+      "ps": "تود",
+      "roman": "tod",
+      "en": "Hot / warm",
+      "loop": 6
+    },
+    {
+      "id": "s4-tea",
+      "ps": "موږ چای څښو.",
+      "roman": "moong chaay ts-khoo",
+      "en": "We drink tea.",
+      "loop": 6
+    },
+    {
+      "id": "s4-go",
+      "ps": "موږ سیند ته ځو.",
+      "roman": "moong seend ta dzoo",
+      "en": "We go to the river.",
+      "loop": 6
+    },
+    {
+      "id": "s4-hot",
+      "ps": "دا چای تود دی.",
+      "roman": "daa chaay tod day",
+      "en": "This tea is hot.",
+      "loop": 6
+    },
+    {
+      "id": "n-fruit",
+      "ps": "مېوه",
+      "roman": "mewa",
+      "en": "Fruit",
+      "loop": 6
+    },
+    {
+      "id": "v-sell",
+      "ps": "پلورل",
+      "roman": "ploral",
+      "en": "To sell",
+      "loop": 6
+    },
+    {
+      "id": "a-sweet",
+      "ps": "خوږ",
+      "roman": "khog",
+      "en": "Sweet",
+      "loop": 6
+    },
+    {
+      "id": "s4-buy",
+      "ps": "موږ مېوه اخلو.",
+      "roman": "moong mewa akhloo",
+      "en": "We buy fruit.",
+      "loop": 6
+    },
+    {
+      "id": "s4-sell",
+      "ps": "موږ مېوه پلورو.",
+      "roman": "moong mewa ploroo",
+      "en": "We sell fruit.",
+      "loop": 6
+    },
+    {
+      "id": "s4-sweet",
+      "ps": "دا مېوه خوږه ده.",
+      "roman": "daa mewa khoga da",
+      "en": "This fruit is sweet.",
+      "loop": 6
+    },
+    {
+      "id": "n-language",
+      "ps": "پښتو",
+      "roman": "pakhto",
+      "en": "Pashto (language)",
+      "loop": 6
+    },
+    {
+      "id": "n-student",
+      "ps": "زده کوونکی",
+      "roman": "zda kawoonkay",
+      "en": "Student",
+      "loop": 6
+    },
+    {
+      "id": "a-difficult",
+      "ps": "ستونزمن",
+      "roman": "stoonzman",
+      "en": "Difficult",
+      "loop": 6
+    },
+    {
+      "id": "s4-learn",
+      "ps": "موږ پښتو زده کوو.",
+      "roman": "moong pakhto zda kawoo",
+      "en": "We learn Pashto.",
+      "loop": 6
+    },
+    {
+      "id": "s4-read",
+      "ps": "موږ کتاب لولو.",
+      "roman": "moong kitaab loloo",
+      "en": "We read a book.",
+      "loop": 6
+    },
+    {
+      "id": "s4-hard",
+      "ps": "دا درس ستونزمن دی.",
+      "roman": "daa dars stoonzman day",
+      "en": "This lesson is difficult.",
+      "loop": 6
+    },
+    {
+      "id": "n-guest",
+      "ps": "مېلمه",
+      "roman": "melma",
+      "en": "Guest",
+      "loop": 5
+    },
+    {
+      "id": "a-dark",
+      "ps": "تیاره",
+      "roman": "tiyaara",
+      "en": "Dark",
+      "loop": 5
+    },
+    {
+      "id": "s5-live",
+      "ps": "تاسې په کور کې اوسېږئ.",
+      "roman": "taase pa kor ke osegey",
+      "en": "You live in the house. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-see",
+      "ps": "تاسې مېلمه وینئ.",
+      "roman": "taase melma weeney",
+      "en": "You see a guest. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-dark",
+      "ps": "دا کوټه تیاره ده.",
+      "roman": "daa koṭa tiyaara da",
+      "en": "This room is dark.",
+      "loop": 5
+    },
+    {
+      "id": "n-rain",
+      "ps": "باران",
+      "roman": "baaraan",
+      "en": "Rain",
+      "loop": 5
+    },
+    {
+      "id": "a-calm",
+      "ps": "ارام",
+      "roman": "araam",
+      "en": "Calm",
+      "loop": 5
+    },
+    {
+      "id": "s5-drink",
+      "ps": "تاسې اوبه څښئ.",
+      "roman": "taase oba ts-khey",
+      "en": "You drink water. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-go",
+      "ps": "تاسې سیند ته ځئ.",
+      "roman": "taase seend ta dzey",
+      "en": "You go to the river. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-calm",
+      "ps": "دا سیند ارام دی.",
+      "roman": "daa seend araam day",
+      "en": "This river is calm.",
+      "loop": 5
+    },
+    {
+      "id": "n-vegetables",
+      "ps": "سبزي",
+      "roman": "sabzee",
+      "en": "Vegetables",
+      "loop": 5
+    },
+    {
+      "id": "a-ripe",
+      "ps": "پخه",
+      "roman": "pakha",
+      "en": "Ripe / cooked (feminine)",
+      "loop": 5
+    },
+    {
+      "id": "s5-buy",
+      "ps": "تاسې سبزي اخلئ.",
+      "roman": "taase sabzee akhley",
+      "en": "You buy vegetables. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-sell",
+      "ps": "تاسې مېوه پلورئ.",
+      "roman": "taase mewa plorey",
+      "en": "You sell fruit. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-cooked",
+      "ps": "دا ډوډۍ پخه ده.",
+      "roman": "daa ḍoḍay pakha da",
+      "en": "This bread is cooked.",
+      "loop": 5
+    },
+    {
+      "id": "n-notebook",
+      "ps": "کتابچه",
+      "roman": "kitaabcha",
+      "en": "Notebook",
+      "loop": 5
+    },
+    {
+      "id": "a-useful",
+      "ps": "ګټور",
+      "roman": "gaṭwar",
+      "en": "Useful",
+      "loop": 5
+    },
+    {
+      "id": "s5-read",
+      "ps": "تاسې کتاب لولئ.",
+      "roman": "taase kitaab loley",
+      "en": "You read a book. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-write",
+      "ps": "تاسې په کتابچه کې لیکئ.",
+      "roman": "taase pa kitaabcha ke leekey",
+      "en": "You write in a notebook. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-useful",
+      "ps": "دا کتاب ګټور دی.",
+      "roman": "daa kitaab gaṭwar day",
+      "en": "This book is useful.",
+      "loop": 5
+    },
+    {
+      "id": "n-children",
+      "ps": "ماشومان",
+      "roman": "maashoomaan",
+      "en": "Children",
+      "loop": 7
+    },
+    {
+      "id": "v-play",
+      "ps": "لوبې کول",
+      "roman": "lobe kawul",
+      "en": "To play",
+      "loop": 7
+    },
+    {
+      "id": "a-loud",
+      "ps": "لوړ",
+      "roman": "loṛ",
+      "en": "Loud / high",
+      "loop": 7
+    },
+    {
+      "id": "s6-play",
+      "ps": "هغوی په کور کې لوبې کوي.",
+      "roman": "haghoi pa kor ke lobe kawee",
+      "en": "They play at home.",
+      "loop": 7
+    },
+    {
+      "id": "s6-live",
+      "ps": "هغوی په کور کې اوسېږي.",
+      "roman": "haghoi pa kor ke osegee",
+      "en": "They live in the house.",
+      "loop": 7
+    },
+    {
+      "id": "n-birds",
+      "ps": "مرغان",
+      "roman": "marghaan",
+      "en": "Birds",
+      "loop": 7
+    },
+    {
+      "id": "a-clear",
+      "ps": "روڼ",
+      "roman": "roṇ",
+      "en": "Clear / bright",
+      "loop": 7
+    },
+    {
+      "id": "s6-drink",
+      "ps": "هغوی اوبه څښي.",
+      "roman": "haghoi oba ts-khee",
+      "en": "They drink water.",
+      "loop": 7
+    },
+    {
+      "id": "s6-go",
+      "ps": "هغوی سیند ته ځي.",
+      "roman": "haghoi seend ta dzee",
+      "en": "They go to the river.",
+      "loop": 7
+    },
+    {
+      "id": "s6-clear",
+      "ps": "دا سیند روڼ دی.",
+      "roman": "daa seend roṇ day",
+      "en": "This river is clear.",
+      "loop": 7
+    },
+    {
+      "id": "n-people",
+      "ps": "خلک",
+      "roman": "khalak",
+      "en": "People",
+      "loop": 7
+    },
+    {
+      "id": "v-like",
+      "ps": "خوښول",
+      "roman": "khoshawul",
+      "en": "To like",
+      "loop": 7
+    },
+    {
+      "id": "a-many",
+      "ps": "ډېر",
+      "roman": "ḍer",
+      "en": "Many / much",
+      "loop": 7
+    },
+    {
+      "id": "s6-eat",
+      "ps": "هغوی ډوډۍ خوري.",
+      "roman": "haghoi ḍoḍay khoree",
+      "en": "They eat bread.",
+      "loop": 7
+    },
+    {
+      "id": "s6-like",
+      "ps": "هغوی مېوه خوښوي.",
+      "roman": "haghoi mewa khoshawi",
+      "en": "They like fruit.",
+      "loop": 7
+    },
+    {
+      "id": "n-books",
+      "ps": "کتابونه",
+      "roman": "kitaaboona",
+      "en": "Books",
+      "loop": 7
+    },
+    {
+      "id": "a-important",
+      "ps": "مهم",
+      "roman": "mohem",
+      "en": "Important",
+      "loop": 7
+    },
+    {
+      "id": "s6-books",
+      "ps": "هغوی کتابونه لولي.",
+      "roman": "haghoi kitaaboona lolee",
+      "en": "They read books.",
+      "loop": 7
+    },
+    {
+      "id": "s6-learn",
+      "ps": "هغوی پښتو زده کوي.",
+      "roman": "haghoi pakhto zda kawee",
+      "en": "They learn Pashto.",
+      "loop": 7
+    },
+    {
+      "id": "s6-important",
+      "ps": "دا درس مهم دی.",
+      "roman": "daa dars mohem day",
+      "en": "This lesson is important.",
+      "loop": 7
+    },
+    {
+      "id": "a-open-state",
+      "ps": "خلاص",
+      "roman": "khlaas",
+      "en": "Open",
+      "loop": 1
+    },
+    {
+      "id": "a-blue",
+      "ps": "شین",
+      "roman": "sheen",
+      "en": "Blue / green",
+      "loop": 1
+    },
+    {
+      "id": "s-it-door",
+      "ps": "دروازه خلاصه ده.",
+      "roman": "darwaaza khlaasa da",
+      "en": "The door is open.",
+      "loop": 1
+    },
+    {
+      "id": "s-it-room",
+      "ps": "کوټه پاکه ده.",
+      "roman": "koṭa paaka da",
+      "en": "The room is clean.",
+      "loop": 1
+    },
+    {
+      "id": "s-it-river",
+      "ps": "سیند شین دی.",
+      "roman": "seend sheen day",
+      "en": "The river is blue.",
+      "loop": 1
+    },
+    {
+      "id": "s-it-market",
+      "ps": "بازار لوی دی.",
+      "roman": "baazaar loy day",
+      "en": "The market is big.",
+      "loop": 1
+    },
+    {
+      "id": "s-it-shop",
+      "ps": "دوکان خلاص دی.",
+      "roman": "dukaan khlaas day",
+      "en": "The shop is open.",
+      "loop": 1
+    },
+    {
+      "id": "s-it-school",
+      "ps": "ښوونځی لوی دی.",
+      "roman": "khwunzay loy day",
+      "en": "The school is big.",
+      "loop": 1
+    },
+    {
+      "id": "n-bird3",
+      "ps": "مرغۍ",
+      "roman": "marghəy",
+      "en": "Bird",
+      "loop": 3
+    },
+    {
+      "id": "v-walk3",
+      "ps": "ګرځېدل",
+      "roman": "garzedal",
+      "en": "To walk / stroll",
+      "loop": 3
+    },
+    {
+      "id": "v-sit3",
+      "ps": "کېناستل",
+      "roman": "kenastal",
+      "en": "To sit",
+      "loop": 3
+    },
+    {
+      "id": "n-word3",
+      "ps": "کلمه",
+      "roman": "kalima",
+      "en": "Word",
+      "loop": 2
+    },
+    {
+      "id": "n-potato3",
+      "ps": "کچالو",
+      "roman": "kachaaloo",
+      "en": "Potatoes",
+      "loop": 3
+    },
+    {
+      "id": "n-onion3",
+      "ps": "پیاز",
+      "roman": "pyaaz",
+      "en": "Onions",
+      "loop": 3
+    },
+    {
+      "id": "n-bag3",
+      "ps": "کڅوړه",
+      "roman": "katswaṛa",
+      "en": "Bag",
+      "loop": 3
+    },
+    {
+      "id": "v-want3",
+      "ps": "غوښتل",
+      "roman": "ghwakhtal",
+      "en": "To want",
+      "loop": 3
+    },
+    {
+      "id": "v-carry3",
+      "ps": "وړل",
+      "roman": "wṛal",
+      "en": "To carry / take",
+      "loop": 3
+    },
+    {
+      "id": "s1-bird",
+      "ps": "زه مرغۍ وینم.",
+      "roman": "za marghəy weenum",
+      "en": "I see a bird.",
+      "loop": 3
+    },
+    {
+      "id": "s1-sit",
+      "ps": "زه د سیند پر غاړه کېنم.",
+      "roman": "za da seend par ghāṛa kenam",
+      "en": "I sit on the riverbank.",
+      "loop": 3
+    },
+    {
+      "id": "s1-walk",
+      "ps": "زه د سیند پر غاړه ګرځم.",
+      "roman": "za da seend par ghāṛa garzam",
+      "en": "I walk along the riverbank.",
+      "loop": 3
+    },
+    {
+      "id": "s1-door3",
+      "ps": "زه دروازه خلاصوم.",
+      "roman": "za darwaaza khlaasawum",
+      "en": "I open the door.",
+      "loop": 3
+    },
+    {
+      "id": "s1-home-book",
+      "ps": "زه په کور کې کتاب لولم.",
+      "roman": "za pa kor ke kitaab lolum",
+      "en": "I read a book at home.",
+      "loop": 3
+    },
+    {
+      "id": "s1-home-water",
+      "ps": "زه په کور کې اوبه څښم.",
+      "roman": "za pa kor ke oba ts-khum",
+      "en": "I drink water at home.",
+      "loop": 3
+    },
+    {
+      "id": "s1-school-word",
+      "ps": "زه کلمه لیکم.",
+      "roman": "za kalima leekum",
+      "en": "I write a word.",
+      "loop": 3
+    },
+    {
+      "id": "s1-school-open",
+      "ps": "زه کتاب خلاصوم.",
+      "roman": "za kitaab khlaasawum",
+      "en": "I open the book.",
+      "loop": 3
+    },
+    {
+      "id": "s1-school-new",
+      "ps": "زه نوی کتاب لولم.",
+      "roman": "za naway kitaab lolum",
+      "en": "I read a new book.",
+      "loop": 3
+    },
+    {
+      "id": "s1-potatoes",
+      "ps": "زه کچالو اخلم.",
+      "roman": "za kachaaloo akhlum",
+      "en": "I buy potatoes.",
+      "loop": 3
+    },
+    {
+      "id": "s1-onions",
+      "ps": "زه پیاز غواړم.",
+      "roman": "za pyaaz ghwaṛum",
+      "en": "I want onions.",
+      "loop": 3
+    },
+    {
+      "id": "s1-bag",
+      "ps": "زه کڅوړه وړم.",
+      "roman": "za katswaṛa wṛum",
+      "en": "I carry a bag.",
+      "loop": 3
+    },
+    {
+      "id": "s1-bread-buy",
+      "ps": "زه ډوډۍ اخلم.",
+      "roman": "za ḍoḍay akhlum",
+      "en": "I buy bread.",
+      "loop": 3
+    },
+    {
+      "id": "v-close2",
+      "ps": "بندول",
+      "roman": "bandawul",
+      "en": "To close",
+      "loop": 2
+    },
+    {
+      "id": "v-sell2",
+      "ps": "خرڅول",
+      "roman": "khartsawul",
+      "en": "To sell",
+      "loop": 2
+    },
+    {
+      "id": "n-milk2",
+      "ps": "شیدې",
+      "roman": "sheede",
+      "en": "Milk",
+      "loop": 2
+    },
+    {
+      "id": "v-throw2",
+      "ps": "غورځول",
+      "roman": "ghurzawul",
+      "en": "To throw",
+      "loop": 2
+    },
+    {
+      "id": "v-catch2",
+      "ps": "نیول",
+      "roman": "newul",
+      "en": "To catch / hold",
+      "loop": 2
+    },
+    {
+      "id": "n-stone2",
+      "ps": "تیږه",
+      "roman": "tega",
+      "en": "Stone",
+      "loop": 2
+    },
+    {
+      "id": "n-tea2",
+      "ps": "چای",
+      "roman": "chaay",
+      "en": "Tea",
+      "loop": 2
+    },
+    {
+      "id": "v-clean2",
+      "ps": "پاکول",
+      "roman": "paakawul",
+      "en": "To clean",
+      "loop": 2
+    },
+    {
+      "id": "s2-school-word",
+      "ps": "هغه کلمه لیکي.",
+      "roman": "hagha kalima leeki",
+      "en": "He/she writes a word.",
+      "loop": 2
+    },
+    {
+      "id": "s2-school-open",
+      "ps": "هغه کتاب خلاصوي.",
+      "roman": "hagha kitaab khlaasawi",
+      "en": "He/she opens a book.",
+      "loop": 2
+    },
+    {
+      "id": "s2-school-close",
+      "ps": "هغه کتاب بندوي.",
+      "roman": "hagha kitaab bandawi",
+      "en": "He/she closes a book.",
+      "loop": 2
+    },
+    {
+      "id": "s2-school-new",
+      "ps": "هغه نوی کتاب لولي.",
+      "roman": "hagha naway kitaab lolee",
+      "en": "He/she reads a new book.",
+      "loop": 2
+    },
+    {
+      "id": "s2-market-buy",
+      "ps": "هغه مڼه اخلي.",
+      "roman": "hagha mana akhlee",
+      "en": "He/she buys an apple.",
+      "loop": 2
+    },
+    {
+      "id": "s2-market-sell",
+      "ps": "هغه ډوډۍ خرڅوي.",
+      "roman": "hagha dodai khartsawi",
+      "en": "He/she sells bread.",
+      "loop": 2
+    },
+    {
+      "id": "s2-market-bag",
+      "ps": "هغه کڅوړه وړي.",
+      "roman": "hagha katswara wree",
+      "en": "He/she carries a bag.",
+      "loop": 2
+    },
+    {
+      "id": "s2-market-milk",
+      "ps": "هغه شیدې اخلي.",
+      "roman": "hagha sheede akhlee",
+      "en": "He/she buys milk.",
+      "loop": 2
+    },
+    {
+      "id": "s2-river-fish",
+      "ps": "هغه کب ویني.",
+      "roman": "hagha kab weeni",
+      "en": "He/she sees a fish.",
+      "loop": 2
+    },
+    {
+      "id": "s2-river-bird",
+      "ps": "هغه مرغۍ ویني.",
+      "roman": "hagha marghay weeni",
+      "en": "He/she sees a bird.",
+      "loop": 2
+    },
+    {
+      "id": "s2-river-stone",
+      "ps": "هغه تیږه غورځوي.",
+      "roman": "hagha tega ghurzawi",
+      "en": "He/she throws a stone.",
+      "loop": 2
+    },
+    {
+      "id": "s2-river-catch",
+      "ps": "هغه کب نیسي.",
+      "roman": "hagha kab neesi",
+      "en": "He/she catches a fish.",
+      "loop": 2
+    },
+    {
+      "id": "s2-house-close",
+      "ps": "هغه دروازه بندوي.",
+      "roman": "hagha darwaaza bandawi",
+      "en": "He/she closes the door.",
+      "loop": 2
+    },
+    {
+      "id": "s2-house-tea",
+      "ps": "هغه چای څښي.",
+      "roman": "hagha chaay ts-khee",
+      "en": "He/she drinks tea.",
+      "loop": 2
+    },
+    {
+      "id": "s2-house-clean",
+      "ps": "هغه کوټه پاکوي.",
+      "roman": "hagha kota paakawi",
+      "en": "He/she cleans the room.",
+      "loop": 2
+    },
+    {
+      "id": "s2-house-window",
+      "ps": "هغه کړکۍ خلاصوي.",
+      "roman": "hagha karkay khlaasawi",
+      "en": "He/she opens the window.",
+      "loop": 2
+    },
+    {
+      "id": "n-chair4",
+      "ps": "څوکۍ",
+      "roman": "tsokey",
+      "en": "Chair",
+      "loop": 4
+    },
+    {
+      "id": "n-basket4",
+      "ps": "ټوکرۍ",
+      "roman": "tokaray",
+      "en": "Basket",
+      "loop": 4
+    },
+    {
+      "id": "n-question4",
+      "ps": "پوښتنه",
+      "roman": "pushtana",
+      "en": "Question",
+      "loop": 4
+    },
+    {
+      "id": "n-sentence4",
+      "ps": "جمله",
+      "roman": "jumla",
+      "en": "Sentence",
+      "loop": 4
+    },
+    {
+      "id": "s4-house-room",
+      "ps": "ته کوټه پاکوې.",
+      "roman": "ta kota paakawey",
+      "en": "You clean the room.",
+      "loop": 4
+    },
+    {
+      "id": "s4-house-chair",
+      "ps": "زه پر څوکۍ کښېنم.",
+      "roman": "za par tsokey kenam",
+      "en": "I sit on the chair.",
+      "loop": 4
+    },
+    {
+      "id": "s4-house-tea",
+      "ps": "ته چای څښې او زه اوبه څښم.",
+      "roman": "ta chaay tshey aw za oba tshkam",
+      "en": "You drink tea, and I drink water.",
+      "loop": 4
+    },
+    {
+      "id": "s4-house-compound",
+      "ps": "ته کوټه پاکوې او زه پر څوکۍ کښېنم.",
+      "roman": "ta kota paakawey aw za par tsokey kenam",
+      "en": "You clean the room, and I sit on the chair.",
+      "loop": 4
+    },
+    {
+      "id": "s4-house-window",
+      "ps": "ته کړکۍ خلاصوې او زه کوټه پاکوم.",
+      "roman": "ta karkay khlaasawey aw za kota paakawum",
+      "en": "You open the window, and I clean the room.",
+      "loop": 4
+    },
+    {
+      "id": "s4-market-bread",
+      "ps": "ته ډوډۍ اخلې.",
+      "roman": "ta dodai akhley",
+      "en": "You buy bread.",
+      "loop": 4
+    },
+    {
+      "id": "s4-market-basket",
+      "ps": "ته ټوکرۍ وړې.",
+      "roman": "ta tokaray wrey",
+      "en": "You carry a basket.",
+      "loop": 4
+    },
+    {
+      "id": "s4-market-mixed",
+      "ps": "ته مڼې اخلې او زه کڅوړه وړم.",
+      "roman": "ta manay akhley aw za katswara wrum",
+      "en": "You buy apples, and I carry a bag.",
+      "loop": 4
+    },
+    {
+      "id": "s4-market-mixed2",
+      "ps": "ته ډوډۍ اخلې او زه مڼې اخلم.",
+      "roman": "ta dodai akhley aw za manay akhlam",
+      "en": "You buy bread, and I buy apples.",
+      "loop": 4
+    },
+    {
+      "id": "s4-river-fish",
+      "ps": "ته کب وینې.",
+      "roman": "ta kab weeney",
+      "en": "You see a fish.",
+      "loop": 4
+    },
+    {
+      "id": "s4-river-bird",
+      "ps": "ته مرغۍ وینې او زه کب وینم.",
+      "roman": "ta marghay weeney aw za kab weenam",
+      "en": "You see a bird, and I see a fish.",
+      "loop": 4
+    },
+    {
+      "id": "s4-river-water",
+      "ps": "ته اوبه څښې او زه کب وینم.",
+      "roman": "ta oba tshey aw za kab weenam",
+      "en": "You drink water, and I see a fish.",
+      "loop": 4
+    },
+    {
+      "id": "s4-school-sentence",
+      "ps": "ته جمله لیکې.",
+      "roman": "ta jumla leekey",
+      "en": "You write a sentence.",
+      "loop": 4
+    },
+    {
+      "id": "s4-school-words",
+      "ps": "ته کتاب لولې او زه کلمه لیکم.",
+      "roman": "ta kitaab loley aw za kalima leekam",
+      "en": "You read a book, and I write a word.",
+      "loop": 4
+    },
+    {
+      "id": "s4-school-learn",
+      "ps": "ته درس زده کوې او زه کتاب لولم.",
+      "roman": "ta dars zda kawey aw za kitaab lolam",
+      "en": "You learn a lesson, and I read a book.",
+      "loop": 4
+    },
+    {
+      "id": "s4-school-question",
+      "ps": "ته پوښتنې ته ځواب ورکوې.",
+      "roman": "ta pushtanay ta dzawaab warkawey",
+      "en": "You answer a question.",
+      "loop": 4
+    },
+    {
+      "id": "s5-home-tea",
+      "ps": "تاسې چای څښئ.",
+      "roman": "taase chaay tshkey",
+      "en": "You drink tea. (polite)",
+      "loop": 5
+    },
+    {
+      "id": "s5-home-door",
+      "ps": "تاسې دروازه خلاصوئ.",
+      "roman": "taase darwaaza khlaasawey",
+      "en": "You open the door. (polite)",
+      "loop": 5
+    },
+    {
+      "id": "s5-home-compare",
+      "ps": "تاسې چای څښئ او زه اوبه څښم.",
+      "roman": "taase chaay tshkey aw za oba tshkam",
+      "en": "You drink tea, and I drink water. (polite)",
+      "loop": 5
+    },
+    {
+      "id": "s5-home-read",
+      "ps": "تاسې کتاب لولئ.",
+      "roman": "taase kitaab loley",
+      "en": "You read a book. (polite)",
+      "loop": 5
+    },
+    {
+      "id": "s5-market-bread",
+      "ps": "تاسې ډوډۍ خرڅوئ.",
+      "roman": "taase dodai khartsawey",
+      "en": "You sell bread. (polite)",
+      "loop": 5
+    },
+    {
+      "id": "s5-market-fruit",
+      "ps": "تاسې مېوه پلورئ.",
+      "roman": "taase mewa plorey",
+      "en": "You sell fruit. (polite)",
+      "loop": 5
+    },
+    {
+      "id": "s5-market-buy",
+      "ps": "تاسې مڼې اخلئ.",
+      "roman": "taase manay akhley",
+      "en": "You buy apples. (plural/polite)",
+      "loop": 5
+    },
+    {
+      "id": "s5-market-mixed",
+      "ps": "تاسې سبزي اخلئ او زه ډوډۍ اخلم.",
+      "roman": "taase sabzee akhley aw za dodai akhlam",
+      "en": "You buy vegetables, and I buy bread. (plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-lake-fish",
+      "ps": "تاسې کب وینئ.",
+      "roman": "taase kab weeney",
+      "en": "You see a fish. (plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-lake-bird",
+      "ps": "تاسې مرغۍ وینئ او زه کب وینم.",
+      "roman": "taase marghay weeney aw za kab weenam",
+      "en": "You see a bird, and I see a fish. (plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-lake-water",
+      "ps": "تاسې اوبه څښئ او زه چای څښم.",
+      "roman": "taase oba tshkey aw za chaay tshkam",
+      "en": "You drink water, and I drink tea. (plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-school-pashto",
+      "ps": "تاسې پښتو زده کوئ.",
+      "roman": "taase pakhto zda kawey",
+      "en": "You learn Pashto. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-school-answer",
+      "ps": "تاسې پوښتنې ته ځواب ورکوئ.",
+      "roman": "taase pushtanay ta dzawaab warkawey",
+      "en": "You answer a question. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "s5-school-compound",
+      "ps": "تاسې کتاب لولئ او زه کلمه لیکم.",
+      "roman": "taase kitaab loley aw za kalima leekam",
+      "en": "You read a book, and I write a word. (polite/plural)",
+      "loop": 5
+    },
+    {
+      "id": "w6-river-run",
+      "ps": "زه د جهیل تر څنګ منډې وهم.",
+      "roman": "za da jaheel tar tsang mande waham",
+      "en": "I run beside the lake.",
+      "loop": 6
+    },
+    {
+      "id": "w6-river-mina-run",
+      "ps": "مینا او زه یو ځای منډې وهو.",
+      "roman": "meena aw za yaw dzay mande waho",
+      "en": "Mina and I run together.",
+      "loop": 6
+    },
+    {
+      "id": "w6-river-birds",
+      "ps": "موږ دوه مرغان وینو.",
+      "roman": "moong dwa marghaan weeno",
+      "en": "We see two birds.",
+      "loop": 6
+    },
+    {
+      "id": "w6-river-water",
+      "ps": "موږ اوبه څښو.",
+      "roman": "moong oba ts-kho",
+      "en": "We drink water.",
+      "loop": 6
+    },
+    {
+      "id": "w6-river-you-walk",
+      "ps": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+      "roman": "taase dwaara da seend tar tsang gardzey",
+      "en": "You both walk beside the river.",
+      "loop": 6
+    },
+    {
+      "id": "w6-house-clean",
+      "ps": "موږ کوټه پاکوو.",
+      "roman": "moong koṭa paakawo",
+      "en": "We clean the room.",
+      "loop": 6
+    },
+    {
+      "id": "w6-house-mina-door",
+      "ps": "مینا او زه دروازه خلاصوو.",
+      "roman": "meena aw za darwaaza khlaasawo",
+      "en": "Mina and I open the door.",
+      "loop": 6
+    },
+    {
+      "id": "w6-house-tea",
+      "ps": "موږ یو ځای چای څښو.",
+      "roman": "moong yaw dzay chaay ts-kho",
+      "en": "We drink tea together.",
+      "loop": 6
+    },
+    {
+      "id": "w6-house-chairs",
+      "ps": "موږ پر څوکیو کښېنو.",
+      "roman": "moong par tsawkeyo keno",
+      "en": "We sit on the chairs.",
+      "loop": 6
+    },
+    {
+      "id": "w6-house-help",
+      "ps": "تاسې دواړه له محمد جان سره مرسته کوئ.",
+      "roman": "taase dwaara la muhammad jaan sara mrasta kawey",
+      "en": "You both help Muhammad Jan.",
+      "loop": 6
+    },
+    {
+      "id": "w6-market-bread",
+      "ps": "موږ ډوډۍ اخلو.",
+      "roman": "moong ḍoḍay akhlo",
+      "en": "We buy bread.",
+      "loop": 6
+    },
+    {
+      "id": "w6-market-baskets",
+      "ps": "مینا او زه ټوکرۍ وړو.",
+      "roman": "meena aw za ṭokray wro",
+      "en": "Mina and I carry baskets.",
+      "loop": 6
+    },
+    {
+      "id": "w6-market-apples",
+      "ps": "موږ مڼې غوره کوو.",
+      "roman": "moong maṇe ghwara kawo",
+      "en": "We choose apples.",
+      "loop": 6
+    },
+    {
+      "id": "w6-market-dinner",
+      "ps": "موږ د ماښامنۍ لپاره سابه اخلو.",
+      "roman": "moong da maakhaamnay lapaara saaba akhlo",
+      "en": "We buy vegetables for dinner.",
+      "loop": 6
+    },
+    {
+      "id": "w6-market-food",
+      "ps": "تاسې دواړه خواړه وړئ.",
+      "roman": "taase dwaara khwaaṛa wrey",
+      "en": "You both carry the food.",
+      "loop": 6
+    },
+    {
+      "id": "w6-school-books",
+      "ps": "موږ کتابونه لولو.",
+      "roman": "moong kitaaboona lwalo",
+      "en": "We read books.",
+      "loop": 6
+    },
+    {
+      "id": "w6-school-saleha-write",
+      "ps": "صالحه او زه جملې لیکو.",
+      "roman": "saaleha aw za jumle leeko",
+      "en": "Saleha and I write sentences.",
+      "loop": 6
+    },
+    {
+      "id": "w6-school-learn",
+      "ps": "موږ پښتو زده کوو.",
+      "roman": "moong pakhto zda kawo",
+      "en": "We learn Pashto.",
+      "loop": 6
+    },
+    {
+      "id": "w6-school-answer",
+      "ps": "موږ یو ځای پوښتنو ته ځوابونه ورکوو.",
+      "roman": "moong yaw dzay pukhtano ta dzawaaboona warkawo",
+      "en": "We answer questions together.",
+      "loop": 6
+    },
+    {
+      "id": "w6-school-open",
+      "ps": "تاسې دواړه خپل کتابونه خلاصوئ.",
+      "roman": "taase dwaara khpal kitaaboona khlaasawey",
+      "en": "You both open your books.",
+      "loop": 6
+    },
+    {
+      "id": "w7-market-apples",
+      "ps": "هغوی مڼې اخلي.",
+      "roman": "haghoy maṇe akhlee",
+      "en": "They buy apples.",
+      "loop": 7
+    },
+    {
+      "id": "w7-market-baskets",
+      "ps": "هغوی ټوکرۍ وړي.",
+      "roman": "haghoy ṭokray wree",
+      "en": "They carry baskets.",
+      "loop": 7
+    },
+    {
+      "id": "w7-market-vegetables",
+      "ps": "هغوی تازه سابه غوره کوي.",
+      "roman": "haghoy taaza saaba ghwara kawee",
+      "en": "They choose fresh vegetables.",
+      "loop": 7
+    },
+    {
+      "id": "w7-market-bread",
+      "ps": "هغوی په غرفه کې ډوډۍ پلوري.",
+      "roman": "haghoy pa ghurfa ke ḍoḍay ploree",
+      "en": "They sell bread at the stall.",
+      "loop": 7
+    },
+    {
+      "id": "w7-market-water",
+      "ps": "هغوی اوبه څښي.",
+      "roman": "haghoy oba ts-khee",
+      "en": "They drink water.",
+      "loop": 7
+    },
+    {
+      "id": "w7-house-door",
+      "ps": "هغوی دروازه خلاصوي.",
+      "roman": "haghoy darwaaza khlaasawee",
+      "en": "They open the door.",
+      "loop": 7
+    },
+    {
+      "id": "w7-house-clean",
+      "ps": "هغوی کوټه پاکوي.",
+      "roman": "haghoy koṭa paakawee",
+      "en": "They clean the room.",
+      "loop": 7
+    },
+    {
+      "id": "w7-house-tea",
+      "ps": "هغوی یو ځای چای څښي.",
+      "roman": "haghoy yaw dzay chaay ts-khee",
+      "en": "They drink tea together.",
+      "loop": 7
+    },
+    {
+      "id": "w7-house-chairs",
+      "ps": "هغوی پر څوکیو کښېني.",
+      "roman": "haghoy par tsawkeyo kenee",
+      "en": "They sit on chairs.",
+      "loop": 7
+    },
+    {
+      "id": "w7-house-help",
+      "ps": "هغوی له محمد جان سره مرسته کوي.",
+      "roman": "haghoy la muhammad jaan sara mrasta kawee",
+      "en": "They help Muhammad Jan.",
+      "loop": 7
+    },
+    {
+      "id": "w7-river-walk",
+      "ps": "هغوی د اوبو تر څنګ ګرځي.",
+      "roman": "haghoy da obo tar tsang gardzee",
+      "en": "They walk beside the water.",
+      "loop": 7
+    },
+    {
+      "id": "w7-river-fish",
+      "ps": "هغوی کبان ویني.",
+      "roman": "haghoy kabaan weenee",
+      "en": "They see fish.",
+      "loop": 7
+    },
+    {
+      "id": "w7-river-birds",
+      "ps": "هغوی مرغان ګوري.",
+      "roman": "haghoy marghaan goree",
+      "en": "They watch the birds.",
+      "loop": 7
+    },
+    {
+      "id": "w7-river-bottles",
+      "ps": "هغوی د اوبو بوتلونه وړي.",
+      "roman": "haghoy da obo botloona wree",
+      "en": "They carry bottles of water.",
+      "loop": 7
+    },
+    {
+      "id": "w7-river-run",
+      "ps": "هغوی یو ځای منډې وهي.",
+      "roman": "haghoy yaw dzay mande wahee",
+      "en": "They run together.",
+      "loop": 7
+    },
+    {
+      "id": "w7-school-books",
+      "ps": "هغوی کتابونه لولي.",
+      "roman": "haghoy kitaaboona lwalee",
+      "en": "They read books.",
+      "loop": 7
+    },
+    {
+      "id": "w7-school-write",
+      "ps": "هغوی جملې لیکي.",
+      "roman": "haghoy jumle leekee",
+      "en": "They write sentences.",
+      "loop": 7
+    },
+    {
+      "id": "w7-school-learn",
+      "ps": "هغوی پښتو زده کوي.",
+      "roman": "haghoy pakhto zda kawee",
+      "en": "They learn Pashto.",
+      "loop": 7
+    },
+    {
+      "id": "w7-school-answer",
+      "ps": "هغوی پوښتنو ته ځوابونه ورکوي.",
+      "roman": "haghoy pukhtano ta dzawaaboona warkawee",
+      "en": "They answer questions.",
+      "loop": 7
+    },
+    {
+      "id": "w7-school-notebooks",
+      "ps": "هغوی خپلې کتابچې خلاصوي.",
+      "roman": "haghoy khpale kitaabche khlaasawee",
+      "en": "They open their notebooks.",
+      "loop": 7
+    },
+    {
+      "id": "w6-we",
+      "ps": "موږ",
+      "roman": "moong",
+      "en": "We",
+      "loop": 6
+    },
+    {
+      "id": "w6-together",
+      "ps": "یو ځای",
+      "roman": "yaw dzay",
+      "en": "Together",
+      "loop": 6
+    },
+    {
+      "id": "w6-you-all",
+      "ps": "تاسې",
+      "roman": "taase",
+      "en": "You all",
+      "loop": 6
+    },
+    {
+      "id": "w6-run",
+      "ps": "منډې وهل",
+      "roman": "mande wahal",
+      "en": "To run",
+      "loop": 6
+    },
+    {
+      "id": "w6-hills",
+      "ps": "غونډۍ",
+      "roman": "ghuṇḍay",
+      "en": "Hills",
+      "loop": 6
+    },
+    {
+      "id": "w6-walk",
+      "ps": "موږ د جهیل تر څنګ یو ځای ګرځو.",
+      "roman": "moong da jaheel tar tsang yaw dzay gardzo",
+      "en": "We walk together beside the lake.",
+      "loop": 6
+    },
+    {
+      "id": "w6-mina-walk",
+      "ps": "مینا او زه یو ځای ګرځو.",
+      "roman": "meena aw za yaw dzay gardzo",
+      "en": "Mina and I walk together.",
+      "loop": 6
+    },
+    {
+      "id": "w6-mina-village",
+      "ps": "مینا او زه کلی وینو.",
+      "roman": "meena aw za kalay weeno",
+      "en": "Mina and I see the village.",
+      "loop": 6
+    },
+    {
+      "id": "w6-you-water",
+      "ps": "تاسې دواړه اوبه څښئ.",
+      "roman": "taase dwaara oba ts-khey",
+      "en": "You both drink water.",
+      "loop": 6
+    },
+    {
+      "id": "w6-you-carry",
+      "ps": "تاسې دواړه اوبه وړئ.",
+      "roman": "taase dwaara oba wrey",
+      "en": "You both carry the water.",
+      "loop": 6
+    },
+    {
+      "id": "w6-bag",
+      "ps": "موږ کڅوړه وړو.",
+      "roman": "moong katsoṛa wro",
+      "en": "We carry the bag.",
+      "loop": 6
+    },
+    {
+      "id": "w6-compound",
+      "ps": "زه سیند وینم او موږ غونډۍ وینو.",
+      "roman": "za seend weenam aw moong ghuṇḍay weeno",
+      "en": "I see the river, and we see the hills.",
+      "loop": 6
+    },
+    {
+      "id": "w6-we-run",
+      "ps": "موږ یو ځای منډې وهو.",
+      "roman": "moong yaw dzay mande waho",
+      "en": "We run together.",
+      "loop": 6
+    },
+    {
+      "id": "w7-i-read",
+      "ps": "زه کتاب لولم.",
+      "roman": "za kitaab lwalam",
+      "en": "I read a book.",
+      "loop": 7
+    },
+    {
+      "id": "w7-you-read",
+      "ps": "ته کتاب لولې.",
+      "roman": "ta kitaab lwaley",
+      "en": "You read a book (Saleha).",
+      "loop": 7
+    },
+    {
+      "id": "w7-all-read",
+      "ps": "تاسې کتابونه لولئ.",
+      "roman": "taase kitaaboona lwaley",
+      "en": "You all read books.",
+      "loop": 7
+    },
+    {
+      "id": "w7-he-bread",
+      "ps": "هغه ډوډۍ اخلي.",
+      "roman": "hagha ḍoḍay akhlee",
+      "en": "He buys bread.",
+      "loop": 7
+    },
+    {
+      "id": "w7-you-open",
+      "ps": "ته کتاب خلاصوې.",
+      "roman": "ta kitaab khlaasawey",
+      "en": "You open the book (Saleha).",
+      "loop": 7
+    },
+    {
+      "id": "w7-compound-room",
+      "ps": "ته کوټه پاکوې او زه پر څوکۍ کښېنم.",
+      "roman": "ta koṭa paakawey aw za par tsawkay kenam",
+      "en": "You clean the room, and I sit on the chair.",
+      "loop": 7
+    },
+    {
+      "id": "w7-compound-read",
+      "ps": "زه کتاب لولم او ته جمله لیکې.",
+      "roman": "za kitaab lwalam aw ta jumla leekey",
+      "en": "I read the book, and you write a sentence.",
+      "loop": 7
+    },
+    {
+      "id": "w7-compound-buy",
+      "ps": "موږ سابه اخلو او هغوی ډوډۍ اخلي.",
+      "roman": "moong saaba akhlo aw haghoy ḍoḍay akhlee",
+      "en": "We buy vegetables, and they buy bread.",
+      "loop": 7
+    },
+    {
+      "id": "w7-compound-books",
+      "ps": "تاسې کتابونه لولئ او موږ جملې لیکو.",
+      "roman": "taase kitaaboona lwaley aw moong jumle leeko",
+      "en": "You all read books, and we write sentences.",
+      "loop": 7
+    },
+    {
+      "id": "w7-compound-door",
+      "ps": "دروازه خلاصه ده او هغوی کوټه پاکوي.",
+      "roman": "darwaaza khlaasa da aw haghoy koṭa paakawee",
+      "en": "The door is open, and they clean the room.",
+      "loop": 7
+    },
+    {
+      "id": "w7-you-bird",
+      "ps": "ته مرغۍ وینې.",
+      "roman": "ta marghay weeney",
+      "en": "You see the bird (Saleha).",
+      "loop": 7
+    },
+    {
+      "id": "w7-polite-tea",
+      "ps": "تاسې چای څښئ.",
+      "roman": "taase chaay ts-khey",
+      "en": "You drink tea (Muhammad Jan, respectfully).",
+      "loop": 7
+    },
+    {
+      "id": "vocab6-river-together",
+      "ps": "یو ځای",
+      "roman": "yaw dzay",
+      "en": "Together",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-river-run",
+      "ps": "منډې وهل",
+      "roman": "mande wahal",
+      "en": "To run",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-river-two",
+      "ps": "دوه",
+      "roman": "dwa",
+      "en": "Two",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-house-help",
+      "ps": "مرسته کول",
+      "roman": "mrasta kawal",
+      "en": "To help",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-house-chairs",
+      "ps": "څوکۍ",
+      "roman": "tsawkay",
+      "en": "Chairs",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-house-together",
+      "ps": "یو ځای",
+      "roman": "yaw dzay",
+      "en": "Together",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-market-baskets",
+      "ps": "ټوکرۍ",
+      "roman": "ṭokray",
+      "en": "Baskets",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-market-choose",
+      "ps": "غوره کول",
+      "roman": "ghwara kawal",
+      "en": "To choose",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-market-carry",
+      "ps": "وړل",
+      "roman": "wṛal",
+      "en": "To carry",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-school-answers",
+      "ps": "ځوابونه",
+      "roman": "dzawaaboona",
+      "en": "Answers",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-school-questions",
+      "ps": "پوښتنې",
+      "roman": "pukhtane",
+      "en": "Questions",
+      "loop": 6
+    },
+    {
+      "id": "vocab6-school-together",
+      "ps": "یو ځای",
+      "roman": "yaw dzay",
+      "en": "Together",
+      "loop": 6
+    },
+    {
+      "id": "vocab7-market-customers",
+      "ps": "پېرودونکي",
+      "roman": "perodoonkee",
+      "en": "Customers",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-market-stall",
+      "ps": "غرفه",
+      "roman": "ghurfa",
+      "en": "Stall",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-market-fresh",
+      "ps": "تازه",
+      "roman": "taaza",
+      "en": "Fresh",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-house-visitors",
+      "ps": "مېلمانه",
+      "roman": "melmaana",
+      "en": "Visitors",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-house-help",
+      "ps": "مرسته کول",
+      "roman": "mrasta kawal",
+      "en": "To help",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-house-chairs",
+      "ps": "څوکۍ",
+      "roman": "tsawkay",
+      "en": "Chairs",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-river-bottles",
+      "ps": "بوتلونه",
+      "roman": "botloona",
+      "en": "Bottles",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-river-watch",
+      "ps": "کتل",
+      "roman": "katal",
+      "en": "To watch",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-river-together",
+      "ps": "یو ځای",
+      "roman": "yaw dzay",
+      "en": "Together",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-school-notebooks",
+      "ps": "کتابچې",
+      "roman": "kitaabche",
+      "en": "Notebooks",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-school-answers",
+      "ps": "ځوابونه",
+      "roman": "dzawaaboona",
+      "en": "Answers",
+      "loop": 7
+    },
+    {
+      "id": "vocab7-school-sentences",
+      "ps": "جملې",
+      "roman": "jumle",
+      "en": "Sentences",
+      "loop": 7
+    },
+    {
+      "id": "w2-d8-vocab-1",
+      "ps": "دا",
+      "roman": "daa",
+      "en": "This / these",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-vocab-2",
+      "ps": "هغه",
+      "roman": "hagha",
+      "en": "That / those",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-vocab-3",
+      "ps": "نږدې",
+      "roman": "negde",
+      "en": "Near",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-vocab-4",
+      "ps": "لرې",
+      "roman": "lare",
+      "en": "Far",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-river-1",
+      "ps": "دا اوبه سړې دي.",
+      "roman": "daa oba saṛe dee",
+      "en": "This water is cold.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-river-2",
+      "ps": "هغه سیند پلن دی.",
+      "roman": "hagha seend plan day",
+      "en": "That river is wide.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-river-3",
+      "ps": "دا کب کوچنی دی.",
+      "roman": "daa kab kochnay day",
+      "en": "This fish is small.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-river-4",
+      "ps": "هغه مرغۍ ونې ته نږدې ده.",
+      "roman": "hagha marghay wane ta negde da",
+      "en": "That bird is near the tree.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-river-5",
+      "ps": "دا تیږه د اوبو تر څنګ ده.",
+      "roman": "daa teegha da obo tar tsang da",
+      "en": "This stone is beside the water.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-market-1",
+      "ps": "دا مڼه تازه ده.",
+      "roman": "daa maṇa taaza da",
+      "en": "This apple is fresh.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-market-2",
+      "ps": "هغه مڼه ګرانه ده.",
+      "roman": "hagha maṇa graana da",
+      "en": "That apple is expensive.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-market-3",
+      "ps": "دا ډوډۍ د ماښامنۍ لپاره ده.",
+      "roman": "daa ḍoḍay da maakhaamnay lapaara da",
+      "en": "This bread is for dinner.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-market-4",
+      "ps": "هغه دوکان لوی دی.",
+      "roman": "hagha dookaan loy day",
+      "en": "That shop is big.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-market-5",
+      "ps": "زه هغه مڼه غواړم.",
+      "roman": "za hagha maṇa ghwaaṛam",
+      "en": "I want that apple.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-school-1",
+      "ps": "دا کتاب نوی دی.",
+      "roman": "daa kitaab naway day",
+      "en": "This book is new.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-school-2",
+      "ps": "هغه کتاب زوړ دی.",
+      "roman": "hagha kitaab zoṛ day",
+      "en": "That book is old.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-school-3",
+      "ps": "دا قلم نوی دی.",
+      "roman": "daa qalam naway day",
+      "en": "This pen is new.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-school-4",
+      "ps": "دا ښوونځی لوی دی.",
+      "roman": "daa khowandzay loy day",
+      "en": "This school is big.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-school-5",
+      "ps": "هغه هغه کتاب لولي.",
+      "roman": "hagha hagha kitaab lwalee",
+      "en": "She reads that book.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-house-1",
+      "ps": "دا دروازه خلاصه ده.",
+      "roman": "daa darwaaza khlaasa da",
+      "en": "This door is open.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-house-2",
+      "ps": "هغه کړکۍ بنده ده.",
+      "roman": "hagha kiṛkay banda da",
+      "en": "That window is closed.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-house-3",
+      "ps": "دا کوټه پاکه ده.",
+      "roman": "daa koṭa paaka da",
+      "en": "This room is clean.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-house-4",
+      "ps": "هغه څوکۍ کوچنۍ ده.",
+      "roman": "hagha tsawkay kochnay da",
+      "en": "That chair is small.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d8-house-5",
+      "ps": "زه دا دروازه خلاصوم.",
+      "roman": "za daa darwaaza khlaasawam",
+      "en": "I open this door.",
+      "loop": 8
+    },
+    {
+      "id": "w2-d9-vocab-1",
+      "ps": "یو",
+      "roman": "yaw",
+      "en": "One",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-vocab-2",
+      "ps": "دوه",
+      "roman": "dwa",
+      "en": "Two",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-vocab-3",
+      "ps": "درې",
+      "roman": "dre",
+      "en": "Three",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-vocab-4",
+      "ps": "څلور",
+      "roman": "tsalor",
+      "en": "Four",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-vocab-5",
+      "ps": "پنځه",
+      "roman": "pindza",
+      "en": "Five",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-market-1",
+      "ps": "دا مڼه ده.",
+      "roman": "daa maṇa da",
+      "en": "This is an apple.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-market-2",
+      "ps": "دا مڼې دي.",
+      "roman": "daa maṇe dee",
+      "en": "These are apples.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-market-3",
+      "ps": "هغه دوه مڼې اخلي.",
+      "roman": "hagha dwa maṇe akhlee",
+      "en": "He buys two apples.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-market-4",
+      "ps": "هغوی درې ټوکرۍ وړي.",
+      "roman": "haghoy dre ṭokray wree",
+      "en": "They carry three baskets.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-market-5",
+      "ps": "هغه مڼې تازه دي.",
+      "roman": "hagha maṇe taaza dee",
+      "en": "Those apples are fresh.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-school-1",
+      "ps": "دا کتاب نوی دی.",
+      "roman": "daa kitaab naway day",
+      "en": "This book is new.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-school-2",
+      "ps": "دا کتابونه نوي دي.",
+      "roman": "daa kitaaboona nawee dee",
+      "en": "These books are new.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-school-3",
+      "ps": "موږ دوه کتابونه لولو.",
+      "roman": "moong dwa kitaaboona lwalo",
+      "en": "We read two books.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-school-4",
+      "ps": "په ټولګي کې درې زده کوونکي دي.",
+      "roman": "pa ṭolgee ke dre zda kawoonkee dee",
+      "en": "There are three students in the classroom.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-school-5",
+      "ps": "هغه کتابونه خلاصوي.",
+      "roman": "hagha kitaaboona khlaasawee",
+      "en": "She opens the books.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-river-1",
+      "ps": "دا یوه مرغۍ ده.",
+      "roman": "daa yawa marghay da",
+      "en": "This is one bird.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-river-2",
+      "ps": "هغه دوه مرغان دي.",
+      "roman": "hagha dwa marghaan dee",
+      "en": "Those are two birds.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-river-3",
+      "ps": "موږ درې کبان وینو.",
+      "roman": "moong dre kabaan weeno",
+      "en": "We see three fish.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-river-4",
+      "ps": "دا تیږې کوچنۍ دي.",
+      "roman": "daa teeghe kochnay dee",
+      "en": "These stones are small.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-river-5",
+      "ps": "هغوی مرغان ویني.",
+      "roman": "haghoy marghaan weenee",
+      "en": "They see the birds.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-house-1",
+      "ps": "دا یوه کوټه ده.",
+      "roman": "daa yawa koṭa da",
+      "en": "This is one room.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-house-2",
+      "ps": "دا کوټې پاکې دي.",
+      "roman": "daa koṭe paake dee",
+      "en": "These rooms are clean.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-house-3",
+      "ps": "دا دروازې خلاصې دي.",
+      "roman": "daa darwaaze khlaase dee",
+      "en": "These doors are open.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-house-4",
+      "ps": "هغه کورونه لوی دي.",
+      "roman": "hagha koroona loy dee",
+      "en": "Those houses are big.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d9-house-5",
+      "ps": "موږ دوه څوکۍ وینو.",
+      "roman": "moong dwa tsawkay weeno",
+      "en": "We see two chairs.",
+      "loop": 9
+    },
+    {
+      "id": "w2-d10-vocab-1",
+      "ps": "دلته",
+      "roman": "dalta",
+      "en": "Here",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-vocab-2",
+      "ps": "هلته",
+      "roman": "halta",
+      "en": "There",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-vocab-3",
+      "ps": "چېرته",
+      "roman": "cherta",
+      "en": "Where",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-river-1",
+      "ps": "کتابچه دلته ده.",
+      "roman": "kitaabcha dalta da",
+      "en": "The notebook is here.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-river-2",
+      "ps": "مینا دلته ده.",
+      "roman": "meena dalta da",
+      "en": "Mina is here.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-river-3",
+      "ps": "صالحه د جهیل تر څنګ ده.",
+      "roman": "saaleha da jaheel tar tsang da",
+      "en": "Saleha is beside the lake.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-river-4",
+      "ps": "کب په سیند کې دی.",
+      "roman": "kab pa seend ke day",
+      "en": "The fish is in the river.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-river-5",
+      "ps": "کتابچه چېرته ده؟",
+      "roman": "kitaabcha cherta da",
+      "en": "Where is the notebook?",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-school-1",
+      "ps": "کتاب پر مېز دی.",
+      "roman": "kitaab par mez day",
+      "en": "The book is on the table.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-school-2",
+      "ps": "کتابچه په ټولګي کې ده.",
+      "roman": "kitaabcha pa ṭolgee ke da",
+      "en": "The notebook is in the classroom.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-school-3",
+      "ps": "قلم چېرته دی؟",
+      "roman": "qalam cherta day",
+      "en": "Where is the pen?",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-school-4",
+      "ps": "زده کوونکي دلته دي.",
+      "roman": "zda kawoonkee dalta dee",
+      "en": "The students are here.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-school-5",
+      "ps": "مینا ښوونځي ته ځي.",
+      "roman": "meena khowandzee ta dzee",
+      "en": "Mina goes to school.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-market-1",
+      "ps": "ټوکرۍ دلته ده.",
+      "roman": "ṭokray dalta da",
+      "en": "The basket is here.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-market-2",
+      "ps": "مڼې په ټوکرۍ کې دي.",
+      "roman": "maṇe pa ṭokray ke dee",
+      "en": "The apples are in the basket.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-market-3",
+      "ps": "دوکاندار په دوکان کې دی.",
+      "roman": "dookaandaar pa dookaan ke day",
+      "en": "The grocer is at the shop.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-market-4",
+      "ps": "کڅوړه چېرته ده؟",
+      "roman": "katsoṛa cherta da",
+      "en": "Where is the bag?",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-market-5",
+      "ps": "هغه ټوکرۍ هلته ده.",
+      "roman": "hagha ṭokray halta da",
+      "en": "That basket is over there.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-house-1",
+      "ps": "څوکۍ د دروازې تر څنګ ده.",
+      "roman": "tsawkay da darwaaze tar tsang da",
+      "en": "The chair is beside the door.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-house-2",
+      "ps": "کتاب پر مېز دی.",
+      "roman": "kitaab par mez day",
+      "en": "The book is on the table.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-house-3",
+      "ps": "کړکۍ دلته ده.",
+      "roman": "kiṛkay dalta da",
+      "en": "The window is here.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-house-4",
+      "ps": "کتابچه چېرته ده؟",
+      "roman": "kitaabcha cherta da",
+      "en": "Where is the notebook?",
+      "loop": 10
+    },
+    {
+      "id": "w2-d10-house-5",
+      "ps": "کتاب په دې کوټه کې دی.",
+      "roman": "kitaab pa de koṭa ke day",
+      "en": "The book is in this room.",
+      "loop": 10
+    },
+    {
+      "id": "w2-d11-vocab-1",
+      "ps": "زما",
+      "roman": "zmaa",
+      "en": "My / mine",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-vocab-2",
+      "ps": "ستاسې",
+      "roman": "staase",
+      "en": "Your (respectful or plural)",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-vocab-3",
+      "ps": "زموږ",
+      "roman": "zmoong",
+      "en": "Our",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-house-1",
+      "ps": "دا زما کور دی.",
+      "roman": "daa zmaa kor day",
+      "en": "This is my house.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-house-2",
+      "ps": "دا ستاسې څوکۍ ده.",
+      "roman": "daa staase tsawkay da",
+      "en": "This is your chair.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-house-3",
+      "ps": "هغه زموږ کوټه ده.",
+      "roman": "hagha zmoong koṭa da",
+      "en": "That is our room.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-house-4",
+      "ps": "دا د محمد جان کتاب دی.",
+      "roman": "daa da muhammad jaan kitaab day",
+      "en": "This is Muhammad Jan’s book.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-house-5",
+      "ps": "زموږ دروازه خلاصه ده.",
+      "roman": "zmoong darwaaza khlaasa da",
+      "en": "Our door is open.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-school-1",
+      "ps": "دا د مینا کتابچه ده.",
+      "roman": "daa da meena kitaabcha da",
+      "en": "This is Mina’s notebook.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-school-2",
+      "ps": "هغه د صالحې قلم دی.",
+      "roman": "hagha da saalehe qalam day",
+      "en": "That is Saleha’s pen.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-school-3",
+      "ps": "دا زموږ کتابونه دي.",
+      "roman": "daa zmoong kitaaboona dee",
+      "en": "These are our books.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-school-4",
+      "ps": "ستاسې کتابچه پر مېز ده.",
+      "roman": "staase kitaabcha par mez da",
+      "en": "Your notebook is on the table.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-school-5",
+      "ps": "دا د صالحې کتاب دی.",
+      "roman": "daa da saalehe kitaab day",
+      "en": "This is Saleha’s book.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-market-1",
+      "ps": "دا د ادریس ټوکرۍ ده.",
+      "roman": "daa da edrees ṭokray da",
+      "en": "This is Edris’s basket.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-market-2",
+      "ps": "هغه زما کڅوړه ده.",
+      "roman": "hagha zmaa katsoṛa da",
+      "en": "That is my bag.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-market-3",
+      "ps": "دا زموږ مڼې دي.",
+      "roman": "daa zmoong maṇe dee",
+      "en": "These are our apples.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-market-4",
+      "ps": "هغه د ادریس دوکان دی.",
+      "roman": "hagha da edrees dookaan day",
+      "en": "That is Edris’s shop.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-market-5",
+      "ps": "زه خپله ټوکرۍ وړم.",
+      "roman": "za khpala ṭokray wṛam",
+      "en": "I carry my basket.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-river-1",
+      "ps": "دا د مینا کتاب دی.",
+      "roman": "daa da meena kitaab day",
+      "en": "This is Mina’s book.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-river-2",
+      "ps": "هغه د صالحې کڅوړه ده.",
+      "roman": "hagha da saalehe katsoṛa da",
+      "en": "That is Saleha’s bag.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-river-3",
+      "ps": "زموږ اوبه سړې دي.",
+      "roman": "zmoong oba saṛe dee",
+      "en": "Our water is cold.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-river-4",
+      "ps": "دا ستاسې تیږې دي.",
+      "roman": "daa staase teeghe dee",
+      "en": "These are your stones.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d11-river-5",
+      "ps": "زه زموږ ملګري وینم.",
+      "roman": "za zmoong malgaree weenam",
+      "en": "I see our friends.",
+      "loop": 11
+    },
+    {
+      "id": "w2-d12-vocab-1",
+      "ps": "څوک",
+      "roman": "tsok",
+      "en": "Who",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-vocab-2",
+      "ps": "څه",
+      "roman": "tsa",
+      "en": "What",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-vocab-3",
+      "ps": "کوم",
+      "roman": "koom",
+      "en": "Which (masculine)",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-vocab-4",
+      "ps": "چېرته",
+      "roman": "cherta",
+      "en": "Where",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-vocab-5",
+      "ps": "څو",
+      "roman": "tso",
+      "en": "How many",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-school-1",
+      "ps": "په دروازه کې څوک دی؟",
+      "roman": "pa darwaaza ke tsok day",
+      "en": "Who is at the door?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-school-2",
+      "ps": "ته څه لولې؟",
+      "roman": "ta tsa lwaley",
+      "en": "What are you reading?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-school-3",
+      "ps": "کوم کتاب نوی دی؟",
+      "roman": "koom kitaab naway day",
+      "en": "Which book is new?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-school-4",
+      "ps": "زما کتابچه چېرته ده؟",
+      "roman": "zmaa kitaabcha cherta da",
+      "en": "Where is my notebook?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-school-5",
+      "ps": "دلته څو کتابونه دي؟",
+      "roman": "dalta tso kitaaboona dee",
+      "en": "How many books are here?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-market-1",
+      "ps": "ته کومه مڼه غواړې؟",
+      "roman": "ta kooma maṇa ghwaaṛey",
+      "en": "Which apple do you want?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-market-2",
+      "ps": "ته څو مڼې اخلې؟",
+      "roman": "ta tso maṇe akhley",
+      "en": "How many apples do you buy?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-market-3",
+      "ps": "څوک ډوډۍ پلوري؟",
+      "roman": "tsok ḍoḍay ploree",
+      "en": "Who sells bread?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-market-4",
+      "ps": "ټوکرۍ چېرته ده؟",
+      "roman": "ṭokray cherta da",
+      "en": "Where is the basket?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-market-5",
+      "ps": "په دې کڅوړه کې څه دي؟",
+      "roman": "pa de katsoṛa ke tsa dee",
+      "en": "What is in this bag?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-river-1",
+      "ps": "د جهیل تر څنګ څوک منډې وهي؟",
+      "roman": "da jaheel tar tsang tsok mande wahee",
+      "en": "Who is running beside the lake?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-river-2",
+      "ps": "ته څه وینې؟",
+      "roman": "ta tsa weeney",
+      "en": "What do you see?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-river-3",
+      "ps": "کومه مرغۍ اوبو ته نږدې ده؟",
+      "roman": "kooma marghay obo ta negde da",
+      "en": "Which bird is near the water?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-river-4",
+      "ps": "مینا چېرته ده؟",
+      "roman": "meena cherta da",
+      "en": "Where is Mina?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-river-5",
+      "ps": "موږ څو کبان وینو؟",
+      "roman": "moong tso kabaan weeno",
+      "en": "How many fish do we see?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-house-1",
+      "ps": "دا د چا کتاب دی؟",
+      "roman": "daa da chaa kitaab day",
+      "en": "Whose book is this?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-house-2",
+      "ps": "څوکۍ چېرته ده؟",
+      "roman": "tsawkay cherta da",
+      "en": "Where is the chair?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-house-3",
+      "ps": "کومه دروازه خلاصه ده؟",
+      "roman": "kooma darwaaza khlaasa da",
+      "en": "Which door is open?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-house-4",
+      "ps": "پر مېز څه دي؟",
+      "roman": "par mez tsa dee",
+      "en": "What is on the table?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d12-house-5",
+      "ps": "څوک چای څښي؟",
+      "roman": "tsok chaay ts-khee",
+      "en": "Who is drinking tea?",
+      "loop": 12
+    },
+    {
+      "id": "w2-d13-vocab-1",
+      "ps": "نن",
+      "roman": "nan",
+      "en": "Today",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-vocab-2",
+      "ps": "ژر",
+      "roman": "zhar",
+      "en": "Quickly",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-vocab-3",
+      "ps": "تل",
+      "roman": "tal",
+      "en": "Always",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-vocab-4",
+      "ps": "ورو ورو",
+      "roman": "wro wro",
+      "en": "Slowly",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-vocab-5",
+      "ps": "کله کله",
+      "roman": "kala kala",
+      "en": "Sometimes",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-vocab-6",
+      "ps": "یو ځای",
+      "roman": "yaw dzay",
+      "en": "Together",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-river-1",
+      "ps": "مینا ورو ورو ځي.",
+      "roman": "meena wro wro dzee",
+      "en": "Mina walks slowly.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-river-2",
+      "ps": "صالحه ژر منډې وهي.",
+      "roman": "saaleha zhar mande wahee",
+      "en": "Saleha runs quickly.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-river-3",
+      "ps": "موږ یو ځای منډې وهو.",
+      "roman": "moong yaw dzay mande waho",
+      "en": "We run together.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-river-4",
+      "ps": "هغوی کله کله د جهیل تر څنګ کښېني.",
+      "roman": "haghoy kala kala da jaheel tar tsang kenee",
+      "en": "They sometimes sit beside the lake.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-river-5",
+      "ps": "نن موږ اوبه څښو.",
+      "roman": "nan moong oba ts-kho",
+      "en": "Today we drink water.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-school-1",
+      "ps": "زه هره ورځ لولم.",
+      "roman": "za hara wraz lwalam",
+      "en": "I read every day.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-school-2",
+      "ps": "موږ کله کله جملې لیکو.",
+      "roman": "moong kala kala jumle leeko",
+      "en": "We sometimes write sentences.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-school-3",
+      "ps": "نن ته دا کتاب لولې.",
+      "roman": "nan ta daa kitaab lwaley",
+      "en": "Today you read this book.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-school-4",
+      "ps": "هغوی یو ځای کار کوي.",
+      "roman": "haghoy yaw dzay kaar kawee",
+      "en": "They work together.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-school-5",
+      "ps": "هغه ورو ورو لیکي.",
+      "roman": "hagha wro wro leekee",
+      "en": "She writes slowly.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-market-1",
+      "ps": "زه تل دلته ډوډۍ اخلم.",
+      "roman": "za tal dalta ḍoḍay akhlam",
+      "en": "I always buy bread here.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-market-2",
+      "ps": "ادریس هره ورځ خپل دوکان خلاصوي.",
+      "roman": "edrees hara wraz khpal dookaan khlaasawee",
+      "en": "Edris opens his shop every day.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-market-3",
+      "ps": "هغوی کله کله مڼې اخلي.",
+      "roman": "haghoy kala kala maṇe akhlee",
+      "en": "They sometimes buy apples.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-market-4",
+      "ps": "موږ کڅوړې ورو ورو وړو.",
+      "roman": "moong katsoṛe wro wro wro",
+      "en": "We carry the bags slowly.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-market-5",
+      "ps": "نن دا ډوډۍ تازه ده.",
+      "roman": "nan daa ḍoḍay taaza da",
+      "en": "Today this bread is fresh.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-house-1",
+      "ps": "زه کله کله چای څښم.",
+      "roman": "za kala kala chaay ts-kham",
+      "en": "I sometimes drink tea.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-house-2",
+      "ps": "موږ یو ځای کوټه پاکوو.",
+      "roman": "moong yaw dzay koṭa paakawo",
+      "en": "We clean the room together.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-house-3",
+      "ps": "محمد جان هره ورځ لولي.",
+      "roman": "muhammad jaan hara wraz lwalee",
+      "en": "Muhammad Jan reads every day.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-house-4",
+      "ps": "نن دروازه خلاصه ده.",
+      "roman": "nan darwaaza khlaasa da",
+      "en": "Today the door is open.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d13-house-5",
+      "ps": "ته تل په کور کې مرسته کوې.",
+      "roman": "ta tal pa kor ke mrasta kawey",
+      "en": "You always help at home.",
+      "loop": 13
+    },
+    {
+      "id": "w2-d14-vocab-1",
+      "ps": "چېرته",
+      "roman": "cherta",
+      "en": "Where",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-vocab-2",
+      "ps": "زما",
+      "roman": "zmaa",
+      "en": "My / mine",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-vocab-3",
+      "ps": "درې",
+      "roman": "dre",
+      "en": "Three",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-vocab-4",
+      "ps": "یو ځای",
+      "roman": "yaw dzay",
+      "en": "Together",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-house-1",
+      "ps": "دا زما کتاب دی.",
+      "roman": "daa zmaa kitaab day",
+      "en": "This is my book.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-house-2",
+      "ps": "ستاسې کتاب پر هغې څوکۍ دی.",
+      "roman": "staase kitaab par haghe tsawkay day",
+      "en": "Your book is on that chair.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-house-3",
+      "ps": "کومه دروازه خلاصه ده؟",
+      "roman": "kooma darwaaza khlaasa da",
+      "en": "Which door is open?",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-house-4",
+      "ps": "نن موږ دا کوټې پاکوو.",
+      "roman": "nan moong daa koṭe paakawo",
+      "en": "Today we clean these rooms.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-house-5",
+      "ps": "د محمد جان کتابچه چېرته ده؟",
+      "roman": "da muhammad jaan kitaabcha cherta da",
+      "en": "Where is Muhammad Jan’s notebook?",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-market-1",
+      "ps": "دا مڼې تازه دي.",
+      "roman": "daa maṇe taaza dee",
+      "en": "These apples are fresh.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-market-2",
+      "ps": "زه درې مڼې اخلم.",
+      "roman": "za dre maṇe akhlam",
+      "en": "I buy three apples.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-market-3",
+      "ps": "کومه ټوکرۍ د ادریس ده؟",
+      "roman": "kooma ṭokray da edrees da",
+      "en": "Which basket belongs to Edris?",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-market-4",
+      "ps": "هغه خلک یو ځای ډوډۍ وړي.",
+      "roman": "hagha khalak yaw dzay ḍoḍay wree",
+      "en": "Those people carry bread together.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-market-5",
+      "ps": "دلته څو کڅوړې دي؟",
+      "roman": "dalta tso katsoṛe dee",
+      "en": "How many bags are here?",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-river-1",
+      "ps": "مینا ورو ورو ځي.",
+      "roman": "meena wro wro dzee",
+      "en": "Mina walks slowly.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-river-2",
+      "ps": "هغه مرغان سیند ته نږدې دي.",
+      "roman": "hagha marghaan seend ta negde dee",
+      "en": "Those birds are near the river.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-river-3",
+      "ps": "د صالحې کڅوړه چېرته ده؟",
+      "roman": "da saalehe katsoṛa cherta da",
+      "en": "Where is Saleha’s bag?",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-river-4",
+      "ps": "موږ دا کبان وینو.",
+      "roman": "moong daa kabaan weeno",
+      "en": "We see these fish.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-river-5",
+      "ps": "څوک ژر منډې وهي؟",
+      "roman": "tsok zhar mande wahee",
+      "en": "Who runs quickly?",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-school-1",
+      "ps": "دا کتابونه نوي دي.",
+      "roman": "daa kitaaboona nawee dee",
+      "en": "These books are new.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-school-2",
+      "ps": "هغه کتابچه زما ده.",
+      "roman": "hagha kitaabcha zmaa da",
+      "en": "That notebook is mine.",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-school-3",
+      "ps": "څوک هره ورځ لولي؟",
+      "roman": "tsok hara wraz lwalee",
+      "en": "Who reads every day?",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-school-4",
+      "ps": "زده کوونکي چېرته دي؟",
+      "roman": "zda kawoonkee cherta dee",
+      "en": "Where are the students?",
+      "loop": 14
+    },
+    {
+      "id": "w2-d14-school-5",
+      "ps": "کوم کتاب د مینا دی؟",
+      "roman": "koom kitaab da meena day",
+      "en": "Which book belongs to Mina?",
+      "loop": 14
+    }
+  ]
+}

@@ -1,0 +1,2569 @@
+{
+  "candidateDistrictCounts": {
+    "residential": 90,
+    "nature": 90,
+    "business": 90,
+    "school": 90
+  },
+  "authoredExampleSceneCoverage": {
+    "residential": 29,
+    "nature": 35,
+    "business": 31,
+    "school": 36,
+    "hills": 0,
+    "bakery": 0,
+    "neighbourHome": 0
+  },
+  "schemaVersion": 1,
+  "activatedLemmas": 127,
+  "activatedContentLemmas": 108,
+  "nativeApprovedContentLemmas": 0,
+  "inactiveCandidates": 360,
+  "aliasCandidates": 7,
+  "eligibleForPromotion": 0,
+  "byPrimaryDistrict": {
+    "residential": 22,
+    "nature": 35,
+    "business": 30,
+    "school": 21
+  },
+  "byPartOfSpeech": {
+    "noun": 45,
+    "verb": 29,
+    "adjective": 26,
+    "adverb": 8
+  },
+  "byReviewStatus": {
+    "needsReview": 127
+  },
+  "byDifficulty": {
+    "not assessed": 127
+  },
+  "formCount": 223,
+  "duplicateLemmaIds": [],
+  "sameHeadwordForEditorialReview": [],
+  "scenes": [
+    {
+      "sceneId": "residential",
+      "districtId": "residential",
+      "displayName": "Home",
+      "participants": [
+        "Muhammad Jan"
+      ]
+    },
+    {
+      "sceneId": "nature",
+      "districtId": "nature",
+      "displayName": "Lake",
+      "participants": [
+        "Saleha"
+      ]
+    },
+    {
+      "sceneId": "business",
+      "districtId": "business",
+      "displayName": "Market",
+      "participants": [
+        "Edris"
+      ]
+    },
+    {
+      "sceneId": "school",
+      "districtId": "school",
+      "displayName": "School",
+      "participants": [
+        "Ms Hameed"
+      ]
+    },
+    {
+      "sceneId": "library",
+      "districtId": "school",
+      "displayName": "Library",
+      "participants": [
+        "Muhammad Jan"
+      ]
+    },
+    {
+      "sceneId": "hills",
+      "districtId": "nature",
+      "displayName": "Hills",
+      "participants": [
+        "Saleha",
+        "Mina"
+      ]
+    },
+    {
+      "sceneId": "bakery",
+      "districtId": "business",
+      "displayName": "Bakery",
+      "participants": []
+    },
+    {
+      "sceneId": "neighbourHome",
+      "districtId": "residential",
+      "displayName": "Neighbour home",
+      "participants": []
+    }
+  ],
+  "candidateGaps": {
+    "Pashto headword": 360,
+    "romanisation": 360,
+    "stable forms and morphology": 360,
+    "contextual examples and constraints": 360,
+    "source mappings": 360,
+    "documented qualified native sign-off": 360,
+    "existing lemma alias, not a new entry": 7
+  },
+  "schedules": [
+    {
+      "pace": 0,
+      "reviewExams": false,
+      "days": [
+        {
+          "day": 1,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 2,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 3,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 4,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 5,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 6,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 7,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 87
+    },
+    {
+      "pace": 4,
+      "reviewExams": false,
+      "days": [
+        {
+          "day": 1,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 2,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 3,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 4,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 5,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 6,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 7,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 8,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 9,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 10,
+          "requested": 4,
+          "assigned": 3,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 4,
+          "assigned": 1,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 1,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 4,
+          "assigned": 1,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 1,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 4,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 8,
+      "reviewExams": false,
+      "days": [
+        {
+          "day": 1,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 2,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 3,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 4,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 5,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 6,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 7,
+          "requested": 8,
+          "assigned": 7,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 1
+          }
+        },
+        {
+          "day": 8,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 12,
+      "reviewExams": false,
+      "days": [
+        {
+          "day": 1,
+          "requested": 12,
+          "assigned": 12,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 3,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 2,
+          "requested": 12,
+          "assigned": 12,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 3,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 3,
+          "requested": 12,
+          "assigned": 12,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 3,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 4,
+          "requested": 12,
+          "assigned": 12,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 3,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 5,
+          "requested": 12,
+          "assigned": 12,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 3,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 6,
+          "requested": 12,
+          "assigned": 2,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 7,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 16,
+      "reviewExams": false,
+      "days": [
+        {
+          "day": 1,
+          "requested": 16,
+          "assigned": 16,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 4,
+            "business": 4,
+            "nature": 4,
+            "school": 4
+          }
+        },
+        {
+          "day": 2,
+          "requested": 16,
+          "assigned": 16,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 4,
+            "business": 4,
+            "nature": 4,
+            "school": 4
+          }
+        },
+        {
+          "day": 3,
+          "requested": 16,
+          "assigned": 16,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 4,
+            "business": 4,
+            "nature": 4,
+            "school": 4
+          }
+        },
+        {
+          "day": 4,
+          "requested": 16,
+          "assigned": 16,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 4,
+            "business": 4,
+            "nature": 4,
+            "school": 4
+          }
+        },
+        {
+          "day": 5,
+          "requested": 16,
+          "assigned": 3,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 2,
+            "nature": 0,
+            "school": 1
+          }
+        },
+        {
+          "day": 6,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 7,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 20,
+      "reviewExams": false,
+      "days": [
+        {
+          "day": 1,
+          "requested": 20,
+          "assigned": 20,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 5,
+            "business": 5,
+            "nature": 5,
+            "school": 5
+          }
+        },
+        {
+          "day": 2,
+          "requested": 20,
+          "assigned": 20,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 5,
+            "business": 5,
+            "nature": 5,
+            "school": 5
+          }
+        },
+        {
+          "day": 3,
+          "requested": 20,
+          "assigned": 20,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 5,
+            "business": 5,
+            "nature": 5,
+            "school": 5
+          }
+        },
+        {
+          "day": 4,
+          "requested": 20,
+          "assigned": 13,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 4,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 5,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 6,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 7,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 24,
+      "reviewExams": false,
+      "days": [
+        {
+          "day": 1,
+          "requested": 24,
+          "assigned": 24,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 6,
+            "business": 6,
+            "nature": 6,
+            "school": 6
+          }
+        },
+        {
+          "day": 2,
+          "requested": 24,
+          "assigned": 24,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 6,
+            "business": 6,
+            "nature": 6,
+            "school": 6
+          }
+        },
+        {
+          "day": 3,
+          "requested": 24,
+          "assigned": 24,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 6,
+            "business": 6,
+            "nature": 6,
+            "school": 6
+          }
+        },
+        {
+          "day": 4,
+          "requested": 24,
+          "assigned": 6,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 5,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 6,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 7,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 0,
+      "reviewExams": true,
+      "days": [
+        {
+          "day": 1,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 2,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 3,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 4,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 5,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 6,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 7,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 87
+    },
+    {
+      "pace": 4,
+      "reviewExams": true,
+      "days": [
+        {
+          "day": 1,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 2,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 3,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 4,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 5,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 6,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 7,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 9,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 10,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 11,
+          "requested": 4,
+          "assigned": 4,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 1,
+            "school": 1
+          }
+        },
+        {
+          "day": 12,
+          "requested": 4,
+          "assigned": 1,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 1,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 4,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 8,
+      "reviewExams": true,
+      "days": [
+        {
+          "day": 1,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 2,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 3,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 4,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 5,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 6,
+          "requested": 8,
+          "assigned": 8,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 7,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 8,
+          "assigned": 7,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 2,
+            "business": 2,
+            "nature": 2,
+            "school": 1
+          }
+        },
+        {
+          "day": 9,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 8,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 12,
+      "reviewExams": true,
+      "days": [
+        {
+          "day": 1,
+          "requested": 12,
+          "assigned": 12,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 3,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 2,
+          "requested": 12,
+          "assigned": 12,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 3,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 3,
+          "requested": 12,
+          "assigned": 12,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 3,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 4,
+          "requested": 12,
+          "assigned": 12,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 3,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 5,
+          "requested": 12,
+          "assigned": 12,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 3,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 6,
+          "requested": 12,
+          "assigned": 2,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 7,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 12,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 16,
+      "reviewExams": true,
+      "days": [
+        {
+          "day": 1,
+          "requested": 16,
+          "assigned": 16,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 4,
+            "business": 4,
+            "nature": 4,
+            "school": 4
+          }
+        },
+        {
+          "day": 2,
+          "requested": 16,
+          "assigned": 16,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 4,
+            "business": 4,
+            "nature": 4,
+            "school": 4
+          }
+        },
+        {
+          "day": 3,
+          "requested": 16,
+          "assigned": 16,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 4,
+            "business": 4,
+            "nature": 4,
+            "school": 4
+          }
+        },
+        {
+          "day": 4,
+          "requested": 16,
+          "assigned": 16,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 4,
+            "business": 4,
+            "nature": 4,
+            "school": 4
+          }
+        },
+        {
+          "day": 5,
+          "requested": 16,
+          "assigned": 3,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 2,
+            "nature": 0,
+            "school": 1
+          }
+        },
+        {
+          "day": 6,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 7,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 16,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 20,
+      "reviewExams": true,
+      "days": [
+        {
+          "day": 1,
+          "requested": 20,
+          "assigned": 20,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 5,
+            "business": 5,
+            "nature": 5,
+            "school": 5
+          }
+        },
+        {
+          "day": 2,
+          "requested": 20,
+          "assigned": 20,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 5,
+            "business": 5,
+            "nature": 5,
+            "school": 5
+          }
+        },
+        {
+          "day": 3,
+          "requested": 20,
+          "assigned": 20,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 5,
+            "business": 5,
+            "nature": 5,
+            "school": 5
+          }
+        },
+        {
+          "day": 4,
+          "requested": 20,
+          "assigned": 13,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 4,
+            "business": 3,
+            "nature": 3,
+            "school": 3
+          }
+        },
+        {
+          "day": 5,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 6,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 7,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 20,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    },
+    {
+      "pace": 24,
+      "reviewExams": true,
+      "days": [
+        {
+          "day": 1,
+          "requested": 24,
+          "assigned": 24,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 6,
+            "business": 6,
+            "nature": 6,
+            "school": 6
+          }
+        },
+        {
+          "day": 2,
+          "requested": 24,
+          "assigned": 24,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 6,
+            "business": 6,
+            "nature": 6,
+            "school": 6
+          }
+        },
+        {
+          "day": 3,
+          "requested": 24,
+          "assigned": 24,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 6,
+            "business": 6,
+            "nature": 6,
+            "school": 6
+          }
+        },
+        {
+          "day": 4,
+          "requested": 24,
+          "assigned": 6,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 2,
+            "school": 2
+          }
+        },
+        {
+          "day": 5,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 6,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 7,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 8,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 11,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 13,
+          "requested": 24,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 14,
+          "requested": 0,
+          "assigned": 0,
+          "feasible": true,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
+          }
+        }
+      ],
+      "encountered": 108
+    }
+  ]
+}

@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#132334" />
+    <title>Pashto Town — Seven Days of Pashto</title>
+    <style>
+      /* @STYLES */
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <div class="brand">
+          ✦ PASHTO TOWN <small>· A new life in town</small>
+        </div>
+        <div class="hud">
+          <span class="pill" id="xpPill">✦ 0 XP</span
+          ><span class="pill green" id="knownPill">0 learned</span
+          ><button id="navWorld" type="button" class="ghost hidden">
+            🏘️ Town map</button
+          ><button id="resetProgress" type="button" class="ghost">
+            Reset progress
+          </button>
+        </div>
+      </header>
+      <details class="dialect-note" id="dialectGuide">
+        <summary>
+          🌿 Laghman focus · regional notes and pronunciation limitations
+        </summary>
+        <p>
+          <strong>What this version teaches:</strong> everyday Afghan Pashto
+          words in the conventional Pashto script, paired with readable
+          pronunciation approximations influenced by speech from eastern
+          Afghanistan. Laghman is not one perfectly uniform accent: some
+          accounts group its varieties with central Pashto, others with eastern
+          Pashto. Treat the Latin hints as
+          <strong
+            >learning aids, not recordings or proof of one exact village
+            accent</strong
+          >.
+        </p>
+        <ul>
+          <li>
+            <strong>ښ</strong> — commonly closer to <em>kh</em> (the sound in
+            Scottish “loch”) in eastern usage, but can sound softer in some
+            central varieties. For example:
+            <span dir="rtl" lang="ps">ښوونځی</span> →
+            <em>khowunzay</em> (school).
+          </li>
+          <li>
+            <strong>ږ</strong> — often has a hard <em>g</em>-like sound in
+            eastern usage; speakers nearer central varieties may use a softer
+            sound. Example: <span dir="rtl" lang="ps">اوسېږم</span> →
+            <em>osegam</em> (I live).
+          </li>
+          <li>
+            <strong>څ</strong> — the <em>ts</em> cue is used for words like
+            <span dir="rtl" lang="ps">څنګه</span>. Sounds can differ between
+            nearby communities.
+          </li>
+          <li>
+            <strong>ټ / ډ / ړ</strong> — tongue curls slightly back for these
+            consonants. In the easy reading hints, <em>ṭ / ḍ / ṛ</em> identify
+            these special sounds.
+          </li>
+        </ul>
+        <p>
+          <strong>🔊 Audio:</strong> Speaker buttons use pre-generated Pashto
+          neural MP3s when installed; otherwise they use your device’s
+          <em>Pashto</em> speech-synthesis voice if available. No unverified
+          non-Pashto voice is substituted. Standard Afghan Pashto neural voices
+          are not necessarily Laghmani; native review is still needed.
+        </p>
+        <p>
+          <strong>Vocabulary alternatives:</strong>
+          <span dir="rtl" lang="ps">خونه</span> (<em>khuna</em>) also means
+          room, while <span dir="rtl" lang="ps">مکتب</span> (<em>maktab</em>) is
+          also used for school in Afghan conversation. The course retains
+          <span dir="rtl" lang="ps">کوټه</span> and
+          <span dir="rtl" lang="ps">ښوونځی</span> in its exercises.
+        </p>
+        <p>
+          <strong>Quality note:</strong> this is a Laghman-focused draft,
+          <em>not a native-speaker-verified Laghmani dictionary</em>. Before
+          publishing or accepting pronunciation audio as authentically local,
+          ask a Pashto speaker from the relevant part of Laghman to review every
+          expression. Regional descriptions:
+          <a
+            href="https://celcar.indiana.edu/materials/language-portal/pashto.html"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Indiana University</a
+          >
+          ·
+          <a
+            href="https://wasiweb.com/پښتو-ګړدودونه-لهجې/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Pashto dialect survey</a
+          >.
+        </p>
+      </details>
+      <section aria-label="Player progress" class="herochar">
+        <div class="avatar">🧙</div>
+        <div class="char-content">
+          <h1 id="characterLevel">Level 1 · Newcomer</h1>
+          <div class="tiny muted" id="characterSubtitle">
+            Muhammad Jan welcomes you at the Library.
+          </div>
+          <div class="bar-label">
+            <span>Next character level</span
+            ><span id="xpAmount">0 / 200 XP</span>
+          </div>
+          <div
+            id="xpBar"
+            class="bar"
+            role="progressbar"
+            aria-label="XP towards next level"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="0"
+          >
+            <div id="xpFill"></div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="panel"
+        id="introScreen"
+        aria-label="Compulsory beginner tutorial"
+      >
+        <p class="eyebrow">Day 1 · Library · The first hello</p>
+        <h2 class="headline">Welcome to Pashto Town</h2>
+        <p class="dialect-label">LAGHMAN-FOCUSED AFGHAN PASHTO</p>
+        <div class="guide-row">
+          <div aria-hidden="true" class="guide-face">🧑‍🏫</div>
+          <div>
+            <p class="guide-name">MUHAMMAD JAN · YOUR FRIENDLY GUIDE</p>
+            <p>
+              سلام! <strong>Salaam!</strong> I am Muhammad Jan, one of the
+              village elders. Welcome to our village Library! Before you meet
+              your neighbours, let’s learn just
+              <strong>four easy greetings</strong>. I’ll show you the Pashto
+              script, its transliteration and its meaning. Then you can choose
+              the right English translation.
+            </p>
+            <p>
+              You have just moved to this town! On <strong>Day 1</strong>,
+              explore the home Muhammad Jan shows you, the market, the lake and
+              the school in any order, then meet me at the Library for the home
+              handover challenge. On <strong>Day 2</strong>, begin with Ms
+              Hameed at school, practise at the market and lake, and finish at
+              home. Later days follow the familiar four-location routine.
+              <strong>Prefer a challenge?</strong> After this first tutorial,
+              you may skip visits and take the day's final challenge whenever
+              you are ready. We’ll speak only in the
+              <strong>present tense</strong> for now.
+            </p>
+          </div>
+        </div>
+        <div class="round-path">
+          <div class="stage active">1 · Learn</div>
+          <div class="stage">2 · Choose</div>
+          <div class="stage">3 · Explore</div>
+        </div>
+        <div class="intro-art">
+          <div>
+            <span class="emoji">🏡 🏞️</span><strong>Home &amp; Lake</strong
+            ><small>Learn nouns, actions and descriptions in context.</small>
+          </div>
+          <div>
+            <span class="emoji">🏪 🏫</span><strong>Market &amp; School</strong
+            ><small>Build sentences using what you already know.</small>
+          </div>
+        </div>
+        <button id="startTutorial" class="primary" type="button">
+          Meet Muhammad Jan →
+        </button>
+      </section>
+      <section
+        class="panel hidden"
+        id="worldScreen"
+        aria-label="Explore the language-learning world"
+      >
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Live • Learn • Remember</p>
+            <h2 style="margin: 0">🏘️ Your Pashto Town</h2>
+            <p>
+              Learn with the village and visit the Library anytime. Muhammad Jan
+              shows you around before awarding your home after the Day 1
+              challenge. Day 1: explore freely, then check in with Muhammad Jan.
+              Day 2: school first, market and lake in either order, then home.
+              Day 3: meet Saleha at the lake, visit the village, then shop for
+              dinner with Edris. Days 4–7 keep the four-location routine. On
+              every day, you can also skip the visits and attempt the final
+              challenge immediately.
+            </p>
+          </div>
+          <span class="pill" id="chapterProgress">0/4 locations</span>
+        </div>
+        <div class="town-story" id="townStory" aria-live="polite">
+          <span aria-hidden="true">🧑‍🏫</span>
+          <p>Muhammad Jan welcomes you to the village.</p>
+        </div>
+        <div class="day-route" id="dayRoute" aria-live="polite"></div>
+        <div
+          id="skipDayArea"
+          class="skip-challenge"
+          aria-label="Optional shortcut to the end-of-day challenge"
+        >
+          <div>
+            <strong id="skipDayHeading"
+              >Ready for the end-of-day challenge?</strong
+            ><small id="skipDayHint"
+              >Explore the village or go straight to your 15-question
+              challenge.</small
+            >
+          </div>
+          <button class="primary" id="skipDayBtn" type="button">
+            Skip visits →
+          </button>
+        </div>
+        <div
+          class="chapters"
+          id="chapterButtons"
+          aria-label="Days in town"
+        ></div>
+        <div class="notice" id="chapterHint"></div>
+        <div class="round-insight" id="roundInsight"></div>
+        <div
+          class="worldmap"
+          aria-label="Illustrated map of the town you live in"
+        >
+          <svg
+            aria-label="The town, with a home, lake, market, school and Library"
+            preserveaspectratio="none"
+            role="img"
+            viewbox="0 0 900 350"
+          >
+            <defs>
+              <pattern
+                height="40"
+                id="grass"
+                patternunits="userSpaceOnUse"
+                width="46"
+              >
+                <circle cx="9" cy="12" fill="#a9c9a4" r="2"></circle>
+                <path
+                  d="M31 30 l3 -5 3 5"
+                  fill="none"
+                  stroke="#9cbd93"
+                  stroke-width="1.5"
+                ></path>
+              </pattern>
+            </defs>
+            <rect fill="#c8dcbc" height="350" width="900"></rect>
+            <rect fill="url(#grass)" height="350" width="900"></rect>
+            <path
+              d="M0 68Q110 12 213 48T442 28T682 43T900 12"
+              fill="none"
+              opacity=".55"
+              stroke="#a8c5a8"
+              stroke-width="44"
+            ></path>
+            <path
+              d="M-55 305Q95 235 213 307T442 282T655 300T950 255"
+              fill="none"
+              opacity=".4"
+              stroke="#aac897"
+              stroke-width="70"
+            ></path>
+            <path
+              d="M18 176 Q170 180 290 150 S505 159 616 171 S810 177 890 171"
+              fill="none"
+              stroke="#e2cca3"
+              stroke-linecap="round"
+              stroke-width="29"
+            ></path>
+            <path
+              d="M18 176 Q170 180 290 150 S505 159 616 171 S810 177 890 171"
+              fill="none"
+              stroke="#f5e9c9"
+              stroke-dasharray="2 0"
+              stroke-linecap="round"
+              stroke-width="22"
+            ></path>
+            <path
+              d="M0 280 Q138 259 230 298 Q326 333 384 350"
+              fill="#79b7cf"
+              stroke="#4c95b4"
+              stroke-width="8"
+            ></path>
+            <path
+              d="M0 275 Q137 258 233 290 Q330 319 380 350"
+              fill="none"
+              stroke="#a8dbdf"
+              stroke-width="5"
+            ></path>
+            <ellipse
+              cx="202"
+              cy="262"
+              fill="#79b7cf"
+              rx="136"
+              ry="67"
+              stroke="#4c95b4"
+              stroke-width="7"
+            ></ellipse>
+            <path
+              d="M91 260Q195 244 298 266"
+              fill="none"
+              opacity=".65"
+              stroke="#b7e5de"
+              stroke-width="4"
+            ></path>
+            <path
+              d="M132 286Q197 270 257 291"
+              fill="none"
+              opacity=".65"
+              stroke="#b7e5de"
+              stroke-width="3"
+            ></path>
+            <g fill="#588d60" stroke="#3f7052" stroke-width="2">
+              <circle cx="55" cy="48" r="24"></circle>
+              <circle cx="99" cy="91" r="18"></circle>
+              <circle cx="341" cy="56" r="25"></circle>
+              <circle cx="396" cy="79" r="17"></circle>
+              <circle cx="527" cy="31" r="21"></circle>
+              <circle cx="815" cy="64" r="19"></circle>
+              <circle cx="845" cy="115" r="20"></circle>
+              <circle cx="426" cy="310" r="18"></circle>
+              <circle cx="535" cy="291" r="23"></circle>
+              <circle cx="872" cy="305" r="26"></circle>
+            </g>
+            <g fill="#8cad6b" opacity=".75">
+              <circle cx="55" cy="43" r="9"></circle>
+              <circle cx="342" cy="48" r="10"></circle>
+              <circle cx="526" cy="23" r="9"></circle>
+              <circle cx="869" cy="296" r="12"></circle>
+            </g>
+            <path
+              d="M350 0l-46 42 84-11 31-31 M669 0l-43 32 70-7 33-25"
+              fill="#8fb29b"
+              opacity=".65"
+            ></path>
+            <g fill="#fff8e5" opacity=".75">
+              <circle cx="45" cy="145" r="3"></circle>
+              <circle cx="457" cy="224" r="3"></circle>
+              <circle cx="605" cy="91" r="3"></circle>
+              <circle cx="768" cy="326" r="3"></circle>
+            </g>
+          </svg>
+          <button
+            class="map-point residential"
+            data-place="residential"
+            type="button"
+          >
+            <span class="micon">🏡</span><b>Your Home</b
+            ><small id="map-residential">Start</small>
+          </button>
+          <button class="map-point school" data-place="school" type="button">
+            <span class="micon">🏫</span><b>The School</b
+            ><small id="map-school">Start</small>
+          </button>
+          <button class="map-point nature" data-place="nature" type="button">
+            <span class="micon">🏞️</span><b>The Lake</b
+            ><small id="map-nature">Start</small>
+          </button>
+          <button
+            class="map-point business"
+            data-place="business"
+            type="button"
+          >
+            <span class="micon">🏪</span><b>The Market</b
+            ><small id="map-business">Start</small>
+          </button>
+        </div>
+        <div class="places" id="placeCards"></div>
+        <div class="daily-challenge" id="dayChallenge" aria-live="polite">
+          <div class="challenge-header">
+            <span aria-hidden="true" class="challenge-trophy">🏆</span>
+            <div>
+              <p class="eyebrow" id="challengeEyebrow">
+                DAY 1 · TOWN CHECKPOINT
+              </p>
+              <h3 id="challengeTitle">The Town Challenge</h3>
+              <p id="challengeDescription">
+                Visit the village to practise, or take the challenge straight
+                away.
+              </p>
+            </div>
+          </div>
+          <div class="challenge-breakdown">
+            <span>5 word recall</span><span>5 sentence recall</span
+            ><span>5 sentence builds</span>
+          </div>
+          <div class="buttons">
+            <button id="startChallenge" type="button" class="primary">
+              Take the 15-question challenge →</button
+            ><span id="challengeRecord" class="challenge-record"
+              >Pass: 12/15 (80%)</span
+            >
+          </div>
+        </div>
+        <div class="info-strip">
+          <span
+            >🧠 Your town remembers what you learn. Revisits include earlier
+            words, and missed material returns for spaced repetition.</span
+          ><button id="reviewBtn" class="secondary" type="button">
+            Memory Trail (0 due)
+          </button>
+        </div>
+        <div class="buttons" style="margin-top: 12px">
+          <button id="replayGuide" class="ghost" type="button">
+            ↺ Repeat greetings tutorial
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="lessonScreen"
+        class="panel hidden"
+        aria-label="Interactive Pashto lesson"
+      >
+        <div class="lesson-title">
+          <div>
+            <p class="eyebrow" id="lessonEyebrow">LESSON</p>
+            <h2 id="lessonName">The House</h2>
+            <p class="tiny muted" id="lessonDescription">Learn the language.</p>
+          </div>
+          <span id="lessonIcon" class="icon" aria-hidden="true">🏡</span>
+        </div>
+        <div
+          id="participants"
+          class="interlocutors"
+          aria-label="People in this conversation"
+        ></div>
+        <div class="guide-bubble">
+          <span aria-hidden="true" id="speakerIcon">🧑‍🏫</span>
+          <div>
+            <strong id="speakerName">The Friendly Guide · speaking</strong>
+            <p id="guideMessage">First, let’s learn.</p>
+          </div>
+        </div>
+        <div
+          class="audio-info"
+          id="audioStatus"
+          role="status"
+          aria-live="polite"
+        >
+          🔊 Tap a speaker button for Pashto audio. A Pashto voice or MP3 pack
+          is required.
+        </div>
+        <div id="teachPanel" class="hidden">
+          <div class="round-path" id="lessonStages">
+            <div class="stage active">1 · New words</div>
+            <div class="stage">2 · Sentences</div>
+            <div class="stage">3 · Mixed recall</div>
+          </div>
+          <div class="teach-card">
+            <div class="count" id="teachCount">STUDY CARD 1</div>
+            <div class="card-type" id="teachType">Noun</div>
+            <div class="pashto" id="teachPashto" dir="rtl" lang="ps">سلام</div>
+            <div class="roman" id="teachRoman">salaam</div>
+            <button
+              type="button"
+              class="speaker"
+              id="teachSpeak"
+              aria-label="Hear the Pashto phrase"
+            >
+              🔊 Hear Pashto
+            </button>
+            <div class="meaning" id="teachEnglish">Hello</div>
+            <p class="teach-note" id="teachNote">Learn this word.</p>
+            <div class="dialect-variant hidden" id="dialectVariant"></div>
+          </div>
+          <div class="buttons teach-actions">
+            <button class="primary" id="teachNext" type="button">
+              Next study card →
+            </button>
+          </div>
+        </div>
+        <div id="sovPanel" class="hidden">
+          <div class="sov-area">
+            <p class="guide-step" id="sovStep">The Guide's grammar workshop</p>
+            <h3 id="sovTitle">How a Pashto sentence works</h3>
+            <p id="sovExplanation"></p>
+            <div id="sovDiagram">
+              <p class="world-title">English usually uses S–V–O</p>
+              <div class="sov-flow">
+                <div class="sov-word subject">
+                  <b>SUBJECT</b><span>He / she</span>
+                </div>
+                <div class="sov-word verb"><b>VERB</b><span>drinks</span></div>
+                <div class="sov-word object">
+                  <b>OBJECT</b><span>water</span>
+                </div>
+              </div>
+              <p class="world-title">Pashto usually uses S–O–V</p>
+              <div class="sov-flow">
+                <div class="sov-word subject">
+                  <b>SUBJECT</b><span class="ps" lang="ps">هغه</span
+                  ><span>hagha</span>
+                </div>
+                <div class="sov-word object">
+                  <b>OBJECT</b><span class="ps" lang="ps">اوبه</span
+                  ><span>oba</span>
+                </div>
+                <div class="sov-word verb">
+                  <b>VERB</b><span class="ps" lang="ps">څښي</span
+                  ><span>ts-khee</span>
+                </div>
+              </div>
+              <p class="sov-small">
+                هغه اوبه څښي. — He/she drinks water. The verb comes at the end.
+              </p>
+            </div>
+            <div class="buttons">
+              <button type="button" class="speaker" id="grammarSpeak">
+                🔊 Hear example</button
+              ><button id="sovNext" class="primary" type="button">
+                I understand — continue →
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="quizPanel" class="hidden">
+          <div
+            id="addressTarget"
+            class="speaker-direction hidden"
+            aria-live="polite"
+          ></div>
+          <div class="question-meta">
+            <span id="quizCounter">Question 1</span
+            ><span id="quizType">★ NEW</span>
+          </div>
+          <div class="quizword">
+            <div class="label" id="quizPrompt">
+              What does this expression mean?
+            </div>
+            <div class="pashto" id="quizPashto" dir="rtl" lang="ps">کور</div>
+            <div class="roman" id="quizRoman">kor</div>
+            <button
+              type="button"
+              class="speaker"
+              id="quizSpeak"
+              aria-label="Hear the Pashto phrase"
+            >
+              🔊 Hear Pashto
+            </button>
+            <h3>Choose the correct English meaning</h3>
+          </div>
+          <div class="choices" id="choices"></div>
+          <div
+            id="constructionPanel"
+            class="hidden construction-panel"
+            aria-label="Build the Pashto sentence"
+          >
+            <p class="build-caption">
+              YOUR SENTENCE · Tap tiles to put the words in order
+            </p>
+            <div
+              class="built-sentence"
+              id="builtSentence"
+              dir="rtl"
+              lang="ps"
+              aria-live="polite"
+            >
+              <span class="build-placeholder">Tap a tile below to begin…</span>
+            </div>
+            <div class="word-tiles" id="wordTiles" dir="rtl" lang="ps"></div>
+            <div class="buttons build-actions">
+              <button class="secondary" id="undoTile" type="button" disabled>
+                ↶ Undo</button
+              ><button class="ghost" id="clearTiles" type="button" disabled>
+                Clear</button
+              ><button class="primary" id="checkBuild" type="button" disabled>
+                Check sentence ✓
+              </button>
+            </div>
+          </div>
+          <div aria-live="polite" class="feedback">
+            <div id="quizFeedback">Choose an answer to continue.</div>
+            <button id="quizNext" type="button" class="primary" disabled>
+              Next →
+            </button>
+          </div>
+        </div>
+        <p
+          class="tiny muted"
+          style="
+            border-top: 1px solid #526e7c;
+            padding-top: 12px;
+            margin: 22px 0 0;
+          "
+        >
+          Conventional Pashto spelling · Laghman-focused approximate
+          transliteration · Tap the speaker to hear Pashto if an Afghan Pashto
+          voice or audio pack is available · Local Laghman review still
+          required.
+        </p>
+      </section>
+      <section
+        id="resultScreen"
+        class="panel summary hidden"
+        aria-label="Lesson results"
+      >
+        <div class="trophy">🏆</div>
+        <p class="eyebrow">Lesson finished</p>
+        <h2 id="resultHeading">Lesson complete!</h2>
+        <p id="resultDescription">You learned some words.</p>
+        <div class="stats">
+          <div class="stat">
+            <b id="resultAccuracy">0/0</b><small>First-try correct</small>
+          </div>
+          <div class="stat">
+            <b id="resultXP">+0</b><small>XP gained</small>
+          </div>
+          <div class="stat">
+            <b id="resultKnowledge">0/0</b><small>Items practised</small>
+          </div>
+        </div>
+        <p class="tiny muted" id="resultNext"></p>
+        <div class="buttons">
+          <button id="resultWorld" class="primary" type="button">
+            Return to town →</button
+          ><button id="resultReplay" class="secondary" type="button">
+            Practise again
+          </button>
+        </div>
+      </section>
+      <footer class="footer">
+        Learning prototype · Present tense only · Offline reading/quiz · Pashto
+        speech requires a compatible browser voice or generated MP3 pack ·
+        Spaced repetition stored locally where browser storage is available ·
+        <a
+          href="https://grammar.lingdocs.com/verbs/present-verbs/"
+          rel="noopener noreferrer"
+          target="_blank"
+          >Pashto verb reference</a
+        >
+        ·
+        <a
+          href="https://files.eric.ed.gov/fulltext/ED399825.pdf"
+          rel="noopener noreferrer"
+          target="_blank"
+          >Pashto word order</a
+        >
+      </footer>
+    </div>
+    <script>
+      // @SCRIPT
+    </script>
+  </body>
+</html>

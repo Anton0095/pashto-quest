@@ -1,32 +1,15 @@
-# Week 2 acceptance and regression tests
+# Current acceptance contract
 
-## Patch safety / formatting
+Run `python3 tools/verify.py`; actual results and limitations are recorded in `docs/CLEANUP_TEST_RESULTS.md`.
 
-- [ ] Confirm current `index.html` contains Day 6 Mina + Hills and Day 7 25-question examination; reject outdated `main` HTML.
-- [ ] Run `python3 patch/test_patch.py` (fixture insertion, Node JS parser, tile logic); verify `node --check` passes on script extracted from patched full HTML.
-- [ ] Original Week 1 `construct` questions still require all their original answer tiles. Starting Day 8, `dialogue` and explicitly authored `construct` questions with a `duds` array permit unused distractors.
-- [ ] A mixed prompt `Saleha asks: What does منډې وهل mean?` displays the Pashto term much larger than the surrounding English text. All-Pashto multiple-choice choices and the tile bank are similarly large, including at 375px wide.
-- [ ] RTL rendering places the first selected Pashto word at the right and wraps rather than clipping.
-- [ ] All display text is installed via text nodes/textContent (never raw question HTML).
-
-## Dialogue-mode scoring
-
-- [ ] Speaker clearly identified; prompt is an actual *question*; player assembles appropriate *answer*. In lake example: `ته څه څښې؟` → `زه اوبه څښم.`
-- [ ] Bank has ≥2 authored distractors; distractors cannot be identical to required tokens, repeated, or multiword tokens. Plausible distractors such as wrong verb person are included.
-- [ ] `زه` → `اوبه` → `څښم` is accepted even though two or more words remain unused. `زه` → `کتاب` → `څښم` rejected; `ته` + second-person verb form also rejected for a first-person reply when unlicensed.
-- [ ] Duplicate correct tokens (where a sentence requires them) can be selected separately and scored; each tile is identified by its *index* rather than its text.
-- [ ] Remove/Undo/Clear works before Check. Check is disabled if no tile chosen. Once submitted, response is locked and first score counts.
-- [ ] Spaces and final punctuation do not change scoring; incorrect word order/person does. `acceptedPs` alternative answers are scored only when explicitly authored and native-reviewed.
-- [ ] XP for a correct first-time dialogue question is awarded at most once per unique day+question ID, even on challenge replay. Wrong attempts do not grant XP. Completing all challenges via Skip does not auto-complete optional visits.
-- [ ] Optional Pashto speech button only appears when an actual prompt audio ID maps to a playable resource; no false assurance of recorded native voice.
-
-## Narrative and progression
-
-- [ ] Days 8–14 follow defined grammatical sequence in Week 2 content bank, with named NPCs at their narrative opening location.
-- [ ] Days 8–13 contain five contextual sentence targets for each of four locations (20/day); Day 14 is cumulative with 20 sentence targets; all locally reviewed before declaring full release.
-- [ ] Day 8 only unlocks after genuine Week 1 examination and New Resident milestone; old generic Day 7 records cannot bypass.
-- [ ] Days 8–14 Skip is visible immediately without completing opening lessons and challenges run with 0/4 visited, but regular route begins at specified teacher/location.
-- [ ] Day 8–13 challenge size 15, pass 12. Day 14 challenge size 25, pass 20. Retrying does not grant previous first-pass XP twice.
-- [ ] Week 2 locale/grammar: relevant nouns/verbs work semantically (no 'door ran'); Pashto and English target each other faithfully; plural agreement and speaker/recipient correct.
-- [ ] Existing four explorable map locations remain. No new inventory/physics/game-mode dependency.
-- [ ] Week 1 7-day progression, character roles, proper title/level, Day 3 dinner quiz, Day 4 compound sentences, Day 5 respectful you, Day 6 hills and Day 7 weekly examination pass unaffected.
+- Fresh onboarding works at 4/8/12/16/20/24 assigned lemmas (optional zero), with no frozen Day 1 before pace selection. Greetings do not consume content quota.
+- Four canonical teaching districts and reference Library remain accessible in the proper narrative order. Library never adds a visit or reward; Hills is a Nature scene.
+- All 14 authored days retain their grammar, teachers, relationships, speaker/recipient context, dialogue responses and sentence targets. Day 14 introduces no compulsory new vocabulary.
+- A lemma is counted once across explicit forms. Encounter, practice and mastery differ. Incidental story exposure is separate from assigned vocabulary. Skipping never completes unseen visits/plans.
+- Forms and sentence/expression units use one scheduler. Incorrect answers become due, correct spaced answers progress, and replaying not-due material cannot farm XP.
+- Regular daily challenges have 15 questions/pass 12. Days 7/14 have 25/pass 20. The first submitted answer alone scores; unused dud tiles, undo/clear and duplicate word indices work.
+- Day 1 first pass awards the home once. Week 1 minimum-score skip-only completion reaches Level 10/New Resident only after the actual Day 7 examination. Week 2 retains this title and banks XP without a new level schedule.
+- Current schema 4 saves preserve progress and active question/tile state after reload. Unsupported/corrupt saves show a blocking explanation and explicit reset; no automatic import or silent overwrite occurs.
+- Desktop/mobile, RTL, keyboard focus, missing audio and offline-after-delivery work. Physical iPhone Safari and native pronunciation are reported as unverified unless actually tested.
+- All six nonzero paces are exercised across normal and skip full-curriculum profiles. Quota shortages are reported exactly; no test invents native-reviewed candidates or substitutes duplicate lemmas.
+- Generated HTML matches editable sources, original authored bilingual content matches the curriculum contract, there are no duplicate card/lemma identities, and obsolete compatibility/patch implementations are absent.
