@@ -30,7 +30,7 @@ compiled=subprocess.run(['node','--check'],input=script,text=True,capture_output
 passed=compiled.returncode==0 and passed
 print('PASS compiled release syntax' if compiled.returncode==0 else compiled.stderr)
 if not args.quick:
-    browsers=[['node','tests/'+name+'.test.mjs'] for name in ['independent-browser','week1','week2','library-vocabulary','full-curriculum','narrative-greetings']]
+    browsers=[['node','tests/'+name+'.test.mjs'] for name in ['challenge-disclosure','independent-browser','week1','week2','library-vocabulary','full-curriculum','narrative-greetings']]
     with ThreadPoolExecutor(max_workers=2) as executor:
         passed=all(list(executor.map(run,browsers))) and passed
 else:print('UNRUN browser suites (--quick)')

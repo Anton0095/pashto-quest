@@ -5,9 +5,10 @@ Run `python3 tools/verify.py` from the repository root. It checks build parity, 
 - `current-model.test.mjs`: canonical identity, plans/pace freezing, one form SRS, mastery/reload, immutable curriculum meaning contract and inactive candidates.
 - `district-content.test.py`: incomplete language, duplicate identity and unapproved promotion rejection.
 - `independent-browser.test.mjs`: public DOM/UI only, no production bridge/helper imports. Checks displayed study content against quiz prompts, quota 4, acquisition, replay XP, reload, Library, mobile, offline and preservation/reset of incompatible/corrupt saves.
+- `challenge-disclosure.test.mjs`: desktop/mobile unstudied-word presentation in both saved directions, ordinary choices/audio, unanswered current/schema-4 reloads, correct/wrong feedback, unchanged saved scoring/SRS/XP, studied-word presentation and immediate Days 2–14 skipping.
 - `week1.test.mjs`, `week2.test.mjs`: detailed desktop/mobile normal and skip flows, thresholds, constructed answers, dud tiles, speakers, XP and graduation.
 - `library-vocabulary.test.mjs`: every pace at onboarding, normal and zero-visit skip routes, form statuses, references, voluntary review, and submitted/unsubmitted restored attempts.
-- `full-curriculum.test.mjs`: actual in-browser runtime progression through all fourteen days at seven paces including zero, normal and skip; 392 district visits and 196 assessments. This uses a test-only bridge and complements independent public-UI testing. It records, rather than hides, content exhaustion.
+- `full-curriculum.test.mjs`: actual in-browser runtime progression through all fourteen days at seven paces including zero, normal and skip; 392 district visits and 196 assessments. It checks pre-answer word presentation after queued rendering, including unstudied transliteration/warnings, ordinary studied-word prompts and unhighlighted answer choices. This uses a test-only bridge and complements independent public-UI testing. It records, rather than hides, content exhaustion.
 
 Playwright is resolved locally first, falling back to the cloud runtime. Chromium defaults to `/usr/bin/chromium`; all browser suites accept `CHROMIUM_PATH`. Test bridges are injected into responses only and are never part of the released application.
 

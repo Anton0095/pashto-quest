@@ -2054,14 +2054,16 @@
       finishChallenge();
       return;
     }
+    if (q.kind === "word") {
+      // Freeze presentation before exposure, including unanswered saved attempts.
+      q.unstudied ??= (LIBRARY_DATA.sourceMappings[q.id] || []).some(({ lemmaId }) => {
+        const record = progress.library.acquired[lemmaId];
+        return !record || (record.firstEncounteredSource === "challenge" && record.totalAttempts === 0);
+      });
+      if (q.unstudied) q.direction = "ps-en";
+    }
     if (q.kind !== "dialogue") libraryExpose(q.id, "challenge");
-    queueMicrotask(() => {
-      const hint = q.scaffold || q.comment;
-      if (hint && q.vocabularyOrigin === "scheduled-scaffold")
-        $("quizRoman").textContent =
-          "Not previously studied · " + (wordById[q.id]?.en || "");
-      save();
-    });
+    queueMicrotask(save);
     const w =
       q.kind === "address" || q.kind === "choice" || q.kind === "dialogue"
         ? null
@@ -2240,7 +2242,7 @@
       ? "Arrange the Pashto tiles below"
       : reverse
         ? "Recall the Pashto expression"
-        : w.roman;
+        : w.roman + (q.unstudied ? " · Not previously studied" : "");
     $("quizPrompt").textContent = isBuild
       ? "Build the Pashto sentence for this meaning"
       : reverse
@@ -2308,7 +2310,7 @@
       if (["construct", "dialogue"].includes(q.kind)) renderBuiltSentence();
       $("quizFeedback").textContent =
         "Saved response: " +
-        (q.answerPs || q.correct || w?.ps || "") +
+        (q.answerPs || q.correct || (w ? w.ps + (q.kind === "word" ? " — " + w.en : "") : "")) +
         ". Your first submitted answer is already recorded.";
       $("quizNext").disabled = false;
       return;
