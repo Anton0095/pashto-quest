@@ -25,3 +25,14 @@ TEST_ARTIFACTS=/tmp/pashto-week2-qa node tests/week2.test.mjs
 ```
 
 The Week 2 suite checks all 140 semantic targets, embedded-bank parity, the completed Week 1 baseline hash, 48 contextual replies, indexed duplicate words and normalization. Browser flows at 1280px and 375px exercise all seven minimum-score skip-only clears, failure/retry boundaries, every normal lesson, first-answer locking, unused dud tiles, Undo/Clear/removal, first-word RTL placement, reload/replay, Level 10 and save preservation, offline replies and safe mixed-script rendering. It does not certify native language or pronunciation.
+
+## Library and vocabulary
+
+```sh
+python3 tools/embed_library.py --check
+node tests/library-vocabulary.test.mjs
+```
+
+Editable Library data/runtime live in `content/LIBRARY_LEXICON.json` and `src/library-*.js`. After edits, run `python3 tools/embed_library.py` to regenerate the standalone bundle. The Week 2 embed check is still required. Optional screenshots: `TEST_ARTIFACTS=/tmp/pashto-library-qa node tests/library-vocabulary.test.mjs`.
+
+The Library suite covers migration, all five allocation presets with controlled content, explicit real-content quota restrictions, lemma/form deduplication, spaced practice, home-award failure/retry/replay, partial visits, challenge restoration, supported normal-day actual totals, search, reference-only access, keyboard focus and offline pages. It does not certify seven/fourteen days of 20 new lemmas: the existing bank has only 108 content lemmas. Day 1 supports 20/24; smaller targets are blocked because its preserved story exceeds them. See `docs/LIBRARY_IMPLEMENTATION.md` for remaining content work.
