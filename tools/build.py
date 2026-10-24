@@ -88,8 +88,11 @@ def build():
             raise ValueError('Lexical card requires one form identity: ' + card['id'])
         card['type'] = entries[refs[0]['lemmaId']]['partOfSpeech']
     library['cardTypes'] = {card['id']: card['type'] for card in game['words']}
+    audio_dir = ROOT / 'audio'
+    audio_ids = sorted(path.stem for path in audio_dir.glob('*.mp3')) if audio_dir.exists() else []
     script = (read('src/app.js')
               .replace('// @GAME_DATA', 'const GAME_DATA=' + encode(game) + ';')
+              .replace('// @AUDIO_IDS', 'const BUNDLED_AUDIO_IDS=' + encode(audio_ids) + ';')
               .replace('// @WEEK2_DATA', 'const WEEK2_DATA=' + encode(week2) + ';')
               .replace('// @PROGRESSION', read('src/progression.js'))
               .replace('// @LIBRARY', 'const LIBRARY_DATA=' + encode(library) + ';\n'
