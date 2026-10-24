@@ -2,7 +2,7 @@
 
 An offline Pashto learning game with fourteen authored story days, four teaching districts, and an always-open Library. Week 1 finishes with the Level 10 / New Resident examination. Week 2 adds contextual dialogue, grammar and cumulative review; its language remains a draft awaiting local Laghman review.
 
-Open `index.html` in a modern browser, or serve the checkout with `python3 -m http.server 8000`. No backend, API key, runtime JSON request or package installation is needed to play. Audio uses an available Pashto asset/device voice and reports missing pronunciation support honestly.
+Open `index.html` in a modern browser, or serve the checkout with `python3 -m http.server 8000`. No backend, API key, runtime JSON request or package installation is needed to play. Audio uses bundled Pashto MP3 recordings when present, then a detected browser Pashto voice. If no Pashto voice is listed, it asks the browser to speak in `ps-AF` and warns that the resulting pronunciation may be inaccurate. The build embeds an audio-file manifest so absent MP3s are not requested on every click.
 
 ## Edit and build
 
