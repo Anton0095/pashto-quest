@@ -12,6 +12,8 @@ The HTML release is generated. Edit these authoritative files:
 - `src/progression.js`: current save version/factory, authoritative challenge results, XP transactions and level gates.
 - `src/library-engine.js`: lemma acquisition, form/unit SRS, deterministic district plans and bank selection.
 - `src/library-ui.js`: Library and its integration with lessons/assessments.
+- `src/narrative-ui.js`, `content/NARRATIVE_EXPRESSIONS.json`: contextual expressions and reviewed/pending activation.
+- `content/UNIVERSAL_TEACHING_TARGETS.json`: inactive semantic teaching targets, distinct from lexical identities.
 - `content/WEEK1_RUNTIME.json`, `content/WEEK2_RUNTIME.json`: curriculum cards and narrative data.
 - `content/LIBRARY_LEXICON.json`: lexical identities, forms, mappings, grammar notes and review metadata.
 
@@ -39,10 +41,12 @@ node tools/district-inventory.mjs       # refresh capacity report after content/
 node tools/district-inventory.mjs --check
 ```
 
-Browser coverage includes public-UI-only checks at 1280px/375px, detailed Week 1/2 and Library flows, and twelve complete normal/skip curriculum profiles at 4/8/12/16/20/24 assigned lemmas. See [cleanup findings and limits](docs/CLEANUP_REVIEW.md) and [test evidence](docs/CLEANUP_TEST_RESULTS.md).
+Browser coverage includes public-UI-only checks at 1280px/375px, detailed Week 1/2 and Library flows, and fourteen complete normal/skip curriculum profiles at 0/4/8/12/16/20/24 assigned lemmas. See [current test evidence](docs/CURRICULUM_TEST_RESULTS.md) and [historical cleanup findings](docs/CLEANUP_REVIEW.md).
 
 ## Language and capacity
 
-The 127 draft lemma records contain 108 quota-counting content lemmas. All 360 untranslated candidates remain inactive. Pace settings work below 20 from Day 1; incidental story vocabulary is counted separately. Day 14 always schedules zero compulsory new words. The current inventory cannot sustain a full standard/intensive new-word quota throughout the curriculum: shortages are displayed and tested, never filled with repeats or fabricated Pashto.
+The 127 existing draft lemma records contain **99 district lemmas and 28 universal lemmas**. Exactly 301 of the original 360 untranslated candidates are selected as pending additions to a balanced **400-lemma target**; none is activated. Pace settings work below 20 from Day 1, and the maximum Day 1 setting assigns six distinct nouns/adjectives per district. Action verbs begin on Day 2. Day 14 schedules zero compulsory new words. The current pool cannot sustain 24/day through Days 1–13: the minimum raw shortfall is 213 lemmas, before incidental encounters. Shortages are explicit.
+
+Two user-supplied expressions—Welcome and Day 2 Good morning—use the existing pronunciation/SRS system as provisional fixed expressions. The other 15 contextual expression slots are visibly pending translation and grammatical review; English dialogue never pretends to be acquired Pashto. See the [current expansion contract and linguistic blockers](docs/CURRICULUM_EXPANSION.md), [inventory report](content/DISTRICT_INVENTORY_REPORT.json) and [test results](docs/CURRICULUM_TEST_RESULTS.md).
 
 [Language review](LANGUAGE_REVIEW.md), [Week 2 review checklist](content/WEEK2_REVIEW.md), [district model](docs/DISTRICT_MODEL.md), and [curriculum specification](GAME_SPEC.md) describe the remaining editorial/native-review work. Automated Chromium tests do not establish physical iPhone Safari compatibility or linguistic certification.

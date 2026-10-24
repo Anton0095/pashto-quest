@@ -7,9 +7,10 @@ const start = source.indexOf('  // Pronunciation:');
 const end = source.indexOf('  $("teachSpeak").addEventListener', start);
 assert(start >= 0 && end > start, 'audio implementation not found');
 const audioSource = source.slice(start, end);
+const phrases = JSON.parse(readFileSync('content/NARRATIVE_EXPRESSIONS.json', 'utf8')).expressions.filter((p) => p.active);
 
 const tick = () => new Promise((resolve) => setImmediate(resolve));
-function fixture(audioIds = [], initialVoices = []) {
+function fixture(audioIds = [], initialVoices = [], startSpeech = true) {
   let voices = initialVoices;
   const spoken = [];
   const statuses = [];
@@ -20,7 +21,7 @@ function fixture(audioIds = [], initialVoices = []) {
     cancel() {},
     speak(utterance) {
       spoken.push({ text: utterance.text, lang: utterance.lang, voice: utterance.voice?.name ?? null });
-      utterance.onstart?.();
+      if (startSpeech) utterance.onstart?.();
     },
     addEventListener(event, callback) { listeners.set(event, callback); },
     removeEventListener(event) { listeners.delete(event); },
@@ -37,8 +38,8 @@ function fixture(audioIds = [], initialVoices = []) {
   const $ = () => ({ set textContent(value) { statuses.push(value); } });
   const sandbox = {
     BUNDLED_AUDIO_IDS: audioIds,
-    wordById: { a: { id: 'a', ps: 'سلام' }, b: { id: 'b', ps: 'مننه' } },
-    $, window, SpeechSynthesisUtterance: Utterance, Audio,
+    wordById: { a: { id: 'a', ps: 'سلام' }, b: { id: 'b', ps: 'مننه' }, ...Object.fromEntries(phrases.map((p) => [p.id, {id:p.audioContentId, ps:p.pashto}])) },
+    $, document: { querySelectorAll: () => [] }, window, SpeechSynthesisUtterance: Utterance, Audio,
     setTimeout, clearTimeout,
   };
   runInNewContext(audioSource + '\nthis.audioApi = { speak, pashtoVoice, stopAudio };', sandbox);
@@ -60,7 +61,7 @@ function fixture(audioIds = [], initialVoices = []) {
 {
   const t = fixture([], [{ lang: 'en-US', name: 'English' }]);
   t.api.speak('a');
-  await tick();
+  await new Promise((r) => setTimeout(r, 750));
   assert.equal(t.spoken.length, 1);
   assert.equal(t.spoken[0].voice, null, 'do not explicitly select an unrelated language voice');
   assert(t.statuses.some((status) => status.includes('pronunciation')));
@@ -87,4 +88,42 @@ function fixture(audioIds = [], initialVoices = []) {
   assert.equal(t.players[0].path, 'audio/a.mp3');
   assert.equal(t.spoken.length, 0, 'a bundled recording takes priority');
 }
-console.log('Audio voice and bundled-file fallbacks: 5 groups passed.');
+{
+  const t = fixture([], [{ lang: 'ps-AF', name: 'Pashto Basic' }, { lang: 'ps-AF', name: 'Microsoft Pashto Neural' }, { lang: 'ur-PK', name: 'Urdu Neural' }]);
+  assert.equal(t.api.pashtoVoice().name, 'Microsoft Pashto Neural', 'prefer neural within Afghan Pashto voices');
+}
+{
+  const t = fixture([], [{lang: 'en-US', name: 'English'}, {lang: 'fa-IR', name: 'Persian'}, {lang: 'ur-PK', name: 'Urdu'}]);
+  t.api.speak('a');
+  t.setVoices([{lang: 'ps-AF', name: 'Delayed Windows Pashto Neural'}]);
+  await tick();
+  assert.equal(t.spoken[0].voice, 'Delayed Windows Pashto Neural', 'late Pashto must work even when other languages loaded first');
+}
+for (const phrase of phrases) {
+  const bundled = fixture([phrase.audioContentId], [{lang:'ps-AF',name:'Pashto Neural'}]);
+  bundled.api.speak(phrase.id); await tick();
+  assert.equal(bundled.players[0].path, `audio/${phrase.audioContentId}.mp3`);
+  assert.equal(bundled.spoken.length,0);
+  const device = fixture([], [{lang:'ps-AF',name:'Windows Pashto Neural'}]);
+  device.api.speak(phrase.id); await tick();
+  assert.equal(device.spoken[0].text,phrase.pashto);
+  assert.equal(device.spoken[0].voice,'Windows Pashto Neural');
+  const failed = fixture([phrase.audioContentId], [{lang:'ps-AF',name:'Pashto'}]);
+  failed.api.speak(phrase.id);
+  failed.players[0].onerror();await tick();
+  assert.equal(failed.spoken[0].text,phrase.pashto,'unavailable recording falls back through the same browser engine');
+}
+{
+  const t=fixture([],[]);t.api.speak(phrases[0].id);t.api.stopAudio();
+  t.setVoices([{lang:'ps-AF',name:'Late voice'}]);await tick();
+  assert.equal(t.spoken.length,0,'navigation cancels pending expression pronunciation');
+}
+{
+  const t=fixture([], [{lang:'en-US',name:'Pashto course narration (English)'},{lang:'fa-IR',name:'Persian'},{lang:'ur-PK',name:'Urdu'}]);
+  assert.equal(t.api.pashtoVoice(),null,'declared unrelated languages are not Pashto voices');
+  const pending=fixture([], [{lang:'ps-AF',name:'Pashto Neural'}],false);
+  pending.api.speak(phrases[0].id);await tick();
+  assert(pending.statuses.at(-1).includes('Playback has not started'));
+  assert(!pending.statuses.some(s=>s.includes('Speaking with')),'an attempted request is not playback success');
+}
+console.log('Audio: 7 restoration groups + both active expression IDs (MP3 priority, device voice, failed MP3 fallback) + cancellation passed. Mocked APIs; physical devices unverified.');

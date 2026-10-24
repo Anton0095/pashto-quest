@@ -49,7 +49,7 @@ export function activationProblems(candidate) {
 }
 const tally = (values) =>
   values.reduce((o, k) => ((o[k] = (o[k] || 0) + 1), o), {});
-export function inventory(data, backlog, engine) {
+export function inventory(data, backlog, engine, includeProjection = true) {
   const E = vm.runInNewContext(engine + ";LibraryEngine");
   const content = data.entries.filter((e) => e.countsTowardDailyQuota);
   const schedules = [];
@@ -96,10 +96,45 @@ export function inventory(data, backlog, engine) {
       });
     }
   const forms = data.entries.flatMap((e) => e.forms);
+  // Identity-only capacity projection. These records have no Pashto and are NEVER
+  // supplied to the builder/runtime or reported as active/approved vocabulary.
+  let targetProjection = null;
+  if (includeProjection) {
+    const projected = {
+      ...data,
+      entries: [...data.entries, ...backlog.candidates.filter((c) => c.selectedForExpansion).map((c) => ({
+        lemmaId: c.candidateId, primaryDistrict: c.primaryDistrict,
+        suitableDistricts: c.suitableDistricts, partOfSpeech: c.partOfSpeech,
+        countsTowardDailyQuota: true, examples: [],
+        forms: [{formId: "projection-only:" + c.candidateId}],
+      }))],
+    };
+    const intensive = inventory(projected, backlog, engine, false).schedules.find((s) => s.pace === 24 && !s.reviewExams);
+    targetProjection = {
+      status: "Identity-only projection; every selected target assumed distinct and approved. NOT playable capacity or linguistic verification.",
+      scheduled: intensive.days.reduce((sum, d) => sum + d.assigned, 0),
+      encounteredIncludingStory: intensive.encountered,
+      missingScheduled: 312 - intensive.days.reduce((sum, d) => sum + d.assigned, 0),
+      days: intensive.days,
+    };
+  }
   return {
+    targetProjection,
     candidateDistrictCounts: tally(
       backlog.candidates.map((c) => c.primaryDistrict),
     ),
+    selectedInactiveCandidatesByDistrict: tally(backlog.candidates.filter((c) => c.selectedForExpansion).map((c) => c.primaryDistrict)),
+    selectedInactiveCandidates: backlog.candidates.filter((c) => c.selectedForExpansion).length,
+    excludedCandidates: backlog.candidates.filter((c) => !c.selectedForExpansion).length,
+    universalLemmas: data.entries.filter((e) => e.vocabularyClass === "universal").length,
+    targetInventory: {
+      perDistrict: 100, total: 400, currentlyPlayable: content.length,
+      missingPlayableToTarget: 400 - content.length,
+      intensiveScheduledIntroductions: 13 * 24,
+      minimumCurrentShortfall: 13 * 24 - content.length,
+      idealTargetIncidentalMarginPerDistrict: 100 - 13 * 6,
+      note: "400 is a pending lexical target, not playable capacity. An approved primary district must retain 78 unencountered entries; more than 22 incidental introductions in any district needs additional distinct reviewed content. Cross-district allocation is globally deduplicated.",
+    },
     authoredExampleSceneCoverage: Object.fromEntries(
       [
         "residential",

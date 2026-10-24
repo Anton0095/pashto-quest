@@ -1490,3 +1490,25 @@ header {
   border-radius: 16px;
   padding: 20px;
 }
+
+.narrative-expression {
+  margin: 12px 0;
+  padding: 14px;
+  border: 1px solid var(--border, #b6c4ce);
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+.narrative-expression .phrase-practice,
+.library-entry .phrase-practice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.phrase-practice p { flex-basis: 100%; }
+.narrative-expression button { max-width: 100%; white-space: normal; }
+/* Keep Pashto legible inside the lesson guide, whose ordinary paragraphs are smaller. */
+.narrative-expression p.library-pashto {
+  font-size: 1.65rem;
+  line-height: 1.8;
+  margin: 12px 0;
+}

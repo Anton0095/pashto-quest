@@ -1,6 +1,6 @@
 # Pashto Quest development
 
-Use the existing checkout and preserve the current fourteen-day curriculum. Read `README.md`, `docs/CLEANUP_REVIEW.md`, `GAME_SPEC.md`, `XP_MILESTONE_SPEC.md`, and `ACCEPTANCE_TESTS.md` and `docs/LIBRARY_DESIGN.md` before changing behaviour. Historical specifications can describe superseded compatibility requirements; this release intentionally supports save format 4 only.
+Use the existing checkout and preserve the current fourteen-day curriculum. Read `README.md`, `docs/CLEANUP_REVIEW.md`, `GAME_SPEC.md`, `XP_MILESTONE_SPEC.md`, and `ACCEPTANCE_TESTS.md` and `docs/LIBRARY_DESIGN.md` and `docs/CURRICULUM_EXPANSION.md` before changing behaviour. Historical specifications can describe superseded compatibility requirements; this release intentionally supports save format 4 only.
 
 - Edit `src/` and `content/`; regenerate `index.html` with `python3 tools/build.py`. `python3 tools/build.py --check` verifies the entire release in one pass.
 - Canonical district IDs are `residential`, `nature`, `business`, `school`. The map labels remain Home/Lake/Market/School plus reference Library. Hills is a Nature scene, not a fifth quota.
@@ -13,3 +13,7 @@ Use the existing checkout and preserve the current fourteen-day curriculum. Read
 - Keep candidates without complete Pashto inactive. Do not invent native review, Laghman pronunciation, translated sentences or approved variants. Refresh inventory with `node tools/district-inventory.mjs` after vocabulary/planner changes.
 - Run `python3 tools/verify.py` for comprehensive checks. Public UI tests deliberately avoid runtime bridges; matrix tests complement detailed type-specific UI regressions. Never label a quick-only run as full validation.
 - Use review branches/PRs; do not merge into main or force-push without explicit authorization.
+
+- Preserve the inherited Windows audio restoration: one MP3-first player, Pashto-device voice second, delayed voice detection and explicit warned fallback. New expressions must use that player and file-safe stable audio IDs.
+- Day 1 teaches descriptions, not lexical actions; apply the LibraryEngine day guard to planning, exposure, review and assessment. Universal words have stable lemma/form history but never consume district quotas.
+- Only the two exact user-supplied Pashto expressions are provisionally active. Other expression translations require documented review. English narrative placeholders are not acquired Pashto.

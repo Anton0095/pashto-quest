@@ -511,7 +511,7 @@ try {
       await page.waitForFunction(() =>
         document
           .querySelector("#libraryAudioStatus")
-          .textContent.includes("No Pashto audio available"),
+          .textContent.match(/No Pashto audio|no Pashto voice|speech failed|no speech synthesis/i),
       );
     }
     const lemma = await detail.getAttribute("data-lemma");

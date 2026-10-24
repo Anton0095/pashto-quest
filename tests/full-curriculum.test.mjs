@@ -28,7 +28,7 @@ try {
     errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(`http://127.0.0.1:${server.address().port}`);
-  for (const pace of [4, 8, 12, 16, 20, 24])
+  for (const pace of [0, 4, 8, 12, 16, 20, 24])
     for (const skip of [false, true]) {
       const trace = await page.evaluate(
         ({ pace, skip }) => {
@@ -193,5 +193,5 @@ try {
   server.close();
 }
 console.log(
-  "PASS 12 full 14-day profiles at six paces, 336 normal visits, 168 minimum-score assessments, explicit supply gaps",
+  "PASS 14 full 14-day profiles at seven paces, 392 normal visits, 196 minimum-score assessments, explicit supply gaps",
 );
