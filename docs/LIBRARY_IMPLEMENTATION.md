@@ -1,5 +1,7 @@
 # Library and cumulative vocabulary implementation
 
+Historical handover report. Current pacing and district changes supersede its lower-pace restrictions; see [district results](DISTRICT_IMPLEMENTATION_RESULTS.md).
+
 Implementation branch: `codex/implement-library-vocabulary-20261024`.
 Base: `codex/handover-library-vocabulary-20261024` at `d4001d24fafadf64a628100651a54c9e90e881da`.
 That branch contains Week 2 development commit `19f3660ba51ce0be589ae89078f1829e20e6fe06` and gameplay commit `b7824fb`. No reference HTML replacement, main merge, reset or force push is involved.

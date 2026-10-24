@@ -1,5 +1,7 @@
 # Pashto Quest — District vocabulary architecture (24 October 2026)
 
+Implementation update: see [P0–P3 results](DISTRICT_IMPLEMENTATION_RESULTS.md) for current pacing, persistence, review and content capacity. The preparation notes below describe the starting branch.
+
 ## Status
 
 This branch introduces a **backward-compatible internal district taxonomy** and a curated **English-lemma candidate backlog**. The four player-facing map labels stay **Home, Lake, Market, School**. Nothing here represents 360 production-ready Pashto entries: every new candidate requires native Laghman translation, morphological and orthographic review. Candidate entries are intentionally **not in LIBRARY_DATA.entries** and cannot silently count toward quotas.

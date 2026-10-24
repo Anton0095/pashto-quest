@@ -36,3 +36,13 @@ node tests/library-vocabulary.test.mjs
 Editable Library data/runtime live in `content/LIBRARY_LEXICON.json` and `src/library-*.js`. After edits, run `python3 tools/embed_library.py` to regenerate the standalone bundle. The Week 2 embed check is still required. Optional screenshots: `TEST_ARTIFACTS=/tmp/pashto-library-qa node tests/library-vocabulary.test.mjs`.
 
 The Library suite covers migration, all five allocation presets with controlled content, explicit real-content quota restrictions, lemma/form deduplication, spaced practice, home-award failure/retry/replay, partial visits, challenge restoration, supported normal-day actual totals, search, reference-only access, keyboard focus and offline pages. It does not certify seven/fourteen days of 20 new lemmas: the existing bank has only 108 content lemmas. Day 1 supports 20/24; smaller targets are blocked because its preserved story exceeds them. See `docs/LIBRARY_IMPLEMENTATION.md` for remaining content work.
+
+## District P0–P3
+
+```sh
+node tests/district.test.mjs
+python3 tests/district-content.test.py
+node tools/district-inventory.mjs --check
+```
+
+Run these alongside both embedding checks, patch/fixture checks and all three existing browser suites. Day 1 now supports all seven paces (0/4/8/12/16/20/24); incidental story exposure is separate from assigned vocabulary. Earlier Library notes describing blocked lower paces are historical. See `docs/DISTRICT_IMPLEMENTATION_RESULTS.md` for current capacity and inactive-candidate limitations.

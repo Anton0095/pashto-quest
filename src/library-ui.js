@@ -3,10 +3,20 @@ for(const entry of LIBRARY_DATA.entries){const form=entry.forms[0],id='library-c
  wordById[id]={id,loop:1,place:entry.suitableLocations[0],type:entry.partOfSpeech,ps:form.pashto,roman:form.romanisation,en:entry.englishSenses[0],note:'Existing authored draft vocabulary. Native Laghman review pending.',dialect:''};
  LIBRARY_DATA.sourceMappings[id]=[{lemmaId:entry.lemmaId,formId:form.formId}];
 }
+for(const entry of LIBRARY_DATA.entries)for(const form of entry.forms){const id='library-form:'+form.formId;
+ wordById[id]={id,loop:1,place:entry.suitableLocations[0],type:entry.partOfSpeech,ps:form.pashto,roman:form.romanisation||'',en:form.englishGloss,note:'Attested form · native review pending.',dialect:''};
+ LIBRARY_DATA.sourceMappings[id]=[{lemmaId:entry.lemmaId,formId:form.formId}];
+}
+function librarySyncForms(refs){for(const ref of refs){const r=progress.library.acquired[ref.lemmaId],f=r?.forms[ref.formId];if(!f)continue;
+ for(const [id,aliases] of Object.entries(LIBRARY_DATA.sourceMappings)){if(aliases.length!==1||aliases[0].lemmaId!==ref.lemmaId||aliases[0].formId!==ref.formId||!wordById[id]||wordById[id].type==='sentence')continue;
+  const old=progress.stats[id]||{};progress.stats[id]={...old,seen:Math.max(old.seen||0,f.totalAttempts),correct:Math.max(old.correct||0,f.correctAttempts),wrong:Math.max(old.wrong||0,f.totalAttempts-f.correctAttempts),stage:f.stage,dueAt:f.srsDueAt};
+ }
+}}
+function librarySyncStats(id){librarySyncForms(LIBRARY_DATA.sourceMappings[id]||[]);}
 /* Library is a reference dialog. Opening it never changes lesson/quiz state or earns XP. */
 function libraryContext(source,contentId){return {day:session?.loop||selectedLoop,source,location:session?.loc||(source==='challenge'?'challenge':'library'),contentId};}
 function libraryExpose(id,source){LibraryEngine.expose(progress,LIBRARY_DATA,id,libraryContext(source,id));}
-function libraryPractice(id,correct,eventId,source){LibraryEngine.practise(progress,LIBRARY_DATA,id,correct,{...libraryContext(source,id),eventId});}
+function libraryPractice(id,correct,eventId,source){LibraryEngine.practise(progress,LIBRARY_DATA,id,correct,{...libraryContext(source,id),eventId});if(source==='challenge'&&['choice','dialogue','address'].includes(session?.questions[session.index]?.kind))librarySyncStats(id);}
 function libraryLessonPool(day,place){
  if(progress.library.legacyDays[day])return [...(courses[day+'-'+place]||[])];
  const plan=LibraryEngine.ensurePlan(progress,LIBRARY_DATA,day),assigned=plan.locationAssignments[place]||[];
@@ -14,18 +24,21 @@ function libraryLessonPool(day,place){
  const original=LIBRARY_DATA.lessonSentenceTargets?.[day]?.[place]||(courses[day+'-'+place]||[]).filter(id=>wordById[id]?.type==='sentence');
  const grammar=(courses[day+'-'+place]||[]).filter(id=>wordById[id]?.type!=='sentence'&&(LIBRARY_DATA.sourceMappings[id]||[]).some(r=>!libraryEntries[r.lemmaId].countsTowardDailyQuota));
  // Fixed authored sentences preserve grammar, roles and stories; no unreviewed substitutions.
- const review=Object.keys(progress.library.acquired).map(id=>libraryEntries[id]).filter(e=>e?.countsTowardDailyQuota&&LibraryEngine.matchesPlace(e,place)&&!assigned.includes(e.lemmaId)).sort((a,b)=>progress.library.acquired[a.lemmaId].srsDueAt-progress.library.acquired[b.lemmaId].srsDueAt||a.lemmaId.localeCompare(b.lemmaId)).slice(0,2).map(e=>'library-card:'+e.lemmaId);
+ const review=LibraryEngine.dueForms(progress,LIBRARY_DATA).slice(0,2).map(({form})=>'library-form:'+form.formId);
+
  return [...lexical,...grammar,...review,...original];
 }
 function libraryChallengeQuestions(day,questions){
  if(day===3||progress.library.legacyDays[day])return questions; // Edris’s authored dinner ingredients/actions keep their exact narrative.
  const plan=LibraryEngine.ensurePlan(progress,LIBRARY_DATA,day);
- const scheduled=Object.values(plan.locationAssignments).flat();
- const prior=Object.keys(progress.library.acquired).filter(id=>libraryEntries[id]?.countsTowardDailyQuota&&!scheduled.includes(id)).sort((a,b)=>progress.library.acquired[a].srsDueAt-progress.library.acquired[b].srsDueAt||a.localeCompare(b));
- const candidates=[...scheduled.slice(0,6),...prior.slice(0,9),...scheduled.slice(6)].map(id=>'library-card:'+id);
- // Replace lexical slots only. Keep all authored grammar/dialogue/story assessment objectives.
- const used=new Set(questions.map(q=>q.id)),result=questions.map(q=>({...q}));
- for(const q of result){if(q.kind!=='word')continue;const original=wordById[q.id];const id=candidates.find(id=>!used.has(id)&&LibraryEngine.matchesPlace(libraryEntries[id.slice('library-card:'.length)],original?.place));if(!id)continue;used.add(id);q.id=id;q.comment='Recall a scheduled word or a word from your acquired bank. Draft: native review pending.';}
+ const selection=LibraryEngine.lexicalSelection(progress,LIBRARY_DATA,day,30),used=new Set(questions.map(q=>q.id)),result=questions.map(q=>({...q}));
+ for(const q of result){if(q.kind!=='word')continue;const picked=selection.find(x=>!used.has('library-card:'+x.lemmaId));if(!picked){q.vocabularyOrigin='authored-fallback';q.comment='Context scaffold: this word may be unfamiliar; use the supplied meaning and options.';continue;}
+  q.id='library-card:'+picked.lemmaId;used.add(q.id);q.lemmaId=picked.lemmaId;q.vocabularyOrigin=picked.origin;
+  q.comment=picked.origin==='scheduled-scaffold'?'Scheduled word, not yet studied: use the meaning and answer options.':'Recall from your encountered bank · '+picked.origin;
+ }
+ for(const q of result)if(q.kind!=='word')q.scaffold='Authored grammar/story context; unfamiliar vocabulary is supported by the translation and answer feedback.';
+ plan.assessmentMix=result.reduce((out,q)=>{const key=q.vocabularyOrigin||'authored-grammar';out[key]=(out[key]||0)+1;return out;},{});
+
  return result;
 }
 function captureLibraryChallenge(){
@@ -75,7 +88,7 @@ function renderLibrary(tab){
  root.append(libraryNode('h3','Vocabulary Bank'));
  const sum=LibraryEngine.summary(progress,LIBRARY_DATA);root.append(libraryNode('p',`${sum.encountered} encountered · ${sum.practised} practised · ${sum.mastered} mastered content lemmas. Inflections count under one entry.`, 'notice'));
  const plan=progress.library.plans[selectedLoop];if(plan?.legacyContent)root.append(libraryNode('p',plan.notice));
- if(plan&&!plan.legacyContent){const ids=Object.values(plan.locationAssignments).flat(),seen=ids.filter(id=>progress.library.acquired[id]).length,actual=LIBRARY_DATA.entries.filter(e=>e.countsTowardDailyQuota&&progress.library.acquired[e.lemmaId]?.firstEncounteredDay===selectedLoop).length;root.append(libraryNode('p',`Day ${selectedLoop}: ${ids.length} scheduled · ${seen} scheduled lemmas actually encountered. ${actual} total new content lemmas encountered today, including story examples. ${plan.contentGap?plan.notice:''}`));}
+ if(plan&&!plan.legacyContent){const tally=LibraryEngine.tallies(progress,LIBRARY_DATA,selectedLoop),ids=tally.scheduledNewLemmas,seen=tally.actuallyEncounteredScheduledLemmas.length,actual=tally.incidentalStoryLemmas.length;root.append(libraryNode('p',`Day ${selectedLoop}: ${ids.length} scheduled · ${seen} scheduled lemmas actually encountered. ${actual} incidental story lemmas · ${tally.reviewedExistingLemmas.length} existing lemmas revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap?plan.notice:''}`));}
  const filters=libraryNode('div',undefined,'library-filters');
  function select(label,id,values){const wrap=libraryNode('label',label+' '),input=libraryNode('select');input.id=id;for(const [value,text] of values){const o=libraryNode('option',text);o.value=value;input.append(o);}wrap.append(input);filters.append(wrap);return input;}
  const searchLabel=libraryNode('label','Search '),search=libraryNode('input');search.id='librarySearch';search.type='search';search.placeholder='Pashto, romanisation or meaning';searchLabel.append(search);filters.append(searchLabel);
@@ -107,16 +120,17 @@ function libraryVoluntaryPractice(e,container){
  if(!form)return;const exercise=libraryNode('div');exercise.append(libraryNode('p','Choose the meaning of '+form.pashto));
  const options=[...new Set([form.englishGloss,...LIBRARY_DATA.entries.filter(x=>x.lemmaId!==e.lemmaId).slice(0,3).map(x=>x.englishSenses[0])])];
  const eventId='library-practice:'+ ++progress.library.attemptSequence;
- for(const option of shuffle(options)){const b=libraryButton(option,()=>{for(const btn of exercise.querySelectorAll('button'))btn.disabled=true;const correct=option===form.englishGloss;LibraryEngine.practise(progress,{...LIBRARY_DATA,sourceMappings:{exercise:[{lemmaId:e.lemmaId,formId:form.formId}]}},'exercise',correct,{day:selectedLoop,source:'review',location:'library',eventId});save();hud();const label=container.querySelector('summary span:last-child');if(label)label.textContent=` ${e.romanisation} · ${e.englishSenses.join('; ')} · ${e.partOfSpeech} · ${LibraryEngine.status(progress.library.acquired[e.lemmaId])}`;exercise.append(libraryNode('p',correct?'Correct. Practice recorded; no XP is awarded for Library review.':'Review: '+form.englishGloss));});exercise.append(b);}container.append(exercise);
+ for(const option of shuffle(options)){const b=libraryButton(option,()=>{for(const btn of exercise.querySelectorAll('button'))btn.disabled=true;const correct=option===form.englishGloss;LibraryEngine.practise(progress,{...LIBRARY_DATA,sourceMappings:{exercise:[{lemmaId:e.lemmaId,formId:form.formId}]}},'exercise',correct,{day:selectedLoop,source:'review',location:'library',eventId});librarySyncForms([{lemmaId:e.lemmaId,formId:form.formId}]);save();hud();const label=container.querySelector('summary span:last-child');if(label)label.textContent=` ${e.romanisation} · ${e.englishSenses.join('; ')} · ${e.partOfSpeech} · ${LibraryEngine.status(progress.library.acquired[e.lemmaId])}`;exercise.append(libraryNode('p',correct?'Correct. Practice recorded; no XP is awarded for Library review.':'Review: '+form.englishGloss));});exercise.append(b);}container.append(exercise);
 }
 function renderLibraryPace(root){
  const plan=progress.library.plans[selectedLoop],current=plan?.effectiveDailyTarget;
  let next=selectedLoop;while((progress.library.plans[next]||progress.library.legacyDays[next])&&next<=14)next++;
  const available=LibraryEngine.supported(progress,LIBRARY_DATA,next);
- root.append(libraryNode('h3','Learning Pace'),libraryNode('p',`Current Day ${selectedLoop}: ${plan?(plan.legacyContent?'existing lesson content preserved':current?current+' new scheduled content lemmas': 'content gap; '+Object.values(plan.locationAssignments).flat().length+' available scheduled lemmas'):'not started'}. Requested pace: ${progress.library.requestedDailyTarget}/day.`));
+ root.append(libraryNode('h3','Learning Pace'),libraryNode('p',`Current Day ${selectedLoop}: ${plan?(plan.legacyContent?'existing lesson content preserved':current!==null&&current!==undefined?current+' new scheduled content lemmas': 'content gap; '+Object.values(plan.locationAssignments).flat().length+' available scheduled lemmas'):'not started'}. Requested pace: ${progress.library.requestedDailyTarget}/day.`));
  root.append(libraryNode('p',`Changes apply to ${next<=14?'Day '+next+' before its first lesson or challenge':'future content'}. Existing assignments remain unchanged. Story examples can expose additional words beyond the supplementary target.`),libraryNode('p',LIBRARY_DATA.contentNotice,'notice'));
+ root.append(libraryNode('p',`${LIBRARY_DATA.inventorySummary.activeContentLemmas} activated draft content lemmas; ${LIBRARY_DATA.inventorySummary.inactiveCandidates} untranslated candidates remain inactive. Native review is pending.`));
  const message=libraryNode('p');message.id='libraryPaceFeedback';message.setAttribute('role','status');
- for(const [i,target] of LibraryEngine.presets.entries()){const b=libraryButton(`${['Gentle','Steady','Moderate','Standard','Intensive'][i]} · ${target}/day · ${target/4} per teaching location${available.includes(target)?'':' · Unavailable for this story / pool'}`,()=>{const result=LibraryEngine.setPace(progress,LIBRARY_DATA,target,selectedLoop);if(result.ok){save();renderLibrary('pace');$('libraryPaceFeedback').textContent=`Saved ${target}/day, starting Day ${result.day}.`;}else message.textContent=result.reason;});b.dataset.pace=String(target);b.disabled=!available.includes(target)||next>14;b.setAttribute('aria-pressed',String(progress.library.requestedDailyTarget===target));root.append(b);}
+ for(const [i,target] of LibraryEngine.presets.entries()){const b=libraryButton(`${['Review only','Very gentle','Gentle','Steady','Moderate','Standard','Intensive'][i]} · ${target}/day · ${target/4} per teaching location${available.includes(target)?'':' · Unavailable for this story / pool'}`,()=>{const result=LibraryEngine.setPace(progress,LIBRARY_DATA,target,selectedLoop);if(result.ok){save();renderLibrary('pace');$('libraryPaceFeedback').textContent=`Saved ${target}/day, starting Day ${result.day}.`;}else message.textContent=result.reason;});b.dataset.pace=String(target);b.disabled=!available.includes(target)||next>14;b.setAttribute('aria-pressed',String(progress.library.requestedDailyTarget===target));root.append(b);}
  if(!available.length)root.append(libraryNode('p','No complete quota is supported by the remaining distinct draft content. Lessons, fixed stories and skip challenges remain available. More curated vocabulary and native review are needed; repeats will not count as new.'));
  root.append(message);
 }
@@ -147,7 +161,7 @@ function libraryInit(){
  const marker=libraryButton('',()=>openLibrary());marker.className='map-point library';marker.dataset.place='library';marker.append(libraryNode('span','📚','micon'),libraryNode('b','Library'),libraryNode('small','Always open'));document.querySelector('.worldmap').append(marker);
  const choices=libraryNode('div');choices.id='onboardingPace';choices.append(libraryNode('h3','Choose your learning pace'),libraryNode('p','Default: 20 new content lemmas/day, five per teaching location. Existing content is a development draft; unavailable quotas are flagged.'));
  const feedback=libraryNode('p','20/day requested · 5 per location');feedback.id='onboardingPaceFeedback';feedback.setAttribute('role','status');
- const onboardingSupported=LibraryEngine.supported(progress,LIBRARY_DATA,1);choices.append(libraryNode('p','Available for the preserved Day 1 story: '+onboardingSupported.join(' or ')+'/day. Lower targets cannot cover its existing story vocabulary and stay disabled.'));
+ const onboardingSupported=LibraryEngine.supported(progress,LIBRARY_DATA,1);choices.append(libraryNode('p','Available for the preserved Day 1 story: '+onboardingSupported.join(' or ')+'/day. Story words are scaffolded incidental exposure and do not set your assigned-word target. Choose 0 for a review day, including exam days.'));
  for(const target of LibraryEngine.presets){const b=libraryButton(target+'/day',()=>{const result=LibraryEngine.setPace(progress,LIBRARY_DATA,target,1);if(result.ok){save();for(const x of choices.querySelectorAll('button'))x.setAttribute('aria-pressed',String(x===b));feedback.textContent=target+'/day requested · '+target/4+' per location';}else feedback.textContent=result.reason;});b.dataset.onboardingPace=String(target);b.disabled=!LibraryEngine.supported(progress,LIBRARY_DATA,1).includes(target);b.setAttribute('aria-pressed',String(progress.library.requestedDailyTarget===target));choices.append(b);}choices.append(feedback);$('introScreen').insertBefore(choices,$('startTutorial'));
  if(!progress.tutorialDone){$('introScreen').append(document.querySelector('.worldmap'));for(const b of document.querySelectorAll('.map-point:not(.library)'))b.disabled=true;}
 }
