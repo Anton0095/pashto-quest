@@ -14,7 +14,7 @@ function libraryLessonPool(day,place){
  const original=LIBRARY_DATA.lessonSentenceTargets?.[day]?.[place]||(courses[day+'-'+place]||[]).filter(id=>wordById[id]?.type==='sentence');
  const grammar=(courses[day+'-'+place]||[]).filter(id=>wordById[id]?.type!=='sentence'&&(LIBRARY_DATA.sourceMappings[id]||[]).some(r=>!libraryEntries[r.lemmaId].countsTowardDailyQuota));
  // Fixed authored sentences preserve grammar, roles and stories; no unreviewed substitutions.
- const review=Object.keys(progress.library.acquired).map(id=>libraryEntries[id]).filter(e=>e?.countsTowardDailyQuota&&e.suitableLocations.includes(place)&&!assigned.includes(e.lemmaId)).sort((a,b)=>progress.library.acquired[a.lemmaId].srsDueAt-progress.library.acquired[b.lemmaId].srsDueAt||a.lemmaId.localeCompare(b.lemmaId)).slice(0,2).map(e=>'library-card:'+e.lemmaId);
+ const review=Object.keys(progress.library.acquired).map(id=>libraryEntries[id]).filter(e=>e?.countsTowardDailyQuota&&LibraryEngine.matchesPlace(e,place)&&!assigned.includes(e.lemmaId)).sort((a,b)=>progress.library.acquired[a.lemmaId].srsDueAt-progress.library.acquired[b.lemmaId].srsDueAt||a.lemmaId.localeCompare(b.lemmaId)).slice(0,2).map(e=>'library-card:'+e.lemmaId);
  return [...lexical,...grammar,...review,...original];
 }
 function libraryChallengeQuestions(day,questions){
@@ -25,7 +25,7 @@ function libraryChallengeQuestions(day,questions){
  const candidates=[...scheduled.slice(0,6),...prior.slice(0,9),...scheduled.slice(6)].map(id=>'library-card:'+id);
  // Replace lexical slots only. Keep all authored grammar/dialogue/story assessment objectives.
  const used=new Set(questions.map(q=>q.id)),result=questions.map(q=>({...q}));
- for(const q of result){if(q.kind!=='word')continue;const original=wordById[q.id];const id=candidates.find(id=>!used.has(id)&&libraryEntries[id.slice('library-card:'.length)]?.suitableLocations.includes(original?.place));if(!id)continue;used.add(id);q.id=id;q.comment='Recall a scheduled word or a word from your acquired bank. Draft: native review pending.';}
+ for(const q of result){if(q.kind!=='word')continue;const original=wordById[q.id];const id=candidates.find(id=>!used.has(id)&&LibraryEngine.matchesPlace(libraryEntries[id.slice('library-card:'.length)],original?.place));if(!id)continue;used.add(id);q.id=id;q.comment='Recall a scheduled word or a word from your acquired bank. Draft: native review pending.';}
  return result;
 }
 function captureLibraryChallenge(){
