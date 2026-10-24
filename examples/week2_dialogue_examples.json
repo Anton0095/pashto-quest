@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "status": "illustrative_question_bank_needs_laghman_review",
+    "target_branch": "codex/complete-week1-23850c7",
+    "question_count": 12,
+    "instruction": "Embed eligible authored dialogue questions into Days 8–14 challenges. These are example objects only, NOT a full 15/25 question pool. Questions must not be copied verbatim across the same assessment. Keep pronouns/recipients consistent.",
+    "mechanics": "Display question in large Pashto type, optional English gloss; choose response in Pashto using answer words and 2–3 distractors; no automatic deduction for unused tiles; award XP once per unique challenge turn."
+  },
+  "questions": [
+    {
+      "id": "w2-day8-dialogue-1",
+      "day": 8,
+      "kind": "dialogue",
+      "speaker": "Saleha",
+      "recipient": "Saleha",
+      "promptPs": "ته څه څښې؟",
+      "promptEnglish": "What do you drink?",
+      "answerPs": "زه اوبه څښم.",
+      "answerEnglish": "I drink water.",
+      "duds": [
+        "کتاب",
+        "څښې",
+        "لولي"
+      ],
+      "topic": "Day 1-3 revision applied to a conversational response",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day8-dialogue-2",
+      "day": 8,
+      "kind": "dialogue",
+      "speaker": "Saleha",
+      "recipient": "Saleha",
+      "promptPs": "دا څه دی؟",
+      "promptEnglish": "What is this?",
+      "answerPs": "دا کتاب دی.",
+      "answerEnglish": "This is a book.",
+      "duds": [
+        "اوبه",
+        "ده",
+        "مڼې"
+      ],
+      "topic": "this / demonstrative",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day9-dialogue-1",
+      "day": 9,
+      "kind": "dialogue",
+      "speaker": "Edris",
+      "recipient": "Edris",
+      "promptPs": "دا څه دي؟",
+      "promptEnglish": "What are these?",
+      "answerPs": "دا مڼې دي.",
+      "answerEnglish": "These are apples.",
+      "duds": [
+        "کتاب",
+        "دی",
+        "زما"
+      ],
+      "topic": "plural noun + plural copula",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day9-dialogue-2",
+      "day": 9,
+      "kind": "dialogue",
+      "speaker": "Edris",
+      "recipient": "Edris",
+      "promptPs": "ته څه اخلې؟",
+      "promptEnglish": "What do you buy?",
+      "answerPs": "زه مڼې اخلم.",
+      "answerEnglish": "I buy apples.",
+      "duds": [
+        "اوبه",
+        "اخلي",
+        "کتاب"
+      ],
+      "topic": "market plural produce",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day10-dialogue-1",
+      "day": 10,
+      "kind": "dialogue",
+      "speaker": "Mina",
+      "recipient": "Mina",
+      "promptPs": "کتاب چېرته دی؟",
+      "promptEnglish": "Where is the book?",
+      "answerPs": "کتاب دلته دی.",
+      "answerEnglish": "The book is here.",
+      "duds": [
+        "هلته",
+        "ده",
+        "څښم"
+      ],
+      "topic": "here / there / where",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day10-dialogue-2",
+      "day": 10,
+      "kind": "dialogue",
+      "speaker": "Mina",
+      "recipient": "Mina",
+      "promptPs": "مینا چېرته ده؟",
+      "promptEnglish": "Where is Mina?",
+      "answerPs": "مینا دلته ده.",
+      "answerEnglish": "Mina is here.",
+      "duds": [
+        "هلته",
+        "دی",
+        "کتاب"
+      ],
+      "topic": "spatial location",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day11-dialogue-1",
+      "day": 11,
+      "kind": "dialogue",
+      "speaker": "Muhammad Jan",
+      "recipient": "Muhammad Jan",
+      "promptPs": "دا د چا کتاب دی؟",
+      "promptEnglish": "Whose book is this?",
+      "answerPs": "دا زما کتاب دی.",
+      "answerEnglish": "This is my book.",
+      "duds": [
+        "ستا",
+        "اوبه",
+        "دي"
+      ],
+      "topic": "ownership",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day12-dialogue-1",
+      "day": 12,
+      "kind": "dialogue",
+      "speaker": "Ms Hameed",
+      "recipient": "Ms Hameed",
+      "promptPs": "ته څه لولې؟",
+      "promptEnglish": "What do you read?",
+      "answerPs": "زه کتاب لولم.",
+      "answerEnglish": "I read a book.",
+      "duds": [
+        "لولې",
+        "اوبه",
+        "اخلم"
+      ],
+      "topic": "answering who/what questions",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day12-dialogue-2",
+      "day": 12,
+      "kind": "dialogue",
+      "speaker": "Ms Hameed",
+      "recipient": "Ms Hameed",
+      "promptPs": "کتاب چېرته دی؟",
+      "promptEnglish": "Where is the book?",
+      "answerPs": "کتاب هلته دی.",
+      "answerEnglish": "The book is there.",
+      "duds": [
+        "دلته",
+        "ده",
+        "مڼه"
+      ],
+      "topic": "question words and distance",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day13-dialogue-1",
+      "day": 13,
+      "kind": "dialogue",
+      "speaker": "Mina",
+      "recipient": "Mina",
+      "promptPs": "ته څنګه ځې؟",
+      "promptEnglish": "How do you go?",
+      "answerPs": "زه ورو ورو ځم.",
+      "answerEnglish": "I go slowly.",
+      "duds": [
+        "ژر",
+        "ځې",
+        "کتاب"
+      ],
+      "topic": "adverb of manner",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day14-dialogue-1",
+      "day": 14,
+      "kind": "dialogue",
+      "speaker": "Ms Hameed",
+      "recipient": "Ms Hameed",
+      "promptPs": "دا د چا کتاب دی؟",
+      "promptEnglish": "Whose book is this?",
+      "answerPs": "دا زما کتاب دی.",
+      "answerEnglish": "This is my book.",
+      "duds": [
+        "ستا",
+        "دي",
+        "دروازه"
+      ],
+      "topic": "cumulative Week 2 assessment",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    },
+    {
+      "id": "w2-day14-dialogue-2",
+      "day": 14,
+      "kind": "dialogue",
+      "speaker": "Ms Hameed",
+      "recipient": "Ms Hameed",
+      "promptPs": "ته څه څښې؟",
+      "promptEnglish": "What do you drink?",
+      "answerPs": "زه اوبه څښم.",
+      "answerEnglish": "I drink water.",
+      "duds": [
+        "څښې",
+        "کتاب",
+        "مڼه"
+      ],
+      "topic": "week1 + week2 applied response",
+      "nativeReviewed": false,
+      "reviewNote": "Illustrative Pashto: check with Laghman native speaker before production."
+    }
+  ]
+}

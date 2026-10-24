@@ -1,0 +1,726 @@
+{
+  "meta": {
+    "title": "Pashto Quest — Week 2 Content Bank",
+    "version": "2026-10-23-draft1",
+    "authoritative_day_range": [
+      8,
+      14
+    ],
+    "inherits": "Existing 4-zone game and Week 1 navigation, player progress and XP rules. No new interaction modes.",
+    "scope": "CONTENT IMPLEMENTATION PACKAGE, not yet installed in the playable game",
+    "language_policy": "English intentions are canonical content; Pashto models are provisional and require a Laghman native speaker review before release; no automated synthesized audio is falsely labelled native.",
+    "zone_count": 4,
+    "target_sentence_count": 140,
+    "model_pashto_count": 35,
+    "daily_skip_rule": "Day 8+ challenges selectable immediately, skip does not mark visits complete. Day 8 accessible only once Day 7 weekly exam passed in final integration.",
+    "week2_levels": "TBD; do not change Week 1 Level 10 graduation or add XP assumptions",
+    "source_urls": [
+      "https://grammar.lingdocs.com/nouns/determiners/",
+      "https://grammar.lingdocs.com/nouns/nouns-plural/",
+      "https://grammar.lingdocs.com/phrase-structure/ap/",
+      "https://grammar.lingdocs.com/verbs/present-verbs/",
+      "https://files.eric.ed.gov/fulltext/ED364085.pdf",
+      "https://oped.univie.ac.at/"
+    ]
+  },
+  "days": [
+    {
+      "day": 8,
+      "title": "This One or That One?",
+      "topic": "Demonstratives: near and far",
+      "guide": "Saleha",
+      "opening": "Lake",
+      "intro": "Saleha points to a book beside the player, a bird farther along the water, and two baskets at different distances. She explains that Pashto دا and هغه can point to things; هغه also occurs as he/she, so the surrounding noun and conversational context matter. Use دغه as an optional familiar local near form only after review.",
+      "new": [
+        "دا — this/these (proximal)",
+        "هغه — that/those (distal)",
+        "دغه — this/these (optional alternative; review register)",
+        "نږدې — near (optional)",
+        "لرې — far (optional)"
+      ],
+      "revisit": [
+        "book",
+        "apple",
+        "door",
+        "water",
+        "market",
+        "river",
+        "new",
+        "cold",
+        "fresh",
+        "big"
+      ],
+      "grammar": [
+        "A demonstrative identifies which noun is meant, not who performs an action.",
+        "Pashto دا can modify a singular or plural noun; unlike English, it does not automatically change from this to these.",
+        "The demonstrative هغه and the he/she pronoun share a spelling; distinguish meaning by structure and stress (pronunciation audit).",
+        "Keep gender/number agreement on adjectives and equatives."
+      ],
+      "models": [
+        [
+          "دا کتاب نوی دی.",
+          "This book is new."
+        ],
+        [
+          "هغه کتاب زوړ دی.",
+          "That book is old."
+        ],
+        [
+          "دا دروازه خلاصه ده.",
+          "This door is open."
+        ],
+        [
+          "دا اوبه سړې دي.",
+          "This water is cold."
+        ],
+        [
+          "دغه کتاب نوی دی.",
+          "This book is new. (near alternative; native review)"
+        ]
+      ],
+      "locations": {
+        "Lake · Saleha": [
+          "This water is cold.",
+          "That river is wide.",
+          "This fish is small.",
+          "That bird is near the tree.",
+          "This stone is beside the water."
+        ],
+        "Market · Edris": [
+          "This apple is fresh.",
+          "That apple is expensive.",
+          "This bread is for dinner.",
+          "That shop is big.",
+          "I want that apple."
+        ],
+        "School · Ms Hameed": [
+          "This book is new.",
+          "That book is old.",
+          "This pen is new.",
+          "This school is big.",
+          "She reads that book."
+        ],
+        "Home · Muhammad Jan": [
+          "This door is open.",
+          "That window is closed.",
+          "This room is clean.",
+          "That chair is small.",
+          "I open this door."
+        ]
+      },
+      "challenge": "Saleha describes nearby and distant objects at the lakeside; player identifies intended objects and constructs demonstrative sentences.",
+      "assessment": [
+        "Choose this/that from given relative distance",
+        "Compare plural/nonplural meanings with دا",
+        "Sentence construction with demonstrative + noun + adjective",
+        "Cumulative recall from Week 1"
+      ],
+      "lesson_count": 4,
+      "sentence_targets": 20,
+      "challenge_questions": 15,
+      "pass_score": 12,
+      "challenge_available_at_start": true,
+      "normal_route_force_opening": true,
+      "implementation_status": "authored_english_targets_pashto_models_draft_not_imported",
+      "model_pashto_verified_by_local_speaker": false
+    },
+    {
+      "day": 9,
+      "title": "One, Two, Many",
+      "topic": "Plural nouns, agreement and small quantities",
+      "guide": "Edris",
+      "opening": "Market",
+      "intro": "Edris receives a delivery and asks the player to sort individual items and groups. Singular and plural words are heard in meaningful sentences. Numbers one to five are introduced for simple counts.",
+      "new": [
+        "کتابونه — books (کتاب → کتابونه)",
+        "مڼې — apples (مڼه → مڼې)",
+        "دروازې — doors (دروازه → دروازې)",
+        "کورونه — houses (کور → کورونه)",
+        "یو / دوه / درې / څلور / پنځه — one to five"
+      ],
+      "revisit": [
+        "book",
+        "apple",
+        "house",
+        "door",
+        "student",
+        "fresh",
+        "new",
+        "big",
+        "they",
+        "this/that"
+      ],
+      "grammar": [
+        "Pluralisation is noun-class dependent; ـونه works with many inanimate consonant-ending masculine nouns, while many ـه feminine nouns form ـې plurals.",
+        "Plural adjective/equative agreement must be taught with full examples; avoid guessing based on English endings.",
+        "دا can introduce both singular and plural noun phrases; the noun and predicate distinguish this/these.",
+        "Numerals and counted nouns may involve special agreement/inflection; begin with simple naming/counting tasks and speaker-reviewed sentences."
+      ],
+      "models": [
+        [
+          "دا کتاب دی.",
+          "This is a book."
+        ],
+        [
+          "دا کتابونه دي.",
+          "These are books."
+        ],
+        [
+          "دا مڼه ده.",
+          "This is an apple."
+        ],
+        [
+          "دا مڼې دي.",
+          "These are apples."
+        ],
+        [
+          "دا کورونه لوی دي.",
+          "These houses are big."
+        ]
+      ],
+      "locations": {
+        "Market · Edris": [
+          "This is an apple.",
+          "These are apples.",
+          "He buys two apples.",
+          "They carry three baskets.",
+          "Those apples are fresh."
+        ],
+        "School · Ms Hameed": [
+          "This book is new.",
+          "These books are new.",
+          "We read two books.",
+          "There are three students in the classroom.",
+          "She opens the books."
+        ],
+        "Lake · Saleha and Mina": [
+          "This is one bird.",
+          "Those are two birds.",
+          "We see three fish.",
+          "These stones are small.",
+          "They see the birds."
+        ],
+        "Home · Muhammad Jan": [
+          "This is one room.",
+          "These rooms are clean.",
+          "These doors are open.",
+          "Those houses are big.",
+          "We see two chairs."
+        ]
+      },
+      "challenge": "Edris takes inventory; match quantities to item groups, interpret singular/plural, and assemble agreement-safe sentences.",
+      "assessment": [
+        "Identify singular vs plural noun",
+        "Match 1–5 quantities to nouns",
+        "Conjugate singular/plural predicate accurately",
+        "Revisit Day 8 this/that distinctions"
+      ],
+      "lesson_count": 4,
+      "sentence_targets": 20,
+      "challenge_questions": 15,
+      "pass_score": 12,
+      "challenge_available_at_start": true,
+      "normal_route_force_opening": true,
+      "implementation_status": "authored_english_targets_pashto_models_draft_not_imported",
+      "model_pashto_verified_by_local_speaker": false
+    },
+    {
+      "day": 10,
+      "title": "Where Is Mina’s Notebook?",
+      "topic": "Here/there/where and simple spatial expressions",
+      "guide": "Mina",
+      "opening": "Lake",
+      "intro": "Mina misplaces a notebook she was using beside the lake. Without adding a new playable map location, the player follows descriptions and speaks to villagers to work out where she left it.",
+      "new": [
+        "دلته — here",
+        "هلته — there",
+        "چېرته — where",
+        "په ... کې — in/inside",
+        "په ... باندې — on",
+        "تر څنګ — beside (practice as a full phrase)"
+      ],
+      "revisit": [
+        "notebook",
+        "book",
+        "bag",
+        "school",
+        "market",
+        "chair",
+        "water",
+        "window",
+        "go",
+        "see"
+      ],
+      "grammar": [
+        "Location questions with چېرته often keep ordinary Pashto verb placement.",
+        "Pashto commonly uses paired adpositions (e.g. په ... کې) rather than treating every English preposition as one Pashto word.",
+        "Keep the difference between a location statement and a movement-to-location sentence; school ته ځي is movement.",
+        "Do not introduce the full case-inflection system yet; teach fixed common phrases and mark inflection-sensitive forms for review."
+      ],
+      "models": [
+        [
+          "کتاب دلته دی.",
+          "The book is here."
+        ],
+        [
+          "کتاب هلته دی.",
+          "The book is there."
+        ],
+        [
+          "کتاب چېرته دی؟",
+          "Where is the book?"
+        ],
+        [
+          "مینا دلته ده.",
+          "Mina is here."
+        ],
+        [
+          "هغه په کور کې دی.",
+          "He is in the house."
+        ]
+      ],
+      "locations": {
+        "Lake · Mina and Saleha": [
+          "The notebook is here.",
+          "Mina is here.",
+          "Saleha is beside the lake.",
+          "The fish is in the river.",
+          "Where is the notebook?"
+        ],
+        "School · Ms Hameed": [
+          "The book is on the table.",
+          "The notebook is in the classroom.",
+          "Where is the pen?",
+          "The students are here.",
+          "Mina goes to school."
+        ],
+        "Market · Edris": [
+          "The basket is here.",
+          "The apples are in the basket.",
+          "The grocer is at the shop.",
+          "Where is the bag?",
+          "That basket is over there."
+        ],
+        "Home · Muhammad Jan": [
+          "The chair is beside the door.",
+          "The book is on the table.",
+          "The window is here.",
+          "Where is the notebook?",
+          "The book is in this room."
+        ]
+      },
+      "challenge": "Mina retraces her route. Questions describe locations; the player interprets clues to identify the notebook’s location through dialogue only.",
+      "assessment": [
+        "Distinguish here/there",
+        "Use where in questions",
+        "Complete common in/on/beside phrases",
+        "Recall demonstrative and singular/plural forms"
+      ],
+      "lesson_count": 4,
+      "sentence_targets": 20,
+      "challenge_questions": 15,
+      "pass_score": 12,
+      "challenge_available_at_start": true,
+      "normal_route_force_opening": true,
+      "implementation_status": "authored_english_targets_pashto_models_draft_not_imported",
+      "model_pashto_verified_by_local_speaker": false
+    },
+    {
+      "day": 11,
+      "title": "Whose Things Are These?",
+      "topic": "Possession and ownership",
+      "guide": "Muhammad Jan",
+      "opening": "Home",
+      "intro": "Muhammad Jan finds household belongings mixed with items belonging to Mina and Saleha. He asks the player to identify the owner of each, building on this/that and plurals.",
+      "new": [
+        "زما — my/mine",
+        "ستا — your (informal singular)",
+        "ستاسو / ستاسې — your (polite/plural; check local preference)",
+        "زموږ / زمونږ — our (regional variation)",
+        "د مینا — Mina’s",
+        "د هغه / د هغې — his / her (case and referent sensitive)"
+      ],
+      "revisit": [
+        "book",
+        "notebook",
+        "room",
+        "house",
+        "pen",
+        "bag",
+        "chair",
+        "this/that",
+        "we",
+        "you all"
+      ],
+      "grammar": [
+        "Possession often uses a possessor before the noun: زما کتاب.",
+        "Named possessors can use د + possessor, with gender/case-sensitive forms when applicable.",
+        "Pashto possessives are not identical to English apostrophe-s; teach whole natural phrases.",
+        "Distinguish pronoun person from owner rather than allowing ambiguous his/her questions."
+      ],
+      "models": [
+        [
+          "دا زما کتاب دی.",
+          "This is my book."
+        ],
+        [
+          "دا ستا کتاب دی.",
+          "This is your book. (informal)"
+        ],
+        [
+          "دا زموږ کور دی.",
+          "This is our home."
+        ],
+        [
+          "دا د مینا کتاب دی.",
+          "This is Mina’s book."
+        ],
+        [
+          "دا د ادریس دوکان دی.",
+          "This is Edris’s shop."
+        ]
+      ],
+      "locations": {
+        "Home · Muhammad Jan": [
+          "This is my house.",
+          "This is your chair.",
+          "That is our room.",
+          "This is Muhammad Jan’s book.",
+          "Our door is open."
+        ],
+        "School · Ms Hameed": [
+          "This is Mina’s notebook.",
+          "That is Saleha’s pen.",
+          "These are our books.",
+          "Your notebook is on the table.",
+          "This is Saleha’s book."
+        ],
+        "Market · Edris": [
+          "This is Edris’s basket.",
+          "That is my bag.",
+          "These are our apples.",
+          "That is Edris’s shop.",
+          "I carry my basket."
+        ],
+        "Lake · Saleha and Mina": [
+          "This is Mina’s book.",
+          "That is Saleha’s bag.",
+          "Our water is cold.",
+          "These are your stones.",
+          "I see our friends."
+        ]
+      },
+      "challenge": "Muhammad Jan sorts misplaced possessions after a visit; the player identifies owners in an everyday conversation.",
+      "assessment": [
+        "Identify my/your/our",
+        "Apply named owners with د",
+        "Combine possessives and demonstratives",
+        "Recall noun plurals in possessive phrases"
+      ],
+      "lesson_count": 4,
+      "sentence_targets": 20,
+      "challenge_questions": 15,
+      "pass_score": 12,
+      "challenge_available_at_start": true,
+      "normal_route_force_opening": true,
+      "implementation_status": "authored_english_targets_pashto_models_draft_not_imported",
+      "model_pashto_verified_by_local_speaker": false
+    },
+    {
+      "day": 12,
+      "title": "Ask the Right Question",
+      "topic": "Who, what, which, where, how many",
+      "guide": "Ms Hameed",
+      "opening": "School",
+      "intro": "Ms Hameed runs a classroom investigation. The player learns to ask purposeful questions rather than merely answering prompts: identify people, objects, choices, places and quantities.",
+      "new": [
+        "څوک — who",
+        "څه — what",
+        "کوم — which (m.; inflection-sensitive)",
+        "چېرته — where (revisit)",
+        "څو — how many",
+        "څنګه — how (recognition only, previously greeting)"
+      ],
+      "revisit": [
+        "student",
+        "teacher",
+        "book",
+        "notebook",
+        "market",
+        "apple",
+        "my",
+        "your",
+        "numbers 1–5"
+      ],
+      "grammar": [
+        "Pashto question words generally appear in the position corresponding to the information requested rather than forcing English word order.",
+        "Yes/no questions can use rising intonation; wh-questions use interrogative words.",
+        "Some question words and adjectives change form with gender/case; only teach verified examples initially.",
+        "A question must be pragmatically natural with a sensible answer; do not test arbitrary grammar strings."
+      ],
+      "models": [
+        [
+          "دا څوک دی؟",
+          "Who is this? (masculine referent)"
+        ],
+        [
+          "دا څه دي؟",
+          "What are these?"
+        ],
+        [
+          "کتاب چېرته دی؟",
+          "Where is the book?"
+        ],
+        [
+          "ته څه لولې؟",
+          "What are you reading?"
+        ],
+        [
+          "ته کوم کتاب لولې؟",
+          "Which book are you reading?"
+        ]
+      ],
+      "locations": {
+        "School · Ms Hameed": [
+          "Who is at the door?",
+          "What are you reading?",
+          "Which book is new?",
+          "Where is my notebook?",
+          "How many books are here?"
+        ],
+        "Market · Edris": [
+          "Which apple do you want?",
+          "How many apples do you buy?",
+          "Who sells bread?",
+          "Where is the basket?",
+          "What is in this bag?"
+        ],
+        "Lake · Saleha and Mina": [
+          "Who is running beside the lake?",
+          "What do you see?",
+          "Which bird is near the water?",
+          "Where is Mina?",
+          "How many fish do we see?"
+        ],
+        "Home · Muhammad Jan": [
+          "Whose book is this?",
+          "Where is the chair?",
+          "Which door is open?",
+          "What is on the table?",
+          "Who is drinking tea?"
+        ]
+      },
+      "challenge": "A short classroom interview led by Ms Hameed; select suitable questions and respond using familiar vocabulary.",
+      "assessment": [
+        "Choose sensible question word for an answer",
+        "Build complete wh-questions",
+        "Distinguish where from which and whose",
+        "Answer with matching grammatical person"
+      ],
+      "lesson_count": 4,
+      "sentence_targets": 20,
+      "challenge_questions": 15,
+      "pass_score": 12,
+      "challenge_available_at_start": true,
+      "normal_route_force_opening": true,
+      "implementation_status": "authored_english_targets_pashto_models_draft_not_imported",
+      "model_pashto_verified_by_local_speaker": false
+    },
+    {
+      "day": 13,
+      "title": "How We Do Things",
+      "topic": "Adverbs: time, manner, frequency and group action",
+      "guide": "Saleha and Mina",
+      "opening": "Lake",
+      "intro": "Saleha and Mina compare everyday routines. One walks slowly, another runs quickly, and everyone describes what they normally do at different places.",
+      "new": [
+        "نن — today",
+        "سبا — tomorrow (time word only; do not teach future tense yet)",
+        "ورو ورو — slowly",
+        "ژر — quickly / soon (context sensitive)",
+        "تل — always",
+        "کله کله — sometimes",
+        "هره ورځ — every day",
+        "یو ځای — together (revisit)"
+      ],
+      "revisit": [
+        "run",
+        "walk",
+        "read",
+        "drink",
+        "school",
+        "market",
+        "we",
+        "they",
+        "I",
+        "you"
+      ],
+      "grammar": [
+        "Adverbs add information about how, when, or how often an action occurs.",
+        "Do not teach “tomorrow” as a future tense form: restrict practice to timetable phrases or leave it receptive.",
+        "Adverbs and adverbial phrases may vary in position; accept contextually natural variants supported by the language reviewer.",
+        "Reuse known present-tense verbs so the new challenge is the adverb, not a new conjugation."
+      ],
+      "models": [
+        [
+          "موږ یو ځای ځو.",
+          "We go together."
+        ],
+        [
+          "زه نن کتاب لولم.",
+          "I am reading a book today."
+        ],
+        [
+          "مینا ورو ورو ځي.",
+          "Mina walks/goes slowly."
+        ],
+        [
+          "موږ هره ورځ منډې وهو.",
+          "We run every day."
+        ],
+        [
+          "زه کله کله چای څښم.",
+          "I sometimes drink tea."
+        ]
+      ],
+      "locations": {
+        "Lake · Saleha and Mina": [
+          "Mina walks slowly.",
+          "Saleha runs quickly.",
+          "We run together.",
+          "They sometimes sit beside the lake.",
+          "Today we drink water."
+        ],
+        "School · Ms Hameed": [
+          "I read every day.",
+          "We sometimes write sentences.",
+          "Today you read this book.",
+          "They work together.",
+          "She writes slowly."
+        ],
+        "Market · Edris": [
+          "I always buy bread here.",
+          "Edris opens his shop every day.",
+          "They sometimes buy apples.",
+          "We carry the bags slowly.",
+          "Today this bread is fresh."
+        ],
+        "Home · Muhammad Jan": [
+          "I sometimes drink tea.",
+          "We clean the room together.",
+          "Muhammad Jan reads every day.",
+          "Today the door is open.",
+          "You always help at home."
+        ]
+      },
+      "challenge": "Saleha and Mina plan a routine walk around town; identify how/when actions take place and form meaningful sentences with adverbs.",
+      "assessment": [
+        "Identify adverbs by meaning",
+        "Add manner to an existing sentence",
+        "Add time/frequency without changing present tense",
+        "Revisit group pronouns and plural nouns"
+      ],
+      "lesson_count": 4,
+      "sentence_targets": 20,
+      "challenge_questions": 15,
+      "pass_score": 12,
+      "challenge_available_at_start": true,
+      "normal_route_force_opening": true,
+      "implementation_status": "authored_english_targets_pashto_models_draft_not_imported",
+      "model_pashto_verified_by_local_speaker": false
+    },
+    {
+      "day": 14,
+      "title": "The Village Scavenger Hunt",
+      "topic": "Integrated Week 2 revision; no new core grammar",
+      "guide": "Muhammad Jan and Ms Hameed",
+      "opening": "Home",
+      "intro": "Muhammad Jan sets the player a series of clues involving all four village locations; Ms Hameed administers an extended Week 2 assessment. Scavenger-hunt stops use existing dialogue/lesson cards, not object-moving or a new explorable region.",
+      "new": [],
+      "revisit": [
+        "this/that",
+        "plurals",
+        "1–5",
+        "here/there/where",
+        "my/your/our",
+        "who/what/which/how many",
+        "time and manner adverbs",
+        "Week 1 pronouns and present-tense verbs"
+      ],
+      "grammar": [
+        "No new grammar: use the week’s topics in combined, meaningful contexts.",
+        "Interpret each clue before forming a sentence.",
+        "Require nouns and verbs that match everyday scenes.",
+        "Correctly recognise speaker, intended addressee and referenced object."
+      ],
+      "models": [
+        [
+          "دا زما کتاب دی.",
+          "This is my book."
+        ],
+        [
+          "دا کتابونه نوي دي.",
+          "These books are new."
+        ],
+        [
+          "مینا چېرته ده؟",
+          "Where is Mina?"
+        ],
+        [
+          "موږ یو ځای ښوونځي ته ځو.",
+          "We go to school together."
+        ],
+        [
+          "زه نن کتاب لولم.",
+          "I read a book today."
+        ]
+      ],
+      "locations": {
+        "Home · Muhammad Jan": [
+          "This is my book.",
+          "Your book is on that chair.",
+          "Which door is open?",
+          "Today we clean these rooms.",
+          "Where is Muhammad Jan’s notebook?"
+        ],
+        "Market · Edris": [
+          "These apples are fresh.",
+          "I buy three apples.",
+          "Which basket belongs to Edris?",
+          "Those people carry bread together.",
+          "How many bags are here?"
+        ],
+        "Lake · Saleha and Mina": [
+          "Mina walks slowly.",
+          "Those birds are near the river.",
+          "Where is Saleha’s bag?",
+          "We see these fish.",
+          "Who runs quickly?"
+        ],
+        "School · Ms Hameed": [
+          "These books are new.",
+          "That notebook is mine.",
+          "Who reads every day?",
+          "Where are the students?",
+          "Which book belongs to Mina?"
+        ]
+      },
+      "challenge": "Week 2 culminating challenge: Ms Hameed reviews 25 contextual prompts framed as village scavenger-hunt clues (20/25 to pass), with cumulative Week 1 integration.",
+      "assessment": [
+        "5 demonstrative/number agreement",
+        "5 plurals/quantities",
+        "5 place/possession clues",
+        "5 questions and adverbs",
+        "5 integrated sentence construction, mixed pronouns and speaker/addressee"
+      ],
+      "lesson_count": 4,
+      "sentence_targets": 20,
+      "challenge_questions": 25,
+      "pass_score": 20,
+      "challenge_available_at_start": true,
+      "normal_route_force_opening": true,
+      "implementation_status": "authored_english_targets_pashto_models_draft_not_imported",
+      "model_pashto_verified_by_local_speaker": false
+    }
+  ]
+}

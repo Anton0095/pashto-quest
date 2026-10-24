@@ -86,7 +86,7 @@ try{
  for(const width of [1280,390]){
   const {page,context,errors}=await setup(width);await tutorial(page);assert(await page.evaluate(()=>{const qs=__test.selectChallenge(7);return qs.length===25&&new Set(qs.map(q=>q.id)).size===25&&qs.every(q=>q.speaker==='Ms Hameed'&&q.recipient)&&['pronouns','verbs','sov','compounds','dialogue'].every(section=>qs.filter(q=>q.section===section).length===5)&&__test.normalizeAnswer('مونږ تاسو.')===__test.normalizeAnswer('موږ تاسې');}));assert.match(await page.locator('#characterLevel').innerText(),/Level 1 · Newcomer/);
   for(const f of fixture.dayProgression){
-   assert.equal(await page.locator('.map-point').count(),4);assert(await page.locator('#skipDayBtn').isVisible());await page.locator('#skipDayBtn').click();
+   assert.equal(await page.locator('.map-point:not(.library)').count(),4);assert(await page.locator('#skipDayBtn').isVisible());await page.locator('#skipDayBtn').click();
    if(f.day===6)assert.match(await page.locator('#challengeScene').innerText(),/HILLS/);
    if(process.env.TEST_ARTIFACTS&&f.day>=6){mkdirSync(process.env.TEST_ARTIFACTS,{recursive:true});await page.screenshot({path:`${process.env.TEST_ARTIFACTS}/day${f.day}-${width}.png`,fullPage:true});}
    if(f.day===7)assert.match(await page.locator('#speakerName').innerText(),/Ms Hameed/);
