@@ -32,3 +32,7 @@ If Codex wants a direct script command: `python3 patch/apply_week2_interactions.
 ## Important scope boundary
 
 Do not silently unlock content with untranslated or unchecked Pashto. Do not invent a Week 2 XP leveling ladder yet. Maintain Week 1's Level 10 graduation and New Resident title. Extra features (inventory, new locations, dialogue branching, drag-and-drop animations) are not required and remain for later planning.
+
+## Library development feature
+
+The Library implementation adds a fifth reference location, cumulative lemma/form records, a Grammar Journal, frozen pace plans, preserved challenge attempts and Muhammad Jan's Day 1 Library/home-handover story. It retains the Week 2 game and offline single-file release. See [implementation and content limitations](docs/LIBRARY_IMPLEMENTATION.md) and [test commands](tests/README.md). The existing 108-content-lemma draft cannot supply every requested pace across all fourteen days; unsupported settings/content gaps are explicit and native review is pending.

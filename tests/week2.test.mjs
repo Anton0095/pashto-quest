@@ -59,7 +59,7 @@ try{for(const width of [1280,375]){
  for(const token of ['زه','کتاب','څښم'])await clickText(page,'#wordTiles button',token);await page.locator('#checkBuild').click();assert.equal(await page.evaluate(()=>__test.session.correctCount),0);assert.equal((await getP(page)).challengeRewards['week2-dialogue:8:w2-d8-reply-1'],undefined);
  await page.evaluate(()=>__test.select(8));
  for(let day=8;day<=14;day++){
-  assert.equal(await page.locator('.map-point').count(),4);assert(await page.locator('#skipDayBtn').isVisible());await page.locator('#skipDayBtn').click();
+  assert.equal(await page.locator('.map-point:not(.library)').count(),4);assert(await page.locator('#skipDayBtn').isVisible());await page.locator('#skipDayBtn').click();
   assert(await page.evaluate(({day,minimum})=>{const q=__test.session.questions;return q.filter(x=>x.kind==='dialogue').length>=minimum&&['word','sentence','construct'].every(k=>q.some(x=>x.kind===k));},{day,minimum:minimum[day]}));
   const spec={count:day===14?25:15,pass:day===14?20:12};
   await assessment(page,spec.pass-1);assert.equal((await getP(page)).challenges[day].passed,false);assert.equal(await page.evaluate(d=>__test.allowed(d+1),day),false);
