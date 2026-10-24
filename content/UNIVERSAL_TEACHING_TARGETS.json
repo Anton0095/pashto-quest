@@ -1,0 +1,338 @@
+{
+  "status": "semantic targets only; no new playable lemmas",
+  "countingPolicy": "Verified lexical identities only. Multiword expressions and inflections do not automatically add lemmas. Link existing forms before considering a new identity.",
+  "groups": {
+    "pronouns": [
+      "I",
+      "Informal singular you",
+      "They"
+    ],
+    "questionWords": [
+      "Why",
+      "When",
+      "How",
+      "Whose",
+      "How much"
+    ],
+    "numbers": [
+      "Zero",
+      "Six",
+      "Seven",
+      "Eight",
+      "Nine",
+      "Ten",
+      "Eleven",
+      "Twelve",
+      "Thirteen",
+      "Fourteen",
+      "Fifteen",
+      "Sixteen",
+      "Seventeen",
+      "Eighteen",
+      "Nineteen",
+      "Twenty"
+    ],
+    "positionDirection": [
+      "In",
+      "Out",
+      "Up",
+      "Down",
+      "Left",
+      "Right",
+      "On",
+      "Under",
+      "Behind",
+      "In front"
+    ],
+    "connectors": [
+      "And",
+      "Or",
+      "But",
+      "Because",
+      "With",
+      "Without"
+    ]
+  },
+  "targets": [
+    {
+      "targetId": "universal-target:pronouns:0",
+      "english": "I",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:pronouns:1",
+      "english": "Informal singular you",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:pronouns:2",
+      "english": "They",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:questionWords:0",
+      "english": "Why",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:questionWords:1",
+      "english": "When",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:questionWords:2",
+      "english": "How",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:questionWords:3",
+      "english": "Whose",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:questionWords:4",
+      "english": "How much",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:0",
+      "english": "Zero",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:1",
+      "english": "Six",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:2",
+      "english": "Seven",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:3",
+      "english": "Eight",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:4",
+      "english": "Nine",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:5",
+      "english": "Ten",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:6",
+      "english": "Eleven",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:7",
+      "english": "Twelve",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:8",
+      "english": "Thirteen",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:9",
+      "english": "Fourteen",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:10",
+      "english": "Fifteen",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:11",
+      "english": "Sixteen",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:12",
+      "english": "Seventeen",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:13",
+      "english": "Eighteen",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:14",
+      "english": "Nineteen",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:numbers:15",
+      "english": "Twenty",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:positionDirection:0",
+      "english": "In",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:positionDirection:1",
+      "english": "Out",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:positionDirection:2",
+      "english": "Up",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:positionDirection:3",
+      "english": "Down",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:positionDirection:4",
+      "english": "Left",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:positionDirection:5",
+      "english": "Right",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:positionDirection:6",
+      "english": "On",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:positionDirection:7",
+      "english": "Under",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:positionDirection:8",
+      "english": "Behind",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:positionDirection:9",
+      "english": "In front",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:connectors:0",
+      "english": "And",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:connectors:1",
+      "english": "Or",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:connectors:2",
+      "english": "But",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:connectors:3",
+      "english": "Because",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:connectors:4",
+      "english": "With",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    },
+    {
+      "targetId": "universal-target:connectors:5",
+      "english": "Without",
+      "status": "needsLinguisticIdentityReview",
+      "active": false,
+      "lemmaId": null
+    }
+  ]
+}

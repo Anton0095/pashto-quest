@@ -1,6 +1,15 @@
 const libraryEntries = Object.fromEntries(
   LIBRARY_DATA.entries.map((e) => [e.lemmaId, e]),
 );
+for (const phrase of LIBRARY_DATA.phrases) {
+  wordById[phrase.id] ||= {
+    id: phrase.id, loop: phrase.day || 0, type: "greeting",
+    ps: phrase.pashto, roman: phrase.romanisation, en: phrase.english,
+    place: phrase.location || "library",
+    note: "Fixed expression; provisional romanisation, native Laghman review pending.", dialect: "",
+  };
+  LIBRARY_DATA.cardTypes[phrase.id] = "greeting";
+}
 for (const entry of LIBRARY_DATA.entries) {
   const form = entry.forms[0],
     id = "library-card:" + entry.lemmaId;
@@ -76,10 +85,13 @@ function libraryLessonPool(day, place) {
   );
   // Fixed authored sentences preserve grammar, roles and stories; no unreviewed substitutions.
   const review = LibraryEngine.dueForms(progress, LIBRARY_DATA)
+    .filter(({ entry }) => LibraryEngine.allowedOnDay(entry, day))
     .slice(0, 2)
     .map(({ form }) => "library-form:" + form.formId);
 
-  return [...lexical, ...grammar, ...review, ...original];
+  const actionIntro = day === 2 && place === "school" ? ["v-read", "v-write"] : [];
+  return [...new Set([...actionIntro, ...lexical, ...grammar, ...review, ...original])]
+    .filter((id) => LibraryEngine.cardAllowed(LIBRARY_DATA, id, day));
 }
 function libraryChallengeQuestions(day, questions) {
   if (day === 3) return questions; // Edris’s authored dinner ingredients/actions keep their exact narrative.
@@ -148,6 +160,11 @@ function restoreLibraryChallenge() {
   )
     return false;
   const snapshot = JSON.parse(JSON.stringify(s));
+  const replacements = selectChallenge(s.loop);
+  const replacedCurrent = !LibraryEngine.cardAllowed(LIBRARY_DATA, snapshot.questions[snapshot.index].id, s.loop);
+  snapshot.questions = snapshot.questions.map((q, index) =>
+    LibraryEngine.cardAllowed(LIBRARY_DATA, q.id, s.loop) ? q : replacements[index]);
+  if (replacedCurrent) snapshot.built = [];
   startChallenge(s.loop, true);
   session = { ...snapshot };
   const built = [...(session.built || [])],
@@ -162,6 +179,8 @@ function restoreLibraryChallenge() {
     session.locked = false;
     session.restoring = true;
     answerChallenge(snapshot.submittedAnswer);
+    if (replacedCurrent)
+      $("quizFeedback").textContent = "Your earlier response and score remain saved. This Day 1 action prompt has been replaced with description vocabulary; continue without another submission.";
     delete session.restoring;
     session.answered = answered;
     session.correctCount = correctCount;
@@ -194,10 +213,12 @@ function openLibrary(tab = "vocabulary") {
   $("libraryClose").focus();
 }
 function closeLibrary() {
+  stopAudio();
   $("libraryDialog").close();
   libraryLastFocus?.focus();
 }
 function renderLibrary(tab) {
+  stopAudio();
   const root = $("libraryBody");
   root.replaceChildren();
   $("libraryDialog").dataset.tab = tab;
@@ -280,16 +301,24 @@ function renderLibrary(tab) {
         libraryNode("p", p.romanisation + " — " + p.english),
         libraryButton("Pronunciation (if available)", () => speak(p.id)),
       );
+      card.dataset.phrase = p.id;
+      card.append(libraryNode("p", "Fixed expression · native Laghman review pending. Inflections/components add no district words.", "tiny"));
+      appendPhrasePractice(card, p, "review");
       root.append(card);
     }
     return;
   }
-  root.append(libraryNode("h3", "Vocabulary Bank"));
+  const universal = tab === "universal";
+  root.append(libraryNode("h3", universal ? "Universal Vocabulary" : "Vocabulary Bank"));
+  if (universal) root.append(libraryNode("p", "Universal words can occur in every district and never consume a district quota. Each lexical identity counts once; expressions have their own collection."));
   const sum = LibraryEngine.summary(progress, LIBRARY_DATA);
+  const encounteredUniversal = LIBRARY_DATA.entries.filter((e) => e.vocabularyClass === "universal" && progress.library.acquired[e.lemmaId]).length;
   root.append(
     libraryNode(
       "p",
-      `${sum.encountered} encountered · ${sum.practised} practised · ${sum.mastered} mastered content lemmas. Inflections count under one entry.`,
+      universal
+        ? `${encounteredUniversal} encountered universal lemmas · ${sum.encountered + encounteredUniversal} distinct lexical lemmas overall. Universal words never consume district quotas.`
+        : `${sum.encountered} encountered · ${sum.practised} practised · ${sum.mastered} mastered content lemmas. ${encounteredUniversal} universal lemmas appear separately. Inflections count under one entry.`,
       "notice",
     ),
   );
@@ -372,6 +401,7 @@ function renderLibrary(tab) {
       const r = progress.library.acquired[e.lemmaId];
       return (
         r &&
+        (e.vocabularyClass === "universal") === universal &&
         (!query ||
           [e.displayLemmaPs, e.romanisation, ...e.englishSenses]
             .join(" ")
@@ -483,6 +513,10 @@ function libraryEntry(e) {
   return detail;
 }
 function libraryVoluntaryPractice(e, container) {
+  if (!LibraryEngine.allowedOnDay(e, selectedLoop)) {
+    container.append(libraryNode("p", "Action-verb practice begins on Day 2. Your existing vocabulary history is retained."));
+    return;
+  }
   const r = progress.library.acquired[e.lemmaId],
     form = e.forms.find((f) => r.encounteredFormIds.includes(f.formId));
   if (!form) return;
@@ -659,6 +693,7 @@ function libraryInit() {
   nav.setAttribute("aria-label", "Library pages");
   for (const [tab, label] of [
     ["vocabulary", "Vocabulary Bank"],
+    ["universal", "Universal Vocabulary"],
     ["grammar", "Grammar Journal"],
     ["pace", "Learning Pace"],
     ["phrases", "Useful Expressions"],
@@ -685,7 +720,10 @@ function libraryInit() {
     subtree: true,
     characterData: true,
   });
-  dialog.addEventListener("close", () => libraryLastFocus?.focus());
+  dialog.addEventListener("close", () => {
+    stopAudio(); // Includes the native Escape/cancel path.
+    libraryLastFocus?.focus();
+  });
   const navButton = libraryButton("📚 Library", () => openLibrary());
   navButton.id = "navLibrary";
   navButton.className = "ghost";

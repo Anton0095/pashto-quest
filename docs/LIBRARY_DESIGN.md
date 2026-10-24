@@ -17,3 +17,7 @@ Questions retain fixed authored grammar/narrative contexts. Lexical selection pr
 The current release supports save schema 4 only. Incompatible/corrupt stored data remains unchanged until explicit reset. There are no old-format imports, previous-place adapters or historical-clear backfills.
 
 The single offline release bundles all text/data. Native Laghman review, verified pronunciation and additional translated vocabulary remain editorial prerequisites. Untranslated candidate records are not part of the playable lexicon. The activation/build gates require complete metadata and documented review for promotion.
+
+## Current curriculum update
+
+Universal vocabulary has its own Library tab and retains the same acquisition/form/SRS identities while being excluded from district quotas. Contextual expressions use the existing greeting units and shared scheduler with no XP. Only actual visible active dialogue acquires an expression; pending translations remain editorial targets. Day 1 allocation, review and assessment paths exclude lexical actions. Read [the current expansion contract](CURRICULUM_EXPANSION.md) for active and pending expression lists and schema-4 safety reconciliation.
