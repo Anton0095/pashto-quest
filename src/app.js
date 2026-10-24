@@ -1,4 +1,5 @@
 // @GAME_DATA
+// @AUDIO_IDS
 (() => {
   "use strict";
   const $ = (id) => document.getElementById(id);
@@ -3406,14 +3407,18 @@
     view("resultScreen");
   }
 
-  // Audio strategy: prefer pre-generated ps-AF neural MP3s, then only an exact Pashto browser TTS voice.
-  // Never use an unrelated Persian/Urdu/English voice as a pronunciation substitute.
-  let playback = null,
-    currentSpoken = null;
+  // Pronunciation: bundled Pashto MP3 first, then the browser's available Pashto speech service.
+  // Browsers may populate their voice list asynchronously, so never treat the first empty list as final.
+  let playback = null;
+  let currentSpoken = null;
+  let activeUtterance = null;
+  let audioRequest = 0;
+  const bundledAudioIds = new Set(BUNDLED_AUDIO_IDS);
   function audioStatus(message) {
     $("audioStatus").textContent = message;
   }
   function stopAudio() {
+    audioRequest++;
     try {
       if (playback) {
         playback.pause();
@@ -3421,56 +3426,121 @@
       }
     } catch (e) {}
     playback = null;
+    activeUtterance = null;
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
   }
+  function speechVoices() {
+    if (!("speechSynthesis" in window)) return [];
+    try {
+      return window.speechSynthesis.getVoices();
+    } catch (e) {
+      return [];
+    }
+  }
   function pashtoVoice() {
-    if (!("speechSynthesis" in window)) return null;
-    const matches = window.speechSynthesis
-      .getVoices()
-      .filter((v) => /^ps([_-]|$)/i.test(v.lang));
-    return matches.find((v) => /af/i.test(v.lang)) || matches[0] || null;
+    const voices = speechVoices();
+    const matches = voices.filter(
+      (voice) =>
+        /^ps(?:[-_]|$)/i.test(voice.lang || "") ||
+        /pashto|pakhto|pukhto/i.test(voice.name || ""),
+    );
+    return (
+      matches.find((voice) => /^ps[-_]AF$/i.test(voice.lang || "")) ||
+      matches.find((voice) => /neural|natural|online/i.test(voice.name || "")) ||
+      matches[0] ||
+      null
+    );
+  }
+  function waitForPashtoVoice() {
+    const voice = pashtoVoice();
+    if (voice || speechVoices().length) return Promise.resolve(voice);
+    if (!("speechSynthesis" in window)) return Promise.resolve(null);
+    return new Promise((resolve) => {
+      let settled = false;
+      const synth = window.speechSynthesis;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        synth.removeEventListener?.("voiceschanged", changed);
+        clearTimeout(timer);
+        resolve(pashtoVoice());
+      };
+      const changed = () => {
+        if (pashtoVoice() || speechVoices().length) finish();
+      };
+      synth.addEventListener?.("voiceschanged", changed);
+      const timer = setTimeout(finish, 700);
+      changed();
+    });
+  }
+  async function speakWithBrowserVoice(w, request) {
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+      audioStatus("⚠️ This browser has no speech synthesis. A Pashto MP3 pack is needed.");
+      return;
+    }
+    const voice = await waitForPashtoVoice();
+    if (request !== audioRequest || currentSpoken !== w.id) return;
+    const utterance = new SpeechSynthesisUtterance(w.ps);
+    activeUtterance = utterance; // Keep the utterance alive until playback finishes.
+    utterance.lang = "ps-AF";
+    if (voice) utterance.voice = voice;
+    utterance.rate = 0.82;
+    utterance.onerror = (event) => {
+      if (request !== audioRequest) return;
+      audioStatus(
+        "⚠️ Browser speech failed (" +
+          (event.error || "unknown error") +
+          "). Try a compatible Pashto voice or a recorded audio pack.",
+      );
+      activeUtterance = null;
+    };
+    utterance.onstart = () => {
+      if (request !== audioRequest) return;
+      audioStatus(
+        voice
+          ? "🔊 Speaking with " + voice.name + " (Laghman pronunciation not verified)."
+          : "🔊 Using the browser's ps-AF speech fallback. Check pronunciation carefully; a Pashto voice was not identified.",
+      );
+    };
+    utterance.onend = () => {
+      if (request === audioRequest) activeUtterance = null;
+    };
+    try {
+      if (!voice)
+        audioStatus(
+          "🔊 Requesting Pashto (ps-AF) speech from this browser. No Pashto voice was identified; pronunciation may be incorrect.",
+        );
+      window.speechSynthesis.speak(utterance);
+    } catch (error) {
+      if (request === audioRequest) {
+        activeUtterance = null;
+        audioStatus("⚠️ Browser speech could not start. A compatible Pashto voice or MP3 is needed.");
+      }
+    }
   }
   function speak(id) {
     const w = wordById[id];
-    if (!w) return;
+    if (!w?.ps) return;
     stopAudio();
-    const path = "audio/" + encodeURIComponent(w.id) + ".mp3";
-    const player = new Audio(path);
-    playback = player;
+    const request = audioRequest;
     currentSpoken = w.id;
-    player.onplay = () => {
-      audioStatus("🔊 Playing " + w.ps + " (Pashto recording).");
-    };
-    player.onerror = () => {
-      if (playback !== player || currentSpoken !== w.id) return;
+    if (!bundledAudioIds.has(w.id)) {
+      void speakWithBrowserVoice(w, request);
+      return;
+    }
+    const player = new Audio("audio/" + encodeURIComponent(w.id) + ".mp3");
+    playback = player;
+    const fallback = () => {
+      if (request !== audioRequest || playback !== player) return;
       playback = null;
-      const voice = pashtoVoice();
-      if (!voice) {
-        audioStatus(
-          "⚠️ No Pashto audio available. To hear native-language synthesis, add the neural MP3 pack, or install a ps-AF Pashto voice in your browser/device. Other-language voices are intentionally not used.",
-        );
-        return;
-      }
-      const utterance = new SpeechSynthesisUtterance(w.ps);
-      utterance.lang = "ps-AF";
-      utterance.voice = voice;
-      utterance.rate = 0.82;
-      utterance.onerror = () =>
-        audioStatus(
-          "⚠️ The installed Pashto voice could not play this text. Try the MP3 audio pack.",
-        );
-      utterance.onstart = () =>
-        audioStatus(
-          "🔊 Speaking in browser Pashto voice: " +
-            voice.name +
-            " (regional accent not verified).",
-        );
-      window.speechSynthesis.speak(utterance);
+      void speakWithBrowserVoice(w, request);
     };
-    player.play().catch(() => {
-      if (playback === player && typeof player.onerror === "function")
-        player.onerror();
-    });
+    player.onplay = () => {
+      if (request === audioRequest)
+        audioStatus("🔊 Playing " + w.ps + " (Pashto recording).");
+    };
+    player.onerror = fallback;
+    player.play().catch(fallback);
   }
   $("teachSpeak").addEventListener("click", () => {
     if (session) speak(studyList()[session.cardIndex]);
