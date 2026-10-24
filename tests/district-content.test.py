@@ -4,7 +4,7 @@ import json
 import runpy
 import unittest
 
-validate = runpy.run_path('tools/embed_library.py')['validate']
+validate = runpy.run_path('tools/build.py')['validate']
 data = json.load(open('content/LIBRARY_LEXICON.json'))
 
 class ActivationTests(unittest.TestCase):

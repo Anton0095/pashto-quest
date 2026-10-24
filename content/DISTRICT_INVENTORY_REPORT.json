@@ -6,9 +6,9 @@
     "school": 90
   },
   "authoredExampleSceneCoverage": {
-    "house": 29,
-    "river": 35,
-    "market": 31,
+    "residential": 29,
+    "nature": 35,
+    "business": 31,
     "school": 36,
     "hills": 0,
     "bakery": 0,
@@ -44,7 +44,7 @@
   "sameHeadwordForEditorialReview": [],
   "scenes": [
     {
-      "sceneId": "house",
+      "sceneId": "residential",
       "districtId": "residential",
       "displayName": "Home",
       "participants": [
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "sceneId": "river",
+      "sceneId": "nature",
       "districtId": "nature",
       "displayName": "Lake",
       "participants": [
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "sceneId": "market",
+      "sceneId": "business",
       "districtId": "business",
       "displayName": "Market",
       "participants": [
@@ -452,9 +452,9 @@
         },
         {
           "day": 14,
-          "requested": 4,
+          "requested": 0,
           "assigned": 0,
-          "feasible": false,
+          "feasible": true,
           "perDistrict": {
             "residential": 0,
             "business": 0,
@@ -627,9 +627,9 @@
         },
         {
           "day": 14,
-          "requested": 8,
+          "requested": 0,
           "assigned": 0,
-          "feasible": false,
+          "feasible": true,
           "perDistrict": {
             "residential": 0,
             "business": 0,
@@ -802,9 +802,9 @@
         },
         {
           "day": 14,
-          "requested": 12,
+          "requested": 0,
           "assigned": 0,
-          "feasible": false,
+          "feasible": true,
           "perDistrict": {
             "residential": 0,
             "business": 0,
@@ -977,9 +977,9 @@
         },
         {
           "day": 14,
-          "requested": 16,
+          "requested": 0,
           "assigned": 0,
-          "feasible": false,
+          "feasible": true,
           "perDistrict": {
             "residential": 0,
             "business": 0,
@@ -1152,9 +1152,9 @@
         },
         {
           "day": 14,
-          "requested": 20,
+          "requested": 0,
           "assigned": 0,
-          "feasible": false,
+          "feasible": true,
           "perDistrict": {
             "residential": 0,
             "business": 0,
@@ -1327,9 +1327,9 @@
         },
         {
           "day": 14,
-          "requested": 24,
+          "requested": 0,
           "assigned": 0,
-          "feasible": false,
+          "feasible": true,
           "perDistrict": {
             "residential": 0,
             "business": 0,

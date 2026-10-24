@@ -1,5 +1,6 @@
 # Pashto Quest — Week 1 Development Handoff for Codex
 
+Current implementation/workflow: see README.md and docs/CLEANUP_REVIEW.md. Historical status notes below are curriculum context, not instructions to restore removed migrations or prototype code.
 **Specification status:** 23 October 2026  
 **Reference implementation:** `pashto_quest_days_1_5_narrative.html` (latest available supplied game build; verify against GitHub HEAD before changing source).  
 **Development scope:** Finish Days 6–7, rebalance character levels/XP, implement Week 1 completion/title, and preserve the established Days 1–5 gameplay. This is a *specification*, not a claim that these items are already in the HTML.

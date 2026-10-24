@@ -1,19 +1,15 @@
-# Agent instructions — Pashto Quest
+# Pashto Quest development
 
-Before changes, read `GAME_SPEC.md`, `CODEX_TASK.md`, `XP_MILESTONE_SPEC.md`, `WEEK1_CONTENT_BLUEPRINT.md`, and `ACCEPTANCE_TESTS.md`.
+Use the existing checkout and preserve the current fourteen-day curriculum. Read `README.md`, `docs/CLEANUP_REVIEW.md`, `GAME_SPEC.md`, `XP_MILESTONE_SPEC.md`, and `ACCEPTANCE_TESTS.md` and `docs/LIBRARY_DESIGN.md` before changing behaviour. Historical specifications can describe superseded compatibility requirements; this release intentionally supports save format 4 only.
 
-- **Source of truth:** current GitHub HEAD. `reference/` is an older working HTML snapshot. Diff and merge surgically; do not replace newer source indiscriminately.
-- **Scope:** implement the current authorized Week 2 task while preserving the completed Week 1 game and milestone behaviour. Preserve Days 1–5 behavior, all four explorable zones, accessible controls, mobile/offline gameplay, study/review and skip-to-challenge.
-- **Narrative:** forced opening lessons exist only on normal route. Skip is available after Day 1 tutorial and immediately on Days 2–7. Passing 0-visit challenges is valid and must grant sufficient XP to progress.
-- **Grammar:** first-week content is present tense. Use meaningful sentences and contextual speakers/recipients. Maintain Pashto RTL, English LTR, pronoun forms and appropriate respectful address. Do not claim local Laghmani dialect or voice verification without human review.
-- **Challenge:** Days 1–6: 15 questions, threshold 12; Day 7: 25, threshold 20. Avoid hard-coded challenge lengths in runtime. No XP/title award for failing, replaying or repeating migrated first-pass flags.
-- **Progression:** Level 10 and `New Resident` require a fresh-version Day 7 weekly examination pass, never a prior generic Day 7 clear. Save migration must preserve XP and completed Days 1–6.
-- **Quality:** add automated tests for XP checkpoints, skip-only path, migration, grading, 25-question completion and idempotent rewards; browser test at mobile and desktop widths. Report test results honestly and provide a short changelog.
-
-## Week 2 integration
-
-- Days 8–14 are authorized as a draft development preview using the completed Week 1 baseline. Preserve all original Week 1 cards, courses, milestones and migration.
-- `content/WEEK2_RUNTIME.json` is the editable Week 2 bank; run `python3 tools/embed_week2.py` to update the offline HTML and `--check` to verify synchronization.
-- Keep all unreviewed content clearly marked. Do not claim native Laghman review or create approved alternative answers without reviewer evidence. See `content/WEEK2_REVIEW.md`.
-- Week 2 has no approved level schedule: retain Level 10/New Resident, bank existing lesson/answer rewards, and do not apply Week 1 floors or first-pass bonuses to Days 8–14. The separate XP proposal is not runtime authorization.
-- Run `python3 patch/test_patch.py`, `node tests/week1.test.mjs`, and `node tests/week2.test.mjs`. New dialogue/construct dud banks must permit unused tiles; original Week 1 constructions retain their all-answer-tile rule.
+- Edit `src/` and `content/`; regenerate `index.html` with `python3 tools/build.py`. `python3 tools/build.py --check` verifies the entire release in one pass.
+- Canonical district IDs are `residential`, `nature`, `business`, `school`. The map labels remain Home/Lake/Market/School plus reference Library. Hills is a Nature scene, not a fifth quota.
+- `LibraryEngine` owns acquisition, form identity, SRS and planning. Do not introduce a mirrored card-stat system or old-save migrations. Incompatible saves require explanation and explicit reset.
+- Preserve all 14 authored days, teachers/relationships, grammar objectives, normal/skip routes, contextual dialogue and unused distractor tiles. Day 14 is consolidation with no compulsory new vocabulary.
+- Days 1–6/8–13 have 15 questions, pass 12; Days 7/14 have 25, pass 20. Week 1 graduation requires the actual current examination. Week 2 retains Level 10/New Resident without inventing a new schedule.
+- `src/progression.js` owns XP transactions and progression. Do not add parallel exam/graduation flags or XP mutations to UI handlers.
+- First submissions and reward identities are persistent. Replays must not farm XP; Library views/review never grant XP.
+- Preserve RTL and accessible keyboard/mobile controls, single-file offline playback and explicit audio fallback.
+- Keep candidates without complete Pashto inactive. Do not invent native review, Laghman pronunciation, translated sentences or approved variants. Refresh inventory with `node tools/district-inventory.mjs` after vocabulary/planner changes.
+- Run `python3 tools/verify.py` for comprehensive checks. Public UI tests deliberately avoid runtime bridges; matrix tests complement detailed type-specific UI regressions. Never label a quick-only run as full validation.
+- Use review branches/PRs; do not merge into main or force-push without explicit authorization.

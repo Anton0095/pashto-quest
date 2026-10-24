@@ -5,13 +5,11 @@
   "editorialWarning": "English lemma candidates only. pashtoDraft/romanisationDraft are null, no audio or inflected forms are invented. Do not count or serve these in player lessons until a reviewer approves a distinct Pashto lemma, forms and contextual examples.",
   "districtModel": {
     "schemaVersion": 1,
-    "sourcePlaceKeysStable": true,
-    "designRule": "Canonical districts classify vocabulary and future scenes; existing place keys remain storage/navigation aliases until a backward-compatible migration is implemented.",
+    "designRule": "Canonical residential, nature, business and school district IDs are used directly in content, navigation and save format 4. Library is a reference scene; Hills belongs to Nature.",
     "districts": [
       {
         "id": "residential",
         "label": "Residential district",
-        "legacyPlaceKey": "house",
         "playerMapLabel": "Home",
         "sceneFamilies": [
           "home",
@@ -26,7 +24,6 @@
       {
         "id": "nature",
         "label": "Nature district",
-        "legacyPlaceKey": "river",
         "playerMapLabel": "Lake",
         "sceneFamilies": [
           "lake",
@@ -44,7 +41,6 @@
       {
         "id": "business",
         "label": "Business district",
-        "legacyPlaceKey": "market",
         "playerMapLabel": "Market",
         "sceneFamilies": [
           "market",
@@ -61,7 +57,6 @@
       {
         "id": "school",
         "label": "School district",
-        "legacyPlaceKey": "school",
         "playerMapLabel": "School",
         "sceneFamilies": [
           "classroom",
@@ -75,9 +70,9 @@
       }
     ],
     "districtByLegacyPlaceKey": {
-      "house": "residential",
-      "river": "nature",
-      "market": "business",
+      "residential": "residential",
+      "nature": "nature",
+      "business": "business",
       "school": "school"
     }
   },
