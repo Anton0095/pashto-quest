@@ -21,7 +21,7 @@ def run(command):
     if result.returncode:print('\n'.join(result.stdout.splitlines()[-30:]),flush=True)
     return result.returncode==0
 
-commands=[['python3','tools/build.py','--check'],['node','tools/district-inventory.mjs','--check'],['node','tests/current-model.test.mjs'],['python3','tests/district-content.test.py']]
+commands=[['python3','tools/build.py','--check'],['node','tools/district-inventory.mjs','--check'],['node','tests/current-model.test.mjs'],['node','tests/audio.test.mjs'],['python3','tests/district-content.test.py']]
 commands += [['node','--check',str(path.relative_to(ROOT))] for directory,pattern in [('src','*.js'),('tools','*.mjs'),('tests','*.mjs')] for path in sorted((ROOT/directory).glob(pattern))]
 passed=True
 for command in commands:passed=run(command) and passed
