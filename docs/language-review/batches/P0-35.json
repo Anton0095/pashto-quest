@@ -992,7 +992,10 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "هغه د چا کڅوړه ده؟",
+          "targetPashto": "هغه د صالحې کڅوړه ده.",
+          "targetEnglish": "That is Saleha’s bag."
         },
         {
           "id": "w2-d12-reply-3:dud:0",
@@ -1001,7 +1004,10 @@
           "romanisation": null,
           "day": 12,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "څوک ډوډۍ پلوري؟",
+          "targetPashto": "ادریس ډوډۍ پلوري.",
+          "targetEnglish": "Edris sells bread."
         },
         {
           "id": "w2-d12-reply-6:prompt",
@@ -1088,7 +1094,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "څوک ډوډۍ پلوري؟",
+          "targetPashto": "ادریس ډوډۍ پلوري.",
+          "targetEnglish": "Edris sells bread."
         },
         {
           "id": "w2-d10-reply-6:answerPs",
@@ -3229,7 +3238,10 @@
           "romanisation": null,
           "day": 13,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "تاسې څنګه منډې وهئ؟",
+          "targetPashto": "موږ یو ځای منډې وهو.",
+          "targetEnglish": "We run together."
         },
         {
           "id": "hills-transform:option:2",
@@ -3901,7 +3913,10 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "مڼې چېرته دي؟",
+          "targetPashto": "مڼې په ټوکرۍ کې دي.",
+          "targetEnglish": "The apples are in the basket."
         },
         {
           "id": "w2-d12-reply-4:dud:2",
@@ -3910,7 +3925,10 @@
           "romanisation": null,
           "day": 12,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "کتابچه چېرته ده؟",
+          "targetPashto": "کتابچه په ټولګي کې ده.",
+          "targetEnglish": "The notebook is in the classroom."
         },
         {
           "id": "w2-d14-reply-7:reply",

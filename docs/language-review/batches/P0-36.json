@@ -135,7 +135,10 @@
           "romanisation": null,
           "day": 13,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "مینا څنګه ځي؟",
+          "targetPashto": "مینا ورو ورو ځي.",
+          "targetEnglish": "Mina walks slowly."
         },
         {
           "id": "w2-d13-river-2:dud:2",
@@ -144,7 +147,11 @@
           "romanisation": null,
           "day": 13,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "صالحه ژر منډې وهي.",
+          "targetEnglish": "Saleha runs quickly.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d13-river-5:dud:2",
@@ -153,7 +160,11 @@
           "romanisation": null,
           "day": 13,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "نن موږ اوبه څښو.",
+          "targetEnglish": "Today we drink water.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d13-school-3:dud:2",
@@ -162,7 +173,11 @@
           "romanisation": null,
           "day": 13,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "نن ته دا کتاب لولې.",
+          "targetEnglish": "Today you read this book.",
+          "speaker": "Ms Hameed",
+          "recipient": "Player"
         },
         {
           "id": "w2-d13-market-1:dud:2",
@@ -171,7 +186,11 @@
           "romanisation": null,
           "day": 13,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زه تل دلته ډوډۍ اخلم.",
+          "targetEnglish": "I always buy bread here.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d13-market-5:dud:2",
@@ -180,7 +199,11 @@
           "romanisation": null,
           "day": 13,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "نن دا ډوډۍ تازه ده.",
+          "targetEnglish": "Today this bread is fresh.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d13-house-4:dud:2",
@@ -189,7 +212,11 @@
           "romanisation": null,
           "day": 13,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "نن دروازه خلاصه ده.",
+          "targetEnglish": "Today the door is open.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d13-house-5:dud:2",
@@ -198,7 +225,11 @@
           "romanisation": null,
           "day": 13,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "ته تل په کور کې مرسته کوې.",
+          "targetEnglish": "You always help at home.",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player"
         },
         {
           "id": "w2-d14-reply-11:reply",
@@ -374,7 +405,10 @@
           "romanisation": null,
           "day": 13,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "ته څنګه ځې؟",
+          "targetPashto": "زه ورو ورو ځم.",
+          "targetEnglish": "I go slowly."
         },
         {
           "id": "w2-d14-reply-11:prompt",
@@ -395,7 +429,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "ته څنګه ځې؟",
+          "targetPashto": "زه ورو ورو ځم.",
+          "targetEnglish": "I go slowly."
         },
         {
           "id": "w2-d13-reply-1:promptPs",
@@ -2964,7 +3001,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کتابچه دلته ده.",
+          "targetEnglish": "The notebook is here.",
+          "speaker": "Player",
+          "recipient": "Mina"
         },
         {
           "id": "w2-d10-river-2:dud:2",
@@ -2973,7 +3014,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "مینا دلته ده.",
+          "targetEnglish": "Mina is here.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d10-market-1:dud:2",
@@ -2982,7 +3027,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "ټوکرۍ دلته ده.",
+          "targetEnglish": "The basket is here.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d10-market-5:dud:2",
@@ -2991,7 +3040,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه ټوکرۍ هلته ده.",
+          "targetEnglish": "That basket is over there.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d10-house-3:dud:2",
@@ -3000,7 +3053,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کړکۍ دلته ده.",
+          "targetEnglish": "The window is here.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d12-reply-4:reply",

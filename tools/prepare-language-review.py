@@ -183,6 +183,9 @@ def build():
                     d["day"],
                     d["opening"],
                     "content/WEEK2_RUNTIME.json duds",
+                    promptPashto=q["promptPs"],
+                    targetPashto=q["answerPs"],
+                    targetEnglish=q.get("answerEnglish"),
                 )
         for l in d["lessons"]:
             for c in l["cards"]:
@@ -195,6 +198,10 @@ def build():
                         d["day"],
                         l["location"],
                         "content/WEEK2_RUNTIME.json duds",
+                        targetPashto=c["pashto"],
+                        targetEnglish=c["english"],
+                        speaker=c.get("speaker"),
+                        recipient=c.get("recipient"),
                     )
     for a in runtime["assessments"]:
         for q in a["questions"]:

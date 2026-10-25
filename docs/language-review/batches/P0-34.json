@@ -2544,7 +2544,10 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا څه دی؟",
+          "targetPashto": "دا کتاب دی.",
+          "targetEnglish": "This is a book."
         },
         {
           "id": "w2-d8-reply-4:dud:2",
@@ -2553,7 +2556,10 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "کوم کتاب زوړ دی؟",
+          "targetPashto": "هغه کتاب زوړ دی.",
+          "targetEnglish": "That book is old."
         },
         {
           "id": "w2-d8-river-1:dud:2",
@@ -2562,7 +2568,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا اوبه سړې دي.",
+          "targetEnglish": "This water is cold.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d8-river-2:dud:1",
@@ -2571,7 +2581,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه سیند پلن دی.",
+          "targetEnglish": "That river is wide.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d8-river-3:dud:1",
@@ -2580,7 +2594,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا کب کوچنی دی.",
+          "targetEnglish": "This fish is small.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d8-market-4:dud:1",
@@ -2589,7 +2607,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه دوکان لوی دی.",
+          "targetEnglish": "That shop is big.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d8-market-5:dud:2",
@@ -2598,7 +2620,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زه هغه مڼه غواړم.",
+          "targetEnglish": "I want that apple.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d8-school-1:dud:1",
@@ -2607,7 +2633,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا کتاب نوی دی.",
+          "targetEnglish": "This book is new.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d8-school-2:dud:1",
@@ -2616,7 +2646,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه کتاب زوړ دی.",
+          "targetEnglish": "That book is old.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d8-school-3:dud:1",
@@ -2625,7 +2659,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا قلم نوی دی.",
+          "targetEnglish": "This pen is new.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d8-school-4:dud:1",
@@ -2634,7 +2672,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا ښوونځی لوی دی.",
+          "targetEnglish": "This school is big.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d8-school-5:dud:2",
@@ -2643,7 +2685,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه هغه کتاب لولي.",
+          "targetEnglish": "She reads that book.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d8-house-5:dud:2",
@@ -2652,7 +2698,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زه دا دروازه خلاصوم.",
+          "targetEnglish": "I open this door.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "model:9:2",
@@ -2703,7 +2753,10 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "کتاب چېرته دی؟",
+          "targetPashto": "کتاب پر مېز دی.",
+          "targetEnglish": "The book is on the table."
         },
         {
           "id": "w2-d10-reply-4:dud:1",
@@ -2712,7 +2765,10 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "قلم چېرته دی؟",
+          "targetPashto": "قلم هلته دی.",
+          "targetEnglish": "The pen is there."
         },
         {
           "id": "w2-d10-reply-6:prompt",
@@ -2745,7 +2801,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کب په سیند کې دی.",
+          "targetEnglish": "The fish is in the river.",
+          "speaker": "Player",
+          "recipient": "Mina"
         },
         {
           "id": "w2-d10-school-1:dud:2",
@@ -2754,7 +2814,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کتاب پر مېز دی.",
+          "targetEnglish": "The book is on the table.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d10-school-3:dud:2",
@@ -2763,7 +2827,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "قلم چېرته دی؟",
+          "targetEnglish": "Where is the pen?",
+          "speaker": "Ms Hameed",
+          "recipient": "Player"
         },
         {
           "id": "w2-d10-school-4:dud:2",
@@ -2772,7 +2840,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زده کوونکي دلته دي.",
+          "targetEnglish": "The students are here.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d10-market-3:dud:2",
@@ -2781,7 +2853,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دوکاندار په دوکان کې دی.",
+          "targetEnglish": "The grocer is at the shop.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d10-house-2:dud:2",
@@ -2790,7 +2866,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کتاب پر مېز دی.",
+          "targetEnglish": "The book is on the table.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d10-house-5:dud:2",
@@ -2799,7 +2879,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کتاب په دې کوټه کې دی.",
+          "targetEnglish": "The book is in this room.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d11-reply-2:prompt",
@@ -2937,7 +3021,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا څه دی؟",
+          "targetPashto": "دا کتاب دی.",
+          "targetEnglish": "This is a book."
         },
         {
           "id": "w2-d14-reply-2:dud:2",
@@ -2946,7 +3033,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "کوم کتاب زوړ دی؟",
+          "targetPashto": "هغه کتاب زوړ دی.",
+          "targetEnglish": "That book is old."
         },
         {
           "id": "w2-d14-reply-6:prompt",
@@ -2979,7 +3069,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "کتاب چېرته دی؟",
+          "targetPashto": "کتاب پر مېز دی.",
+          "targetEnglish": "The book is on the table."
         },
         {
           "id": "w2-d14-reply-9:prompt",
@@ -4203,7 +4296,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه سیند پلن دی.",
+          "targetEnglish": "That river is wide.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d8-river-3:dud:2",
@@ -4212,7 +4309,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا کب کوچنی دی.",
+          "targetEnglish": "This fish is small.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d8-river-4:dud:2",
@@ -4221,7 +4322,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه مرغۍ ونې ته نږدې ده.",
+          "targetEnglish": "That bird is near the tree.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d8-river-5:dud:2",
@@ -4230,7 +4335,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا تیږه د اوبو تر څنګ ده.",
+          "targetEnglish": "This stone is beside the water.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d8-market-1:dud:2",
@@ -4239,7 +4348,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا مڼه تازه ده.",
+          "targetEnglish": "This apple is fresh.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d8-market-2:dud:2",
@@ -4248,7 +4361,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه مڼه ګرانه ده.",
+          "targetEnglish": "That apple is expensive.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d8-market-3:dud:2",
@@ -4257,7 +4374,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا ډوډۍ د ماښامنۍ لپاره ده.",
+          "targetEnglish": "This bread is for dinner.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d8-market-4:dud:2",
@@ -4266,7 +4387,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه دوکان لوی دی.",
+          "targetEnglish": "That shop is big.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d8-school-1:dud:2",
@@ -4275,7 +4400,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا کتاب نوی دی.",
+          "targetEnglish": "This book is new.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d8-school-2:dud:2",
@@ -4284,7 +4413,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه کتاب زوړ دی.",
+          "targetEnglish": "That book is old.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d8-school-3:dud:2",
@@ -4293,7 +4426,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا قلم نوی دی.",
+          "targetEnglish": "This pen is new.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d8-school-4:dud:2",
@@ -4302,7 +4439,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا ښوونځی لوی دی.",
+          "targetEnglish": "This school is big.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d8-house-1:dud:2",
@@ -4311,7 +4452,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا دروازه خلاصه ده.",
+          "targetEnglish": "This door is open.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d8-house-2:dud:2",
@@ -4320,7 +4465,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه کړکۍ بنده ده.",
+          "targetEnglish": "That window is closed.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d8-house-3:dud:2",
@@ -4329,7 +4478,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا کوټه پاکه ده.",
+          "targetEnglish": "This room is clean.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d8-house-4:dud:2",
@@ -4338,7 +4491,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه څوکۍ کوچنۍ ده.",
+          "targetEnglish": "That chair is small.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "model:9:1",
@@ -4470,7 +4627,10 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتاب دی؟",
+          "targetPashto": "دا زما کتاب دی.",
+          "targetEnglish": "This is my book."
         },
         {
           "id": "w2-d11-reply-5:prompt",
@@ -4536,7 +4696,10 @@
           "romanisation": null,
           "day": 12,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتاب دی؟",
+          "targetPashto": "دا زما کتاب دی.",
+          "targetEnglish": "This is my book."
         },
         {
           "id": "model:14:1",
@@ -4578,7 +4741,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتاب دی؟",
+          "targetPashto": "دا زما کتاب دی.",
+          "targetEnglish": "This is my book."
         },
         {
           "id": "w2-d8-reply-3:answerPs",
@@ -5906,7 +6072,10 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا اوبه څنګه دي؟",
+          "targetPashto": "دا اوبه سړې دي.",
+          "targetEnglish": "This water is cold."
         },
         {
           "id": "w2-d8-reply-4:prompt",
@@ -5939,7 +6108,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا اوبه سړې دي.",
+          "targetEnglish": "This water is cold.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d8-river-4:dud:1",
@@ -5948,7 +6121,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه مرغۍ ونې ته نږدې ده.",
+          "targetEnglish": "That bird is near the tree.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d8-river-5:dud:1",
@@ -5957,7 +6134,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا تیږه د اوبو تر څنګ ده.",
+          "targetEnglish": "This stone is beside the water.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d8-market-1:dud:1",
@@ -5966,7 +6147,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا مڼه تازه ده.",
+          "targetEnglish": "This apple is fresh.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d8-market-2:dud:1",
@@ -5975,7 +6160,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه مڼه ګرانه ده.",
+          "targetEnglish": "That apple is expensive.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d8-market-3:dud:1",
@@ -5984,7 +6173,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا ډوډۍ د ماښامنۍ لپاره ده.",
+          "targetEnglish": "This bread is for dinner.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d8-market-5:dud:1",
@@ -5993,7 +6186,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زه هغه مڼه غواړم.",
+          "targetEnglish": "I want that apple.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d8-school-5:dud:1",
@@ -6002,7 +6199,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه هغه کتاب لولي.",
+          "targetEnglish": "She reads that book.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d8-house-1:dud:1",
@@ -6011,7 +6212,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا دروازه خلاصه ده.",
+          "targetEnglish": "This door is open.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d8-house-2:dud:1",
@@ -6020,7 +6225,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه کړکۍ بنده ده.",
+          "targetEnglish": "That window is closed.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d8-house-3:dud:1",
@@ -6029,7 +6238,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا کوټه پاکه ده.",
+          "targetEnglish": "This room is clean.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d8-house-4:dud:1",
@@ -6038,7 +6251,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه څوکۍ کوچنۍ ده.",
+          "targetEnglish": "That chair is small.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d8-house-5:dud:1",
@@ -6047,7 +6264,11 @@
           "romanisation": null,
           "day": 8,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زه دا دروازه خلاصوم.",
+          "targetEnglish": "I open this door.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "model:9:0",
@@ -6065,7 +6286,10 @@
           "romanisation": null,
           "day": 9,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا څه دي؟",
+          "targetPashto": "دا مڼې دي.",
+          "targetEnglish": "These are apples."
         },
         {
           "id": "w2-d9-reply-4:dud:1",
@@ -6074,7 +6298,10 @@
           "romanisation": null,
           "day": 9,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا کتابونه څنګه دي؟",
+          "targetPashto": "دا کتابونه نوي دي.",
+          "targetEnglish": "These books are new."
         },
         {
           "id": "w2-d9-market-3:dud:2",
@@ -6083,7 +6310,11 @@
           "romanisation": null,
           "day": 9,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه دوه مڼې اخلي.",
+          "targetEnglish": "He buys two apples.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d9-market-4:dud:2",
@@ -6092,7 +6323,11 @@
           "romanisation": null,
           "day": 9,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغوی درې ټوکرۍ وړي.",
+          "targetEnglish": "They carry three baskets.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d9-school-3:dud:2",
@@ -6101,7 +6336,11 @@
           "romanisation": null,
           "day": 9,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "موږ دوه کتابونه لولو.",
+          "targetEnglish": "We read two books.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d9-school-4:dud:2",
@@ -6110,7 +6349,11 @@
           "romanisation": null,
           "day": 9,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "په ټولګي کې درې زده کوونکي دي.",
+          "targetEnglish": "There are three students in the classroom.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d9-river-2:dud:2",
@@ -6119,7 +6362,11 @@
           "romanisation": null,
           "day": 9,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه دوه مرغان دي.",
+          "targetEnglish": "Those are two birds.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d9-river-3:dud:2",
@@ -6128,7 +6375,11 @@
           "romanisation": null,
           "day": 9,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "موږ درې کبان وینو.",
+          "targetEnglish": "We see three fish.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d9-house-5:dud:2",
@@ -6137,7 +6388,11 @@
           "romanisation": null,
           "day": 9,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "موږ دوه څوکۍ وینو.",
+          "targetEnglish": "We see two chairs.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "model:10:0",
@@ -6182,7 +6437,10 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "کتابچه چېرته ده؟",
+          "targetPashto": "کتابچه دلته ده.",
+          "targetEnglish": "The notebook is here."
         },
         {
           "id": "w2-d10-reply-2:prompt",
@@ -6215,7 +6473,10 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "مڼې چېرته دي؟",
+          "targetPashto": "مڼې په ټوکرۍ کې دي.",
+          "targetEnglish": "The apples are in the basket."
         },
         {
           "id": "w2-d10-reply-4:prompt",
@@ -6248,7 +6509,10 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "زده کوونکي چېرته دي؟",
+          "targetPashto": "زده کوونکي دلته دي.",
+          "targetEnglish": "The students are here."
         },
         {
           "id": "w2-d10-reply-6:dud:1",
@@ -6257,7 +6521,10 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "مینا چېرته ده؟",
+          "targetPashto": "مینا دلته ده.",
+          "targetEnglish": "Mina is here."
         },
         {
           "id": "w2-d10-river-1:dud:1",
@@ -6266,7 +6533,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کتابچه دلته ده.",
+          "targetEnglish": "The notebook is here.",
+          "speaker": "Player",
+          "recipient": "Mina"
         },
         {
           "id": "w2-d10-river-2:dud:1",
@@ -6275,7 +6546,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "مینا دلته ده.",
+          "targetEnglish": "Mina is here.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d10-river-3:dud:2",
@@ -6284,7 +6559,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "صالحه د جهیل تر څنګ ده.",
+          "targetEnglish": "Saleha is beside the lake.",
+          "speaker": "Player",
+          "recipient": "Mina"
         },
         {
           "id": "w2-d10-river-5:dud:2",
@@ -6293,7 +6572,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کتابچه چېرته ده؟",
+          "targetEnglish": "Where is the notebook?",
+          "speaker": "Mina",
+          "recipient": "Player"
         },
         {
           "id": "w2-d10-school-2:dud:2",
@@ -6302,7 +6585,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کتابچه په ټولګي کې ده.",
+          "targetEnglish": "The notebook is in the classroom.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d10-school-4:dud:1",
@@ -6311,7 +6598,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زده کوونکي دلته دي.",
+          "targetEnglish": "The students are here.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d10-school-5:dud:2",
@@ -6320,7 +6611,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "مینا ښوونځي ته ځي.",
+          "targetEnglish": "Mina goes to school.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d10-market-1:dud:1",
@@ -6329,7 +6624,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "ټوکرۍ دلته ده.",
+          "targetEnglish": "The basket is here.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d10-market-2:dud:2",
@@ -6338,7 +6637,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "مڼې په ټوکرۍ کې دي.",
+          "targetEnglish": "The apples are in the basket.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d10-market-4:dud:2",
@@ -6347,7 +6650,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کڅوړه چېرته ده؟",
+          "targetEnglish": "Where is the bag?",
+          "speaker": "Edris",
+          "recipient": "Player"
         },
         {
           "id": "w2-d10-market-5:dud:1",
@@ -6356,7 +6663,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه ټوکرۍ هلته ده.",
+          "targetEnglish": "That basket is over there.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d10-house-1:dud:2",
@@ -6365,7 +6676,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "څوکۍ د دروازې تر څنګ ده.",
+          "targetEnglish": "The chair is beside the door.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d10-house-3:dud:1",
@@ -6374,7 +6689,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کړکۍ دلته ده.",
+          "targetEnglish": "The window is here.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d10-house-4:dud:2",
@@ -6383,7 +6702,11 @@
           "romanisation": null,
           "day": 10,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کتابچه چېرته ده؟",
+          "targetEnglish": "Where is the notebook?",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player"
         },
         {
           "id": "model:11:0",
@@ -6461,7 +6784,10 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتابچه ده؟",
+          "targetPashto": "دا د مینا کتابچه ده.",
+          "targetEnglish": "This is Mina’s notebook."
         },
         {
           "id": "w2-d11-reply-3:dud:2",
@@ -6470,7 +6796,10 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "هغه د چا کڅوړه ده؟",
+          "targetPashto": "هغه د صالحې کڅوړه ده.",
+          "targetEnglish": "That is Saleha’s bag."
         },
         {
           "id": "w2-d11-reply-4:dud:2",
@@ -6479,7 +6808,10 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا څوکۍ ده؟",
+          "targetPashto": "دا ستاسې څوکۍ ده.",
+          "targetEnglish": "This is your chair, respectfully."
         },
         {
           "id": "w2-d11-reply-5:dud:2",
@@ -6488,7 +6820,10 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتابونه دي؟",
+          "targetPashto": "دا زموږ کتابونه دي.",
+          "targetEnglish": "These are our books."
         },
         {
           "id": "model:12:0",
@@ -6515,7 +6850,10 @@
           "romanisation": null,
           "day": 12,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "کتابچه چېرته ده؟",
+          "targetPashto": "کتابچه په ټولګي کې ده.",
+          "targetEnglish": "The notebook is in the classroom."
         },
         {
           "id": "w2-d12-reply-5:dud:2",
@@ -6524,7 +6862,10 @@
           "romanisation": null,
           "day": 12,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دلته څو کتابونه دي؟",
+          "targetPashto": "دلته درې کتابونه دي.",
+          "targetEnglish": "Three books are here."
         },
         {
           "id": "w2-d12-reply-6:dud:1",
@@ -6533,7 +6874,10 @@
           "romanisation": null,
           "day": 12,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "مینا چېرته ده؟",
+          "targetPashto": "مینا دلته ده.",
+          "targetEnglish": "Mina is here."
         },
         {
           "id": "w2-d12-reply-7:prompt",
@@ -6623,7 +6967,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا څه دي؟",
+          "targetPashto": "دا مڼې دي.",
+          "targetEnglish": "These are apples."
         },
         {
           "id": "w2-d14-reply-6:dud:1",
@@ -6632,7 +6979,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "کتابچه چېرته ده؟",
+          "targetPashto": "کتابچه دلته ده.",
+          "targetEnglish": "The notebook is here."
         },
         {
           "id": "w2-d14-reply-7:prompt",
@@ -6689,7 +7039,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتابچه ده؟",
+          "targetPashto": "دا د مینا کتابچه ده.",
+          "targetEnglish": "This is Mina’s notebook."
         },
         {
           "id": "w2-d8-reply-2:answerPs",
@@ -8532,7 +8885,10 @@
           "romanisation": null,
           "day": 9,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "تاسې څو کبان وینئ؟",
+          "targetPashto": "موږ درې کبان وینو.",
+          "targetEnglish": "We see three fish."
         },
         {
           "id": "w2-d10-reply-5:dud:2",
@@ -8541,7 +8897,10 @@
           "romanisation": null,
           "day": 10,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "زده کوونکي چېرته دي؟",
+          "targetPashto": "زده کوونکي دلته دي.",
+          "targetEnglish": "The students are here."
         },
         {
           "id": "w2-d11-reply-6:reply",
@@ -8616,7 +8975,10 @@
           "romanisation": null,
           "day": 13,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "تاسې څنګه منډې وهئ؟",
+          "targetPashto": "موږ یو ځای منډې وهو.",
+          "targetEnglish": "We run together."
         },
         {
           "id": "w2-d13-reply-3:reply",
@@ -8637,7 +8999,10 @@
           "romanisation": null,
           "day": 13,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "تاسې نن څه څښئ؟",
+          "targetPashto": "نن موږ اوبه څښو.",
+          "targetEnglish": "Today we drink water."
         },
         {
           "id": "w2-d13-reply-8:dud:0",
@@ -8646,7 +9011,10 @@
           "romanisation": null,
           "day": 13,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "هغوی څنګه کار کوي؟",
+          "targetPashto": "هغوی یو ځای کار کوي.",
+          "targetEnglish": "They work together."
         },
         {
           "id": "model:14:4",
@@ -9463,7 +9831,10 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتاب دی؟",
+          "targetPashto": "دا زما کتاب دی.",
+          "targetEnglish": "This is my book."
         },
         {
           "id": "w2-d11-reply-4:dud:1",
@@ -9472,7 +9843,10 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا څوکۍ ده؟",
+          "targetPashto": "دا ستاسې څوکۍ ده.",
+          "targetEnglish": "This is your chair, respectfully."
         },
         {
           "id": "w2-d11-house-1:dud:0",
@@ -9481,7 +9855,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا زما کور دی.",
+          "targetEnglish": "This is my house.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d11-house-2:dud:1",
@@ -9490,7 +9868,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا ستاسې څوکۍ ده.",
+          "targetEnglish": "This is your chair.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d11-house-3:dud:1",
@@ -9499,7 +9881,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه زموږ کوټه ده.",
+          "targetEnglish": "That is our room.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d11-house-4:dud:1",
@@ -9508,7 +9894,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا د محمد جان کتاب دی.",
+          "targetEnglish": "This is Muhammad Jan’s book.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d11-house-5:dud:1",
@@ -9517,7 +9907,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زموږ دروازه خلاصه ده.",
+          "targetEnglish": "Our door is open.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d11-school-1:dud:1",
@@ -9526,7 +9920,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا د مینا کتابچه ده.",
+          "targetEnglish": "This is Mina’s notebook.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d11-school-2:dud:1",
@@ -9535,7 +9933,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه د صالحې قلم دی.",
+          "targetEnglish": "That is Saleha’s pen.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d11-school-3:dud:1",
@@ -9544,7 +9946,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا زموږ کتابونه دي.",
+          "targetEnglish": "These are our books.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d11-school-4:dud:1",
@@ -9553,7 +9959,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "ستاسې کتابچه پر مېز ده.",
+          "targetEnglish": "Your notebook is on the table.",
+          "speaker": "Ms Hameed",
+          "recipient": "Player"
         },
         {
           "id": "w2-d11-school-5:dud:1",
@@ -9562,7 +9972,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا د صالحې کتاب دی.",
+          "targetEnglish": "This is Saleha’s book.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d11-market-1:dud:1",
@@ -9571,7 +9985,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا د ادریس ټوکرۍ ده.",
+          "targetEnglish": "This is Edris’s basket.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d11-market-2:dud:0",
@@ -9580,7 +9998,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه زما کڅوړه ده.",
+          "targetEnglish": "That is my bag.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d11-market-3:dud:1",
@@ -9589,7 +10011,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا زموږ مڼې دي.",
+          "targetEnglish": "These are our apples.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d11-market-4:dud:1",
@@ -9598,7 +10024,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه د ادریس دوکان دی.",
+          "targetEnglish": "That is Edris’s shop.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d11-market-5:dud:1",
@@ -9607,7 +10037,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زه خپله ټوکرۍ وړم.",
+          "targetEnglish": "I carry my basket.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d11-river-1:dud:1",
@@ -9616,7 +10050,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا د مینا کتاب دی.",
+          "targetEnglish": "This is Mina’s book.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d11-river-2:dud:1",
@@ -9625,7 +10063,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه د صالحې کڅوړه ده.",
+          "targetEnglish": "That is Saleha’s bag.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d11-river-3:dud:1",
@@ -9634,7 +10076,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زموږ اوبه سړې دي.",
+          "targetEnglish": "Our water is cold.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d11-river-4:dud:1",
@@ -9643,7 +10089,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا ستاسې تیږې دي.",
+          "targetEnglish": "These are your stones.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d11-river-5:dud:1",
@@ -9652,7 +10102,11 @@
           "romanisation": null,
           "day": 11,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زه زموږ ملګري وینم.",
+          "targetEnglish": "I see our friends.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d12-reply-7:dud:0",
@@ -9661,7 +10115,10 @@
           "romanisation": null,
           "day": 12,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتاب دی؟",
+          "targetPashto": "دا زما کتاب دی.",
+          "targetEnglish": "This is my book."
         },
         {
           "id": "w2-d14-reply-8:dud:0",
@@ -9670,7 +10127,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتاب دی؟",
+          "targetPashto": "دا زما کتاب دی.",
+          "targetEnglish": "This is my book."
         },
         {
           "id": "w2-d14-house-1:dud:0",
@@ -9679,7 +10139,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا زما کتاب دی.",
+          "targetEnglish": "This is my book.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d14-house-2:dud:1",
@@ -9688,7 +10152,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "ستاسې کتاب پر هغې څوکۍ دی.",
+          "targetEnglish": "Your book is on that chair.",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player"
         },
         {
           "id": "w2-d14-house-3:dud:1",
@@ -9697,7 +10165,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کومه دروازه خلاصه ده؟",
+          "targetEnglish": "Which door is open?",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player"
         },
         {
           "id": "w2-d14-house-4:dud:1",
@@ -9706,7 +10178,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "نن موږ دا کوټې پاکوو.",
+          "targetEnglish": "Today we clean these rooms.",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan"
         },
         {
           "id": "w2-d14-house-5:dud:1",
@@ -9715,7 +10191,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "د محمد جان کتابچه چېرته ده؟",
+          "targetEnglish": "Where is Muhammad Jan’s notebook?",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player"
         },
         {
           "id": "w2-d14-market-1:dud:1",
@@ -9724,7 +10204,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا مڼې تازه دي.",
+          "targetEnglish": "These apples are fresh.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d14-market-2:dud:1",
@@ -9733,7 +10217,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زه درې مڼې اخلم.",
+          "targetEnglish": "I buy three apples.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d14-market-3:dud:1",
@@ -9742,7 +10230,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کومه ټوکرۍ د ادریس ده؟",
+          "targetEnglish": "Which basket belongs to Edris?",
+          "speaker": "Edris",
+          "recipient": "Player"
         },
         {
           "id": "w2-d14-market-4:dud:1",
@@ -9751,7 +10243,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه خلک یو ځای ډوډۍ وړي.",
+          "targetEnglish": "Those people carry bread together.",
+          "speaker": "Player",
+          "recipient": "Edris"
         },
         {
           "id": "w2-d14-market-5:dud:1",
@@ -9760,7 +10256,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "business",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دلته څو کڅوړې دي؟",
+          "targetEnglish": "How many bags are here?",
+          "speaker": "Edris",
+          "recipient": "Player"
         },
         {
           "id": "w2-d14-river-1:dud:1",
@@ -9769,7 +10269,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "مینا ورو ورو ځي.",
+          "targetEnglish": "Mina walks slowly.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d14-river-2:dud:1",
@@ -9778,7 +10282,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه مرغان سیند ته نږدې دي.",
+          "targetEnglish": "Those birds are near the river.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d14-river-3:dud:1",
@@ -9787,7 +10295,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "د صالحې کڅوړه چېرته ده؟",
+          "targetEnglish": "Where is Saleha’s bag?",
+          "speaker": "Saleha",
+          "recipient": "Player"
         },
         {
           "id": "w2-d14-river-4:dud:1",
@@ -9796,7 +10308,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "موږ دا کبان وینو.",
+          "targetEnglish": "We see these fish.",
+          "speaker": "Player",
+          "recipient": "Saleha"
         },
         {
           "id": "w2-d14-river-5:dud:1",
@@ -9805,7 +10321,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "څوک ژر منډې وهي؟",
+          "targetEnglish": "Who runs quickly?",
+          "speaker": "Saleha",
+          "recipient": "Player"
         },
         {
           "id": "w2-d14-school-1:dud:1",
@@ -9814,7 +10334,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "دا کتابونه نوي دي.",
+          "targetEnglish": "These books are new.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d14-school-2:dud:0",
@@ -9823,7 +10347,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "هغه کتابچه زما ده.",
+          "targetEnglish": "That notebook is mine.",
+          "speaker": "Player",
+          "recipient": "Ms Hameed"
         },
         {
           "id": "w2-d14-school-3:dud:1",
@@ -9832,7 +10360,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "څوک هره ورځ لولي؟",
+          "targetEnglish": "Who reads every day?",
+          "speaker": "Ms Hameed",
+          "recipient": "Player"
         },
         {
           "id": "w2-d14-school-4:dud:1",
@@ -9841,7 +10373,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "زده کوونکي چېرته دي؟",
+          "targetEnglish": "Where are the students?",
+          "speaker": "Ms Hameed",
+          "recipient": "Player"
         },
         {
           "id": "w2-d14-school-5:dud:1",
@@ -9850,7 +10386,11 @@
           "romanisation": null,
           "day": 14,
           "scene": "school",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "targetPashto": "کوم کتاب د مینا دی؟",
+          "targetEnglish": "Which book belongs to Mina?",
+          "speaker": "Ms Hameed",
+          "recipient": "Player"
         },
         {
           "id": "literal:content.js:270",

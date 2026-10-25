@@ -537,7 +537,10 @@
           "romanisation": null,
           "day": 11,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتابچه ده؟",
+          "targetPashto": "دا د مینا کتابچه ده.",
+          "targetEnglish": "This is Mina’s notebook."
         },
         {
           "id": "w2-d12-reply-3:reply",
@@ -582,7 +585,10 @@
           "romanisation": null,
           "day": 14,
           "scene": "residential",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا د چا کتابچه ده؟",
+          "targetPashto": "دا د مینا کتابچه ده.",
+          "targetEnglish": "This is Mina’s notebook."
         },
         {
           "id": "w2-d14-reply-10:reply",
@@ -4375,7 +4381,10 @@
           "romanisation": null,
           "day": 8,
           "scene": "nature",
-          "source": "content/WEEK2_RUNTIME.json duds"
+          "source": "content/WEEK2_RUNTIME.json duds",
+          "promptPashto": "دا اوبه څنګه دي؟",
+          "targetPashto": "دا اوبه سړې دي.",
+          "targetEnglish": "This water is cold."
         }
       ],
       "existing": {
