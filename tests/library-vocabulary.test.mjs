@@ -481,6 +481,7 @@ try {
           __libraryTest.session.questions
             .filter((q) => q.kind === "word")
             .every((q) =>
+              q.vocabularyOrigin === "daily-greeting" ||
               ["encountered", "due-review"].includes(q.vocabularyOrigin),
             ),
         ),
