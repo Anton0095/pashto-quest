@@ -43,6 +43,12 @@ node tools/district-inventory.mjs --check
 
 Browser coverage includes public-UI-only checks at 1280px/375px, detailed Week 1/2 and Library flows, and fourteen complete normal/skip curriculum profiles at 0/4/8/12/16/20/24 assigned lemmas. See [current test evidence](docs/CURRICULUM_TEST_RESULTS.md) and [historical cleanup findings](docs/CLEANUP_REVIEW.md).
 
+## Greeting-first lessons and challenges
+
+Every active, non-optional daily greeting is taught inside the normal lesson sequence: it is the **first study card** at each of the four locations, with Pashto text, romanisation, audio and meaning. A location-specific approved expression takes priority; otherwise all locations repeat the day's active opening expression. The separate narrative panel must not pre-teach or acquire it. An opening grammar workshop follows the greeting when applicable, then scheduled vocabulary and sentences.
+
+An active greeting is the **first question** of its day's challenge. Additional approved location expressions can take subsequent question slots. These replace existing vocabulary questions: total questions, pass thresholds and lexical-lemma quota are unchanged. A greeting encountered for the first time by skipping a day is flagged *Not previously studied* before its answer; normal SRS recognition records the reply, but fixed expressions earn no XP. Untranslated/pending expressions stay inactive. As of this version only Day 1's Welcome and Day 2's Good morning are enabled as provisional Afghan Pashto expressions, pending local review.
+
 ## Language and capacity
 
 The 127 existing draft lemma records contain **99 district lemmas and 28 universal lemmas**. Exactly 301 of the original 360 untranslated candidates are selected as pending additions to a balanced **400-lemma target**; none is activated. Pace settings work below 20 from Day 1, and the maximum Day 1 setting assigns six distinct nouns/adjectives per district. Action verbs begin on Day 2. Day 14 schedules zero compulsory new words. The current pool cannot sustain 24/day through Days 1–13: the minimum raw shortfall is 213 lemmas, before incidental encounters. Shortages are explicit.
