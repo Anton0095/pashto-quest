@@ -71,7 +71,7 @@ function renderLessonExpression(day, location, mode) {
   if (!root) {
     root = libraryNode("div");
     root.id = "lessonExpression";
-    $("guideMessage").after(root);
+    $("teachPanel").before(root);
   }
   root.replaceChildren();
   if (mode !== "standard") return;
