@@ -1,19 +1,17 @@
-# Pashto Quest development
+# Codex and ChatGPT project instructions
 
-Use the existing checkout and preserve the current fourteen-day curriculum. Read `README.md`, `docs/CLEANUP_REVIEW.md`, `GAME_SPEC.md`, `XP_MILESTONE_SPEC.md`, and `ACCEPTANCE_TESTS.md` and `docs/LIBRARY_DESIGN.md` and `docs/CURRICULUM_EXPANSION.md` before changing behaviour. Historical specifications can describe superseded compatibility requirements; this release intentionally supports save format 4 only.
+Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CURRICULUM.md` for lessons/characters/vocabulary, `LANGUAGE_REVIEW.md` for Pashto/audio, and `tests/README.md` for verification **only when relevant**. `docs/reference/` contains historical editorial plans, not active instructions. Inspect current source before trusting prose.
 
-- Edit `src/` and `content/`; regenerate `index.html` with `python3 tools/build.py`. `python3 tools/build.py --check` verifies the entire release in one pass.
-- Canonical district IDs are `residential`, `nature`, `business`, `school`. The map labels remain Home/Lake/Market/School plus reference Library. Hills is a Nature scene, not a fifth quota.
-- `LibraryEngine` owns acquisition, form identity, SRS and planning. Do not introduce a mirrored card-stat system or old-save migrations. Incompatible saves require explanation and explicit reset.
-- Preserve all 14 authored days, teachers/relationships, grammar objectives, normal/skip routes, contextual dialogue and unused distractor tiles. Day 14 is consolidation with no compulsory new vocabulary.
-- Days 1–6/8–13 have 15 questions, pass 12; Days 7/14 have 25, pass 20. Week 1 graduation requires the actual current examination. Week 2 retains Level 10/New Resident without inventing a new schedule.
-- `src/progression.js` owns XP transactions and progression. Do not add parallel exam/graduation flags or XP mutations to UI handlers.
-- First submissions and reward identities are persistent. Replays must not farm XP; Library views/review never grant XP.
-- Preserve RTL and accessible keyboard/mobile controls, single-file offline playback and explicit audio fallback.
-- Keep candidates without complete Pashto inactive. Do not invent native review, Laghman pronunciation, translated sentences or approved variants. Refresh inventory with `node tools/district-inventory.mjs` after vocabulary/planner changes.
-- Run `python3 tools/verify.py` for comprehensive checks. Public UI tests deliberately avoid runtime bridges; matrix tests complement detailed type-specific UI regressions. Never label a quick-only run as full validation.
-- Use review branches/PRs; do not merge into main or force-push without explicit authorization.
+## Single sources of authority
+- Edit `src/` and playable `content/*.json`, never generated `index.html` directly. Regenerate with `python3 tools/build.py`.
+- `src/library-engine.js`: lemma/form identity, acquisition, spaced repetition and four-district planning.
+- `src/progression.js`: current save factory, XP, results, milestones and reward identity.
+- Four district keys: `residential`, `nature`, `business`, `school`. Library is reference-only; Hills is a Nature scene.
+- Preserve 14 authored days, characters, normal/skip paths and current learning states. Day 1 excludes lexical action verbs; Day 14 has zero compulsory new lemmas.
+- Only **save schema 4** is supported. Do not add old-format migration/backfill/adapters or silent save resets. Unsupported/corrupt saves remain untouched until explicit user reset.
+- Do not add duplicate SRS/XP stores, replay-farmable rewards, or reveal unseen vocabulary's English meaning before answer submission.
+- Inactive language candidates and pending expressions must remain inactive until documented review. No invented native Laghman approval, pronunciation or audio recordings.
+- Preserve mobile/RTL interaction and candid audio fallback. Mocked browser testing is not physical-device verification.
 
-- Preserve the inherited Windows audio restoration: one MP3-first player, Pashto-device voice second, delayed voice detection and explicit warned fallback. New expressions must use that player and file-safe stable audio IDs.
-- Day 1 teaches descriptions, not lexical actions; apply the LibraryEngine day guard to planning, exposure, review and assessment. Universal words have stable lemma/form history but never consume district quotas.
-- Only the two exact user-supplied Pashto expressions are provisionally active. Other expression translations require documented review. English narrative placeholders are not acquired Pashto.
+## Change process
+Use a review branch; do not merge or force-push without explicit authorisation. Rebuild and run `python3 tools/verify.py` (full browser-inclusive suite); `--quick` is **not** full. For vocabulary/planner edits refresh `node tools/district-inventory.mjs`. Report changed files, actual tests and limitations, and the PR link. Record task-specific handoffs in PRs, not new root-level Markdown files.
