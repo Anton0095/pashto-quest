@@ -10,14 +10,14 @@ try { ({ chromium } = require("playwright")); }
 catch { ({ chromium } = require("/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright")); }
 const narrative = JSON.parse(readFileSync("content/NARRATIVE_EXPRESSIONS.json", "utf8"));
 const hook = `window.__narrative = {
-  get progress(){return progress}, get session(){return session},
-  data:LIBRARY_DATA, E:LibraryEngine, begin, startWorld,
-  selectChallenge, libraryLessonPool, save, afterStudy, answerChallenge,
+  get progress(){return state.progress}, get session(){return state.session},
+  data:content.LIBRARY_DATA, E:LibraryEngine, begin:lessons.begin, startWorld:world.startWorld,
+  selectChallenge:questions.selectChallenge, libraryLessonPool:learning.libraryLessonPool, save:storage.save, afterStudy:lessons.afterStudy, answerChallenge:challenge.answerChallenge,
   fixture(day, pace=20) {
-    progress=fresh(); progress.tutorialDone=true;
-    progress.library.requestedDailyTarget=pace;
-    for(let d=1;d<day;d++) completeChallengeOnce(progress,d,getChallengeSpec(d).passCount);
-    selectedLoop=day; session=null; save(); startWorld();
+    state.progress=progression.fresh(); state.progress.tutorialDone=true;
+    state.progress.library.requestedDailyTarget=pace;
+    for(let d=1;d<day;d++) progression.completeChallengeOnce(state.progress,d,progression.getChallengeSpec(d).passCount);
+    state.day=day; state.session=null; storage.save(); world.startWorld();
   }
 };`;
 const html = readFileSync("index.html","utf8").replace("// @TEST_HOOK",hook);

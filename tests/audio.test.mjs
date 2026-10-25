@@ -2,11 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 
-const source = readFileSync(new URL('../src/app.js', import.meta.url), 'utf8');
-const start = source.indexOf('  // Pronunciation:');
-const end = source.indexOf('  $("teachSpeak").addEventListener', start);
-assert(start >= 0 && end > start, 'audio implementation not found');
-const audioSource = source.slice(start, end);
+const source = readFileSync(new URL('../src/audio.js', import.meta.url), 'utf8');
 const phrases = JSON.parse(readFileSync('content/NARRATIVE_EXPRESSIONS.json', 'utf8')).expressions.filter((p) => p.active);
 
 const tick = () => new Promise((resolve) => setImmediate(resolve));
@@ -42,7 +38,7 @@ function fixture(audioIds = [], initialVoices = [], startSpeech = true) {
     $, document: { querySelectorAll: () => [] }, window, SpeechSynthesisUtterance: Utterance, Audio,
     setTimeout, clearTimeout,
   };
-  runInNewContext(audioSource + '\nthis.audioApi = { speak, pashtoVoice, stopAudio };', sandbox);
+  runInNewContext(source + '\nthis.audioApi = createAudio({wordById,BUNDLED_AUDIO_IDS,$,document,window,Audio,SpeechSynthesisUtterance});', sandbox);
   return {
     api: sandbox.audioApi, spoken, statuses, players,
     setVoices(next) { voices = next; listeners.get('voiceschanged')?.(); },

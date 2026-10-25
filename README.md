@@ -29,16 +29,23 @@ node tools/district-inventory.mjs --check
 
 | Source | Owns |
 |---|---|
-| `src/app.html`, `src/app.css`, `src/app.js` | UI shell, styles, gameplay, narrative screens, questions and save I/O |
-| `src/progression.js` | Save factory/version, challenge outcomes, XP and titles |
-| `src/library-engine.js` | Lemma/form identity, exposure, SRS and district scheduling |
-| `src/library-ui.js` | Vocabulary Bank, Grammar Journal, pace settings and lesson/challenge integration |
-| `src/narrative-ui.js` | Contextual expression presentation |
-| `content/WEEK1_RUNTIME.json`, `content/WEEK2_RUNTIME.json` | Authored fourteen-day lesson content |
-| `content/LIBRARY_LEXICON.json` | Lexical records, forms, POS and source mappings |
-| `content/NARRATIVE_EXPRESSIONS.json` | Active/pending contextual phrase identities |
+| `src/app.js` | Browser composition, shared runtime state and event wiring |
+| `src/content.js`, `src/assessment-content.js`, `src/grammar-content.js` | Catalog adapters and existing authored narrative/question/grammar blueprints |
+| `src/library-engine.js` | Sole lemma/form identity, acquisition, SRS and district planner |
+| `src/progression.js` | Save factory/version, XP/reward identity, results, milestones and access rules |
+| `src/question-engine.js` | Shared answer evaluation, approved normalisation and indexed tiles |
+| `src/learning.js`, `src/questions.js` | Practice transactions, lesson pools, frozen assessments and answer choices |
+| `src/storage.js` | Current-save validation, local storage and active challenge snapshots |
+| `src/ui.js`, `src/world-ui.js`, `src/lesson-ui.js`, `src/challenge-ui.js` | DOM/RTL shell and world, lesson and assessment presentation |
+| `src/tutorial-ui.js`, `src/grammar-ui.js`, `src/library-ui.js`, `src/narrative-ui.js` | Onboarding, workshops and reference/expression presentation |
+| `src/audio.js` | Common MP3/device-voice player and cancellation |
+| `src/app.html`, `src/app.css` | UI shell and styles |
+| `content/WEEK1_RUNTIME.json`, `content/WEEK2_RUNTIME.json` | Authoritative exact fourteen-day authored learning content |
+| `content/LIBRARY_LEXICON.json`, `content/NARRATIVE_EXPRESSIONS.json` | Lexical forms/mappings and active/pending expression identities |
 | `content/DISTRICT_VOCABULARY_CANDIDATES.json`, `content/UNIVERSAL_TEACHING_TARGETS.json` | Inactive editorial candidates, not playable translations |
-| `tools/build.py`, `tools/verify.py` | Release assembly/validation and verification |
+| `tools/build.py`, `tools/verify.py` | Offline assembly/validation and complete verification |
+
+Modules expose small factory APIs with explicit state/service dependencies and screen-transition callbacks. UI submits answers through `learning.js`; it does not maintain a second score, XP or SRS store. `tools/build.py` assembles the modules in explicit dependency order inside one private script closure. The generated game needs no module loader, framework, package manager or network requests for code/curriculum. Runtime dependencies remain browser DOM, local storage and optional Audio/Web Speech APIs; development uses Python and Node/Playwright/Chromium.
 
 `content/WEEK2_LESSON_DATA.json` retains the English curricular source/semantic targets; `tests/curriculum-contract.json` preserves authored-content regression fixtures. `content/DISTRICT_INVENTORY_REPORT.json` is an inventory output. Do not delete data files just because some names overlap.
 
@@ -59,4 +66,4 @@ The current lexicon is short of the high-pace target: 99 district draft lemmas +
 - [`tests/README.md`](tests/README.md): verification coverage, requirements and limitations.
 - [`docs/reference/`](docs/reference/): historical Week 1/2 authoring blueprints retained only for editorial context; current JSON/runtime and active specifications take precedence.
 
-Save format **4 only** is supported. There is no old-save migration. An incompatible or corrupt save stays untouched until the player explicitly resets it. Current-format progress, SRS and active attempts are preserved.
+Save format **5 only** is supported. There is no old-save migration. An incompatible or corrupt save stays untouched until the player explicitly resets it. New format-5 progress, SRS and active attempts save and resume normally, including placed tiles and first-answer locks. Earlier formats are intentionally unsupported; there are no migration or content-repair adapters.

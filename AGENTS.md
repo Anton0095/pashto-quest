@@ -5,10 +5,12 @@ Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CUR
 ## Single sources of authority
 - Edit `src/` and playable `content/*.json`, never generated `index.html` directly. Regenerate with `python3 tools/build.py`.
 - `src/library-engine.js`: lemma/form identity, acquisition, spaced repetition and four-district planning.
-- `src/progression.js`: current save factory, XP, results, milestones and reward identity.
+- `src/progression.js`: current save factory, XP, results, milestones, reward identity and access rules.
+- `src/question-engine.js`: answer evaluation and indexed tiles; `src/learning.js` applies practice transactions. UI renders outcomes.
+- `src/storage.js`: save validation/I/O and active assessment snapshots. `src/app.js` only composes services and wires controls. Keep authored blueprints in content modules/JSON, apart from renderers.
 - Four district keys: `residential`, `nature`, `business`, `school`. Library is reference-only; Hills is a Nature scene.
 - Preserve 14 authored days, characters, normal/skip paths and current learning states. Day 1 excludes lexical action verbs; Day 14 has zero compulsory new lemmas.
-- Only **save schema 4** is supported. Do not add old-format migration/backfill/adapters or silent save resets. Unsupported/corrupt saves remain untouched until explicit user reset.
+- Only **save schema 5** is supported. Do not add old-format migration/backfill/content-repair adapters or silent save resets. Unsupported/corrupt saves remain untouched until explicit user reset.
 - Do not add duplicate SRS/XP stores, replay-farmable rewards, or reveal unseen vocabulary's English meaning before answer submission.
 - Inactive language candidates and pending expressions must remain inactive until documented review. No invented native Laghman approval, pronunciation or audio recordings.
 - Preserve mobile/RTL interaction and candid audio fallback. Mocked browser testing is not physical-device verification.

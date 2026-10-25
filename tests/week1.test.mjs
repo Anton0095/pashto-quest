@@ -1,6 +1,6 @@
+import {models} from "./model-fixture.mjs";
 import { readFileSync, mkdirSync } from "node:fs";
 import assert from "node:assert/strict";
-import vm from "node:vm";
 import http from "node:http";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
@@ -17,20 +17,7 @@ const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const fixture = JSON.parse(
   readFileSync(new URL("acceptance_fixtures.json", import.meta.url), "utf8"),
 );
-const helpers = readFileSync(
-  new URL("../src/progression.js", import.meta.url),
-  "utf8",
-);
-const engine = readFileSync(
-  new URL("../src/library-engine.js", import.meta.url),
-  "utf8",
-);
-const api = vm.runInNewContext(
-  engine +
-    "\n" +
-    helpers +
-    ";({fresh,characterStatus,highestClearedDay,completeChallengeOnce,getChallengeSpec})",
-);
+const api = models();
 let checks = 0;
 function check(name, fn) {
   fn();
@@ -78,10 +65,10 @@ check("Current save reload retains current XP and gate flags", () => {
   p.xp = 2500;
   const restored = JSON.parse(JSON.stringify(p));
   assert.equal(api.characterStatus(restored).level, 1);
-  assert.equal(restored.saveSchemaVersion, 4);
+  assert.equal(restored.saveSchemaVersion, 5);
 });
 // Tests expose the lexical runtime only in the HTTP response, never in the app file.
-const hook = `window.__test={get progress(){return progress},get session(){return session},get selectedLoop(){return selectedLoop},words,wordById,courses,zoneKeys,selectChallenge,normalizeAnswer,characterStatus,allowed,passedChallenge,placeAccessible,dayGuidance,teacherFor,startWorld,showChallengeQuestion,save,load,setProgress(p){progress={...fresh(),...p,saveSchemaVersion:4,library:p.library||LibraryEngine.state()};save();hud();startWorld()},select(day){selectedLoop=day;startWorld()}};`;
+const hook = `window.__test={get progress(){return state.progress},get session(){return state.session},get selectedLoop(){return state.day},words:content.words,wordById:content.wordById,courses:content.courses,zoneKeys:content.zoneKeys,selectChallenge:questions.selectChallenge,normalizeAnswer:QuestionEngine.normalizeAnswer,characterStatus:progression.characterStatus,allowed:learning.allowed,passedChallenge:learning.passedChallenge,placeAccessible:learning.placeAccessible,dayGuidance:world.dayGuidance,teacherFor:content.teacherFor,startWorld:world.startWorld,showChallengeQuestion:challenge.showChallengeQuestion,save:storage.save,load:storage.load,setProgress(p){state.progress={...progression.fresh(),...p,saveSchemaVersion:5,library:p.library||LibraryEngine.state()};storage.save();ui.hud();world.startWorld()},select(day){state.day=day;world.startWorld()}};`;
 const testHtml = html.replace("// @TEST_HOOK", hook);
 const server = http.createServer((req, res) => {
   if (req.url.startsWith("/audio/")) {

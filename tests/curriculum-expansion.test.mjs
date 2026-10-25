@@ -48,11 +48,10 @@ const record=JSON.stringify(p.library.acquired[u.lemmaId]);
 E.encounter(p,data,uref,{day:3,source:'lesson',location:'business'});
 assert.equal(JSON.stringify(p.library.acquired[u.lemmaId]),record);
 assert.equal(E.summary(p,data).encountered,1);
-// Old schema-4 plans are made safe without erasing learning history or rerolling safe words.
-p.library.plans[1]={day:1,requestedDailyTarget:4,locationAssignments:{residential:['lemma:n-house',verb.lemmaId],nature:[u.lemmaId],business:[],school:[]}};
-E.ensurePlan(p,data,1);
-assert.deepEqual([...p.library.plans[1].locationAssignments.residential],['lemma:n-house']);
-assert(p.library.acquired[verb.lemmaId] && p.library.acquired[u.lemmaId]);
+// A generated plan stays frozen on reload; current code never rewrites authored assignments.
+const planned=fresh();
+const frozen=JSON.stringify(E.ensurePlan(planned,data,1));
+assert.equal(JSON.stringify(E.ensurePlan(JSON.parse(JSON.stringify(planned)),data,1)),frozen);
 // A synthetic identity-only test measures planner capacity, never promotes untranslated words.
 const synthetic={...data,entries:places.flatMap((d) => Array.from({length:100},(_,i) => ({lemmaId:`fixture:${d}:${i}`,primaryDistrict:d,suitableDistricts:[d],partOfSpeech:i%2?'adjective':'noun',countsTowardDailyQuota:true,forms:[{formId:`fixture:${d}:${i}:form`}]})))};
 const ideal=fresh();ideal.library.requestedDailyTarget=24;
@@ -89,7 +88,7 @@ const reloaded=JSON.parse(JSON.stringify(phraseProgress));
 assert.equal(E.cardStat(reloaded,activeData,morning.id).stage,1);
 assert.equal(Object.keys(reloaded.library.acquired).length,0);
 assert(narrative.expressions.filter((e)=>!e.active).every((e)=>!activeData.phrases.some((a)=>a.id===e.id)));
-console.log('PASS curriculum expansion: exact candidate selection, 28 universal identities, all seven Day 1 paces, action guards, safe current saves, 312 synthetic introductions, incidental boundary, 17 honest phrase slots, persistent expression SRS');
+console.log('PASS curriculum expansion: exact candidate selection, 28 universal identities, all seven Day 1 paces, action guards, frozen current plans, 312 synthetic introductions, incidental boundary, 17 honest phrase slots, persistent expression SRS');
 
 const universalTargets=JSON.parse(read('content/UNIVERSAL_TEACHING_TARGETS.json'));
 assert.equal(universalTargets.targets.length,40);

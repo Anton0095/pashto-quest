@@ -12,7 +12,7 @@ try {
     chromium,
   } = require("/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright"));
 }
-const hook = `window.__matrix={fresh,begin,afterStudy,afterGrammar,answer,nextQuestion,startChallenge,answerChallenge,wordById,week2Days,get session(){return session},get progress(){return progress},reset(){progress=fresh();session=null;selectedLoop=1;save()},day(day){selectedLoop=day;startWorld()}};`;
+const hook = `window.__matrix={fresh:progression.fresh,begin:lessons.begin,afterStudy:lessons.afterStudy,afterGrammar:lessons.afterGrammar,answer:lessons.answer,nextQuestion,startChallenge:challenge.startChallenge,answerChallenge:challenge.answerChallenge,wordById:content.wordById,week2Days:content.week2Days,get session(){return state.session},get progress(){return state.progress},reset(){state.progress=progression.fresh();state.session=null;state.day=1;storage.save()},day(day){state.day=day;world.startWorld()}};`;
 const html = readFileSync("index.html", "utf8").replace("// @TEST_HOOK", hook),
   server = http.createServer((req, res) => {
     res.setHeader("Content-Type", "text/html;charset=utf-8");
@@ -44,7 +44,15 @@ try {
             ) {
               if (++guard > 500) throw Error("Lesson stalled");
               const s = t.session;
-              if (["greeting", "lexical", "sentence"].includes(s.phase)) t.afterStudy();
+              if (s.mode === "tutorial") {
+                const area = document.querySelector("#tutorialInteraction");
+                const click = text => [...area.querySelectorAll("button")].find(b => b.textContent === text).click();
+                if (s.cardIndex === 0) click("Hello");
+                else if (s.cardIndex === 1) { click("څنګه"); click("یې؟"); click("Check sentence"); }
+                else if (s.cardIndex === 2) click("Prefer not to say");
+                else { document.querySelector("#tutorialName").value = "Curriculum tester"; click("Use this name"); }
+                t.afterStudy();
+              } else if (["greeting", "lexical", "sentence"].includes(s.phase)) t.afterStudy();
               else if (s.phase === "grammar") {
                 if (document.querySelector("#sovNext").disabled) {
                   const box = document.querySelector("#openingPractice");

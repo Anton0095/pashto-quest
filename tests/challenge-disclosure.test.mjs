@@ -6,7 +6,7 @@ import http from 'node:http';
 const require=createRequire(import.meta.url);
 let chromium;
 try {({chromium}=require('playwright'))} catch {({chromium}=require('/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'))}
-const hook=`window.__disclosure={get progress(){return progress},get session(){return session},wordById,E:LibraryEngine,data:LIBRARY_DATA,save,showChallengeQuestion,fixture(day,studied=false){progress=fresh();progress.tutorialDone=true;progress.library.requestedDailyTarget=24;for(let d=1;d<day;d++)completeChallengeOnce(progress,d,getChallengeSpec(d).passCount);selectedLoop=day;session=null;if(studied){const e=LIBRARY_DATA.entries.find(e=>e.lemmaId==='lemma:n-window');LibraryEngine.encounter(progress,LIBRARY_DATA,{lemmaId:e.lemmaId,formId:e.forms[0].formId},{day,source:'lesson',location:'residential'})}save();startWorld()},focus(direction,origin='scheduled-scaffold'){const s=session,q={id:'library-card:lemma:n-window',lemmaId:'lemma:n-window',kind:'word',direction,vocabularyOrigin:origin,comment:'Scheduled word, not yet studied: use the meaning and answer options.'};s.index=0;s.questions[0]=q;showChallengeQuestion();return wordById[q.id]}};`;
+const hook=`window.__disclosure={get progress(){return state.progress},get session(){return state.session},wordById:content.wordById,E:LibraryEngine,data:content.LIBRARY_DATA,save:storage.save,showChallengeQuestion:challenge.showChallengeQuestion,fixture(day,studied=false){state.progress=progression.fresh();state.progress.tutorialDone=true;state.progress.library.requestedDailyTarget=24;for(let d=1;d<day;d++)progression.completeChallengeOnce(state.progress,d,progression.getChallengeSpec(d).passCount);state.day=day;state.session=null;if(studied){const e=content.LIBRARY_DATA.entries.find(e=>e.lemmaId==='lemma:n-window');LibraryEngine.encounter(state.progress,content.LIBRARY_DATA,{lemmaId:e.lemmaId,formId:e.forms[0].formId},{day,source:'lesson',location:'residential'})}storage.save();world.startWorld()},focus(direction,origin='scheduled-scaffold'){const s=state.session,q={id:'library-card:lemma:n-window',lemmaId:'lemma:n-window',kind:'word',direction,vocabularyOrigin:origin,comment:'Scheduled word, not yet studied: use the meaning and answer options.'};s.index=0;s.questions[0]=q;challenge.showChallengeQuestion();return content.wordById[q.id]}};`;
 const html=readFileSync('index.html','utf8').replace('// @TEST_HOOK',hook);
 const server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/html;charset=utf-8');res.end(html)});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
@@ -47,7 +47,7 @@ try {
    await assertUnanswered(word);
    assert.deepEqual(await page.evaluate(()=>__disclosure.progress.library.acquired),before.library.acquired);
    assert.equal(await page.evaluate(()=>__disclosure.progress.xp),before.xp);
-   // A schema-4 attempt saved before this fix has no presentation flag.
+   // An unanswered current attempt can derive its presentation before first render.
    await page.evaluate(direction=>{
     const raw=JSON.parse(localStorage.getItem('pashto-town-days-v1'));
     delete raw.activeChallenge.questions[0].unstudied;
