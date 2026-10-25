@@ -355,6 +355,12 @@ header {
   border-radius: 15px;
   background: #c8dcbc;
 }
+#introScreen > .worldmap {
+  margin: 12px 0 20px;
+}
+#worldScreen > .worldmap {
+  margin-bottom: 18px;
+}
 .worldmap svg {
   position: absolute;
   inset: 0;
@@ -483,26 +489,24 @@ header {
 .lesson-title .icon {
   font-size: 43px;
 }
-.guide-bubble {
+.speaker-note {
   display: flex;
-  gap: 12px;
   align-items: flex-start;
-  border-radius: 13px;
-  background: #2b483b;
-  border: 1px solid #668270;
-  padding: 13px;
-  margin: 15px 0;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px solid #4a6678;
 }
-.guide-bubble > span {
-  font-size: 27px;
-  line-height: 1.1;
+.speaker-note > span {
+  font-size: 22px;
+  line-height: 1.2;
 }
-.guide-bubble strong {
+.speaker-note strong {
   color: #ffe0a9;
-  font-size: 13px;
+  font-size: 12px;
 }
-.guide-bubble p {
-  color: #e4f2e9;
+.speaker-note p {
+  color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
   margin: 3px 0 0;
@@ -983,12 +987,8 @@ header {
   color: #ffe1a5;
 }
 .round-insight {
-  font-size: 13px;
-  background: #294738;
-  border: 1px solid #66826c;
-  border-radius: 11px;
-  padding: 12px;
-  color: #e2f1e8;
+  font-size: 12px;
+  color: var(--muted);
   margin: 9px 0 13px;
 }
 @media (max-width: 640px) {
@@ -1045,22 +1045,18 @@ header {
 
 .town-story {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   align-items: flex-start;
-  margin: 12px 0 15px;
-  padding: 11px 14px;
-  border: 1px solid #688878;
-  background: #294638;
-  border-radius: 13px;
+  margin: 10px 0 13px;
 }
 .town-story > span {
-  font-size: 28px;
-  line-height: 1.2;
+  font-size: 18px;
+  line-height: 1.4;
 }
 .town-story p {
   margin: 0;
-  color: #e4f2e5;
-  font-size: 13px;
+  color: var(--muted);
+  font-size: 12px;
 }
 .skip-challenge {
   display: flex;
