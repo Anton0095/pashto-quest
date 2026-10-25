@@ -402,15 +402,16 @@ try {
       /Your Home/,
     );
     // An unsubmitted construction and a paused attempt also survive reload and map navigation.
-    await page.evaluate(() => {
-      const t = __libraryTest;
-      t.startChallenge(1);
-      const index = t.session.questions.findIndex(
-        (q) => q.kind === "construct",
-      );
-      t.session.index = index;
-      t.showChallengeQuestion();
-    });
+    await page.evaluate(() => __libraryTest.startChallenge(1));
+    while (await page.evaluate(() =>
+      __libraryTest.session.questions[__libraryTest.session.index].kind !== "construct")) {
+      const expected = await page.evaluate(() => {
+        const t = __libraryTest, q = t.session.questions[t.session.index], w = t.wordById[q.id];
+        return q.correct || (q.direction === "ps-en" ? w.en : w.ps);
+      });
+      await page.locator("#choices button").getByText(expected, {exact:true}).click();
+      await page.locator("#quizNext").click();
+    }
     await page.locator("#wordTiles button").first().click();
     const pending = await page.evaluate(() => ({
       index: __libraryTest.session.index,
