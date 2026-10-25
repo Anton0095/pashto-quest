@@ -3088,11 +3088,52 @@ function libraryLessonPool(day, place) {
     .map(({ form }) => "library-form:" + form.formId);
 
   const actionIntro = day === 2 && place === "school" ? ["v-read", "v-write"] : [];
-  return [...new Set([...actionIntro, ...lexical, ...grammar, ...review, ...original])]
+  // Use a location's active expression, otherwise repeat this day's active
+  // greeting. Pending translations remain unavailable. Expressions do not
+  // consume lexical quotas, even when repeated at multiple locations.
+  const greeting = NARRATIVE_DATA.expressions.find(
+    (p) => p.day === day && p.location === place && p.active && !p.optional,
+  ) || NARRATIVE_DATA.expressions.find(
+    (p) => p.day === day && p.active && !p.optional,
+  );
+  const opening = greeting ? [greeting.id] : [];
+  return [...new Set([...opening, ...actionIntro, ...lexical, ...grammar, ...review, ...original])]
     .filter((id) => LibraryEngine.cardAllowed(LIBRARY_DATA, id, day));
 }
+function prependChallengeGreetings(day, questions) {
+  const greetings = NARRATIVE_DATA.expressions.filter(
+    (p) => p.day === day && p.active && !p.optional && wordById[p.id],
+  );
+  if (!greetings.length) return questions;
+  const remaining = questions.map((q) => ({ ...q }));
+  const greetingIds = new Set(greetings.map((p) => p.id));
+  for (const p of greetings) {
+    const existing = remaining.findIndex((q) => q.id === p.id);
+    if (existing >= 0) {
+      remaining.splice(existing, 1);
+      continue;
+    }
+    const wordSlot = remaining.findIndex(
+      (q) => q.kind === "word" && !greetingIds.has(q.id),
+    );
+    const otherSlot = remaining.findIndex(
+      (q) => q.kind === "sentence" && !greetingIds.has(q.id),
+    );
+    const target = wordSlot >= 0 ? wordSlot : otherSlot;
+    if (target < 0) throw Error("Day " + day + " has no greeting assessment slot");
+    remaining.splice(target, 1);
+  }
+  const opening = greetings.map((p) => ({
+    id: p.id, kind: "word", direction: "ps-en",
+    vocabularyOrigin: "daily-greeting", speaker: p.speaker,
+    recipient: p.recipient, comment: "Recognise today's greeting.",
+  }));
+  const result = [...opening, ...remaining];
+  if (result.length !== questions.length) throw Error("Greeting changed challenge length");
+  return result;
+}
 function libraryChallengeQuestions(day, questions) {
-  if (day === 3) return questions; // Edris’s authored dinner ingredients/actions keep their exact narrative.
+  if (day === 3) return prependChallengeGreetings(day, questions); // Preserve dinner story and length.
   const plan = LibraryEngine.ensurePlan(progress, LIBRARY_DATA, day);
   const selection = LibraryEngine.lexicalSelection(
       progress,
@@ -3126,13 +3167,14 @@ function libraryChallengeQuestions(day, questions) {
     if (q.kind !== "word")
       q.scaffold =
         "Authored grammar/story context; unfamiliar vocabulary is supported by the translation and answer feedback.";
-  plan.assessmentMix = result.reduce((out, q) => {
+  const withGreetings = prependChallengeGreetings(day, result);
+  plan.assessmentMix = withGreetings.reduce((out, q) => {
     const key = q.vocabularyOrigin || "authored-grammar";
     out[key] = (out[key] || 0) + 1;
     return out;
   }, {});
 
-  return result;
+  return withGreetings;
 }
 function captureLibraryChallenge() {
   if (!session || session.mode !== "challenge") return;
@@ -3856,22 +3898,34 @@ function renderDayExpression(day) {
     $("skipDayArea").before(root);
   }
   root.replaceChildren();
-  const phrase = NARRATIVE_DATA.expressions.find((p) => p.day === day && day > 1);
-  if (phrase) root.append(expressionDialogue(phrase, "day-opening"));
+  // Announce the encounter without pre-teaching the English answer or
+  // acquiring the expression before the first location study card.
+  const phrase = NARRATIVE_DATA.expressions.find(
+    (p) => p.day === day && day > 1 && p.active && !p.optional,
+  );
+  if (phrase)
+    root.append(libraryNode("p",
+      `${phrase.speaker} will teach you a new greeting today. Meet the village teachers to study it as the first card.`,
+      "tiny muted"));
 }
 function renderLessonExpression(day, location, mode) {
   let root = $("lessonExpression");
   if (!root) {
     root = libraryNode("div");
     root.id = "lessonExpression";
-    $("teachPanel").before(root);
+    $("audioStatus").after(root);
   }
   root.replaceChildren();
   if (mode !== "standard") return;
-  const phrase = NARRATIVE_DATA.expressions.find((p) => p.day === day && p.location === location);
-  // The opening character repeats their greeting naturally. It is the same persistent
-  // identity/first encounter, never a second acquisition or an XP award.
-  if (phrase) root.append(expressionDialogue(phrase, "lesson"));
+  // An active greeting is shown by the standard study/recall sequence.
+  // Inactive expressions cannot appear as Pashto teaching or challenge items.
+  const pending = NARRATIVE_DATA.expressions.find(
+    (p) => p.day === day && p.location === location && !p.active,
+  );
+  if (pending)
+    root.append(libraryNode("p",
+      "Another location expression awaits an approved Pashto translation and cannot yet be studied.",
+      "tiny muted"));
 }
 
   const SAVE_VERSION = 4;
@@ -5394,7 +5448,14 @@ function completeLessonOnce(p, id, mode, passed) {
   function selectChallenge(day) {
     const currentPlan = LibraryEngine.ensurePlan(progress, LIBRARY_DATA, day);
     const saved = currentPlan.challengeQuestions;
-    if (saved && saved.every((q) => LibraryEngine.cardAllowed(LIBRARY_DATA, q.id, day)))
+    const currentGreetings = NARRATIVE_DATA.expressions.filter(
+      (p) => p.day === day && p.active && !p.optional,
+    );
+    if (
+      saved &&
+      saved.every((q) => LibraryEngine.cardAllowed(LIBRARY_DATA, q.id, day)) &&
+      currentGreetings.every((p, i) => saved[i]?.id === p.id)
+    )
       return saved.map((q) => ({ ...q }));
     const plan = currentPlan,
       previousRandom = curriculumRandom;
@@ -5694,7 +5755,9 @@ function completeLessonOnce(p, id, mode, passed) {
     }
     if (q.kind === "word") {
       // Freeze presentation before exposure, including unanswered saved attempts.
-      q.unstudied ??= (LIBRARY_DATA.sourceMappings[q.id] || []).some(({ lemmaId }) => {
+      q.unstudied ??= LIBRARY_DATA.phrases.some((p) => p.id === q.id)
+        ? !progress.library.phrases[q.id]
+        : (LIBRARY_DATA.sourceMappings[q.id] || []).some(({ lemmaId }) => {
         const record = progress.library.acquired[lemmaId];
         return !record || (record.firstEncounteredSource === "challenge" && record.totalAttempts === 0);
       });
@@ -5886,7 +5949,7 @@ function completeLessonOnce(p, id, mode, passed) {
       : reverse
         ? "Which Pashto expression means this?"
         : q.kind === "word"
-          ? "What does this word mean?"
+          ? w.type === "greeting" ? "What does this greeting mean?" : "What does this word mean?"
           : "What does this sentence mean?";
     $("quizSpeak").classList.toggle("hidden", reverse);
     $("quizPanel").querySelector(".quizword h3").textContent = isBuild
@@ -6034,7 +6097,8 @@ function completeLessonOnce(p, id, mode, passed) {
       return;
     }
     const rewardKey = `${session.loop}:${q.kind}:${q.direction}:${q.id}`;
-    const gain = correct ? awardXP(progress, rewardKey, 5) : 0;
+    const isExpression = LIBRARY_DATA.phrases.some((p) => p.id === q.id);
+    const gain = correct && !isExpression ? awardXP(progress, rewardKey, 5) : 0;
     session.earned += gain;
     save();
     hud();
@@ -6163,6 +6227,10 @@ function completeLessonOnce(p, id, mode, passed) {
     const recall = [];
     const lexical = pool.filter((x) => wordById[x].type !== "sentence"),
       sentences = pool.filter((x) => wordById[x].type === "sentence");
+    const greetingId = mode === "standard" && lexical.length &&
+      LIBRARY_DATA.phrases.some((p) => p.id === lexical[0])
+      ? lexical[0] : null;
+    const newWords = greetingId ? lexical.filter((id) => id !== greetingId) : lexical;
     const ordered =
       mode === "standard" ? [...lexical, ...sentences, ...recall] : pool;
     session = {
@@ -6172,9 +6240,11 @@ function completeLessonOnce(p, id, mode, passed) {
       loop,
       required: pool,
       recall,
-      studyWords: mode === "tutorial" ? pool : lexical,
+      studyWords: mode === "tutorial" ? pool : newWords,
+      greetingCards: greetingId ? [greetingId] : [],
       studySentences: sentences,
       phase:
+        greetingId ? "greeting" :
         mode === "review"
           ? lexical.length
             ? "lexical"
@@ -6239,7 +6309,7 @@ function completeLessonOnce(p, id, mode, passed) {
       const z = zones[loc],
         l = loops.find((x) => x.id === loop);
       title = displayPlace(loop, loc);
-      desc = `Day ${loop}: ${l.label} · ${lexical.length} vocabulary cards · ${sentences.length} sentences · ${recall.length} recall`;
+      desc = `Day ${loop}: ${l.label} · ${greetingId ? "1 greeting · " : ""}${newWords.length} vocabulary cards · ${sentences.length} sentences · ${recall.length} recall`;
       emoji = z.icon;
       guide = advancedScenes[loop]
         ? advancedScenes[loop][loc]
@@ -6274,7 +6344,7 @@ function completeLessonOnce(p, id, mode, passed) {
     stopAudio();
     for (const id of ["teachPanel", "sovPanel", "quizPanel"])
       $(id).classList.add("hidden");
-    if (session.phase === "lexical" || session.phase === "sentence") {
+    if (["greeting", "lexical", "sentence"].includes(session.phase)) {
       teachCard();
     } else if (session.phase === "grammar") {
       showGrammar();
@@ -6282,9 +6352,9 @@ function completeLessonOnce(p, id, mode, passed) {
     else showQuestion();
   }
   function studyList() {
-    return session.phase === "sentence"
-      ? session.studySentences
-      : session.studyWords;
+    return session.phase === "greeting"
+      ? session.greetingCards
+      : session.phase === "sentence" ? session.studySentences : session.studyWords;
   }
   function teachCard() {
     const items = studyList(),
@@ -6313,7 +6383,7 @@ function completeLessonOnce(p, id, mode, passed) {
     $("teachPanel").classList.remove("hidden");
     $("lessonStages").classList.toggle("hidden", session.mode === "tutorial");
     $("teachCount").textContent =
-      `${session.phase === "lexical" ? "VOCABULARY" : "BUILDING SENTENCES"} · CARD ${session.cardIndex + 1}/${items.length}`;
+      `${session.phase === "greeting" ? "TODAY'S GREETING" : session.phase === "lexical" ? "VOCABULARY" : "BUILDING SENTENCES"} · CARD ${session.cardIndex + 1}/${items.length}`;
     $("teachType").textContent =
       session.phase === "sentence" ? "Present-tense sentence" : w.type;
     $("teachPashto").textContent = w.ps;
@@ -6377,9 +6447,11 @@ function completeLessonOnce(p, id, mode, passed) {
     $("addressTarget").classList.remove("hidden");
     $("teachNext").textContent =
       session.cardIndex === items.length - 1
-        ? session.phase === "lexical" && session.studySentences.length
-          ? "Time for sentences →"
-          : "Start the quiz →"
+        ? session.phase === "greeting"
+          ? "Continue to the lesson →"
+          : session.phase === "lexical" && session.studySentences.length
+            ? "Time for sentences →"
+            : "Start the quiz →"
         : "Next study card →";
     const stages = $("lessonStages").children;
     for (let i = 0; i < stages.length; i++) {
@@ -6405,7 +6477,14 @@ function completeLessonOnce(p, id, mode, passed) {
       teachCard();
       return;
     }
-    if (session.phase === "lexical" && session.studySentences.length) {
+    if (session.phase === "greeting") {
+      session.phase = session.preLessonGrammar
+        ? "grammar"
+        : session.studyWords.length ? "lexical"
+          : session.studySentences.length ? "grammar" : "quiz";
+      session.cardIndex = 0;
+      renderPhase();
+    } else if (session.phase === "lexical" && session.studySentences.length) {
       session.phase =
         session.preLessonGrammar || session.mode === "review"
           ? "sentence"
@@ -6834,7 +6913,9 @@ function completeLessonOnce(p, id, mode, passed) {
       progress.sovSeen = true;
     if (session.loop) progress.personIntros[session.loop] = true;
     save();
-    session.phase = session.preLessonGrammar ? "lexical" : "sentence";
+    session.phase = session.preLessonGrammar
+      ? session.studyWords.length ? "lexical" : session.studySentences.length ? "sentence" : "quiz"
+      : "sentence";
     session.cardIndex = 0;
     renderPhase();
   }
