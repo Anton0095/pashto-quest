@@ -1,41 +1,43 @@
-# Pashto grammar and Laghman pronunciation review
+# Pashto linguistic review and release gate
 
-This is a **quality checklist**, not a statement that all in-game phrases were validated by a native speaker. Grammar references help with standard Pashto present-tense forms; they do not alone establish authentic local speech in Laghman.
+**Status: not native-certified.** The game targets Afghan Pashto as spoken in **Laghman**. Conventional Pashto spelling is preferred when local variants are uncertain. Existing Pashto, romanisation and authored Week 1/2 translations are instructional drafts; neither a browser voice nor passing tests establishes native-speaker review.
 
-## Grammar resources for implementation
+## Required approval record
 
-- LingDocs, **Verb Endings**: https://grammar.lingdocs.com/verbs/verb-endings/ — present-person suffixes (`ـم`, `ـې`, `ـي`, `ـو`, `ـئ`, `ـي`).
-- LingDocs, **Present Verbs**: https://grammar.lingdocs.com/verbs/present-verbs/ — present stems and paradigms; supports careful differentiation of `I`, `we`, `you all`.
-- Speaking Pashto, **Lesson Four**: https://www.speakingpashto.com/lesson-four/ — informal singular `ته` versus respectful/plural `تاسو`, with corresponding conjugation.
-- Speaking Pashto, **Lesson Seven**: https://www.speakingpashto.com/lesson-seven/ — pronouns and forms with adpositions; may be more relevant as vocabulary expands.
+For any proposed lexical candidate, greeting, sentence, dialogue response or alternate accepted answer, record its stable content/lemma/form ID; existing and proposed Pashto; precise English sense; context, speaker and addressee; any local vs written variant; romanisation; reviewer name or identifier and review date; review source/reference; accepted alternate responses and rationale; and audio provenance when available. Never invent sign-off. A candidate remains inactive until its `nativeReview` and language fields satisfy `tools/build.py` gates. Existing language can remain a labelled development draft awaiting retrospective native review.
 
-## Priority items for native Laghman review
+The current lexicon has 127 draft lemmas (99 district and 28 universal), while **301** selected additions and **40** universal semantic targets remain untranslated/inactive. `content/NARRATIVE_EXPRESSIONS.json` has 17 contextual slots; **only Welcome (`ښه راغلاست`) and Day 2 Good morning (`سهار مو پخیر!`)** are provisionally active from exact user-supplied text. Their source has not been independently bibliographically or locally verified. The remaining **15** slots are pending, never invented Pashto. The tutorial's question texts for gender and name are also provisional and require review.
 
-1. **Written vs spoken variants:** `موږ / مونږ` for “we”, `تاسې / تاسو` for respectful/plural “you”; pick a consistent written standard while accepting valid local alternates in recall where appropriate.
-2. **Verbs:** `منډې وهل`, `تلل`, `کښېناستل`, `اخیستل`, `څښل`, `لوستل`, `لیکل`, `پاکول`, etc. Validate person/number conjugations from their actual stems and their fit in the sentence; some stems are irregular.
-3. **Third plural:** do not assume a universal suffix distinguishes third-person singular from third-person plural in the present tense; many paradigms share `ـي`. Teach “they” primarily through `هغوی` and context.
-4. **Natural collocations:** use semantically plausible subject–verb combinations (people run, doors open, customers buy fruit). Verify postpositions, compounds, object marking, plural forms, word order and politeness.
-5. **Romanisation:** consistently represent vowel distinctions and aspirated/consonant sounds in a way playable on a beginner's phone; don't silently mix incompatible dialect notation.
-6. **Audio availability:** the game can attempt `audio/<word-id>.mp3`, but a generated audio pack is not automatically bundled. Use human-reviewed recordings where feasible. A compatible browser Pashto TTS voice is a fallback only; avoid reading Pashto through a different-language voice.
-7. **Assessment fairness:** allow objectively equivalent dialect spelling or acceptable word order where grammatically and contextually valid, or revise the prompt to make exactly one intended answer unambiguous. Tile construction should not reject meaningful alternatives without an explicit teaching rationale.
+## Phonology, orthography and grammar checklist
 
-A release-quality language review should record each disputed phrase's word ID, current Pashto string, meaning, local alternative, reviewed speaker/date, and accepted quiz answers. Codex must not invent a native speaker validation record.
+- Validate `موږ / مونږ` for “we”, `تاسې / تاسو` for polite/plural “you”, and informal `ته` with explicit speaker/listener number and politeness. Select consistent written standards and deliberately approved variants.
+- Check present-tense agreement and actual verb stems, not a universal suffix rule: `ـم`, `ـې`, `ـي`, `ـو`, `ـئ`, `ـي` may overlap; third-person plural is often distinguished by subject/context. Irregular and compound verbs such as `تلل`, `منډې وهل`, `کښېناستل`, `اخیستل`, `څښل`, `لوستل`, `لیکل` and `پاکول` merit individual checks.
+- Validate SOV, postpositions, object marking, gender/number agreement, noun plurals/obliques, sensible everyday collocations and named compound subjects. `مینا او زه` includes the player in “we”; “they” describes an outside group.
+- Romanisation must be consistently usable by beginners on phones; review vowel distinctions, aspirated sounds and local pronunciation instead of silently mixing dialect systems.
+- A quiz should accept only intentionally approved equivalent forms/orderings. Do not accept arbitrary permutations, strip important inflections, or add dialect variants without explicit teaching/reviewer evidence. Keep distractor and dud-tile answers genuinely wrong in context.
 
-## New implementation review queue — 23 October 2026
+## High-priority authored review queue
 
-No native-speaker sign-off has been obtained. All added `w6-*`, `w7-*` and `vocab6-*`/`vocab7-*` records include Pashto and approximate reading aids and remain review candidates. Particular priorities:
+Week 1 Days 6–7: review `w6-river-run` / `w6-river-mina-run` / `w6-we-run` (lake/river, running, singular vs plural); `w6-river-you-walk` and `w6-walk` (respectful/plural agreement); `w6-house-help` and `w7-house-help` (help + Muhammad Jan); `w6-house-chairs` / `w7-house-chairs` (chair obliques); `w6-market-*` / `w7-market-*` (baskets, carrying, vegetable collocations); `w6-school-answer` / `w7-school-answer` (questions/answers); `w6-compound`, `w7-compound-*` (coordination), `w7-i-read` / `w7-you-read` / `w7-all-read` (person distinctions). Verify Week 1 exam contexts for `موږ`, `تاسې` and `هغوی`.
 
-| IDs / pattern | Pashto examples | Review focus |
-|---|---|---|
-| `w6-river-run`, `w6-river-mina-run`, `w6-we-run` | زه د جهیل تر څنګ منډې وهم؛ مینا او زه یو ځای منډې وهو | Lake terminology, running collocation, singular/plural forms and romanisation |
-| `w6-river-you-walk`, `w6-walk` | تاسې دواړه د سیند تر څنګ ګرځئ؛ موږ د جهیل تر څنګ یو ځای ګرځو | “You both” audience, walking expression and local lake/river terminology |
-| `w6-house-help`, `w7-house-help` | له محمد جان سره مرسته کوئ / کوي | Help construction, respectful reference and present forms |
-| `w6-house-chairs`, `w7-house-chairs` | پر څوکیو کښېنو / کښېني | Chair plural/oblique and sitting verb forms |
-| `w6-market-*`, `w7-market-*` | ټوکرۍ وړو / وړي؛ تازه سابه غوره کوي | Carrying/choosing forms, baskets, vegetables and dinner vocabulary |
-| `w6-school-answer`, `w7-school-answer` | پوښتنو ته ځوابونه ورکوو / ورکوي | Natural answer collocation, obliques and inflection |
-| `w6-compound` | زه سیند وینم او موږ غونډۍ وینو | Hills noun/number and clause coordination |
-| `w7-compound-*` | موږ سابه اخلو او هغوی ډوډۍ اخلي | Person agreement, natural compound wording and canonical tile order |
-| `w7-i-read`, `w7-you-read`, `w7-all-read` and exam clozes | لولم / لولې / لولو / لولئ / لولي | Reading forms and consistency of learner romanisation |
-| Grammar openings / choice distractors | موږ / مونږ؛ تاسې / تاسو؛ هغوی | Consistent written standard, shared third-person endings, unambiguous distractors |
+Week 2 `content/WEEK2_RUNTIME.json`: 140 sentence cards (`w2-d8-<zone>-1` through `w2-d14-<zone>-5`) and 48 NPC question/reply records (`w2-d8-reply-1` through `w2-d14-reply-12`, with actual per-day ranges defined in runtime). All are drafts marked for native review; no `acceptedPs` alternatives have been approved. Review by day:
+- **8:** near/far demonstratives `دا / هغه`; feminine/plural agreement, lake terminology and obliques.
+- **9:** counted nouns and plurals, feminine quantities, numbers 1–5 and adjective agreement.
+- **10:** spatial constructions `پر مېز`, `په ټولګي کې`, `د دروازې تر څنګ`, motion/direction vs static location.
+- **11:** possession `د صالحې`, `ستاسې`, `زموږ`, reflexive `خپله` and speaker-relative pronouns.
+- **12:** question words `کوم / کومه`, `څو`, `د چا`; questions whose scene supports exactly the intended response.
+- **13:** `ورو ورو` vs `وړو`, `ژر`, `تل`, `کله کله`, `هره ورځ`, adverb placement and present-tense continuity.
+- **14:** distal feminine obliques, integrated clues and speaker/owner references, context-specific answers in the final examination.
 
-The renderer identifies NPC teaching prompts separately from the player's model responses: “Mina and I” has the player as “I”. Day 7 observed groups are explicitly outside the speaker/player conversation. Review these referents alongside the text. Audio filenames are attempted at `audio/<id>.mp3`; there are no bundled recordings, synthesized pronunciation claims or dialect certification.
+Full authored English targets and editorial context are in `content/WEEK2_LESSON_DATA.json` and the non-authoritative `docs/reference/WEEK2_DETAILED_LESSONS.md`. Mark resolved issues individually; do not globally remove draft/review flags.
+
+## Audio and device status
+
+An optional `audio/<content-id>.mp3` pack is **not** currently bundled or native-verified. The common player prioritises available MP3 files, then detected Pashto device voices with neural/`ps-AF` preference and delayed discovery, or a clearly warned `ps-AF` fallback. An explicitly unrelated language voice must not be selected as Pashto. Tests of mocked speech selection do **not** prove audio is intelligible or works on a particular physical iPhone/Windows device. Log actual device/browser/voice, phrase ID, intelligibility and pronunciation validation before claiming success.
+
+## Helpful grammatical references (not local dialect sign-off)
+
+- LingDocs: [Verb endings](https://grammar.lingdocs.com/verbs/verb-endings/) and [present verbs](https://grammar.lingdocs.com/verbs/present-verbs/).
+- Speaking Pashto: [Lesson four](https://www.speakingpashto.com/lesson-four/) and [lesson seven](https://www.speakingpashto.com/lesson-seven/).
+
+These support systematic review but do not replace a qualified Laghman speaker or verified recordings.

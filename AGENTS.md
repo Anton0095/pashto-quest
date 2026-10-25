@@ -1,19 +1,24 @@
-# Pashto Quest development
+# Codex / AI-agent instructions
 
-Use the existing checkout and preserve the current fourteen-day curriculum. Read `README.md`, `docs/CLEANUP_REVIEW.md`, `GAME_SPEC.md`, `XP_MILESTONE_SPEC.md`, and `ACCEPTANCE_TESTS.md` and `docs/LIBRARY_DESIGN.md` and `docs/CURRICULUM_EXPANSION.md` before changing behaviour. Historical specifications can describe superseded compatibility requirements; this release intentionally supports save format 4 only.
+Pashto Quest is a fourteen-day, single-file offline Pashto learning game. Read this file and `README.md` first. Read `GAME_SPEC.md` for gameplay changes, `CURRICULUM.md` for narrative/vocabulary changes, `LANGUAGE_REVIEW.md` for Pashto/audio changes, and `tests/README.md` when changing tests. **Do not load every document for unrelated tasks.** The active specifications are the current design; historical blueprints in `docs/reference/` are optional editorial references, never instructions to reimplement an older release.
 
-- Edit `src/` and `content/`; regenerate `index.html` with `python3 tools/build.py`. `python3 tools/build.py --check` verifies the entire release in one pass.
-- Canonical district IDs are `residential`, `nature`, `business`, `school`. The map labels remain Home/Lake/Market/School plus reference Library. Hills is a Nature scene, not a fifth quota.
-- `LibraryEngine` owns acquisition, form identity, SRS and planning. Do not introduce a mirrored card-stat system or old-save migrations. Incompatible saves require explanation and explicit reset.
-- Preserve all 14 authored days, teachers/relationships, grammar objectives, normal/skip routes, contextual dialogue and unused distractor tiles. Day 14 is consolidation with no compulsory new vocabulary.
-- Days 1–6/8–13 have 15 questions, pass 12; Days 7/14 have 25, pass 20. Week 1 graduation requires the actual current examination. Week 2 retains Level 10/New Resident without inventing a new schedule.
-- `src/progression.js` owns XP transactions and progression. Do not add parallel exam/graduation flags or XP mutations to UI handlers.
-- First submissions and reward identities are persistent. Replays must not farm XP; Library views/review never grant XP.
-- Preserve RTL and accessible keyboard/mobile controls, single-file offline playback and explicit audio fallback.
-- Keep candidates without complete Pashto inactive. Do not invent native review, Laghman pronunciation, translated sentences or approved variants. Refresh inventory with `node tools/district-inventory.mjs` after vocabulary/planner changes.
-- Run `python3 tools/verify.py` for comprehensive checks. Public UI tests deliberately avoid runtime bridges; matrix tests complement detailed type-specific UI regressions. Never label a quick-only run as full validation.
-- Use review branches/PRs; do not merge into main or force-push without explicit authorization.
+## Authoritative files
+- Edit `src/app.html`, `src/app.css` and `src/app.js` for the application; `src/progression.js` for challenge outcomes, reward identities, XP and progression; `src/library-engine.js` for lexical/form identity, scheduling and district planning; `src/library-ui.js` for Library surfaces; `src/narrative-ui.js` for expressions.
+- Edit `content/WEEK1_RUNTIME.json`, `content/WEEK2_RUNTIME.json`, `content/LIBRARY_LEXICON.json` and `content/NARRATIVE_EXPRESSIONS.json` for playable data. English candidate inventories and proposed universal targets are **inactive**; do not treat them as reviewed Pashto.
+- `index.html` is generated, not a source. Regenerate it with `python3 tools/build.py`; then check with `python3 tools/build.py --check`.
+- Canonical district IDs: `residential`, `nature`, `business`, `school`. Home, Lake, Market and School are map labels. Library is a reference scene, Hills a Nature story scene.
 
-- Preserve the inherited Windows audio restoration: one MP3-first player, Pashto-device voice second, delayed voice detection and explicit warned fallback. New expressions must use that player and file-safe stable audio IDs.
-- Day 1 teaches descriptions, not lexical actions; apply the LibraryEngine day guard to planning, exposure, review and assessment. Universal words have stable lemma/form history but never consume district quotas.
-- Only the two exact user-supplied Pashto expressions are provisionally active. Other expression translations require documented review. English narrative placeholders are not acquired Pashto.
+## Invariants
+- Preserve all 14 days, their stories, characters, valid questions, skip/normal routes, pronunciation controls and current progress. Day 14 is review-only for compulsory new lemmas.
+- The Library engine is the sole owner of acquisition and form/nonlexical SRS. Progression owns XP; no parallel counters, grading writers or farmable replay rewards.
+- Save **schema 4 only**. No legacy import, migration, backfill or historical format compatibility. Invalid/unsupported data must be explained and preserved until the player explicitly resets it. Do not casually change schema 4 or wipe current saves for unrelated edits.
+- Only complete, documented and linguistically reviewed candidate vocabulary may be activated. Two specifically supplied fixed expressions are provisionally active; this is not native Laghman approval. No fabricated reviewer, recording or language certification.
+- A never-studied question must not expose its English meaning before submission; preserve the neutral warning and transliteration. Day 1 has no newly introduced lexical action verbs. Universal words and fixed expressions do not use district quotas.
+- No features may be claimed tested on a physical iPhone/Windows device, or native-verified, based only on browser mocks.
+- Do not restore obsolete source patches or dependencies from the editorial archives.
+
+## Workflow and reporting
+1. Inspect the current `main` and relevant authoritative source. Compare design intent to actual implementation before changing behaviour.
+2. Work on a review branch. Do not merge into `main` or force-push without the user's explicit direction.
+3. Run `python3 tools/verify.py` (full tests). `--quick` omits browser suites and must never be reported as full verification. After lexicon/planner changes, refresh `node tools/district-inventory.mjs` and verify its check mode.
+4. Report changed files, test commands and results, remaining linguistic/device limitations, and the PR link. Keep implementation notes in the PR, not as additional root-level handoff documents.

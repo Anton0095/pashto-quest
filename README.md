@@ -1,62 +1,62 @@
 # Pashto Quest
 
-An offline Pashto learning game with fourteen authored story days, four teaching districts, and an always-open Library. Week 1 finishes with the Level 10 / New Resident examination. Week 2 adds contextual dialogue, grammar and cumulative review; its language remains a draft awaiting local Laghman review.
+An offline, browser-based Pashto learning game set in a village in Laghman, Afghanistan. Four teaching districts (Home, Lake, Market and School), a reference Library and a recurring cast support 14 narrative days of cumulative language study. The playable Pashto is a **draft**, not certified local-language instruction.
 
-Open `index.html` in a modern browser, or serve the checkout with `python3 -m http.server 8000`. No backend, API key, runtime JSON request or package installation is needed to play. Audio uses bundled Pashto MP3 recordings when present, then a detected browser Pashto voice. If no Pashto voice is listed, it asks the browser to speak in `ps-AF` and warns that the resulting pronunciation may be inaccurate. The build embeds an audio-file manifest so absent MP3s are not requested on every click.
+## Play
 
-## Edit and build
-
-The HTML release is generated. Edit these authoritative files:
-
-- `src/app.html`, `src/app.css`, `src/app.js`: interface, authored scenes, assessment rendering and save I/O.
-- `src/progression.js`: current save version/factory, authoritative challenge results, XP transactions and level gates.
-- `src/library-engine.js`: lemma acquisition, form/unit SRS, deterministic district plans and bank selection.
-- `src/library-ui.js`: Library and its integration with lessons/assessments.
-- `src/narrative-ui.js`, `content/NARRATIVE_EXPRESSIONS.json`: contextual expressions and reviewed/pending activation.
-- `content/UNIVERSAL_TEACHING_TARGETS.json`: inactive semantic teaching targets, distinct from lexical identities.
-- `content/WEEK1_RUNTIME.json`, `content/WEEK2_RUNTIME.json`: curriculum cards and narrative data.
-- `content/LIBRARY_LEXICON.json`: lexical identities, forms, mappings, grammar notes and review metadata.
+Open the generated `index.html` in a modern browser, or serve the repository with:
 
 ```sh
-python3 tools/build.py
-python3 tools/build.py --check
+python3 -m http.server 8000
 ```
 
-The single Python-standard-library builder bundles the complete game. Do not edit generated `index.html` independently. The internal district keys are `residential`, `nature`, `business`, `school`. Home, Lake, Market and School remain the player-facing map labels; Library is a reference scene and Hills belongs to Nature.
+The game needs no backend, account, API key or runtime JSON fetch. The generated release embeds source data. A browser may impose restrictions when opening local files; local HTTP hosting is a useful development alternative. Progress is kept in browser local storage. Audio is optional: bundled `audio/<id>.mp3` recordings take priority when supplied; otherwise the game attempts a detected Pashto device voice and warns about uncertain fallback. No native-reviewed MP3 pack is currently committed. Physical iPhone Safari and Windows speech quality have not been independently verified.
 
-## Save format
+## Development
 
-This release uses **save schema 4 only**. It deliberately does not migrate older formats. An incompatible or corrupt save produces a blocking explanation and an explicit reset button. The stored value remains unchanged until the player chooses reset. Current-version progress, frozen plans, SRS and challenge attempts persist normally.
-
-Vocabulary acquisition and SRS have one authority in `progress.library`. Sentences and expressions have distinct learning units using the same scheduler; lexical card aliases read the corresponding form record and store no mirrored counters. XP uses persistent reward identities to prevent immediate lesson replay farming.
-
-## Verification
-
-Requires Python 3, Node.js, Playwright and Chromium. The cloud image supplies these; local installations can use `playwright` and set `CHROMIUM_PATH` where necessary.
+Use Python 3 for the standard-library builder and Node.js/Playwright/Chromium for full tests.
 
 ```sh
-python3 tools/verify.py          # all syntax/model/build checks and all browser suites
-python3 tools/verify.py --quick  # explicitly excludes browser suites
-node tools/district-inventory.mjs       # refresh capacity report after content/model changes
+python3 tools/build.py              # update generated offline index.html
+python3 tools/build.py --check      # check generated release matches sources
+python3 tools/verify.py             # model, syntax, build and browser suites
+python3 tools/verify.py --quick     # no browser suites: not full validation
+node tools/district-inventory.mjs   # refresh candidate/capacity report after relevant edits
 node tools/district-inventory.mjs --check
 ```
 
-Browser coverage includes public-UI-only checks at 1280px/375px, detailed Week 1/2 and Library flows, and fourteen complete normal/skip curriculum profiles at 0/4/8/12/16/20/24 assigned lemmas. See [current test evidence](docs/CURRICULUM_TEST_RESULTS.md) and [historical cleanup findings](docs/CLEANUP_REVIEW.md).
+**Never edit `index.html` as the authoritative source.**
 
-## Greeting-first lessons and challenges
+| Source | Owns |
+|---|---|
+| `src/app.html`, `src/app.css`, `src/app.js` | UI shell, styles, gameplay, narrative screens, questions and save I/O |
+| `src/progression.js` | Save factory/version, challenge outcomes, XP and titles |
+| `src/library-engine.js` | Lemma/form identity, exposure, SRS and district scheduling |
+| `src/library-ui.js` | Vocabulary Bank, Grammar Journal, pace settings and lesson/challenge integration |
+| `src/narrative-ui.js` | Contextual expression presentation |
+| `content/WEEK1_RUNTIME.json`, `content/WEEK2_RUNTIME.json` | Authored fourteen-day lesson content |
+| `content/LIBRARY_LEXICON.json` | Lexical records, forms, POS and source mappings |
+| `content/NARRATIVE_EXPRESSIONS.json` | Active/pending contextual phrase identities |
+| `content/DISTRICT_VOCABULARY_CANDIDATES.json`, `content/UNIVERSAL_TEACHING_TARGETS.json` | Inactive editorial candidates, not playable translations |
+| `tools/build.py`, `tools/verify.py` | Release assembly/validation and verification |
 
-Every active, non-optional daily greeting is taught inside the normal lesson sequence: it is the **first study card** at each of the four locations, with Pashto text, romanisation, audio and meaning. A location-specific approved expression takes priority; otherwise all locations repeat the day's active opening expression. The separate narrative panel must not pre-teach or acquire it. An opening grammar workshop follows the greeting when applicable, then scheduled vocabulary and sentences.
+`content/WEEK2_LESSON_DATA.json` retains the English curricular source/semantic targets; `tests/curriculum-contract.json` preserves authored-content regression fixtures. `content/DISTRICT_INVENTORY_REPORT.json` is an inventory output. Do not delete data files just because some names overlap.
 
-An active greeting is the **first question** of its day's challenge. Additional approved location expressions can take subsequent question slots. These replace existing vocabulary questions: total questions, pass thresholds and lexical-lemma quota are unchanged. A greeting encountered for the first time by skipping a day is flagged *Not previously studied* before its answer; normal SRS recognition records the reply, but fixed expressions earn no XP. Untranslated/pending expressions stay inactive. As of this version only Day 1's Welcome and Day 2's Good morning are enabled as provisional Afghan Pashto expressions, pending local review.
+## How progression works
 
-## Language and capacity
+The Day 1 Library tutorial introduces four question types: choose the meaning of `سلام`, arrange `څنګه یې؟`, select a gender preference, and type a player name. Completing all four is required to begin Day 1. A normal day includes narrative openings and district lessons; after the tutorial on Day 1, or immediately on Days 2–14, the player can skip visits and attempt the daily challenge. Skips do not mark unseen locations or vocabulary complete.
 
-The 127 existing draft lemma records contain **99 district lemmas and 28 universal lemmas**. Exactly 301 of the original 360 untranslated candidates are selected as pending additions to a balanced **400-lemma target**; none is activated. Pace settings work below 20 from Day 1, and the maximum Day 1 setting assigns six distinct nouns/adjectives per district. Action verbs begin on Day 2. Day 14 schedules zero compulsory new words. The current pool cannot sustain 24/day through Days 1–13: the minimum raw shortfall is 213 lemmas, before incidental encounters. Shortages are explicit.
+Each of the four districts contributes new **distinct lexical lemmas**, at a selected pace of 0/4/8/12/16/20/24 per day. Universal vocabulary, inflections, grammar units and expressions do not consume district quotas. Day 1 teaches descriptions, while action verbs start on Day 2. Day 14 schedules no compulsory new words. Daily challenges have 15 items, pass 12; Days 7 and 14 have 25, pass 20. A passed Day 7 exam unlocks Level 10 and New Resident.
 
-Two user-supplied expressions—Welcome and Day 2 Good morning—use the existing pronunciation/SRS system as provisional fixed expressions. The other 15 contextual expression slots are visibly pending translation and grammatical review; English dialogue never pretends to be acquired Pashto. See the [current expansion contract and linguistic blockers](docs/CURRICULUM_EXPANSION.md), [inventory report](content/DISTRICT_INVENTORY_REPORT.json) and [test results](docs/CURRICULUM_TEST_RESULTS.md).
+The current lexicon is short of the high-pace target: 99 district draft lemmas + 28 universal draft lemmas are playable; 301 selected district candidates are inactive pending linguistic work. The interface reports shortages without counting untranslated English candidates as learned words. Details and day-by-day teaching targets are in `CURRICULUM.md`.
 
-[Language review](LANGUAGE_REVIEW.md), [Week 2 review checklist](content/WEEK2_REVIEW.md), [district model](docs/DISTRICT_MODEL.md), and [curriculum specification](GAME_SPEC.md) describe the remaining editorial/native-review work. Automated Chromium tests do not establish physical iPhone Safari compatibility or linguistic certification.
+## Current documentation
 
-## Interactive introduction (Day 1)
+- [`AGENTS.md`](AGENTS.md): short workflow/safety contract for Codex and ChatGPT.
+- [`GAME_SPEC.md`](GAME_SPEC.md): current mechanics, game state, XP, UI and audio behaviour.
+- [`CURRICULUM.md`](CURRICULUM.md): current daily plan, districts, greetings and inventory.
+- [`LANGUAGE_REVIEW.md`](LANGUAGE_REVIEW.md): linguistic review queue and activation rules.
+- [`tests/README.md`](tests/README.md): verification coverage, requirements and limitations.
+- [`docs/reference/`](docs/reference/): historical Week 1/2 authoring blueprints retained only for editorial context; current JSON/runtime and active specifications take precedence.
 
-Muhammad Jan now guides players through four interactive cards: سلام (choose English meaning), څنګه یې؟ (order Pashto word tiles), a provisional gender question (male/female/prefer not to say), and a provisional name question (type a name). The name/gender are saved as `playerProfile` in the existing local schema-4 game progress only after completion. Older schema-4 saves without this optional profile remain usable, and replay updates the details. Thank you and Goodbye are introduced at Day 2 Market and Day 3 Home. New Pashto questions await Laghman-native review.
+Save format **4 only** is supported. There is no old-save migration. An incompatible or corrupt save stays untouched until the player explicitly resets it. Current-format progress, SRS and active attempts are preserved.
