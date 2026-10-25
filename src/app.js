@@ -10,7 +10,6 @@
   const KEY = "pashto-town-days-v1";
   let saveProblem = null;
   const DAY = 86400000;
-  const greeting = words.filter((w) => w.loop === 0).map((w) => w.id);
   const zoneKeys = ["residential", "nature", "business", "school"];
   const dayTwoScenes = {
     school:
@@ -357,6 +356,106 @@
   // @LIBRARY
   // @NARRATIVE
   // @PROGRESSION
+
+  // Four guided study cards introduce the game's interaction types.
+  const tutorialCards = [
+    {id:"g-hello",kind:"choice",help:"Read Salaam and its pronunciation. Tap the correct English meaning; then Continue."},
+    {id:"g-how",kind:"tiles",help:"Tap the Pashto word tiles in the order needed to ask 'How are you?'. Use Undo or Clear if needed."},
+    {id:"tutorial-gender",kind:"gender",ps:"ستاسو جنسیت څه دی؟",roman:"Staaso jinsiyat tsa day?",en:"What is your gender?",help:"Answer the question rather than translating it. Select the option that suits you, or prefer not to say."},
+    {id:"tutorial-name",kind:"name",ps:"ستا نوم څه دی؟",roman:"Sta num tsa day?",en:"What is your name?",help:"Type your own answer. Your name and gender preference are only saved in this browser's game progress."},
+  ];
+  for (const c of tutorialCards) {
+    if (c.ps) wordById[c.id]={id:c.id,loop:0,place:"guide",type:"greeting",ps:c.ps,roman:c.roman,en:c.en,note:"Provisional Afghan Pashto; native Laghman language review pending.",dialect:""};
+    if (!LIBRARY_DATA.phrases.some((p)=>p.id===c.id)) {
+      const w=wordById[c.id];
+      LIBRARY_DATA.phrases.push({id:c.id,pashto:w.ps,romanisation:w.roman,english:w.en,reviewStatus:"needsNativeLaghmanReview"});
+    }
+  }
+  const tutorialIds=tutorialCards.map((c)=>c.id);
+  function tutorialAnswer(correct) {
+    const id=tutorialIds[session.cardIndex],first=!session.firstAsked.has(id);
+    session.firstAsked.add(id);
+    session.tutorialResponses++;
+    libraryPractice(id,correct,`tutorial:${session.attemptId}:${session.tutorialResponses}`,"tutorial");
+    session.answered++;
+    if(correct) {
+      if(first)session.firstCorrect++;
+      session.passed.add(id);
+      session.earned+=awardXP(progress,"practice:"+id,10);
+      $("teachNext").disabled=false;
+    }
+    save();hud();
+  }
+  function renderTutorialStep() {
+    const n=session.cardIndex,c=tutorialCards[n],w=wordById[c.id];
+    libraryExpose(c.id,"tutorial");save();
+    $("teachPanel").classList.remove("hidden");
+    $("lessonStages").classList.add("hidden");
+    $("teachCount").textContent=`TUTORIAL · CARD ${n+1}/4`;
+    $("teachType").textContent=["Choose a meaning","Arrange Pashto words","Answer a question","Type a response"][n];
+    $("teachPashto").textContent=w.ps;
+    $("teachRoman").textContent=w.roman;
+    $("teachEnglish").textContent=w.en;
+    $("teachNote").textContent=c.help;
+    $("dialectVariant").classList.add("hidden");
+    $("addressTarget").textContent="Muhammad Jan → Player · Your answer → Muhammad Jan";
+    $("addressTarget").classList.remove("hidden");
+    $("guideMessage").textContent=[
+      "First, select what Salaam means. You can try again if you make a mistake.",
+      "Now arrange my Pashto words into a sentence by tapping them in order.",
+      "This time you answer about yourself. There is no wrong choice.",
+      "Now type the name you would like me to call you."
+    ][n];
+    $("teachNext").disabled=true;
+    $("teachNext").textContent=n===3?"Finish introduction →":"Continue →";
+    const area=$("tutorialInteraction");area.replaceChildren();area.classList.remove("hidden");
+    const p=document.createElement("p");p.className="tutorial-instructions";p.textContent=c.help;
+    const feedback=document.createElement("p");feedback.id="tutorialFeedback";feedback.className="tutorial-feedback";feedback.setAttribute("role","status");area.append(p);
+    const done=(message)=>{
+      if(session.passed.has(c.id))return;
+      tutorialAnswer(true);feedback.textContent=message||"✓ Correct. Continue.";
+      for(const el of area.querySelectorAll("button,input"))el.disabled=true;
+    };
+    if(c.kind==="choice"){
+      const choices=document.createElement("div");choices.className="choices tutorial-choices";
+      for(const answer of ["Thank you","Hello","Goodbye"]){
+        const b=document.createElement("button");b.type="button";b.className="choice";b.textContent=answer;
+        b.addEventListener("click",()=>{
+          if(answer==="Hello"){b.classList.add("correct");done("✓ Salaam means Hello. That is how you answer multiple choice.");}
+          else{tutorialAnswer(false);feedback.textContent="Not quite. Try again."; }
+        });choices.append(b);
+      }area.append(choices);
+    } else if(c.kind==="tiles"){
+      const answer=[],target=["څنګه","یې؟"];
+      const built=document.createElement("div");built.id="tutorialBuilt";built.className="tutorial-built";built.lang="ps";built.dir="rtl";
+      const tiles=document.createElement("div");tiles.className="tutorial-tiles";tiles.dir="rtl";tiles.lang="ps";
+      const row=document.createElement("div");row.className="buttons";
+      const make=(txt,fn,klass)=>{const b=document.createElement("button");b.type="button";b.textContent=txt;b.className=klass;b.addEventListener("click",fn);return b;};
+      const undo=make("Undo",()=>{answer.pop();render();},"secondary");
+      const clear=make("Clear",()=>{answer.length=0;render();},"ghost");
+      const check=make("Check sentence",()=>{if(answer.join(" ")===target.join(" "))done("✓ څنګه یې؟ means How are you?");else{tutorialAnswer(false);feedback.textContent="Wrong order. Use Undo or Clear, then try again.";}},"primary");
+      const render=()=>{built.textContent=answer.length?answer.join(" "):"Tap the words to begin";
+        for(const tile of tiles.children)tile.disabled=answer.includes(tile.dataset.word);
+        undo.disabled=clear.disabled=answer.length===0;check.disabled=answer.length!==2;};
+      for(const word of ["یې؟","څنګه"]){const tile=make(word,()=>{answer.push(word);render();},"choice tutorial-tile");tile.dataset.word=word;tiles.append(tile);}
+      row.append(undo,clear,check);area.append(built,tiles,row);render();
+    } else if(c.kind==="gender"){
+      const choices=document.createElement("div");choices.className="choices tutorial-choices";
+      for(const [gender,label] of [["male","Male"],["female","Female"],["unspecified","Prefer not to say"]]){
+        const b=document.createElement("button");b.type="button";b.className="choice";b.dataset.gender=gender;b.textContent=label;
+        b.addEventListener("click",()=>{session.profileGender=gender;done("✓ Thank you. You can change this by replaying the tutorial.");});
+        choices.append(b);
+      }area.append(choices);
+    } else {
+      const row=document.createElement("div");row.className="tutorial-name-row";
+      const field=document.createElement("input");field.id="tutorialName";field.type="text";field.className="tutorial-name-input";field.maxLength=40;field.autocomplete="given-name";field.placeholder="Name you would like to use";field.value=progress.playerProfile?.name||"";field.setAttribute("aria-label","Your name");
+      const b=document.createElement("button");b.type="button";b.id="tutorialSaveName";b.className="primary";b.textContent="Use this name";
+      const accept=()=>{const name=field.value.trim();if(!name){feedback.textContent="Enter a name up to 40 characters.";return;}session.profileName=name;done(`✓ Nice to meet you, ${name}!`);};
+      b.addEventListener("click",accept);field.addEventListener("keydown",(event)=>{if(event.key==="Enter"){event.preventDefault();accept();}});
+      row.append(field,b);area.append(row);
+    }area.append(feedback);
+  }
+
   function currentSave(p) {
     const object = (value) =>
       value && typeof value === "object" && !Array.isArray(value);
@@ -374,6 +473,7 @@
     )
       return false;
     if (
+      (p.playerProfile && (!object(p.playerProfile) || typeof p.playerProfile.name !== "string" || p.playerProfile.name.length > 40 || !["male","female","unspecified"].includes(p.playerProfile.gender))) ||
       !object(p.library) ||
       ![
         "units",
@@ -562,7 +662,7 @@
       status.level === 10
         ? "Week 1 complete · New Resident"
         : progress.tutorialDone
-          ? "Living in town · Day-by-day Pashto · Present tense."
+          ? `${progress.playerProfile?.name ? "Welcome, " + progress.playerProfile.name + " · " : ""}Living in town · Day-by-day Pashto · Present tense.`
           : "Muhammad Jan is waiting at the Library.";
   }
   function view(name) {
@@ -2514,7 +2614,7 @@
       loop = 0,
       mode = "standard";
     if (id === "tutorial") {
-      pool = [...greeting];
+      pool = [...tutorialIds];
       mode = "tutorial";
       loc = "library";
     } else if (id === "review") {
@@ -2548,11 +2648,11 @@
       loop,
       required: pool,
       recall,
-      studyWords: mode === "tutorial" ? pool : newWords,
+      studyWords: mode === "tutorial" ? [] : newWords,
       greetingCards: greetingId ? [greetingId] : [],
       studySentences: sentences,
       phase:
-        greetingId ? "greeting" :
+        mode === "tutorial" ? "tutorial" : greetingId ? "greeting" :
         mode === "review"
           ? lexical.length
             ? "lexical"
@@ -2597,16 +2697,19 @@
       firstCorrect: 0,
       passed: new Set(),
       earned: 0,
+      tutorialResponses: 0,
+      profileGender: progress.playerProfile?.gender || "unspecified",
+      profileName: progress.playerProfile?.name || "",
       initialLevel: characterStatus(progress).level,
     };
     session.attemptId = ++progress.library.attemptSequence;
     let title, desc, emoji, guide;
     if (mode === "tutorial") {
       title = "Muhammad Jan · Library welcome";
-      desc = "Library · Four easy greetings";
+      desc = "Library · Four interactive study cards";
       emoji = "👴";
       guide =
-        "Salaam! I am Muhammad Jan. Learn these four greetings with me, then choose their meanings. I will make sure you are ready to meet your neighbours.";
+        "Salaam! Learn how to answer the game’s questions, and tell me your name and preferred gender option.";
     } else if (mode === "review") {
       title = "Memory Trail";
       desc = `${pool.length} spaced-repetition review items`;
@@ -2652,7 +2755,10 @@
     stopAudio();
     for (const id of ["teachPanel", "sovPanel", "quizPanel"])
       $(id).classList.add("hidden");
-    if (["greeting", "lexical", "sentence"].includes(session.phase)) {
+    if (session.mode === "tutorial") {
+      renderTutorialStep();
+    } else if (["greeting", "lexical", "sentence"].includes(session.phase)) {
+      $("tutorialInteraction").classList.add("hidden");
       teachCard();
     } else if (session.phase === "grammar") {
       showGrammar();
@@ -2660,6 +2766,7 @@
     else showQuestion();
   }
   function studyList() {
+    if (session?.mode === "tutorial") return tutorialIds;
     return session.phase === "greeting"
       ? session.greetingCards
       : session.phase === "sentence" ? session.studySentences : session.studyWords;
@@ -2779,6 +2886,13 @@
   }
   function afterStudy() {
     stopAudio();
+    if (session?.mode === "tutorial") {
+      if ($("teachNext").disabled) return;
+      session.cardIndex++;
+      if (session.cardIndex < tutorialCards.length) renderTutorialStep();
+      else finish();
+      return;
+    }
     if (!session || !["greeting", "lexical", "sentence"].includes(session.phase)) return;
     session.cardIndex++;
     if (session.cardIndex < studyList().length) {
@@ -3393,15 +3507,19 @@
     if (!session) return;
     const s = session;
     const passedRequired = s.required.every((id) => s.passed.has(id));
+    if(s.mode==="tutorial"){
+      if(!passedRequired || !s.profileName.trim() || !["male","female","unspecified"].includes(s.profileGender))return;
+      progress.playerProfile={name:s.profileName.trim(),gender:s.profileGender};
+    }
     const bonus = completeLessonOnce(progress, s.id, s.mode, passedRequired);
     s.earned += bonus;
     save();
     hud();
     let title, desc, follow;
     if (s.mode === "tutorial") {
-      title = "Muhammad Jan welcomes you!";
+      title = `Muhammad Jan welcomes ${progress.playerProfile.name}!`;
       desc =
-        "You practised four friendly greetings at the Library. Day 1 is open for exploration, or go straight to Muhammad Jan’s Library home-award challenge.";
+        `Welcome, ${progress.playerProfile.name}! You practised choosing a meaning, arranging words, selecting an answer, and typing your name. Day 1 is now open.`;
       follow =
         "Explore home, market, lake and school in any order, or use “Skip to Muhammad Jan’s check-in” on the town screen. His 15-question Library home-award challenge is available now.";
     } else if (s.mode === "review") {
@@ -3447,7 +3565,7 @@
     $("resultNext").textContent = follow;
     $("resultReplay").textContent =
       s.mode === "tutorial"
-        ? "Repeat greetings tutorial"
+        ? "Replay introduction tutorial"
         : s.mode === "review"
           ? "Review again"
           : "Practise this location again";
