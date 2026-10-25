@@ -270,7 +270,7 @@ async function lesson(page) {
     if (++guard > 180) throw Error("Lesson did not finish");
     const phase = await page.evaluate(() => __test.session.phase);
     if (phase === "grammar") await page.locator("#sovNext").click();
-    else if (["lexical", "sentence"].includes(phase))
+    else if (["greeting", "lexical", "sentence"].includes(phase))
       await page.locator("#teachNext").click();
     else {
       const expected = await page.evaluate(
