@@ -2769,7 +2769,7 @@
       );
       stages[i].classList.toggle(
         "active",
-        session.phase === "lexical"
+        session.phase === "greeting" || session.phase === "lexical"
           ? i === 0
           : session.phase === "sentence"
             ? i === 1
@@ -2779,7 +2779,7 @@
   }
   function afterStudy() {
     stopAudio();
-    if (!session || !["lexical", "sentence"].includes(session.phase)) return;
+    if (!session || !["greeting", "lexical", "sentence"].includes(session.phase)) return;
     session.cardIndex++;
     if (session.cardIndex < studyList().length) {
       teachCard();
