@@ -1,5 +1,11 @@
 # Curriculum expansion and narrative expressions
 
+## Current Day 1 introduction contract — 25 October 2026
+
+The active implementation replaces the historical four-translation greeting tutorial below. Muhammad Jan introduces four interactive study cards at the Library, in order: (1) `سلام` — select “Hello” from multiple choices; (2) `څنګه یې؟` — tap tiles in their Pashto word order; (3) `ستاسو جنسیت څه دی؟` — choose a gender answer (male, female, or prefer not to say) rather than translate; (4) `ستا نوم څه دی؟` — enter a player's chosen name as typed text. Each card teaches its interaction type, shows Pashto script, transliteration and optional speaker audio, and requires a valid answer before advancing. Day 1 remains gated until all four cards are completed. The name and gender preference are committed together in the schema-4 local save as `playerProfile`, and replaying the tutorial permits changes. The earlier `مننه` and `خدای پامان` cards are retained, moved to Day 2 Market and Day 3 Home respectively. These two new Pashto tutorial questions are provisional, pending local Laghman-language validation. Historical statements about the unchanged four-greeting tutorial below are superseded by this section.
+
+
+
 ## Branch and scope
 
 The feature branch starts at `6fbc876` on the unmerged `codex/restore-windows-pashto-audio-20261024` branch. Its PR is stacked on that audio branch. It retains the MP3 manifest, player, browser/device voice fallback and offline builder. It does not replace the Windows audio restoration, merge main or change save schema 4.
@@ -59,7 +65,7 @@ The generated `DISTRICT_INVENTORY_REPORT.json` distinguishes current playable ca
 | 13 Lake | Saleha | How is your day going? | Pending |
 | 14 Home | Muhammad Jan | Good luck! | Pending; optional cultural content |
 
-Pending slots use readable English character dialogue with an explicit pending-language note. They expose no invented Pashto, speaker button, recognition test or acquisition record. Thus three Day 1 expressions and twelve subsequent greetings remain linguistic deliverables, not claimed completed Pashto lessons. The original four-greeting Muhammad Jan Library tutorial is unchanged.
+Pending slots use readable English character dialogue with an explicit pending-language note. They expose no invented Pashto, speaker button, recognition test or acquisition record. Thus three Day 1 expressions and twelve subsequent greetings remain linguistic deliverables, not claimed completed Pashto lessons. The Day 1 tutorial has since been replaced by the four-interaction onboarding sequence above.
 
 Provenance is recorded per active expression: the user's Curriculum Expansion and Narrative Greetings request, sections 6/7, dated 24 October 2026. The request describes the morning wording as attested in Afghan learning materials but supplies no bibliographic title/URL. Attempts to inspect Wikivoyage/Omniglot were blocked by the environment's HTTP proxy (403). **An independent bibliographic citation, grammatical sign-off and native Laghman review remain outstanding.** No external source was falsely claimed as inspected. The activation gate exempts only the exact two supplied texts; altering their text or enabling another translation requires documented review.
 
