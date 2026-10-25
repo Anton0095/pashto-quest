@@ -6,10 +6,14 @@ const LibraryEngine = (() => {
     !!entry?.suitableDistricts.includes(scene(place)?.districtId || place);
   const unique = (values) => [...new Set(values)];
   // Descriptions precede lexical actions. Fixed expressions have no component-verb mappings.
-  const allowedOnDay = (entry, day) => day !== 1 || entry?.partOfSpeech !== "verb";
+  const allowedOnDay = (entry, day) =>
+    day !== 1 || entry?.partOfSpeech !== "verb";
   function cardAllowed(data, id, day) {
     return (data.sourceMappings[id] || []).every((ref) =>
-      allowedOnDay(data.entries.find((e) => e.lemmaId === ref.lemmaId), day),
+      allowedOnDay(
+        data.entries.find((e) => e.lemmaId === ref.lemmaId),
+        day,
+      ),
     );
   }
   function state() {
@@ -27,9 +31,14 @@ const LibraryEngine = (() => {
     };
   }
   function encounter(p, data, ref, context) {
-    const s = p.library || (p.library = state()),
+    const s = p.library,
       e = data.entries.find((e) => e.lemmaId === ref.lemmaId);
-    if (!e || !allowedOnDay(e, context.day) || !e.forms.some((f) => f.formId === ref.formId)) return null;
+    if (
+      !e ||
+      !allowedOnDay(e, context.day) ||
+      !e.forms.some((f) => f.formId === ref.formId)
+    )
+      return null;
     const r = s.acquired[e.lemmaId] || {
       firstEncounteredDay: context.day,
       firstEncounteredSource: context.source,
@@ -46,7 +55,7 @@ const LibraryEngine = (() => {
     if (!r.encounteredFormIds.includes(ref.formId)) delete r.masteredAt;
     r.encounteredFormIds = unique([...r.encounteredFormIds, ref.formId]);
     r.encounteredSourceIds = unique(
-      [...(r.encounteredSourceIds || []), context.contentId].filter(Boolean),
+      [...r.encounteredSourceIds, context.contentId].filter(Boolean),
     );
     if (context.day > 0) {
       const ledger = (s.dayExposure[context.day] ||= {
@@ -84,11 +93,18 @@ const LibraryEngine = (() => {
   function expose(p, data, id, context) {
     if (data.phrases.some((f) => f.id === id)) {
       p.library.phrases[id] ||= {
-        day: context.day, source: context.source, location: context.location,
+        day: context.day,
+        source: context.source,
+        location: context.location,
       };
       // Encountered but unpractised expressions are due too; optional recognition
       // can be skipped without removing the expression from later review.
-      p.library.units[id] ||= {stage: 0, srsDueAt: 0, totalAttempts: 0, correctAttempts: 0};
+      p.library.units[id] ||= {
+        stage: 0,
+        srsDueAt: 0,
+        totalAttempts: 0,
+        correctAttempts: 0,
+      };
       return;
     }
     for (const ref of data.sourceMappings[id] || [])
@@ -191,10 +207,18 @@ const LibraryEngine = (() => {
     const reserved = new Set(
       Object.values(p.library.plans)
         .filter((x) => x.day !== day)
-        .flatMap((x) => Object.values(x.locationAssignments).flat().filter((id) => {
-          const e = data.entries.find((e) => e.lemmaId === id);
-          return x.day !== 14 && e?.countsTowardDailyQuota && allowedOnDay(e, x.day);
-        })),
+        .flatMap((x) =>
+          Object.values(x.locationAssignments)
+            .flat()
+            .filter((id) => {
+              const e = data.entries.find((e) => e.lemmaId === id);
+              return (
+                x.day !== 14 &&
+                e?.countsTowardDailyQuota &&
+                allowedOnDay(e, x.day)
+              );
+            }),
+        ),
     );
     return data.entries.filter(
       (e) =>
@@ -252,29 +276,7 @@ const LibraryEngine = (() => {
     );
   }
   function ensurePlan(p, data, day) {
-    if (p.library.plans[day]) {
-      const plan = p.library.plans[day];
-      // A current-schema save may contain a reclassified universal or Day 1 action.
-      // Retain identities/history and safe frozen assignments; remove unsafe teaching only.
-      {
-        let removed = false;
-        for (const place of places) {
-          const ids = plan.locationAssignments[place] || [];
-          plan.locationAssignments[place] = ids.filter((id) => {
-            const entry = data.entries.find((e) => e.lemmaId === id);
-            const keep = day !== 14 && entry?.countsTowardDailyQuota && allowedOnDay(entry, day);
-            if (!keep) removed = true;
-            return keep;
-          });
-        }
-        if (removed) {
-          plan.contentGap = true;
-          plan.effectiveDailyTarget = null;
-          plan.notice = "Curriculum update: earlier universal/Day 1 action assignments are retained in your learning history but excluded from district teaching quotas. Safe frozen assignments remain; choose a new pace on an unstarted day.";
-        }
-      }
-      return plan;
-    }
+    if (p.library.plans[day]) return p.library.plans[day];
     const target = day === 14 ? 0 : p.library.requestedDailyTarget,
       a = allocation(p, data, day, target);
     const plan = {
@@ -282,8 +284,6 @@ const LibraryEngine = (() => {
       requestedDailyTarget: target,
       effectiveDailyTarget: a.supported ? target : null,
       locationAssignments: a.assignments,
-      planVersion: 2,
-      sourceContentVersion: data.sourceContentVersion,
       seed: p.library.seed,
       contentGap: !a.supported,
       notice: a.supported
@@ -369,11 +369,22 @@ const LibraryEngine = (() => {
   }
   function lexicalSelection(p, data, day, count) {
     const scheduled = new Set(
-      Object.values(p.library.plans[day]?.locationAssignments || {}).flat().filter((id) =>
-        data.entries.some((e) => e.lemmaId === id && e.countsTowardDailyQuota && allowedOnDay(e, day))),
+      Object.values(p.library.plans[day]?.locationAssignments || {})
+        .flat()
+        .filter((id) =>
+          data.entries.some(
+            (e) =>
+              e.lemmaId === id &&
+              e.countsTowardDailyQuota &&
+              allowedOnDay(e, day),
+          ),
+        ),
     );
     const acquired = Object.keys(p.library.acquired).filter((id) =>
-      data.entries.some((e) => e.lemmaId === id && e.countsTowardDailyQuota && allowedOnDay(e, day)),
+      data.entries.some(
+        (e) =>
+          e.lemmaId === id && e.countsTowardDailyQuota && allowedOnDay(e, day),
+      ),
     );
     const due = acquired
       .filter((id) => p.library.acquired[id].srsDueAt <= Date.now())
@@ -433,7 +444,8 @@ const LibraryEngine = (() => {
         (id) => p.library.acquired[id],
       ),
       incidentalStoryLemmas: (ledger.incidentalStoryLemmas || []).filter((id) =>
-        data.entries.some((e) => e.lemmaId === id && e.countsTowardDailyQuota)),
+        data.entries.some((e) => e.lemmaId === id && e.countsTowardDailyQuota),
+      ),
       reviewedExistingLemmas: ledger.reviewedExistingLemmas || [],
       masteredLemmas: data.entries
         .filter(

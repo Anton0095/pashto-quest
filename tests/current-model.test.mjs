@@ -1,3 +1,4 @@
+import {models} from "./model-fixture.mjs";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
@@ -125,12 +126,7 @@ console.log(
   "PASS current schema: seven pacing options, canonical districts, one form SRS, idempotent events, mastery, intact 14-day content contract and inactive candidate gates",
 );
 
-const P = vm.runInNewContext(
-  read("src/library-engine.js") +
-    "\n" +
-    read("src/progression.js") +
-    ";({fresh,completeChallengeOnce,awardXP,completeLessonOnce})",
-);
+const P = models();
 const progress = P.fresh(),
   untouched = JSON.stringify(progress);
 for (const score of [-1, 16, Infinity, 0.5])

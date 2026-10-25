@@ -1,6 +1,6 @@
+import {models} from "./model-fixture.mjs";
 import { readFileSync, mkdirSync } from "node:fs";
 import assert from "node:assert/strict";
-import vm from "node:vm";
 import http from "node:http";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
@@ -30,20 +30,7 @@ const bank = JSON.parse(
   ),
 );
 const game = JSON.parse(html.match(/const GAME_DATA\s*=\s*(\{.*?\});/s)[1]);
-const helpers = readFileSync(
-  new URL("../src/progression.js", import.meta.url),
-  "utf8",
-);
-const api = vm.runInNewContext(
-  engine +
-    "\n" +
-    helpers +
-    ";({E:LibraryEngine,fresh,completeChallengeOnce,characterStatus,getChallengeSpec})",
-  {
-    LIBRARY_DATA: data,
-    week2Days: Object.fromEntries(bank.days.map((d) => [d.day, d])),
-  },
-);
+const api = models();
 const plain = (x) => JSON.parse(JSON.stringify(x));
 let groups = 0;
 function check(name, fn) {
@@ -203,7 +190,7 @@ check("LIB-17: grammar unlock follows exposure, not schedule or pass", () => {
   assert(p.library.grammar["grammar-day-3"]);
   assert(!p.library.grammar["grammar-day-4"]);
 });
-const hook = `window.__libraryTest={get progress(){return progress},get session(){return session},get selectedLoop(){return selectedLoop},E:LibraryEngine,data:LIBRARY_DATA,entries:libraryEntries,words,wordById,zoneKeys,begin,startWorld,openLibrary,closeLibrary,afterStudy,afterGrammar,answer,nextQuestion,answerChallenge,showChallengeQuestion,buildTiles,save,getChallengeSpec,setProgress(p){progress={...fresh(),...p,saveSchemaVersion:4,library:p.library||LibraryEngine.state()};session=null;save();hud();startWorld()},select(day){selectedLoop=day;startWorld()},startChallenge};`;
+const hook = `window.__libraryTest={get progress(){return state.progress},get session(){return state.session},get selectedLoop(){return state.day},E:LibraryEngine,data:content.LIBRARY_DATA,entries:content.libraryEntries,words:content.words,wordById:content.wordById,zoneKeys:content.zoneKeys,begin:lessons.begin,startWorld:world.startWorld,openLibrary:library.openLibrary,closeLibrary:library.closeLibrary,afterStudy:lessons.afterStudy,afterGrammar:lessons.afterGrammar,answer:lessons.answer,nextQuestion,answerChallenge:challenge.answerChallenge,showChallengeQuestion:challenge.showChallengeQuestion,buildTiles:questions.buildTiles,save:storage.save,getChallengeSpec:progression.getChallengeSpec,setProgress(p){state.progress={...progression.fresh(),...p,saveSchemaVersion:5,library:p.library||LibraryEngine.state()};state.session=null;storage.save();ui.hud();world.startWorld()},select(day){state.day=day;world.startWorld()},startChallenge:challenge.startChallenge};`;
 const served = html.replace("// @TEST_HOOK", hook);
 const server = http.createServer((req, res) => {
   if (req.url.startsWith("/audio/")) {
@@ -594,15 +581,9 @@ try {
 
           library: t.E.state(),
         };
-      p.library.plans[1] = {
-        day: 1,
-        locationAssignments: {
-          residential: t.data.entries
-            .filter((e) => e.countsTowardDailyQuota)
-            .map((e) => e.lemmaId),
-        },
-        planVersion: 1,
-      };
+      for (const e of t.data.entries.filter(e => e.countsTowardDailyQuota))
+        t.E.encounter(p, t.data, {lemmaId:e.lemmaId, formId:e.forms[0].formId},
+          {day:0, source:"fixture", location:e.primaryDistrict});
       t.setProgress(p);
       t.select(13);
       t.begin("13-nature");

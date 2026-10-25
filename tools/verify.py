@@ -21,7 +21,7 @@ def run(command):
     if result.returncode:print('\n'.join(result.stdout.splitlines()[-30:]),flush=True)
     return result.returncode==0
 
-commands=[['python3','tools/build.py','--check'],['node','tools/district-inventory.mjs','--check'],['node','tests/current-model.test.mjs'],['node','tests/audio.test.mjs'],['node','tests/curriculum-expansion.test.mjs'],['python3','tests/district-content.test.py']]
+commands=[['python3','tools/build.py','--check'],['node','tools/district-inventory.mjs','--check'],['node','tests/current-model.test.mjs'],['node','tests/game-state.test.mjs'],['node','tests/audio.test.mjs'],['node','tests/curriculum-expansion.test.mjs'],['python3','tests/district-content.test.py']]
 commands += [['node','--check',str(path.relative_to(ROOT))] for directory,pattern in [('src','*.js'),('tools','*.mjs'),('tests','*.mjs')] for path in sorted((ROOT/directory).glob(pattern))]
 passed=True
 for command in commands:passed=run(command) and passed
@@ -30,7 +30,7 @@ compiled=subprocess.run(['node','--check'],input=script,text=True,capture_output
 passed=compiled.returncode==0 and passed
 print('PASS compiled release syntax' if compiled.returncode==0 else compiled.stderr)
 if not args.quick:
-    browsers=[['node','tests/'+name+'.test.mjs'] for name in ['challenge-disclosure','independent-browser','week1','week2','library-vocabulary','full-curriculum','narrative-greetings']]
+    browsers=[['node','tests/'+name+'.test.mjs'] for name in ['resume-behaviour','challenge-disclosure','independent-browser','week1','week2','library-vocabulary','full-curriculum','narrative-greetings']]
     with ThreadPoolExecutor(max_workers=2) as executor:
         passed=all(list(executor.map(run,browsers))) and passed
 else:print('UNRUN browser suites (--quick)')

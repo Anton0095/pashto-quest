@@ -122,15 +122,19 @@ def build():
     library['phrases'] += [p for p in narrative['expressions'] if p['active']]
     audio_dir = ROOT / 'audio'
     audio_ids = sorted(path.stem for path in audio_dir.glob('*.mp3')) if audio_dir.exists() else []
-    script = (read('src/app.js')
-              .replace('// @GAME_DATA', 'const GAME_DATA=' + encode(game) + ';')
-              .replace('// @AUDIO_IDS', 'const BUNDLED_AUDIO_IDS=' + encode(audio_ids) + ';')
-              .replace('// @WEEK2_DATA', 'const WEEK2_DATA=' + encode(week2) + ';')
-              .replace('// @NARRATIVE', 'const NARRATIVE_DATA=' + encode(narrative) + ';\n'
-                       + read('src/narrative-ui.js'))
-              .replace('// @PROGRESSION', read('src/progression.js'))
-              .replace('// @LIBRARY', 'const LIBRARY_DATA=' + encode(library) + ';\n'
-                       + read('src/library-engine.js') + '\n' + read('src/library-ui.js')))
+    # Explicit dependency order; modules use factories with injected services.
+    modules = [
+        'library-engine', 'progression', 'content', 'question-engine',
+        'assessment-content', 'grammar-content', 'learning', 'questions', 'storage', 'audio', 'ui',
+        'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
+        'world-ui', 'library-ui', 'app',
+    ]
+    datasets = {'GAME_DATA': game, 'WEEK2_DATA': week2, 'LIBRARY_DATA': library,
+                'NARRATIVE_DATA': narrative, 'BUNDLED_AUDIO_IDS': audio_ids}
+    script = '\n'.join('const ' + name + '=' + encode(value) + ';'
+                       for name, value in datasets.items()) + '\n'
+    script += '\n'.join(read('src/' + name + '.js') for name in modules)
+    script = '(() => {\n\"use strict\";\n' + script + '\n})();'
     return (read('src/app.html').replace('/* @STYLES */', read('src/app.css'))
             .replace('// @SCRIPT', script))
 

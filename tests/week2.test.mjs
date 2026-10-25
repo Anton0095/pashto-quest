@@ -1,7 +1,7 @@
+import {models} from "./model-fixture.mjs";
 import { readFileSync, mkdirSync } from "node:fs";
 import assert from "node:assert/strict";
 import http from "node:http";
-import vm from "node:vm";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 let chromium;
@@ -73,14 +73,7 @@ for (const day of bank.days) {
     assert.deepEqual(q.acceptedPs, []);
   }
 }
-const helpers = html.slice(
-  html.indexOf("/* Only the display text changes."),
-  html.indexOf("function buildTiles("),
-);
-const api = vm.runInNewContext(
-  helpers +
-    ";({getAnswerTiles,isDialogueAnswerCorrect,normalizePashtoResponse})",
-);
+const api = models();
 for (const d of bank.days)
   for (const q of d.dialogues) {
     const t = api.getAnswerTiles(q.answerPs, q.duds);
@@ -108,7 +101,7 @@ assert(
 console.log(
   "PASS content: 140 exact semantic targets, full draft Pashto/romanization, 48 contextual replies, distinct tiles and normalization",
 );
-const hook = `window.__test={get progress(){return progress},get session(){return session},wordById,zoneKeys,week2Days,selectChallenge,characterStatus,allowed,placeAccessible,getAnswerTiles,getDialogueTiles,buildTiles,answerChallenge,showChallengeQuestion,renderMixedPashto,save,setProgress(p){progress={...fresh(),...p,saveSchemaVersion:4,library:p.library||LibraryEngine.state()};save();hud();startWorld()},select(day){selectedLoop=day;startWorld()}};`;
+const hook = `window.__test={get progress(){return state.progress},get session(){return state.session},wordById:content.wordById,zoneKeys:content.zoneKeys,week2Days:content.week2Days,selectChallenge:questions.selectChallenge,characterStatus:progression.characterStatus,allowed:learning.allowed,placeAccessible:learning.placeAccessible,getAnswerTiles:QuestionEngine.getAnswerTiles,getDialogueTiles:QuestionEngine.getDialogueTiles,buildTiles:questions.buildTiles,answerChallenge:challenge.answerChallenge,showChallengeQuestion:challenge.showChallengeQuestion,renderMixedPashto:ui.renderMixedPashto,save:storage.save,setProgress(p){state.progress={...progression.fresh(),...p,saveSchemaVersion:5,library:p.library||LibraryEngine.state()};storage.save();ui.hud();world.startWorld()},select(day){state.day=day;world.startWorld()}};`;
 const served = html.replace("// @TEST_HOOK", hook);
 const server = http.createServer((req, res) => {
   res.setHeader("Content-Type", "text/html; charset=utf-8");
@@ -121,7 +114,7 @@ const browser = await chromium.launch({
   args: ["--no-sandbox"],
 });
 const graduate = () => ({
-  saveSchemaVersion: 4,
+  saveSchemaVersion: 5,
   xp: 1800,
   tutorialDone: true,
 
