@@ -63,20 +63,32 @@ function renderDayExpression(day) {
     $("skipDayArea").before(root);
   }
   root.replaceChildren();
-  const phrase = NARRATIVE_DATA.expressions.find((p) => p.day === day && day > 1);
-  if (phrase) root.append(expressionDialogue(phrase, "day-opening"));
+  // Announce the encounter without pre-teaching the English answer or
+  // acquiring the expression before the first location study card.
+  const phrase = NARRATIVE_DATA.expressions.find(
+    (p) => p.day === day && day > 1 && p.active && !p.optional,
+  );
+  if (phrase)
+    root.append(libraryNode("p",
+      `${phrase.speaker} will teach you a new greeting today. Meet the village teachers to study it as the first card.`,
+      "tiny muted"));
 }
 function renderLessonExpression(day, location, mode) {
   let root = $("lessonExpression");
   if (!root) {
     root = libraryNode("div");
     root.id = "lessonExpression";
-    $("guideMessage").after(root);
+    $("audioStatus").after(root);
   }
   root.replaceChildren();
   if (mode !== "standard") return;
-  const phrase = NARRATIVE_DATA.expressions.find((p) => p.day === day && p.location === location);
-  // The opening character repeats their greeting naturally. It is the same persistent
-  // identity/first encounter, never a second acquisition or an XP award.
-  if (phrase) root.append(expressionDialogue(phrase, "lesson"));
+  // An active greeting is shown by the standard study/recall sequence.
+  // Inactive expressions cannot appear as Pashto teaching or challenge items.
+  const pending = NARRATIVE_DATA.expressions.find(
+    (p) => p.day === day && p.location === location && !p.active,
+  );
+  if (pending)
+    root.append(libraryNode("p",
+      "Another location expression awaits an approved Pashto translation and cannot yet be studied.",
+      "tiny muted"));
 }

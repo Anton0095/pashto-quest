@@ -1756,7 +1756,14 @@
   function selectChallenge(day) {
     const currentPlan = LibraryEngine.ensurePlan(progress, LIBRARY_DATA, day);
     const saved = currentPlan.challengeQuestions;
-    if (saved && saved.every((q) => LibraryEngine.cardAllowed(LIBRARY_DATA, q.id, day)))
+    const currentGreetings = NARRATIVE_DATA.expressions.filter(
+      (p) => p.day === day && p.active && !p.optional,
+    );
+    if (
+      saved &&
+      saved.every((q) => LibraryEngine.cardAllowed(LIBRARY_DATA, q.id, day)) &&
+      currentGreetings.every((p, i) => saved[i]?.id === p.id)
+    )
       return saved.map((q) => ({ ...q }));
     const plan = currentPlan,
       previousRandom = curriculumRandom;
@@ -2056,7 +2063,9 @@
     }
     if (q.kind === "word") {
       // Freeze presentation before exposure, including unanswered saved attempts.
-      q.unstudied ??= (LIBRARY_DATA.sourceMappings[q.id] || []).some(({ lemmaId }) => {
+      q.unstudied ??= LIBRARY_DATA.phrases.some((p) => p.id === q.id)
+        ? !progress.library.phrases[q.id]
+        : (LIBRARY_DATA.sourceMappings[q.id] || []).some(({ lemmaId }) => {
         const record = progress.library.acquired[lemmaId];
         return !record || (record.firstEncounteredSource === "challenge" && record.totalAttempts === 0);
       });
@@ -2248,7 +2257,7 @@
       : reverse
         ? "Which Pashto expression means this?"
         : q.kind === "word"
-          ? "What does this word mean?"
+          ? w.type === "greeting" ? "What does this greeting mean?" : "What does this word mean?"
           : "What does this sentence mean?";
     $("quizSpeak").classList.toggle("hidden", reverse);
     $("quizPanel").querySelector(".quizword h3").textContent = isBuild
@@ -2396,7 +2405,8 @@
       return;
     }
     const rewardKey = `${session.loop}:${q.kind}:${q.direction}:${q.id}`;
-    const gain = correct ? awardXP(progress, rewardKey, 5) : 0;
+    const isExpression = LIBRARY_DATA.phrases.some((p) => p.id === q.id);
+    const gain = correct && !isExpression ? awardXP(progress, rewardKey, 5) : 0;
     session.earned += gain;
     save();
     hud();
@@ -2525,6 +2535,10 @@
     const recall = [];
     const lexical = pool.filter((x) => wordById[x].type !== "sentence"),
       sentences = pool.filter((x) => wordById[x].type === "sentence");
+    const greetingId = mode === "standard" && lexical.length &&
+      LIBRARY_DATA.phrases.some((p) => p.id === lexical[0])
+      ? lexical[0] : null;
+    const newWords = greetingId ? lexical.filter((id) => id !== greetingId) : lexical;
     const ordered =
       mode === "standard" ? [...lexical, ...sentences, ...recall] : pool;
     session = {
@@ -2534,9 +2548,11 @@
       loop,
       required: pool,
       recall,
-      studyWords: mode === "tutorial" ? pool : lexical,
+      studyWords: mode === "tutorial" ? pool : newWords,
+      greetingCards: greetingId ? [greetingId] : [],
       studySentences: sentences,
       phase:
+        greetingId ? "greeting" :
         mode === "review"
           ? lexical.length
             ? "lexical"
@@ -2601,7 +2617,7 @@
       const z = zones[loc],
         l = loops.find((x) => x.id === loop);
       title = displayPlace(loop, loc);
-      desc = `Day ${loop}: ${l.label} · ${lexical.length} vocabulary cards · ${sentences.length} sentences · ${recall.length} recall`;
+      desc = `Day ${loop}: ${l.label} · ${greetingId ? "1 greeting · " : ""}${newWords.length} vocabulary cards · ${sentences.length} sentences · ${recall.length} recall`;
       emoji = z.icon;
       guide = advancedScenes[loop]
         ? advancedScenes[loop][loc]
@@ -2636,7 +2652,7 @@
     stopAudio();
     for (const id of ["teachPanel", "sovPanel", "quizPanel"])
       $(id).classList.add("hidden");
-    if (session.phase === "lexical" || session.phase === "sentence") {
+    if (["greeting", "lexical", "sentence"].includes(session.phase)) {
       teachCard();
     } else if (session.phase === "grammar") {
       showGrammar();
@@ -2644,9 +2660,9 @@
     else showQuestion();
   }
   function studyList() {
-    return session.phase === "sentence"
-      ? session.studySentences
-      : session.studyWords;
+    return session.phase === "greeting"
+      ? session.greetingCards
+      : session.phase === "sentence" ? session.studySentences : session.studyWords;
   }
   function teachCard() {
     const items = studyList(),
@@ -2675,7 +2691,7 @@
     $("teachPanel").classList.remove("hidden");
     $("lessonStages").classList.toggle("hidden", session.mode === "tutorial");
     $("teachCount").textContent =
-      `${session.phase === "lexical" ? "VOCABULARY" : "BUILDING SENTENCES"} · CARD ${session.cardIndex + 1}/${items.length}`;
+      `${session.phase === "greeting" ? "TODAY'S GREETING" : session.phase === "lexical" ? "VOCABULARY" : "BUILDING SENTENCES"} · CARD ${session.cardIndex + 1}/${items.length}`;
     $("teachType").textContent =
       session.phase === "sentence" ? "Present-tense sentence" : w.type;
     $("teachPashto").textContent = w.ps;
@@ -2739,9 +2755,11 @@
     $("addressTarget").classList.remove("hidden");
     $("teachNext").textContent =
       session.cardIndex === items.length - 1
-        ? session.phase === "lexical" && session.studySentences.length
-          ? "Time for sentences →"
-          : "Start the quiz →"
+        ? session.phase === "greeting"
+          ? "Continue to the lesson →"
+          : session.phase === "lexical" && session.studySentences.length
+            ? "Time for sentences →"
+            : "Start the quiz →"
         : "Next study card →";
     const stages = $("lessonStages").children;
     for (let i = 0; i < stages.length; i++) {
@@ -2751,7 +2769,7 @@
       );
       stages[i].classList.toggle(
         "active",
-        session.phase === "lexical"
+        session.phase === "greeting" || session.phase === "lexical"
           ? i === 0
           : session.phase === "sentence"
             ? i === 1
@@ -2761,13 +2779,20 @@
   }
   function afterStudy() {
     stopAudio();
-    if (!session || !["lexical", "sentence"].includes(session.phase)) return;
+    if (!session || !["greeting", "lexical", "sentence"].includes(session.phase)) return;
     session.cardIndex++;
     if (session.cardIndex < studyList().length) {
       teachCard();
       return;
     }
-    if (session.phase === "lexical" && session.studySentences.length) {
+    if (session.phase === "greeting") {
+      session.phase = session.preLessonGrammar
+        ? "grammar"
+        : session.studyWords.length ? "lexical"
+          : session.studySentences.length ? "grammar" : "quiz";
+      session.cardIndex = 0;
+      renderPhase();
+    } else if (session.phase === "lexical" && session.studySentences.length) {
       session.phase =
         session.preLessonGrammar || session.mode === "review"
           ? "sentence"
@@ -3196,7 +3221,9 @@
       progress.sovSeen = true;
     if (session.loop) progress.personIntros[session.loop] = true;
     save();
-    session.phase = session.preLessonGrammar ? "lexical" : "sentence";
+    session.phase = session.preLessonGrammar
+      ? session.studyWords.length ? "lexical" : session.studySentences.length ? "sentence" : "quiz"
+      : "sentence";
     session.cardIndex = 0;
     renderPhase();
   }
@@ -3658,7 +3685,7 @@
       progress = fresh();
       session = null;
       selectedLoop = 1;
-      $("introScreen").append(document.querySelector(".worldmap"));
+      $("introScreen").insertBefore(document.querySelector(".worldmap"), $("introScreen").querySelector(".guide-row"));
       save();
       hud();
       view("introScreen");
