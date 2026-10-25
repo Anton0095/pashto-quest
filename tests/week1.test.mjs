@@ -279,7 +279,7 @@ async function finishLesson(page) {
               .click();
       }
       await page.locator("#sovNext").click();
-    } else if (["lexical", "sentence"].includes(phase))
+    } else if (["greeting", "lexical", "sentence"].includes(phase))
       await page.locator("#teachNext").click();
     else {
       const answer = await page.evaluate(
