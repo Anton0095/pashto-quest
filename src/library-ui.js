@@ -99,7 +99,10 @@ function libraryLessonPool(day, place) {
     (p) => p.day === day && p.active && !p.optional,
   );
   const opening = greeting ? [greeting.id] : [];
-  return [...new Set([...opening, ...actionIntro, ...lexical, ...grammar, ...review, ...original])]
+  // Move former tutorial courtesies into contextual Day 2–3 teaching, without affecting lexical quotas.
+  const deferred = day === 2 && place === "business" ? ["g-thanks"]
+    : day === 3 && place === "residential" ? ["g-bye"] : [];
+  return [...new Set([...opening, ...deferred, ...actionIntro, ...lexical, ...grammar, ...review, ...original])]
     .filter((id) => LibraryEngine.cardAllowed(LIBRARY_DATA, id, day));
 }
 function prependChallengeGreetings(day, questions) {

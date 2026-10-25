@@ -224,15 +224,25 @@ const getP = (page) =>
   page.evaluate(() => JSON.parse(JSON.stringify(__libraryTest.progress)));
 async function tutorial(page) {
   await page.locator("#startTutorial").click();
-  assert.match(await page.locator("#lessonName").innerText(), /Library/);
-  for (let i = 0; i < 4; i++) await page.locator("#teachNext").click();
-  await page.evaluate(() => {
-    const t = __libraryTest;
-    while (t.session.queue.length) {
-      t.answer(t.wordById[t.session.queue[0].id].en);
-      t.nextQuestion();
-    }
-  });
+  assert(await page.locator("#teachPashto").isVisible());
+  assert.equal(await page.locator("#teachPashto").innerText(), "سلام");
+  assert(await page.locator("#teachNext").isDisabled(), "cannot skip first study interaction");
+  await page.locator("#tutorialInteraction .choice").filter({hasText:"Hello"}).click();
+  await page.locator("#teachNext").click();
+  assert.equal(await page.locator("#teachPashto").innerText(), "څنګه یې؟");
+  await page.locator('.tutorial-tile[data-word="څنګه"]').click();
+  await page.locator('.tutorial-tile[data-word="یې؟"]').click();
+  await page.getByRole("button",{name:"Check sentence"}).click();
+  await page.locator("#teachNext").click();
+  await page.locator('[data-gender="female"]').click();
+  await page.locator("#teachNext").click();
+  assert(await page.locator("#teachNext").isDisabled(), "name must be submitted");
+  await page.locator("#tutorialName").fill("Sami");
+  await page.locator("#tutorialSaveName").click();
+  await page.locator("#teachNext").click();
+  const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem("pashto-town-days-v1")));
+  assert.equal(saved.tutorialDone,true);
+  assert.deepEqual(saved.playerProfile,{name:"Sami",gender:"female"});
   await page.locator("#resultWorld").click();
 }
 async function finishLesson(page) {

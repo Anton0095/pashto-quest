@@ -42,7 +42,20 @@ try {
       let steps = 0;
       while (await page.locator("#resultScreen").isHidden()) {
         assert(++steps < 250, "public lesson stalls");
-        if (await page.locator("#teachPanel").isVisible()) {
+        if (await page.locator("#tutorialInteraction").isVisible()) {
+          const step=await page.locator("#teachCount").innerText();
+          if(step.includes("CARD 1/4")) await page.locator("#tutorialInteraction .choice").filter({hasText:"Hello"}).click();
+          else if(step.includes("CARD 2/4")) {
+            await page.locator('.tutorial-tile[data-word="څنګه"]').click();
+            await page.locator('.tutorial-tile[data-word="یې؟"]').click();
+            await page.getByRole("button",{name:"Check sentence"}).click();
+          } else if(step.includes("CARD 3/4")) await page.locator('[data-gender="female"]').click();
+          else {
+            await page.locator("#tutorialName").fill("Sami");
+            await page.locator("#tutorialSaveName").click();
+          }
+          await page.locator("#teachNext").click();
+        } else if (await page.locator("#teachPanel").isVisible()) {
           meanings.set(
             (await page.locator("#teachPashto").innerText()).trim(),
             await page.locator("#teachEnglish").innerText(),

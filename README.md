@@ -56,3 +56,7 @@ The 127 existing draft lemma records contain **99 district lemmas and 28 univers
 Two user-supplied expressions—Welcome and Day 2 Good morning—use the existing pronunciation/SRS system as provisional fixed expressions. The other 15 contextual expression slots are visibly pending translation and grammatical review; English dialogue never pretends to be acquired Pashto. See the [current expansion contract and linguistic blockers](docs/CURRICULUM_EXPANSION.md), [inventory report](content/DISTRICT_INVENTORY_REPORT.json) and [test results](docs/CURRICULUM_TEST_RESULTS.md).
 
 [Language review](LANGUAGE_REVIEW.md), [Week 2 review checklist](content/WEEK2_REVIEW.md), [district model](docs/DISTRICT_MODEL.md), and [curriculum specification](GAME_SPEC.md) describe the remaining editorial/native-review work. Automated Chromium tests do not establish physical iPhone Safari compatibility or linguistic certification.
+
+## Interactive introduction (Day 1)
+
+Muhammad Jan now guides players through four interactive cards: سلام (choose English meaning), څنګه یې؟ (order Pashto word tiles), a provisional gender question (male/female/prefer not to say), and a provisional name question (type a name). The name/gender are saved as `playerProfile` in the existing local schema-4 game progress only after completion. Older schema-4 saves without this optional profile remain usable, and replay updates the details. Thank you and Goodbye are introduced at Day 2 Market and Day 3 Home. New Pashto questions await Laghman-native review.

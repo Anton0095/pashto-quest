@@ -18,6 +18,7 @@ const fresh = () => ({
   complete: {},
   challenges: {},
   tutorialDone: false,
+  playerProfile: {name:"",gender:"unspecified"},
   sovSeen: false,
   personIntros: {},
 });
