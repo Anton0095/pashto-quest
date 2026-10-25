@@ -3658,7 +3658,7 @@
       progress = fresh();
       session = null;
       selectedLoop = 1;
-      $("introScreen").append(document.querySelector(".worldmap"));
+      $("introScreen").insertBefore(document.querySelector(".worldmap"), $("introScreen").querySelector(".guide-row"));
       save();
       hud();
       view("introScreen");
