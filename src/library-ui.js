@@ -90,11 +90,52 @@ function libraryLessonPool(day, place) {
     .map(({ form }) => "library-form:" + form.formId);
 
   const actionIntro = day === 2 && place === "school" ? ["v-read", "v-write"] : [];
-  return [...new Set([...actionIntro, ...lexical, ...grammar, ...review, ...original])]
+  // Use a location's active expression, otherwise repeat this day's active
+  // greeting. Pending translations remain unavailable. Expressions do not
+  // consume lexical quotas, even when repeated at multiple locations.
+  const greeting = NARRATIVE_DATA.expressions.find(
+    (p) => p.day === day && p.location === place && p.active && !p.optional,
+  ) || NARRATIVE_DATA.expressions.find(
+    (p) => p.day === day && p.active && !p.optional,
+  );
+  const opening = greeting ? [greeting.id] : [];
+  return [...new Set([...opening, ...actionIntro, ...lexical, ...grammar, ...review, ...original])]
     .filter((id) => LibraryEngine.cardAllowed(LIBRARY_DATA, id, day));
 }
+function prependChallengeGreetings(day, questions) {
+  const greetings = NARRATIVE_DATA.expressions.filter(
+    (p) => p.day === day && p.active && !p.optional && wordById[p.id],
+  );
+  if (!greetings.length) return questions;
+  const remaining = questions.map((q) => ({ ...q }));
+  const greetingIds = new Set(greetings.map((p) => p.id));
+  for (const p of greetings) {
+    const existing = remaining.findIndex((q) => q.id === p.id);
+    if (existing >= 0) {
+      remaining.splice(existing, 1);
+      continue;
+    }
+    const wordSlot = remaining.findIndex(
+      (q) => q.kind === "word" && !greetingIds.has(q.id),
+    );
+    const otherSlot = remaining.findIndex(
+      (q) => q.kind === "sentence" && !greetingIds.has(q.id),
+    );
+    const target = wordSlot >= 0 ? wordSlot : otherSlot;
+    if (target < 0) throw Error("Day " + day + " has no greeting assessment slot");
+    remaining.splice(target, 1);
+  }
+  const opening = greetings.map((p) => ({
+    id: p.id, kind: "word", direction: "ps-en",
+    vocabularyOrigin: "daily-greeting", speaker: p.speaker,
+    recipient: p.recipient, comment: "Recognise today's greeting.",
+  }));
+  const result = [...opening, ...remaining];
+  if (result.length !== questions.length) throw Error("Greeting changed challenge length");
+  return result;
+}
 function libraryChallengeQuestions(day, questions) {
-  if (day === 3) return questions; // Edris’s authored dinner ingredients/actions keep their exact narrative.
+  if (day === 3) return prependChallengeGreetings(day, questions); // Preserve dinner story and length.
   const plan = LibraryEngine.ensurePlan(progress, LIBRARY_DATA, day);
   const selection = LibraryEngine.lexicalSelection(
       progress,
@@ -128,13 +169,14 @@ function libraryChallengeQuestions(day, questions) {
     if (q.kind !== "word")
       q.scaffold =
         "Authored grammar/story context; unfamiliar vocabulary is supported by the translation and answer feedback.";
-  plan.assessmentMix = result.reduce((out, q) => {
+  const withGreetings = prependChallengeGreetings(day, result);
+  plan.assessmentMix = withGreetings.reduce((out, q) => {
     const key = q.vocabularyOrigin || "authored-grammar";
     out[key] = (out[key] || 0) + 1;
     return out;
   }, {});
 
-  return result;
+  return withGreetings;
 }
 function captureLibraryChallenge() {
   if (!session || session.mode !== "challenge") return;
