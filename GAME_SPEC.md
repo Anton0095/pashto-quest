@@ -1,5 +1,11 @@
 # Pashto Quest — Week 1 Development Handoff for Codex
 
+## Current Day 1 introduction contract — 25 October 2026
+
+The active implementation replaces the historical four-translation greeting tutorial below. Muhammad Jan introduces four interactive study cards at the Library, in order: (1) `سلام` — select “Hello” from multiple choices; (2) `څنګه یې؟` — tap tiles in their Pashto word order; (3) `ستاسو جنسیت څه دی؟` — choose a gender answer (male, female, or prefer not to say) rather than translate; (4) `ستا نوم څه دی؟` — enter a player's chosen name as typed text. Each card teaches its interaction type, shows Pashto script, transliteration and optional speaker audio, and requires a valid answer before advancing. Day 1 remains gated until all four cards are completed. The name and gender preference are committed together in the schema-4 local save as `playerProfile`, and replaying the tutorial permits changes. The earlier `مننه` and `خدای پامان` cards are retained, moved to Day 2 Market and Day 3 Home respectively. These two new Pashto tutorial questions are provisional, pending local Laghman-language validation. Historical statements about the unchanged four-greeting tutorial below are superseded by this section.
+
+
+
 Current implementation/workflow: see README.md, docs/CURRICULUM_EXPANSION.md and docs/CLEANUP_REVIEW.md. The current expansion contract supersedes historical inventory/Day 1/save wording below. Historical status notes below are curriculum context, not instructions to restore removed migrations or prototype code.
 **Specification status:** 23 October 2026  
 **Reference implementation:** `pashto_quest_days_1_5_narrative.html` (latest available supplied game build; verify against GitHub HEAD before changing source).  
