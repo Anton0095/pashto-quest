@@ -245,7 +245,7 @@ async function finishLesson(page) {
     ) {
       if (++n > 350) throw Error("Lesson stalled");
       const s = t.session;
-      if (["lexical", "sentence"].includes(s.phase)) t.afterStudy();
+      if (["greeting", "lexical", "sentence"].includes(s.phase)) t.afterStudy();
       else if (s.phase === "grammar") {
         if (document.querySelector("#sovNext").disabled)
           throw Error("Unexpected interactive opening");
