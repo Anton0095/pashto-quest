@@ -633,7 +633,7 @@ function renderLibraryPace(root) {
 }
 function libraryUpdateWorld() {
   const map = document.querySelector(".worldmap");
-  $("worldScreen").insertBefore(map, $("placeCards"));
+  $("worldScreen").prepend(map);
   const plan = LibraryEngine.ensurePlan(progress, LIBRARY_DATA, selectedLoop);
   save();
   for (const [index, place] of zoneKeys.entries()) {
@@ -786,7 +786,7 @@ function libraryInit() {
   choices.append(feedback);
   $("introScreen").insertBefore(choices, $("startTutorial"));
   if (!progress.tutorialDone) {
-    $("introScreen").append(document.querySelector(".worldmap"));
+    $("introScreen").insertBefore(document.querySelector(".worldmap"), $("introScreen").querySelector(".guide-row"));
     for (const b of document.querySelectorAll(".map-point:not(.library)"))
       b.disabled = true;
   }
