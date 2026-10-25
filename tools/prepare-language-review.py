@@ -259,6 +259,22 @@ def build():
             {"pashto": s["pashto"], "romanisation": s["romanisation"]},
             "P0" if (s.get("day") in [6, 7] or ":dud:" in s["id"]) else "P1",
         )
+    authored_hints = collections.defaultdict(list)
+    for c in runtime["cards"]:
+        ts = tokens(c["ps"])
+        if len(ts) == 1:
+            authored_hints[ts[0]].append(
+                {"sourceId": c["id"], "english": c["en"], "source": "runtime-catalog"}
+            )
+    for day, sample in runtime["grammar"]["samples"].items():
+        authored_hints[sample[0]].append(
+            {
+                "source": "src/grammar-content.js samples",
+                "day": day,
+                "english": sample[1],
+                "grammarExplanation": sample[4],
+            }
+        )
     unmatched = collections.defaultdict(list)
     for s in surfaces:
         for t in sorted(set(tokens(s["pashto"])) - known.keys()):
@@ -269,6 +285,7 @@ def build():
             "possible-form-or-identity-gap",
             {
                 "status": "unresolved-token-alignment",
+                "authoredSenseHints": authored_hints.get(t, []),
                 "englishContexts": sorted(set(s["englishContext"] or "" for s in uses)),
                 "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed.",
             },

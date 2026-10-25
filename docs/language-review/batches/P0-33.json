@@ -418,6 +418,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "Distractor; must be wrong for this reply, not a new teaching lemma.",
           "Edris opens his shop every day.",
@@ -668,6 +669,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "This bread is cheap."
         ],
@@ -724,6 +726,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
           "I read the book, and you write a sentence.",
@@ -1650,6 +1653,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "They carry bottles of water.",
           "They walk beside the water.",
@@ -1768,6 +1772,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "That window is closed."
         ],
@@ -1824,6 +1829,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "Authored inline text; reviewer must distinguish examples, alternatives and UI labels."
         ],
@@ -1877,6 +1883,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "Assessment option; correctness depends on authored question.",
           "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
@@ -2273,6 +2280,14 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [
+          {
+            "source": "src/grammar-content.js samples",
+            "day": "4",
+            "english": "You (informal singular)",
+            "grammarExplanation": "Second-person singular often uses ـې. Compare څښم with څښې."
+          }
+        ],
         "englishContexts": [
           "Assessment option; correctness depends on authored question.",
           "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
@@ -4361,6 +4376,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "Distractor; must be wrong for this reply, not a new teaching lemma."
         ],
@@ -4408,6 +4424,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "These are your stones.",
           "These stones are small."
@@ -4486,6 +4503,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "Muhammad Jan reads every day.",
           "They help Muhammad Jan.",
@@ -4622,6 +4640,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
           "What is your gender?"
@@ -4680,6 +4699,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "I run beside the lake.",
           "Saleha is beside the lake.",
@@ -4815,6 +4835,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "Goodbye"
         ],
@@ -4862,6 +4883,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "These doors are open."
         ],
@@ -4918,6 +4940,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "You both carry the food."
         ],
@@ -4974,6 +4997,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "They like fruit."
         ],
@@ -5026,6 +5050,7 @@
       "priority": "P0",
       "intendedMeaning": {
         "status": "unresolved-token-alignment",
+        "authoredSenseHints": [],
         "englishContexts": [
           "Edris opens his shop every day.",
           "When does Edris open his shop?",
