@@ -28,10 +28,10 @@ try {
     errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(`http://127.0.0.1:${server.address().port}`);
-  for (const pace of [4, 8, 12, 16, 20, 24])
+  for (const pace of [0, 4, 8, 12, 16, 20, 24])
     for (const skip of [false, true]) {
       const trace = await page.evaluate(
-        ({ pace, skip }) => {
+        async ({ pace, skip }) => {
           const t = __matrix;
           t.reset();
           t.progress.library.requestedDailyTarget = pace;
@@ -124,6 +124,8 @@ try {
             if (t.session.questions.length !== n)
               throw Error("Assessment length");
             for (let i = 0; i < n; i++) {
+              // Audit the final pre-answer DOM after queued rendering/saving.
+              await Promise.resolve();
               const q = t.session.questions[i],
                 w = t.wordById[q.id],
                 correct =
@@ -134,6 +136,18 @@ try {
                     : q.direction === "ps-en"
                       ? w.en
                       : w.ps);
+              if (q.kind === "word") {
+                const roman = document.querySelector("#quizRoman").textContent;
+                if (q.unstudied) {
+                  if (q.direction !== "ps-en" || document.querySelector("#quizPashto").textContent !== w.ps ||
+                      roman !== w.roman + " · Not previously studied" ||
+                      ![...document.querySelectorAll("#choices button")].some((b) => b.textContent === w.en))
+                    throw Error("Unstudied word reveals its answer or loses recognition support");
+                } else if (roman !== (q.direction === "ps-en" ? w.roman : "Recall the Pashto expression"))
+                  throw Error("Studied word presentation changed");
+                if (document.querySelector("#choices .correct,#choices .wrong,#choices button:disabled"))
+                  throw Error("Answer highlighted before submission");
+              }
               t.answerChallenge(i < pass ? correct : "incorrect fixture");
               t.nextQuestion();
             }
@@ -193,5 +207,5 @@ try {
   server.close();
 }
 console.log(
-  "PASS 12 full 14-day profiles at six paces, 336 normal visits, 168 minimum-score assessments, explicit supply gaps",
+  "PASS 14 full 14-day profiles at seven paces, 392 normal visits, 196 minimum-score assessments, explicit supply gaps",
 );

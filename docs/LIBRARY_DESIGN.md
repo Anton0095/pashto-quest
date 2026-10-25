@@ -14,6 +14,12 @@ One scheduler updates forms and nonlexical sentence/expression skills. The acqui
 
 Questions retain fixed authored grammar/narrative contexts. Lexical selection prioritises genuine acquired/due entries and identifies scheduled unfamiliar scaffolds. Selected questions and live attempts are saved, including tile indices, index, submitted answer, first-answer lock, score and earned XP. Restore reconstructs feedback without regrading. Permanent reward keys block immediate replay farming; first-pass milestones remain once-only.
 
+Unstudied challenge words use Pashto-to-English recognition with transliteration, the neutral “Not previously studied” warning and pronunciation. Their English solution appears only as an ordinary answer option until submission locks the answer, then in feedback. Presentation is frozen in the attempt before exposure so an unanswered reload cannot turn recognition into an English prompt; existing question-only exposure with no attempts is also handled for current-schema saves. Previously studied words keep their normal direction and presentation. Skipping does not reduce the score automatically.
+
 The current release supports save schema 4 only. Incompatible/corrupt stored data remains unchanged until explicit reset. There are no old-format imports, previous-place adapters or historical-clear backfills.
 
 The single offline release bundles all text/data. Native Laghman review, verified pronunciation and additional translated vocabulary remain editorial prerequisites. Untranslated candidate records are not part of the playable lexicon. The activation/build gates require complete metadata and documented review for promotion.
+
+## Current curriculum update
+
+Universal vocabulary has its own Library tab and retains the same acquisition/form/SRS identities while being excluded from district quotas. Contextual expressions use the existing greeting units and shared scheduler with no XP. Only actual visible active dialogue acquires an expression; pending translations remain editorial targets. Day 1 allocation, review and assessment paths exclude lexical actions. Read [the current expansion contract](CURRICULUM_EXPANSION.md) for active and pending expression lists and schema-4 safety reconciliation.

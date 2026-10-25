@@ -1,4 +1,5 @@
 // @GAME_DATA
+// @AUDIO_IDS
 (() => {
   "use strict";
   const $ = (id) => document.getElementById(id);
@@ -354,6 +355,7 @@
   }
 
   // @LIBRARY
+  // @NARRATIVE
   // @PROGRESSION
   function currentSave(p) {
     const object = (value) =>
@@ -523,7 +525,9 @@
         (id) => isDue(id) && wordById[id] && currentAvailable(wordById[id]),
       ),
     ];
-    return [...new Set(ids)].map((id) => wordById[id]);
+    return [...new Set(ids)]
+      .filter((id) => LibraryEngine.cardAllowed(LIBRARY_DATA, id, selectedLoop))
+      .map((id) => wordById[id]);
   }
   let curriculumRandom = null;
   function shuffle(list) {
@@ -638,6 +642,8 @@
                     : `Skip to Day ${day} challenge →`;
   }
   function renderWorld() {
+    stopAudio();
+    renderDayExpression(selectedLoop);
     const selected = loops.find((l) => l.id === selectedLoop);
     $("chapterButtons").replaceChildren();
     for (const l of loops) {
@@ -1748,9 +1754,11 @@
     return shuffle(questionSet);
   }
   function selectChallenge(day) {
-    const saved = progress.library?.plans[day]?.challengeQuestions;
-    if (saved) return saved.map((q) => ({ ...q }));
-    const plan = LibraryEngine.ensurePlan(progress, LIBRARY_DATA, day),
+    const currentPlan = LibraryEngine.ensurePlan(progress, LIBRARY_DATA, day);
+    const saved = currentPlan.challengeQuestions;
+    if (saved && saved.every((q) => LibraryEngine.cardAllowed(LIBRARY_DATA, q.id, day)))
+      return saved.map((q) => ({ ...q }));
+    const plan = currentPlan,
       previousRandom = curriculumRandom;
     let seed = plan.seed + day * 7919;
     curriculumRandom = () => {
@@ -1772,6 +1780,7 @@
   function startChallenge(day, restoring = false) {
     if (!allowed(day)) return;
     stopAudio();
+    $("lessonExpression")?.replaceChildren();
     const questions = selectChallenge(day),
       spec = getChallengeSpec(day);
     session = {
@@ -1871,6 +1880,7 @@
         x.id !== w.id &&
         x.type === w.type &&
         x.loop <= session.loop &&
+        LibraryEngine.cardAllowed(LIBRARY_DATA, x.id, session.loop) &&
         x[direction === "ps-en" ? "en" : "ps"] !== current,
     );
     if (w.type === "sentence")
@@ -2044,14 +2054,16 @@
       finishChallenge();
       return;
     }
+    if (q.kind === "word") {
+      // Freeze presentation before exposure, including unanswered saved attempts.
+      q.unstudied ??= (LIBRARY_DATA.sourceMappings[q.id] || []).some(({ lemmaId }) => {
+        const record = progress.library.acquired[lemmaId];
+        return !record || (record.firstEncounteredSource === "challenge" && record.totalAttempts === 0);
+      });
+      if (q.unstudied) q.direction = "ps-en";
+    }
     if (q.kind !== "dialogue") libraryExpose(q.id, "challenge");
-    queueMicrotask(() => {
-      const hint = q.scaffold || q.comment;
-      if (hint && q.vocabularyOrigin === "scheduled-scaffold")
-        $("quizRoman").textContent =
-          "Not previously studied · " + (wordById[q.id]?.en || "");
-      save();
-    });
+    queueMicrotask(save);
     const w =
       q.kind === "address" || q.kind === "choice" || q.kind === "dialogue"
         ? null
@@ -2230,7 +2242,7 @@
       ? "Arrange the Pashto tiles below"
       : reverse
         ? "Recall the Pashto expression"
-        : w.roman;
+        : w.roman + (q.unstudied ? " · Not previously studied" : "");
     $("quizPrompt").textContent = isBuild
       ? "Build the Pashto sentence for this meaning"
       : reverse
@@ -2298,7 +2310,7 @@
       if (["construct", "dialogue"].includes(q.kind)) renderBuiltSentence();
       $("quizFeedback").textContent =
         "Saved response: " +
-        (q.answerPs || q.correct || w?.ps || "") +
+        (q.answerPs || q.correct || (w ? w.ps + (q.kind === "word" ? " — " + w.en : "") : "")) +
         ". Your first submitted answer is already recorded.";
       $("quizNext").disabled = false;
       return;
@@ -2613,6 +2625,7 @@
     $("lessonIcon").textContent = emoji;
     setSpeaker(loop, loc, mode);
     $("guideMessage").textContent = guide;
+    renderLessonExpression(loop, loc, mode);
     hud();
     view("lessonScreen");
     renderPhase();
@@ -3091,7 +3104,12 @@
       $("sovTitle").textContent =
         "English uses S–V–O. Pashto usually uses S–O–V.";
       $("sovExplanation").textContent =
-        `${session.preLessonGrammar ? "Ms Hameed starts your school day with a new rule. " : ""}English says “He/she ${d.verb} ${d.object}”: Subject → Verb → Object. In a simple Pashto action sentence, the object usually comes before the verb: Subject → Object → Verb. The boxes present grammatical order; Pashto script itself is read from right to left.`;
+        `${session.preLessonGrammar ? "Ms Hameed starts your school day with action verbs. Yesterday: “The book is new” describes a thing; today: “He/she reads a book” describes an action. Dictionary forms: لوستل (lostal, to read), لیکل (leekal, to write). The third-person present forms are لولي (lolee, reads) and لیکي (leekee, writes); these are forms of the same two words. " : ""}English says “He/she ${d.verb} ${d.object}”: Subject → Verb → Object. In a simple Pashto action sentence, the object usually comes before the verb: Subject → Object → Verb. Practise with familiar nouns from your bank, such as کتاب (book). The boxes present grammatical order; Pashto script itself is read from right to left.`;
+      if (session.loop === 2 && session.loc === "school") {
+        for (const id of ["v-read", "v-write", "s3-read", "s2-school-word"])
+          if (wordById[id]) libraryExpose(id, "lesson");
+        save();
+      }
       $("sovNext").textContent = session.preLessonGrammar
         ? "Let’s learn the school vocabulary →"
         : "I understand S–O–V →";
@@ -3188,7 +3206,8 @@
       ...Object.values(wordById).filter((x) =>
         x.id.startsWith("library-card:"),
       ),
-    ].filter((x) => x.id !== w.id && x.en !== w.en && x.type === w.type);
+    ].filter((x) => x.id !== w.id && x.en !== w.en && x.type === w.type &&
+      LibraryEngine.cardAllowed(LIBRARY_DATA, x.id, session.loop || selectedLoop));
     if (w.type === "sentence") {
       const same = peers.filter((x) => x.loop === w.loop),
         prior = peers.filter((x) => x.loop < w.loop);
@@ -3293,7 +3312,10 @@
     if (correct) {
       session.passed.add(w.id);
       const identity = LibraryEngine.identity(LIBRARY_DATA, w.id);
-      if (previous.correct === 0)
+      const narrativeExpression = LIBRARY_DATA.phrases.some((p) =>
+        p.id === w.id && p.kind === "fixed conversational expression");
+      if (narrativeExpression) gain = 0; // Includes Memory Trail; original tutorial rewards stay intact.
+      else if (previous.correct === 0)
         gain = awardXP(progress, "practice:" + identity, 10);
       else if (previous.dueAt <= Date.now())
         gain = awardXP(
@@ -3406,14 +3428,20 @@
     view("resultScreen");
   }
 
-  // Audio strategy: prefer pre-generated ps-AF neural MP3s, then only an exact Pashto browser TTS voice.
-  // Never use an unrelated Persian/Urdu/English voice as a pronunciation substitute.
-  let playback = null,
-    currentSpoken = null;
+  // Pronunciation: bundled Pashto MP3 first, then the browser's available Pashto speech service.
+  // Browsers may populate their voice list asynchronously, so never treat the first empty list as final.
+  let playback = null;
+  let currentSpoken = null;
+  let activeUtterance = null;
+  let audioRequest = 0;
+  const bundledAudioIds = new Set(BUNDLED_AUDIO_IDS);
   function audioStatus(message) {
     $("audioStatus").textContent = message;
+    for (const node of document.querySelectorAll("[data-expression-audio-status]"))
+      node.textContent = message;
   }
   function stopAudio() {
+    audioRequest++;
     try {
       if (playback) {
         playback.pause();
@@ -3421,56 +3449,124 @@
       }
     } catch (e) {}
     playback = null;
+    activeUtterance = null;
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
   }
+  function speechVoices() {
+    if (!("speechSynthesis" in window)) return [];
+    try {
+      return window.speechSynthesis.getVoices();
+    } catch (e) {
+      return [];
+    }
+  }
   function pashtoVoice() {
-    if (!("speechSynthesis" in window)) return null;
-    const matches = window.speechSynthesis
-      .getVoices()
-      .filter((v) => /^ps([_-]|$)/i.test(v.lang));
-    return matches.find((v) => /af/i.test(v.lang)) || matches[0] || null;
+    const voices = speechVoices();
+    const matches = voices.filter(
+      (voice) =>
+        /^ps(?:[-_]|$)/i.test(voice.lang || "") ||
+        ((!voice.lang || /^und$/i.test(voice.lang)) &&
+          /pashto|pakhto|pukhto/i.test(voice.name || "")),
+    );
+    return (
+      matches.find((voice) => /^ps[-_]AF$/i.test(voice.lang || "") && /neural|natural|online/i.test(voice.name || "")) ||
+      matches.find((voice) => /^ps[-_]AF$/i.test(voice.lang || "")) ||
+      matches.find((voice) => /neural|natural|online/i.test(voice.name || "")) ||
+      matches[0] ||
+      null
+    );
+  }
+  function waitForPashtoVoice() {
+    const voice = pashtoVoice();
+    if (voice) return Promise.resolve(voice);
+    if (!("speechSynthesis" in window)) return Promise.resolve(null);
+    return new Promise((resolve) => {
+      let settled = false;
+      const synth = window.speechSynthesis;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        synth.removeEventListener?.("voiceschanged", changed);
+        clearTimeout(timer);
+        resolve(pashtoVoice());
+      };
+      const changed = () => {
+        if (pashtoVoice()) finish();
+      };
+      synth.addEventListener?.("voiceschanged", changed);
+      const timer = setTimeout(finish, 700);
+      changed();
+    });
+  }
+  async function speakWithBrowserVoice(w, request) {
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+      audioStatus("⚠️ This browser has no speech synthesis. A Pashto MP3 pack is needed.");
+      return;
+    }
+    const voice = await waitForPashtoVoice();
+    if (request !== audioRequest || currentSpoken !== w.id) return;
+    const utterance = new SpeechSynthesisUtterance(w.ps);
+    activeUtterance = utterance; // Keep the utterance alive until playback finishes.
+    utterance.lang = "ps-AF";
+    if (voice) utterance.voice = voice;
+    utterance.rate = 0.82;
+    utterance.onerror = (event) => {
+      if (request !== audioRequest) return;
+      audioStatus(
+        "⚠️ Browser speech failed (" +
+          (event.error || "unknown error") +
+          "). Try a compatible Pashto voice or a recorded audio pack.",
+      );
+      activeUtterance = null;
+    };
+    utterance.onstart = () => {
+      if (request !== audioRequest) return;
+      audioStatus(
+        voice
+          ? "🔊 Speaking with " + voice.name + " (Laghman pronunciation not verified)."
+          : "⚠️ The browser started its ps-AF fallback, but no Pashto voice was identified. Pronunciation may be incorrect. Other-language voices are intentionally not selected.",
+      );
+    };
+    utterance.onend = () => {
+      if (request === audioRequest) activeUtterance = null;
+    };
+    try {
+      if (!voice)
+        audioStatus(
+          "⚠️ No Pashto audio available from an identified voice. Requesting the browser's explicit ps-AF fallback; pronunciation may be incorrect. Other-language voices are intentionally not used.",
+        );
+      window.speechSynthesis.speak(utterance);
+    } catch (error) {
+      if (request === audioRequest) {
+        activeUtterance = null;
+        audioStatus("⚠️ Browser speech could not start. A compatible Pashto voice or MP3 is needed.");
+      }
+    }
   }
   function speak(id) {
     const w = wordById[id];
-    if (!w) return;
+    if (!w?.ps) return;
     stopAudio();
-    const path = "audio/" + encodeURIComponent(w.id) + ".mp3";
-    const player = new Audio(path);
-    playback = player;
+    const request = audioRequest;
     currentSpoken = w.id;
-    player.onplay = () => {
-      audioStatus("🔊 Playing " + w.ps + " (Pashto recording).");
-    };
-    player.onerror = () => {
-      if (playback !== player || currentSpoken !== w.id) return;
+    audioStatus("Preparing Pashto pronunciation… Playback has not started.");
+    if (!bundledAudioIds.has(w.id)) {
+      void speakWithBrowserVoice(w, request);
+      return;
+    }
+    const player = new Audio("audio/" + encodeURIComponent(w.id) + ".mp3");
+    playback = player;
+    const fallback = () => {
+      if (request !== audioRequest || playback !== player) return;
       playback = null;
-      const voice = pashtoVoice();
-      if (!voice) {
-        audioStatus(
-          "⚠️ No Pashto audio available. To hear native-language synthesis, add the neural MP3 pack, or install a ps-AF Pashto voice in your browser/device. Other-language voices are intentionally not used.",
-        );
-        return;
-      }
-      const utterance = new SpeechSynthesisUtterance(w.ps);
-      utterance.lang = "ps-AF";
-      utterance.voice = voice;
-      utterance.rate = 0.82;
-      utterance.onerror = () =>
-        audioStatus(
-          "⚠️ The installed Pashto voice could not play this text. Try the MP3 audio pack.",
-        );
-      utterance.onstart = () =>
-        audioStatus(
-          "🔊 Speaking in browser Pashto voice: " +
-            voice.name +
-            " (regional accent not verified).",
-        );
-      window.speechSynthesis.speak(utterance);
+      void speakWithBrowserVoice(w, request);
     };
-    player.play().catch(() => {
-      if (playback === player && typeof player.onerror === "function")
-        player.onerror();
-    });
+    player.onplay = () => {
+      if (request === audioRequest)
+        audioStatus("🔊 Playing " + w.ps + " (Pashto recording).");
+    };
+    player.onerror = fallback;
+    player.play().catch(fallback);
   }
   $("teachSpeak").addEventListener("click", () => {
     if (session) speak(studyList()[session.cardIndex]);
@@ -3580,9 +3676,12 @@
   $("lessonScreen").insertBefore($("addressTarget"), $("teachPanel"));
   save();
   hud();
-  if (progress.tutorialDone) startWorld();
-  else view("introScreen");
-  if (progress.activeChallenge) restoreLibraryChallenge();
+  // Restore the visible assessment first. Rendering an immediately hidden day
+  // opening here would incorrectly acquire a greeting the player never saw.
+  if (!progress.activeChallenge || !restoreLibraryChallenge()) {
+    if (progress.tutorialDone) startWorld();
+    else view("introScreen");
+  }
   if (saveProblem) {
     const dialog = document.createElement("dialog");
     dialog.id = "saveCompatibility";

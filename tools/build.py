@@ -27,6 +27,12 @@ def validate(data):
         if identity in identities:
             raise ValueError('Duplicate lemma: ' + identity)
         identities.add(identity)
+        if entry.get('vocabularyClass') not in ['district', 'universal']:
+            raise ValueError('Missing vocabulary classification: ' + identity)
+        if entry['countsTowardDailyQuota'] != (entry['vocabularyClass'] == 'district'):
+            raise ValueError('Inconsistent quota classification: ' + identity)
+        if entry['vocabularyClass'] == 'universal' and set(entry['suitableDistricts']) != DISTRICTS:
+            raise ValueError('Universal entry must be available in every district: ' + identity)
         if (not re.search(r'[\u0600-\u06ff]', entry.get('displayLemmaPs') or '')
                 or not entry.get('romanisation') or not entry.get('englishSenses')
                 or not entry.get('forms')):
@@ -41,6 +47,28 @@ def validate(data):
             if (entry.get('reviewStatus') != 'approved' or not review.get('reviewer')
                     or not review.get('reference') or not entry.get('examples')):
                 raise ValueError('Candidate requires documented native review')
+
+
+def validate_expressions(data):
+    identities = set()
+    supplied = {'phrase-d1-home-welcome': 'ښه راغلاست',
+                'phrase-day-2-opening': 'سهار مو پخیر!'}
+    for phrase in data['expressions']:
+        identity = phrase['id']
+        if (identity in identities or phrase['audioContentId'] != identity
+                or not re.fullmatch(r'[a-z0-9][a-z0-9_-]*', identity)):
+            raise ValueError('Duplicate/unstable expression identity: ' + identity)
+        identities.add(identity)
+        if not phrase['active']:
+            continue
+        if (not re.search(r'[\u0600-\u06ff]', phrase.get('pashto') or '')
+                or not phrase.get('romanisation') or not phrase.get('english')
+                or not phrase.get('speaker') or not phrase.get('source')):
+            raise ValueError('Incomplete active expression: ' + identity)
+        review = phrase.get('nativeReview', {})
+        if supplied.get(identity) != phrase['pashto'] and (review.get('status') != 'approved'
+                or not review.get('reviewer') or not review.get('reference')):
+            raise ValueError('Expression requires documented linguistic review: ' + identity)
 
 
 def append_week2(game, week2):
@@ -77,7 +105,9 @@ def build():
     game = json.loads(read('content/WEEK1_RUNTIME.json'))
     week2 = json.loads(read('content/WEEK2_RUNTIME.json'))
     library = json.loads(read('content/LIBRARY_LEXICON.json'))
+    narrative = json.loads(read('content/NARRATIVE_EXPRESSIONS.json'))
     validate(library)
+    validate_expressions(narrative)
     append_week2(game, week2)
     entries = {entry['lemmaId']: entry for entry in library['entries']}
     for card in game['words']:
@@ -88,9 +118,16 @@ def build():
             raise ValueError('Lexical card requires one form identity: ' + card['id'])
         card['type'] = entries[refs[0]['lemmaId']]['partOfSpeech']
     library['cardTypes'] = {card['id']: card['type'] for card in game['words']}
+    # Expressions are not lexical lemmas. Pending translations never enter playable cards.
+    library['phrases'] += [p for p in narrative['expressions'] if p['active']]
+    audio_dir = ROOT / 'audio'
+    audio_ids = sorted(path.stem for path in audio_dir.glob('*.mp3')) if audio_dir.exists() else []
     script = (read('src/app.js')
               .replace('// @GAME_DATA', 'const GAME_DATA=' + encode(game) + ';')
+              .replace('// @AUDIO_IDS', 'const BUNDLED_AUDIO_IDS=' + encode(audio_ids) + ';')
               .replace('// @WEEK2_DATA', 'const WEEK2_DATA=' + encode(week2) + ';')
+              .replace('// @NARRATIVE', 'const NARRATIVE_DATA=' + encode(narrative) + ';\n'
+                       + read('src/narrative-ui.js'))
               .replace('// @PROGRESSION', read('src/progression.js'))
               .replace('// @LIBRARY', 'const LIBRARY_DATA=' + encode(library) + ';\n'
                        + read('src/library-engine.js') + '\n' + read('src/library-ui.js')))

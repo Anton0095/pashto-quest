@@ -1,37 +1,231 @@
 {
+  "targetProjection": {
+    "status": "Identity-only projection; every selected target assumed distinct and approved. NOT playable capacity or linguistic verification.",
+    "scheduled": 312,
+    "encounteredIncludingStory": 375,
+    "missingScheduled": 0,
+    "days": [
+      {
+        "day": 1,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 2,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 3,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 4,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 5,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 6,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 7,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 8,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 9,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 10,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 11,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 12,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 13,
+        "requested": 24,
+        "assigned": 24,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 6,
+          "business": 6,
+          "nature": 6,
+          "school": 6
+        }
+      },
+      {
+        "day": 14,
+        "requested": 0,
+        "assigned": 0,
+        "feasible": true,
+        "perDistrict": {
+          "residential": 0,
+          "business": 0,
+          "nature": 0,
+          "school": 0
+        }
+      }
+    ]
+  },
   "candidateDistrictCounts": {
     "residential": 90,
     "nature": 90,
     "business": 90,
     "school": 90
   },
+  "selectedInactiveCandidatesByDistrict": {
+    "residential": 78,
+    "nature": 73,
+    "business": 71,
+    "school": 79
+  },
+  "selectedInactiveCandidates": 301,
+  "excludedCandidates": 59,
+  "universalLemmas": 28,
+  "targetInventory": {
+    "perDistrict": 100,
+    "total": 400,
+    "currentlyPlayable": 99,
+    "missingPlayableToTarget": 301,
+    "intensiveScheduledIntroductions": 312,
+    "minimumCurrentShortfall": 213,
+    "idealTargetIncidentalMarginPerDistrict": 22,
+    "note": "400 is a pending lexical target, not playable capacity. An approved primary district must retain 78 unencountered entries; more than 22 incidental introductions in any district needs additional distinct reviewed content. Cross-district allocation is globally deduplicated."
+  },
   "authoredExampleSceneCoverage": {
-    "residential": 29,
-    "nature": 35,
-    "business": 31,
-    "school": 36,
+    "residential": 25,
+    "nature": 29,
+    "business": 26,
+    "school": 32,
     "hills": 0,
     "bakery": 0,
     "neighbourHome": 0
   },
   "schemaVersion": 1,
   "activatedLemmas": 127,
-  "activatedContentLemmas": 108,
+  "activatedContentLemmas": 99,
   "nativeApprovedContentLemmas": 0,
   "inactiveCandidates": 360,
   "aliasCandidates": 7,
   "eligibleForPromotion": 0,
   "byPrimaryDistrict": {
     "residential": 22,
-    "nature": 35,
-    "business": 30,
+    "nature": 27,
+    "business": 29,
     "school": 21
   },
   "byPartOfSpeech": {
     "noun": 45,
     "verb": 29,
-    "adjective": 26,
-    "adverb": 8
+    "adjective": 25
   },
   "byReviewStatus": {
     "needsReview": 127
@@ -288,7 +482,7 @@
           }
         }
       ],
-      "encountered": 87
+      "encountered": 80
     },
     {
       "pace": 4,
@@ -381,36 +575,36 @@
         {
           "day": 8,
           "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 9,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 10,
-          "requested": 4,
           "assigned": 3,
           "feasible": false,
           "perDistrict": {
             "residential": 1,
             "business": 1,
             "nature": 1,
+            "school": 0
+          }
+        },
+        {
+          "day": 9,
+          "requested": 4,
+          "assigned": 2,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 1,
+            "business": 1,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 10,
+          "requested": 4,
+          "assigned": 1,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 1,
+            "nature": 0,
             "school": 0
           }
         },
@@ -429,11 +623,11 @@
         {
           "day": 12,
           "requested": 4,
-          "assigned": 1,
+          "assigned": 0,
           "feasible": false,
           "perDistrict": {
             "residential": 0,
-            "business": 1,
+            "business": 0,
             "nature": 0,
             "school": 0
           }
@@ -463,7 +657,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 8,
@@ -532,25 +726,25 @@
         {
           "day": 6,
           "requested": 8,
-          "assigned": 8,
-          "feasible": true,
+          "assigned": 6,
+          "feasible": false,
           "perDistrict": {
-            "residential": 2,
+            "residential": 1,
             "business": 2,
-            "nature": 2,
+            "nature": 1,
             "school": 2
           }
         },
         {
           "day": 7,
           "requested": 8,
-          "assigned": 7,
+          "assigned": 0,
           "feasible": false,
           "perDistrict": {
-            "residential": 2,
-            "business": 2,
-            "nature": 2,
-            "school": 1
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
           }
         },
         {
@@ -638,7 +832,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 12,
@@ -695,23 +889,23 @@
         {
           "day": 5,
           "requested": 12,
-          "assigned": 12,
-          "feasible": true,
+          "assigned": 5,
+          "feasible": false,
           "perDistrict": {
-            "residential": 3,
-            "business": 3,
-            "nature": 3,
-            "school": 3
+            "residential": 1,
+            "business": 2,
+            "nature": 0,
+            "school": 2
           }
         },
         {
           "day": 6,
           "requested": 12,
-          "assigned": 2,
+          "assigned": 0,
           "feasible": false,
           "perDistrict": {
-            "residential": 1,
-            "business": 1,
+            "residential": 0,
+            "business": 0,
             "nature": 0,
             "school": 0
           }
@@ -813,7 +1007,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 16,
@@ -858,25 +1052,25 @@
         {
           "day": 4,
           "requested": 16,
-          "assigned": 16,
-          "feasible": true,
+          "assigned": 14,
+          "feasible": false,
           "perDistrict": {
             "residential": 4,
             "business": 4,
-            "nature": 4,
+            "nature": 2,
             "school": 4
           }
         },
         {
           "day": 5,
           "requested": 16,
-          "assigned": 3,
+          "assigned": 0,
           "feasible": false,
           "perDistrict": {
             "residential": 0,
-            "business": 2,
+            "business": 0,
             "nature": 0,
-            "school": 1
+            "school": 0
           }
         },
         {
@@ -988,7 +1182,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 20,
@@ -1033,12 +1227,12 @@
         {
           "day": 4,
           "requested": 20,
-          "assigned": 13,
+          "assigned": 8,
           "feasible": false,
           "perDistrict": {
-            "residential": 4,
+            "residential": 1,
             "business": 3,
-            "nature": 3,
+            "nature": 1,
             "school": 3
           }
         },
@@ -1163,7 +1357,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 24,
@@ -1208,13 +1402,13 @@
         {
           "day": 4,
           "requested": 24,
-          "assigned": 6,
+          "assigned": 3,
           "feasible": false,
           "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 2,
-            "school": 2
+            "residential": 0,
+            "business": 2,
+            "nature": 0,
+            "school": 1
           }
         },
         {
@@ -1338,7 +1532,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 0,
@@ -1513,7 +1707,7 @@
           }
         }
       ],
-      "encountered": 87
+      "encountered": 80
     },
     {
       "pace": 4,
@@ -1618,47 +1812,47 @@
         {
           "day": 9,
           "requested": 4,
-          "assigned": 4,
-          "feasible": true,
+          "assigned": 3,
+          "feasible": false,
           "perDistrict": {
             "residential": 1,
             "business": 1,
             "nature": 1,
-            "school": 1
+            "school": 0
           }
         },
         {
           "day": 10,
           "requested": 4,
-          "assigned": 4,
-          "feasible": true,
+          "assigned": 2,
+          "feasible": false,
           "perDistrict": {
             "residential": 1,
             "business": 1,
-            "nature": 1,
-            "school": 1
+            "nature": 0,
+            "school": 0
           }
         },
         {
           "day": 11,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 12,
           "requested": 4,
           "assigned": 1,
           "feasible": false,
           "perDistrict": {
             "residential": 0,
             "business": 1,
+            "nature": 0,
+            "school": 0
+          }
+        },
+        {
+          "day": 12,
+          "requested": 4,
+          "assigned": 0,
+          "feasible": false,
+          "perDistrict": {
+            "residential": 0,
+            "business": 0,
             "nature": 0,
             "school": 0
           }
@@ -1688,7 +1882,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 8,
@@ -1757,12 +1951,12 @@
         {
           "day": 6,
           "requested": 8,
-          "assigned": 8,
-          "feasible": true,
+          "assigned": 6,
+          "feasible": false,
           "perDistrict": {
-            "residential": 2,
+            "residential": 1,
             "business": 2,
-            "nature": 2,
+            "nature": 1,
             "school": 2
           }
         },
@@ -1781,13 +1975,13 @@
         {
           "day": 8,
           "requested": 8,
-          "assigned": 7,
+          "assigned": 0,
           "feasible": false,
           "perDistrict": {
-            "residential": 2,
-            "business": 2,
-            "nature": 2,
-            "school": 1
+            "residential": 0,
+            "business": 0,
+            "nature": 0,
+            "school": 0
           }
         },
         {
@@ -1863,7 +2057,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 12,
@@ -1920,23 +2114,23 @@
         {
           "day": 5,
           "requested": 12,
-          "assigned": 12,
-          "feasible": true,
+          "assigned": 5,
+          "feasible": false,
           "perDistrict": {
-            "residential": 3,
-            "business": 3,
-            "nature": 3,
-            "school": 3
+            "residential": 1,
+            "business": 2,
+            "nature": 0,
+            "school": 2
           }
         },
         {
           "day": 6,
           "requested": 12,
-          "assigned": 2,
+          "assigned": 0,
           "feasible": false,
           "perDistrict": {
-            "residential": 1,
-            "business": 1,
+            "residential": 0,
+            "business": 0,
             "nature": 0,
             "school": 0
           }
@@ -2038,7 +2232,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 16,
@@ -2083,25 +2277,25 @@
         {
           "day": 4,
           "requested": 16,
-          "assigned": 16,
-          "feasible": true,
+          "assigned": 14,
+          "feasible": false,
           "perDistrict": {
             "residential": 4,
             "business": 4,
-            "nature": 4,
+            "nature": 2,
             "school": 4
           }
         },
         {
           "day": 5,
           "requested": 16,
-          "assigned": 3,
+          "assigned": 0,
           "feasible": false,
           "perDistrict": {
             "residential": 0,
-            "business": 2,
+            "business": 0,
             "nature": 0,
-            "school": 1
+            "school": 0
           }
         },
         {
@@ -2213,7 +2407,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 20,
@@ -2258,12 +2452,12 @@
         {
           "day": 4,
           "requested": 20,
-          "assigned": 13,
+          "assigned": 8,
           "feasible": false,
           "perDistrict": {
-            "residential": 4,
+            "residential": 1,
             "business": 3,
-            "nature": 3,
+            "nature": 1,
             "school": 3
           }
         },
@@ -2388,7 +2582,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     },
     {
       "pace": 24,
@@ -2433,13 +2627,13 @@
         {
           "day": 4,
           "requested": 24,
-          "assigned": 6,
+          "assigned": 3,
           "feasible": false,
           "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 2,
-            "school": 2
+            "residential": 0,
+            "business": 2,
+            "nature": 0,
+            "school": 1
           }
         },
         {
@@ -2563,7 +2757,7 @@
           }
         }
       ],
-      "encountered": 108
+      "encountered": 99
     }
   ]
 }

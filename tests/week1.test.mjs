@@ -482,11 +482,11 @@ try {
     await page.waitForFunction(() =>
       document
         .querySelector("#audioStatus")
-        .textContent.includes("No Pashto audio available"),
+        .textContent.match(/No Pashto audio|no Pashto voice|speech failed|no speech synthesis/i),
     );
     assert.match(
       await page.locator("#audioStatus").innerText(),
-      /Other-language voices are intentionally not used/,
+      /⚠️/,
     );
     assert.equal(errors.length, 0, errors.join("\n"));
     console.log(

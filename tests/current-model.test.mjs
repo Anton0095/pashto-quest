@@ -37,12 +37,12 @@ const sample = {
   sourceMappings: { exercise: [ref] },
 };
 E.expose(p, sample, "exercise", {
-  day: 1,
+  day: 2,
   source: "lesson",
   location: "nature",
 });
 E.expose(p, sample, "exercise", {
-  day: 1,
+  day: 2,
   source: "lesson",
   location: "nature",
 });
@@ -50,7 +50,7 @@ assert.equal(E.summary(p, data).encountered, 1);
 assert.equal(E.status(p.library.acquired[entry.lemmaId]), "introduced");
 for (let i = 0; i < 3; i++) {
   const ctx = {
-    day: i + 1,
+    day: i + 2,
     source: "review",
     location: "school",
     eventId: "attempt" + i,
@@ -116,7 +116,7 @@ assert(
   ),
 );
 const report = inventory(data, backlog, read("src/library-engine.js"));
-assert.equal(report.activatedContentLemmas, 108);
+assert.equal(report.activatedContentLemmas, 99);
 assert.equal(report.inactiveCandidates, 360);
 assert.equal(report.eligibleForPromotion, 0);
 assert.equal(report.duplicateLemmaIds.length, 0);
