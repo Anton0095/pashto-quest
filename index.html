@@ -363,6 +363,12 @@ header {
   border-radius: 15px;
   background: #c8dcbc;
 }
+#introScreen > .worldmap {
+  margin: 12px 0 20px;
+}
+#worldScreen > .worldmap {
+  margin-bottom: 18px;
+}
 .worldmap svg {
   position: absolute;
   inset: 0;
@@ -491,26 +497,24 @@ header {
 .lesson-title .icon {
   font-size: 43px;
 }
-.guide-bubble {
+.speaker-note {
   display: flex;
-  gap: 12px;
   align-items: flex-start;
-  border-radius: 13px;
-  background: #2b483b;
-  border: 1px solid #668270;
-  padding: 13px;
-  margin: 15px 0;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px solid #4a6678;
 }
-.guide-bubble > span {
-  font-size: 27px;
-  line-height: 1.1;
+.speaker-note > span {
+  font-size: 22px;
+  line-height: 1.2;
 }
-.guide-bubble strong {
+.speaker-note strong {
   color: #ffe0a9;
-  font-size: 13px;
+  font-size: 12px;
 }
-.guide-bubble p {
-  color: #e4f2e9;
+.speaker-note p {
+  color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
   margin: 3px 0 0;
@@ -991,12 +995,8 @@ header {
   color: #ffe1a5;
 }
 .round-insight {
-  font-size: 13px;
-  background: #294738;
-  border: 1px solid #66826c;
-  border-radius: 11px;
-  padding: 12px;
-  color: #e2f1e8;
+  font-size: 12px;
+  color: var(--muted);
   margin: 9px 0 13px;
 }
 @media (max-width: 640px) {
@@ -1053,22 +1053,18 @@ header {
 
 .town-story {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   align-items: flex-start;
-  margin: 12px 0 15px;
-  padding: 11px 14px;
-  border: 1px solid #688878;
-  background: #294638;
-  border-radius: 13px;
+  margin: 10px 0 13px;
 }
 .town-story > span {
-  font-size: 28px;
-  line-height: 1.2;
+  font-size: 18px;
+  line-height: 1.4;
 }
 .town-story p {
   margin: 0;
-  color: #e4f2e5;
-  font-size: 13px;
+  color: var(--muted);
+  font-size: 12px;
 }
 .skip-challenge {
   display: flex;
@@ -1946,27 +1942,6 @@ header {
           </div>
           <span id="lessonIcon" class="icon" aria-hidden="true">🏡</span>
         </div>
-        <div
-          id="participants"
-          class="interlocutors"
-          aria-label="People in this conversation"
-        ></div>
-        <div class="guide-bubble">
-          <span aria-hidden="true" id="speakerIcon">🧑‍🏫</span>
-          <div>
-            <strong id="speakerName">The Friendly Guide · speaking</strong>
-            <p id="guideMessage">First, let’s learn.</p>
-          </div>
-        </div>
-        <div
-          class="audio-info"
-          id="audioStatus"
-          role="status"
-          aria-live="polite"
-        >
-          🔊 Tap a speaker button for Pashto audio. A Pashto voice or MP3 pack
-          is required.
-        </div>
         <div id="teachPanel" class="hidden">
           <div class="round-path" id="lessonStages">
             <div class="stage active">1 · New words</div>
@@ -2101,6 +2076,27 @@ header {
               Next →
             </button>
           </div>
+        </div>
+        <div
+          id="participants"
+          class="interlocutors"
+          aria-label="People in this conversation"
+        ></div>
+        <div class="speaker-note">
+          <span aria-hidden="true" id="speakerIcon">🧑‍🏫</span>
+          <div>
+            <strong id="speakerName">The Friendly Guide · speaking</strong>
+            <p id="guideMessage">First, let’s learn.</p>
+          </div>
+        </div>
+        <div
+          class="audio-info"
+          id="audioStatus"
+          role="status"
+          aria-live="polite"
+        >
+          🔊 Tap a speaker button for Pashto audio. A Pashto voice or MP3 pack
+          is required.
         </div>
         <p
           class="tiny muted"
@@ -3635,7 +3631,7 @@ function renderLibraryPace(root) {
 }
 function libraryUpdateWorld() {
   const map = document.querySelector(".worldmap");
-  $("worldScreen").insertBefore(map, $("placeCards"));
+  $("worldScreen").prepend(map);
   const plan = LibraryEngine.ensurePlan(progress, LIBRARY_DATA, selectedLoop);
   save();
   for (const [index, place] of zoneKeys.entries()) {
@@ -3788,7 +3784,7 @@ function libraryInit() {
   choices.append(feedback);
   $("introScreen").insertBefore(choices, $("startTutorial"));
   if (!progress.tutorialDone) {
-    $("introScreen").append(document.querySelector(".worldmap"));
+    $("introScreen").insertBefore(document.querySelector(".worldmap"), $("introScreen").querySelector(".guide-row"));
     for (const b of document.querySelectorAll(".map-point:not(.library)"))
       b.disabled = true;
   }
@@ -3868,7 +3864,7 @@ function renderLessonExpression(day, location, mode) {
   if (!root) {
     root = libraryNode("div");
     root.id = "lessonExpression";
-    $("guideMessage").after(root);
+    $("teachPanel").before(root);
   }
   root.replaceChildren();
   if (mode !== "standard") return;
@@ -7300,7 +7296,7 @@ function completeLessonOnce(p, id, mode, passed) {
       progress = fresh();
       session = null;
       selectedLoop = 1;
-      $("introScreen").append(document.querySelector(".worldmap"));
+      $("introScreen").insertBefore(document.querySelector(".worldmap"), $("introScreen").querySelector(".guide-row"));
       save();
       hud();
       view("introScreen");
