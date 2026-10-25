@@ -1,0 +1,1288 @@
+{
+  "batchId": "P0-04",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "surface:w7-river-birds",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "They watch the birds.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w7-river-birds",
+          "pashto": "هغوی مرغان ګوري.",
+          "englishContext": "They watch the birds.",
+          "romanisation": "haghoy marghaan goree",
+          "day": 7,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bird3",
+              "formId": "lemma:n-bird3:form:0"
+            },
+            {
+              "lemmaId": "lemma:vocab7-river-watch",
+              "formId": "lemma:vocab7-river-watch:present:2"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی مرغان ګوري.",
+        "romanisation": "haghoy marghaan goree"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-river-bottles",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "They carry bottles of water.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w7-river-bottles",
+          "pashto": "هغوی د اوبو بوتلونه وړي.",
+          "englishContext": "They carry bottles of water.",
+          "romanisation": "haghoy da obo botloona wree",
+          "day": 7,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:2"
+            },
+            {
+              "lemmaId": "lemma:vocab7-river-bottles",
+              "formId": "lemma:vocab7-river-bottles:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی د اوبو بوتلونه وړي.",
+        "romanisation": "haghoy da obo botloona wree"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-river-run",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "They run together.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w7-river-run",
+          "pashto": "هغوی یو ځای منډې وهي.",
+          "englishContext": "They run together.",
+          "romanisation": "haghoy yaw dzay mande wahee",
+          "day": 7,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-run",
+              "formId": "lemma:w6-run:present:2"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی یو ځای منډې وهي.",
+        "romanisation": "haghoy yaw dzay mande wahee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-school-books",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "They read books.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-school-books",
+          "pashto": "هغوی کتابونه لولي.",
+          "englishContext": "They read books.",
+          "romanisation": "haghoy kitaaboona lwalee",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:1"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:2"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی کتابونه لولي.",
+        "romanisation": "haghoy kitaaboona lwalee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-school-write",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "They write sentences.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-school-write",
+          "pashto": "هغوی جملې لیکي.",
+          "englishContext": "They write sentences.",
+          "romanisation": "haghoy jumle leekee",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-write",
+              "formId": "lemma:v-write:present:2"
+            },
+            {
+              "lemmaId": "lemma:n-sentence4",
+              "formId": "lemma:n-sentence4:form:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی جملې لیکي.",
+        "romanisation": "haghoy jumle leekee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-school-learn",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "They learn Pashto.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-school-learn",
+          "pashto": "هغوی پښتو زده کوي.",
+          "englishContext": "They learn Pashto.",
+          "romanisation": "haghoy pakhto zda kawee",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-learn",
+              "formId": "lemma:v-learn:present:2"
+            },
+            {
+              "lemmaId": "lemma:n-language",
+              "formId": "lemma:n-language:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی پښتو زده کوي.",
+        "romanisation": "haghoy pakhto zda kawee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-school-answer",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "They answer questions.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-school-answer",
+          "pashto": "هغوی پوښتنو ته ځوابونه ورکوي.",
+          "englishContext": "They answer questions.",
+          "romanisation": "haghoy pukhtano ta dzawaaboona warkawee",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-give",
+              "formId": "lemma:v-give:present:2"
+            },
+            {
+              "lemmaId": "lemma:vocab6-school-answers",
+              "formId": "lemma:vocab6-school-answers:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی پوښتنو ته ځوابونه ورکوي.",
+        "romanisation": "haghoy pukhtano ta dzawaaboona warkawee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-school-notebooks",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "They open their notebooks.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-school-notebooks",
+          "pashto": "هغوی خپلې کتابچې خلاصوي.",
+          "englishContext": "They open their notebooks.",
+          "romanisation": "haghoy khpale kitaabche khlaasawee",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:2"
+            },
+            {
+              "lemmaId": "lemma:n-notebook",
+              "formId": "lemma:n-notebook:form:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی خپلې کتابچې خلاصوي.",
+        "romanisation": "haghoy khpale kitaabche khlaasawee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-we",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "We",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-we",
+          "pashto": "موږ",
+          "englishContext": "We",
+          "romanisation": "moong",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "موږ",
+        "romanisation": "moong"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-together",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Together",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-together",
+          "pashto": "یو ځای",
+          "englishContext": "Together",
+          "romanisation": "yaw dzay",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "یو ځای",
+        "romanisation": "yaw dzay"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-you-all",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You all",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-you-all",
+          "pashto": "تاسې",
+          "englishContext": "You all",
+          "romanisation": "taase",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": "taase"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-run",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "To run",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-run",
+          "pashto": "منډې وهل",
+          "englishContext": "To run",
+          "romanisation": "mande wahal",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-run",
+              "formId": "lemma:w6-run:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "منډې وهل",
+        "romanisation": "mande wahal"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-hills",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Hills",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-hills",
+          "pashto": "غونډۍ",
+          "englishContext": "Hills",
+          "romanisation": "ghuṇḍay",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-hills",
+              "formId": "lemma:w6-hills:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "غونډۍ",
+        "romanisation": "ghuṇḍay"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-walk",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "We walk together beside the lake.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-walk",
+          "pashto": "موږ د جهیل تر څنګ یو ځای ګرځو.",
+          "englishContext": "We walk together beside the lake.",
+          "romanisation": "moong da jaheel tar tsang yaw dzay gardzo",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-walk3",
+              "formId": "lemma:v-walk3:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "موږ د جهیل تر څنګ یو ځای ګرځو.",
+        "romanisation": "moong da jaheel tar tsang yaw dzay gardzo"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-mina-walk",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Mina and I walk together.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-mina-walk",
+          "pashto": "مینا او زه یو ځای ګرځو.",
+          "englishContext": "Mina and I walk together.",
+          "romanisation": "meena aw za yaw dzay gardzo",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-walk3",
+              "formId": "lemma:v-walk3:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "مینا او زه یو ځای ګرځو.",
+        "romanisation": "meena aw za yaw dzay gardzo"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-mina-village",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Mina and I see the village.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-mina-village",
+          "pashto": "مینا او زه کلی وینو.",
+          "englishContext": "Mina and I see the village.",
+          "romanisation": "meena aw za kalay weeno",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:3"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "مینا او زه کلی وینو.",
+        "romanisation": "meena aw za kalay weeno"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-you-water",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You both drink water.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-you-water",
+          "pashto": "تاسې دواړه اوبه څښئ.",
+          "englishContext": "You both drink water.",
+          "romanisation": "taase dwaara oba ts-khey",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:4"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې دواړه اوبه څښئ.",
+        "romanisation": "taase dwaara oba ts-khey"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-you-carry",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You both carry the water.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-you-carry",
+          "pashto": "تاسې دواړه اوبه وړئ.",
+          "englishContext": "You both carry the water.",
+          "romanisation": "taase dwaara oba wrey",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:4"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې دواړه اوبه وړئ.",
+        "romanisation": "taase dwaara oba wrey"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-bag",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "We carry the bag.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-bag",
+          "pashto": "موږ کڅوړه وړو.",
+          "englishContext": "We carry the bag.",
+          "romanisation": "moong katsoṛa wro",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bag3",
+              "formId": "lemma:n-bag3:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "موږ کڅوړه وړو.",
+        "romanisation": "moong katsoṛa wro"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-compound",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "I see the river, and we see the hills.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-compound",
+          "pashto": "زه سیند وینم او موږ غونډۍ وینو.",
+          "englishContext": "I see the river, and we see the hills.",
+          "romanisation": "za seend weenam aw moong ghuṇḍay weeno",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-river",
+              "formId": "lemma:n-river:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-hills",
+              "formId": "lemma:w6-hills:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "زه سیند وینم او موږ غونډۍ وینو.",
+        "romanisation": "za seend weenam aw moong ghuṇḍay weeno"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-we-run",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "We run together.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-we-run",
+          "pashto": "موږ یو ځای منډې وهو.",
+          "englishContext": "We run together.",
+          "romanisation": "moong yaw dzay mande waho",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-run",
+              "formId": "lemma:w6-run:present:3"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "موږ یو ځای منډې وهو.",
+        "romanisation": "moong yaw dzay mande waho"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-i-read",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "I read a book.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-i-read",
+          "pashto": "زه کتاب لولم.",
+          "englishContext": "I read a book.",
+          "romanisation": "za kitaab lwalam",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "زه کتاب لولم.",
+        "romanisation": "za kitaab lwalam"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-you-read",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You read a book (Saleha).",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-you-read",
+          "pashto": "ته کتاب لولې.",
+          "englishContext": "You read a book (Saleha).",
+          "romanisation": "ta kitaab lwaley",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ته کتاب لولې.",
+        "romanisation": "ta kitaab lwaley"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-all-read",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You all read books.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-all-read",
+          "pashto": "تاسې کتابونه لولئ.",
+          "englishContext": "You all read books.",
+          "romanisation": "taase kitaaboona lwaley",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:1"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:4"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې کتابونه لولئ.",
+        "romanisation": "taase kitaaboona lwaley"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-he-bread",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "He buys bread.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-he-bread",
+          "pashto": "هغه ډوډۍ اخلي.",
+          "englishContext": "He buys bread.",
+          "romanisation": "hagha ḍoḍay akhlee",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:2"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-2",
+              "formId": "lemma:w2-d8-vocab-2:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغه ډوډۍ اخلي.",
+        "romanisation": "hagha ḍoḍay akhlee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

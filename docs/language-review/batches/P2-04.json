@@ -1,0 +1,806 @@
+{
+  "batchId": "P2-04",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "candidate:adjective:noisy",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "noisy",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:tidy",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "tidy",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:messy",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "messy",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:forest",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "forest",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:tree",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "tree",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:branch",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "branch",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:leaf",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "leaf",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:root",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "root",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:flower",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "flower",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:seed",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "seed",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:grass",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "grass",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:soil",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "soil",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:mud",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "mud",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:pebble",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "pebble",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:mountain",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "mountain",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:valley",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "valley",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:meadow",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "meadow",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:field",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "field",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:orchard",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "orchard",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:stream",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "stream",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:waterfall",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "waterfall",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:spring",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "spring",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:shore",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "shore",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:riverbank",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "riverbank",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:cloud",
+      "kind": "selected-candidate",
+      "priority": "P2",
+      "intendedMeaning": "cloud",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Selected lexical target only; Pashto translation, distinct identity, forms and documented native review required before activation.",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

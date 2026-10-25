@@ -1,0 +1,64 @@
+{
+  "batchId": "P1-35",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "phrase-day-2-opening",
+      "kind": "expression",
+      "priority": "P1",
+      "intendedMeaning": "Good morning!",
+      "morphology": {
+        "reviewRequest": "Confirm fixed phrase, speech act, politeness, addressee number and idiomatic Laghman use; provide complete phrase, not isolated token glosses."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/NARRATIVE_EXPRESSIONS.json",
+          "id": "phrase-day-2-opening",
+          "day": 2,
+          "location": "school",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "english": "Good morning!",
+          "pashto": "سهار مو پخیر!",
+          "romanisation": "sahaar mo pakheer",
+          "romanisationStatus": "provisional",
+          "audioContentId": "phrase-day-2-opening",
+          "active": true,
+          "reviewStatus": "needsNativeLaghmanReview",
+          "source": {
+            "type": "user-supplied attested Afghan Pashto wording",
+            "reference": "Curriculum Expansion and Narrative Greetings request, section 7, 2026-10-24",
+            "verification": "User identifies Afghan learning materials but supplies no title/URL. External bibliographic verification blocked by network access; exact source and native Laghman review pending. No certification claimed."
+          },
+          "nativeReview": {
+            "status": "pending",
+            "reviewer": null,
+            "reference": null
+          },
+          "kind": "fixed conversational expression",
+          "countsTowardDailyQuota": false,
+          "optional": false
+        }
+      ],
+      "existing": {
+        "pashto": "سهار مو پخیر!",
+        "romanisation": "sahaar mo pakheer",
+        "active": true
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

@@ -1,0 +1,3586 @@
+{
+  "batchId": "P1-02",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "lemma:v-buy",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "To buy / take"
+      ],
+      "morphology": {
+        "partOfSpeech": "verb",
+        "forms": [
+          {
+            "formId": "lemma:v-buy:form:0",
+            "pashto": "اخیستل",
+            "romanisation": "akheestal",
+            "englishGloss": "To buy / take",
+            "morphology": {
+              "form": "infinitive",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "v-buy"
+          },
+          {
+            "formId": "lemma:v-buy:present:0",
+            "pashto": "اخلم",
+            "romanisation": "za maṇa akhlum",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To buy / take — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "singular"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-3"
+            ],
+            "sourceExampleId": "s1-buy"
+          },
+          {
+            "formId": "lemma:v-buy:present:1",
+            "pashto": "اخلې",
+            "romanisation": "ta maṇa akhle",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To buy / take — second informal person",
+            "morphology": {
+              "tense": "present",
+              "person": "second informal",
+              "number": "singular"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-4"
+            ],
+            "sourceExampleId": "s2-buy"
+          },
+          {
+            "formId": "lemma:v-buy:present:2",
+            "pashto": "اخلي",
+            "romanisation": "hagha mana akhlee",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To buy / take — third person",
+            "morphology": {
+              "tense": "present",
+              "person": "third",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-2"
+            ],
+            "sourceExampleId": "s2-market-buy"
+          },
+          {
+            "formId": "lemma:v-buy:present:3",
+            "pashto": "اخلو",
+            "romanisation": "moong mewa akhloo",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To buy / take — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-6"
+            ],
+            "sourceExampleId": "s4-buy"
+          },
+          {
+            "formId": "lemma:v-buy:present:4",
+            "pashto": "اخلئ",
+            "romanisation": "taase sabzee akhley",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To buy / take — second respectful person",
+            "morphology": {
+              "tense": "present",
+              "person": "second respectful",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-5"
+            ],
+            "sourceExampleId": "s5-buy"
+          }
+        ],
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:v-buy",
+          "examples": [
+            {
+              "exampleId": "s1-buy",
+              "pashto": "زه مڼه اخلم.",
+              "romanisation": "za maṇa akhlum",
+              "english": "I buy an apple.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 3,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-buy",
+              "pashto": "ته مڼه اخلې.",
+              "romanisation": "ta maṇa akhle",
+              "english": "You buy an apple.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-buy",
+              "pashto": "موږ مېوه اخلو.",
+              "romanisation": "moong mewa akhloo",
+              "english": "We buy fruit.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-buy",
+              "pashto": "تاسې سبزي اخلئ.",
+              "romanisation": "taase sabzee akhley",
+              "english": "You buy vegetables. (polite/plural)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s1-potatoes",
+              "pashto": "زه کچالو اخلم.",
+              "romanisation": "za kachaaloo akhlum",
+              "english": "I buy potatoes.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 3,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s1-bread-buy",
+              "pashto": "زه ډوډۍ اخلم.",
+              "romanisation": "za ḍoḍay akhlum",
+              "english": "I buy bread.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 3,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-market-buy",
+              "pashto": "هغه مڼه اخلي.",
+              "romanisation": "hagha mana akhlee",
+              "english": "He/she buys an apple.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-market-milk",
+              "pashto": "هغه شیدې اخلي.",
+              "romanisation": "hagha sheede akhlee",
+              "english": "He/she buys milk.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-market-bread",
+              "pashto": "ته ډوډۍ اخلې.",
+              "romanisation": "ta dodai akhley",
+              "english": "You buy bread.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-market-mixed",
+              "pashto": "ته مڼې اخلې او زه کڅوړه وړم.",
+              "romanisation": "ta manay akhley aw za katswara wrum",
+              "english": "You buy apples, and I carry a bag.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-market-mixed2",
+              "pashto": "ته ډوډۍ اخلې او زه مڼې اخلم.",
+              "romanisation": "ta dodai akhley aw za manay akhlam",
+              "english": "You buy bread, and I buy apples.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-market-mixed2",
+              "pashto": "ته ډوډۍ اخلې او زه مڼې اخلم.",
+              "romanisation": "ta dodai akhley aw za manay akhlam",
+              "english": "You buy bread, and I buy apples.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "v-buy",
+            "s1-buy",
+            "s2-buy",
+            "s4-buy",
+            "s5-buy",
+            "s1-potatoes",
+            "s1-bread-buy",
+            "s2-market-buy",
+            "s2-market-milk",
+            "s4-market-bread",
+            "s4-market-mixed",
+            "s4-market-mixed2",
+            "s5-market-buy",
+            "s5-market-mixed",
+            "w6-market-bread",
+            "w6-market-dinner",
+            "w7-market-apples",
+            "w7-he-bread",
+            "w7-compound-buy",
+            "w2-d9-market-3",
+            "w2-d12-market-2",
+            "w2-d13-market-1",
+            "w2-d13-market-3",
+            "w2-d14-market-2",
+            "w2-d9-reply-2",
+            "w2-d14-reply-4",
+            "exam-dialogue-w7-market-apples"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "اخیستل",
+        "romanisation": "akheestal",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:a-expensive",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Expensive"
+      ],
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "forms": [
+          {
+            "formId": "lemma:a-expensive:form:0",
+            "pashto": "ګران",
+            "romanisation": "graan",
+            "englishGloss": "Expensive",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "a-expensive"
+          }
+        ],
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:a-expensive",
+          "examples": [],
+          "mappedSourceIds": [
+            "a-expensive"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ګران",
+        "romanisation": "graan",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:n-pen",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Pen"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:n-pen:form:0",
+            "pashto": "قلم",
+            "romanisation": "qalam",
+            "englishGloss": "Pen",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "n-pen"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:n-pen",
+          "examples": [
+            {
+              "exampleId": "w2-d8-school-3",
+              "pashto": "دا قلم نوی دی.",
+              "romanisation": "daa qalam naway day",
+              "english": "This pen is new.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 8,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-school-3",
+              "pashto": "قلم چېرته دی؟",
+              "romanisation": "qalam cherta day",
+              "english": "Where is the pen?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 10,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d11-school-2",
+              "pashto": "هغه د صالحې قلم دی.",
+              "romanisation": "hagha da saalehe qalam day",
+              "english": "That is Saleha’s pen.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 11,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "n-pen",
+            "w2-d8-school-3",
+            "w2-d10-school-3",
+            "w2-d11-school-2",
+            "w2-d10-reply-4"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "قلم",
+        "romanisation": "qalam",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:v-write",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "To write"
+      ],
+      "morphology": {
+        "partOfSpeech": "verb",
+        "forms": [
+          {
+            "formId": "lemma:v-write:form:0",
+            "pashto": "لیکل",
+            "romanisation": "leekal",
+            "englishGloss": "To write",
+            "morphology": {
+              "form": "infinitive",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "v-write"
+          },
+          {
+            "formId": "lemma:v-write:present:0",
+            "pashto": "لیکم",
+            "romanisation": "za pa kitaab ke leekum",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To write — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "singular"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-3"
+            ],
+            "sourceExampleId": "s1-write"
+          },
+          {
+            "formId": "lemma:v-write:present:1",
+            "pashto": "لیکې",
+            "romanisation": "ta jumla leekey",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To write — second informal person",
+            "morphology": {
+              "tense": "present",
+              "person": "second informal",
+              "number": "singular"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-4"
+            ],
+            "sourceExampleId": "s4-school-sentence"
+          },
+          {
+            "formId": "lemma:v-write:present:2",
+            "pashto": "لیکي",
+            "romanisation": "hagha kalima leeki",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To write — third person",
+            "morphology": {
+              "tense": "present",
+              "person": "third",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-2"
+            ],
+            "sourceExampleId": "s2-school-word"
+          },
+          {
+            "formId": "lemma:v-write:present:3",
+            "pashto": "لیکو",
+            "romanisation": "saaleha aw za jumle leeko",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To write — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-6"
+            ],
+            "sourceExampleId": "w6-school-saleha-write"
+          },
+          {
+            "formId": "lemma:v-write:present:4",
+            "pashto": "لیکئ",
+            "romanisation": "taase pa kitaabcha ke leekey",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To write — second respectful person",
+            "morphology": {
+              "tense": "present",
+              "person": "second respectful",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-5"
+            ],
+            "sourceExampleId": "s5-write"
+          }
+        ],
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:v-write",
+          "examples": [
+            {
+              "exampleId": "s1-write",
+              "pashto": "زه په کتاب کې لیکم.",
+              "romanisation": "za pa kitaab ke leekum",
+              "english": "I write in a book.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 3,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-write",
+              "pashto": "تاسې په کتابچه کې لیکئ.",
+              "romanisation": "taase pa kitaabcha ke leekey",
+              "english": "You write in a notebook. (polite/plural)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s1-school-word",
+              "pashto": "زه کلمه لیکم.",
+              "romanisation": "za kalima leekum",
+              "english": "I write a word.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 3,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-school-word",
+              "pashto": "هغه کلمه لیکي.",
+              "romanisation": "hagha kalima leeki",
+              "english": "He/she writes a word.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-school-sentence",
+              "pashto": "ته جمله لیکې.",
+              "romanisation": "ta jumla leekey",
+              "english": "You write a sentence.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-school-words",
+              "pashto": "ته کتاب لولې او زه کلمه لیکم.",
+              "romanisation": "ta kitaab loley aw za kalima leekam",
+              "english": "You read a book, and I write a word.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-school-compound",
+              "pashto": "تاسې کتاب لولئ او زه کلمه لیکم.",
+              "romanisation": "taase kitaab loley aw za kalima leekam",
+              "english": "You read a book, and I write a word. (polite/plural)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w6-school-saleha-write",
+              "pashto": "صالحه او زه جملې لیکو.",
+              "romanisation": "saaleha aw za jumle leeko",
+              "english": "Saleha and I write sentences.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 6,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-school-write",
+              "pashto": "هغوی جملې لیکي.",
+              "romanisation": "haghoy jumle leekee",
+              "english": "They write sentences.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 7,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-compound-read",
+              "pashto": "زه کتاب لولم او ته جمله لیکې.",
+              "romanisation": "za kitaab lwalam aw ta jumla leekey",
+              "english": "I read the book, and you write a sentence.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 7,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-compound-books",
+              "pashto": "تاسې کتابونه لولئ او موږ جملې لیکو.",
+              "romanisation": "taase kitaaboona lwaley aw moong jumle leeko",
+              "english": "You all read books, and we write sentences.",
+              "speaker": "Player",
+              "recipient": "Saleha and Mina",
+              "day": 7,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-school-2",
+              "pashto": "موږ کله کله جملې لیکو.",
+              "romanisation": "moong kala kala jumle leeko",
+              "english": "We sometimes write sentences.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 13,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "v-write",
+            "s1-write",
+            "s5-write",
+            "s1-school-word",
+            "s2-school-word",
+            "s4-school-sentence",
+            "s4-school-words",
+            "s5-school-compound",
+            "w6-school-saleha-write",
+            "w7-school-write",
+            "w7-compound-read",
+            "w7-compound-books",
+            "w2-d13-school-2",
+            "w2-d13-school-5"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "لیکل",
+        "romanisation": "leekal",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:a-easy",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Easy"
+      ],
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "forms": [
+          {
+            "formId": "lemma:a-easy:form:0",
+            "pashto": "اسانه",
+            "romanisation": "asaana",
+            "englishGloss": "Easy",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "a-easy"
+          }
+        ],
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:a-easy",
+          "examples": [
+            {
+              "exampleId": "s1-easy",
+              "pashto": "دا کتاب اسانه دی.",
+              "romanisation": "daa kitaab asaana day",
+              "english": "This book is easy.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 3,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "a-easy",
+            "s1-easy"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "اسانه",
+        "romanisation": "asaana",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:n-table",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Table"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:n-table:form:0",
+            "pashto": "مېز",
+            "romanisation": "mez",
+            "englishGloss": "Table",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "n-table"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "residential",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:n-table",
+          "examples": [
+            {
+              "exampleId": "s2-table",
+              "pashto": "ته مېز پاکوې.",
+              "romanisation": "ta mez paakawe",
+              "english": "You clean the table.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-old",
+              "pashto": "دا مېز زوړ دی.",
+              "romanisation": "daa mez zoṛ day",
+              "english": "This table is old.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-school-1",
+              "pashto": "کتاب پر مېز دی.",
+              "romanisation": "kitaab par mez day",
+              "english": "The book is on the table.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 10,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-house-2",
+              "pashto": "کتاب پر مېز دی.",
+              "romanisation": "kitaab par mez day",
+              "english": "The book is on the table.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 10,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d11-school-4",
+              "pashto": "ستاسې کتابچه پر مېز ده.",
+              "romanisation": "staase kitaabcha par mez da",
+              "english": "Your notebook is on the table.",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 11,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-house-4",
+              "pashto": "پر مېز څه دي؟",
+              "romanisation": "par mez tsa dee",
+              "english": "What is on the table?",
+              "speaker": "Muhammad Jan",
+              "recipient": "Player",
+              "day": 12,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "n-table",
+            "s2-table",
+            "s2-old",
+            "w2-d10-school-1",
+            "w2-d10-house-2",
+            "w2-d11-school-4",
+            "w2-d12-house-4",
+            "w2-d10-reply-2",
+            "w2-d14-reply-7"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "مېز",
+        "romanisation": "mez",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:v-clean",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "To clean"
+      ],
+      "morphology": {
+        "partOfSpeech": "verb",
+        "forms": [
+          {
+            "formId": "lemma:v-clean:form:0",
+            "pashto": "پاکول",
+            "romanisation": "paakawul",
+            "englishGloss": "To clean",
+            "morphology": {
+              "form": "infinitive",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "v-clean"
+          },
+          {
+            "formId": "lemma:v-clean:present:0",
+            "pashto": "پاکوم",
+            "romanisation": "ta karkay khlaasawey aw za kota paakawum",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To clean — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "singular"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-3"
+            ],
+            "sourceExampleId": "s4-house-window"
+          },
+          {
+            "formId": "lemma:v-clean:present:1",
+            "pashto": "پاکوې",
+            "romanisation": "ta mez paakawe",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To clean — second informal person",
+            "morphology": {
+              "tense": "present",
+              "person": "second informal",
+              "number": "singular"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-4"
+            ],
+            "sourceExampleId": "s2-table"
+          },
+          {
+            "formId": "lemma:v-clean:present:2",
+            "pashto": "پاکوي",
+            "romanisation": "hagha kota paakawi",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To clean — third person",
+            "morphology": {
+              "tense": "present",
+              "person": "third",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-2"
+            ],
+            "sourceExampleId": "s2-house-clean"
+          },
+          {
+            "formId": "lemma:v-clean:present:3",
+            "pashto": "پاکوو",
+            "romanisation": "moong koṭa paakawo",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To clean — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-6"
+            ],
+            "sourceExampleId": "w6-house-clean"
+          }
+        ],
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:v-clean",
+          "examples": [
+            {
+              "exampleId": "s2-table",
+              "pashto": "ته مېز پاکوې.",
+              "romanisation": "ta mez paakawe",
+              "english": "You clean the table.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-house-clean",
+              "pashto": "هغه کوټه پاکوي.",
+              "romanisation": "hagha kota paakawi",
+              "english": "He/she cleans the room.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-house-room",
+              "pashto": "ته کوټه پاکوې.",
+              "romanisation": "ta kota paakawey",
+              "english": "You clean the room.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-house-compound",
+              "pashto": "ته کوټه پاکوې او زه پر څوکۍ کښېنم.",
+              "romanisation": "ta kota paakawey aw za par tsokey kenam",
+              "english": "You clean the room, and I sit on the chair.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-house-window",
+              "pashto": "ته کړکۍ خلاصوې او زه کوټه پاکوم.",
+              "romanisation": "ta karkay khlaasawey aw za kota paakawum",
+              "english": "You open the window, and I clean the room.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w6-house-clean",
+              "pashto": "موږ کوټه پاکوو.",
+              "romanisation": "moong koṭa paakawo",
+              "english": "We clean the room.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 6,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-house-clean",
+              "pashto": "هغوی کوټه پاکوي.",
+              "romanisation": "haghoy koṭa paakawee",
+              "english": "They clean the room.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 7,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-compound-room",
+              "pashto": "ته کوټه پاکوې او زه پر څوکۍ کښېنم.",
+              "romanisation": "ta koṭa paakawey aw za par tsawkay kenam",
+              "english": "You clean the room, and I sit on the chair.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 7,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-compound-door",
+              "pashto": "دروازه خلاصه ده او هغوی کوټه پاکوي.",
+              "romanisation": "darwaaza khlaasa da aw haghoy koṭa paakawee",
+              "english": "The door is open, and they clean the room.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 7,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-house-2",
+              "pashto": "موږ یو ځای کوټه پاکوو.",
+              "romanisation": "moong yaw dzay koṭa paakawo",
+              "english": "We clean the room together.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 13,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-house-4",
+              "pashto": "نن موږ دا کوټې پاکوو.",
+              "romanisation": "nan moong daa koṭe paakawo",
+              "english": "Today we clean these rooms.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 14,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "v-clean",
+            "v-clean2",
+            "s2-table",
+            "s2-house-clean",
+            "s4-house-room",
+            "s4-house-compound",
+            "s4-house-window",
+            "w6-house-clean",
+            "w7-house-clean",
+            "w7-compound-room",
+            "w7-compound-door",
+            "w2-d13-house-2",
+            "w2-d14-house-4"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "پاکول",
+        "romanisation": "paakawul",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:a-old",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Old"
+      ],
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "forms": [
+          {
+            "formId": "lemma:a-old:form:0",
+            "pashto": "زوړ",
+            "romanisation": "zoṛ",
+            "englishGloss": "Old",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "a-old"
+          }
+        ],
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "residential",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:a-old",
+          "examples": [
+            {
+              "exampleId": "s2-old",
+              "pashto": "دا مېز زوړ دی.",
+              "romanisation": "daa mez zoṛ day",
+              "english": "This table is old.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d8-school-2",
+              "pashto": "هغه کتاب زوړ دی.",
+              "romanisation": "hagha kitaab zoṛ day",
+              "english": "That book is old.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 8,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "a-old",
+            "s2-old",
+            "w2-d8-school-2",
+            "w2-d8-reply-4",
+            "w2-d14-reply-2"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "زوړ",
+        "romanisation": "zoṛ",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:n-pond",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Pond"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:n-pond:form:0",
+            "pashto": "ډنډ",
+            "romanisation": "ḍanḍ",
+            "englishGloss": "Pond",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "n-pond"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:n-pond",
+          "examples": [
+            {
+              "exampleId": "s2-swim",
+              "pashto": "ته په ډنډ کې لامبو وهې.",
+              "romanisation": "ta pa ḍanḍ ke laambo wahe",
+              "english": "You swim in the pond.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-deep",
+              "pashto": "دا ډنډ ژور دی.",
+              "romanisation": "daa ḍanḍ zhor day",
+              "english": "This pond is deep.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "n-pond",
+            "s2-swim",
+            "s2-deep"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ډنډ",
+        "romanisation": "ḍanḍ",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:v-swim",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "To swim"
+      ],
+      "morphology": {
+        "partOfSpeech": "verb",
+        "forms": [
+          {
+            "formId": "lemma:v-swim:form:0",
+            "pashto": "لامبو وهل",
+            "romanisation": "laambo wahal",
+            "englishGloss": "To swim",
+            "morphology": {
+              "form": "infinitive",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "v-swim"
+          },
+          {
+            "formId": "lemma:v-swim:present:1",
+            "pashto": "لامبو وهې",
+            "romanisation": "ta pa ḍanḍ ke laambo wahe",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To swim — second informal person",
+            "morphology": {
+              "tense": "present",
+              "person": "second informal",
+              "number": "singular"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-4"
+            ],
+            "sourceExampleId": "s2-swim"
+          }
+        ],
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:v-swim",
+          "examples": [
+            {
+              "exampleId": "s2-swim",
+              "pashto": "ته په ډنډ کې لامبو وهې.",
+              "romanisation": "ta pa ḍanḍ ke laambo wahe",
+              "english": "You swim in the pond.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "v-swim",
+            "s2-swim"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "لامبو وهل",
+        "romanisation": "laambo wahal",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:a-deep",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Deep"
+      ],
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "forms": [
+          {
+            "formId": "lemma:a-deep:form:0",
+            "pashto": "ژور",
+            "romanisation": "zhor",
+            "englishGloss": "Deep",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "a-deep"
+          }
+        ],
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:a-deep",
+          "examples": [
+            {
+              "exampleId": "s2-deep",
+              "pashto": "دا ډنډ ژور دی.",
+              "romanisation": "daa ḍanḍ zhor day",
+              "english": "This pond is deep.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "a-deep",
+            "s2-deep"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ژور",
+        "romanisation": "zhor",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:n-money",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Money"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:n-money:form:0",
+            "pashto": "پیسې",
+            "romanisation": "pese",
+            "englishGloss": "Money",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "n-money"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:n-money",
+          "examples": [
+            {
+              "exampleId": "s2-money",
+              "pashto": "ته پیسې ورکوې.",
+              "romanisation": "ta pese warkawe",
+              "english": "You give money.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "n-money",
+            "s2-money"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "پیسې",
+        "romanisation": "pese",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:v-give",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "To give"
+      ],
+      "morphology": {
+        "partOfSpeech": "verb",
+        "forms": [
+          {
+            "formId": "lemma:v-give:form:0",
+            "pashto": "ورکول",
+            "romanisation": "warkawul",
+            "englishGloss": "To give",
+            "morphology": {
+              "form": "infinitive",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "v-give"
+          },
+          {
+            "formId": "lemma:v-give:present:1",
+            "pashto": "ورکوې",
+            "romanisation": "ta pese warkawe",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To give — second informal person",
+            "morphology": {
+              "tense": "present",
+              "person": "second informal",
+              "number": "singular"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-4"
+            ],
+            "sourceExampleId": "s2-money"
+          },
+          {
+            "formId": "lemma:v-give:present:2",
+            "pashto": "ورکوي",
+            "romanisation": "haghoy pukhtano ta dzawaaboona warkawee",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To give — third person",
+            "morphology": {
+              "tense": "present",
+              "person": "third",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-2"
+            ],
+            "sourceExampleId": "w7-school-answer"
+          },
+          {
+            "formId": "lemma:v-give:present:3",
+            "pashto": "ورکوو",
+            "romanisation": "moong yaw dzay pukhtano ta dzawaaboona warkawo",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To give — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-6"
+            ],
+            "sourceExampleId": "w6-school-answer"
+          },
+          {
+            "formId": "lemma:v-give:present:4",
+            "pashto": "ورکوئ",
+            "romanisation": "taase pushtanay ta dzawaab warkawey",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To give — second respectful person",
+            "morphology": {
+              "tense": "present",
+              "person": "second respectful",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-5"
+            ],
+            "sourceExampleId": "s5-school-answer"
+          }
+        ],
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:v-give",
+          "examples": [
+            {
+              "exampleId": "s2-money",
+              "pashto": "ته پیسې ورکوې.",
+              "romanisation": "ta pese warkawe",
+              "english": "You give money.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-school-question",
+              "pashto": "ته پوښتنې ته ځواب ورکوې.",
+              "romanisation": "ta pushtanay ta dzawaab warkawey",
+              "english": "You answer a question.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-school-answer",
+              "pashto": "تاسې پوښتنې ته ځواب ورکوئ.",
+              "romanisation": "taase pushtanay ta dzawaab warkawey",
+              "english": "You answer a question. (polite/plural)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w6-school-answer",
+              "pashto": "موږ یو ځای پوښتنو ته ځوابونه ورکوو.",
+              "romanisation": "moong yaw dzay pukhtano ta dzawaaboona warkawo",
+              "english": "We answer questions together.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 6,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-school-answer",
+              "pashto": "هغوی پوښتنو ته ځوابونه ورکوي.",
+              "romanisation": "haghoy pukhtano ta dzawaaboona warkawee",
+              "english": "They answer questions.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 7,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "v-give",
+            "s2-money",
+            "s4-school-question",
+            "s5-school-answer",
+            "w6-school-answer",
+            "w7-school-answer"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ورکول",
+        "romanisation": "warkawul",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:a-cheap",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Cheap / inexpensive"
+      ],
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "forms": [
+          {
+            "formId": "lemma:a-cheap:form:0",
+            "pashto": "ارزان",
+            "romanisation": "arzaan",
+            "englishGloss": "Cheap / inexpensive",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "a-cheap"
+          }
+        ],
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:a-cheap",
+          "examples": [],
+          "mappedSourceIds": [
+            "a-cheap"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ارزان",
+        "romanisation": "arzaan",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:n-lesson",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Lesson"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:n-lesson:form:0",
+            "pashto": "درس",
+            "romanisation": "dars",
+            "englishGloss": "Lesson",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "n-lesson"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:n-lesson",
+          "examples": [
+            {
+              "exampleId": "s2-learn",
+              "pashto": "ته درس زده کوې.",
+              "romanisation": "ta dars zda kawe",
+              "english": "You learn a lesson.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-good",
+              "pashto": "دا درس ښه دی.",
+              "romanisation": "daa dars kha day",
+              "english": "This lesson is good.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-hard",
+              "pashto": "دا درس ستونزمن دی.",
+              "romanisation": "daa dars stoonzman day",
+              "english": "This lesson is difficult.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s6-important",
+              "pashto": "دا درس مهم دی.",
+              "romanisation": "daa dars mohem day",
+              "english": "This lesson is important.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 7,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-school-learn",
+              "pashto": "ته درس زده کوې او زه کتاب لولم.",
+              "romanisation": "ta dars zda kawey aw za kitaab lolam",
+              "english": "You learn a lesson, and I read a book.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "n-lesson",
+            "s2-learn",
+            "s2-good",
+            "s4-hard",
+            "s6-important",
+            "s4-school-learn"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "درس",
+        "romanisation": "dars",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:v-learn",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "To learn"
+      ],
+      "morphology": {
+        "partOfSpeech": "verb",
+        "forms": [
+          {
+            "formId": "lemma:v-learn:form:0",
+            "pashto": "زده کول",
+            "romanisation": "zda kawul",
+            "englishGloss": "To learn",
+            "morphology": {
+              "form": "infinitive",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "v-learn"
+          },
+          {
+            "formId": "lemma:v-learn:present:1",
+            "pashto": "زده کوې",
+            "romanisation": "ta dars zda kawe",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To learn — second informal person",
+            "morphology": {
+              "tense": "present",
+              "person": "second informal",
+              "number": "singular"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-4"
+            ],
+            "sourceExampleId": "s2-learn"
+          },
+          {
+            "formId": "lemma:v-learn:present:2",
+            "pashto": "زده کوي",
+            "romanisation": "haghoi pakhto zda kawee",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To learn — third person",
+            "morphology": {
+              "tense": "present",
+              "person": "third",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-2"
+            ],
+            "sourceExampleId": "s6-learn"
+          },
+          {
+            "formId": "lemma:v-learn:present:3",
+            "pashto": "زده کوو",
+            "romanisation": "moong pakhto zda kawoo",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To learn — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-6"
+            ],
+            "sourceExampleId": "s4-learn"
+          },
+          {
+            "formId": "lemma:v-learn:present:4",
+            "pashto": "زده کوئ",
+            "romanisation": "taase pakhto zda kawey",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To learn — second respectful person",
+            "morphology": {
+              "tense": "present",
+              "person": "second respectful",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-5"
+            ],
+            "sourceExampleId": "s5-school-pashto"
+          }
+        ],
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:v-learn",
+          "examples": [
+            {
+              "exampleId": "s2-learn",
+              "pashto": "ته درس زده کوې.",
+              "romanisation": "ta dars zda kawe",
+              "english": "You learn a lesson.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-learn",
+              "pashto": "موږ پښتو زده کوو.",
+              "romanisation": "moong pakhto zda kawoo",
+              "english": "We learn Pashto.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s6-learn",
+              "pashto": "هغوی پښتو زده کوي.",
+              "romanisation": "haghoi pakhto zda kawee",
+              "english": "They learn Pashto.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 7,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-school-learn",
+              "pashto": "ته درس زده کوې او زه کتاب لولم.",
+              "romanisation": "ta dars zda kawey aw za kitaab lolam",
+              "english": "You learn a lesson, and I read a book.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-school-pashto",
+              "pashto": "تاسې پښتو زده کوئ.",
+              "romanisation": "taase pakhto zda kawey",
+              "english": "You learn Pashto. (polite/plural)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w6-school-learn",
+              "pashto": "موږ پښتو زده کوو.",
+              "romanisation": "moong pakhto zda kawo",
+              "english": "We learn Pashto.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 6,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-school-learn",
+              "pashto": "هغوی پښتو زده کوي.",
+              "romanisation": "haghoy pakhto zda kawee",
+              "english": "They learn Pashto.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 7,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "v-learn",
+            "s2-learn",
+            "s4-learn",
+            "s6-learn",
+            "s4-school-learn",
+            "s5-school-pashto",
+            "w6-school-learn",
+            "w7-school-learn"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "زده کول",
+        "romanisation": "zda kawul",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:a-good",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Good"
+      ],
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "forms": [
+          {
+            "formId": "lemma:a-good:form:0",
+            "pashto": "ښه",
+            "romanisation": "kha",
+            "englishGloss": "Good",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "a-good"
+          }
+        ],
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:a-good",
+          "examples": [
+            {
+              "exampleId": "s2-good",
+              "pashto": "دا درس ښه دی.",
+              "romanisation": "daa dars kha day",
+              "english": "This lesson is good.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "a-good",
+            "s2-good"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ښه",
+        "romanisation": "kha",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:n-family",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Family"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:n-family:form:0",
+            "pashto": "کورنۍ",
+            "romanisation": "koranay",
+            "englishGloss": "Family",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "n-family"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:n-family",
+          "examples": [],
+          "mappedSourceIds": [
+            "n-family"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کورنۍ",
+        "romanisation": "koranay",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:v-talk",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "To talk"
+      ],
+      "morphology": {
+        "partOfSpeech": "verb",
+        "forms": [
+          {
+            "formId": "lemma:v-talk:form:0",
+            "pashto": "خبرې کول",
+            "romanisation": "khabare kawul",
+            "englishGloss": "To talk",
+            "morphology": {
+              "form": "infinitive",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "v-talk"
+          },
+          {
+            "formId": "lemma:v-talk:present:3",
+            "pashto": "خبرې کوو",
+            "romanisation": "moong pa kor ke khabare kawoo",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To talk — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-6"
+            ],
+            "sourceExampleId": "s4-talk"
+          }
+        ],
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:v-talk",
+          "examples": [
+            {
+              "exampleId": "s4-talk",
+              "pashto": "موږ په کور کې خبرې کوو.",
+              "romanisation": "moong pa kor ke khabare kawoo",
+              "english": "We talk at home.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "v-talk",
+            "s4-talk"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "خبرې کول",
+        "romanisation": "khabare kawul",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:a-happy",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Happy"
+      ],
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "forms": [
+          {
+            "formId": "lemma:a-happy:form:0",
+            "pashto": "خوشحاله",
+            "romanisation": "khoshhaala",
+            "englishGloss": "Happy",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "a-happy"
+          }
+        ],
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:a-happy",
+          "examples": [],
+          "mappedSourceIds": [
+            "a-happy"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "خوشحاله",
+        "romanisation": "khoshhaala",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:n-tea",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Tea"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:n-tea:form:0",
+            "pashto": "چای",
+            "romanisation": "chaay",
+            "englishGloss": "Tea",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "n-tea"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature",
+        "residential"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:n-tea",
+          "examples": [
+            {
+              "exampleId": "s4-tea",
+              "pashto": "موږ چای څښو.",
+              "romanisation": "moong chaay ts-khoo",
+              "english": "We drink tea.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-hot",
+              "pashto": "دا چای تود دی.",
+              "romanisation": "daa chaay tod day",
+              "english": "This tea is hot.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-house-tea",
+              "pashto": "هغه چای څښي.",
+              "romanisation": "hagha chaay ts-khee",
+              "english": "He/she drinks tea.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-house-tea",
+              "pashto": "ته چای څښې او زه اوبه څښم.",
+              "romanisation": "ta chaay tshey aw za oba tshkam",
+              "english": "You drink tea, and I drink water.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-home-tea",
+              "pashto": "تاسې چای څښئ.",
+              "romanisation": "taase chaay tshkey",
+              "english": "You drink tea. (polite)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-home-compare",
+              "pashto": "تاسې چای څښئ او زه اوبه څښم.",
+              "romanisation": "taase chaay tshkey aw za oba tshkam",
+              "english": "You drink tea, and I drink water. (polite)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-lake-water",
+              "pashto": "تاسې اوبه څښئ او زه چای څښم.",
+              "romanisation": "taase oba tshkey aw za chaay tshkam",
+              "english": "You drink water, and I drink tea. (plural)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w6-house-tea",
+              "pashto": "موږ یو ځای چای څښو.",
+              "romanisation": "moong yaw dzay chaay ts-kho",
+              "english": "We drink tea together.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 6,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-house-tea",
+              "pashto": "هغوی یو ځای چای څښي.",
+              "romanisation": "haghoy yaw dzay chaay ts-khee",
+              "english": "They drink tea together.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 7,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-polite-tea",
+              "pashto": "تاسې چای څښئ.",
+              "romanisation": "taase chaay ts-khey",
+              "english": "You drink tea (Muhammad Jan, respectfully).",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 7,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-house-5",
+              "pashto": "څوک چای څښي؟",
+              "romanisation": "tsok chaay ts-khee",
+              "english": "Who is drinking tea?",
+              "speaker": "Muhammad Jan",
+              "recipient": "Player",
+              "day": 12,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-house-1",
+              "pashto": "زه کله کله چای څښم.",
+              "romanisation": "za kala kala chaay ts-kham",
+              "english": "I sometimes drink tea.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 13,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "n-tea",
+            "n-tea2",
+            "s4-tea",
+            "s4-hot",
+            "s2-house-tea",
+            "s4-house-tea",
+            "s5-home-tea",
+            "s5-home-compare",
+            "s5-lake-water",
+            "w6-house-tea",
+            "w7-house-tea",
+            "w7-polite-tea",
+            "w2-d12-house-5",
+            "w2-d13-house-1",
+            "w2-d13-reply-3",
+            "w2-d14-reply-12",
+            "exam-dialogue-w7-polite-tea"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "چای",
+        "romanisation": "chaay",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:v-go",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "To go"
+      ],
+      "morphology": {
+        "partOfSpeech": "verb",
+        "forms": [
+          {
+            "formId": "lemma:v-go:form:0",
+            "pashto": "تلل",
+            "romanisation": "tlal",
+            "englishGloss": "To go",
+            "morphology": {
+              "form": "infinitive",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "v-go"
+          },
+          {
+            "formId": "lemma:v-go:present:2",
+            "pashto": "ځي",
+            "romanisation": "haghoi seend ta dzee",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To go — third person",
+            "morphology": {
+              "tense": "present",
+              "person": "third",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-2"
+            ],
+            "sourceExampleId": "s6-go"
+          },
+          {
+            "formId": "lemma:v-go:present:3",
+            "pashto": "ځو",
+            "romanisation": "moong seend ta dzoo",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To go — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-6"
+            ],
+            "sourceExampleId": "s4-go"
+          },
+          {
+            "formId": "lemma:v-go:present:4",
+            "pashto": "ځئ",
+            "romanisation": "taase seend ta dzey",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To go — second respectful person",
+            "morphology": {
+              "tense": "present",
+              "person": "second respectful",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-5"
+            ],
+            "sourceExampleId": "s5-go"
+          }
+        ],
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "nature",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:v-go",
+          "examples": [
+            {
+              "exampleId": "s4-go",
+              "pashto": "موږ سیند ته ځو.",
+              "romanisation": "moong seend ta dzoo",
+              "english": "We go to the river.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-go",
+              "pashto": "تاسې سیند ته ځئ.",
+              "romanisation": "taase seend ta dzey",
+              "english": "You go to the river. (polite/plural)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s6-go",
+              "pashto": "هغوی سیند ته ځي.",
+              "romanisation": "haghoi seend ta dzee",
+              "english": "They go to the river.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 7,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-school-5",
+              "pashto": "مینا ښوونځي ته ځي.",
+              "romanisation": "meena khowandzee ta dzee",
+              "english": "Mina goes to school.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 10,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-river-1",
+              "pashto": "مینا ورو ورو ځي.",
+              "romanisation": "meena wro wro dzee",
+              "english": "Mina walks slowly.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 13,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-river-1",
+              "pashto": "مینا ورو ورو ځي.",
+              "romanisation": "meena wro wro dzee",
+              "english": "Mina walks slowly.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 14,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "v-go",
+            "s4-go",
+            "s5-go",
+            "s6-go",
+            "w2-d10-school-5",
+            "w2-d13-river-1",
+            "w2-d14-river-1",
+            "w2-d13-reply-5"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "تلل",
+        "romanisation": "tlal",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:a-hot",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Hot / warm"
+      ],
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "forms": [
+          {
+            "formId": "lemma:a-hot:form:0",
+            "pashto": "تود",
+            "romanisation": "tod",
+            "englishGloss": "Hot / warm",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "a-hot"
+          }
+        ],
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:a-hot",
+          "examples": [
+            {
+              "exampleId": "s4-hot",
+              "pashto": "دا چای تود دی.",
+              "romanisation": "daa chaay tod day",
+              "english": "This tea is hot.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "a-hot",
+            "s4-hot"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "تود",
+        "romanisation": "tod",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:n-fruit",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Fruit"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:n-fruit:form:0",
+            "pashto": "مېوه",
+            "romanisation": "mewa",
+            "englishGloss": "Fruit",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "n-fruit"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:n-fruit",
+          "examples": [
+            {
+              "exampleId": "s4-buy",
+              "pashto": "موږ مېوه اخلو.",
+              "romanisation": "moong mewa akhloo",
+              "english": "We buy fruit.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-sell",
+              "pashto": "موږ مېوه پلورو.",
+              "romanisation": "moong mewa ploroo",
+              "english": "We sell fruit.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-sweet",
+              "pashto": "دا مېوه خوږه ده.",
+              "romanisation": "daa mewa khoga da",
+              "english": "This fruit is sweet.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-sell",
+              "pashto": "تاسې مېوه پلورئ.",
+              "romanisation": "taase mewa plorey",
+              "english": "You sell fruit. (polite/plural)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s6-like",
+              "pashto": "هغوی مېوه خوښوي.",
+              "romanisation": "haghoi mewa khoshawi",
+              "english": "They like fruit.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 7,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-market-fruit",
+              "pashto": "تاسې مېوه پلورئ.",
+              "romanisation": "taase mewa plorey",
+              "english": "You sell fruit. (polite)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "n-fruit",
+            "s4-buy",
+            "s4-sell",
+            "s4-sweet",
+            "s5-sell",
+            "s6-like",
+            "s5-market-fruit"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "مېوه",
+        "romanisation": "mewa",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:v-sell",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "To sell"
+      ],
+      "morphology": {
+        "partOfSpeech": "verb",
+        "forms": [
+          {
+            "formId": "lemma:v-sell:form:0",
+            "pashto": "پلورل",
+            "romanisation": "ploral",
+            "englishGloss": "To sell",
+            "morphology": {
+              "form": "infinitive",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "v-sell"
+          },
+          {
+            "formId": "lemma:v-sell:present:2",
+            "pashto": "پلوري",
+            "romanisation": "haghoy pa ghurfa ke ḍoḍay ploree",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To sell — third person",
+            "morphology": {
+              "tense": "present",
+              "person": "third",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-2"
+            ],
+            "sourceExampleId": "w7-market-bread"
+          },
+          {
+            "formId": "lemma:v-sell:present:3",
+            "pashto": "پلورو",
+            "romanisation": "moong mewa ploroo",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To sell — first person",
+            "morphology": {
+              "tense": "present",
+              "person": "first",
+              "number": "plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-6"
+            ],
+            "sourceExampleId": "s4-sell"
+          },
+          {
+            "formId": "lemma:v-sell:present:4",
+            "pashto": "پلورئ",
+            "romanisation": "taase mewa plorey",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To sell — second respectful person",
+            "morphology": {
+              "tense": "present",
+              "person": "second respectful",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-5"
+            ],
+            "sourceExampleId": "s5-sell"
+          }
+        ],
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:v-sell",
+          "examples": [
+            {
+              "exampleId": "s4-sell",
+              "pashto": "موږ مېوه پلورو.",
+              "romanisation": "moong mewa ploroo",
+              "english": "We sell fruit.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-sell",
+              "pashto": "تاسې مېوه پلورئ.",
+              "romanisation": "taase mewa plorey",
+              "english": "You sell fruit. (polite/plural)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-market-fruit",
+              "pashto": "تاسې مېوه پلورئ.",
+              "romanisation": "taase mewa plorey",
+              "english": "You sell fruit. (polite)",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-market-bread",
+              "pashto": "هغوی په غرفه کې ډوډۍ پلوري.",
+              "romanisation": "haghoy pa ghurfa ke ḍoḍay ploree",
+              "english": "They sell bread at the stall.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 7,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-market-3",
+              "pashto": "څوک ډوډۍ پلوري؟",
+              "romanisation": "tsok ḍoḍay ploree",
+              "english": "Who sells bread?",
+              "speaker": "Edris",
+              "recipient": "Player",
+              "day": 12,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "v-sell",
+            "s4-sell",
+            "s5-sell",
+            "s5-market-fruit",
+            "w7-market-bread",
+            "w2-d12-market-3",
+            "w2-d12-reply-3",
+            "w2-d14-reply-10"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "پلورل",
+        "romanisation": "ploral",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

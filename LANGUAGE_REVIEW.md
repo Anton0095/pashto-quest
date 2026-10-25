@@ -41,3 +41,7 @@ An optional `audio/<content-id>.mp3` pack is **not** currently bundled or native
 - Speaking Pashto: [Lesson four](https://www.speakingpashto.com/lesson-four/) and [lesson seven](https://www.speakingpashto.com/lesson-seven/).
 
 These support systematic review but do not replace a qualified Laghman speaker or verified recordings.
+
+## Generated coverage and review batches
+
+[`docs/language-review/README.md`](docs/language-review/README.md) explains the editorial coverage report, assignment register and batches of up to 25 items. Regenerate/check with `python3 tools/prepare-language-review.py [--check]`. The export includes current lemma/form records, teaching/assessment contexts, unresolved token alignments, selected/excluded candidates, universal targets and expression slots. It supplies source meanings and morphological review requests, never invented translations or approval. Token gaps require human alignment; do not equate them with missing lemmas or activate exported records directly.

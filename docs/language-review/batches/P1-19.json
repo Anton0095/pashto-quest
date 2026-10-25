@@ -1,0 +1,1328 @@
+{
+  "batchId": "P1-19",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "surface:w2-d13-market-2",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Edris opens his shop every day.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d13-market-2",
+          "pashto": "ادریس هره ورځ خپل دوکان خلاصوي.",
+          "englishContext": "Edris opens his shop every day.",
+          "romanisation": "edrees hara wraz khpal dookaan khlaasawee",
+          "day": 13,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:2"
+            },
+            {
+              "lemmaId": "lemma:n-shop",
+              "formId": "lemma:n-shop:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ادریس هره ورځ خپل دوکان خلاصوي.",
+        "romanisation": "edrees hara wraz khpal dookaan khlaasawee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d13-market-3",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "They sometimes buy apples.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d13-market-3",
+          "pashto": "هغوی کله کله مڼې اخلي.",
+          "englishContext": "They sometimes buy apples.",
+          "romanisation": "haghoy kala kala maṇe akhlee",
+          "day": 13,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:2"
+            },
+            {
+              "lemmaId": "lemma:w2-d13-vocab-5",
+              "formId": "lemma:w2-d13-vocab-5:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-apple",
+              "formId": "lemma:n-apple:variant:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی کله کله مڼې اخلي.",
+        "romanisation": "haghoy kala kala maṇe akhlee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d13-market-4",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "We carry the bags slowly.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d13-market-4",
+          "pashto": "موږ کڅوړې ورو ورو وړو.",
+          "englishContext": "We carry the bags slowly.",
+          "romanisation": "moong katsoṛe wro wro wro",
+          "day": 13,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d13-vocab-4",
+              "formId": "lemma:w2-d13-vocab-4:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-bag3",
+              "formId": "lemma:n-bag3:variant:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "موږ کڅوړې ورو ورو وړو.",
+        "romanisation": "moong katsoṛe wro wro wro"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d13-market-5",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Today this bread is fresh.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d13-market-5",
+          "pashto": "نن دا ډوډۍ تازه ده.",
+          "englishContext": "Today this bread is fresh.",
+          "romanisation": "nan daa ḍoḍay taaza da",
+          "day": 13,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            },
+            {
+              "lemmaId": "lemma:a-fresh",
+              "formId": "lemma:a-fresh:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d13-vocab-1",
+              "formId": "lemma:w2-d13-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "نن دا ډوډۍ تازه ده.",
+        "romanisation": "nan daa ḍoḍay taaza da"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d13-house-1",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "I sometimes drink tea.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d13-house-1",
+          "pashto": "زه کله کله چای څښم.",
+          "englishContext": "I sometimes drink tea.",
+          "romanisation": "za kala kala chaay ts-kham",
+          "day": 13,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:0"
+            },
+            {
+              "lemmaId": "lemma:n-tea",
+              "formId": "lemma:n-tea:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d13-vocab-5",
+              "formId": "lemma:w2-d13-vocab-5:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "زه کله کله چای څښم.",
+        "romanisation": "za kala kala chaay ts-kham"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d13-house-2",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "We clean the room together.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d13-house-2",
+          "pashto": "موږ یو ځای کوټه پاکوو.",
+          "englishContext": "We clean the room together.",
+          "romanisation": "moong yaw dzay koṭa paakawo",
+          "day": 13,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-room",
+              "formId": "lemma:n-room:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "موږ یو ځای کوټه پاکوو.",
+        "romanisation": "moong yaw dzay koṭa paakawo"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d13-house-3",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Muhammad Jan reads every day.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d13-house-3",
+          "pashto": "محمد جان هره ورځ لولي.",
+          "englishContext": "Muhammad Jan reads every day.",
+          "romanisation": "muhammad jaan hara wraz lwalee",
+          "day": 13,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:2"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "محمد جان هره ورځ لولي.",
+        "romanisation": "muhammad jaan hara wraz lwalee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d13-house-4",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Today the door is open.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d13-house-4",
+          "pashto": "نن دروازه خلاصه ده.",
+          "englishContext": "Today the door is open.",
+          "romanisation": "nan darwaaza khlaasa da",
+          "day": 13,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-door",
+              "formId": "lemma:n-door:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d13-vocab-1",
+              "formId": "lemma:w2-d13-vocab-1:form:0"
+            },
+            {
+              "lemmaId": "lemma:a-open-state",
+              "formId": "lemma:a-open-state:feminine"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "نن دروازه خلاصه ده.",
+        "romanisation": "nan darwaaza khlaasa da"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d13-house-5",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "You always help at home.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d13-house-5",
+          "pashto": "ته تل په کور کې مرسته کوې.",
+          "englishContext": "You always help at home.",
+          "romanisation": "ta tal pa kor ke mrasta kawey",
+          "day": 13,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-house",
+              "formId": "lemma:n-house:form:0"
+            },
+            {
+              "lemmaId": "lemma:vocab6-house-help",
+              "formId": "lemma:vocab6-house-help:present:1"
+            },
+            {
+              "lemmaId": "lemma:w2-d13-vocab-3",
+              "formId": "lemma:w2-d13-vocab-3:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ته تل په کور کې مرسته کوې.",
+        "romanisation": "ta tal pa kor ke mrasta kawey"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-vocab-1",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Where",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-vocab-1",
+          "pashto": "چېرته",
+          "englishContext": "Where",
+          "romanisation": "cherta",
+          "day": 14,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w2-d10-vocab-3",
+              "formId": "lemma:w2-d10-vocab-3:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "چېرته",
+        "romanisation": "cherta"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-vocab-2",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "My / mine",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-vocab-2",
+          "pashto": "زما",
+          "englishContext": "My / mine",
+          "romanisation": "zmaa",
+          "day": 14,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w2-d11-vocab-1",
+              "formId": "lemma:w2-d11-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "زما",
+        "romanisation": "zmaa"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-vocab-3",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Three",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-vocab-3",
+          "pashto": "درې",
+          "englishContext": "Three",
+          "romanisation": "dre",
+          "day": 14,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w2-d9-vocab-3",
+              "formId": "lemma:w2-d9-vocab-3:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "درې",
+        "romanisation": "dre"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-vocab-4",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Together",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-vocab-4",
+          "pashto": "یو ځای",
+          "englishContext": "Together",
+          "romanisation": "yaw dzay",
+          "day": 14,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "یو ځای",
+        "romanisation": "yaw dzay"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-house-1",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "This is my book.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-house-1",
+          "pashto": "دا زما کتاب دی.",
+          "englishContext": "This is my book.",
+          "romanisation": "daa zmaa kitaab day",
+          "day": 14,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d11-vocab-1",
+              "formId": "lemma:w2-d11-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "دا زما کتاب دی.",
+        "romanisation": "daa zmaa kitaab day"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-house-2",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Your book is on that chair.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-house-2",
+          "pashto": "ستاسې کتاب پر هغې څوکۍ دی.",
+          "englishContext": "Your book is on that chair.",
+          "romanisation": "staase kitaab par haghe tsawkay day",
+          "day": 14,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-chair4",
+              "formId": "lemma:n-chair4:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d11-vocab-2",
+              "formId": "lemma:w2-d11-vocab-2:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ستاسې کتاب پر هغې څوکۍ دی.",
+        "romanisation": "staase kitaab par haghe tsawkay day"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-house-3",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Which door is open?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-house-3",
+          "pashto": "کومه دروازه خلاصه ده؟",
+          "englishContext": "Which door is open?",
+          "romanisation": "kooma darwaaza khlaasa da",
+          "day": 14,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-door",
+              "formId": "lemma:n-door:form:0"
+            },
+            {
+              "lemmaId": "lemma:a-open-state",
+              "formId": "lemma:a-open-state:feminine"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کومه دروازه خلاصه ده؟",
+        "romanisation": "kooma darwaaza khlaasa da"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-house-4",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Today we clean these rooms.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-house-4",
+          "pashto": "نن موږ دا کوټې پاکوو.",
+          "englishContext": "Today we clean these rooms.",
+          "romanisation": "nan moong daa koṭe paakawo",
+          "day": 14,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d13-vocab-1",
+              "formId": "lemma:w2-d13-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "نن موږ دا کوټې پاکوو.",
+        "romanisation": "nan moong daa koṭe paakawo"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-house-5",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Where is Muhammad Jan’s notebook?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-house-5",
+          "pashto": "د محمد جان کتابچه چېرته ده؟",
+          "englishContext": "Where is Muhammad Jan’s notebook?",
+          "romanisation": "da muhammad jaan kitaabcha cherta da",
+          "day": 14,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-notebook",
+              "formId": "lemma:n-notebook:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d10-vocab-3",
+              "formId": "lemma:w2-d10-vocab-3:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "د محمد جان کتابچه چېرته ده؟",
+        "romanisation": "da muhammad jaan kitaabcha cherta da"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-market-1",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "These apples are fresh.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-market-1",
+          "pashto": "دا مڼې تازه دي.",
+          "englishContext": "These apples are fresh.",
+          "romanisation": "daa maṇe taaza dee",
+          "day": 14,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:a-fresh",
+              "formId": "lemma:a-fresh:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-apple",
+              "formId": "lemma:n-apple:variant:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "دا مڼې تازه دي.",
+        "romanisation": "daa maṇe taaza dee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-market-2",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "I buy three apples.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-market-2",
+          "pashto": "زه درې مڼې اخلم.",
+          "englishContext": "I buy three apples.",
+          "romanisation": "za dre maṇe akhlam",
+          "day": 14,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-3",
+              "formId": "lemma:w2-d9-vocab-3:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-apple",
+              "formId": "lemma:n-apple:variant:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "زه درې مڼې اخلم.",
+        "romanisation": "za dre maṇe akhlam"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-market-3",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Which basket belongs to Edris?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-market-3",
+          "pashto": "کومه ټوکرۍ د ادریس ده؟",
+          "englishContext": "Which basket belongs to Edris?",
+          "romanisation": "kooma ṭokray da edrees da",
+          "day": 14,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Edris",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-basket4",
+              "formId": "lemma:n-basket4:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کومه ټوکرۍ د ادریس ده؟",
+        "romanisation": "kooma ṭokray da edrees da"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-market-4",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Those people carry bread together.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-market-4",
+          "pashto": "هغه خلک یو ځای ډوډۍ وړي.",
+          "englishContext": "Those people carry bread together.",
+          "romanisation": "hagha khalak yaw dzay ḍoḍay wree",
+          "day": 14,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-people",
+              "formId": "lemma:n-people:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:2"
+            },
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-2",
+              "formId": "lemma:w2-d8-vocab-2:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغه خلک یو ځای ډوډۍ وړي.",
+        "romanisation": "hagha khalak yaw dzay ḍoḍay wree"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-market-5",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "How many bags are here?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-market-5",
+          "pashto": "دلته څو کڅوړې دي؟",
+          "englishContext": "How many bags are here?",
+          "romanisation": "dalta tso katsoṛe dee",
+          "day": 14,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Edris",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w2-d10-vocab-1",
+              "formId": "lemma:w2-d10-vocab-1:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d12-vocab-5",
+              "formId": "lemma:w2-d12-vocab-5:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-bag3",
+              "formId": "lemma:n-bag3:variant:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "دلته څو کڅوړې دي؟",
+        "romanisation": "dalta tso katsoṛe dee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-river-1",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Mina walks slowly.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-river-1",
+          "pashto": "مینا ورو ورو ځي.",
+          "englishContext": "Mina walks slowly.",
+          "romanisation": "meena wro wro dzee",
+          "day": 14,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-go",
+              "formId": "lemma:v-go:present:2"
+            },
+            {
+              "lemmaId": "lemma:w2-d13-vocab-4",
+              "formId": "lemma:w2-d13-vocab-4:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "مینا ورو ورو ځي.",
+        "romanisation": "meena wro wro dzee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-river-2",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Those birds are near the river.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-river-2",
+          "pashto": "هغه مرغان سیند ته نږدې دي.",
+          "englishContext": "Those birds are near the river.",
+          "romanisation": "hagha marghaan seend ta negde dee",
+          "day": 14,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-river",
+              "formId": "lemma:n-river:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-bird3",
+              "formId": "lemma:n-bird3:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-2",
+              "formId": "lemma:w2-d8-vocab-2:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-3",
+              "formId": "lemma:w2-d8-vocab-3:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغه مرغان سیند ته نږدې دي.",
+        "romanisation": "hagha marghaan seend ta negde dee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

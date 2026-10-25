@@ -1,0 +1,1024 @@
+{
+  "batchId": "P1-25",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "surface:w2-d14-reply-4:prompt",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "How many apples do you buy?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-4:prompt",
+          "pashto": "ته څو مڼې اخلې؟",
+          "englishContext": "How many apples do you buy?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: Your order contains exactly two apples."
+        }
+      ],
+      "existing": {
+        "pashto": "ته څو مڼې اخلې؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-4:reply",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "I buy two apples.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-4:reply",
+          "pashto": "زه دوه مڼې اخلم.",
+          "englishContext": "I buy two apples.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "Village review clue: Your order contains exactly two apples."
+        }
+      ],
+      "existing": {
+        "pashto": "زه دوه مڼې اخلم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-5:prompt",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "How many baskets do they carry?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-5:prompt",
+          "pashto": "هغوی څو ټوکرۍ وړي؟",
+          "englishContext": "How many baskets do they carry?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: Three customers each carry one basket."
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی څو ټوکرۍ وړي؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-5:reply",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "They carry three baskets.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-5:reply",
+          "pashto": "هغوی درې ټوکرۍ وړي.",
+          "englishContext": "They carry three baskets.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "Village review clue: Three customers each carry one basket."
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی درې ټوکرۍ وړي.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-6:prompt",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Where is the notebook?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-6:prompt",
+          "pashto": "کتابچه چېرته ده؟",
+          "englishContext": "Where is the notebook?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: The notebook rests beside you."
+        }
+      ],
+      "existing": {
+        "pashto": "کتابچه چېرته ده؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-6:reply",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "The notebook is here.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-6:reply",
+          "pashto": "کتابچه دلته ده.",
+          "englishContext": "The notebook is here.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "Village review clue: The notebook rests beside you."
+        }
+      ],
+      "existing": {
+        "pashto": "کتابچه دلته ده.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-7:prompt",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Where is the book?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-7:prompt",
+          "pashto": "کتاب چېرته دی؟",
+          "englishContext": "Where is the book?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: The book rests on the table, not in a bag."
+        }
+      ],
+      "existing": {
+        "pashto": "کتاب چېرته دی؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-7:reply",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "The book is on the table.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-7:reply",
+          "pashto": "کتاب پر مېز دی.",
+          "englishContext": "The book is on the table.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "Village review clue: The book rests on the table, not in a bag."
+        }
+      ],
+      "existing": {
+        "pashto": "کتاب پر مېز دی.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-8:prompt",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Whose book is this?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-8:prompt",
+          "pashto": "دا د چا کتاب دی؟",
+          "englishContext": "Whose book is this?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: Muhammad Jan shows you the book bearing your name."
+        }
+      ],
+      "existing": {
+        "pashto": "دا د چا کتاب دی؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-8:reply",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "This is my book.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-8:reply",
+          "pashto": "دا زما کتاب دی.",
+          "englishContext": "This is my book.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "Village review clue: Muhammad Jan shows you the book bearing your name."
+        }
+      ],
+      "existing": {
+        "pashto": "دا زما کتاب دی.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-9:prompt",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Whose notebook is this?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-9:prompt",
+          "pashto": "دا د چا کتابچه ده؟",
+          "englishContext": "Whose notebook is this?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: The notebook is labelled Mina."
+        }
+      ],
+      "existing": {
+        "pashto": "دا د چا کتابچه ده؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-9:reply",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "This is Mina’s notebook.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-9:reply",
+          "pashto": "دا د مینا کتابچه ده.",
+          "englishContext": "This is Mina’s notebook.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "Village review clue: The notebook is labelled Mina."
+        }
+      ],
+      "existing": {
+        "pashto": "دا د مینا کتابچه ده.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-10:prompt",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Who sells bread?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-10:prompt",
+          "pashto": "څوک ډوډۍ پلوري؟",
+          "englishContext": "Who sells bread?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: At the market Edris is the bread seller."
+        }
+      ],
+      "existing": {
+        "pashto": "څوک ډوډۍ پلوري؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-10:reply",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Edris sells bread.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-10:reply",
+          "pashto": "ادریس ډوډۍ پلوري.",
+          "englishContext": "Edris sells bread.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "Village review clue: At the market Edris is the bread seller."
+        }
+      ],
+      "existing": {
+        "pashto": "ادریس ډوډۍ پلوري.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-11:prompt",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "How do you go?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-11:prompt",
+          "pashto": "ته څنګه ځې؟",
+          "englishContext": "How do you go?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: You walk at a slow pace alongside the sisters."
+        }
+      ],
+      "existing": {
+        "pashto": "ته څنګه ځې؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-11:reply",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "I go slowly.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-11:reply",
+          "pashto": "زه ورو ورو ځم.",
+          "englishContext": "I go slowly.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "Village review clue: You walk at a slow pace alongside the sisters."
+        }
+      ],
+      "existing": {
+        "pashto": "زه ورو ورو ځم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-12:prompt",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "When do you drink tea?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-12:prompt",
+          "pashto": "ته کله چای څښې؟",
+          "englishContext": "When do you drink tea?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: Tea is an occasional drink for you, not a daily habit."
+        }
+      ],
+      "existing": {
+        "pashto": "ته کله چای څښې؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d14-reply-12:reply",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "I sometimes drink tea.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d14-reply-12:reply",
+          "pashto": "زه کله کله چای څښم.",
+          "englishContext": "I sometimes drink tea.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "Village review clue: Tea is an occasional drink for you, not a daily habit."
+        }
+      ],
+      "existing": {
+        "pashto": "زه کله کله چای څښم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:address5-0:correct",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "You are speaking to Saleha, a familiar student. Choose the informal singular pronoun.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "address5-0:correct",
+          "pashto": "ته",
+          "englishContext": "You are speaking to Saleha, a familiar student. Choose the informal singular pronoun.",
+          "romanisation": null,
+          "day": 5,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:address5-1:correct",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Saleha invites you to greet Muhammad Jan, an older respected village leader.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "address5-1:correct",
+          "pashto": "تاسې",
+          "englishContext": "Saleha invites you to greet Muhammad Jan, an older respected village leader.",
+          "romanisation": null,
+          "day": 5,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Muhammad Jan"
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:address5-2:correct",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Ms Hameed invites you to speak to another young classmate you know well. Choose informal singular.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "address5-2:correct",
+          "pashto": "ته",
+          "englishContext": "Ms Hameed invites you to speak to another young classmate you know well. Choose informal singular.",
+          "romanisation": null,
+          "day": 5,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "a familiar classmate"
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:address5-3:correct",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Muhammad Jan asks you to address Edris respectfully.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "address5-3:correct",
+          "pashto": "تاسې",
+          "englishContext": "Muhammad Jan asks you to address Edris respectfully.",
+          "romanisation": null,
+          "day": 5,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "speaker": "Muhammad Jan",
+          "recipient": "Edris"
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:address5-4:correct",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Ms Hameed asks you to address two people together: plural “you”.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "address5-4:correct",
+          "pashto": "تاسې",
+          "englishContext": "Ms Hameed asks you to address two people together: plural “you”.",
+          "romanisation": null,
+          "day": 5,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha and Edris together"
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:s2-read:comment",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Recall how friends use informal ته.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "s2-read:comment",
+          "pashto": "Recall how friends use informal ته.",
+          "englishContext": "Recall how friends use informal ته.",
+          "romanisation": null,
+          "day": 5,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        }
+      ],
+      "existing": {
+        "pashto": "Recall how friends use informal ته.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-1:answerPs",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "I drink water.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-1:answerPs",
+          "pashto": "زه اوبه څښم.",
+          "englishContext": "I drink water.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        }
+      ],
+      "existing": {
+        "pashto": "زه اوبه څښم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

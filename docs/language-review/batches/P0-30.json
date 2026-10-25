@@ -1,0 +1,1381 @@
+{
+  "batchId": "P0-30",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "surface:exam-pronoun-we:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-we:option:2",
+          "pashto": "تاسې",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You describe yourself and Mina. Choose the pronoun for your group.",
+            "correct": "موږ",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Mina",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Mina"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-we:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-we:option:3",
+          "pashto": "هغوی",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You describe yourself and Mina. Choose the pronoun for your group.",
+            "correct": "موږ",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Mina",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Mina"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-friend:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You address Saleha, one familiar friend.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-friend:correct",
+          "pashto": "ته",
+          "englishContext": "You address Saleha, one familiar friend.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-friend:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-friend:option:0",
+          "pashto": "موږ",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-friend",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha, one familiar friend.",
+            "correct": "ته",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-friend:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-friend:option:1",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-friend",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha, one familiar friend.",
+            "correct": "ته",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-friend:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-friend:option:2",
+          "pashto": "تاسې",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-friend",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha, one familiar friend.",
+            "correct": "ته",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-friend:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-friend:option:3",
+          "pashto": "هغوی",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-friend",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha, one familiar friend.",
+            "correct": "ته",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-respect:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You address Ms Hameed respectfully.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-respect:correct",
+          "pashto": "تاسې",
+          "englishContext": "You address Ms Hameed respectfully.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-respect:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-respect:option:0",
+          "pashto": "موږ",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-respect",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Ms Hameed respectfully.",
+            "correct": "تاسې",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Ms Hameed",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-respect:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-respect:option:1",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-respect",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Ms Hameed respectfully.",
+            "correct": "تاسې",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Ms Hameed",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-respect:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-respect:option:2",
+          "pashto": "تاسې",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-respect",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Ms Hameed respectfully.",
+            "correct": "تاسې",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Ms Hameed",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-respect:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-respect:option:3",
+          "pashto": "هغوی",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-respect",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Ms Hameed respectfully.",
+            "correct": "تاسې",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Ms Hameed",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-group:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You address Saleha and Mina together.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-group:correct",
+          "pashto": "تاسې",
+          "englishContext": "You address Saleha and Mina together.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha and Mina"
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-group:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-group:option:0",
+          "pashto": "موږ",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-group",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha and Mina together.",
+            "correct": "تاسې",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-group:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-group:option:1",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-group",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha and Mina together.",
+            "correct": "تاسې",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-group:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-group:option:2",
+          "pashto": "تاسې",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-group",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha and Mina together.",
+            "correct": "تاسې",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-group:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-group:option:3",
+          "pashto": "هغوی",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-group",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha and Mina together.",
+            "correct": "تاسې",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-they:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You describe customers elsewhere in the market, excluding yourself.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-they:correct",
+          "pashto": "هغوی",
+          "englishContext": "You describe customers elsewhere in the market, excluding yourself.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Edris"
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-they:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-they:option:0",
+          "pashto": "موږ",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-they",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You describe customers elsewhere in the market, excluding yourself.",
+            "correct": "هغوی",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Edris",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Edris"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-they:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-they:option:1",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-they",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You describe customers elsewhere in the market, excluding yourself.",
+            "correct": "هغوی",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Edris",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Edris"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-they:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-they:option:2",
+          "pashto": "تاسې",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-they",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You describe customers elsewhere in the market, excluding yourself.",
+            "correct": "هغوی",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Edris",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Edris"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-they:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-they:option:3",
+          "pashto": "هغوی",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-they",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You describe customers elsewhere in the market, excluding yourself.",
+            "correct": "هغوی",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Edris",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Edris"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-i:prompt",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "I read a book: زه کتاب ___.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-i:prompt",
+          "pashto": "I read a book: زه کتاب ___.",
+          "englishContext": "I read a book: زه کتاب ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "I read a book: زه کتاب ___.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-i:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "I read a book: زه کتاب ___.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-i:correct",
+          "pashto": "لولم",
+          "englishContext": "I read a book: زه کتاب ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "لولم",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-i:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-i:option:0",
+          "pashto": "لولم",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-i",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "I read a book: زه کتاب ___.",
+            "correct": "لولم",
+            "options": [
+              "لولم",
+              "لولې",
+              "لولو",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Player",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولم",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

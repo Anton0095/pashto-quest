@@ -1,0 +1,1012 @@
+{
+  "batchId": "P0-06",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "surface:vocab7-house-chairs",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Chairs",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "vocab7-house-chairs",
+          "pashto": "څوکۍ",
+          "englishContext": "Chairs",
+          "romanisation": "tsawkay",
+          "day": 7,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-chair4",
+              "formId": "lemma:n-chair4:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "څوکۍ",
+        "romanisation": "tsawkay"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:vocab7-river-bottles",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Bottles",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "vocab7-river-bottles",
+          "pashto": "بوتلونه",
+          "englishContext": "Bottles",
+          "romanisation": "botloona",
+          "day": 7,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:vocab7-river-bottles",
+              "formId": "lemma:vocab7-river-bottles:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "بوتلونه",
+        "romanisation": "botloona"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:vocab7-river-watch",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "To watch",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "vocab7-river-watch",
+          "pashto": "کتل",
+          "englishContext": "To watch",
+          "romanisation": "katal",
+          "day": 7,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:vocab7-river-watch",
+              "formId": "lemma:vocab7-river-watch:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کتل",
+        "romanisation": "katal"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:vocab7-river-together",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Together",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "vocab7-river-together",
+          "pashto": "یو ځای",
+          "englishContext": "Together",
+          "romanisation": "yaw dzay",
+          "day": 7,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "یو ځای",
+        "romanisation": "yaw dzay"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:vocab7-school-notebooks",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Notebooks",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "vocab7-school-notebooks",
+          "pashto": "کتابچې",
+          "englishContext": "Notebooks",
+          "romanisation": "kitaabche",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-notebook",
+              "formId": "lemma:n-notebook:form:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کتابچې",
+        "romanisation": "kitaabche"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:vocab7-school-answers",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Answers",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "vocab7-school-answers",
+          "pashto": "ځوابونه",
+          "englishContext": "Answers",
+          "romanisation": "dzawaaboona",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:vocab6-school-answers",
+              "formId": "lemma:vocab6-school-answers:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ځوابونه",
+        "romanisation": "dzawaaboona"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:vocab7-school-sentences",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Sentences",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "vocab7-school-sentences",
+          "pashto": "جملې",
+          "englishContext": "Sentences",
+          "romanisation": "jumle",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-sentence4",
+              "formId": "lemma:n-sentence4:form:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "جملې",
+        "romanisation": "jumle"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-1:dud:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-1:dud:0",
+          "pashto": "کتاب",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "کتاب",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-1:dud:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-1:dud:1",
+          "pashto": "څښې",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "څښې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-1:dud:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-1:dud:2",
+          "pashto": "لولي",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "لولي",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-2:dud:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-2:dud:0",
+          "pashto": "مڼې",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "مڼې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-2:dud:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-2:dud:1",
+          "pashto": "ده",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "ده",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-2:dud:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-2:dud:2",
+          "pashto": "هغه",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "هغه",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-3:dud:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-3:dud:0",
+          "pashto": "تودې",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "تودې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-3:dud:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-3:dud:1",
+          "pashto": "دی",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "دی",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-3:dud:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-3:dud:2",
+          "pashto": "هغه",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "هغه",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-4:dud:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-4:dud:0",
+          "pashto": "دا",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "دا",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-4:dud:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-4:dud:1",
+          "pashto": "نوی",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "نوی",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-reply-4:dud:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-4:dud:2",
+          "pashto": "ده",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "ده",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-river-1:dud:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; validate against the exact sentence.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-river-1:dud:0",
+          "pashto": "هغه",
+          "englishContext": "Distractor; validate against the exact sentence.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "هغه",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-river-1:dud:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; validate against the exact sentence.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-river-1:dud:1",
+          "pashto": "دی",
+          "englishContext": "Distractor; validate against the exact sentence.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "دی",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-river-1:dud:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; validate against the exact sentence.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-river-1:dud:2",
+          "pashto": "ده",
+          "englishContext": "Distractor; validate against the exact sentence.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "ده",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-river-2:dud:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; validate against the exact sentence.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-river-2:dud:0",
+          "pashto": "دا",
+          "englishContext": "Distractor; validate against the exact sentence.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "دا",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-river-2:dud:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; validate against the exact sentence.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-river-2:dud:1",
+          "pashto": "ده",
+          "englishContext": "Distractor; validate against the exact sentence.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "ده",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w2-d8-river-2:dud:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Distractor; validate against the exact sentence.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-river-2:dud:2",
+          "pashto": "دي",
+          "englishContext": "Distractor; validate against the exact sentence.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "دي",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

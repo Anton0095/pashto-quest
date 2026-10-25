@@ -1,0 +1,1337 @@
+{
+  "batchId": "P0-31",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "surface:exam-verb-i:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-i:option:1",
+          "pashto": "لولې",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-i",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "I read a book: زه کتاب ___.",
+            "correct": "لولم",
+            "options": [
+              "لولم",
+              "لولې",
+              "لولو",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Player",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-i:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-i:option:2",
+          "pashto": "لولو",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-i",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "I read a book: زه کتاب ___.",
+            "correct": "لولم",
+            "options": [
+              "لولم",
+              "لولې",
+              "لولو",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Player",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولو",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-i:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-i:option:3",
+          "pashto": "لولي",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-i",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "I read a book: زه کتاب ___.",
+            "correct": "لولم",
+            "options": [
+              "لولم",
+              "لولې",
+              "لولو",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Player",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولي",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-you:prompt",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You, Saleha, read a book: ته کتاب ___.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-you:prompt",
+          "pashto": "You, Saleha, read a book: ته کتاب ___.",
+          "englishContext": "You, Saleha, read a book: ته کتاب ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        }
+      ],
+      "existing": {
+        "pashto": "You, Saleha, read a book: ته کتاب ___.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-you:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You, Saleha, read a book: ته کتاب ___.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-you:correct",
+          "pashto": "لولې",
+          "englishContext": "You, Saleha, read a book: ته کتاب ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        }
+      ],
+      "existing": {
+        "pashto": "لولې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-you:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-you:option:0",
+          "pashto": "لولې",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-you",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You, Saleha, read a book: ته کتاب ___.",
+            "correct": "لولې",
+            "options": [
+              "لولې",
+              "لولم",
+              "لولو",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-you:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-you:option:1",
+          "pashto": "لولم",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-you",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You, Saleha, read a book: ته کتاب ___.",
+            "correct": "لولې",
+            "options": [
+              "لولې",
+              "لولم",
+              "لولو",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولم",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-you:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-you:option:2",
+          "pashto": "لولو",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-you",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You, Saleha, read a book: ته کتاب ___.",
+            "correct": "لولې",
+            "options": [
+              "لولې",
+              "لولم",
+              "لولو",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولو",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-you:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-you:option:3",
+          "pashto": "لولي",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-you",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You, Saleha, read a book: ته کتاب ___.",
+            "correct": "لولې",
+            "options": [
+              "لولې",
+              "لولم",
+              "لولو",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولي",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-we:prompt",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "We read books: موږ کتابونه ___.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-we:prompt",
+          "pashto": "We read books: موږ کتابونه ___.",
+          "englishContext": "We read books: موږ کتابونه ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        }
+      ],
+      "existing": {
+        "pashto": "We read books: موږ کتابونه ___.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-we:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "We read books: موږ کتابونه ___.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-we:correct",
+          "pashto": "لولو",
+          "englishContext": "We read books: موږ کتابونه ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        }
+      ],
+      "existing": {
+        "pashto": "لولو",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-we:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-we:option:0",
+          "pashto": "لولو",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "We read books: موږ کتابونه ___.",
+            "correct": "لولو",
+            "options": [
+              "لولو",
+              "لولم",
+              "لولي",
+              "لولئ"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Ms Hameed",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولو",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-we:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-we:option:1",
+          "pashto": "لولم",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "We read books: موږ کتابونه ___.",
+            "correct": "لولو",
+            "options": [
+              "لولو",
+              "لولم",
+              "لولي",
+              "لولئ"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Ms Hameed",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولم",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-we:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-we:option:2",
+          "pashto": "لولي",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "We read books: موږ کتابونه ___.",
+            "correct": "لولو",
+            "options": [
+              "لولو",
+              "لولم",
+              "لولي",
+              "لولئ"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Ms Hameed",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولي",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-we:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-we:option:3",
+          "pashto": "لولئ",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "We read books: موږ کتابونه ___.",
+            "correct": "لولو",
+            "options": [
+              "لولو",
+              "لولم",
+              "لولي",
+              "لولئ"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Ms Hameed",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولئ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-all:prompt",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You all read books: تاسې کتابونه ___.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-all:prompt",
+          "pashto": "You all read books: تاسې کتابونه ___.",
+          "englishContext": "You all read books: تاسې کتابونه ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha and Mina"
+        }
+      ],
+      "existing": {
+        "pashto": "You all read books: تاسې کتابونه ___.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-all:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You all read books: تاسې کتابونه ___.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-all:correct",
+          "pashto": "لولئ",
+          "englishContext": "You all read books: تاسې کتابونه ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha and Mina"
+        }
+      ],
+      "existing": {
+        "pashto": "لولئ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-all:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-all:option:0",
+          "pashto": "لولئ",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-all",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You all read books: تاسې کتابونه ___.",
+            "correct": "لولئ",
+            "options": [
+              "لولئ",
+              "لولو",
+              "لولم",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولئ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-all:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-all:option:1",
+          "pashto": "لولو",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-all",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You all read books: تاسې کتابونه ___.",
+            "correct": "لولئ",
+            "options": [
+              "لولئ",
+              "لولو",
+              "لولم",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولو",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-all:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-all:option:2",
+          "pashto": "لولم",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-all",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You all read books: تاسې کتابونه ___.",
+            "correct": "لولئ",
+            "options": [
+              "لولئ",
+              "لولو",
+              "لولم",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولم",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-all:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-all:option:3",
+          "pashto": "لولي",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-all",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You all read books: تاسې کتابونه ___.",
+            "correct": "لولئ",
+            "options": [
+              "لولئ",
+              "لولو",
+              "لولم",
+              "لولي"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولي",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-they:prompt",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "They, the other students, read books: هغوی کتابونه ___.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-they:prompt",
+          "pashto": "They, the other students, read books: هغوی کتابونه ___.",
+          "englishContext": "They, the other students, read books: هغوی کتابونه ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "They, the other students, read books: هغوی کتابونه ___.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-they:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "They, the other students, read books: هغوی کتابونه ___.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-they:correct",
+          "pashto": "لولي",
+          "englishContext": "They, the other students, read books: هغوی کتابونه ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "لولي",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-they:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-they:option:0",
+          "pashto": "لولي",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-they",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "They, the other students, read books: هغوی کتابونه ___.",
+            "correct": "لولي",
+            "options": [
+              "لولي",
+              "لولو",
+              "لولم",
+              "لولئ"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Player",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولي",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-they:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-they:option:1",
+          "pashto": "لولو",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-they",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "They, the other students, read books: هغوی کتابونه ___.",
+            "correct": "لولي",
+            "options": [
+              "لولي",
+              "لولو",
+              "لولم",
+              "لولئ"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Player",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولو",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

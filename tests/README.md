@@ -13,6 +13,7 @@ python3 tools/verify.py --quick       # excludes browser suites; not equivalent
 
 | Suite | Contract exercised |
 |---|---|
+| `tests/language-review.test.py` | Editorial export parity, complete lemma/form coverage, batch limits, provenance fields and inactive approval defaults |
 | `tests/game-state.test.mjs` | Domain APIs: all answer kinds, frozen fourteen-day assessments, atomic first submissions, shared rewards/SRS, retries, current saves and rejection/reset |
 | `tests/resume-behaviour.test.mjs` | Public controls across all fourteen skip days; partial tiles, pause/resume, locked feedback, persisted results, and network-disabled HTML boot without runtime fetches |
 | `tests/current-model.test.mjs` | District keys/pace/plans, lemma/form SRS, identity and fixed-language contract |

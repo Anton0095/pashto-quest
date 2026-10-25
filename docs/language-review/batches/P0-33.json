@@ -1,0 +1,5146 @@
+{
+  "batchId": "P0-33",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "surface:exam-dialogue-w6-river-you-walk:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w6-river-you-walk:option:2",
+          "pashto": "زه د سیند تر څنګ ګرځم.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-river-you-walk",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address both sisters: “You both walk beside the river”.",
+            "correct": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+            "options": [
+              "تاسې دواړه د سیند تر څنګ ګرځئ.",
+              "موږ د سیند تر څنګ ګرځو.",
+              "زه د سیند تر څنګ ګرځم.",
+              "هغوی د سیند تر څنګ ګرځي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "dialogue",
+            "audioId": "w6-river-you-walk",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "زه د سیند تر څنګ ګرځم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w6-river-you-walk:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w6-river-you-walk:option:3",
+          "pashto": "هغوی د سیند تر څنګ ګرځي.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-river-you-walk",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address both sisters: “You both walk beside the river”.",
+            "correct": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+            "options": [
+              "تاسې دواړه د سیند تر څنګ ګرځئ.",
+              "موږ د سیند تر څنګ ګرځو.",
+              "زه د سیند تر څنګ ګرځم.",
+              "هغوی د سیند تر څنګ ګرځي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "dialogue",
+            "audioId": "w6-river-you-walk",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی د سیند تر څنګ ګرځي.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-market-apples:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Edris points to the fruit customers. Tell him “They buy apples”.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-market-apples:correct",
+          "pashto": "هغوی مڼې اخلي.",
+          "englishContext": "Edris points to the fruit customers. Tell him “They buy apples”.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Edris"
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی مڼې اخلي.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-market-apples:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-market-apples:option:0",
+          "pashto": "هغوی مڼې اخلي.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-market-apples",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Edris points to the fruit customers. Tell him “They buy apples”.",
+            "correct": "هغوی مڼې اخلي.",
+            "options": [
+              "هغوی مڼې اخلي.",
+              "موږ مڼې اخلو.",
+              "زه مڼې اخلم.",
+              "تاسې مڼې اخلئ."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Edris",
+            "section": "dialogue",
+            "audioId": "w7-market-apples",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Edris"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی مڼې اخلي.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-market-apples:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-market-apples:option:1",
+          "pashto": "موږ مڼې اخلو.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-market-apples",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Edris points to the fruit customers. Tell him “They buy apples”.",
+            "correct": "هغوی مڼې اخلي.",
+            "options": [
+              "هغوی مڼې اخلي.",
+              "موږ مڼې اخلو.",
+              "زه مڼې اخلم.",
+              "تاسې مڼې اخلئ."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Edris",
+            "section": "dialogue",
+            "audioId": "w7-market-apples",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Edris"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ مڼې اخلو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-market-apples:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-market-apples:option:2",
+          "pashto": "زه مڼې اخلم.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-market-apples",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Edris points to the fruit customers. Tell him “They buy apples”.",
+            "correct": "هغوی مڼې اخلي.",
+            "options": [
+              "هغوی مڼې اخلي.",
+              "موږ مڼې اخلو.",
+              "زه مڼې اخلم.",
+              "تاسې مڼې اخلئ."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Edris",
+            "section": "dialogue",
+            "audioId": "w7-market-apples",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Edris"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "زه مڼې اخلم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-market-apples:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-market-apples:option:3",
+          "pashto": "تاسې مڼې اخلئ.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-market-apples",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Edris points to the fruit customers. Tell him “They buy apples”.",
+            "correct": "هغوی مڼې اخلي.",
+            "options": [
+              "هغوی مڼې اخلي.",
+              "موږ مڼې اخلو.",
+              "زه مڼې اخلم.",
+              "تاسې مڼې اخلئ."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Edris",
+            "section": "dialogue",
+            "audioId": "w7-market-apples",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Edris"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې مڼې اخلئ.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:ادریس",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "Edris opens his shop every day.",
+          "Edris sells bread.",
+          "That is Edris’s shop.",
+          "This is Edris’s basket.",
+          "This is Edris’s shop.",
+          "When does Edris open his shop?",
+          "Which basket belongs to Edris?"
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "business",
+        "nature",
+        "residential",
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d11-market-1",
+          "pashto": "دا د ادریس ټوکرۍ ده.",
+          "englishContext": "This is Edris’s basket.",
+          "romanisation": "daa da edrees ṭokray da",
+          "day": 11,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-basket4",
+              "formId": "lemma:n-basket4:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d11-market-4",
+          "pashto": "هغه د ادریس دوکان دی.",
+          "englishContext": "That is Edris’s shop.",
+          "romanisation": "hagha da edrees dookaan day",
+          "day": 11,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-shop",
+              "formId": "lemma:n-shop:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-2",
+              "formId": "lemma:w2-d8-vocab-2:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d13-market-2",
+          "pashto": "ادریس هره ورځ خپل دوکان خلاصوي.",
+          "englishContext": "Edris opens his shop every day.",
+          "romanisation": "edrees hara wraz khpal dookaan khlaasawee",
+          "day": 13,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:2"
+            },
+            {
+              "lemmaId": "lemma:n-shop",
+              "formId": "lemma:n-shop:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d14-market-3",
+          "pashto": "کومه ټوکرۍ د ادریس ده؟",
+          "englishContext": "Which basket belongs to Edris?",
+          "romanisation": "kooma ṭokray da edrees da",
+          "day": 14,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Edris",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-basket4",
+              "formId": "lemma:n-basket4:form:0"
+            }
+          ]
+        },
+        {
+          "id": "model:11:4",
+          "pashto": "دا د ادریس دوکان دی.",
+          "englishContext": "This is Edris’s shop.",
+          "romanisation": null,
+          "day": 11,
+          "scene": "residential",
+          "source": "content/WEEK2_RUNTIME.json models"
+        },
+        {
+          "id": "w2-d11-reply-2:dud:0",
+          "pashto": "ادریس",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 11,
+          "scene": "residential",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        },
+        {
+          "id": "w2-d12-reply-3:reply",
+          "pashto": "ادریس ډوډۍ پلوري.",
+          "englishContext": "Edris sells bread.",
+          "romanisation": null,
+          "day": 12,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "At the market Edris is the bread seller."
+        },
+        {
+          "id": "w2-d13-reply-4:prompt",
+          "pashto": "ادریس کله خپل دوکان خلاصوي؟",
+          "englishContext": "When does Edris open his shop?",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Saleha",
+          "recipient": "Player",
+          "authoredContext": "His shop opens daily, including today."
+        },
+        {
+          "id": "w2-d13-reply-4:reply",
+          "pashto": "ادریس هره ورځ خپل دوکان خلاصوي.",
+          "englishContext": "Edris opens his shop every day.",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "authoredContext": "His shop opens daily, including today."
+        },
+        {
+          "id": "w2-d14-reply-9:dud:0",
+          "pashto": "ادریس",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "residential",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        },
+        {
+          "id": "w2-d14-reply-10:reply",
+          "pashto": "ادریس ډوډۍ پلوري.",
+          "englishContext": "Edris sells bread.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "authoredContext": "Village review clue: At the market Edris is the bread seller."
+        },
+        {
+          "id": "w2-d12-reply-3:answerPs",
+          "pashto": "ادریس ډوډۍ پلوري.",
+          "englishContext": "Edris sells bread.",
+          "romanisation": null,
+          "day": 12,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        },
+        {
+          "id": "w2-d13-reply-4:answerPs",
+          "pashto": "ادریس هره ورځ خپل دوکان خلاصوي.",
+          "englishContext": "Edris opens his shop every day.",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "w2-d13-reply-4:promptPs",
+          "pashto": "ادریس کله خپل دوکان خلاصوي؟",
+          "englishContext": "Edris opens his shop every day.",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "w2-d14-reply-10:answerPs",
+          "pashto": "ادریس ډوډۍ پلوري.",
+          "englishContext": "Edris sells bread.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        }
+      ],
+      "existing": {
+        "pashto": "ادریس"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:ارزانه",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "This bread is cheap."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "s2-cheap",
+          "pashto": "دا ډوډۍ ارزانه ده.",
+          "englishContext": "This bread is cheap.",
+          "romanisation": "daa ḍoḍay arzaana da",
+          "day": 4,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ارزانه"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:او",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "I read the book, and you write a sentence.",
+          "I see the river, and we see the hills.",
+          "Mina and I carry baskets.",
+          "Mina and I open the door.",
+          "Mina and I run together.",
+          "Mina and I see the village.",
+          "Mina and I walk together.",
+          "Ms Hameed asks you to join two present-tense clauses with او.",
+          "Saleha and I write sentences.",
+          "The door is open, and they clean the room.",
+          "We buy vegetables, and they buy bread.",
+          "You all read books, and we write sentences.",
+          "You buy apples, and I carry a bag.",
+          "You buy bread, and I buy apples.",
+          "You buy vegetables, and I buy bread. (plural)",
+          "You clean the room, and I sit on the chair.",
+          "You drink tea, and I drink water.",
+          "You drink tea, and I drink water. (polite)",
+          "You drink water, and I drink tea. (plural)",
+          "You drink water, and I see a fish.",
+          "You learn a lesson, and I read a book.",
+          "You open the window, and I clean the room.",
+          "You read a book, and I write a word.",
+          "You read a book, and I write a word. (polite/plural)",
+          "You see a bird, and I see a fish.",
+          "You see a bird, and I see a fish. (plural)"
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "business",
+        "context-in-source",
+        "nature",
+        "residential",
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "s4-house-tea",
+          "pashto": "ته چای څښې او زه اوبه څښم.",
+          "englishContext": "You drink tea, and I drink water.",
+          "romanisation": "ta chaay tshey aw za oba tshkam",
+          "day": 4,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-tea",
+              "formId": "lemma:n-tea:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-house-compound",
+          "pashto": "ته کوټه پاکوې او زه پر څوکۍ کښېنم.",
+          "englishContext": "You clean the room, and I sit on the chair.",
+          "romanisation": "ta kota paakawey aw za par tsokey kenam",
+          "day": 4,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-room",
+              "formId": "lemma:n-room:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-chair4",
+              "formId": "lemma:n-chair4:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-house-window",
+          "pashto": "ته کړکۍ خلاصوې او زه کوټه پاکوم.",
+          "englishContext": "You open the window, and I clean the room.",
+          "romanisation": "ta karkay khlaasawey aw za kota paakawum",
+          "day": 4,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-room",
+              "formId": "lemma:n-room:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-window",
+              "formId": "lemma:n-window:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-market-mixed",
+          "pashto": "ته مڼې اخلې او زه کڅوړه وړم.",
+          "englishContext": "You buy apples, and I carry a bag.",
+          "romanisation": "ta manay akhley aw za katswara wrum",
+          "day": 4,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-bag3",
+              "formId": "lemma:n-bag3:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:0"
+            },
+            {
+              "lemmaId": "lemma:n-apple",
+              "formId": "lemma:n-apple:variant:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-market-mixed2",
+          "pashto": "ته ډوډۍ اخلې او زه مڼې اخلم.",
+          "englishContext": "You buy bread, and I buy apples.",
+          "romanisation": "ta dodai akhley aw za manay akhlam",
+          "day": 4,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-apple",
+              "formId": "lemma:n-apple:variant:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-river-bird",
+          "pashto": "ته مرغۍ وینې او زه کب وینم.",
+          "englishContext": "You see a bird, and I see a fish.",
+          "romanisation": "ta marghay weeney aw za kab weenam",
+          "day": 4,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-fish",
+              "formId": "lemma:n-fish:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-bird3",
+              "formId": "lemma:n-bird3:form:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-river-water",
+          "pashto": "ته اوبه څښې او زه کب وینم.",
+          "englishContext": "You drink water, and I see a fish.",
+          "romanisation": "ta oba tshey aw za kab weenam",
+          "day": 4,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-fish",
+              "formId": "lemma:n-fish:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-school-words",
+          "pashto": "ته کتاب لولې او زه کلمه لیکم.",
+          "englishContext": "You read a book, and I write a word.",
+          "romanisation": "ta kitaab loley aw za kalima leekam",
+          "day": 4,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:1"
+            },
+            {
+              "lemmaId": "lemma:v-write",
+              "formId": "lemma:v-write:present:0"
+            },
+            {
+              "lemmaId": "lemma:n-word3",
+              "formId": "lemma:n-word3:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-school-learn",
+          "pashto": "ته درس زده کوې او زه کتاب لولم.",
+          "englishContext": "You learn a lesson, and I read a book.",
+          "romanisation": "ta dars zda kawey aw za kitaab lolam",
+          "day": 4,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:0"
+            },
+            {
+              "lemmaId": "lemma:n-lesson",
+              "formId": "lemma:n-lesson:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-learn",
+              "formId": "lemma:v-learn:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s5-home-compare",
+          "pashto": "تاسې چای څښئ او زه اوبه څښم.",
+          "englishContext": "You drink tea, and I drink water. (polite)",
+          "romanisation": "taase chaay tshkey aw za oba tshkam",
+          "day": 5,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:4"
+            },
+            {
+              "lemmaId": "lemma:n-tea",
+              "formId": "lemma:n-tea:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s5-market-mixed",
+          "pashto": "تاسې سبزي اخلئ او زه ډوډۍ اخلم.",
+          "englishContext": "You buy vegetables, and I buy bread. (plural)",
+          "romanisation": "taase sabzee akhley aw za dodai akhlam",
+          "day": 5,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:4"
+            },
+            {
+              "lemmaId": "lemma:n-vegetables",
+              "formId": "lemma:n-vegetables:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s5-lake-bird",
+          "pashto": "تاسې مرغۍ وینئ او زه کب وینم.",
+          "englishContext": "You see a bird, and I see a fish. (plural)",
+          "romanisation": "taase marghay weeney aw za kab weenam",
+          "day": 5,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-fish",
+              "formId": "lemma:n-fish:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:4"
+            },
+            {
+              "lemmaId": "lemma:n-bird3",
+              "formId": "lemma:n-bird3:form:1"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s5-lake-water",
+          "pashto": "تاسې اوبه څښئ او زه چای څښم.",
+          "englishContext": "You drink water, and I drink tea. (plural)",
+          "romanisation": "taase oba tshkey aw za chaay tshkam",
+          "day": 5,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:4"
+            },
+            {
+              "lemmaId": "lemma:n-tea",
+              "formId": "lemma:n-tea:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s5-school-compound",
+          "pashto": "تاسې کتاب لولئ او زه کلمه لیکم.",
+          "englishContext": "You read a book, and I write a word. (polite/plural)",
+          "romanisation": "taase kitaab loley aw za kalima leekam",
+          "day": 5,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:4"
+            },
+            {
+              "lemmaId": "lemma:v-write",
+              "formId": "lemma:v-write:present:0"
+            },
+            {
+              "lemmaId": "lemma:n-word3",
+              "formId": "lemma:n-word3:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w6-river-mina-run",
+          "pashto": "مینا او زه یو ځای منډې وهو.",
+          "englishContext": "Mina and I run together.",
+          "romanisation": "meena aw za yaw dzay mande waho",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-run",
+              "formId": "lemma:w6-run:present:3"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w6-house-mina-door",
+          "pashto": "مینا او زه دروازه خلاصوو.",
+          "englishContext": "Mina and I open the door.",
+          "romanisation": "meena aw za darwaaza khlaasawo",
+          "day": 6,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-door",
+              "formId": "lemma:n-door:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:3"
+            }
+          ]
+        },
+        {
+          "id": "w6-market-baskets",
+          "pashto": "مینا او زه ټوکرۍ وړو.",
+          "englishContext": "Mina and I carry baskets.",
+          "romanisation": "meena aw za ṭokray wro",
+          "day": 6,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:3"
+            },
+            {
+              "lemmaId": "lemma:n-basket4",
+              "formId": "lemma:n-basket4:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w6-school-saleha-write",
+          "pashto": "صالحه او زه جملې لیکو.",
+          "englishContext": "Saleha and I write sentences.",
+          "romanisation": "saaleha aw za jumle leeko",
+          "day": 6,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-write",
+              "formId": "lemma:v-write:present:3"
+            },
+            {
+              "lemmaId": "lemma:n-sentence4",
+              "formId": "lemma:n-sentence4:form:1"
+            }
+          ]
+        },
+        {
+          "id": "w6-mina-walk",
+          "pashto": "مینا او زه یو ځای ګرځو.",
+          "englishContext": "Mina and I walk together.",
+          "romanisation": "meena aw za yaw dzay gardzo",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-walk3",
+              "formId": "lemma:v-walk3:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w6-mina-village",
+          "pashto": "مینا او زه کلی وینو.",
+          "englishContext": "Mina and I see the village.",
+          "romanisation": "meena aw za kalay weeno",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:3"
+            }
+          ]
+        },
+        {
+          "id": "w6-compound",
+          "pashto": "زه سیند وینم او موږ غونډۍ وینو.",
+          "englishContext": "I see the river, and we see the hills.",
+          "romanisation": "za seend weenam aw moong ghuṇḍay weeno",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-river",
+              "formId": "lemma:n-river:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-hills",
+              "formId": "lemma:w6-hills:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-compound-room",
+          "pashto": "ته کوټه پاکوې او زه پر څوکۍ کښېنم.",
+          "englishContext": "You clean the room, and I sit on the chair.",
+          "romanisation": "ta koṭa paakawey aw za par tsawkay kenam",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-room",
+              "formId": "lemma:n-room:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-chair4",
+              "formId": "lemma:n-chair4:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-compound-read",
+          "pashto": "زه کتاب لولم او ته جمله لیکې.",
+          "englishContext": "I read the book, and you write a sentence.",
+          "romanisation": "za kitaab lwalam aw ta jumla leekey",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-write",
+              "formId": "lemma:v-write:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-sentence4",
+              "formId": "lemma:n-sentence4:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-compound-buy",
+          "pashto": "موږ سابه اخلو او هغوی ډوډۍ اخلي.",
+          "englishContext": "We buy vegetables, and they buy bread.",
+          "romanisation": "moong saaba akhlo aw haghoy ḍoḍay akhlee",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:2"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-compound-books",
+          "pashto": "تاسې کتابونه لولئ او موږ جملې لیکو.",
+          "englishContext": "You all read books, and we write sentences.",
+          "romanisation": "taase kitaaboona lwaley aw moong jumle leeko",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:1"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:4"
+            },
+            {
+              "lemmaId": "lemma:v-write",
+              "formId": "lemma:v-write:present:3"
+            },
+            {
+              "lemmaId": "lemma:n-sentence4",
+              "formId": "lemma:n-sentence4:form:1"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-compound-door",
+          "pashto": "دروازه خلاصه ده او هغوی کوټه پاکوي.",
+          "englishContext": "The door is open, and they clean the room.",
+          "romanisation": "darwaaza khlaasa da aw haghoy koṭa paakawee",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-door",
+              "formId": "lemma:n-door:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-room",
+              "formId": "lemma:n-room:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:2"
+            },
+            {
+              "lemmaId": "lemma:a-open-state",
+              "formId": "lemma:a-open-state:feminine"
+            }
+          ]
+        },
+        {
+          "id": "w7-compound-room:comment",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "w7-compound-read:comment",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "w7-compound-buy:comment",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        },
+        {
+          "id": "w7-compound-books:comment",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha and Mina"
+        },
+        {
+          "id": "w7-compound-door:comment",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        },
+        {
+          "id": "literal:assessment-content.js:306",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:challenge-ui.js:124",
+          "pashto": "Come in and sit down. We have talked as friends all day. Let us practise what YOU and I do, and join two clauses using او. When I say “you” informally, I am addressing you; when you do, you are addressing a familiar friend, not an elder.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        },
+        {
+          "id": "literal:content.js:112",
+          "pashto": "Muhammad Jan: “You have learnt to speak about yourself. Now we will use ته when talking to a familiar person, and join two meaningful thoughts with او — and.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        },
+        {
+          "id": "literal:content.js:322",
+          "pashto": "Muhammad Jan welcomes you home to learn informal ته and link actions using او. Return for a friendly conversation at the end of the day.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:18",
+          "pashto": "زه منډې وهم — I run. مینا او زه یو ځای منډې وهو — Mina and I run together. موږ یو ځای منډې وهو — We run together. A subject containing the speaker takes a first-person plural verb. Notice وهم → وهو.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:136",
+          "pashto": "ته — informal “you”; linking two actions with او",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:138",
+          "pashto": "Muhammad Jan: “Yesterday you said زه اوبه څښم — I drink water. Today, when speaking to a familiar friend, say ته اوبه څښې — you drink water. The ending changes from ـم to ـې. We can join two complete clauses: ته کوټه پاکوې او زه پر څوکۍ کښېنم — You clean the room, and I sit on the chair. Each clause has its own subject and verb. Use informal ته with peers; when addressing respected elders, a different polite form will be taught tomorrow.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:world-ui.js:67",
+          "pashto": "🏡 Normal route: start at home with Muhammad Jan to learn informal ته (you) and combine clauses with او (and). Or skip to his challenge immediately.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/world-ui.js"
+        }
+      ],
+      "existing": {
+        "pashto": "او"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:اوبو",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "They carry bottles of water.",
+          "They walk beside the water.",
+          "This stone is beside the water.",
+          "Which bird is near the water?"
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w7-river-walk",
+          "pashto": "هغوی د اوبو تر څنګ ګرځي.",
+          "englishContext": "They walk beside the water.",
+          "romanisation": "haghoy da obo tar tsang gardzee",
+          "day": 7,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-walk3",
+              "formId": "lemma:v-walk3:present:2"
+            }
+          ]
+        },
+        {
+          "id": "w7-river-bottles",
+          "pashto": "هغوی د اوبو بوتلونه وړي.",
+          "englishContext": "They carry bottles of water.",
+          "romanisation": "haghoy da obo botloona wree",
+          "day": 7,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:2"
+            },
+            {
+              "lemmaId": "lemma:vocab7-river-bottles",
+              "formId": "lemma:vocab7-river-bottles:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d8-river-5",
+          "pashto": "دا تیږه د اوبو تر څنګ ده.",
+          "englishContext": "This stone is beside the water.",
+          "romanisation": "daa teegha da obo tar tsang da",
+          "day": 8,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-stone2",
+              "formId": "lemma:n-stone2:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d12-river-3",
+          "pashto": "کومه مرغۍ اوبو ته نږدې ده؟",
+          "englishContext": "Which bird is near the water?",
+          "romanisation": "kooma marghay obo ta negde da",
+          "day": 12,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Saleha",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bird3",
+              "formId": "lemma:n-bird3:form:1"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-3",
+              "formId": "lemma:w2-d8-vocab-3:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "اوبو"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:بنده",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "That window is closed."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-house-2",
+          "pashto": "هغه کړکۍ بنده ده.",
+          "englishContext": "That window is closed.",
+          "romanisation": "hagha kiṛkay banda da",
+          "day": 8,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-window",
+              "formId": "lemma:n-window:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-2",
+              "formId": "lemma:w2-d8-vocab-2:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "بنده"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:تاسو",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "Authored inline text; reviewer must distinguish examples, alternatives and UI labels."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:grammar-content.js:148",
+          "pashto": "Ms Hameed: “You have learned ته کتاب لولې — you read a book (speaking to one familiar friend). When addressing an elder, a teacher, an unfamiliar adult or several people, use تاسې کتاب لولئ. The polite/plural verb generally ends in ـئ instead of the informal ـې. The same تاسې form can refer to one respected person or a group. Look at the listener and the context. In some speech you will also hear تاسو; we use تاسې for consistency in these lessons.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:question-engine.js:10",
+          "pashto": "تاسو",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/question-engine.js"
+        }
+      ],
+      "existing": {
+        "pashto": "تاسو"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:تر",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "Assessment option; correctness depends on authored question.",
+          "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "I run beside the lake.",
+          "Saleha is beside the lake.",
+          "The chair is beside the door.",
+          "They sometimes sit beside the lake.",
+          "They walk beside the water.",
+          "This stone is beside the water.",
+          "We walk together beside the lake.",
+          "Who is running beside the lake?",
+          "You address both sisters: “You both walk beside the river”.",
+          "You both walk beside the river."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "challenge",
+        "context-in-source",
+        "nature",
+        "residential",
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w6-river-run",
+          "pashto": "زه د جهیل تر څنګ منډې وهم.",
+          "englishContext": "I run beside the lake.",
+          "romanisation": "za da jaheel tar tsang mande waham",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-run",
+              "formId": "lemma:w6-run:present:0"
+            }
+          ]
+        },
+        {
+          "id": "w6-river-you-walk",
+          "pashto": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+          "englishContext": "You both walk beside the river.",
+          "romanisation": "taase dwaara da seend tar tsang gardzey",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-river",
+              "formId": "lemma:n-river:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-walk3",
+              "formId": "lemma:v-walk3:present:4"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-river-walk",
+          "pashto": "هغوی د اوبو تر څنګ ګرځي.",
+          "englishContext": "They walk beside the water.",
+          "romanisation": "haghoy da obo tar tsang gardzee",
+          "day": 7,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-walk3",
+              "formId": "lemma:v-walk3:present:2"
+            }
+          ]
+        },
+        {
+          "id": "w6-walk",
+          "pashto": "موږ د جهیل تر څنګ یو ځای ګرځو.",
+          "englishContext": "We walk together beside the lake.",
+          "romanisation": "moong da jaheel tar tsang yaw dzay gardzo",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-walk3",
+              "formId": "lemma:v-walk3:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d8-river-5",
+          "pashto": "دا تیږه د اوبو تر څنګ ده.",
+          "englishContext": "This stone is beside the water.",
+          "romanisation": "daa teegha da obo tar tsang da",
+          "day": 8,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-stone2",
+              "formId": "lemma:n-stone2:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d10-river-3",
+          "pashto": "صالحه د جهیل تر څنګ ده.",
+          "englishContext": "Saleha is beside the lake.",
+          "romanisation": "saaleha da jaheel tar tsang da",
+          "day": 10,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Mina",
+          "sourceMappings": []
+        },
+        {
+          "id": "w2-d10-house-1",
+          "pashto": "څوکۍ د دروازې تر څنګ ده.",
+          "englishContext": "The chair is beside the door.",
+          "romanisation": "tsawkay da darwaaze tar tsang da",
+          "day": 10,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-chair4",
+              "formId": "lemma:n-chair4:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-door",
+              "formId": "lemma:n-door:variant:1"
+            }
+          ]
+        },
+        {
+          "id": "w2-d12-river-1",
+          "pashto": "د جهیل تر څنګ څوک منډې وهي؟",
+          "englishContext": "Who is running beside the lake?",
+          "romanisation": "da jaheel tar tsang tsok mande wahee",
+          "day": 12,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Saleha",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-run",
+              "formId": "lemma:w6-run:present:2"
+            },
+            {
+              "lemmaId": "lemma:w2-d12-vocab-1",
+              "formId": "lemma:w2-d12-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d13-river-4",
+          "pashto": "هغوی کله کله د جهیل تر څنګ کښېني.",
+          "englishContext": "They sometimes sit beside the lake.",
+          "romanisation": "haghoy kala kala da jaheel tar tsang kenee",
+          "day": 13,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w2-d13-vocab-5",
+              "formId": "lemma:w2-d13-vocab-5:form:0"
+            }
+          ]
+        },
+        {
+          "id": "exam-dialogue-w6-river-you-walk:correct",
+          "pashto": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+          "englishContext": "You address both sisters: “You both walk beside the river”.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha and Mina"
+        },
+        {
+          "id": "exam-dialogue-w6-river-you-walk:option:0",
+          "pashto": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-river-you-walk",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address both sisters: “You both walk beside the river”.",
+            "correct": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+            "options": [
+              "تاسې دواړه د سیند تر څنګ ګرځئ.",
+              "موږ د سیند تر څنګ ګرځو.",
+              "زه د سیند تر څنګ ګرځم.",
+              "هغوی د سیند تر څنګ ګرځي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "dialogue",
+            "audioId": "w6-river-you-walk",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        },
+        {
+          "id": "exam-dialogue-w6-river-you-walk:option:1",
+          "pashto": "موږ د سیند تر څنګ ګرځو.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-river-you-walk",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address both sisters: “You both walk beside the river”.",
+            "correct": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+            "options": [
+              "تاسې دواړه د سیند تر څنګ ګرځئ.",
+              "موږ د سیند تر څنګ ګرځو.",
+              "زه د سیند تر څنګ ګرځم.",
+              "هغوی د سیند تر څنګ ګرځي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "dialogue",
+            "audioId": "w6-river-you-walk",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        },
+        {
+          "id": "exam-dialogue-w6-river-you-walk:option:2",
+          "pashto": "زه د سیند تر څنګ ګرځم.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-river-you-walk",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address both sisters: “You both walk beside the river”.",
+            "correct": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+            "options": [
+              "تاسې دواړه د سیند تر څنګ ګرځئ.",
+              "موږ د سیند تر څنګ ګرځو.",
+              "زه د سیند تر څنګ ګرځم.",
+              "هغوی د سیند تر څنګ ګرځي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "dialogue",
+            "audioId": "w6-river-you-walk",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        },
+        {
+          "id": "exam-dialogue-w6-river-you-walk:option:3",
+          "pashto": "هغوی د سیند تر څنګ ګرځي.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-river-you-walk",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address both sisters: “You both walk beside the river”.",
+            "correct": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+            "options": [
+              "تاسې دواړه د سیند تر څنګ ګرځئ.",
+              "موږ د سیند تر څنګ ګرځو.",
+              "زه د سیند تر څنګ ګرځم.",
+              "هغوی د سیند تر څنګ ګرځي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "dialogue",
+            "audioId": "w6-river-you-walk",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        },
+        {
+          "id": "literal:assessment-content.js:371",
+          "pashto": "موږ د سیند تر څنګ ګرځو.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:372",
+          "pashto": "زه د سیند تر څنګ ګرځم.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:373",
+          "pashto": "هغوی د سیند تر څنګ ګرځي.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "تر"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:ته",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "Assessment option; correctness depends on authored question.",
+          "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "How do you go?",
+          "How many apples do you buy?",
+          "I buy two apples.",
+          "I carry my basket.",
+          "I drink water.",
+          "I go slowly.",
+          "I read a book.",
+          "I read the book, and you write a sentence.",
+          "I sometimes drink tea.",
+          "I want that apple.",
+          "Mina goes to school.",
+          "Ms Hameed invites you to speak to another young classmate you know well. Choose informal singular.",
+          "Recall how friends use informal ته.",
+          "That bird is near the tree.",
+          "They answer questions.",
+          "They go to the river.",
+          "Those birds are near the river.",
+          "Today you read this book.",
+          "We answer questions together.",
+          "We go to school together.",
+          "We go to the river.",
+          "What are you reading?",
+          "What do you carry?",
+          "What do you drink?",
+          "What do you read?",
+          "What do you see?",
+          "When do you drink tea?",
+          "Which apple do you want?",
+          "Which bird is near the water?",
+          "Which book are you reading?",
+          "You address Saleha alone: “You see the bird”.",
+          "You address Saleha, one familiar friend.",
+          "You always help at home.",
+          "You answer a question.",
+          "You answer a question. (polite/plural)",
+          "You are speaking to Saleha, a familiar student. Choose the informal singular pronoun.",
+          "You buy an apple.",
+          "You buy apples, and I carry a bag.",
+          "You buy bread, and I buy apples.",
+          "You buy bread.",
+          "You carry a basket.",
+          "You clean the room, and I sit on the chair.",
+          "You clean the room.",
+          "You clean the table.",
+          "You drink tea, and I drink water.",
+          "You drink water, and I see a fish.",
+          "You drink water.",
+          "You give money.",
+          "You go to the river. (polite/plural)",
+          "You learn a lesson, and I read a book.",
+          "You learn a lesson.",
+          "You open the book (Saleha).",
+          "You open the door.",
+          "You open the window, and I clean the room.",
+          "You read a book (Saleha).",
+          "You read a book, and I write a word.",
+          "You read a book.",
+          "You see a bird, and I see a fish.",
+          "You see a fish.",
+          "You see the bird (Saleha).",
+          "You swim in the pond.",
+          "You write a sentence.",
+          "You, Saleha, read a book: ته کتاب ___."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "business",
+        "challenge",
+        "context-in-source",
+        "nature",
+        "residential",
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "s2-table",
+          "pashto": "ته مېز پاکوې.",
+          "englishContext": "You clean the table.",
+          "romanisation": "ta mez paakawe",
+          "day": 4,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-table",
+              "formId": "lemma:n-table:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s2-door",
+          "pashto": "ته دروازه خلاصوې.",
+          "englishContext": "You open the door.",
+          "romanisation": "ta darwaaza khlaasawe",
+          "day": 4,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-door",
+              "formId": "lemma:n-door:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s2-swim",
+          "pashto": "ته په ډنډ کې لامبو وهې.",
+          "englishContext": "You swim in the pond.",
+          "romanisation": "ta pa ḍanḍ ke laambo wahe",
+          "day": 4,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-pond",
+              "formId": "lemma:n-pond:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-swim",
+              "formId": "lemma:v-swim:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s2-water",
+          "pashto": "ته اوبه څښې.",
+          "englishContext": "You drink water.",
+          "romanisation": "ta oba ts-khe",
+          "day": 4,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s2-money",
+          "pashto": "ته پیسې ورکوې.",
+          "englishContext": "You give money.",
+          "romanisation": "ta pese warkawe",
+          "day": 4,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-money",
+              "formId": "lemma:n-money:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-give",
+              "formId": "lemma:v-give:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s2-buy",
+          "pashto": "ته مڼه اخلې.",
+          "englishContext": "You buy an apple.",
+          "romanisation": "ta maṇa akhle",
+          "day": 4,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-apple",
+              "formId": "lemma:n-apple:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s2-learn",
+          "pashto": "ته درس زده کوې.",
+          "englishContext": "You learn a lesson.",
+          "romanisation": "ta dars zda kawe",
+          "day": 4,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-lesson",
+              "formId": "lemma:n-lesson:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-learn",
+              "formId": "lemma:v-learn:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s2-read",
+          "pashto": "ته کتاب لولې.",
+          "englishContext": "You read a book.",
+          "romanisation": "ta kitaab lole",
+          "day": 4,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-go",
+          "pashto": "موږ سیند ته ځو.",
+          "englishContext": "We go to the river.",
+          "romanisation": "moong seend ta dzoo",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-river",
+              "formId": "lemma:n-river:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-go",
+              "formId": "lemma:v-go:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s5-go",
+          "pashto": "تاسې سیند ته ځئ.",
+          "englishContext": "You go to the river. (polite/plural)",
+          "romanisation": "taase seend ta dzey",
+          "day": 5,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-river",
+              "formId": "lemma:n-river:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-go",
+              "formId": "lemma:v-go:present:4"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s6-go",
+          "pashto": "هغوی سیند ته ځي.",
+          "englishContext": "They go to the river.",
+          "romanisation": "haghoi seend ta dzee",
+          "day": 7,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-river",
+              "formId": "lemma:n-river:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-go",
+              "formId": "lemma:v-go:present:2"
+            }
+          ]
+        },
+        {
+          "id": "s4-house-room",
+          "pashto": "ته کوټه پاکوې.",
+          "englishContext": "You clean the room.",
+          "romanisation": "ta kota paakawey",
+          "day": 4,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-room",
+              "formId": "lemma:n-room:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-house-tea",
+          "pashto": "ته چای څښې او زه اوبه څښم.",
+          "englishContext": "You drink tea, and I drink water.",
+          "romanisation": "ta chaay tshey aw za oba tshkam",
+          "day": 4,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-tea",
+              "formId": "lemma:n-tea:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-house-compound",
+          "pashto": "ته کوټه پاکوې او زه پر څوکۍ کښېنم.",
+          "englishContext": "You clean the room, and I sit on the chair.",
+          "romanisation": "ta kota paakawey aw za par tsokey kenam",
+          "day": 4,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-room",
+              "formId": "lemma:n-room:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-chair4",
+              "formId": "lemma:n-chair4:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-house-window",
+          "pashto": "ته کړکۍ خلاصوې او زه کوټه پاکوم.",
+          "englishContext": "You open the window, and I clean the room.",
+          "romanisation": "ta karkay khlaasawey aw za kota paakawum",
+          "day": 4,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-room",
+              "formId": "lemma:n-room:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-window",
+              "formId": "lemma:n-window:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-market-bread",
+          "pashto": "ته ډوډۍ اخلې.",
+          "englishContext": "You buy bread.",
+          "romanisation": "ta dodai akhley",
+          "day": 4,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-market-basket",
+          "pashto": "ته ټوکرۍ وړې.",
+          "englishContext": "You carry a basket.",
+          "romanisation": "ta tokaray wrey",
+          "day": 4,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-basket4",
+              "formId": "lemma:n-basket4:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-market-mixed",
+          "pashto": "ته مڼې اخلې او زه کڅوړه وړم.",
+          "englishContext": "You buy apples, and I carry a bag.",
+          "romanisation": "ta manay akhley aw za katswara wrum",
+          "day": 4,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-bag3",
+              "formId": "lemma:n-bag3:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:0"
+            },
+            {
+              "lemmaId": "lemma:n-apple",
+              "formId": "lemma:n-apple:variant:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-market-mixed2",
+          "pashto": "ته ډوډۍ اخلې او زه مڼې اخلم.",
+          "englishContext": "You buy bread, and I buy apples.",
+          "romanisation": "ta dodai akhley aw za manay akhlam",
+          "day": 4,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-apple",
+              "formId": "lemma:n-apple:variant:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-river-fish",
+          "pashto": "ته کب وینې.",
+          "englishContext": "You see a fish.",
+          "romanisation": "ta kab weeney",
+          "day": 4,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-fish",
+              "formId": "lemma:n-fish:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-river-bird",
+          "pashto": "ته مرغۍ وینې او زه کب وینم.",
+          "englishContext": "You see a bird, and I see a fish.",
+          "romanisation": "ta marghay weeney aw za kab weenam",
+          "day": 4,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-fish",
+              "formId": "lemma:n-fish:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-bird3",
+              "formId": "lemma:n-bird3:form:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-river-water",
+          "pashto": "ته اوبه څښې او زه کب وینم.",
+          "englishContext": "You drink water, and I see a fish.",
+          "romanisation": "ta oba tshey aw za kab weenam",
+          "day": 4,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-fish",
+              "formId": "lemma:n-fish:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-school-sentence",
+          "pashto": "ته جمله لیکې.",
+          "englishContext": "You write a sentence.",
+          "romanisation": "ta jumla leekey",
+          "day": 4,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-write",
+              "formId": "lemma:v-write:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-sentence4",
+              "formId": "lemma:n-sentence4:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-school-words",
+          "pashto": "ته کتاب لولې او زه کلمه لیکم.",
+          "englishContext": "You read a book, and I write a word.",
+          "romanisation": "ta kitaab loley aw za kalima leekam",
+          "day": 4,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:1"
+            },
+            {
+              "lemmaId": "lemma:v-write",
+              "formId": "lemma:v-write:present:0"
+            },
+            {
+              "lemmaId": "lemma:n-word3",
+              "formId": "lemma:n-word3:form:0"
+            }
+          ]
+        },
+        {
+          "id": "s4-school-learn",
+          "pashto": "ته درس زده کوې او زه کتاب لولم.",
+          "englishContext": "You learn a lesson, and I read a book.",
+          "romanisation": "ta dars zda kawey aw za kitaab lolam",
+          "day": 4,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:0"
+            },
+            {
+              "lemmaId": "lemma:n-lesson",
+              "formId": "lemma:n-lesson:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-learn",
+              "formId": "lemma:v-learn:present:1"
+            }
+          ]
+        },
+        {
+          "id": "s4-school-question",
+          "pashto": "ته پوښتنې ته ځواب ورکوې.",
+          "englishContext": "You answer a question.",
+          "romanisation": "ta pushtanay ta dzawaab warkawey",
+          "day": 4,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-give",
+              "formId": "lemma:v-give:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-question4",
+              "formId": "lemma:n-question4:form:1"
+            }
+          ]
+        },
+        {
+          "id": "s5-school-answer",
+          "pashto": "تاسې پوښتنې ته ځواب ورکوئ.",
+          "englishContext": "You answer a question. (polite/plural)",
+          "romanisation": "taase pushtanay ta dzawaab warkawey",
+          "day": 5,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-give",
+              "formId": "lemma:v-give:present:4"
+            },
+            {
+              "lemmaId": "lemma:n-question4",
+              "formId": "lemma:n-question4:form:1"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w6-school-answer",
+          "pashto": "موږ یو ځای پوښتنو ته ځوابونه ورکوو.",
+          "englishContext": "We answer questions together.",
+          "romanisation": "moong yaw dzay pukhtano ta dzawaaboona warkawo",
+          "day": 6,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-give",
+              "formId": "lemma:v-give:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:vocab6-school-answers",
+              "formId": "lemma:vocab6-school-answers:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-school-answer",
+          "pashto": "هغوی پوښتنو ته ځوابونه ورکوي.",
+          "englishContext": "They answer questions.",
+          "romanisation": "haghoy pukhtano ta dzawaaboona warkawee",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-give",
+              "formId": "lemma:v-give:present:2"
+            },
+            {
+              "lemmaId": "lemma:vocab6-school-answers",
+              "formId": "lemma:vocab6-school-answers:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-you-read",
+          "pashto": "ته کتاب لولې.",
+          "englishContext": "You read a book (Saleha).",
+          "romanisation": "ta kitaab lwaley",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:1"
+            }
+          ]
+        },
+        {
+          "id": "w7-you-open",
+          "pashto": "ته کتاب خلاصوې.",
+          "englishContext": "You open the book (Saleha).",
+          "romanisation": "ta kitaab khlaasawey",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-compound-room",
+          "pashto": "ته کوټه پاکوې او زه پر څوکۍ کښېنم.",
+          "englishContext": "You clean the room, and I sit on the chair.",
+          "romanisation": "ta koṭa paakawey aw za par tsawkay kenam",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-room",
+              "formId": "lemma:n-room:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-clean",
+              "formId": "lemma:v-clean:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-chair4",
+              "formId": "lemma:n-chair4:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-compound-read",
+          "pashto": "زه کتاب لولم او ته جمله لیکې.",
+          "englishContext": "I read the book, and you write a sentence.",
+          "romanisation": "za kitaab lwalam aw ta jumla leekey",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:0"
+            },
+            {
+              "lemmaId": "lemma:v-write",
+              "formId": "lemma:v-write:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-sentence4",
+              "formId": "lemma:n-sentence4:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w7-you-bird",
+          "pashto": "ته مرغۍ وینې.",
+          "englishContext": "You see the bird (Saleha).",
+          "romanisation": "ta marghay weeney",
+          "day": 7,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:1"
+            },
+            {
+              "lemmaId": "lemma:n-bird3",
+              "formId": "lemma:n-bird3:form:1"
+            }
+          ]
+        },
+        {
+          "id": "w2-d8-river-4",
+          "pashto": "هغه مرغۍ ونې ته نږدې ده.",
+          "englishContext": "That bird is near the tree.",
+          "romanisation": "hagha marghay wane ta negde da",
+          "day": 8,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bird3",
+              "formId": "lemma:n-bird3:form:1"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-2",
+              "formId": "lemma:w2-d8-vocab-2:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-3",
+              "formId": "lemma:w2-d8-vocab-3:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d10-school-5",
+          "pashto": "مینا ښوونځي ته ځي.",
+          "englishContext": "Mina goes to school.",
+          "romanisation": "meena khowandzee ta dzee",
+          "day": 10,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Ms Hameed",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-go",
+              "formId": "lemma:v-go:present:2"
+            },
+            {
+              "lemmaId": "lemma:n-school",
+              "formId": "lemma:n-school:variant:1"
+            }
+          ]
+        },
+        {
+          "id": "w2-d12-school-2",
+          "pashto": "ته څه لولې؟",
+          "englishContext": "What are you reading?",
+          "romanisation": "ta tsa lwaley",
+          "day": 12,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:1"
+            },
+            {
+              "lemmaId": "lemma:w2-d12-vocab-2",
+              "formId": "lemma:w2-d12-vocab-2:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d12-market-1",
+          "pashto": "ته کومه مڼه غواړې؟",
+          "englishContext": "Which apple do you want?",
+          "romanisation": "ta kooma maṇa ghwaaṛey",
+          "day": 12,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Edris",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-apple",
+              "formId": "lemma:n-apple:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-want3",
+              "formId": "lemma:v-want3:present:1"
+            }
+          ]
+        },
+        {
+          "id": "w2-d12-market-2",
+          "pashto": "ته څو مڼې اخلې؟",
+          "englishContext": "How many apples do you buy?",
+          "romanisation": "ta tso maṇe akhley",
+          "day": 12,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Edris",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-buy",
+              "formId": "lemma:v-buy:present:1"
+            },
+            {
+              "lemmaId": "lemma:w2-d12-vocab-5",
+              "formId": "lemma:w2-d12-vocab-5:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-apple",
+              "formId": "lemma:n-apple:variant:1"
+            }
+          ]
+        },
+        {
+          "id": "w2-d12-river-2",
+          "pashto": "ته څه وینې؟",
+          "englishContext": "What do you see?",
+          "romanisation": "ta tsa weeney",
+          "day": 12,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Saleha",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-see",
+              "formId": "lemma:v-see:present:1"
+            },
+            {
+              "lemmaId": "lemma:w2-d12-vocab-2",
+              "formId": "lemma:w2-d12-vocab-2:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d12-river-3",
+          "pashto": "کومه مرغۍ اوبو ته نږدې ده؟",
+          "englishContext": "Which bird is near the water?",
+          "romanisation": "kooma marghay obo ta negde da",
+          "day": 12,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Saleha",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bird3",
+              "formId": "lemma:n-bird3:form:1"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-3",
+              "formId": "lemma:w2-d8-vocab-3:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d13-school-3",
+          "pashto": "نن ته دا کتاب لولې.",
+          "englishContext": "Today you read this book.",
+          "romanisation": "nan ta daa kitaab lwaley",
+          "day": 13,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:1"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d13-vocab-1",
+              "formId": "lemma:w2-d13-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d13-house-5",
+          "pashto": "ته تل په کور کې مرسته کوې.",
+          "englishContext": "You always help at home.",
+          "romanisation": "ta tal pa kor ke mrasta kawey",
+          "day": 13,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-house",
+              "formId": "lemma:n-house:form:0"
+            },
+            {
+              "lemmaId": "lemma:vocab6-house-help",
+              "formId": "lemma:vocab6-house-help:present:1"
+            },
+            {
+              "lemmaId": "lemma:w2-d13-vocab-3",
+              "formId": "lemma:w2-d13-vocab-3:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d14-river-2",
+          "pashto": "هغه مرغان سیند ته نږدې دي.",
+          "englishContext": "Those birds are near the river.",
+          "romanisation": "hagha marghaan seend ta negde dee",
+          "day": 14,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-river",
+              "formId": "lemma:n-river:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-bird3",
+              "formId": "lemma:n-bird3:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-2",
+              "formId": "lemma:w2-d8-vocab-2:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-3",
+              "formId": "lemma:w2-d8-vocab-3:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d8-reply-1:prompt",
+          "pashto": "ته څه څښې؟",
+          "englishContext": "What do you drink?",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Saleha",
+          "recipient": "Player",
+          "authoredContext": "You hold a cup of water beside the lake."
+        },
+        {
+          "id": "w2-d9-reply-2:prompt",
+          "pashto": "ته څو مڼې اخلې؟",
+          "englishContext": "How many apples do you buy?",
+          "romanisation": null,
+          "day": 9,
+          "scene": "business",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Edris",
+          "recipient": "Player",
+          "authoredContext": "Your order contains exactly two apples."
+        },
+        {
+          "id": "w2-d11-reply-6:prompt",
+          "pashto": "ته څه وړې؟",
+          "englishContext": "What do you carry?",
+          "romanisation": null,
+          "day": 11,
+          "scene": "residential",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player",
+          "authoredContext": "You hold your own basket, not someone else’s bag."
+        },
+        {
+          "id": "model:12:3",
+          "pashto": "ته څه لولې؟",
+          "englishContext": "What are you reading?",
+          "romanisation": null,
+          "day": 12,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json models"
+        },
+        {
+          "id": "model:12:4",
+          "pashto": "ته کوم کتاب لولې؟",
+          "englishContext": "Which book are you reading?",
+          "romanisation": null,
+          "day": 12,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json models"
+        },
+        {
+          "id": "w2-d12-reply-1:prompt",
+          "pashto": "ته څه لولې؟",
+          "englishContext": "What do you read?",
+          "romanisation": null,
+          "day": 12,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "You read a book while Ms Hameed interviews you."
+        },
+        {
+          "id": "w2-d12-reply-2:prompt",
+          "pashto": "ته کومه مڼه غواړې؟",
+          "englishContext": "Which apple do you want?",
+          "romanisation": null,
+          "day": 12,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "You point to the distant apple, not the nearby one."
+        },
+        {
+          "id": "w2-d13-reply-1:prompt",
+          "pashto": "ته څنګه ځې؟",
+          "englishContext": "How do you go?",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Saleha",
+          "recipient": "Player",
+          "authoredContext": "You walk at a slow pace alongside the sisters."
+        },
+        {
+          "id": "w2-d13-reply-3:prompt",
+          "pashto": "ته کله چای څښې؟",
+          "englishContext": "When do you drink tea?",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Saleha",
+          "recipient": "Player",
+          "authoredContext": "Tea is an occasional drink for you, not a daily habit."
+        },
+        {
+          "id": "model:14:3",
+          "pashto": "موږ یو ځای ښوونځي ته ځو.",
+          "englishContext": "We go to school together.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "residential",
+          "source": "content/WEEK2_RUNTIME.json models"
+        },
+        {
+          "id": "w2-d14-reply-4:prompt",
+          "pashto": "ته څو مڼې اخلې؟",
+          "englishContext": "How many apples do you buy?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: Your order contains exactly two apples."
+        },
+        {
+          "id": "w2-d14-reply-11:prompt",
+          "pashto": "ته څنګه ځې؟",
+          "englishContext": "How do you go?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: You walk at a slow pace alongside the sisters."
+        },
+        {
+          "id": "w2-d14-reply-12:prompt",
+          "pashto": "ته کله چای څښې؟",
+          "englishContext": "When do you drink tea?",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Ms Hameed",
+          "recipient": "Player",
+          "authoredContext": "Village review clue: Tea is an occasional drink for you, not a daily habit."
+        },
+        {
+          "id": "address5-0:correct",
+          "pashto": "ته",
+          "englishContext": "You are speaking to Saleha, a familiar student. Choose the informal singular pronoun.",
+          "romanisation": null,
+          "day": 5,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "address5-2:correct",
+          "pashto": "ته",
+          "englishContext": "Ms Hameed invites you to speak to another young classmate you know well. Choose informal singular.",
+          "romanisation": null,
+          "day": 5,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "a familiar classmate"
+        },
+        {
+          "id": "s2-read:comment",
+          "pashto": "Recall how friends use informal ته.",
+          "englishContext": "Recall how friends use informal ته.",
+          "romanisation": null,
+          "day": 5,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "hills-we:option:3",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha asks you: Which pronoun describes a group including the person speaking?",
+            "correct": "موږ",
+            "options": [
+              "موږ",
+              "تاسې",
+              "زه",
+              "ته"
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-we",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        },
+        {
+          "id": "hills-you:option:3",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-you",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Mina asks you: Which pronoun addresses both sisters without including you?",
+            "correct": "تاسې",
+            "options": [
+              "تاسې",
+              "موږ",
+              "زه",
+              "ته"
+            ],
+            "speaker": "Mina",
+            "recipient": "Player",
+            "audioId": "w6-you-all",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        },
+        {
+          "id": "hills-transform:option:3",
+          "pashto": "ته منډې وهې.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-transform",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+            "correct": "موږ یو ځای منډې وهو.",
+            "options": [
+              "موږ یو ځای منډې وهو.",
+              "زه منډې وهم.",
+              "تاسې منډې وهئ.",
+              "ته منډې وهې."
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-we-run",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        },
+        {
+          "id": "hills-birds:option:3",
+          "pashto": "ته دوه مرغان وینې.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-birds",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha asks you: Choose “We see two birds” (speaker included).",
+            "correct": "موږ دوه مرغان وینو.",
+            "options": [
+              "موږ دوه مرغان وینو.",
+              "تاسې دوه مرغان وینئ.",
+              "زه دوه مرغان وینم.",
+              "ته دوه مرغان وینې."
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-river-birds",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        },
+        {
+          "id": "exam-pronoun-we:option:1",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You describe yourself and Mina. Choose the pronoun for your group.",
+            "correct": "موږ",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Mina",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Mina"
+            ]
+          }
+        },
+        {
+          "id": "exam-pronoun-friend:correct",
+          "pashto": "ته",
+          "englishContext": "You address Saleha, one familiar friend.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "exam-pronoun-friend:option:1",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-friend",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha, one familiar friend.",
+            "correct": "ته",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        },
+        {
+          "id": "exam-pronoun-respect:option:1",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-respect",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Ms Hameed respectfully.",
+            "correct": "تاسې",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Ms Hameed",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Ms Hameed"
+            ]
+          }
+        },
+        {
+          "id": "exam-pronoun-group:option:1",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-group",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha and Mina together.",
+            "correct": "تاسې",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        },
+        {
+          "id": "exam-pronoun-they:option:1",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-they",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You describe customers elsewhere in the market, excluding yourself.",
+            "correct": "هغوی",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Edris",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Edris"
+            ]
+          }
+        },
+        {
+          "id": "exam-verb-you:prompt",
+          "pashto": "You, Saleha, read a book: ته کتاب ___.",
+          "englishContext": "You, Saleha, read a book: ته کتاب ___.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "exam-dialogue-w7-you-bird:correct",
+          "pashto": "ته مرغۍ وینې.",
+          "englishContext": "You address Saleha alone: “You see the bird”.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "exam-dialogue-w7-you-bird:option:0",
+          "pashto": "ته مرغۍ وینې.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-you-bird",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha alone: “You see the bird”.",
+            "correct": "ته مرغۍ وینې.",
+            "options": [
+              "ته مرغۍ وینې.",
+              "زه مرغۍ وینم.",
+              "موږ مرغۍ وینو.",
+              "هغوی مرغۍ ویني."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "dialogue",
+            "audioId": "w7-you-bird",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        },
+        {
+          "id": "exam-dialogue-w7-polite-tea:option:1",
+          "pashto": "ته چای څښې.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-polite-tea",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You respectfully address Muhammad Jan: “You drink tea”.",
+            "correct": "تاسې چای څښئ.",
+            "options": [
+              "تاسې چای څښئ.",
+              "ته چای څښې.",
+              "زه چای څښم.",
+              "موږ چای څښو."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Muhammad Jan",
+            "section": "dialogue",
+            "audioId": "w7-polite-tea",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Muhammad Jan"
+            ]
+          }
+        },
+        {
+          "id": "w2-d8-reply-1:promptPs",
+          "pashto": "ته څه څښې؟",
+          "englishContext": "I drink water.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "w2-d9-reply-2:promptPs",
+          "pashto": "ته څو مڼې اخلې؟",
+          "englishContext": "I buy two apples.",
+          "romanisation": null,
+          "day": 9,
+          "scene": "business",
+          "source": "src/assessment-content.js",
+          "speaker": "Edris",
+          "recipient": "Edris"
+        },
+        {
+          "id": "w2-d11-reply-6:promptPs",
+          "pashto": "ته څه وړې؟",
+          "englishContext": "I carry my basket.",
+          "romanisation": null,
+          "day": 11,
+          "scene": "residential",
+          "source": "src/assessment-content.js",
+          "speaker": "Muhammad Jan",
+          "recipient": "Muhammad Jan"
+        },
+        {
+          "id": "w2-d12-reply-1:promptPs",
+          "pashto": "ته څه لولې؟",
+          "englishContext": "I read a book.",
+          "romanisation": null,
+          "day": 12,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        },
+        {
+          "id": "w2-d12-reply-2:promptPs",
+          "pashto": "ته کومه مڼه غواړې؟",
+          "englishContext": "I want that apple.",
+          "romanisation": null,
+          "day": 12,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        },
+        {
+          "id": "w2-d13-reply-1:promptPs",
+          "pashto": "ته څنګه ځې؟",
+          "englishContext": "I go slowly.",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "w2-d13-reply-3:promptPs",
+          "pashto": "ته کله چای څښې؟",
+          "englishContext": "I sometimes drink tea.",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "w2-d14-reply-4:promptPs",
+          "pashto": "ته څو مڼې اخلې؟",
+          "englishContext": "I buy two apples.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        },
+        {
+          "id": "w2-d14-reply-11:promptPs",
+          "pashto": "ته څنګه ځې؟",
+          "englishContext": "I go slowly.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        },
+        {
+          "id": "w2-d14-reply-12:promptPs",
+          "pashto": "ته کله چای څښې؟",
+          "englishContext": "I sometimes drink tea.",
+          "romanisation": null,
+          "day": 14,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        },
+        {
+          "id": "literal:assessment-content.js:61",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:80",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:97",
+          "pashto": "ته منډې وهې.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:120",
+          "pashto": "ته دوه مرغان وینې.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:206",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:225",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:241",
+          "pashto": "You, Saleha, read a book: ته کتاب ___.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:369",
+          "pashto": "ته چای څښې.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:439",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:455",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:assessment-content.js:487",
+          "pashto": "Recall how friends use informal ته.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/assessment-content.js"
+        },
+        {
+          "id": "literal:challenge-ui.js:126",
+          "pashto": "Welcome to our gathering near the lake! Saleha, Edris, Ms Hameed and Muhammad Jan are all here. Listen to the speaker, look carefully at whom you are addressing, and choose informal ته or polite/plural تاسې.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        },
+        {
+          "id": "literal:challenge-ui.js:383",
+          "pashto": "ته · informal singular",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        },
+        {
+          "id": "literal:challenge-ui.js:383",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        },
+        {
+          "id": "literal:challenge-ui.js:526",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        },
+        {
+          "id": "literal:content.js:112",
+          "pashto": "Muhammad Jan: “You have learnt to speak about yourself. Now we will use ته when talking to a familiar person, and join two meaningful thoughts with او — and.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        },
+        {
+          "id": "literal:content.js:124",
+          "pashto": "Edris: “Saleha is helping at the shop today! You can use ته with a friend like her, and تاسې to speak to me politely.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        },
+        {
+          "id": "literal:content.js:322",
+          "pashto": "Muhammad Jan welcomes you home to learn informal ته and link actions using او. Return for a friendly conversation at the end of the day.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:23",
+          "pashto": "موږ ښوونځي ته ځو — We go to school. تاسې ښوونځي ته ځئ — You all go to school. ځو and ځئ differ; learn whole verb forms rather than adding one ending to every stem. The pronoun can sometimes be omitted because the verb marks person.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:104",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:136",
+          "pashto": "ته — informal “you”; linking two actions with او",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:138",
+          "pashto": "Muhammad Jan: “Yesterday you said زه اوبه څښم — I drink water. Today, when speaking to a familiar friend, say ته اوبه څښې — you drink water. The ending changes from ـم to ـې. We can join two complete clauses: ته کوټه پاکوې او زه پر څوکۍ کښېنم — You clean the room, and I sit on the chair. Each clause has its own subject and verb. Use informal ته with peers; when addressing respected elders, a different polite form will be taught tomorrow.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:141",
+          "pashto": "Muhammad Jan: “I may address you as ته. When you practise your own sentences, imagine speaking to a friend such as Saleha, not to me.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:146",
+          "pashto": "ته or تاسې? Choose by whom you address",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:148",
+          "pashto": "Ms Hameed: “You have learned ته کتاب لولې — you read a book (speaking to one familiar friend). When addressing an elder, a teacher, an unfamiliar adult or several people, use تاسې کتاب لولئ. The polite/plural verb generally ends in ـئ instead of the informal ـې. The same تاسې form can refer to one respected person or a group. Look at the listener and the context. In some speech you will also hear تاسو; we use تاسې for consistency in these lessons.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:grammar-content.js:151",
+          "pashto": "Ms Hameed: “I can speak to you with ته, but you should usually use تاسې when speaking politely to me or Muhammad Jan.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        },
+        {
+          "id": "literal:world-ui.js:67",
+          "pashto": "🏡 Normal route: start at home with Muhammad Jan to learn informal ته (you) and combine clauses with او (and). Or skip to his challenge immediately.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/world-ui.js"
+        },
+        {
+          "id": "literal:world-ui.js:199",
+          "pashto": "Muhammad Jan begins with informal ته and compound sentences. Practise around town, then have a familiar conversation with him at home.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/world-ui.js"
+        },
+        {
+          "id": "literal:world-ui.js:201",
+          "pashto": "Ms Hameed teaches the choice between ته and polite/plural تاسې. People gather at the lake for a multi-speaker challenge.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/world-ui.js"
+        }
+      ],
+      "existing": {
+        "pashto": "ته"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:تودې",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "Distractor; must be wrong for this reply, not a new teaching lemma."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d8-reply-3:dud:0",
+          "pashto": "تودې",
+          "englishContext": "Distractor; must be wrong for this reply, not a new teaching lemma.",
+          "romanisation": null,
+          "day": 8,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json duds"
+        }
+      ],
+      "existing": {
+        "pashto": "تودې"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:تیږې",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "These are your stones.",
+          "These stones are small."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d9-river-4",
+          "pashto": "دا تیږې کوچنۍ دي.",
+          "englishContext": "These stones are small.",
+          "romanisation": "daa teeghe kochnay dee",
+          "day": 9,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            },
+            {
+              "lemmaId": "lemma:a-small",
+              "formId": "lemma:a-small:variant:1"
+            }
+          ]
+        },
+        {
+          "id": "w2-d11-river-4",
+          "pashto": "دا ستاسې تیږې دي.",
+          "englishContext": "These are your stones.",
+          "romanisation": "daa staase teeghe dee",
+          "day": 11,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d11-vocab-2",
+              "formId": "lemma:w2-d11-vocab-2:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "تیږې"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:جان",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "Muhammad Jan reads every day.",
+          "They help Muhammad Jan.",
+          "This is Muhammad Jan’s book.",
+          "Where is Muhammad Jan’s notebook?",
+          "You both help Muhammad Jan."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w6-house-help",
+          "pashto": "تاسې دواړه له محمد جان سره مرسته کوئ.",
+          "englishContext": "You both help Muhammad Jan.",
+          "romanisation": "taase dwaara la muhammad jaan sara mrasta kawey",
+          "day": 6,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            },
+            {
+              "lemmaId": "lemma:vocab6-house-help",
+              "formId": "lemma:vocab6-house-help:present:4"
+            }
+          ]
+        },
+        {
+          "id": "w7-house-help",
+          "pashto": "هغوی له محمد جان سره مرسته کوي.",
+          "englishContext": "They help Muhammad Jan.",
+          "romanisation": "haghoy la muhammad jaan sara mrasta kawee",
+          "day": 7,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:vocab6-house-help",
+              "formId": "lemma:vocab6-house-help:present:2"
+            }
+          ]
+        },
+        {
+          "id": "w2-d11-house-4",
+          "pashto": "دا د محمد جان کتاب دی.",
+          "englishContext": "This is Muhammad Jan’s book.",
+          "romanisation": "daa da muhammad jaan kitaab day",
+          "day": 11,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d13-house-3",
+          "pashto": "محمد جان هره ورځ لولي.",
+          "englishContext": "Muhammad Jan reads every day.",
+          "romanisation": "muhammad jaan hara wraz lwalee",
+          "day": 13,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-read",
+              "formId": "lemma:v-read:present:2"
+            }
+          ]
+        },
+        {
+          "id": "w2-d14-house-5",
+          "pashto": "د محمد جان کتابچه چېرته ده؟",
+          "englishContext": "Where is Muhammad Jan’s notebook?",
+          "romanisation": "da muhammad jaan kitaabcha cherta da",
+          "day": 14,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Muhammad Jan",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-notebook",
+              "formId": "lemma:n-notebook:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d10-vocab-3",
+              "formId": "lemma:w2-d10-vocab-3:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "جان"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:جنسیت",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "What is your gender?"
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "context-in-source",
+        "guide"
+      ],
+      "evidence": [
+        {
+          "id": "tutorial-gender",
+          "pashto": "ستاسو جنسیت څه دی؟",
+          "englishContext": "What is your gender?",
+          "romanisation": "Staaso jinsiyat tsa day?",
+          "day": 0,
+          "scene": "guide",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": []
+        },
+        {
+          "id": "literal:content.js:262",
+          "pashto": "ستاسو جنسیت څه دی؟",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "جنسیت"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:جهیل",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "I run beside the lake.",
+          "Saleha is beside the lake.",
+          "They sometimes sit beside the lake.",
+          "We walk together beside the lake.",
+          "Who is running beside the lake?"
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "w6-river-run",
+          "pashto": "زه د جهیل تر څنګ منډې وهم.",
+          "englishContext": "I run beside the lake.",
+          "romanisation": "za da jaheel tar tsang mande waham",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-run",
+              "formId": "lemma:w6-run:present:0"
+            }
+          ]
+        },
+        {
+          "id": "w6-walk",
+          "pashto": "موږ د جهیل تر څنګ یو ځای ګرځو.",
+          "englishContext": "We walk together beside the lake.",
+          "romanisation": "moong da jaheel tar tsang yaw dzay gardzo",
+          "day": 6,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-walk3",
+              "formId": "lemma:v-walk3:present:3"
+            },
+            {
+              "lemmaId": "lemma:w6-we",
+              "formId": "lemma:w6-we:form:0"
+            },
+            {
+              "lemmaId": "lemma:w6-together",
+              "formId": "lemma:w6-together:form:0"
+            },
+            {
+              "lemmaId": "lemma:w2-d9-vocab-1",
+              "formId": "lemma:w2-d9-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d10-river-3",
+          "pashto": "صالحه د جهیل تر څنګ ده.",
+          "englishContext": "Saleha is beside the lake.",
+          "romanisation": "saaleha da jaheel tar tsang da",
+          "day": 10,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Mina",
+          "sourceMappings": []
+        },
+        {
+          "id": "w2-d12-river-1",
+          "pashto": "د جهیل تر څنګ څوک منډې وهي؟",
+          "englishContext": "Who is running beside the lake?",
+          "romanisation": "da jaheel tar tsang tsok mande wahee",
+          "day": 12,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Saleha",
+          "recipient": "Player",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w6-run",
+              "formId": "lemma:w6-run:present:2"
+            },
+            {
+              "lemmaId": "lemma:w2-d12-vocab-1",
+              "formId": "lemma:w2-d12-vocab-1:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d13-river-4",
+          "pashto": "هغوی کله کله د جهیل تر څنګ کښېني.",
+          "englishContext": "They sometimes sit beside the lake.",
+          "romanisation": "haghoy kala kala da jaheel tar tsang kenee",
+          "day": 13,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w2-d13-vocab-5",
+              "formId": "lemma:w2-d13-vocab-5:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "جهیل"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:خدای",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "Goodbye"
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "guide"
+      ],
+      "evidence": [
+        {
+          "id": "g-bye",
+          "pashto": "خدای پامان",
+          "englishContext": "Goodbye",
+          "romanisation": "khudaay paamaan",
+          "day": 0,
+          "scene": "guide",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": []
+        }
+      ],
+      "existing": {
+        "pashto": "خدای"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:خلاصې",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "These doors are open."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "w2-d9-house-3",
+          "pashto": "دا دروازې خلاصې دي.",
+          "englishContext": "These doors are open.",
+          "romanisation": "daa darwaaze khlaase dee",
+          "day": 9,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Muhammad Jan",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:w2-d8-vocab-1",
+              "formId": "lemma:w2-d8-vocab-1:form:0"
+            },
+            {
+              "lemmaId": "lemma:n-door",
+              "formId": "lemma:n-door:variant:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "خلاصې"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:خواړه",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "You both carry the food."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "w6-market-food",
+          "pashto": "تاسې دواړه خواړه وړئ.",
+          "englishContext": "You both carry the food.",
+          "romanisation": "taase dwaara khwaaṛa wrey",
+          "day": 6,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-carry3",
+              "formId": "lemma:v-carry3:present:4"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "خواړه"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:خوښوي",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "They like fruit."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "s6-like",
+          "pashto": "هغوی مېوه خوښوي.",
+          "englishContext": "They like fruit.",
+          "romanisation": "haghoi mewa khoshawi",
+          "day": 7,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-fruit",
+              "formId": "lemma:n-fruit:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "خوښوي"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "unmapped-token:خپل",
+      "kind": "possible-form-or-identity-gap",
+      "priority": "P0",
+      "intendedMeaning": {
+        "status": "unresolved-token-alignment",
+        "englishContexts": [
+          "Edris opens his shop every day.",
+          "When does Edris open his shop?",
+          "You both open your books."
+        ],
+        "instruction": "Assign the precise token sense from cited contexts; no English-to-token alignment has been assumed."
+      },
+      "morphology": {
+        "status": "requires-human-analysis",
+        "reviewRequest": "Determine whether this is an inflection, function word, name, compound component, orthographic variant or genuinely missing lemma; map to an existing identity before proposing a new lemma."
+      },
+      "suitableScenes": [
+        "business",
+        "nature",
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w6-school-open",
+          "pashto": "تاسې دواړه خپل کتابونه خلاصوئ.",
+          "englishContext": "You both open your books.",
+          "romanisation": "taase dwaara khpal kitaaboona khlaasawey",
+          "day": 6,
+          "scene": "school",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Saleha and Mina",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:4"
+            },
+            {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:1"
+            },
+            {
+              "lemmaId": "lemma:w6-you-all",
+              "formId": "lemma:w6-you-all:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d13-market-2",
+          "pashto": "ادریس هره ورځ خپل دوکان خلاصوي.",
+          "englishContext": "Edris opens his shop every day.",
+          "romanisation": "edrees hara wraz khpal dookaan khlaasawee",
+          "day": 13,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": "Player",
+          "recipient": "Edris",
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:2"
+            },
+            {
+              "lemmaId": "lemma:n-shop",
+              "formId": "lemma:n-shop:form:0"
+            }
+          ]
+        },
+        {
+          "id": "w2-d13-reply-4:prompt",
+          "pashto": "ادریس کله خپل دوکان خلاصوي؟",
+          "englishContext": "When does Edris open his shop?",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Saleha",
+          "recipient": "Player",
+          "authoredContext": "His shop opens daily, including today."
+        },
+        {
+          "id": "w2-d13-reply-4:reply",
+          "pashto": "ادریس هره ورځ خپل دوکان خلاصوي.",
+          "englishContext": "Edris opens his shop every day.",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "content/WEEK2_RUNTIME.json dialogues",
+          "speaker": "Player",
+          "recipient": "Saleha",
+          "authoredContext": "His shop opens daily, including today."
+        },
+        {
+          "id": "w2-d13-reply-4:answerPs",
+          "pashto": "ادریس هره ورځ خپل دوکان خلاصوي.",
+          "englishContext": "Edris opens his shop every day.",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        },
+        {
+          "id": "w2-d13-reply-4:promptPs",
+          "pashto": "ادریس کله خپل دوکان خلاصوي؟",
+          "englishContext": "Edris opens his shop every day.",
+          "romanisation": null,
+          "day": 13,
+          "scene": "nature",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha"
+        }
+      ],
+      "existing": {
+        "pashto": "خپل"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

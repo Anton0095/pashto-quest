@@ -1,0 +1,1306 @@
+{
+  "batchId": "P0-29",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "surface:hills-we:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-we:option:3",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha asks you: Which pronoun describes a group including the person speaking?",
+            "correct": "موږ",
+            "options": [
+              "موږ",
+              "تاسې",
+              "زه",
+              "ته"
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-we",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-together:prompt",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Mina asks you: What does یو ځای mean?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "hills"
+      ],
+      "evidence": [
+        {
+          "id": "hills-together:prompt",
+          "pashto": "Mina asks you: What does یو ځای mean?",
+          "englishContext": "Mina asks you: What does یو ځای mean?",
+          "romanisation": null,
+          "day": 6,
+          "scene": "hills",
+          "source": "src/assessment-content.js",
+          "speaker": "Mina",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "Mina asks you: What does یو ځای mean?",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-river:prompt",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Saleha points to the river: choose سیند in English.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "hills"
+      ],
+      "evidence": [
+        {
+          "id": "hills-river:prompt",
+          "pashto": "Saleha points to the river: choose سیند in English.",
+          "englishContext": "Saleha points to the river: choose سیند in English.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "hills",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "Saleha points to the river: choose سیند in English.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-you:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Mina asks you: Which pronoun addresses both sisters without including you?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "hills"
+      ],
+      "evidence": [
+        {
+          "id": "hills-you:correct",
+          "pashto": "تاسې",
+          "englishContext": "Mina asks you: Which pronoun addresses both sisters without including you?",
+          "romanisation": null,
+          "day": 6,
+          "scene": "hills",
+          "source": "src/assessment-content.js",
+          "speaker": "Mina",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-you:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-you:option:0",
+          "pashto": "تاسې",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-you",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Mina asks you: Which pronoun addresses both sisters without including you?",
+            "correct": "تاسې",
+            "options": [
+              "تاسې",
+              "موږ",
+              "زه",
+              "ته"
+            ],
+            "speaker": "Mina",
+            "recipient": "Player",
+            "audioId": "w6-you-all",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-you:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-you:option:1",
+          "pashto": "موږ",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-you",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Mina asks you: Which pronoun addresses both sisters without including you?",
+            "correct": "تاسې",
+            "options": [
+              "تاسې",
+              "موږ",
+              "زه",
+              "ته"
+            ],
+            "speaker": "Mina",
+            "recipient": "Player",
+            "audioId": "w6-you-all",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-you:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-you:option:2",
+          "pashto": "زه",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-you",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Mina asks you: Which pronoun addresses both sisters without including you?",
+            "correct": "تاسې",
+            "options": [
+              "تاسې",
+              "موږ",
+              "زه",
+              "ته"
+            ],
+            "speaker": "Mina",
+            "recipient": "Player",
+            "audioId": "w6-you-all",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "زه",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-you:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-you:option:3",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-you",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Mina asks you: Which pronoun addresses both sisters without including you?",
+            "correct": "تاسې",
+            "options": [
+              "تاسې",
+              "موږ",
+              "زه",
+              "ته"
+            ],
+            "speaker": "Mina",
+            "recipient": "Player",
+            "audioId": "w6-you-all",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-run:prompt",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Saleha asks you: What does منډې وهل mean?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "hills"
+      ],
+      "evidence": [
+        {
+          "id": "hills-run:prompt",
+          "pashto": "Saleha asks you: What does منډې وهل mean?",
+          "englishContext": "Saleha asks you: What does منډې وهل mean?",
+          "romanisation": null,
+          "day": 6,
+          "scene": "hills",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "Saleha asks you: What does منډې وهل mean?",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-transform:prompt",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "hills"
+      ],
+      "evidence": [
+        {
+          "id": "hills-transform:prompt",
+          "pashto": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+          "englishContext": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "hills",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-transform:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "hills"
+      ],
+      "evidence": [
+        {
+          "id": "hills-transform:correct",
+          "pashto": "موږ یو ځای منډې وهو.",
+          "englishContext": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "hills",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "موږ یو ځای منډې وهو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-transform:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-transform:option:0",
+          "pashto": "موږ یو ځای منډې وهو.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-transform",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+            "correct": "موږ یو ځای منډې وهو.",
+            "options": [
+              "موږ یو ځای منډې وهو.",
+              "زه منډې وهم.",
+              "تاسې منډې وهئ.",
+              "ته منډې وهې."
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-we-run",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ یو ځای منډې وهو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-transform:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-transform:option:1",
+          "pashto": "زه منډې وهم.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-transform",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+            "correct": "موږ یو ځای منډې وهو.",
+            "options": [
+              "موږ یو ځای منډې وهو.",
+              "زه منډې وهم.",
+              "تاسې منډې وهئ.",
+              "ته منډې وهې."
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-we-run",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "زه منډې وهم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-transform:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-transform:option:2",
+          "pashto": "تاسې منډې وهئ.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-transform",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+            "correct": "موږ یو ځای منډې وهو.",
+            "options": [
+              "موږ یو ځای منډې وهو.",
+              "زه منډې وهم.",
+              "تاسې منډې وهئ.",
+              "ته منډې وهې."
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-we-run",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې منډې وهئ.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-transform:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-transform:option:3",
+          "pashto": "ته منډې وهې.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-transform",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha models زه منډې وهم (I run). Choose “We run together”.",
+            "correct": "موږ یو ځای منډې وهو.",
+            "options": [
+              "موږ یو ځای منډې وهو.",
+              "زه منډې وهم.",
+              "تاسې منډې وهئ.",
+              "ته منډې وهې."
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-we-run",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته منډې وهې.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-birds:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Saleha asks you: Choose “We see two birds” (speaker included).",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "hills"
+      ],
+      "evidence": [
+        {
+          "id": "hills-birds:correct",
+          "pashto": "موږ دوه مرغان وینو.",
+          "englishContext": "Saleha asks you: Choose “We see two birds” (speaker included).",
+          "romanisation": null,
+          "day": 6,
+          "scene": "hills",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Player"
+        }
+      ],
+      "existing": {
+        "pashto": "موږ دوه مرغان وینو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-birds:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-birds:option:0",
+          "pashto": "موږ دوه مرغان وینو.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-birds",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha asks you: Choose “We see two birds” (speaker included).",
+            "correct": "موږ دوه مرغان وینو.",
+            "options": [
+              "موږ دوه مرغان وینو.",
+              "تاسې دوه مرغان وینئ.",
+              "زه دوه مرغان وینم.",
+              "ته دوه مرغان وینې."
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-river-birds",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ دوه مرغان وینو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-birds:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-birds:option:1",
+          "pashto": "تاسې دوه مرغان وینئ.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-birds",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha asks you: Choose “We see two birds” (speaker included).",
+            "correct": "موږ دوه مرغان وینو.",
+            "options": [
+              "موږ دوه مرغان وینو.",
+              "تاسې دوه مرغان وینئ.",
+              "زه دوه مرغان وینم.",
+              "ته دوه مرغان وینې."
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-river-birds",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې دوه مرغان وینئ.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-birds:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-birds:option:2",
+          "pashto": "زه دوه مرغان وینم.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-birds",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha asks you: Choose “We see two birds” (speaker included).",
+            "correct": "موږ دوه مرغان وینو.",
+            "options": [
+              "موږ دوه مرغان وینو.",
+              "تاسې دوه مرغان وینئ.",
+              "زه دوه مرغان وینم.",
+              "ته دوه مرغان وینې."
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-river-birds",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "زه دوه مرغان وینم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-birds:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "hills-birds:option:3",
+          "pashto": "ته دوه مرغان وینې.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "hills-birds",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Saleha asks you: Choose “We see two birds” (speaker included).",
+            "correct": "موږ دوه مرغان وینو.",
+            "options": [
+              "موږ دوه مرغان وینو.",
+              "تاسې دوه مرغان وینئ.",
+              "زه دوه مرغان وینم.",
+              "ته دوه مرغان وینې."
+            ],
+            "speaker": "Saleha",
+            "recipient": "Player",
+            "audioId": "w6-river-birds",
+            "participants": [
+              "Saleha",
+              "Mina"
+            ],
+            "day": 6,
+            "location": "hills"
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته دوه مرغان وینې.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:hills-carry:prompt",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You tell Saleha and Mina: تاسې دواړه اوبه وړئ. Who carries the water?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "hills"
+      ],
+      "evidence": [
+        {
+          "id": "hills-carry:prompt",
+          "pashto": "You tell Saleha and Mina: تاسې دواړه اوبه وړئ. Who carries the water?",
+          "englishContext": "You tell Saleha and Mina: تاسې دواړه اوبه وړئ. Who carries the water?",
+          "romanisation": null,
+          "day": 6,
+          "scene": "hills",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha and Mina"
+        }
+      ],
+      "existing": {
+        "pashto": "You tell Saleha and Mina: تاسې دواړه اوبه وړئ. Who carries the water?",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w6-compound:comment",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Saleha asks for two clauses. Vocabulary help: غونډۍ means hills.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "hills"
+      ],
+      "evidence": [
+        {
+          "id": "w6-compound:comment",
+          "pashto": "Saleha asks for two clauses. Vocabulary help: غونډۍ means hills.",
+          "englishContext": "Saleha asks for two clauses. Vocabulary help: غونډۍ means hills.",
+          "romanisation": null,
+          "day": 6,
+          "scene": "hills",
+          "source": "src/assessment-content.js",
+          "speaker": "Saleha",
+          "recipient": "Saleha and Mina"
+        }
+      ],
+      "existing": {
+        "pashto": "Saleha asks for two clauses. Vocabulary help: غونډۍ means hills.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-we:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You describe yourself and Mina. Choose the pronoun for your group.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-we:correct",
+          "pashto": "موږ",
+          "englishContext": "You describe yourself and Mina. Choose the pronoun for your group.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Mina"
+        }
+      ],
+      "existing": {
+        "pashto": "موږ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-we:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-we:option:0",
+          "pashto": "موږ",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You describe yourself and Mina. Choose the pronoun for your group.",
+            "correct": "موږ",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Mina",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Mina"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-pronoun-we:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-pronoun-we:option:1",
+          "pashto": "ته",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-pronoun-we",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You describe yourself and Mina. Choose the pronoun for your group.",
+            "correct": "موږ",
+            "options": [
+              "موږ",
+              "ته",
+              "تاسې",
+              "هغوی"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Mina",
+            "section": "pronouns",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Mina"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

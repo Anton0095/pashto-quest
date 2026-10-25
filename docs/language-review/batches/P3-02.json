@@ -1,0 +1,808 @@
+{
+  "batchId": "P3-02",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "candidate:verb:snow",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "snow",
+      "morphology": {
+        "partOfSpeech": "verb",
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:tall",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "tall",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:clear",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "clear",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "nature",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:flowing",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "flowing",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:bazaar",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "bazaar",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:cash-register",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "cash register",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:banknote",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "banknote",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:profit",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "profit",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:tax",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "tax",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:wage",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "wage",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:customer",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "customer",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:vegetable",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "vegetable",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:verb:choose",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "choose",
+      "morphology": {
+        "partOfSpeech": "verb",
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:verb:count",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "count",
+      "morphology": {
+        "partOfSpeech": "verb",
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:verb:measure",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "measure",
+      "morphology": {
+        "partOfSpeech": "verb",
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:verb:negotiate",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "negotiate",
+      "morphology": {
+        "partOfSpeech": "verb",
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:cheap",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "cheap",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:free",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "free",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:costly",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "costly",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:ripe",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "ripe",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:cooked",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "cooked",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "Existing authored sense; retain as inactive editorial alias, not another quota entry."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:fair",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "fair",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:adjective:unfair",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "unfair",
+      "morphology": {
+        "partOfSpeech": "adjective",
+        "reviewRequest": "Confirm sense, gender/number agreement and direct/oblique forms in cited contexts."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:pupil",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "pupil",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "candidate:noun:number",
+      "kind": "excluded-candidate",
+      "priority": "P3",
+      "intendedMeaning": "number",
+      "morphology": {
+        "partOfSpeech": "noun",
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/DISTRICT_VOCABULARY_CANDIDATES.json",
+          "selectionNote": "Excluded by curriculum request (sense-specific where stated).",
+          "auditNote": "No confirmed existing identity; translation and lexical identity review required before promotion."
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

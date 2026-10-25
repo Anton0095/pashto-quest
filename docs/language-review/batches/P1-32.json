@@ -1,0 +1,974 @@
+{
+  "batchId": "P1-32",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "surface:literal:challenge-ui.js:65",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:challenge-ui.js:65",
+          "pashto": "Saleha → Player: “Mina and I welcome you on our walk. When you join our group, say موږ — we.” Mina → Player: “Address Saleha and me as تاسې — you both.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Saleha → Player: “Mina and I welcome you on our walk. When you join our group, say موږ — we.” Mina → Player: “Address Saleha and me as تاسې — you both.”",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:challenge-ui.js:124",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:challenge-ui.js:124",
+          "pashto": "Come in and sit down. We have talked as friends all day. Let us practise what YOU and I do, and join two clauses using او. When I say “you” informally, I am addressing you; when you do, you are addressing a familiar friend, not an elder.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Come in and sit down. We have talked as friends all day. Let us practise what YOU and I do, and join two clauses using او. When I say “you” informally, I am addressing you; when you do, you are addressing a familiar friend, not an elder.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:challenge-ui.js:126",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:challenge-ui.js:126",
+          "pashto": "Welcome to our gathering near the lake! Saleha, Edris, Ms Hameed and Muhammad Jan are all here. Listen to the speaker, look carefully at whom you are addressing, and choose informal ته or polite/plural تاسې.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Welcome to our gathering near the lake! Saleha, Edris, Ms Hameed and Muhammad Jan are all here. Listen to the speaker, look carefully at whom you are addressing, and choose informal ته or polite/plural تاسې.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:challenge-ui.js:383",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:challenge-ui.js:383",
+          "pashto": "ته · informal singular",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        },
+        {
+          "id": "literal:challenge-ui.js:383",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        }
+      ],
+      "existing": {
+        "pashto": "ته · informal singular",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:challenge-ui.js:384",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:challenge-ui.js:384",
+          "pashto": "تاسې · respectful singular or plural",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        },
+        {
+          "id": "literal:challenge-ui.js:384",
+          "pashto": "تاسې",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې · respectful singular or plural",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:challenge-ui.js:526",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:challenge-ui.js:526",
+          "pashto": "ته",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/challenge-ui.js"
+        }
+      ],
+      "existing": {
+        "pashto": "ته",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:content.js:112",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:content.js:112",
+          "pashto": "Muhammad Jan: “You have learnt to speak about yourself. Now we will use ته when talking to a familiar person, and join two meaningful thoughts with او — and.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Muhammad Jan: “You have learnt to speak about yourself. Now we will use ته when talking to a familiar person, and join two meaningful thoughts with او — and.”",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:content.js:122",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:content.js:122",
+          "pashto": "Muhammad Jan: “Our neighbours are coming together near the lake. With elders, the polite تاسې is usually the respectful choice.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Muhammad Jan: “Our neighbours are coming together near the lake. With elders, the polite تاسې is usually the respectful choice.”",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:content.js:124",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:content.js:124",
+          "pashto": "Edris: “Saleha is helping at the shop today! You can use ته with a friend like her, and تاسې to speak to me politely.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Edris: “Saleha is helping at the shop today! You can use ته with a friend like her, and تاسې to speak to me politely.”",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:content.js:126",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:content.js:126",
+          "pashto": "Saleha: “Everyone is gathering at the lake! Muhammad Jan and Ms Hameed will be here too. Practise speaking to a group with تاسې.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Saleha: “Everyone is gathering at the lake! Muhammad Jan and Ms Hameed will be here too. Practise speaking to a group with تاسې.”",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:content.js:128",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:content.js:128",
+          "pashto": "Ms Hameed: “Today you will learn how to use تاسې for elders, teachers, and groups, and how it changes the verb endings.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Ms Hameed: “Today you will learn how to use تاسې for elders, teachers, and groups, and how it changes the verb endings.”",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:content.js:138",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:content.js:138",
+          "pashto": "Ms Hameed: “Now we will practise first-person plural forms: موږ, we.”",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Ms Hameed: “Now we will practise first-person plural forms: موږ, we.”",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:content.js:262",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:content.js:262",
+          "pashto": "ستاسو جنسیت څه دی؟",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "ستاسو جنسیت څه دی؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:content.js:270",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:content.js:270",
+          "pashto": "ستا نوم څه دی؟",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "ستا نوم څه دی؟",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:content.js:322",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:content.js:322",
+          "pashto": "Muhammad Jan welcomes you home to learn informal ته and link actions using او. Return for a friendly conversation at the end of the day.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Muhammad Jan welcomes you home to learn informal ته and link actions using او. Return for a friendly conversation at the end of the day.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:content.js:323",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:content.js:323",
+          "pashto": "Ms Hameed teaches respectful/plural تاسې. The whole village is preparing to gather beside the lake. Characters can now visit different locations.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "Ms Hameed teaches respectful/plural تاسې. The whole village is preparing to gather beside the lake. Characters can now visit different locations.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:grammar-content.js:18",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:grammar-content.js:18",
+          "pashto": "زه منډې وهم — I run. مینا او زه یو ځای منډې وهو — Mina and I run together. موږ یو ځای منډې وهو — We run together. A subject containing the speaker takes a first-person plural verb. Notice وهم → وهو.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "زه منډې وهم — I run. مینا او زه یو ځای منډې وهو — Mina and I run together. موږ یو ځای منډې وهو — We run together. A subject containing the speaker takes a first-person plural verb. Notice وهم → وهو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:grammar-content.js:22",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:grammar-content.js:22",
+          "pashto": "موږ includes the speaker",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "موږ includes the speaker",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:grammar-content.js:23",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:grammar-content.js:23",
+          "pashto": "موږ ښوونځي ته ځو — We go to school. تاسې ښوونځي ته ځئ — You all go to school. ځو and ځئ differ; learn whole verb forms rather than adding one ending to every stem. The pronoun can sometimes be omitted because the verb marks person.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "موږ ښوونځي ته ځو — We go to school. تاسې ښوونځي ته ځئ — You all go to school. ځو and ځئ differ; learn whole verb forms rather than adding one ending to every stem. The pronoun can sometimes be omitted because the verb marks person.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:grammar-content.js:40",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:grammar-content.js:40",
+          "pashto": "هغه ډوډۍ اخلي — He buys bread. هغوی ډوډۍ اخلي — They buy bread. The present verb اخلي can be shared by third-person singular and plural; هغوی and context identify the group.",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "هغه ډوډۍ اخلي — He buys bread. هغوی ډوډۍ اخلي — They buy bread. The present verb اخلي can be shared by third-person singular and plural; هغوی and context identify the group.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:grammar-content.js:45",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:grammar-content.js:45",
+          "pashto": "موږ سابه اخلو — We buy vegetables (you and me included). تاسې سابه اخلئ — You all buy vegetables (I address customers). هغوی سابه اخلي — They buy vegetables (I describe other customers).",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "موږ سابه اخلو — We buy vegetables (you and me included). تاسې سابه اخلئ — You all buy vegetables (I address customers). هغوی سابه اخلي — They buy vegetables (I describe other customers).",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:grammar-content.js:58",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:grammar-content.js:58",
+          "pashto": "دروازه",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "دروازه",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:grammar-content.js:59",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:grammar-content.js:59",
+          "pashto": "خلاصوي",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "خلاصوي",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:grammar-content.js:66",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:grammar-content.js:66",
+          "pashto": "اوبه",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "اوبه",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:literal:grammar-content.js:67",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "context-in-source"
+      ],
+      "evidence": [
+        {
+          "id": "literal:grammar-content.js:67",
+          "pashto": "څښي",
+          "englishContext": "Authored inline text; reviewer must distinguish examples, alternatives and UI labels.",
+          "romanisation": null,
+          "day": null,
+          "scene": null,
+          "source": "src/grammar-content.js"
+        }
+      ],
+      "existing": {
+        "pashto": "څښي",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

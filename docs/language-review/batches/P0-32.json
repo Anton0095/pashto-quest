@@ -1,0 +1,1350 @@
+{
+  "batchId": "P0-32",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "surface:exam-verb-they:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-they:option:2",
+          "pashto": "لولم",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-they",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "They, the other students, read books: هغوی کتابونه ___.",
+            "correct": "لولي",
+            "options": [
+              "لولي",
+              "لولو",
+              "لولم",
+              "لولئ"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Player",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولم",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-verb-they:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-verb-they:option:3",
+          "pashto": "لولئ",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-verb-they",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "They, the other students, read books: هغوی کتابونه ___.",
+            "correct": "لولي",
+            "options": [
+              "لولي",
+              "لولو",
+              "لولم",
+              "لولئ"
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Player",
+            "section": "verbs",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "لولئ",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-compound-room:comment",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Ms Hameed asks you to join two present-tense clauses with او.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-compound-room:comment",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        }
+      ],
+      "existing": {
+        "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-compound-read:comment",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Ms Hameed asks you to join two present-tense clauses with او.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-compound-read:comment",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        }
+      ],
+      "existing": {
+        "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-compound-buy:comment",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Ms Hameed asks you to join two present-tense clauses with او.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-compound-buy:comment",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        }
+      ],
+      "existing": {
+        "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-compound-books:comment",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Ms Hameed asks you to join two present-tense clauses with او.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-compound-books:comment",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha and Mina"
+        }
+      ],
+      "existing": {
+        "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:w7-compound-door:comment",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Ms Hameed asks you to join two present-tense clauses with او.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "w7-compound-door:comment",
+          "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "englishContext": "Ms Hameed asks you to join two present-tense clauses with او.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Ms Hameed"
+        }
+      ],
+      "existing": {
+        "pashto": "Ms Hameed asks you to join two present-tense clauses with او.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w6-we-run:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Mina invites you to join the group. Reply “We run together”.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w6-we-run:correct",
+          "pashto": "موږ یو ځای منډې وهو.",
+          "englishContext": "Mina invites you to join the group. Reply “We run together”.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Mina"
+        }
+      ],
+      "existing": {
+        "pashto": "موږ یو ځای منډې وهو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w6-we-run:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w6-we-run:option:0",
+          "pashto": "موږ یو ځای منډې وهو.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-we-run",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Mina invites you to join the group. Reply “We run together”.",
+            "correct": "موږ یو ځای منډې وهو.",
+            "options": [
+              "موږ یو ځای منډې وهو.",
+              "زه منډې وهم.",
+              "تاسې منډې وهئ.",
+              "هغوی منډې وهي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Mina",
+            "section": "dialogue",
+            "audioId": "w6-we-run",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Mina"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ یو ځای منډې وهو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w6-we-run:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w6-we-run:option:1",
+          "pashto": "زه منډې وهم.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-we-run",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Mina invites you to join the group. Reply “We run together”.",
+            "correct": "موږ یو ځای منډې وهو.",
+            "options": [
+              "موږ یو ځای منډې وهو.",
+              "زه منډې وهم.",
+              "تاسې منډې وهئ.",
+              "هغوی منډې وهي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Mina",
+            "section": "dialogue",
+            "audioId": "w6-we-run",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Mina"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "زه منډې وهم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w6-we-run:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w6-we-run:option:2",
+          "pashto": "تاسې منډې وهئ.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-we-run",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Mina invites you to join the group. Reply “We run together”.",
+            "correct": "موږ یو ځای منډې وهو.",
+            "options": [
+              "موږ یو ځای منډې وهو.",
+              "زه منډې وهم.",
+              "تاسې منډې وهئ.",
+              "هغوی منډې وهي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Mina",
+            "section": "dialogue",
+            "audioId": "w6-we-run",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Mina"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې منډې وهئ.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w6-we-run:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w6-we-run:option:3",
+          "pashto": "هغوی منډې وهي.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-we-run",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "Mina invites you to join the group. Reply “We run together”.",
+            "correct": "موږ یو ځای منډې وهو.",
+            "options": [
+              "موږ یو ځای منډې وهو.",
+              "زه منډې وهم.",
+              "تاسې منډې وهئ.",
+              "هغوی منډې وهي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Mina",
+            "section": "dialogue",
+            "audioId": "w6-we-run",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Mina"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی منډې وهي.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-you-bird:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You address Saleha alone: “You see the bird”.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-you-bird:correct",
+          "pashto": "ته مرغۍ وینې.",
+          "englishContext": "You address Saleha alone: “You see the bird”.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha"
+        }
+      ],
+      "existing": {
+        "pashto": "ته مرغۍ وینې.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-you-bird:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-you-bird:option:0",
+          "pashto": "ته مرغۍ وینې.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-you-bird",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha alone: “You see the bird”.",
+            "correct": "ته مرغۍ وینې.",
+            "options": [
+              "ته مرغۍ وینې.",
+              "زه مرغۍ وینم.",
+              "موږ مرغۍ وینو.",
+              "هغوی مرغۍ ویني."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "dialogue",
+            "audioId": "w7-you-bird",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته مرغۍ وینې.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-you-bird:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-you-bird:option:1",
+          "pashto": "زه مرغۍ وینم.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-you-bird",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha alone: “You see the bird”.",
+            "correct": "ته مرغۍ وینې.",
+            "options": [
+              "ته مرغۍ وینې.",
+              "زه مرغۍ وینم.",
+              "موږ مرغۍ وینو.",
+              "هغوی مرغۍ ویني."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "dialogue",
+            "audioId": "w7-you-bird",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "زه مرغۍ وینم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-you-bird:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-you-bird:option:2",
+          "pashto": "موږ مرغۍ وینو.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-you-bird",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha alone: “You see the bird”.",
+            "correct": "ته مرغۍ وینې.",
+            "options": [
+              "ته مرغۍ وینې.",
+              "زه مرغۍ وینم.",
+              "موږ مرغۍ وینو.",
+              "هغوی مرغۍ ویني."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "dialogue",
+            "audioId": "w7-you-bird",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ مرغۍ وینو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-you-bird:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-you-bird:option:3",
+          "pashto": "هغوی مرغۍ ویني.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-you-bird",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address Saleha alone: “You see the bird”.",
+            "correct": "ته مرغۍ وینې.",
+            "options": [
+              "ته مرغۍ وینې.",
+              "زه مرغۍ وینم.",
+              "موږ مرغۍ وینو.",
+              "هغوی مرغۍ ویني."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha",
+            "section": "dialogue",
+            "audioId": "w7-you-bird",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Saleha"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "هغوی مرغۍ ویني.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-polite-tea:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You respectfully address Muhammad Jan: “You drink tea”.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-polite-tea:correct",
+          "pashto": "تاسې چای څښئ.",
+          "englishContext": "You respectfully address Muhammad Jan: “You drink tea”.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Muhammad Jan"
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې چای څښئ.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-polite-tea:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-polite-tea:option:0",
+          "pashto": "تاسې چای څښئ.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-polite-tea",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You respectfully address Muhammad Jan: “You drink tea”.",
+            "correct": "تاسې چای څښئ.",
+            "options": [
+              "تاسې چای څښئ.",
+              "ته چای څښې.",
+              "زه چای څښم.",
+              "موږ چای څښو."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Muhammad Jan",
+            "section": "dialogue",
+            "audioId": "w7-polite-tea",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Muhammad Jan"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې چای څښئ.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-polite-tea:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-polite-tea:option:1",
+          "pashto": "ته چای څښې.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-polite-tea",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You respectfully address Muhammad Jan: “You drink tea”.",
+            "correct": "تاسې چای څښئ.",
+            "options": [
+              "تاسې چای څښئ.",
+              "ته چای څښې.",
+              "زه چای څښم.",
+              "موږ چای څښو."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Muhammad Jan",
+            "section": "dialogue",
+            "audioId": "w7-polite-tea",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Muhammad Jan"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "ته چای څښې.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-polite-tea:option:2",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-polite-tea:option:2",
+          "pashto": "زه چای څښم.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-polite-tea",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You respectfully address Muhammad Jan: “You drink tea”.",
+            "correct": "تاسې چای څښئ.",
+            "options": [
+              "تاسې چای څښئ.",
+              "ته چای څښې.",
+              "زه چای څښم.",
+              "موږ چای څښو."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Muhammad Jan",
+            "section": "dialogue",
+            "audioId": "w7-polite-tea",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Muhammad Jan"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "زه چای څښم.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w7-polite-tea:option:3",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w7-polite-tea:option:3",
+          "pashto": "موږ چای څښو.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w7-polite-tea",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You respectfully address Muhammad Jan: “You drink tea”.",
+            "correct": "تاسې چای څښئ.",
+            "options": [
+              "تاسې چای څښئ.",
+              "ته چای څښې.",
+              "زه چای څښم.",
+              "موږ چای څښو."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Muhammad Jan",
+            "section": "dialogue",
+            "audioId": "w7-polite-tea",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed",
+              "Muhammad Jan"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ چای څښو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w6-river-you-walk:correct",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "You address both sisters: “You both walk beside the river”.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "school"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w6-river-you-walk:correct",
+          "pashto": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+          "englishContext": "You address both sisters: “You both walk beside the river”.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "school",
+          "source": "src/assessment-content.js",
+          "speaker": "Ms Hameed",
+          "recipient": "Saleha and Mina"
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w6-river-you-walk:option:0",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w6-river-you-walk:option:0",
+          "pashto": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-river-you-walk",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address both sisters: “You both walk beside the river”.",
+            "correct": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+            "options": [
+              "تاسې دواړه د سیند تر څنګ ګرځئ.",
+              "موږ د سیند تر څنګ ګرځو.",
+              "زه د سیند تر څنګ ګرځم.",
+              "هغوی د سیند تر څنګ ګرځي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "dialogue",
+            "audioId": "w6-river-you-walk",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:exam-dialogue-w6-river-you-walk:option:1",
+      "kind": "authored-surface",
+      "priority": "P0",
+      "intendedMeaning": "Assessment option; correctness depends on authored question.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "challenge"
+      ],
+      "evidence": [
+        {
+          "id": "exam-dialogue-w6-river-you-walk:option:1",
+          "pashto": "موږ د سیند تر څنګ ګرځو.",
+          "englishContext": "Assessment option; correctness depends on authored question.",
+          "romanisation": null,
+          "day": 7,
+          "scene": "challenge",
+          "source": "src/assessment-content.js",
+          "question": {
+            "id": "exam-dialogue-w6-river-you-walk",
+            "kind": "choice",
+            "direction": "en-ps",
+            "prompt": "You address both sisters: “You both walk beside the river”.",
+            "correct": "تاسې دواړه د سیند تر څنګ ګرځئ.",
+            "options": [
+              "تاسې دواړه د سیند تر څنګ ګرځئ.",
+              "موږ د سیند تر څنګ ګرځو.",
+              "زه د سیند تر څنګ ګرځم.",
+              "هغوی د سیند تر څنګ ګرځي."
+            ],
+            "speaker": "Ms Hameed",
+            "recipient": "Saleha and Mina",
+            "section": "dialogue",
+            "audioId": "w6-river-you-walk",
+            "comment": "Ms Hameed presents this scenario; the player supplies the quoted response.",
+            "day": 7,
+            "location": "school",
+            "participants": [
+              "Ms Hameed"
+            ]
+          }
+        }
+      ],
+      "existing": {
+        "pashto": "موږ د سیند تر څنګ ګرځو.",
+        "romanisation": null
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

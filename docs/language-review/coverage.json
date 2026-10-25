@@ -1,0 +1,1701 @@
+{
+  "counts": {
+    "existing-lemma": 127,
+    "authored-surface": 1529,
+    "possible-form-or-identity-gap": 90,
+    "selected-candidate": 301,
+    "excluded-candidate": 59,
+    "universal-target": 40,
+    "expression": 17
+  },
+  "playableLemmas": 127,
+  "playableForms": 223,
+  "surfaceRecords": 1573,
+  "possibleUnmappedTokens": 90,
+  "structuralGaps": {
+    "unmappedSourceReferences": [],
+    "orphanSourceMappingIds": [],
+    "missingLexicalCardMappings": [],
+    "incompleteForms": [
+      {
+        "lemmaId": "lemma:n-house",
+        "formId": "lemma:n-house:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "House"
+      },
+      {
+        "lemmaId": "lemma:n-door",
+        "formId": "lemma:n-door:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Door"
+      },
+      {
+        "lemmaId": "lemma:n-door",
+        "formId": "lemma:n-door:variant:1",
+        "morphology": {
+          "form": "plural or oblique"
+        },
+        "meaning": "Door"
+      },
+      {
+        "lemmaId": "lemma:n-room",
+        "formId": "lemma:n-room:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Room"
+      },
+      {
+        "lemmaId": "lemma:v-open",
+        "formId": "lemma:v-open:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To open"
+      },
+      {
+        "lemmaId": "lemma:a-big",
+        "formId": "lemma:a-big:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Big"
+      },
+      {
+        "lemmaId": "lemma:n-water",
+        "formId": "lemma:n-water:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Water"
+      },
+      {
+        "lemmaId": "lemma:n-river",
+        "formId": "lemma:n-river:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "River"
+      },
+      {
+        "lemmaId": "lemma:v-drink",
+        "formId": "lemma:v-drink:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To drink"
+      },
+      {
+        "lemmaId": "lemma:a-cold",
+        "formId": "lemma:a-cold:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Cold"
+      },
+      {
+        "lemmaId": "lemma:a-cold",
+        "formId": "lemma:a-cold:variant:1",
+        "morphology": {
+          "form": "feminine plural"
+        },
+        "meaning": "Cold"
+      },
+      {
+        "lemmaId": "lemma:n-market",
+        "formId": "lemma:n-market:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Market"
+      },
+      {
+        "lemmaId": "lemma:n-bread",
+        "formId": "lemma:n-bread:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Bread / food"
+      },
+      {
+        "lemmaId": "lemma:n-shop",
+        "formId": "lemma:n-shop:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Shop"
+      },
+      {
+        "lemmaId": "lemma:v-eat",
+        "formId": "lemma:v-eat:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To eat"
+      },
+      {
+        "lemmaId": "lemma:a-fresh",
+        "formId": "lemma:a-fresh:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Fresh"
+      },
+      {
+        "lemmaId": "lemma:n-book",
+        "formId": "lemma:n-book:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Book"
+      },
+      {
+        "lemmaId": "lemma:n-school",
+        "formId": "lemma:n-school:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "School"
+      },
+      {
+        "lemmaId": "lemma:n-school",
+        "formId": "lemma:n-school:variant:1",
+        "morphology": {
+          "form": "oblique"
+        },
+        "meaning": "School"
+      },
+      {
+        "lemmaId": "lemma:v-read",
+        "formId": "lemma:v-read:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To read"
+      },
+      {
+        "lemmaId": "lemma:a-new",
+        "formId": "lemma:a-new:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "New"
+      },
+      {
+        "lemmaId": "lemma:n-window",
+        "formId": "lemma:n-window:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Window"
+      },
+      {
+        "lemmaId": "lemma:v-live",
+        "formId": "lemma:v-live:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To live / reside"
+      },
+      {
+        "lemmaId": "lemma:a-small",
+        "formId": "lemma:a-small:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Small"
+      },
+      {
+        "lemmaId": "lemma:a-small",
+        "formId": "lemma:a-small:variant:1",
+        "morphology": {
+          "form": "feminine singular / plural"
+        },
+        "meaning": "Small"
+      },
+      {
+        "lemmaId": "lemma:n-fish",
+        "formId": "lemma:n-fish:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Fish"
+      },
+      {
+        "lemmaId": "lemma:v-see",
+        "formId": "lemma:v-see:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To see"
+      },
+      {
+        "lemmaId": "lemma:a-clean",
+        "formId": "lemma:a-clean:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Clean"
+      },
+      {
+        "lemmaId": "lemma:a-clean",
+        "formId": "lemma:a-clean:feminine",
+        "morphology": {
+          "gender": "feminine",
+          "number": "singular"
+        },
+        "meaning": "Clean"
+      },
+      {
+        "lemmaId": "lemma:n-apple",
+        "formId": "lemma:n-apple:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Apple"
+      },
+      {
+        "lemmaId": "lemma:n-apple",
+        "formId": "lemma:n-apple:variant:1",
+        "morphology": {
+          "form": "plural or oblique"
+        },
+        "meaning": "Apple"
+      },
+      {
+        "lemmaId": "lemma:v-buy",
+        "formId": "lemma:v-buy:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To buy / take"
+      },
+      {
+        "lemmaId": "lemma:a-expensive",
+        "formId": "lemma:a-expensive:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Expensive"
+      },
+      {
+        "lemmaId": "lemma:n-pen",
+        "formId": "lemma:n-pen:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Pen"
+      },
+      {
+        "lemmaId": "lemma:v-write",
+        "formId": "lemma:v-write:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To write"
+      },
+      {
+        "lemmaId": "lemma:a-easy",
+        "formId": "lemma:a-easy:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Easy"
+      },
+      {
+        "lemmaId": "lemma:n-table",
+        "formId": "lemma:n-table:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Table"
+      },
+      {
+        "lemmaId": "lemma:v-clean",
+        "formId": "lemma:v-clean:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To clean"
+      },
+      {
+        "lemmaId": "lemma:a-old",
+        "formId": "lemma:a-old:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Old"
+      },
+      {
+        "lemmaId": "lemma:n-pond",
+        "formId": "lemma:n-pond:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Pond"
+      },
+      {
+        "lemmaId": "lemma:v-swim",
+        "formId": "lemma:v-swim:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To swim"
+      },
+      {
+        "lemmaId": "lemma:a-deep",
+        "formId": "lemma:a-deep:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Deep"
+      },
+      {
+        "lemmaId": "lemma:n-money",
+        "formId": "lemma:n-money:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Money"
+      },
+      {
+        "lemmaId": "lemma:v-give",
+        "formId": "lemma:v-give:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To give"
+      },
+      {
+        "lemmaId": "lemma:a-cheap",
+        "formId": "lemma:a-cheap:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Cheap / inexpensive"
+      },
+      {
+        "lemmaId": "lemma:n-lesson",
+        "formId": "lemma:n-lesson:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Lesson"
+      },
+      {
+        "lemmaId": "lemma:v-learn",
+        "formId": "lemma:v-learn:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To learn"
+      },
+      {
+        "lemmaId": "lemma:a-good",
+        "formId": "lemma:a-good:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Good"
+      },
+      {
+        "lemmaId": "lemma:n-family",
+        "formId": "lemma:n-family:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Family"
+      },
+      {
+        "lemmaId": "lemma:v-talk",
+        "formId": "lemma:v-talk:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To talk"
+      },
+      {
+        "lemmaId": "lemma:a-happy",
+        "formId": "lemma:a-happy:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Happy"
+      },
+      {
+        "lemmaId": "lemma:n-tea",
+        "formId": "lemma:n-tea:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Tea"
+      },
+      {
+        "lemmaId": "lemma:v-go",
+        "formId": "lemma:v-go:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To go"
+      },
+      {
+        "lemmaId": "lemma:a-hot",
+        "formId": "lemma:a-hot:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Hot / warm"
+      },
+      {
+        "lemmaId": "lemma:n-fruit",
+        "formId": "lemma:n-fruit:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Fruit"
+      },
+      {
+        "lemmaId": "lemma:v-sell",
+        "formId": "lemma:v-sell:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To sell"
+      },
+      {
+        "lemmaId": "lemma:a-sweet",
+        "formId": "lemma:a-sweet:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Sweet"
+      },
+      {
+        "lemmaId": "lemma:a-sweet",
+        "formId": "lemma:a-sweet:variant:1",
+        "morphology": {
+          "form": "feminine singular"
+        },
+        "meaning": "Sweet"
+      },
+      {
+        "lemmaId": "lemma:n-language",
+        "formId": "lemma:n-language:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Pashto (language)"
+      },
+      {
+        "lemmaId": "lemma:n-student",
+        "formId": "lemma:n-student:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Student"
+      },
+      {
+        "lemmaId": "lemma:a-difficult",
+        "formId": "lemma:a-difficult:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Difficult"
+      },
+      {
+        "lemmaId": "lemma:n-guest",
+        "formId": "lemma:n-guest:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Guest"
+      },
+      {
+        "lemmaId": "lemma:a-dark",
+        "formId": "lemma:a-dark:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Dark"
+      },
+      {
+        "lemmaId": "lemma:n-rain",
+        "formId": "lemma:n-rain:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Rain"
+      },
+      {
+        "lemmaId": "lemma:a-calm",
+        "formId": "lemma:a-calm:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Calm"
+      },
+      {
+        "lemmaId": "lemma:n-vegetables",
+        "formId": "lemma:n-vegetables:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Vegetables"
+      },
+      {
+        "lemmaId": "lemma:a-ripe",
+        "formId": "lemma:a-ripe:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Ripe / cooked (feminine)"
+      },
+      {
+        "lemmaId": "lemma:n-notebook",
+        "formId": "lemma:n-notebook:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Notebook"
+      },
+      {
+        "lemmaId": "lemma:a-useful",
+        "formId": "lemma:a-useful:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Useful"
+      },
+      {
+        "lemmaId": "lemma:n-children",
+        "formId": "lemma:n-children:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Children"
+      },
+      {
+        "lemmaId": "lemma:v-play",
+        "formId": "lemma:v-play:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To play"
+      },
+      {
+        "lemmaId": "lemma:a-loud",
+        "formId": "lemma:a-loud:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Loud / high"
+      },
+      {
+        "lemmaId": "lemma:n-bird3",
+        "formId": "lemma:n-bird3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Birds"
+      },
+      {
+        "lemmaId": "lemma:n-bird3",
+        "formId": "lemma:n-bird3:form:1",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Bird"
+      },
+      {
+        "lemmaId": "lemma:a-clear",
+        "formId": "lemma:a-clear:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Clear / bright"
+      },
+      {
+        "lemmaId": "lemma:n-people",
+        "formId": "lemma:n-people:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "People"
+      },
+      {
+        "lemmaId": "lemma:v-like",
+        "formId": "lemma:v-like:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To like"
+      },
+      {
+        "lemmaId": "lemma:a-many",
+        "formId": "lemma:a-many:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Many / much"
+      },
+      {
+        "lemmaId": "lemma:a-important",
+        "formId": "lemma:a-important:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Important"
+      },
+      {
+        "lemmaId": "lemma:a-open-state",
+        "formId": "lemma:a-open-state:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Open"
+      },
+      {
+        "lemmaId": "lemma:a-open-state",
+        "formId": "lemma:a-open-state:feminine",
+        "morphology": {
+          "gender": "feminine",
+          "number": "singular"
+        },
+        "meaning": "Open"
+      },
+      {
+        "lemmaId": "lemma:a-blue",
+        "formId": "lemma:a-blue:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Blue / green"
+      },
+      {
+        "lemmaId": "lemma:v-walk3",
+        "formId": "lemma:v-walk3:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To walk / stroll"
+      },
+      {
+        "lemmaId": "lemma:v-sit3",
+        "formId": "lemma:v-sit3:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To sit"
+      },
+      {
+        "lemmaId": "lemma:n-word3",
+        "formId": "lemma:n-word3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Word"
+      },
+      {
+        "lemmaId": "lemma:n-potato3",
+        "formId": "lemma:n-potato3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Potatoes"
+      },
+      {
+        "lemmaId": "lemma:n-onion3",
+        "formId": "lemma:n-onion3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Onions"
+      },
+      {
+        "lemmaId": "lemma:n-bag3",
+        "formId": "lemma:n-bag3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Bag"
+      },
+      {
+        "lemmaId": "lemma:n-bag3",
+        "formId": "lemma:n-bag3:variant:1",
+        "morphology": {
+          "form": "plural or oblique"
+        },
+        "meaning": "Bag"
+      },
+      {
+        "lemmaId": "lemma:v-want3",
+        "formId": "lemma:v-want3:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To want"
+      },
+      {
+        "lemmaId": "lemma:v-carry3",
+        "formId": "lemma:v-carry3:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To carry / take"
+      },
+      {
+        "lemmaId": "lemma:v-close2",
+        "formId": "lemma:v-close2:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To close"
+      },
+      {
+        "lemmaId": "lemma:v-sell2",
+        "formId": "lemma:v-sell2:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To sell"
+      },
+      {
+        "lemmaId": "lemma:n-milk2",
+        "formId": "lemma:n-milk2:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Milk"
+      },
+      {
+        "lemmaId": "lemma:v-throw2",
+        "formId": "lemma:v-throw2:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To throw"
+      },
+      {
+        "lemmaId": "lemma:v-catch2",
+        "formId": "lemma:v-catch2:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To catch / hold"
+      },
+      {
+        "lemmaId": "lemma:n-stone2",
+        "formId": "lemma:n-stone2:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Stone"
+      },
+      {
+        "lemmaId": "lemma:n-chair4",
+        "formId": "lemma:n-chair4:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Chair"
+      },
+      {
+        "lemmaId": "lemma:n-basket4",
+        "formId": "lemma:n-basket4:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Basket"
+      },
+      {
+        "lemmaId": "lemma:n-question4",
+        "formId": "lemma:n-question4:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Question"
+      },
+      {
+        "lemmaId": "lemma:n-sentence4",
+        "formId": "lemma:n-sentence4:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Sentence"
+      },
+      {
+        "lemmaId": "lemma:w6-we",
+        "formId": "lemma:w6-we:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "We"
+      },
+      {
+        "lemmaId": "lemma:w6-together",
+        "formId": "lemma:w6-together:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Together"
+      },
+      {
+        "lemmaId": "lemma:w6-you-all",
+        "formId": "lemma:w6-you-all:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "You all"
+      },
+      {
+        "lemmaId": "lemma:w6-run",
+        "formId": "lemma:w6-run:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To run"
+      },
+      {
+        "lemmaId": "lemma:w6-hills",
+        "formId": "lemma:w6-hills:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Hills"
+      },
+      {
+        "lemmaId": "lemma:w2-d9-vocab-2",
+        "formId": "lemma:w2-d9-vocab-2:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Two"
+      },
+      {
+        "lemmaId": "lemma:vocab6-house-help",
+        "formId": "lemma:vocab6-house-help:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To help"
+      },
+      {
+        "lemmaId": "lemma:vocab6-market-choose",
+        "formId": "lemma:vocab6-market-choose:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To choose"
+      },
+      {
+        "lemmaId": "lemma:vocab6-school-answers",
+        "formId": "lemma:vocab6-school-answers:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Answers"
+      },
+      {
+        "lemmaId": "lemma:vocab7-market-customers",
+        "formId": "lemma:vocab7-market-customers:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Customers"
+      },
+      {
+        "lemmaId": "lemma:vocab7-market-stall",
+        "formId": "lemma:vocab7-market-stall:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Stall"
+      },
+      {
+        "lemmaId": "lemma:vocab7-river-bottles",
+        "formId": "lemma:vocab7-river-bottles:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Bottles"
+      },
+      {
+        "lemmaId": "lemma:vocab7-river-watch",
+        "formId": "lemma:vocab7-river-watch:form:0",
+        "morphology": {
+          "form": "infinitive",
+          "number": "unspecified"
+        },
+        "meaning": "To watch"
+      },
+      {
+        "lemmaId": "lemma:w2-d8-vocab-1",
+        "formId": "lemma:w2-d8-vocab-1:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "This / these"
+      },
+      {
+        "lemmaId": "lemma:w2-d8-vocab-2",
+        "formId": "lemma:w2-d8-vocab-2:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "That / those"
+      },
+      {
+        "lemmaId": "lemma:w2-d8-vocab-3",
+        "formId": "lemma:w2-d8-vocab-3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Near"
+      },
+      {
+        "lemmaId": "lemma:w2-d8-vocab-4",
+        "formId": "lemma:w2-d8-vocab-4:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Far"
+      },
+      {
+        "lemmaId": "lemma:w2-d9-vocab-1",
+        "formId": "lemma:w2-d9-vocab-1:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "One"
+      },
+      {
+        "lemmaId": "lemma:w2-d9-vocab-3",
+        "formId": "lemma:w2-d9-vocab-3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Three"
+      },
+      {
+        "lemmaId": "lemma:w2-d9-vocab-4",
+        "formId": "lemma:w2-d9-vocab-4:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Four"
+      },
+      {
+        "lemmaId": "lemma:w2-d9-vocab-5",
+        "formId": "lemma:w2-d9-vocab-5:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Five"
+      },
+      {
+        "lemmaId": "lemma:w2-d10-vocab-1",
+        "formId": "lemma:w2-d10-vocab-1:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Here"
+      },
+      {
+        "lemmaId": "lemma:w2-d10-vocab-2",
+        "formId": "lemma:w2-d10-vocab-2:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "There"
+      },
+      {
+        "lemmaId": "lemma:w2-d10-vocab-3",
+        "formId": "lemma:w2-d10-vocab-3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Where"
+      },
+      {
+        "lemmaId": "lemma:w2-d11-vocab-1",
+        "formId": "lemma:w2-d11-vocab-1:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "My / mine"
+      },
+      {
+        "lemmaId": "lemma:w2-d11-vocab-2",
+        "formId": "lemma:w2-d11-vocab-2:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Your (respectful or plural)"
+      },
+      {
+        "lemmaId": "lemma:w2-d11-vocab-3",
+        "formId": "lemma:w2-d11-vocab-3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Our"
+      },
+      {
+        "lemmaId": "lemma:w2-d12-vocab-1",
+        "formId": "lemma:w2-d12-vocab-1:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Who"
+      },
+      {
+        "lemmaId": "lemma:w2-d12-vocab-2",
+        "formId": "lemma:w2-d12-vocab-2:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "What"
+      },
+      {
+        "lemmaId": "lemma:w2-d12-vocab-3",
+        "formId": "lemma:w2-d12-vocab-3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Which (masculine)"
+      },
+      {
+        "lemmaId": "lemma:w2-d12-vocab-5",
+        "formId": "lemma:w2-d12-vocab-5:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "How many"
+      },
+      {
+        "lemmaId": "lemma:w2-d13-vocab-1",
+        "formId": "lemma:w2-d13-vocab-1:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Today"
+      },
+      {
+        "lemmaId": "lemma:w2-d13-vocab-2",
+        "formId": "lemma:w2-d13-vocab-2:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Quickly"
+      },
+      {
+        "lemmaId": "lemma:w2-d13-vocab-3",
+        "formId": "lemma:w2-d13-vocab-3:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Always"
+      },
+      {
+        "lemmaId": "lemma:w2-d13-vocab-4",
+        "formId": "lemma:w2-d13-vocab-4:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Slowly"
+      },
+      {
+        "lemmaId": "lemma:w2-d13-vocab-5",
+        "formId": "lemma:w2-d13-vocab-5:form:0",
+        "morphology": {
+          "form": "source form",
+          "number": "unspecified"
+        },
+        "meaning": "Sometimes"
+      }
+    ]
+  },
+  "batches": [
+    {
+      "batchId": "P0-01",
+      "count": 25,
+      "file": "batches/P0-01.json"
+    },
+    {
+      "batchId": "P0-02",
+      "count": 25,
+      "file": "batches/P0-02.json"
+    },
+    {
+      "batchId": "P0-03",
+      "count": 25,
+      "file": "batches/P0-03.json"
+    },
+    {
+      "batchId": "P0-04",
+      "count": 25,
+      "file": "batches/P0-04.json"
+    },
+    {
+      "batchId": "P0-05",
+      "count": 25,
+      "file": "batches/P0-05.json"
+    },
+    {
+      "batchId": "P0-06",
+      "count": 25,
+      "file": "batches/P0-06.json"
+    },
+    {
+      "batchId": "P0-07",
+      "count": 25,
+      "file": "batches/P0-07.json"
+    },
+    {
+      "batchId": "P0-08",
+      "count": 25,
+      "file": "batches/P0-08.json"
+    },
+    {
+      "batchId": "P0-09",
+      "count": 25,
+      "file": "batches/P0-09.json"
+    },
+    {
+      "batchId": "P0-10",
+      "count": 25,
+      "file": "batches/P0-10.json"
+    },
+    {
+      "batchId": "P0-11",
+      "count": 25,
+      "file": "batches/P0-11.json"
+    },
+    {
+      "batchId": "P0-12",
+      "count": 25,
+      "file": "batches/P0-12.json"
+    },
+    {
+      "batchId": "P0-13",
+      "count": 25,
+      "file": "batches/P0-13.json"
+    },
+    {
+      "batchId": "P0-14",
+      "count": 25,
+      "file": "batches/P0-14.json"
+    },
+    {
+      "batchId": "P0-15",
+      "count": 25,
+      "file": "batches/P0-15.json"
+    },
+    {
+      "batchId": "P0-16",
+      "count": 25,
+      "file": "batches/P0-16.json"
+    },
+    {
+      "batchId": "P0-17",
+      "count": 25,
+      "file": "batches/P0-17.json"
+    },
+    {
+      "batchId": "P0-18",
+      "count": 25,
+      "file": "batches/P0-18.json"
+    },
+    {
+      "batchId": "P0-19",
+      "count": 25,
+      "file": "batches/P0-19.json"
+    },
+    {
+      "batchId": "P0-20",
+      "count": 25,
+      "file": "batches/P0-20.json"
+    },
+    {
+      "batchId": "P0-21",
+      "count": 25,
+      "file": "batches/P0-21.json"
+    },
+    {
+      "batchId": "P0-22",
+      "count": 25,
+      "file": "batches/P0-22.json"
+    },
+    {
+      "batchId": "P0-23",
+      "count": 25,
+      "file": "batches/P0-23.json"
+    },
+    {
+      "batchId": "P0-24",
+      "count": 25,
+      "file": "batches/P0-24.json"
+    },
+    {
+      "batchId": "P0-25",
+      "count": 25,
+      "file": "batches/P0-25.json"
+    },
+    {
+      "batchId": "P0-26",
+      "count": 25,
+      "file": "batches/P0-26.json"
+    },
+    {
+      "batchId": "P0-27",
+      "count": 25,
+      "file": "batches/P0-27.json"
+    },
+    {
+      "batchId": "P0-28",
+      "count": 25,
+      "file": "batches/P0-28.json"
+    },
+    {
+      "batchId": "P0-29",
+      "count": 25,
+      "file": "batches/P0-29.json"
+    },
+    {
+      "batchId": "P0-30",
+      "count": 25,
+      "file": "batches/P0-30.json"
+    },
+    {
+      "batchId": "P0-31",
+      "count": 25,
+      "file": "batches/P0-31.json"
+    },
+    {
+      "batchId": "P0-32",
+      "count": 25,
+      "file": "batches/P0-32.json"
+    },
+    {
+      "batchId": "P0-33",
+      "count": 25,
+      "file": "batches/P0-33.json"
+    },
+    {
+      "batchId": "P0-34",
+      "count": 25,
+      "file": "batches/P0-34.json"
+    },
+    {
+      "batchId": "P0-35",
+      "count": 25,
+      "file": "batches/P0-35.json"
+    },
+    {
+      "batchId": "P0-36",
+      "count": 25,
+      "file": "batches/P0-36.json"
+    },
+    {
+      "batchId": "P0-37",
+      "count": 12,
+      "file": "batches/P0-37.json"
+    },
+    {
+      "batchId": "P1-01",
+      "count": 25,
+      "file": "batches/P1-01.json"
+    },
+    {
+      "batchId": "P1-02",
+      "count": 25,
+      "file": "batches/P1-02.json"
+    },
+    {
+      "batchId": "P1-03",
+      "count": 25,
+      "file": "batches/P1-03.json"
+    },
+    {
+      "batchId": "P1-04",
+      "count": 25,
+      "file": "batches/P1-04.json"
+    },
+    {
+      "batchId": "P1-05",
+      "count": 25,
+      "file": "batches/P1-05.json"
+    },
+    {
+      "batchId": "P1-06",
+      "count": 25,
+      "file": "batches/P1-06.json"
+    },
+    {
+      "batchId": "P1-07",
+      "count": 25,
+      "file": "batches/P1-07.json"
+    },
+    {
+      "batchId": "P1-08",
+      "count": 25,
+      "file": "batches/P1-08.json"
+    },
+    {
+      "batchId": "P1-09",
+      "count": 25,
+      "file": "batches/P1-09.json"
+    },
+    {
+      "batchId": "P1-10",
+      "count": 25,
+      "file": "batches/P1-10.json"
+    },
+    {
+      "batchId": "P1-11",
+      "count": 25,
+      "file": "batches/P1-11.json"
+    },
+    {
+      "batchId": "P1-12",
+      "count": 25,
+      "file": "batches/P1-12.json"
+    },
+    {
+      "batchId": "P1-13",
+      "count": 25,
+      "file": "batches/P1-13.json"
+    },
+    {
+      "batchId": "P1-14",
+      "count": 25,
+      "file": "batches/P1-14.json"
+    },
+    {
+      "batchId": "P1-15",
+      "count": 25,
+      "file": "batches/P1-15.json"
+    },
+    {
+      "batchId": "P1-16",
+      "count": 25,
+      "file": "batches/P1-16.json"
+    },
+    {
+      "batchId": "P1-17",
+      "count": 25,
+      "file": "batches/P1-17.json"
+    },
+    {
+      "batchId": "P1-18",
+      "count": 25,
+      "file": "batches/P1-18.json"
+    },
+    {
+      "batchId": "P1-19",
+      "count": 25,
+      "file": "batches/P1-19.json"
+    },
+    {
+      "batchId": "P1-20",
+      "count": 25,
+      "file": "batches/P1-20.json"
+    },
+    {
+      "batchId": "P1-21",
+      "count": 25,
+      "file": "batches/P1-21.json"
+    },
+    {
+      "batchId": "P1-22",
+      "count": 25,
+      "file": "batches/P1-22.json"
+    },
+    {
+      "batchId": "P1-23",
+      "count": 25,
+      "file": "batches/P1-23.json"
+    },
+    {
+      "batchId": "P1-24",
+      "count": 25,
+      "file": "batches/P1-24.json"
+    },
+    {
+      "batchId": "P1-25",
+      "count": 25,
+      "file": "batches/P1-25.json"
+    },
+    {
+      "batchId": "P1-26",
+      "count": 25,
+      "file": "batches/P1-26.json"
+    },
+    {
+      "batchId": "P1-27",
+      "count": 25,
+      "file": "batches/P1-27.json"
+    },
+    {
+      "batchId": "P1-28",
+      "count": 25,
+      "file": "batches/P1-28.json"
+    },
+    {
+      "batchId": "P1-29",
+      "count": 25,
+      "file": "batches/P1-29.json"
+    },
+    {
+      "batchId": "P1-30",
+      "count": 25,
+      "file": "batches/P1-30.json"
+    },
+    {
+      "batchId": "P1-31",
+      "count": 25,
+      "file": "batches/P1-31.json"
+    },
+    {
+      "batchId": "P1-32",
+      "count": 25,
+      "file": "batches/P1-32.json"
+    },
+    {
+      "batchId": "P1-33",
+      "count": 25,
+      "file": "batches/P1-33.json"
+    },
+    {
+      "batchId": "P1-34",
+      "count": 25,
+      "file": "batches/P1-34.json"
+    },
+    {
+      "batchId": "P1-35",
+      "count": 1,
+      "file": "batches/P1-35.json"
+    },
+    {
+      "batchId": "P2-01",
+      "count": 25,
+      "file": "batches/P2-01.json"
+    },
+    {
+      "batchId": "P2-02",
+      "count": 25,
+      "file": "batches/P2-02.json"
+    },
+    {
+      "batchId": "P2-03",
+      "count": 25,
+      "file": "batches/P2-03.json"
+    },
+    {
+      "batchId": "P2-04",
+      "count": 25,
+      "file": "batches/P2-04.json"
+    },
+    {
+      "batchId": "P2-05",
+      "count": 25,
+      "file": "batches/P2-05.json"
+    },
+    {
+      "batchId": "P2-06",
+      "count": 25,
+      "file": "batches/P2-06.json"
+    },
+    {
+      "batchId": "P2-07",
+      "count": 25,
+      "file": "batches/P2-07.json"
+    },
+    {
+      "batchId": "P2-08",
+      "count": 25,
+      "file": "batches/P2-08.json"
+    },
+    {
+      "batchId": "P2-09",
+      "count": 25,
+      "file": "batches/P2-09.json"
+    },
+    {
+      "batchId": "P2-10",
+      "count": 25,
+      "file": "batches/P2-10.json"
+    },
+    {
+      "batchId": "P2-11",
+      "count": 25,
+      "file": "batches/P2-11.json"
+    },
+    {
+      "batchId": "P2-12",
+      "count": 25,
+      "file": "batches/P2-12.json"
+    },
+    {
+      "batchId": "P2-13",
+      "count": 25,
+      "file": "batches/P2-13.json"
+    },
+    {
+      "batchId": "P2-14",
+      "count": 16,
+      "file": "batches/P2-14.json"
+    },
+    {
+      "batchId": "P3-01",
+      "count": 25,
+      "file": "batches/P3-01.json"
+    },
+    {
+      "batchId": "P3-02",
+      "count": 25,
+      "file": "batches/P3-02.json"
+    },
+    {
+      "batchId": "P3-03",
+      "count": 9,
+      "file": "batches/P3-03.json"
+    }
+  ],
+  "limitations": [
+    "Exact token matching is triage, not linguistic segmentation or proof of missing lemmas.",
+    "No new Pashto, morphology approval, accepted alternatives or audio provenance has been invented.",
+    "Inline double-quoted Pashto literals are included; dynamically assembled/template prose requires reviewer inspection of source alongside these batches.",
+    "Planning demand shortfalls are separate from lexical identity gaps; untranslated candidates remain inactive."
+  ]
+}

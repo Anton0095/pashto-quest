@@ -1,0 +1,3321 @@
+{
+  "batchId": "P1-05",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "lemma:vocab7-market-customers",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Customers"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:vocab7-market-customers:form:0",
+            "pashto": "پېرودونکي",
+            "romanisation": "perodoonkee",
+            "englishGloss": "Customers",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "vocab7-market-customers"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:vocab7-market-customers",
+          "examples": [],
+          "mappedSourceIds": [
+            "vocab7-market-customers"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "پېرودونکي",
+        "romanisation": "perodoonkee",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:vocab7-market-stall",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Stall"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:vocab7-market-stall:form:0",
+            "pashto": "غرفه",
+            "romanisation": "ghurfa",
+            "englishGloss": "Stall",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "vocab7-market-stall"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:vocab7-market-stall",
+          "examples": [
+            {
+              "exampleId": "w7-market-bread",
+              "pashto": "هغوی په غرفه کې ډوډۍ پلوري.",
+              "romanisation": "haghoy pa ghurfa ke ḍoḍay ploree",
+              "english": "They sell bread at the stall.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 7,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "vocab7-market-stall",
+            "w7-market-bread"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "غرفه",
+        "romanisation": "ghurfa",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:vocab7-river-bottles",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Bottles"
+      ],
+      "morphology": {
+        "partOfSpeech": "noun",
+        "forms": [
+          {
+            "formId": "lemma:vocab7-river-bottles:form:0",
+            "pashto": "بوتلونه",
+            "romanisation": "botloona",
+            "englishGloss": "Bottles",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "vocab7-river-bottles"
+          }
+        ],
+        "reviewRequest": "Confirm lexical sense, gender, countability, singular/plural and direct/oblique forms needed by cited sentences."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:vocab7-river-bottles",
+          "examples": [
+            {
+              "exampleId": "w7-river-bottles",
+              "pashto": "هغوی د اوبو بوتلونه وړي.",
+              "romanisation": "haghoy da obo botloona wree",
+              "english": "They carry bottles of water.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 7,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "vocab7-river-bottles",
+            "w7-river-bottles"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "بوتلونه",
+        "romanisation": "botloona",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:vocab7-river-watch",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "To watch"
+      ],
+      "morphology": {
+        "partOfSpeech": "verb",
+        "forms": [
+          {
+            "formId": "lemma:vocab7-river-watch:form:0",
+            "pashto": "کتل",
+            "romanisation": "katal",
+            "englishGloss": "To watch",
+            "morphology": {
+              "form": "infinitive",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "vocab7-river-watch"
+          },
+          {
+            "formId": "lemma:vocab7-river-watch:present:2",
+            "pashto": "ګوري",
+            "romanisation": "haghoy marghaan goree",
+            "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+            "englishGloss": "To watch — third person",
+            "morphology": {
+              "tense": "present",
+              "person": "third",
+              "number": "singular or plural"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [
+              "grammar-day-2"
+            ],
+            "sourceExampleId": "w7-river-birds"
+          }
+        ],
+        "reviewRequest": "Confirm infinitive, simple/compound identity, transitivity, present stems, person/number agreement, object marking and contextual subject; do not infer stems from suffixes."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:vocab7-river-watch",
+          "examples": [
+            {
+              "exampleId": "w7-river-birds",
+              "pashto": "هغوی مرغان ګوري.",
+              "romanisation": "haghoy marghaan goree",
+              "english": "They watch the birds.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 7,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "vocab7-river-watch",
+            "w7-river-birds"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کتل",
+        "romanisation": "katal",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d8-vocab-1",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "This / these"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d8-vocab-1:form:0",
+            "pashto": "دا",
+            "romanisation": "daa",
+            "englishGloss": "This / these",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d8-vocab-1"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d8-vocab-1",
+          "examples": [
+            {
+              "exampleId": "s1-small",
+              "pashto": "دا کوټه کوچنۍ ده.",
+              "romanisation": "daa koṭa kochnay da",
+              "english": "This room is small.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 3,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s1-price",
+              "pashto": "دا مڼه ګرانه ده.",
+              "romanisation": "daa maṇa graana da",
+              "english": "This apple is expensive.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 3,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s1-easy",
+              "pashto": "دا کتاب اسانه دی.",
+              "romanisation": "daa kitaab asaana day",
+              "english": "This book is easy.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 3,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-old",
+              "pashto": "دا مېز زوړ دی.",
+              "romanisation": "daa mez zoṛ day",
+              "english": "This table is old.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-deep",
+              "pashto": "دا ډنډ ژور دی.",
+              "romanisation": "daa ḍanḍ zhor day",
+              "english": "This pond is deep.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-cheap",
+              "pashto": "دا ډوډۍ ارزانه ده.",
+              "romanisation": "daa ḍoḍay arzaana da",
+              "english": "This bread is cheap.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-good",
+              "pashto": "دا درس ښه دی.",
+              "romanisation": "daa dars kha day",
+              "english": "This lesson is good.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 4,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-hot",
+              "pashto": "دا چای تود دی.",
+              "romanisation": "daa chaay tod day",
+              "english": "This tea is hot.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-sweet",
+              "pashto": "دا مېوه خوږه ده.",
+              "romanisation": "daa mewa khoga da",
+              "english": "This fruit is sweet.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s4-hard",
+              "pashto": "دا درس ستونزمن دی.",
+              "romanisation": "daa dars stoonzman day",
+              "english": "This lesson is difficult.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 6,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-dark",
+              "pashto": "دا کوټه تیاره ده.",
+              "romanisation": "daa koṭa tiyaara da",
+              "english": "This room is dark.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s5-calm",
+              "pashto": "دا سیند ارام دی.",
+              "romanisation": "daa seend araam day",
+              "english": "This river is calm.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 5,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d8-vocab-1",
+            "s1-small",
+            "s1-price",
+            "s1-easy",
+            "s2-old",
+            "s2-deep",
+            "s2-cheap",
+            "s2-good",
+            "s4-hot",
+            "s4-sweet",
+            "s4-hard",
+            "s5-dark",
+            "s5-calm",
+            "s5-cooked",
+            "s5-useful",
+            "s6-clear",
+            "s6-important",
+            "w2-d8-river-1",
+            "w2-d8-river-3",
+            "w2-d8-river-5",
+            "w2-d8-market-1",
+            "w2-d8-market-3",
+            "w2-d8-school-1",
+            "w2-d8-school-3",
+            "w2-d8-school-4",
+            "w2-d8-house-1",
+            "w2-d8-house-3",
+            "w2-d8-house-5",
+            "w2-d9-market-1",
+            "w2-d9-market-2",
+            "w2-d9-school-1",
+            "w2-d9-school-2",
+            "w2-d9-river-1",
+            "w2-d9-river-4",
+            "w2-d9-house-1",
+            "w2-d9-house-2",
+            "w2-d9-house-3",
+            "w2-d11-house-1",
+            "w2-d11-house-2",
+            "w2-d11-house-4",
+            "w2-d11-school-1",
+            "w2-d11-school-3",
+            "w2-d11-school-5",
+            "w2-d11-market-1",
+            "w2-d11-market-3",
+            "w2-d11-river-1",
+            "w2-d11-river-4",
+            "w2-d12-house-1",
+            "w2-d13-school-3",
+            "w2-d13-market-5",
+            "w2-d14-house-1",
+            "w2-d14-house-4",
+            "w2-d14-market-1",
+            "w2-d14-river-4",
+            "w2-d14-school-1",
+            "w2-d8-reply-2",
+            "w2-d8-reply-3",
+            "w2-d9-reply-1",
+            "w2-d9-reply-4",
+            "w2-d11-reply-1",
+            "w2-d11-reply-2",
+            "w2-d11-reply-4",
+            "w2-d11-reply-5",
+            "w2-d12-reply-7",
+            "w2-d14-reply-1",
+            "w2-d14-reply-3",
+            "w2-d14-reply-8",
+            "w2-d14-reply-9"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "دا",
+        "romanisation": "daa",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d8-vocab-2",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "That / those"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d8-vocab-2:form:0",
+            "pashto": "هغه",
+            "romanisation": "hagha",
+            "englishGloss": "That / those",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d8-vocab-2"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d8-vocab-2",
+          "examples": [
+            {
+              "exampleId": "s3-door",
+              "pashto": "هغه دروازه خلاصوي.",
+              "romanisation": "hagha darwaaza khlaasawi",
+              "english": "He/she opens the door.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s3-water",
+              "pashto": "هغه اوبه څښي.",
+              "romanisation": "hagha oba ts-khee",
+              "english": "He/she drinks water.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s3-eat",
+              "pashto": "هغه ډوډۍ خوري.",
+              "romanisation": "hagha ḍoḍay khoree",
+              "english": "He/she eats bread.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s3-read",
+              "pashto": "هغه کتاب لولي.",
+              "romanisation": "hagha kitaab lolee",
+              "english": "He/she reads a book.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-school-word",
+              "pashto": "هغه کلمه لیکي.",
+              "romanisation": "hagha kalima leeki",
+              "english": "He/she writes a word.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-school-open",
+              "pashto": "هغه کتاب خلاصوي.",
+              "romanisation": "hagha kitaab khlaasawi",
+              "english": "He/she opens a book.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-school-close",
+              "pashto": "هغه کتاب بندوي.",
+              "romanisation": "hagha kitaab bandawi",
+              "english": "He/she closes a book.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-school-new",
+              "pashto": "هغه نوی کتاب لولي.",
+              "romanisation": "hagha naway kitaab lolee",
+              "english": "He/she reads a new book.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-market-buy",
+              "pashto": "هغه مڼه اخلي.",
+              "romanisation": "hagha mana akhlee",
+              "english": "He/she buys an apple.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-market-sell",
+              "pashto": "هغه ډوډۍ خرڅوي.",
+              "romanisation": "hagha dodai khartsawi",
+              "english": "He/she sells bread.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-market-bag",
+              "pashto": "هغه کڅوړه وړي.",
+              "romanisation": "hagha katswara wree",
+              "english": "He/she carries a bag.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "s2-market-milk",
+              "pashto": "هغه شیدې اخلي.",
+              "romanisation": "hagha sheede akhlee",
+              "english": "He/she buys milk.",
+              "speaker": "Lesson teacher",
+              "recipient": "Player",
+              "day": 2,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d8-vocab-2",
+            "s3-door",
+            "s3-water",
+            "s3-eat",
+            "s3-read",
+            "s2-school-word",
+            "s2-school-open",
+            "s2-school-close",
+            "s2-school-new",
+            "s2-market-buy",
+            "s2-market-sell",
+            "s2-market-bag",
+            "s2-market-milk",
+            "s2-river-fish",
+            "s2-river-bird",
+            "s2-river-stone",
+            "s2-river-catch",
+            "s2-house-close",
+            "s2-house-tea",
+            "s2-house-clean",
+            "s2-house-window",
+            "w7-he-bread",
+            "w2-d8-river-2",
+            "w2-d8-river-4",
+            "w2-d8-market-2",
+            "w2-d8-market-4",
+            "w2-d8-market-5",
+            "w2-d8-school-2",
+            "w2-d8-school-5",
+            "w2-d8-house-2",
+            "w2-d8-house-4",
+            "w2-d9-market-3",
+            "w2-d9-market-5",
+            "w2-d9-school-5",
+            "w2-d9-river-2",
+            "w2-d9-house-4",
+            "w2-d10-market-5",
+            "w2-d11-house-3",
+            "w2-d11-school-2",
+            "w2-d11-market-2",
+            "w2-d11-market-4",
+            "w2-d11-river-2",
+            "w2-d13-school-5",
+            "w2-d14-market-4",
+            "w2-d14-river-2",
+            "w2-d14-school-2",
+            "w2-d8-reply-4",
+            "w2-d11-reply-3",
+            "w2-d12-reply-2",
+            "w2-d14-reply-2"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغه",
+        "romanisation": "hagha",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d8-vocab-3",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Near"
+      ],
+      "morphology": {
+        "partOfSpeech": "adverb",
+        "forms": [
+          {
+            "formId": "lemma:w2-d8-vocab-3:form:0",
+            "pashto": "نږدې",
+            "romanisation": "negde",
+            "englishGloss": "Near",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d8-vocab-3"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d8-vocab-3",
+          "examples": [
+            {
+              "exampleId": "w2-d8-river-4",
+              "pashto": "هغه مرغۍ ونې ته نږدې ده.",
+              "romanisation": "hagha marghay wane ta negde da",
+              "english": "That bird is near the tree.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 8,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-river-3",
+              "pashto": "کومه مرغۍ اوبو ته نږدې ده؟",
+              "romanisation": "kooma marghay obo ta negde da",
+              "english": "Which bird is near the water?",
+              "speaker": "Saleha",
+              "recipient": "Player",
+              "day": 12,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-river-2",
+              "pashto": "هغه مرغان سیند ته نږدې دي.",
+              "romanisation": "hagha marghaan seend ta negde dee",
+              "english": "Those birds are near the river.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 14,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d8-vocab-3",
+            "w2-d8-river-4",
+            "w2-d12-river-3",
+            "w2-d14-river-2"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "نږدې",
+        "romanisation": "negde",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d8-vocab-4",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Far"
+      ],
+      "morphology": {
+        "partOfSpeech": "adverb",
+        "forms": [
+          {
+            "formId": "lemma:w2-d8-vocab-4:form:0",
+            "pashto": "لرې",
+            "romanisation": "lare",
+            "englishGloss": "Far",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d8-vocab-4"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d8-vocab-4",
+          "examples": [],
+          "mappedSourceIds": [
+            "w2-d8-vocab-4"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "لرې",
+        "romanisation": "lare",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d9-vocab-1",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "One"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d9-vocab-1:form:0",
+            "pashto": "یو",
+            "romanisation": "yaw",
+            "englishGloss": "One",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d9-vocab-1"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d9-vocab-1",
+          "examples": [
+            {
+              "exampleId": "w6-river-mina-run",
+              "pashto": "مینا او زه یو ځای منډې وهو.",
+              "romanisation": "meena aw za yaw dzay mande waho",
+              "english": "Mina and I run together.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 6,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w6-house-tea",
+              "pashto": "موږ یو ځای چای څښو.",
+              "romanisation": "moong yaw dzay chaay ts-kho",
+              "english": "We drink tea together.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 6,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w6-school-answer",
+              "pashto": "موږ یو ځای پوښتنو ته ځوابونه ورکوو.",
+              "romanisation": "moong yaw dzay pukhtano ta dzawaaboona warkawo",
+              "english": "We answer questions together.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 6,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-house-tea",
+              "pashto": "هغوی یو ځای چای څښي.",
+              "romanisation": "haghoy yaw dzay chaay ts-khee",
+              "english": "They drink tea together.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 7,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w7-river-run",
+              "pashto": "هغوی یو ځای منډې وهي.",
+              "romanisation": "haghoy yaw dzay mande wahee",
+              "english": "They run together.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 7,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w6-walk",
+              "pashto": "موږ د جهیل تر څنګ یو ځای ګرځو.",
+              "romanisation": "moong da jaheel tar tsang yaw dzay gardzo",
+              "english": "We walk together beside the lake.",
+              "speaker": "Player",
+              "recipient": "Saleha and Mina",
+              "day": 6,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w6-mina-walk",
+              "pashto": "مینا او زه یو ځای ګرځو.",
+              "romanisation": "meena aw za yaw dzay gardzo",
+              "english": "Mina and I walk together.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 6,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w6-we-run",
+              "pashto": "موږ یو ځای منډې وهو.",
+              "romanisation": "moong yaw dzay mande waho",
+              "english": "We run together.",
+              "speaker": "Player",
+              "recipient": "Saleha and Mina",
+              "day": 6,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-river-3",
+              "pashto": "موږ یو ځای منډې وهو.",
+              "romanisation": "moong yaw dzay mande waho",
+              "english": "We run together.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 13,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-school-4",
+              "pashto": "هغوی یو ځای کار کوي.",
+              "romanisation": "haghoy yaw dzay kaar kawee",
+              "english": "They work together.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 13,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-house-2",
+              "pashto": "موږ یو ځای کوټه پاکوو.",
+              "romanisation": "moong yaw dzay koṭa paakawo",
+              "english": "We clean the room together.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 13,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-market-4",
+              "pashto": "هغه خلک یو ځای ډوډۍ وړي.",
+              "romanisation": "hagha khalak yaw dzay ḍoḍay wree",
+              "english": "Those people carry bread together.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 14,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d9-vocab-1",
+            "w6-river-mina-run",
+            "w6-house-tea",
+            "w6-school-answer",
+            "w7-house-tea",
+            "w7-river-run",
+            "w6-walk",
+            "w6-mina-walk",
+            "w6-we-run",
+            "w2-d13-river-3",
+            "w2-d13-school-4",
+            "w2-d13-house-2",
+            "w2-d14-market-4",
+            "w2-d13-reply-2",
+            "w2-d13-reply-8",
+            "hills-transform",
+            "exam-dialogue-w6-we-run"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "یو",
+        "romanisation": "yaw",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d9-vocab-3",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Three"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d9-vocab-3:form:0",
+            "pashto": "درې",
+            "romanisation": "dre",
+            "englishGloss": "Three",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d9-vocab-3"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d9-vocab-3",
+          "examples": [
+            {
+              "exampleId": "w2-d9-market-4",
+              "pashto": "هغوی درې ټوکرۍ وړي.",
+              "romanisation": "haghoy dre ṭokray wree",
+              "english": "They carry three baskets.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 9,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d9-school-4",
+              "pashto": "په ټولګي کې درې زده کوونکي دي.",
+              "romanisation": "pa ṭolgee ke dre zda kawoonkee dee",
+              "english": "There are three students in the classroom.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 9,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d9-river-3",
+              "pashto": "موږ درې کبان وینو.",
+              "romanisation": "moong dre kabaan weeno",
+              "english": "We see three fish.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 9,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-market-2",
+              "pashto": "زه درې مڼې اخلم.",
+              "romanisation": "za dre maṇe akhlam",
+              "english": "I buy three apples.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 14,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d9-vocab-3",
+            "w2-d14-vocab-3",
+            "w2-d9-market-4",
+            "w2-d9-school-4",
+            "w2-d9-river-3",
+            "w2-d14-market-2",
+            "w2-d9-reply-3",
+            "w2-d9-reply-5",
+            "w2-d12-reply-5",
+            "w2-d14-reply-5"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "درې",
+        "romanisation": "dre",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d9-vocab-4",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Four"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d9-vocab-4:form:0",
+            "pashto": "څلور",
+            "romanisation": "tsalor",
+            "englishGloss": "Four",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d9-vocab-4"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d9-vocab-4",
+          "examples": [],
+          "mappedSourceIds": [
+            "w2-d9-vocab-4"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "څلور",
+        "romanisation": "tsalor",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d9-vocab-5",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Five"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d9-vocab-5:form:0",
+            "pashto": "پنځه",
+            "romanisation": "pindza",
+            "englishGloss": "Five",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d9-vocab-5"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d9-vocab-5",
+          "examples": [],
+          "mappedSourceIds": [
+            "w2-d9-vocab-5"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "پنځه",
+        "romanisation": "pindza",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d10-vocab-1",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Here"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d10-vocab-1:form:0",
+            "pashto": "دلته",
+            "romanisation": "dalta",
+            "englishGloss": "Here",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d10-vocab-1"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d10-vocab-1",
+          "examples": [
+            {
+              "exampleId": "w2-d10-river-1",
+              "pashto": "کتابچه دلته ده.",
+              "romanisation": "kitaabcha dalta da",
+              "english": "The notebook is here.",
+              "speaker": "Player",
+              "recipient": "Mina",
+              "day": 10,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-river-2",
+              "pashto": "مینا دلته ده.",
+              "romanisation": "meena dalta da",
+              "english": "Mina is here.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 10,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-school-4",
+              "pashto": "زده کوونکي دلته دي.",
+              "romanisation": "zda kawoonkee dalta dee",
+              "english": "The students are here.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 10,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-market-1",
+              "pashto": "ټوکرۍ دلته ده.",
+              "romanisation": "ṭokray dalta da",
+              "english": "The basket is here.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 10,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-house-3",
+              "pashto": "کړکۍ دلته ده.",
+              "romanisation": "kiṛkay dalta da",
+              "english": "The window is here.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 10,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-school-5",
+              "pashto": "دلته څو کتابونه دي؟",
+              "romanisation": "dalta tso kitaaboona dee",
+              "english": "How many books are here?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 12,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-market-1",
+              "pashto": "زه تل دلته ډوډۍ اخلم.",
+              "romanisation": "za tal dalta ḍoḍay akhlam",
+              "english": "I always buy bread here.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 13,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-market-5",
+              "pashto": "دلته څو کڅوړې دي؟",
+              "romanisation": "dalta tso katsoṛe dee",
+              "english": "How many bags are here?",
+              "speaker": "Edris",
+              "recipient": "Player",
+              "day": 14,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d10-vocab-1",
+            "w2-d10-river-1",
+            "w2-d10-river-2",
+            "w2-d10-school-4",
+            "w2-d10-market-1",
+            "w2-d10-house-3",
+            "w2-d12-school-5",
+            "w2-d13-market-1",
+            "w2-d14-market-5",
+            "w2-d10-reply-1",
+            "w2-d10-reply-5",
+            "w2-d10-reply-6",
+            "w2-d12-reply-5",
+            "w2-d12-reply-6",
+            "w2-d14-reply-6"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "دلته",
+        "romanisation": "dalta",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d10-vocab-2",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "There"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d10-vocab-2:form:0",
+            "pashto": "هلته",
+            "romanisation": "halta",
+            "englishGloss": "There",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d10-vocab-2"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d10-vocab-2",
+          "examples": [
+            {
+              "exampleId": "w2-d10-market-5",
+              "pashto": "هغه ټوکرۍ هلته ده.",
+              "romanisation": "hagha ṭokray halta da",
+              "english": "That basket is over there.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 10,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d10-vocab-2",
+            "w2-d10-market-5",
+            "w2-d10-reply-4"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هلته",
+        "romanisation": "halta",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d10-vocab-3",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Where"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d10-vocab-3:form:0",
+            "pashto": "چېرته",
+            "romanisation": "cherta",
+            "englishGloss": "Where",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d10-vocab-3"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d10-vocab-3",
+          "examples": [
+            {
+              "exampleId": "w2-d10-river-5",
+              "pashto": "کتابچه چېرته ده؟",
+              "romanisation": "kitaabcha cherta da",
+              "english": "Where is the notebook?",
+              "speaker": "Mina",
+              "recipient": "Player",
+              "day": 10,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-school-3",
+              "pashto": "قلم چېرته دی؟",
+              "romanisation": "qalam cherta day",
+              "english": "Where is the pen?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 10,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-market-4",
+              "pashto": "کڅوړه چېرته ده؟",
+              "romanisation": "katsoṛa cherta da",
+              "english": "Where is the bag?",
+              "speaker": "Edris",
+              "recipient": "Player",
+              "day": 10,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d10-house-4",
+              "pashto": "کتابچه چېرته ده؟",
+              "romanisation": "kitaabcha cherta da",
+              "english": "Where is the notebook?",
+              "speaker": "Muhammad Jan",
+              "recipient": "Player",
+              "day": 10,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-school-4",
+              "pashto": "زما کتابچه چېرته ده؟",
+              "romanisation": "zmaa kitaabcha cherta da",
+              "english": "Where is my notebook?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 12,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-market-4",
+              "pashto": "ټوکرۍ چېرته ده؟",
+              "romanisation": "ṭokray cherta da",
+              "english": "Where is the basket?",
+              "speaker": "Edris",
+              "recipient": "Player",
+              "day": 12,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-river-4",
+              "pashto": "مینا چېرته ده؟",
+              "romanisation": "meena cherta da",
+              "english": "Where is Mina?",
+              "speaker": "Saleha",
+              "recipient": "Player",
+              "day": 12,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-house-2",
+              "pashto": "څوکۍ چېرته ده؟",
+              "romanisation": "tsawkay cherta da",
+              "english": "Where is the chair?",
+              "speaker": "Muhammad Jan",
+              "recipient": "Player",
+              "day": 12,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-house-5",
+              "pashto": "د محمد جان کتابچه چېرته ده؟",
+              "romanisation": "da muhammad jaan kitaabcha cherta da",
+              "english": "Where is Muhammad Jan’s notebook?",
+              "speaker": "Muhammad Jan",
+              "recipient": "Player",
+              "day": 14,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-river-3",
+              "pashto": "د صالحې کڅوړه چېرته ده؟",
+              "romanisation": "da saalehe katsoṛa cherta da",
+              "english": "Where is Saleha’s bag?",
+              "speaker": "Saleha",
+              "recipient": "Player",
+              "day": 14,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-school-4",
+              "pashto": "زده کوونکي چېرته دي؟",
+              "romanisation": "zda kawoonkee cherta dee",
+              "english": "Where are the students?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 14,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d10-vocab-3",
+            "w2-d12-vocab-4",
+            "w2-d14-vocab-1",
+            "w2-d10-river-5",
+            "w2-d10-school-3",
+            "w2-d10-market-4",
+            "w2-d10-house-4",
+            "w2-d12-school-4",
+            "w2-d12-market-4",
+            "w2-d12-river-4",
+            "w2-d12-house-2",
+            "w2-d14-house-5",
+            "w2-d14-river-3",
+            "w2-d14-school-4"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "چېرته",
+        "romanisation": "cherta",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d11-vocab-1",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "My / mine"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d11-vocab-1:form:0",
+            "pashto": "زما",
+            "romanisation": "zmaa",
+            "englishGloss": "My / mine",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d11-vocab-1"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d11-vocab-1",
+          "examples": [
+            {
+              "exampleId": "w2-d11-house-1",
+              "pashto": "دا زما کور دی.",
+              "romanisation": "daa zmaa kor day",
+              "english": "This is my house.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 11,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d11-market-2",
+              "pashto": "هغه زما کڅوړه ده.",
+              "romanisation": "hagha zmaa katsoṛa da",
+              "english": "That is my bag.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 11,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-school-4",
+              "pashto": "زما کتابچه چېرته ده؟",
+              "romanisation": "zmaa kitaabcha cherta da",
+              "english": "Where is my notebook?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 12,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-house-1",
+              "pashto": "دا زما کتاب دی.",
+              "romanisation": "daa zmaa kitaab day",
+              "english": "This is my book.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 14,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-school-2",
+              "pashto": "هغه کتابچه زما ده.",
+              "romanisation": "hagha kitaabcha zmaa da",
+              "english": "That notebook is mine.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 14,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d11-vocab-1",
+            "w2-d14-vocab-2",
+            "w2-d11-house-1",
+            "w2-d11-market-2",
+            "w2-d12-school-4",
+            "w2-d14-house-1",
+            "w2-d14-school-2",
+            "w2-d11-reply-1",
+            "w2-d12-reply-7",
+            "w2-d14-reply-8"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "زما",
+        "romanisation": "zmaa",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d11-vocab-2",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Your (respectful or plural)"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d11-vocab-2:form:0",
+            "pashto": "ستاسې",
+            "romanisation": "staase",
+            "englishGloss": "Your (respectful or plural)",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d11-vocab-2"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d11-vocab-2",
+          "examples": [
+            {
+              "exampleId": "w2-d11-house-2",
+              "pashto": "دا ستاسې څوکۍ ده.",
+              "romanisation": "daa staase tsawkay da",
+              "english": "This is your chair.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 11,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d11-school-4",
+              "pashto": "ستاسې کتابچه پر مېز ده.",
+              "romanisation": "staase kitaabcha par mez da",
+              "english": "Your notebook is on the table.",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 11,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d11-river-4",
+              "pashto": "دا ستاسې تیږې دي.",
+              "romanisation": "daa staase teeghe dee",
+              "english": "These are your stones.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 11,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-house-2",
+              "pashto": "ستاسې کتاب پر هغې څوکۍ دی.",
+              "romanisation": "staase kitaab par haghe tsawkay day",
+              "english": "Your book is on that chair.",
+              "speaker": "Muhammad Jan",
+              "recipient": "Player",
+              "day": 14,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d11-vocab-2",
+            "w2-d11-house-2",
+            "w2-d11-school-4",
+            "w2-d11-river-4",
+            "w2-d14-house-2",
+            "w2-d11-reply-4"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ستاسې",
+        "romanisation": "staase",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d11-vocab-3",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Our"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d11-vocab-3:form:0",
+            "pashto": "زموږ",
+            "romanisation": "zmoong",
+            "englishGloss": "Our",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d11-vocab-3"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d11-vocab-3",
+          "examples": [
+            {
+              "exampleId": "w2-d11-house-3",
+              "pashto": "هغه زموږ کوټه ده.",
+              "romanisation": "hagha zmoong koṭa da",
+              "english": "That is our room.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 11,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d11-house-5",
+              "pashto": "زموږ دروازه خلاصه ده.",
+              "romanisation": "zmoong darwaaza khlaasa da",
+              "english": "Our door is open.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 11,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d11-school-3",
+              "pashto": "دا زموږ کتابونه دي.",
+              "romanisation": "daa zmoong kitaaboona dee",
+              "english": "These are our books.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 11,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d11-market-3",
+              "pashto": "دا زموږ مڼې دي.",
+              "romanisation": "daa zmoong maṇe dee",
+              "english": "These are our apples.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 11,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d11-river-3",
+              "pashto": "زموږ اوبه سړې دي.",
+              "romanisation": "zmoong oba saṛe dee",
+              "english": "Our water is cold.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 11,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d11-river-5",
+              "pashto": "زه زموږ ملګري وینم.",
+              "romanisation": "za zmoong malgaree weenam",
+              "english": "I see our friends.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 11,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d11-vocab-3",
+            "w2-d11-house-3",
+            "w2-d11-house-5",
+            "w2-d11-school-3",
+            "w2-d11-market-3",
+            "w2-d11-river-3",
+            "w2-d11-river-5",
+            "w2-d11-reply-5"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "زموږ",
+        "romanisation": "zmoong",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d12-vocab-1",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Who"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d12-vocab-1:form:0",
+            "pashto": "څوک",
+            "romanisation": "tsok",
+            "englishGloss": "Who",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d12-vocab-1"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d12-vocab-1",
+          "examples": [
+            {
+              "exampleId": "w2-d12-school-1",
+              "pashto": "په دروازه کې څوک دی؟",
+              "romanisation": "pa darwaaza ke tsok day",
+              "english": "Who is at the door?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 12,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-market-3",
+              "pashto": "څوک ډوډۍ پلوري؟",
+              "romanisation": "tsok ḍoḍay ploree",
+              "english": "Who sells bread?",
+              "speaker": "Edris",
+              "recipient": "Player",
+              "day": 12,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-river-1",
+              "pashto": "د جهیل تر څنګ څوک منډې وهي؟",
+              "romanisation": "da jaheel tar tsang tsok mande wahee",
+              "english": "Who is running beside the lake?",
+              "speaker": "Saleha",
+              "recipient": "Player",
+              "day": 12,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-house-5",
+              "pashto": "څوک چای څښي؟",
+              "romanisation": "tsok chaay ts-khee",
+              "english": "Who is drinking tea?",
+              "speaker": "Muhammad Jan",
+              "recipient": "Player",
+              "day": 12,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-river-5",
+              "pashto": "څوک ژر منډې وهي؟",
+              "romanisation": "tsok zhar mande wahee",
+              "english": "Who runs quickly?",
+              "speaker": "Saleha",
+              "recipient": "Player",
+              "day": 14,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-school-3",
+              "pashto": "څوک هره ورځ لولي؟",
+              "romanisation": "tsok hara wraz lwalee",
+              "english": "Who reads every day?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 14,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d12-vocab-1",
+            "w2-d12-school-1",
+            "w2-d12-market-3",
+            "w2-d12-river-1",
+            "w2-d12-house-5",
+            "w2-d14-river-5",
+            "w2-d14-school-3"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "څوک",
+        "romanisation": "tsok",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d12-vocab-2",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "What"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d12-vocab-2:form:0",
+            "pashto": "څه",
+            "romanisation": "tsa",
+            "englishGloss": "What",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d12-vocab-2"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d12-vocab-2",
+          "examples": [
+            {
+              "exampleId": "w2-d12-school-2",
+              "pashto": "ته څه لولې؟",
+              "romanisation": "ta tsa lwaley",
+              "english": "What are you reading?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 12,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-market-5",
+              "pashto": "په دې کڅوړه کې څه دي؟",
+              "romanisation": "pa de katsoṛa ke tsa dee",
+              "english": "What is in this bag?",
+              "speaker": "Edris",
+              "recipient": "Player",
+              "day": 12,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-river-2",
+              "pashto": "ته څه وینې؟",
+              "romanisation": "ta tsa weeney",
+              "english": "What do you see?",
+              "speaker": "Saleha",
+              "recipient": "Player",
+              "day": 12,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-house-4",
+              "pashto": "پر مېز څه دي؟",
+              "romanisation": "par mez tsa dee",
+              "english": "What is on the table?",
+              "speaker": "Muhammad Jan",
+              "recipient": "Player",
+              "day": 12,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d12-vocab-2",
+            "w2-d12-school-2",
+            "w2-d12-market-5",
+            "w2-d12-river-2",
+            "w2-d12-house-4"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "څه",
+        "romanisation": "tsa",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d12-vocab-3",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Which (masculine)"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d12-vocab-3:form:0",
+            "pashto": "کوم",
+            "romanisation": "koom",
+            "englishGloss": "Which (masculine)",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d12-vocab-3"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d12-vocab-3",
+          "examples": [
+            {
+              "exampleId": "w2-d12-school-3",
+              "pashto": "کوم کتاب نوی دی؟",
+              "romanisation": "koom kitaab naway day",
+              "english": "Which book is new?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 12,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-school-5",
+              "pashto": "کوم کتاب د مینا دی؟",
+              "romanisation": "koom kitaab da meena day",
+              "english": "Which book belongs to Mina?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 14,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d12-vocab-3",
+            "w2-d12-school-3",
+            "w2-d14-school-5"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کوم",
+        "romanisation": "koom",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d12-vocab-5",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "How many"
+      ],
+      "morphology": {
+        "partOfSpeech": "grammar",
+        "forms": [
+          {
+            "formId": "lemma:w2-d12-vocab-5:form:0",
+            "pashto": "څو",
+            "romanisation": "tso",
+            "englishGloss": "How many",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d12-vocab-5"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d12-vocab-5",
+          "examples": [
+            {
+              "exampleId": "w2-d12-school-5",
+              "pashto": "دلته څو کتابونه دي؟",
+              "romanisation": "dalta tso kitaaboona dee",
+              "english": "How many books are here?",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 12,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-market-2",
+              "pashto": "ته څو مڼې اخلې؟",
+              "romanisation": "ta tso maṇe akhley",
+              "english": "How many apples do you buy?",
+              "speaker": "Edris",
+              "recipient": "Player",
+              "day": 12,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d12-river-5",
+              "pashto": "موږ څو کبان وینو؟",
+              "romanisation": "moong tso kabaan weeno",
+              "english": "How many fish do we see?",
+              "speaker": "Saleha",
+              "recipient": "Player",
+              "day": 12,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-market-5",
+              "pashto": "دلته څو کڅوړې دي؟",
+              "romanisation": "dalta tso katsoṛe dee",
+              "english": "How many bags are here?",
+              "speaker": "Edris",
+              "recipient": "Player",
+              "day": 14,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d12-vocab-5",
+            "w2-d12-school-5",
+            "w2-d12-market-2",
+            "w2-d12-river-5",
+            "w2-d14-market-5"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "څو",
+        "romanisation": "tso",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d13-vocab-1",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Today"
+      ],
+      "morphology": {
+        "partOfSpeech": "adverb",
+        "forms": [
+          {
+            "formId": "lemma:w2-d13-vocab-1:form:0",
+            "pashto": "نن",
+            "romanisation": "nan",
+            "englishGloss": "Today",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d13-vocab-1"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d13-vocab-1",
+          "examples": [
+            {
+              "exampleId": "w2-d13-river-5",
+              "pashto": "نن موږ اوبه څښو.",
+              "romanisation": "nan moong oba ts-kho",
+              "english": "Today we drink water.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 13,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-school-3",
+              "pashto": "نن ته دا کتاب لولې.",
+              "romanisation": "nan ta daa kitaab lwaley",
+              "english": "Today you read this book.",
+              "speaker": "Ms Hameed",
+              "recipient": "Player",
+              "day": 13,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-market-5",
+              "pashto": "نن دا ډوډۍ تازه ده.",
+              "romanisation": "nan daa ḍoḍay taaza da",
+              "english": "Today this bread is fresh.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 13,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-house-4",
+              "pashto": "نن دروازه خلاصه ده.",
+              "romanisation": "nan darwaaza khlaasa da",
+              "english": "Today the door is open.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 13,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-house-4",
+              "pashto": "نن موږ دا کوټې پاکوو.",
+              "romanisation": "nan moong daa koṭe paakawo",
+              "english": "Today we clean these rooms.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 14,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d13-vocab-1",
+            "w2-d13-river-5",
+            "w2-d13-school-3",
+            "w2-d13-market-5",
+            "w2-d13-house-4",
+            "w2-d14-house-4",
+            "w2-d13-reply-7"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "نن",
+        "romanisation": "nan",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d13-vocab-2",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Quickly"
+      ],
+      "morphology": {
+        "partOfSpeech": "adverb",
+        "forms": [
+          {
+            "formId": "lemma:w2-d13-vocab-2:form:0",
+            "pashto": "ژر",
+            "romanisation": "zhar",
+            "englishGloss": "Quickly",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d13-vocab-2"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d13-vocab-2",
+          "examples": [
+            {
+              "exampleId": "w2-d13-river-2",
+              "pashto": "صالحه ژر منډې وهي.",
+              "romanisation": "saaleha zhar mande wahee",
+              "english": "Saleha runs quickly.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 13,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-river-5",
+              "pashto": "څوک ژر منډې وهي؟",
+              "romanisation": "tsok zhar mande wahee",
+              "english": "Who runs quickly?",
+              "speaker": "Saleha",
+              "recipient": "Player",
+              "day": 14,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d13-vocab-2",
+            "w2-d13-river-2",
+            "w2-d14-river-5",
+            "w2-d13-reply-6"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ژر",
+        "romanisation": "zhar",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d13-vocab-3",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Always"
+      ],
+      "morphology": {
+        "partOfSpeech": "adverb",
+        "forms": [
+          {
+            "formId": "lemma:w2-d13-vocab-3:form:0",
+            "pashto": "تل",
+            "romanisation": "tal",
+            "englishGloss": "Always",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d13-vocab-3"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d13-vocab-3",
+          "examples": [
+            {
+              "exampleId": "w2-d13-market-1",
+              "pashto": "زه تل دلته ډوډۍ اخلم.",
+              "romanisation": "za tal dalta ḍoḍay akhlam",
+              "english": "I always buy bread here.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 13,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-house-5",
+              "pashto": "ته تل په کور کې مرسته کوې.",
+              "romanisation": "ta tal pa kor ke mrasta kawey",
+              "english": "You always help at home.",
+              "speaker": "Muhammad Jan",
+              "recipient": "Player",
+              "day": 13,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d13-vocab-3",
+            "w2-d13-market-1",
+            "w2-d13-house-5"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "تل",
+        "romanisation": "tal",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

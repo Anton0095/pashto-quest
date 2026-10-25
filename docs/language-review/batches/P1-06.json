@@ -1,0 +1,1329 @@
+{
+  "batchId": "P1-06",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "lemma:w2-d13-vocab-4",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Slowly"
+      ],
+      "morphology": {
+        "partOfSpeech": "adverb",
+        "forms": [
+          {
+            "formId": "lemma:w2-d13-vocab-4:form:0",
+            "pashto": "ورو ورو",
+            "romanisation": "wro wro",
+            "englishGloss": "Slowly",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d13-vocab-4"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d13-vocab-4",
+          "examples": [
+            {
+              "exampleId": "w2-d13-river-1",
+              "pashto": "مینا ورو ورو ځي.",
+              "romanisation": "meena wro wro dzee",
+              "english": "Mina walks slowly.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 13,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-school-5",
+              "pashto": "هغه ورو ورو لیکي.",
+              "romanisation": "hagha wro wro leekee",
+              "english": "She writes slowly.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 13,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-market-4",
+              "pashto": "موږ کڅوړې ورو ورو وړو.",
+              "romanisation": "moong katsoṛe wro wro wro",
+              "english": "We carry the bags slowly.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 13,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d14-river-1",
+              "pashto": "مینا ورو ورو ځي.",
+              "romanisation": "meena wro wro dzee",
+              "english": "Mina walks slowly.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 14,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d13-vocab-4",
+            "w2-d13-river-1",
+            "w2-d13-school-5",
+            "w2-d13-market-4",
+            "w2-d14-river-1",
+            "w2-d13-reply-1",
+            "w2-d13-reply-5",
+            "w2-d14-reply-11"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ورو ورو",
+        "romanisation": "wro wro",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "lemma:w2-d13-vocab-5",
+      "kind": "existing-lemma",
+      "priority": "P1",
+      "intendedMeaning": [
+        "Sometimes"
+      ],
+      "morphology": {
+        "partOfSpeech": "adverb",
+        "forms": [
+          {
+            "formId": "lemma:w2-d13-vocab-5:form:0",
+            "pashto": "کله کله",
+            "romanisation": "kala kala",
+            "englishGloss": "Sometimes",
+            "morphology": {
+              "form": "source form",
+              "number": "unspecified"
+            },
+            "reviewStatus": "needsReview",
+            "prerequisiteGrammarIds": [],
+            "audioContentId": "w2-d13-vocab-5"
+          }
+        ],
+        "reviewRequest": "Confirm grammatical function, reference, agreement and contextual scope."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/LIBRARY_LEXICON.json",
+          "lemmaId": "lemma:w2-d13-vocab-5",
+          "examples": [
+            {
+              "exampleId": "w2-d13-river-4",
+              "pashto": "هغوی کله کله د جهیل تر څنګ کښېني.",
+              "romanisation": "haghoy kala kala da jaheel tar tsang kenee",
+              "english": "They sometimes sit beside the lake.",
+              "speaker": "Player",
+              "recipient": "Saleha",
+              "day": 13,
+              "location": "nature",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-school-2",
+              "pashto": "موږ کله کله جملې لیکو.",
+              "romanisation": "moong kala kala jumle leeko",
+              "english": "We sometimes write sentences.",
+              "speaker": "Player",
+              "recipient": "Ms Hameed",
+              "day": 13,
+              "location": "school",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-market-3",
+              "pashto": "هغوی کله کله مڼې اخلي.",
+              "romanisation": "haghoy kala kala maṇe akhlee",
+              "english": "They sometimes buy apples.",
+              "speaker": "Player",
+              "recipient": "Edris",
+              "day": 13,
+              "location": "business",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            },
+            {
+              "exampleId": "w2-d13-house-1",
+              "pashto": "زه کله کله چای څښم.",
+              "romanisation": "za kala kala chaay ts-kham",
+              "english": "I sometimes drink tea.",
+              "speaker": "Player",
+              "recipient": "Muhammad Jan",
+              "day": 13,
+              "location": "residential",
+              "reviewStatus": "needsReview",
+              "constraints": {
+                "mode": "fixed authored sentence",
+                "substitutions": []
+              }
+            }
+          ],
+          "mappedSourceIds": [
+            "w2-d13-vocab-5",
+            "w2-d13-river-4",
+            "w2-d13-school-2",
+            "w2-d13-market-3",
+            "w2-d13-house-1",
+            "w2-d13-reply-3",
+            "w2-d14-reply-12"
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کله کله",
+        "romanisation": "kala kala",
+        "reviewStatus": "needsReview"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:g-hello",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Hello",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "guide"
+      ],
+      "evidence": [
+        {
+          "id": "g-hello",
+          "pashto": "سلام",
+          "englishContext": "Hello",
+          "romanisation": "salaam",
+          "day": 0,
+          "scene": "guide",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": []
+        }
+      ],
+      "existing": {
+        "pashto": "سلام",
+        "romanisation": "salaam"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:g-how",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "How are you?",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "guide"
+      ],
+      "evidence": [
+        {
+          "id": "g-how",
+          "pashto": "څنګه یې؟",
+          "englishContext": "How are you?",
+          "romanisation": "tsanga ye?",
+          "day": 0,
+          "scene": "guide",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": []
+        }
+      ],
+      "existing": {
+        "pashto": "څنګه یې؟",
+        "romanisation": "tsanga ye?"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:g-thanks",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Thank you",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "guide"
+      ],
+      "evidence": [
+        {
+          "id": "g-thanks",
+          "pashto": "مننه",
+          "englishContext": "Thank you",
+          "romanisation": "manana",
+          "day": 0,
+          "scene": "guide",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": []
+        }
+      ],
+      "existing": {
+        "pashto": "مننه",
+        "romanisation": "manana"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:g-bye",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Goodbye",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "guide"
+      ],
+      "evidence": [
+        {
+          "id": "g-bye",
+          "pashto": "خدای پامان",
+          "englishContext": "Goodbye",
+          "romanisation": "khudaay paamaan",
+          "day": 0,
+          "scene": "guide",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": []
+        }
+      ],
+      "existing": {
+        "pashto": "خدای پامان",
+        "romanisation": "khudaay paamaan"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:n-house",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "House",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "n-house",
+          "pashto": "کور",
+          "englishContext": "House",
+          "romanisation": "kor",
+          "day": 1,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-house",
+              "formId": "lemma:n-house:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کور",
+        "romanisation": "kor"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:n-door",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Door",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "n-door",
+          "pashto": "دروازه",
+          "englishContext": "Door",
+          "romanisation": "darwaaza",
+          "day": 1,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-door",
+              "formId": "lemma:n-door:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "دروازه",
+        "romanisation": "darwaaza"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:n-room",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Room",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "n-room",
+          "pashto": "کوټه",
+          "englishContext": "Room",
+          "romanisation": "koṭa",
+          "day": 1,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-room",
+              "formId": "lemma:n-room:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کوټه",
+        "romanisation": "koṭa"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:v-open",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "To open",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "v-open",
+          "pashto": "خلاصول",
+          "englishContext": "To open",
+          "romanisation": "khlaasawul",
+          "day": 2,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "خلاصول",
+        "romanisation": "khlaasawul"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:a-big",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Big",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "a-big",
+          "pashto": "لوی",
+          "englishContext": "Big",
+          "romanisation": "loy",
+          "day": 1,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:a-big",
+              "formId": "lemma:a-big:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "لوی",
+        "romanisation": "loy"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:s3-door",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "He/she opens the door.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "s3-door",
+          "pashto": "هغه دروازه خلاصوي.",
+          "englishContext": "He/she opens the door.",
+          "romanisation": "hagha darwaaza khlaasawi",
+          "day": 2,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-door",
+              "formId": "lemma:n-door:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-open",
+              "formId": "lemma:v-open:present:2"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-2",
+              "formId": "lemma:w2-d8-vocab-2:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغه دروازه خلاصوي.",
+        "romanisation": "hagha darwaaza khlaasawi"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:s3-house",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "The house is big.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "residential"
+      ],
+      "evidence": [
+        {
+          "id": "s3-house",
+          "pashto": "کور لوی دی.",
+          "englishContext": "The house is big.",
+          "romanisation": "kor loy day",
+          "day": 1,
+          "scene": "residential",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-house",
+              "formId": "lemma:n-house:form:0"
+            },
+            {
+              "lemmaId": "lemma:a-big",
+              "formId": "lemma:a-big:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "کور لوی دی.",
+        "romanisation": "kor loy day"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:n-water",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Water",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "n-water",
+          "pashto": "اوبه",
+          "englishContext": "Water",
+          "romanisation": "oba",
+          "day": 1,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "اوبه",
+        "romanisation": "oba"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:n-river",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "River",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "n-river",
+          "pashto": "سیند",
+          "englishContext": "River",
+          "romanisation": "seend",
+          "day": 1,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-river",
+              "formId": "lemma:n-river:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "سیند",
+        "romanisation": "seend"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:v-drink",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "To drink",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "v-drink",
+          "pashto": "څښل",
+          "englishContext": "To drink",
+          "romanisation": "ts-khal",
+          "day": 2,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "څښل",
+        "romanisation": "ts-khal"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:a-cold",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Cold",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "a-cold",
+          "pashto": "سوړ",
+          "englishContext": "Cold",
+          "romanisation": "soṛ",
+          "day": 1,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:a-cold",
+              "formId": "lemma:a-cold:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "سوړ",
+        "romanisation": "soṛ"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:s3-water",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "He/she drinks water.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "s3-water",
+          "pashto": "هغه اوبه څښي.",
+          "englishContext": "He/she drinks water.",
+          "romanisation": "hagha oba ts-khee",
+          "day": 2,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-drink",
+              "formId": "lemma:v-drink:present:2"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-2",
+              "formId": "lemma:w2-d8-vocab-2:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغه اوبه څښي.",
+        "romanisation": "hagha oba ts-khee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:s3-cold",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "The water is cold.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "nature"
+      ],
+      "evidence": [
+        {
+          "id": "s3-cold",
+          "pashto": "اوبه سړې دي.",
+          "englishContext": "The water is cold.",
+          "romanisation": "oba saṛe dee",
+          "day": 1,
+          "scene": "nature",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-water",
+              "formId": "lemma:n-water:form:0"
+            },
+            {
+              "lemmaId": "lemma:a-cold",
+              "formId": "lemma:a-cold:variant:1"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "اوبه سړې دي.",
+        "romanisation": "oba saṛe dee"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:n-market",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Market",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "n-market",
+          "pashto": "بازار",
+          "englishContext": "Market",
+          "romanisation": "baazaar",
+          "day": 1,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-market",
+              "formId": "lemma:n-market:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "بازار",
+        "romanisation": "baazaar"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:n-bread",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Bread / food",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "n-bread",
+          "pashto": "ډوډۍ",
+          "englishContext": "Bread / food",
+          "romanisation": "ḍoḍay",
+          "day": 1,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "ډوډۍ",
+        "romanisation": "ḍoḍay"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:n-shop",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Shop",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "n-shop",
+          "pashto": "دوکان",
+          "englishContext": "Shop",
+          "romanisation": "dukaan",
+          "day": 1,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-shop",
+              "formId": "lemma:n-shop:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "دوکان",
+        "romanisation": "dukaan"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:v-eat",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "To eat",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "v-eat",
+          "pashto": "خوړل",
+          "englishContext": "To eat",
+          "romanisation": "khoṛal",
+          "day": 2,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:v-eat",
+              "formId": "lemma:v-eat:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "خوړل",
+        "romanisation": "khoṛal"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:a-fresh",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "Fresh",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "a-fresh",
+          "pashto": "تازه",
+          "englishContext": "Fresh",
+          "romanisation": "taaza",
+          "day": 1,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:a-fresh",
+              "formId": "lemma:a-fresh:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "تازه",
+        "romanisation": "taaza"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "surface:s3-eat",
+      "kind": "authored-surface",
+      "priority": "P1",
+      "intendedMeaning": "He/she eats bread.",
+      "morphology": {
+        "reviewRequest": "Align every Pashto component with intended English; identify lemma/form IDs, agreement, person/number, case and phrase boundaries. Validate distractors/accepted answers separately."
+      },
+      "suitableScenes": [
+        "business"
+      ],
+      "evidence": [
+        {
+          "id": "s3-eat",
+          "pashto": "هغه ډوډۍ خوري.",
+          "englishContext": "He/she eats bread.",
+          "romanisation": "hagha ḍoḍay khoree",
+          "day": 2,
+          "scene": "business",
+          "source": "runtime-catalog",
+          "speaker": null,
+          "recipient": null,
+          "sourceMappings": [
+            {
+              "lemmaId": "lemma:n-bread",
+              "formId": "lemma:n-bread:form:0"
+            },
+            {
+              "lemmaId": "lemma:v-eat",
+              "formId": "lemma:v-eat:present:2"
+            },
+            {
+              "lemmaId": "lemma:w2-d8-vocab-2",
+              "formId": "lemma:w2-d8-vocab-2:form:0"
+            }
+          ]
+        }
+      ],
+      "existing": {
+        "pashto": "هغه ډوډۍ خوري.",
+        "romanisation": "hagha ḍoḍay khoree"
+      },
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}

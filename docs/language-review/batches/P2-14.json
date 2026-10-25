@@ -1,0 +1,598 @@
+{
+  "batchId": "P2-14",
+  "activationAllowed": false,
+  "items": [
+    {
+      "id": "universal-target:positionDirection:0",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "In",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:positionDirection:0",
+          "english": "In",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:positionDirection:1",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "Out",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:positionDirection:1",
+          "english": "Out",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:positionDirection:2",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "Up",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:positionDirection:2",
+          "english": "Up",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:positionDirection:3",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "Down",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:positionDirection:3",
+          "english": "Down",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:positionDirection:4",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "Left",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:positionDirection:4",
+          "english": "Left",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:positionDirection:5",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "Right",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:positionDirection:5",
+          "english": "Right",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:positionDirection:6",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "On",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:positionDirection:6",
+          "english": "On",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:positionDirection:7",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "Under",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:positionDirection:7",
+          "english": "Under",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:positionDirection:8",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "Behind",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:positionDirection:8",
+          "english": "Behind",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:positionDirection:9",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "In front",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:positionDirection:9",
+          "english": "In front",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:connectors:0",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "And",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:connectors:0",
+          "english": "And",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:connectors:1",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "Or",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:connectors:1",
+          "english": "Or",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:connectors:2",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "But",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:connectors:2",
+          "english": "But",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:connectors:3",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "Because",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:connectors:3",
+          "english": "Because",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:connectors:4",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "With",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:connectors:4",
+          "english": "With",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    },
+    {
+      "id": "universal-target:connectors:5",
+      "kind": "universal-target",
+      "priority": "P2",
+      "intendedMeaning": "Without",
+      "morphology": {
+        "reviewRequest": "Resolve semantic target to existing or new lemma/form; specify person, number, deixis, case, politeness or grammatical scope as applicable. Do not count an inflection as another lemma."
+      },
+      "suitableScenes": [
+        "residential",
+        "nature",
+        "business",
+        "school"
+      ],
+      "evidence": [
+        {
+          "file": "content/UNIVERSAL_TEACHING_TARGETS.json",
+          "targetId": "universal-target:connectors:5",
+          "english": "Without",
+          "status": "needsLinguisticIdentityReview",
+          "active": false,
+          "lemmaId": null
+        }
+      ],
+      "existing": {},
+      "status": "pending-human-review",
+      "proposedPashto": null,
+      "proposedRomanisation": null,
+      "localVsWrittenVariant": null,
+      "acceptedAlternatives": [],
+      "alternativeRationale": null,
+      "reviewer": null,
+      "reviewDate": null,
+      "reviewReference": null,
+      "audioProvenance": null,
+      "decision": null
+    }
+  ]
+}
