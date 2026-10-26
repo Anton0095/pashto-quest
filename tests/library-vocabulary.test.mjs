@@ -480,7 +480,10 @@ try {
             .filter((q) => q.kind === "word")
             .every((q) =>
               q.vocabularyOrigin === "daily-greeting" ||
-              ["encountered", "due-review"].includes(q.vocabularyOrigin),
+              ["encountered", "due-review"].includes(q.vocabularyOrigin) ||
+              // Zero pace may leave fewer encountered lemmas than challenge slots.
+              // An authored fallback must retain safe recognition presentation.
+              (q.vocabularyOrigin === "authored-fallback" && q.unstudied === true && q.direction === "ps-en"),
             ),
         ),
       );
