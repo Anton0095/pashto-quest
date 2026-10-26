@@ -4,8 +4,12 @@ import argparse
 import json
 from pathlib import Path
 import re
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+# runpy-based content checks also resolve the sibling schema module.
+sys.path.insert(0, str(ROOT / "tools"))
+from curriculum_schema import validate_curriculum
 DISTRICTS = {'residential', 'nature', 'business', 'school'}
 
 
@@ -21,6 +25,7 @@ def read(name):
 
 
 def validate(data):
+    validate_curriculum(data)
     identities = set()
     for entry in data['entries']:
         identity = entry['lemmaId']
@@ -106,9 +111,37 @@ def build():
     week2 = json.loads(read('content/WEEK2_RUNTIME.json'))
     library = json.loads(read('content/LIBRARY_LEXICON.json'))
     narrative = json.loads(read('content/NARRATIVE_EXPRESSIONS.json'))
+    overrides = json.loads(read('content/CURRICULUM_OVERRIDES.json'))
+    approval = overrides['approval']
+    if approval.get('approved'):
+        if not all(approval.get(k) for k in ['reviewer', 'date', 'reference']):
+            raise ValueError('Curriculum override needs explicit human approval evidence')
+        entries = {e['lemmaId']: e for e in library['entries']}
+        seen = set()
+        for row in overrides['introductions']:
+            eid = row['lemmaId']
+            if eid not in entries or eid in seen:
+                raise ValueError('Unknown or duplicate curriculum override')
+            seen.add(eid)
+            e = entries[eid]
+            if not e['firstIntroductionConstraints']['earliestDay'] <= row['day'] <= 13:
+                raise ValueError('Override violates earliest grammar day')
+            e['introduction'].update({k: row[k] for k in ['day', 'district', 'teachingOrder']})
+            e['introduction']['verifiedStatus'] = 'human_curriculum_approved'
+            for f in e['forms']:
+                f['firstAllowedDay'] = max(row['day'], f['grammarFirstDay'])
+            # Authorial scheduling approval NEVER changes linguistic review status.
+    library['sentenceFrames'] = json.loads(read('content/SENTENCE_FRAMES.json'))
+    candidates = json.loads(read('content/DISTRICT_VOCABULARY_CANDIDATES.json'))
+    library['inventorySummary'] = {'activeContentLemmas': sum(e['countsTowardDailyQuota'] for e in library['entries']), 'universalLemmas': sum(e['vocabularyClass']=='universal' for e in library['entries']), 'inactiveCandidates':len(candidates['candidates'])}
     validate(library)
     validate_expressions(narrative)
     append_week2(game, week2)
+    audio_sources = {w['id'] for w in game['words']} | {q['id'] for d in week2['days'] for q in d['dialogues']}
+    for e in library['entries']:
+        for f in e['forms']:
+            if f.get('audioContentId') and f['audioContentId'] not in audio_sources:
+                raise ValueError('Orphan audio source: ' + f['formId'])
     entries = {entry['lemmaId']: entry for entry in library['entries']}
     for card in game['words']:
         if card.get('type') in ['sentence', 'greeting']:
@@ -124,7 +157,7 @@ def build():
     audio_ids = sorted(path.stem for path in audio_dir.glob('*.mp3')) if audio_dir.exists() else []
     # Explicit dependency order; modules use factories with injected services.
     modules = [
-        'library-engine', 'progression', 'content', 'question-engine',
+        'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
         'assessment-content', 'grammar-content', 'learning', 'questions', 'storage', 'audio', 'ui',
         'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
         'world-ui', 'library-ui', 'app',

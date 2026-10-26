@@ -87,7 +87,7 @@ check(
     assert(
       all.size <= data.entries.filter((e) => e.countsTowardDailyQuota).length,
     );
-    assert(data.entries.every((e) => e.reviewStatus === "needsReview"));
+    assert(data.entries.every((e) => e.reviewStatus === "needs_native_review"));
     assert.equal(api.E.supported(p, data, 15).length, 0);
   },
 );
@@ -105,7 +105,7 @@ check(
         p,
         data,
         { lemmaId: verb.lemmaId, formId: f.formId },
-        { day: 3, source: "lesson", location: "nature" },
+        { day: 9, source: "lesson", location: "nature", introduce:true },
       );
     assert.equal(api.E.summary(p, data).encountered, 1);
     assert.equal(api.E.status(p.library.acquired[verb.lemmaId]), "introduced");
@@ -120,7 +120,7 @@ check(
     };
     for (let i = 0; i < 3; i++) {
       const context = {
-        day: 3 + i,
+        day: 9 + i,
         source: "review",
         location: "library",
         eventId: "attempt:" + i,
@@ -133,7 +133,7 @@ check(
     assert.equal(api.E.summary(p, data).mastered, 1);
     for (const id of ["n-book", "n-books"])
       api.E.expose(p, data, id, {
-        day: 7,
+        day: 9,
         source: "lesson",
         location: "school",
       });
@@ -190,7 +190,7 @@ check("LIB-17: grammar unlock follows exposure, not schedule or pass", () => {
   assert(p.library.grammar["grammar-day-3"]);
   assert(!p.library.grammar["grammar-day-4"]);
 });
-const hook = `window.__libraryTest={get progress(){return state.progress},get session(){return state.session},get selectedLoop(){return state.day},E:LibraryEngine,data:content.LIBRARY_DATA,entries:content.libraryEntries,words:content.words,wordById:content.wordById,zoneKeys:content.zoneKeys,begin:lessons.begin,startWorld:world.startWorld,openLibrary:library.openLibrary,closeLibrary:library.closeLibrary,afterStudy:lessons.afterStudy,afterGrammar:lessons.afterGrammar,answer:lessons.answer,nextQuestion,answerChallenge:challenge.answerChallenge,showChallengeQuestion:challenge.showChallengeQuestion,buildTiles:questions.buildTiles,save:storage.save,getChallengeSpec:progression.getChallengeSpec,setProgress(p){state.progress={...progression.fresh(),...p,saveSchemaVersion:5,library:p.library||LibraryEngine.state()};state.session=null;storage.save();ui.hud();world.startWorld()},select(day){state.day=day;world.startWorld()},startChallenge:challenge.startChallenge};`;
+const hook = `window.__libraryTest={get progress(){return state.progress},get session(){return state.session},get selectedLoop(){return state.day},E:LibraryEngine,data:content.LIBRARY_DATA,entries:content.libraryEntries,words:content.words,wordById:content.wordById,zoneKeys:content.zoneKeys,begin:lessons.begin,startWorld:world.startWorld,openLibrary:library.openLibrary,closeLibrary:library.closeLibrary,afterStudy:lessons.afterStudy,afterGrammar:lessons.afterGrammar,answer:lessons.answer,nextQuestion,answerChallenge:challenge.answerChallenge,showChallengeQuestion:challenge.showChallengeQuestion,buildTiles:questions.buildTiles,save:storage.save,getChallengeSpec:progression.getChallengeSpec,setProgress(p){state.progress={...progression.fresh(),...p,saveSchemaVersion:6,library:p.library||LibraryEngine.state()};state.session=null;storage.save();ui.hud();world.startWorld()},select(day){state.day=day;world.startWorld()},startChallenge:challenge.startChallenge};`;
 const served = html.replace("// @TEST_HOOK", hook);
 const server = http.createServer((req, res) => {
   if (req.url.startsWith("/audio/")) {
@@ -480,7 +480,10 @@ try {
             .filter((q) => q.kind === "word")
             .every((q) =>
               q.vocabularyOrigin === "daily-greeting" ||
-              ["encountered", "due-review"].includes(q.vocabularyOrigin),
+              ["encountered", "due-review"].includes(q.vocabularyOrigin) ||
+              // Zero pace may leave fewer encountered lemmas than challenge slots.
+              // An authored fallback must retain safe recognition presentation.
+              (q.vocabularyOrigin === "authored-fallback" && q.unstudied === true && q.direction === "ps-en"),
             ),
         ),
       );
@@ -584,7 +587,7 @@ try {
         };
       for (const e of t.data.entries.filter(e => e.countsTowardDailyQuota))
         t.E.encounter(p, t.data, {lemmaId:e.lemmaId, formId:e.forms[0].formId},
-          {day:0, source:"fixture", location:e.primaryDistrict});
+          {day:13, source:"fixture", location:e.primaryDistrict, introduce:true});
       t.setProgress(p);
       t.select(13);
       t.begin("13-nature");

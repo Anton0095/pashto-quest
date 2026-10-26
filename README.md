@@ -33,6 +33,7 @@ node tools/district-inventory.mjs --check
 | `src/content.js`, `src/assessment-content.js`, `src/grammar-content.js` | Catalog adapters and existing authored narrative/question/grammar blueprints |
 | `src/library-engine.js` | Sole lemma/form identity, acquisition, SRS and district planner |
 | `src/progression.js` | Save factory/version, XP/reward identity, results, milestones and access rules |
+| `src/sentence-engine.js`, `content/SENTENCE_FRAMES.json` | Bounded feature/semantic unification, licensed draft compositions and deterministic practice selection |
 | `src/question-engine.js` | Shared answer evaluation, approved normalisation and indexed tiles |
 | `src/learning.js`, `src/questions.js` | Practice transactions, lesson pools, frozen assessments and answer choices |
 | `src/storage.js` | Current-save validation, local storage and active challenge snapshots |
@@ -53,9 +54,9 @@ Modules expose small factory APIs with explicit state/service dependencies and s
 
 The Day 1 Library tutorial introduces four question types: choose the meaning of `سلام`, arrange `څنګه یې؟`, select a gender preference, and type a player name. Completing all four is required to begin Day 1. A normal day includes narrative openings and district lessons; after the tutorial on Day 1, or immediately on Days 2–14, the player can skip visits and attempt the daily challenge. Skips do not mark unseen locations or vocabulary complete.
 
-Each of the four districts contributes new **distinct lexical lemmas**, at a selected pace of 0/4/8/12/16/20/24 per day. Universal vocabulary, inflections, grammar units and expressions do not consume district quotas. Day 1 teaches descriptions, while action verbs start on Day 2. Day 14 schedules no compulsory new words. Daily challenges have 15 items, pass 12; Days 7 and 14 have 25, pass 20. A passed Day 7 exam unlocks Level 10 and New Resident.
+Each district selects eligible new **distinct lexical lemmas** in its explicit curated introduction order, at a selected pace of 0/4/8/12/16/20/24 per day. Universal vocabulary, inflections, grammar units and expressions do not consume district quotas. Day 1 teaches descriptions, while action verbs start on Day 2. Day 14 schedules no compulsory new words. Daily challenges have 15 items, pass 12; Days 7 and 14 have 25, pass 20. A passed Day 7 exam unlocks Level 10 and New Resident.
 
-The current lexicon is short of the high-pace target: 99 district draft lemmas + 28 universal draft lemmas are playable; 301 selected district candidates are inactive pending linguistic work. The interface reports shortages without counting untranslated English candidates as learned words. Details and day-by-day teaching targets are in `CURRICULUM.md`.
+The current lexicon is short of the high-pace target: 99 district draft lemmas + 29 universal draft lemmas are playable; 301 selected district candidates are inactive pending linguistic work. The interface reports shortages without counting untranslated English candidates as learned words. Details and day-by-day teaching targets are in `CURRICULUM.md`.
 
 ## Current documentation
 
@@ -66,4 +67,10 @@ The current lexicon is short of the high-pace target: 99 district draft lemmas +
 - [`tests/README.md`](tests/README.md): verification coverage, requirements and limitations.
 - [`docs/reference/`](docs/reference/): historical Week 1/2 authoring blueprints retained only for editorial context; current JSON/runtime and active specifications take precedence.
 
-Save format **5 only** is supported. There is no old-save migration. An incompatible or corrupt save stays untouched until the player explicitly resets it. New format-5 progress, SRS and active attempts save and resume normally, including placed tiles and first-answer locks. Earlier formats are intentionally unsupported; there are no migration or content-repair adapters.
+Save format **6 only** is supported. There is no old-save migration. An incompatible or corrupt save stays untouched until the player explicitly resets it. New format-6 progress, SRS and active attempts save and resume normally, including placed tiles and first-answer locks. Earlier formats are intentionally unsupported; there are no migration or content-repair adapters.
+
+Vocabulary introductions are declared per immutable lemma ID in `content/LIBRARY_LEXICON.json` (planned day, district/universal, order and grammar requirements), separately from actual encounter, individual form study and mastery. A hash no longer selects the curriculum. All seven paces remain selectable when supply is insufficient; the plan displays real district shortfalls instead of pulling future words forward. `content/CURRICULUM_AUDIT.json` is the maintained effective audit, including applied approved overrides, form exclusions and retimed authored cards. `content/DISTRICT_INVENTORY_REPORT.json` reports each day's district assignments/shortfalls at every pace.
+
+Controlled cumulative practice now composes noun–adjective–copula descriptions from ten feature-vetted forms and actual study/grammar unlocks. The initial frame enables nine semantic tuples: six exact authored outputs and three new generated drafts (e.g. `کور نوی دی.` / “The house is new.”). Incomplete or ambiguous forms are excluded. Other grammar retains eligible authored fallbacks; no verb conjugation or noun declension is extrapolated. New and authored outputs both remain pending native Laghman review. All authored JSON sentences/dialogues are retained; practice involving later forms is deferred rather than exposing future grammar as new material.
+
+For a future human-edited spreadsheet, export CSV columns `lemmaId,plannedDay,district,teachingOrder,verifiedStatus` and run `python3 tools/import-curriculum.py input.csv proposal.json`. This creates an **unapproved proposal**; it cannot certify language. `content/CURRICULUM_OVERRIDES.json` is applied only with explicit curriculum approval, reviewer/date/reference, valid stable IDs and grammar-safe days. Curriculum approval never changes linguistic approval. Regenerate/check the audit with `python3 tools/curriculum-audit.py [--check]` after rebuilding.

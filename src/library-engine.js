@@ -6,15 +6,18 @@ const LibraryEngine = (() => {
     !!entry?.suitableDistricts.includes(scene(place)?.districtId || place);
   const unique = (values) => [...new Set(values)];
   // Descriptions precede lexical actions. Fixed expressions have no component-verb mappings.
-  const allowedOnDay = (entry, day) =>
-    day !== 1 || entry?.partOfSpeech !== "verb";
+  const allowedOnDay = (entry, day) => !!entry && day >= entry.introduction.day;
+  function formAllowed(entry, value, day) {
+    return allowedOnDay(entry, day) && day >= value.firstAllowedDay;
+  }
   function cardAllowed(data, id, day) {
-    return (data.sourceMappings[id] || []).every((ref) =>
-      allowedOnDay(
-        data.entries.find((e) => e.lemmaId === ref.lemmaId),
-        day,
-      ),
-    );
+    if ((data.cardDays?.[id] || 0) > day && data.cardTypes?.[id] === "sentence")
+      return false;
+    return (data.sourceMappings[id] || []).every((ref) => {
+      const e = data.entries.find((e) => e.lemmaId === ref.lemmaId),
+        f = e?.forms.find((f) => f.formId === ref.formId);
+      return e && f && formAllowed(e, f, day);
+    });
   }
   function state() {
     return {
@@ -36,7 +39,9 @@ const LibraryEngine = (() => {
     if (
       !e ||
       !allowedOnDay(e, context.day) ||
-      !e.forms.some((f) => f.formId === ref.formId)
+      !e.forms.some(
+        (f) => f.formId === ref.formId && formAllowed(e, f, context.day),
+      )
     )
       return null;
     const r = s.acquired[e.lemmaId] || {
@@ -44,6 +49,7 @@ const LibraryEngine = (() => {
       firstEncounteredSource: context.source,
       firstEncounteredLocation: context.location,
       encounteredFormIds: [],
+      introducedFormIds: [],
       practisedFormIds: [],
       correctAttempts: 0,
       totalAttempts: 0,
@@ -57,6 +63,10 @@ const LibraryEngine = (() => {
     r.encounteredSourceIds = unique(
       [...r.encounteredSourceIds, context.contentId].filter(Boolean),
     );
+    if (context.introduce) {
+      r.introducedFormIds = unique([...r.introducedFormIds, ref.formId]);
+      r.formallyIntroducedDay ??= context.day;
+    }
     if (context.day > 0) {
       const ledger = (s.dayExposure[context.day] ||= {
         incidentalStoryLemmas: [],
@@ -69,7 +79,7 @@ const LibraryEngine = (() => {
         r.firstEncounteredDay === context.day &&
         e.countsTowardDailyQuota &&
         !scheduled.includes(e.lemmaId) &&
-        ["lesson", "challenge"].includes(context.source)
+        ["lesson", "challenge", "grammar-model"].includes(context.source)
       )
         ledger.incidentalStoryLemmas = unique([
           ...ledger.incidentalStoryLemmas,
@@ -108,7 +118,13 @@ const LibraryEngine = (() => {
       return;
     }
     for (const ref of data.sourceMappings[id] || [])
-      encounter(p, data, ref, { ...context, contentId: id });
+      encounter(p, data, ref, {
+        ...context,
+        contentId: id,
+        introduce:
+          lexicalCard(data, id) &&
+          ["lesson", "review", "library", "tutorial"].includes(context.source),
+      });
   }
   function schedule(record, correct, now) {
     const f = {
@@ -140,14 +156,16 @@ const LibraryEngine = (() => {
     );
   }
   function identity(data, id) {
-    return lexicalCard(data, id) ? data.sourceMappings[id][0].formId : id;
+    return lexicalCard(data, id)
+      ? data.sourceMappings[id][0].formId
+      : data.sentenceOrigins?.[id] || id;
   }
   function cardStat(p, data, id) {
     if (lexicalCard(data, id)) {
       const ref = data.sourceMappings[id][0];
       return p.library.acquired[ref.lemmaId]?.forms[ref.formId] || {};
     }
-    return p.library.units[id] || {};
+    return p.library.units[data.sentenceOrigins?.[id] || id] || {};
   }
   function practise(p, data, id, correct, context) {
     if (!cardAllowed(data, id, context.day)) return false;
@@ -157,7 +175,11 @@ const LibraryEngine = (() => {
     expose(p, data, id, context);
     const now = context.now ?? Date.now();
     if (data.cardTypes?.[id] && !lexicalCard(data, id))
-      p.library.units[id] = schedule(p.library.units[id], correct, now);
+      p.library.units[data.sentenceOrigins?.[id] || id] = schedule(
+        p.library.units[data.sentenceOrigins?.[id] || id],
+        correct,
+        now,
+      );
     for (const ref of data.sourceMappings[id] || []) {
       const r = p.library.acquired[ref.lemmaId];
       if (!r) continue;
@@ -182,7 +204,9 @@ const LibraryEngine = (() => {
         ? "mastered"
         : r.practisedFormIds.length
           ? "practised"
-          : "introduced";
+          : r.introducedFormIds.length
+            ? "introduced"
+            : "encountered";
   }
   function summary(p, data) {
     const counts = { encountered: 0, practised: 0, mastered: 0 };
@@ -195,85 +219,44 @@ const LibraryEngine = (() => {
     }
     return counts;
   }
-  function hash(text) {
-    let h = 2166136261;
-    for (const ch of text) {
-      h ^= ch.charCodeAt(0);
-      h = Math.imul(h, 16777619);
-    }
-    return h >>> 0;
-  }
   function available(p, data, day) {
     const reserved = new Set(
       Object.values(p.library.plans)
         .filter((x) => x.day !== day)
-        .flatMap((x) =>
-          Object.values(x.locationAssignments)
-            .flat()
-            .filter((id) => {
-              const e = data.entries.find((e) => e.lemmaId === id);
-              return (
-                x.day !== 14 &&
-                e?.countsTowardDailyQuota &&
-                allowedOnDay(e, x.day)
-              );
-            }),
-        ),
+        .flatMap((x) => Object.values(x.locationAssignments).flat()),
     );
-    return data.entries.filter(
-      (e) =>
-        e.countsTowardDailyQuota &&
-        allowedOnDay(e, day) &&
-        !p.library.acquired[e.lemmaId] &&
-        !reserved.has(e.lemmaId),
-    );
+    return data.entries
+      .filter(
+        (e) =>
+          e.countsTowardDailyQuota &&
+          allowedOnDay(e, day) &&
+          !p.library.acquired[e.lemmaId]?.formallyIntroducedDay &&
+          !reserved.has(e.lemmaId),
+      )
+      .sort(
+        (a, b) =>
+          a.introduction.day - b.introduction.day ||
+          a.introduction.teachingOrder - b.introduction.teachingOrder ||
+          a.lemmaId.localeCompare(b.lemmaId),
+      );
   }
   function allocation(p, data, day, target) {
-    const pool = available(p, data, day),
-      byId = Object.fromEntries(pool.map((e) => [e.lemmaId, e])),
-      quota = target / 4;
     const assignments = Object.fromEntries(places.map((place) => [place, []]));
-    function assign(id, visited = new Set()) {
-      for (const place of places.filter((place) =>
-        matchesPlace(byId[id], place),
-      )) {
-        if (visited.has(place)) continue;
-        visited.add(place);
-        if (assignments[place].length < quota) {
-          assignments[place].push(id);
-          return true;
-        }
-        for (let i = 0; i < assignments[place].length; i++) {
-          const prior = assignments[place][i];
-          if (assign(prior, visited)) {
-            assignments[place][i] = id;
-            return true;
-          }
-        }
+    if (day !== 14)
+      for (const e of available(p, data, day)) {
+        const place = e.introduction.district;
+        if (assignments[place]?.length < target / 4)
+          assignments[place].push(e.lemmaId);
       }
-      return false;
-    }
-    const optional = pool.sort(
-      (a, b) =>
-        hash(p.library.seed + ":" + day + ":" + a.lemmaId) -
-          hash(p.library.seed + ":" + day + ":" + b.lemmaId) ||
-        a.lemmaId.localeCompare(b.lemmaId),
-    );
-    for (const e of optional) {
-      if (Object.values(assignments).flat().length >= target) break;
-      assign(e.lemmaId);
-    }
     return {
       assignments,
-      supported: places.every((place) => assignments[place].length === quota),
+      supported: places.every(
+        (place) => assignments[place].length === target / 4,
+      ),
     };
   }
   function supported(p, data, day) {
-    if (day < 1 || day > 14) return [];
-    if (day === 14) return [...presets];
-    return presets.filter(
-      (target) => allocation(p, data, day, target).supported,
-    );
+    return day >= 1 && day <= 14 ? [...presets] : [];
   }
   function ensurePlan(p, data, day) {
     if (p.library.plans[day]) return p.library.plans[day];
@@ -285,6 +268,12 @@ const LibraryEngine = (() => {
       effectiveDailyTarget: a.supported ? target : null,
       locationAssignments: a.assignments,
       seed: p.library.seed,
+      shortfalls: Object.fromEntries(
+        places.map((place) => [
+          place,
+          target / 4 - a.assignments[place].length,
+        ]),
+      ),
       contentGap: !a.supported,
       notice: a.supported
         ? "Draft content: native review pending."
@@ -296,7 +285,7 @@ const LibraryEngine = (() => {
   function setPace(p, data, target, day) {
     if (!presets.includes(target))
       return { ok: false, reason: "Choose a listed pace." };
-    // Never alter an existing plan. Validate the next unstarted day against the remaining pool.
+    // Existing plans stay frozen; the setting applies to the first unstarted day.
     let next = day;
     while (p.library.plans[next] && next <= 14) next++;
     if (next > 14)
@@ -304,12 +293,6 @@ const LibraryEngine = (() => {
         ok: false,
         reason:
           "All current day plans have begun. More curated content is needed for future days.",
-      };
-    if (!supported(p, data, next).includes(target))
-      return {
-        ok: false,
-        reason:
-          "Content gap: too few distinct activated lemmas remain. Select an available pace; no words will be invented.",
       };
     p.library.requestedDailyTarget = target;
     return { ok: true, day: next };
@@ -386,8 +369,9 @@ const LibraryEngine = (() => {
           e.lemmaId === id && e.countsTowardDailyQuota && allowedOnDay(e, day),
       ),
     );
+    const dueIds = new Set(dueForms(p, data).map(({ entry }) => entry.lemmaId));
     const due = acquired
-      .filter((id) => p.library.acquired[id].srsDueAt <= Date.now())
+      .filter((id) => dueIds.has(id))
       .sort(
         (a, b) =>
           p.library.acquired[a].srsDueAt - p.library.acquired[b].srsDueAt ||
@@ -418,7 +402,8 @@ const LibraryEngine = (() => {
           ? e.forms
               .filter(
                 (f) =>
-                  r.encounteredFormIds.includes(f.formId) &&
+                  (r.introducedFormIds.includes(f.formId) ||
+                    r.forms[f.formId]?.totalAttempts > 0) &&
                   r.forms[f.formId]?.srsDueAt <= Date.now(),
               )
               .map((f) => ({
@@ -461,6 +446,7 @@ const LibraryEngine = (() => {
       p.library.grammar["grammar-day-" + day] ||= { day, source };
   }
   return {
+    formAllowed,
     schedule,
     allowedOnDay,
     cardAllowed,

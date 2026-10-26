@@ -263,11 +263,6 @@ function createGrammar({ state, content, learning, ui, storage, onPhase }) {
         "English uses S–V–O. Pashto usually uses S–O–V.";
       ui.$("sovExplanation").textContent =
         `${state.session.preLessonGrammar ? "Ms Hameed starts your school day with action verbs. Yesterday: “The book is new” describes a thing; today: “He/she reads a book” describes an action. Dictionary forms: لوستل (lostal, to read), لیکل (leekal, to write). The third-person present forms are لولي (lolee, reads) and لیکي (leekee, writes); these are forms of the same two words. " : ""}English says “He/she ${d.verb} ${d.object}”: Subject → Verb → Object. In a simple Pashto action sentence, the object usually comes before the verb: Subject → Object → Verb. Practise with familiar nouns from your bank, such as کتاب (book). The boxes present grammatical order; Pashto script itself is read from right to left.`;
-      if (state.session.loop === 2 && state.session.loc === "school") {
-        for (const id of ["v-read", "v-write", "s3-read", "s2-school-word"])
-          if (content.wordById[id]) learning.libraryExpose(id, "lesson");
-        storage.save();
-      }
       ui.$("sovNext").textContent = state.session.preLessonGrammar
         ? "Let’s learn the school vocabulary →"
         : "I understand S–O–V →";
@@ -295,5 +290,18 @@ function createGrammar({ state, content, learning, ui, storage, onPhase }) {
     onPhase();
   }
 
-  return { showWeekOpening, showGrammar };
+  function recordVisibleWorkshop(render) {
+    render();
+    if (
+      state.session.phase === "grammar" &&
+      !ui.$("sovPanel").classList.contains("hidden")
+    ) {
+      learning.recordGrammarExposure(ui.$("sovExplanation").textContent);
+      storage.save();
+    }
+  }
+  return {
+    showWeekOpening: () => recordVisibleWorkshop(showWeekOpening),
+    showGrammar: () => recordVisibleWorkshop(showGrammar),
+  };
 }

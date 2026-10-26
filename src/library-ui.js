@@ -209,6 +209,7 @@ function createLibraryUI({
     ]);
     const status = select("Status", "libraryStatus", [
       ["", "All"],
+      ["encountered", "Encountered, not yet studied"],
       ["introduced", "Introduced"],
       ["practised", "Practised"],
       ["mastered", "Mastered"],
@@ -288,6 +289,13 @@ function createLibraryUI({
     detail.append(
       ui.node(
         "p",
+        `Planned introduction: Day ${e.introduction.day} · ${e.introduction.district}. ${r.formallyIntroducedDay ? "First word/form study: Day " + r.formallyIntroducedDay : "Not yet formally studied"}. Native language review pending.`,
+        "tiny",
+      ),
+    );
+    detail.append(
+      ui.node(
+        "p",
         `First encountered: Day ${r.firstEncounteredDay} · ${r.firstEncounteredSource} · ${r.firstEncounteredLocation}. ${r.correctAttempts}/${r.totalAttempts} correct attempts. ${r.srsDueAt <= Date.now() ? "Due for revision." : "Revision scheduled."}`,
         "tiny",
       ),
@@ -304,12 +312,33 @@ function createLibraryUI({
         ui.node(
           "p",
           `${f.englishGloss} · ${Object.entries(f.morphology)
-            .map(([k, v]) => k + ": " + v)
+            .map(
+              ([k, v]) =>
+                k +
+                ": " +
+                (v == null
+                  ? "not yet reviewed"
+                  : Array.isArray(v)
+                    ? v.join("/")
+                    : v),
+            )
             .join(", ")}`,
         ),
-        ui.node("p", f.romanisationNote || f.romanisation),
+        ui.node(
+          "p",
+          f.romanisation || "Isolated-form romanisation pending review.",
+        ),
         ui.node("p", "Native review pending.", "tiny"),
       );
+      if (f.contextRomanisation)
+        box.append(
+          ui.node(
+            "p",
+            "Source sentence aid (not isolated-form pronunciation): " +
+              f.contextRomanisation,
+            "tiny",
+          ),
+        );
       if (f.audioContentId)
         box.append(
           ui.button("Pronunciation (if available)", () =>
@@ -421,7 +450,7 @@ function createLibraryUI({
     root.append(
       ui.node(
         "p",
-        `Changes apply to ${next <= 14 ? "Day " + next + " before its first lesson or challenge" : "future content"}. Existing assignments remain unchanged. Story examples can expose additional words beyond the supplementary target.`,
+        `Changes apply to ${next <= 14 ? "Day " + next + " before its first lesson or challenge" : "future content"}. Existing assignments remain unchanged. Eligible words follow curated teaching order; future-day vocabulary is not pulled forward to fill gaps.`,
       ),
       ui.node("p", content.LIBRARY_DATA.contentNotice, "notice"),
     );

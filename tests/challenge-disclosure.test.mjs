@@ -6,7 +6,7 @@ import http from 'node:http';
 const require=createRequire(import.meta.url);
 let chromium;
 try {({chromium}=require('playwright'))} catch {({chromium}=require('/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'))}
-const hook=`window.__disclosure={get progress(){return state.progress},get session(){return state.session},wordById:content.wordById,E:LibraryEngine,data:content.LIBRARY_DATA,save:storage.save,showChallengeQuestion:challenge.showChallengeQuestion,fixture(day,studied=false){state.progress=progression.fresh();state.progress.tutorialDone=true;state.progress.library.requestedDailyTarget=24;for(let d=1;d<day;d++)progression.completeChallengeOnce(state.progress,d,progression.getChallengeSpec(d).passCount);state.day=day;state.session=null;if(studied){const e=content.LIBRARY_DATA.entries.find(e=>e.lemmaId==='lemma:n-window');LibraryEngine.encounter(state.progress,content.LIBRARY_DATA,{lemmaId:e.lemmaId,formId:e.forms[0].formId},{day,source:'lesson',location:'residential'})}storage.save();world.startWorld()},focus(direction,origin='scheduled-scaffold'){const s=state.session,q={id:'library-card:lemma:n-window',lemmaId:'lemma:n-window',kind:'word',direction,vocabularyOrigin:origin,comment:'Scheduled word, not yet studied: use the meaning and answer options.'};s.index=0;s.questions[0]=q;challenge.showChallengeQuestion();return content.wordById[q.id]}};`;
+const hook=`window.__disclosure={get progress(){return state.progress},get session(){return state.session},wordById:content.wordById,E:LibraryEngine,data:content.LIBRARY_DATA,save:storage.save,showChallengeQuestion:challenge.showChallengeQuestion,fixture(day,studied=false){state.progress=progression.fresh();state.progress.tutorialDone=true;state.progress.library.requestedDailyTarget=24;for(let d=1;d<day;d++)progression.completeChallengeOnce(state.progress,d,progression.getChallengeSpec(d).passCount);state.day=day;state.session=null;if(studied){const e=content.LIBRARY_DATA.entries.find(e=>e.lemmaId==='lemma:n-window');LibraryEngine.encounter(state.progress,content.LIBRARY_DATA,{lemmaId:e.lemmaId,formId:e.forms[0].formId},{day,source:'lesson',location:'residential',introduce:true})}storage.save();world.startWorld()},focus(direction,origin='scheduled-scaffold'){const s=state.session,q={id:'library-card:lemma:n-window',lemmaId:'lemma:n-window',kind:'word',direction,vocabularyOrigin:origin,comment:'Scheduled word, not yet studied: use the meaning and answer options.'};s.index=0;s.questions[0]=q;challenge.showChallengeQuestion();return content.wordById[q.id]}};`;
 const html=readFileSync('index.html','utf8').replace('// @TEST_HOOK',hook);
 const server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/html;charset=utf-8');res.end(html)});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
@@ -68,7 +68,9 @@ try {
    assert.deepEqual(await page.evaluate(()=>__disclosure.progress.library.acquired),locked.library.acquired);
    assert((await page.locator('#quizFeedback').innerText()).includes(word.en));
    await page.evaluate(()=>__disclosure.focus('en-ps'));
-   assert.equal(await page.locator('#quizPashto').innerText(),word.en,'a word learned through feedback can use the normal reverse question');
+   assert.equal(await page.locator('#quizPashto').innerText(),word.ps,'assessment feedback is an encounter, not individual form study');
+   assert((await page.locator('#quizRoman').innerText()).includes('Not previously studied'));
+   assert(!(await page.locator('#quizRoman').innerText()).includes(word.en));
   }
   // A wrong submission reveals feedback and locks exactly once.
   await page.evaluate(()=>__disclosure.fixture(2));
@@ -79,7 +81,7 @@ try {
   assert.equal(await page.evaluate(()=>__disclosure.session.correctCount),0);
   assert((await page.locator('#quizFeedback').innerText()).includes(wrongWord.en));
   assert.equal(await page.locator('#choices button:enabled').count(),0);
-  // Actual prior lesson exposure retains both normal question directions.
+  // Actual prior individual form study retains both normal question directions.
   for(const direction of ['ps-en','en-ps']) {
    await page.evaluate(()=>__disclosure.fixture(2,true));
    await page.locator('#skipDayBtn').click();

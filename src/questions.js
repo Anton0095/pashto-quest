@@ -71,6 +71,97 @@ function createQuestions({ state, content, progression, storage }) {
     const withGreetings = prependChallengeGreetings(day, result);
     return withGreetings;
   }
+  function retimeQuestions(day, list) {
+    const used = new Set();
+    const reserved = new Set(list.map((q) => q.id));
+    return list.map((q) => {
+      q = { ...q };
+      if (!LibraryEngine.cardAllowed(content.LIBRARY_DATA, q.id, day)) {
+        const old = content.wordById[q.id];
+        const pool = content.words
+          .filter(
+            (w) =>
+              (q.kind === "word"
+                ? !["sentence", "greeting"].includes(w.type)
+                : w.type === "sentence") &&
+              LibraryEngine.cardAllowed(content.LIBRARY_DATA, w.id, day) &&
+              !used.has(w.id) &&
+              !reserved.has(w.id) &&
+              (q.section !== "compounds" || w.ps.includes(" او ")),
+          )
+          .sort(
+            (a, b) =>
+              Number(b.place === old?.place) - Number(a.place === old?.place) ||
+              Number(b.loop === day) - Number(a.loop === day) ||
+              a.id.localeCompare(b.id),
+          );
+        if (!pool.length)
+          throw Error("No prerequisite-safe authored fallback for day " + day);
+        if (q.kind === "choice") {
+          q.correct = pool[0].ps;
+          q.options = [pool[0].ps, ...pool.slice(1, 4).map((w) => w.ps)];
+          q.prompt = "Choose the Pashto sentence for: " + pool[0].en;
+          delete q.audioId;
+        }
+        q.retimedFrom = q.id;
+        q.id = pool[0].id;
+        q.comment =
+          "Cumulative authored practice within today's grammar. Later forms remain available in their original content records.";
+      }
+      used.add(q.id);
+      return q;
+    });
+  }
+  function isUnstudied(id) {
+    return content.LIBRARY_DATA.phrases.some((p) => p.id === id)
+      ? !state.progress.library.phrases[id]
+      : (content.LIBRARY_DATA.sourceMappings[id] || []).some(
+          (r) =>
+            !state.progress.library.acquired[
+              r.lemmaId
+            ]?.introducedFormIds.includes(r.formId),
+        );
+  }
+  function freezeQuestions(day, list, random) {
+    const practice = SentenceEngine.select(
+      state.progress,
+      content.LIBRARY_DATA,
+      content.LIBRARY_DATA.sentenceFrames,
+      day,
+      2,
+      state.progress.library.seed + day,
+    );
+    // Story/dialogue identities remain fixed; only generic recall slots vary.
+    let selected = 0;
+    return list.map((q) => {
+      q = { ...q };
+      if (
+        day <= 2 &&
+        ["sentence", "construct"].includes(q.kind) &&
+        practice[selected]
+      ) {
+        const card = practice[selected++];
+        q.id = card.id;
+        q.generated = JSON.parse(JSON.stringify(card));
+        q.audioId = card.generated.sourceId;
+      }
+      const w = content.wordById[q.id];
+      if (q.kind === "word") {
+        q.unstudied = isUnstudied(q.id);
+        if (q.unstudied) q.direction = "ps-en";
+      }
+      if (q.kind === "choice")
+        q.choiceOrder = QuestionEngine.shuffle(q.options, random);
+      else if (q.kind === "address") q.choiceOrder = ["ته", "تاسې"];
+      else if (["construct", "dialogue"].includes(q.kind))
+        q.tileSequence = QuestionEngine.shuffle(
+          QuestionEngine.buildTiles(w, q, day).map((t) => t.index),
+          random,
+        );
+      else q.choiceOrder = answerChoices(w, q.direction, false, day, random);
+      return q;
+    });
+  }
   function selectChallenge(day) {
     const currentPlan = LibraryEngine.ensurePlan(
       state.progress,
@@ -85,9 +176,13 @@ function createQuestions({ state, content, progression, storage }) {
       progression,
       shuffle: (list) => QuestionEngine.shuffle(list, random),
     });
-    const result = libraryChallengeQuestions(
+    const result = freezeQuestions(
       day,
-      authored.selectAuthoredChallenge(day),
+      retimeQuestions(
+        day,
+        libraryChallengeQuestions(day, authored.selectAuthoredChallenge(day)),
+      ),
+      random,
     );
     state.progress.library.plans[day].challengeQuestions = result.map((q) => ({
       ...q,
@@ -95,8 +190,13 @@ function createQuestions({ state, content, progression, storage }) {
     storage.save();
     return result;
   }
-  function answerChoices(w, direction, lesson = false) {
-    const day = state.session.loop || state.day;
+  function answerChoices(
+    w,
+    direction,
+    lesson = false,
+    day = state.session?.loop || state.day,
+    random = Math.random,
+  ) {
     const field = direction === "ps-en" ? "en" : "ps";
     let peers = [
       ...content.words,
@@ -114,15 +214,24 @@ function createQuestions({ state, content, progression, storage }) {
     if (w.type === "sentence") {
       if (lesson)
         peers = [
-          ...QuestionEngine.shuffle(peers.filter((x) => x.loop === w.loop)),
-          ...QuestionEngine.shuffle(peers.filter((x) => x.loop < w.loop)),
-          ...QuestionEngine.shuffle(peers.filter((x) => x.loop > w.loop)),
+          ...QuestionEngine.shuffle(
+            peers.filter((x) => x.loop === w.loop),
+            random,
+          ),
+          ...QuestionEngine.shuffle(
+            peers.filter((x) => x.loop < w.loop),
+            random,
+          ),
+          ...QuestionEngine.shuffle(
+            peers.filter((x) => x.loop > w.loop),
+            random,
+          ),
         ];
       else
         peers.sort(
           (a, b) => Number(b.loop === w.loop) - Number(a.loop === w.loop),
         );
-    } else peers = QuestionEngine.shuffle(peers);
+    } else peers = QuestionEngine.shuffle(peers, random);
     const options = [...new Set(peers.map((x) => x[field]))].slice(0, 3);
     const fallback = lesson
       ? ["A different meaning", "None of these", "Another expression"]
@@ -130,7 +239,7 @@ function createQuestions({ state, content, progression, storage }) {
           (x) => "— " + x + " —",
         );
     while (options.length < 3) options.push(fallback[options.length]);
-    return QuestionEngine.shuffle([w[field], ...options]);
+    return QuestionEngine.shuffle([w[field], ...options], random);
   }
   function makeChallengeChoices(word, direction) {
     return answerChoices(word, direction);
@@ -150,6 +259,7 @@ function createQuestions({ state, content, progression, storage }) {
 
   return {
     selectChallenge,
+    isUnstudied,
     makeChallengeChoices,
     distractors,
     buildTiles,

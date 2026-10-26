@@ -14,6 +14,7 @@ const context = Object.fromEntries(
 );
 const modules = [
   "library-engine",
+  "sentence-engine",
   "content",
   "progression",
   "question-engine",
@@ -217,7 +218,7 @@ assert.equal(runtime.backend.getItem(), old);
 storage.resetProblem();
 state.progress = P.fresh();
 storage.save();
-assert.equal(JSON.parse(runtime.backend.getItem()).saveSchemaVersion, 5);
+assert.equal(JSON.parse(runtime.backend.getItem()).saveSchemaVersion, 6);
 console.log(
   "PASS domain APIs: all question kinds, fourteen frozen assessments, first-answer transactions, shared SRS/XP, retries, current partial saves, invalid/old save rejection and explicit reset",
 );

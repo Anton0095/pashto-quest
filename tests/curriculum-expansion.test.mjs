@@ -18,7 +18,7 @@ assert(selected('snow','noun'));assert(!selected('snow','verb'));
 assert(selected('answer','verb'));assert(!selected('answer','noun'));
 assert(selected('lock','noun') && selected('lock','verb'));
 const universal = data.entries.filter((e) => e.vocabularyClass==='universal');
-assert.equal(universal.length,28);
+assert.equal(universal.length,29);
 assert(universal.every((e) => !e.countsTowardDailyQuota && places.every((d) => E.matchesPlace(e,d))));
 assert(backlog.candidates.every((e) => !e.countsTowardDailyQuota && !byId[e.candidateId]));
 for (const pace of E.presets) {
@@ -43,9 +43,9 @@ E.encounter(p,data,ref,{day:2,source:'lesson',location:'school'});
 assert(p.library.acquired[verb.lemmaId]);
 // Reclassified entries and forms preserve their records and never consume quota again.
 const u=byId['lemma:w6-together'], uref={lemmaId:u.lemmaId,formId:u.forms[0].formId};
-E.encounter(p,data,uref,{day:2,source:'lesson',location:'nature'});
+E.encounter(p,data,uref,{day:6,source:'lesson',location:'nature'});
 const record=JSON.stringify(p.library.acquired[u.lemmaId]);
-E.encounter(p,data,uref,{day:3,source:'lesson',location:'business'});
+E.encounter(p,data,uref,{day:7,source:'lesson',location:'business'});
 assert.equal(JSON.stringify(p.library.acquired[u.lemmaId]),record);
 assert.equal(E.summary(p,data).encountered,1);
 // A generated plan stays frozen on reload; current code never rewrites authored assignments.
@@ -53,10 +53,10 @@ const planned=fresh();
 const frozen=JSON.stringify(E.ensurePlan(planned,data,1));
 assert.equal(JSON.stringify(E.ensurePlan(JSON.parse(JSON.stringify(planned)),data,1)),frozen);
 // A synthetic identity-only test measures planner capacity, never promotes untranslated words.
-const synthetic={...data,entries:places.flatMap((d) => Array.from({length:100},(_,i) => ({lemmaId:`fixture:${d}:${i}`,primaryDistrict:d,suitableDistricts:[d],partOfSpeech:i%2?'adjective':'noun',countsTowardDailyQuota:true,forms:[{formId:`fixture:${d}:${i}:form`}]})))};
+const synthetic={...data,entries:places.flatMap((d) => Array.from({length:100},(_,i) => ({lemmaId:`fixture:${d}:${i}`,primaryDistrict:d,suitableDistricts:[d],partOfSpeech:i%2?'adjective':'noun',countsTowardDailyQuota:true,introduction:{day:1,district:d,teachingOrder:i},forms:[{formId:`fixture:${d}:${i}:form`,firstAllowedDay:1}]})))};
 const ideal=fresh();ideal.library.requestedDailyTarget=24;
 // Exactly 22 incidental encounters per primary district exhaust the 88-word margin.
-for(const d of places) for(let i=0;i<22;i++) E.encounter(ideal,synthetic,{lemmaId:`fixture:${d}:${i}`,formId:`fixture:${d}:${i}:form`},{day:0,source:'fixture'});
+for(const d of places) for(let i=0;i<22;i++) E.encounter(ideal,synthetic,{lemmaId:`fixture:${d}:${i}`,formId:`fixture:${d}:${i}:form`,firstAllowedDay:1},{day:1,source:'fixture',introduce:true});
 const assigned=new Set();
 for(let day=1;day<=13;day++) {
  const plan=E.ensurePlan(ideal,synthetic,day);assert.equal(plan.contentGap,false);
@@ -66,7 +66,7 @@ for(let day=1;day<=13;day++) {
 assert.equal(assigned.size,312);assert.equal(E.ensurePlan(ideal,synthetic,14).requestedDailyTarget,0);
 // One additional incidental identity per district needs four reviewed replacements (101 each, balanced).
 const insufficient=fresh();insufficient.library.requestedDailyTarget=24;
-for(const d of places)for(let i=0;i<23;i++)E.encounter(insufficient,synthetic,{lemmaId:`fixture:${d}:${i}`,formId:`fixture:${d}:${i}:form`},{day:0,source:'fixture'});
+for(const d of places)for(let i=0;i<23;i++)E.encounter(insufficient,synthetic,{lemmaId:`fixture:${d}:${i}`,formId:`fixture:${d}:${i}:form`,firstAllowedDay:1},{day:1,source:'fixture',introduce:true});
 let assignedCount=0;for(let day=1;day<=13;day++)assignedCount+=Object.values(E.ensurePlan(insufficient,synthetic,day).locationAssignments).flat().length;
 assert.equal(312-assignedCount,4);
 // Pending phrase slots are explicit editorial targets, never acquired by a plan.
@@ -88,7 +88,7 @@ const reloaded=JSON.parse(JSON.stringify(phraseProgress));
 assert.equal(E.cardStat(reloaded,activeData,morning.id).stage,1);
 assert.equal(Object.keys(reloaded.library.acquired).length,0);
 assert(narrative.expressions.filter((e)=>!e.active).every((e)=>!activeData.phrases.some((a)=>a.id===e.id)));
-console.log('PASS curriculum expansion: exact candidate selection, 28 universal identities, all seven Day 1 paces, action guards, frozen current plans, 312 synthetic introductions, incidental boundary, 17 honest phrase slots, persistent expression SRS');
+console.log('PASS curriculum expansion: exact candidate selection, 29 universal identities, all seven Day 1 paces, action guards, frozen current plans, 312 synthetic introductions, incidental boundary, 17 honest phrase slots, persistent expression SRS');
 
 const universalTargets=JSON.parse(read('content/UNIVERSAL_TEACHING_TARGETS.json'));
 assert.equal(universalTargets.targets.length,40);

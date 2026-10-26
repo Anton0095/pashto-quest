@@ -70,7 +70,14 @@ function createStorage({
         !object(record) ||
         !object(record.forms) ||
         !Array.isArray(record.encounteredFormIds) ||
-        !Array.isArray(record.practisedFormIds)
+        !Array.isArray(record.practisedFormIds) ||
+        !Array.isArray(record.introducedFormIds)
+      )
+        return false;
+      if (
+        record.introducedFormIds.some(
+          (id) => !record.encounteredFormIds.includes(id),
+        )
       )
         return false;
       if (
@@ -88,6 +95,26 @@ function createStorage({
         plan.day > 14 ||
         !object(plan.locationAssignments) ||
         !LibraryEngine.presets.includes(plan.requestedDailyTarget)
+      )
+        return false;
+      if (
+        plan.generatedPractice &&
+        (!object(plan.generatedPractice) ||
+          Object.entries(plan.generatedPractice).some(
+            ([district, ids]) =>
+              !content.zoneKeys.includes(district) ||
+              !Array.isArray(ids) ||
+              new Set(ids).size !== ids.length ||
+              ids.some(
+                (id) =>
+                  !content.wordById[id]?.generated ||
+                  !LibraryEngine.cardAllowed(
+                    content.LIBRARY_DATA,
+                    id,
+                    plan.day,
+                  ),
+              ),
+          ))
       )
         return false;
       const assignments = plan.locationAssignments;
@@ -159,6 +186,19 @@ function createStorage({
         )
       )
         return false;
+      for (const item of a.questions) {
+        if (item.generated) {
+          const card = content.wordById[item.id];
+          if (
+            !card?.generated ||
+            item.generated.ps !== card.ps ||
+            item.generated.en !== card.en ||
+            JSON.stringify(item.generated.generated) !==
+              JSON.stringify(card.generated)
+          )
+            return false;
+        }
+      }
       const q = a.questions[a.index];
       if (["construct", "dialogue"].includes(q.kind)) {
         let tiles;
@@ -197,7 +237,7 @@ function createStorage({
       return p;
     } catch (error) {
       saveProblem =
-        "This save belongs to an older or incompatible version. This release uses save format 5 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
+        "This save belongs to an older or incompatible version. This release uses save format 6 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
       return progression.fresh();
     }
   }
