@@ -66,6 +66,8 @@ export function inventory(data, backlog, engine, includeProjection = true) {
           requested: plan.requestedDailyTarget,
           assigned: Object.values(plan.locationAssignments).flat().length,
           feasible: !plan.contentGap,
+          shortfalls: plan.shortfalls,
+          locationAssignments: plan.locationAssignments,
           perDistrict: Object.fromEntries(
             Object.entries(plan.locationAssignments).map(([key, ids]) => [
               E.scene(key).districtId,
@@ -102,19 +104,44 @@ export function inventory(data, backlog, engine, includeProjection = true) {
   if (includeProjection) {
     const projected = {
       ...data,
-      entries: [...data.entries, ...backlog.candidates.filter((c) => c.selectedForExpansion).map((c) => ({
-        lemmaId: c.candidateId, primaryDistrict: c.primaryDistrict,
-        suitableDistricts: c.suitableDistricts, partOfSpeech: c.partOfSpeech,
-        countsTowardDailyQuota: true, examples: [],
-        forms: [{formId: "projection-only:" + c.candidateId}],
-      }))],
+      entries: [
+        ...data.entries,
+        ...backlog.candidates
+          .filter((c) => c.selectedForExpansion)
+          .map((c, i) => ({
+            lemmaId: c.candidateId,
+            primaryDistrict: c.primaryDistrict,
+            suitableDistricts: c.suitableDistricts,
+            partOfSpeech: c.partOfSpeech,
+            countsTowardDailyQuota: true,
+            introduction: {
+              day: c.partOfSpeech === "verb" ? 2 : 1,
+              district: c.primaryDistrict,
+              teachingOrder: 1000 + i,
+            },
+            examples: [],
+            forms: [
+              {
+                formId: "projection-only:" + c.candidateId,
+                firstAllowedDay: c.partOfSpeech === "verb" ? 2 : 1,
+              },
+            ],
+          })),
+      ],
     };
-    const intensive = inventory(projected, backlog, engine, false).schedules.find((s) => s.pace === 24 && !s.reviewExams);
+    const intensive = inventory(
+      projected,
+      backlog,
+      engine,
+      false,
+    ).schedules.find((s) => s.pace === 24 && !s.reviewExams);
     targetProjection = {
-      status: "Identity-only projection; every selected target assumed distinct and approved. NOT playable capacity or linguistic verification.",
+      status:
+        "Identity-only projection; every selected target assumed distinct and approved. NOT playable capacity or linguistic verification.",
       scheduled: intensive.days.reduce((sum, d) => sum + d.assigned, 0),
       encounteredIncludingStory: intensive.encountered,
-      missingScheduled: 312 - intensive.days.reduce((sum, d) => sum + d.assigned, 0),
+      missingScheduled:
+        312 - intensive.days.reduce((sum, d) => sum + d.assigned, 0),
       days: intensive.days,
     };
   }
@@ -123,12 +150,24 @@ export function inventory(data, backlog, engine, includeProjection = true) {
     candidateDistrictCounts: tally(
       backlog.candidates.map((c) => c.primaryDistrict),
     ),
-    selectedInactiveCandidatesByDistrict: tally(backlog.candidates.filter((c) => c.selectedForExpansion).map((c) => c.primaryDistrict)),
-    selectedInactiveCandidates: backlog.candidates.filter((c) => c.selectedForExpansion).length,
-    excludedCandidates: backlog.candidates.filter((c) => !c.selectedForExpansion).length,
-    universalLemmas: data.entries.filter((e) => e.vocabularyClass === "universal").length,
+    selectedInactiveCandidatesByDistrict: tally(
+      backlog.candidates
+        .filter((c) => c.selectedForExpansion)
+        .map((c) => c.primaryDistrict),
+    ),
+    selectedInactiveCandidates: backlog.candidates.filter(
+      (c) => c.selectedForExpansion,
+    ).length,
+    excludedCandidates: backlog.candidates.filter(
+      (c) => !c.selectedForExpansion,
+    ).length,
+    universalLemmas: data.entries.filter(
+      (e) => e.vocabularyClass === "universal",
+    ).length,
     targetInventory: {
-      perDistrict: 100, total: 400, currentlyPlayable: content.length,
+      perDistrict: 100,
+      total: 400,
+      currentlyPlayable: content.length,
       missingPlayableToTarget: 400 - content.length,
       intensiveScheduledIntroductions: 13 * 24,
       minimumCurrentShortfall: 13 * 24 - content.length,
@@ -195,7 +234,11 @@ if (
   process.argv[1] &&
   import.meta.url === pathToFileURL(process.argv[1]).href
 ) {
-  const data = JSON.parse(readFileSync("content/LIBRARY_LEXICON.json")),
+  const data = JSON.parse(
+      readFileSync("index.html", "utf8").match(
+        /const LIBRARY_DATA=(\{.*?\});/s,
+      )[1],
+    ),
     backlog = JSON.parse(
       readFileSync("content/DISTRICT_VOCABULARY_CANDIDATES.json"),
     ),

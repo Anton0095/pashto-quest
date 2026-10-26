@@ -101,7 +101,7 @@ assert(
 console.log(
   "PASS content: 140 exact semantic targets, full draft Pashto/romanization, 48 contextual replies, distinct tiles and normalization",
 );
-const hook = `window.__test={get progress(){return state.progress},get session(){return state.session},wordById:content.wordById,zoneKeys:content.zoneKeys,week2Days:content.week2Days,selectChallenge:questions.selectChallenge,characterStatus:progression.characterStatus,allowed:learning.allowed,placeAccessible:learning.placeAccessible,getAnswerTiles:QuestionEngine.getAnswerTiles,getDialogueTiles:QuestionEngine.getDialogueTiles,buildTiles:questions.buildTiles,answerChallenge:challenge.answerChallenge,showChallengeQuestion:challenge.showChallengeQuestion,renderMixedPashto:ui.renderMixedPashto,save:storage.save,setProgress(p){state.progress={...progression.fresh(),...p,saveSchemaVersion:5,library:p.library||LibraryEngine.state()};storage.save();ui.hud();world.startWorld()},select(day){state.day=day;world.startWorld()}};`;
+const hook = `window.__test={get progress(){return state.progress},get session(){return state.session},wordById:content.wordById,zoneKeys:content.zoneKeys,week2Days:content.week2Days,selectChallenge:questions.selectChallenge,characterStatus:progression.characterStatus,allowed:learning.allowed,placeAccessible:learning.placeAccessible,getAnswerTiles:QuestionEngine.getAnswerTiles,getDialogueTiles:QuestionEngine.getDialogueTiles,buildTiles:questions.buildTiles,answerChallenge:challenge.answerChallenge,showChallengeQuestion:challenge.showChallengeQuestion,renderMixedPashto:ui.renderMixedPashto,save:storage.save,setProgress(p){state.progress={...progression.fresh(),...p,saveSchemaVersion:6,library:p.library||LibraryEngine.state()};storage.save();ui.hud();world.startWorld()},select(day){state.day=day;world.startWorld()}};`;
 const served = html.replace("// @TEST_HOOK", hook);
 const server = http.createServer((req, res) => {
   res.setHeader("Content-Type", "text/html; charset=utf-8");
@@ -114,7 +114,7 @@ const browser = await chromium.launch({
   args: ["--no-sandbox"],
 });
 const graduate = () => ({
-  saveSchemaVersion: 5,
+  saveSchemaVersion: 6,
   xp: 1800,
   tutorialDone: true,
 
@@ -263,8 +263,10 @@ async function lesson(page) {
     if (++guard > 180) throw Error("Lesson did not finish");
     const phase = await page.evaluate(() => __test.session.phase);
     if (phase === "grammar") await page.locator("#sovNext").click();
-    else if (["greeting", "lexical", "sentence"].includes(phase))
+    else if (["greeting", "lexical", "sentence"].includes(phase)) {
+      assert(await page.locator("#teachPanel").isVisible(), "Hidden study phase: " + JSON.stringify(await page.evaluate(()=>({phase:__test.session.phase,day:__test.session.loop,location:__test.session.loc,words:__test.session.studyWords.length,sentences:__test.session.studySentences.length}))));
       await page.locator("#teachNext").click();
+    }
     else {
       const expected = await page.evaluate(
         () => __test.wordById[__test.session.queue[0].id].en,
@@ -282,7 +284,7 @@ try {
       }),
       page = await context.newPage(),
       errors = [];
-    page.on("pageerror", (e) => errors.push(e.message));
+    page.on("pageerror", (e) => { errors.push(e.message); console.error("PAGEERROR",e.stack); });
     await page.goto(`http://127.0.0.1:${server.address().port}`);
     const old = graduate();
     old.challenges[7].passed = false;

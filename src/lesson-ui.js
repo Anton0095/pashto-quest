@@ -165,11 +165,15 @@ function createLessons({
         : state.session.studyWords;
   }
   function teachCard() {
+    if (state.session.phase === "sentence")
+      learning.prepareSentences(state.session);
     const items = studyList(),
       w = content.wordById[items[state.session.cardIndex]];
     if (!w) {
       state.session.phase =
-        state.session.phase === "lexical" && state.session.studySentences.length
+        state.session.phase === "lexical" &&
+        (state.session.studySentences.length ||
+          (state.session.loop === 1 && !state.progress.personIntros[1]))
           ? state.session.preLessonGrammar || state.session.mode === "review"
             ? "sentence"
             : "grammar"
@@ -260,6 +264,12 @@ function createLessons({
     ui.$("addressTarget").textContent =
       `${content.teacherFor(state.session.loop, state.session.loc, state.session.mode).name} → Player · study example${state.session.loop >= 6 ? " · Player practises the displayed sentence" : ""}`;
     ui.$("addressTarget").classList.remove("hidden");
+    if (w.generated)
+      ui.$("guideMessage").textContent =
+        "Cumulative practice: descriptions and noun agreement using words you have already studied. Generated language remains a draft for native review.";
+    else if (w.loop < state.session.loop && w.type === "sentence")
+      ui.$("guideMessage").textContent =
+        "Cumulative practice from an earlier authored lesson. Read the model's meaning and forms carefully.";
     ui.$("teachNext").textContent =
       state.session.cardIndex === items.length - 1
         ? state.session.phase === "greeting"
@@ -306,18 +316,21 @@ function createLessons({
       return;
     }
     if (state.session.phase === "greeting") {
-      state.session.phase = state.session.preLessonGrammar
-        ? "grammar"
-        : state.session.studyWords.length
-          ? "lexical"
-          : state.session.studySentences.length
-            ? "grammar"
-            : "quiz";
+      state.session.phase =
+        state.session.preLessonGrammar ||
+        (state.session.loop === 1 && !state.progress.personIntros[1])
+          ? "grammar"
+          : state.session.studyWords.length
+            ? "lexical"
+            : state.session.studySentences.length
+              ? "grammar"
+              : "quiz";
       state.session.cardIndex = 0;
       renderPhase();
     } else if (
       state.session.phase === "lexical" &&
-      state.session.studySentences.length
+      (state.session.studySentences.length ||
+        (state.session.loop === 1 && !state.progress.personIntros[1]))
     ) {
       state.session.phase =
         state.session.preLessonGrammar || state.session.mode === "review"

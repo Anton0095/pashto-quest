@@ -2,6 +2,7 @@
 function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
   const { words, courses, loops, zones } = GAME_DATA;
   const wordById = Object.fromEntries(words.map((w) => [w.id, w]));
+  LIBRARY_DATA.cardDays = Object.fromEntries(words.map((w) => [w.id, w.loop]));
   const week2Days = Object.fromEntries(WEEK2_DATA.days.map((d) => [d.day, d]));
   const zoneKeys = ["residential", "nature", "business", "school"];
   const libraryEntries = Object.fromEntries(
@@ -215,7 +216,7 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
       place: entry.primaryDistrict,
       type: entry.partOfSpeech,
       ps: form.pashto,
-      roman: form.romanisation,
+      roman: form.romanisation || "Romanisation pending native review",
       en: entry.englishSenses[0],
       note: "Existing authored draft vocabulary. Native Laghman review pending.",
       dialect: "",
@@ -234,7 +235,7 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
         place: entry.primaryDistrict,
         type: entry.partOfSpeech,
         ps: form.pashto,
-        roman: form.romanisation || "",
+        roman: form.romanisation || "Romanisation pending native review",
         en: form.englishGloss,
         note: "Attested form · native review pending.",
         dialect: "",
@@ -243,6 +244,22 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
       LIBRARY_DATA.sourceMappings[id] = [
         { lemmaId: entry.lemmaId, formId: form.formId },
       ];
+    }
+  LIBRARY_DATA.sentenceOrigins = {};
+  for (const frame of LIBRARY_DATA.sentenceFrames.frames)
+    for (const binding of frame.bindings) {
+      const card = SentenceEngine.compose(LIBRARY_DATA, frame, binding);
+      if (!card) continue;
+      const source = wordById[binding.output.sourceId] || {
+        loop: 1,
+        place: libraryEntries[binding.slots.noun.lemmaId].primaryDistrict,
+      };
+      wordById[card.id] = { ...source, ...card };
+      LIBRARY_DATA.cardTypes[card.id] = "sentence";
+      if (binding.output.sourceId)
+        LIBRARY_DATA.sentenceOrigins[card.id] = binding.output.sourceId;
+      LIBRARY_DATA.sourceMappings[card.id] = Object.values(binding.slots);
+      LIBRARY_DATA.cardDays[card.id] = 1;
     }
   // Four guided study cards introduce the game's interaction types.
   const tutorialCards = [

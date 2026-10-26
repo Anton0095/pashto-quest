@@ -230,18 +230,7 @@ function createChallengeUI({
     }
     if (q.kind === "word") {
       // Freeze presentation before exposure, including unanswered saved attempts.
-      q.unstudied ??= content.LIBRARY_DATA.phrases.some((p) => p.id === q.id)
-        ? !state.progress.library.phrases[q.id]
-        : (content.LIBRARY_DATA.sourceMappings[q.id] || []).some(
-            ({ lemmaId }) => {
-              const record = state.progress.library.acquired[lemmaId];
-              return (
-                !record ||
-                (record.firstEncounteredSource === "challenge" &&
-                  record.totalAttempts === 0)
-              );
-            },
-          );
+      q.unstudied ??= questions.isUnstudied(q.id);
       if (q.unstudied) q.direction = "ps-en";
     }
     if (q.kind !== "dialogue") learning.libraryExpose(q.id, "challenge");
@@ -318,9 +307,11 @@ function createChallengeUI({
       ui.$("quizSpeak").classList.toggle("hidden", !q.audioId);
       ui.$("constructionPanel").classList.remove("hidden");
       if (!resuming)
-        state.session.tileSequence = QuestionEngine.shuffle(
-          questions.buildTiles(null, q).map((t) => t.index),
-        );
+        state.session.tileSequence =
+          q.tileSequence ||
+          QuestionEngine.shuffle(
+            questions.buildTiles(null, q).map((t) => t.index),
+          );
       renderBuiltSentence();
       ui.$("quizFeedback").textContent =
         "Your first submitted answer counts. Leave unused tiles in the bank.";
@@ -344,7 +335,7 @@ function createChallengeUI({
       ui.$("quizPanel").querySelector(".quizword h3").textContent =
         "Choose your answer";
       ui.$("quizSpeak").classList.toggle("hidden", !q.audioId);
-      for (const value of QuestionEngine.shuffle(q.options)) {
+      for (const value of q.choiceOrder || q.options) {
         const b = document.createElement("button");
         b.type = "button";
         b.className = "choice";
@@ -435,12 +426,13 @@ function createChallengeUI({
     if (isBuild) {
       ui.$("constructionPanel").classList.remove("hidden");
       if (!resuming)
-        state.session.tileSequence = QuestionEngine.shuffle(
-          questions.buildTiles(w).map((x) => x.index),
-        );
+        state.session.tileSequence =
+          q.tileSequence ||
+          QuestionEngine.shuffle(questions.buildTiles(w).map((x) => x.index));
       renderBuiltSentence();
     } else
-      for (const value of questions.makeChallengeChoices(w, q.direction)) {
+      for (const value of q.choiceOrder ||
+        questions.makeChallengeChoices(w, q.direction)) {
         const b = document.createElement("button");
         b.type = "button";
         b.className = "choice";

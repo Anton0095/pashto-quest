@@ -1,0 +1,285 @@
+{
+  "version": 1,
+  "reviewNotice": "Feature-vetted constrained draft frames, not native-certified; newly composed tuples are explicitly distinguished from exact authored attestations.",
+  "frames": [
+    {
+      "id": "description-masculine-singular",
+      "objective": "Noun/adjective/copula agreement in a simple description",
+      "requiredGrammarIds": [
+        "grammar-day-1"
+      ],
+      "scope": "feature_vetted_draft",
+      "nativeReview": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "pashtoPattern": "{noun} {adjective} دی.",
+      "englishPattern": "The {noun} is {adjective}.",
+      "slots": {
+        "noun": {
+          "partOfSpeech": "noun",
+          "features": {
+            "gender": "masculine",
+            "number": "singular",
+            "case": "direct",
+            "person": null
+          }
+        },
+        "adjective": {
+          "partOfSpeech": "adjective",
+          "features": {
+            "gender": "masculine",
+            "number": "singular",
+            "case": "direct",
+            "person": null
+          }
+        }
+      },
+      "terminals": [
+        {
+          "id": "copula-masculine-singular",
+          "pashto": "دی",
+          "grammarId": "grammar-day-1",
+          "features": {
+            "gender": "masculine",
+            "number": "singular"
+          }
+        }
+      ],
+      "speaker": "Lesson teacher",
+      "recipient": "Player",
+      "bindings": [
+        {
+          "id": "s3-house",
+          "slots": {
+            "noun": {
+              "lemmaId": "lemma:n-house",
+              "formId": "lemma:n-house:form:0"
+            },
+            "adjective": {
+              "lemmaId": "lemma:a-big",
+              "formId": "lemma:a-big:form:0"
+            }
+          },
+          "englishSlots": {
+            "noun": "house",
+            "adjective": "big"
+          },
+          "output": {
+            "sourceId": "s3-house",
+            "pashto": "کور لوی دی.",
+            "romanisation": "kor loy day",
+            "english": "The house is big.",
+            "kind": "authored"
+          }
+        },
+        {
+          "id": "s-it-market",
+          "slots": {
+            "noun": {
+              "lemmaId": "lemma:n-market",
+              "formId": "lemma:n-market:form:0"
+            },
+            "adjective": {
+              "lemmaId": "lemma:a-big",
+              "formId": "lemma:a-big:form:0"
+            }
+          },
+          "englishSlots": {
+            "noun": "market",
+            "adjective": "big"
+          },
+          "output": {
+            "sourceId": "s-it-market",
+            "pashto": "بازار لوی دی.",
+            "romanisation": "baazaar loy day",
+            "english": "The market is big.",
+            "kind": "authored"
+          }
+        },
+        {
+          "id": "s-it-school",
+          "slots": {
+            "noun": {
+              "lemmaId": "lemma:n-school",
+              "formId": "lemma:n-school:form:0"
+            },
+            "adjective": {
+              "lemmaId": "lemma:a-big",
+              "formId": "lemma:a-big:form:0"
+            }
+          },
+          "englishSlots": {
+            "noun": "school",
+            "adjective": "big"
+          },
+          "output": {
+            "sourceId": "s-it-school",
+            "pashto": "ښوونځی لوی دی.",
+            "romanisation": "khwunzay loy day",
+            "english": "The school is big.",
+            "kind": "authored"
+          }
+        },
+        {
+          "id": "s3-new",
+          "slots": {
+            "noun": {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            "adjective": {
+              "lemmaId": "lemma:a-new",
+              "formId": "lemma:a-new:form:0"
+            }
+          },
+          "englishSlots": {
+            "noun": "book",
+            "adjective": "new"
+          },
+          "output": {
+            "sourceId": "s3-new",
+            "pashto": "کتاب نوی دی.",
+            "romanisation": "kitaab naway day",
+            "english": "The book is new.",
+            "kind": "authored"
+          }
+        },
+        {
+          "id": "s-it-river",
+          "slots": {
+            "noun": {
+              "lemmaId": "lemma:n-river",
+              "formId": "lemma:n-river:form:0"
+            },
+            "adjective": {
+              "lemmaId": "lemma:a-blue",
+              "formId": "lemma:a-blue:form:0"
+            }
+          },
+          "englishSlots": {
+            "noun": "river",
+            "adjective": "blue"
+          },
+          "output": {
+            "sourceId": "s-it-river",
+            "pashto": "سیند شین دی.",
+            "romanisation": "seend sheen day",
+            "english": "The river is blue.",
+            "kind": "authored"
+          }
+        },
+        {
+          "id": "s-it-shop",
+          "slots": {
+            "noun": {
+              "lemmaId": "lemma:n-shop",
+              "formId": "lemma:n-shop:form:0"
+            },
+            "adjective": {
+              "lemmaId": "lemma:a-open-state",
+              "formId": "lemma:a-open-state:form:0"
+            }
+          },
+          "englishSlots": {
+            "noun": "shop",
+            "adjective": "open"
+          },
+          "output": {
+            "sourceId": "s-it-shop",
+            "pashto": "دوکان خلاص دی.",
+            "romanisation": "dukaan khlaas day",
+            "english": "The shop is open.",
+            "kind": "authored"
+          }
+        },
+        {
+          "id": "composed-house-new",
+          "slots": {
+            "noun": {
+              "lemmaId": "lemma:n-house",
+              "formId": "lemma:n-house:form:0"
+            },
+            "adjective": {
+              "lemmaId": "lemma:a-new",
+              "formId": "lemma:a-new:form:0"
+            }
+          },
+          "englishSlots": {
+            "noun": "house",
+            "adjective": "new"
+          },
+          "output": {
+            "sourceId": null,
+            "kind": "composed_draft",
+            "formEvidenceSourceIds": [
+              "s3-house",
+              "s3-new"
+            ],
+            "pashto": "کور نوی دی.",
+            "romanisation": "kor naway day",
+            "english": "The house is new."
+          }
+        },
+        {
+          "id": "composed-market-new",
+          "slots": {
+            "noun": {
+              "lemmaId": "lemma:n-market",
+              "formId": "lemma:n-market:form:0"
+            },
+            "adjective": {
+              "lemmaId": "lemma:a-new",
+              "formId": "lemma:a-new:form:0"
+            }
+          },
+          "englishSlots": {
+            "noun": "market",
+            "adjective": "new"
+          },
+          "output": {
+            "sourceId": null,
+            "kind": "composed_draft",
+            "formEvidenceSourceIds": [
+              "s-it-market",
+              "s3-new"
+            ],
+            "pashto": "بازار نوی دی.",
+            "romanisation": "baazaar naway day",
+            "english": "The market is new."
+          }
+        },
+        {
+          "id": "composed-book-big",
+          "slots": {
+            "noun": {
+              "lemmaId": "lemma:n-book",
+              "formId": "lemma:n-book:form:0"
+            },
+            "adjective": {
+              "lemmaId": "lemma:a-big",
+              "formId": "lemma:a-big:form:0"
+            }
+          },
+          "englishSlots": {
+            "noun": "book",
+            "adjective": "big"
+          },
+          "output": {
+            "sourceId": null,
+            "kind": "composed_draft",
+            "formEvidenceSourceIds": [
+              "s3-new",
+              "s-it-school"
+            ],
+            "pashto": "کتاب لوی دی.",
+            "romanisation": "kitaab loy day",
+            "english": "The book is big."
+          }
+        }
+      ],
+      "reviewBoundary": "Only these explicit semantic tuples are enabled; all features come from authored masculine singular descriptions. New combinations are generated drafts, never native-certified.",
+      "context": "The teacher points at a village building or a classroom book and describes its size or age."
+    }
+  ]
+}

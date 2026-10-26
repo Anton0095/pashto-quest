@@ -65,10 +65,10 @@ check("Current save reload retains current XP and gate flags", () => {
   p.xp = 2500;
   const restored = JSON.parse(JSON.stringify(p));
   assert.equal(api.characterStatus(restored).level, 1);
-  assert.equal(restored.saveSchemaVersion, 5);
+  assert.equal(restored.saveSchemaVersion, 6);
 });
 // Tests expose the lexical runtime only in the HTTP response, never in the app file.
-const hook = `window.__test={get progress(){return state.progress},get session(){return state.session},get selectedLoop(){return state.day},words:content.words,wordById:content.wordById,courses:content.courses,zoneKeys:content.zoneKeys,selectChallenge:questions.selectChallenge,normalizeAnswer:QuestionEngine.normalizeAnswer,characterStatus:progression.characterStatus,allowed:learning.allowed,passedChallenge:learning.passedChallenge,placeAccessible:learning.placeAccessible,dayGuidance:world.dayGuidance,teacherFor:content.teacherFor,startWorld:world.startWorld,showChallengeQuestion:challenge.showChallengeQuestion,save:storage.save,load:storage.load,setProgress(p){state.progress={...progression.fresh(),...p,saveSchemaVersion:5,library:p.library||LibraryEngine.state()};storage.save();ui.hud();world.startWorld()},select(day){state.day=day;world.startWorld()}};`;
+const hook = `window.__test={get progress(){return state.progress},get session(){return state.session},get selectedLoop(){return state.day},words:content.words,wordById:content.wordById,courses:content.courses,zoneKeys:content.zoneKeys,selectChallenge:questions.selectChallenge,normalizeAnswer:QuestionEngine.normalizeAnswer,characterStatus:progression.characterStatus,allowed:learning.allowed,passedChallenge:learning.passedChallenge,placeAccessible:learning.placeAccessible,dayGuidance:world.dayGuidance,teacherFor:content.teacherFor,startWorld:world.startWorld,showChallengeQuestion:challenge.showChallengeQuestion,save:storage.save,load:storage.load,setProgress(p){state.progress={...progression.fresh(),...p,saveSchemaVersion:6,library:p.library||LibraryEngine.state()};storage.save();ui.hud();world.startWorld()},select(day){state.day=day;world.startWorld()}};`;
 const testHtml = html.replace("// @TEST_HOOK", hook);
 const server = http.createServer((req, res) => {
   if (req.url.startsWith("/audio/")) {

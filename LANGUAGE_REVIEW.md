@@ -6,7 +6,7 @@
 
 For any proposed lexical candidate, greeting, sentence, dialogue response or alternate accepted answer, record its stable content/lemma/form ID; existing and proposed Pashto; precise English sense; context, speaker and addressee; any local vs written variant; romanisation; reviewer name or identifier and review date; review source/reference; accepted alternate responses and rationale; and audio provenance when available. Never invent sign-off. A candidate remains inactive until its `nativeReview` and language fields satisfy `tools/build.py` gates. Existing language can remain a labelled development draft awaiting retrospective native review.
 
-The current lexicon has 127 draft lemmas (99 district and 28 universal), while **301** selected additions and **40** universal semantic targets remain untranslated/inactive. `content/NARRATIVE_EXPRESSIONS.json` has 17 contextual slots; **only Welcome (`ښه راغلاست`) and Day 2 Good morning (`سهار مو پخیر!`)** are provisionally active from exact user-supplied text. Their source has not been independently bibliographically or locally verified. The remaining **15** slots are pending, never invented Pashto. The tutorial's question texts for gender and name are also provisional and require review.
+The current lexicon has 128 draft lemmas (99 district and 29 universal), while **301** selected additions and **40** universal semantic targets remain untranslated/inactive. `content/NARRATIVE_EXPRESSIONS.json` has 17 contextual slots; **only Welcome (`ښه راغلاست`) and Day 2 Good morning (`سهار مو پخیر!`)** are provisionally active from exact user-supplied text. Their source has not been independently bibliographically or locally verified. The remaining **15** slots are pending, never invented Pashto. The tutorial's question texts for gender and name are also provisional and require review.
 
 ## Phonology, orthography and grammar checklist
 
@@ -41,3 +41,13 @@ An optional `audio/<content-id>.mp3` pack is **not** currently bundled or native
 - Speaking Pashto: [Lesson four](https://www.speakingpashto.com/lesson-four/) and [lesson seven](https://www.speakingpashto.com/lesson-seven/).
 
 These support systematic review but do not replace a qualified Laghman speaker or verified recordings.
+
+## Current lexical audit and generation exclusions
+
+`content/CURRICULUM_AUDIT.json` is regenerated with `python3 tools/curriculum-audit.py` and checked by full verification. It reports all 128 identities/224 forms, exact current senses/POS/roles/traits, intended introductions, source/audio references, uncertainty, missing examples, retimed cards, frame provenance and every composition-excluded form ID. The extra identity separates the existing personal-subject sense of `هغه` from its demonstrative sense; it is not a newly translated candidate. Stable prior lemma/form IDs and authored Pashto remain intact.
+
+Unknown morphology stays null. Source-level uncertainty such as “plural or oblique”, the bird/children citation anomalies and sell-lexeme synonym candidates requires individual human decisions. Sentence-level romanisation formerly attached to isolated finite forms is preserved as `contextRomanisation`, not falsely presented as that form's own pronunciation. The nine originally blank form romanisations remain unresolved; additional sentence-only romanisation is now correctly flagged too. These forms cannot enter composition.
+
+Only ten forms currently have feature evidence for the restricted masculine-singular description frame; 214 forms are excluded from generation. Six outputs are exact authored examples; three are new constrained compositions using the same attested features and an explicit semantic whitelist. “Feature-vetted draft” means mechanically consistent with those sources, **not native-certified**. The frame and all language retain pending native review. There is no licensed lexical-verb, oblique/plural, possessive or negative sentence frame yet. Do not extrapolate a paradigm from a citation or promote a form merely because a property test passes.
+
+CSV curriculum proposals and human scheduling approvals are separate from linguistic verification. A worksheet's `verifiedStatus` cannot confer native certification. No pending district candidate, universal target or narrative expression is activated by these changes. Existing device/audio caveats and required reviewer/date/reference/variant/alternative/audio provenance remain in force.

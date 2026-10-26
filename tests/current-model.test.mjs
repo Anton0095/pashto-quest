@@ -38,12 +38,12 @@ const sample = {
   sourceMappings: { exercise: [ref] },
 };
 E.expose(p, sample, "exercise", {
-  day: 2,
+  day: 3,
   source: "lesson",
   location: "nature",
 });
 E.expose(p, sample, "exercise", {
-  day: 2,
+  day: 3,
   source: "lesson",
   location: "nature",
 });
@@ -51,7 +51,7 @@ assert.equal(E.summary(p, data).encountered, 1);
 assert.equal(E.status(p.library.acquired[entry.lemmaId]), "introduced");
 for (let i = 0; i < 3; i++) {
   const ctx = {
-    day: i + 2,
+    day: i + 3,
     source: "review",
     location: "school",
     eventId: "attempt" + i,
@@ -69,7 +69,7 @@ assert.equal(
   "no mirrored lexical card state",
 );
 E.practise(p, sample, "exercise", false, {
-  day: 4,
+  day: 5,
   source: "review",
   location: "business",
   eventId: "wrong",

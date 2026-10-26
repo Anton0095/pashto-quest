@@ -70,26 +70,49 @@ function createLearning({ state, content, progression }) {
       ),
       assigned = plan.locationAssignments[place] || [];
     const lexical = assigned.map((id) => "library-card:" + id);
-    const original =
-      content.LIBRARY_DATA.lessonSentenceTargets?.[day]?.[place] ||
-      (content.courses[day + "-" + place] || []).filter(
-        (id) => content.wordById[id]?.type === "sentence",
-      );
-    const grammar = (content.courses[day + "-" + place] || []).filter(
-      (id) =>
-        content.wordById[id]?.type !== "sentence" &&
-        (content.LIBRARY_DATA.sourceMappings[id] || []).some(
-          (r) => !content.libraryEntries[r.lemmaId].countsTowardDailyQuota,
-        ),
-    );
-    // Fixed authored sentences preserve grammar, roles and stories; no unreviewed substitutions.
+    const universals = content.LIBRARY_DATA.entries
+      .filter(
+        (e) =>
+          day !== 14 &&
+          e.vocabularyClass === "universal" &&
+          e.introduction.day <= day &&
+          !state.progress.library.acquired[
+            e.lemmaId
+          ]?.introducedFormIds.includes(e.forms[0].formId),
+      )
+      .map((e) => "library-card:" + e.lemmaId);
+    const taught = new Set([
+      ...Object.entries(state.progress.library.acquired)
+        .filter(([, record]) => record.introducedFormIds.length)
+        .map(([id]) => id),
+      ...assigned,
+      ...universals.flatMap((id) =>
+        (content.LIBRARY_DATA.sourceMappings[id] || []).map((r) => r.lemmaId),
+      ),
+    ]);
+    // Retain exact authored sentences, but retime practice until their lexical components are introduced.
+    const original = [
+      ...new Set([
+        ...(content.LIBRARY_DATA.lessonSentenceTargets?.[day]?.[place] || []),
+        ...Array.from(
+          { length: day },
+          (_, i) => content.courses[i + 1 + "-" + place] || [],
+        ).flat(),
+      ]),
+    ]
+      .filter(
+        (id) =>
+          content.wordById[id]?.type === "sentence" &&
+          LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) &&
+          (content.LIBRARY_DATA.sourceMappings[id] || []).every((r) =>
+            taught.has(r.lemmaId),
+          ),
+      )
+      .slice(0, 8);
     const review = LibraryEngine.dueForms(state.progress, content.LIBRARY_DATA)
-      .filter(({ entry }) => LibraryEngine.allowedOnDay(entry, day))
+      .filter(({ entry, form }) => LibraryEngine.formAllowed(entry, form, day))
       .slice(0, 2)
       .map(({ form }) => "library-form:" + form.formId);
-
-    const actionIntro =
-      day === 2 && place === "school" ? ["v-read", "v-write"] : [];
     // Use a location's active expression, otherwise repeat this day's active
     // greeting. Pending translations remain unavailable. Expressions do not
     // consume lexical quotas, even when repeated at multiple locations.
@@ -108,17 +131,68 @@ function createLearning({ state, content, progression }) {
         : day === 3 && place === "residential"
           ? ["g-bye"]
           : [];
-    return [
+    const pool = [
       ...new Set([
         ...opening,
         ...deferred,
-        ...actionIntro,
         ...lexical,
-        ...grammar,
+        ...universals,
         ...review,
         ...original,
       ]),
     ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day));
+    return pool.length ? pool : ["g-hello"];
+  }
+  function recordGrammarExposure(text) {
+    const normalise = (value) =>
+      String(value)
+        .normalize("NFC")
+        .replace(/[؟،]/g, " ")
+        .replace(/[^\u0600-\u06ff]+/g, " ")
+        .trim();
+    const shown = " " + normalise(text) + " ";
+    for (const word of content.words) {
+      const ps = normalise(word.ps);
+      if (
+        ps &&
+        word.loop <= state.session.loop &&
+        shown.includes(" " + ps + " ") &&
+        LibraryEngine.cardAllowed(
+          content.LIBRARY_DATA,
+          word.id,
+          state.session.loop,
+        )
+      )
+        libraryExpose(word.id, "grammar-model");
+    }
+  }
+  function generatedPractice(day, seed, count = 2) {
+    return SentenceEngine.select(
+      state.progress,
+      content.LIBRARY_DATA,
+      content.LIBRARY_DATA.sentenceFrames,
+      day,
+      count,
+      seed,
+    );
+  }
+  function prepareSentences(s) {
+    if (s.mode !== "standard" || s.generatedPrepared) return;
+    s.generatedPrepared = true;
+    const plan = state.progress.library.plans[s.loop];
+    const selections = (plan.generatedPractice ||= {});
+    // A completed visit reuses its first selection even after other districts unlock more forms.
+    const ids = (selections[s.loc] ||= generatedPractice(
+      s.loop,
+      s.attemptId,
+    ).map((card) => card.id));
+    s.generatedPractice = ids.map((id) => content.wordById[id]);
+    for (const card of s.generatedPractice) {
+      if (s.studySentences.includes(card.id)) continue;
+      s.studySentences.push(card.id);
+      s.required.push(card.id);
+      s.queue.push({ id: card.id, retries: 0 });
+    }
   }
   function completeRound(day) {
     return progression.completeRound(state.progress, day);
@@ -245,6 +319,7 @@ function createLearning({ state, content, progression }) {
   }
   function preLessonGrammar(day, place) {
     return (
+      (day === 1 && !state.progress.personIntros[1]) ||
       needsOpening(day, place) ||
       (day === 2 &&
         place === "school" &&
@@ -256,6 +331,9 @@ function createLearning({ state, content, progression }) {
     );
   }
   return {
+    recordGrammarExposure,
+    generatedPractice,
+    prepareSentences,
     stat,
     isDue,
     learned,

@@ -131,7 +131,7 @@ try {
   for (const incompatible of [
     JSON.stringify({ saveSchemaVersion: 3, xp: 999 }),
     JSON.stringify({ ...savedCurrent, saveSchemaVersion: 4 }),
-    JSON.stringify({ saveSchemaVersion: 5, xp: 0 }),
+    JSON.stringify({ saveSchemaVersion: 6, xp: 0 }),
     "{broken",
     JSON.stringify({
       ...savedCurrent,
@@ -160,7 +160,7 @@ try {
     await page.waitForFunction(
       () =>
         JSON.parse(localStorage.getItem("pashto-town-days-v1"))
-          .saveSchemaVersion === 5,
+          .saveSchemaVersion === 6,
     );
     await page.reload();
     assert.equal(await page.locator("#saveCompatibility").count(), 0);
