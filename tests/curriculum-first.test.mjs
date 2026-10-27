@@ -10,7 +10,7 @@ const { E, S } = vm.runInNewContext(
     ";({E:LibraryEngine,S:SentenceEngine})",
 );
 const plain = (x) => JSON.parse(JSON.stringify(x));
-assert.equal(data.entries.length, 128);
+assert.equal(data.entries.length, 469);
 assert(data.entries.every((e) => e.partOfSpeech !== "grammar"));
 const dark = data.entries.find((e) => e.lemmaId === "lemma:a-dark");
 assert.equal(dark.introduction.day, 5);
@@ -128,5 +128,5 @@ for (const change of [
   );
 }
 console.log(
-  "PASS curriculum-first: 128 identities, deliberate introductions/all paces, exposure vs introduction, 20,000 licensed compositions, nine variants, determinism and adversarial agreement/case/unlock tests",
+  "PASS curriculum-first: 469 identities, deliberate introductions/all paces, exposure vs introduction, 20,000 licensed compositions, nine variants, determinism and adversarial agreement/case/unlock tests",
 );

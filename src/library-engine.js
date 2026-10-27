@@ -23,7 +23,7 @@ const LibraryEngine = (() => {
     return {
       units: {},
       dayExposure: {},
-      requestedDailyTarget: 20,
+      requestedDailyTarget: 24,
       seed: 2401024,
       plans: {},
       acquired: {},

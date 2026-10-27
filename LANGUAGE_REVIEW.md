@@ -4,9 +4,9 @@
 
 ## Required approval record
 
-For any proposed lexical candidate, greeting, sentence, dialogue response or alternate accepted answer, record its stable content/lemma/form ID; existing and proposed Pashto; precise English sense; context, speaker and addressee; any local vs written variant; romanisation; reviewer name or identifier and review date; review source/reference; accepted alternate responses and rationale; and audio provenance when available. Never invent sign-off. A candidate remains inactive until its `nativeReview` and language fields satisfy `tools/build.py` gates. Existing language can remain a labelled development draft awaiting retrospective native review.
+For any lexical candidate, greeting, sentence, dialogue response or alternate accepted answer, record its stable content/lemma/form ID; Pashto; precise English sense; context, speaker and addressee; any local vs written variant; romanisation; reviewer name or identifier and review date; review source/reference; accepted alternatives and rationale; and audio provenance when available. Never invent sign-off. A complete entry may be playable as an explicitly unchecked provisional draft; `native_approved` still requires documented reviewer evidence.
 
-The current lexicon has 128 draft lemmas (99 district and 29 universal), while **301** selected additions and **40** universal semantic targets remain untranslated/inactive. `content/NARRATIVE_EXPRESSIONS.json` has 17 contextual slots; **only Welcome (`ښه راغلاست`) and Day 2 Good morning (`سهار مو پخیر!`)** are provisionally active from exact user-supplied text. Their source has not been independently bibliographically or locally verified. The remaining **15** slots are pending, never invented Pashto. The tutorial's question texts for gender and name are also provisional and require review.
+The lexicon has 469 draft lemmas: 128 previously authored drafts plus **301** newly promoted district drafts and **40** newly linked universal targets. Every new item has `userVerified: false`, mechanical uncertainty notes and no native-approval claim. Review them in `content/VOCABULARY_REVIEW.csv`; corrections belong in `content/LIBRARY_LEXICON.json`, after which the CSV is regenerated. The 15 untranslated narrative expression slots remain inactive.
 
 ## Phonology, orthography and grammar checklist
 
@@ -44,7 +44,7 @@ These support systematic review but do not replace a qualified Laghman speaker o
 
 ## Current lexical audit and generation exclusions
 
-`content/CURRICULUM_AUDIT.json` is regenerated with `python3 tools/curriculum-audit.py` and checked by full verification. It reports all 128 identities/224 forms, exact current senses/POS/roles/traits, intended introductions, source/audio references, uncertainty, missing examples, retimed cards, frame provenance and every composition-excluded form ID. The extra identity separates the existing personal-subject sense of `هغه` from its demonstrative sense; it is not a newly translated candidate. Stable prior lemma/form IDs and authored Pashto remain intact.
+`content/CURRICULUM_AUDIT.json` reports all 469 identities/565 forms, exact senses/POS/roles/traits, intended introductions, provenance, uncertainty, retimed cards and composition exclusions. `content/VOCABULARY_REVIEW.csv` mirrors every active district and universal lemma for human editing; it is generated output, not a runtime database.
 
 Unknown morphology stays null. Source-level uncertainty such as “plural or oblique”, the bird/children citation anomalies and sell-lexeme synonym candidates requires individual human decisions. Sentence-level romanisation formerly attached to isolated finite forms is preserved as `contextRomanisation`, not falsely presented as that form's own pronunciation. The nine originally blank form romanisations remain unresolved; additional sentence-only romanisation is now correctly flagged too. These forms cannot enter composition.
 

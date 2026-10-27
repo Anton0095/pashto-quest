@@ -110,16 +110,15 @@ const { activationProblems, inventory } = await import(
   "../tools/district-inventory.mjs"
 );
 const backlog = JSON.parse(read("content/DISTRICT_VOCABULARY_CANDIDATES.json"));
-assert(
-  backlog.candidates.every(
-    (c) =>
-      activationProblems(c).length > 0 && c.countsTowardDailyQuota === false,
-  ),
-);
+const promoted = backlog.candidates.filter((c) => c.promotedLemmaId);
+assert.equal(promoted.length, 301);
+assert(promoted.every((c) => c.reviewStatus === "provisional_playable" && c.userVerified === false));
+assert(promoted.every((c) => data.entries.some((e) => e.lemmaId === c.promotedLemmaId)));
 const report = inventory(data, backlog, read("src/library-engine.js"));
-assert.equal(report.activatedContentLemmas, 99);
-assert.equal(report.inactiveCandidates, 360);
-assert.equal(report.eligibleForPromotion, 0);
+assert.equal(report.activatedContentLemmas, 400);
+assert.equal(report.inactiveCandidates, 59);
+assert.deepEqual(report.candidateDisposition, {promoted:301,merged:0,rejected:59,replaced:0});
+assert.equal(report.byReviewStatus.provisional_playable, 341);
 assert.equal(report.duplicateLemmaIds.length, 0);
 assert(report.schedules.every((s) => s.days[13].assigned === 0));
 console.log(

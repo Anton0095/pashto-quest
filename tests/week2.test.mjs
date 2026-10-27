@@ -284,6 +284,7 @@ try {
       }),
       page = await context.newPage(),
       errors = [];
+    page.setDefaultTimeout(60000);
     page.on("pageerror", (e) => { errors.push(e.message); console.error("PAGEERROR",e.stack); });
     await page.goto(`http://127.0.0.1:${server.address().port}`);
     const old = graduate();

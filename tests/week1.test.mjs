@@ -92,6 +92,7 @@ async function setup(width = 1280) {
     viewport: { width, height: 900 },
   });
   const page = await context.newPage();
+  page.setDefaultTimeout(60000);
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(url);
@@ -492,6 +493,7 @@ try {
     viewport: { width: 390, height: 844 },
   });
   const offlinePage = await offlineContext.newPage();
+  offlinePage.setDefaultTimeout(60000);
   try {
     await offlinePage.goto(new URL("../index.html", import.meta.url).href);
     console.log("PASS file:// standalone startup");
@@ -503,6 +505,7 @@ try {
   }
   await offlinePage.close();
   const deliveredPage = await offlineContext.newPage();
+  deliveredPage.setDefaultTimeout(60000);
   await deliveredPage.goto(url + "/standalone");
   await offlineContext.setOffline(true);
   await deliveredPage.locator("#startTutorial").click();

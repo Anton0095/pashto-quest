@@ -457,7 +457,7 @@ function createLibraryUI({
     root.append(
       ui.node(
         "p",
-        `${content.LIBRARY_DATA.inventorySummary.activeContentLemmas} activated draft content lemmas; ${content.LIBRARY_DATA.inventorySummary.inactiveCandidates} untranslated candidates remain inactive. Native review is pending.`,
+        `${content.LIBRARY_DATA.inventorySummary.activeContentLemmas} district draft lemmas are active; promoted entries remain provisional and unchecked. Native review is pending.`,
       ),
     );
     const message = ui.node("p");

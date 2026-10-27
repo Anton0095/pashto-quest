@@ -14,7 +14,7 @@ Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CUR
 - Preserve 14 authored days, characters, normal/skip paths and current learning states. Day 1 excludes lexical action verbs; Day 14 has zero compulsory new lemmas.
 - Only **save schema 6** is supported. Do not add old-format migration/backfill/content-repair adapters or silent save resets. Unsupported/corrupt saves remain untouched until explicit user reset.
 - Do not add duplicate SRS/XP stores, replay-farmable rewards, or reveal unseen vocabulary's English meaning before answer submission.
-- Inactive language candidates and pending expressions must remain inactive until documented review. No invented native Laghman approval, pronunciation or audio recordings.
+- Incomplete language candidates and pending expressions remain inactive. Mechanically complete lexical drafts may be `provisional_playable` only with explicit provenance, `userVerified: false`, and no native-approval claim. No invented native Laghman approval or audio recordings.
 - Preserve mobile/RTL interaction and candid audio fallback. Mocked browser testing is not physical-device verification.
 
 ## Change process

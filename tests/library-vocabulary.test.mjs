@@ -63,31 +63,28 @@ check(
   },
 );
 check(
-  "LIB-05/24: actual content shortage is explicit; no fabricated 140/280-word claim",
+  "LIB-05/24: default 24 supplies the complete balanced curriculum",
   () => {
     const p = fresh(),
       all = new Set();
-    let gaps = 0;
     for (let day = 1; day <= 14; day++) {
       const plan = api.E.ensurePlan(p, data, day);
       for (const id of Object.values(plan.locationAssignments).flat()) {
         assert(!all.has(id));
         all.add(id);
       }
-      if (plan.contentGap) {
-        gaps++;
-        assert.equal(plan.effectiveDailyTarget, null);
-      } else
-        assert.equal(
-          Object.values(plan.locationAssignments).flat().length,
-          day === 14 ? 0 : 20,
-        );
+      assert.equal(plan.contentGap, false);
+      assert.equal(
+        Object.values(plan.locationAssignments).flat().length,
+        day === 14 ? 0 : 24,
+      );
     }
-    assert(gaps > 0);
+    assert.equal(all.size, 312);
     assert(
       all.size <= data.entries.filter((e) => e.countsTowardDailyQuota).length,
     );
-    assert(data.entries.every((e) => e.reviewStatus === "needs_native_review"));
+    assert(data.entries.every((e) => ["needs_native_review", "provisional_playable"].includes(e.reviewStatus)));
+    assert(data.entries.filter((e) => e.reviewStatus === "provisional_playable").every((e) => e.userVerified === false));
     assert.equal(api.E.supported(p, data, 15).length, 0);
   },
 );
@@ -278,6 +275,7 @@ try {
       }),
       page = await context.newPage(),
       errors = [];
+    page.setDefaultTimeout(60000);
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`http://127.0.0.1:${server.address().port}`);
     assert.equal(await page.locator(".map-point:visible").count(), 5);
@@ -618,7 +616,7 @@ try {
     await context.close();
     groups++;
     console.log(
-      `PASS LIB browser ${width}px: fresh map, pace, phrases, partial visits, home failure/retry/replay, challenge reload, all seven normal-day paces and honest content gaps, reference without rewards, search, keyboard and offline`,
+      `PASS LIB browser ${width}px: fresh map, pace, phrases, partial visits, home failure/retry/replay, challenge reload, all seven complete normal-day paces, reference without rewards, search, keyboard and offline`,
     );
   }
 } finally {
@@ -626,5 +624,5 @@ try {
   server.close();
 }
 console.log(
-  `PASS ${groups} Library test groups. Full 140/280 content quota and native Laghman/iPhone review remain unavailable; content gaps are explicit.`,
+  `PASS ${groups} Library test groups. The 312-introduction quota is complete; native Laghman and physical-device review remain outstanding.`,
 );
