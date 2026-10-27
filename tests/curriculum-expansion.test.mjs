@@ -18,7 +18,7 @@ assert(selected('snow','noun'));assert(!selected('snow','verb'));
 assert(selected('answer','verb'));assert(!selected('answer','noun'));
 assert(selected('lock','noun') && selected('lock','verb'));
 const universal = data.entries.filter((e) => e.vocabularyClass==='universal');
-assert.equal(universal.length,69);
+assert.equal(universal.length,73);
 assert(universal.every((e) => !e.countsTowardDailyQuota && places.every((d) => E.matchesPlace(e,d))));
 assert(backlog.candidates.filter((e)=>e.selectedForExpansion).every((e) => e.countsTowardDailyQuota && e.reviewStatus==='provisional_playable' && e.userVerified===false && byId[e.promotedLemmaId]));
 for (const pace of E.presets) {

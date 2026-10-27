@@ -207,6 +207,38 @@ questions.selectChallenge(1);
 const actionPlan = clone(state.progress);
 actionPlan.library.plans[1].locationAssignments.school[0] = "lemma:v-read";
 assert(!storage.currentSave(actionPlan));
+// Every new grammar family survives partial-tile save/retry with its full provenance.
+reset(14);
+for (let day=1; day<=13; day++) runtime.E.unlock(state.progress, day, "fixture");
+for (const e of content.LIBRARY_DATA.entries) for (const f of e.forms)
+  runtime.E.encounter(state.progress, content.LIBRARY_DATA,
+    {lemmaId:e.lemmaId,formId:f.formId}, {day:13,source:"lesson",introduce:true});
+const generatedFamilies = [...new Set(content.LIBRARY_DATA.generatedCatalog.map(c=>c.generated.family))];
+for (const family of generatedFamilies) {
+  const card = content.LIBRARY_DATA.generatedCatalog.find(c=>c.generated.family===family);
+  const list = questions.selectChallenge(14);
+  list[0] = {id:card.id,kind:"construct",direction:"en-ps",generated:clone(card)};
+  list[0].tileSequence = Q.buildTiles(card,list[0],14).map(t=>t.index).reverse();
+  state.progress.library.plans[14].challengeQuestions = clone(list);
+  attempt(list);
+  state.session.tileSequence = clone(list[0].tileSequence);
+  state.session.built = [state.session.tileSequence[0]];
+  storage.save();
+  assert(storage.currentSave(state.progress), family);
+  const frozen = JSON.stringify(state.progress);
+  state.progress = storage.load();
+  assert.equal(JSON.stringify(state.progress), frozen, family);
+  assert.deepEqual(clone(questions.selectChallenge(14)),clone(list), family);
+  const badSlots = clone(state.progress);
+  const slot = Object.keys(badSlots.activeChallenge.questions[0].generated.generated.slots)[0];
+  badSlots.activeChallenge.questions[0].generated.generated.slots[slot].formId += ":different";
+  assert(!storage.currentSave(badSlots), "changed slots with unchanged text must be rejected");
+  const badRoman = clone(state.progress);
+  badRoman.activeChallenge.questions[0].generated.roman = "unattested pronunciation";
+  assert(!storage.currentSave(badRoman), "full pronunciation snapshot must match");
+}
+assert(generatedFamilies.length > 9);
+console.log("PASS all-family generated persistence:",generatedFamilies.length,"families, exact text/gloss/tiles/romanisation/provenance, stable retry, tampering rejected");
 // Old formats are rejected rather than adapted; explicit reset is required to replace raw storage.
 const old = JSON.stringify({ ...state.progress, saveSchemaVersion: 4 });
 runtime.backend.setItem(null, old);

@@ -90,6 +90,18 @@ function createLearning({ state, content, progression }) {
         (content.LIBRARY_DATA.sourceMappings[id] || []).map((r) => r.lemmaId),
       ),
     ]);
+    // Finite forms, plurals, adjective variants and whole case-governed chunks
+    // receive individual study cards. Incidental sentences never introduce them.
+    // A current-day workshop may follow this lexical phase; generation still waits
+    // for its actual unlock. Missing earlier workshops are not silently granted.
+    const forms = day === 14 ? [] : content.LIBRARY_DATA.entries.flatMap((e) =>
+      taught.has(e.lemmaId) ? e.forms.filter((f) =>
+        f.formId !== e.forms[0].formId && f.composition.enabled &&
+        LibraryEngine.formAllowed(e, f, day) &&
+        f.prerequisiteGrammarIds.every((id) =>
+          state.progress.library.grammar[id] || id === "grammar-day-" + day) &&
+        !state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId)
+      ).map((f) => "library-form:" + f.formId) : []);
     // Retain exact authored sentences, but retime practice until their lexical components are introduced.
     const original = [
       ...new Set([
@@ -110,7 +122,8 @@ function createLearning({ state, content, progression }) {
       )
       .slice(0, 8);
     const review = LibraryEngine.dueForms(state.progress, content.LIBRARY_DATA)
-      .filter(({ entry, form }) => LibraryEngine.formAllowed(entry, form, day))
+      .filter(({ entry, form }) => LibraryEngine.formAllowed(entry, form, day) &&
+        (day !== 14 || state.progress.library.acquired[entry.lemmaId]?.introducedFormIds.includes(form.formId)))
       .slice(0, 2)
       .map(({ form }) => "library-form:" + form.formId);
     // Use a location's active expression, otherwise repeat this day's active
@@ -137,6 +150,7 @@ function createLearning({ state, content, progression }) {
         ...deferred,
         ...lexical,
         ...universals,
+        ...forms,
         ...review,
         ...original,
       ]),

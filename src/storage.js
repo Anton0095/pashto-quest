@@ -193,6 +193,7 @@ function createStorage({
             !card?.generated ||
             item.generated.ps !== card.ps ||
             item.generated.en !== card.en ||
+            item.generated.roman !== card.roman ||
             JSON.stringify(item.generated.generated) !==
               JSON.stringify(card.generated)
           )

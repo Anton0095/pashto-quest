@@ -6,7 +6,7 @@ Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CUR
 - Edit `src/` and playable `content/*.json`, never generated `index.html` directly. Regenerate with `python3 tools/build.py`.
 - `content/LIBRARY_LEXICON.json`: precise lexical classes, explicit uncertainty, per-form grammar gates and curated stable-ID introductions. Authored `loop` is provenance, not a live lemma schedule.
 - `src/library-engine.js`: one acquisition/form-introduction/SRS store and curated-order district planning.
-- `src/sentence-engine.js` + `content/SENTENCE_FRAMES.json`: feature-constrained practice, introduced forms and actually unlocked grammar only. Whitelisted generated drafts are not native-certified.
+- `src/sentence-engine.js` + `content/SENTENCE_FRAMES.json`: feature-constrained practice, introduced forms and actually unlocked grammar only. Feature-constrained generated drafts are not native-certified.
 - `src/progression.js`: current save factory, XP, results, milestones, reward identity and access rules.
 - `src/question-engine.js`: answer evaluation and indexed tiles; `src/learning.js` applies practice transactions. UI renders outcomes.
 - `src/storage.js`: save validation/I/O and active assessment snapshots. `src/app.js` only composes services and wires controls. Keep authored blueprints in content modules/JSON, apart from renderers.

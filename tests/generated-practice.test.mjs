@@ -80,7 +80,7 @@ try {
           "Completed visit rerolled generated practice after later unlocks",
         );
     }
-    const candidates = t.learning.generatedPractice(1, 1, 20);
+    const candidates = t.learning.generatedPractice(1, 1, 200);
     t.challenge.startChallenge(1);
     return {
       generated,

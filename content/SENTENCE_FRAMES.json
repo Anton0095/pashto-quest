@@ -1,285 +1,2193 @@
 {
-  "version": 1,
-  "reviewNotice": "Feature-vetted constrained draft frames, not native-certified; newly composed tuples are explicitly distinguished from exact authored attestations.",
+  "schemaVersion": 2,
+  "status": "Provisional feature-constrained composition; never native certification",
+  "copulas": [
+    {
+      "pashto": "دی",
+      "romanisation": "day",
+      "gender": "masculine",
+      "number": "singular",
+      "grammarId": "grammar-day-1",
+      "evidenceSourceId": "s3-house"
+    },
+    {
+      "pashto": "ده",
+      "romanisation": "da",
+      "gender": "feminine",
+      "number": "singular",
+      "grammarId": "grammar-day-1",
+      "evidenceSourceId": "s-it-door"
+    },
+    {
+      "pashto": "دي",
+      "romanisation": "dee",
+      "gender": null,
+      "number": "plural",
+      "grammarId": "grammar-day-1",
+      "evidenceSourceId": "s3-cold"
+    }
+  ],
   "frames": [
     {
-      "id": "description-masculine-singular",
-      "objective": "Noun/adjective/copula agreement in a simple description",
+      "id": "description",
+      "family": "equative_descriptor",
+      "earliestDay": 1,
       "requiredGrammarIds": [
         "grammar-day-1"
       ],
       "scope": "feature_vetted_draft",
-      "nativeReview": {
-        "status": "pending",
-        "reviewer": null
-      },
-      "pashtoPattern": "{noun} {adjective} دی.",
-      "englishPattern": "The {noun} is {adjective}.",
       "slots": {
         "noun": {
+          "role": "noun",
           "partOfSpeech": "noun",
           "features": {
-            "gender": "masculine",
-            "number": "singular",
-            "case": "direct",
-            "person": null
-          }
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
         },
         "adjective": {
+          "role": "adjective",
           "partOfSpeech": "adjective",
           "features": {
-            "gender": "masculine",
-            "number": "singular",
-            "case": "direct",
-            "person": null
-          }
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
         }
       },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "noun",
+          "right": "adjective",
+          "features": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        {
+          "type": "adjective",
+          "left": "noun",
+          "right": "adjective"
+        }
+      ],
+      "pashtoPattern": "{noun} {adjective} {copula}.",
+      "englishRealiser": "description",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
       "terminals": [
         {
-          "id": "copula-masculine-singular",
           "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
           "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "demonstrative-description",
+      "family": "demonstrative_descriptor",
+      "earliestDay": 8,
+      "requiredGrammarIds": [
+        "grammar-day-8"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
           "features": {
-            "gender": "masculine",
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "adjective": {
+          "role": "adjective",
+          "partOfSpeech": "adjective",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "demonstrative": {
+          "role": "demonstrative",
+          "partOfSpeech": "demonstrative",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [],
+          "grammaticalFunction": "determiner"
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "noun",
+          "right": "adjective",
+          "features": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        {
+          "type": "adjective",
+          "left": "noun",
+          "right": "adjective"
+        }
+      ],
+      "pashtoPattern": "{demonstrative} {noun} {adjective} {copula}.",
+      "englishRealiser": "description",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "attributive",
+      "family": "attributive_equative",
+      "earliestDay": 8,
+      "requiredGrammarIds": [
+        "grammar-day-8"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "adjective": {
+          "role": "adjective",
+          "partOfSpeech": "adjective",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "demonstrative": {
+          "role": "demonstrative",
+          "partOfSpeech": "demonstrative",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [],
+          "grammaticalFunction": "independent"
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "noun",
+          "right": "adjective",
+          "features": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        {
+          "type": "adjective",
+          "left": "noun",
+          "right": "adjective"
+        }
+      ],
+      "pashtoPattern": "{demonstrative} {adjective} {noun} {copula}.",
+      "englishRealiser": "attributive",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "identification",
+      "family": "equative_noun",
+      "earliestDay": 8,
+      "requiredGrammarIds": [
+        "grammar-day-8"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "demonstrative": {
+          "role": "demonstrative",
+          "partOfSpeech": "demonstrative",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [],
+          "grammaticalFunction": "independent"
+        }
+      },
+      "constraints": [],
+      "pashtoPattern": "{demonstrative} {noun} {copula}.",
+      "englishRealiser": "identification",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "sov",
+      "family": "present_transitive",
+      "earliestDay": 2,
+      "requiredGrammarIds": [
+        "grammar-day-2"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "number",
+            "case"
+          ]
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        },
+        {
+          "type": "object",
+          "left": "noun",
+          "right": "verb"
+        }
+      ],
+      "pashtoPattern": "{subject} {noun} {verb}.",
+      "englishRealiser": "transitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "predicateType": "simple",
+      "valency": "transitive",
+      "terminals": []
+    },
+    {
+      "id": "compound-sov",
+      "family": "present_compound_transitive",
+      "earliestDay": 2,
+      "requiredGrammarIds": [
+        "grammar-day-2"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "number",
+            "case"
+          ]
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        },
+        {
+          "type": "object",
+          "left": "noun",
+          "right": "verb"
+        }
+      ],
+      "pashtoPattern": "{subject} {noun} {verb}.",
+      "englishRealiser": "transitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "predicateType": "compound",
+      "valency": "transitive",
+      "terminals": []
+    },
+    {
+      "id": "attributive-sov",
+      "family": "present_attributive",
+      "earliestDay": 2,
+      "requiredGrammarIds": [
+        "grammar-day-2"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "adjective": {
+          "role": "adjective",
+          "partOfSpeech": "adjective",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        },
+        {
+          "type": "object",
+          "left": "noun",
+          "right": "verb"
+        },
+        {
+          "type": "agree",
+          "left": "noun",
+          "right": "adjective",
+          "features": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        {
+          "type": "adjective",
+          "left": "noun",
+          "right": "adjective"
+        }
+      ],
+      "pashtoPattern": "{subject} {adjective} {noun} {verb}.",
+      "englishRealiser": "transitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "predicateType": "simple",
+      "valency": "transitive",
+      "terminals": []
+    },
+    {
+      "id": "intransitive",
+      "family": "present_intransitive",
+      "earliestDay": 2,
+      "requiredGrammarIds": [
+        "grammar-day-2"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        }
+      ],
+      "pashtoPattern": "{subject} {verb}.",
+      "englishRealiser": "intransitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "predicateType": "simple",
+      "valency": "intransitive",
+      "terminals": []
+    },
+    {
+      "id": "compound-predicate",
+      "family": "present_compound_predicate",
+      "earliestDay": 2,
+      "requiredGrammarIds": [
+        "grammar-day-2"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        }
+      ],
+      "pashtoPattern": "{subject} {verb}.",
+      "englishRealiser": "intransitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "predicateType": "compound",
+      "valency": "intransitive",
+      "terminals": []
+    },
+    {
+      "id": "together-compound",
+      "family": "present_compound_predicate",
+      "earliestDay": 6,
+      "requiredGrammarIds": [
+        "grammar-day-6"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "adverb": {
+          "role": "adverb",
+          "partOfSpeech": "adverb",
+          "features": {
+            "form": "attested"
+          },
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        },
+        {
+          "type": "adverb",
+          "left": "adverb",
+          "right": "verb"
+        }
+      ],
+      "pashtoPattern": "{subject} {adverb} {verb}.",
+      "englishRealiser": "intransitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "predicateType": "compound",
+      "valency": "intransitive",
+      "adverbClasses": [
+        "together"
+      ],
+      "terminals": []
+    },
+    {
+      "id": "demonstrative-sov",
+      "family": "demonstrative_transitive",
+      "earliestDay": 8,
+      "requiredGrammarIds": [
+        "grammar-day-8"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "number",
+            "case"
+          ]
+        },
+        "demonstrative": {
+          "role": "demonstrative",
+          "partOfSpeech": "demonstrative",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [],
+          "grammaticalFunction": "determiner"
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        },
+        {
+          "type": "object",
+          "left": "noun",
+          "right": "verb"
+        }
+      ],
+      "pashtoPattern": "{subject} {demonstrative} {noun} {verb}.",
+      "englishRealiser": "transitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "predicateType": "simple",
+      "valency": "transitive",
+      "terminals": []
+    },
+    {
+      "id": "count-identification",
+      "family": "counted_equative",
+      "earliestDay": 9,
+      "requiredGrammarIds": [
+        "grammar-day-9"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "numeral": {
+          "role": "numeral",
+          "partOfSpeech": "numeral",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "number"
+          ]
+        },
+        "demonstrative": {
+          "role": "demonstrative",
+          "partOfSpeech": "demonstrative",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [],
+          "grammaticalFunction": "independent"
+        }
+      },
+      "constraints": [
+        {
+          "type": "numeral",
+          "left": "noun",
+          "right": "numeral"
+        }
+      ],
+      "pashtoPattern": "{demonstrative} {numeral} {noun} {copula}.",
+      "englishRealiser": "identification",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "count-sov",
+      "family": "counted_transitive",
+      "earliestDay": 9,
+      "requiredGrammarIds": [
+        "grammar-day-9"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "numeral": {
+          "role": "numeral",
+          "partOfSpeech": "numeral",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "number"
+          ]
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        },
+        {
+          "type": "object",
+          "left": "noun",
+          "right": "verb"
+        },
+        {
+          "type": "numeral",
+          "left": "noun",
+          "right": "numeral"
+        }
+      ],
+      "pashtoPattern": "{subject} {numeral} {noun} {verb}.",
+      "englishRealiser": "transitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "predicateType": "simple",
+      "valency": "transitive",
+      "terminals": []
+    },
+    {
+      "id": "location",
+      "family": "spatial_equative",
+      "earliestDay": 10,
+      "requiredGrammarIds": [
+        "grammar-day-10"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "location": {
+          "role": "location",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "oblique",
+            "form": "spatial_chunk"
+          },
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [
+        {
+          "type": "location",
+          "left": "noun",
+          "right": "location"
+        }
+      ],
+      "pashtoPattern": "{noun} {location} {copula}.",
+      "englishRealiser": "spatial",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "here-there",
+      "family": "location_adverb_equative",
+      "earliestDay": 10,
+      "requiredGrammarIds": [
+        "grammar-day-10"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "location": {
+          "role": "location_adverb",
+          "partOfSpeech": "adverb",
+          "features": {},
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [],
+      "pashtoPattern": "{noun} {location} {copula}.",
+      "englishRealiser": "spatial",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "ownership",
+      "family": "possessive_equative",
+      "earliestDay": 11,
+      "requiredGrammarIds": [
+        "grammar-day-11"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "possessive": {
+          "role": "possessive",
+          "partOfSpeech": null,
+          "features": {
+            "case": "oblique"
+          },
+          "requiredFeatures": []
+        },
+        "demonstrative": {
+          "role": "demonstrative",
+          "partOfSpeech": "demonstrative",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [],
+          "grammaticalFunction": "independent"
+        }
+      },
+      "constraints": [
+        {
+          "type": "ownable",
+          "left": "noun"
+        }
+      ],
+      "pashtoPattern": "{demonstrative} {possessive} {noun} {copula}.",
+      "englishRealiser": "identification",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "owned-description",
+      "family": "possessive_descriptor",
+      "earliestDay": 11,
+      "requiredGrammarIds": [
+        "grammar-day-11"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "adjective": {
+          "role": "adjective",
+          "partOfSpeech": "adjective",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "possessive": {
+          "role": "possessive",
+          "partOfSpeech": null,
+          "features": {
+            "case": "oblique"
+          },
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "noun",
+          "right": "adjective",
+          "features": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        {
+          "type": "adjective",
+          "left": "noun",
+          "right": "adjective"
+        },
+        {
+          "type": "ownable",
+          "left": "noun"
+        }
+      ],
+      "pashtoPattern": "{possessive} {noun} {adjective} {copula}.",
+      "englishRealiser": "description",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "owned-location",
+      "family": "possessive_spatial",
+      "earliestDay": 11,
+      "requiredGrammarIds": [
+        "grammar-day-11"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "location": {
+          "role": "location",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "oblique",
+            "form": "spatial_chunk"
+          },
+          "requiredFeatures": []
+        },
+        "possessive": {
+          "role": "possessive",
+          "partOfSpeech": null,
+          "features": {
+            "case": "oblique"
+          },
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [
+        {
+          "type": "location",
+          "left": "noun",
+          "right": "location"
+        },
+        {
+          "type": "ownable",
+          "left": "noun"
+        }
+      ],
+      "pashtoPattern": "{possessive} {noun} {location} {copula}.",
+      "englishRealiser": "spatial",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "where",
+      "family": "where_question",
+      "earliestDay": 10,
+      "requiredGrammarIds": [
+        "grammar-day-10"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "question": {
+          "role": "where",
+          "partOfSpeech": "interrogative",
+          "features": {},
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [],
+      "pashtoPattern": "{noun} {question} {copula}؟",
+      "englishRealiser": "where",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "answerType": "location",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "which",
+      "family": "which_question",
+      "earliestDay": 12,
+      "requiredGrammarIds": [
+        "grammar-day-12"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "adjective": {
+          "role": "adjective",
+          "partOfSpeech": "adjective",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "question": {
+          "role": "which",
+          "partOfSpeech": "interrogative",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "noun",
+          "right": "adjective",
+          "features": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        {
+          "type": "adjective",
+          "left": "noun",
+          "right": "adjective"
+        },
+        {
+          "type": "agree",
+          "left": "noun",
+          "right": "question",
+          "features": [
+            "gender",
+            "number",
+            "case"
+          ]
+        }
+      ],
+      "pashtoPattern": "{question} {noun} {adjective} {copula}؟",
+      "englishRealiser": "which",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "answerType": "scene_selection",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "whose",
+      "family": "whose_question",
+      "earliestDay": 12,
+      "requiredGrammarIds": [
+        "grammar-day-12"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "question": {
+          "role": "whose",
+          "partOfSpeech": "interrogative",
+          "features": {},
+          "requiredFeatures": []
+        },
+        "demonstrative": {
+          "role": "demonstrative",
+          "partOfSpeech": "demonstrative",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [],
+          "grammaticalFunction": "independent"
+        }
+      },
+      "constraints": [
+        {
+          "type": "ownable",
+          "left": "noun"
+        }
+      ],
+      "pashtoPattern": "{demonstrative} {question} {noun} {copula}؟",
+      "englishRealiser": "whose",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "answerType": "possessor",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "how-many",
+      "family": "how_many_question",
+      "earliestDay": 12,
+      "requiredGrammarIds": [
+        "grammar-day-12"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct",
+            "number": "plural"
+          },
+          "requiredFeatures": [
+            "gender"
+          ]
+        },
+        "question": {
+          "role": "how_many",
+          "partOfSpeech": "interrogative",
+          "features": {},
+          "requiredFeatures": []
+        },
+        "location": {
+          "role": "location_adverb",
+          "partOfSpeech": "adverb",
+          "features": {},
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [
+        {
+          "type": "countable",
+          "left": "noun"
+        }
+      ],
+      "pashtoPattern": "{location} {question} {noun} {copula}؟",
+      "englishRealiser": "how_many",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "answerType": "count",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
+    },
+    {
+      "id": "what-object",
+      "family": "what_object_question",
+      "earliestDay": 12,
+      "requiredGrammarIds": [
+        "grammar-day-12"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "question": {
+          "role": "what",
+          "partOfSpeech": "interrogative",
+          "features": {},
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        }
+      ],
+      "pashtoPattern": "{subject} {question} {verb}؟",
+      "englishRealiser": "what",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "predicateType": "simple",
+      "valency": "transitive",
+      "verbSenses": [
+        "read",
+        "see"
+      ],
+      "answerType": "verb_object_class",
+      "terminals": []
+    },
+    {
+      "id": "who-subject",
+      "family": "who_subject_question",
+      "earliestDay": 12,
+      "requiredGrammarIds": [
+        "grammar-day-12"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "who",
+          "partOfSpeech": "interrogative",
+          "features": {
             "number": "singular"
-          }
+          },
+          "requiredFeatures": []
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "number",
+            "case"
+          ]
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        },
+        {
+          "type": "object",
+          "left": "noun",
+          "right": "verb"
         }
       ],
-      "speaker": "Lesson teacher",
-      "recipient": "Player",
-      "bindings": [
+      "pashtoPattern": "{subject} {noun} {verb}؟",
+      "englishRealiser": "transitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "predicateType": "simple",
+      "valency": "transitive",
+      "answerType": "person",
+      "terminals": []
+    },
+    {
+      "id": "adverb-sv",
+      "family": "present_intransitive_adverb",
+      "earliestDay": 13,
+      "requiredGrammarIds": [
+        "grammar-day-13"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "adverb": {
+          "role": "adverb",
+          "partOfSpeech": "adverb",
+          "features": {},
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [
         {
-          "id": "s3-house",
-          "slots": {
-            "noun": {
-              "lemmaId": "lemma:n-house",
-              "formId": "lemma:n-house:form:0"
-            },
-            "adjective": {
-              "lemmaId": "lemma:a-big",
-              "formId": "lemma:a-big:form:0"
-            }
-          },
-          "englishSlots": {
-            "noun": "house",
-            "adjective": "big"
-          },
-          "output": {
-            "sourceId": "s3-house",
-            "pashto": "کور لوی دی.",
-            "romanisation": "kor loy day",
-            "english": "The house is big.",
-            "kind": "authored"
-          }
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
         },
         {
-          "id": "s-it-market",
-          "slots": {
-            "noun": {
-              "lemmaId": "lemma:n-market",
-              "formId": "lemma:n-market:form:0"
-            },
-            "adjective": {
-              "lemmaId": "lemma:a-big",
-              "formId": "lemma:a-big:form:0"
-            }
-          },
-          "englishSlots": {
-            "noun": "market",
-            "adjective": "big"
-          },
-          "output": {
-            "sourceId": "s-it-market",
-            "pashto": "بازار لوی دی.",
-            "romanisation": "baazaar loy day",
-            "english": "The market is big.",
-            "kind": "authored"
-          }
-        },
-        {
-          "id": "s-it-school",
-          "slots": {
-            "noun": {
-              "lemmaId": "lemma:n-school",
-              "formId": "lemma:n-school:form:0"
-            },
-            "adjective": {
-              "lemmaId": "lemma:a-big",
-              "formId": "lemma:a-big:form:0"
-            }
-          },
-          "englishSlots": {
-            "noun": "school",
-            "adjective": "big"
-          },
-          "output": {
-            "sourceId": "s-it-school",
-            "pashto": "ښوونځی لوی دی.",
-            "romanisation": "khwunzay loy day",
-            "english": "The school is big.",
-            "kind": "authored"
-          }
-        },
-        {
-          "id": "s3-new",
-          "slots": {
-            "noun": {
-              "lemmaId": "lemma:n-book",
-              "formId": "lemma:n-book:form:0"
-            },
-            "adjective": {
-              "lemmaId": "lemma:a-new",
-              "formId": "lemma:a-new:form:0"
-            }
-          },
-          "englishSlots": {
-            "noun": "book",
-            "adjective": "new"
-          },
-          "output": {
-            "sourceId": "s3-new",
-            "pashto": "کتاب نوی دی.",
-            "romanisation": "kitaab naway day",
-            "english": "The book is new.",
-            "kind": "authored"
-          }
-        },
-        {
-          "id": "s-it-river",
-          "slots": {
-            "noun": {
-              "lemmaId": "lemma:n-river",
-              "formId": "lemma:n-river:form:0"
-            },
-            "adjective": {
-              "lemmaId": "lemma:a-blue",
-              "formId": "lemma:a-blue:form:0"
-            }
-          },
-          "englishSlots": {
-            "noun": "river",
-            "adjective": "blue"
-          },
-          "output": {
-            "sourceId": "s-it-river",
-            "pashto": "سیند شین دی.",
-            "romanisation": "seend sheen day",
-            "english": "The river is blue.",
-            "kind": "authored"
-          }
-        },
-        {
-          "id": "s-it-shop",
-          "slots": {
-            "noun": {
-              "lemmaId": "lemma:n-shop",
-              "formId": "lemma:n-shop:form:0"
-            },
-            "adjective": {
-              "lemmaId": "lemma:a-open-state",
-              "formId": "lemma:a-open-state:form:0"
-            }
-          },
-          "englishSlots": {
-            "noun": "shop",
-            "adjective": "open"
-          },
-          "output": {
-            "sourceId": "s-it-shop",
-            "pashto": "دوکان خلاص دی.",
-            "romanisation": "dukaan khlaas day",
-            "english": "The shop is open.",
-            "kind": "authored"
-          }
-        },
-        {
-          "id": "composed-house-new",
-          "slots": {
-            "noun": {
-              "lemmaId": "lemma:n-house",
-              "formId": "lemma:n-house:form:0"
-            },
-            "adjective": {
-              "lemmaId": "lemma:a-new",
-              "formId": "lemma:a-new:form:0"
-            }
-          },
-          "englishSlots": {
-            "noun": "house",
-            "adjective": "new"
-          },
-          "output": {
-            "sourceId": null,
-            "kind": "composed_draft",
-            "formEvidenceSourceIds": [
-              "s3-house",
-              "s3-new"
-            ],
-            "pashto": "کور نوی دی.",
-            "romanisation": "kor naway day",
-            "english": "The house is new."
-          }
-        },
-        {
-          "id": "composed-market-new",
-          "slots": {
-            "noun": {
-              "lemmaId": "lemma:n-market",
-              "formId": "lemma:n-market:form:0"
-            },
-            "adjective": {
-              "lemmaId": "lemma:a-new",
-              "formId": "lemma:a-new:form:0"
-            }
-          },
-          "englishSlots": {
-            "noun": "market",
-            "adjective": "new"
-          },
-          "output": {
-            "sourceId": null,
-            "kind": "composed_draft",
-            "formEvidenceSourceIds": [
-              "s-it-market",
-              "s3-new"
-            ],
-            "pashto": "بازار نوی دی.",
-            "romanisation": "baazaar naway day",
-            "english": "The market is new."
-          }
-        },
-        {
-          "id": "composed-book-big",
-          "slots": {
-            "noun": {
-              "lemmaId": "lemma:n-book",
-              "formId": "lemma:n-book:form:0"
-            },
-            "adjective": {
-              "lemmaId": "lemma:a-big",
-              "formId": "lemma:a-big:form:0"
-            }
-          },
-          "englishSlots": {
-            "noun": "book",
-            "adjective": "big"
-          },
-          "output": {
-            "sourceId": null,
-            "kind": "composed_draft",
-            "formEvidenceSourceIds": [
-              "s3-new",
-              "s-it-school"
-            ],
-            "pashto": "کتاب لوی دی.",
-            "romanisation": "kitaab loy day",
-            "english": "The book is big."
-          }
+          "type": "adverb",
+          "left": "adverb",
+          "right": "verb"
         }
       ],
-      "reviewBoundary": "Only these explicit semantic tuples are enabled; all features come from authored masculine singular descriptions. New combinations are generated drafts, never native-certified.",
-      "context": "The teacher points at a village building or a classroom book and describes its size or age."
+      "pashtoPattern": "{subject} {adverb} {verb}.",
+      "englishRealiser": "intransitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "valency": "intransitive",
+      "terminals": []
+    },
+    {
+      "id": "adverb-sov",
+      "family": "present_transitive_adverb",
+      "earliestDay": 13,
+      "requiredGrammarIds": [
+        "grammar-day-13"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "adverb": {
+          "role": "adverb",
+          "partOfSpeech": "adverb",
+          "features": {},
+          "requiredFeatures": []
+        },
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "number",
+            "case"
+          ]
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        },
+        {
+          "type": "adverb",
+          "left": "adverb",
+          "right": "verb"
+        },
+        {
+          "type": "object",
+          "left": "noun",
+          "right": "verb"
+        }
+      ],
+      "pashtoPattern": "{subject} {adverb} {noun} {verb}.",
+      "englishRealiser": "transitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "valency": "transitive",
+      "terminals": []
+    },
+    {
+      "id": "together-sov",
+      "family": "present_joint_action",
+      "earliestDay": 6,
+      "requiredGrammarIds": [
+        "grammar-day-6"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "subject": {
+          "role": "subject",
+          "partOfSpeech": null,
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "case"
+          ]
+        },
+        "verb": {
+          "role": "verb",
+          "partOfSpeech": "verb",
+          "features": {
+            "form": "finite",
+            "tense": "present",
+            "aspect": "imperfective",
+            "mood": "indicative"
+          },
+          "requiredFeatures": [
+            "person",
+            "number",
+            "transitivity"
+          ]
+        },
+        "adverb": {
+          "role": "adverb",
+          "partOfSpeech": "adverb",
+          "features": {},
+          "requiredFeatures": []
+        },
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "number",
+            "case"
+          ]
+        }
+      },
+      "constraints": [
+        {
+          "type": "agree",
+          "left": "subject",
+          "right": "verb",
+          "features": [
+            "person",
+            "number"
+          ]
+        },
+        {
+          "type": "adverb",
+          "left": "adverb",
+          "right": "verb"
+        },
+        {
+          "type": "object",
+          "left": "noun",
+          "right": "verb"
+        }
+      ],
+      "pashtoPattern": "{subject} {adverb} {noun} {verb}.",
+      "englishRealiser": "transitive",
+      "copulaFrom": null,
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "valency": "transitive",
+      "terminals": [],
+      "adverbClasses": [
+        "together"
+      ]
+    }
+  ],
+  "blockedConstructions": [
+    {
+      "family": "unrestricted_quantities_1_to_5",
+      "missing": "Masculine cardinal One needs an attested cardinal NP (یو ځای is an idiom); numeral Four/Five need direct counted-NP licenses; feminine Two needs its own evidenced form. Three is licensed from fish/baskets only in direct count NPs.",
+      "formIds": [
+        "lemma:w2-d9-vocab-1:form:0",
+        "lemma:w2-d9-vocab-2:form:0",
+        "lemma:w2-d9-vocab-4:form:0",
+        "lemma:w2-d9-vocab-5:form:0"
+      ]
+    },
+    {
+      "family": "arbitrary_obliques",
+      "missing": "Only stored whole spatial and possessive chunks are licensed. Direct noun homographs do not establish oblique cases."
+    },
+    {
+      "family": "unsupported_tenses",
+      "missing": "Past/perfect/future/subjunctive/imperative are outside the Days 1–14 curriculum; no paradigms licensed."
     }
   ]
 }

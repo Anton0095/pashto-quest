@@ -36,6 +36,8 @@ try {
           const t = __matrix;
           t.reset();
           t.progress.library.requestedDailyTarget = pace;
+          let compositionChecks = 0;
+          const generatedFamilies = new Set();
           function lesson() {
             let guard = 0;
             while (
@@ -53,7 +55,19 @@ try {
                 else if (s.cardIndex === 2) click("Prefer not to say");
                 else { document.querySelector("#tutorialName").value = "Curriculum tester"; click("Use this name"); }
                 t.afterStudy();
-              } else if (["greeting", "lexical", "sentence"].includes(s.phase)) t.afterStudy();
+              } else if (["greeting", "lexical", "sentence"].includes(s.phase)) {
+                const id = (s.phase === "greeting" ? s.greetingCards : s.phase === "lexical" ? s.studyWords : s.studySentences)[s.cardIndex];
+                const w = t.wordById[id];
+                if (w?.generated) {
+                  for (const r of Object.values(w.generated.slots))
+                    if (!t.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))
+                      throw Error("Generated form was not individually studied: " + r.formId);
+                  if (!w.generated.requiredGrammarIds.every(id => t.progress.library.grammar[id]))
+                    throw Error("Generated grammar was not taught");
+                  compositionChecks++; generatedFamilies.add(w.generated.family);
+                }
+                t.afterStudy();
+              }
               else if (s.phase === "grammar") {
                 if (document.querySelector("#sovNext").disabled) {
                   const box = document.querySelector("#openingPractice");
@@ -172,6 +186,7 @@ try {
                 id.startsWith(day + "-"),
               ).length,
               xp: t.progress.xp,
+              introducedForms: Object.values(t.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0),
             });
           }
           return {
@@ -180,6 +195,7 @@ try {
             graduated: t.progress.challenges[7].passed,
             complete: t.progress.challenges[14].passed,
             bank: Object.keys(t.progress.library.acquired).length,
+            compositionChecks, generatedFamilies: [...generatedFamilies],
           };
         },
         { pace, skip },
@@ -196,6 +212,13 @@ try {
         else if (!day.gap) assert.equal(day.assigned.length, pace);
       }
       assert(trace.graduated && trace.complete);
+      assert.equal(trace.trace[13].introducedForms, trace.trace[12].introducedForms, "Day 14 introduced a compulsory form");
+      if (skip) assert.equal(trace.compositionChecks, 0);
+      if (!skip && pace === 24) {
+        assert(trace.compositionChecks > 20);
+        assert(trace.generatedFamilies.length > 9, "Normal study must unlock productive variety beyond descriptions");
+        console.log("PASS actual form-study generation:", trace.compositionChecks, "cards across", trace.generatedFamilies.length, "families");
+      }
       assert.match(trace.title, /Level 10 · New Resident/);
       console.log(
         "PASS full curriculum",

@@ -1,6 +1,6 @@
 """Mechanical curriculum validation and audit. No linguistic approval is inferred."""
 
-import json
+import json, re
 from pathlib import Path
 
 POS = {
@@ -105,11 +105,25 @@ def validate_curriculum(data):
                 for dep in f["prerequisiteGrammarIds"]
             ):
                 raise ValueError("Unhandled form grammar: " + fid)
-            if f["composition"]["enabled"] and (
-                not f.get("romanisation")
-                or any(m.get(k) is None for k in ["gender", "number", "case"])
-            ):
-                raise ValueError("Incomplete composition form: " + fid)
+            if f["composition"]["enabled"]:
+                evidence = f.get("featureEvidence", {})
+                c = f["composition"]
+                if (not f.get("romanisation") or not c.get("roles")
+                    or evidence.get("pashtoSpan") != f["pashto"]
+                    or evidence.get("romanisationSpan") != f["romanisation"]
+                    or evidence.get("features") != m):
+                    raise ValueError("Incomplete composition evidence: " + fid)
+                if "verb" in c["roles"] and any(m.get(k) is None for k in
+                        ["person", "number", "tense", "aspect", "mood", "transitivity"]):
+                    raise ValueError("Incomplete finite verb: " + fid)
+                if "verb" in c["roles"] and (m.get("tense"), m.get("aspect"), m.get("mood")) != ("present", "imperfective", "indicative"):
+                    raise ValueError("Unsupported productive tense/aspect/mood: " + fid)
+                if "adjective" in c["roles"] and any(m.get(k) is None for k in ["gender", "number", "case"]):
+                    raise ValueError("Incomplete adjective: " + fid)
+                if "possessive" in c["roles"] and m.get("case") != "oblique":
+                    raise ValueError("Possessive lacks case license: " + fid)
+                if "location" in c["roles"] and (m.get("case") != "oblique" or c.get("chunkSchema") != "attested_indivisible"):
+                    raise ValueError("Location lacks intact case license: " + fid)
     for sid, refs in data["sourceMappings"].items():
         for r in refs:
             if (
@@ -123,43 +137,49 @@ def validate_curriculum(data):
     ]
     if len(orders) != len(set(orders)):
         raise ValueError("Introduction order collision")
+    attestations = {a["sourceId"]: a for a in data.get("generationAttestations", [])}
+    for fid, (e, f) in forms.items():
+        if not f["composition"]["enabled"]:
+            continue
+        evidence = f["featureEvidence"]
+        a = attestations.get(evidence["sourceId"])
+        if not a or f["pashto"] not in a["pashto"] or f["romanisation"] not in a["romanisation"]:
+            raise ValueError("Unattested composition span: " + fid)
+    config = data.get("sentenceFrames", {})
+    if config and config.get("schemaVersion") != 2:
+        raise ValueError("Unsupported frame schema")
     frameids = set()
-    for frame in data.get("sentenceFrames", {}).get("frames", []):
+    roles = {r for _, f in forms.values() for r in f["composition"].get("roles", [])}
+    realisers = {"description", "attributive", "identification", "spatial", "where", "which", "whose", "how_many", "what", "transitive", "intransitive"}
+    for frame in config.get("frames", []):
         if frame["id"] in frameids:
             raise ValueError("Duplicate frame identity")
         frameids.add(frame["id"])
-        if len({b["id"] for b in frame["bindings"]}) != len(frame["bindings"]):
-            raise ValueError("Duplicate binding identity")
-        if any(dep not in grammar for dep in frame["requiredGrammarIds"]):
+        if frame.get("scope") != "feature_vetted_draft" or frame.get("englishRealiser") not in realisers:
+            raise ValueError("Unsupported frame license/realiser")
+        if not 1 <= frame["earliestDay"] <= 13 or any(dep not in grammar for dep in frame["requiredGrammarIds"]):
             raise ValueError("Unhandled frame grammar")
+        placeholders = set(re.findall(r"\{([a-z]+)\}", frame["pashtoPattern"]))
+        expected = set(frame["slots"]) | ({"copula"} if frame.get("copulaFrom") else set())
+        residue = re.sub(r"\{[a-z]+\}", "", frame["pashtoPattern"])
+        if placeholders != expected or residue.strip(" .؟"):
+            raise ValueError("Unlicensed pattern token or omitted semantic slot")
+        for name, slot in frame["slots"].items():
+            if slot["role"] not in roles or (slot["partOfSpeech"] and slot["partOfSpeech"] not in POS):
+                raise ValueError("Unknown typed slot")
+            if slot.get("grammaticalFunction") not in {None, "independent", "determiner"}:
+                raise ValueError("Unknown grammatical function")
+            if "case" in slot["features"] and slot["features"]["case"] != ("oblique" if slot["role"] in {"possessive", "location"} else "direct"):
+                raise ValueError("Invalid slot case")
+        for rule in frame["constraints"]:
+            if rule["type"] not in {"agree", "adjective", "object", "location", "ownable", "countable", "numeral", "adverb"}:
+                raise ValueError("Unknown unification constraint")
+            if rule["left"] not in frame["slots"] or (rule.get("right") and rule["right"] not in frame["slots"]):
+                raise ValueError("Missing constraint slot")
         for terminal in frame["terminals"]:
-            if terminal["grammarId"] not in frame["requiredGrammarIds"] or any(
-                frame["slots"]["noun"]["features"].get(key) != value
-                for key, value in terminal["features"].items()
-            ):
-                raise ValueError("Unhandled terminal grammar/agreement")
-        for b in frame["bindings"]:
-            values = {}
-            for name, spec in frame["slots"].items():
-                r = b["slots"][name]
-                e, f = forms.get(r["formId"], (None, None))
-                if (
-                    not e
-                    or e["lemmaId"] != r["lemmaId"]
-                    or e["partOfSpeech"] != spec["partOfSpeech"]
-                    or not f["composition"]["enabled"]
-                    or any(
-                        f["morphology"].get(k) != v for k, v in spec["features"].items()
-                    )
-                ):
-                    raise ValueError("Impossible frame binding: " + b["id"])
-                values[name] = f["pashto"]
-            if (
-                frame["pashtoPattern"].format(**values) != b["output"]["pashto"]
-                or frame["englishPattern"].format(**b["englishSlots"])
-                != b["output"]["english"]
-            ):
-                raise ValueError("Inconsistent attestation: " + b["id"])
+            a = attestations.get(terminal["evidenceSourceId"])
+            if terminal["grammarId"] not in grammar or not a or terminal["pashto"] not in a["pashto"] or terminal["romanisation"] not in a["romanisation"]:
+                raise ValueError("Unhandled terminal grammar/evidence")
     return entries, forms
 
 

@@ -246,21 +246,18 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
       ];
     }
   LIBRARY_DATA.sentenceOrigins = {};
-  for (const frame of LIBRARY_DATA.sentenceFrames.frames)
-    for (const binding of frame.bindings) {
-      const card = SentenceEngine.compose(LIBRARY_DATA, frame, binding);
-      if (!card) continue;
-      const source = wordById[binding.output.sourceId] || {
-        loop: 1,
-        place: libraryEntries[binding.slots.noun.lemmaId].primaryDistrict,
-      };
-      wordById[card.id] = { ...source, ...card };
-      LIBRARY_DATA.cardTypes[card.id] = "sentence";
-      if (binding.output.sourceId)
-        LIBRARY_DATA.sentenceOrigins[card.id] = binding.output.sourceId;
-      LIBRARY_DATA.sourceMappings[card.id] = Object.values(binding.slots);
-      LIBRARY_DATA.cardDays[card.id] = 1;
-    }
+  LIBRARY_DATA.generatedCatalog = SentenceEngine.catalog(LIBRARY_DATA, LIBRARY_DATA.sentenceFrames);
+  const meaningOrigins = new Map();
+  for (const card of LIBRARY_DATA.generatedCatalog) {
+    wordById[card.id] = card;
+    LIBRARY_DATA.cardTypes[card.id] = "sentence";
+    const meaning = card.ps + "\n" + card.en;
+    const origin = card.generated.sourceId || meaningOrigins.get(meaning) || card.id;
+    meaningOrigins.set(meaning, origin);
+    LIBRARY_DATA.sentenceOrigins[card.id] = origin;
+    LIBRARY_DATA.sourceMappings[card.id] = [...new Map(Object.values(card.generated.slots).map((r) => [r.formId, r])).values()];
+    LIBRARY_DATA.cardDays[card.id] = card.loop;
+  }
   // Four guided study cards introduce the game's interaction types.
   const tutorialCards = [
     {

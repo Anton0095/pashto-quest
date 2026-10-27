@@ -266,7 +266,7 @@ function createLessons({
     ui.$("addressTarget").classList.remove("hidden");
     if (w.generated)
       ui.$("guideMessage").textContent =
-        "Cumulative practice: descriptions and noun agreement using words you have already studied. Generated language remains a draft for native review.";
+        "Build another sentence with the words and grammar you have studied. Generated language and pronunciation remain provisional.";
     else if (w.loop < state.session.loop && w.type === "sentence")
       ui.$("guideMessage").textContent =
         "Cumulative practice from an earlier authored lesson. Read the model's meaning and forms carefully.";

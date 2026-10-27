@@ -146,6 +146,12 @@ function createQuestions({ state, content, progression, storage }) {
         q.audioId = card.generated.sourceId;
       }
       const w = content.wordById[q.id];
+      if (w?.type === "sentence") q.sentenceOrigin = {
+        kind: q.generated ? q.generated.generated.outputKind
+          : q.retimedFrom || (day <= 2 && !practice.length) ? "fixed_authored_fallback" : "fixed_authored",
+        sourceId: q.generated ? q.generated.generated.sourceId : q.id,
+        retimedFrom: q.retimedFrom || null,
+      };
       if (q.kind === "word") {
         q.unstudied = isUnstudied(q.id);
         if (q.unstudied) q.direction = "ps-en";

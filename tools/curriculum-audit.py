@@ -50,7 +50,7 @@ def rendered():
     )
     result["sourceMappingCorrections"] = data.get("sourceMappingCorrections", [])
     result["generationBoundary"] = {
-        "policy": "Explicit semantic tuples only (authored attestations plus three composed combinations); feature-vetted development drafts, not native certification. No lexical verb templates enabled.",
+        "policy": "Typed feature and semantic constraints over attested forms. Independent form study and grammar unlocks required; see GENERATION_AUDIT.json for day/family capacity and exact missing features. Provisional language, never native certification.",
         "frames": data["sentenceFrames"],
     }
     return json.dumps(result, ensure_ascii=False, indent=2) + "\n"

@@ -150,6 +150,11 @@ def build():
     validate(library)
     validate_expressions(narrative)
     append_week2(game, week2)
+    authored = {w['id']: w for w in game['words']}
+    for a in library.get('generationAttestations', []):
+        w = authored.get(a['sourceId'])
+        if not w or (a['pashto'], a['english'], a['romanisation']) != (w['ps'], w['en'], w['roman']):
+            raise ValueError('Generation evidence differs from authored corpus: ' + a['sourceId'])
     audio_sources = {w['id'] for w in game['words']} | {q['id'] for d in week2['days'] for q in d['dialogues']}
     for e in library['entries']:
         for f in e['forms']:
