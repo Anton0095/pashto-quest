@@ -37,12 +37,14 @@ export function activationProblems(candidate) {
     !Object.keys(candidate.sourceMappings).length
   )
     gaps.push("source mappings");
-  if (
+  if (candidate.reviewStatus === "provisional_playable") {
+    if (candidate.userVerified !== false)
+      gaps.push("explicit unchecked user verification");
+  } else if (
     candidate.reviewStatus !== "approved" ||
     !candidate.nativeReview?.reviewer ||
     !candidate.nativeReview?.reference
-  )
-    gaps.push("documented qualified native sign-off");
+  ) gaps.push("documented qualified native sign-off or provisional status");
   if (candidate.aliasOfLemmaId)
     gaps.push("existing lemma alias, not a new entry");
   return gaps;
@@ -156,7 +158,7 @@ export function inventory(data, backlog, engine, includeProjection = true) {
         .map((c) => c.primaryDistrict),
     ),
     selectedInactiveCandidates: backlog.candidates.filter(
-      (c) => c.selectedForExpansion,
+      (c) => c.selectedForExpansion && !c.promotedLemmaId,
     ).length,
     excludedCandidates: backlog.candidates.filter(
       (c) => !c.selectedForExpansion,
@@ -172,7 +174,7 @@ export function inventory(data, backlog, engine, includeProjection = true) {
       intensiveScheduledIntroductions: 13 * 24,
       minimumCurrentShortfall: 13 * 24 - content.length,
       idealTargetIncidentalMarginPerDistrict: 100 - 13 * 6,
-      note: "400 is a pending lexical target, not playable capacity. An approved primary district must retain 78 unencountered entries; more than 22 incidental introductions in any district needs additional distinct reviewed content. Cross-district allocation is globally deduplicated.",
+      note: "The active inventory includes clearly labelled provisional drafts. Each district retains 22 entries beyond the 78 scheduled maximum-pace introductions.",
     },
     authoredExampleSceneCoverage: Object.fromEntries(
       [
@@ -195,7 +197,13 @@ export function inventory(data, backlog, engine, includeProjection = true) {
     nativeApprovedContentLemmas: content.filter(
       (e) => e.reviewStatus === "approved",
     ).length,
-    inactiveCandidates: backlog.candidates.length,
+    inactiveCandidates: backlog.candidates.filter((c) => !c.promotedLemmaId).length,
+    candidateDisposition: {
+      promoted: backlog.candidates.filter((c) => c.promotedLemmaId).length,
+      merged: backlog.candidates.filter((c) => c.disposition === "merged").length,
+      rejected: backlog.candidates.filter((c) => !c.selectedForExpansion).length,
+      replaced: backlog.candidates.filter((c) => c.disposition === "replacement").length,
+    },
     aliasCandidates: backlog.candidates.filter((c) => c.aliasOfLemmaId).length,
     eligibleForPromotion: backlog.candidates.filter(
       (c) => !activationProblems(c).length,
@@ -255,6 +263,6 @@ if (
       data.entries.filter((e) => e.countsTowardDailyQuota).length +
       " activated content lemmas; " +
       backlog.candidates.length +
-      " inactive candidates. No untranslated entry promoted.",
+      " candidate records; complete provisional entries may be promoted without claiming native approval.",
   );
 }

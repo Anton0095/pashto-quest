@@ -49,9 +49,18 @@ def validate(data):
             raise ValueError('Missing forms: ' + identity)
         if entry.get('promotionCandidateId') or identity.startswith('candidate:'):
             review = entry.get('nativeReview', {})
-            if (entry.get('reviewStatus') != 'approved' or not review.get('reviewer')
-                    or not review.get('reference') or not entry.get('examples')):
-                raise ValueError('Candidate requires documented native review')
+            status = entry.get('reviewStatus')
+            if status == 'native_approved':
+                if not review.get('reviewer') or not review.get('reference'):
+                    raise ValueError('Native-approved candidate requires review evidence')
+            elif status == 'provisional_playable':
+                provenance = entry.get('provenance', {})
+                if (entry.get('userVerified') is not False
+                        or provenance.get('nativeApproved') is not False
+                        or not provenance.get('source') or not entry.get('examples')):
+                    raise ValueError('Provisional candidate requires honest review metadata')
+            else:
+                raise ValueError('Candidate is neither provisional-playable nor approved')
 
 
 def validate_expressions(data):
@@ -133,7 +142,11 @@ def build():
             # Authorial scheduling approval NEVER changes linguistic review status.
     library['sentenceFrames'] = json.loads(read('content/SENTENCE_FRAMES.json'))
     candidates = json.loads(read('content/DISTRICT_VOCABULARY_CANDIDATES.json'))
-    library['inventorySummary'] = {'activeContentLemmas': sum(e['countsTowardDailyQuota'] for e in library['entries']), 'universalLemmas': sum(e['vocabularyClass']=='universal' for e in library['entries']), 'inactiveCandidates':len(candidates['candidates'])}
+    library['inventorySummary'] = {
+        'activeContentLemmas': sum(e['countsTowardDailyQuota'] for e in library['entries']),
+        'universalLemmas': sum(e['vocabularyClass']=='universal' for e in library['entries']),
+        'inactiveCandidates': sum(not e.get('promotedLemmaId') for e in candidates['candidates']),
+    }
     validate(library)
     validate_expressions(narrative)
     append_week2(game, week2)

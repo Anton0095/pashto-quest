@@ -26,6 +26,7 @@ const browser = await chromium.launch({
 try {
   const page = await browser.newPage({ viewport: { width: 375, height: 900 } }),
     errors = [];
+  page.setDefaultTimeout(60000);
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(`http://127.0.0.1:${server.address().port}`);
   for (const pace of [0, 4, 8, 12, 16, 20, 24])

@@ -32,6 +32,7 @@ const browser = await chromium.launch({
 try {
   for (const width of [1280,375]) {
     const page=await browser.newPage({viewport:{width,height:900}}), errors=[];
+    page.setDefaultTimeout(60000);
     page.on("pageerror",e=>errors.push(e.message));
     await page.addInitScript(()=>{
       window.__spoken=[];

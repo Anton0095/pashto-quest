@@ -51,6 +51,13 @@ def validate_curriculum(data):
         entries[eid] = e
         if e["partOfSpeech"] not in POS:
             raise ValueError("Invalid POS: " + eid)
+        if e.get("reviewStatus") not in {"needs_native_review", "provisional_playable", "native_approved", "approved"}:
+            raise ValueError("Invalid playable review status: " + eid)
+        if e.get("reviewStatus") == "provisional_playable" and (
+            e.get("userVerified") is not False
+            or e.get("provenance", {}).get("nativeApproved") is not False
+        ):
+            raise ValueError("False provisional approval: " + eid)
         if not e.get("grammaticalRoles") or set(e.get("traits", {})) != TRAITS:
             raise ValueError("Missing grammatical traits: " + eid)
         validate_features(e["traits"], eid)
