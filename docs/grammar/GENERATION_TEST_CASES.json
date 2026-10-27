@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "status": "specification_fixtures_not_executable_tests",
+  "date": "2026-10-27",
+  "language": "ps-AF",
+  "nativeReview": "not performed; all Pashto/English positive fixture sentences are existing authored game drafts, not independent native confirmation",
+  "purpose": "Provide exact existing-source positive regression examples and negative property/eligibility constraints for a future typed generator. Codex must implement executable tests.",
+  "positiveAuthoredRegression": [
+    {
+      "id": "EQUATIVE-MSG",
+      "dayMin": 1,
+      "sourceId": "s3-house",
+      "pashto": "کور لوی دی.",
+      "english": "The house is big.",
+      "family": "equative_descriptor",
+      "features": {
+        "subject": {
+          "person": 3,
+          "number": "singular",
+          "gender": "masculine"
+        },
+        "predicate": {
+          "pos": "adjective",
+          "agreement": "subject"
+        },
+        "equative": "masculine_singular"
+      }
+    },
+    {
+      "id": "EQUATIVE-FSG",
+      "dayMin": 1,
+      "sourceId": "s5-dark",
+      "pashto": "دا کوټه تیاره ده.",
+      "english": "This room is dark.",
+      "family": "equative_descriptor",
+      "features": {
+        "subject": {
+          "person": 3,
+          "number": "singular",
+          "gender": "feminine"
+        },
+        "predicate": {
+          "pos": "adjective",
+          "agreement": "subject"
+        },
+        "equative": "feminine_singular"
+      },
+      "note": "Fixture is authored for later in Week 1; earliest grammatical pattern is Day 1 but sentence requires every actual constituent to be unlocked."
+    },
+    {
+      "id": "PRESENT-3SG",
+      "dayMin": 2,
+      "sourceId": "s3-read",
+      "pashto": "هغه کتاب لولي.",
+      "english": "He/she reads a book.",
+      "family": "present_transitive",
+      "features": {
+        "subject": {
+          "person": 3,
+          "number": "singular"
+        },
+        "verb": {
+          "lemmaId": "lemma:v-read",
+          "tense": "present",
+          "aspect": "imperfective",
+          "person": 3,
+          "number": "singular"
+        },
+        "objectSemanticClass": "readable"
+      }
+    },
+    {
+      "id": "PRESENT-1SG",
+      "dayMin": 3,
+      "sourceId": "s1-read",
+      "pashto": "زه کتاب لولم.",
+      "english": "I read a book.",
+      "family": "present_transitive",
+      "features": {
+        "subject": {
+          "person": 1,
+          "number": "singular"
+        },
+        "verb": {
+          "lemmaId": "lemma:v-read",
+          "tense": "present",
+          "aspect": "imperfective",
+          "person": 1,
+          "number": "singular"
+        },
+        "objectSemanticClass": "readable"
+      }
+    },
+    {
+      "id": "PRESENT-2SG",
+      "dayMin": 4,
+      "sourceId": "s2-read",
+      "pashto": "ته کتاب لولې.",
+      "english": "You read a book.",
+      "family": "present_transitive",
+      "features": {
+        "subject": {
+          "person": 2,
+          "number": "singular"
+        },
+        "verb": {
+          "lemmaId": "lemma:v-read",
+          "tense": "present",
+          "aspect": "imperfective",
+          "person": 2,
+          "number": "singular"
+        },
+        "objectSemanticClass": "readable"
+      }
+    },
+    {
+      "id": "PRESENT-2POLITE",
+      "dayMin": 5,
+      "sourceId": "s5-read",
+      "pashto": "تاسې کتاب لولئ.",
+      "english": "You read a book. (polite/plural)",
+      "family": "present_transitive",
+      "features": {
+        "subject": {
+          "person": 2,
+          "number": "plural",
+          "register": "polite_or_plural"
+        },
+        "verb": {
+          "lemmaId": "lemma:v-read",
+          "tense": "present",
+          "aspect": "imperfective",
+          "person": 2,
+          "number": "plural"
+        }
+      }
+    },
+    {
+      "id": "PRESENT-3PL",
+      "dayMin": 7,
+      "sourceId": "s6-books",
+      "pashto": "هغوی کتابونه لولي.",
+      "english": "They read books.",
+      "family": "present_transitive",
+      "features": {
+        "subject": {
+          "person": 3,
+          "number": "plural"
+        },
+        "verb": {
+          "lemmaId": "lemma:v-read",
+          "tense": "present",
+          "aspect": "imperfective",
+          "person": 3,
+          "number": "plural"
+        }
+      }
+    },
+    {
+      "id": "EQUATIVE-PL",
+      "dayMin": 9,
+      "sourceId": "w2-d9-market-2",
+      "pashto": "دا مڼې دي.",
+      "english": "These are apples.",
+      "family": "equative_noun",
+      "features": {
+        "subject": {
+          "number": "plural"
+        },
+        "equative": "plural"
+      }
+    },
+    {
+      "id": "POSSESSION",
+      "dayMin": 11,
+      "sourceId": "w2-d11-house-1",
+      "pashto": "دا زما کور دی.",
+      "english": "This is my house.",
+      "family": "possessive_equative",
+      "features": {
+        "possessor": {
+          "person": 1,
+          "number": "singular"
+        },
+        "headNoun": {
+          "gender": "masculine",
+          "number": "singular"
+        }
+      }
+    },
+    {
+      "id": "SPATIAL",
+      "dayMin": 10,
+      "sourceId": "w2-d10-school-1",
+      "pashto": "کتاب پر مېز دی.",
+      "english": "The book is on the table.",
+      "family": "spatial_equative",
+      "features": {
+        "location": "table",
+        "relation": "on",
+        "postpositionSchema": "attested_required"
+      }
+    },
+    {
+      "id": "ADVERB",
+      "dayMin": 13,
+      "sourceId": "w2-d13-river-1",
+      "pashto": "مینا ورو ورو ځي.",
+      "english": "Mina walks slowly.",
+      "family": "present_intransitive_adverb",
+      "features": {
+        "subject": {
+          "person": 3,
+          "number": "singular"
+        },
+        "adverbClass": "manner"
+      }
+    },
+    {
+      "id": "PRESENT-1PL-COMPOUND",
+      "dayMin": 6,
+      "sourceId": "w6-we-run",
+      "pashto": "موږ یو ځای منډې وهو.",
+      "english": "We run together.",
+      "family": "present_compound_predicate",
+      "features": {
+        "subject": {
+          "person": 1,
+          "number": "plural"
+        },
+        "predicateConstruction": "compound_keep_together"
+      }
+    }
+  ],
+  "mustReject": [
+    {
+      "id": "NEG-D1-ACTION",
+      "type": "day_gate",
+      "day": 1,
+      "attempt": {
+        "family": "present_transitive",
+        "sentenceSourceId": "s3-read"
+      },
+      "reason": "Action verbs not formally taught on Day 1"
+    },
+    {
+      "id": "NEG-NOUN-COPULA-GENDER",
+      "type": "feature_mismatch",
+      "attempt": {
+        "surface": "دا کوټه تیاره دی.",
+        "subjectGender": "feminine",
+        "copulaGender": "masculine"
+      },
+      "reason": "Descriptive equative must agree with feminine singular subject"
+    },
+    {
+      "id": "NEG-COPULA-NUMBER",
+      "type": "feature_mismatch",
+      "attempt": {
+        "surface": "دا مڼې دی.",
+        "subjectNumber": "plural",
+        "copulaNumber": "singular"
+      },
+      "reason": "Plural nominal predicate requires compatible equative"
+    },
+    {
+      "id": "NEG-PRESENT-1SG-2SG",
+      "type": "feature_mismatch",
+      "attempt": {
+        "surface": "زه کتاب لولې.",
+        "subjectPerson": 1,
+        "subjectNumber": "singular",
+        "verbPerson": 2,
+        "verbNumber": "singular"
+      },
+      "reason": "Present finite verb does not agree with subject"
+    },
+    {
+      "id": "NEG-PRESENT-3PL-1SG",
+      "type": "feature_mismatch",
+      "attempt": {
+        "surface": "هغوی کتابونه لولم.",
+        "subjectPerson": 3,
+        "subjectNumber": "plural",
+        "verbPerson": 1,
+        "verbNumber": "singular"
+      },
+      "reason": "Third plural and first singular verb mismatch"
+    },
+    {
+      "id": "NEG-OBJECT-SEMANTICS",
+      "type": "semantic_selection",
+      "attempt": {
+        "surface": "زه اوبه لولم.",
+        "verbSense": "read_text",
+        "objectClass": "liquid"
+      },
+      "reason": "Semantic selection rejects water as a readable text object"
+    },
+    {
+      "id": "NEG-FUTURE-AS-PRESENT",
+      "type": "morphology_gate",
+      "day": 3,
+      "attempt": {
+        "tense": "future",
+        "aspect": "imperfective"
+      },
+      "reason": "Future form outside grammar progression"
+    },
+    {
+      "id": "NEG-COMPLETE-INFLECTION-GUESS",
+      "type": "evidence_gate",
+      "attempt": {
+        "pos": "verb",
+        "onlyKnownForm": "infinitive",
+        "targetPerson": 1,
+        "targetNumber": "singular"
+      },
+      "reason": "Do not suffix endings to unreviewed/unknown stem"
+    },
+    {
+      "id": "NEG-UNKNOWN-GENDER",
+      "type": "evidence_gate",
+      "attempt": {
+        "pos": "noun",
+        "gender": null,
+        "frame": "feminine_singular_copula"
+      },
+      "reason": "Null morphology cannot unify as wildcard"
+    },
+    {
+      "id": "NEG-OBLIQUE-D10",
+      "type": "case_gate",
+      "attempt": {
+        "frame": "in_location",
+        "nounCase": "direct_only",
+        "requiredCase": "oblique"
+      },
+      "reason": "Attested/direct noun alone does not prove oblique placement"
+    },
+    {
+      "id": "NEG-COMPOUND-SPLIT",
+      "type": "predicate_gate",
+      "attempt": {
+        "predicate": "منډې وهل",
+        "renderStrategy": "freely_separate_and_shuffle"
+      },
+      "reason": "Compound predicate must preserve licensed complementary structure"
+    },
+    {
+      "id": "NEG-UNSEEN-LEMMA",
+      "type": "unlock_gate",
+      "attempt": {
+        "lemmaId": "lemma:a-dark",
+        "presentInLexicon": true,
+        "formIntroducedToPlayer": false
+      },
+      "reason": "Known to catalog is not introduced to player; cannot compose"
+    },
+    {
+      "id": "NEG-UNKNOWN-WORD-PROPOSAL",
+      "type": "review_gate",
+      "attempt": {
+        "wordStatus": "candidate_untranslated",
+        "pashto": null,
+        "compositionEligible": true
+      },
+      "reason": "No fake transliterations/English candidate tokens"
+    },
+    {
+      "id": "NEG-PRONOUN-DEIXIS",
+      "type": "semantic_identity",
+      "attempt": {
+        "surface": "هغه",
+        "lexicalSense": "personal_pronoun",
+        "usedAs": "distal_demonstrative"
+      },
+      "reason": "Same spelling does not make grammatical functions interchangeable"
+    },
+    {
+      "id": "NEG-PAST-ERGATIVE",
+      "type": "grammar_gate",
+      "day": 13,
+      "attempt": {
+        "tense": "past",
+        "transitive": true
+      },
+      "reason": "Past transitive alignment is a future curriculum family; not a present-template option"
+    }
+  ],
+  "systemInvariants": [
+    "All source sentence positive cases are regression examples ONLY, not native-verification evidence.",
+    "Composition must use complete attested written surface forms and actual introduced form IDs.",
+    "Eligibility additionally requires actual unlocked grammar IDs and earliest allowed day.",
+    "Every automatically generated sentence must have a typed frame, complete provenance and independently checked semantic compatibility.",
+    "English gloss must match grammatical person, number, predicate and arguments.",
+    "No generated dialogue answer can contradict the question or role of speaker.",
+    "No target Day 14 compulsory new vocabulary.",
+    "If no safe composition exists return a compatible fixed authored sentence or transparent no-option result.",
+    "Save/resume returns byte-for-byte same Pashto/English, choices, distractors, source IDs, scoring and order.",
+    "Never silently promote provisional draft entries to user/native-verified."
+  ],
+  "references": [
+    "https://grammar.lingdocs.com/phrase-structure/np/",
+    "https://grammar.lingdocs.com/phrase-structure/ep/",
+    "https://grammar.lingdocs.com/nouns/nouns-gender/",
+    "https://grammar.lingdocs.com/nouns/nouns-plural/",
+    "https://grammar.lingdocs.com/verbs/present-verbs/",
+    "https://grammar.lingdocs.com/verbs/verb-endings/",
+    "https://grammar.lingdocs.com/verbs/roots-and-stems/",
+    "https://grammar.lingdocs.com/nouns/determiners/",
+    "https://grammar.lingdocs.com/phrase-structure/ap/",
+    "https://grammar.lingdocs.com/phrase-structure/shortening-vps/"
+  ]
+}
