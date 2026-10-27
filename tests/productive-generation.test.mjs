@@ -43,6 +43,8 @@ const frameFor=(ps)=>plain(byFrame.get(card(ps).generated.frameId));
 const read1='زه کتاب لولم.', read3='هغه کتاب لولي.', readpl='هغوی کتابونه لولي.';
 const reject=(d,f,b,id)=>assert.equal(S.compose(d,f,b),null,id);
 // Each JSON negative case mutates actual compiler inputs, not a second fixture validator.
+assert(catalog.some(c=>c.en === "What does Mina read?"), "Proper names retain their English capitalisation");
+assert(catalog.some(c=>c.en === "What do Mina and I read?"), "Coordinated subjects retain the speaker and English I");
 const negatives={
  'NEG-D1-ACTION':()=>assert(!S.eligible(player(1),data,frames,1).some(c=>c.generated.family.startsWith('present'))),
  'NEG-NOUN-COPULA-GENDER':()=>{const f=frameFor('دا کوټه تیاره ده.');f.terminals=f.terminals.filter(t=>t.gender!=='feminine');reject(data,f,binding('دا کوټه تیاره ده.'),'gender')},

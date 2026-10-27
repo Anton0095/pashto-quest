@@ -2750,7 +2750,7 @@ const SentenceEngine = (() => {
       finite = person === 3 && number === "singular" ? v.third : v.base,
       polite = s.subject.value.composition.register === "polite_or_plural" ? " (polite/plural)" : "";
     if (frame.englishRealiser === "what")
-      return `What ${person === 3 && number === "singular" ? "does" : "do"} ${subject === "I" ? "I" : subject.toLowerCase()} ${v.base}?${polite}`;
+      return `What ${person === 3 && number === "singular" ? "does" : "do"} ${subject === "I" || s.subject.entry.partOfSpeech === "noun" ? subject : subject.toLowerCase()} ${v.base}?${polite}`;
     const object = !n ? "" : possessive || s.demonstrative || numeral
       ? possessive ? `${possessive} ${head}` : s.demonstrative ? `${demonstrative} ${head}` : head
       : mass(sem) || plural(n) ? head : `${sem.objectArticle === "the" ? "the" : article(head)} ${head}`;
