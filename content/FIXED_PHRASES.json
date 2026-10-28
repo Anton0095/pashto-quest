@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "policy": "Only these six conventional expressions are exempt from productive sentence generation. Profile questions are English UI, not Pashto phrase exceptions. Inflected forms and licensed grammatical chunks are vocabulary, not hidden sentence exceptions.",
+  "phrases": [
+    {
+      "id": "g-hello",
+      "pashto": "سلام",
+      "romanisation": "salaam",
+      "english": "Hello",
+      "reviewStatus": "needsReview",
+      "kind": "fixed_phrase",
+      "day": 0,
+      "location": "library",
+      "speaker": "Muhammad Jan",
+      "active": true,
+      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase."
+    },
+    {
+      "id": "g-how",
+      "pashto": "څنګه یې؟",
+      "romanisation": "tsanga ye?",
+      "english": "How are you?",
+      "reviewStatus": "needsReview",
+      "kind": "fixed_phrase",
+      "day": 0,
+      "location": "library",
+      "speaker": "Muhammad Jan",
+      "active": true,
+      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase."
+    },
+    {
+      "id": "g-thanks",
+      "pashto": "مننه",
+      "romanisation": "manana",
+      "english": "Thank you",
+      "reviewStatus": "needsReview",
+      "kind": "fixed_phrase",
+      "day": 2,
+      "location": "business",
+      "speaker": "Muhammad Jan",
+      "active": true,
+      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase."
+    },
+    {
+      "id": "g-bye",
+      "pashto": "خدای پامان",
+      "romanisation": "khudaay paamaan",
+      "english": "Goodbye",
+      "reviewStatus": "needsReview",
+      "kind": "fixed_phrase",
+      "day": 3,
+      "location": "residential",
+      "speaker": "Muhammad Jan",
+      "active": true,
+      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase."
+    },
+    {
+      "id": "phrase-d1-home-welcome",
+      "pashto": "ښه راغلاست",
+      "romanisation": "kha raaghlaast",
+      "english": "Welcome!",
+      "reviewStatus": "provisional_playable",
+      "userVerified": false,
+      "kind": "fixed_phrase",
+      "day": 1,
+      "location": "residential",
+      "speaker": "Muhammad Jan",
+      "active": true,
+      "exceptionReason": "User-supplied conventional welcome or morning greeting, intentionally taught whole."
+    },
+    {
+      "id": "phrase-day-2-opening",
+      "pashto": "سهار مو پخیر!",
+      "romanisation": "sahaar mo pakheer",
+      "english": "Good morning!",
+      "reviewStatus": "provisional_playable",
+      "userVerified": false,
+      "kind": "fixed_phrase",
+      "day": 2,
+      "location": "school",
+      "speaker": "Ms Hameed",
+      "active": true,
+      "exceptionReason": "User-supplied conventional welcome or morning greeting, intentionally taught whole."
+    }
+  ]
+}

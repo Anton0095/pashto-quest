@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "concepts": [
+    {
+      "id": "description-order",
+      "day": 1,
+      "reference": "A description orders noun, adjective, then present equative.",
+      "case": "Arrange the roles in a simple description.",
+      "correct": "Noun → adjective → equative",
+      "misconceptions": [
+        "Adjective → noun → equative",
+        "Noun → equative → adjective",
+        "Equative → adjective → noun"
+      ]
+    },
+    {
+      "id": "feminine-description",
+      "day": 1,
+      "reference": "Adjective and present equative agree with the described noun in gender and number.",
+      "case": "The described noun is feminine singular. Which pair agrees?",
+      "correct": "Feminine singular adjective + feminine singular equative",
+      "misconceptions": [
+        "Masculine singular adjective + feminine singular equative",
+        "Feminine singular adjective + plural equative",
+        "Masculine singular adjective + masculine singular equative"
+      ]
+    },
+    {
+      "id": "masculine-description",
+      "day": 1,
+      "reference": "Adjective and present equative agree with the described noun in gender and number.",
+      "case": "The described noun is masculine singular. Which pair agrees?",
+      "correct": "Masculine singular adjective + masculine singular equative",
+      "misconceptions": [
+        "Feminine singular adjective + masculine singular equative",
+        "Masculine singular adjective + plural equative",
+        "Feminine singular adjective + feminine singular equative"
+      ]
+    },
+    {
+      "id": "plural-description",
+      "day": 1,
+      "reference": "Adjective and present equative agree with the described noun in gender and number.",
+      "case": "The described noun is plural. What number must its agreeing forms have?",
+      "correct": "Plural adjective and plural equative",
+      "misconceptions": [
+        "Singular adjective and plural equative",
+        "Plural adjective and singular equative",
+        "Singular adjective and singular equative"
+      ]
+    },
+    {
+      "id": "agreement-controller",
+      "day": 1,
+      "reference": "The noun being described controls adjective and equative agreement.",
+      "case": "A female speaker describes a masculine singular noun. What controls agreement?",
+      "correct": "The masculine singular noun",
+      "misconceptions": [
+        "The female speaker",
+        "The listener’s gender",
+        "The adjective’s English spelling"
+      ]
+    },
+    {
+      "id": "two-agreements",
+      "day": 1,
+      "reference": "Both the adjective form and the equative must match the noun.",
+      "case": "An adjective agrees with a feminine singular noun, but the equative is masculine singular. What needs changing?",
+      "correct": "The equative only",
+      "misconceptions": [
+        "The adjective only",
+        "Both agreeing forms",
+        "The noun’s gender"
+      ]
+    },
+    {
+      "id": "number-controller",
+      "day": 1,
+      "reference": "Agreement follows the grammatical features of the noun, including inherent plurality.",
+      "case": "A noun denotes a single item but its studied form is grammatically plural. Which agreement applies?",
+      "correct": "The noun’s grammatical plural agreement",
+      "misconceptions": [
+        "Singular agreement because one item is meant",
+        "Agreement with the speaker’s number",
+        "Agreement with the listener’s number"
+      ]
+    },
+    {
+      "id": "noun-before-adjective",
+      "day": 1,
+      "reference": "A descriptive predicate follows its noun; noun-phrase adjective placement is a later construction.",
+      "case": "In a simple description, which role immediately precedes the adjective?",
+      "correct": "The noun being described",
+      "misconceptions": [
+        "The present equative",
+        "The listener",
+        "A finite action verb"
+      ]
+    },
+    {
+      "id": "sov-order",
+      "day": 2,
+      "reference": "A present action clause normally orders subject, object, then the complete finite verb.",
+      "case": "A subject reads an object. Arrange the roles.",
+      "correct": "Subject → object → finite verb",
+      "misconceptions": [
+        "Subject → finite verb → object",
+        "Object → finite verb → subject",
+        "Finite verb → subject → object"
+      ]
+    },
+    {
+      "id": "third-person",
+      "day": 2,
+      "reference": "He, she and one named person are third-person singular subjects.",
+      "case": "One named person performs a present action. Which verb features apply?",
+      "correct": "Third person singular",
+      "misconceptions": [
+        "First person singular",
+        "Second person singular",
+        "Third person plural"
+      ]
+    },
+    {
+      "id": "finite-last",
+      "day": 2,
+      "reference": "The complete finite verb ends the normal present SOV action clause.",
+      "case": "Which role normally comes last in a present SOV clause?",
+      "correct": "The complete finite verb",
+      "misconceptions": [
+        "The subject",
+        "The direct object",
+        "The subject pronoun only"
+      ]
+    },
+    {
+      "id": "speaker-i",
+      "day": 3,
+      "reference": "First-person singular identifies the speaker as I and takes an evidenced first-person singular verb.",
+      "case": "Only the speaker performs the action. Choose the subject and verb features.",
+      "correct": "First person singular + first person singular",
+      "misconceptions": [
+        "Third person singular + first person singular",
+        "First person singular + second person singular",
+        "First person plural + first person plural"
+      ]
+    },
+    {
+      "id": "i-versus-he",
+      "day": 3,
+      "reference": "Person agreement follows the subject. I is first person; he or she is third person.",
+      "case": "A subject changes from he to I. Which verb feature changes?",
+      "correct": "Third person singular → first person singular",
+      "misconceptions": [
+        "Third person singular → second person singular",
+        "Third person singular → third person plural",
+        "Third person singular stays unchanged"
+      ]
+    },
+    {
+      "id": "familiar-you",
+      "day": 4,
+      "reference": "One familiar friend is addressed with informal second-person singular and a matching finite verb.",
+      "case": "The speaker addresses one familiar friend. Choose the agreement.",
+      "correct": "Second person singular",
+      "misconceptions": [
+        "First person singular",
+        "Third person singular",
+        "First person plural"
+      ]
+    },
+    {
+      "id": "clause-joining",
+      "day": 4,
+      "reference": "Joining two clauses preserves the subject and finite verb agreement inside each clause.",
+      "case": "An I clause is joined to a familiar-you clause. What must the finite verbs do?",
+      "correct": "Each agrees with its own subject",
+      "misconceptions": [
+        "Both agree with the first subject",
+        "Both become third person singular",
+        "Both become first person plural"
+      ]
+    },
+    {
+      "id": "respectful-you",
+      "day": 5,
+      "reference": "An elder or teacher takes respectful second person; the form is also used for plural listeners.",
+      "case": "The speaker addresses one teacher respectfully. Which second-person form fits?",
+      "correct": "Respectful/plural second person",
+      "misconceptions": [
+        "Familiar singular second person",
+        "Third person singular",
+        "First person plural"
+      ]
+    },
+    {
+      "id": "group-you",
+      "day": 5,
+      "reference": "Addressing several listeners takes plural second person, distinct from speaker-inclusive we.",
+      "case": "The speaker addresses two listeners without including themself. Which person applies?",
+      "correct": "Second person plural",
+      "misconceptions": [
+        "First person plural",
+        "Third person plural",
+        "Second person singular"
+      ]
+    },
+    {
+      "id": "we",
+      "day": 6,
+      "reference": "We is first-person plural and includes the speaker.",
+      "case": "The speaker describes an action by themself and a friend. Choose the subject.",
+      "correct": "First person plural: we",
+      "misconceptions": [
+        "Second person plural: you",
+        "Third person plural: they",
+        "First person singular: I"
+      ]
+    },
+    {
+      "id": "we-you",
+      "day": 6,
+      "reference": "We includes the speaker; plural you addresses a group of listeners.",
+      "case": "A group changes from including the speaker to being addressed by the speaker. Which change fits?",
+      "correct": "First person plural → second person plural",
+      "misconceptions": [
+        "First person plural → third person singular",
+        "Second person plural → first person singular",
+        "Third person plural → second person singular"
+      ]
+    },
+    {
+      "id": "they",
+      "day": 7,
+      "reference": "They refers to an observed group outside the speaker and listener.",
+      "case": "A speaker describes several other people, including neither speaker nor listener. Which subject fits?",
+      "correct": "Third person plural",
+      "misconceptions": [
+        "First person plural",
+        "Second person plural",
+        "Third person singular"
+      ]
+    },
+    {
+      "id": "shared-form",
+      "day": 7,
+      "reference": "A written present verb form may serve third-person singular and plural; its subject distinguishes number.",
+      "case": "The written verb looks identical for he and they. What can distinguish the number?",
+      "correct": "The subject’s number",
+      "misconceptions": [
+        "The object’s spelling alone",
+        "The speaker’s gender",
+        "The position of the English translation"
+      ]
+    },
+    {
+      "id": "attributive-order",
+      "day": 8,
+      "reference": "Inside a noun phrase an adjective precedes its noun; a descriptive predicate follows the noun.",
+      "case": "Arrange the roles inside a noun phrase containing an adjective.",
+      "correct": "Adjective → noun",
+      "misconceptions": [
+        "Noun → adjective",
+        "Equative → noun",
+        "Noun → finite action verb"
+      ]
+    },
+    {
+      "id": "demonstrative-role",
+      "day": 8,
+      "reference": "Demonstratives indicate near or far reference; the same spelling may separately function as a personal pronoun.",
+      "case": "A form points to a nearby object. Which function is being used?",
+      "correct": "Near demonstrative",
+      "misconceptions": [
+        "First-person pronoun",
+        "Far demonstrative",
+        "Possessive owner"
+      ]
+    },
+    {
+      "id": "plural-form",
+      "day": 9,
+      "reference": "Each noun’s direct plural must be separately studied; plural agreement follows the noun’s actual gender and number.",
+      "case": "A noun changes from its studied singular to its studied direct plural. What must the description do?",
+      "correct": "Use matching plural adjective and equative forms",
+      "misconceptions": [
+        "Keep singular adjective and equative forms",
+        "Change only the speaker’s pronoun",
+        "Change the noun to an oblique solely because it is plural"
+      ]
+    },
+    {
+      "id": "count-form",
+      "day": 9,
+      "reference": "A count expression requires the evidenced numeral construction and the appropriate studied noun form.",
+      "case": "Which evidence licenses a count expression?",
+      "correct": "An evidenced numeral construction with its required noun form",
+      "misconceptions": [
+        "Any numeral plus any singular noun",
+        "An English plural gloss alone",
+        "A noun’s location in the district plan"
+      ]
+    },
+    {
+      "id": "where-response",
+      "day": 10,
+      "reference": "A where question asks for a compatible location response.",
+      "case": "What kind of reply answers a where question?",
+      "correct": "The referent’s location",
+      "misconceptions": [
+        "The referent’s owner",
+        "The referent’s count",
+        "The referent’s gender alone"
+      ]
+    },
+    {
+      "id": "oblique-location",
+      "day": 10,
+      "reference": "Spatial expressions may govern an oblique form; a direct noun form does not supply that form automatically.",
+      "case": "A spatial expression requires an oblique noun. Which stored form is needed?",
+      "correct": "The studied oblique required by that expression",
+      "misconceptions": [
+        "The direct singular regardless of case",
+        "The adjective’s plural form",
+        "The subject pronoun regardless of referent"
+      ]
+    },
+    {
+      "id": "possessed-agreement",
+      "day": 11,
+      "reference": "The owned noun, rather than the owner, controls its description’s agreement.",
+      "case": "A masculine owner possesses a feminine singular noun. What controls the adjective and equative?",
+      "correct": "The feminine singular owned noun",
+      "misconceptions": [
+        "The masculine owner",
+        "The listener’s gender",
+        "The number of possessive words"
+      ]
+    },
+    {
+      "id": "owner-head",
+      "day": 11,
+      "reference": "A possessive construction distinguishes the owner from the owned head.",
+      "case": "Which role identifies the thing being possessed?",
+      "correct": "The owned head noun",
+      "misconceptions": [
+        "The owner",
+        "The listener",
+        "The finite verb"
+      ]
+    },
+    {
+      "id": "who-what",
+      "day": 12,
+      "reference": "Who asks about a person; what asks about an object; replies must preserve the referent.",
+      "case": "A question asks for a person’s identity. Which reply type matches?",
+      "correct": "The same person’s identity",
+      "misconceptions": [
+        "An unrelated object’s identity",
+        "A location only",
+        "An unrelated quantity"
+      ]
+    },
+    {
+      "id": "question-count",
+      "day": 12,
+      "reference": "How many asks for a count of the same referent; where asks for location.",
+      "case": "A question asks how many of a named item there are. Choose the reply type.",
+      "correct": "The count of that item",
+      "misconceptions": [
+        "The location of that item",
+        "The owner of another item",
+        "The identity of the listener"
+      ]
+    },
+    {
+      "id": "adverb-meaning",
+      "day": 13,
+      "reference": "Adverbs express compatible time, manner, frequency or joint action.",
+      "case": "An adverb answers how often an action happens. Which semantic type applies?",
+      "correct": "Frequency",
+      "misconceptions": [
+        "Location",
+        "Owner",
+        "Count of objects"
+      ]
+    },
+    {
+      "id": "adverb-agreement",
+      "day": 13,
+      "reference": "Adding an adverb does not replace the finite verb’s agreement with its subject.",
+      "case": "An I clause gains a compatible frequency adverb. What happens to verb agreement?",
+      "correct": "It stays first person singular",
+      "misconceptions": [
+        "It becomes third person singular",
+        "It becomes first person plural",
+        "It agrees with the adverb instead"
+      ]
+    }
+  ]
+}

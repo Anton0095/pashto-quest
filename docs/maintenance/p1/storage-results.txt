@@ -1,0 +1,6 @@
+PASS storage failure/recovery QuotaExceededError
+PASS storage failure/recovery SecurityError
+PASS storage failure/recovery Storage unavailable
+PASS denied reads, no-op writes and recovery
+PASS unread existing save preserved, memory export, reload recovery
+PASS corruption distinct from persistence failure; explicit reset only

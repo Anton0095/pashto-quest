@@ -39,13 +39,19 @@ const QuestionEngine = (() => {
   function getDialogueTiles(q) {
     if (!q || q.kind !== "dialogue")
       throw Error("A dialogue question is required");
-    if (!q.answerPs || !q.promptPs)
-      throw Error("Dialogue requires promptPs and answerPs");
-    return getAnswerTiles(q.answerPs, q.duds);
+    if (!q.answerPs || (!q.promptPs && !q.promptEnglish))
+      throw Error(
+        "Dialogue requires a generated answer and a meaningful prompt",
+      );
+    if (q.duds?.length >= 2) return getAnswerTiles(q.answerPs, q.duds);
+    return normalizePashtoResponse(q.answerPs)
+      .split(" ")
+      .filter(Boolean)
+      .map((word, index) => ({ word, index }));
   }
   function questionUsesDuds(q, day) {
     return (
-      q?.kind === "dialogue" ||
+      (q?.kind === "dialogue" && q.duds?.length >= 2) ||
       (q?.kind === "construct" && day >= 8 && Array.isArray(q.duds))
     );
   }
@@ -78,6 +84,8 @@ const QuestionEngine = (() => {
       return normalizeAnswer(value) === normalizeAnswer(q.correct);
     if (q.kind === "construct")
       return normalizeAnswer(value) === normalizeAnswer(card.ps);
+    if (q.kind === "word" && q.unstudied)
+      return String(value).trim().toLocaleLowerCase("en") === card.en.trim().toLocaleLowerCase("en");
     return value === (q.direction === "en-ps" ? card.ps : card.en);
   }
   function randomFor(seed) {

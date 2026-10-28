@@ -1,5 +1,7 @@
 # Pashto Quest — evidence-based sentence generation grammar
 
+> **Runtime policy update (PR #22):** The user's [generated-only architecture requirement](https://github.com/Anton0095/pashto-quest/pull/22#issuecomment-6456042600) supersedes all authored-fallback delivery suggestions in this research document. Grammar evidence remains applicable. Insufficient compositions now produce an explicit deficit and word/English grammar tasks, never a stored instructional sentence. See [measured integration results](INSTRUCTIONAL_DELIVERY_REPORT.md).
+
 **Status:** Implementation reference, 27 October 2026. **Not a native Laghman language approval.** Researched from published Pashto grammar and cross-checked with the game's authored 14-day content. No gameplay or translations are changed by this document.
 
 **Audience:** Codex extending src/sentence-engine.js and content/SENTENCE_FRAMES.json. Read this alongside [GENERATION_IMPLEMENTATION.md](GENERATION_IMPLEMENTATION.md) and [GENERATION_TEST_CASES.json](GENERATION_TEST_CASES.json).

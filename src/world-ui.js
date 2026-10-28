@@ -34,9 +34,9 @@ function createWorld({
   }
   function dayGuidance(day) {
     if (day >= 8) {
-      const d = content.week2Days[day];
+      const d = content.dayById[day];
       return !state.progress.complete[`${day}-${d.opening}`]
-        ? `Normal route: meet ${content.teacherFor(day, d.opening, "standard").name} at ${ui.displayPlace(day, d.opening)} first, or skip directly to the final challenge.`
+        ? `Normal route: meet ${content.teacherFor(day, d.opening, "standard").name} at ${ui.displayPlace(d.opening)} first, or skip directly to the final challenge.`
         : learning.completeRound(day)
           ? `All four visits complete. ${d.challenge}`
           : "Visit the other three locations in any order, or take the final challenge now.";
@@ -98,7 +98,8 @@ function createWorld({
     }
     state.session = null;
     if (!learning.allowed(state.day))
-      state.day = content.loops.find((l) => learning.allowed(l.id))?.id || 1;
+      state.day =
+        content.curriculum.days.find((d) => learning.allowed(d.day))?.day || 1;
     ui.hud();
     renderWorld();
     ui.view("worldScreen");
@@ -147,38 +148,38 @@ function createWorld({
   function renderWorld() {
     audio.stopAudio();
     narrative.renderDayExpression(state.day);
-    const selected = content.loops.find((l) => l.id === state.day);
+    const selected = content.dayById[state.day];
     ui.$("chapterButtons").replaceChildren();
-    for (const l of content.loops) {
+    for (const l of content.curriculum.days) {
       const n = content.zoneKeys.filter(
-        (z) => state.progress.complete[`${l.id}-${z}`],
+        (z) => state.progress.complete[`${l.day}-${z}`],
       ).length;
       const b = document.createElement("button");
       b.type = "button";
-      b.className = "chapter" + (l.id === state.day ? " selected" : "");
-      b.disabled = !learning.allowed(l.id);
-      b.setAttribute("aria-pressed", String(l.id === state.day));
+      b.className = "chapter" + (l.day === state.day ? " selected" : "");
+      b.disabled = !learning.allowed(l.day);
+      b.setAttribute("aria-pressed", String(l.day === state.day));
       const heading = document.createElement("b");
-      heading.textContent = `${learning.allowed(l.id) ? l.icon : "🔒"} Day ${l.id}: ${l.label}`;
+      heading.textContent = `${learning.allowed(l.day) ? "📚" : "🔒"} Day ${l.day}: ${l.title}`;
       const sub = document.createElement("small");
-      sub.textContent = learning.passedChallenge(l.id)
+      sub.textContent = learning.passedChallenge(l.day)
         ? "✓ Challenge passed"
-        : learning.allowed(l.id)
-          ? l.id === 1
+        : learning.allowed(l.day)
+          ? l.day === 1
             ? "Free roam · skip optional"
-            : l.id === 2
+            : l.day === 2
               ? `${n}/4 · school → roam → home`
-              : l.id === 3
+              : l.day === 3
                 ? `${n}/4 · lake → roam → market`
-                : l.id === 4
+                : l.day === 4
                   ? `${n}/4 · home → roam → home`
-                  : l.id === 5
+                  : l.day === 5
                     ? `${n}/4 · school → roam → lake`
-                    : `${n}/4 places · ${l.person}`
-          : `Pass Day ${l.id - 1} challenge`;
+                    : `${n}/4 places · ${l.topic}`
+          : `Pass Day ${l.day - 1} challenge`;
       b.append(heading, sub);
       b.addEventListener("click", () => {
-        state.day = l.id;
+        state.day = l.day;
         renderWorld();
       });
       ui.$("chapterButtons").append(b);
@@ -187,36 +188,18 @@ function createWorld({
       (z) => state.progress.complete[`${state.day}-${z}`],
     ).length;
     ui.$("chapterProgress").textContent = `Day ${state.day} · ${done}/4 places`;
-    ui.$("chapterHint").textContent = selected.description;
+    ui.$("chapterHint").textContent = selected.intro;
     ui.$("dayRoute").textContent = dayGuidance(state.day);
     renderSkipDayAction(state.day);
-    ui.$("roundInsight").textContent =
-      state.day <= 2
-        ? `${selected.subtitle} · Pattern: ${selected.person}. Each visit has a local teacher, and Muhammad Jan checks your learning at the end of the day.`
-        : state.day === 3
-          ? "Saleha introduces the first-person verb patterns at the lake. Use new and familiar words around the village; finish by shopping for dinner with Edris."
-          : state.day === 4
-            ? "Muhammad Jan begins with informal ته and compound sentences. Practise around town, then have a familiar conversation with him at home."
-            : state.day === 5
-              ? "Ms Hameed teaches the choice between ته and polite/plural تاسې. People gather at the lake for a multi-speaker challenge."
-              : `${selected.subtitle} · Pattern: ${selected.person}. Optional visits teach new vocabulary and revisit older words. You can attempt the 15-question challenge immediately to ${state.day === content.loops.length ? "complete your first week in town" : `begin Day ${state.day + 1}`}.`;
-    if (state.day >= 6)
-      ui.$("roundInsight").textContent =
-        state.day === 6
-          ? "Saleha introduces Mina and speaker-included موږ at the lake. Practise in town, then join the sisters in the Hills. Skip is available now."
-          : "Edris introduces هغوی among market shoppers. The separate School exam revisits all seven days: 25 questions, 20 to pass.";
-    if (state.day >= 8) {
-      ui.$("chapterHint").textContent = content.week2Days[state.day].intro;
-      ui.$("roundInsight").textContent =
-        "Week 2 draft · Native Laghman review pending. Practise the new topic or skip to the dialogue challenge. Level 10 · New Resident is retained; further level milestones are not assigned.";
-    }
+    ui.$("roundInsight").textContent = selected.story || selected.intro;
+    if (state.day >= 8)
+      ui.$("roundInsight").textContent +=
+        " Week 2 draft · Native Laghman review pending. Level 10 · New Resident is retained.";
     renderDayChallenge();
     ui.$("placeCards").replaceChildren();
     for (const place of content.zoneKeys) {
       const zone = content.zones[place],
         id = `${state.day}-${place}`,
-        itemIds = content.courses[id] || [],
-        n = itemIds.filter(learning.learned).length,
         full = !!state.progress.complete[id];
       const accessible = learning.placeAccessible(state.day, place),
         checkin =
@@ -233,7 +216,7 @@ function createWorld({
       b.className = "place" + (checkin ? " checkin" : "");
       b.disabled = !accessible;
       const a = document.createElement("strong");
-      a.textContent = `${zone.icon} ${ui.displayPlace(state.day, place)}`;
+      a.textContent = `${zone.icon} ${ui.displayPlace(place)}`;
       const sub = document.createElement("small");
       sub.textContent =
         state.day <= 4 ? content.villagePeople[place].description : zone.intro;
@@ -267,7 +250,7 @@ function createWorld({
                   : state.day === 7 && !accessible
                     ? "Meet Edris at the market first"
                     : state.day >= 8 && !accessible
-                      ? `Begin at ${ui.displayPlace(state.day, content.week2Days[state.day].opening)} first`
+                      ? `Begin at ${ui.displayPlace(content.dayById[state.day].opening)} first`
                       : "";
       foot.textContent = checkin
         ? state.day === 3
@@ -276,7 +259,7 @@ function createWorld({
             ? "🏞️ Town gathering · 15 questions"
             : "🏆 Final conversation · 15 questions"
         : lockedReason ||
-          `${full ? "✓ Complete · " : ""}${n}/${itemIds.length} items`;
+          (full ? "✓ Visit complete" : "Words → grammar → sentences");
       b.append(a, sub, teacher, foot);
       b.addEventListener("click", () => navigatePlace(state.day, place));
       ui.$("placeCards").append(b);
@@ -284,14 +267,14 @@ function createWorld({
       marker.disabled = !accessible;
       marker.classList.toggle("done", full);
       marker.classList.toggle("checkin", checkin);
-      marker.querySelector("b").textContent = ui.displayPlace(state.day, place);
+      marker.querySelector("b").textContent = ui.displayPlace(place);
       ui.$("map-" + place).textContent = checkin
         ? state.day === 3
           ? "🧺 Dinner quiz"
           : state.day === 5
             ? "🏞️ Gathering"
             : "🏆 Conversation"
-        : lockedReason || `${full ? "✓ " : ""}${n}/${itemIds.length}`;
+        : lockedReason || (full ? "✓ Complete" : "Visit");
     }
     const due = learning.duePool().length;
     ui.$("reviewBtn").disabled = due === 0;
@@ -304,24 +287,12 @@ function createWorld({
       passed = learning.passedChallenge(day),
       record = state.progress.challenges[String(day)],
       spec = progression.getChallengeSpec(day);
-    const titles = {
-      ...Object.fromEntries(
-        content.WEEK2_DATA.days.map((d) => [d.day, d.title]),
-      ),
-      1: "Muhammad Jan’s Library home handover",
-      2: "Muhammad Jan’s check-in",
-      3: "Dinner shopping with Edris",
-      4: "Conversation at home with Muhammad Jan",
-      5: "Community at the lake",
-      6: spec.title,
-      7: spec.title,
-    };
     ui.$("challengeEyebrow").textContent =
       `DAY ${day} · ${day === 1 ? "LIBRARY · HOME HANDOVER" : day === 6 ? "HILLS STORY SCENE" : day === 7 ? "SCHOOL · WEEKLY EXAMINATION" : "DAILY CHECK-IN"}`;
     ui.$("challengeTitle").textContent =
-      `${passed ? "✓ " : ""}${titles[day]}${passed ? " · passed" : ""}`;
+      `${passed ? "✓ " : ""}${spec.title}${passed ? " · passed" : ""}`;
     ui.$("challengeDescription").textContent =
-      `${content.townStories[day] || content.week2Days[day]?.challenge} ${spec.questionCount} turns; ${spec.passCount} correct to pass. ${done ? "All four visits complete. Take the final assessment." : "Follow the normal route or skip straight to this assessment without completing visits."}`;
+      `${content.dayById[day].story || content.dayById[day].challenge} ${spec.questionCount} turns; ${spec.passCount} correct to pass. ${done ? "All four visits complete. Take the final assessment." : "Follow the normal route or skip straight to this assessment without completing visits."}`;
     ui.$("startChallenge").disabled = !learning.allowed(day);
     ui.$("startChallenge").textContent = passed
       ? `Replay ${spec.questionCount}-question assessment ↻`
@@ -354,7 +325,7 @@ function createWorld({
               ? "👩‍🏫"
               : "👴";
     ui.$("townStory").querySelector("p").textContent =
-      `Day ${day} — ${content.townStories[day] || content.week2Days[day]?.intro} ${passed ? "Challenge passed." : "The final challenge is available from the beginning of the day."}`;
+      `Day ${day} — ${content.dayById[day].story || content.dayById[day].intro} ${passed ? "Challenge passed." : "The final challenge is available from the beginning of the day."}`;
   }
   function libraryUpdateWorld() {
     const map = document.querySelector(".worldmap");
@@ -409,13 +380,7 @@ function createWorld({
   }
 
   return {
-    dayCheckInReady,
     navigatePlace,
-    dayGuidance,
     startWorld,
-    renderSkipDayAction,
-    renderWorld,
-    renderDayChallenge,
-    libraryUpdateWorld,
   };
 }

@@ -3,10 +3,27 @@ function createStorage({
   state,
   content,
   progression,
-  backend = localStorage,
+  backend,
 }) {
   const KEY = "pashto-town-days-v1";
-  let saveProblem = null;
+  let saveProblem = null, persistenceProblem = null, readBlocked = false;
+  let notifyPersistence = () => {};
+  const access = () => backend || globalThis.localStorage;
+  function persistenceFailure(message) {
+    persistenceProblem = message;
+    notifyPersistence(message);
+    return false;
+  }
+  function validOrder(order, size) {
+    return (
+      Array.isArray(order) &&
+      order.length === size &&
+      new Set(order).size === size &&
+      order.every(
+        (index) => Number.isInteger(index) && index >= 0 && index < size,
+      )
+    );
+  }
   function currentSave(p) {
     const object = (value) =>
       value && typeof value === "object" && !Array.isArray(value);
@@ -17,11 +34,7 @@ function createStorage({
       p.xp < 0
     )
       return false;
-    if (
-      !["rewards", "complete", "challenges", "personIntros"].every((key) =>
-        object(p[key]),
-      )
-    )
+    if (!["rewards", "complete", "challenges"].every((key) => object(p[key])))
       return false;
     if (
       !object(p.playerProfile) ||
@@ -41,9 +54,34 @@ function createStorage({
         "phrases",
         "grammar",
         "events",
+        "deliveries",
+        "deficits",
       ].every((key) => object(p.library[key]))
     )
       return false;
+    if (!content.restoreGenerated(p)) return false;
+    for (const delivery of Object.values(p.library.deliveries)) {
+      const card = content.wordById[delivery.id];
+      if (
+        !card ||
+        ![
+          "generated_sentence",
+          "fixed_phrase",
+          "lexical_or_interface",
+        ].includes(delivery.kind)
+      )
+        return false;
+      if (
+        delivery.kind === "generated_sentence" &&
+        card.generated?.origin !== "productive_engine"
+      )
+        return false;
+      if (
+        delivery.kind === "fixed_phrase" &&
+        !content.LIBRARY_DATA.phrases.some((x) => x.id === card.id)
+      )
+        return false;
+    }
     for (const [day, record] of Object.entries(p.challenges)) {
       if (
         !Number.isInteger(Number(day)) ||
@@ -165,7 +203,8 @@ function createStorage({
         a.attemptId < 1 ||
         !Number.isFinite(a.earned) ||
         a.earned < 0 ||
-        !Array.isArray(a.built)
+        !Array.isArray(a.built) ||
+        (a.recallDraft !== undefined && (typeof a.recallDraft !== "string" || a.recallDraft.length > 160))
       )
         return false;
       if (
@@ -187,12 +226,75 @@ function createStorage({
       )
         return false;
       for (const item of a.questions) {
+        // Current attempts always freeze presentation at creation. Missing choices
+        // or tile order are corrupt data, never a request to draw another exam.
+        if (
+          item.kind === "word" &&
+          (typeof item.unstudied !== "boolean" ||
+            (item.unstudied && item.direction !== "ps-en"))
+        )
+          return false;
+        if (["construct", "dialogue"].includes(item.kind)) {
+          let size;
+          try {
+            size = QuestionEngine.buildTiles(
+              content.wordById[item.id],
+              item,
+              a.loop,
+            ).length;
+          } catch {
+            return false;
+          }
+          if (!validOrder(item.tileSequence, size)) return false;
+        } else if (
+          !Array.isArray(item.choiceOrder) ||
+          !item.choiceOrder.length ||
+          item.choiceOrder.some((value) => typeof value !== "string") ||
+          new Set(item.choiceOrder).size !== item.choiceOrder.length
+        )
+          return false;
+        if (
+          ["sentence", "construct", "dialogue"].includes(item.kind) &&
+          content.wordById[item.id]?.type === "sentence" &&
+          !item.generated
+        )
+          return false;
+        if (
+          item.promptPs &&
+          (!item.promptGenerated || item.promptPs !== item.promptGenerated.ps)
+        )
+          return false;
+        if (item.promptGenerated) {
+          const prompt = content.wordById[item.promptGenerated.id];
+          if (
+            !prompt?.generated ||
+            JSON.stringify(prompt) !== JSON.stringify(item.promptGenerated)
+          )
+            return false;
+        }
+        if (
+          item.kind === "dialogue" &&
+          (!item.generated || item.answerPs !== content.wordById[item.id]?.ps)
+        )
+          return false;
         if (item.generated) {
+          if (
+            !item.generated.generated.requiredGrammarIds.every(
+              (g) => p.library.grammar[g],
+            ) ||
+            !Object.values(item.generated.generated.slots).every((r) =>
+              p.library.acquired[r.lemmaId]?.introducedFormIds.includes(
+                r.formId,
+              ),
+            )
+          )
+            return false;
           const card = content.wordById[item.id];
           if (
             !card?.generated ||
             item.generated.ps !== card.ps ||
             item.generated.en !== card.en ||
+            item.generated.roman !== card.roman ||
             JSON.stringify(item.generated.generated) !==
               JSON.stringify(card.generated)
           )
@@ -208,9 +310,8 @@ function createStorage({
           return false;
         }
         if (
-          !Array.isArray(a.tileSequence) ||
-          a.tileSequence.length !== tiles.length ||
-          new Set(a.tileSequence).size !== tiles.length ||
+          !validOrder(a.tileSequence, tiles.length) ||
+          JSON.stringify(a.tileSequence) !== JSON.stringify(q.tileSequence) ||
           new Set(a.built).size !== a.built.length ||
           [...a.tileSequence, ...a.built].some(
             (i) => !Number.isInteger(i) || i < 0 || i >= tiles.length,
@@ -226,8 +327,10 @@ function createStorage({
   function load() {
     let raw;
     try {
-      raw = backend.getItem(KEY);
+      raw = access().getItem(KEY);
     } catch (error) {
+      readBlocked = true;
+      persistenceFailure("Progress has not been saved: browser storage is unavailable. Progress stays in this tab. Retry or export before closing it.");
       return progression.fresh();
     }
     if (!raw) return progression.fresh();
@@ -237,28 +340,47 @@ function createStorage({
       return p;
     } catch (error) {
       saveProblem =
-        "This save belongs to an older or incompatible version. This release uses save format 6 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
+        "This save belongs to an older or incompatible version. This release uses save format 7 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
       return progression.fresh();
     }
   }
-  function save() {
-    if (saveProblem) return;
+  function snapshot() {
     if (state.session?.mode === "challenge") {
       if (state.session.finished) delete state.progress.activeChallenge;
-      else
-        state.progress.activeChallenge = JSON.parse(
-          JSON.stringify(state.session),
-        );
+      else state.progress.activeChallenge = JSON.parse(JSON.stringify(state.session));
     }
+    return JSON.stringify(state.progress);
+  }
+  function save() {
+    if (saveProblem) return false;
     try {
-      backend.setItem(KEY, JSON.stringify(state.progress));
-    } catch (e) {}
+      const target = access();
+      if (readBlocked) {
+        if (target.getItem(KEY))
+          return persistenceFailure("Progress has not been saved: existing progress could not be read at startup. Export this tab’s progress, then reload to recover the existing save. Retry will not overwrite it.");
+        readBlocked = false;
+      }
+      const raw = snapshot();
+      target.setItem(KEY, raw);
+      if (target.getItem(KEY) !== raw) throw Error("Storage did not retain progress");
+      persistenceProblem = null;
+      notifyPersistence(null);
+      return true;
+    } catch (error) {
+      return persistenceFailure("Progress has not been saved: browser storage is full or unavailable. Progress stays in this tab. Retry or export before closing it.");
+    }
   }
 
   return {
     load,
     save,
     currentSave,
+    snapshot,
+    onPersistenceChange(listener) {
+      notifyPersistence = listener;
+      listener(persistenceProblem);
+    },
+    get persistenceProblem() { return persistenceProblem; },
     get problem() {
       return saveProblem;
     },

@@ -143,9 +143,9 @@
               village elders. Welcome to our village Library! Before you meet
               your neighbours, I'll show you how to play through
               <strong>four interactive study cards</strong>: choose a meaning,
-              arrange words, answer a personal question and type your name.
-              You may select “Prefer not to say” for gender. These details
-              stay in this browser's local game progress.
+              arrange words, answer a personal question and type your name. You
+              may select “Prefer not to say” for gender. These details stay in
+              this browser's local game progress.
             </p>
             <p>
               You have just moved to this town! On <strong>Day 1</strong>,
@@ -393,10 +393,6 @@
               </p>
             </div>
           </div>
-          <div class="challenge-breakdown">
-            <span>5 word recall</span><span>5 sentence recall</span
-            ><span>5 sentence builds</span>
-          </div>
           <div class="buttons">
             <button id="startChallenge" type="button" class="primary">
               Take the 15-question challenge →</button
@@ -435,8 +431,8 @@
         </div>
         <div id="teachPanel" class="hidden">
           <div class="round-path" id="lessonStages">
-            <div class="stage active">1 · Greeting &amp; new words</div>
-            <div class="stage">2 · Sentences</div>
+            <div class="stage active">1 · Words &amp; forms</div>
+            <div class="stage">2 · Generated sentences</div>
             <div class="stage">3 · Mixed recall</div>
           </div>
           <div class="teach-card">
@@ -454,54 +450,27 @@
             </button>
             <div class="meaning" id="teachEnglish">Hello</div>
             <p class="teach-note" id="teachNote">Learn this word.</p>
-            <div class="dialect-variant hidden" id="dialectVariant"></div>
           </div>
-          <div id="tutorialInteraction" class="tutorial-interaction hidden" aria-label="Interactive introduction"></div>
+          <div
+            id="tutorialInteraction"
+            class="tutorial-interaction hidden"
+            aria-label="Interactive introduction"
+          ></div>
           <div class="buttons teach-actions">
             <button class="primary" id="teachNext" type="button">
               Next study card →
             </button>
           </div>
         </div>
-        <div id="sovPanel" class="hidden">
-          <div class="sov-area">
-            <p class="guide-step" id="sovStep">The Guide's grammar workshop</p>
-            <h3 id="sovTitle">How a Pashto sentence works</h3>
-            <p id="sovExplanation"></p>
-            <div id="sovDiagram">
-              <p class="world-title">English usually uses S–V–O</p>
-              <div class="sov-flow">
-                <div class="sov-word subject">
-                  <b>SUBJECT</b><span>He / she</span>
-                </div>
-                <div class="sov-word verb"><b>VERB</b><span>drinks</span></div>
-                <div class="sov-word object">
-                  <b>OBJECT</b><span>water</span>
-                </div>
-              </div>
-              <p class="world-title">Pashto usually uses S–O–V</p>
-              <div class="sov-flow">
-                <div class="sov-word subject">
-                  <b>SUBJECT</b><span class="ps" lang="ps">هغه</span
-                  ><span>hagha</span>
-                </div>
-                <div class="sov-word object">
-                  <b>OBJECT</b><span class="ps" lang="ps">اوبه</span
-                  ><span>oba</span>
-                </div>
-                <div class="sov-word verb">
-                  <b>VERB</b><span class="ps" lang="ps">څښي</span
-                  ><span>ts-khee</span>
-                </div>
-              </div>
-              <p class="sov-small">
-                هغه اوبه څښي. — He/she drinks water. The verb comes at the end.
-              </p>
-            </div>
+        <div id="grammarPanel" class="hidden">
+          <div class="grammar-area">
+            <p class="guide-step" id="grammarStep">
+              The Guide's grammar workshop
+            </p>
+            <h3 id="grammarTitle">How a Pashto sentence works</h3>
+            <div id="grammarExplanation"></div>
             <div class="buttons">
-              <button type="button" class="speaker" id="grammarSpeak">
-                🔊 Hear example</button
-              ><button id="sovNext" class="primary" type="button">
+              <button id="grammarNext" class="primary" type="button">
                 I understand — continue →
               </button>
             </div>

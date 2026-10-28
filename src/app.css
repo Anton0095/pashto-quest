@@ -244,32 +244,6 @@ header {
   letter-spacing: 0.03em;
   margin: 0 0 3px !important;
 }
-.path {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 5px;
-  margin: 15px 0;
-}
-.path-step {
-  background: #2c4556;
-  border-radius: 9px;
-  border: 1px solid #4c6776;
-  text-align: center;
-  padding: 10px 3px;
-  font-size: 11px;
-  font-weight: 800;
-  color: #c5d5df;
-}
-.path-step.active {
-  border-color: #f6c77c;
-  background: #655236;
-  color: #ffdf9b;
-}
-.path-step.done {
-  border-color: #5d9275;
-  background: #265040;
-  color: #b6efc8;
-}
 .intro-art {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -453,15 +427,6 @@ header {
   font-weight: 800;
   margin-top: 8px;
   display: block;
-}
-.lesson-tag {
-  border: 1px solid #587789;
-  background: #304b60;
-  color: #ddedf4;
-  border-radius: 25px;
-  font-size: 12px;
-  font-weight: 800;
-  padding: 5px 10px;
 }
 .info-strip {
   margin-top: 16px;
@@ -715,14 +680,6 @@ header {
 .dialect-note a {
   color: #ffe2a5;
 }
-.dialect-variant {
-  margin: 8px auto 0;
-  max-width: 550px;
-  border-top: 1px solid #506d73;
-  padding: 9px 0 0;
-  font-size: 13px;
-  color: #c9e7df;
-}
 .dialect-label {
   display: inline-block;
   background: #34594a;
@@ -742,15 +699,6 @@ header {
 }
 .footer a {
   color: #f5d79c;
-}
-.reset {
-  border: 0;
-  background: transparent;
-  text-decoration: underline;
-  color: #bed1df;
-  font-size: 12px;
-  min-height: 40px;
-  padding: 7px;
 }
 .notice {
   border-left: 3px solid #e7c786;
@@ -807,9 +755,6 @@ header {
   .choice {
     min-height: 54px;
     padding: 12px;
-  }
-  .path-step {
-    font-size: 9px;
   }
   .worldmap {
     height: 265px;
@@ -870,84 +815,22 @@ header {
   border-color: #7ab996;
   color: #b5f4d1;
 }
-.lesson-chip {
-  display: inline-block;
-  border-radius: 40px;
-  border: 1px solid #728c9b;
-  font-size: 11px;
-  padding: 4px 10px;
-  color: #e7f3f0;
-  margin: 0 5px 6px 0;
-}
-.lesson-chip.new {
-  color: #ffdb9a;
-  border-color: #968055;
-}
-.lesson-chip.recall {
-  color: #c0f0d7;
-  border-color: #61917b;
-}
-.sov-area {
+.grammar-area {
   padding: 14px;
   background: #112b3a;
   border: 1px solid #688b86;
   border-radius: 16px;
   margin: 14px 0;
 }
-.sov-area h3 {
+.grammar-area h3 {
   font-size: 22px;
   margin: 0 0 9px;
   color: #ffe1ae;
 }
-.sov-area p {
+.grammar-area p {
   font-size: 13px;
   margin: 10px 0;
   color: #dde9ee;
-}
-.sov-flow {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px;
-  direction: ltr;
-  margin: 12px 0;
-}
-.sov-word {
-  text-align: center;
-  border-radius: 10px;
-  border: 1px solid #678398;
-  background: #244458;
-  padding: 10px 3px;
-  min-width: 0;
-}
-.sov-word b {
-  display: block;
-  color: #d9eff0;
-  font-size: 11px;
-}
-.sov-word .ps {
-  display: block;
-  font-size: 29px;
-  line-height: 1.8;
-  font-family: "Noto Naskh Arabic", "Noto Sans Arabic", serif;
-  direction: rtl;
-  color: #fff3d4;
-}
-.sov-word span {
-  font-size: 12px;
-  color: #d1deed;
-}
-.sov-word.subject {
-  border-color: #b8d6d3;
-}
-.sov-word.object {
-  border-color: #f7d28c;
-}
-.sov-word.verb {
-  border-color: #a6ceab;
-}
-.sov-small {
-  font-size: 12px;
-  color: #c6d9df;
 }
 .guide-step {
   font-size: 11px;
@@ -956,11 +839,6 @@ header {
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
-.lesson-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
 .card-type {
   font-size: 11px;
   color: #f4d69d;
@@ -968,23 +846,6 @@ header {
   font-weight: 900;
   text-transform: uppercase;
   margin: 8px 0;
-}
-.world-title {
-  font-size: 15px;
-  color: var(--gold);
-  font-weight: 850;
-}
-.mini-note {
-  font-size: 12px;
-  color: #d0e0e8;
-  margin-top: 7px;
-}
-.sov-compare {
-  border-left: 3px solid #eac78c;
-  padding-left: 12px;
-}
-.sov-compare strong {
-  color: #ffe1a5;
 }
 .round-insight {
   font-size: 12px;
@@ -997,12 +858,6 @@ header {
   }
   .round-path {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .sov-word .ps {
-    font-size: 24px;
-  }
-  .sov-word span {
-    font-size: 11px;
   }
 }
 
@@ -1114,21 +969,6 @@ header {
   margin: 5px 0;
   color: #e2e8dd;
   font-size: 13px;
-}
-.challenge-breakdown {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin: 14px 0;
-}
-.challenge-breakdown span {
-  border: 1px solid #958f68;
-  background: #414d47;
-  border-radius: 40px;
-  padding: 5px 10px;
-  font-size: 11px;
-  color: #ffebcc;
-  font-weight: 750;
 }
 .challenge-record {
   font-size: 12px;
@@ -1500,8 +1340,13 @@ header {
   flex-wrap: wrap;
   gap: 8px;
 }
-.phrase-practice p { flex-basis: 100%; }
-.narrative-expression button { max-width: 100%; white-space: normal; }
+.phrase-practice p {
+  flex-basis: 100%;
+}
+.narrative-expression button {
+  max-width: 100%;
+  white-space: normal;
+}
 /* Keep Pashto legible inside the lesson guide, whose ordinary paragraphs are smaller. */
 .narrative-expression p.library-pashto {
   font-size: 1.65rem;
@@ -1510,13 +1355,72 @@ header {
 }
 
 /* Guided Day 1 study interactions */
-.tutorial-interaction { margin: 16px 0 8px; padding: 15px; border: 1px solid #7194a4; border-radius: 13px; }
-.tutorial-instructions { margin: 0 0 14px; line-height: 1.6; }
-.tutorial-choices { margin: 8px 0 10px; }
-.tutorial-feedback { min-height: 1.5em; margin: 13px 0 0; }
-.tutorial-built { min-height: 54px; padding: 12px; border: 1px dashed #8baaba; border-radius: 10px; margin-bottom: 12px; font-size: 1.25rem; text-align: center; }
-.tutorial-tiles { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
-.tutorial-tiles .choice { flex: 0 0 auto; min-width: 90px; }
-.tutorial-name-row { display: flex; flex-wrap: wrap; gap: 10px; }
-.tutorial-name-input { flex: 1 1 220px; min-width: 0; padding: 12px; border: 1px solid #7194a4; border-radius: 10px; font: inherit; color: #152939; background: #fff; }
-.tutorial-name-row button { flex: 0 1 auto; }
+.tutorial-interaction {
+  margin: 16px 0 8px;
+  padding: 15px;
+  border: 1px solid #7194a4;
+  border-radius: 13px;
+}
+.tutorial-instructions {
+  margin: 0 0 14px;
+  line-height: 1.6;
+}
+.tutorial-choices {
+  margin: 8px 0 10px;
+}
+.tutorial-feedback {
+  min-height: 1.5em;
+  margin: 13px 0 0;
+}
+.tutorial-built {
+  min-height: 54px;
+  padding: 12px;
+  border: 1px dashed #8baaba;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 1.25rem;
+  text-align: center;
+}
+.tutorial-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.tutorial-tiles .choice {
+  flex: 0 0 auto;
+  min-width: 90px;
+}
+.tutorial-name-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.tutorial-name-input {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #7194a4;
+  border-radius: 10px;
+  font: inherit;
+  color: #152939;
+  background: #fff;
+}
+.tutorial-name-row button {
+  flex: 0 1 auto;
+}
+
+.save-warning { border: 2px solid #d9a441; padding: 12px; margin: 8px 0; border-radius: 8px; overflow-wrap: anywhere; }
+.save-warning button { margin: 4px; }
+.recall-input { width: 100%; max-width: 100%; box-sizing: border-box; padding: 12px; }
+
+
+/* Clause-driven scenes stay embedded in the offline release. */
+.sentence-scene { margin: 0 0 18px; padding: 14px; border: 1px solid #7190a5; border-radius: 16px; background: #203f50; text-align: center; }
+.sentence-scene svg { display: block; width: min(100%, 320px); margin: auto; max-height: 180px; }
+.sentence-scene figcaption { margin-top: 8px; color: #fffdf6; font-size: 16px; }
+.scene-props { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.scene-prop { display: grid; gap: 4px; align-content: center; padding: 10px; min-width: 65px; border-radius: 10px; background: #315668; color: #fffdf6; }
+.scene-symbol { font-size: 36px; }
+.choice.correct::after { content: " ✓"; }
+.choice.wrong::after { content: " ✗"; }

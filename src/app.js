@@ -1,19 +1,44 @@
 /* Browser composition and event wiring. The release builder embeds all modules and data. */
 (() => {
   "use strict";
-  const content = createContent(
-    GAME_DATA,
-    WEEK2_DATA,
-    LIBRARY_DATA,
-    NARRATIVE_DATA,
-  );
+  const content = createContent(LIBRARY_DATA, NARRATIVE_DATA);
   const state = { progress: null, session: null, day: 1 };
   const progression = createProgression(content, LibraryEngine);
   const storage = createStorage({ state, content, progression });
   state.progress = storage.load();
   const ui = createUI({ state, content, progression });
+  const saveWarning = document.createElement("aside");
+  saveWarning.id = "saveWarning";
+  saveWarning.className = "save-warning hidden";
+  saveWarning.setAttribute("aria-label", "Progress saving warning");
+  const saveMessage = document.createElement("p");
+  saveMessage.setAttribute("role", "status");
+  const retrySave = document.createElement("button");
+  retrySave.id = "retrySave";
+  retrySave.type = "button";
+  retrySave.textContent = "Retry saving";
+  retrySave.addEventListener("click", () => storage.save());
+  const exportSave = document.createElement("button");
+  exportSave.id = "exportSave";
+  exportSave.type = "button";
+  exportSave.textContent = "Export progress";
+  exportSave.addEventListener("click", () => {
+    const url = URL.createObjectURL(new Blob([storage.snapshot()], { type: "application/json" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "pashto-quest-progress.json";
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+  saveWarning.append(saveMessage, retrySave, exportSave);
+  document.querySelector(".app").prepend(saveWarning);
+  storage.onPersistenceChange((message) => {
+    saveMessage.textContent = message || "";
+    saveWarning.classList.toggle("hidden", !message);
+  });
   const audio = createAudio({
     wordById: content.wordById,
+    onSpeak: (id) => learning.surface(id, "audio"),
     BUNDLED_AUDIO_IDS,
     $: ui.$,
     document,
@@ -22,15 +47,13 @@
   });
   const learning = createLearning({ state, content, progression });
   const questions = createQuestions({ state, content, progression, storage });
-  const narrative = createNarrative({ state, content, ui, audio, storage });
-  const tutorial = createTutorial({ state, content, learning, ui, storage });
+  const narrative = createNarrative({ state, content, ui, audio, storage, questions });
+  const tutorial = createTutorial({ state, content, learning, ui, storage, questions });
   const grammar = createGrammar({
     state,
     content,
-    learning,
     ui,
     storage,
-    onPhase: () => lessons.renderPhase(),
   });
   const lessons = createLessons({
     state,
@@ -69,16 +92,17 @@
     onLesson: (id) => lessons.begin(id),
     onChallenge: (day) => challenge.startChallenge(day),
     onLibrary: () => library.openLibrary(),
-    onResume: () => challenge.restoreLibraryChallenge(),
+    onResume: () => challenge.resumeChallenge(),
   });
   const library = createLibraryUI({
     state,
     content,
-    progression,
     ui,
     audio,
     storage,
     narrative,
+    learning,
+    questions,
   });
   function nextQuestion() {
     if (!state.session || ui.$("quizNext").disabled) return;
@@ -98,31 +122,8 @@
     if (state.session?.mode === "challenge") {
       const q = state.session.questions[state.session.index];
       if (q) audio.speak(q.audioId || q.id);
-    } else if (state.session?.queue.length)
-      audio.speak(state.session.queue[0].id);
-  });
-  ui.$("grammarSpeak").addEventListener("click", () => {
-    if (!state.session) return;
-    const firstExample = {
-      residential: "s-it-door",
-      nature: "s-it-river",
-      business: "s-it-market",
-      school: "s-it-school",
-    };
-    const id =
-      state.session.loop === 3 && state.session.loc === "nature"
-        ? "s1-water"
-        : state.session.loop === 1
-          ? firstExample[state.session.loc]
-          : (
-              content.courses[state.session.loop + "-" + state.session.loc] ||
-              []
-            ).find((x) => content.wordById[x]?.type === "sentence");
-    if (state.session?.loop === 6 && state.session.loc === "nature")
-      audio.speak("w6-we-run");
-    else if (state.session?.loop === 7 && state.session.loc === "business")
-      audio.speak("w7-market-apples");
-    else if (id) audio.speak(id);
+    } else if (state.session?.activeItem)
+      audio.speak(state.session.activeItem.id);
   });
   ui.$("startTutorial").addEventListener("click", () =>
     lessons.begin("tutorial"),
@@ -131,7 +132,7 @@
     lessons.begin("tutorial"),
   );
   ui.$("teachNext").addEventListener("click", lessons.afterStudy);
-  ui.$("sovNext").addEventListener("click", lessons.afterGrammar);
+  ui.$("grammarNext").addEventListener("click", lessons.afterGrammar);
   ui.$("quizNext").addEventListener("click", nextQuestion);
   ui.$("navWorld").addEventListener("click", world.startWorld);
   ui.$("resultWorld").addEventListener("click", world.startWorld);
@@ -149,9 +150,21 @@
   ui.$("skipDayBtn").addEventListener("click", () =>
     challenge.startChallenge(state.day),
   );
-  ui.$("undoTile").addEventListener("click", challenge.undoTile);
-  ui.$("clearTiles").addEventListener("click", challenge.clearTiles);
-  ui.$("checkBuild").addEventListener("click", challenge.checkBuild);
+  ui.$("undoTile").addEventListener("click", () =>
+    state.session?.mode === "challenge"
+      ? challenge.undoTile()
+      : lessons.undoTile(),
+  );
+  ui.$("clearTiles").addEventListener("click", () =>
+    state.session?.mode === "challenge"
+      ? challenge.clearTiles()
+      : lessons.clearTiles(),
+  );
+  ui.$("checkBuild").addEventListener("click", () =>
+    state.session?.mode === "challenge"
+      ? challenge.checkBuild()
+      : lessons.checkBuild(),
+  );
   for (const b of document.querySelectorAll(".map-point:not(.library)"))
     b.addEventListener("click", () =>
       world.navigatePlace(state.day, b.dataset.place),
@@ -164,18 +177,16 @@
       state.progress = progression.fresh();
       state.session = null;
       state.day = 1;
-      ui.$("introScreen").insertBefore(
-        document.querySelector(".worldmap"),
-        ui.$("introScreen").querySelector(".guide-row"),
-      );
       storage.save();
+      library.prepareOnboarding();
       ui.hud();
       ui.view("introScreen");
     }
   });
   if (state.progress.tutorialDone)
     state.day =
-      content.loops.filter((l) => learning.allowed(l.id)).at(-1)?.id || 1;
+      content.curriculum.days.filter((d) => learning.allowed(d.day)).at(-1)
+        ?.day || 1;
   library.libraryInit();
   // @TEST_HOOK
   ui.$("lessonScreen").insertBefore(ui.$("addressTarget"), ui.$("teachPanel"));
@@ -183,7 +194,7 @@
   ui.hud();
   // Restore the visible assessment first. Rendering an immediately hidden day
   // opening here would incorrectly acquire a greeting the player never saw.
-  if (!state.progress.activeChallenge || !challenge.restoreLibraryChallenge()) {
+  if (!state.progress.activeChallenge || !challenge.resumeChallenge()) {
     if (state.progress.tutorialDone) world.startWorld();
     else ui.view("introScreen");
   }

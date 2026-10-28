@@ -1,5 +1,5 @@
 /* Four authored onboarding interactions; ordinary shared learning records and rewards. */
-function createTutorial({ state, content, learning, ui, storage }) {
+function createTutorial({ state, content, learning, ui, storage, questions }) {
   function tutorialAnswer(correct) {
     learning.submitTutorial(
       content.tutorialIds[state.session.cardIndex],
@@ -14,6 +14,7 @@ function createTutorial({ state, content, learning, ui, storage }) {
     const n = state.session.cardIndex,
       c = content.tutorialCards[n],
       w = content.wordById[c.id];
+    learning.surface(c.id, "tutorial");
     learning.libraryExpose(c.id, "tutorial");
     storage.save();
     ui.$("teachPanel").classList.remove("hidden");
@@ -29,13 +30,12 @@ function createTutorial({ state, content, learning, ui, storage }) {
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
     ui.$("teachNote").textContent = c.help;
-    ui.$("dialectVariant").classList.add("hidden");
     ui.$("addressTarget").textContent =
       "Muhammad Jan → Player · Your answer → Muhammad Jan";
     ui.$("addressTarget").classList.remove("hidden");
     ui.$("guideMessage").textContent = [
       "First, select what Salaam means. You can try again if you make a mistake.",
-      "Now arrange my Pashto words into a sentence by tapping them in order.",
+      "Arrange this conventional greeting, taught as a complete phrase.",
       "This time you answer about yourself. There is no wrong choice.",
       "Now type the name you would like me to call you.",
     ][n];
@@ -63,7 +63,7 @@ function createTutorial({ state, content, learning, ui, storage }) {
     if (c.kind === "choice") {
       const choices = document.createElement("div");
       choices.className = "choices tutorial-choices";
-      for (const answer of ["Thank you", "Hello", "Goodbye"]) {
+      for (const answer of questions.distractors(w)) {
         const b = document.createElement("button");
         b.type = "button";
         b.className = "choice";
@@ -131,7 +131,7 @@ function createTutorial({ state, content, learning, ui, storage }) {
           if (
             QuestionEngine.evaluate({ kind: "construct" }, w, answer.join(" "))
           )
-            done("✓ څنګه یې؟ means How are you?");
+            done("✓ " + w.ps + " means " + w.en);
           else {
             tutorialAnswer(false);
             feedback.textContent =
@@ -149,7 +149,7 @@ function createTutorial({ state, content, learning, ui, storage }) {
         undo.disabled = clear.disabled = answer.length === 0;
         check.disabled = answer.length !== 2;
       };
-      for (const word of ["یې؟", "څنګه"]) {
+      for (const word of w.ps.split(" ").reverse()) {
         const tile = make(
           word,
           () => {

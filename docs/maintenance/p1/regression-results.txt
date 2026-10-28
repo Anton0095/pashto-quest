@@ -1,0 +1,10 @@
+A choices [ 'Window', 'House', 'Room', 'Door' ] unintroduced meanings []
+PASS P1-A
+B grammar tasks 10 distinct prompts 10 unlearned days []
+PASS P1-B
+C result false persistence warning Progress has not been saved: browser storage is full or unavailable. Progress stays in this tab. Retry or export before closing it.
+PASS P1-C
+PASS P1-A extended: encounter/intro separation, partial day, revision, all 14 skipped days × seven paces, saved choices
+PASS P1-B extended: all 33 concepts, four unique answer roles, exact correctness, 0/4 ×14 learned-day sets, all-day guided skip without unlocks
+PASS assessment answers cannot grant workshop grammar
+PASS grammar quality: eight distinct Day-1 concepts, 400 seeded correct-position samples [ 89, 105, 106, 100 ] and 17 independent role/agreement answer checks

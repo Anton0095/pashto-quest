@@ -44,7 +44,8 @@ export function activationProblems(candidate) {
     candidate.reviewStatus !== "approved" ||
     !candidate.nativeReview?.reviewer ||
     !candidate.nativeReview?.reference
-  ) gaps.push("documented qualified native sign-off or provisional status");
+  )
+    gaps.push("documented qualified native sign-off or provisional status");
   if (candidate.aliasOfLemmaId)
     gaps.push("existing lemma alias, not a new entry");
   return gaps;
@@ -77,10 +78,9 @@ export function inventory(data, backlog, engine, includeProjection = true) {
             ]),
           ),
         });
-        // Real chronological exposure includes story words, not just idealised quota arithmetic.
+        // Simulate assigned lexical encounters; story narration no longer introduces words.
         for (const id of new Set([
           ...Object.values(plan.locationAssignments).flat(),
-          ...Object.values(data.storyRequirements[day] || {}).flat(),
         ])) {
           const e = data.entries.find((e) => e.lemmaId === id);
           if (e)
@@ -187,8 +187,9 @@ export function inventory(data, backlog, engine, includeProjection = true) {
         "neighbourHome",
       ].map((scene) => [
         scene,
-        content.filter((e) => e.examples.some((ex) => ex.location === scene))
-          .length,
+        content.filter((e) =>
+          (e.examples || []).some((ex) => ex.location === scene),
+        ).length,
       ]),
     ),
     schemaVersion: 1,
@@ -197,12 +198,17 @@ export function inventory(data, backlog, engine, includeProjection = true) {
     nativeApprovedContentLemmas: content.filter(
       (e) => e.reviewStatus === "approved",
     ).length,
-    inactiveCandidates: backlog.candidates.filter((c) => !c.promotedLemmaId).length,
+    inactiveCandidates: backlog.candidates.filter((c) => !c.promotedLemmaId)
+      .length,
     candidateDisposition: {
       promoted: backlog.candidates.filter((c) => c.promotedLemmaId).length,
-      merged: backlog.candidates.filter((c) => c.disposition === "merged").length,
-      rejected: backlog.candidates.filter((c) => !c.selectedForExpansion).length,
-      replaced: backlog.candidates.filter((c) => c.disposition === "replacement").length,
+      merged: backlog.candidates.filter((c) => c.disposition === "merged")
+        .length,
+      rejected: backlog.candidates.filter((c) => !c.selectedForExpansion)
+        .length,
+      replaced: backlog.candidates.filter(
+        (c) => c.disposition === "replacement",
+      ).length,
     },
     aliasCandidates: backlog.candidates.filter((c) => c.aliasOfLemmaId).length,
     eligibleForPromotion: backlog.candidates.filter(
@@ -251,6 +257,13 @@ if (
       readFileSync("content/DISTRICT_VOCABULARY_CANDIDATES.json"),
     ),
     engine = readFileSync("src/library-engine.js", "utf8");
+  const archival = new Map(
+    JSON.parse(
+      readFileSync("content/LIBRARY_LEXICON.json", "utf8"),
+    ).entries.map((e) => [e.lemmaId, e.examples]),
+  );
+  for (const entry of data.entries)
+    entry.examples = archival.get(entry.lemmaId) || [];
   const report =
       JSON.stringify(inventory(data, backlog, engine), null, 2) + "\n",
     path = "content/DISTRICT_INVENTORY_REPORT.json";

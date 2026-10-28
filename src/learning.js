@@ -6,7 +6,6 @@ function createLearning({ state, content, progression }) {
     return {
       seen: f.totalAttempts || 0,
       correct: f.correctAttempts || 0,
-      wrong: (f.totalAttempts || 0) - (f.correctAttempts || 0),
       stage: f.stage || 0,
       dueAt: f.srsDueAt || 0,
     };
@@ -15,9 +14,6 @@ function createLearning({ state, content, progression }) {
   function isDue(id) {
     let s = stat(id);
     return s.seen > 0 && (s.stage === 0 || s.dueAt <= Date.now());
-  }
-  function learned(id) {
-    return stat(id).correct > 0;
   }
 
   function duePool() {
@@ -29,6 +25,7 @@ function createLearning({ state, content, progression }) {
         (id) =>
           isDue(id) &&
           content.wordById[id] &&
+          content.wordById[id].type !== "profile" &&
           currentAvailable(content.wordById[id]),
       ),
     ];
@@ -90,27 +87,42 @@ function createLearning({ state, content, progression }) {
         (content.LIBRARY_DATA.sourceMappings[id] || []).map((r) => r.lemmaId),
       ),
     ]);
-    // Retain exact authored sentences, but retime practice until their lexical components are introduced.
-    const original = [
-      ...new Set([
-        ...(content.LIBRARY_DATA.lessonSentenceTargets?.[day]?.[place] || []),
-        ...Array.from(
-          { length: day },
-          (_, i) => content.courses[i + 1 + "-" + place] || [],
-        ).flat(),
-      ]),
-    ]
-      .filter(
-        (id) =>
-          content.wordById[id]?.type === "sentence" &&
-          LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) &&
-          (content.LIBRARY_DATA.sourceMappings[id] || []).every((r) =>
-            taught.has(r.lemmaId),
-          ),
-      )
-      .slice(0, 8);
+    // Finite forms, plurals, adjective variants and whole case-governed chunks
+    // receive individual study cards. Incidental sentences never introduce them.
+    // A current-day workshop may follow this lexical phase; generation still waits
+    // for its actual unlock. Missing earlier workshops are not silently granted.
+    const forms =
+      day === 14
+        ? []
+        : content.LIBRARY_DATA.entries.flatMap((e) =>
+            taught.has(e.lemmaId)
+              ? e.forms
+                  .filter(
+                    (f) =>
+                      f.formId !== e.forms[0].formId &&
+                      f.composition.enabled &&
+                      LibraryEngine.formAllowed(e, f, day) &&
+                      f.prerequisiteGrammarIds.every(
+                        (id) =>
+                          state.progress.library.grammar[id] ||
+                          id === "grammar-day-" + day,
+                      ) &&
+                      !state.progress.library.acquired[
+                        e.lemmaId
+                      ]?.introducedFormIds.includes(f.formId),
+                  )
+                  .map((f) => "library-form:" + f.formId)
+              : [],
+          );
     const review = LibraryEngine.dueForms(state.progress, content.LIBRARY_DATA)
-      .filter(({ entry, form }) => LibraryEngine.formAllowed(entry, form, day))
+      .filter(
+        ({ entry, form }) =>
+          LibraryEngine.formAllowed(entry, form, day) &&
+          (day !== 14 ||
+            state.progress.library.acquired[
+              entry.lemmaId
+            ]?.introducedFormIds.includes(form.formId)),
+      )
       .slice(0, 2)
       .map(({ form }) => "library-form:" + form.formId);
     // Use a location's active expression, otherwise repeat this day's active
@@ -137,62 +149,158 @@ function createLearning({ state, content, progression }) {
         ...deferred,
         ...lexical,
         ...universals,
+        ...forms,
         ...review,
-        ...original,
       ]),
     ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day));
-    return pool.length ? pool : ["g-hello"];
+    return pool;
   }
-  function recordGrammarExposure(text) {
-    const normalise = (value) =>
-      String(value)
-        .normalize("NFC")
-        .replace(/[؟،]/g, " ")
-        .replace(/[^\u0600-\u06ff]+/g, " ")
-        .trim();
-    const shown = " " + normalise(text) + " ";
-    for (const word of content.words) {
-      const ps = normalise(word.ps);
-      if (
-        ps &&
-        word.loop <= state.session.loop &&
-        shown.includes(" " + ps + " ") &&
-        LibraryEngine.cardAllowed(
-          content.LIBRARY_DATA,
-          word.id,
-          state.session.loop,
-        )
-      )
-        libraryExpose(word.id, "grammar-model");
-    }
-  }
-  function generatedPractice(day, seed, count = 2) {
-    return SentenceEngine.select(
+  function availableSentences(day = state.session?.loop || state.day) {
+    return SentenceEngine.available(
       state.progress,
       content.LIBRARY_DATA,
       content.LIBRARY_DATA.sentenceFrames,
       day,
-      count,
-      seed,
     );
+  }
+  function generatedPractice(day, seed, count = 4, options = {}) {
+    let pool = availableSentences(day);
+    if (options.filter) pool = pool.filter(options.filter);
+    const excluded = new Set(options.excludeTexts || []);
+    pool = pool.filter((c) => !excluded.has(c.ps));
+    const goal = content.curriculum.days[day - 1],
+      focus = goal.focusFamilies;
+    const preferred = pool.filter(
+      (c) =>
+        focus.includes(c.generated.family) &&
+        (!goal.subjectFeatures ||
+          c.generated.subjects.some(
+            (s) =>
+              s.person === goal.subjectFeatures.person &&
+              s.number === goal.subjectFeatures.number,
+          )),
+    );
+    const from = (candidates) =>
+      SentenceEngine.select(
+        state.progress,
+        { ...content.LIBRARY_DATA, generatedCatalog: candidates },
+        content.LIBRARY_DATA.sentenceFrames,
+        day,
+        count,
+        seed,
+      );
+    const first = from(preferred.length ? preferred : pool);
+    if (first.length >= count)
+      return first.map((card) => content.registerGenerated(card));
+    return [
+      ...first,
+      ...from(pool.filter((c) => !first.some((x) => x.ps === c.ps))),
+    ]
+      .slice(0, count)
+      .map((card) => content.registerGenerated(card));
   }
   function prepareSentences(s) {
     if (s.mode !== "standard" || s.generatedPrepared) return;
     s.generatedPrepared = true;
     const plan = state.progress.library.plans[s.loop];
     const selections = (plan.generatedPractice ||= {});
-    // A completed visit reuses its first selection even after other districts unlock more forms.
-    const ids = (selections[s.loc] ||= generatedPractice(
-      s.loop,
-      s.attemptId,
-    ).map((card) => card.id));
-    s.generatedPractice = ids.map((id) => content.wordById[id]);
-    for (const card of s.generatedPractice) {
-      if (s.studySentences.includes(card.id)) continue;
-      s.studySentences.push(card.id);
-      s.required.push(card.id);
-      s.queue.push({ id: card.id, retries: 0 });
+    const requested = content.curriculum.days[s.loop - 1].sentenceCount;
+    if (!selections[s.loc]) {
+      const prior = Object.values(state.progress.library.deliveries).filter(
+        (d) => d.surface === "study" && d.mode === "standard",
+      );
+      const excluded = prior
+        .map((d) => content.wordById[d.id]?.ps)
+        .filter(Boolean);
+      const selected = generatedPractice(
+        s.loop,
+        plan.seed + s.attemptId,
+        requested,
+        { excludeTexts: excluded },
+      );
+      selections[s.loc] = selected.map((c) => c.id);
+      (plan.generatedPracticeCards ||= {})[s.loc] = JSON.parse(
+        JSON.stringify(selected),
+      );
+      state.progress.library.deficits[s.id] = {
+        requested,
+        available: selected.length,
+        missing: Math.max(0, requested - selected.length),
+        reason:
+          selected.length < requested
+            ? "Not enough distinct, previously unshown sentences from individually studied forms and unlocked grammar. Continue vocabulary/form and grammar practice; no fixed sentence is substituted."
+            : null,
+      };
     }
+    s.generatedPractice = selections[s.loc].map((id) => content.wordById[id]);
+    s.studySentences = s.generatedPractice.map((c) => c.id);
+    s.required.push(...s.studySentences);
+    s.queue.push(
+      ...s.studySentences.map((id) => ({ id, retries: 0, kind: "construct" })),
+    );
+    s.generationDeficit = state.progress.library.deficits[s.id];
+  }
+  function surface(id, surfaceName, extra = {}) {
+    const card = content.wordById[id];
+    if (!card) throw Error("Unknown instructional card: " + id);
+    const day = state.session?.loop || state.day;
+    if (card.type === "sentence") {
+      if (
+        card.generated?.origin !== "productive_engine" ||
+        !card.generated.requiredGrammarIds.every(
+          (g) => state.progress.library.grammar[g],
+        ) ||
+        !Object.values(card.generated.slots).every((r) =>
+          state.progress.library.acquired[
+            r.lemmaId
+          ]?.introducedFormIds.includes(r.formId),
+        )
+      )
+        throw Error(
+          "Instructional sentence lacks productive origin or actual unlocks: " +
+            id,
+        );
+    } else if (
+      card.type === "greeting" &&
+      !content.LIBRARY_DATA.phrases.some((p) => p.id === id)
+    )
+      throw Error("Unregistered fixed expression: " + id);
+    // Compact delivery evidence is separate from the complete frozen question snapshots.
+    // Keeping full text and long IDs in both key and value would exhaust offline storage.
+    let hash = 2166136261;
+    for (let i = 0; i < id.length; i++)
+      hash = Math.imul(hash ^ id.charCodeAt(i), 16777619);
+    let key = `${state.session?.attemptId || "reference"}:${surfaceName}:${hash >>> 0}`;
+    while (
+      state.progress.library.deliveries[key] &&
+      state.progress.library.deliveries[key].id !== id
+    )
+      key += ":";
+    state.progress.library.deliveries[key] ||= {
+      id,
+      day,
+      surface: surfaceName,
+      mode: state.session?.mode || "reference",
+      kind:
+        card.type === "sentence"
+          ? "generated_sentence"
+          : card.type === "greeting"
+            ? "fixed_phrase"
+            : "lexical_or_interface",
+      family: card.generated?.family || null,
+      ...extra,
+    };
+    return card;
+  }
+  function deliverySummary() {
+    const rows = Object.values(state.progress.library.deliveries);
+    const sentences = rows.filter((d) => d.kind === "generated_sentence");
+    return {
+      instructionalSentences: sentences.length,
+      generatedSentences: sentences.length,
+      generatedPercent: sentences.length ? 100 : null,
+      fixedPhrases: rows.filter((d) => d.kind === "fixed_phrase").length,
+    };
   }
   function completeRound(day) {
     return progression.completeRound(state.progress, day);
@@ -205,9 +313,6 @@ function createLearning({ state, content, progression }) {
   }
   function placeAccessible(day, place) {
     return progression.placeAccessible(state.progress, day, place);
-  }
-  function needsOpening(day, place) {
-    return progression.needsOpening(state.progress, day, place);
   }
   function currentAvailable(word) {
     return word.loop === 0 ? state.progress.tutorialDone : allowed(word.loop);
@@ -225,10 +330,6 @@ function createLearning({ state, content, progression }) {
       `challenge:${s.attemptId}:${s.index}`,
       "challenge",
     );
-    if (correct)
-      for (const day of content.LIBRARY_DATA.challengeGrammarMappings[q.id] ||
-        [])
-        LibraryEngine.unlock(state.progress, day, "challenge");
     s.submittedAnswer = value;
     s.locked = true;
     s.answered++;
@@ -260,7 +361,10 @@ function createLearning({ state, content, progression }) {
       w = content.wordById[item.id],
       previous = stat(w.id);
     const correct = QuestionEngine.evaluate(
-      { kind: "word", direction: "ps-en" },
+      {
+        kind: item.kind || "word",
+        direction: item.kind === "construct" ? "en-ps" : "ps-en",
+      },
       w,
       value,
     );
@@ -279,7 +383,7 @@ function createLearning({ state, content, progression }) {
       s.passed.add(w.id);
       const identity = LibraryEngine.identity(content.LIBRARY_DATA, w.id);
       const expression = content.LIBRARY_DATA.phrases.some(
-        (p) => p.id === w.id && p.kind === "fixed conversational expression",
+        (p) => p.id === w.id,
       );
       if (!expression && previous.correct === 0)
         gain = progression.awardXP(state.progress, "practice:" + identity, 10);
@@ -304,12 +408,13 @@ function createLearning({ state, content, progression }) {
     const first = !s.firstAsked.has(id);
     s.firstAsked.add(id);
     s.tutorialResponses++;
-    libraryPractice(
-      id,
-      correct,
-      `tutorial:${s.attemptId}:${s.tutorialResponses}`,
-      "tutorial",
-    );
+    if (content.wordById[id]?.type !== "profile")
+      libraryPractice(
+        id,
+        correct,
+        `tutorial:${s.attemptId}:${s.tutorialResponses}`,
+        "tutorial",
+      );
     s.answered++;
     if (correct) {
       if (first) s.firstCorrect++;
@@ -317,40 +422,21 @@ function createLearning({ state, content, progression }) {
       s.earned += progression.awardXP(state.progress, "practice:" + id, 10);
     }
   }
-  function preLessonGrammar(day, place) {
-    return (
-      (day === 1 && !state.progress.personIntros[1]) ||
-      needsOpening(day, place) ||
-      (day === 2 &&
-        place === "school" &&
-        !state.progress.complete["2-school"]) ||
-      ([3, 4, 5].includes(day) &&
-        place === { 3: "nature", 4: "residential", 5: "school" }[day] &&
-        !state.progress.complete[`${day}-${place}`] &&
-        !state.progress.personIntros[day])
-    );
-  }
   return {
-    recordGrammarExposure,
+    availableSentences,
+    surface,
+    deliverySummary,
     generatedPractice,
     prepareSentences,
-    stat,
-    isDue,
-    learned,
     duePool,
-    libraryContext,
     libraryExpose,
-    libraryPractice,
     libraryLessonPool,
     completeRound,
     passedChallenge,
     allowed,
     placeAccessible,
-    needsOpening,
-    currentAvailable,
     submitChallenge,
     submitLesson,
     submitTutorial,
-    preLessonGrammar,
   };
 }

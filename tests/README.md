@@ -1,49 +1,31 @@
 # Pashto Quest verification
 
-Use the single current entry point from the repository root. Full checks require Python 3, Node.js, Playwright and Chromium; browser suites honour `CHROMIUM_PATH` and may use the Codex cloud-runtime Playwright fallback.
+Run `python3 tools/verify.py` from the repository root with Python 3, Node.js, Playwright and Chromium. Browser suites honour `CHROMIUM_PATH` and the managed cloud runtime fallback. `--quick` explicitly excludes browsers and cannot refresh the measured delivery report. Edit sources and run `python3 tools/build.py` first; never edit the offline release directly.
 
-```sh
-python3 tools/build.py --check        # generated index.html parity
-node tools/district-inventory.mjs --check
-python3 tools/verify.py               # includes ALL browser suites
-python3 tools/verify.py --quick       # excludes browser suites; not equivalent
-```
-
-`tools/verify.py` also performs editable/compiled JS syntax, lexical model/activation checks, generated inventory parity and Python content checks. Logs are emitted to a temporary directory; their paths are per-run and are not persistent project specifications.
-
-| Suite | Contract exercised |
+| Suite | Contract |
 |---|---|
-| `tests/game-state.test.mjs` | Domain APIs: all answer kinds, frozen fourteen-day assessments, atomic first submissions, shared rewards/SRS, retries, current saves and rejection/reset |
-| `tests/resume-behaviour.test.mjs` | Public controls across all fourteen skip days; partial tiles, pause/resume, locked feedback, persisted results, and network-disabled HTML boot without runtime fetches |
-| `tests/curriculum-first.test.mjs`, `tests/curriculum-schema.test.py` | All 469 identities/565 forms; provisional/native status, curated order, Day 5 Dark, every pace, 20,000 deterministic licensed compositions and adversarial feature/unlock/schema cases |
-| `tests/generated-practice.test.mjs` | Real study-before-generation, new combinations, mobile controls, frozen provenance/options/tiles, reload and retry |
-| `tests/current-model.test.mjs` | District keys/pace/plans, lemma/form SRS, identity and fixed-language contract |
-| `tests/curriculum-expansion.test.mjs` | Candidate selection, universal classes, Day 1 no-action rules, synthetic future capacity |
-| `tests/district-content.test.py` | Incomplete language, duplicate identities and prohibited candidate promotion |
-| `tests/audio.test.mjs` | MP3 preference, Pashto voice discovery/fallback, delayed voices, cancellation and warnings using mocks |
-| `tests/independent-browser.test.mjs` | Public UI only; actual tutorial, study/quiz fairness, XP/replay/reload, Library, mobile and save handling |
-| `tests/challenge-disclosure.test.mjs` | Unstudied challenge-word masking, answer-first scoring and restored question presentation |
-| `tests/week1.test.mjs` | Day 1 four-interaction tutorial, normal/skip progression, Days 6/7 narratives and graduation |
-| `tests/week2.test.mjs` | Days 8–14 lessons, contextual replies, distractor tiles, pass thresholds and persistence |
-| `tests/library-vocabulary.test.mjs` | Paces, lexeme exposure/forms/SRS, study/reference, saved attempts |
-| `tests/full-curriculum.test.mjs` | All 14 days, seven pace settings, normal/skip routes and supply shortfalls |
-| `tests/narrative-greetings.test.mjs` | Expression-first lessons/assessments, active vs pending greetings, first encounters, Day 2 verbs, skip |
+| `p1-regression.test.mjs`, `p1-storage.test.mjs`, `p1-browser.test.mjs` | Studied-only choices, partial/skip/revision/reload, all 33 English grammar concepts and real prerequisites, uncued recall, quota/denial/no-op/intermittent writes, export/retry/recovery and corruption separation at 375/1280px |
+| `generation-cache.test.mjs` | All fourteen complete card/dialogue and 20-seed payload digests match the pre-optimisation engine; one immutable lexical index, unlock invalidation and mutable/shallow-frozen data rebuilds |
+| `cleanup-model.test.mjs`, `cleanup-browser.test.mjs` | All fourteen days retain people, scenes, story and access rules; 375/1280 UI truth, pace persistence/reset, filters, visiting teachers, frozen assessment counts, grammar catch-up, active-item audio and empty visits without XP |
+| `productive-generation.test.mjs` | All 12 positive and 15 negative PR #21 grammar fixtures; every licensed binding, 1,000 deterministic selections, semantic/form/grammar exclusions |
+| `generated-architecture.test.mjs` | No startup catalogue/authored runtime cards; real word → grammar → composition order; Day 1 Home; seven paces and normal/skip routes; no hidden introductions or repeated standard study texts |
+| `generated-dialogue.test.mjs` | Six typed generated question/reply families, exact semantic joins, speaker referents, guided early dialogues, coordinated-clause syntax/provenance |
+| `game-state.test.mjs` | Schema 7 generated snapshots, all 28 families including compound AST restore, partial/locked tiles, proof tampering rejection, score/reward locks and explicit reset |
+| `generated-learning.test.mjs` | Real mobile tutorial and default Home: six lemmas, grammar after words, three generated study cards, shuffled indexed construction; pace 0/4 adaptation; committed demonstration screenshots |
+| `resume-behaviour.test.mjs` | Offline HTML boot, partial/locked generated attempts, exact reload/retry, corrupt proof preservation and explicit reset |
+| `challenge-disclosure.test.mjs` | No generated unknown-form clauses on fresh skip; explicit adaptations; unseen word/phrase meanings hidden before submission, including reload |
+| `independent-browser.test.mjs` | Public controls without injected bridge: tutorial, actual Home study/construction, replay XP locks, Library, 375/1280 layouts and reload |
+| `full-curriculum.test.mjs` | Fourteen days × seven paces × normal/skip; 392 visits and 196 assessments; independently checks rendered lesson/question/dialogue/feedback clauses against compiler and actual study; story/awards/exams |
+| `curriculum-first.test.mjs`, `curriculum-schema.test.py` | All 473 identities/607 forms; provisional/native status, curated schedule, seven paces and study vs encounter |
+| `current-model.test.mjs`, `curriculum-expansion.test.mjs`, `district-content.test.py` | Planner, identity/SRS, draft activation and candidate constraints |
+| `audio.test.mjs` | Mocked MP3 preference, delayed Pashto voice discovery, fallback warnings and cancellation |
 
-The comprehensive matrix has **14 profiles** (seven paces × normal/skip), with expected **392 normal district visits and 196 challenges**. At pace 24, every Day 1–13 plan assigns six distinct provisional district lemmas per location; Day 14 assigns none.
+Full verification also checks all editable/compiled JavaScript syntax and generated release, vocabulary, curriculum, district and capacity reports. Only after all suites pass does `tools/delivery-audit.mjs --write` publish the measured browser observations. Its `--check` needs only committed files and verifies the release SHA-256; code changes require another complete run. `docs/grammar/INSTRUCTIONAL_DELIVERY_REPORT.md` reports actual delivered sentence observations, excluding the six registered conventional phrases. Potential family/day counts and exact missing forms are separately reported in `GENERATION_COVERAGE.md`.
 
-`tests/curriculum-contract.json` is a regression fixture preserving previously authored bilingual content and stable IDs; it is not a historical compatibility runtime. `tests/acceptance_fixtures.json` contains test fixtures. Browser suites may inject test-only bridges; none is part of the generated playable release. The independent UI and resume-behaviour suites use public controls without injected runtime bridges. Model/audio tests call whole module APIs instead of locating implementation snippets in `app.js`. The curriculum matrix completes the current four-interaction tutorial through its rendered controls before exercising lessons/challenges.
+The browser matrix completes the rendered four-interaction tutorial before exercising lessons and assessments. Profiles that deliver no sentences are reported as N/A, never an invented 100%. No complete authored sentence bank, grammar model or fixed dialogue answer is loaded at runtime. Archived banks and `curriculum-contract.json` remain language evidence/fixtures, not normal teaching content. Test bridges exist only in injected test pages; the independent browser suite uses public controls.
 
-## Core acceptance invariants
+Daily challenges remain 15 items/pass 12; Days 7/14 remain 25/pass 20. Skip never completes unseen visits or introduces forms; Day 1 has no lexical actions and Day 14 no new forms. Indexed tile duplicates, answer masking, retries, XP locks and current-save integrity are checked. Schema 7 alone is supported; incompatible/corrupt saves stay untouched until explicit reset.
 
-- Day 1 tutorial requires four different interaction types and saves optional player profile; Day 2+ skip is immediately available.
-- Distinct lemma/form history and frozen district assignments remain consistent; Day 1 has no lexical actions; Day 14 has no compulsory new words.
-- Correctly use 12/15 daily passes and 20/25 on Days 7 and 14; graduation requires the actual Day 7 exam.
-- Never-studied challenge words do not reveal English meaning before first submission, even after reload.
-- Replay cannot farm XP; voluntary Library and phrase review cannot grant expression XP; first-score locks persist.
-- Schema 6 alone is supported. Unsupported/corrupt saves preserve raw stored content until an explicit reset. Schema 4 is deliberately rejected; no historical repair/migration tests require obsolete runtime code.
-- Only mechanically complete candidates with honest provisional metadata or documented native approval can activate; pending English-only greetings stay inactive.
-- Offline-after-delivery works without runtime JSON requests; RTL, desktop/mobile browser controls and visible audio fallback remain accessible.
+Passing tests do not certify native Laghman translations, naturalness, pronunciation, recordings or physical iPhone Safari/Windows audio. All language remains provisional pending real reviewer evidence.
 
-A passing test suite does **not** certify Pashto translations, local pronunciation, bundled recordings, physical iPhone Safari or physical Windows compatibility. Do not claim such verification without independent testing.
-
-Full checks also verify `content/CURRICULUM_AUDIT.json` parity and the effective per-day/per-district inventory. Generation tests deliberately include both authored outputs and three new composed drafts, using explicit form study rather than exposure or mastery as eligibility. Wrong gender/number/case/person, missing own romanisation, future forms and locked grammar are adversarial exclusions. Feature consistency is not native validation. Current default quotas may be short on earlier days because the planner no longer fills them with future-stage words. The complete curriculum matrix still exercises all fourteen days, seven paces and normal/skip routes; authored-content fixtures remain unchanged.
+Performance runs separately with `node tools/performance-benchmark.mjs --samples 20 --output work/p1/performance.json`. Optional `--profile desktop|mobile4x`, `--pace 0|12|24` and `--release path/to/frozen.html` isolate reproducible runs. The browser-only index counters are injected by the harness; no production instrumentation ships. Ten review sessions each replay Day-14 Home, answer up to ten due items and visit a Library entry, using a synthetic 90-day advance to make review due. Heap figures are CDP JavaScript heap after forced GC; sampled pre-GC high water is explicitly not an exact allocation peak.
