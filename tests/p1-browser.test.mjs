@@ -28,7 +28,7 @@ for(const width of [375,1280]) {
    s.index=s.questions.findIndex(q=>q.unstudied);s.answered=s.index;t.challenge.showChallengeQuestion();
    return {q:s.questions[s.index],card:t.content.wordById[s.questions[s.index].id]};
   });
-  await p.screenshot({path:`docs/maintenance/p1/uncued-recall-${width}.png`});
+  await p.locator("#quizPanel").screenshot({path:`docs/maintenance/p1/uncued-recall-${width}.png`});
   assert(!unknown.q.choiceOrder.includes(unknown.card.en));
   assert(!(await p.locator('#choices').innerText()).includes(unknown.card.en));
   await p.locator('#unseenRecall').fill('partial draft');
@@ -75,6 +75,18 @@ for(const width of [375,1280]) {
   assert((await p.locator('#quizPrompt').innerText()).startsWith('Reference:'));
   await answerCurrent(p);assert.deepEqual(await p.evaluate(()=>__test.state.progress.library.grammar),{});
   const frozenPrompt=await p.locator('#quizPrompt').innerText();await p.reload();assert.equal(await p.locator('#quizPrompt').innerText(),frozenPrompt);
+  // Fill real Chromium localStorage to its native quota, then recover.
+  const nativeQuota=await p.evaluate(()=>{
+    let low=0,high=8*1024*1024,quotaErrors=0;
+    while(low<high){const n=Math.ceil((low+high)/2);try{localStorage.setItem('quota-fill','x'.repeat(n));low=n}catch(error){if(error.name!=='QuotaExceededError')throw error;quotaErrors++;high=n-1}}
+    localStorage.setItem('quota-fill','x'.repeat(low));
+    __test.state.progress.xp=123456789;
+    return {quotaErrors,save:__test.storage.save(),bytes:low*2};
+  });
+  console.log('Native Chromium quota filled',width,nativeQuota.bytes,'UTF-16 filler bytes; failed save:',!nativeQuota.save);
+  assert(nativeQuota.quotaErrors>0&&nativeQuota.bytes>1024*1024);assert.equal(nativeQuota.save,false);assert(await p.locator('#saveWarning').isVisible());
+  await p.evaluate(()=>localStorage.removeItem('quota-fill'));await p.locator('#retrySave').click();assert(!(await p.locator('#saveWarning').isVisible()));
+  await p.reload();assert.equal(await p.evaluate(()=>__test.state.progress.xp),123456789);
   // Storage unavailable even at initial read must boot and warn, without modal reset.
   await p.addInitScript(()=>{Storage.prototype.getItem=function(){throw new DOMException('Denied','SecurityError')};Storage.prototype.setItem=function(){throw new DOMException('Denied','SecurityError')}});
   await p.reload();assert(await p.locator('#saveWarning').isVisible());assert.equal(await p.locator('#saveCompatibility').count(),0);assert(await p.locator('#startTutorial').isVisible());

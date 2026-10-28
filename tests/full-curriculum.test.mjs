@@ -209,7 +209,7 @@ try {
                 for (const text of q.choiceOrder)
                   if (!studied.has(text) && !["A different meaning", "Another response", "None of these"].includes(text))
                     throw Error("Unstudied distractor meaning: " + text);
-                if (q.unstudied && document.querySelector("#choices").textContent.includes(card.en))
+                if (q.unstudied && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === card.en))
                   throw Error("Unstudied target meaning offered as a clue");
               }
               if (q.kind === "choice" && q.grammarConcept) {

@@ -1,10 +1,10 @@
 # Measured instructional sentence delivery
 
-**4649 / 4649 independently observed sentence surfaces were generated: 100%.** Zero authored sentence surfaces were delivered. The six designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.
+**4650 / 4650 independently observed sentence surfaces were generated: 100%.** Zero authored sentence surfaces were delivered. The six designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.
 
 Actual rendered browser surfaces across fourteen complete profiles; compiler provenance and actual form/grammar unlocks checked independently at each sentence surface.
 
-Release SHA-256: `312ac4061fe25eccf4602f4de5cff9a87fd98746c98467a78b125b70d3564cf1`. The complete browser matrix covered 392 normal district visits and 196 assessments, all fourteen days, seven paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
+Release SHA-256: `d58f62d15e6087fa3463f337477583cddbdd5b7c8763343996af069555d1c5fe`. The complete browser matrix covered 392 normal district visits and 196 assessments, all fourteen days, seven paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
 
 ## Day 1 Home: before and after
 
@@ -35,19 +35,19 @@ Default Home needs no other district visit and introduces no action verb. The wi
 | Day | Generated question/answer families | Dialogue families | Adapted tasks |
 |---|---|---|---:|
 | 1 | equative_descriptor | guided_scene | 0 |
-| 2 | equative_descriptor, present_attributive, present_transitive | guided_scene | 0 |
+| 2 | present_attributive, present_transitive | guided_scene | 0 |
 | 3 | present_attributive, present_intransitive, present_transitive | guided_scene | 0 |
 | 4 | coordinated_present, present_attributive, present_transitive | guided_scene | 0 |
 | 5 | present_attributive, present_transitive | guided_scene | 0 |
-| 6 | present_attributive, present_compound_predicate, present_joint_action, present_transitive | guided_scene | 0 |
+| 6 | coordinated_present, present_attributive, present_compound_predicate, present_joint_action | guided_scene | 0 |
 | 7 | coordinated_present, present_attributive, present_compound_transitive, present_joint_action, present_transitive | guided_scene | 0 |
-| 8 | attributive_equative, demonstrative_descriptor, demonstrative_transitive, equative_noun, present_attributive | guided_scene | 0 |
-| 9 | counted_equative, counted_transitive, demonstrative_transitive, present_attributive, present_intransitive | guided_scene | 0 |
-| 10 | demonstrative_transitive, location_adverb_equative, spatial_equative, where_question | guided_scene, where_question | 0 |
-| 11 | possessive_descriptor, possessive_equative, possessive_spatial, present_attributive, present_transitive, spatial_equative | guided_scene, where_question | 0 |
-| 12 | count_location, how_many_question, location_adverb_equative, present_transitive, what_object_question, where_question, which_question, whose_question | how_many_question, where_question, who_subject_question | 0 |
-| 13 | demonstrative_descriptor, demonstrative_transitive, present_intransitive_adverb, present_transitive, present_transitive_adverb | guided_scene, which_question, who_subject_question | 0 |
-| 14 | coordinated_present, count_location, demonstrative_descriptor, equative_descriptor, how_many_question, location_adverb_equative, possessive_equative, present_attributive, present_intransitive_adverb, present_transitive, spatial_equative, what_object_question, which_question | guided_scene, how_many_question, what_object_question, where_question, which_question, who_subject_question, whose_question | 0 |
+| 8 | attributive_equative, demonstrative_descriptor, demonstrative_transitive, equative_descriptor, equative_noun, present_attributive | guided_scene | 0 |
+| 9 | counted_equative, counted_transitive, demonstrative_transitive | guided_scene | 0 |
+| 10 | demonstrative_transitive, location_adverb_equative, present_attributive, spatial_equative, where_question | guided_scene, where_question | 0 |
+| 11 | location_adverb_equative, possessive_descriptor, possessive_equative, possessive_spatial, present_transitive | guided_scene, where_question | 0 |
+| 12 | demonstrative_descriptor, how_many_question, location_adverb_equative, present_transitive, what_object_question, where_question, which_question, who_subject_question, whose_question | where_question, which_question, who_subject_question | 0 |
+| 13 | count_location, demonstrative_descriptor, present_intransitive_adverb, present_transitive, present_transitive_adverb | how_many_question, which_question, who_subject_question | 0 |
+| 14 | coordinated_present, count_location, demonstrative_descriptor, demonstrative_transitive, equative_descriptor, how_many_question, location_adverb_equative, possessive_equative, present_attributive, present_intransitive_adverb, present_transitive, spatial_equative, what_object_question, which_question | guided_scene, how_many_question, what_object_question, where_question, which_question, who_subject_question, whose_question | 0 |
 
 ## All tested profiles
 
@@ -59,13 +59,13 @@ Default Home needs no other district visit and introduces no action verb. The wi
 | 4 | Skip | 0 | N/A (no sentences) |
 | 8 | Normal | 752 | 100% |
 | 8 | Skip | 0 | N/A (no sentences) |
-| 12 | Normal | 774 | 100% |
+| 12 | Normal | 773 | 100% |
 | 12 | Skip | 0 | N/A (no sentences) |
-| 16 | Normal | 792 | 100% |
+| 16 | Normal | 791 | 100% |
 | 16 | Skip | 0 | N/A (no sentences) |
-| 20 | Normal | 793 | 100% |
+| 20 | Normal | 794 | 100% |
 | 20 | Skip | 0 | N/A (no sentences) |
-| 24 | Normal | 797 | 100% |
+| 24 | Normal | 799 | 100% |
 | 24 | Skip | 0 | N/A (no sentences) |
 
 ## Fixed expression inventory

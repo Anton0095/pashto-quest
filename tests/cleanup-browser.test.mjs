@@ -73,7 +73,7 @@ for (const width of [375, 1280]) {
     await p.locator('[data-pace="4"]').click();
     assert.match(
       await p.locator("#libraryPaceFeedback").innerText(),
-      /Saved 4\/day, starting Day 1/,
+      /Selected 4\/day, starting Day 1/,
     );
     await p.locator("#libraryClose").click();
     assert.match(await status.innerText(), /4\/day.*1 per teaching location/);

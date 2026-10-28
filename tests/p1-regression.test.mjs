@@ -82,3 +82,34 @@ if(mode==='all'){
  t.learning.submitChallenge(q.correct);assert.deepEqual(plain(t.state.progress.library.grammar),{});
  console.log('PASS assessment answers cannot grant workshop grammar');
 }
+if(mode==='all'){
+ const t=runtime(),positions=[0,0,0,0],concepts=new Set();
+ for(let seed=1;seed<=40;seed++){
+  reset(t,0);t.state.progress.library.seed=seed;
+  for(const q of t.questions.selectChallenge(1).filter(q=>q.kind==='choice')){
+   positions[q.choiceOrder.indexOf(q.correct)]++;concepts.add(q.grammarConcept);
+  }
+ }
+ assert.equal(concepts.size,8);assert(positions.every(n=>n>=60&&n<=140),'Correct positions must not form an answer-location shortcut');
+ const expected={
+  'feminine-description':'Feminine singular adjective + feminine singular equative',
+  'masculine-description':'Masculine singular adjective + masculine singular equative',
+  'plural-description':'Plural adjective and plural equative',
+  'agreement-controller':'The masculine singular noun',
+  'sov-order':'Subject → object → finite verb',
+  'speaker-i':'First person singular + first person singular',
+  'familiar-you':'Second person singular',
+  'respectful-you':'Respectful/plural second person',
+  'group-you':'Second person plural',
+  'we':'First person plural: we',
+  'they':'Third person plural',
+  'attributive-order':'Adjective → noun',
+  'count-form':'An evidenced numeral construction with its required noun form',
+  'where-response':'The referent’s location',
+  'possessed-agreement':'The feminine singular owned noun',
+  'question-count':'The count of that item',
+  'adverb-agreement':'It stays first person singular',
+ };
+ for(const [id,correct] of Object.entries(expected))assert.equal(t.content.LIBRARY_DATA.grammarAssessment.concepts.find(c=>c.id===id).correct,correct,'Independent grammar-role expectation '+id);
+ console.log('PASS grammar quality: eight distinct Day-1 concepts, 400 seeded correct-position samples',positions,'and 17 independent role/agreement answer checks');
+}
