@@ -4,7 +4,7 @@
 import argparse, json, re
 from pathlib import Path
 from build import build
-from curriculum_schema import audit
+from curriculum_schema import audit, is_native_approved
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -25,12 +25,7 @@ def rendered():
     result["archivedAuthoredSentenceCount"] = len(raw["generationAttestations"])
     result["playableAuthoredSentenceCount"] = 0
     result["runtimeSentenceSource"] = "productive_engine_only"
-    result["nativeCertifiedLemmas"] = sum(
-        e.get("reviewStatus") == "approved"
-        and bool(e.get("nativeReview", {}).get("reviewer"))
-        and bool(e.get("nativeReview", {}).get("reference"))
-        for e in data["entries"]
-    )
+    result["nativeCertifiedLemmas"] = sum(is_native_approved(e) for e in data["entries"])
     result["sourceMappingCorrections"] = raw.get("sourceMappingCorrections", [])
     result["generationBoundary"] = {
         "policy": "Typed feature and semantic constraints over attested forms. Independent form study and grammar unlocks required; see GENERATION_AUDIT.json for day/family capacity and exact missing features. Provisional language, never native certification.",

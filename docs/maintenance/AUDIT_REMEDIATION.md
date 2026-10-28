@@ -6,4 +6,6 @@ Stage 1 protects the stored payload against stale-tab writes, observes storage/l
 
 Stage 2 preserves construction retry metadata, resolves listener labels separately from the teaching host, highlights optional expressions with shared feedback, freezes paused attempts while refreshing explicitly new attempts, seeds varied studied dud tokens and accepts explicit form-specific English infinitive formatting alternatives. No lemma-family synonyms or Pashto inflections were inferred. Ambiguous slash/person glosses remain editorial work. Full verification: exit 0, 82 checks; the additional teaching-browser regression ran separately at both widths with exit 0. [Full log](audit/stage2-verification.txt), [model regression](audit/stage2-targeted.txt), [browser regression](audit/stage2-browser.txt).
 
-Stages 3–4 and final disposition remain pending. No merge is authorised.
+Stage 3 separates structural save validation from storage coordination, sentence-scene rendering from HUD helpers, and shared feedback from screens. Assessment creation no longer stores a daily question bank: the active attempt owns its frozen questions. Composition and pairing retain their shared feature/evidence index rather than adding wrappers. Approval reporting consistently requires `native_approved` plus named review evidence; synthetic-only fixtures exercise this without approving real records. Full verification: exit 0, 90 checks; [command log](audit/stage3-verification.txt).
+
+Stage 4 and final disposition remain pending. No merge is authorised.

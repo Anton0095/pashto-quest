@@ -1,6 +1,6 @@
 /* Every assessment proposition and Pashto reply is compiled from actual unlocks.
  * Deficits adapt to vocabulary/English grammar tasks, never authored sentence targets. */
-function createQuestions({ state, content, progression, storage }) {
+function createQuestions({ state, content, progression }) {
   const clone = (x) => JSON.parse(JSON.stringify(x));
   function isUnstudied(id) {
     return content.LIBRARY_DATA.phrases.some((p) => p.id === id)
@@ -135,7 +135,9 @@ function createQuestions({ state, content, progression, storage }) {
       content.LIBRARY_DATA,
       day,
     );
-    if (!newAttempt && plan.challengeQuestions) return clone(plan.challengeQuestions);
+    const frozen = state.session?.mode === "challenge" && state.session.loop === day && !state.session.finished && state.session.index < state.session.questions.length
+      ? state.session : state.progress.activeChallenge?.loop === day ? state.progress.activeChallenge : null;
+    if (!newAttempt && frozen) return clone(frozen.questions);
     const random = QuestionEngine.randomFor(plan.seed + day * 7919),
       blueprint = createAssessmentContent({ content, progression }).blueprint(
         day,
@@ -382,8 +384,6 @@ function createQuestions({ state, content, progression, storage }) {
         ? "Not enough distinct licensed sentences from actually introduced forms and grammar; English grammar tasks preserve assessment length."
         : null,
     };
-    plan.challengeQuestions = clone(out);
-    storage.save();
     return clone(out);
   }
   function originsForChoices(

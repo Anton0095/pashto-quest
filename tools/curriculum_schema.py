@@ -3,6 +3,11 @@
 import json, re
 from pathlib import Path
 
+def is_native_approved(entry):
+    review = entry.get("nativeReview", {})
+    return entry.get("reviewStatus") == "native_approved" and bool(review.get("reviewer")) and bool(review.get("reference"))
+
+
 POS = {
     "noun",
     "verb",
@@ -51,7 +56,9 @@ def validate_curriculum(data):
         entries[eid] = e
         if e["partOfSpeech"] not in POS:
             raise ValueError("Invalid POS: " + eid)
-        if e.get("reviewStatus") not in {"needs_native_review", "provisional_playable", "native_approved", "approved"}:
+        if e.get("reviewStatus") == "native_approved" and not is_native_approved(e):
+            raise ValueError("Native approval requires reviewer evidence: " + eid)
+        if e.get("reviewStatus") not in {"needs_native_review", "provisional_playable", "native_approved"}:
             raise ValueError("Invalid playable review status: " + eid)
         if e.get("reviewStatus") == "provisional_playable" and (
             e.get("userVerified") is not False

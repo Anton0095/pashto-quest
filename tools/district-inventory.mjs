@@ -41,7 +41,7 @@ export function activationProblems(candidate) {
     if (candidate.userVerified !== false)
       gaps.push("explicit unchecked user verification");
   } else if (
-    candidate.reviewStatus !== "approved" ||
+    candidate.reviewStatus !== "native_approved" ||
     !candidate.nativeReview?.reviewer ||
     !candidate.nativeReview?.reference
   )
@@ -196,7 +196,7 @@ export function inventory(data, backlog, engine, includeProjection = true) {
     activatedLemmas: data.entries.length,
     activatedContentLemmas: content.length,
     nativeApprovedContentLemmas: content.filter(
-      (e) => e.reviewStatus === "approved",
+      (e) => e.reviewStatus === "native_approved" && !!e.nativeReview?.reviewer && !!e.nativeReview?.reference,
     ).length,
     inactiveCandidates: backlog.candidates.filter((c) => !c.promotedLemmaId)
       .length,

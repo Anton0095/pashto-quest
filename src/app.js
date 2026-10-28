@@ -46,7 +46,7 @@
     Audio,
   });
   const learning = createLearning({ state, content, progression });
-  const questions = createQuestions({ state, content, progression, storage });
+  const questions = createQuestions({ state, content, progression });
   const narrative = createNarrative({ state, content, ui, audio, storage, questions });
   const tutorial = createTutorial({ state, content, learning, ui, storage, questions });
   const grammar = createGrammar({
