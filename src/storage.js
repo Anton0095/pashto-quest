@@ -8,6 +8,22 @@ function createStorage({
   const KEY = "pashto-town-days-v1";
   let saveProblem = null, persistenceProblem = null, readBlocked = false;
   let notifyPersistence = () => {};
+  let observed, conflict = false;
+  try { observed = accessInitial(); } catch {}
+  function accessInitial() { return (backend || globalThis.localStorage).getItem(KEY); }
+  function checkExternalChange() {
+    try {
+      if (observed !== undefined && access().getItem(KEY) !== observed) {
+        conflict = true;
+        persistenceFailure("Newer saved progress exists in another tab. This tab has not overwritten it. Export this tab’s progress if needed, then reload to use the newer save. Progress records are not merged.");
+      }
+    } catch {}
+  }
+  if (!backend && typeof globalThis.addEventListener === "function") {
+    globalThis.addEventListener("storage", event => { if (event.key === KEY || event.key === null) checkExternalChange(); });
+    globalThis.addEventListener("pageshow", checkExternalChange);
+    globalThis.document?.addEventListener("visibilitychange", () => { if (!document.hidden) checkExternalChange(); });
+  }
   const access = () => backend || globalThis.localStorage;
   function persistenceFailure(message) {
     persistenceProblem = message;
@@ -25,6 +41,52 @@ function createStorage({
     );
   }
   function currentSave(p) {
+    try { return nestedSave(p) && validateSave(p); } catch { return false; }
+  }
+  function nestedSave(p) {
+    const object = v => v !== null && typeof v === "object" && !Array.isArray(v);
+    const integer = v => Number.isSafeInteger(v) && v >= 0;
+    const time = v => Number.isFinite(v) && v >= 0;
+    const strings = v => Array.isArray(v) && v.every(x => typeof x === "string") && new Set(v).size === v.length;
+    const stats = v => object(v) && integer(v.totalAttempts) && integer(v.correctAttempts) && v.correctAttempts <= v.totalAttempts && integer(v.stage) && v.stage <= 5 && time(v.srsDueAt);
+    if (!object(p) || !object(p.library)) return false;
+    const l = p.library;
+    if (!integer(l.seed) || !["units","acquired","plans","dayExposure","grammar","phrases","events","deliveries","deficits"].every(k=>object(l[k]))) return false;
+    if (!Object.values(l.units).every(stats)) return false;
+    if (![p.rewards,p.complete].every(v=>object(v) && Object.values(v).every(x=>x===true))) return false;
+    if (p.homeGranted !== undefined && typeof p.homeGranted !== "boolean") return false;
+    for (const r of Object.values(l.acquired)) {
+      if (!object(r) || !object(r.forms) || !Object.values(r.forms).every(stats) ||
+          !integer(r.totalAttempts) || !integer(r.correctAttempts) || r.correctAttempts>r.totalAttempts || !time(r.srsDueAt) ||
+          !Number.isInteger(r.firstEncounteredDay) || r.firstEncounteredDay<1 || r.firstEncounteredDay>14 ||
+          typeof r.firstEncounteredSource!=="string" || !strings(r.encounteredSourceIds) ||
+          ![r.encounteredFormIds,r.introducedFormIds,r.practisedFormIds].every(strings) ||
+          [...r.introducedFormIds,...r.practisedFormIds,...Object.keys(r.forms)].some(id=>!r.encounteredFormIds.includes(id))) return false;
+      if (r.formallyIntroducedDay!==undefined && (!integer(r.formallyIntroducedDay)||r.formallyIntroducedDay<1||r.formallyIntroducedDay>14)) return false;
+      if (r.masteredAt!==undefined && !time(r.masteredAt)) return false;
+    }
+    for (const [day,r] of Object.entries(l.dayExposure)) {
+      if (!/^(?:[1-9]|1[0-4])$/.test(day) || !object(r) || ![r.incidentalStoryLemmas,r.reviewedExistingLemmas].every(a=>strings(a)&&a.every(id=>content.libraryEntries[id]))) return false;
+    }
+    for (const [id,r] of Object.entries(l.grammar)) {
+      if (!object(r)||!Number.isInteger(r.day)||r.day<1||r.day>14||id!=="grammar-day-"+r.day||typeof r.source!=="string") return false;
+    }
+    for (const [id,r] of Object.entries(l.phrases)) {
+      if (!content.LIBRARY_DATA.phrases.some(p=>p.id===id)||!object(r)||!integer(r.day)||r.day>14||typeof r.source!=="string") return false;
+    }
+    if (!Object.values(l.events).every(v=>v===true)) return false;
+    for (const r of Object.values(l.deficits)) if (!object(r)||![r.requested,r.available,r.missing].every(integer)||(r.reason!==null&&typeof r.reason!=="string")) return false;
+    for (const r of Object.values(l.deliveries)) if (!object(r)||typeof r.id!=="string"||!integer(r.day)||r.day>14||typeof r.surface!=="string"||typeof r.mode!=="string") return false;
+    for (const plan of Object.values(l.plans)) {
+      if (!object(plan)||!integer(plan.seed)||!object(plan.shortfalls)||typeof plan.notice!=="string"||typeof plan.contentGap!=="boolean"||
+          !(plan.effectiveDailyTarget===null||LibraryEngine.presets.includes(plan.effectiveDailyTarget))||
+          !content.zoneKeys.every(k=>integer(plan.shortfalls[k])&&plan.shortfalls[k]<=6)) return false;
+      if (plan.generatedPracticeCards!==undefined && (!object(plan.generatedPracticeCards)||Object.values(plan.generatedPracticeCards).some(a=>!Array.isArray(a)))) return false;
+      if (plan.challengeQuestions!==undefined && (!Array.isArray(plan.challengeQuestions)||plan.challengeQuestions.length!==progression.getChallengeSpec(plan.day).questionCount)) return false;
+    }
+    return true;
+  }
+  function validateSave(p) {
     const object = (value) =>
       value && typeof value === "object" && !Array.isArray(value);
     if (
@@ -60,6 +122,33 @@ function createStorage({
     )
       return false;
     if (!content.restoreGenerated(p)) return false;
+    const questionValid = (q, day) => {
+      if (!object(q) || typeof q.id!=="string" || !["word","sentence","construct","dialogue","choice","address"].includes(q.kind)) return false;
+      for (const key of ["speaker","recipient","comment","section","audioId","promptPs","promptEnglish","sceneEnglish"])
+        if (q[key]!==undefined && q[key]!==null && typeof q[key]!=="string") return false;
+      if (q.grammarDays!==undefined && (!Array.isArray(q.grammarDays)||q.grammarDays.some(n=>!Number.isInteger(n)||n<1||n>14))) return false;
+      const w=content.wordById[q.id];
+      if (!["choice","address"].includes(q.kind) && (!w || !LibraryEngine.cardAllowed(content.LIBRARY_DATA,q.id,day))) return false;
+      if (["word","sentence","construct"].includes(q.kind) && !["ps-en","en-ps"].includes(q.direction)) return false;
+      if (q.kind==="word" && (typeof q.unstudied!=="boolean" || (q.unstudied && q.direction!=="ps-en"))) return false;
+      if (["choice","address"].includes(q.kind) && typeof q.correct!=="string") return false;
+      if (q.kind==="choice" && (typeof q.prompt!=="string" || !Array.isArray(q.options) || q.options.some(v=>typeof v!=="string") || !q.options.includes(q.correct))) return false;
+      if (q.kind==="address" && (!Array.isArray(q.addressOptions)||q.addressOptions.some(a=>!Array.isArray(a)||a.length!==2||a.some(v=>typeof v!=="string"))||!q.addressOptions.some(a=>a[1]===q.correct))) return false;
+      if (q.duds!==undefined && (!Array.isArray(q.duds)||q.duds.some(v=>typeof v!=="string"))) return false;
+      if (["construct","dialogue"].includes(q.kind)) {
+        try { if (!validOrder(q.tileSequence,QuestionEngine.buildTiles(w,q,day).length)) return false; } catch { return false; }
+      } else if (!Array.isArray(q.choiceOrder)||!q.choiceOrder.length||q.choiceOrder.some(v=>typeof v!=="string")||new Set(q.choiceOrder).size!==q.choiceOrder.length) return false;
+      if (["choice","address"].includes(q.kind) && !q.choiceOrder.includes(q.correct)) return false;
+      if (["sentence","construct","dialogue"].includes(q.kind) && w?.type==="sentence" && !q.generated) return false;
+      for (const card of [q.generated,q.promptGenerated].filter(Boolean)) {
+        if (!card.generated?.requiredGrammarIds?.every(g=>p.library.grammar[g]) ||
+            !Object.values(card.generated.slots).every(r=>p.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))) return false;
+      }
+      return true;
+    };
+    for (const plan of Object.values(p.library.plans))
+      if (plan.challengeQuestions?.some(q=>!questionValid(q,plan.day))) return false;
+    if (p.activeChallenge && (!Array.isArray(p.activeChallenge.questions)||p.activeChallenge.questions.some(q=>!questionValid(q,p.activeChallenge.loop)))) return false;
     for (const delivery of Object.values(p.library.deliveries)) {
       const card = content.wordById[delivery.id];
       if (
@@ -328,6 +417,7 @@ function createStorage({
     let raw;
     try {
       raw = access().getItem(KEY);
+      observed = raw;
     } catch (error) {
       readBlocked = true;
       persistenceFailure("Progress has not been saved: browser storage is unavailable. Progress stays in this tab. Retry or export before closing it.");
@@ -359,10 +449,14 @@ function createStorage({
         if (target.getItem(KEY))
           return persistenceFailure("Progress has not been saved: existing progress could not be read at startup. Export this tab’s progress, then reload to recover the existing save. Retry will not overwrite it.");
         readBlocked = false;
+        observed = null;
       }
+      checkExternalChange();
+      if (conflict) return false;
       const raw = snapshot();
       target.setItem(KEY, raw);
       if (target.getItem(KEY) !== raw) throw Error("Storage did not retain progress");
+      observed = raw;
       persistenceProblem = null;
       notifyPersistence(null);
       return true;
