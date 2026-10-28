@@ -676,8 +676,6 @@ const SentenceEngine = (() => {
     const refs = new Map(
       data.entries.flatMap((e) => e.forms.map((f) => [f.formId, { e, f }])),
     );
-    const same = (a, b, k) =>
-      a.generated.slots[k]?.formId === b.generated.slots[k]?.formId;
     const result = [];
     const answerFamilies = {
       where_question: ["spatial_equative", "location_adverb_equative"],

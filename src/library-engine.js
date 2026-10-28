@@ -249,18 +249,15 @@ const LibraryEngine = (() => {
     if (day !== 14)
       for (const e of available(p, data, day)) {
         const place = e.introduction.district;
-        if (assignments[place]?.length < target / 4)
+        if (assignments[place]?.length < target / places.length)
           assignments[place].push(e.lemmaId);
       }
     return {
       assignments,
       supported: places.every(
-        (place) => assignments[place].length === target / 4,
+        (place) => assignments[place].length === target / places.length,
       ),
     };
-  }
-  function supported(p, data, day) {
-    return day >= 1 && day <= 14 ? [...presets] : [];
   }
   function ensurePlan(p, data, day) {
     if (p.library.plans[day]) return p.library.plans[day];
@@ -275,7 +272,7 @@ const LibraryEngine = (() => {
       shortfalls: Object.fromEntries(
         places.map((place) => [
           place,
-          target / 4 - a.assignments[place].length,
+          target / places.length - a.assignments[place].length,
         ]),
       ),
       contentGap: !a.supported,
@@ -286,12 +283,16 @@ const LibraryEngine = (() => {
     p.library.plans[day] = plan;
     return plan;
   }
-  function setPace(p, data, target, day) {
+  function nextUnstartedDay(p, day) {
+    let next = day;
+    while (next <= 14 && p.library.plans[next]) next++;
+    return next;
+  }
+  function setPace(p, target, day) {
     if (!presets.includes(target))
       return { ok: false, reason: "Choose a listed pace." };
     // Existing plans stay frozen; the setting applies to the first unstarted day.
-    let next = day;
-    while (p.library.plans[next] && next <= 14) next++;
+    const next = nextUnstartedDay(p, day);
     if (next > 14)
       return {
         ok: false,
@@ -354,50 +355,6 @@ const LibraryEngine = (() => {
   function scene(id) {
     return scenes[id] || null;
   }
-  function lexicalSelection(p, data, day, count) {
-    const scheduled = new Set(
-      Object.values(p.library.plans[day]?.locationAssignments || {})
-        .flat()
-        .filter((id) =>
-          data.entries.some(
-            (e) =>
-              e.lemmaId === id &&
-              e.countsTowardDailyQuota &&
-              allowedOnDay(e, day),
-          ),
-        ),
-    );
-    const acquired = Object.keys(p.library.acquired).filter((id) =>
-      data.entries.some(
-        (e) =>
-          e.lemmaId === id && e.countsTowardDailyQuota && allowedOnDay(e, day),
-      ),
-    );
-    const dueIds = new Set(dueForms(p, data).map(({ entry }) => entry.lemmaId));
-    const due = acquired
-      .filter((id) => dueIds.has(id))
-      .sort(
-        (a, b) =>
-          p.library.acquired[a].srsDueAt - p.library.acquired[b].srsDueAt ||
-          a.localeCompare(b),
-      );
-    const encountered = acquired.filter((id) => !due.includes(id)).sort();
-    // Due recall and genuinely encountered words precedes unstudied scheduled scaffolds.
-    const lists = [due, encountered, [...scheduled]],
-      seen = new Set(),
-      out = [];
-    for (const [i, list] of lists.entries())
-      for (const id of list) {
-        if (seen.has(id)) continue;
-        seen.add(id);
-        out.push({
-          lemmaId: id,
-          origin: ["due-review", "encountered", "scheduled-scaffold"][i],
-        });
-        if (out.length === count) return out;
-      }
-    return out;
-  }
   function dueForms(p, data) {
     return data.entries
       .flatMap((e) => {
@@ -457,7 +414,6 @@ const LibraryEngine = (() => {
     identity,
     cardStat,
     scene,
-    lexicalSelection,
     dueForms,
     tallies,
     presets,
@@ -471,9 +427,9 @@ const LibraryEngine = (() => {
     summary,
     available,
     allocation,
-    supported,
     ensurePlan,
     setPace,
+    nextUnstartedDay,
     unlock,
   };
 })();

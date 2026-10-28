@@ -1,5 +1,5 @@
 /* Save factory, XP, assessment outcomes and access rules. No DOM or storage. */
-function createProgression({ week2Days, loops, zoneKeys }, libraryEngine) {
+function createProgression({ curriculum, zoneKeys }, libraryEngine) {
   const SAVE_VERSION = 7;
   const XP_STEP = 200;
   const XP_FLOORS = {
@@ -21,8 +21,6 @@ function createProgression({ week2Days, loops, zoneKeys }, libraryEngine) {
     challenges: {},
     tutorialDone: false,
     playerProfile: { name: "", gender: "unspecified" },
-    sovSeen: false,
-    personIntros: {},
   });
   function highestClearedDay(p) {
     let day = 0;
@@ -80,30 +78,11 @@ function createProgression({ week2Days, loops, zoneKeys }, libraryEngine) {
     return {
       questionCount: day === 7 || day === 14 ? 25 : 15,
       passCount: day === 7 || day === 14 ? 20 : 12,
-      scene:
-        day === 1
-          ? "library"
-          : day >= 8
-            ? day === 14
-              ? "school"
-              : week2Days[day].opening
-            : day === 6
-              ? "hills"
-              : day === 7
-                ? "school"
-                : day === 3
-                  ? "business"
-                  : day === 5
-                    ? "nature"
-                    : "residential",
-      title:
-        day >= 8
-          ? week2Days[day].title
-          : day === 6
-            ? "Together in the Hills"
-            : day === 7
-              ? "Ms Hameed’s Week 1 examination"
-              : null,
+      scene: curriculum.days[day - 1].assessment.scene,
+      title: curriculum.days[day - 1].assessment.title,
+      resultTitle:
+        curriculum.days[day - 1].assessment.resultTitle ||
+        curriculum.days[day - 1].assessment.title,
     };
   }
 
@@ -113,13 +92,14 @@ function createProgression({ week2Days, loops, zoneKeys }, libraryEngine) {
     p.xp += amount;
     return amount;
   }
-  function completeLessonOnce(p, id, mode, passed) {
+  function completeLessonOnce(p, id, mode, passed, itemCount) {
     if (!passed) return 0;
     if (mode === "tutorial" && !p.tutorialDone) p.tutorialDone = true;
     else if (mode === "standard" && !p.complete[id]) p.complete[id] = true;
     else return 0;
-    p.xp += 25;
-    return 25;
+    const bonus = itemCount > 0 ? 25 : 0;
+    p.xp += bonus;
+    return bonus;
   }
 
   function completeRound(progress, number) {
@@ -137,7 +117,7 @@ function createProgression({ week2Days, loops, zoneKeys }, libraryEngine) {
     return (
       Number.isInteger(number) &&
       number >= 1 &&
-      number <= loops.length &&
+      number <= curriculum.days.length &&
       progress.tutorialDone &&
       (number === 1 || passedChallenge(progress, number - 1)) &&
       (number < 8 ||
@@ -149,11 +129,6 @@ function createProgression({ week2Days, loops, zoneKeys }, libraryEngine) {
   function placeAccessible(progress, day, place) {
     if (place === "library") return true;
     if (!allowed(progress, day)) return false;
-    if (day >= 8)
-      return (
-        place === week2Days[day].opening ||
-        !!progress.complete[`${day}-${week2Days[day].opening}`]
-      );
     if (day === 2) {
       if (!progress.complete["2-school"]) return place === "school";
       if (place === "residential")
@@ -161,23 +136,9 @@ function createProgression({ week2Days, loops, zoneKeys }, libraryEngine) {
           !!progress.complete["2-business"] && !!progress.complete["2-nature"]
         );
     }
-    if (day === 3) return !!progress.complete["3-nature"] || place === "nature";
-    if (day === 4)
-      return !!progress.complete["4-residential"] || place === "residential";
-    if (day === 5) return !!progress.complete["5-school"] || place === "school";
-    if (day === 6) return !!progress.complete["6-nature"] || place === "nature";
-    if (day === 7)
-      return !!progress.complete["7-business"] || place === "business";
-    return true;
-  }
-
-  function needsOpening(progress, loop, loc) {
-    return loop >= 8
-      ? loc === week2Days[loop].opening && !progress.complete[`${loop}-${loc}`]
-      : (loop === 6 && loc === "nature" && !progress.complete["6-nature"]) ||
-          (loop === 7 &&
-            loc === "business" &&
-            !progress.complete["7-business"]);
+    if (day === 1 || day === 2) return true;
+    const opening = curriculum.days[day - 1].opening;
+    return place === opening || !!progress.complete[`${day}-${opening}`];
   }
 
   return {
@@ -194,6 +155,5 @@ function createProgression({ week2Days, loops, zoneKeys }, libraryEngine) {
     passedChallenge,
     allowed,
     placeAccessible,
-    needsOpening,
   };
 }

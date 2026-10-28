@@ -23,7 +23,6 @@ function createQuestions({ state, content, progression, storage }) {
   function answerChoices(
     w,
     direction,
-    lesson = false,
     day = state.session?.loop || state.day,
     random = Math.random,
   ) {
@@ -350,7 +349,6 @@ function createQuestions({ state, content, progression, storage }) {
         q.choiceOrder = answerChoices(
           content.wordById[q.id],
           q.direction,
-          false,
           day,
           random,
         );
@@ -389,19 +387,9 @@ function createQuestions({ state, content, progression, storage }) {
       .filter(Boolean)
       .map((card) => content.registerGenerated(card));
   }
-  function inspectQuestion(q) {
-    const cards = [];
-    if (q.generated) cards.push(content.wordById[q.generated.id]);
-    if (q.promptGenerated) cards.push(content.wordById[q.promptGenerated.id]);
-    return cards;
-  }
   return {
     selectChallenge,
-    isUnstudied,
-    inspectQuestion,
-    originsForChoices,
-    makeChallengeChoices: (w, d) => answerChoices(w, d),
-    distractors: (w) => answerChoices(w, "ps-en", true),
+    distractors: (w) => answerChoices(w, "ps-en"),
     buildTiles: (w, q = state.session?.questions?.[state.session.index]) =>
       QuestionEngine.buildTiles(w, q, state.session?.loop),
     questionUsesDuds: (q) =>

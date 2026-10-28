@@ -1,7 +1,7 @@
 /* Shared DOM/RTL helpers, character display, HUD and screen switching. */
 function createUI({ state, content, progression }) {
   const $ = (id) => document.getElementById(id);
-  function displayPlace(loop, loc) {
+  function displayPlace(loc) {
     return loc === "library"
       ? "Library"
       : loc === "residential"
@@ -27,15 +27,7 @@ function createUI({ state, content, progression }) {
       strong.textContent = name;
       const role = document.createElement("span");
       role.textContent =
-        (name === "Saleha"
-          ? "Fellow student"
-          : name === "Muhammad Jan"
-            ? "Village elder"
-            : name === "Ms Hameed"
-              ? "Pashto teacher"
-              : name === "Mina"
-                ? "Saleha’s sister"
-                : "Grocer") +
+        (person.role || "Visitor") +
         (name === recipient ? " · Person you address" : "");
       body.append(strong, role);
       el.append(icon, body);

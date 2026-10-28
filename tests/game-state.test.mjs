@@ -40,6 +40,20 @@ const slot = Object.keys(
 altered.activeChallenge.questions[0].generated.generated.slots[slot].formId +=
   "wrong";
 assert(!t.storage.currentSave(altered));
+for (const field of ["choiceOrder", "unstudied"]) {
+  const corrupted = plain(t.state.progress);
+  const word = corrupted.activeChallenge.questions.find(
+    (q) => q.kind === "word",
+  );
+  delete word[field];
+  assert(
+    !t.storage.currentSave(corrupted),
+    "Missing frozen word presentation: " + field,
+  );
+}
+const missingOrder = plain(t.state.progress);
+delete missingOrder.activeChallenge.questions[0].tileSequence;
+assert(!t.storage.currentSave(missingOrder), "No tile-order reroll on resume");
 const dup = plain(t.state.progress);
 dup.activeChallenge.built = [0, 0];
 assert(!t.storage.currentSave(dup));
@@ -73,6 +87,7 @@ for (const family of families) {
   t.state.session.tileSequence = t.Q.buildTiles(card, list[0], 14).map(
     (t) => t.index,
   );
+  list[0].tileSequence = plain(t.state.session.tileSequence);
   t.state.session.built = [0];
   t.storage.save();
   assert(t.storage.currentSave(t.state.progress), family);

@@ -6,7 +6,6 @@ function createLearning({ state, content, progression }) {
     return {
       seen: f.totalAttempts || 0,
       correct: f.correctAttempts || 0,
-      wrong: (f.totalAttempts || 0) - (f.correctAttempts || 0),
       stage: f.stage || 0,
       dueAt: f.srsDueAt || 0,
     };
@@ -15,9 +14,6 @@ function createLearning({ state, content, progression }) {
   function isDue(id) {
     let s = stat(id);
     return s.seen > 0 && (s.stage === 0 || s.dueAt <= Date.now());
-  }
-  function learned(id) {
-    return stat(id).correct > 0;
   }
 
   function duePool() {
@@ -157,7 +153,7 @@ function createLearning({ state, content, progression }) {
         ...review,
       ]),
     ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day));
-    return pool.length ? pool : ["g-hello"];
+    return pool;
   }
   function availableSentences(day = state.session?.loop || state.day) {
     return SentenceEngine.available(
@@ -318,9 +314,6 @@ function createLearning({ state, content, progression }) {
   function placeAccessible(day, place) {
     return progression.placeAccessible(state.progress, day, place);
   }
-  function needsOpening(day, place) {
-    return progression.needsOpening(state.progress, day, place);
-  }
   function currentAvailable(word) {
     return word.loop === 0 ? state.progress.tutorialDone : allowed(word.loop);
   }
@@ -438,20 +431,13 @@ function createLearning({ state, content, progression }) {
     deliverySummary,
     generatedPractice,
     prepareSentences,
-    stat,
-    isDue,
-    learned,
     duePool,
-    libraryContext,
     libraryExpose,
-    libraryPractice,
     libraryLessonPool,
     completeRound,
     passedChallenge,
     allowed,
     placeAccessible,
-    needsOpening,
-    currentAvailable,
     submitChallenge,
     submitLesson,
     submitTutorial,

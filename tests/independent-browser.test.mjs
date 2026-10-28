@@ -23,8 +23,8 @@ for (const width of [375, 1280]) {
           )
             generated++;
           await p.locator("#teachNext").click();
-        } else if (await p.locator("#sovPanel").isVisible())
-          await p.locator("#sovNext").click();
+        } else if (await p.locator("#grammarPanel").isVisible())
+          await p.locator("#grammarNext").click();
         else {
           const build = await p.locator("#constructionPanel").isVisible(),
             prompt = await p.locator("#quizPashto").innerText();

@@ -38,7 +38,7 @@ function createLessons({
       loc = id.split("-")[1];
       if (
         !learning.allowed(loop) ||
-        !content.courses[id] ||
+        !content.zoneKeys.includes(loc) ||
         !learning.placeAccessible(loop, loc)
       )
         return;
@@ -102,7 +102,7 @@ function createLessons({
         ? "Muhammad Jan · Library welcome"
         : mode === "review"
           ? "Memory Trail"
-          : ui.displayPlace(loop, loc);
+          : ui.displayPlace(loc);
     ui.$("lessonDescription").textContent =
       mode === "tutorial"
         ? "Two conventional greetings and two English profile settings"
@@ -111,10 +111,6 @@ function createLessons({
           : content.curriculum.days[loop - 1].topic;
     ui.$("lessonIcon").textContent = content.zones[loc]?.icon || "📚";
     ui.setSpeaker(loop, loc, mode);
-    ui.$("guideMessage").textContent =
-      mode === "standard"
-        ? content.villagePeople[loc].welcome
-        : "Study, then practise. First answers are recorded.";
     narrative.renderLessonExpression(loop, loc, mode);
     ui.hud();
     ui.view("lessonScreen");
@@ -125,7 +121,7 @@ function createLessons({
     if (!state.session) return;
     audio.stopAudio();
     queueMicrotask(ui.readableQuizSurfaces);
-    for (const id of ["teachPanel", "sovPanel", "quizPanel"])
+    for (const id of ["teachPanel", "grammarPanel", "quizPanel"])
       ui.$(id).classList.add("hidden");
     if (state.session.mode === "tutorial") {
       tutorial.renderTutorialStep();
@@ -181,14 +177,15 @@ function createLessons({
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
     ui.$("teachNote").textContent = w.note;
-    ui.$("dialectVariant").classList.add("hidden");
-    ui.$("guideMessage").textContent = w.generated
+    const teacher = content.teacherFor(s.loop, s.loc, s.mode);
+    const guidance = w.generated
       ? "Use the words and forms you studied to build this meaning. This example is composed from your unlocked grammar."
       : w.type === "greeting"
         ? "Learn this conventional expression as a complete phrase."
         : "Study this word or individual form. It will remain available in later constructions.";
-    ui.$("addressTarget").textContent =
-      `${content.teacherFor(s.loop, s.loc, s.mode).name} → Player`;
+    ui.$("guideMessage").textContent =
+      `${teacher.name} at ${ui.displayPlace(s.loc)}: ${guidance}`;
+    ui.$("addressTarget").textContent = `${teacher.name} → Player`;
     ui.$("addressTarget").classList.remove("hidden");
     ui.$("teachNext").disabled = false;
     ui.$("teachNext").textContent =
@@ -221,9 +218,7 @@ function createLessons({
   }
   function afterGrammar() {
     const s = state.session;
-    if (!s || s.phase !== "grammar" || ui.$("sovNext").disabled) return;
-    state.progress.personIntros[s.loop] = true;
-    state.progress.sovSeen ||= s.loop > 1;
+    if (!s || s.phase !== "grammar" || ui.$("grammarNext").disabled) return;
     learning.prepareSentences(s);
     s.phase = "sentence";
     s.cardIndex = 0;
@@ -270,7 +265,7 @@ function createLessons({
     }
     audio.stopAudio();
     ui.$("teachPanel").classList.add("hidden");
-    ui.$("sovPanel").classList.add("hidden");
+    ui.$("grammarPanel").classList.add("hidden");
     ui.$("quizPanel").classList.remove("hidden");
     s.activeItem = s.queue[0];
     s.locked = false;
@@ -386,6 +381,7 @@ function createLessons({
       s.id,
       s.mode,
       passedRequired,
+      s.required.length,
     );
     s.earned += bonus;
     storage.save();
@@ -402,8 +398,11 @@ function createLessons({
         "These words will come back at longer intervals if you recall them successfully.";
       follow = "Return to the world map and continue learning.";
     } else {
-      title = `${ui.displayPlace(s.loop, s.loc)} — Day ${s.loop} visit complete!`;
+      title = `${ui.displayPlace(s.loc)} — Day ${s.loop} visit complete!`;
       desc = `You practised ${s.required.length} lesson items.${bonus ? " First-time bonus: +25 XP!" : ""}`;
+      if (!s.required.length)
+        desc =
+          "No new words, forms or due review were available. You reviewed the grammar guidance; no practice XP was awarded.";
       follow =
         s.loop === 1
           ? learning.completeRound(1)
@@ -449,9 +448,7 @@ function createLessons({
   }
   return {
     begin,
-    renderPhase,
     studyList,
-    teachCard,
     afterStudy,
     afterGrammar,
     showQuestion,

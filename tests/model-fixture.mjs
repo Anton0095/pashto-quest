@@ -3,13 +3,9 @@ import vm from "node:vm";
 export function models() {
   const read = (name) =>
     readFileSync(new URL("../" + name, import.meta.url), "utf8");
-  const week2 = JSON.parse(
-    read("docs/grammar/attestations/WEEK2_AUTHORED.json"),
-  );
   const context = {
     curriculum: {
-      week2Days: Object.fromEntries(week2.days.map((d) => [d.day, d])),
-      loops: Array.from({ length: 14 }, (_, i) => ({ id: i + 1 })),
+      curriculum: JSON.parse(read("content/LEARNING_CURRICULUM.json")),
       zoneKeys: ["residential", "nature", "business", "school"],
     },
   };

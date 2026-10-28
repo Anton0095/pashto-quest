@@ -12,16 +12,21 @@ const t = runtime(),
   { content: c } = t;
 assert(!c.LIBRARY_DATA.generatedCatalog);
 assert(!Object.values(c.wordById).some((c) => c.type === "sentence"));
-assert.equal(
-  c.words.length,
-  0,
-  "No archived sentence/word catalogue drives delivery",
+assert(
+  !("words" in c) && !("courses" in c),
+  "No empty authored delivery adapters",
+);
+assert(
+  !/const (GAME_DATA|WEEK2_DATA)=/.test(readFileSync("index.html", "utf8")),
 );
 assert(!c.LIBRARY_DATA.lessonSentenceTargets);
 assert(!c.LIBRARY_DATA.generationAttestations);
 assert(!readFileSync("index.html", "utf8").includes("fixed_authored_fallback"));
 assert(c.LIBRARY_DATA.entries.every((e) => !e.examples));
-assert(c.LIBRARY_DATA.grammar.every((g) => !g.example));
+assert(
+  !c.LIBRARY_DATA.grammar,
+  "Grammar journal uses the canonical curriculum",
+);
 const exceptions = c.LIBRARY_DATA.phrases;
 assert.equal(exceptions.length, 6);
 assert(exceptions.every((p) => p.exceptionReason && p.kind === "fixed_phrase"));

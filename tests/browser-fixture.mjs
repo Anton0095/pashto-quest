@@ -10,7 +10,7 @@ try {
     chromium,
   } = require("/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright"));
 }
-export const hook = `window.__test={state,content,progression,learning,questions,lessons,challenge,grammar,storage,world,library,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine,nextQuestion,reset(pace=24){state.progress=progression.fresh();state.progress.library.requestedDailyTarget=pace;state.session=null;state.day=1;storage.resetProblem();storage.save();ui.view('introScreen')},day(day){state.day=day;world.startWorld()}};`;
+export const hook = `window.__test={state,audio,content,progression,learning,questions,lessons,challenge,grammar,storage,world,library,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine,nextQuestion,reset(pace=24){state.progress=progression.fresh();state.progress.library.requestedDailyTarget=pace;state.session=null;state.day=1;storage.resetProblem();storage.save();ui.view('introScreen')},day(day){state.day=day;world.startWorld()}};`;
 export async function setup({
   width = 375,
   bridge = true,

@@ -30,7 +30,6 @@ function createTutorial({ state, content, learning, ui, storage }) {
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
     ui.$("teachNote").textContent = c.help;
-    ui.$("dialectVariant").classList.add("hidden");
     ui.$("addressTarget").textContent =
       "Muhammad Jan → Player · Your answer → Muhammad Jan";
     ui.$("addressTarget").classList.remove("hidden");

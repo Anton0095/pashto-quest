@@ -1,12 +1,7 @@
 /* Browser composition and event wiring. The release builder embeds all modules and data. */
 (() => {
   "use strict";
-  const content = createContent(
-    GAME_DATA,
-    WEEK2_DATA,
-    LIBRARY_DATA,
-    NARRATIVE_DATA,
-  );
+  const content = createContent(LIBRARY_DATA, NARRATIVE_DATA);
   const state = { progress: null, session: null, day: 1 };
   const progression = createProgression(content, LibraryEngine);
   const storage = createStorage({ state, content, progression });
@@ -28,10 +23,8 @@
   const grammar = createGrammar({
     state,
     content,
-    learning,
     ui,
     storage,
-    onPhase: () => lessons.renderPhase(),
   });
   const lessons = createLessons({
     state,
@@ -70,12 +63,11 @@
     onLesson: (id) => lessons.begin(id),
     onChallenge: (day) => challenge.startChallenge(day),
     onLibrary: () => library.openLibrary(),
-    onResume: () => challenge.restoreLibraryChallenge(),
+    onResume: () => challenge.resumeChallenge(),
   });
   const library = createLibraryUI({
     state,
     content,
-    progression,
     ui,
     audio,
     storage,
@@ -100,13 +92,8 @@
     if (state.session?.mode === "challenge") {
       const q = state.session.questions[state.session.index];
       if (q) audio.speak(q.audioId || q.id);
-    } else if (state.session?.queue.length)
-      audio.speak(state.session.queue[0].id);
-  });
-  ui.$("grammarSpeak").addEventListener("click", () => {
-    if (!state.session) return;
-    const id = state.session.studySentences?.[0];
-    if (id) audio.speak(id);
+    } else if (state.session?.activeItem)
+      audio.speak(state.session.activeItem.id);
   });
   ui.$("startTutorial").addEventListener("click", () =>
     lessons.begin("tutorial"),
@@ -115,7 +102,7 @@
     lessons.begin("tutorial"),
   );
   ui.$("teachNext").addEventListener("click", lessons.afterStudy);
-  ui.$("sovNext").addEventListener("click", lessons.afterGrammar);
+  ui.$("grammarNext").addEventListener("click", lessons.afterGrammar);
   ui.$("quizNext").addEventListener("click", nextQuestion);
   ui.$("navWorld").addEventListener("click", world.startWorld);
   ui.$("resultWorld").addEventListener("click", world.startWorld);
@@ -160,18 +147,16 @@
       state.progress = progression.fresh();
       state.session = null;
       state.day = 1;
-      ui.$("introScreen").insertBefore(
-        document.querySelector(".worldmap"),
-        ui.$("introScreen").querySelector(".guide-row"),
-      );
       storage.save();
+      library.prepareOnboarding();
       ui.hud();
       ui.view("introScreen");
     }
   });
   if (state.progress.tutorialDone)
     state.day =
-      content.loops.filter((l) => learning.allowed(l.id)).at(-1)?.id || 1;
+      content.curriculum.days.filter((d) => learning.allowed(d.day)).at(-1)
+        ?.day || 1;
   library.libraryInit();
   // @TEST_HOOK
   ui.$("lessonScreen").insertBefore(ui.$("addressTarget"), ui.$("teachPanel"));
@@ -179,7 +164,7 @@
   ui.hud();
   // Restore the visible assessment first. Rendering an immediately hidden day
   // opening here would incorrectly acquire a greeting the player never saw.
-  if (!state.progress.activeChallenge || !challenge.restoreLibraryChallenge()) {
+  if (!state.progress.activeChallenge || !challenge.resumeChallenge()) {
     if (state.progress.tutorialDone) world.startWorld();
     else ui.view("introScreen");
   }

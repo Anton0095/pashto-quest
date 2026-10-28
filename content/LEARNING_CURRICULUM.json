@@ -68,7 +68,13 @@
           ]
         }
       ],
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "library",
+        "teacher": "Muhammad Jan",
+        "title": "Muhammad Jan’s Library home handover"
+      },
+      "story": "Muhammad Jan welcomes you. Edris is at the market, Saleha is by the lake, and Ms Hameed is at school."
     },
     {
       "day": 2,
@@ -119,7 +125,13 @@
         "person": 3,
         "number": "singular"
       },
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "residential",
+        "teacher": "Muhammad Jan",
+        "title": "Muhammad Jan’s check-in"
+      },
+      "story": "Ms Hameed introduces S–O–V. Visit the market and lake before returning home to Muhammad Jan."
     },
     {
       "day": 3,
@@ -170,7 +182,14 @@
         "person": 1,
         "number": "singular"
       },
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "business",
+        "teacher": "Edris",
+        "title": "Dinner shopping with Edris",
+        "resultTitle": "Dinner shopping"
+      },
+      "story": "Saleha shows you how to talk about yourself. Practise around town, then shop for dinner with Edris."
     },
     {
       "day": 4,
@@ -222,7 +241,14 @@
         "person": 2,
         "number": "singular"
       },
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "residential",
+        "teacher": "Muhammad Jan",
+        "title": "Conversation at home with Muhammad Jan",
+        "resultTitle": "An evening with Muhammad Jan"
+      },
+      "story": "Muhammad Jan welcomes you home to learn informal ته and link actions using او. Return for a friendly conversation at the end of the day."
     },
     {
       "day": 5,
@@ -243,28 +269,34 @@
           "location": "residential",
           "teacher": "Muhammad Jan",
           "participants": [
-            "Muhammad Jan"
+            "Muhammad Jan",
+            "Edris"
           ]
         },
         {
           "location": "nature",
           "teacher": "Saleha",
           "participants": [
-            "Saleha"
+            "Saleha",
+            "Muhammad Jan",
+            "Ms Hameed",
+            "Edris"
           ]
         },
         {
           "location": "business",
           "teacher": "Edris",
           "participants": [
-            "Edris"
+            "Edris",
+            "Saleha"
           ]
         },
         {
           "location": "school",
           "teacher": "Ms Hameed",
           "participants": [
-            "Ms Hameed"
+            "Ms Hameed",
+            "Saleha"
           ]
         }
       ],
@@ -272,7 +304,14 @@
         "person": 2,
         "number": "plural"
       },
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "nature",
+        "teacher": "Saleha",
+        "title": "Community at the lake",
+        "resultTitle": "The lakeside gathering"
+      },
+      "story": "Ms Hameed teaches respectful/plural تاسې. The whole village is preparing to gather beside the lake. Characters can now visit different locations."
     },
     {
       "day": 6,
@@ -292,8 +331,9 @@
       "lessons": [
         {
           "location": "residential",
-          "teacher": "Muhammad Jan",
+          "teacher": "Saleha",
           "participants": [
+            "Saleha",
             "Muhammad Jan"
           ]
         },
@@ -307,8 +347,9 @@
         },
         {
           "location": "business",
-          "teacher": "Edris",
+          "teacher": "Muhammad Jan",
           "participants": [
+            "Muhammad Jan",
             "Edris"
           ]
         },
@@ -316,7 +357,8 @@
           "location": "school",
           "teacher": "Ms Hameed",
           "participants": [
-            "Ms Hameed"
+            "Ms Hameed",
+            "Mina"
           ]
         }
       ],
@@ -324,7 +366,13 @@
         "person": 1,
         "number": "plural"
       },
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "hills",
+        "teacher": "Saleha",
+        "title": "Together in the Hills"
+      },
+      "story": "Saleha introduces her sister Mina beside the lake. Practise shared actions around town, then walk together in the Hills."
     },
     {
       "day": 7,
@@ -347,27 +395,32 @@
           "location": "residential",
           "teacher": "Muhammad Jan",
           "participants": [
-            "Muhammad Jan"
+            "Muhammad Jan",
+            "Saleha"
           ]
         },
         {
           "location": "nature",
-          "teacher": "Saleha",
+          "teacher": "Ms Hameed",
           "participants": [
-            "Saleha"
+            "Ms Hameed",
+            "Saleha",
+            "Mina"
           ]
         },
         {
           "location": "business",
           "teacher": "Edris",
           "participants": [
-            "Edris"
+            "Edris",
+            "Muhammad Jan"
           ]
         },
         {
           "location": "school",
-          "teacher": "Ms Hameed",
+          "teacher": "Saleha",
           "participants": [
+            "Saleha",
             "Ms Hameed"
           ]
         }
@@ -376,7 +429,14 @@
         "person": 3,
         "number": "plural"
       },
-      "assessmentReview": true
+      "assessmentReview": true,
+      "assessment": {
+        "scene": "school",
+        "teacher": "Ms Hameed",
+        "title": "Ms Hameed’s Week 1 examination",
+        "resultTitle": "Week 1 examination"
+      },
+      "story": "Edris describes groups of shoppers. Ms Hameed welcomes you to the separate 25-question Week 1 examination at School."
     },
     {
       "day": 8,
@@ -400,32 +460,41 @@
           "location": "residential",
           "teacher": "Muhammad Jan",
           "participants": [
-            "Muhammad Jan"
+            "Muhammad Jan",
+            "Edris"
           ]
         },
         {
           "location": "nature",
           "teacher": "Saleha",
           "participants": [
-            "Saleha"
+            "Saleha",
+            "Ms Hameed"
           ]
         },
         {
           "location": "business",
           "teacher": "Edris",
           "participants": [
-            "Edris"
+            "Edris",
+            "Mina"
           ]
         },
         {
           "location": "school",
           "teacher": "Ms Hameed",
           "participants": [
-            "Ms Hameed"
+            "Ms Hameed",
+            "Saleha"
           ]
         }
       ],
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "nature",
+        "teacher": "Saleha",
+        "title": "This One or That One?"
+      }
     },
     {
       "day": 9,
@@ -447,7 +516,8 @@
           "location": "residential",
           "teacher": "Muhammad Jan",
           "participants": [
-            "Muhammad Jan"
+            "Muhammad Jan",
+            "Ms Hameed"
           ]
         },
         {
@@ -462,18 +532,25 @@
           "location": "business",
           "teacher": "Edris",
           "participants": [
-            "Edris"
+            "Edris",
+            "Saleha"
           ]
         },
         {
           "location": "school",
           "teacher": "Ms Hameed",
           "participants": [
-            "Ms Hameed"
+            "Ms Hameed",
+            "Muhammad Jan"
           ]
         }
       ],
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "business",
+        "teacher": "Edris",
+        "title": "One, Two, Many"
+      }
     },
     {
       "day": 10,
@@ -496,7 +573,8 @@
           "location": "residential",
           "teacher": "Muhammad Jan",
           "participants": [
-            "Muhammad Jan"
+            "Muhammad Jan",
+            "Mina"
           ]
         },
         {
@@ -511,18 +589,25 @@
           "location": "business",
           "teacher": "Edris",
           "participants": [
-            "Edris"
+            "Edris",
+            "Muhammad Jan"
           ]
         },
         {
           "location": "school",
           "teacher": "Ms Hameed",
           "participants": [
-            "Ms Hameed"
+            "Ms Hameed",
+            "Edris"
           ]
         }
       ],
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "nature",
+        "teacher": "Mina",
+        "title": "Where Is Mina’s Notebook?"
+      }
     },
     {
       "day": 11,
@@ -545,7 +630,8 @@
           "location": "residential",
           "teacher": "Muhammad Jan",
           "participants": [
-            "Muhammad Jan"
+            "Muhammad Jan",
+            "Saleha"
           ]
         },
         {
@@ -553,7 +639,8 @@
           "teacher": "Saleha",
           "participants": [
             "Saleha",
-            "Mina"
+            "Mina",
+            "Muhammad Jan"
           ]
         },
         {
@@ -571,7 +658,12 @@
           ]
         }
       ],
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "residential",
+        "teacher": "Muhammad Jan",
+        "title": "Whose Things Are These?"
+      }
     },
     {
       "day": 12,
@@ -605,25 +697,33 @@
           "teacher": "Saleha",
           "participants": [
             "Saleha",
-            "Mina"
+            "Mina",
+            "Edris"
           ]
         },
         {
           "location": "business",
           "teacher": "Edris",
           "participants": [
-            "Edris"
+            "Edris",
+            "Ms Hameed"
           ]
         },
         {
           "location": "school",
           "teacher": "Ms Hameed",
           "participants": [
-            "Ms Hameed"
+            "Ms Hameed",
+            "Mina"
           ]
         }
       ],
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "school",
+        "teacher": "Ms Hameed",
+        "title": "Ask the Right Question"
+      }
     },
     {
       "day": 13,
@@ -645,7 +745,8 @@
           "location": "residential",
           "teacher": "Muhammad Jan",
           "participants": [
-            "Muhammad Jan"
+            "Muhammad Jan",
+            "Edris"
           ]
         },
         {
@@ -653,25 +754,33 @@
           "teacher": "Saleha",
           "participants": [
             "Saleha",
-            "Mina"
+            "Mina",
+            "Ms Hameed"
           ]
         },
         {
           "location": "business",
           "teacher": "Edris",
           "participants": [
-            "Edris"
+            "Edris",
+            "Mina"
           ]
         },
         {
           "location": "school",
           "teacher": "Ms Hameed",
           "participants": [
-            "Ms Hameed"
+            "Ms Hameed",
+            "Saleha"
           ]
         }
       ],
-      "assessmentReview": false
+      "assessmentReview": false,
+      "assessment": {
+        "scene": "nature",
+        "teacher": "Saleha",
+        "title": "How We Do Things"
+      }
     },
     {
       "day": 14,
@@ -690,7 +799,8 @@
           "location": "residential",
           "teacher": "Muhammad Jan",
           "participants": [
-            "Muhammad Jan"
+            "Muhammad Jan",
+            "Ms Hameed"
           ]
         },
         {
@@ -705,18 +815,25 @@
           "location": "business",
           "teacher": "Edris",
           "participants": [
-            "Edris"
+            "Edris",
+            "Saleha"
           ]
         },
         {
           "location": "school",
           "teacher": "Ms Hameed",
           "participants": [
-            "Ms Hameed"
+            "Ms Hameed",
+            "Muhammad Jan"
           ]
         }
       ],
-      "assessmentReview": true
+      "assessmentReview": true,
+      "assessment": {
+        "scene": "school",
+        "teacher": "Ms Hameed",
+        "title": "The Village Scavenger Hunt"
+      }
     }
   ]
 }

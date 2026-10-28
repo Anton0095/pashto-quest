@@ -41,14 +41,14 @@ node tools/district-inventory.mjs --check
 | `src/tutorial-ui.js`, `src/grammar-ui.js`, `src/library-ui.js`, `src/narrative-ui.js` | Onboarding, workshops and reference/expression presentation |
 | `src/audio.js` | Common MP3/device-voice player and cancellation |
 | `src/app.html`, `src/app.css` | UI shell and styles |
-| `content/LEARNING_CURRICULUM.json`, `content/FIXED_PHRASES.json` | English curriculum/grammar sequence and six conventional expression exceptions |
+| `content/LEARNING_CURRICULUM.json`, `content/FIXED_PHRASES.json` | Curriculum, grammar, story/people, assessment scenes and six conventional expression exceptions |
 | `content/LIBRARY_LEXICON.json`, `content/NARRATIVE_EXPRESSIONS.json` | Lexical forms/mappings and active/pending expression identities |
 | `content/DISTRICT_VOCABULARY_CANDIDATES.json`, `content/UNIVERSAL_TEACHING_TARGETS.json` | Inactive editorial candidates, not playable translations |
 | `tools/build.py`, `tools/verify.py` | Offline assembly/validation and complete verification |
 
 Modules expose small factory APIs with explicit state/service dependencies and screen-transition callbacks. UI submits answers through `learning.js`; it does not maintain a second score, XP or SRS store. `tools/build.py` assembles the modules in explicit dependency order inside one private script closure. The generated game needs no module loader, framework, package manager or network requests for code/curriculum. Runtime dependencies remain browser DOM, local storage and optional Audio/Web Speech APIs; development uses Python and Node/Playwright/Chromium.
 
-`content/WEEK2_LESSON_DATA.json` retains the English curricular source/semantic targets; `tests/curriculum-contract.json` preserves authored-content regression fixtures. `content/DISTRICT_INVENTORY_REPORT.json` is an inventory output. Do not delete data files just because some names overlap.
+`docs/reference/WEEK2_LESSON_DATA.json` archives the historical English editorial targets and is never read by the runtime/builder; `tests/curriculum-contract.json` preserves authored-content regression fixtures. `content/DISTRICT_INVENTORY_REPORT.json` is an inventory output. Do not delete data files just because some names overlap.
 
 ## How progression works
 
@@ -78,3 +78,5 @@ At default pace, Day 1 Home teaches six district lemmas plus an evidenced femini
 The [measured delivery report](docs/grammar/INSTRUCTIONAL_DELIVERY_REPORT.md) records the actual rendered sentence percentage across all fourteen days, seven paces and normal/skip routes. `python3 tools/verify.py` refreshes it only after the full browser matrix passes. Its release fingerprint prevents reuse after code changes. [Potential capacity and exact missing forms/features](docs/grammar/GENERATION_COVERAGE.md) are separate diagnostics, not a teaching-percentage claim. `userVerified: false` permits evidenced provisional composition without certifying translations or pronunciation.
 
 For a future human-edited spreadsheet, export CSV columns `lemmaId,plannedDay,district,teachingOrder,verifiedStatus` and run `python3 tools/import-curriculum.py input.csv proposal.json`. This creates an **unapproved proposal**; it cannot certify language. `content/CURRICULUM_OVERRIDES.json` is applied only with explicit curriculum approval, reviewer/date/reference, valid stable IDs and grammar-safe days. Curriculum approval never changes linguistic approval. Regenerate/check the audit with `python3 tools/curriculum-audit.py [--check]` after rebuilding.
+
+The [cleanup dependency review](docs/maintenance/CLEANUP_REVIEW.md) records traced removals, retained behaviour, before/after UI captures and verification. The active workshop and Grammar Journal read the same curriculum. Current schema-7 saves continue to work; missing frozen attempt presentation is rejected rather than rerolled.

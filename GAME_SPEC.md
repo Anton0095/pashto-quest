@@ -1,6 +1,6 @@
 # Pashto Quest — Current game specification
 
-**Status:** Current fourteen-day gameplay design, 25 October 2026. This is a behavioural specification of the current source, not a to-do list or handoff from an earlier release. Implementation truth resides in `src/` and playable `content/*RUNTIME.json`; resolve any discrepancy explicitly rather than restoring archived logic. For learning content see `CURRICULUM.md`; for acceptance and tests see `tests/README.md`.
+**Status:** Current fourteen-day gameplay design. This is a behavioural specification of the current source, not a to-do list or handoff from an earlier release. Implementation truth resides in `src/`, `content/LEARNING_CURRICULUM.json` and the lexical/phrase registries; resolve any discrepancy explicitly rather than restoring archived logic. For learning content see `CURRICULUM.md`; for acceptance and tests see `tests/README.md`.
 
 ## Product and world
 
@@ -79,3 +79,5 @@ Typed templates enforce gender/number/person agreement, semantic valency, counta
 An under-supplied pace/skip route adapts with explicit vocabulary or English grammar tasks, preserving question counts and pass thresholds. No unknown form is introduced by assessment and no fixed sentence fills a shortage. The measured browser-observed delivery report is `docs/grammar/INSTRUCTIONAL_DELIVERY_REPORT.md`; potential capacity and exact missing features are separate in `GENERATION_COVERAGE.md`.
 
 Frozen attempts retain generated text, gloss, syntax, slot/form/grammar references, question direction, indexed tile order/placement, scene, speaker/recipient, choices and locked feedback. Restore recompiles each proof; a generated label alone is insufficient. Identical text/gloss shares one reward/SRS origin. Vocabulary/SRS and answer/XP authorities remain unchanged.
+
+Grammar catch-up shows all previously missed workshops through the current day before unlocking those visible rule IDs; it does not grant future grammar or introduce words. When a visit has no vocabulary/forms/review and no eligible generated sentences, it records completion after grammar guidance with zero practice/completion XP. This permits normal route progression without a fixed greeting fallback. The settings UI reflects the actual requested pace and four-district allocation; assessment captions count the frozen question set.

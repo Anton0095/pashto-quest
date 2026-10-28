@@ -34,7 +34,7 @@ function createChallengeUI({
     if (day >= 8) {
       const intro = document.createElement("p");
       intro.className = "tiny";
-      intro.textContent = `Week 2 draft · Native Laghman review pending. ${content.week2Days[day].challenge}`;
+      intro.textContent = `Week 2 draft · Native Laghman review pending. ${content.dayById[day].challenge}`;
       panel.append(intro);
       return;
     }
@@ -106,8 +106,6 @@ function createChallengeUI({
             : day === 5
               ? "A lakeside community gathering"
               : "Town Challenge";
-    ui.$("lessonDescription").textContent =
-      `${items.length} turns · generated language, vocabulary and grammar · ${spec.passCount}/${items.length} to pass`;
     ui.$("lessonIcon").textContent =
       day === 3 ? "🧺" : day === 4 ? "🏡" : day === 5 ? "🏞️" : "🏆";
     ui.setSpeaker(
@@ -119,36 +117,48 @@ function createChallengeUI({
       day <= 2
         ? "Welcome home! Let us check what you know. You may take the challenge without visiting the other locations. Twelve correct answers unlock tomorrow."
         : day === 3
-          ? "Salaam! It is nearly dinnertime. Let us shop for dinner and practise fifteen useful sentences."
+          ? "Salaam! It is nearly dinnertime. Let us shop for dinner and practise fifteen questions."
           : day === 4
             ? "Come in and sit down. We have talked as friends all day. Let us practise what YOU and I do, and join two clauses using او. When I say “you” informally, I am addressing you; when you do, you are addressing a familiar friend, not an elder."
             : day === 5
               ? "Welcome to our gathering near the lake! Saleha, Edris, Ms Hameed and Muhammad Jan are all here. Listen to the speaker, look carefully at whom you are addressing, and choose informal ته or polite/plural تاسې."
               : `Welcome to Day ${day}! You need twelve correct answers to advance.`;
     if (day >= 6) {
-      state.session.challengeScene = spec.scene;
       ui.$("lessonEyebrow").textContent =
         day === 6 ? "DAY 6 · HILLS" : "DAY 7 · SCHOOL · WEEKLY EXAMINATION";
       ui.$("lessonName").textContent = spec.title;
-      ui.$("lessonDescription").textContent =
-        `${items.length} turns · ${spec.passCount}/${items.length} to pass${day === 7 ? " · 5 pronouns · 5 verb forms · 5 SOV · 5 compounds · 5 dialogues" : ""}`;
       ui.$("lessonIcon").textContent = day === 6 ? "⛰️" : "🏫";
     }
     if (day >= 8) {
       ui.$("lessonIcon").textContent = content.zones[spec.scene].icon;
       ui.$("lessonEyebrow").textContent = `DAY ${day} · WEEK 2 DRAFT`;
-      ui.$("lessonDescription").textContent =
-        `${items.length} turns · ${spec.passCount}/${items.length} to pass · Reply to questions and leave dud tiles unused`;
       ui.setSpeaker(day, spec.scene, "challenge");
     }
     if (day === 1) {
-      state.session.challengeScene = "library";
       ui.$("lessonEyebrow").textContent = "DAY 1 · LIBRARY · HOME HANDOVER";
       ui.$("lessonName").textContent = "Muhammad Jan’s Library conversation";
       ui.$("guideMessage").textContent = state.progress.homeGranted
         ? "Welcome back to the Library. Your home award is already recorded."
         : "Muhammad Jan → Player: Welcome to the Library. Twelve correct answers and I will give you the key to your home. You can take this challenge without any teaching visits.";
     }
+    const categories = {
+      word: "vocabulary/phrases",
+      choice: "English grammar",
+      address: "address",
+      construct: "construction",
+      dialogue: "dialogue",
+      sentence: "translation",
+    };
+    const counts = items.reduce((out, question) => {
+      out[question.kind] = (out[question.kind] || 0) + 1;
+      return out;
+    }, {});
+    ui.$("lessonDescription").textContent =
+      `${items.length} turns · ${spec.passCount}/${items.length} to pass · ${Object.entries(
+        counts,
+      )
+        .map(([kind, count]) => `${count} ${categories[kind]}`)
+        .join(" · ")}`;
     const deficit = state.progress.library.plans[day]?.assessmentDeficit;
     if (deficit?.adaptedTasks)
       ui.$("lessonDescription").textContent +=
@@ -158,7 +168,7 @@ function createChallengeUI({
     showChallengeScene(day);
     ui.hud();
     ui.view("lessonScreen");
-    for (const id of ["teachPanel", "sovPanel", "quizPanel"])
+    for (const id of ["teachPanel", "grammarPanel", "quizPanel"])
       ui.$(id).classList.add("hidden");
     showChallengeQuestion(Boolean(snapshot));
   }
@@ -240,11 +250,6 @@ function createChallengeUI({
       finishChallenge();
       return;
     }
-    if (q.kind === "word") {
-      // Freeze presentation before exposure, including unanswered saved attempts.
-      q.unstudied ??= questions.isUnstudied(q.id);
-      if (q.unstudied) q.direction = "ps-en";
-    }
     if (q.kind !== "dialogue") learning.libraryExpose(q.id, "challenge");
     queueMicrotask(storage.save);
     const w =
@@ -323,12 +328,7 @@ function createChallengeUI({
           : "Use the tiles to construct your reply.";
       ui.$("quizSpeak").classList.toggle("hidden", !q.audioId);
       ui.$("constructionPanel").classList.remove("hidden");
-      if (!resuming)
-        state.session.tileSequence =
-          q.tileSequence ||
-          QuestionEngine.shuffle(
-            questions.buildTiles(null, q).map((t) => t.index),
-          );
+      if (!resuming) state.session.tileSequence = q.tileSequence;
       renderBuiltSentence();
       ui.$("quizFeedback").textContent =
         "Your first submitted answer counts. Leave unused tiles in the bank.";
@@ -352,7 +352,7 @@ function createChallengeUI({
       ui.$("quizPanel").querySelector(".quizword h3").textContent =
         "Choose your answer";
       ui.$("quizSpeak").classList.toggle("hidden", !q.audioId);
-      for (const value of q.choiceOrder || q.options) {
+      for (const value of q.choiceOrder) {
         const b = document.createElement("button");
         b.type = "button";
         b.className = "choice";
@@ -439,14 +439,10 @@ function createChallengeUI({
         : "Choose the correct English meaning";
     if (isBuild) {
       ui.$("constructionPanel").classList.remove("hidden");
-      if (!resuming)
-        state.session.tileSequence =
-          q.tileSequence ||
-          QuestionEngine.shuffle(questions.buildTiles(w).map((x) => x.index));
+      if (!resuming) state.session.tileSequence = q.tileSequence;
       renderBuiltSentence();
     } else
-      for (const value of q.choiceOrder ||
-        questions.makeChallengeChoices(w, q.direction)) {
+      for (const value of q.choiceOrder) {
         const b = document.createElement("button");
         b.type = "button";
         b.className = "choice";
@@ -582,24 +578,12 @@ function createChallengeUI({
       { passed, firstPass, base, topUp } = reward;
     s.earned += base + topUp;
     const graduation = day === 7 && firstPass;
-    if (firstPass && day < content.loops.length) state.day = day + 1;
+    if (firstPass && day < content.curriculum.days.length) state.day = day + 1;
     storage.save();
     ui.hud();
-    const names = {
-      ...Object.fromEntries(
-        content.WEEK2_DATA.days.map((d) => [d.day, d.title]),
-      ),
-      1: "Muhammad Jan’s Library home handover",
-      2: "Muhammad Jan’s check-in",
-      3: "Dinner shopping",
-      4: "An evening with Muhammad Jan",
-      5: "The lakeside gathering",
-      6: "Together in the Hills",
-      7: "Week 1 examination",
-    };
     ui.$("resultHeading").textContent = graduation
       ? "Week 1 complete · Level 10 · New Resident"
-      : `${names[day]}: ${passed ? "passed!" : "practise and retry"}`;
+      : `${spec.resultTitle}: ${passed ? "passed!" : "practise and retry"}`;
     ui.$("resultDescription").textContent = graduation
       ? "Ms Hameed → Player: “When you arrived, you were a Newcomer. Now you can introduce yourself, speak respectfully to your neighbours and describe the people around you. Welcome as a New Resident of our village!”"
       : day === 7
@@ -611,7 +595,7 @@ function createChallengeUI({
             ? "Saleha and Mina → Player: “We enjoy walking with you! Your next day is open.”"
             : "Saleha → Player: “Let us practise we and you both again.”"
           : passed
-            ? `You passed ${names[day]}. Day ${day + 1} is open!`
+            ? `You passed ${spec.resultTitle}. Day ${day + 1} is open!`
             : `You scored ${s.correctCount}/${s.questions.length}; ${spec.passCount} correct are needed. Practise in town or retry.`;
     if (day === 1) {
       ui.$("resultDescription").textContent = passed
@@ -651,7 +635,7 @@ function createChallengeUI({
       ". Your first submitted answer is already recorded.";
     ui.$("quizNext").disabled = false;
   }
-  function restoreLibraryChallenge() {
+  function resumeChallenge() {
     if (!state.progress.activeChallenge) return false;
     const snapshot = JSON.parse(JSON.stringify(state.progress.activeChallenge));
     if (!learning.allowed(snapshot.loop)) return false;
@@ -686,7 +670,7 @@ function createChallengeUI({
     showChallengeQuestion,
     answerChallenge,
     finishChallenge,
-    restoreLibraryChallenge,
+    resumeChallenge,
     undoTile,
     clearTiles,
     checkBuild,

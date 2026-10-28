@@ -8,11 +8,9 @@ function createAssessmentContent({ content, progression }) {
     if ([5, 6, 7, 14].includes(day))
       for (const i of [5, 8]) kinds[i] = "address";
     return {
-      day,
       count,
       kinds,
       scenario: content.curriculum.days[day - 1].challenge,
-      grammarGoals: content.curriculum.days[day - 1].focusFamilies,
     };
   }
   return { blueprint };

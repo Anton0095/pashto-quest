@@ -1,0 +1,636 @@
+{
+  "source": "Pre-cleanup PR #22 head 688311e. Active world routing, people and story behaviour; not a second runtime curriculum.",
+  "days": [
+    {
+      "day": 1,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "library",
+        "title": null
+      },
+      "challengeTeacher": "Muhammad Jan",
+      "story": "Muhammad Jan welcomes you. Edris is at the market, Saleha is by the lake, and Ms Hameed is at school.",
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "opening": "residential"
+    },
+    {
+      "day": 2,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "residential",
+        "title": null
+      },
+      "challengeTeacher": "Muhammad Jan",
+      "story": "Ms Hameed introduces S–O–V. Visit the market and lake before returning home to Muhammad Jan.",
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "opening": "school"
+    },
+    {
+      "day": 3,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "business",
+        "title": null
+      },
+      "challengeTeacher": "Edris",
+      "story": "Saleha shows you how to talk about yourself. Practise around town, then shop for dinner with Edris.",
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "opening": "nature"
+    },
+    {
+      "day": 4,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "residential",
+        "title": null
+      },
+      "challengeTeacher": "Muhammad Jan",
+      "story": "Muhammad Jan welcomes you home to learn informal ته and link actions using او. Return for a friendly conversation at the end of the day.",
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "opening": "residential"
+    },
+    {
+      "day": 5,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "nature",
+        "title": null
+      },
+      "challengeTeacher": "Saleha",
+      "story": "Ms Hameed teaches respectful/plural تاسې. The whole village is preparing to gather beside the lake. Characters can now visit different locations.",
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan",
+            "Edris"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Muhammad Jan",
+            "Ms Hameed",
+            "Edris"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris",
+            "Saleha"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed",
+            "Saleha"
+          ]
+        }
+      ],
+      "opening": "school"
+    },
+    {
+      "day": 6,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "hills",
+        "title": "Together in the Hills"
+      },
+      "challengeTeacher": "Saleha",
+      "story": "Saleha introduces her sister Mina beside the lake. Practise shared actions around town, then walk together in the Hills.",
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan",
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed",
+            "Mina"
+          ]
+        }
+      ],
+      "opening": "nature"
+    },
+    {
+      "day": 7,
+      "challenge": {
+        "questionCount": 25,
+        "passCount": 20,
+        "scene": "school",
+        "title": "Ms Hameed’s Week 1 examination"
+      },
+      "challengeTeacher": "Ms Hameed",
+      "story": "Edris describes groups of shoppers. Ms Hameed welcomes you to the separate 25-question Week 1 examination at School.",
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan",
+            "Saleha"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed",
+            "Saleha",
+            "Mina"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris",
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "opening": "business"
+    },
+    {
+      "day": 8,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "nature",
+        "title": "This One or That One?"
+      },
+      "challengeTeacher": "Saleha",
+      "story": null,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan",
+            "Edris"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Ms Hameed"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris",
+            "Mina"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed",
+            "Saleha"
+          ]
+        }
+      ],
+      "opening": "nature"
+    },
+    {
+      "day": 9,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "business",
+        "title": "One, Two, Many"
+      },
+      "challengeTeacher": "Edris",
+      "story": null,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan",
+            "Ms Hameed"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris",
+            "Saleha"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed",
+            "Muhammad Jan"
+          ]
+        }
+      ],
+      "opening": "business"
+    },
+    {
+      "day": 10,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "nature",
+        "title": "Where Is Mina’s Notebook?"
+      },
+      "challengeTeacher": "Mina",
+      "story": null,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan",
+            "Mina"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Mina",
+          "participants": [
+            "Mina",
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris",
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed",
+            "Edris"
+          ]
+        }
+      ],
+      "opening": "nature"
+    },
+    {
+      "day": 11,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "residential",
+        "title": "Whose Things Are These?"
+      },
+      "challengeTeacher": "Muhammad Jan",
+      "story": null,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan",
+            "Saleha"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina",
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "opening": "residential"
+    },
+    {
+      "day": 12,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "school",
+        "title": "Ask the Right Question"
+      },
+      "challengeTeacher": "Ms Hameed",
+      "story": null,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina",
+            "Edris"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris",
+            "Ms Hameed"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed",
+            "Mina"
+          ]
+        }
+      ],
+      "opening": "school"
+    },
+    {
+      "day": 13,
+      "challenge": {
+        "questionCount": 15,
+        "passCount": 12,
+        "scene": "nature",
+        "title": "How We Do Things"
+      },
+      "challengeTeacher": "Saleha",
+      "story": null,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan",
+            "Edris"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina",
+            "Ms Hameed"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris",
+            "Mina"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed",
+            "Saleha"
+          ]
+        }
+      ],
+      "opening": "nature"
+    },
+    {
+      "day": 14,
+      "challenge": {
+        "questionCount": 25,
+        "passCount": 20,
+        "scene": "school",
+        "title": "The Village Scavenger Hunt"
+      },
+      "challengeTeacher": "Ms Hameed",
+      "story": null,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan",
+            "Ms Hameed"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris",
+            "Saleha"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed",
+            "Muhammad Jan"
+          ]
+        }
+      ],
+      "opening": "residential"
+    }
+  ]
+}

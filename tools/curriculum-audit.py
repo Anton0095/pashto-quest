@@ -12,7 +12,6 @@ ROOT = Path(__file__).resolve().parents[1]
 def rendered():
     html = build()
     data = json.loads(re.search(r"const LIBRARY_DATA=(\{.*?\});", html, re.S)[1])
-    game = json.loads(re.search(r"const GAME_DATA=(\{.*?\});", html, re.S)[1])
     raw = json.loads((ROOT / "content/LIBRARY_LEXICON.json").read_text())
     effective = {e["lemmaId"]: e for e in data["entries"]}
     for entry in raw["entries"]:

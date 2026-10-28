@@ -4,7 +4,7 @@ export const plain = (x) => JSON.parse(JSON.stringify(x));
 export function runtime() {
   const html = readFileSync("index.html", "utf8");
   const context = Object.fromEntries(
-    ["GAME_DATA", "WEEK2_DATA", "LIBRARY_DATA", "NARRATIVE_DATA"].map((n) => [
+    ["LIBRARY_DATA", "NARRATIVE_DATA"].map((n) => [
       n,
       JSON.parse(
         html.match(new RegExp("const " + n + "=(\\{.*?\\});", "s"))[1],
@@ -25,7 +25,7 @@ export function runtime() {
   return vm.runInNewContext(
     modules.map((n) => readFileSync("src/" + n + ".js", "utf8")).join("\n") +
       `
- const content=createContent(GAME_DATA,WEEK2_DATA,LIBRARY_DATA,NARRATIVE_DATA),progression=createProgression(content,LibraryEngine);
+ const content=createContent(LIBRARY_DATA,NARRATIVE_DATA),progression=createProgression(content,LibraryEngine);
  const state={progress:progression.fresh(),session:null,day:1};let raw=null;
  const backend={getItem(){return raw},setItem(k,v){raw=v}},storage=createStorage({state,content,progression,backend});
  const learning=createLearning({state,content,progression}),questions=createQuestions({state,content,progression,storage});
@@ -74,7 +74,13 @@ export function study(t, day, place) {
     s.locked = false;
     t.learning.submitLesson(item.kind === "construct" ? w.ps : w.en);
   }
-  t.progression.completeLessonOnce(t.state.progress, s.id, "standard", true);
+  t.progression.completeLessonOnce(
+    t.state.progress,
+    s.id,
+    "standard",
+    true,
+    s.required.length,
+  );
   return s;
 }
 export function beginAttempt(t, day) {

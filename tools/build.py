@@ -89,11 +89,6 @@ def build():
     curriculum = json.loads(read('content/LEARNING_CURRICULUM.json'))
     archived1 = json.loads(read('docs/grammar/attestations/WEEK1_AUTHORED.json'))
     archived2 = json.loads(read('docs/grammar/attestations/WEEK2_AUTHORED.json'))
-    game = dict(words=[], zones=curriculum['zones'],
-                courses={str(d['day'])+'-'+p: [] for d in curriculum['days'] for p in curriculum['zones']},
-                loops=[dict(id=d['day'], label=d['title'], person=d['topic'],
-                            subtitle=d['topic'], description=d['intro'], icon='📚') for d in curriculum['days']])
-    week2 = dict(days=[d for d in curriculum['days'] if d['day'] >= 8])
     library = json.loads(read('content/LIBRARY_LEXICON.json'))
     narrative = json.loads(read('content/NARRATIVE_EXPRESSIONS.json'))
     overrides = json.loads(read('content/CURRICULUM_OVERRIDES.json'))
@@ -151,9 +146,7 @@ def build():
     library['sourceMappings'] = {}
     library['cardTypes'] = {}
     library['curriculum'] = curriculum
-    library['grammar'] = [dict(grammarId='grammar-day-'+str(d['day']), day=d['day'],
-                               title=d['topic'], explanation=d['grammar'][0], linkedLemmaIds=[])
-                          for d in curriculum['days']]
+    library.pop('grammar', None)
     library['phrases'] = json.loads(read('content/FIXED_PHRASES.json'))['phrases']
     fixed_sources = {p['id']: p['ps'] for p in archived1['words'] if p.get('type') == 'greeting'}
     fixed_sources.update({p['id']: p['pashto'] for p in narrative['expressions'] if p['active']})
@@ -175,7 +168,7 @@ def build():
         'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
         'world-ui', 'library-ui', 'app',
     ]
-    datasets = {'GAME_DATA': game, 'WEEK2_DATA': week2, 'LIBRARY_DATA': library,
+    datasets = {'LIBRARY_DATA': library,
                 'NARRATIVE_DATA': narrative, 'BUNDLED_AUDIO_IDS': audio_ids}
     script = '\n'.join('const ' + name + '=' + encode(value) + ';'
                        for name, value in datasets.items()) + '\n'

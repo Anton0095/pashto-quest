@@ -1,71 +1,38 @@
-/* Runtime catalog derived from authored curriculum and lexical identities. No DOM or player state. */
-function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
-  const { words, courses, loops, zones } = GAME_DATA;
-  if (words.some((w) => w.type === "sentence"))
-    throw Error("Authored sentences are forbidden in the runtime catalog");
-  const wordById = Object.fromEntries(words.map((w) => [w.id, w]));
-  LIBRARY_DATA.cardDays = Object.fromEntries(words.map((w) => [w.id, w.loop]));
-  const week2Days = Object.fromEntries(WEEK2_DATA.days.map((d) => [d.day, d]));
-  const zoneKeys = ["residential", "nature", "business", "school"];
+/* Runtime registry and world lookups from the single curriculum and lexical identities. */
+function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
+  const curriculum = LIBRARY_DATA.curriculum;
+  const { zones, days } = curriculum;
+  const dayById = Object.fromEntries(days.map((day) => [day.day, day]));
+  const zoneKeys = Object.keys(zones);
+  const wordById = {};
+  LIBRARY_DATA.cardDays = {};
   const libraryEntries = Object.fromEntries(
     LIBRARY_DATA.entries.map((e) => [e.lemmaId, e]),
   );
   const villagePeople = {
     residential: {
+      role: "Village elder",
       name: "Muhammad Jan",
       face: "👴",
       description: "An older village leader, patient and wise.",
-      welcome:
-        "Welcome back, my friend! A home is the best place to start learning about the village.",
-      words:
-        "Look around our home. The door, rooms and other familiar things are a fine place to begin.",
     },
     business: {
+      role: "Grocer",
       name: "Edris",
       face: "🧑‍🌾",
       description: "The grocer who loves a good chat.",
-      welcome:
-        "Salaam! Come closer. There is always something interesting to see at my shop!",
-      words:
-        "A market is full of useful words. Look at the food, the shop and everything around you.",
     },
     nature: {
+      role: "Fellow student",
       name: "Saleha",
       face: "👩‍🎓",
       description: "A fellow student from your school.",
-      welcome:
-        "You are new here too? I am Saleha! I often come to the lake after school.",
-      words:
-        "It is peaceful beside the lake. We can describe the water and the river together.",
     },
     school: {
+      role: "Pashto teacher",
       name: "Ms Hameed",
       face: "👩‍🏫",
       description: "Your Pashto teacher at the village school.",
-      welcome:
-        "Welcome to class. We will build your Pashto one clear step at a time.",
-      words:
-        "We will study these words carefully, then use them in complete sentences.",
-    },
-  };
-  const roamingTeachers = {
-    5: {
-      residential: "Muhammad Jan",
-      business: "Edris",
-      nature: "Saleha",
-      school: "Ms Hameed",
-    },
-    6: {
-      residential: "Saleha",
-      business: "Muhammad Jan",
-      nature: "Saleha",
-      school: "Ms Hameed",
-    },
-    7: {
-      residential: "Muhammad Jan",
-      business: "Edris",
-      nature: "Ms Hameed",
-      school: "Saleha",
     },
   };
   const peopleByName = Object.fromEntries(
@@ -74,87 +41,37 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
       {
         name: "Mina",
         face: "👧",
-        description: "Saleha’s sister",
         role: "Saleha’s sister",
       },
     ].map((p) => [p.name, p]),
   );
-  const peopleAt = {
-    5: {
-      residential: ["Muhammad Jan", "Edris"],
-      business: ["Edris", "Saleha"],
-      nature: ["Saleha", "Muhammad Jan", "Ms Hameed", "Edris"],
-      school: ["Ms Hameed", "Saleha"],
-    },
-    6: {
-      residential: ["Saleha", "Muhammad Jan"],
-      business: ["Muhammad Jan", "Edris"],
-      nature: ["Saleha", "Mina"],
-      school: ["Ms Hameed", "Mina"],
-    },
-    7: {
-      residential: ["Muhammad Jan", "Saleha"],
-      business: ["Edris", "Muhammad Jan"],
-      nature: ["Ms Hameed", "Saleha", "Mina"],
-      school: ["Saleha", "Ms Hameed"],
-    },
-  };
-  function teacherFor(loop, loc, mode) {
+  const peopleAt = Object.fromEntries(
+    days.map((day) => [
+      day.day,
+      Object.fromEntries(
+        day.lessons.map((lesson) => [lesson.location, lesson.participants]),
+      ),
+    ]),
+  );
+  function teacherFor(day, location, mode) {
     if (mode === "tutorial") return villagePeople.residential;
-    if (loop >= 8) {
-      const day = week2Days[loop];
-      return (
-        peopleByName[
-          mode === "challenge"
-            ? loop === 14
-              ? "Ms Hameed"
-              : day.lessons.find((l) => l.location === day.opening).teacher
-            : day.lessons.find((l) => l.location === loc)?.teacher
-        ] || villagePeople.school
-      );
-    }
-    if (mode === "challenge") {
-      if (loop === 7) return villagePeople.school;
-      if (loop === 6) return villagePeople.nature;
-      if (loop === 3) return villagePeople.business;
-      if (loop === 5) return villagePeople.nature;
-      return villagePeople.residential;
-    }
-    if (loop <= 4 && villagePeople[loc]) return villagePeople[loc];
-    return peopleByName[roamingTeachers[loop]?.[loc]] || villagePeople.school;
-  }
-  for (const day of WEEK2_DATA.days) {
-    const d = day.day;
-    peopleAt[d] = {};
-    roamingTeachers[d] = {};
-    for (const [i, lesson] of day.lessons.entries()) {
-      const visitor = ["Mina", "Saleha", "Muhammad Jan", "Edris", "Ms Hameed"][
-        (d + i) % 5
-      ];
-      peopleAt[d][lesson.location] = [
-        ...new Set([
-          ...lesson.participants,
-          visitor,
-          ...(d === 14 && lesson.location === "residential"
-            ? ["Ms Hameed"]
-            : []),
-        ]),
-      ];
-      roamingTeachers[d][lesson.location] = lesson.teacher;
-    }
+    const goal = dayById[day];
+    const name =
+      mode === "challenge"
+        ? goal?.assessment.teacher
+        : goal?.lessons.find((lesson) => lesson.location === location)?.teacher;
+    return peopleByName[name] || villagePeople.school;
   }
   for (const phrase of LIBRARY_DATA.phrases) {
     wordById[phrase.id] ||= {
       id: phrase.id,
       loop: phrase.day || 0,
       type: "greeting",
-      phraseException: phrase.id,
       ps: phrase.pashto,
       roman: phrase.romanisation,
       en: phrase.english,
       place: phrase.location || "library",
       note: "Fixed expression; provisional romanisation, native Laghman review pending.",
-      dialect: "",
     };
     LIBRARY_DATA.cardTypes[phrase.id] = "greeting";
   }
@@ -171,7 +88,6 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
       roman: form.romanisation || "Romanisation pending native review",
       en: entry.englishSenses[0],
       note: "Provisional vocabulary; native Laghman review pending.",
-      dialect: "",
     };
     LIBRARY_DATA.cardDays[id] = entry.introduction.day;
     LIBRARY_DATA.cardTypes[id] = entry.partOfSpeech;
@@ -192,7 +108,6 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
         roman: form.romanisation || "Romanisation pending native review",
         en: form.englishGloss,
         note: "Attested form · native review pending.",
-        dialect: "",
       };
       LIBRARY_DATA.cardDays[id] = form.firstAllowedDay;
       LIBRARY_DATA.cardTypes[id] = entry.partOfSpeech;
@@ -322,34 +237,19 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
       roman: "",
       en,
       note: "English profile setting",
-      dialect: "",
     };
     LIBRARY_DATA.cardTypes[id] = "profile";
   }
   const tutorialIds = tutorialCards.map((c) => c.id);
-  const townStories = {
-    1: "Muhammad Jan welcomes you. Edris is at the market, Saleha is by the lake, and Ms Hameed is at school.",
-    2: "Ms Hameed introduces S–O–V. Visit the market and lake before returning home to Muhammad Jan.",
-    3: "Saleha shows you how to talk about yourself. Practise around town, then shop for dinner with Edris.",
-    4: "Muhammad Jan welcomes you home to learn informal ته and link actions using او. Return for a friendly conversation at the end of the day.",
-    5: "Ms Hameed teaches respectful/plural تاسې. The whole village is preparing to gather beside the lake. Characters can now visit different locations.",
-    6: "Saleha introduces her sister Mina beside the lake. Practise shared actions around town, then walk together in the Hills.",
-    7: "Edris describes groups of shoppers. Ms Hameed welcomes you to the separate 25-question Week 1 examination at School.",
-  };
   return {
     registerGenerated,
     restoreGenerated,
-    townStories,
-    words,
-    courses,
-    loops,
     zones,
     wordById,
-    curriculum: LIBRARY_DATA.curriculum,
-    week2Days,
+    curriculum,
+    dayById,
     zoneKeys,
     villagePeople,
-    roamingTeachers,
     peopleByName,
     peopleAt,
     teacherFor,
@@ -358,6 +258,5 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
     libraryEntries,
     LIBRARY_DATA,
     NARRATIVE_DATA,
-    WEEK2_DATA,
   };
 }

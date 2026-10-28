@@ -2,7 +2,6 @@
 function createLibraryUI({
   state,
   content,
-  progression,
   ui,
   audio,
   storage,
@@ -18,9 +17,7 @@ function createLibraryUI({
     ui.$("libraryClose").focus();
   }
   function closeLibrary() {
-    audio.stopAudio();
     ui.$("libraryDialog").close();
-    libraryLastFocus?.focus();
   }
   function renderLibrary(tab) {
     audio.stopAudio();
@@ -41,21 +38,20 @@ function createLibraryUI({
           "Rules unlock through actual lesson exposure or a correctly demonstrated challenge response. Native Laghman review is pending.",
         ),
       );
-      for (const rule of content.LIBRARY_DATA.grammar) {
-        const unlocked = state.progress.library.grammar[rule.grammarId],
+      for (const rule of content.curriculum.days) {
+        const grammarId = "grammar-day-" + rule.day;
+        const unlocked = state.progress.library.grammar[grammarId],
           detail = ui.node("details");
         const heading = ui.node(
           "summary",
-          `Day ${rule.day}: ${rule.title}${unlocked ? "" : " · Locked"}`,
+          `Day ${rule.day}: ${rule.topic}${unlocked ? "" : " · Locked"}`,
         );
         detail.append(heading);
         if (unlocked) {
-          detail.append(ui.node("p", rule.explanation));
+          detail.append(...rule.grammar.map((text) => ui.node("p", text)));
           const ex = learning
             .availableSentences(state.day)
-            .find((c) =>
-              c.generated.requiredGrammarIds.includes(rule.grammarId),
-            );
+            .find((c) => c.generated.requiredGrammarIds.includes(grammarId));
           if (ex) {
             content.registerGenerated(ex);
             learning.surface(ex.id, "grammar-reference");
@@ -69,13 +65,6 @@ function createLibraryUI({
                 "p",
                 "Study compatible forms before an example can be generated.",
               ),
-            );
-          const links = rule.linkedLemmaIds
-            .filter((id) => state.progress.library.acquired[id])
-            .map((id) => content.libraryEntries[id].englishSenses[0]);
-          if (links.length)
-            detail.append(
-              ui.node("p", "Linked vocabulary: " + links.join(", ")),
             );
         } else {
           detail.append(
@@ -191,16 +180,15 @@ function createLibraryUI({
     filters.append(searchLabel);
     const pos = select("Part of speech", "libraryPos", [
       ["", "All"],
-      ...["noun", "verb", "adjective", "adverb", "pronoun", "grammar"].map(
-        (x) => [x, x],
-      ),
+      ...[...new Set(content.LIBRARY_DATA.entries.map((e) => e.partOfSpeech))]
+        .sort()
+        .map((x) => [x, x]),
     ]);
     const day = select("First encounter", "libraryDay", [
       ["", "All days"],
-      ["0", "Legacy"],
-      ...Array.from({ length: 14 }, (_, i) => [
-        String(i + 1),
-        "Day " + (i + 1),
+      ...content.curriculum.days.map((day) => [
+        String(day.day),
+        "Day " + day.day,
       ]),
     ]);
     const location = select("Location", "libraryLocation", [
@@ -337,15 +325,6 @@ function createLibraryUI({
         ),
         ui.node("p", "Native review pending.", "tiny"),
       );
-      if (f.contextRomanisation)
-        box.append(
-          ui.node(
-            "p",
-            "Source sentence aid (not isolated-form pronunciation): " +
-              f.contextRomanisation,
-            "tiny",
-          ),
-        );
       if (f.audioContentId)
         box.append(
           ui.button("Pronunciation (if available)", () =>
@@ -441,18 +420,12 @@ function createLibraryUI({
   function renderLibraryPace(root) {
     const plan = state.progress.library.plans[state.day],
       current = plan?.effectiveDailyTarget;
-    let next = state.day;
-    while (state.progress.library.plans[next] && next <= 14) next++;
-    const available = LibraryEngine.supported(
-      state.progress,
-      content.LIBRARY_DATA,
-      next,
-    );
+    const next = LibraryEngine.nextUnstartedDay(state.progress, state.day);
     root.append(
       ui.node("h3", "Learning Pace"),
       ui.node(
         "p",
-        `Current Day ${state.day}: ${plan ? (current !== null && current !== undefined ? current + " new scheduled content lemmas" : "content gap; " + Object.values(plan.locationAssignments).flat().length + " available scheduled lemmas") : "not started"}. Requested pace: ${state.progress.library.requestedDailyTarget}/day.`,
+        `Current Day ${state.day}: ${plan ? (current !== null && current !== undefined ? current + " new scheduled content lemmas" : "content gap; " + Object.values(plan.locationAssignments).flat().length + " available scheduled lemmas") : "not started"}. Requested pace: ${paceSummary(state.progress.library.requestedDailyTarget)}.`,
       ),
     );
     root.append(
@@ -471,40 +444,98 @@ function createLibraryUI({
     const message = ui.node("p");
     message.id = "libraryPaceFeedback";
     message.setAttribute("role", "status");
-    for (const [i, target] of LibraryEngine.presets.entries()) {
-      const b = ui.button(
-        `${["Review only", "Very gentle", "Gentle", "Steady", "Moderate", "Standard", "Intensive"][i]} · ${target}/day · ${target / 4} per teaching location${available.includes(target) ? "" : " · Unavailable for this story / pool"}`,
-        () => {
-          const result = LibraryEngine.setPace(
-            state.progress,
-            content.LIBRARY_DATA,
-            target,
-            state.day,
-          );
-          if (result.ok) {
-            storage.save();
-            renderLibrary("pace");
-            ui.$("libraryPaceFeedback").textContent =
-              `Saved ${target}/day, starting Day ${result.day}.`;
-          } else message.textContent = result.reason;
-        },
-      );
+    for (const target of LibraryEngine.presets) {
+      const b = ui.button(`${paceSummary(target)}`, () => {
+        const result = LibraryEngine.setPace(state.progress, target, state.day);
+        if (result.ok) {
+          storage.save();
+          renderOnboardingPace();
+          renderLibrary("pace");
+          ui.$("libraryPaceFeedback").textContent =
+            `Saved ${target}/day, starting Day ${result.day}.`;
+        } else message.textContent = result.reason;
+      });
       b.dataset.pace = String(target);
-      b.disabled = !available.includes(target) || next > 14;
+      b.disabled = next > content.curriculum.days.length;
       b.setAttribute(
         "aria-pressed",
         String(state.progress.library.requestedDailyTarget === target),
       );
       root.append(b);
     }
-    if (!available.length)
+    if (next > content.curriculum.days.length)
       root.append(
         ui.node(
           "p",
-          "No complete quota is supported by the remaining distinct draft content. Narrative visits and skip challenges remain available through word and grammar practice. More curated vocabulary and native review are needed; repeats will not count as new.",
+          "All fourteen day plans have started. Their assignments stay fixed; you can continue visits, challenges and revision.",
         ),
       );
     root.append(message);
+  }
+  function paceSummary(target) {
+    return `${target}/day requested · ${target / LibraryEngine.places.length} per teaching location`;
+  }
+  function renderOnboardingPace() {
+    const choices = ui.$("onboardingPace") || ui.node("div");
+    choices.id = "onboardingPace";
+    choices.replaceChildren();
+    choices.append(
+      ui.node("h3", "Choose your learning pace"),
+      ui.node(
+        "p",
+        `Default: ${paceSummary(LibraryEngine.state().requestedDailyTarget)}. District vocabulary remains a development draft; shortages are shown in the day plan.`,
+      ),
+    );
+    const feedback = ui.node(
+      "p",
+      paceSummary(state.progress.library.requestedDailyTarget),
+    );
+    feedback.id = "onboardingPaceFeedback";
+    feedback.setAttribute("role", "status");
+    choices.append(
+      ui.node(
+        "p",
+        "Available district-word paces: " +
+          LibraryEngine.presets.join(" or ") +
+          "/day. Universal grammar words and forms are shown separately. At pace 0 or 4, Day 1 Home cannot yet make two sentences: word/grammar practice adapts without extra district words. Choose 0 for a review day.",
+      ),
+    );
+    for (const target of LibraryEngine.presets) {
+      const b = ui.button(target + "/day", () => {
+        const result = LibraryEngine.setPace(state.progress, target, 1);
+        if (result.ok) {
+          storage.save();
+          renderOnboardingPace();
+        } else feedback.textContent = result.reason;
+      });
+      b.dataset.onboardingPace = String(target);
+      b.setAttribute(
+        "aria-pressed",
+        String(state.progress.library.requestedDailyTarget === target),
+      );
+      choices.append(b);
+    }
+    choices.append(feedback);
+    if (!choices.isConnected)
+      ui.$("introScreen").insertBefore(choices, ui.$("startTutorial"));
+  }
+  function prepareOnboarding() {
+    renderOnboardingPace();
+    ui.$("introScreen").insertBefore(
+      document.querySelector(".worldmap"),
+      ui.$("introScreen").querySelector(".guide-row"),
+    );
+    for (const marker of document.querySelectorAll(
+      ".map-point:not(.library)",
+    )) {
+      marker.disabled = true;
+      marker.classList.remove("done", "checkin");
+      marker.querySelector("b").textContent = ui.displayPlace(
+        marker.dataset.place,
+      );
+      marker.querySelector("small").textContent =
+        "Complete the Library welcome";
+    }
   }
   function libraryInit() {
     const dialog = ui.node("dialog");
@@ -562,70 +593,9 @@ function createLibraryUI({
       ui.node("small", "Always open"),
     );
     document.querySelector(".worldmap").append(marker);
-    const choices = ui.node("div");
-    choices.id = "onboardingPace";
-    choices.append(
-      ui.node("h3", "Choose your learning pace"),
-      ui.node(
-        "p",
-        "Default: 20 new content lemmas/day, five per teaching location. Existing content is a development draft; unavailable quotas are flagged.",
-      ),
-    );
-    const feedback = ui.node("p", "20/day requested · 5 per location");
-    feedback.id = "onboardingPaceFeedback";
-    feedback.setAttribute("role", "status");
-    const onboardingSupported = LibraryEngine.supported(
-      state.progress,
-      content.LIBRARY_DATA,
-      1,
-    );
-    choices.append(
-      ui.node(
-        "p",
-        "Available district-word paces: " +
-          onboardingSupported.join(" or ") +
-          "/day. Universal grammar words and forms are shown separately. At pace 0 or 4, Day 1 Home cannot yet make two sentences: word/grammar practice adapts without extra district words. Choose 0 for a review day.",
-      ),
-    );
-    for (const target of LibraryEngine.presets) {
-      const b = ui.button(target + "/day", () => {
-        const result = LibraryEngine.setPace(
-          state.progress,
-          content.LIBRARY_DATA,
-          target,
-          1,
-        );
-        if (result.ok) {
-          storage.save();
-          for (const x of choices.querySelectorAll("button"))
-            x.setAttribute("aria-pressed", String(x === b));
-          feedback.textContent =
-            target + "/day requested · " + target / 4 + " per location";
-        } else feedback.textContent = result.reason;
-      });
-      b.dataset.onboardingPace = String(target);
-      b.disabled = !LibraryEngine.supported(
-        state.progress,
-        content.LIBRARY_DATA,
-        1,
-      ).includes(target);
-      b.setAttribute(
-        "aria-pressed",
-        String(state.progress.library.requestedDailyTarget === target),
-      );
-      choices.append(b);
-    }
-    choices.append(feedback);
-    ui.$("introScreen").insertBefore(choices, ui.$("startTutorial"));
-    if (!state.progress.tutorialDone) {
-      ui.$("introScreen").insertBefore(
-        document.querySelector(".worldmap"),
-        ui.$("introScreen").querySelector(".guide-row"),
-      );
-      for (const b of document.querySelectorAll(".map-point:not(.library)"))
-        b.disabled = true;
-    }
+    if (!state.progress.tutorialDone) prepareOnboarding();
+    else renderOnboardingPace();
   }
 
-  return { openLibrary, closeLibrary, libraryInit };
+  return { openLibrary, closeLibrary, libraryInit, prepareOnboarding };
 }

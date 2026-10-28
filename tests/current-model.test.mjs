@@ -10,7 +10,7 @@ const canonical = ["residential", "nature", "business", "school"];
 assert.deepEqual([...E.places].sort(), [...canonical].sort());
 for (const target of [4, 8, 12, 16, 20, 24]) {
   const p = current();
-  assert(E.setPace(p, data, target, 1).ok);
+  assert(E.setPace(p, target, 1).ok);
   const day = E.ensurePlan(p, data, 1);
   assert.equal(Object.values(day.locationAssignments).flat().length, target);
   for (const [district, ids] of Object.entries(day.locationAssignments)) {
@@ -23,7 +23,7 @@ for (const target of [4, 8, 12, 16, 20, 24]) {
       );
   }
   const frozen = JSON.stringify(day);
-  E.setPace(p, data, 4, 1);
+  E.setPace(p, 4, 1);
   assert.equal(JSON.stringify(day), frozen);
   assert.equal(Object.keys(p.library.acquired).length, 0);
   assert.equal(E.ensurePlan(p, data, 14).effectiveDailyTarget, 0);
@@ -81,14 +81,16 @@ assert.equal(
   JSON.stringify(JSON.parse(JSON.stringify(p)).library),
   JSON.stringify(p.library),
 );
-const html = read("index.html"),
-  game = JSON.parse(html.match(/const GAME_DATA=(\{.*?\});/s)[1]),
-  contract = JSON.parse(read("tests/curriculum-contract.json"));
-assert.equal(
-  game.words.length,
-  0,
-  "Authored source sentences must not cross the runtime boundary",
+const html = read("index.html");
+assert(
+  !/const (GAME_DATA|WEEK2_DATA)=/.test(html),
+  "No obsolete runtime projections",
 );
+const runtimeLibrary = JSON.parse(
+  html.match(/const LIBRARY_DATA=(\{.*?\});/s)[1],
+);
+assert.equal(runtimeLibrary.curriculum.days.length, 14);
+assert.equal(Object.keys(runtimeLibrary.curriculum.zones).length, 4);
 const archived = JSON.parse(
   read("docs/grammar/attestations/WEEK1_AUTHORED.json"),
 );
@@ -96,12 +98,6 @@ assert(
   archived.words.some((w) => w.id === "s3-house"),
   "Old sources remain evidence only",
 );
-assert.equal(game.loops.length, 14);
-assert.equal(Object.keys(game.courses).length, 56);
-for (const [id, ids] of Object.entries(game.courses)) {
-  assert(/^\d+-(residential|nature|business|school)$/.test(id));
-  for (const card of ids) assert(game.words.some((w) => w.id === card));
-}
 const { activationProblems, inventory } = await import(
   "../tools/district-inventory.mjs"
 );
@@ -161,11 +157,11 @@ assert.equal(missed.srsDueAt, first.srsDueAt + 2);
 assert.equal(P.awardXP(progress, "fixture-skill", 10), 10);
 assert.equal(P.awardXP(progress, "fixture-skill", 10), 0);
 assert.equal(
-  P.completeLessonOnce(progress, "1-residential", "standard", true),
+  P.completeLessonOnce(progress, "1-residential", "standard", true, 1),
   25,
 );
 assert.equal(
-  P.completeLessonOnce(progress, "1-residential", "standard", true),
+  P.completeLessonOnce(progress, "1-residential", "standard", true, 1),
   0,
 );
 assert.equal(progress.xp, 35);

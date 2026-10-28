@@ -4,6 +4,7 @@ Run `python3 tools/verify.py` from the repository root with Python 3, Node.js, P
 
 | Suite | Contract |
 |---|---|
+| `cleanup-model.test.mjs`, `cleanup-browser.test.mjs` | All fourteen days retain people, scenes, story and access rules; 375/1280 UI truth, pace persistence/reset, filters, visiting teachers, frozen assessment counts, grammar catch-up, active-item audio and empty visits without XP |
 | `productive-generation.test.mjs` | All 12 positive and 15 negative PR #21 grammar fixtures; every licensed binding, 1,000 deterministic selections, semantic/form/grammar exclusions |
 | `generated-architecture.test.mjs` | No startup catalogue/authored runtime cards; real word → grammar → composition order; Day 1 Home; seven paces and normal/skip routes; no hidden introductions or repeated standard study texts |
 | `generated-dialogue.test.mjs` | Six typed generated question/reply families, exact semantic joins, speaker referents, guided early dialogues, coordinated-clause syntax/provenance |

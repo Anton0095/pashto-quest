@@ -29,7 +29,7 @@ Week 2 `docs/grammar/attestations/WEEK2_AUTHORED.json`: 140 sentence cards (`w2-
 - **13:** `ورو ورو` vs `وړو`, `ژر`, `تل`, `کله کله`, `هره ورځ`, adverb placement and present-tense continuity.
 - **14:** distal feminine obliques, integrated clues and speaker/owner references, context-specific answers in the final examination.
 
-Full authored English targets and editorial context are in `content/WEEK2_LESSON_DATA.json` and the non-authoritative `docs/reference/WEEK2_DETAILED_LESSONS.md`. Mark resolved issues individually; do not globally remove draft/review flags.
+Full authored English targets and editorial context are in `docs/reference/WEEK2_LESSON_DATA.json` and the non-authoritative `docs/reference/WEEK2_DETAILED_LESSONS.md`. Mark resolved issues individually; do not globally remove draft/review flags.
 
 ## Audio and device status
 

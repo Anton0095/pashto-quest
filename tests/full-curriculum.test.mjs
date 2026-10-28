@@ -134,7 +134,8 @@ try {
                   } else if (s.phase === "grammar") {
                     if (
                       /[\u0600-\u06ff]/.test(
-                        document.querySelector("#sovExplanation").textContent,
+                        document.querySelector("#grammarExplanation")
+                          .textContent,
                       )
                     )
                       throw Error("A stored Pashto model leaked into grammar");

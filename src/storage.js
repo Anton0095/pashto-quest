@@ -7,6 +7,16 @@ function createStorage({
 }) {
   const KEY = "pashto-town-days-v1";
   let saveProblem = null;
+  function validOrder(order, size) {
+    return (
+      Array.isArray(order) &&
+      order.length === size &&
+      new Set(order).size === size &&
+      order.every(
+        (index) => Number.isInteger(index) && index >= 0 && index < size,
+      )
+    );
+  }
   function currentSave(p) {
     const object = (value) =>
       value && typeof value === "object" && !Array.isArray(value);
@@ -17,11 +27,7 @@ function createStorage({
       p.xp < 0
     )
       return false;
-    if (
-      !["rewards", "complete", "challenges", "personIntros"].every((key) =>
-        object(p[key]),
-      )
-    )
+    if (!["rewards", "complete", "challenges"].every((key) => object(p[key])))
       return false;
     if (
       !object(p.playerProfile) ||
@@ -212,6 +218,33 @@ function createStorage({
       )
         return false;
       for (const item of a.questions) {
+        // Current attempts always freeze presentation at creation. Missing choices
+        // or tile order are corrupt data, never a request to draw another exam.
+        if (
+          item.kind === "word" &&
+          (typeof item.unstudied !== "boolean" ||
+            (item.unstudied && item.direction !== "ps-en"))
+        )
+          return false;
+        if (["construct", "dialogue"].includes(item.kind)) {
+          let size;
+          try {
+            size = QuestionEngine.buildTiles(
+              content.wordById[item.id],
+              item,
+              a.loop,
+            ).length;
+          } catch {
+            return false;
+          }
+          if (!validOrder(item.tileSequence, size)) return false;
+        } else if (
+          !Array.isArray(item.choiceOrder) ||
+          !item.choiceOrder.length ||
+          item.choiceOrder.some((value) => typeof value !== "string") ||
+          new Set(item.choiceOrder).size !== item.choiceOrder.length
+        )
+          return false;
         if (
           ["sentence", "construct", "dialogue"].includes(item.kind) &&
           content.wordById[item.id]?.type === "sentence" &&
@@ -269,9 +302,8 @@ function createStorage({
           return false;
         }
         if (
-          !Array.isArray(a.tileSequence) ||
-          a.tileSequence.length !== tiles.length ||
-          new Set(a.tileSequence).size !== tiles.length ||
+          !validOrder(a.tileSequence, tiles.length) ||
+          JSON.stringify(a.tileSequence) !== JSON.stringify(q.tileSequence) ||
           new Set(a.built).size !== a.built.length ||
           [...a.tileSequence, ...a.built].some(
             (i) => !Number.isInteger(i) || i < 0 || i >= tiles.length,

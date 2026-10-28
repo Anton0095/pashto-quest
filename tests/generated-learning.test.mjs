@@ -20,6 +20,7 @@ try {
         phase: s.phase,
         id,
         card: c,
+        phrase: t.content.LIBRARY_DATA.phrases.some((p) => p.id === id),
         grammar: t.state.progress.library.grammar,
         queue: s.queue.length,
       };
@@ -33,7 +34,7 @@ try {
           english: s.card.en,
           origin:
             s.card.generated?.origin ||
-            s.card.phraseException ||
+            (s.phrase ? s.id : null) ||
             "lexical_form",
         });
       if (s.phase === "sentence") {
@@ -60,9 +61,9 @@ try {
     } else if (s.phase === "grammar") {
       transcript.push({
         phase: "grammar",
-        text: await page.locator("#sovExplanation").innerText(),
+        text: await page.locator("#grammarExplanation").innerText(),
       });
-      await page.locator("#sovNext").click();
+      await page.locator("#grammarNext").click();
     } else {
       const isBuild = await page.evaluate(
         () => __test.state.session.activeItem.kind === "construct",
