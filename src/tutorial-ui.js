@@ -14,6 +14,7 @@ function createTutorial({ state, content, learning, ui, storage }) {
     const n = state.session.cardIndex,
       c = content.tutorialCards[n],
       w = content.wordById[c.id];
+    learning.surface(c.id, "tutorial");
     learning.libraryExpose(c.id, "tutorial");
     storage.save();
     ui.$("teachPanel").classList.remove("hidden");
@@ -35,7 +36,7 @@ function createTutorial({ state, content, learning, ui, storage }) {
     ui.$("addressTarget").classList.remove("hidden");
     ui.$("guideMessage").textContent = [
       "First, select what Salaam means. You can try again if you make a mistake.",
-      "Now arrange my Pashto words into a sentence by tapping them in order.",
+      "Arrange this conventional greeting, taught as a complete phrase.",
       "This time you answer about yourself. There is no wrong choice.",
       "Now type the name you would like me to call you.",
     ][n];
@@ -131,7 +132,7 @@ function createTutorial({ state, content, learning, ui, storage }) {
           if (
             QuestionEngine.evaluate({ kind: "construct" }, w, answer.join(" "))
           )
-            done("✓ څنګه یې؟ means How are you?");
+            done("✓ " + w.ps + " means " + w.en);
           else {
             tutorialAnswer(false);
             feedback.textContent =
@@ -149,7 +150,7 @@ function createTutorial({ state, content, learning, ui, storage }) {
         undo.disabled = clear.disabled = answer.length === 0;
         check.disabled = answer.length !== 2;
       };
-      for (const word of ["یې؟", "څنګه"]) {
+      for (const word of w.ps.split(" ").reverse()) {
         const tile = make(
           word,
           () => {

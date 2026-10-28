@@ -1,6 +1,8 @@
 /* Runtime catalog derived from authored curriculum and lexical identities. No DOM or player state. */
 function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
   const { words, courses, loops, zones } = GAME_DATA;
+  if (words.some((w) => w.type === "sentence"))
+    throw Error("Authored sentences are forbidden in the runtime catalog");
   const wordById = Object.fromEntries(words.map((w) => [w.id, w]));
   LIBRARY_DATA.cardDays = Object.fromEntries(words.map((w) => [w.id, w.loop]));
   const week2Days = Object.fromEntries(WEEK2_DATA.days.map((d) => [d.day, d]));
@@ -8,16 +10,6 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
   const libraryEntries = Object.fromEntries(
     LIBRARY_DATA.entries.map((e) => [e.lemmaId, e]),
   );
-  const dayTwoScenes = {
-    school:
-      "Ms Hameed: “Good morning! Watch me read, write and open this book. Before we practise, I will show you how a Pashto action sentence puts its verb at the end.”",
-    business:
-      "Edris: “Salaam again! Look at my customers. One buys an apple, another carries a bag, and I sell bread. What actions can you describe?”",
-    nature:
-      "Saleha: “Look! There are fish and birds by the water. Let us describe what people see, drink, catch and throw.”",
-    residential:
-      "Muhammad Jan: “You are home! Tell me what people do here: open and close the door, drink tea, and clean the room. Then we will see what you remember.”",
-  };
   const villagePeople = {
     residential: {
       name: "Muhammad Jan",
@@ -107,48 +99,6 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
       school: ["Saleha", "Ms Hameed"],
     },
   };
-  const advancedScenes = {
-    4: {
-      residential:
-        "Muhammad Jan: “You have learnt to speak about yourself. Now we will use ته when talking to a familiar person, and join two meaningful thoughts with او — and.”",
-      business:
-        "Edris: “Imagine you are speaking to a friend who buys bread while you carry a bag. Describe what you each do!”",
-      nature:
-        "Saleha: “Look at the fish and birds. You see the bird and I see the fish. Let us say both ideas together.”",
-      school:
-        "Ms Hameed: “Two clauses can each have their own subject and verb. Try saying what your classmate does, then what you do.”",
-    },
-    5: {
-      residential:
-        "Muhammad Jan: “Our neighbours are coming together near the lake. With elders, the polite تاسې is usually the respectful choice.”",
-      business:
-        "Edris: “Saleha is helping at the shop today! You can use ته with a friend like her, and تاسې to speak to me politely.”",
-      nature:
-        "Saleha: “Everyone is gathering at the lake! Muhammad Jan and Ms Hameed will be here too. Practise speaking to a group with تاسې.”",
-      school:
-        "Ms Hameed: “Today you will learn how to use تاسې for elders, teachers, and groups, and how it changes the verb endings.”",
-    },
-    6: {
-      residential:
-        "Saleha: “I came to visit Muhammad Jan. Let us talk about what WE do together.”",
-      nature:
-        "Saleha: “Meet my sister Mina! Join us beside the lake. I run; Mina and I run together; WE run together. You both means the people I address, not my own group.”",
-      business:
-        "Muhammad Jan: “I stopped by Edris’s shop. We can talk about what WE buy and sell.”",
-      school:
-        "Ms Hameed: “Now we will practise first-person plural forms: موږ, we.”",
-    },
-    7: {
-      residential:
-        "Muhammad Jan: “Our village is busy with visitors. Let us describe what THEY do.”",
-      nature:
-        "Ms Hameed: “We came here with Saleha. Can you describe what the people and birds around us do?”",
-      business:
-        "Edris: “Look at the customers by the fruit stall. They buy apples and carry baskets. The sellers at the bread stall are another group: they sell bread. Neither group includes you or me.”",
-      school:
-        "Saleha: “I am visiting our classroom. Practise telling me what the other students do.”",
-    },
-  };
   function teacherFor(loop, loc, mode) {
     if (mode === "tutorial") return villagePeople.residential;
     if (loop >= 8) {
@@ -198,6 +148,7 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
       id: phrase.id,
       loop: phrase.day || 0,
       type: "greeting",
+      phraseException: phrase.id,
       ps: phrase.pashto,
       roman: phrase.romanisation,
       en: phrase.english,
@@ -212,15 +163,17 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
       id = "library-card:" + entry.lemmaId;
     wordById[id] = {
       id,
-      loop: 1,
+      loop: entry.introduction.day,
       place: entry.primaryDistrict,
       type: entry.partOfSpeech,
+      audioContentId: form.audioContentId,
       ps: form.pashto,
       roman: form.romanisation || "Romanisation pending native review",
       en: entry.englishSenses[0],
-      note: "Existing authored draft vocabulary. Native Laghman review pending.",
+      note: "Provisional vocabulary; native Laghman review pending.",
       dialect: "",
     };
+    LIBRARY_DATA.cardDays[id] = entry.introduction.day;
     LIBRARY_DATA.cardTypes[id] = entry.partOfSpeech;
     LIBRARY_DATA.sourceMappings[id] = [
       { lemmaId: entry.lemmaId, formId: form.formId },
@@ -231,104 +184,149 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
       const id = "library-form:" + form.formId;
       wordById[id] = {
         id,
-        loop: 1,
+        loop: form.firstAllowedDay,
         place: entry.primaryDistrict,
         type: entry.partOfSpeech,
+        audioContentId: form.audioContentId,
         ps: form.pashto,
         roman: form.romanisation || "Romanisation pending native review",
         en: form.englishGloss,
         note: "Attested form · native review pending.",
         dialect: "",
       };
+      LIBRARY_DATA.cardDays[id] = form.firstAllowedDay;
       LIBRARY_DATA.cardTypes[id] = entry.partOfSpeech;
       LIBRARY_DATA.sourceMappings[id] = [
         { lemmaId: entry.lemmaId, formId: form.formId },
       ];
     }
   LIBRARY_DATA.sentenceOrigins = {};
-  LIBRARY_DATA.generatedCatalog = SentenceEngine.catalog(LIBRARY_DATA, LIBRARY_DATA.sentenceFrames);
+  // No sentence catalogue is built before study. The engine compiles current eligible state on request.
   const meaningOrigins = new Map();
-  for (const card of LIBRARY_DATA.generatedCatalog) {
+  const deepFreeze = (value) => {
+    if (value && typeof value === "object" && !Object.isFrozen(value)) {
+      Object.values(value).forEach(deepFreeze);
+      Object.freeze(value);
+    }
+    return value;
+  };
+  function registerGenerated(card) {
+    if (wordById[card.id]) return wordById[card.id];
+    if (
+      card.type !== "sentence" ||
+      card.generated?.origin !== "productive_engine"
+    )
+      throw Error("Only compiler output may register a sentence");
+    {
+      const check = SentenceEngine.restoreCard(
+        LIBRARY_DATA,
+        LIBRARY_DATA.sentenceFrames,
+        card,
+      );
+      if (!check || JSON.stringify(check) !== JSON.stringify(card))
+        throw Error("Sentence body does not match its compiler proof");
+    }
+    deepFreeze(card);
     wordById[card.id] = card;
     LIBRARY_DATA.cardTypes[card.id] = "sentence";
-    const meaning = card.ps + "\n" + card.en;
-    const origin = card.generated.sourceId || meaningOrigins.get(meaning) || card.id;
+    const meaning = card.ps + "\n" + card.en,
+      origin = meaningOrigins.get(meaning) || card.id;
     meaningOrigins.set(meaning, origin);
     LIBRARY_DATA.sentenceOrigins[card.id] = origin;
-    LIBRARY_DATA.sourceMappings[card.id] = [...new Map(Object.values(card.generated.slots).map((r) => [r.formId, r])).values()];
+    LIBRARY_DATA.sourceMappings[card.id] = [
+      ...new Map(
+        Object.values(card.generated.slots).map((r) => [r.formId, r]),
+      ).values(),
+    ];
     LIBRARY_DATA.cardDays[card.id] = card.loop;
+    return card;
+  }
+  function restoreGenerated(progress) {
+    // A practiced meaning's first registered binding owns its SRS/reward key.
+    // Restore those owners before plan snapshots, which may contain an equivalent
+    // binding from a different frame and were not necessarily registered first.
+    for (const id of Object.keys(progress.library?.units || {})) {
+      if (!id.startsWith("generated:")) continue;
+      const card = SentenceEngine.restoreId(
+        LIBRARY_DATA,
+        LIBRARY_DATA.sentenceFrames,
+        id,
+      );
+      if (!card) return false;
+      registerGenerated(card);
+    }
+    const snapshots = [];
+    for (const plan of Object.values(progress.library?.plans || {})) {
+      for (const cards of Object.values(plan.generatedPracticeCards || {}))
+        snapshots.push(...cards);
+      for (const q of plan.challengeQuestions || [])
+        snapshots.push(q.generated, q.promptGenerated);
+    }
+    for (const q of progress.activeChallenge?.questions || [])
+      snapshots.push(q.generated, q.promptGenerated);
+    for (const snapshot of snapshots.filter(Boolean)) {
+      const card = SentenceEngine.restoreCard(
+        LIBRARY_DATA,
+        LIBRARY_DATA.sentenceFrames,
+        snapshot,
+      );
+      if (!card || JSON.stringify(card) !== JSON.stringify(snapshot))
+        return false;
+      registerGenerated(card);
+    }
+    for (const delivery of Object.values(progress.library?.deliveries || {})) {
+      if (delivery.kind !== "generated_sentence" || wordById[delivery.id])
+        continue;
+      const card = SentenceEngine.restoreId(
+        LIBRARY_DATA,
+        LIBRARY_DATA.sentenceFrames,
+        delivery.id,
+      );
+      if (!card) return false;
+      registerGenerated(card);
+    }
+    return true;
   }
   // Four guided study cards introduce the game's interaction types.
   const tutorialCards = [
     {
       id: "g-hello",
       kind: "choice",
-      help: "Read Salaam and its pronunciation. Tap the correct English meaning; then Continue.",
+      help: "Choose the meaning of this conventional greeting.",
     },
     {
       id: "g-how",
       kind: "tiles",
-      help: "Tap the Pashto word tiles in the order needed to ask 'How are you?'. Use Undo or Clear if needed.",
+      help: "Arrange the words of this conventional greeting, taught as one fixed phrase.",
     },
     {
       id: "tutorial-gender",
       kind: "gender",
-      ps: "ستاسو جنسیت څه دی؟",
-      roman: "Staaso jinsiyat tsa day?",
-      en: "What is your gender?",
-      help: "Answer the question rather than translating it. Select the option that suits you, or prefer not to say.",
+      help: "Optional profile preference. This is an English interface question, not Pashto language instruction.",
     },
     {
       id: "tutorial-name",
       kind: "name",
-      ps: "ستا نوم څه دی؟",
-      roman: "Sta num tsa day?",
-      en: "What is your name?",
-      help: "Type your own answer. Your name and gender preference are only saved in this browser's game progress.",
+      help: "Choose your player name. This is an English interface question, not Pashto language instruction.",
     },
   ];
-  for (const c of tutorialCards) {
-    if (c.ps)
-      wordById[c.id] = {
-        id: c.id,
-        loop: 0,
-        place: "guide",
-        type: "greeting",
-        ps: c.ps,
-        roman: c.roman,
-        en: c.en,
-        note: "Provisional Afghan Pashto; native Laghman language review pending.",
-        dialect: "",
-      };
-    if (!LIBRARY_DATA.phrases.some((p) => p.id === c.id)) {
-      const w = wordById[c.id];
-      LIBRARY_DATA.phrases.push({
-        id: c.id,
-        pashto: w.ps,
-        romanisation: w.roman,
-        english: w.en,
-        reviewStatus: "needsNativeLaghmanReview",
-      });
-    }
+  for (const [id, en] of [
+    ["tutorial-gender", "Your gender preference"],
+    ["tutorial-name", "Your player name"],
+  ]) {
+    wordById[id] = {
+      id,
+      type: "profile",
+      loop: 0,
+      ps: "",
+      roman: "",
+      en,
+      note: "English profile setting",
+      dialect: "",
+    };
+    LIBRARY_DATA.cardTypes[id] = "profile";
   }
   const tutorialIds = tutorialCards.map((c) => c.id);
-  const dinnerLines = [
-    "Salaam! Welcome to my market. Let’s get ready for dinner.",
-    "This is a common ingredient. Can you name it?",
-    "Now for another ingredient to take home.",
-    "What action do you do when you pay for food?",
-    "Tell me how to say that you want something.",
-    "Good. Tell me what you are buying.",
-    "Suppose you ask for onions. What would you say?",
-    "Sometimes fruit costs too much. What does this mean?",
-    "I have baked some bread. What do you understand?",
-    "A customer is eating bread. What is happening?",
-    "Now speak to me directly: say you are buying potatoes.",
-    "Do not forget the bread. Tell me you are buying it.",
-    "Imagine dinner is ready. Say that you eat bread.",
-    "You need a way to carry everything home. Tell me.",
-    "And what will you drink with dinner? One last sentence!",
-  ];
   const townStories = {
     1: "Muhammad Jan welcomes you. Edris is at the market, Saleha is by the lake, and Ms Hameed is at school.",
     2: "Ms Hameed introduces S–O–V. Visit the market and lake before returning home to Muhammad Jan.",
@@ -339,21 +337,21 @@ function createContent(GAME_DATA, WEEK2_DATA, LIBRARY_DATA, NARRATIVE_DATA) {
     7: "Edris describes groups of shoppers. Ms Hameed welcomes you to the separate 25-question Week 1 examination at School.",
   };
   return {
+    registerGenerated,
+    restoreGenerated,
     townStories,
-    dinnerLines,
     words,
     courses,
     loops,
     zones,
     wordById,
+    curriculum: LIBRARY_DATA.curriculum,
     week2Days,
     zoneKeys,
-    dayTwoScenes,
     villagePeople,
     roamingTeachers,
     peopleByName,
     peopleAt,
-    advancedScenes,
     teacherFor,
     tutorialCards,
     tutorialIds,

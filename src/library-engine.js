@@ -31,6 +31,8 @@ const LibraryEngine = (() => {
       grammar: {},
       events: {},
       attemptSequence: 0,
+      deliveries: {},
+      deficits: {},
     };
   }
   function encounter(p, data, ref, context) {
@@ -235,6 +237,8 @@ const LibraryEngine = (() => {
       )
       .sort(
         (a, b) =>
+          Number(b.introduction.day === day) -
+            Number(a.introduction.day === day) ||
           a.introduction.day - b.introduction.day ||
           a.introduction.teachingOrder - b.introduction.teachingOrder ||
           a.lemmaId.localeCompare(b.lemmaId),

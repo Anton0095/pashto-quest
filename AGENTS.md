@@ -10,9 +10,10 @@ Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CUR
 - `src/progression.js`: current save factory, XP, results, milestones, reward identity and access rules.
 - `src/question-engine.js`: answer evaluation and indexed tiles; `src/learning.js` applies practice transactions. UI renders outcomes.
 - `src/storage.js`: save validation/I/O and active assessment snapshots. `src/app.js` only composes services and wires controls. Keep authored blueprints in content modules/JSON, apart from renderers.
+- `content/LEARNING_CURRICULUM.json`: fixed English teaching sequence; every instructional clause is compiled after actual form study and grammar unlocks. `content/FIXED_PHRASES.json` is the complete six-expression exception register. Authored archives are evidence/fixtures only, never teaching fallbacks.
 - Four district keys: `residential`, `nature`, `business`, `school`. Library is reference-only; Hills is a Nature scene.
-- Preserve 14 authored days, characters, normal/skip paths and current learning states. Day 1 excludes lexical action verbs; Day 14 has zero compulsory new lemmas.
-- Only **save schema 6** is supported. Do not add old-format migration/backfill/content-repair adapters or silent save resets. Unsupported/corrupt saves remain untouched until explicit user reset.
+- Preserve 14 curriculum days, characters, normal/skip paths and current learning states. Day 1 excludes lexical action verbs; Day 14 has zero compulsory new lemmas.
+- Only **save schema 7** is supported. Do not add old-format migration/backfill/content-repair adapters or silent save resets. Unsupported/corrupt saves remain untouched until explicit user reset.
 - Do not add duplicate SRS/XP stores, replay-farmable rewards, or reveal unseen vocabulary's English meaning before answer submission.
 - Incomplete language candidates and pending expressions remain inactive. Mechanically complete lexical drafts may be `provisional_playable` only with explicit provenance, `userVerified: false`, and no native-approval claim. No invented native Laghman approval or audio recordings.
 - Preserve mobile/RTL interaction and candid audio fallback. Mocked browser testing is not physical-device verification.

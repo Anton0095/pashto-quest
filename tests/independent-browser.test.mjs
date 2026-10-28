@@ -1,175 +1,91 @@
-// Public UI only: no injected runtime bridge and no production progression/grading helpers.
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import http from "node:http";
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-let chromium;
-try {
-  ({ chromium } = require("playwright"));
-} catch {
-  ({
-    chromium,
-  } = require("/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright"));
-}
-const html = readFileSync("index.html", "utf8"),
-  server = http.createServer((req, res) => {
-    res.setHeader("Content-Type", "text/html;charset=utf-8");
-    res.end(html);
-  });
-await new Promise((r) => server.listen(0, "127.0.0.1", r));
-const browser = await chromium.launch({
-  executablePath: process.env.CHROMIUM_PATH || "/usr/bin/chromium",
-  args: ["--no-sandbox"],
-});
-let savedCurrent;
-try {
-  for (const width of [1280, 375]) {
-    const context = await browser.newContext({
-        viewport: { width, height: 900 },
-      }),
-      page = await context.newPage(),
-      meanings = new Map();
-    const errors = [];
-    page.on("pageerror", (e) => {
-      errors.push(e.message);
-      console.log("PAGEERROR", e.stack);
-    });
-    await page.goto(`http://127.0.0.1:${server.address().port}`);
-    await page.locator('[data-onboarding-pace="4"]').click();
-    await page.locator("#startTutorial").click();
-    async function finish() {
-      let steps = 0;
-      while (await page.locator("#resultScreen").isHidden()) {
-        assert(++steps < 250, "public lesson stalls");
-        if (await page.locator("#tutorialInteraction").isVisible()) {
-          const step=await page.locator("#teachCount").innerText();
-          if(step.includes("CARD 1/4")) await page.locator("#tutorialInteraction .choice").filter({hasText:"Hello"}).click();
-          else if(step.includes("CARD 2/4")) {
-            await page.locator('.tutorial-tile[data-word="څنګه"]').click();
-            await page.locator('.tutorial-tile[data-word="یې؟"]').click();
-            await page.getByRole("button",{name:"Check sentence"}).click();
-          } else if(step.includes("CARD 3/4")) await page.locator('[data-gender="female"]').click();
-          else {
-            await page.locator("#tutorialName").fill("Sami");
-            await page.locator("#tutorialSaveName").click();
+import { setup, tutorial } from "./browser-fixture.mjs";
+for (const width of [375, 1280]) {
+  const b = await setup({ width, bridge: false });
+  try {
+    const p = b.page;
+    await tutorial(p);
+    await p.locator("#resultWorld").click();
+    await p.locator('.map-point[data-place="residential"]').click();
+    const known = new Map();
+    let generated = 0;
+    async function finishVisit() {
+      let guard = 0;
+      while (await p.locator("#lessonScreen").isVisible()) {
+        if (++guard > 100) throw Error("Public controls stalled");
+        if (await p.locator("#teachPanel").isVisible()) {
+          const ps = await p.locator("#teachPashto").innerText(),
+            en = await p.locator("#teachEnglish").innerText();
+          known.set(ps, en);
+          if (
+            (await p.locator("#teachType").textContent()).toLowerCase() ===
+            "generated sentence"
+          )
+            generated++;
+          await p.locator("#teachNext").click();
+        } else if (await p.locator("#sovPanel").isVisible())
+          await p.locator("#sovNext").click();
+        else {
+          const build = await p.locator("#constructionPanel").isVisible(),
+            prompt = await p.locator("#quizPashto").innerText();
+          if (build) {
+            const ps = [...known].find(([ps, en]) => en === prompt)?.[0];
+            assert(ps, prompt);
+            for (const word of ps.replace(/[.!؟،]/g, "").split(/\s+/))
+              await p
+                .locator("#wordTiles button:enabled")
+                .getByText(word, { exact: true })
+                .first()
+                .click();
+            await p.locator("#checkBuild").click();
+          } else {
+            const meaning = known.get(prompt);
+            assert(meaning, prompt);
+            await p
+              .locator("#choices button")
+              .getByText(meaning, { exact: true })
+              .click();
           }
-          await page.locator("#teachNext").click();
-        } else if (await page.locator("#teachPanel").isVisible()) {
-          meanings.set(
-            (await page.locator("#teachPashto").innerText()).trim(),
-            await page.locator("#teachEnglish").innerText(),
-          );
-          await page.locator("#teachNext").click();
-        } else if (await page.locator("#sovPanel").isVisible()) {
-          await page.locator("#sovNext").click();
-        } else {
-          const text = (await page.locator("#quizPashto").innerText()).trim(),
-            expected = meanings.get(text);
-          assert(
-            expected,
-            "quiz asks content absent from displayed study cards: " + text,
-          );
-          await page
-            .getByRole("button", { name: expected, exact: true })
-            .click();
-          await page.locator("#quizNext").click();
+          await p.locator("#quizNext").click();
         }
       }
     }
-    await finish();
-    await page.locator("#resultWorld").click();
-    const home = page
-      .locator(".map-point")
-      .filter({ has: page.locator("b", { hasText: "Home" }) });
-    await home.click();
-    await finish();
-    await page.locator("#resultWorld").click();
-    const storage = () =>
-      page.evaluate(() =>
-        JSON.parse(localStorage.getItem("pashto-town-days-v1")),
+    await finishVisit();
+    assert(generated >= 2);
+    const getXP = () =>
+      p.evaluate(
+        () => JSON.parse(localStorage.getItem("pashto-town-days-v1")).xp,
       );
-    let saved = await storage();
-    assert.equal(
-      Object.values(saved.library.plans[1].locationAssignments).flat().length,
-      4,
+    const xp = await getXP();
+    await p.locator("#resultReplay").click();
+    await finishVisit();
+    assert.equal(await getXP(), xp, "Explicit replay cannot farm rewards");
+    await p.locator("#navLibrary").click();
+    await p.locator('[data-library-tab="grammar"]').click();
+    assert(
+      (await p.locator("#libraryBody").innerText()).includes("Grammar Journal"),
     );
-    assert(Object.keys(saved.library.acquired).length > 0);
-    const before = saved.xp;
-    await home.click();
-    await finish();
-    saved = await storage();
-    assert.equal(saved.xp, before, "completed not-due replay must not farm XP");
-    await page.reload();
-    assert.equal((await storage()).xp, saved.xp);
-    await page.locator("#navLibrary").click();
-    assert.match(await page.locator("#libraryBody").innerText(), /encountered/);
-    await page.keyboard.press("Escape");
-    assert.equal(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth > innerWidth,
-      ),
-      false,
+    await p.locator('[data-library-tab="phrases"]').click();
+    assert(
+      (await p.locator("#libraryBody").innerText()).includes("How are you?"),
     );
-    await page.clock.setFixedTime(new Date(Date.now() + 31 * 86400000));
-    await page.reload();
-    await page.locator("#reviewBtn").click();
-    await finish();
-    await page.locator("#resultWorld").click();
-    await context.setOffline(true);
-    await page.locator("#navLibrary").click();
-    await page.locator("#libraryClose").click();
-    savedCurrent = await storage();
-    assert.deepEqual(errors, []);
-    await context.close();
+    await p.locator('[data-library-tab="pace"]').click();
+    assert((await p.locator("#libraryBody").innerText()).includes("24"));
+    await p.locator("#libraryClose").click();
+    assert.equal(await getXP(), xp);
+    const overflow = await p.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth + 2,
+    );
+    assert(!overflow, "Horizontal overflow");
+    await p.reload();
+    assert.equal(await getXP(), xp);
+    assert.deepEqual(b.errors, []);
     console.log(
-      "PASS independent public UI",
+      "PASS independent public controls",
       width,
-      "pace 4, study/quiz, acquisition, replay, reload, Library, RTL/mobile/offline",
+      "tutorial, actual Home study and construction, explicit replay/no XP farming, generated journal/phrase register/pace, reload and responsive layout",
     );
+  } finally {
+    await b.close();
   }
-  for (const incompatible of [
-    JSON.stringify({ saveSchemaVersion: 3, xp: 999 }),
-    JSON.stringify({ ...savedCurrent, saveSchemaVersion: 4 }),
-    JSON.stringify({ saveSchemaVersion: 6, xp: 0 }),
-    "{broken",
-    JSON.stringify({
-      ...savedCurrent,
-      challenges: { 7: { best: 19, passed: true, attempts: 1 } },
-    }),
-  ]) {
-    const context = await browser.newContext(),
-      page = await context.newPage();
-    await page.goto(`http://127.0.0.1:${server.address().port}`);
-    await page.evaluate(
-      (value) => localStorage.setItem("pashto-town-days-v1", value),
-      incompatible,
-    );
-    await page.reload();
-    assert(await page.locator("#saveCompatibility").isVisible());
-    assert.equal(
-      await page.evaluate(() => localStorage.getItem("pashto-town-days-v1")),
-      incompatible,
-    );
-    await page
-      .getByRole("button", {
-        name: "Reset incompatible save and start",
-        exact: true,
-      })
-      .click();
-    await page.waitForFunction(
-      () =>
-        JSON.parse(localStorage.getItem("pashto-town-days-v1"))
-          .saveSchemaVersion === 6,
-    );
-    await page.reload();
-    assert.equal(await page.locator("#saveCompatibility").count(), 0);
-    await context.close();
-  }
-  console.log(
-    "PASS independent incompatible/corrupt save preservation, explicit reset, and current-version reload",
-  );
-} finally {
-  await browser.close();
-  server.close();
 }

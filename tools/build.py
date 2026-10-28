@@ -85,39 +85,15 @@ def validate_expressions(data):
             raise ValueError('Expression requires documented linguistic review: ' + identity)
 
 
-def append_week2(game, week2):
-    for day in week2['days']:
-        number = day['day']
-        for word in day['vocabulary']:
-            game['words'].append(dict(
-                id=word['id'], loop=number, place=day['opening'],
-                ps=word['pashto'], roman=word['romanization'], en=word['english'],
-                note='Week 2 draft vocabulary. Native Laghman review pending.',
-                dialect='',
-            ))
-        for lesson in day['lessons']:
-            for card in lesson['cards']:
-                game['words'].append(dict(
-                    id=card['id'], loop=number, place=lesson['location'],
-                    type='sentence', ps=card['pashto'], roman=card['romanization'],
-                    en=card['english'], note=card['note'],
-                    dialect='Draft: local Laghman review pending.',
-                    speaker=card['speaker'], recipient=card['recipient'],
-                    status=card['status'],
-                ))
-            course = f"{number}-{lesson['location']}"
-            game['courses'][course] = ([word['id'] for word in day['vocabulary']]
-                                       + [card['id'] for card in lesson['cards']])
-        game['loops'].append(dict(
-            id=number, label=day['title'], person=day['topic'],
-            icon='📚' if number == 14 else '🌿', subtitle=day['topic'],
-            description=day['intro'],
-        ))
-
-
 def build():
-    game = json.loads(read('content/WEEK1_RUNTIME.json'))
-    week2 = json.loads(read('content/WEEK2_RUNTIME.json'))
+    curriculum = json.loads(read('content/LEARNING_CURRICULUM.json'))
+    archived1 = json.loads(read('docs/grammar/attestations/WEEK1_AUTHORED.json'))
+    archived2 = json.loads(read('docs/grammar/attestations/WEEK2_AUTHORED.json'))
+    game = dict(words=[], zones=curriculum['zones'],
+                courses={str(d['day'])+'-'+p: [] for d in curriculum['days'] for p in curriculum['zones']},
+                loops=[dict(id=d['day'], label=d['title'], person=d['topic'],
+                            subtitle=d['topic'], description=d['intro'], icon='📚') for d in curriculum['days']])
+    week2 = dict(days=[d for d in curriculum['days'] if d['day'] >= 8])
     library = json.loads(read('content/LIBRARY_LEXICON.json'))
     narrative = json.loads(read('content/NARRATIVE_EXPRESSIONS.json'))
     overrides = json.loads(read('content/CURRICULUM_OVERRIDES.json'))
@@ -149,34 +125,53 @@ def build():
     }
     validate(library)
     validate_expressions(narrative)
-    append_week2(game, week2)
-    authored = {w['id']: w for w in game['words']}
+    authored = {w['id']: w for w in archived1['words']}
+    for day in archived2['days']:
+        for lesson in day['lessons']:
+            for c in lesson['cards']:
+                authored[c['id']] = dict(ps=c['pashto'], en=c['english'], roman=c['romanization'])
     for a in library.get('generationAttestations', []):
         w = authored.get(a['sourceId'])
         if not w or (a['pashto'], a['english'], a['romanisation']) != (w['ps'], w['en'], w['roman']):
             raise ValueError('Generation evidence differs from authored corpus: ' + a['sourceId'])
-    audio_sources = {w['id'] for w in game['words']} | {q['id'] for d in week2['days'] for q in d['dialogues']}
+    audio_sources = set(authored) | {q['id'] for d in archived2['days'] for q in d['dialogues']} | {w['id'] for d in archived2['days'] for w in d['vocabulary']}
     for e in library['entries']:
         for f in e['forms']:
             if f.get('audioContentId') and f['audioContentId'] not in audio_sources:
                 raise ValueError('Orphan audio source: ' + f['formId'])
-    entries = {entry['lemmaId']: entry for entry in library['entries']}
-    for card in game['words']:
-        if card.get('type') in ['sentence', 'greeting']:
-            continue
-        refs = library['sourceMappings'].get(card['id'], [])
-        if len(refs) != 1:
-            raise ValueError('Lexical card requires one form identity: ' + card['id'])
-        card['type'] = entries[refs[0]['lemmaId']]['partOfSpeech']
-    library['cardTypes'] = {card['id']: card['type'] for card in game['words']}
-    # Expressions are not lexical lemmas. Pending translations never enter playable cards.
-    library['phrases'] += [p for p in narrative['expressions'] if p['active']]
+    # Only licensed spans cross the runtime boundary. Full authored clauses remain
+    # in the evidence archive and cannot be selected as playable cards or fallbacks.
+    library['generationEvidence'] = {
+        f['formId']: dict(sourceId=f['featureEvidence']['sourceId'],
+                          pashto=f['pashto'], romanisation=f['romanisation'])
+        for e in library['entries'] for f in e['forms'] if f['composition']['enabled']}
+    for key in ['generationAttestations', 'lessonSentenceTargets', 'storyRequirements',
+                'lessonContexts', 'challengeGrammarMappings', 'sourceMappingCorrections']:
+        library.pop(key, None)
+    library['sourceMappings'] = {}
+    library['cardTypes'] = {}
+    library['curriculum'] = curriculum
+    library['grammar'] = [dict(grammarId='grammar-day-'+str(d['day']), day=d['day'],
+                               title=d['topic'], explanation=d['grammar'][0], linkedLemmaIds=[])
+                          for d in curriculum['days']]
+    library['phrases'] = json.loads(read('content/FIXED_PHRASES.json'))['phrases']
+    fixed_sources = {p['id']: p['ps'] for p in archived1['words'] if p.get('type') == 'greeting'}
+    fixed_sources.update({p['id']: p['pashto'] for p in narrative['expressions'] if p['active']})
+    for phrase in library['phrases']:
+        if fixed_sources.get(phrase['id']) != phrase['pashto'] or not phrase.get('exceptionReason'):
+            raise ValueError('Unregistered fixed expression; authored sentences cannot become exceptions')
+    if len({p['id'] for p in library['phrases']}) != len(library['phrases']):
+        raise ValueError('Duplicate fixed phrase exception')
+    for entry in library['entries']:
+        entry.pop('examples', None)
+        for f in entry['forms']:
+            f.pop('contextRomanisation', None)
     audio_dir = ROOT / 'audio'
     audio_ids = sorted(path.stem for path in audio_dir.glob('*.mp3')) if audio_dir.exists() else []
     # Explicit dependency order; modules use factories with injected services.
     modules = [
         'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
-        'assessment-content', 'grammar-content', 'learning', 'questions', 'storage', 'audio', 'ui',
+        'assessment-content', 'learning', 'questions', 'storage', 'audio', 'ui',
         'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
         'world-ui', 'library-ui', 'app',
     ]

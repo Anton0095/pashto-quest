@@ -30,7 +30,7 @@ node tools/district-inventory.mjs --check
 | Source | Owns |
 |---|---|
 | `src/app.js` | Browser composition, shared runtime state and event wiring |
-| `src/content.js`, `src/assessment-content.js`, `src/grammar-content.js` | Catalog adapters and existing authored narrative/question/grammar blueprints |
+| `src/content.js`, `src/assessment-content.js` | On-demand generated-card registry, English narrative and task blueprints |
 | `src/library-engine.js` | Sole lemma/form identity, acquisition, SRS and district planner |
 | `src/progression.js` | Save factory/version, XP/reward identity, results, milestones and access rules |
 | `src/sentence-engine.js`, `content/SENTENCE_FRAMES.json` | Bounded feature/semantic unification, licensed draft compositions and deterministic practice selection |
@@ -41,7 +41,7 @@ node tools/district-inventory.mjs --check
 | `src/tutorial-ui.js`, `src/grammar-ui.js`, `src/library-ui.js`, `src/narrative-ui.js` | Onboarding, workshops and reference/expression presentation |
 | `src/audio.js` | Common MP3/device-voice player and cancellation |
 | `src/app.html`, `src/app.css` | UI shell and styles |
-| `content/WEEK1_RUNTIME.json`, `content/WEEK2_RUNTIME.json` | Authoritative exact fourteen-day authored learning content |
+| `content/LEARNING_CURRICULUM.json`, `content/FIXED_PHRASES.json` | English curriculum/grammar sequence and six conventional expression exceptions |
 | `content/LIBRARY_LEXICON.json`, `content/NARRATIVE_EXPRESSIONS.json` | Lexical forms/mappings and active/pending expression identities |
 | `content/DISTRICT_VOCABULARY_CANDIDATES.json`, `content/UNIVERSAL_TEACHING_TARGETS.json` | Inactive editorial candidates, not playable translations |
 | `tools/build.py`, `tools/verify.py` | Offline assembly/validation and complete verification |
@@ -67,12 +67,14 @@ The current lexicon contains 400 balanced district drafts (100 per district) and
 - [`tests/README.md`](tests/README.md): verification coverage, requirements and limitations.
 - [`docs/reference/`](docs/reference/): historical Week 1/2 authoring blueprints retained only for editorial context; current JSON/runtime and active specifications take precedence.
 
-Save format **6 only** is supported. There is no old-save migration. An incompatible or corrupt save stays untouched until the player explicitly resets it. New format-6 progress, SRS and active attempts save and resume normally, including placed tiles and first-answer locks. Earlier formats are intentionally unsupported; there are no migration or content-repair adapters.
+Save format **7 only** is supported. There is no old-save migration. An incompatible or corrupt save stays untouched until the player explicitly resets it. New format-7 progress, SRS and active attempts save and resume normally, including placed tiles and first-answer locks. Earlier formats are intentionally unsupported; there are no migration or content-repair adapters.
 
 Vocabulary introductions are declared per immutable lemma ID in `content/LIBRARY_LEXICON.json` (planned day, district/universal, order and grammar requirements), separately from actual encounter, individual form study and mastery. A hash no longer selects the curriculum. All seven paces remain selectable; plans remain frozen after creation. `content/CURRICULUM_AUDIT.json` is the maintained effective audit, and `content/DISTRICT_INVENTORY_REPORT.json` reports each day's assignments and the 22-entry reserve per district.
 
-Productive cumulative practice uses 27 typed templates across 26 grammar families: noun/adjective agreement, attributive and descriptive equatives, attested present SOV and compound predicates, demonstratives, direct plurals/counts, whole spatial expressions, possession, typed questions and adverbs. Slots range over compatible introduced forms; there is no sentence-tuple whitelist or stem-based inflection. Normal lessons explicitly teach eligible individual forms before composition, and preserve all authored story/dialogue and challenge objectives. The four existing named characters now have explicit universal study identities, bringing the inventory to 473 lemmas / 607 forms (400 district, 73 universal).
+Every instructional Pashto clause is produced by the sentence engine, including lesson study, construction, assessment questions/replies, dialogue and Library examples. Only the [six designated conventional expressions](docs/grammar/FIXED_PHRASE_EXCEPTIONS.md) are fixed language. Vocabulary/forms → grammar → engine composition is the teaching order; the runtime builds no sentence catalogue before study. The former authored teaching banks are archived in `docs/grammar/attestations/` as form evidence and fixtures only.
 
-`node tools/generation-audit.mjs` maintains [day/family/pace coverage](docs/grammar/GENERATION_COVERAGE.md) and `content/GENERATION_AUDIT.json`, including exact missing-feature/form IDs. Under the current provisional licenses, 179 forms from 95 lemmas support 15,066 distinct Pashto sentences by Day 13; 14,894 are new compositions and 172 match authored Pashto. These are potential combinations, not forced lesson counts or native validation. Actual availability depends on the player's form study and completed grammar; skip-only profiles generate none. Numeral/oblique/conjugation gaps stay excluded and are reported individually. `userVerified: false` does not block evidenced provisional composition and is never upgraded automatically.
+At default pace, Day 1 Home teaches six district lemmas plus an evidenced feminine adjective form, then composes **three distinct descriptions** without another district visit or an action verb. Later days combine compatible, actually introduced forms through 28 grammar families, including typed question/reply joins and coordinated clauses. Unknown morphology fails closed. Paces 0/4 can lack enough compositions; an explicit deficit triggers word or English grammar tasks, without extra district words or fixed sentence substitutions. Day 14 introduces no new forms.
+
+The [measured delivery report](docs/grammar/INSTRUCTIONAL_DELIVERY_REPORT.md) records the actual rendered sentence percentage across all fourteen days, seven paces and normal/skip routes. `python3 tools/verify.py` refreshes it only after the full browser matrix passes. Its release fingerprint prevents reuse after code changes. [Potential capacity and exact missing forms/features](docs/grammar/GENERATION_COVERAGE.md) are separate diagnostics, not a teaching-percentage claim. `userVerified: false` permits evidenced provisional composition without certifying translations or pronunciation.
 
 For a future human-edited spreadsheet, export CSV columns `lemmaId,plannedDay,district,teachingOrder,verifiedStatus` and run `python3 tools/import-curriculum.py input.csv proposal.json`. This creates an **unapproved proposal**; it cannot certify language. `content/CURRICULUM_OVERRIDES.json` is applied only with explicit curriculum approval, reviewer/date/reference, valid stable IDs and grammar-safe days. Curriculum approval never changes linguistic approval. Regenerate/check the audit with `python3 tools/curriculum-audit.py [--check]` after rebuilding.

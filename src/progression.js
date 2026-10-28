@@ -1,6 +1,6 @@
 /* Save factory, XP, assessment outcomes and access rules. No DOM or storage. */
 function createProgression({ week2Days, loops, zoneKeys }, libraryEngine) {
-  const SAVE_VERSION = 6;
+  const SAVE_VERSION = 7;
   const XP_STEP = 200;
   const XP_FLOORS = {
     1: 200,

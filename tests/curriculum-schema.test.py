@@ -40,6 +40,7 @@ class Schema(unittest.TestCase):
             "english",
             "lemmaFeatures",
             "terminal",
+            "composite",
         ]:
             d = data()
             e = d["entries"][0]
@@ -67,12 +68,26 @@ class Schema(unittest.TestCase):
                 d["sentenceFrames"]["frames"][0]["englishRealiser"] = "unrelated"
             if change == "lemmaFeatures":
                 e["traits"]["gender"] = "unknown-but-asserted"
+            if change == "composite":
+                d["sentenceFrames"]["compositeFrames"][0]["earliestDay"] = 1
             if change == "terminal":
                 d["sentenceFrames"]["frames"][0]["terminals"][0][
                     "grammarId"
                 ] = "grammar-day-99"
             with self.subTest(change=change), self.assertRaises(ValueError):
                 m.validate_curriculum(d)
+
+    def test_ordinary_sentence_cannot_be_declared_phrase(self):
+        build = runpy.run_path(str(ROOT / "tools/build.py"))["build"]
+        read = build.__globals__["read"]
+        def altered(path):
+            if path != "content/FIXED_PHRASES.json":
+                return read(path)
+            phrases = json.loads(read(path))
+            phrases["phrases"][0]["pashto"] = "کور لوی دی."
+            return json.dumps(phrases)
+        with patch.dict(build.__globals__, read=altered), self.assertRaises(ValueError):
+            build()
 
     def test_overrides_require_human_evidence_and_never_certify_language(self):
         build = runpy.run_path(str(ROOT / "tools/build.py"))["build"]

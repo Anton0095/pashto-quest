@@ -1,5 +1,7 @@
 # Codex implementation contract — productive grammar-aware Pashto practice
 
+> **Runtime policy update (PR #22):** The user's [generated-only architecture requirement](https://github.com/Anton0095/pashto-quest/pull/22#issuecomment-6456042600) supersedes all authored-fallback delivery suggestions in this research document. Grammar evidence remains applicable. Insufficient compositions now produce an explicit deficit and word/English grammar tasks, never a stored instructional sentence. See [measured integration results](INSTRUCTIONAL_DELIVERY_REPORT.md).
+
 **Source of grammar:** [PASHTO_GENERATION_RULES.md](PASHTO_GENERATION_RULES.md). **Golden/negative cases:** [GENERATION_TEST_CASES.json](GENERATION_TEST_CASES.json).
 
 **Purpose:** Turn a small finite nine-binding matrix into a maintainable *feature-constrained sentence composer*, using the user's 14-day curriculum. This is a **future implementation specification only**. This branch deliberately makes **no gameplay/source or lexicon edits**.

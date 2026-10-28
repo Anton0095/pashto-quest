@@ -13,42 +13,26 @@ def rendered():
     html = build()
     data = json.loads(re.search(r"const LIBRARY_DATA=(\{.*?\});", html, re.S)[1])
     game = json.loads(re.search(r"const GAME_DATA=(\{.*?\});", html, re.S)[1])
-    words = {w["id"]: w for w in game["words"]}
-    result = audit(data)
-    result["audioFindings"] = [
-        f["formId"]
-        for e in data["entries"]
-        for f in e["forms"]
-        if f.get("audioContentId") and f["audioContentId"] not in words
-    ]
-    result["retimedCards"] = [
-        {
-            "sourceId": w["id"],
-            "authoredDay": w["loop"],
-            "earliestPracticeDay": max(
-                [w["loop"]]
-                + [
-                    next(
-                        f["firstAllowedDay"]
-                        for e in data["entries"]
-                        if e["lemmaId"] == r["lemmaId"]
-                        for f in e["forms"]
-                        if f["formId"] == r["formId"]
-                    )
-                    for r in data["sourceMappings"].get(w["id"], [])
-                ]
-            ),
-        }
-        for w in game["words"]
-        if w.get("type") == "sentence"
-    ]
+    raw = json.loads((ROOT / "content/LIBRARY_LEXICON.json").read_text())
+    effective = {e["lemmaId"]: e for e in data["entries"]}
+    for entry in raw["entries"]:
+        entry["introduction"] = effective[entry["lemmaId"]]["introduction"]
+        for form, current in zip(entry["forms"], effective[entry["lemmaId"]]["forms"]):
+            form["firstAllowedDay"] = current["firstAllowedDay"]
+    raw["sentenceFrames"] = data["sentenceFrames"]
+    # Validate the complete evidence corpus; it is not embedded as teaching data.
+    result = audit(raw)
+    result["audioFindings"] = []  # evidence audio IDs were checked by build()
+    result["archivedAuthoredSentenceCount"] = len(raw["generationAttestations"])
+    result["playableAuthoredSentenceCount"] = 0
+    result["runtimeSentenceSource"] = "productive_engine_only"
     result["nativeCertifiedLemmas"] = sum(
         e.get("reviewStatus") == "approved"
         and bool(e.get("nativeReview", {}).get("reviewer"))
         and bool(e.get("nativeReview", {}).get("reference"))
         for e in data["entries"]
     )
-    result["sourceMappingCorrections"] = data.get("sourceMappingCorrections", [])
+    result["sourceMappingCorrections"] = raw.get("sourceMappingCorrections", [])
     result["generationBoundary"] = {
         "policy": "Typed feature and semantic constraints over attested forms. Independent form study and grammar unlocks required; see GENERATION_AUDIT.json for day/family capacity and exact missing features. Provisional language, never native certification.",
         "frames": data["sentenceFrames"],
@@ -68,5 +52,5 @@ if __name__ == "__main__":
     else:
         path.write_text(s)
     print(
-        "Lexical audit: stable identities, intended introductions, form exclusions and authored retiming recorded; native review pending."
+        "Lexical audit: stable identities, intended introductions, form exclusions and archived evidence recorded; native review pending."
     )

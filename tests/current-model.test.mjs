@@ -1,4 +1,4 @@
-import {models} from "./model-fixture.mjs";
+import { models } from "./model-fixture.mjs";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
@@ -84,22 +84,18 @@ assert.equal(
 const html = read("index.html"),
   game = JSON.parse(html.match(/const GAME_DATA=(\{.*?\});/s)[1]),
   contract = JSON.parse(read("tests/curriculum-contract.json"));
-const expected = new Map(contract.words.map((w) => [w.id, w]));
-assert.equal(expected.size, contract.words.length);
-assert.equal(game.words.length, expected.size);
-assert.equal(new Set(game.words.map((w) => w.id)).size, game.words.length);
-for (const w of game.words) {
-  const projection = Object.fromEntries(
-    ["id", "ps", "roman", "en", "loop"].map((k) => [k, w[k]]),
-  );
-  assert.deepEqual(
-    projection,
-    Object.fromEntries(
-      Object.entries(expected.get(w.id)).filter(([key]) => key !== "type"),
-    ),
-  );
-  assert(canonical.includes(w.place) || w.loop === 0);
-}
+assert.equal(
+  game.words.length,
+  0,
+  "Authored source sentences must not cross the runtime boundary",
+);
+const archived = JSON.parse(
+  read("docs/grammar/attestations/WEEK1_AUTHORED.json"),
+);
+assert(
+  archived.words.some((w) => w.id === "s3-house"),
+  "Old sources remain evidence only",
+);
 assert.equal(game.loops.length, 14);
 assert.equal(Object.keys(game.courses).length, 56);
 for (const [id, ids] of Object.entries(game.courses)) {
@@ -112,17 +108,31 @@ const { activationProblems, inventory } = await import(
 const backlog = JSON.parse(read("content/DISTRICT_VOCABULARY_CANDIDATES.json"));
 const promoted = backlog.candidates.filter((c) => c.promotedLemmaId);
 assert.equal(promoted.length, 301);
-assert(promoted.every((c) => c.reviewStatus === "provisional_playable" && c.userVerified === false));
-assert(promoted.every((c) => data.entries.some((e) => e.lemmaId === c.promotedLemmaId)));
+assert(
+  promoted.every(
+    (c) =>
+      c.reviewStatus === "provisional_playable" && c.userVerified === false,
+  ),
+);
+assert(
+  promoted.every((c) =>
+    data.entries.some((e) => e.lemmaId === c.promotedLemmaId),
+  ),
+);
 const report = inventory(data, backlog, read("src/library-engine.js"));
 assert.equal(report.activatedContentLemmas, 400);
 assert.equal(report.inactiveCandidates, 59);
-assert.deepEqual(report.candidateDisposition, {promoted:301,merged:0,rejected:59,replaced:0});
+assert.deepEqual(report.candidateDisposition, {
+  promoted: 301,
+  merged: 0,
+  rejected: 59,
+  replaced: 0,
+});
 assert.equal(report.byReviewStatus.provisional_playable, 341);
 assert.equal(report.duplicateLemmaIds.length, 0);
 assert(report.schedules.every((s) => s.days[13].assigned === 0));
 console.log(
-  "PASS current schema: seven pacing options, canonical districts, one form SRS, idempotent events, mastery, intact 14-day content contract and inactive candidate gates",
+  "PASS current schema: seven pacing options, canonical districts, one form SRS, idempotent events, mastery, 14-day generated-only curriculum and inactive candidate gates",
 );
 
 const P = models();

@@ -1,6 +1,7 @@
 /* Common pronunciation player; recordings, device voices, delayed discovery and cancellation. */
 function createAudio({
   wordById,
+  onSpeak = () => {},
   BUNDLED_AUDIO_IDS,
   $,
   document,
@@ -143,15 +144,18 @@ function createAudio({
   function speak(id) {
     const w = wordById[id];
     if (!w?.ps) return;
+    onSpeak(id);
     stopAudio();
     const request = audioRequest;
     currentSpoken = w.id;
     audioStatus("Preparing Pashto pronunciation… Playback has not started.");
-    if (!bundledAudioIds.has(w.id)) {
+    if (!bundledAudioIds.has(w.audioContentId || w.id)) {
       void speakWithBrowserVoice(w, request);
       return;
     }
-    const player = new Audio("audio/" + encodeURIComponent(w.id) + ".mp3");
+    const player = new Audio(
+      "audio/" + encodeURIComponent(w.audioContentId || w.id) + ".mp3",
+    );
     playback = player;
     const fallback = () => {
       if (request !== audioRequest || playback !== player) return;

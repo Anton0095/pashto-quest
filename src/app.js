@@ -14,6 +14,7 @@
   const ui = createUI({ state, content, progression });
   const audio = createAudio({
     wordById: content.wordById,
+    onSpeak: (id) => learning.surface(id, "audio"),
     BUNDLED_AUDIO_IDS,
     $: ui.$,
     document,
@@ -79,6 +80,7 @@
     audio,
     storage,
     narrative,
+    learning,
   });
   function nextQuestion() {
     if (!state.session || ui.$("quizNext").disabled) return;
@@ -103,26 +105,8 @@
   });
   ui.$("grammarSpeak").addEventListener("click", () => {
     if (!state.session) return;
-    const firstExample = {
-      residential: "s-it-door",
-      nature: "s-it-river",
-      business: "s-it-market",
-      school: "s-it-school",
-    };
-    const id =
-      state.session.loop === 3 && state.session.loc === "nature"
-        ? "s1-water"
-        : state.session.loop === 1
-          ? firstExample[state.session.loc]
-          : (
-              content.courses[state.session.loop + "-" + state.session.loc] ||
-              []
-            ).find((x) => content.wordById[x]?.type === "sentence");
-    if (state.session?.loop === 6 && state.session.loc === "nature")
-      audio.speak("w6-we-run");
-    else if (state.session?.loop === 7 && state.session.loc === "business")
-      audio.speak("w7-market-apples");
-    else if (id) audio.speak(id);
+    const id = state.session.studySentences?.[0];
+    if (id) audio.speak(id);
   });
   ui.$("startTutorial").addEventListener("click", () =>
     lessons.begin("tutorial"),
@@ -149,9 +133,21 @@
   ui.$("skipDayBtn").addEventListener("click", () =>
     challenge.startChallenge(state.day),
   );
-  ui.$("undoTile").addEventListener("click", challenge.undoTile);
-  ui.$("clearTiles").addEventListener("click", challenge.clearTiles);
-  ui.$("checkBuild").addEventListener("click", challenge.checkBuild);
+  ui.$("undoTile").addEventListener("click", () =>
+    state.session?.mode === "challenge"
+      ? challenge.undoTile()
+      : lessons.undoTile(),
+  );
+  ui.$("clearTiles").addEventListener("click", () =>
+    state.session?.mode === "challenge"
+      ? challenge.clearTiles()
+      : lessons.clearTiles(),
+  );
+  ui.$("checkBuild").addEventListener("click", () =>
+    state.session?.mode === "challenge"
+      ? challenge.checkBuild()
+      : lessons.checkBuild(),
+  );
   for (const b of document.querySelectorAll(".map-point:not(.library)"))
     b.addEventListener("click", () =>
       world.navigatePlace(state.day, b.dataset.place),

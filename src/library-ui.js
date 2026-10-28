@@ -7,6 +7,7 @@ function createLibraryUI({
   audio,
   storage,
   narrative,
+  learning,
 }) {
   let libraryLastFocus = null;
   function openLibrary(tab = "vocabulary") {
@@ -50,20 +51,25 @@ function createLibraryUI({
         detail.append(heading);
         if (unlocked) {
           detail.append(ui.node("p", rule.explanation));
-          const ex = rule.example;
-          const ps = ui.node("p", ex.pashto, "library-pashto");
-          ps.lang = "ps";
-          ps.dir = "rtl";
-          detail.append(
-            ps,
-            ui.node("p", ex.romanisation),
-            ui.node("p", ex.english),
-            ui.node(
-              "p",
-              `${ex.speaker} → ${ex.recipient} · Native review pending.`,
-              "tiny",
-            ),
-          );
+          const ex = learning
+            .availableSentences(state.day)
+            .find((c) =>
+              c.generated.requiredGrammarIds.includes(rule.grammarId),
+            );
+          if (ex) {
+            content.registerGenerated(ex);
+            learning.surface(ex.id, "grammar-reference");
+            const ps = ui.node("p", ex.ps, "library-pashto");
+            ps.lang = "ps";
+            ps.dir = "rtl";
+            detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
+          } else
+            detail.append(
+              ui.node(
+                "p",
+                "Study compatible forms before an example can be generated.",
+              ),
+            );
           const links = rule.linkedLemmaIds
             .filter((id) => state.progress.library.acquired[id])
             .map((id) => content.libraryEntries[id].englishSenses[0]);
@@ -96,6 +102,7 @@ function createLibraryUI({
           ),
         );
       for (const p of phrases) {
+        learning.surface(p.id, "phrase-reference");
         const card = ui.node("article", undefined, "library-entry");
         const ps = ui.node("p", p.pashto, "library-pashto");
         ps.dir = "rtl";
@@ -342,27 +349,28 @@ function createLibraryUI({
       if (f.audioContentId)
         box.append(
           ui.button("Pronunciation (if available)", () =>
-            audio.speak(f.audioContentId),
+            audio.speak("library-form:" + f.formId),
           ),
         );
       detail.append(box);
     }
-    for (const ex of e.examples
-      .filter((ex) => (r.encounteredSourceIds || []).includes(ex.exampleId))
-      .slice(0, 3)) {
-      const text = ui.node("p", ex.pashto, "library-pashto");
-      text.dir = "rtl";
-      text.lang = "ps";
-      detail.append(
-        text,
-        ui.node("p", ex.romanisation + " — " + ex.english),
-        ui.node(
-          "p",
-          `${ex.speaker} → ${ex.recipient} · Native review pending.`,
-          "tiny",
-        ),
-      );
-    }
+    detail.addEventListener("toggle", () => {
+      if (!detail.open || detail.dataset.generatedExample) return;
+      const ex = learning
+        .availableSentences(state.day)
+        .find((c) =>
+          Object.values(c.generated.slots).some((r) => r.lemmaId === e.lemmaId),
+        );
+      if (ex) {
+        content.registerGenerated(ex);
+        learning.surface(ex.id, "vocabulary-reference");
+        const ps = ui.node("p", ex.ps, "library-pashto");
+        ps.lang = "ps";
+        ps.dir = "rtl";
+        detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
+        detail.dataset.generatedExample = ex.id;
+      }
+    });
     detail.append(
       ui.button("Practise an encountered form", () =>
         libraryVoluntaryPractice(e, detail),
@@ -493,7 +501,7 @@ function createLibraryUI({
       root.append(
         ui.node(
           "p",
-          "No complete quota is supported by the remaining distinct draft content. Lessons, fixed stories and skip challenges remain available. More curated vocabulary and native review are needed; repeats will not count as new.",
+          "No complete quota is supported by the remaining distinct draft content. Narrative visits and skip challenges remain available through word and grammar practice. More curated vocabulary and native review are needed; repeats will not count as new.",
         ),
       );
     root.append(message);
@@ -574,9 +582,9 @@ function createLibraryUI({
     choices.append(
       ui.node(
         "p",
-        "Available for the preserved Day 1 story: " +
+        "Available district-word paces: " +
           onboardingSupported.join(" or ") +
-          "/day. Story words are scaffolded incidental exposure and do not set your assigned-word target. Choose 0 for a review day, including exam days.",
+          "/day. Universal grammar words and forms are shown separately. At pace 0 or 4, Day 1 Home cannot yet make two sentences: word/grammar practice adapts without extra district words. Choose 0 for a review day.",
       ),
     );
     for (const target of LibraryEngine.presets) {

@@ -107,7 +107,7 @@ function createChallengeUI({
               ? "A lakeside community gathering"
               : "Town Challenge";
     ui.$("lessonDescription").textContent =
-      `${items.length} turns · ${day === 5 ? "5 address choices" : "5 words"} · 5 sentence recalls · 5 sentence builds · ${spec.passCount}/${items.length} to pass`;
+      `${items.length} turns · generated language, vocabulary and grammar · ${spec.passCount}/${items.length} to pass`;
     ui.$("lessonIcon").textContent =
       day === 3 ? "🧺" : day === 4 ? "🏡" : day === 5 ? "🏞️" : "🏆";
     ui.setSpeaker(
@@ -149,6 +149,10 @@ function createChallengeUI({
         ? "Welcome back to the Library. Your home award is already recorded."
         : "Muhammad Jan → Player: Welcome to the Library. Twelve correct answers and I will give you the key to your home. You can take this challenge without any teaching visits.";
     }
+    const deficit = state.progress.library.plans[day]?.assessmentDeficit;
+    if (deficit?.adaptedTasks)
+      ui.$("lessonDescription").textContent +=
+        ` · ${deficit.adaptedTasks} English grammar tasks: insufficient distinct studied sentence combinations`;
     ui.$("lessonScreen").dataset.week = day >= 8 ? "2" : "1";
     ui.$("lessonScreen").dataset.day = String(day);
     showChallengeScene(day);
@@ -224,6 +228,14 @@ function createChallengeUI({
     ui.$("constructionPanel").classList.add("hidden");
     ui.$("choices").replaceChildren();
     const q = state.session.questions[state.session.index];
+    if (q) {
+      if (q.generated) learning.surface(q.id, "assessment-target");
+      if (q.promptGenerated)
+        learning.surface(q.promptGenerated.id, "dialogue-prompt");
+      if (q.kind === "word") learning.surface(q.id, "assessment-word");
+      if (q.choiceIds)
+        for (const id of q.choiceIds) learning.surface(id, "assessment-choice");
+    }
     if (!q) {
       finishChallenge();
       return;
@@ -249,10 +261,8 @@ function createChallengeUI({
       state.session.loop === 3
         ? `EDRIS · DINNER CONVERSATION ${state.session.index + 1}/${state.session.questions.length} · SCORE ${state.session.correctCount}/${state.session.questions.length}`
         : `DAY ${state.session.loop} · QUESTION ${state.session.index + 1}/${state.session.questions.length} · SCORE ${state.session.correctCount}/${state.session.questions.length}`;
-    if (state.session.loop === 3) {
-      ui.$("guideMessage").textContent =
-        `Edris: “${content.dinnerLines[state.session.index]}”`;
-    }
+    ui.$("guideMessage").textContent =
+      q.comment || content.curriculum.days[state.session.loop - 1].challenge;
     const target = ui.$("addressTarget");
     const host = content.teacherFor(state.session.loop, null, "challenge");
     ui.setDialogueSpeaker(host.name);
@@ -295,15 +305,22 @@ function createChallengeUI({
     if (q.kind === "dialogue") {
       ui.$("quizType").textContent = "🗣️ REPLY IN PASHTO";
       ui.$("quizPashto").classList.remove("english-question");
-      ui.$("quizPashto").textContent = q.promptPs;
-      ui.$("quizPashto").lang = "ps";
-      ui.$("quizPashto").dir = "rtl";
-      ui.$("quizRoman").textContent =
-        q.promptEnglish || "Listen to the question and answer in Pashto.";
+      ui.$("quizPashto").textContent = q.promptPs || q.promptEnglish;
+      ui.$("quizPashto").lang = q.promptPs ? "ps" : "en";
+      ui.$("quizPashto").dir = q.promptPs ? "rtl" : "ltr";
+      ui.$("quizPashto").classList.toggle("english-question", !q.promptPs);
+      ui.$("quizRoman").textContent = [
+        q.promptPs ? q.promptEnglish : "Respond using studied forms",
+        q.sceneEnglish,
+      ]
+        .filter(Boolean)
+        .join(" · ");
       ui.$("quizPrompt").textContent =
         `${q.speaker || "Your neighbour"} asks you a question. Build YOUR reply, not a translation of the prompt.`;
       ui.$("quizPanel").querySelector(".quizword h3").textContent =
-        "Choose only the tiles you need. Some tiles are distractions.";
+        q.duds?.length >= 2
+          ? "Choose only the tiles you need. Some tiles are distractions."
+          : "Use the tiles to construct your reply.";
       ui.$("quizSpeak").classList.toggle("hidden", !q.audioId);
       ui.$("constructionPanel").classList.remove("hidden");
       if (!resuming)
@@ -370,10 +387,7 @@ function createChallengeUI({
       ui.$("quizSpeak").classList.add("hidden");
       ui.$("quizPanel").querySelector(".quizword h3").textContent =
         "How should you say “you” to this person or group?";
-      for (const [label, value] of [
-        ["ته · informal singular", "ته"],
-        ["تاسې · respectful singular or plural", "تاسې"],
-      ]) {
+      for (const [label, value] of q.addressOptions) {
         const b = document.createElement("button");
         b.type = "button";
         b.className = "choice address-choice";
@@ -464,6 +478,9 @@ function createChallengeUI({
     const result = learning.submitChallenge(value);
     if (!result) return;
     const { q, w, correct, gain } = result;
+    if (q.generated) learning.surface(q.id, "assessment-feedback");
+    if (q.promptGenerated)
+      learning.surface(q.promptGenerated.id, "dialogue-feedback");
     storage.save();
     ui.hud();
     if (q.kind === "dialogue") {
@@ -515,7 +532,7 @@ function createChallengeUI({
         ? "✓ Correct form for this listener."
         : "✗ Use a different form for this listener.";
       const info = document.createElement("div");
-      info.textContent = `${q.correct} — ${q.scope === "group" ? "plural you for more than one listener" : q.correct === "ته" ? "informal singular for a familiar friend" : "respectful singular for an elder, teacher or adult"}.`;
+      info.textContent = `${q.correct} — ${q.scope === "group" ? "plural you for more than one listener" : q.scope === "familiar" ? "informal singular for a familiar friend" : "respectful singular for an elder, teacher or adult"}.`;
       ui.$("quizFeedback").append(line, info);
       ui.$("quizNext").disabled = false;
       return;

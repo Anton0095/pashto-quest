@@ -3,7 +3,9 @@ import vm from "node:vm";
 export function models() {
   const read = (name) =>
     readFileSync(new URL("../" + name, import.meta.url), "utf8");
-  const week2 = JSON.parse(read("content/WEEK2_RUNTIME.json"));
+  const week2 = JSON.parse(
+    read("docs/grammar/attestations/WEEK2_AUTHORED.json"),
+  );
   const context = {
     curriculum: {
       week2Days: Object.fromEntries(week2.days.map((d) => [d.day, d])),

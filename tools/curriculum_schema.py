@@ -180,6 +180,16 @@ def validate_curriculum(data):
             a = attestations.get(terminal["evidenceSourceId"])
             if terminal["grammarId"] not in grammar or not a or terminal["pashto"] not in a["pashto"] or terminal["romanisation"] not in a["romanisation"]:
                 raise ValueError("Unhandled terminal grammar/evidence")
+    for frame in config.get("compositeFrames", []):
+        if (frame.get("id") in frameids or frame.get("id") != "coordinate-present"
+                or frame.get("family") != "coordinated_present"
+                or frame.get("kind") != "clause_coordination"
+                or frame.get("scope") != "feature_vetted_draft"
+                or frame.get("earliestDay") != 4
+                or frame.get("requiredGrammarIds") != ["grammar-day-4"]
+                or frame.get("connectorRole") != "conjunction"):
+            raise ValueError("Unsupported composite grammar frame")
+        frameids.add(frame["id"])
     return entries, forms
 
 

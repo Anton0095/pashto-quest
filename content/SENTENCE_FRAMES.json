@@ -2168,6 +2168,87 @@
       "adverbClasses": [
         "together"
       ]
+    },
+    {
+      "id": "count-location",
+      "family": "count_location",
+      "earliestDay": 12,
+      "requiredGrammarIds": [
+        "grammar-day-9",
+        "grammar-day-10",
+        "grammar-day-12"
+      ],
+      "scope": "feature_vetted_draft",
+      "slots": {
+        "noun": {
+          "role": "noun",
+          "partOfSpeech": "noun",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "gender",
+            "number",
+            "case"
+          ]
+        },
+        "numeral": {
+          "role": "numeral",
+          "partOfSpeech": "numeral",
+          "features": {
+            "case": "direct"
+          },
+          "requiredFeatures": [
+            "number"
+          ]
+        },
+        "location": {
+          "role": "location_adverb",
+          "partOfSpeech": "adverb",
+          "features": {},
+          "requiredFeatures": []
+        }
+      },
+      "constraints": [
+        {
+          "type": "numeral",
+          "left": "noun",
+          "right": "numeral"
+        }
+      ],
+      "pashtoPattern": "{numeral} {noun} {location} {copula}.",
+      "englishRealiser": "spatial",
+      "copulaFrom": "noun",
+      "ruleReferences": [
+        "docs/grammar/PASHTO_GENERATION_RULES.md"
+      ],
+      "context": "Vocabulary and grammar practice in the village; grammatical roles are explicit. Native Laghman review pending.",
+      "terminals": [
+        {
+          "pashto": "دی",
+          "romanisation": "day",
+          "gender": "masculine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-house"
+        },
+        {
+          "pashto": "ده",
+          "romanisation": "da",
+          "gender": "feminine",
+          "number": "singular",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s-it-door"
+        },
+        {
+          "pashto": "دي",
+          "romanisation": "dee",
+          "gender": null,
+          "number": "plural",
+          "grammarId": "grammar-day-1",
+          "evidenceSourceId": "s3-cold"
+        }
+      ]
     }
   ],
   "blockedConstructions": [
@@ -2188,6 +2269,20 @@
     {
       "family": "unsupported_tenses",
       "missing": "Past/perfect/future/subjunctive/imperative are outside the Days 1–14 curriculum; no paradigms licensed."
+    }
+  ],
+  "compositeFrames": [
+    {
+      "id": "coordinate-present",
+      "family": "coordinated_present",
+      "kind": "clause_coordination",
+      "earliestDay": 4,
+      "requiredGrammarIds": [
+        "grammar-day-4"
+      ],
+      "connectorRole": "conjunction",
+      "children": "two independently licensed present transitive clauses; full SOV order retained",
+      "scope": "feature_vetted_draft"
     }
   ]
 }

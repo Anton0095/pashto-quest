@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 1,
+  "contract": "Only words, individual forms and English grammar/scenarios are prescribed. Every instructional Pashto clause is compiled; no sentence targets or authored fallbacks.",
+  "zones": {
+    "residential": {
+      "name": "Your Home",
+      "icon": "🏡",
+      "intro": "Doors, rooms, family and everyday actions."
+    },
+    "nature": {
+      "name": "Lake & River",
+      "icon": "🏞️",
+      "intro": "Water, fish, nature and travel."
+    },
+    "business": {
+      "name": "The Market",
+      "icon": "🏪",
+      "intro": "Food, buying, selling and prices."
+    },
+    "school": {
+      "name": "The School",
+      "icon": "🏫",
+      "intro": "Books, learning and useful descriptions."
+    }
+  },
+  "days": [
+    {
+      "day": 1,
+      "title": "It / Things",
+      "topic": "Simple descriptions",
+      "opening": "residential",
+      "intro": "Muhammad Jan welcomes you and prepares your home handover.",
+      "challenge": "Muhammad Jan welcomes you and prepares your home handover.",
+      "grammar": [
+        "A description places a noun before an adjective and a present equative. Choose the equative and adjective form that agree with the noun. Feminine singular, masculine singular and inherent plural nouns have different agreement."
+      ],
+      "focusFamilies": [
+        "equative_descriptor"
+      ],
+      "sentenceCount": 3,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "assessmentReview": false
+    },
+    {
+      "day": 2,
+      "title": "He / She",
+      "topic": "SOV and he / she",
+      "opening": "school",
+      "intro": "Ms Hameed demonstrates actions at School before your village visits.",
+      "challenge": "Ms Hameed demonstrates actions at School before your village visits.",
+      "grammar": [
+        "A present action clause normally puts the subject first, the object next and the complete finite verb last. Third-person singular verbs describe he, she or one named person. Learn each evidenced conjugation as a complete form."
+      ],
+      "focusFamilies": [
+        "present_transitive",
+        "present_attributive"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "subjectFeatures": {
+        "person": 3,
+        "number": "singular"
+      },
+      "assessmentReview": false
+    },
+    {
+      "day": 3,
+      "title": "I",
+      "topic": "First person: I",
+      "opening": "nature",
+      "intro": "Saleha practises talking about yourself; Edris helps you shop for dinner.",
+      "challenge": "Saleha practises talking about yourself; Edris helps you shop for dinner.",
+      "grammar": [
+        "Use the first-person singular pronoun to speak as I. Select the evidenced first-person singular present verb, rather than adding an ending to an unknown stem."
+      ],
+      "focusFamilies": [
+        "present_transitive",
+        "present_intransitive"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "subjectFeatures": {
+        "person": 1,
+        "number": "singular"
+      },
+      "assessmentReview": false
+    },
+    {
+      "day": 4,
+      "title": "You (informal)",
+      "topic": "Informal you and joining clauses",
+      "opening": "residential",
+      "intro": "Muhammad Jan invites a friendly conversation at Home.",
+      "challenge": "Muhammad Jan invites a friendly conversation at Home.",
+      "grammar": [
+        "Address one familiar friend with the informal singular second person. Keep the finite verb in second-person singular. Whole clauses can be linked only when both clauses are licensed."
+      ],
+      "focusFamilies": [
+        "coordinated_present",
+        "present_transitive",
+        "present_attributive"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "subjectFeatures": {
+        "person": 2,
+        "number": "singular"
+      },
+      "assessmentReview": false
+    },
+    {
+      "day": 5,
+      "title": "You (polite/plural)",
+      "topic": "Respectful and plural you",
+      "opening": "school",
+      "intro": "Ms Hameed explains respectful address before the lakeside gathering.",
+      "challenge": "Ms Hameed explains respectful address before the lakeside gathering.",
+      "grammar": [
+        "Use respectful or plural second person for elders, teachers or a group. Its present verb form differs from familiar singular you. The speaker and addressee are different roles."
+      ],
+      "focusFamilies": [
+        "present_transitive"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "subjectFeatures": {
+        "person": 2,
+        "number": "plural"
+      },
+      "assessmentReview": false
+    },
+    {
+      "day": 6,
+      "title": "We",
+      "topic": "We: speaker included",
+      "opening": "nature",
+      "intro": "Saleha introduces her sister Mina; you join them for a walk in the Hills.",
+      "challenge": "Saleha introduces her sister Mina; you join them for a walk in the Hills.",
+      "grammar": [
+        "First-person plural includes the speaker. Contrast we with a group you are addressing. Whole attested coordinated subjects and compound predicates remain intact."
+      ],
+      "focusFamilies": [
+        "present_joint_action",
+        "present_compound_predicate"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "subjectFeatures": {
+        "person": 1,
+        "number": "plural"
+      },
+      "assessmentReview": false
+    },
+    {
+      "day": 7,
+      "title": "They",
+      "topic": "They: observed group",
+      "opening": "business",
+      "intro": "Edris describes the shoppers; Ms Hameed conducts the Week 1 examination.",
+      "challenge": "Edris describes the shoppers; Ms Hameed conducts the Week 1 examination.",
+      "grammar": [
+        "Third-person plural describes an observed group outside the speaker and listener. A written present form may be shared with third-person singular; the subject still distinguishes the group."
+      ],
+      "focusFamilies": [
+        "present_transitive",
+        "present_compound_transitive",
+        "coordinated_present"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "subjectFeatures": {
+        "person": 3,
+        "number": "plural"
+      },
+      "assessmentReview": true
+    },
+    {
+      "day": 8,
+      "title": "This One or That One?",
+      "topic": "Near and far demonstratives",
+      "opening": "nature",
+      "intro": "Saleha describes nearby and distant objects at the lakeside; player identifies intended objects and constructs demonstrative sentences.",
+      "challenge": "Saleha describes nearby and distant objects at the lakeside; player identifies intended objects and constructs demonstrative sentences.",
+      "grammar": [
+        "Near and far demonstratives can point to an object or stand independently. Keep their deictic function separate from the personal pronoun with the same spelling. Adjectives inside a noun phrase precede the noun."
+      ],
+      "focusFamilies": [
+        "demonstrative_descriptor",
+        "demonstrative_transitive",
+        "attributive_equative",
+        "equative_noun"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "assessmentReview": false
+    },
+    {
+      "day": 9,
+      "title": "One, Two, Many",
+      "topic": "Plurals and small counts",
+      "opening": "business",
+      "intro": "Edris takes inventory; match quantities to item groups, interpret singular/plural, and assemble agreement-safe sentences.",
+      "challenge": "Edris takes inventory; match quantities to item groups, interpret singular/plural, and assemble agreement-safe sentences.",
+      "grammar": [
+        "Use only the studied direct plural of each noun. Agreement follows the actual number and gender. Count expressions require an evidenced numeral construction; missing numeral or noun forms stay unavailable."
+      ],
+      "focusFamilies": [
+        "counted_equative",
+        "counted_transitive"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "assessmentReview": false
+    },
+    {
+      "day": 10,
+      "title": "Where Is Mina’s Notebook?",
+      "topic": "Here, there and where",
+      "opening": "nature",
+      "intro": "Mina retraces her route. Questions describe locations; the player interprets clues to identify the notebook’s location through dialogue only.",
+      "challenge": "Mina retraces her route. Questions describe locations; the player interprets clues to identify the notebook’s location through dialogue only.",
+      "grammar": [
+        "Describe locations with studied here/there forms or complete case-governed spatial expressions. A direct-case noun is not automatically an oblique form. A where question requires a compatible location response."
+      ],
+      "focusFamilies": [
+        "spatial_equative",
+        "location_adverb_equative",
+        "where_question"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Mina",
+          "participants": [
+            "Mina",
+            "Saleha"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "assessmentReview": false
+    },
+    {
+      "day": 11,
+      "title": "Whose Things Are These?",
+      "topic": "Possession: my, your and our",
+      "opening": "residential",
+      "intro": "Muhammad Jan sorts misplaced possessions after a visit; the player identifies owners in an everyday conversation.",
+      "challenge": "Muhammad Jan sorts misplaced possessions after a visit; the player identifies owners in an everyday conversation.",
+      "grammar": [
+        "Keep owner and owned head distinct. Independent possessives and named oblique possession chunks are studied separately. The described or identified noun determines its own agreement."
+      ],
+      "focusFamilies": [
+        "possessive_equative",
+        "possessive_descriptor",
+        "possessive_spatial"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "assessmentReview": false
+    },
+    {
+      "day": 12,
+      "title": "Ask the Right Question",
+      "topic": "Practical question words",
+      "opening": "school",
+      "intro": "A short classroom interview led by Ms Hameed; select suitable questions and respond using familiar vocabulary.",
+      "challenge": "A short classroom interview led by Ms Hameed; select suitable questions and respond using familiar vocabulary.",
+      "grammar": [
+        "Choose a question for a person, object, choice, location, owner or count. A generated reply must answer the question with the same referent and grammatical roles."
+      ],
+      "focusFamilies": [
+        "which_question",
+        "whose_question",
+        "how_many_question",
+        "what_object_question",
+        "who_subject_question",
+        "where_question"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "assessmentReview": false
+    },
+    {
+      "day": 13,
+      "title": "How We Do Things",
+      "topic": "Adverbs in daily routines",
+      "opening": "nature",
+      "intro": "Saleha and Mina plan a routine walk around town; identify how/when actions take place and form meaningful sentences with adverbs.",
+      "challenge": "Saleha and Mina plan a routine walk around town; identify how/when actions take place and form meaningful sentences with adverbs.",
+      "grammar": [
+        "Adverbs express time, manner, frequency or joint action. Their meaning must suit the predicate. Keep the evidenced finite verb and its subject agreement."
+      ],
+      "focusFamilies": [
+        "present_transitive_adverb",
+        "present_intransitive_adverb"
+      ],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "assessmentReview": false
+    },
+    {
+      "day": 14,
+      "title": "The Village Scavenger Hunt",
+      "topic": "Cumulative village review",
+      "opening": "residential",
+      "intro": "Week 2 culminating challenge: Ms Hameed reviews 25 contextual prompts framed as village scavenger-hunt clues (20/25 to pass), with cumulative Week 1 integration.",
+      "challenge": "Week 2 culminating challenge: Ms Hameed reviews 25 contextual prompts framed as village scavenger-hunt clues (20/25 to pass), with cumulative Week 1 integration.",
+      "grammar": [
+        "Combine previously studied vocabulary and grammar. This is revision: no compulsory new word or form is introduced."
+      ],
+      "focusFamilies": [],
+      "sentenceCount": 4,
+      "lessons": [
+        {
+          "location": "residential",
+          "teacher": "Muhammad Jan",
+          "participants": [
+            "Muhammad Jan"
+          ]
+        },
+        {
+          "location": "nature",
+          "teacher": "Saleha",
+          "participants": [
+            "Saleha",
+            "Mina"
+          ]
+        },
+        {
+          "location": "business",
+          "teacher": "Edris",
+          "participants": [
+            "Edris"
+          ]
+        },
+        {
+          "location": "school",
+          "teacher": "Ms Hameed",
+          "participants": [
+            "Ms Hameed"
+          ]
+        }
+      ],
+      "assessmentReview": true
+    }
+  ]
+}

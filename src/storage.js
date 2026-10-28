@@ -41,9 +41,34 @@ function createStorage({
         "phrases",
         "grammar",
         "events",
+        "deliveries",
+        "deficits",
       ].every((key) => object(p.library[key]))
     )
       return false;
+    if (!content.restoreGenerated(p)) return false;
+    for (const delivery of Object.values(p.library.deliveries)) {
+      const card = content.wordById[delivery.id];
+      if (
+        !card ||
+        ![
+          "generated_sentence",
+          "fixed_phrase",
+          "lexical_or_interface",
+        ].includes(delivery.kind)
+      )
+        return false;
+      if (
+        delivery.kind === "generated_sentence" &&
+        card.generated?.origin !== "productive_engine"
+      )
+        return false;
+      if (
+        delivery.kind === "fixed_phrase" &&
+        !content.LIBRARY_DATA.phrases.some((x) => x.id === card.id)
+      )
+        return false;
+    }
     for (const [day, record] of Object.entries(p.challenges)) {
       if (
         !Number.isInteger(Number(day)) ||
@@ -187,7 +212,42 @@ function createStorage({
       )
         return false;
       for (const item of a.questions) {
+        if (
+          ["sentence", "construct", "dialogue"].includes(item.kind) &&
+          content.wordById[item.id]?.type === "sentence" &&
+          !item.generated
+        )
+          return false;
+        if (
+          item.promptPs &&
+          (!item.promptGenerated || item.promptPs !== item.promptGenerated.ps)
+        )
+          return false;
+        if (item.promptGenerated) {
+          const prompt = content.wordById[item.promptGenerated.id];
+          if (
+            !prompt?.generated ||
+            JSON.stringify(prompt) !== JSON.stringify(item.promptGenerated)
+          )
+            return false;
+        }
+        if (
+          item.kind === "dialogue" &&
+          (!item.generated || item.answerPs !== content.wordById[item.id]?.ps)
+        )
+          return false;
         if (item.generated) {
+          if (
+            !item.generated.generated.requiredGrammarIds.every(
+              (g) => p.library.grammar[g],
+            ) ||
+            !Object.values(item.generated.generated.slots).every((r) =>
+              p.library.acquired[r.lemmaId]?.introducedFormIds.includes(
+                r.formId,
+              ),
+            )
+          )
+            return false;
           const card = content.wordById[item.id];
           if (
             !card?.generated ||
@@ -238,7 +298,7 @@ function createStorage({
       return p;
     } catch (error) {
       saveProblem =
-        "This save belongs to an older or incompatible version. This release uses save format 6 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
+        "This save belongs to an older or incompatible version. This release uses save format 7 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
       return progression.fresh();
     }
   }
