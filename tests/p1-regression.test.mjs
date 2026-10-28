@@ -74,3 +74,11 @@ if(mode==='all') {
  }
  console.log('PASS P1-B extended: all 33 concepts, four unique answer roles, exact correctness, 0/4 ×14 learned-day sets, all-day guided skip without unlocks');
 }
+
+if(mode==='all'){
+ const t=runtime();reset(t,0);const qs=t.questions.selectChallenge(1),q=qs.find(q=>q.kind==='choice');
+ // Even a forged/previously frozen grammar-day claim is not a study transaction.
+ q.grammarDays=[14];t.state.session={mode:'challenge',questions:[q],index:0,locked:false,answered:0,correctCount:0,earned:0,attemptId:1,loop:1};
+ t.learning.submitChallenge(q.correct);assert.deepEqual(plain(t.state.progress.library.grammar),{});
+ console.log('PASS assessment answers cannot grant workshop grammar');
+}

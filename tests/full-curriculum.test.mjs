@@ -200,6 +200,23 @@ try {
                 )
                   throw Error("Early dialogue invented a Pashto question");
               }
+              if (q.kind === "word") {
+                const studied = new Set(Object.values(t.content.wordById).filter((c) => {
+                  const refs = t.content.LIBRARY_DATA.sourceMappings[c.id] || [];
+                  return t.state.progress.library.phrases[c.id] || (refs.length && refs.every((r) =>
+                    t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId)));
+                }).map((c) => c.en));
+                for (const text of q.choiceOrder)
+                  if (!studied.has(text) && !["A different meaning", "Another response", "None of these"].includes(text))
+                    throw Error("Unstudied distractor meaning: " + text);
+                if (q.unstudied && document.querySelector("#choices").textContent.includes(card.en))
+                  throw Error("Unstudied target meaning offered as a clue");
+              }
+              if (q.kind === "choice" && q.grammarConcept) {
+                if (!q.grammarDays.every((day) => t.state.progress.library.grammar["grammar-day-" + day]))
+                  throw Error("Grammar assessment required an unvisited workshop");
+                if (q.reference && !q.prompt.includes(q.reference)) throw Error("Missing guided grammar reference");
+              }
               if (q.kind === "word" && q.unstudied) {
                 if (
                   q.direction !== "ps-en" ||

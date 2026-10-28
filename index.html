@@ -2483,11 +2483,23 @@ const LibraryEngine = (() => {
  * Grammar evidence never confers native approval. */
 const SentenceEngine = (() => {
   const unique = (xs) => [...new Set(xs)];
+  const lexicalIndexes = new WeakMap();
   const index = (data) => {
+    // Only immutable lexical data is cached. Mutable editorial/test catalogs
+    // rebuild normally, so evidence edits can never leave a stale index.
+    const cached = lexicalIndexes.get(data.entries);
+    if (cached && cached.evidence === data.generationEvidence &&
+        cached.attestations === data.generationAttestations) return cached.lookup;
+    const immutable = Object.isFrozen(data.entries) &&
+      data.entries.every((e) => Object.isFrozen(e) && Object.isFrozen(e.forms) &&
+        e.forms.every((f) => Object.isFrozen(f) && Object.isFrozen(f.featureEvidence))) &&
+      (!data.generationEvidence || Object.isFrozen(data.generationEvidence)) &&
+      (!data.generationAttestations || (Object.isFrozen(data.generationAttestations) &&
+        data.generationAttestations.every(Object.isFrozen)));
     const sources = new Map(
       (data.generationAttestations || []).map((a) => [a.sourceId, a]),
     );
-    return new Map(
+    const lookup = new Map(
       data.entries.flatMap((entry) =>
         entry.forms.map((value) => [
           value.formId,
@@ -2501,6 +2513,10 @@ const SentenceEngine = (() => {
         ]),
       ),
     );
+    if (immutable) lexicalIndexes.set(data.entries, {
+      evidence: data.generationEvidence, attestations: data.generationAttestations, lookup,
+    });
+    return lookup;
   };
   const feature = (item, key) =>
     key === "person" && item?.entry.partOfSpeech === "noun"
@@ -3532,6 +3548,11 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
     }
     return value;
   };
+  // Lexical evidence is build-time data. Acquisition lives in progress, never here.
+  // Immutable roots allow compiler views to share one index without stale edits.
+  deepFreeze(LIBRARY_DATA.entries);
+  deepFreeze(LIBRARY_DATA.generationEvidence);
+  deepFreeze(LIBRARY_DATA.generationAttestations);
   function registerGenerated(card) {
     if (wordById[card.id]) return wordById[card.id];
     if (
@@ -4128,9 +4149,6 @@ function createLearning({ state, content, progression }) {
       `challenge:${s.attemptId}:${s.index}`,
       "challenge",
     );
-    if (correct)
-      for (const day of q.grammarDays || [])
-        LibraryEngine.unlock(state.progress, day, "challenge");
     s.submittedAnswer = value;
     s.locked = true;
     s.answered++;
@@ -6530,7 +6548,7 @@ function createChallengeUI({
   }
   function showChallengeQuestion(resuming = false) {
     renderQuestion(resuming);
-    if (resuming && state.session.locked) renderSavedResponse();
+    if (resuming && state.session.locked) renderRecordedResponse();
   }
   function renderQuestion(resuming) {
     queueMicrotask(ui.readableQuizSurfaces);
@@ -6953,13 +6971,13 @@ function createChallengeUI({
     ui.$("resultWorld").textContent = "Return to town →";
     ui.view("resultScreen");
   }
-  function renderSavedResponse() {
+  function renderRecordedResponse() {
     const q = state.session.questions[state.session.index],
       w = content.wordById[q.id];
     for (const b of ui.$("choices").querySelectorAll("input, button")) b.disabled = true;
     if (["construct", "dialogue"].includes(q.kind)) renderBuiltSentence();
     ui.$("quizFeedback").textContent =
-      "Saved response: " +
+      "Recorded response: " +
       (q.answerPs ||
         q.correct ||
         (w ? w.ps + (q.kind === "word" ? " — " + w.en : "") : "")) +
@@ -7468,7 +7486,7 @@ function createLibraryUI({
           detail.append(
             ui.node(
               "p",
-              "Encounter this grammar in a lesson or demonstrate it in a challenge to read its examples.",
+              "Visit this grammar workshop in a lesson to read its generated examples.",
             ),
           );
         }

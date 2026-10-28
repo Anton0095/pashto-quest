@@ -3,11 +3,23 @@
  * Grammar evidence never confers native approval. */
 const SentenceEngine = (() => {
   const unique = (xs) => [...new Set(xs)];
+  const lexicalIndexes = new WeakMap();
   const index = (data) => {
+    // Only immutable lexical data is cached. Mutable editorial/test catalogs
+    // rebuild normally, so evidence edits can never leave a stale index.
+    const cached = lexicalIndexes.get(data.entries);
+    if (cached && cached.evidence === data.generationEvidence &&
+        cached.attestations === data.generationAttestations) return cached.lookup;
+    const immutable = Object.isFrozen(data.entries) &&
+      data.entries.every((e) => Object.isFrozen(e) && Object.isFrozen(e.forms) &&
+        e.forms.every((f) => Object.isFrozen(f) && Object.isFrozen(f.featureEvidence))) &&
+      (!data.generationEvidence || Object.isFrozen(data.generationEvidence)) &&
+      (!data.generationAttestations || (Object.isFrozen(data.generationAttestations) &&
+        data.generationAttestations.every(Object.isFrozen)));
     const sources = new Map(
       (data.generationAttestations || []).map((a) => [a.sourceId, a]),
     );
-    return new Map(
+    const lookup = new Map(
       data.entries.flatMap((entry) =>
         entry.forms.map((value) => [
           value.formId,
@@ -21,6 +33,10 @@ const SentenceEngine = (() => {
         ]),
       ),
     );
+    if (immutable) lexicalIndexes.set(data.entries, {
+      evidence: data.generationEvidence, attestations: data.generationAttestations, lookup,
+    });
+    return lookup;
   };
   const feature = (item, key) =>
     key === "person" && item?.entry.partOfSpeech === "noun"

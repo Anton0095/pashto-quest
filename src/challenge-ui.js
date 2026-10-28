@@ -229,7 +229,7 @@ function createChallengeUI({
   }
   function showChallengeQuestion(resuming = false) {
     renderQuestion(resuming);
-    if (resuming && state.session.locked) renderSavedResponse();
+    if (resuming && state.session.locked) renderRecordedResponse();
   }
   function renderQuestion(resuming) {
     queueMicrotask(ui.readableQuizSurfaces);
@@ -652,13 +652,13 @@ function createChallengeUI({
     ui.$("resultWorld").textContent = "Return to town →";
     ui.view("resultScreen");
   }
-  function renderSavedResponse() {
+  function renderRecordedResponse() {
     const q = state.session.questions[state.session.index],
       w = content.wordById[q.id];
     for (const b of ui.$("choices").querySelectorAll("input, button")) b.disabled = true;
     if (["construct", "dialogue"].includes(q.kind)) renderBuiltSentence();
     ui.$("quizFeedback").textContent =
-      "Saved response: " +
+      "Recorded response: " +
       (q.answerPs ||
         q.correct ||
         (w ? w.ps + (q.kind === "word" ? " — " + w.en : "") : "")) +

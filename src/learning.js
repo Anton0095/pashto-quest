@@ -330,9 +330,6 @@ function createLearning({ state, content, progression }) {
       `challenge:${s.attemptId}:${s.index}`,
       "challenge",
     );
-    if (correct)
-      for (const day of q.grammarDays || [])
-        LibraryEngine.unlock(state.progress, day, "challenge");
     s.submittedAnswer = value;
     s.locked = true;
     s.answered++;

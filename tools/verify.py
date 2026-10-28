@@ -23,7 +23,7 @@ def run(command):
     return result.returncode==0
 
 commands=[['python3','tools/build.py','--check'],['python3','tools/curriculum-audit.py','--check'],['python3','tools/vocabulary-review.py','--check'],['python3','tests/curriculum-schema.test.py'],['node','tests/curriculum-first.test.mjs'],['node','tests/productive-generation.test.mjs'],['node','tests/generated-architecture.test.mjs'],['node','tests/generated-dialogue.test.mjs'],['node','tools/generation-audit.mjs','--check'],['node','tools/district-inventory.mjs','--check'],['node','tests/cleanup-model.test.mjs'],['node','tests/current-model.test.mjs'],['node','tests/game-state.test.mjs'],['node','tests/audio.test.mjs'],['node','tests/curriculum-expansion.test.mjs'],['python3','tests/district-content.test.py']]
-commands += [['node','tests/'+name+'.test.mjs'] for name in ['p1-regression','p1-storage']]
+commands += [['node','tests/'+name+'.test.mjs'] for name in ['p1-regression','p1-storage','generation-cache']]
 commands += [['node','--check',str(path.relative_to(ROOT))] for directory,pattern in [('src','*.js'),('tools','*.mjs'),('tests','*.mjs')] for path in sorted((ROOT/directory).glob(pattern))]
 passed=True
 for command in commands:passed=run(command) and passed

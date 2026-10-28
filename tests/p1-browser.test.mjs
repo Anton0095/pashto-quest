@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import {mkdirSync} from 'node:fs';
+mkdirSync('docs/maintenance/p1',{recursive:true});
 import {setup,tutorial,answerCurrent} from './browser-fixture.mjs';
 for(const width of [375,1280]) {
  const b=await setup({width}); const p=b.page;
@@ -17,7 +19,7 @@ for(const width of [375,1280]) {
     t.library.openLibrary();const detail=document.querySelector('.library-entry');detail.open=true;
     [...detail.querySelectorAll('button')].find(b=>b.textContent==='Practise an encountered form').click();
     const allowed=new Set(Object.values(t.content.wordById).filter(c=>(t.content.LIBRARY_DATA.sourceMappings[c.id]||[]).length&&t.content.LIBRARY_DATA.sourceMappings[c.id].every(r=>t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))).map(c=>c.en));
-    for(const b of detail.querySelectorAll('div:last-child button'))if(!allowed.has(b.textContent)&&!['A different meaning','Another response','None of these'].includes(b.textContent))throw Error('Library leaked '+b.textContent);
+    for(const b of detail.lastElementChild.querySelectorAll('button'))if(!allowed.has(b.textContent)&&!['A different meaning','Another response','None of these'].includes(b.textContent))throw Error('Library leaked '+b.textContent);
     document.querySelector('#libraryDialog').close();
   });
   await p.evaluate(()=>__test.challenge.startChallenge(1));
@@ -26,6 +28,7 @@ for(const width of [375,1280]) {
    s.index=s.questions.findIndex(q=>q.unstudied);s.answered=s.index;t.challenge.showChallengeQuestion();
    return {q:s.questions[s.index],card:t.content.wordById[s.questions[s.index].id]};
   });
+  await p.screenshot({path:`docs/maintenance/p1/uncued-recall-${width}.png`});
   assert(!unknown.q.choiceOrder.includes(unknown.card.en));
   assert(!(await p.locator('#choices').innerText()).includes(unknown.card.en));
   await p.locator('#unseenRecall').fill('partial draft');
@@ -54,6 +57,7 @@ for(const width of [375,1280]) {
   });
   assert(await p.locator('#saveWarning').isVisible());
   assert((await p.locator('#saveWarning').innerText()).includes('has not been saved'));
+  await p.locator('#saveWarning').scrollIntoViewIfNeeded();await p.screenshot({path:`docs/maintenance/p1/save-failure-${width}.png`});
   assert.equal(await p.locator('#saveCompatibility').count(),0);
   assert.equal(await p.evaluate(()=>__test.state.progress.xp),xp+7);
   const downloadPromise=p.waitForEvent('download');await p.locator('#exportSave').click();const download=await downloadPromise;

@@ -71,7 +71,7 @@ function createLibraryUI({
           detail.append(
             ui.node(
               "p",
-              "Encounter this grammar in a lesson or demonstrate it in a challenge to read its examples.",
+              "Visit this grammar workshop in a lesson to read its generated examples.",
             ),
           );
         }
