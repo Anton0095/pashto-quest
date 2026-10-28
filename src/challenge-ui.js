@@ -228,7 +228,18 @@ function createChallengeUI({
     storage.save();
   }
   function showChallengeQuestion(resuming = false) {
+    ui.clearSentenceScene();
     renderQuestion(resuming);
+    const q = state.session?.questions[state.session.index];
+    if (q && ["construct", "dialogue"].includes(q.kind)) {
+      const w = content.wordById[q.id];
+      const host = q.speaker || content.teacherFor(state.session.loop, null, "challenge").name;
+      ui.sentenceContext(w, host, ui.$("quizPanel"), "construct");
+      if (q.kind === "dialogue") {
+        ui.$("guideMessage").textContent = `${host}: “${q.promptEnglish}” ${q.sceneEnglish || ""}`;
+        ui.$("addressTarget").textContent = `${host} → Player · YOUR RESPONSE → ${q.recipient}`;
+      }
+    }
     if (resuming && state.session.locked) renderRecordedResponse();
   }
   function renderQuestion(resuming) {
@@ -476,6 +487,7 @@ function createChallengeUI({
         b.type = "button";
         b.className = "choice";
         b.textContent = value;
+        b.dataset.answer = value;
         if (reverse) {
           b.lang = "ps";
           b.dir = "rtl";
@@ -533,11 +545,7 @@ function createChallengeUI({
       return;
     }
     if (q.kind === "choice") {
-      for (const b of ui.$("choices").children) {
-        b.disabled = true;
-        if (b.dataset.answer === q.correct) b.classList.add("correct");
-        else if (b.dataset.answer === value) b.classList.add("wrong");
-      }
+      ui.showAnswerFeedback(ui.$("choices"), q.correct, value);
       ui.$("quizFeedback").textContent =
         (correct ? "✓ Correct. " : "✗ Review this response: ") +
         q.correct +
@@ -546,11 +554,7 @@ function createChallengeUI({
       return;
     }
     if (q.kind === "address") {
-      for (const b of ui.$("choices").children) {
-        b.disabled = true;
-        if (b.dataset.answer === q.correct) b.classList.add("correct");
-        else if (b.dataset.answer === value) b.classList.add("wrong");
-      }
+      ui.showAnswerFeedback(ui.$("choices"), q.correct, value);
       ui.$("quizFeedback").replaceChildren();
       const line = document.createElement("strong");
       line.className = correct ? "good" : "bad";
@@ -564,12 +568,7 @@ function createChallengeUI({
       return;
     }
     if (q.kind !== "construct")
-      for (const b of ui.$("choices").children) {
-        b.disabled = true;
-        if (b.textContent === (q.direction === "ps-en" ? w.en : w.ps))
-          b.classList.add("correct");
-        else if (b.textContent === value) b.classList.add("wrong");
-      }
+      ui.showAnswerFeedback(ui.$("choices"), q.direction === "ps-en" ? w.en : w.ps, value);
     else {
       renderBuiltSentence();
       ui.$("builtSentence").classList.add(
@@ -591,6 +590,8 @@ function createChallengeUI({
     const detail = document.createElement("div");
     detail.textContent = `${w.ps} (${w.roman}) — ${w.en}`;
     feedback.append(headline, detail);
+    if (w.generated)
+      ui.sentenceContext(w, q.speaker || content.teacherFor(state.session.loop, null, "challenge").name, ui.$("quizPanel"), "study");
     ui.$("quizSpeak").classList.remove("hidden");
     ui.$("quizNext").disabled = false;
   }
@@ -656,7 +657,14 @@ function createChallengeUI({
     const q = state.session.questions[state.session.index],
       w = content.wordById[q.id];
     for (const b of ui.$("choices").querySelectorAll("input, button")) b.disabled = true;
-    if (["construct", "dialogue"].includes(q.kind)) renderBuiltSentence();
+    const value = state.session.submittedAnswer;
+    const correct = QuestionEngine.evaluate(q, w, value);
+    if (["construct", "dialogue"].includes(q.kind)) {
+      renderBuiltSentence();
+      ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
+    } else if (!q.unstudied) {
+      ui.showAnswerFeedback(ui.$("choices"), q.correct || (q.direction === "en-ps" ? w?.ps : w?.en), value);
+    }
     ui.$("quizFeedback").textContent =
       "Recorded response: " +
       (q.answerPs ||
@@ -706,3 +714,4 @@ function createChallengeUI({
     checkBuild,
   };
 }
+

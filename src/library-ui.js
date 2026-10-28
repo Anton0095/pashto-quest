@@ -60,6 +60,7 @@ function createLibraryUI({
             ps.lang = "ps";
             ps.dir = "rtl";
             detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
+            ui.sentenceContext(ex, "", detail, "reference");
           } else
             detail.append(
               ui.node(
@@ -348,6 +349,7 @@ function createLibraryUI({
         ps.lang = "ps";
         ps.dir = "rtl";
         detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
+        ui.sentenceContext(ex, "", detail, "reference");
         detail.dataset.generatedExample = ex.id;
       }
     });
@@ -378,8 +380,7 @@ function createLibraryUI({
       "library-practice:" + ++state.progress.library.attemptSequence;
     for (const option of QuestionEngine.shuffle(options)) {
       const b = ui.button(option, () => {
-        for (const btn of exercise.querySelectorAll("button"))
-          btn.disabled = true;
+        ui.showAnswerFeedback(exercise, form.englishGloss, option);
         const correct = QuestionEngine.evaluate(
           { kind: "word", direction: "ps-en" },
           { en: form.englishGloss },
@@ -406,6 +407,8 @@ function createLibraryUI({
           ),
         );
       });
+      b.classList.add("choice");
+      b.dataset.answer = option;
       exercise.append(b);
     }
     container.append(exercise);
@@ -592,3 +595,4 @@ function createLibraryUI({
 
   return { openLibrary, closeLibrary, libraryInit, prepareOnboarding };
 }
+

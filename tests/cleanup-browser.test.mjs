@@ -4,6 +4,7 @@ import { setup, tutorial } from "./browser-fixture.mjs";
 const contract = JSON.parse(readFileSync("tests/world-contract.json", "utf8"));
 const captures = [];
 mkdirSync("docs/maintenance/cleanup", { recursive: true });
+mkdirSync("work/cleanup", { recursive: true });
 for (const width of [375, 1280]) {
   const b = await setup({ width });
   const p = b.page;
@@ -154,7 +155,7 @@ for (const width of [375, 1280]) {
       );
       assert(
         (await p.locator("#guideMessage").innerText()).startsWith(
-          lesson.teacher + " at ",
+          lesson.teacher + ": “",
         ),
       );
       assert(

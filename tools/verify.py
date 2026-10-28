@@ -32,7 +32,7 @@ compiled=subprocess.run(['node','--check'],input=script,text=True,capture_output
 passed=compiled.returncode==0 and passed
 print('PASS compiled release syntax' if compiled.returncode==0 else compiled.stderr)
 if not args.quick:
-    browsers=[['node','tests/'+name+'.test.mjs'] for name in ['p1-browser','cleanup-browser','generated-learning','resume-behaviour','challenge-disclosure','independent-browser','full-curriculum']]
+    browsers=[['node','tests/'+name+'.test.mjs'] for name in ['narrative-feedback','p1-browser','cleanup-browser','generated-learning','resume-behaviour','challenge-disclosure','independent-browser','full-curriculum']]
     with ThreadPoolExecutor(max_workers=2) as executor:
         passed=all(list(executor.map(run,browsers))) and passed
     if passed:

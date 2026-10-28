@@ -1413,3 +1413,14 @@ header {
 .save-warning { border: 2px solid #d9a441; padding: 12px; margin: 8px 0; border-radius: 8px; overflow-wrap: anywhere; }
 .save-warning button { margin: 4px; }
 .recall-input { width: 100%; max-width: 100%; box-sizing: border-box; padding: 12px; }
+
+
+/* Clause-driven scenes stay embedded in the offline release. */
+.sentence-scene { margin: 0 0 18px; padding: 14px; border: 1px solid #7190a5; border-radius: 16px; background: #203f50; text-align: center; }
+.sentence-scene svg { display: block; width: min(100%, 320px); margin: auto; max-height: 180px; }
+.sentence-scene figcaption { margin-top: 8px; color: #fffdf6; font-size: 16px; }
+.scene-props { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.scene-prop { display: grid; gap: 4px; align-content: center; padding: 10px; min-width: 65px; border-radius: 10px; background: #315668; color: #fffdf6; }
+.scene-symbol { font-size: 36px; }
+.choice.correct::after { content: " ✓"; }
+.choice.wrong::after { content: " ✗"; }

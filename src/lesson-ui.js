@@ -120,6 +120,7 @@ function createLessons({
   function renderPhase() {
     if (!state.session) return;
     audio.stopAudio();
+    ui.clearSentenceScene();
     queueMicrotask(ui.readableQuizSurfaces);
     for (const id of ["teachPanel", "grammarPanel", "quizPanel"])
       ui.$(id).classList.add("hidden");
@@ -183,10 +184,16 @@ function createLessons({
       : w.type === "greeting"
         ? "Learn this conventional expression as a complete phrase."
         : "Study this word or individual form. It will remain available in later constructions.";
+    const voice = teacher.name + (s.mode === "review" ? " · Memory Trail" : "");
     ui.$("guideMessage").textContent =
-      `${teacher.name}${s.loc ? " at " + ui.displayPlace(s.loc) : " · Memory Trail"}: ${guidance}`;
+      w.type === "greeting"
+        ? `${voice}: “${w.en}” Listen to the expression, then practise saying it with me.`
+        : w.generated
+          ? `${voice}: ${guidance}`
+          : `${voice}: “Let us learn ‘${w.en}’ together. Listen, then try saying it.”`;
     ui.$("addressTarget").textContent = `${teacher.name} → Player`;
     ui.$("addressTarget").classList.remove("hidden");
+    ui.sentenceContext(w, teacher.name, ui.$("teachPanel"), "study");
     ui.$("teachNext").disabled = false;
     ui.$("teachNext").textContent =
       s.cardIndex + 1 < studyList().length
@@ -304,6 +311,13 @@ function createLessons({
       ? "Put the studied Pashto forms in order"
       : "Choose the correct meaning";
     ui.$("quizSpeak").classList.toggle("hidden", build);
+    ui.clearSentenceScene();
+    const teacher = content.teacherFor(s.loop, s.loc, s.mode);
+    ui.setDialogueSpeaker(teacher.name);
+    ui.$("guideMessage").textContent = `${teacher.name}: “What does this mean? Choose your answer and we will check it together.”`;
+    ui.$("addressTarget").textContent = `${teacher.name} → Player · YOUR ANSWER → ${teacher.name}`;
+    if (build) ui.sentenceContext(w, teacher.name, ui.$("quizPanel"), "construct");
+    ui.$("builtSentence").classList.remove("build-success", "build-error");
     ui.$("choices").replaceChildren();
     ui.$("constructionPanel").classList.toggle("hidden", !build);
     if (build) renderBuild();
@@ -311,6 +325,7 @@ function createLessons({
       for (const choice of questions.distractors(w)) {
         const b = ui.button(choice, () => answer(choice));
         b.className = "choice";
+        b.dataset.answer = choice;
         ui.$("choices").append(b);
       }
     ui.$("quizFeedback").textContent = "Submit your answer to continue.";
@@ -324,7 +339,11 @@ function createLessons({
     learning.surface(w.id, "lesson-feedback");
     storage.save();
     ui.hud();
-    for (const b of ui.$("choices").children) b.disabled = true;
+    ui.showAnswerFeedback(ui.$("choices"), w.en, value);
+    if (state.session.activeItem.kind === "construct")
+      ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
+    else if (w.generated)
+      ui.sentenceContext(w, content.teacherFor(state.session.loop, state.session.loc, state.session.mode).name, ui.$("quizPanel"), "study");
     for (const b of ui.$("wordTiles").children) b.disabled = true;
     ui.$("checkBuild").disabled = true;
     ui.$("undoTile").disabled = true;
@@ -459,3 +478,4 @@ function createLessons({
     clearTiles,
   };
 }
+
