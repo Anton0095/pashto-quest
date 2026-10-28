@@ -85,3 +85,7 @@ Grammar catch-up shows all previously missed workshops through the current day b
 English grammar adaptation uses `content/GRAMMAR_ASSESSMENT.json`: application tasks with role/agreement misconceptions, selected only from actually visited workshops. If none have been visited, a visibly supplied Day-1 reference supports a guided check; its answer never grants workshop grammar or future constructions. Task options, references and correct answers freeze with the assessment.
 
 Persistence errors display a nonblocking warning, keep progress in memory and offer Retry and Export. Success requires reading back the exact written payload. A failed initial read cannot overwrite an existing save on recovery; the player can export this tab and reload the stored progress. This state is distinct from incompatible/corrupt-save rejection. Schema 7, scoring and explicit reset remain unchanged. Export is a JSON backup, not a new import/migration system.
+
+## English answer policy
+
+Lexical recall accepts its displayed gloss and explicitly stored `acceptedEnglishAnswers` for that individual form, using NFC, case and outer-whitespace normalization. For unambiguous English infinitive labels, the stored list explicitly permits omission of “to”; this does not accept finite-person forms, imperatives or arbitrary lemma-family synonyms. Slash-separated or person-annotated ambiguous glosses await editorial review. This formatting policy changes neither Pashto forms nor native approval.

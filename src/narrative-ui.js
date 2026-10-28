@@ -20,12 +20,10 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
     // Allocate an attempt only on actual response, not each time a surface is rendered.
     let answered = false;
     for (const option of QuestionEngine.shuffle(options)) {
-      box.append(
-        ui.button(option, () => {
+      const button = ui.button(option, () => {
           if (answered) return;
           answered = true;
-          for (const button of box.querySelectorAll("button"))
-            button.disabled = true;
+          ui.showAnswerFeedback(box, phrase.english, option);
           const correct = QuestionEngine.evaluate(
             { kind: "word", direction: "ps-en" },
             { en: phrase.english },
@@ -54,8 +52,9 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
               "notice",
             ),
           );
-        }),
-      );
+        });
+      button.dataset.answer = option;
+      box.append(button);
     }
     container.append(box);
   }

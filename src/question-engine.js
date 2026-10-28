@@ -84,8 +84,10 @@ const QuestionEngine = (() => {
       return normalizeAnswer(value) === normalizeAnswer(q.correct);
     if (q.kind === "construct")
       return normalizeAnswer(value) === normalizeAnswer(card.ps);
-    if (q.kind === "word" && q.unstudied)
-      return String(value).trim().toLocaleLowerCase("en") === card.en.trim().toLocaleLowerCase("en");
+    if (q.kind === "word" && q.direction !== "en-ps") {
+      const english = text => String(text).normalize("NFC").trim().toLocaleLowerCase("en");
+      return [card.en, ...(card.acceptedEnglishAnswers || [])].some(answer => english(answer) === english(value));
+    }
     return value === (q.direction === "en-ps" ? card.ps : card.en);
   }
   function randomFor(seed) {

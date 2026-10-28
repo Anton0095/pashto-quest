@@ -179,13 +179,13 @@ function createUI({ state, content, progression }) {
   // Presentation is derived from the actual compiled clause, never its day number.
   // Recognition tasks call this only after submission so pictures cannot disclose
   // an unseen target's meaning. Construction already supplies the English target.
-  function sentenceContext(w, host, panel, purpose = "study") {
+  function sentenceContext(w, host, panel, purpose = "study", context = {}) {
     const reference = purpose === "reference";
     if (!reference) clearSentenceScene();
     if (!w?.generated) return;
     if (!reference) {
       setDialogueSpeaker(host);
-      $("addressTarget").textContent = `${host} → Player · YOUR WORDS → ${host}`;
+      $("addressTarget").textContent = `${host} → Player · YOUR WORDS → ${(context.dialogueContext?.responseAddressee || (context.recipient !== "Player" ? context.recipient : null)) || (w.generated.subjects.some(s => s.person === 2) ? w.recipient : host)}`;
       $("addressTarget").classList.remove("hidden");
       $("guideMessage").textContent = purpose === "study"
         ? `${host}: “Look at the scene with me. Here is how you can say ‘${w.en}’ in Pashto.”`

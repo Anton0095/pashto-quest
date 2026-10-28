@@ -68,9 +68,11 @@ function createChallengeUI({
   }
   function startChallenge(day, snapshot = null) {
     if (!learning.allowed(day)) return;
+    if (!snapshot && state.progress.activeChallenge)
+      return startChallenge(state.progress.activeChallenge.loop, JSON.parse(JSON.stringify(state.progress.activeChallenge)));
     audio.stopAudio();
     ui.$("lessonExpression")?.replaceChildren();
-    const items = snapshot?.questions || questions.selectChallenge(day),
+    const items = snapshot?.questions || questions.selectChallenge(day, { newAttempt: true }),
       spec = progression.getChallengeSpec(day);
     state.session = snapshot || {
       id: `challenge-${day}`,
@@ -234,7 +236,7 @@ function createChallengeUI({
     if (q && ["construct", "dialogue"].includes(q.kind)) {
       const w = content.wordById[q.id];
       const host = q.speaker || content.teacherFor(state.session.loop, null, "challenge").name;
-      ui.sentenceContext(w, host, ui.$("quizPanel"), "construct");
+      ui.sentenceContext(w, host, ui.$("quizPanel"), "construct", q);
       if (q.kind === "dialogue") {
         ui.$("guideMessage").textContent = `${host}: “${q.promptEnglish}” ${q.sceneEnglish || ""}`;
         ui.$("addressTarget").textContent = `${host} → Player · YOUR RESPONSE → ${q.recipient}`;
@@ -591,7 +593,7 @@ function createChallengeUI({
     detail.textContent = `${w.ps} (${w.roman}) — ${w.en}`;
     feedback.append(headline, detail);
     if (w.generated)
-      ui.sentenceContext(w, q.speaker || content.teacherFor(state.session.loop, null, "challenge").name, ui.$("quizPanel"), "study");
+      ui.sentenceContext(w, q.speaker || content.teacherFor(state.session.loop, null, "challenge").name, ui.$("quizPanel"), "study", q);
     ui.$("quizSpeak").classList.remove("hidden");
     ui.$("quizNext").disabled = false;
   }

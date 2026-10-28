@@ -396,6 +396,7 @@ function createLearning({ state, content, progression }) {
       s.earned += gain;
     } else
       s.queue.splice(Math.min(2, s.queue.length), 0, {
+        ...item,
         id: w.id,
         retries: item.retries + 1,
       });

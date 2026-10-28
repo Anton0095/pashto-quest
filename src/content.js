@@ -87,6 +87,7 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       ps: form.pashto,
       roman: form.romanisation || "Romanisation pending native review",
       en: entry.englishSenses[0],
+      acceptedEnglishAnswers: form.acceptedEnglishAnswers || [],
       note: "Provisional vocabulary; native Laghman review pending.",
     };
     LIBRARY_DATA.cardDays[id] = entry.introduction.day;
@@ -107,6 +108,7 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
         ps: form.pashto,
         roman: form.romanisation || "Romanisation pending native review",
         en: form.englishGloss,
+        acceptedEnglishAnswers: form.acceptedEnglishAnswers || [],
         note: "Attested form · native review pending.",
       };
       LIBRARY_DATA.cardDays[id] = form.firstAllowedDay;

@@ -129,13 +129,13 @@ function createQuestions({ state, content, progression, storage }) {
         : "English application of a previously visited grammar workshop; no fixed Pashto sentence fallback.",
     };
   }
-  function selectChallenge(day) {
+  function selectChallenge(day, { newAttempt = false } = {}) {
     const plan = LibraryEngine.ensurePlan(
       state.progress,
       content.LIBRARY_DATA,
       day,
     );
-    if (plan.challengeQuestions) return clone(plan.challengeQuestions);
+    if (!newAttempt && plan.challengeQuestions) return clone(plan.challengeQuestions);
     const random = QuestionEngine.randomFor(plan.seed + day * 7919),
       blueprint = createAssessmentContent({ content, progression }).blueprint(
         day,
@@ -347,9 +347,9 @@ function createQuestions({ state, content, progression, storage }) {
             )
             .map((f) => f.pashto),
         );
-        const duds = [...new Set(studiedTokens)]
-          .filter((t) => !tokens.has(t))
-          .slice(0, 2);
+        for (const accepted of q.acceptedPs || [])
+          for (const token of QuestionEngine.normalizePashtoResponse(accepted).split(" ")) tokens.add(token);
+        const duds = QuestionEngine.shuffle([...new Set(studiedTokens)].filter(t => !tokens.has(t)), random).slice(0, 2);
         if (duds.length === 2) q.duds = duds;
         q.tileSequence = QuestionEngine.shuffle(
           QuestionEngine.buildTiles(content.wordById[q.id], q, day).map(

@@ -87,6 +87,11 @@ def validate_curriculum(data):
             if fid in forms:
                 raise ValueError("Duplicate form identity: " + fid)
             forms[fid] = (e, f)
+            if "acceptedEnglishAnswers" in f:
+                answers=f["acceptedEnglishAnswers"]
+                if (not isinstance(answers,list) or not answers or any(not isinstance(a,str) or not a.strip() for a in answers)
+                        or len(set(a.casefold() for a in answers)) != len(answers) or not f.get("englishAnswerEvidence",{}).get("reference")):
+                    raise ValueError("Invalid explicit English answer policy: " + fid)
             if not TRAITS.issubset(m):
                 raise ValueError("Missing form traits: " + fid)
             validate_features(m, fid)
