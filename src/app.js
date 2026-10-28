@@ -7,6 +7,35 @@
   const storage = createStorage({ state, content, progression });
   state.progress = storage.load();
   const ui = createUI({ state, content, progression });
+  const saveWarning = document.createElement("aside");
+  saveWarning.id = "saveWarning";
+  saveWarning.className = "save-warning hidden";
+  saveWarning.setAttribute("aria-label", "Progress saving warning");
+  const saveMessage = document.createElement("p");
+  saveMessage.setAttribute("role", "status");
+  const retrySave = document.createElement("button");
+  retrySave.id = "retrySave";
+  retrySave.type = "button";
+  retrySave.textContent = "Retry saving";
+  retrySave.addEventListener("click", () => storage.save());
+  const exportSave = document.createElement("button");
+  exportSave.id = "exportSave";
+  exportSave.type = "button";
+  exportSave.textContent = "Export progress";
+  exportSave.addEventListener("click", () => {
+    const url = URL.createObjectURL(new Blob([storage.snapshot()], { type: "application/json" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "pashto-quest-progress.json";
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+  saveWarning.append(saveMessage, retrySave, exportSave);
+  document.querySelector(".app").prepend(saveWarning);
+  storage.onPersistenceChange((message) => {
+    saveMessage.textContent = message || "";
+    saveWarning.classList.toggle("hidden", !message);
+  });
   const audio = createAudio({
     wordById: content.wordById,
     onSpeak: (id) => learning.surface(id, "audio"),
@@ -18,8 +47,8 @@
   });
   const learning = createLearning({ state, content, progression });
   const questions = createQuestions({ state, content, progression, storage });
-  const narrative = createNarrative({ state, content, ui, audio, storage });
-  const tutorial = createTutorial({ state, content, learning, ui, storage });
+  const narrative = createNarrative({ state, content, ui, audio, storage, questions });
+  const tutorial = createTutorial({ state, content, learning, ui, storage, questions });
   const grammar = createGrammar({
     state,
     content,
@@ -73,6 +102,7 @@
     storage,
     narrative,
     learning,
+    questions,
   });
   function nextQuestion() {
     if (!state.session || ui.$("quizNext").disabled) return;

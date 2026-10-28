@@ -1,5 +1,5 @@
 /* Contextual expression reference and encounter presentation. */
-function createNarrative({ state, content, ui, audio, storage }) {
+function createNarrative({ state, content, ui, audio, storage, questions }) {
   /* Character dialogue uses the same expression units, scheduler and audio as the tutorial. */
   function appendPhrasePractice(container, phrase, source, day = state.day) {
     const box = ui.node("div", undefined, "phrase-practice");
@@ -16,15 +16,7 @@ function createNarrative({ state, content, ui, audio, storage }) {
           : "Practise recognising this fixed expression (optional):",
       ),
     );
-    const options = [
-      ...new Set([
-        phrase.english,
-        ...content.LIBRARY_DATA.phrases
-          .filter((p) => p.id !== phrase.id)
-          .slice(0, 2)
-          .map((p) => p.english),
-      ]),
-    ];
+    const options = questions.distractors(content.wordById[phrase.id]);
     // Allocate an attempt only on actual response, not each time a surface is rendered.
     let answered = false;
     for (const option of QuestionEngine.shuffle(options)) {
@@ -57,7 +49,7 @@ function createNarrative({ state, content, ui, audio, storage }) {
             ui.node(
               "p",
               correct
-                ? "Correct. Recognition saved; no XP awarded."
+                ? "Correct. Recognition recorded; no XP awarded."
                 : "Meaning: " + phrase.english,
               "notice",
             ),

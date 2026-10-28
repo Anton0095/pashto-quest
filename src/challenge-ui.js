@@ -260,6 +260,7 @@ function createChallengeUI({
       state.session.locked = false;
       state.session.built = [];
       delete state.session.submittedAnswer;
+      delete state.session.recallDraft;
     }
     ui.$("builtSentence").classList.remove("build-success", "build-error");
     ui.$("quizCounter").textContent =
@@ -367,7 +368,7 @@ function createChallengeUI({
         ui.$("choices").append(b);
       }
       ui.$("quizFeedback").textContent =
-        "Consider who is speaking, who is included and whom you address.";
+        q.reference ? "Guided check: apply the reference above. This does not unlock a workshop." : "Apply a rule from a workshop you have visited. Your first answer counts.";
       ui.$("quizNext").disabled = true;
       ui.$("quizNext").textContent =
         state.session.index === state.session.questions.length - 1
@@ -441,6 +442,34 @@ function createChallengeUI({
       ui.$("constructionPanel").classList.remove("hidden");
       if (!resuming) state.session.tileSequence = q.tileSequence;
       renderBuiltSentence();
+    } else if (q.kind === "word" && q.unstudied) {
+      ui.$("quizPrompt").textContent = "Not previously studied. Type the English meaning if you already know it, or reveal it after submitting. Your first answer counts.";
+      ui.$("quizPanel").querySelector(".quizword h3").textContent = "Recall without a translation clue";
+      const form = document.createElement("form");
+      const input = document.createElement("input");
+      input.id = "unseenRecall";
+      input.className = "recall-input";
+      input.setAttribute("aria-label", "English meaning from memory");
+      input.autocomplete = "off";
+      input.maxLength = 160;
+      input.value = state.session.recallDraft || "";
+      input.addEventListener("input", () => {
+        state.session.recallDraft = input.value;
+        storage.save();
+      });
+      const submit = document.createElement("button");
+      submit.type = "submit";
+      submit.textContent = "Submit meaning";
+      const reveal = document.createElement("button");
+      reveal.type = "button";
+      reveal.textContent = "I don’t know — reveal meaning";
+      reveal.addEventListener("click", () => answerChallenge(""));
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        answerChallenge(input.value);
+      });
+      form.append(input, submit, reveal);
+      ui.$("choices").append(form);
     } else
       for (const value of q.choiceOrder) {
         const b = document.createElement("button");
@@ -474,6 +503,7 @@ function createChallengeUI({
     const result = learning.submitChallenge(value);
     if (!result) return;
     const { q, w, correct, gain } = result;
+    for (const control of ui.$("choices").querySelectorAll("input, button")) control.disabled = true;
     if (q.generated) learning.surface(q.id, "assessment-feedback");
     if (q.promptGenerated)
       learning.surface(q.promptGenerated.id, "dialogue-feedback");
@@ -601,7 +631,7 @@ function createChallengeUI({
       ui.$("resultDescription").textContent = passed
         ? firstPass
           ? "Muhammad Jan → Player: Here is the key to your own home. Welcome to the village! Your home is now yours, and I will still visit to help you learn."
-          : "Your home award is already saved. No second key or milestone reward is granted."
+          : "Your home award is already recorded. No second key or milestone reward is granted."
         : "Muhammad Jan → Player: Let us practise and try again. Your home will be awarded after twelve correct answers.";
     }
     if (day >= 8) {
@@ -616,7 +646,7 @@ function createChallengeUI({
     ui.$("resultXP").textContent = `+${s.earned}`;
     ui.$("resultKnowledge").textContent = passed ? "PASSED" : "NOT YET";
     ui.$("resultNext").textContent =
-      `Total: ${state.progress.xp} XP · Answer rewards: +${s.earned - base - topUp} XP. ${base ? `First-pass bonus: +${base} XP. ` : ""}${topUp ? `Checkpoint catch-up: +${topUp} XP. ` : ""}${graduation ? "Newcomer → New Resident. Week 1 is complete." : passed ? "Progress saved. Replays do not repeat milestone rewards." : "No milestone or title awarded. Retry when ready."}`;
+      `Total: ${state.progress.xp} XP · Answer rewards: +${s.earned - base - topUp} XP. ${base ? `First-pass bonus: +${base} XP. ` : ""}${topUp ? `Checkpoint catch-up: +${topUp} XP. ` : ""}${graduation ? "Newcomer → New Resident. Week 1 is complete." : passed ? `${storage.persistenceProblem ? "Progress is in this tab; saving failed." : "Progress saved."} Replays do not repeat milestone rewards.` : "No milestone or title awarded. Retry when ready."}`;
     ui.$("resultReplay").textContent =
       `Retry ${s.questions.length}-question assessment`;
     ui.$("resultWorld").textContent = "Return to town →";
@@ -625,7 +655,7 @@ function createChallengeUI({
   function renderSavedResponse() {
     const q = state.session.questions[state.session.index],
       w = content.wordById[q.id];
-    for (const b of ui.$("choices").children) b.disabled = true;
+    for (const b of ui.$("choices").querySelectorAll("input, button")) b.disabled = true;
     if (["construct", "dialogue"].includes(q.kind)) renderBuiltSentence();
     ui.$("quizFeedback").textContent =
       "Saved response: " +

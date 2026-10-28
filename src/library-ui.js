@@ -7,6 +7,7 @@ function createLibraryUI({
   storage,
   narrative,
   learning,
+  questions,
 }) {
   let libraryLastFocus = null;
   function openLibrary(tab = "vocabulary") {
@@ -372,15 +373,7 @@ function createLibraryUI({
     if (!form) return;
     const exercise = ui.node("div");
     exercise.append(ui.node("p", "Choose the meaning of " + form.pashto));
-    const options = [
-      ...new Set([
-        form.englishGloss,
-        ...content.LIBRARY_DATA.entries
-          .filter((x) => x.lemmaId !== e.lemmaId)
-          .slice(0, 3)
-          .map((x) => x.englishSenses[0]),
-      ]),
-    ];
+    const options = questions.distractors(content.wordById["library-form:" + form.formId]);
     const eventId =
       "library-practice:" + ++state.progress.library.attemptSequence;
     for (const option of QuestionEngine.shuffle(options)) {
@@ -452,7 +445,7 @@ function createLibraryUI({
           renderOnboardingPace();
           renderLibrary("pace");
           ui.$("libraryPaceFeedback").textContent =
-            `Saved ${target}/day, starting Day ${result.day}.`;
+            `Selected ${target}/day, starting Day ${result.day}.`;
         } else message.textContent = result.reason;
       });
       b.dataset.pace = String(target);

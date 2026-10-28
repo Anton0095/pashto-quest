@@ -4,6 +4,8 @@ Run `python3 tools/verify.py` from the repository root with Python 3, Node.js, P
 
 | Suite | Contract |
 |---|---|
+| `p1-regression.test.mjs`, `p1-storage.test.mjs`, `p1-browser.test.mjs` | Studied-only choices, partial/skip/revision/reload, all 33 English grammar concepts and real prerequisites, uncued recall, quota/denial/no-op/intermittent writes, export/retry/recovery and corruption separation at 375/1280px |
+| `generation-cache.test.mjs` | All fourteen complete card/dialogue and 20-seed payload digests match the pre-optimisation engine; one immutable lexical index, unlock invalidation and mutable/shallow-frozen data rebuilds |
 | `cleanup-model.test.mjs`, `cleanup-browser.test.mjs` | All fourteen days retain people, scenes, story and access rules; 375/1280 UI truth, pace persistence/reset, filters, visiting teachers, frozen assessment counts, grammar catch-up, active-item audio and empty visits without XP |
 | `productive-generation.test.mjs` | All 12 positive and 15 negative PR #21 grammar fixtures; every licensed binding, 1,000 deterministic selections, semantic/form/grammar exclusions |
 | `generated-architecture.test.mjs` | No startup catalogue/authored runtime cards; real word → grammar → composition order; Day 1 Home; seven paces and normal/skip routes; no hidden introductions or repeated standard study texts |
@@ -25,3 +27,5 @@ The browser matrix completes the rendered four-interaction tutorial before exerc
 Daily challenges remain 15 items/pass 12; Days 7/14 remain 25/pass 20. Skip never completes unseen visits or introduces forms; Day 1 has no lexical actions and Day 14 no new forms. Indexed tile duplicates, answer masking, retries, XP locks and current-save integrity are checked. Schema 7 alone is supported; incompatible/corrupt saves stay untouched until explicit reset.
 
 Passing tests do not certify native Laghman translations, naturalness, pronunciation, recordings or physical iPhone Safari/Windows audio. All language remains provisional pending real reviewer evidence.
+
+Performance runs separately with `node tools/performance-benchmark.mjs --samples 20 --output work/p1/performance.json`. Optional `--profile desktop|mobile4x`, `--pace 0|12|24` and `--release path/to/frozen.html` isolate reproducible runs. The browser-only index counters are injected by the harness; no production instrumentation ships. Ten review sessions each replay Day-14 Home, answer up to ten due items and visit a Library entry, using a synthetic 90-day advance to make review due. Heap figures are CDP JavaScript heap after forced GC; sampled pre-GC high water is explicitly not an exact allocation peak.

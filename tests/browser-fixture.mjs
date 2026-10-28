@@ -15,9 +15,11 @@ export async function setup({
   width = 375,
   bridge = true,
   offline = false,
+  htmlPath = "index.html",
+  transform = (html) => html,
 } = {}) {
   mkdirSync("work", { recursive: true });
-  const html = readFileSync("index.html", "utf8").replace(
+  const html = transform(readFileSync(htmlPath, "utf8")).replace(
     "// @TEST_HOOK",
     bridge ? hook : "",
   );
@@ -84,13 +86,17 @@ export async function answerCurrent(page) {
       w = t.content.wordById[q.id];
     return {
       kind: q.kind,
+      unstudied: q.unstudied,
       answer:
         q.answerPs ||
         q.correct ||
         (q.kind === "construct" ? w.ps : q.direction === "en-ps" ? w.ps : w.en),
     };
   });
-  if (["construct", "dialogue"].includes(q.kind)) {
+  if (q.unstudied) {
+    await page.locator("#unseenRecall").fill(q.answer);
+    await page.getByRole("button", {name:"Submit meaning",exact:true}).click();
+  } else if (["construct", "dialogue"].includes(q.kind)) {
     for (const token of q.answer
       .replace(/[.!؟،]/g, "")
       .split(/\s+/)

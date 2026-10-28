@@ -1,5 +1,5 @@
 /* Four authored onboarding interactions; ordinary shared learning records and rewards. */
-function createTutorial({ state, content, learning, ui, storage }) {
+function createTutorial({ state, content, learning, ui, storage, questions }) {
   function tutorialAnswer(correct) {
     learning.submitTutorial(
       content.tutorialIds[state.session.cardIndex],
@@ -63,7 +63,7 @@ function createTutorial({ state, content, learning, ui, storage }) {
     if (c.kind === "choice") {
       const choices = document.createElement("div");
       choices.className = "choices tutorial-choices";
-      for (const answer of ["Thank you", "Hello", "Goodbye"]) {
+      for (const answer of questions.distractors(w)) {
         const b = document.createElement("button");
         b.type = "button";
         b.className = "choice";

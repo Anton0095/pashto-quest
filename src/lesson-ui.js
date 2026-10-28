@@ -184,7 +184,7 @@ function createLessons({
         ? "Learn this conventional expression as a complete phrase."
         : "Study this word or individual form. It will remain available in later constructions.";
     ui.$("guideMessage").textContent =
-      `${teacher.name} at ${ui.displayPlace(s.loc)}: ${guidance}`;
+      `${teacher.name}${s.loc ? " at " + ui.displayPlace(s.loc) : " · Memory Trail"}: ${guidance}`;
     ui.$("addressTarget").textContent = `${teacher.name} → Player`;
     ui.$("addressTarget").classList.remove("hidden");
     ui.$("teachNext").disabled = false;

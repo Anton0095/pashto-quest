@@ -25,6 +25,7 @@ function createQuestions({ state, content, progression, storage }) {
     direction,
     day = state.session?.loop || state.day,
     random = Math.random,
+    uncued = false,
   ) {
     const field = direction === "ps-en" ? "en" : "ps";
     const peers =
@@ -33,23 +34,32 @@ function createQuestions({ state, content, progression, storage }) {
         : Object.values(content.wordById).filter(
             (c) =>
               c.type === w.type &&
-              LibraryEngine.cardAllowed(content.LIBRARY_DATA, c.id, day),
+              LibraryEngine.cardAllowed(content.LIBRARY_DATA, c.id, day) &&
+              !isUnstudied(c.id),
           );
+    const seen = new Set();
     const choices = [
       ...new Set(
         QuestionEngine.shuffle(
-          peers.filter((c) => c.ps !== w.ps && c[field] !== w[field]),
+          peers.filter((c) => c.ps !== w.ps && c[field].trim().toLocaleLowerCase("en") !== w[field].trim().toLocaleLowerCase("en")),
           random,
         ).map((c) => c[field]),
       ),
-    ].slice(0, 3);
+    ].filter((value) => {
+      const key = value.trim().toLocaleLowerCase("en");
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).slice(0, 3);
     while (choices.length < 3)
       choices.push(
         ["A different meaning", "Another response", "None of these"][
           choices.length
         ],
       );
-    return QuestionEngine.shuffle([w[field], ...choices], random);
+    // An unseen target uses uncued recall, not a visible translation option.
+    const target = uncued ? [] : [w[field]];
+    return QuestionEngine.shuffle([...target, ...choices], random);
   }
   function lexicalPool(day, random) {
     const plan = state.progress.library.plans[day],
@@ -97,24 +107,26 @@ function createQuestions({ state, content, progression, storage }) {
     ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day));
   }
   function grammarQuestion(day, index) {
-    const ruleDay = 1 + (index % day),
-      goal = content.curriculum.days[ruleDay - 1];
+    const bank = content.LIBRARY_DATA.grammarAssessment.concepts;
+    const taught = bank.filter((c) => c.day <= day &&
+      state.progress.library.grammar["grammar-day-" + c.day]);
+    // A skipped workshop grants no grammar. A visible Day-1 reference supports
+    // guided discrimination instead of claiming unaided recall of untaught rules.
+    const guided = !taught.length;
+    const concepts = guided ? bank.filter((c) => c.day === 1) : taught;
+    const offset = state.progress.library.plans[day].seed % concepts.length;
+    const c = concepts[(index + offset) % concepts.length];
+    const contexts = ["Check a learner’s analysis", "Choose the matching grammatical roles", "Resolve the agreement or role choice"];
     return {
       id: `grammar:${day}:${index}`,
-      kind: "choice",
-      direction: "en-ps",
-      section: "grammar",
-      prompt: `Which rule belongs to ${goal.topic}?`,
-      correct: goal.grammar[0],
-      options: [
-        goal.grammar[0],
-        "Ignore agreement when words have familiar spellings.",
-        "Invent a missing form from any dictionary headword.",
-        "Study or use a future construction before its prerequisites.",
-      ],
-      grammarDays: [ruleDay],
-      adaptation:
-        "Insufficient distinct compiled sentences; this is an English grammar task, not a fixed sentence fallback.",
+      kind: "choice", direction: "en-ps", section: guided ? "guided grammar" : "grammar recall",
+      prompt: `${guided ? "Reference: " + c.reference + "\n\n" : ""}${contexts[Math.floor(index / concepts.length) % contexts.length]}. ${c.case}`,
+      correct: c.correct, options: [c.correct, ...c.misconceptions],
+      grammarDays: guided ? [] : [c.day], grammarConcept: c.id,
+      reference: guided ? c.reference : null,
+      adaptation: guided
+        ? "Guided English rule application; the reference is shown here. No workshop or future grammar is unlocked."
+        : "English application of a previously visited grammar workshop; no fixed Pashto sentence fallback.",
     };
   }
   function selectChallenge(day) {
@@ -305,7 +317,7 @@ function createQuestions({ state, content, progression, storage }) {
       }
       if (!q) {
         deficit++;
-        q = grammarQuestion(day, i);
+        q = grammarQuestion(day, deficit - 1);
       }
       q.speaker ||= content.teacherFor(day, null, "challenge").name;
       q.recipient ||= "Player";
@@ -351,6 +363,7 @@ function createQuestions({ state, content, progression, storage }) {
           q.direction,
           day,
           random,
+          q.unstudied,
         );
       if (q.generated && q.kind === "sentence")
         q.choiceIds = originsForChoices(

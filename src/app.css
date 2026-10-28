@@ -1409,3 +1409,7 @@ header {
 .tutorial-name-row button {
   flex: 0 1 auto;
 }
+
+.save-warning { border: 2px solid #d9a441; padding: 12px; margin: 8px 0; border-radius: 8px; overflow-wrap: anywhere; }
+.save-warning button { margin: 4px; }
+.recall-input { width: 100%; max-width: 100%; box-sizing: border-box; padding: 12px; }

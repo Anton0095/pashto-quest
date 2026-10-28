@@ -84,6 +84,8 @@ const QuestionEngine = (() => {
       return normalizeAnswer(value) === normalizeAnswer(q.correct);
     if (q.kind === "construct")
       return normalizeAnswer(value) === normalizeAnswer(card.ps);
+    if (q.kind === "word" && q.unstudied)
+      return String(value).trim().toLocaleLowerCase("en") === card.en.trim().toLocaleLowerCase("en");
     return value === (q.direction === "en-ps" ? card.ps : card.en);
   }
   function randomFor(seed) {

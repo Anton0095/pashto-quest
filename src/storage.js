@@ -3,10 +3,17 @@ function createStorage({
   state,
   content,
   progression,
-  backend = localStorage,
+  backend,
 }) {
   const KEY = "pashto-town-days-v1";
-  let saveProblem = null;
+  let saveProblem = null, persistenceProblem = null, readBlocked = false;
+  let notifyPersistence = () => {};
+  const access = () => backend || globalThis.localStorage;
+  function persistenceFailure(message) {
+    persistenceProblem = message;
+    notifyPersistence(message);
+    return false;
+  }
   function validOrder(order, size) {
     return (
       Array.isArray(order) &&
@@ -196,7 +203,8 @@ function createStorage({
         a.attemptId < 1 ||
         !Number.isFinite(a.earned) ||
         a.earned < 0 ||
-        !Array.isArray(a.built)
+        !Array.isArray(a.built) ||
+        (a.recallDraft !== undefined && (typeof a.recallDraft !== "string" || a.recallDraft.length > 160))
       )
         return false;
       if (
@@ -319,8 +327,10 @@ function createStorage({
   function load() {
     let raw;
     try {
-      raw = backend.getItem(KEY);
+      raw = access().getItem(KEY);
     } catch (error) {
+      readBlocked = true;
+      persistenceFailure("Progress has not been saved: browser storage is unavailable. Progress stays in this tab. Retry or export before closing it.");
       return progression.fresh();
     }
     if (!raw) return progression.fresh();
@@ -334,24 +344,43 @@ function createStorage({
       return progression.fresh();
     }
   }
-  function save() {
-    if (saveProblem) return;
+  function snapshot() {
     if (state.session?.mode === "challenge") {
       if (state.session.finished) delete state.progress.activeChallenge;
-      else
-        state.progress.activeChallenge = JSON.parse(
-          JSON.stringify(state.session),
-        );
+      else state.progress.activeChallenge = JSON.parse(JSON.stringify(state.session));
     }
+    return JSON.stringify(state.progress);
+  }
+  function save() {
+    if (saveProblem) return false;
     try {
-      backend.setItem(KEY, JSON.stringify(state.progress));
-    } catch (e) {}
+      const target = access();
+      if (readBlocked) {
+        if (target.getItem(KEY))
+          return persistenceFailure("Progress has not been saved: existing progress could not be read at startup. Export this tab’s progress, then reload to recover the existing save. Retry will not overwrite it.");
+        readBlocked = false;
+      }
+      const raw = snapshot();
+      target.setItem(KEY, raw);
+      if (target.getItem(KEY) !== raw) throw Error("Storage did not retain progress");
+      persistenceProblem = null;
+      notifyPersistence(null);
+      return true;
+    } catch (error) {
+      return persistenceFailure("Progress has not been saved: browser storage is full or unavailable. Progress stays in this tab. Retry or export before closing it.");
+    }
   }
 
   return {
     load,
     save,
     currentSave,
+    snapshot,
+    onPersistenceChange(listener) {
+      notifyPersistence = listener;
+      listener(persistenceProblem);
+    },
+    get persistenceProblem() { return persistenceProblem; },
     get problem() {
       return saveProblem;
     },
