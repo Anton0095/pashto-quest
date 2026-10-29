@@ -1,9 +1,30 @@
 # Pashto Quest verification
 
-Run `python3 tools/verify.py` from the repository root with Python 3, Node.js, Playwright and Chromium. Browser suites honour `CHROMIUM_PATH` and the managed cloud runtime fallback. `--quick` explicitly excludes browsers and cannot refresh the measured delivery report. Edit sources and run `python3 tools/build.py` first; never edit the offline release directly.
+## Choose validation by change and risk
+
+Choose checks for the changed behaviour and its dependencies. Full verification includes browser playthroughs across fourteen days, seven paces and normal/skip routes; it is intentionally substantial and is not the default file-review operation.
+
+| Change | Required validation |
+|---|---|
+| Markdown only; no runtime, data, build or test changes | Review wording, document roles, terminology, relative links/anchors and the final Markdown-only diff. No build, `verify.py`, `--quick`, gameplay, audit regeneration, screenshots or benchmarks. |
+| Isolated presentation or local behaviour | Run the relevant focused suite(s), syntax/build checks when their inputs change, and affected mobile/desktop UI checks. Escalate to full verification if shared controls or broad contracts are affected. |
+| Shared learning, answer evaluation, generation, planner, progression, save schema or persistence | Use targeted regressions during editing, then run full verification once on the final integrated state. |
+| Lexicon, curriculum, planner or frame data | Validate schemas and affected eligibility/generation contracts; rebuild and regenerate affected curriculum, inventory and generation audits. Run full verification for changes to shared learning or generated delivery. |
+| Performance claim or requested performance work | Measure affected profiles against a reproducible baseline. Run the complete benchmark matrix for broad performance work; benchmarks are separate from functional checks. |
+
+Do not repeat a full baseline or full suite for each file, commit or documentation edit. Repeat after relevant subsequent changes, failures or unresolved concerns. `--quick` excludes browsers but still runs substantial model/generation checks; it is not a lightweight Markdown check. Explicit user instructions can narrow or expand validation; report any resulting evidence limits honestly.
+
+A release-bound delivery report must match the exact HTML fingerprint. Refreshing that report requires the complete successful browser matrix; never edit its hash or observations by hand. When a focused change does not warrant a full matrix, keep previous measurements identified as evidence for their recorded release, and disclose that they do not validate the new release. Do not claim that an earlier report is fresh or passing if its fingerprint no longer matches.
+
+Record actual commands/results and why broader checks were unnecessary or omitted. Historical logs, check counts and benchmark figures are dated evidence, not instructions to rerun those checks.
+
+## Suite reference
+
+When full verification is warranted, run `python3 tools/verify.py` from the repository root with Python 3, Node.js, Playwright and Chromium. Browser suites honour `CHROMIUM_PATH` and the managed cloud runtime fallback. `--quick` explicitly excludes browsers and cannot refresh the measured delivery report. When release inputs change, edit sources and run `python3 tools/build.py` first; never edit the offline release directly.
 
 | Suite | Contract |
 |---|---|
+| `narrative-feedback.test.mjs` | Shared answer feedback and narrative context at mobile/desktop widths |
 | `audit-compaction.test.mjs` | 400 attempts preserve counts/SRS/XP, retired replay rejection, paused exact snapshots, schema-7 compatibility and unchanged-save write avoidance |
 | `audit-save.test.mjs`, `audit-tabs.test.mjs` | Nested schema-7 rejection without overwriting raw data; public two-tab tutorial/pace conflict and reload |
 | `audit-teaching.test.mjs`, `audit-teaching-browser.test.mjs` | Construction retries, seeded duds, explicit English alternatives, refreshed new attempts and frozen paused drafts, teacher/listener contexts, optional expression feedback and two open Library exercises answered in reverse order with no XP at both widths |
@@ -24,7 +45,7 @@ Run `python3 tools/verify.py` from the repository root with Python 3, Node.js, P
 | `current-model.test.mjs`, `curriculum-expansion.test.mjs`, `district-content.test.py` | Planner, identity/SRS, draft activation and candidate constraints |
 | `audio.test.mjs` | Mocked MP3 preference, delayed Pashto voice discovery, fallback warnings and cancellation |
 
-Full verification also checks all editable/compiled JavaScript syntax and generated release, vocabulary, curriculum, district and capacity reports. Only after all suites pass does `tools/delivery-audit.mjs --write` publish the measured browser observations. Its `--check` needs only committed files and verifies the release SHA-256; code changes require another complete run. `docs/grammar/INSTRUCTIONAL_DELIVERY_REPORT.md` reports actual delivered sentence observations, excluding the six registered conventional phrases. Potential family/day counts and exact missing forms are separately reported in `GENERATION_COVERAGE.md`.
+Full verification also checks all editable/compiled JavaScript syntax and generated release, vocabulary, curriculum, district and capacity reports. Only after all suites pass does `tools/delivery-audit.mjs --write` publish the measured browser observations. Its `--check` needs only committed files and verifies the release SHA-256; refreshing the report after release changes requires another complete run. Focused changes follow the policy above and must disclose any retained report’s older fingerprint. `docs/grammar/INSTRUCTIONAL_DELIVERY_REPORT.md` reports actual delivered sentence observations, excluding the six registered conventional phrases. Potential family/day counts and exact missing forms are separately reported in `GENERATION_COVERAGE.md`.
 
 The browser matrix completes the rendered four-interaction tutorial before exercising lessons and assessments. Profiles that deliver no sentences are reported as N/A, never an invented 100%. No complete authored sentence bank, grammar model or fixed dialogue answer is loaded at runtime. Archived banks and `curriculum-contract.json` remain language evidence/fixtures, not normal teaching content. Test bridges exist only in injected test pages; the independent browser suite uses public controls.
 
@@ -34,4 +55,4 @@ Passing tests do not certify native Laghman translations, naturalness, pronuncia
 
 Performance runs separately with `node tools/performance-benchmark.mjs --samples 20 --output work/p1/performance.json`. Optional `--profile desktop|mobile4x`, `--pace 0|12|24` and `--release path/to/frozen.html` isolate reproducible runs. The browser-only index counters are injected by the harness; no production instrumentation ships. Ten review sessions each replay Day-14 Home, answer up to ten due items and visit a Library entry, using a synthetic 90-day advance to make review due. Heap figures are CDP JavaScript heap after forced GC; sampled pre-GC high water is explicitly not an exact allocation peak.
 
-The [audit remediation](../docs/maintenance/AUDIT_REMEDIATION.md) and [paired benchmark report](../docs/maintenance/AUDIT_PERFORMANCE.md) record the current run separately from historical results. `python3 tools/audit-performance-report.py before.json after.json output.md` checks matching profiles, browser/host, sample counts, candidate counts, cache invalidation and revision warnings before reporting median/p95 distributions.
+The [audit remediation](../docs/maintenance/AUDIT_REMEDIATION.md) and [paired benchmark report](../docs/maintenance/AUDIT_PERFORMANCE.md) record the PR #23 run separately from earlier historical results; they are not measurements of every later documentation revision. `python3 tools/audit-performance-report.py before.json after.json output.md` checks matching profiles, browser/host, sample counts, candidate counts, cache invalidation and revision warnings before reporting median/p95 distributions.

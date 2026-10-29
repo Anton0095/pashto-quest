@@ -1,5 +1,7 @@
 # P1 fixes and performance verification
 
+> **Historical maintenance record.** Decisions, imperatives, branch names, results and remaining-debt statements below describe the recorded baseline/deliverable, not a current work order. Preserve historical counts and measurements. Use [current documentation roles](../../README.md#documentation-roles-and-precedence), [AGENTS](../../AGENTS.md) and the [validation policy](../../tests/README.md#choose-validation-by-change-and-risk) for new work. Screenshot links below are pinned to the preserved pre-remediation main snapshot (`3d2896f`), rather than mutable paths that later suites overwrite.
+
 This follows the [cross-system review of PR #22](https://github.com/Anton0095/pashto-quest/pull/22#issuecomment-6461034748), against `bf657f3f58c9079dddaff56b958a3a12369d434c`. Work stays on `feat/productive-pashto-generation`; no merge is authorised. The sentence compiler and curriculum were retained. Its only algorithm-independent performance change shares an immutable lexical index.
 
 ## Original reproductions
@@ -100,13 +102,13 @@ The final matrix completed **392 normal visits and 196 assessments**, covering a
 - کور لوی دی. — The house is big.
 - دروازه خلاصه ده. — The door is open.
 
-These are actual compiler outputs recorded by the browser, not teaching-bank fallbacks. [Generated study](../grammar/demonstration/day1-generated-study.png) and [construction](../grammar/demonstration/day1-construction.png) captures remain available. [Uncued recall at 375px](p1/uncued-recall-375.png) and [the nonblocking save warning](p1/save-failure-375.png) demonstrate the new paths; 1280px captures are in the same directory.
+These are actual compiler outputs recorded by the browser, not teaching-bank fallbacks. [Generated study](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/grammar/demonstration/day1-generated-study.png) and [construction](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/grammar/demonstration/day1-construction.png) captures remain available. [Uncued recall at 375px](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/maintenance/p1/uncued-recall-375.png) and [the nonblocking save warning](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/maintenance/p1/save-failure-375.png) demonstrate the new paths; 1280px captures are in the same directory.
 
 The [release-fingerprinted delivery audit](../grammar/INSTRUCTIONAL_DELIVERY_REPORT.md) measured **4,650 / 4,650 = 100% genuinely generated Pashto instructional sentence surfaces**, with zero authored sentence fallbacks. The six designated fixed expressions are excluded; zero-sentence profiles are N/A. Isolated vocabulary/forms and English grammar/narrative scaffolding are separate from Pashto clause delivery. All 12 positive and 15 negative research cases, 16,649 independently checked bindings, 1,000 seeds and the additional all-day compiler contracts passed.
 
 Earlier complete runs exited 1 while updating two test assumptions: an old UI assertion expected “Saved” instead of the deliberate “Selected” label, and a new substring assertion mistook “I” in the generic “I don’t know” control for a translation option. The assertions now check the actual intended UI/answer labels. No failing final checks remain. Physical-device/voice testing and exact instantaneous allocation peaks remain unavailable, as explicitly described in the performance report; they are not represented as passing tests.
 
-## Remaining debt and limits
+## Debt and limits at the recorded checkpoint
 
 | Priority | Finding | Evidence/status and treatment |
 |---|---|---|

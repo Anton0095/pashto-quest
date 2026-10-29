@@ -2,9 +2,22 @@
 
 **Status: not native-certified.** The game targets Afghan Pashto as spoken in **Laghman**. Conventional Pashto spelling is preferred when local variants are uncertain. Existing Pashto, romanisation and authored Week 1/2 translations are instructional drafts; neither a browser voice nor passing tests establishes native-speaker review.
 
+## Status terms
+
+| Term | Meaning |
+|---|---|
+| Draft / pending | Editorial material; incomplete or untranslated records cannot become teaching targets automatically |
+| `provisional_playable` | Mechanically complete lexical draft with explicit provenance and `userVerified: false`; playable under the existing provisional pathway, not native-certified |
+| Active expression | Enabled phrase identity under its documented approval/provisional pathway; an activation flag alone is not native approval |
+| `native_approved` | Real linguistic sign-off with reviewer, date, reference and the item-specific evidence below; never inferred from tests, generation or curriculum scheduling |
+| Introduced / acquired | Player learning state for that exact item/form; distinct from editorial status, assignment and mastery |
+| Curriculum approved | Human approval of stable-ID scheduling; does not certify translation, morphology or pronunciation |
+
+The requirements below govern genuine linguistic sign-off. Do not describe mechanical eligibility or a source citation as native review. The two user-supplied active expressions remain explicitly provisional; pending expressions do not inherit their activation pathway automatically. See the [phrase expansion gate](docs/grammar/FIXED_PHRASE_EXCEPTIONS.md#expanding-the-register).
+
 ## Required approval record
 
-For any lexical candidate, greeting, sentence, dialogue response or alternate accepted answer, record its stable content/lemma/form ID; Pashto; precise English sense; context, speaker and addressee; any local vs written variant; romanisation; reviewer name or identifier and review date; review source/reference; accepted alternatives and rationale; and audio provenance when available. Never invent sign-off. A complete entry may be playable as an explicitly unchecked provisional draft; `native_approved` still requires documented reviewer evidence.
+For any lexical candidate, greeting, sentence, dialogue response or alternate accepted answer, record its stable content/lemma/form ID; Pashto; precise English sense; context, speaker and addressee; any local vs written variant; romanisation; reviewer name or identifier and review date; review source/reference; accepted alternatives and rationale; and audio provenance when available. Never invent sign-off. A mechanically complete lexical entry may use the existing explicitly unchecked provisional pathway; new expressions follow the separate phrase activation gate. For native sign-off, `native_approved` still requires documented reviewer evidence.
 
 The lexicon has 473 draft lemmas: 128 previously authored drafts, **301** promoted district drafts, **40** linked universal targets and four explicit existing story-character identities. Every new item has `userVerified: false`, mechanical uncertainty notes and no native-approval claim. Review them in `content/VOCABULARY_REVIEW.csv`; corrections belong in `content/LIBRARY_LEXICON.json`, after which the CSV is regenerated. The 15 untranslated narrative expression slots remain inactive.
 
@@ -52,10 +65,10 @@ Unknown morphology stays null and is never a wildcard. For example, the direct o
 
 `content/GENERATION_AUDIT.json` enumerates exact excluded/partially usable form IDs, missing features, semantic evidence and absent present-conjugation cells. [Capacity and gaps](docs/grammar/GENERATION_COVERAGE.md) are separate from [actual instructional delivery](docs/grammar/INSTRUCTIONAL_DELIVERY_REPORT.md). There are no authored sentence fallbacks. Only the [six registered conventional expressions](docs/grammar/FIXED_PHRASE_EXCEPTIONS.md) may be taught whole. Masculine cardinal One (the idiom “together” is not cardinal evidence), feminine Two, counted Four/Five, arbitrary noun obliques and unlicensed tenses remain blocked. All combinations, selection preferences and English senses still require human naturalness/dialect review.
 
-The additional window analysis and conjunction license cite exact archived forms; neither guesses a stem or certifies pronunciation. Runtime carries per-form evidence, not complete archived teaching sentences. Archive corrections should update the relevant form licenses and rerun generation and delivery tests.
+The additional window analysis and conjunction license cite exact archived forms; neither guesses a stem or certifies pronunciation. Runtime carries per-form evidence, not complete archived teaching sentences. Archive corrections that affect runtime licenses should update those licenses and use the relevant generation/delivery checks under the [validation policy](tests/README.md#choose-validation-by-change-and-risk).
 
-CSV curriculum proposals and human scheduling approvals are separate from linguistic verification. A worksheet's `verifiedStatus` cannot confer native certification. No pending district candidate, universal target or narrative expression is activated by these changes. Existing device/audio caveats and required reviewer/date/reference/variant/alternative/audio provenance remain in force.
+CSV curriculum proposals and human scheduling approvals are separate from linguistic verification. A worksheet's `verifiedStatus` cannot confer native certification. CSV generation, schedule approval and Markdown edits do not activate pending district candidates, universal targets or narrative expressions. Existing device/audio caveats and required reviewer/date/reference/variant/alternative/audio provenance remain in force.
 
 ## Form-specific English recall
 
-Exact infinitive forms with unambiguous “To …” glosses now declare `acceptedEnglishAnswers` for the same gloss without “to”, with formatting-equivalence evidence. This does not certify the gloss or pronunciation. Slash-separated senses, person-annotated finite verbs and proposed synonyms remain excluded from automatic expansion. The [exact verb forms awaiting editorial decisions](docs/maintenance/audit/english-editorial-review.json) list the form IDs and current glosses. Native review must decide and evidence each additional form-specific equivalent.
+Exact infinitive forms with unambiguous “To …” glosses now declare `acceptedEnglishAnswers` for the same gloss without “to”, with formatting-equivalence evidence. This does not certify the gloss or pronunciation. Slash-separated senses, person-annotated finite verbs and proposed synonyms remain excluded from automatic expansion. The [exact verb forms awaiting editorial decisions](docs/maintenance/audit/english-editorial-review.json) list the form IDs and current glosses. Unambiguous English-only formatting equivalence can be documented editorially for the same form and sense. New synonyms, changed senses or Pashto variants require item-specific linguistic review; neither pathway certifies an unreviewed Pashto form.

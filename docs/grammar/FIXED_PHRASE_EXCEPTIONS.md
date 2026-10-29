@@ -12,3 +12,9 @@ This is the complete exception register. It is checked against the archived conv
 | phrase-day-2-opening | سهار مو پخیر! | Good morning! | 2 | User-supplied conventional welcome or morning greeting, intentionally taught whole. |
 
 English profile settings are not language teaching. Phonological letters, lexical headwords, individual finite/inflected forms and licensed non-clausal chunks are vocabulary/form references, not hidden fixed-sentence exceptions. Every instructional clause is generated. All six expressions retain their provisional language-review status.
+
+## Expanding the register
+
+Six is the current registered inventory, not a permanent product cap. Further conventional greetings/conversational formulas may be proposed to fulfil the intended narrative. They require stable identity, exact Pashto/English/context, provenance and documented approval through the applicable [language review](../../LANGUAGE_REVIEW.md) pathway before activation. Never invent native sign-off or automatically extend the two user-supplied expressions’ provisional permission to other phrases.
+
+Keep untranslated or unapproved narrative slots pending. When an approved content change is in scope, update the canonical phrase/expression JSON, this register and affected validators/tests together, using the [risk-based validation policy](../../tests/README.md#choose-validation-by-change-and-risk). Ordinary declarative sentences, generated questions and replies cannot be reclassified as conventional formulas to bypass composition. Markdown changes alone do not add or activate a phrase.

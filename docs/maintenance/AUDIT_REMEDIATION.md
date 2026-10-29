@@ -1,5 +1,7 @@
 # Coordinated audit remediation
 
+> **PR #23 implementation record.** Stages, test counts and benchmark figures below refer to the recorded releases and logs, not checks rerun for every later edit. “Stage 4 complete” means the planned implementation stage completed, not that all possible defects are closed. See the remaining concurrent-write issue below. Current workflow and check selection are in [AGENTS](../../AGENTS.md) and the [validation policy](../../tests/README.md#choose-validation-by-change-and-risk).
+
 Starting remote main: `3d2896fa658be678fa0066635d4967821c0c6e43`. Branch: `review/audit-remediation`. Baseline full verification: exit 0, **76 checks**. No source edits preceded the completed baseline. [Original reproductions](audit/original-reproductions.txt).
 
 Stage 1 protects the stored payload against stale-tab writes, observes storage/lifecycle changes without merging learning records, and rejects malformed nested plans, ledgers, SRS and question presentation. Schema 7 is unchanged. A conflict retains in-memory progress for export and requires reload to use the newer save. The ordinary-controls two-tab test preserves tutorial completion and 65 XP. New nested-validation tests preserve rejected raw data until explicit reset. Existing quota/recovery and all-family resume tests pass. Full Stage 1 verification: exit 0, 80 checks; [command log](audit/stage1-verification.txt).
@@ -22,14 +24,14 @@ No-op write avoidance runs only after the external-storage guard and serializati
 
 | # | Reproduced on starting main | Implementation and validation | Status |
 |---|---|---|---|
-| 1 | Two ordinary tabs reverted tutorial/65 XP after stale pace change | Read-before-write plus storage/pageshow/visibility observations; sticky conflict, export/reload; public-controls regression at 375/1280 | Fixed |
+| 1 | Two ordinary tabs reverted tutorial/65 XP after stale pace change | Read-before-write plus storage/pageshow/visibility observations; sticky conflict, export/reload; public-controls regression at 375/1280 | Original stale-tab case fixed; simultaneous-write gap remains |
 | 2 | Missing `shortfalls`, malformed exposure/SRS accepted | Separate nested schema validator, preserved-data rejection and existing all-family proof/resume tests | Fixed |
 | 3 | Wrong construction retry lost `kind` | Requeue original item metadata; wrong → retry → correct regression | Fixed |
 | 4 | Host was displayed as listener | Separate teacher, subject and recipient; informal/respectful/plural visiting-host regressions | Fixed |
 | 5 | Optional phrase practice lacked highlighting | Shared feedback function used by phrase/lesson/assessment/Library consumers; correct/wrong/lock/no-XP browser checks | Fixed |
 | 6 | New attempts reused pre-study daily labels | Daily vocabulary plans remain frozen; each new attempt uses current knowledge, paused attempt owns immutable question/draft snapshot | Fixed |
-| 7 | Corrected baseline still accumulated completed history and rewrote unchanged saves | Attempt retirement, identity/count-preserving delivery summaries and checked no-op writes; 400-attempt regression and paired revision benchmarks | Fixed |
-| 8 | Corrected baseline allocated thousands of complete candidate cards on cold eligibility | Reuse licensed slots, defer display/provenance for immutable inputs, cache coordinated availability; exact output/20-seed parity and paired cold/warm benchmarks | Fixed |
+| 7 | Corrected baseline still accumulated completed history and rewrote unchanged saves | Attempt retirement, identity/count-preserving delivery summaries and checked no-op writes; 400-attempt regression and paired revision benchmarks | Mitigated; distinct identities still grow |
+| 8 | Corrected baseline allocated thousands of complete candidate cards on cold eligibility | Reuse licensed slots, defer display/provenance for immutable inputs, cache coordinated availability; exact output/20-seed parity and paired cold/warm benchmarks | Mitigated; enumeration/allocation costs remain |
 | 9 | Audit used `approved`; builder used `native_approved` | Canonical status plus review evidence in schema/audit/inventory; explicitly synthetic fixtures, unchanged real approval flags | Fixed |
 | 10 | Active onboarding/order prose and Journal unlock claim contradicted runtime | Specifications, source ownership and test guide updated; Day 1/teacher/pace/recall/warning screenshots recaptured by final browser run; relative links checked | Fixed |
 | 11 | Duds always came from first two eligible tokens | Seeded shuffle of studied forms, target/accepted-token exclusions; varied seeds and frozen resume | Fixed |
@@ -72,3 +74,9 @@ python3 tools/audit-performance-report.py docs/maintenance/audit/performance-bef
 Both benchmark runs exited 0; the paired-report assertions passed. To reproduce the baseline from a clean checkout, obtain its frozen release with `git show 697a4f5:index.html > /tmp/pashto-audit-before.html` and pass that path to `--release`. Use the current `index.html` for the after run. The original harness attempt called an answer before the review study phase; it was corrected, bounded to ten due items, and rerun. Interrupted intermediate representations/suites were excluded; all results above refer to completed runs against the committed-stage baseline and final deliverable.
 
 The final [delivery report](../grammar/INSTRUCTIONAL_DELIVERY_REPORT.md) records **4,647 / 4,647 generated instructional sentence observations (100%)**, zero authored sentence fallbacks, excluding six designated conventional phrases. Default Day 1 Home still teaches six district lemmas plus the evidenced feminine form, then composes three distinct descriptions before tile construction. The [relative-link check](audit/documentation-links.txt) passed for active Markdown file targets. No native translation/pronunciation certification follows from these technical checks.
+
+## Known open issue: concurrent writes
+
+The ordinary stale-tab case is fixed: a tab observing a changed saved payload blocks its next write and offers reload/export. This is conflict detection, not an atomic transaction across tabs. A forced interleaving of read/check → serialization → write can let both tabs pass their checks before either writes; both can report success while the later payload loses the other tab’s update. The ordinary public-controls regression does not establish protection against this interleaving.
+
+This remaining runtime issue is documented, not fixed by the Markdown cleanup. A subsequent persistence change must coordinate concurrent writers and add a targeted simultaneous-write regression, then follow the validation policy for shared persistence changes. Do not describe current storage as fully conflict-safe or atomically protected. Preserve schema-7 saves, first-answer locks and the no-silent-merge/reset rules when addressing it.

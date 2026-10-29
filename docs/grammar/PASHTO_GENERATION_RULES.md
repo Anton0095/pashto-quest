@@ -1,5 +1,7 @@
 # Pashto Quest — evidence-based sentence generation grammar
 
+> **Role:** Researched grammar reference, not native certification, a current task list or proof that every described construction is implemented. Use the [current specification](../../GAME_SPEC.md), [coverage report](GENERATION_COVERAGE.md) and [validation policy](../../tests/README.md#choose-validation-by-change-and-risk) for implementation scope and checks.
+
 > **Runtime policy update (PR #22):** The user's [generated-only architecture requirement](https://github.com/Anton0095/pashto-quest/pull/22#issuecomment-6456042600) supersedes all authored-fallback delivery suggestions in this research document. Grammar evidence remains applicable. Insufficient compositions now produce an explicit deficit and word/English grammar tasks, never a stored instructional sentence. See [measured integration results](INSTRUCTIONAL_DELIVERY_REPORT.md).
 
 **Status:** Implementation reference, 27 October 2026. **Not a native Laghman language approval.** Researched from published Pashto grammar and cross-checked with the game's authored 14-day content. No gameplay or translations are changed by this document.
@@ -44,7 +46,7 @@ Don't treat English “is” as an ordinary conjugated action verb and don't ass
   - adjective used **before** noun: agree with head noun;
   - descriptive predicate adjective: agree with described subject NP;
   - nouns used as predicative complements are NOT freely treated as adjectives;
-  - if no compatible surface form exists, fail closed / use authored fallback.
+  - if no compatible surface form exists, fail closed and report the deficit; adapt with eligible word/English grammar tasks, never an authored sentence fallback.
 Source: [NPs](https://grammar.lingdocs.com/phrase-structure/np/), [Equative Phrases](https://grammar.lingdocs.com/phrase-structure/ep/).
 
 **B5. Numerals and quantifiers (Day 9):** identify countable noun, quantity, noun number, gender/case behaviour and numeral-specific construction. “One” must not indiscriminately replace “two”; some numerals distinguish forms/contexts. Example in current authored game: دا مڼه ده. vs دا مڼې دي. Enable only licensed numeral + count-noun pairings with suitable examples and grammar IDs; do not simply prepend a count token. Sources: [Determiners](https://grammar.lingdocs.com/nouns/determiners/) and [Noun Plurals](https://grammar.lingdocs.com/nouns/nouns-plural/).

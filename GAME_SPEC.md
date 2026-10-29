@@ -1,6 +1,6 @@
 # Pashto Quest — Current game specification
 
-**Status:** Current fourteen-day gameplay design. This is a behavioural specification of the current source, not a to-do list or handoff from an earlier release. Implementation truth resides in `src/`, `content/LEARNING_CURRICULUM.json` and the lexical/phrase registries; resolve any discrepancy explicitly rather than restoring archived logic. For learning content see `CURRICULUM.md`; for acceptance and tests see `tests/README.md`.
+**Status:** Current fourteen-day gameplay design. It describes implemented mechanics; pending product goals are explicitly separated in the [README](README.md#product-goal-and-delivery-status). Current implementation resides in `src/`, `content/LEARNING_CURRICULUM.json` and the lexical/phrase registries; resolve any discrepancy explicitly rather than restoring archived logic. For learning content see `CURRICULUM.md`; for acceptance and tests see `tests/README.md`.
 
 ## Product and world
 
@@ -50,9 +50,9 @@ A skip-only player who passes at the minimum score can reach Level 10 after the 
 
 ## Persistence
 
-`src/progression.js` owns save schema **7** and its fresh state; `src/storage.js` validates, loads and saves it. `src/app.js` assembles services and wires browser controls. `src/learning.js` applies answer transactions using the single evaluator in `src/question-engine.js`; screens render the resulting feedback. Vocabulary/SRS remain exclusively in `src/library-engine.js`, and XP/results/access rules in `src/progression.js`. Persist acquired lemmas/forms, SRS, frozen district plans, unique rewards, challenge scores and live attempt state (including first-answer locks and placed tiles), current tutorial completion and optional player profile.
+`src/progression.js` owns save schema **7** and its fresh state; `src/save-schema.js` validates its nested shape/proofs; `src/storage.js` delegates validation, loads and saves it. `src/app.js` assembles services and wires browser controls. `src/learning.js` applies answer transactions using the single evaluator in `src/question-engine.js`; screens render the resulting feedback. Vocabulary/SRS remain exclusively in `src/library-engine.js`, and XP/results/access rules in `src/progression.js`. Persist acquired lemmas/forms, SRS, frozen district plans, unique rewards, challenge scores and live attempt state (including first-answer locks and placed tiles), current tutorial completion and optional player profile.
 
-**No backwards compatibility.** Unsupported/corrupt storage must show a blocking explanation and explicit reset, without silently overwriting old data. Do not add old-schema migrations, old navigation aliases, deprecated XP flags, separate SRS counters or obsolete patchers. A current schema-7 save's active challenge must restore before world greetings are shown, preventing an unseen expression from being acquired behind the restored assessment. Resuming renders saved questions, tile order/placement and locked feedback without regrading, rewarding or substituting curriculum content. Earlier formats (including schema 6) are intentionally unsupported; an explicit reset starts the new schema.
+**No support for save schemas earlier than 7.** Valid existing schema-7 saves, including those without optional retirement metadata, remain supported. This does not authorise old-schema migration or silent repair. Unsupported/corrupt storage must show a blocking explanation and explicit reset, without silently overwriting old data. Do not add old-schema migrations, old navigation aliases, deprecated XP flags, separate SRS counters or obsolete patchers. A current schema-7 save's active challenge must restore before world greetings are shown, preventing an unseen expression from being acquired behind the restored assessment. Resuming renders saved questions, tile order/placement and locked feedback without regrading, rewarding or substituting curriculum content. Earlier formats (including schema 6) are intentionally unsupported; an explicit reset starts the new schema.
 
 ## Audio and accessibility
 
@@ -62,7 +62,7 @@ Retain correctly directed Pashto RTL, romanisation/English LTR, visible speaker/
 
 ## Change control
 
-Edit authoritative sources, regenerate `index.html`, and run `python3 tools/verify.py`. See `tests/README.md` for actual suites and limitations. Pending translations and candidate activation require `LANGUAGE_REVIEW.md` review and `tools/build.py` validation; do not invent linguistic approvals.
+Edit authoritative sources and follow the [risk-based validation policy](tests/README.md#choose-validation-by-change-and-risk). Rebuild when release inputs change; Markdown-only edits require documentation checks, not builds or gameplay tests. Pending translations and candidate activation require `LANGUAGE_REVIEW.md` review and `tools/build.py` validation; do not invent linguistic approvals.
 
 ## Curriculum and composition boundaries
 
@@ -72,7 +72,7 @@ A formal introduction plan follows curated day/district/order and grammar constr
 
 Lessons teach individual words/forms, then missing English grammar rules, then request engine-composed clauses. Day 1 requests three study sentences; later days request four when distinct eligible compositions remain. Standard visits exclude previously studied sentence texts; explicit revision/replay may repeat them. At default pace, Home alone yields at least two (currently three) distinct descriptions from its six assigned nouns/adjectives and required forms. Low paces report deficits without changing district quotas.
 
-All instructional clauses on every surface must be compiled from actually introduced forms and unlocked grammar: lessons, assessment targets and Pashto prompts, dialogue replies, feedback and Library examples. `content/FIXED_PHRASES.json` is the complete six-expression exception bank. English profile settings and story narration are interface/scenario text, not Pashto phrase exceptions. Former authored banks, models and question/reply targets are archival form evidence only and are absent from the runtime.
+All instructional clauses on every surface must be compiled from actually introduced forms and unlocked grammar: lessons, assessment targets and Pashto prompts, dialogue replies, feedback and Library examples. `content/FIXED_PHRASES.json` is the current six-expression exception bank, expandable only through the [phrase review gate](docs/grammar/FIXED_PHRASE_EXCEPTIONS.md#expanding-the-register). English profile settings and story narration are interface/scenario text, not Pashto phrase exceptions. Former authored banks, models and question/reply targets are archival form evidence only and are absent from the runtime.
 
 Typed templates enforce gender/number/person agreement, semantic valency, countability, case licenses and whole compound predicates. English follows the actual bindings. Unknown morphology and unattested inflections fail closed. Twenty-eight families include coordinated present clauses and compatible generated question/reply joins. Before Pashto questions are taught, dialogue uses English scene requests and engine-generated responses. Earlier forms remain available for cumulative composition; Day 14 introduces no new forms.
 
@@ -94,6 +94,19 @@ Lexical recall accepts its displayed gloss and explicitly stored `acceptedEnglis
 
 Daily plans freeze assigned vocabulary and their selection seed. Each explicitly new assessment uses current study and grammar eligibility. Its questions, knowledge labels, directions, dud tokens, tile sequence, draft and first-answer lock then freeze for that attempt, including while paused for study. An older daily question bank is not reused.
 
-Schema-7 saves are validated before use, including nested SRS, plans, exposure records and generated proofs. Invalid raw data remains untouched until explicit reset. Storage is checked before every write; another tab’s changed payload blocks writes and prompts reload/export rather than merging learning records. Failed writes retain in-memory progress and synchronous retry/export.
+Schema-7 saves are validated before use, including nested SRS, plans, exposure records and generated proofs. Invalid raw data remains untouched until explicit reset. Storage is checked before every write; an already-observed changed payload blocks writes and prompts reload/export rather than merging learning records. This check is not atomic with the write: [simultaneous writes can still race](docs/maintenance/AUDIT_REMEDIATION.md#known-open-issue-concurrent-writes). Failed writes retain in-memory progress and synchronous retry/export.
 
 Completed practice events retire under the existing monotonic attempt sequence. Current UI and paused assessment attempts retain their exact event/delivery keys; retired attempts cannot grade again. Completed deliveries aggregate by exact content identity, surface and mode, retaining counts and first/last day. This preserves previous-standard-study exclusions and compiler-restorable identities. SRS, rewards, acquired forms and frozen plans/proofs remain intact. Older valid schema-7 payloads without retirement fields remain readable; this is bounded-history maintenance, not old-schema migration. Repeated unchanged saves skip storage writes after checking the existing payload.
+
+## Attempt terminology
+
+- **Answer correction/retry:** another response to the same practice item; retain its identity and first-answer scoring lock. It is not a new assessment.
+- **Resume/reload:** continue the same active or paused assessment snapshot, including after intervening study. Questions, choices, knowledge labels, draft and locks do not reroll.
+- **Explicitly new assessment:** create a new attempt with current actual study/grammar eligibility. Prior reward identities still prevent replay farming.
+- **Frozen daily vocabulary plan:** the independently persisted district assignment/seed; starting a new assessment does not regenerate this plan.
+
+A storage-warning “Retry” retries persistence, not an answer or assessment. UI labels must make the operation clear.
+
+## Narrative and feedback consistency
+
+Generated language must fit the scene, teacher, speaker and recipient as well as the grammatical licenses. Any picture must depict the taught proposition (an open window for “the window is open”). Correct/wrong selection highlighting and answer revelation use the same shared feedback rules across ordinary lessons, forced story lessons, optional expressions and assessments. Apply fixes to the shared behaviour, not a single day-specific exception. This is an acceptance requirement; pending visual/content work is not certified complete by grammar tests.

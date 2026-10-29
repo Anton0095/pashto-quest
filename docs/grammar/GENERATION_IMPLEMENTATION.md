@@ -1,14 +1,16 @@
 # Codex implementation contract — productive grammar-aware Pashto practice
 
+> **Historical proposal (27 October 2026), not an outstanding implementation task.** The phases and acceptance targets below record the original design. Current mechanics are in [GAME_SPEC](../../GAME_SPEC.md), contributor workflow in [AGENTS](../../AGENTS.md), and check selection in the [validation policy](../../tests/README.md#choose-validation-by-change-and-risk). Old branch/schema details are historical provenance; do not execute them as current instructions.
+
 > **Runtime policy update (PR #22):** The user's [generated-only architecture requirement](https://github.com/Anton0095/pashto-quest/pull/22#issuecomment-6456042600) supersedes all authored-fallback delivery suggestions in this research document. Grammar evidence remains applicable. Insufficient compositions now produce an explicit deficit and word/English grammar tasks, never a stored instructional sentence. See [measured integration results](INSTRUCTIONAL_DELIVERY_REPORT.md).
 
 **Source of grammar:** [PASHTO_GENERATION_RULES.md](PASHTO_GENERATION_RULES.md). **Golden/negative cases:** [GENERATION_TEST_CASES.json](GENERATION_TEST_CASES.json).
 
-**Purpose:** Turn a small finite nine-binding matrix into a maintainable *feature-constrained sentence composer*, using the user's 14-day curriculum. This is a **future implementation specification only**. This branch deliberately makes **no gameplay/source or lexicon edits**.
+**Purpose:** Turn a small finite nine-binding matrix into a maintainable *feature-constrained sentence composer*, using the user's 14-day curriculum. This was a proposal for the subsequent implementation; it does not describe the current branch’s remaining work. See the [current documentation roles](../../README.md#documentation-roles-and-precedence).
 
-## 0. Merge/rebase boundary
+## 0. Historical merge/rebase context
 
-As of document authorship (27 October 2026), merged main contains Issue #18 / PR #19 and save schema 6; **PR #20 is open** and contains 341 additional **provisional playable** word records, 301 district + 40 universal. Do not assume PR #20 is merged; inspect the current branch before touching files. If expanding generation using its new forms, either base/rebase on merged PR #20 or coordinate changes explicitly. Preserve `userVerified: false` for unreviewed entries. Grammar research does not provide translations for those 341 items and does not make their inflections trustworthy.
+As of document authorship (27 October 2026), merged main contains Issue #18 / PR #19 and save schema 6; **PR #20 is open** and contains 341 additional **provisional playable** word records, 301 district + 40 universal. Those PR/schema states describe that checkpoint only, not current merge/rebase instructions. Inspect the current branch and active specifications for today’s implementation. Preserve `userVerified: false` for unreviewed entries. Grammar research does not provide translations for those 341 items and does not make their inflections trustworthy.
 
 ## 1. Expected architecture (no wholesale app rewrite unless necessary)
 
@@ -49,10 +51,10 @@ A frame record must carry: immutable `frameId`, grammar `family`, `requiredGramm
 6. Resolve spatial/possession/adverb/question/coordination slots if grammatically unlocked, using *licensed chunks* and contexts.
 7. Apply semantic compatibility (e.g. `drink` with beverage; `read` with readable object). Check that each possible English gloss actually describes the generated Pashto proposition.
 8. Render script from **licensed form spellings** and fixed functional particles with explicit grammar and unlock IDs. Generate phonetic transcription only from attested/approved form-level information (or with a clearly labelled provisional algorithm, not disguised as review).
-9. Reject duplicate/implausible constructions, inflection mismatches, unlicensed form IDs and text/translation mismatches. If no safe candidate exists, choose a compatible previously-authored sentence and disclose that it is a fallback.
-10. Freeze *complete* sentence text, gloss, romanisation, selected lemma/form IDs, frame ID, grammar IDs, speaker/addressee, answer choices, distractors, shuffle/seed and provenance in persisted attempts; no re-roll on resume/retry.
+9. Reject duplicate/implausible constructions, inflection mismatches, unlicensed form IDs and text/translation mismatches. If no safe candidate exists, report the composition deficit and use eligible word/English grammar tasks. Never substitute a stored instructional sentence.
+10. Freeze *complete* sentence text, gloss, romanisation, selected lemma/form IDs, frame ID, grammar IDs, speaker/addressee, answer choices, distractors, shuffle/seed and provenance in persisted attempts; no re-roll on resume or correction within that attempt. An explicitly new assessment uses current eligibility; see [attempt terminology](../../GAME_SPEC.md#attempt-terminology).
 
-**Important:** A sentence does not become correct merely by passing feature unification. Apply scene semantics, selection restrictions and review requirements. A fallback should be correct in the player's taught grammar and never leak unsupported future forms.
+**Important:** A sentence does not become correct merely by passing feature unification. Apply scene semantics, selection restrictions and review requirements. Shortage adaptations must respect actual study and grammar eligibility and never leak unsupported future forms; authored sentence fallbacks are prohibited.
 
 ## 4. Delivery phases (each as a testable milestone)
 
@@ -95,10 +97,10 @@ No arbitrary “all 341 words in every sentence” requirement.
 - **No false review:** every unverified composition and newly added form remains marked draft; no auto-certification.
 - **Determinism:** repeated seeds/states produce identical outputs, but different seeds yield variety where multiple *licensed* choices exist; challenge resume preserves exact text/choices/locks.
 - **Tests:** full `python3 tools/verify.py`, browser suites, schema validation, thousands of property-style combinations, adversarial invalid forms, pace 0/4/8/12/16/20/24 and all 14 days (normal/skip), offline generated index.html, audio fallback test, and save schema lifecycle. Report exact commands and exit codes. Do not conflate mocks and iPhone/Windows device evidence.
-- **Report:** per grammar/day counts of licensed sentence possibilities, lexical coverage and exclusion reasons, example Pashto/English side by side, count of *new* compositions vs fixed authored fallback, any tests skipped, and specific items needing the user's review.
+- **Report:** per grammar/day counts of licensed sentence possibilities, lexical coverage and exclusion reasons, example Pashto/English side by side, count of *new* compositions and explicit shortage adaptations (authored sentence fallbacks are prohibited), any tests skipped, and specific items needing the user's review.
 
 ## 7. Copyright and language-review integrity
 
 Do not scrape/copy LingDocs dictionary datasets, phrase builder algorithms, page code, full tables, or bulk examples into the game. Cite references and independently implement the rule constraints using the user's own corpus and vetted selected examples. LingDocs is not an endorsement of generated content and explicitly highlights the risks of LLM-generated Pashto. Respect its content license and the project's own corpus licensing/provenance.
 
-**Delivery:** Implementation on a fresh branch, PR against current main, no automatic merge. Update existing active documentation files only as truly necessary; this standalone reference remains source-linked research, not a substitute for the canonical runtime curriculum.
+**Historical delivery plan:** A fresh implementation branch and PR against then-current main, without automatic merge. For subsequent work use the requested existing branch and current AGENTS workflow. Update existing active documentation files only as truly necessary; this standalone reference remains source-linked research, not a substitute for the canonical runtime curriculum.
