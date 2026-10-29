@@ -296,10 +296,10 @@ function createLearning({ state, content, progression }) {
     const rows = Object.values(state.progress.library.deliveries);
     const sentences = rows.filter((d) => d.kind === "generated_sentence");
     return {
-      instructionalSentences: sentences.length,
-      generatedSentences: sentences.length,
+      instructionalSentences: sentences.reduce((n,d) => n + (d.count || 1), 0),
+      generatedSentences: sentences.reduce((n,d) => n + (d.count || 1), 0),
       generatedPercent: sentences.length ? 100 : null,
-      fixedPhrases: rows.filter((d) => d.kind === "fixed_phrase").length,
+      fixedPhrases: rows.filter((d) => d.kind === "fixed_phrase").reduce((n,d) => n + (d.count || 1), 0),
     };
   }
   function completeRound(day) {

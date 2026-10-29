@@ -36,7 +36,7 @@ function createLibraryUI({
         ui.node("h3", "Grammar Journal"),
         ui.node(
           "p",
-          "Rules unlock through actual lesson exposure or a correctly demonstrated challenge response. Native Laghman review is pending.",
+          "Rules unlock when their lesson workshop is shown, after word/form study. Challenges do not unlock grammar. Examples also require individually studied forms. Native Laghman review is pending.",
         ),
       );
       for (const rule of content.curriculum.days) {
@@ -376,10 +376,12 @@ function createLibraryUI({
     const exercise = ui.node("div");
     exercise.append(ui.node("p", "Choose the meaning of " + form.pashto));
     const options = questions.distractors(content.wordById["library-form:" + form.formId]);
-    const eventId =
-      "library-practice:" + ++state.progress.library.attemptSequence;
+    let answered = false;
     for (const option of QuestionEngine.shuffle(options)) {
       const b = ui.button(option, () => {
+        if (answered) return;
+        answered = true;
+        const eventId = "library-practice:" + ++state.progress.library.attemptSequence;
         ui.showAnswerFeedback(exercise, form.englishGloss, option);
         const correct = QuestionEngine.evaluate(
           { kind: "word", direction: "ps-en" },

@@ -9,7 +9,7 @@ Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CUR
 - `src/sentence-engine.js` + `content/SENTENCE_FRAMES.json`: feature-constrained practice, introduced forms and actually unlocked grammar only. Feature-constrained generated drafts are not native-certified.
 - `src/progression.js`: current save factory, XP, results, milestones, reward identity and access rules.
 - `src/question-engine.js`: answer evaluation and indexed tiles; `src/learning.js` applies practice transactions. UI renders outcomes.
-- `src/storage.js`: save validation/I/O and active assessment snapshots. `src/app.js` only composes services and wires controls. Keep authored blueprints in content modules/JSON, apart from renderers.
+- `src/save-schema.js`: current-save shape and compiler-proof validation. `src/storage.js`: conflict-safe I/O and active assessment snapshots. `src/app.js` only composes services and wires controls. Keep authored blueprints in content modules/JSON, apart from renderers.
 - `content/LEARNING_CURRICULUM.json`: fixed English teaching sequence; every instructional clause is compiled after actual form study and grammar unlocks. `content/FIXED_PHRASES.json` is the complete six-expression exception register. Authored archives are evidence/fixtures only, never teaching fallbacks.
 - Four district keys: `residential`, `nature`, `business`, `school`. Library is reference-only; Hills is a Nature scene.
 - Preserve 14 curriculum days, characters, normal/skip paths and current learning states. Day 1 excludes lexical action verbs; Day 14 has zero compulsory new lemmas.

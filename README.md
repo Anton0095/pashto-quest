@@ -36,7 +36,8 @@ node tools/district-inventory.mjs --check
 | `src/sentence-engine.js`, `content/SENTENCE_FRAMES.json` | Bounded feature/semantic unification, licensed draft compositions and deterministic practice selection |
 | `src/question-engine.js` | Shared answer evaluation, approved normalisation and indexed tiles |
 | `src/learning.js`, `src/questions.js` | Practice transactions, lesson pools, frozen assessments and answer choices |
-| `src/storage.js` | Current-save validation, local storage and active challenge snapshots |
+| `src/save-schema.js`, `src/storage.js` | Nested current-save validation; conflict-safe persistence and active challenge snapshots |
+| `src/sentence-scene.js`, `src/answer-feedback.js` | Teacher/listener context and shared correct/wrong presentation |
 | `src/ui.js`, `src/world-ui.js`, `src/lesson-ui.js`, `src/challenge-ui.js` | DOM/RTL shell and world, lesson and assessment presentation |
 | `src/tutorial-ui.js`, `src/grammar-ui.js`, `src/library-ui.js`, `src/narrative-ui.js` | Onboarding, workshops and reference/expression presentation |
 | `src/audio.js` | Common MP3/device-voice player and cancellation |
@@ -52,7 +53,7 @@ Modules expose small factory APIs with explicit state/service dependencies and s
 
 ## How progression works
 
-The Day 1 Library tutorial introduces four question types: choose the meaning of `سلام`, arrange `څنګه یې؟`, select a gender preference, and type a player name. Completing all four is required to begin Day 1. A normal day includes narrative openings and district lessons; after the tutorial on Day 1, or immediately on Days 2–14, the player can skip visits and attempt the daily challenge. Skips do not mark unseen locations or vocabulary complete.
+The Day 1 Library tutorial introduces four question types: choose the meaning of `سلام`, arrange `څنګه یې؟`, select a gender preference and type a player name using English profile controls. Completing all four is required to begin Day 1. A normal day includes narrative openings and district lessons; after the tutorial on Day 1, or immediately on Days 2–14, the player can skip visits and attempt the daily challenge. Skips do not mark unseen locations or vocabulary complete.
 
 Each district selects eligible new **distinct lexical lemmas** in its explicit curated introduction order, at a selected pace of 0/4/8/12/16/20/24 per day. Universal vocabulary, inflections, grammar units and expressions do not consume district quotas. Day 1 teaches descriptions, while action verbs start on Day 2. Day 14 schedules no compulsory new words. Daily challenges have 15 items, pass 12; Days 7 and 14 have 25, pass 20. A passed Day 7 exam unlocks Level 10 and New Resident.
 
@@ -84,3 +85,5 @@ The [cleanup dependency review](docs/maintenance/CLEANUP_REVIEW.md) records trac
 Distractors use actually introduced forms, rather than all day-eligible vocabulary. An unstudied assessment target uses uncued typed recall or a scored “I don’t know” reveal; its English meaning is absent before submission. Low-supply assessments use varied English rule-application tasks from visited workshops, or explicitly guided Day-1 reference checks without granting grammar. Browser save failures keep progress in this tab, show a nonblocking warning and offer Retry/JSON Export.
 
 Run `node tools/performance-benchmark.mjs --samples 20 --output work/p1/performance.json` for the browser performance baseline: paces 0/12/24, fourteen-day progression with measurements on Days 1/7/13/14, desktop and 4× CPU mobile Chromium, heap, storage and ten bounded revision/Library sessions. This diagnostic is separate from functional verification and requires the same Playwright/Chromium setup.
+
+The [coordinated audit remediation](docs/maintenance/AUDIT_REMEDIATION.md) records all twelve findings, save-conflict and assessment boundaries, focused refactors, retained evidence and final verification. Its [paired performance report](docs/maintenance/AUDIT_PERFORMANCE.md) measures the corrected Stage 3 release against the optimized deliverable; previous benchmark reports retain their historical results.

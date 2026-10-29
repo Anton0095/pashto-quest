@@ -4,7 +4,7 @@
 
 Actual rendered browser surfaces across fourteen complete profiles; compiler provenance and actual form/grammar unlocks checked independently at each sentence surface.
 
-Release SHA-256: `acefc5312c87831a1111d14eef00642546e6057b62b255563b3428a051cf19bd`. The complete browser matrix covered 392 normal district visits and 196 assessments, all fourteen days, seven paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
+Release SHA-256: `c813ab6b543ddf58333cce13f6443432ada7c6075d46af6cc08138be6db3242b`. The complete browser matrix covered 392 normal district visits and 196 assessments, all fourteen days, seven paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
 
 ## Day 1 Home: before and after
 

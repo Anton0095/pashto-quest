@@ -64,6 +64,7 @@ function createStorage({
       if (state.session.finished) delete state.progress.activeChallenge;
       else state.progress.activeChallenge = JSON.parse(JSON.stringify(state.session));
     }
+    LibraryEngine.compactHistory(state.progress, [state.session, state.progress.activeChallenge]);
     return JSON.stringify(state.progress);
   }
   function save() {
@@ -78,8 +79,10 @@ function createStorage({
       }
       if (!checkExternalChange()) return false;
       const raw = snapshot();
-      target.setItem(KEY, raw);
-      if (target.getItem(KEY) !== raw) throw Error("Storage did not retain progress");
+      if (raw !== observed) {
+        target.setItem(KEY, raw);
+        if (target.getItem(KEY) !== raw) throw Error("Storage did not retain progress");
+      }
       observed = raw;
       persistenceProblem = null;
       notifyPersistence(null);

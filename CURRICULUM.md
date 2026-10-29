@@ -27,15 +27,15 @@ Day 1 Home at default pace teaches house, door, room, big, window and open, plus
 
 ## Vocabulary allocation and identity
 
-- User-selectable daily district-lemma pace: **0, 4, 8, 12, 16, 20 or 24**; fresh-profile default 24. Schema 7 freezes new plans; no old-save compatibility is provided. Nonzero paces divide evenly among four districts. Day 1 maximum is **six distinct nouns/adjectives per district**; action verbs first become teachable on Day 2.
+- User-selectable daily district-lemma pace: **0, 4, 8, 12, 16, 20 or 24**; fresh-profile default 24. Schema 7 freezes new plans. Valid schema-7 progress is preserved; older schemas are not converted. Nonzero paces divide evenly among four districts. Day 1 maximum is **six distinct nouns/adjectives per district**; action verbs first become teachable on Day 2.
 - Every lexeme has one `lemmaId` and potentially multiple `formId`s. Inflections, universal vocabulary, expressions and sentence units are not counted as newly introduced district lemmas. Incidental story exposure is tracked separately from assigned and mastered entries.
-- Day 14 assigns **zero new compulsory district lemmas**. Insufficient verified vocabulary must be reported, never silently filled using repeated entries, English-only candidates or fake translations.
+- Day 14 assigns **zero new compulsory district lemmas**. Insufficient evidenced, eligible vocabulary must be reported, never silently filled using repeated entries, English-only candidates or fake translations.
 - **Current playable draft:** 473 lexical identities/607 forms: 400 district lemmas (100 each for Home, Lake, Market and School) and 73 universal lemmas. “Playable” does **not** mean native-certified.
 - **Expansion disposition:** all 301 selected candidates are mechanically complete `provisional_playable` drafts; 59 candidates remain rejected, including 7 existing-sense aliases. No candidate is marked native-approved or user-verified.
 - At 24/day, the planner schedules exactly **312** distinct district introductions: six per district on Days 1–13. Each district retains 22 additional entries, and Day 14 remains cumulative review with no compulsory vocabulary.
 - `content/UNIVERSAL_TEACHING_TARGETS.json` contains **40 proposed semantic teaching targets** (pronouns, numbers, question words, position, connectors etc.); they are not automatically 40 translated lexical records.
 
-`content/DISTRICT_INVENTORY_REPORT.json` and `node tools/district-inventory.mjs --check` quantify active capacity and projected expansions. Refresh the report after modifying planner/data identities. Language and grammatical review must precede activating candidates.
+`content/DISTRICT_INVENTORY_REPORT.json` and `node tools/district-inventory.mjs --check` quantify active capacity and projected expansions. Refresh the report after modifying planner/data identities. Language and grammatical review must precede activating candidates. Daily plans freeze vocabulary assignments and seeds. Assessments freeze presentation only for the current attempt: a paused attempt survives intervening study unchanged, while an explicitly new attempt uses current introduced forms and visited grammar. A challenge response does not unlock a workshop.
 
 ## Greetings and contextual expressions
 

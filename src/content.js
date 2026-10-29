@@ -129,6 +129,7 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
   };
   // Lexical evidence is build-time data. Acquisition lives in progress, never here.
   // Immutable roots allow compiler views to share one index without stale edits.
+  deepFreeze(LIBRARY_DATA.sentenceFrames);
   deepFreeze(LIBRARY_DATA.entries);
   deepFreeze(LIBRARY_DATA.generationEvidence);
   deepFreeze(LIBRARY_DATA.generationAttestations);

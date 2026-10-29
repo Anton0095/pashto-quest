@@ -22,6 +22,9 @@ function createSaveValidator({ content, progression }) {
     if (!object(p) || !object(p.library)) return false;
     const l = p.library;
     if (!integer(l.seed) || !["units","acquired","plans","dayExposure","grammar","phrases","events","deliveries","deficits"].every(k=>object(l[k]))) return false;
+    if (l.retiredAttemptSequence !== undefined && (!integer(l.retiredAttemptSequence) || l.retiredAttemptSequence > l.attemptSequence)) return false;
+    if (l.protectedAttemptIds !== undefined && (!Array.isArray(l.protectedAttemptIds) || l.protectedAttemptIds.length > 2 || new Set(l.protectedAttemptIds).size !== l.protectedAttemptIds.length || l.protectedAttemptIds.some(id => !integer(id) || id < 1 || id > l.attemptSequence))) return false;
+    if (p.activeChallenge && p.activeChallenge.attemptId <= (l.retiredAttemptSequence || 0) && !l.protectedAttemptIds?.includes(p.activeChallenge.attemptId)) return false;
     if (!Object.values(l.units).every(stats)) return false;
     if (![p.rewards,p.complete].every(v=>object(v) && Object.values(v).every(x=>x===true))) return false;
     if (p.homeGranted !== undefined && typeof p.homeGranted !== "boolean") return false;
@@ -46,7 +49,7 @@ function createSaveValidator({ content, progression }) {
     }
     if (!Object.values(l.events).every(v=>v===true)) return false;
     for (const r of Object.values(l.deficits)) if (!object(r)||![r.requested,r.available,r.missing].every(integer)||(r.reason!==null&&typeof r.reason!=="string")) return false;
-    for (const r of Object.values(l.deliveries)) if (!object(r)||typeof r.id!=="string"||!integer(r.day)||r.day>14||typeof r.surface!=="string"||typeof r.mode!=="string") return false;
+    for (const r of Object.values(l.deliveries)) if (!object(r)||typeof r.id!=="string"||!integer(r.day)||r.day>14||typeof r.surface!=="string"||typeof r.mode!=="string"||(r.count!==undefined&&(!integer(r.count)||r.count<1))||(r.lastDay!==undefined&&(!integer(r.lastDay)||r.lastDay<r.day||r.lastDay>14))) return false;
     for (const plan of Object.values(l.plans)) {
       if (!object(plan)||!integer(plan.seed)||!object(plan.shortfalls)||typeof plan.notice!=="string"||typeof plan.contentGap!=="boolean"||
           !(plan.effectiveDailyTarget===null||LibraryEngine.presets.includes(plan.effectiveDailyTarget))||
@@ -75,7 +78,7 @@ function createSaveValidator({ content, progression }) {
       !["male", "female", "unspecified"].includes(p.playerProfile.gender) ||
       typeof p.tutorialDone !== "boolean" ||
       !object(p.library) ||
-      !Number.isInteger(p.library.attemptSequence) ||
+      !Number.isSafeInteger(p.library.attemptSequence) ||
       p.library.attemptSequence < 0 ||
       !LibraryEngine.presets.includes(p.library.requestedDailyTarget) ||
       ![

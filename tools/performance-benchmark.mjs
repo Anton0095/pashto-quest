@@ -96,8 +96,11 @@ for(const mode of ['desktop','mobile4x'].filter(m=>profile==='all'||m===profile)
     const t=__test,start=performance.now();
     window.benchEpoch ||= Date.now();Date.now=()=>window.benchEpoch+(i+1)*90*86400000;
     benchStudy(14,'residential');
-    t.lessons.begin('review');let guard=0;window.lastReviewCount=0;
-    while(t.state.session?.queue?.length && guard<10){if(++guard>1000)throw Error('Review stalled');const item=t.state.session.queue[0],c=t.content.wordById[item.id];t.lessons.answer(item.kind==='construct'?c.ps:c.en);t.nextQuestion();window.lastReviewCount++;if(guard%10===0)await new Promise(r=>setTimeout(r,0))}
+    const duePool=t.learning.duePool;t.learning.duePool=()=>duePool().slice(0,10);
+    try{t.lessons.begin('review')}finally{t.learning.duePool=duePool}
+    let guard=0;window.lastReviewCount=0;
+    while(!document.querySelector('#lessonScreen').classList.contains('hidden') && ['greeting','lexical','sentence','grammar'].includes(t.state.session.phase)){if(t.state.session.phase==='grammar')t.lessons.afterGrammar();else t.lessons.afterStudy()}
+    while(!document.querySelector('#lessonScreen').classList.contains('hidden') && t.state.session?.activeItem && t.state.session?.queue?.length && guard<10){if(++guard>1000)throw Error('Review stalled');const item=t.state.session.queue[0],c=t.content.wordById[item.id];t.lessons.answer(item.kind==='construct'?c.ps:c.en);t.nextQuestion();window.lastReviewCount++;if(guard%10===0)await new Promise(r=>setTimeout(r,0))}
     t.world.startWorld();t.library.openLibrary();const detail=document.querySelector('.library-entry');if(detail){detail.open=true;detail.dispatchEvent(new Event('toggle'))}
     document.querySelector('#libraryDialog').close();t.storage.save();window.lastReviewMs=performance.now()-start;
    },i);

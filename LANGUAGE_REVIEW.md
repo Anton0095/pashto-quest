@@ -55,3 +55,7 @@ Unknown morphology stays null and is never a wildcard. For example, the direct o
 The additional window analysis and conjunction license cite exact archived forms; neither guesses a stem or certifies pronunciation. Runtime carries per-form evidence, not complete archived teaching sentences. Archive corrections should update the relevant form licenses and rerun generation and delivery tests.
 
 CSV curriculum proposals and human scheduling approvals are separate from linguistic verification. A worksheet's `verifiedStatus` cannot confer native certification. No pending district candidate, universal target or narrative expression is activated by these changes. Existing device/audio caveats and required reviewer/date/reference/variant/alternative/audio provenance remain in force.
+
+## Form-specific English recall
+
+Exact infinitive forms with unambiguous “To …” glosses now declare `acceptedEnglishAnswers` for the same gloss without “to”, with formatting-equivalence evidence. This does not certify the gloss or pronunciation. Slash-separated senses, person-annotated finite verbs and proposed synonyms remain excluded from automatic expansion. The [exact verb forms awaiting editorial decisions](docs/maintenance/audit/english-editorial-review.json) list the form IDs and current glosses. Native review must decide and evidence each additional form-specific equivalent.

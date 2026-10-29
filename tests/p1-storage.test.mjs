@@ -4,7 +4,7 @@ for (const message of ['QuotaExceededError','SecurityError','Storage unavailable
  const t=runtime();reset(t);const stored=t.backend.setItem.bind(t.backend);t.storage.save();
  const notices=[];t.storage.onPersistenceChange(n=>notices.push(n));
  t.state.progress.xp=125;beginAttempt(t,1);t.learning.submitChallenge(correctAnswer(t,t.state.session.questions[0]));
- t.storage.save();const original=t.backend.getItem();const memory=plain(t.state.progress);t.backend.setItem=()=>{throw Error(message)};
+ t.storage.save();const original=t.backend.getItem();t.state.progress.xp++;const memory=plain(t.state.progress);t.backend.setItem=()=>{throw Error(message)};
  assert.equal(t.storage.save(),false);assert(t.storage.persistenceProblem);assert.equal(t.storage.problem,null);
  assert.equal(t.backend.getItem(),original);assert.deepEqual(plain(t.state.progress),memory);
  t.backend.setItem=stored;assert.equal(t.storage.save(),true);assert.equal(t.storage.persistenceProblem,null);

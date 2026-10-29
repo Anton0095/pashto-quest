@@ -8,4 +8,67 @@ Stage 2 preserves construction retry metadata, resolves listener labels separate
 
 Stage 3 separates structural save validation from storage coordination, sentence-scene rendering from HUD helpers, and shared feedback from screens. Assessment creation no longer stores a daily question bank: the active attempt owns its frozen questions. Composition and pairing retain their shared feature/evidence index rather than adding wrappers. Approval reporting consistently requires `native_approved` plus named review evidence; synthetic-only fixtures exercise this without approving real records. Full verification: exit 0, 90 checks; [command log](audit/stage3-verification.txt).
 
-Stage 4 and final disposition remain pending. No merge is authorised.
+Stage 4 is complete. Final full verification: exit 0, **92 passing checks**, no failures; [command log](audit/final-verification.txt). The final benchmark exited 0; maintained audit regeneration exited 0. No merge is authorised.
+
+## Performance and history invariants
+
+The optimisation baseline is the completed Stage 3 release (`697a4f5`), captured before hot-path changes. Candidate selection continues to enumerate every compatible binding and keeps its original order, deduplication and seeded draws. Slot licensing is reused within catalogue construction; public composition and restore still independently validate bindings. Only recursively immutable lexical/frame evidence permits deferred romanisation and provenance allocation. Mutable editorial data remains eager. Coordinated availability reuses the existing form/grammar/day signature. The exact fourteen-day full-card/dialogue/20-seed contract remains the parity gate.
+
+Current UI sessions, including a finished session still used by Library surfaces, and paused assessments retain exact event/delivery keys. Completed canonical practice events retire under a monotonic attempt watermark and cannot grade again. Unknown namespaces remain intact. Closed delivery evidence consolidates only identical content/surface/mode identities, keeping counts and first/last day; hash collisions compare full identity. SRS, acquisition, XP, rewards and compiler proofs are untouched. Older valid schema-7 saves without the optional metadata remain accepted. Frozen vocabulary plans and generated study proofs remain because standard-visit selection and replay depend on them; legacy daily assessment banks are accepted as existing schema-7 evidence but never created or reused for new attempts.
+
+No-op write avoidance runs only after the external-storage guard and serialization. Changed first responses, drafts and locks still write synchronously. No debounce or asynchronous durability was introduced. Snapshot cloning remains deliberate: mutable active draft/tile arrays must not alias stored presentation. This retains a measured cost rather than weakening resume semantics.
+
+## Finding ledger
+
+| # | Reproduced on starting main | Implementation and validation | Status |
+|---|---|---|---|
+| 1 | Two ordinary tabs reverted tutorial/65 XP after stale pace change | Read-before-write plus storage/pageshow/visibility observations; sticky conflict, export/reload; public-controls regression at 375/1280 | Fixed |
+| 2 | Missing `shortfalls`, malformed exposure/SRS accepted | Separate nested schema validator, preserved-data rejection and existing all-family proof/resume tests | Fixed |
+| 3 | Wrong construction retry lost `kind` | Requeue original item metadata; wrong → retry → correct regression | Fixed |
+| 4 | Host was displayed as listener | Separate teacher, subject and recipient; informal/respectful/plural visiting-host regressions | Fixed |
+| 5 | Optional phrase practice lacked highlighting | Shared feedback function used by phrase/lesson/assessment/Library consumers; correct/wrong/lock/no-XP browser checks | Fixed |
+| 6 | New attempts reused pre-study daily labels | Daily vocabulary plans remain frozen; each new attempt uses current knowledge, paused attempt owns immutable question/draft snapshot | Fixed |
+| 7 | Corrected baseline still accumulated completed history and rewrote unchanged saves | Attempt retirement, identity/count-preserving delivery summaries and checked no-op writes; 400-attempt regression and paired revision benchmarks | Fixed |
+| 8 | Corrected baseline allocated thousands of complete candidate cards on cold eligibility | Reuse licensed slots, defer display/provenance for immutable inputs, cache coordinated availability; exact output/20-seed parity and paired cold/warm benchmarks | Fixed |
+| 9 | Audit used `approved`; builder used `native_approved` | Canonical status plus review evidence in schema/audit/inventory; explicitly synthetic fixtures, unchanged real approval flags | Fixed |
+| 10 | Active onboarding/order prose and Journal unlock claim contradicted runtime | Specifications, source ownership and test guide updated; Day 1/teacher/pace/recall/warning screenshots recaptured by final browser run; relative links checked | Fixed |
+| 11 | Duds always came from first two eligible tokens | Seeded shuffle of studied forms, target/accepted-token exclusions; varied seeds and frozen resume | Fixed |
+| 12 | Exact gloss rejected unambiguous infinitive formatting | Explicit exact-form accepted answers and evidence, no lemma-family synonym inference; infinitive acceptance/finite rejection regression | Fixed |
+
+## Retained responsibilities and limits
+
+Composition, selection and dialogue pairing retain one feature/evidence authority. The lesson, challenge and Library screen modules remain functioning consumers. Frozen study proofs preserve original generated selections; current draft/tile arrays retain isolated snapshots. No old-schema migration, silent reset, authored fallback, learning store or production benchmark instrumentation was introduced. Six conventional-expression exceptions, characters, narrative, awards, exam thresholds, skip routes, cumulative revision and audio fallback remain covered by the full curriculum/browser suites.
+
+Additional English equivalents for the [listed exact verb forms](audit/english-editorial-review.json) require editorial decisions; existing finite-person distinctions remain enforced. Native Laghman naturalness, pronunciation and physical iPhone/Windows audio remain unverified. A recursively immutable input is required for deferred candidates; mutable editorial inputs deliberately pay eager validation/allocation costs. Full compatible-binding enumeration and synchronous active snapshot cloning remain costs to measure before any further change. History summaries preserve new distinct identities rather than promising a fixed lifetime byte cap. Cross-tab conflicts require reload/export and never automatically merge scores or SRS.
+
+An initial deferred-accessor trial improved timing but increased desktop pace-12 Day-14 retained heap from 14.7 MB to 23.5 MB. Replacing existing fields caused dictionary storage in Chromium. The final representation adds shared accessors to fresh records in canonical key order and shares the immutable lookup instead of retaining a per-candidate slot map. The final table reports the remaining memory tradeoff explicitly; deferring complete display/provenance fields is not a claim that retained heap or exact allocation peak decreases. Initial incomplete harness/trial runs are excluded from the paired result.
+
+The retained implementation constructs each candidate field once and stores its deferred context on a private, non-enumerable symbol owned by the candidate graph. This replaces the intermediate two-entry-per-candidate WeakMap representation, which added ephemeron/GC bookkeeping. Normal materialization removes the private context; frozen candidates retain cached values. Canonical sentence JSON, proof validation and selection order stay identical. Completed paired measurements, not intermediate trials, determine the final report.
+
+Dependency tracing also found that voluntary Library exercises previously allocated IDs when opened. Closing or answering another panel could retire an unanswered ID. They now allocate one ID on first submission and hold an explicit first-response guard. The browser regression opens two exercises, saves, answers in reverse order and checks two SRS grades, locked controls and zero XP at 375/1280px. Unsubmitted panels no longer consume the sequence used by later attempts. Other canonical event-ID sites allocate at submission or belong to the protected live session.
+
+## Measured result
+
+The [paired performance report](AUDIT_PERFORMANCE.md) contains all 24 profile/day rows (20 samples each) and raw observations. On 375px Chromium at 4× CPU slowdown, pace 24 Day 14 cold median/p95 fell from 1,367.8/1,473.4 ms to 902.75/1,006.4 ms; unchanged complete-save median fell from 74.5 to 31.95 ms. Day-14 retained JS heap after GC fell from 20,819,304 to 19,333,180 bytes. After ten bounded revisions, save size fell from 1,576,728 to 1,473,472 UTF-8 bytes. The compatible pool remains 16,296 cards.
+
+Improvements are not uniform: mobile pace-24 Day-13 assessment creation measured 642.1/705.1 ms median/p95 before versus 677.25/777.9 ms after, and selection 6.1 versus 6.85 ms median. These distributions remain visible in the report. This single paired shared-host run does not establish causation for small regressions or guarantee physical-device latency. Initial empty-profile overhead and cold compatible-binding enumeration remain; exact allocation peaks were not measured.
+
+## Current demonstrations
+
+The final browser suites recapture Day 1 [generated study](../grammar/demonstration/day1-generated-study.png) and [tile construction](../grammar/demonstration/day1-construction.png), maintained pace/teacher/recall/save-warning captures, plus the new [375px conflict banner](audit/tab-conflict-375.png), [1280px conflict banner](audit/tab-conflict-1280.png), [375px Grammar Journal](audit/grammar-journal-375.png) and [1280px Grammar Journal](audit/grammar-journal-1280.png). The stale-tab image intentionally displays that tab’s old in-memory XP; the regression separately verifies the stored tutorial and 65 XP remain intact after reload. Journal and warning mobile captures were visually inspected for text wrapping and controls; automated layout/RTL assertions also remain in the suite.
+
+## Final verification and reproducibility
+
+`python3 tools/verify.py` exited 0 with 92 passing checks. This includes all fourteen days, seven paces and normal/skip routes (392 normal district visits and 196 assessments), public controls at 375/1280px, all 28 generated families, exact partial/locked assessment reload, actual word → grammar → composition order, storage faults, cross-tab conflict, out-of-order Library exercises and the 400-attempt compaction invariant. The delivery audit was regenerated only after the complete browser matrix passed. [Maintained audit regeneration](audit/final-audits.txt) and [additional Library browser regression](audit/library-browser.txt) exited 0.
+
+Actual benchmark commands (both 20-sample, all six profiles):
+
+```sh
+node tools/performance-benchmark.mjs --release work/audit/pre-optimisation.html --samples 20 --output work/audit/performance-before-final.json
+node tools/performance-benchmark.mjs --release work/audit/post-optimisation.html --samples 20 --output work/audit/performance-deliverable.json
+python3 tools/audit-performance-report.py docs/maintenance/audit/performance-before.json docs/maintenance/audit/performance-after.json docs/maintenance/AUDIT_PERFORMANCE.md
+```
+
+Both benchmark runs exited 0; the paired-report assertions passed. To reproduce the baseline from a clean checkout, obtain its frozen release with `git show 697a4f5:index.html > /tmp/pashto-audit-before.html` and pass that path to `--release`. Use the current `index.html` for the after run. The original harness attempt called an answer before the review study phase; it was corrected, bounded to ten due items, and rerun. Interrupted intermediate representations/suites were excluded; all results above refer to completed runs against the committed-stage baseline and final deliverable.
+
+The final [delivery report](../grammar/INSTRUCTIONAL_DELIVERY_REPORT.md) records **4,647 / 4,647 generated instructional sentence observations (100%)**, zero authored sentence fallbacks, excluding six designated conventional phrases. Default Day 1 Home still teaches six district lemmas plus the evidenced feminine form, then composes three distinct descriptions before tile construction. The [relative-link check](audit/documentation-links.txt) passed for active Markdown file targets. No native translation/pronunciation certification follows from these technical checks.
