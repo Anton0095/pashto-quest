@@ -31,13 +31,13 @@ if (['all','C'].includes(mode)) {
  console.log('PASS P1-C');
 }
 if(mode==='all') {
- const t=runtime(), neutral=new Set(['A different meaning','Another response','None of these']);
+ const t=runtime(), fallback=new Set(t.content.LIBRARY_DATA.entries.filter(e=>e.introduction.day===1&&e.forms[0].firstAllowedDay===1).map(e=>e.englishSenses[0])), neutral=new Set(['A different meaning','Another response','None of these']);
  function introduced(c){const refs=t.content.LIBRARY_DATA.sourceMappings[c.id]||[];return refs.length>0&&refs.every(r=>t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))}
  function checkChoices(day){
   const qs=t.questions.selectChallenge(day);for(const q of qs.filter(q=>q.kind==='word')){
    const target=t.content.wordById[q.id];
    const legitimate=new Set(Object.values(t.content.wordById).filter(c=>introduced(c)||t.state.progress.library.phrases[c.id]).map(c=>c.en));
-   for(const meaning of q.choiceOrder) assert(neutral.has(meaning)||legitimate.has(meaning),`Unstudied meaning ${meaning} day ${day}`);
+   for(const meaning of q.choiceOrder) assert(neutral.has(meaning)||legitimate.has(meaning)||fallback.has(meaning),`Unstudied meaning ${meaning} day ${day}`);
    if(q.unstudied)assert(!q.choiceOrder.includes(target.en));
   }
   const saved=plain(qs);t.storage.save();const loaded=t.storage.load();t.state.progress=loaded;

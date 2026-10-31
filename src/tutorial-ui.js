@@ -70,7 +70,7 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
         b.textContent = answer;
         b.dataset.answer = answer;
         b.addEventListener("click", () => {
-          ui.showAnswerFeedback(choices, w.en, answer, {lock:false});
+          ui.showAnswerFeedback(choices, w.en, answer, {lock:false, accepts:v => QuestionEngine.evaluate({kind:"word", direction:"ps-en"}, w, v)});
           if (
             QuestionEngine.evaluate(
               { kind: "word", direction: "ps-en" },

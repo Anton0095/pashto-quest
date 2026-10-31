@@ -344,7 +344,7 @@ function createLessons({
     learning.surface(w.id, "lesson-feedback");
     storage.save();
     ui.hud();
-    ui.showAnswerFeedback(ui.$("choices"), w.en, value);
+    ui.showAnswerFeedback(ui.$("choices"), w.en, value, {accepts:v => QuestionEngine.evaluate({kind:"word", direction:"ps-en"}, w, v)});
     if (state.session.activeItem.kind === "construct")
       ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
     else if (w.generated)
@@ -354,7 +354,7 @@ function createLessons({
     ui.$("undoTile").disabled = true;
     ui.$("clearTiles").disabled = true;
     ui.$("quizFeedback").textContent =
-      `${correct ? "✓ Correct" : "Not yet — try again shortly"} · +${gain} XP · ${w.ps} (${w.roman}) — ${w.en}`;
+      `${correct ? "✓ Correct" : "Not yet — try again shortly"} · +${gain} XP · ${w.ps} (${w.roman}) — ${w.en}. ${QuestionEngine.explanation({kind:state.session.activeItem.kind || "word"}, w)}`;
     ui.$("quizNext").disabled = false;
     ui.$("quizNext").textContent = state.session.queue.length
       ? "Next →"

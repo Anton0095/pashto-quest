@@ -375,17 +375,18 @@ function createLibraryUI({
     if (!form) return;
     const exercise = ui.node("div");
     exercise.append(ui.node("p", "Choose the meaning of " + form.pashto));
-    const options = questions.distractors(content.wordById["library-form:" + form.formId]);
+    const card = content.wordById["library-form:" + form.formId];
+    const options = questions.distractors(card);
     let answered = false;
     for (const option of QuestionEngine.shuffle(options)) {
       const b = ui.button(option, () => {
         if (answered) return;
         answered = true;
         const eventId = "library-practice:" + ++state.progress.library.attemptSequence;
-        ui.showAnswerFeedback(exercise, form.englishGloss, option);
+        ui.showAnswerFeedback(exercise, form.englishGloss, option, {accepts:v => QuestionEngine.evaluate({kind:"word", direction:"ps-en"}, card, v)});
         const correct = QuestionEngine.evaluate(
           { kind: "word", direction: "ps-en" },
-          { en: form.englishGloss },
+          card,
           option,
         );
         LibraryEngine.practise(
@@ -405,7 +406,7 @@ function createLibraryUI({
             "p",
             correct
               ? "Correct. Practice recorded; no XP is awarded for Library review."
-              : "Review: " + form.englishGloss,
+              : "Review: " + form.englishGloss + ". " + QuestionEngine.explanation({kind:"word"}, card),
           ),
         );
       });

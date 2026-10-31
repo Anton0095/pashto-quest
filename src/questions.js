@@ -28,35 +28,28 @@ function createQuestions({ state, content, progression }) {
     uncued = false,
   ) {
     const field = direction === "ps-en" ? "en" : "ps";
-    const peers =
-      w.type === "sentence"
-        ? available(day)
-        : Object.values(content.wordById).filter(
-            (c) =>
-              c.type === w.type &&
-              LibraryEngine.cardAllowed(content.LIBRARY_DATA, c.id, day) &&
-              !isUnstudied(c.id),
-          );
-    const seen = new Set();
-    const choices = [
-      ...new Set(
-        QuestionEngine.shuffle(
-          peers.filter((c) => c.ps !== w.ps && c[field].trim().toLocaleLowerCase("en") !== w[field].trim().toLocaleLowerCase("en")),
-          random,
-        ).map((c) => c[field]),
-      ),
-    ].filter((value) => {
-      const key = value.trim().toLocaleLowerCase("en");
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    }).slice(0, 3);
-    while (choices.length < 3)
-      choices.push(
-        ["A different meaning", "Another response", "None of these"][
-          choices.length
-        ],
-      );
+    const peers = w.type === "sentence" ? available(day) : Object.values(content.wordById).filter(c =>
+      !["sentence", "profile"].includes(c.type) && (c.type !== "greeting" || w.type === "greeting") && !isUnstudied(c.id) &&
+      (content.LIBRARY_DATA.phrases.some(p => p.id === c.id) || (content.LIBRARY_DATA.sourceMappings[c.id] || []).length) &&
+      LibraryEngine.cardAllowed(content.LIBRARY_DATA, c.id, day));
+    // Backup choices are display-only base forms, never an acquisition transaction.
+    const backup = w.type === "sentence" ? [] : content.LIBRARY_DATA.entries
+      .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
+      .map(e => content.wordById["library-card:" + e.lemmaId]);
+    const meanings = new Set(QuestionEngine.meaningKeys(w));
+    const forms = new Set([QuestionEngine.normalizeAnswer(w.ps)]);
+    const labels = new Set([w[field].normalize("NFC").trim().toLocaleLowerCase("en")]);
+    const choices = [];
+    for (const group of [peers, backup]) for (const c of QuestionEngine.shuffle(group, random)) {
+      if (choices.length === 3) break;
+      const keys = QuestionEngine.meaningKeys(c), ps = QuestionEngine.normalizeAnswer(c.ps);
+      const label = c[field].normalize("NFC").trim().toLocaleLowerCase("en");
+      if (forms.has(ps) || labels.has(label) || keys.some(k => meanings.has(k))) continue;
+      // Check the evaluator too: no accepted answer can become a distractor.
+      if (QuestionEngine.evaluate({kind:w.type === "sentence" ? "sentence" : "word", direction}, w, c[field])) continue;
+      choices.push(c[field]);labels.add(label);forms.add(ps);keys.forEach(k => meanings.add(k));
+    }
+    while (choices.length < 3) choices.push(["A different meaning", "Another response", "None of these"][choices.length]);
     // An unseen target uses uncued recall, not a visible translation option.
     const target = uncued ? [] : [w[field]];
     return QuestionEngine.shuffle([...target, ...choices], random);
@@ -124,6 +117,7 @@ function createQuestions({ state, content, progression }) {
       correct: c.correct, options: [c.correct, ...c.misconceptions],
       grammarDays: guided ? [] : [c.day], grammarConcept: c.id,
       reference: guided ? c.reference : null,
+      explanation: c.reference,
       adaptation: guided
         ? "Guided English rule application; the reference is shown here. No workshop or future grammar is unlocked."
         : "English application of a previously visited grammar workshop; no fixed Pashto sentence fallback.",
@@ -239,11 +233,12 @@ function createQuestions({ state, content, progression }) {
             kind: "address",
             recipient,
             scope,
+            registerSpecified: true,
             correct: scope === "familiar" ? familiar.pashto : polite.pashto,
             comment:
               "Address " +
               recipient +
-              ". Choose the pronoun appropriate to this listener.",
+              (scope === "group" ? ". Address both listeners as plural you." : scope === "familiar" ? ". Use explicitly informal singular address." : ". Use explicitly respectful singular address."),
             addressOptions: [
               [familiar.pashto + " · familiar singular", familiar.pashto],
               [polite.pashto + " · respectful or plural", polite.pashto],
@@ -324,7 +319,7 @@ function createQuestions({ state, content, progression }) {
       }
       q.speaker ||= content.teacherFor(day, null, "challenge").name;
       q.recipient ||= "Player";
-      q.comment = blueprint.scenario;
+      q.comment ||= blueprint.scenario;
       q.requestedKind = wanted;
       if (q.kind === "word") {
         q.unstudied = isUnstudied(q.id);
@@ -337,7 +332,7 @@ function createQuestions({ state, content, progression }) {
       else if (["construct", "dialogue"].includes(q.kind)) {
         const answer = q.answerPs || content.wordById[q.id].ps;
         const tokens = new Set(
-          QuestionEngine.normalizePashtoResponse(answer).split(" "),
+          QuestionEngine.normalizeAnswer(QuestionEngine.normalizePashtoResponse(answer)).split(" "),
         );
         const studiedTokens = content.LIBRARY_DATA.entries.flatMap((e) =>
           e.forms
@@ -351,8 +346,8 @@ function createQuestions({ state, content, progression }) {
             .map((f) => f.pashto),
         );
         for (const accepted of q.acceptedPs || [])
-          for (const token of QuestionEngine.normalizePashtoResponse(accepted).split(" ")) tokens.add(token);
-        const duds = QuestionEngine.shuffle([...new Set(studiedTokens)].filter(t => !tokens.has(t)), random).slice(0, 2);
+          for (const token of QuestionEngine.normalizePashtoResponse(accepted).split(" ")) tokens.add(QuestionEngine.normalizeAnswer(token));
+        const duds = QuestionEngine.shuffle([...new Set(studiedTokens)].filter(t => !tokens.has(QuestionEngine.normalizeAnswer(t))), random).slice(0, 2);
         if (duds.length === 2) q.duds = duds;
         q.tileSequence = QuestionEngine.shuffle(
           QuestionEngine.buildTiles(content.wordById[q.id], q, day).map(
@@ -403,6 +398,7 @@ function createQuestions({ state, content, progression }) {
   }
   return {
     selectChallenge,
+    explanation: (q, w) => QuestionEngine.explanation({...q, explanation:q.explanation || content.LIBRARY_DATA.grammarAssessment.concepts.find(c => c.id === q.grammarConcept)?.reference}, w),
     distractors: (w) => answerChoices(w, "ps-en"),
     buildTiles: (w, q = state.session?.questions?.[state.session.index]) =>
       QuestionEngine.buildTiles(w, q, state.session?.loop),

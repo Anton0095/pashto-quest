@@ -58,7 +58,7 @@ const QuestionEngine = (() => {
   function isDialogueAnswerCorrect(q, value) {
     const valid = [q.answerPs, ...(q.acceptedPs || [])];
     return valid.some(
-      (v) => normalizePashtoResponse(v) === normalizePashtoResponse(value),
+      (v) => normalizeAnswer(normalizePashtoResponse(v)) === normalizeAnswer(normalizePashtoResponse(value)),
     );
   }
   function buildTiles(w, q, day) {
@@ -78,17 +78,53 @@ const QuestionEngine = (() => {
     }
     return a;
   }
+  const englishKey = value => String(value || "").normalize("NFC").trim().toLocaleLowerCase("en").replace(/\s+/g, " ").replace(/[.!?]+$/, "");
+  function englishAnswers(card) {
+    // Slash-separated listed senses and explicit form-specific alternatives only.
+    return [...new Set([card?.en, ...(card?.acceptedEnglishAnswers || [])].filter(Boolean).flatMap(v => {
+      if (!/^(?:to )?[a-z]+\s*\/\s*[a-z]+$/i.test(v)) return [v];
+      const parts = v.split(/\s*\/\s*/);
+      if (!/^to /i.test(v)) return [v, ...parts];
+      const verbs = parts.map(p => p.replace(/^to /i, ""));
+      return [v, ...verbs, ...verbs.map(p => "To " + p)];
+    }))];
+  }
+  function meaningKeys(card) {
+    // Conservative exclusions do not add accepted synonyms or inflect words.
+    return englishAnswers(card).map(v => englishKey(v).replace(/^to /, ""));
+  }
+  function legacyAgreement(q) {
+    const cases = {
+      "feminine-description": ["The described noun is feminine singular. Which pair agrees?", "Masculine singular adjective + feminine singular equative"],
+      "masculine-description": ["The described noun is masculine singular. Which pair agrees?", "Feminine singular adjective + masculine singular equative"],
+      "plural-description": ["The described noun is plural. What number must its agreeing forms have?", "Singular adjective and plural equative"],
+    };
+    const old = cases[q.grammarConcept];
+    if (!old || !q.prompt?.endsWith(old[0])) return null;
+    return old[1];
+  }
+  const legacyAddress = q => q.kind === "address" && ["familiar", "respectful"].includes(q.scope) && !q.registerSpecified;
+  function explanation(q, card) {
+    if (legacyAddress(q)) return "This saved prompt did not explicitly specify the address register for its singular listener. Either listed familiar or respectful form is accepted. Earlier scores and rewards are unchanged.";
+    if (legacyAgreement(q)) return "This saved question did not specify an adjective with distinct inflections. An invariant adjective can share a surface form across genders/numbers. Either adjective label with the required equative is accepted here. Previously recorded scores and rewards are unchanged.";
+    if (q.explanation || q.reference) return q.explanation || q.reference;
+    if (q.kind === "address") return "Choose the pronoun for the stated listener count and the explicitly requested familiar or respectful register.";
+    if (q.kind === "word") return `For this exact form, the listed meaning is ${card.en}. Listed senses and explicit accepted alternatives are equivalent answers; another word's meaning is not.`;
+    if (q.kind === "dialogue") return "The reply must preserve the question's referent and requested information, using the studied forms and their agreement.";
+    return "Use the same referents and meaning, with the studied word order and matching noun, adjective, equative or verb features.";
+  }
   function evaluate(q, card, value) {
     if (q.kind === "dialogue") return isDialogueAnswerCorrect(q, value);
+    if (legacyAddress(q)) return q.addressOptions.some(a => normalizeAnswer(value) === normalizeAnswer(a[1]));
     if (q.kind === "address" || q.kind === "choice")
-      return normalizeAnswer(value) === normalizeAnswer(q.correct);
+      return [q.correct, legacyAgreement(q)].filter(Boolean).some(v => normalizeAnswer(value) === normalizeAnswer(v));
     if (q.kind === "construct")
       return normalizeAnswer(value) === normalizeAnswer(card.ps);
     if (q.kind === "word" && q.direction !== "en-ps") {
-      const english = text => String(text).normalize("NFC").trim().toLocaleLowerCase("en");
-      return [card.en, ...(card.acceptedEnglishAnswers || [])].some(answer => english(answer) === english(value));
+      return englishAnswers(card).some(answer => englishKey(answer) === englishKey(value));
     }
-    return value === (q.direction === "en-ps" ? card.ps : card.en);
+    if (q.direction === "en-ps") return normalizeAnswer(value) === normalizeAnswer(card.ps);
+    return englishAnswers(card).some(answer => englishKey(answer) === englishKey(value));
   }
   function randomFor(seed) {
     return () => {
@@ -97,6 +133,10 @@ const QuestionEngine = (() => {
     };
   }
   return {
+    englishAnswers,
+    meaningKeys,
+    explanation,
+    legacyAgreement,
     normalizeAnswer,
     normalizePashtoResponse,
     getAnswerTiles,

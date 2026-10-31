@@ -543,21 +543,21 @@ function createChallengeUI({
       expected.textContent = q.answerPs;
       const gloss = document.createElement("div");
       gloss.textContent = q.answerEnglish || "";
-      f.append(heading, expected, gloss);
+      f.append(heading, expected, gloss, ui.node("p", questions.explanation(q, w)));
       ui.$("quizNext").disabled = false;
       return;
     }
     if (q.kind === "choice") {
-      ui.showAnswerFeedback(ui.$("choices"), q.correct, value);
+      ui.showAnswerFeedback(ui.$("choices"), q.correct, value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
       ui.$("quizFeedback").textContent =
         (correct ? "✓ Correct. " : "✗ Review this response: ") +
-        q.correct +
+        q.correct + ". " + questions.explanation(q, w) +
         (gain ? ` · +${gain} XP` : "");
       ui.$("quizNext").disabled = false;
       return;
     }
     if (q.kind === "address") {
-      ui.showAnswerFeedback(ui.$("choices"), q.correct, value);
+      ui.showAnswerFeedback(ui.$("choices"), q.correct, value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
       ui.$("quizFeedback").replaceChildren();
       const line = document.createElement("strong");
       line.className = correct ? "good" : "bad";
@@ -566,12 +566,12 @@ function createChallengeUI({
         : "✗ Use a different form for this listener.";
       const info = document.createElement("div");
       info.textContent = `${q.correct} — ${q.scope === "group" ? "plural you for more than one listener" : q.scope === "familiar" ? "informal singular for a familiar friend" : "respectful singular for an elder, teacher or adult"}.`;
-      ui.$("quizFeedback").append(line, info);
+      ui.$("quizFeedback").append(line, info, ui.node("p", questions.explanation(q, w)));
       ui.$("quizNext").disabled = false;
       return;
     }
     if (q.kind !== "construct")
-      ui.showAnswerFeedback(ui.$("choices"), q.direction === "ps-en" ? w.en : w.ps, value);
+      ui.showAnswerFeedback(ui.$("choices"), q.direction === "ps-en" ? w.en : w.ps, value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
     else {
       renderBuiltSentence();
       ui.$("builtSentence").classList.add(
@@ -591,7 +591,7 @@ function createChallengeUI({
           ? `✓ Correct! ${gain ? `+${gain} XP` : "Well remembered!"}`
           : "✗ Not quite — this word is now due for review";
     const detail = document.createElement("div");
-    detail.textContent = `${w.ps} (${w.roman}) — ${w.en}`;
+    detail.textContent = `${w.ps} (${w.roman}) — ${w.en}. ${questions.explanation(q, w)}`;
     feedback.append(headline, detail);
     if (w.generated)
       ui.sentenceContext(w, q.speaker || content.teacherFor(state.session.loop, null, "challenge").name, ui.$("quizPanel"), "study", q);
@@ -666,14 +666,14 @@ function createChallengeUI({
       renderBuiltSentence();
       ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
     } else if (!q.unstudied) {
-      ui.showAnswerFeedback(ui.$("choices"), q.correct || (q.direction === "en-ps" ? w?.ps : w?.en), value);
+      ui.showAnswerFeedback(ui.$("choices"), q.correct || (q.direction === "en-ps" ? w?.ps : w?.en), value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
     }
     ui.$("quizFeedback").textContent =
       "Recorded response: " +
       (q.answerPs ||
         q.correct ||
         (w ? w.ps + (q.kind === "word" ? " — " + w.en : "") : "")) +
-      ". Your first submitted answer is already recorded.";
+      ". Your first submitted answer is already recorded. " + questions.explanation(q, w);
     ui.$("quizNext").disabled = false;
   }
   function resumeChallenge() {

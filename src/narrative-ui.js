@@ -23,10 +23,10 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
       const button = ui.button(option, () => {
           if (answered) return;
           answered = true;
-          ui.showAnswerFeedback(box, phrase.english, option);
+          ui.showAnswerFeedback(box, phrase.english, option, {accepts:v => QuestionEngine.evaluate({kind:"word", direction:"ps-en"}, content.wordById[phrase.id], v)});
           const correct = QuestionEngine.evaluate(
             { kind: "word", direction: "ps-en" },
-            { en: phrase.english },
+            content.wordById[phrase.id],
             option,
           );
           LibraryEngine.practise(
@@ -48,7 +48,7 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
               "p",
               correct
                 ? "Correct. Recognition recorded; no XP awarded."
-                : "Meaning: " + phrase.english,
+                : "Meaning: " + phrase.english + ". " + QuestionEngine.explanation({kind:"word"}, content.wordById[phrase.id]),
               "notice",
             ),
           );

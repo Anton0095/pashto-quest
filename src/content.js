@@ -88,7 +88,7 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       ps: form.pashto,
       roman: form.romanisation || "Romanisation pending native review",
       en: entry.englishSenses[0],
-      acceptedEnglishAnswers: form.acceptedEnglishAnswers || [],
+      acceptedEnglishAnswers: [...new Set([...(form.acceptedEnglishAnswers || []), form.englishGloss])],
       note: entry.userVerified ? "Base content user-approved; grammar/forms remain provisional; no independent native certification." : "Provisional vocabulary; native review pending.",
     };
     LIBRARY_DATA.cardDays[id] = entry.introduction.day;
@@ -109,7 +109,10 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
         ps: form.pashto,
         roman: form.romanisation || "Romanisation pending native review",
         en: form.englishGloss,
-        acceptedEnglishAnswers: form.acceptedEnglishAnswers || [],
+        // Share the reviewed primary base sense only with this exact base form.
+        // Do not copy aggregate plural/other-form senses onto inflections.
+        acceptedEnglishAnswers: [...new Set([...(form.acceptedEnglishAnswers || []),
+          ...(form === entry.forms[0] && form.pashto === entry.displayLemmaPs ? [entry.englishSenses[0]] : [])])],
         note: "Attested form · native review pending.",
       };
       LIBRARY_DATA.cardDays[id] = form.firstAllowedDay;
