@@ -5,8 +5,6 @@ function createAssessmentContent({ content, progression }) {
     const kinds = Array.from({ length: count }, (_, i) =>
       i < 5 ? "word" : ["construct", "dialogue", "sentence"][(i - 5) % 3],
     );
-    if ([5, 6, 7, 14].includes(day))
-      for (const i of [5, 8]) kinds[i] = "address";
     return {
       count,
       kinds,

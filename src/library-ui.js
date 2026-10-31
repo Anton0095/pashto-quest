@@ -36,46 +36,43 @@ function createLibraryUI({
         ui.node("h3", "Grammar Journal"),
         ui.node(
           "p",
-          "Rules unlock when their lesson workshop is shown, after word/form study. Challenges do not unlock grammar. Examples also require individually studied forms. Native Laghman review is pending.",
+          "All explanations and worked analyses are readable reference. Reading here does not complete lessons or unlock generation. Pashto examples require separately studied forms and lesson grammar. Native Laghman review is pending.",
         ),
       );
+      if (state.progress.retiredRuleAssessmentJSON) root.append(
+        ui.node("p", "An earlier rule-analysis assessment was explicitly retired. Its original snapshot remains available for export."),
+        ui.button("Export retired assessment archive", () => {
+          const url=URL.createObjectURL(new Blob([state.progress.retiredRuleAssessmentJSON],{type:"application/json"}));
+          const a=document.createElement("a");a.href=url;a.download="pashto-retired-assessment.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+        }));
+      const examples = learning.availableSentences(state.day);
       for (const rule of content.curriculum.days) {
         const grammarId = "grammar-day-" + rule.day;
         const unlocked = state.progress.library.grammar[grammarId],
           detail = ui.node("details");
         const heading = ui.node(
           "summary",
-          `Day ${rule.day}: ${rule.topic}${unlocked ? "" : " · Locked"}`,
+          `Day ${rule.day}: ${rule.topic}${unlocked ? " · Unlocked for generation" : " · Not yet unlocked for generation"}`,
         );
         detail.append(heading);
-        if (unlocked) {
-          detail.append(...rule.grammar.map((text) => ui.node("p", text)));
-          const ex = learning
-            .availableSentences(state.day)
-            .find((c) => c.generated.requiredGrammarIds.includes(grammarId));
-          if (ex) {
-            content.registerGenerated(ex);
-            learning.surface(ex.id, "grammar-reference");
-            const ps = ui.node("p", ex.ps, "library-pashto");
-            ps.lang = "ps";
-            ps.dir = "rtl";
-            detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
-            ui.sentenceContext(ex, "", detail, "reference");
-          } else
-            detail.append(
-              ui.node(
-                "p",
-                "Study compatible forms before an example can be generated.",
-              ),
-            );
-        } else {
-          detail.append(
-            ui.node(
-              "p",
-              "Visit this grammar workshop in a lesson to read its generated examples.",
-            ),
-          );
+        detail.append(...rule.grammar.map(text => ui.node("p", text)));
+        for (const concept of content.LIBRARY_DATA.grammarReference.concepts.filter(c => c.day === rule.day)) {
+          const worked = ui.node("article", undefined, "grammar-worked-example");
+          worked.dataset.grammarConcept = concept.id;
+          worked.append(ui.node("h4", concept.id.replaceAll("-", " ")),
+            ui.node("p", concept.explanation),
+            ui.node("p", "Worked situation: " + concept.workedExample.scenario),
+            ui.node("p", "Worked analysis: " + concept.workedExample.analysis));
+          detail.append(worked);
         }
+        const ex = examples.find(c => c.generated.requiredGrammarIds.includes(grammarId));
+        if (ex) {
+          content.registerGenerated(ex);
+          learning.surface(ex.id, "grammar-reference");
+          const ps = ui.node("p", ex.ps, "library-pashto");ps.lang="ps";ps.dir="rtl";
+          detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
+          ui.sentenceContext(ex, "", detail, "reference");
+        } else detail.append(ui.node("p", "A Pashto example becomes available after compatible form study and lesson grammar unlocks."));
         root.append(detail);
       }
       return;

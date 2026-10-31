@@ -180,7 +180,7 @@ for (const width of [375, 1280]) {
     const grammarCount = assessment.questions.filter(
       (q) => q.kind === "choice",
     ).length;
-    assert(assessment.caption.includes(`${grammarCount} English grammar`));
+    assert.equal(grammarCount,0);assert(!assessment.caption.includes("English grammar"));
     assert(
       !/5 pronouns|5 verb forms|5 SOV|5 compounds|5 dialogues/.test(
         assessment.caption,

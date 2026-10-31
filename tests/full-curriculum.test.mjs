@@ -215,11 +215,8 @@ try {
                 if (q.unstudied && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === card.en))
                   throw Error("Unstudied target meaning offered as a clue");
               }
-              if (q.kind === "choice" && q.grammarConcept) {
-                if (!q.grammarDays.every((day) => t.state.progress.library.grammar["grammar-day-" + day]))
-                  throw Error("Grammar assessment required an unvisited workshop");
-                if (q.reference && !q.prompt.includes(q.reference)) throw Error("Missing guided grammar reference");
-              }
+              if (["choice", "address"].includes(q.kind) || q.grammarConcept)
+                throw Error("Retired grammar-rule question generated in a practical assessment");
               if (q.kind === "word" && q.unstudied) {
                 if (
                   q.direction !== "ps-en" ||

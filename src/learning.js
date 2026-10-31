@@ -323,6 +323,7 @@ function createLearning({ state, content, progression }) {
     if (s?.mode !== "challenge" || s.locked || s.finished) return null;
     const q = s.questions[s.index],
       w = content.wordById[q.id];
+    if (["choice", "address"].includes(q.kind) || q.grammarConcept) return null;
     const correct = QuestionEngine.evaluate(q, w, value);
     libraryPractice(
       q.id,
@@ -338,9 +339,7 @@ function createLearning({ state, content, progression }) {
     const key =
       q.kind === "dialogue"
         ? `week2-dialogue:${s.loop}:${q.id}`
-        : q.kind === "choice"
-          ? `${s.loop}:choice:${q.id}`
-          : `${s.loop}:${q.kind}:${q.direction}:${q.id}`;
+        : `${s.loop}:${q.kind}:${q.direction}:${q.id}`;
     const gain =
       correct && q.kind !== "address" && !expression
         ? progression.awardXP(state.progress, key, 5)

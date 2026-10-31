@@ -71,6 +71,7 @@
     onLessonStart: () => challenge.showChallengeScene(0),
   });
   const challenge = createChallengeUI({
+    onWorld: () => world.startWorld(),
     state,
     content,
     progression,

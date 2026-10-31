@@ -94,6 +94,7 @@ function createSaveValidator({ content, progression }) {
       ].every((key) => object(p.library[key]))
     )
       return false;
+    if (p.retiredRuleAssessmentJSON !== undefined && typeof p.retiredRuleAssessmentJSON !== "string") return false;
     if (!content.restoreGenerated(p)) return false;
     const questionValid = (q, day) => {
       if (!object(q) || typeof q.id!=="string" || !["word","sentence","construct","dialogue","choice","address"].includes(q.kind)) return false;

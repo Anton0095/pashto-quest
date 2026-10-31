@@ -31,7 +31,7 @@ for(const width of [375,1280]){
   assert.deepEqual(libraryResult,{graded:2,xp:0,sequence:2,locked:true});
   await p.locator('#libraryClose').click();
   await p.evaluate(()=>__test.library.openLibrary('grammar'));
-  assert((await p.locator('#libraryDialog').innerText()).includes('Challenges do not unlock grammar'));
+  assert((await p.locator('#libraryDialog').innerText()).includes('Reading here does not complete lessons or unlock generation'));
   await p.screenshot({path:`docs/maintenance/audit/grammar-journal-${width}.png`,fullPage:true});
   await p.locator('#libraryClose').click();
   for(const right of [true,false]){

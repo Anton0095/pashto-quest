@@ -1,5 +1,5 @@
 /* Every assessment proposition and Pashto reply is compiled from actual unlocks.
- * Deficits adapt to vocabulary/English grammar tasks, never authored sentence targets. */
+ * Deficits adapt to vocabulary/approved phrase practice, never authored sentence targets. */
 function createQuestions({ state, content, progression }) {
   const clone = (x) => JSON.parse(JSON.stringify(x));
   function isUnstudied(id) {
@@ -54,6 +54,9 @@ function createQuestions({ state, content, progression }) {
     const target = uncued ? [] : [w[field]];
     return QuestionEngine.shuffle([...target, ...choices], random);
   }
+  // Terminology-heavy editorial glosses are reference/study material, not
+  // practical recall answers. Their licensed forms remain usable in clauses.
+  const practicalMeaning = id => !/\b(?:first|second|third)[ -]person\b|\b(?:masculine|feminine|singular|plural)\b/i.test(content.wordById[id]?.en || "");
   function lexicalPool(day, random) {
     const plan = state.progress.library.plans[day],
       first = [],
@@ -97,31 +100,7 @@ function createQuestions({ state, content, progression }) {
         ...review,
         ...phrases,
       ]),
-    ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day));
-  }
-  function grammarQuestion(day, index) {
-    const bank = content.LIBRARY_DATA.grammarAssessment.concepts;
-    const taught = bank.filter((c) => c.day <= day &&
-      state.progress.library.grammar["grammar-day-" + c.day]);
-    // A skipped workshop grants no grammar. A visible Day-1 reference supports
-    // guided discrimination instead of claiming unaided recall of untaught rules.
-    const guided = !taught.length;
-    const concepts = guided ? bank.filter((c) => c.day === 1) : taught;
-    const offset = state.progress.library.plans[day].seed % concepts.length;
-    const c = concepts[(index + offset) % concepts.length];
-    const contexts = ["Check a learner’s analysis", "Choose the matching grammatical roles", "Resolve the agreement or role choice"];
-    return {
-      id: `grammar:${day}:${index}`,
-      kind: "choice", direction: "en-ps", section: guided ? "guided grammar" : "grammar recall",
-      prompt: `${guided ? "Reference: " + c.reference + "\n\n" : ""}${contexts[Math.floor(index / concepts.length) % contexts.length]}. ${c.case}`,
-      correct: c.correct, options: [c.correct, ...c.misconceptions],
-      grammarDays: guided ? [] : [c.day], grammarConcept: c.id,
-      reference: guided ? c.reference : null,
-      explanation: c.reference,
-      adaptation: guided
-        ? "Guided English rule application; the reference is shown here. No workshop or future grammar is unlocked."
-        : "English application of a previously visited grammar workshop; no fixed Pashto sentence fallback.",
-    };
+    ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id));
   }
   function selectChallenge(day, { newAttempt = false } = {}) {
     const plan = LibraryEngine.ensurePlan(
@@ -178,8 +157,15 @@ function createQuestions({ state, content, progression }) {
       content.LIBRARY_DATA,
       plan.seed + day,
     );
-    const lexical = lexicalPool(day, random),
-      used = new Set(),
+    const lexical = lexicalPool(day, random);
+    const studiedForms = content.LIBRARY_DATA.entries.flatMap(e => e.forms
+      .filter(f => state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId))
+      .map(f => "library-form:" + f.formId));
+    const practical = [...new Set([...studiedForms, ...lexical,
+      ...content.LIBRARY_DATA.phrases.filter(p => p.active && p.day <= day).map(p => p.id)])]
+      .filter(id => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id));
+    if (!practical.length) throw Error("No approved practical assessment material available");
+    const used = new Set(),
       out = [],
       usedDialogueFamilies = new Set();
     const opening = content.NARRATIVE_DATA.expressions.find(
@@ -208,44 +194,7 @@ function createQuestions({ state, content, progression }) {
           direction: "ps-en",
           vocabularyOrigin: "curriculum",
         };
-      else if (wanted === "address") {
-        const familiar =
-            content.libraryEntries["lemma:universal:pronouns-1"]?.forms[0],
-          polite = content.libraryEntries["lemma:w6-you-all"]?.forms[0];
-        if (
-          familiar &&
-          polite &&
-          state.progress.library.acquired[
-            "lemma:universal:pronouns-1"
-          ]?.introducedFormIds.includes(familiar.formId) &&
-          state.progress.library.acquired[
-            "lemma:w6-you-all"
-          ]?.introducedFormIds.includes(polite.formId)
-        ) {
-          const scopes = [
-              ["Saleha", "familiar"],
-              ["Muhammad Jan", "respectful"],
-              [day >= 6 ? "Saleha and Mina" : "Saleha and Edris", "group"],
-            ],
-            [recipient, scope] = scopes[i % scopes.length];
-          q = {
-            id: "address:" + day + ":" + i,
-            kind: "address",
-            recipient,
-            scope,
-            registerSpecified: true,
-            correct: scope === "familiar" ? familiar.pashto : polite.pashto,
-            comment:
-              "Address " +
-              recipient +
-              (scope === "group" ? ". Address both listeners as plural you." : scope === "familiar" ? ". Use explicitly informal singular address." : ". Use explicitly respectful singular address."),
-            addressOptions: [
-              [familiar.pashto + " · familiar singular", familiar.pashto],
-              [polite.pashto + " · respectful or plural", polite.pashto],
-            ],
-          };
-        }
-      } else if (wanted === "dialogue") {
+      else if (wanted === "dialogue") {
         const usable = pairs.filter(
           (p) =>
             !used.has(p.answer.ps) && (!p.prompt || !used.has(p.prompt.ps)),
@@ -315,7 +264,9 @@ function createQuestions({ state, content, progression }) {
       }
       if (!q) {
         deficit++;
-        q = grammarQuestion(day, deficit - 1);
+        const id = practical[(deficit - 1) % practical.length];
+        q = {id, kind:"word", direction:"ps-en", vocabularyOrigin:"practical-review",
+          adaptation:"Not enough distinct studied sentences; practise vocabulary or approved phrases. A small pool may repeat without extra word introductions or repeated XP."};
       }
       q.speaker ||= content.teacherFor(day, null, "challenge").name;
       q.recipient ||= "Player";
@@ -325,11 +276,7 @@ function createQuestions({ state, content, progression }) {
         q.unstudied = isUnstudied(q.id);
         if (q.unstudied) q.direction = "ps-en";
       }
-      if (q.kind === "choice")
-        q.choiceOrder = QuestionEngine.shuffle(q.options, random);
-      else if (q.kind === "address")
-        q.choiceOrder = q.addressOptions.map((x) => x[1]);
-      else if (["construct", "dialogue"].includes(q.kind)) {
+      if (["construct", "dialogue"].includes(q.kind)) {
         const answer = q.answerPs || content.wordById[q.id].ps;
         const tokens = new Set(
           QuestionEngine.normalizeAnswer(QuestionEngine.normalizePashtoResponse(answer)).split(" "),
@@ -376,8 +323,9 @@ function createQuestions({ state, content, progression }) {
       requestedSentences: blueprint.kinds.filter((k) => k !== "word").length,
       generatedSentences: out.filter((q) => q.generated).length,
       adaptedTasks: deficit,
+      practicalPoolSize: practical.length,
       reason: deficit
-        ? "Not enough distinct licensed sentences from actually introduced forms and grammar; English grammar tasks preserve assessment length."
+        ? "Not enough distinct licensed sentences from actually introduced forms and grammar; Vocabulary/approved phrase practice preserves assessment length; a small eligible pool may repeat."
         : null,
     };
     return clone(out);
@@ -398,7 +346,7 @@ function createQuestions({ state, content, progression }) {
   }
   return {
     selectChallenge,
-    explanation: (q, w) => QuestionEngine.explanation({...q, explanation:q.explanation || content.LIBRARY_DATA.grammarAssessment.concepts.find(c => c.id === q.grammarConcept)?.reference}, w),
+    explanation: (q, w) => QuestionEngine.explanation(q, w),
     distractors: (w) => answerChoices(w, "ps-en"),
     buildTiles: (w, q = state.session?.questions?.[state.session.index]) =>
       QuestionEngine.buildTiles(w, q, state.session?.loop),

@@ -70,11 +70,10 @@ for(const width of [375,1280]) {
   await p.evaluate(async()=>{
    Storage.prototype.setItem=()=>{throw Error('Intermittent')};__test.state.progress.xp+=9;await __test.storage.save();
   });await p.reload();assert.equal(await p.evaluate(()=>__test.state.progress.xp),xp+7);
-  // No workshops: visible reference, not an automatic grammar unlock.
-  await p.evaluate(()=>{const t=__test;t.reset(0);t.state.progress.tutorialDone=true;t.challenge.startChallenge(1);const s=t.state.session;s.index=s.questions.findIndex(q=>q.kind==='choice');s.answered=s.index;t.challenge.showChallengeQuestion()});
-  assert((await p.locator('#quizPrompt').innerText()).startsWith('Reference:'));
+  // Practical challenges never require grammar terminology or unlock workshops.
+  await p.evaluate(()=>{const t=__test;t.reset(0);t.state.progress.tutorialDone=true;t.challenge.startChallenge(1);if(t.state.session.questions.some(q=>['choice','address'].includes(q.kind)))throw Error('Retired rule question generated')});
   await answerCurrent(p);assert.deepEqual(await p.evaluate(()=>__test.state.progress.library.grammar),{});
-  const frozenPrompt=await p.locator('#quizPrompt').innerText();await p.reload();assert.equal(await p.locator('#quizPrompt').innerText(),frozenPrompt);
+  const frozenPrompt=await p.locator('#quizPrompt').innerText();await p.evaluate(()=>__test.storage.settled());await p.reload();assert.equal(await p.locator('#quizPrompt').innerText(),frozenPrompt);
   // Fill real Chromium localStorage to its native quota, then recover.
   const nativeQuota=await p.evaluate(async()=>{
     let low=0,high=8*1024*1024,quotaErrors=0;

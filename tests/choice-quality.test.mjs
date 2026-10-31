@@ -28,8 +28,8 @@ assert(t.Q.evaluate({kind:'word',direction:'ps-en'},card('v-buy'),'To take'));
 assert(!t.Q.evaluate({kind:'word',direction:'ps-en'},{en:'He/she reads'},'He'));
 assert(!t.Q.evaluate({kind:'word',direction:'ps-en'},{en:'To live / reside — first person'},'reside — first person'));
 const address={kind:'address',scope:'familiar',correct:'ته',addressOptions:[['familiar','ته'],['respectful','تاسې']]};
-assert(t.Q.evaluate(address,null,'تاسې'));assert(!t.Q.evaluate({...address,registerSpecified:true},null,'تاسې'));
-assert(t.Q.evaluate({...address,scope:'group',correct:'تاسې'},null,'تاسې'));assert(!t.Q.evaluate({...address,scope:'group',correct:'تاسې'},null,'ته'));
+assert(!t.Q.evaluate(address,null,'تاسې'));assert(!t.Q.evaluate({...address,registerSpecified:true},null,'تاسې'));
+assert(!t.Q.evaluate({...address,scope:'group',correct:'تاسې'},null,'تاسې'));assert(!t.Q.evaluate({...address,scope:'group',correct:'تاسې'},null,'ته'));
 assert(t.Q.evaluate({kind:'word',direction:'en-ps'},{ps:'تاسې'},'تاسو'));
 assert(!t.Q.evaluate({kind:'word',direction:'en-ps'},{ps:'تاسې'},'ته'));
 assert(t.Q.evaluate({kind:'dialogue',answerPs:'تاسې کتاب لولئ.'},null,'تاسو کتاب لولئ.'));
@@ -49,24 +49,18 @@ for(const w of Object.values(t.content.wordById).filter(w=>!['sentence','profile
  assert.equal(values.filter(v=>t.Q.evaluate({kind:'word',direction:'ps-en'},w,v)).length,1,w.id);
 }
 assert.deepEqual(plain(t.state.progress),acquisition);
-// All new grammar concepts have four distinct, single-correct options and
-// a stated teaching rule. Inspect the inflection condition independently.
-const concepts=new Set();
-for(let day=1;day<=14;day++)for(let seed=1;seed<=33;seed++) {
- reset(t,0);t.state.progress.library.seed=seed;for(let n=1;n<=day;n++)t.E.unlock(t.state.progress,n,'visible-test');
- for(const q of t.questions.selectChallenge(day).filter(q=>q.kind==='choice')) {
-  concepts.add(q.grammarConcept);assert.equal(new Set(q.choiceOrder).size,4);assert.equal(q.choiceOrder.filter(v=>t.Q.evaluate(q,null,v)).length,1);assert(q.explanation);
-  if(['feminine-description','masculine-description','plural-description'].includes(q.grammarConcept))assert(q.prompt.includes('distinct'));
- }
-}
-assert.equal(concepts.size,33);
+// Grammar explanations now belong to the read-only Journal, never new exams.
+assert.equal(d.grammarReference.concepts.length,33);assert(!d.grammarAssessment);
+for(const c of d.grammarReference.concepts){assert(c.explanation&&c.workedExample.scenario&&c.workedExample.analysis);assert(!c.options&&!c.correct);}
 // Freeze an old ambiguous item and prove no choice regeneration, reset or
-// retrospective grading is needed. First future submission accepts both.
-reset(t,0);beginAttempt(t,1);const s=t.state.session,idx=s.questions.findIndex(q=>q.grammarConcept==='feminine-description');assert(idx>=0);
-const q=s.questions[idx];q.prompt='Choose the matching grammatical roles. The described noun is feminine singular. Which pair agrees?';delete q.explanation;
+// retrospective grading is needed. Retired questions are no longer gradable.
+reset(t,0);beginAttempt(t,1);const s=t.state.session,idx=0;
+const q=s.questions[idx]={id:'grammar:1:0',kind:'choice',direction:'en-ps',grammarConcept:'feminine-description',correct:'Feminine singular adjective + feminine singular equative',options:['Feminine singular adjective + feminine singular equative','Masculine singular adjective + feminine singular equative','Feminine singular adjective + plural equative','Masculine singular adjective + masculine singular equative'],grammarDays:[]};q.choiceOrder=[...q.options];q.prompt='Choose the matching grammatical roles. The described noun is feminine singular. Which pair agrees?';delete q.explanation;
 s.index=idx;s.answered=idx;const frozen=plain(s.questions),alternative=q.choiceOrder.find(v=>v==='Masculine singular adjective + feminine singular equative');assert(alternative);
-assert(t.Q.evaluate(q,null,alternative));assert.equal(q.choiceOrder.filter(v=>t.Q.evaluate(q,null,v)).length,2);
+assert(!t.Q.evaluate(q,null,alternative));assert.equal(q.choiceOrder.filter(v=>t.Q.evaluate(q,null,v)).length,0);
 t.storage.save();t.state.progress=t.storage.load();assert.equal(t.storage.problem,null);assert.deepEqual(plain(t.state.progress.activeChallenge.questions),frozen);
-const result=t.learning.submitChallenge(alternative);assert(result.correct);const locked=plain(t.state.progress),score=s.correctCount;assert.equal(t.learning.submitChallenge(alternative),null);assert.equal(s.correctCount,score);assert.deepEqual(plain(t.state.progress),locked);
-assert(t.Q.explanation(q,null).includes('Previously recorded scores'));
-console.log('PASS same-lesson/mixed-POS priority, real Day1 fallback, unchanged acquisition, accepted-sense/variant exclusions, 33 unambiguous grammar concepts, frozen legacy alternatives and scoring locks');
+const ungraded=plain(t.state.progress),score=s.correctCount;
+assert.equal(t.learning.submitChallenge(alternative),null,'retired rule items cannot be scored');
+assert.equal(s.correctCount,score);assert.deepEqual(plain(t.state.progress),ungraded);
+assert(t.Q.explanation(q,null).includes('retired'));
+console.log('PASS same-lesson/mixed-POS priority, real Day1 fallback, unchanged acquisition, accepted-sense/variant exclusions, 33 Journal reference concepts, frozen retired snapshots and blocked grading');

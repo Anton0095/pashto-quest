@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "policy": "Read-only Grammar Journal reference; never an assessment bank or grammar-unlock operation. Worked analyses are English reference material; Pashto examples are compiled from actual study and unlocks.",
+  "concepts": [
+    {
+      "id": "description-order",
+      "day": 1,
+      "explanation": "A description orders noun, adjective, then present equative.",
+      "workedExample": {
+        "scenario": "Use the neutral noun–predicate order taught here, without topicalisation or emphasis. Arrange noun, predicate adjective and present equative.",
+        "analysis": "Noun → adjective → equative"
+      }
+    },
+    {
+      "id": "feminine-description",
+      "day": 1,
+      "explanation": "For an adjective with distinct gender inflections, choose the noun’s gender/number form and the matching present equative. Invariant adjectives can share one surface form across genders; surface spelling alone does not establish disagreement.",
+      "workedExample": {
+        "scenario": "In a neutral present descriptive clause, the noun is feminine singular and the adjective has distinct masculine and feminine inflections. Which pair agrees?",
+        "analysis": "Feminine singular adjective + feminine singular equative"
+      }
+    },
+    {
+      "id": "masculine-description",
+      "day": 1,
+      "explanation": "For an adjective with distinct gender inflections, choose the noun’s gender/number form and the matching present equative. Invariant adjectives can share one surface form across genders; surface spelling alone does not establish disagreement.",
+      "workedExample": {
+        "scenario": "In a neutral present descriptive clause, the noun is masculine singular and the adjective has distinct masculine and feminine inflections. Which pair agrees?",
+        "analysis": "Masculine singular adjective + masculine singular equative"
+      }
+    },
+    {
+      "id": "plural-description",
+      "day": 1,
+      "explanation": "Use plural adjective agreement and a plural present equative for this plural noun. An invariant adjective may have the same spelling in singular and plural; that spelling alone is not an error.",
+      "workedExample": {
+        "scenario": "In a neutral present description, the noun is plural and the adjective has distinct singular and plural inflections. Which number features must adjective and equative have?",
+        "analysis": "Plural adjective and plural equative"
+      }
+    },
+    {
+      "id": "agreement-controller",
+      "day": 1,
+      "explanation": "The noun being described controls adjective and equative agreement.",
+      "workedExample": {
+        "scenario": "A female speaker describes a masculine singular noun. What controls agreement?",
+        "analysis": "The masculine singular noun"
+      }
+    },
+    {
+      "id": "two-agreements",
+      "day": 1,
+      "explanation": "Both the adjective form and the equative must match the noun.",
+      "workedExample": {
+        "scenario": "An adjective agrees with a feminine singular noun, but the equative is masculine singular. What needs changing?",
+        "analysis": "The equative only"
+      }
+    },
+    {
+      "id": "number-controller",
+      "day": 1,
+      "explanation": "Agreement follows the grammatical features of the noun, including inherent plurality.",
+      "workedExample": {
+        "scenario": "A noun denotes a single item but its studied form is grammatically plural. Which agreement applies?",
+        "analysis": "The noun’s grammatical plural agreement"
+      }
+    },
+    {
+      "id": "noun-before-adjective",
+      "day": 1,
+      "explanation": "A descriptive predicate follows its noun; noun-phrase adjective placement is a later construction.",
+      "workedExample": {
+        "scenario": "In the taught neutral noun–predicate description order, which role immediately precedes the predicate adjective?",
+        "analysis": "The noun being described"
+      }
+    },
+    {
+      "id": "sov-order",
+      "day": 2,
+      "explanation": "A present action clause normally orders subject, object, then the complete finite verb.",
+      "workedExample": {
+        "scenario": "Use the neutral unmarked SOV order taught here, without topicalisation or emphasis. A subject reads an object: arrange the roles.",
+        "analysis": "Subject → object → finite verb"
+      }
+    },
+    {
+      "id": "third-person",
+      "day": 2,
+      "explanation": "He, she and one named person are third-person singular subjects.",
+      "workedExample": {
+        "scenario": "One named person, who is neither speaker nor listener, performs a present action. Which subject-agreement features apply?",
+        "analysis": "Third person singular"
+      }
+    },
+    {
+      "id": "finite-last",
+      "day": 2,
+      "explanation": "The complete finite verb ends the normal present SOV action clause.",
+      "workedExample": {
+        "scenario": "Which role normally comes last in a present SOV clause?",
+        "analysis": "The complete finite verb"
+      }
+    },
+    {
+      "id": "speaker-i",
+      "day": 3,
+      "explanation": "First-person singular identifies the speaker as I and takes an evidenced first-person singular verb.",
+      "workedExample": {
+        "scenario": "Only the speaker performs the action. Choose the subject and verb features.",
+        "analysis": "First person singular + first person singular"
+      }
+    },
+    {
+      "id": "i-versus-he",
+      "day": 3,
+      "explanation": "Person agreement follows the subject. I is first person; he or she is third person.",
+      "workedExample": {
+        "scenario": "A subject changes from he to I. Which verb feature changes?",
+        "analysis": "Third person singular → first person singular"
+      }
+    },
+    {
+      "id": "familiar-you",
+      "day": 4,
+      "explanation": "One familiar friend is addressed with informal second-person singular and a matching finite verb.",
+      "workedExample": {
+        "scenario": "The speaker explicitly chooses informal singular address for one familiar friend. Choose the agreement.",
+        "analysis": "Second person singular"
+      }
+    },
+    {
+      "id": "clause-joining",
+      "day": 4,
+      "explanation": "Joining two clauses preserves the subject and finite verb agreement inside each clause.",
+      "workedExample": {
+        "scenario": "An I clause is joined to a familiar-you clause. What must the finite verbs do?",
+        "analysis": "Each agrees with its own subject"
+      }
+    },
+    {
+      "id": "respectful-you",
+      "day": 5,
+      "explanation": "An elder or teacher takes respectful second person; the form is also used for plural listeners.",
+      "workedExample": {
+        "scenario": "The speaker addresses one teacher respectfully. Which second-person form fits?",
+        "analysis": "Respectful/plural second person"
+      }
+    },
+    {
+      "id": "group-you",
+      "day": 5,
+      "explanation": "Addressing several listeners takes plural second person, distinct from speaker-inclusive we.",
+      "workedExample": {
+        "scenario": "The speaker addresses two listeners without including themself. Which person applies?",
+        "analysis": "Second person plural"
+      }
+    },
+    {
+      "id": "we",
+      "day": 6,
+      "explanation": "We is first-person plural and includes the speaker.",
+      "workedExample": {
+        "scenario": "The speaker describes an action by themself and a friend. Choose the subject.",
+        "analysis": "First person plural: we"
+      }
+    },
+    {
+      "id": "we-you",
+      "day": 6,
+      "explanation": "We includes the speaker; plural you addresses a group of listeners.",
+      "workedExample": {
+        "scenario": "A group changes from including the speaker to being addressed by the speaker. Which change fits?",
+        "analysis": "First person plural → second person plural"
+      }
+    },
+    {
+      "id": "they",
+      "day": 7,
+      "explanation": "They refers to an observed group outside the speaker and listener.",
+      "workedExample": {
+        "scenario": "A speaker describes several other people, including neither speaker nor listener. Which subject fits?",
+        "analysis": "Third person plural"
+      }
+    },
+    {
+      "id": "shared-form",
+      "day": 7,
+      "explanation": "A written present verb form may serve third-person singular and plural; its subject distinguishes number.",
+      "workedExample": {
+        "scenario": "The written verb looks identical for he and they. What can distinguish the number?",
+        "analysis": "The subject’s number"
+      }
+    },
+    {
+      "id": "attributive-order",
+      "day": 8,
+      "explanation": "Inside a noun phrase an adjective precedes its noun; a descriptive predicate follows the noun.",
+      "workedExample": {
+        "scenario": "Arrange the roles inside a noun phrase containing an adjective.",
+        "analysis": "Adjective → noun"
+      }
+    },
+    {
+      "id": "demonstrative-role",
+      "day": 8,
+      "explanation": "Demonstratives indicate near or far reference; the same spelling may separately function as a personal pronoun.",
+      "workedExample": {
+        "scenario": "A form points to a nearby object. Which function is being used?",
+        "analysis": "Near demonstrative"
+      }
+    },
+    {
+      "id": "plural-form",
+      "day": 9,
+      "explanation": "Each noun’s direct plural must be separately studied; plural agreement follows the noun’s actual gender and number.",
+      "workedExample": {
+        "scenario": "A noun changes to its studied direct plural. The predicate adjective has distinct singular/plural inflections. What must the description do?",
+        "analysis": "Use matching plural adjective and equative forms"
+      }
+    },
+    {
+      "id": "count-form",
+      "day": 9,
+      "explanation": "A count expression requires the evidenced numeral construction and the appropriate studied noun form.",
+      "workedExample": {
+        "scenario": "Which evidence licenses a count expression?",
+        "analysis": "An evidenced numeral construction with its required noun form"
+      }
+    },
+    {
+      "id": "where-response",
+      "day": 10,
+      "explanation": "A where question asks for a compatible location response.",
+      "workedExample": {
+        "scenario": "What kind of reply answers a where question?",
+        "analysis": "The referent’s location"
+      }
+    },
+    {
+      "id": "oblique-location",
+      "day": 10,
+      "explanation": "Spatial expressions may govern an oblique form; a direct noun form does not supply that form automatically.",
+      "workedExample": {
+        "scenario": "A spatial expression requires an oblique noun. Which stored form is needed?",
+        "analysis": "The studied oblique required by that expression"
+      }
+    },
+    {
+      "id": "possessed-agreement",
+      "day": 11,
+      "explanation": "The owned noun, rather than the owner, controls its description’s agreement.",
+      "workedExample": {
+        "scenario": "A masculine owner possesses a feminine singular noun. What controls the adjective and equative?",
+        "analysis": "The feminine singular owned noun"
+      }
+    },
+    {
+      "id": "owner-head",
+      "day": 11,
+      "explanation": "A possessive construction distinguishes the owner from the owned head.",
+      "workedExample": {
+        "scenario": "Which role identifies the thing being possessed?",
+        "analysis": "The owned head noun"
+      }
+    },
+    {
+      "id": "who-what",
+      "day": 12,
+      "explanation": "A person-identity question requires a reply identifying that same person. Do not substitute an unrelated object, place or quantity; question-word uses depend on context.",
+      "workedExample": {
+        "scenario": "A question asks for a person’s identity. Which reply type matches?",
+        "analysis": "The same person’s identity"
+      }
+    },
+    {
+      "id": "question-count",
+      "day": 12,
+      "explanation": "How many asks for a count of the same referent; where asks for location.",
+      "workedExample": {
+        "scenario": "A question asks how many of a named item there are. Choose the reply type.",
+        "analysis": "The count of that item"
+      }
+    },
+    {
+      "id": "adverb-meaning",
+      "day": 13,
+      "explanation": "Adverbs express compatible time, manner, frequency or joint action.",
+      "workedExample": {
+        "scenario": "An adverb answers how often an action happens. Which semantic type applies?",
+        "analysis": "Frequency"
+      }
+    },
+    {
+      "id": "adverb-agreement",
+      "day": 13,
+      "explanation": "Adding an adverb does not replace the finite verb’s agreement with its subject.",
+      "workedExample": {
+        "scenario": "An I clause gains a compatible frequency adverb. What happens to verb agreement?",
+        "analysis": "It stays first person singular"
+      }
+    }
+  ]
+}

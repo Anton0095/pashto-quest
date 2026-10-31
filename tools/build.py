@@ -171,13 +171,14 @@ def build():
     library['sourceMappings'] = {}
     library['cardTypes'] = {}
     library['curriculum'] = curriculum
-    library['grammarAssessment'] = json.loads(read('content/GRAMMAR_ASSESSMENT.json'))
-    for concept in library['grammarAssessment']['concepts']:
-        if (not 1 <= concept['day'] <= 13 or len(concept['misconceptions']) != 3
-                or len(set([concept['correct'], *concept['misconceptions']])) != 4
-                or any(re.search(r'[\u0600-\u06ff]', text) for text in
-                       [concept['reference'], concept['case'], concept['correct'], *concept['misconceptions']])):
-            raise ValueError('Invalid English grammar assessment concept: ' + concept['id'])
+    library['grammarReference'] = json.loads(read('content/GRAMMAR_REFERENCE.json'))
+    concept_ids = set()
+    for concept in library['grammarReference']['concepts']:
+        texts = [concept['explanation'], concept['workedExample']['scenario'], concept['workedExample']['analysis']]
+        if (concept['id'] in concept_ids or not 1 <= concept['day'] <= 13
+                or any(not isinstance(text, str) or not text.strip() or re.search(r'[\u0600-\u06ff]', text) for text in texts)):
+            raise ValueError('Invalid Grammar Journal reference: ' + concept['id'])
+        concept_ids.add(concept['id'])
     library.pop('grammar', None)
     library['phrases'] = json.loads(read('content/FIXED_PHRASES.json'))['phrases']
     fixed_sources = {p['id']: p['ps'] for p in archived1['words'] if p.get('type') == 'greeting'}

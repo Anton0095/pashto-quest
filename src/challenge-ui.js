@@ -8,6 +8,7 @@ function createChallengeUI({
   ui,
   audio,
   storage,
+  onWorld,
 }) {
   function showChallengeScene(day) {
     let panel = ui.$("challengeScene");
@@ -62,14 +63,47 @@ function createChallengeUI({
     const text = document.createElement("p");
     text.textContent =
       day === 6
-        ? "Saleha → Player: “Mina and I welcome you on our walk. When you join our group, say موږ — we.” Mina → Player: “Address Saleha and me as تاسې — you both.”"
+        ? "Saleha → Player: “Mina and I welcome you on our walk.” Mina → Player: “Tell us about the activities you remember, and respond when someone speaks to you.”"
         : "Ms Hameed → Player: “This examination checks your first seven days: descriptions, pronouns, verb forms, sentence order, compounds and respectful conversations. Twenty correct answers out of twenty-five completes Week 1.”";
     panel.append(text);
+  }
+  const hasRetiredQuestions = attempt => attempt?.questions?.some(q => ["choice", "address"].includes(q.kind) || q.grammarConcept);
+  function showRetiredAssessment(snapshot) {
+    state.session = snapshot;
+    state.day = snapshot.loop;
+    audio.stopAudio();
+    let panel = ui.$("retiredAssessmentNotice");
+    if (!panel) { panel=ui.node("article");panel.id="retiredAssessmentNotice";ui.$("lessonScreen").prepend(panel); }
+    ui.$("lessonEyebrow").textContent = `DAY ${snapshot.loop} · SAVED ASSESSMENT`;
+    ui.$("lessonName").textContent = "Assessment format changed";
+    ui.$("lessonDescription").textContent = `${snapshot.answered}/${snapshot.questions.length} answers recorded · saved score ${snapshot.correctCount}/${snapshot.questions.length}. Nothing has been regraded.`;
+    ui.$("addressTarget").classList.add("hidden");
+    panel.replaceChildren(ui.node("h2", "Saved assessment uses retired rule questions"),
+      ui.node("p", "Your saved questions, answers and scores have not been changed. Rule-analysis questions are no longer assessed. Keep this attempt paused, export it, or explicitly retire it and start practical Pashto practice. Your vocabulary plan, SRS, XP and past results stay intact."));
+    panel.classList.remove("hidden");
+    panel.append(ui.button("Keep paused and return to town", () => { panel.classList.add("hidden");onWorld(); }),
+      ui.button("Export this saved attempt", () => {
+        const url=URL.createObjectURL(new Blob([JSON.stringify(snapshot,null,2)],{type:"application/json"}));
+        const a=document.createElement("a");a.href=url;a.download="pashto-retired-assessment.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+      }),
+      ui.button("Retire saved attempt and start practical assessment", () => {
+        // Exact archive, not a migration or an automatic reroll. Only this
+        // explicit action abandons the old active attempt; no result is graded.
+        state.progress.retiredRuleAssessmentJSON = JSON.stringify(snapshot);
+        delete state.progress.activeChallenge;
+        state.session=null;
+        panel.classList.add("hidden");
+        startChallenge(snapshot.loop);
+      }));
+    for (const id of ["teachPanel","grammarPanel","quizPanel","constructionPanel","lessonStages","challengeScene"]) ui.$(id)?.classList.add("hidden");
+    ui.view("lessonScreen");
   }
   function startChallenge(day, snapshot = null) {
     if (!learning.allowed(day)) return;
     if (!snapshot && state.progress.activeChallenge)
       return startChallenge(state.progress.activeChallenge.loop, JSON.parse(JSON.stringify(state.progress.activeChallenge)));
+    if (snapshot && hasRetiredQuestions(snapshot)) { showRetiredAssessment(snapshot);return; }
+    ui.$("retiredAssessmentNotice")?.classList.add("hidden");
     audio.stopAudio();
     ui.$("lessonExpression")?.replaceChildren();
     const items = snapshot?.questions || questions.selectChallenge(day, { newAttempt: true }),
@@ -145,8 +179,6 @@ function createChallengeUI({
     }
     const categories = {
       word: "vocabulary/phrases",
-      choice: "English grammar",
-      address: "address",
       construct: "construction",
       dialogue: "dialogue",
       sentence: "translation",
@@ -164,7 +196,7 @@ function createChallengeUI({
     const deficit = state.progress.library.plans[day]?.assessmentDeficit;
     if (deficit?.adaptedTasks)
       ui.$("lessonDescription").textContent +=
-        ` · ${deficit.adaptedTasks} English grammar tasks: insufficient distinct studied sentence combinations`;
+        ` · ${deficit.adaptedTasks} vocabulary/phrase review tasks: insufficient distinct studied sentence combinations; review pool ${deficit.practicalPoolSize || "limited"}, items may repeat`;
     ui.$("lessonScreen").dataset.week = day >= 8 ? "2" : "1";
     ui.$("lessonScreen").dataset.day = String(day);
     showChallengeScene(day);
@@ -230,6 +262,7 @@ function createChallengeUI({
     storage.save();
   }
   function showChallengeQuestion(resuming = false) {
+    if (hasRetiredQuestions(state.session)) {showRetiredAssessment(state.session);return;}
     ui.clearSentenceScene();
     renderQuestion(resuming);
     const q = state.session?.questions[state.session.index];
@@ -293,30 +326,6 @@ function createChallengeUI({
     ui.setDialogueSpeaker(host.name);
     target.classList.remove("hidden");
     target.textContent = `${host.name} → Player · YOUR ANSWER → ${host.name}`;
-    if (q.kind === "address") {
-      const speaker = q.speaker || "Muhammad Jan";
-      ui.setDialogueSpeaker(speaker);
-      const recipient = q.recipient || "player";
-      const contextual =
-        q.comment || "Listen carefully and respond using the appropriate form.";
-      ui.$("guideMessage").textContent =
-        `${contextual} ${q.kind === "address" ? `You are now addressing ${recipient}.` : "What can you understand or say?"}`;
-      target.textContent =
-        state.session.loop === 4
-          ? recipient === "Muhammad Jan"
-            ? "Muhammad Jan is speaking · YOUR TURN → Reply to Muhammad Jan"
-            : `Muhammad Jan is speaking · IMAGINE INFORMAL “YOU” → ${recipient} (not Muhammad Jan)`
-          : `${speaker} is speaking to you · YOUR TURN → ${recipient}`;
-      target.classList.remove("hidden");
-      ui.showParticipants(
-        state.session.loop === 5
-          ? ["Saleha", "Muhammad Jan", "Ms Hameed", "Edris"]
-          : ["Muhammad Jan"],
-        state.session.loop === 5 && content.peopleByName[recipient]
-          ? recipient
-          : "",
-      );
-    }
     if (q.kind === "dialogue") {
       ui.setDialogueSpeaker(q.speaker || host.name);
       ui.showParticipants(q.participants || [q.speaker || host.name], q.recipient);
@@ -352,72 +361,6 @@ function createChallengeUI({
         state.session.index === state.session.questions.length - 1
           ? "See results →"
           : "Next question →";
-      return;
-    }
-    if (q.kind === "choice") {
-      ui.$("quizType").textContent = (
-        q.section || "Hills conversation"
-      ).toUpperCase();
-      ui.renderMixedPashto(ui.$("quizPrompt"), q.prompt);
-      ui.$("quizPashto").textContent = "";
-      ui.renderMixedPashto(
-        ui.$("quizRoman"),
-        q.comment || "Choose one response. Your first answer counts.",
-      );
-      ui.$("quizPanel").querySelector(".quizword h3").textContent =
-        "Choose your answer";
-      ui.$("quizSpeak").classList.toggle("hidden", !q.audioId);
-      for (const value of q.choiceOrder) {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.className = "choice";
-        b.textContent = value;
-        b.dataset.answer = value;
-        if (/[\u0600-\u06ff]/.test(value)) {
-          b.lang = "ps";
-          b.dir = "rtl";
-          b.classList.add("pashto-option");
-        }
-        b.addEventListener("click", () => answerChallenge(value));
-        ui.$("choices").append(b);
-      }
-      ui.$("quizFeedback").textContent =
-        q.reference ? "Guided check: apply the reference above. This does not unlock a workshop." : "Apply a rule from a workshop you have visited. Your first answer counts.";
-      ui.$("quizNext").disabled = true;
-      ui.$("quizNext").textContent =
-        state.session.index === state.session.questions.length - 1
-          ? "See results →"
-          : "Next question →";
-      return;
-    }
-    if (q.kind === "address") {
-      ui.$("quizType").textContent = "🗣️ WHO ARE YOU ADDRESSING?";
-      ui.$("quizPashto").textContent = q.recipient;
-      ui.$("quizPashto").setAttribute("dir", "ltr");
-      ui.$("quizPashto").setAttribute("lang", "en");
-      ui.$("quizPashto").classList.add("english-question");
-      ui.$("quizRoman").textContent =
-        "Choose the socially appropriate second-person pronoun";
-      ui.$("quizPrompt").textContent = q.comment;
-      ui.$("quizSpeak").classList.add("hidden");
-      ui.$("quizPanel").querySelector(".quizword h3").textContent =
-        "How should you say “you” to this person or group?";
-      for (const [label, value] of q.addressOptions) {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.className = "choice address-choice";
-        b.textContent = label;
-        b.dataset.answer = value;
-        b.addEventListener("click", () => answerChallenge(value));
-        ui.$("choices").append(b);
-      }
-      ui.$("quizFeedback").textContent =
-        "Consider who you are speaking to, not only the verb.";
-      ui.$("quizNext").disabled = true;
-      ui.$("quizNext").textContent =
-        state.session.index === state.session.questions.length - 1
-          ? "See results →"
-          : "Next conversation turn →";
       return;
     }
     ui.$("quizType").textContent =
@@ -544,29 +487,6 @@ function createChallengeUI({
       const gloss = document.createElement("div");
       gloss.textContent = q.answerEnglish || "";
       f.append(heading, expected, gloss, ui.node("p", questions.explanation(q, w)));
-      ui.$("quizNext").disabled = false;
-      return;
-    }
-    if (q.kind === "choice") {
-      ui.showAnswerFeedback(ui.$("choices"), q.correct, value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
-      ui.$("quizFeedback").textContent =
-        (correct ? "✓ Correct. " : "✗ Review this response: ") +
-        q.correct + ". " + questions.explanation(q, w) +
-        (gain ? ` · +${gain} XP` : "");
-      ui.$("quizNext").disabled = false;
-      return;
-    }
-    if (q.kind === "address") {
-      ui.showAnswerFeedback(ui.$("choices"), q.correct, value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
-      ui.$("quizFeedback").replaceChildren();
-      const line = document.createElement("strong");
-      line.className = correct ? "good" : "bad";
-      line.textContent = correct
-        ? "✓ Correct form for this listener."
-        : "✗ Use a different form for this listener.";
-      const info = document.createElement("div");
-      info.textContent = `${q.correct} — ${q.scope === "group" ? "plural you for more than one listener" : q.scope === "familiar" ? "informal singular for a familiar friend" : "respectful singular for an elder, teacher or adult"}.`;
-      ui.$("quizFeedback").append(line, info, ui.node("p", questions.explanation(q, w)));
       ui.$("quizNext").disabled = false;
       return;
     }

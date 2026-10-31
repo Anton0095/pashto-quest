@@ -39,28 +39,13 @@ for(const width of [375,1280]) {
    check(t.state.progress.xp===xpBefore,'Library awarded XP');
    const attempts=t.state.progress.library.acquired[inf.lemmaId].totalAttempts;buttons.find(b=>b.dataset.answer==='open').click();
    check(t.state.progress.library.acquired[inf.lemmaId].totalAttempts===attempts,'Library duplicate SRS');
-   // Frozen old grammar choices remain byte-identical. Only their acceptance
-   // policy is clarified; scores already locked are never replayed.
+   // Newly frozen practical choices and locks survive reload unchanged.
    $('libraryDialog').close();t.reset(0);t.state.progress.tutorialDone=true;t.state.day=1;t.challenge.startChallenge(1);
-   const s=t.state.session,i=s.questions.findIndex(q=>q.grammarConcept==='feminine-description');check(i>=0,'missing fixture concept');
-   const q=s.questions[i];q.prompt='Check a learner’s analysis. The described noun is feminine singular. Which pair agrees?';delete q.explanation;
-   s.index=i;s.answered=i;s.locked=false;t.challenge.showChallengeQuestion();
-   window.frozenChoices=JSON.stringify(q.choiceOrder);window.frozenPrompt=q.prompt;
-   const alt='Masculine singular adjective + feminine singular equative';
-   [...$('choices').children].find(b=>b.dataset.answer===alt).click();
-   check(s.locked&&s.correctCount===1,'defensible frozen answer rejected');
-   check($('choices').querySelectorAll('.correct').length===2,'frozen multiple acceptable choices not highlighted');
-   check($('quizFeedback').textContent.includes('invariant'),'missing explanatory feedback');
-   const xp=t.state.progress.xp;[...$('choices').children].find(b=>b.dataset.answer===alt).click();check(t.state.progress.xp===xp,'repeated XP');
-   await t.storage.save();return {choices:q.choiceOrder,prompt:q.prompt,xp,score:s.correctCount};
+   const s=t.state.session,q=s.questions[0];t.challenge.answerChallenge(t.content.wordById[q.id].en);
+   await t.storage.save();return {questions:s.questions,xp:t.state.progress.xp,score:s.correctCount};
   });
-  await p.reload();const resumed=await p.evaluate(()=>({choices:__test.state.session.questions[__test.state.session.index].choiceOrder,prompt:__test.state.session.questions[__test.state.session.index].prompt,xp:__test.state.progress.xp,score:__test.state.session.correctCount}));
-  assert.deepEqual(resumed,checked);assert.equal(await p.locator('#choices .correct').count(),2);assert((await p.locator('#quizFeedback').innerText()).includes('Previously recorded scores'));
-  await p.evaluate(async()=>{__test.state.session.correctCount=0;await __test.storage.save()});
-  const oldXP=await p.evaluate(()=>__test.state.progress.xp);await p.reload();
-  assert.equal(await p.evaluate(()=>__test.state.session.correctCount),0,'do not regrade a historically locked ambiguous response');
-  assert.equal(await p.evaluate(()=>__test.state.progress.xp),oldXP);
-  assert.equal(await p.locator('#choices .correct').count(),2);
-  assert.deepEqual(b.errors,[]);console.log(width,'PASS shared same-lesson choices, mixed POS, evaluator/highlight parity, frozen ambiguous answer, explanation and reload without regrade');
+  await p.reload();const resumed=await p.evaluate(()=>({questions:__test.state.session.questions,xp:__test.state.progress.xp,score:__test.state.session.correctCount}));
+  assert.deepEqual(resumed,checked);assert(await p.evaluate(()=>__test.state.session.locked));
+  assert.deepEqual(b.errors,[]);console.log(width,'PASS shared same-lesson choices, mixed POS, evaluator/highlight parity, frozen practical choices and reload without regrade');
  }finally{await b.close()}
 }

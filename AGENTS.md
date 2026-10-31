@@ -30,3 +30,7 @@ Use the existing review branch when one is specified. Do not merge or force-push
 - Vocabulary/planner/frame changes: refresh affected curriculum, inventory and generation reports after rebuilding, as described in the validation policy. Do not manually change generated evidence or native-approval flags to make checks pass.
 
 Report changed files, actual checks, reasons for omitted checks, material limitations and the PR link. Record task-specific handoffs in PRs, not new root-level Markdown files. Latest explicit user instructions govern task scope and validation; raise a material conflict rather than silently substituting an archived plan.
+
+## Practical assessments and grammar reference
+
+`content/GRAMMAR_REFERENCE.json` belongs to the read-only Library Grammar Journal. All concept explanations and worked analyses are readable without generation unlocks. New daily/weekly assessments must contain only word/phrase recall, sentence meaning/construction or contextual dialogue; insufficient sentence supply uses vocabulary/approved phrases, never English rule/category quizzes. Old grammar-question instructions are superseded. Preserve retired format-7 attempts behind an explicit notice and archive/export them only after the player explicitly chooses retirement; never reroll or regrade them silently.
