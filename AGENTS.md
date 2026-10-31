@@ -1,5 +1,7 @@
 # Codex and ChatGPT project instructions
 
+> **User approval recorded 31 October 2026:** [USER_LANGUAGE_APPROVALS.json](content/USER_LANGUAGE_APPROVALS.json) records approval of all 473 base lemmas and 18 phrase records (the six existing registered phrases plus twelve Day-3–14 expressions). Day 7 now uses “And peace be upon you” instead of “How is business going?”. This is explicit user verification, not an invented independent native certification. Individual inflections, generated combinations, recordings, excluded candidates and untranslated tutorial/Day-1 slots remain outside that approval. Earlier draft/pending counts below describe the pre-integration runtime snapshot. Codex must reconcile the approval record into canonical data, validators and the generated release before claiming integration complete.
+
 Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CURRICULUM.md` for lessons/characters/vocabulary, `LANGUAGE_REVIEW.md` for Pashto/audio, and `tests/README.md` for verification **only when relevant**. `docs/reference/` contains historical editorial plans, not active instructions. Inspect current source to establish implemented behaviour; a discrepancy does not automatically redefine the product goal. See the [documentation roles](README.md#documentation-roles-and-precedence).
 
 ## Single sources of authority

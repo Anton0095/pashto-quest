@@ -1,5 +1,7 @@
 # Pashto Quest — Current curriculum and content status
 
+> **User approval recorded 31 October 2026:** [USER_LANGUAGE_APPROVALS.json](content/USER_LANGUAGE_APPROVALS.json) records approval of all 473 base lemmas and 18 phrase records (the six existing registered phrases plus twelve Day-3–14 expressions). Day 7 now uses “And peace be upon you” instead of “How is business going?”. This is explicit user verification, not an invented independent native certification. Individual inflections, generated combinations, recordings, excluded candidates and untranslated tutorial/Day-1 slots remain outside that approval. Earlier draft/pending counts below describe the pre-integration runtime snapshot. Codex must reconcile the approval record into canonical data, validators and the generated release before claiming integration complete.
+
 The fixed teaching sequence lives in `content/LEARNING_CURRICULUM.json`; lexical identities and attested forms live in `content/LIBRARY_LEXICON.json`. All instructional clauses are dynamically composed after actual word/form study and grammar unlocks. `content/FIXED_PHRASES.json` lists the six currently registered fixed-expression exceptions (see its [expansion gate](docs/grammar/FIXED_PHRASE_EXCEPTIONS.md#expanding-the-register)). Archived Week 1/2 drafts in `docs/grammar/attestations/` are evidence and regression fixtures, never lesson or assessment fallbacks. `GAME_SPEC.md` owns mechanics; `LANGUAGE_REVIEW.md` owns language approval.
 
 ## Learning sequence

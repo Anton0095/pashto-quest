@@ -1,5 +1,7 @@
 # Fixed phrase exceptions
 
+> **User approval recorded 31 October 2026:** [USER_LANGUAGE_APPROVALS.json](../../content/USER_LANGUAGE_APPROVALS.json) records approval of all 473 base lemmas and 18 phrase records (the six existing registered phrases plus twelve Day-3–14 expressions). Day 7 now uses “And peace be upon you” instead of “How is business going?”. This is explicit user verification, not an invented independent native certification. Individual inflections, generated combinations, recordings, excluded candidates and untranslated tutorial/Day-1 slots remain outside that approval. Earlier draft/pending counts below describe the pre-integration runtime snapshot. Codex must reconcile the approval record into canonical data, validators and the generated release before claiming integration complete.
+
 This is the complete exception register. It is checked against the archived conventional greetings and the two exact user-supplied active expressions; ordinary sentence targets cannot be added as exceptions.
 
 | ID | Pashto | English | Introduction | Reason |

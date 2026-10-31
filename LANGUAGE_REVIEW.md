@@ -1,5 +1,7 @@
 # Pashto linguistic review and release gate
 
+> **User approval recorded 31 October 2026:** [USER_LANGUAGE_APPROVALS.json](content/USER_LANGUAGE_APPROVALS.json) records approval of all 473 base lemmas and 18 phrase records (the six existing registered phrases plus twelve Day-3–14 expressions). Day 7 now uses “And peace be upon you” instead of “How is business going?”. This is explicit user verification, not an invented independent native certification. Individual inflections, generated combinations, recordings, excluded candidates and untranslated tutorial/Day-1 slots remain outside that approval. Earlier draft/pending counts below describe the pre-integration runtime snapshot. Codex must reconcile the approval record into canonical data, validators and the generated release before claiming integration complete.
+
 **Status: not native-certified.** The game targets Afghan Pashto as spoken in **Laghman**. Conventional Pashto spelling is preferred when local variants are uncertain. Existing Pashto, romanisation and authored Week 1/2 translations are instructional drafts; neither a browser voice nor passing tests establishes native-speaker review.
 
 ## Status terms
