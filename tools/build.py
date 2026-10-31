@@ -9,7 +9,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 # runpy-based content checks also resolve the sibling schema module.
 sys.path.insert(0, str(ROOT / "tools"))
-from curriculum_schema import validate_curriculum
+from curriculum_schema import validate_curriculum, is_native_approved, is_user_approved
 DISTRICTS = {'residential', 'nature', 'business', 'school'}
 
 
@@ -24,11 +24,31 @@ def read(name):
     return (ROOT / name).read_text(encoding='utf-8')
 
 
+def approval_records(kind):
+    authority = json.loads(read('content/USER_LANGUAGE_APPROVALS.json'))
+    key = 'lemmaId' if kind == 'lemmas' else 'id'
+    return authority, {r[key]: r for r in authority[kind]}
+
+
+def validate_user_approval(record, authority, approved, fields):
+    if record.get('reviewStatus') != 'user_approved':
+        return
+    if (not is_user_approved(record) or not approved
+            or any(record['userApproval'].get(k) != v for k, v in
+                   dict(reviewer=authority['reviewer'], date=authority['recordedDate'],
+                        reference='content/USER_LANGUAGE_APPROVALS.json').items())
+            or any(record.get(k) != approved.get(v) for k, v in fields.items())):
+        raise ValueError('User-approved content/evidence differs from authority: ' + str(record.get('lemmaId', record.get('id'))))
+
+
 def validate(data):
     validate_curriculum(data)
+    authority, approved = approval_records("lemmas")
     identities = set()
     for entry in data['entries']:
         identity = entry['lemmaId']
+        validate_user_approval(entry, authority, approved.get(identity),
+                               dict(displayLemmaPs='pashto', englishSenses='englishSenses', romanisation='romanisation'))
         if identity in identities:
             raise ValueError('Duplicate lemma: ' + identity)
         identities.add(identity)
@@ -48,11 +68,13 @@ def validate(data):
         if any(not f.get('formId') or not f.get('pashto') for f in entry['forms']):
             raise ValueError('Missing forms: ' + identity)
         if entry.get('promotionCandidateId') or identity.startswith('candidate:'):
-            review = entry.get('nativeReview', {})
             status = entry.get('reviewStatus')
             if status == 'native_approved':
-                if not review.get('reviewer') or not review.get('reference'):
+                if not is_native_approved(entry):
                     raise ValueError('Native-approved candidate requires review evidence')
+            elif status == 'user_approved':
+                if not is_user_approved(entry):
+                    raise ValueError('User-approved candidate requires scoped evidence')
             elif status == 'provisional_playable':
                 provenance = entry.get('provenance', {})
                 if (entry.get('userVerified') is not False
@@ -64,11 +86,14 @@ def validate(data):
 
 
 def validate_expressions(data):
+    authority, approved = approval_records("phrases")
     identities = set()
     supplied = {'phrase-d1-home-welcome': 'ښه راغلاست',
                 'phrase-day-2-opening': 'سهار مو پخیر!'}
     for phrase in data['expressions']:
         identity = phrase['id']
+        validate_user_approval(phrase, authority, approved.get(identity),
+                               dict(pashto='pashto', romanisation='romanisation', english='english'))
         if (identity in identities or phrase['audioContentId'] != identity
                 or not re.fullmatch(r'[a-z0-9][a-z0-9_-]*', identity)):
             raise ValueError('Duplicate/unstable expression identity: ' + identity)
@@ -80,8 +105,8 @@ def validate_expressions(data):
                 or not phrase.get('speaker') or not phrase.get('source')):
             raise ValueError('Incomplete active expression: ' + identity)
         review = phrase.get('nativeReview', {})
-        if supplied.get(identity) != phrase['pashto'] and (review.get('status') != 'approved'
-                or not review.get('reviewer') or not review.get('reference')):
+        if not is_user_approved(phrase) and supplied.get(identity) != phrase['pashto'] and (review.get('status') != 'approved'
+                or not all(review.get(k) for k in ['reviewer', 'date', 'reference'])):
             raise ValueError('Expression requires documented linguistic review: ' + identity)
 
 
@@ -146,18 +171,22 @@ def build():
     library['sourceMappings'] = {}
     library['cardTypes'] = {}
     library['curriculum'] = curriculum
-    library['grammarAssessment'] = json.loads(read('content/GRAMMAR_ASSESSMENT.json'))
-    for concept in library['grammarAssessment']['concepts']:
-        if (not 1 <= concept['day'] <= 13 or len(concept['misconceptions']) != 3
-                or len(set([concept['correct'], *concept['misconceptions']])) != 4
-                or any(re.search(r'[\u0600-\u06ff]', text) for text in
-                       [concept['reference'], concept['case'], concept['correct'], *concept['misconceptions']])):
-            raise ValueError('Invalid English grammar assessment concept: ' + concept['id'])
+    library['grammarReference'] = json.loads(read('content/GRAMMAR_REFERENCE.json'))
+    concept_ids = set()
+    for concept in library['grammarReference']['concepts']:
+        texts = [concept['explanation'], concept['workedExample']['scenario'], concept['workedExample']['analysis']]
+        if (concept['id'] in concept_ids or not 1 <= concept['day'] <= 13
+                or any(not isinstance(text, str) or not text.strip() or re.search(r'[\u0600-\u06ff]', text) for text in texts)):
+            raise ValueError('Invalid Grammar Journal reference: ' + concept['id'])
+        concept_ids.add(concept['id'])
     library.pop('grammar', None)
     library['phrases'] = json.loads(read('content/FIXED_PHRASES.json'))['phrases']
     fixed_sources = {p['id']: p['ps'] for p in archived1['words'] if p.get('type') == 'greeting'}
     fixed_sources.update({p['id']: p['pashto'] for p in narrative['expressions'] if p['active']})
+    authority, approved = approval_records('phrases')
     for phrase in library['phrases']:
+        validate_user_approval(phrase, authority, approved.get(phrase['id']),
+                               dict(pashto='pashto', romanisation='romanisation', english='english'))
         if fixed_sources.get(phrase['id']) != phrase['pashto'] or not phrase.get('exceptionReason'):
             raise ValueError('Unregistered fixed expression; authored sentences cannot become exceptions')
     if len({p['id'] for p in library['phrases']}) != len(library['phrases']):
@@ -171,7 +200,7 @@ def build():
     # Explicit dependency order; modules use factories with injected services.
     modules = [
         'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
-        'assessment-content', 'learning', 'questions', 'storage', 'audio', 'ui',
+        'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'answer-feedback', 'sentence-scene', 'ui',
         'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
         'world-ui', 'library-ui', 'app',
     ]

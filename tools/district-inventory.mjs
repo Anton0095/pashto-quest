@@ -41,9 +41,10 @@ export function activationProblems(candidate) {
     if (candidate.userVerified !== false)
       gaps.push("explicit unchecked user verification");
   } else if (
-    candidate.reviewStatus !== "approved" ||
+    candidate.reviewStatus !== "native_approved" ||
     !candidate.nativeReview?.reviewer ||
-    !candidate.nativeReview?.reference
+    !candidate.nativeReview?.reference ||
+    !candidate.nativeReview?.date
   )
     gaps.push("documented qualified native sign-off or provisional status");
   if (candidate.aliasOfLemmaId)
@@ -196,8 +197,9 @@ export function inventory(data, backlog, engine, includeProjection = true) {
     activatedLemmas: data.entries.length,
     activatedContentLemmas: content.length,
     nativeApprovedContentLemmas: content.filter(
-      (e) => e.reviewStatus === "approved",
+      (e) => e.reviewStatus === "native_approved" && !!e.nativeReview?.reviewer && !!e.nativeReview?.reference && !!e.nativeReview?.date,
     ).length,
+    userApprovedBaseLemmas: data.entries.filter(e => e.reviewStatus === "user_approved" && e.userVerified === true && ["reviewer", "date", "reference"].every(k => e.userApproval?.[k]) && e.userApproval.nativeCertificationClaimed === false).length,
     inactiveCandidates: backlog.candidates.filter((c) => !c.promotedLemmaId)
       .length,
     candidateDisposition: {

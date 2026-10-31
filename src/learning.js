@@ -130,12 +130,12 @@ function createLearning({ state, content, progression }) {
     // consume lexical quotas, even when repeated at multiple locations.
     const greeting =
       content.NARRATIVE_DATA.expressions.find(
-        (p) => p.day === day && p.location === place && p.active && !p.optional,
+        (p) => p.day === day && p.location === place && p.active,
       ) ||
       content.NARRATIVE_DATA.expressions.find(
-        (p) => p.day === day && p.active && !p.optional,
+        (p) => p.day === day && p.active,
       );
-    const opening = greeting ? [greeting.id] : [];
+    const opening = greeting ? [...new Set([greeting.id, greeting.responsePhraseId].filter(Boolean))] : [];
     // Move former tutorial courtesies into contextual Day 2–3 teaching, without affecting lexical quotas.
     const deferred =
       day === 2 && place === "business"
@@ -296,10 +296,10 @@ function createLearning({ state, content, progression }) {
     const rows = Object.values(state.progress.library.deliveries);
     const sentences = rows.filter((d) => d.kind === "generated_sentence");
     return {
-      instructionalSentences: sentences.length,
-      generatedSentences: sentences.length,
+      instructionalSentences: sentences.reduce((n,d) => n + (d.count || 1), 0),
+      generatedSentences: sentences.reduce((n,d) => n + (d.count || 1), 0),
       generatedPercent: sentences.length ? 100 : null,
-      fixedPhrases: rows.filter((d) => d.kind === "fixed_phrase").length,
+      fixedPhrases: rows.filter((d) => d.kind === "fixed_phrase").reduce((n,d) => n + (d.count || 1), 0),
     };
   }
   function completeRound(day) {
@@ -323,6 +323,7 @@ function createLearning({ state, content, progression }) {
     if (s?.mode !== "challenge" || s.locked || s.finished) return null;
     const q = s.questions[s.index],
       w = content.wordById[q.id];
+    if (["choice", "address"].includes(q.kind) || q.grammarConcept) return null;
     const correct = QuestionEngine.evaluate(q, w, value);
     libraryPractice(
       q.id,
@@ -338,9 +339,7 @@ function createLearning({ state, content, progression }) {
     const key =
       q.kind === "dialogue"
         ? `week2-dialogue:${s.loop}:${q.id}`
-        : q.kind === "choice"
-          ? `${s.loop}:choice:${q.id}`
-          : `${s.loop}:${q.kind}:${q.direction}:${q.id}`;
+        : `${s.loop}:${q.kind}:${q.direction}:${q.id}`;
     const gain =
       correct && q.kind !== "address" && !expression
         ? progression.awardXP(state.progress, key, 5)
@@ -396,6 +395,7 @@ function createLearning({ state, content, progression }) {
       s.earned += gain;
     } else
       s.queue.splice(Math.min(2, s.queue.length), 0, {
+        ...item,
         id: w.id,
         retries: item.retries + 1,
       });

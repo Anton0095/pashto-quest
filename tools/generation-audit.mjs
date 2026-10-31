@@ -216,7 +216,7 @@ const lines = [
   "",
   `Inventory: ${report.lemmaCount} lemmas / ${report.formCount} forms; ${report.eligibleFormCount} composition-eligible forms. ${report.frameCount} typed templates across ${report.familyCount} families.`,
   "",
-  "**This is not the delivery percentage.** [The measured delivery report](INSTRUCTIONAL_DELIVERY_REPORT.md) checks actual lessons and assessments. There are zero playable authored sentence fallbacks; the [six fixed expressions](FIXED_PHRASE_EXCEPTIONS.md) are the only whole-phrase exceptions.",
+  "**This is not the delivery percentage.** [The measured delivery report](INSTRUCTIONAL_DELIVERY_REPORT.md) checks actual lessons and assessments. There are zero playable authored sentence fallbacks; the [registered fixed expressions](FIXED_PHRASE_EXCEPTIONS.md) are the only whole-phrase exceptions.",
   "",
   "## Potential by grammar family and day",
   "",

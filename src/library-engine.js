@@ -31,6 +31,8 @@ const LibraryEngine = (() => {
       grammar: {},
       events: {},
       attemptSequence: 0,
+      retiredAttemptSequence: 0,
+      protectedAttemptIds: [],
       deliveries: {},
       deficits: {},
     };
@@ -169,9 +171,50 @@ const LibraryEngine = (() => {
     }
     return p.library.units[data.sentenceOrigins?.[id] || id] || {};
   }
+  function eventAttempt(event) {
+    const match = /^(?:(?:lesson|challenge|tutorial):([1-9]\d*):(?:0|[1-9]\d*)|(?:phrase|library-practice):([1-9]\d*))$/.exec(event);
+    const id = match && Number(match[1] || match[2]);
+    return Number.isSafeInteger(id) ? id : null;
+  }
+  // Monotonic attempt IDs make closed practice events rejectable without an
+  // unbounded event set. Preserve both the current UI session (even finished)
+  // and paused assessment, whose exact per-attempt deduplication still matters.
+  // Unknown event namespaces are retained. Delivery counts/identity survive;
+  // acquisition, SRS, rewards and frozen compiler proofs are never compacted.
+  function compactHistory(p, sessions) {
+    const l = p.library;
+    const protectedIds = [...new Set(sessions.filter(Boolean).map(s => s.attemptId).filter(id => Number.isSafeInteger(id) && id > 0 && id <= l.attemptSequence))].sort((a,b) => a-b);
+    if (l.retiredAttemptSequence === l.attemptSequence && JSON.stringify(l.protectedAttemptIds) === JSON.stringify(protectedIds)) return;
+    l.retiredAttemptSequence = l.attemptSequence;
+    l.protectedAttemptIds = protectedIds;
+    for (const key of Object.keys(l.events)) {
+      const id = eventAttempt(key);
+      if (id !== null && id <= l.retiredAttemptSequence && !protectedIds.includes(id)) delete l.events[key];
+    }
+    for (const [key, row] of Object.entries(l.deliveries)) {
+      const match = /^([1-9]\d*):/.exec(key), id = match && Number(match[1]);
+      if (!Number.isSafeInteger(id) || id > l.retiredAttemptSequence || protectedIds.includes(id)) continue;
+      let hash = 2166136261;
+      const identity = JSON.stringify([row.id, row.mode, row.surface]);
+      for (let i=0; i<identity.length; i++) hash = Math.imul(hash ^ identity.charCodeAt(i), 16777619);
+      let summaryKey = `h:${hash >>> 0}`;
+      const same = r => r.id === row.id && r.mode === row.mode && r.surface === row.surface;
+      while (l.deliveries[summaryKey] && !same(l.deliveries[summaryKey])) summaryKey += ":";
+      const prior = l.deliveries[summaryKey];
+      if (prior) {
+        prior.count = (prior.count || 1) + (row.count || 1);
+        const lastDay = Math.max(prior.lastDay || prior.day, row.lastDay || row.day);
+        prior.day = Math.min(prior.day, row.day);
+        if (lastDay !== prior.day) prior.lastDay = lastDay;
+      } else l.deliveries[summaryKey] = {...row};
+      delete l.deliveries[key];
+    }
+  }
   function practise(p, data, id, correct, context) {
     if (!cardAllowed(data, id, context.day)) return false;
     const event = context.eventId;
+    const attempt = eventAttempt(event);
+    if (attempt !== null && attempt <= (p.library.retiredAttemptSequence || 0) && !(p.library.protectedAttemptIds || []).includes(attempt)) return false;
     if (p.library.events[event]) return false;
     p.library.events[event] = true;
     expose(p, data, id, context);
@@ -423,6 +466,7 @@ const LibraryEngine = (() => {
     encounter,
     expose,
     practise,
+    compactHistory,
     status,
     summary,
     available,

@@ -36,46 +36,43 @@ function createLibraryUI({
         ui.node("h3", "Grammar Journal"),
         ui.node(
           "p",
-          "Rules unlock through actual lesson exposure or a correctly demonstrated challenge response. Native Laghman review is pending.",
+          "All explanations and worked analyses are readable reference. Reading here does not complete lessons or unlock generation. Pashto examples require separately studied forms and lesson grammar. Native Laghman review is pending.",
         ),
       );
+      if (state.progress.retiredRuleAssessmentJSON) root.append(
+        ui.node("p", "An earlier rule-analysis assessment was explicitly retired. Its original snapshot remains available for export."),
+        ui.button("Export retired assessment archive", () => {
+          const url=URL.createObjectURL(new Blob([state.progress.retiredRuleAssessmentJSON],{type:"application/json"}));
+          const a=document.createElement("a");a.href=url;a.download="pashto-retired-assessment.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+        }));
+      const examples = learning.availableSentences(state.day);
       for (const rule of content.curriculum.days) {
         const grammarId = "grammar-day-" + rule.day;
         const unlocked = state.progress.library.grammar[grammarId],
           detail = ui.node("details");
         const heading = ui.node(
           "summary",
-          `Day ${rule.day}: ${rule.topic}${unlocked ? "" : " · Locked"}`,
+          `Day ${rule.day}: ${rule.topic}${unlocked ? " · Unlocked for generation" : " · Not yet unlocked for generation"}`,
         );
         detail.append(heading);
-        if (unlocked) {
-          detail.append(...rule.grammar.map((text) => ui.node("p", text)));
-          const ex = learning
-            .availableSentences(state.day)
-            .find((c) => c.generated.requiredGrammarIds.includes(grammarId));
-          if (ex) {
-            content.registerGenerated(ex);
-            learning.surface(ex.id, "grammar-reference");
-            const ps = ui.node("p", ex.ps, "library-pashto");
-            ps.lang = "ps";
-            ps.dir = "rtl";
-            detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
-            ui.sentenceContext(ex, "", detail, "reference");
-          } else
-            detail.append(
-              ui.node(
-                "p",
-                "Study compatible forms before an example can be generated.",
-              ),
-            );
-        } else {
-          detail.append(
-            ui.node(
-              "p",
-              "Visit this grammar workshop in a lesson to read its generated examples.",
-            ),
-          );
+        detail.append(...rule.grammar.map(text => ui.node("p", text)));
+        for (const concept of content.LIBRARY_DATA.grammarReference.concepts.filter(c => c.day === rule.day)) {
+          const worked = ui.node("article", undefined, "grammar-worked-example");
+          worked.dataset.grammarConcept = concept.id;
+          worked.append(ui.node("h4", concept.id.replaceAll("-", " ")),
+            ui.node("p", concept.explanation),
+            ui.node("p", "Worked situation: " + concept.workedExample.scenario),
+            ui.node("p", "Worked analysis: " + concept.workedExample.analysis));
+          detail.append(worked);
         }
+        const ex = examples.find(c => c.generated.requiredGrammarIds.includes(grammarId));
+        if (ex) {
+          content.registerGenerated(ex);
+          learning.surface(ex.id, "grammar-reference");
+          const ps = ui.node("p", ex.ps, "library-pashto");ps.lang="ps";ps.dir="rtl";
+          detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
+          ui.sentenceContext(ex, "", detail, "reference");
+        } else detail.append(ui.node("p", "A Pashto example becomes available after compatible form study and lesson grammar unlocks."));
         root.append(detail);
       }
       return;
@@ -107,7 +104,7 @@ function createLibraryUI({
         card.append(
           ui.node(
             "p",
-            "Fixed expression · native Laghman review pending. Inflections/components add no district words.",
+            "User-approved fixed expression · no independent native certification. Components add no district words.",
             "tiny",
           ),
         );
@@ -286,7 +283,7 @@ function createLibraryUI({
     detail.append(
       ui.node(
         "p",
-        `Planned introduction: Day ${e.introduction.day} · ${e.introduction.district}. ${r.formallyIntroducedDay ? "First word/form study: Day " + r.formallyIntroducedDay : "Not yet formally studied"}. Native language review pending.`,
+        `Planned introduction: Day ${e.introduction.day} · ${e.introduction.district}. ${r.formallyIntroducedDay ? "First word/form study: Day " + r.formallyIntroducedDay : "Not yet formally studied"}. Base wording user-approved; grammar and independent native review pending.`,
         "tiny",
       ),
     );
@@ -325,7 +322,7 @@ function createLibraryUI({
           "p",
           f.romanisation || "Isolated-form romanisation pending review.",
         ),
-        ui.node("p", "Native review pending.", "tiny"),
+        ui.node("p", f.pashto === e.displayLemmaPs ? "Base wording user-approved; morphology and independent native review pending." : "Inflected form unreviewed; independent native review pending.", "tiny"),
       );
       if (f.audioContentId)
         box.append(
@@ -375,15 +372,18 @@ function createLibraryUI({
     if (!form) return;
     const exercise = ui.node("div");
     exercise.append(ui.node("p", "Choose the meaning of " + form.pashto));
-    const options = questions.distractors(content.wordById["library-form:" + form.formId]);
-    const eventId =
-      "library-practice:" + ++state.progress.library.attemptSequence;
+    const card = content.wordById["library-form:" + form.formId];
+    const options = questions.distractors(card);
+    let answered = false;
     for (const option of QuestionEngine.shuffle(options)) {
       const b = ui.button(option, () => {
-        ui.showAnswerFeedback(exercise, form.englishGloss, option);
+        if (answered) return;
+        answered = true;
+        const eventId = "library-practice:" + ++state.progress.library.attemptSequence;
+        ui.showAnswerFeedback(exercise, form.englishGloss, option, {accepts:v => QuestionEngine.evaluate({kind:"word", direction:"ps-en"}, card, v)});
         const correct = QuestionEngine.evaluate(
           { kind: "word", direction: "ps-en" },
-          { en: form.englishGloss },
+          card,
           option,
         );
         LibraryEngine.practise(
@@ -403,7 +403,7 @@ function createLibraryUI({
             "p",
             correct
               ? "Correct. Practice recorded; no XP is awarded for Library review."
-              : "Review: " + form.englishGloss,
+              : "Review: " + form.englishGloss + ". " + QuestionEngine.explanation({kind:"word"}, card),
           ),
         );
       });
@@ -434,7 +434,7 @@ function createLibraryUI({
     root.append(
       ui.node(
         "p",
-        `${content.LIBRARY_DATA.inventorySummary.activeContentLemmas} district draft lemmas are active; promoted entries remain provisional and unchecked. Native review is pending.`,
+        `${content.LIBRARY_DATA.inventorySummary.activeContentLemmas} district lemmas are active and base content is user-approved. Morphology remains provisional; independent native review is pending.`,
       ),
     );
     const message = ui.node("p");

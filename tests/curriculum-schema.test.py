@@ -23,9 +23,9 @@ class Schema(unittest.TestCase):
         entries, forms = m.validate_curriculum(data())
         self.assertEqual(len(entries), 473)
         self.assertGreater(len(forms), 565)
-        provisional = [e for e in entries.values() if e["reviewStatus"] == "provisional_playable"]
-        self.assertEqual(len(provisional), 341)
-        self.assertTrue(all(e["userVerified"] is False for e in provisional))
+        provisional = [e for e in entries.values() if e["reviewStatus"] == "user_approved"]
+        self.assertEqual(len(provisional), 473)
+        self.assertTrue(all(e["userVerified"] is True for e in provisional))
 
     def test_rejections(self):
         for change in [
@@ -129,7 +129,7 @@ class Schema(unittest.TestCase):
                     e for e in effective["entries"] if e["lemmaId"] == dark["lemmaId"]
                 )
                 self.assertEqual(item["introduction"]["day"], 6 if approved else 5)
-                self.assertEqual(item["reviewStatus"], "needs_native_review")
+                self.assertEqual(item["reviewStatus"], "user_approved")
             del proposal["approval"]["reviewer"]
             with self.assertRaises(ValueError):
                 build()

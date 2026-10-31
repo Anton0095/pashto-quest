@@ -4,7 +4,7 @@ Diagnostic capacity under provisional form licenses. Runtime builds no sentence 
 
 Inventory: 473 lemmas / 607 forms; 181 composition-eligible forms. 29 typed templates across 28 families.
 
-**This is not the delivery percentage.** [The measured delivery report](INSTRUCTIONAL_DELIVERY_REPORT.md) checks actual lessons and assessments. There are zero playable authored sentence fallbacks; the [six fixed expressions](FIXED_PHRASE_EXCEPTIONS.md) are the only whole-phrase exceptions.
+**This is not the delivery percentage.** [The measured delivery report](INSTRUCTIONAL_DELIVERY_REPORT.md) checks actual lessons and assessments. There are zero playable authored sentence fallbacks; the [registered fixed expressions](FIXED_PHRASE_EXCEPTIONS.md) are the only whole-phrase exceptions.
 
 ## Potential by grammar family and day
 

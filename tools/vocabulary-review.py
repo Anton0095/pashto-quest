@@ -3,12 +3,13 @@
 import csv
 import io
 import json
+from curriculum_schema import is_native_approved
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FIELDS = ["lemmaId", "english", "pashto", "romanisation", "partOfSpeech",
           "district", "plannedDay", "teachingOrder", "userVerified",
-          "nativeReviewStatus", "source", "notes"]
+          "reviewStatus", "nativeReviewStatus", "nativeApprovalReviewer", "nativeApprovalDate", "nativeApprovalReference", "userApprovalReviewer", "userApprovalDate", "userApprovalReference", "source", "notes"]
 
 def render():
     data = json.loads((ROOT / "content/LIBRARY_LEXICON.json").read_text())
@@ -23,7 +24,10 @@ def render():
             "partOfSpeech": e["partOfSpeech"], "district": e["introduction"]["district"],
             "plannedDay": e["introduction"]["day"], "teachingOrder": e["introduction"]["teachingOrder"],
             "userVerified": str(e.get("userVerified", False)).lower(),
-            "nativeReviewStatus": e["reviewStatus"],
+            "reviewStatus": e["reviewStatus"],
+            "nativeReviewStatus": "native_approved" if is_native_approved(e) else "pending",
+            **{"nativeApproval"+k.title(): e.get("nativeReview", {}).get(k, "") for k in ["reviewer", "date", "reference"]},
+            **{"userApproval"+k.title(): e.get("userApproval", {}).get(k, "") for k in ["reviewer", "date", "reference"]},
             "source": provenance.get("source", e.get("introduction", {}).get("rationale", "authored game content")),
             "notes": " | ".join(
                 item if isinstance(item, str) else json.dumps(item, ensure_ascii=False, sort_keys=True)

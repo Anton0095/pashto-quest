@@ -206,17 +206,17 @@ try {
                   return t.state.progress.library.phrases[c.id] || (refs.length && refs.every((r) =>
                     t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId)));
                 }).map((c) => c.en));
+                const backup = new Set(t.content.LIBRARY_DATA.entries
+                  .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
+                  .map(e => e.englishSenses[0]));
                 for (const text of q.choiceOrder)
-                  if (!studied.has(text) && !["A different meaning", "Another response", "None of these"].includes(text))
-                    throw Error("Unstudied distractor meaning: " + text);
+                  if (!studied.has(text) && !backup.has(text) && !["A different meaning", "Another response", "None of these"].includes(text))
+                    throw Error("Distractor is neither studied nor Day-1 backup: " + text);
                 if (q.unstudied && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === card.en))
                   throw Error("Unstudied target meaning offered as a clue");
               }
-              if (q.kind === "choice" && q.grammarConcept) {
-                if (!q.grammarDays.every((day) => t.state.progress.library.grammar["grammar-day-" + day]))
-                  throw Error("Grammar assessment required an unvisited workshop");
-                if (q.reference && !q.prompt.includes(q.reference)) throw Error("Missing guided grammar reference");
-              }
+              if (["choice", "address"].includes(q.kind) || q.grammarConcept)
+                throw Error("Retired grammar-rule question generated in a practical assessment");
               if (q.kind === "word" && q.unstudied) {
                 if (
                   q.direction !== "ps-en" ||

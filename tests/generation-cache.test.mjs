@@ -3,9 +3,14 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 const data=JSON.parse(readFileSync('index.html','utf8').match(/const LIBRARY_DATA=(\{.*?\});/s)[1]);
+// Preserve the pre-optimisation output contract at its recorded pronunciation.
+// The approved nun correction is separately checked by approved-language tests.
+const today=data.entries.find(e=>e.displayLemmaPs==='نن').forms[0];
+today.romanisation=today.priorAttestedRomanisation;today.featureEvidence.romanisationSpan=today.romanisation;
+data.generationEvidence[today.formId].romanisation=today.romanisation;
 const frames=data.sentenceFrames;
 const freeze=value=>{if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(freeze);Object.freeze(value)}return value};
-freeze(data.entries);freeze(data.generationEvidence);
+freeze(frames);freeze(data.entries);freeze(data.generationEvidence);
 const source=process.argv.includes('--write')?readFileSync('work/p1/sentence-engine-before.js','utf8'):readFileSync('src/sentence-engine.js','utf8');
 const context={rebuilds:0};
 const {S,E}=vm.runInNewContext(readFileSync('src/library-engine.js','utf8')+'\n'+source.replace('    const sources = new Map(','    globalThis.rebuilds++;\n    const sources = new Map(')+';({S:SentenceEngine,E:LibraryEngine})',context);
@@ -16,6 +21,13 @@ for(let day=1;day<=14;day++){
  for(let n=1;n<=day;n++)E.unlock(p,n,'visible-test-workshop');
  for(const e of data.entries)for(const f of e.forms)if(E.formAllowed(e,f,day))E.encounter(p,data,{lemmaId:e.lemmaId,formId:f.formId},{day,source:'lesson',introduce:true});
  const cards=S.available(p,data,frames,day);
+ if(day===14){
+  const lazy=cards.find(c=>Object.getOwnPropertyDescriptor(c,'roman').get);
+  assert(lazy,'Unselected immutable candidates defer full display/provenance allocation');
+  const eager=S.compose(data,frames.frames.find(f=>f.id===lazy.generated.frameId),{slots:lazy.generated.slots});
+  Object.freeze(lazy.generated);Object.freeze(lazy);
+  assert.equal(JSON.stringify(lazy),JSON.stringify(eager),'Frozen lazy candidates preserve complete canonical output');
+ }
  const selections=[];for(let seed=1;seed<=20;seed++)selections.push(S.select(p,data,frames,day,15,seed));
  actual.push({day,count:cards.length,cardsSha256:hash(cards),selectionsSha256:hash(selections),dialoguesSha256:hash(S.dialogues(cards,data,12345))});
  const signature=data.eligibleCache.signature;
