@@ -54,8 +54,8 @@ if(mode==='all') {
  }
  console.log('PASS P1-A extended: encounter/intro separation, partial day, revision, all 14 skipped days × seven paces, saved choices');
  const covered=new Set();
- for(const pace of [0,4])for(let day=1;day<=14;day++){
-  reset(t,pace);for(let d=1;d<=day;d++)t.E.unlock(t.state.progress,d,'studied-workshop-test');
+ for(const pace of [0,4])for(let day=1;day<=14;day++)for(const seed of (day===14?Array.from({length:33},(_,i)=>i+1):[1])){
+  reset(t,pace);t.state.progress.library.seed=seed;for(let d=1;d<=day;d++)t.E.unlock(t.state.progress,d,'studied-workshop-test');
   const before=plain(t.state.progress.library.grammar),qs=t.questions.selectChallenge(day);
   for(const q of qs.filter(q=>q.kind==='choice')){
    const c=t.content.LIBRARY_DATA.grammarAssessment.concepts.find(c=>c.id===q.grammarConcept);assert(c);covered.add(c.id);

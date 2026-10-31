@@ -28,7 +28,7 @@ assert(
   "Grammar journal uses the canonical curriculum",
 );
 const exceptions = c.LIBRARY_DATA.phrases;
-assert.equal(exceptions.length, 6);
+assert.equal(exceptions.length, 18);
 assert(exceptions.every((p) => p.exceptionReason && p.kind === "fixed_phrase"));
 assert(!c.wordById["s3-house"]);
 assert(!c.wordById["w2-d12-school-2"]);

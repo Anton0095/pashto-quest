@@ -5,7 +5,14 @@ from pathlib import Path
 
 def is_native_approved(entry):
     review = entry.get("nativeReview", {})
-    return entry.get("reviewStatus") == "native_approved" and bool(review.get("reviewer")) and bool(review.get("reference"))
+    return entry.get("reviewStatus") == "native_approved" and bool(review.get("reviewer")) and bool(review.get("reference")) and bool(review.get("date"))
+
+
+def is_user_approved(entry):
+    review = entry.get("userApproval", {})
+    return (entry.get("reviewStatus") == "user_approved" and entry.get("userVerified") is True
+            and all(review.get(k) for k in ["reviewer", "date", "reference"])
+            and review.get("nativeCertificationClaimed") is False)
 
 
 POS = {
@@ -58,13 +65,15 @@ def validate_curriculum(data):
             raise ValueError("Invalid POS: " + eid)
         if e.get("reviewStatus") == "native_approved" and not is_native_approved(e):
             raise ValueError("Native approval requires reviewer evidence: " + eid)
-        if e.get("reviewStatus") not in {"needs_native_review", "provisional_playable", "native_approved"}:
+        if e.get("reviewStatus") not in {"needs_native_review", "provisional_playable", "native_approved", "user_approved"}:
             raise ValueError("Invalid playable review status: " + eid)
         if e.get("reviewStatus") == "provisional_playable" and (
             e.get("userVerified") is not False
             or e.get("provenance", {}).get("nativeApproved") is not False
         ):
             raise ValueError("False provisional approval: " + eid)
+        if e.get("reviewStatus") == "user_approved" and not is_user_approved(e):
+            raise ValueError("User approval requires scoped reviewer/date/reference evidence: " + eid)
         if not e.get("grammaticalRoles") or set(e.get("traits", {})) != TRAITS:
             raise ValueError("Missing grammatical traits: " + eid)
         validate_features(e["traits"], eid)
@@ -155,8 +164,10 @@ def validate_curriculum(data):
             continue
         evidence = f["featureEvidence"]
         a = attestations.get(evidence["sourceId"])
-        if not a or f["pashto"] not in a["pashto"] or f["romanisation"] not in a["romanisation"]:
+        if not a or f["pashto"] not in a["pashto"] or (f["romanisation"] not in a["romanisation"] and not (is_user_approved(e) and f is e["forms"][0] and f["romanisation"] == e["romanisation"] and evidence.get("romanisationApproval") == e.get("userApproval"))):
             raise ValueError("Unattested composition span: " + fid)
+        if f.get("priorAttestedRomanisation") and (not a or f["priorAttestedRomanisation"] not in a["romanisation"] or not is_user_approved(e)):
+            raise ValueError("Unattested prior pronunciation aid: " + fid)
     config = data.get("sentenceFrames", {})
     if config and config.get("schemaVersion") != 2:
         raise ValueError("Unsupported frame schema")

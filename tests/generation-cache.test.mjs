@@ -3,6 +3,11 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 const data=JSON.parse(readFileSync('index.html','utf8').match(/const LIBRARY_DATA=(\{.*?\});/s)[1]);
+// Preserve the pre-optimisation output contract at its recorded pronunciation.
+// The approved nun correction is separately checked by approved-language tests.
+const today=data.entries.find(e=>e.displayLemmaPs==='نن').forms[0];
+today.romanisation=today.priorAttestedRomanisation;today.featureEvidence.romanisationSpan=today.romanisation;
+data.generationEvidence[today.formId].romanisation=today.romanisation;
 const frames=data.sentenceFrames;
 const freeze=value=>{if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(freeze);Object.freeze(value)}return value};
 freeze(frames);freeze(data.entries);freeze(data.generationEvidence);

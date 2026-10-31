@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "user_approved_pending_runtime_integration",
+  "status": "integrated_user_approval",
   "recordedDate": "2026-10-31",
   "reviewer": "Yaqub Forrest (project owner)",
   "approvalType": "explicit_user_confirmation",
@@ -10,7 +10,7 @@
   "scope": {
     "approved": "Exact base lemma spelling, listed English sense and supplied transliteration; exact phrase wording/transliteration below.",
     "notApproved": "Unshown inflected forms, generated sentences, grammar features, automatic new synonyms, recordings, new tutorial translations or the 59 excluded candidates.",
-    "missingTransliteration": "Today / نن had no transliteration in the approved list. Its spelling/meaning are approved; its transliteration remains missing.",
+    "missingTransliteration": "Today / نن: project owner supplied nun explicitly in the implementation request on 2026-10-31.",
     "nativeReview": "User verification is real approval. Reviewer dialect credentials were not asserted; do not invent independent native certification.",
     "activation": "This is the authoritative approval handoff. Existing runtime JSON/HTML and generated reports remain at their pre-integration snapshot until Codex reconciles statuses and integrates content."
   },
@@ -1006,7 +1006,7 @@
       "englishSenses": [
         "Today"
       ],
-      "romanisation": "nan"
+      "romanisation": "nun"
     },
     {
       "lemmaId": "lemma:w2-d13-vocab-2",

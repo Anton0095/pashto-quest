@@ -4,6 +4,7 @@ function createStorage({
   content,
   progression,
   backend,
+  locks = backend ? null : globalThis.navigator?.locks,
 }) {
   const KEY = "pashto-town-days-v1";
   let saveProblem = null, persistenceProblem = null, readBlocked = false;
@@ -67,7 +68,7 @@ function createStorage({
     LibraryEngine.compactHistory(state.progress, [state.session, state.progress.activeChallenge]);
     return JSON.stringify(state.progress);
   }
-  function save() {
+  function write(raw) {
     if (saveProblem) return false;
     try {
       const target = access();
@@ -78,7 +79,6 @@ function createStorage({
         observed = null;
       }
       if (!checkExternalChange()) return false;
-      const raw = snapshot();
       if (raw !== observed) {
         target.setItem(KEY, raw);
         if (target.getItem(KEY) !== raw) throw Error("Storage did not retain progress");
@@ -92,11 +92,45 @@ function createStorage({
     }
   }
 
+  let pending = 0, lastSave = Promise.resolve(true), queuedSave = null;
+  function save() {
+    if (saveProblem) return false;
+    let raw;
+    try { raw = snapshot(); } catch {
+      return persistenceFailure("Progress has not been saved: the current snapshot could not be prepared. Keep this tab open and retry.");
+    }
+    // Injected synchronous backends are single-process test adapters. Browser
+    // writers must share an origin-wide lock, including the final comparison.
+    if (backend && !locks) return write(raw);
+    if (!locks?.request)
+      return persistenceFailure("Progress has not been saved: this browser cannot coordinate safe saves across tabs. Keep this tab open and export your progress. Use a browser with Web Locks support to resume saving.");
+    // Coalesce not-yet-written snapshots from this tab. Never merge records
+    // from another tab, and never retain an unbounded queue of full saves.
+    if (queuedSave) { queuedSave.raw = raw; return queuedSave.promise; }
+    const request = {raw, promise:null};
+    queuedSave = request;
+    pending++;
+    request.promise = locks.request(KEY, { mode: "exclusive" }, () => {
+      try { return write(request.raw); }
+      finally { if (queuedSave === request) queuedSave = null; }
+    }).catch(() => {
+      if (queuedSave === request) queuedSave = null;
+      return persistenceFailure("Progress has not been saved: browser save coordination failed. Retry or export before closing this tab.");
+    }).finally(() => { pending--; });
+    return lastSave = request.promise;
+  }
+  if (!backend && typeof globalThis.addEventListener === "function")
+    globalThis.addEventListener("beforeunload", event => {
+      if (pending) { event.preventDefault(); event.returnValue = ""; }
+    });
+
   return {
     load,
     save,
     currentSave,
     snapshot,
+    get pending() { return pending > 0; },
+    settled() { return lastSave; },
     onPersistenceChange(listener) {
       notifyPersistence = listener;
       listener(persistenceProblem);

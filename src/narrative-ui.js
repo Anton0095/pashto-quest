@@ -69,7 +69,7 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
     card.append(
       ui.node(
         "p",
-        `${phrase.speaker} → Player · ${place}${phrase.optional ? " · Optional cultural content" : ""}`,
+        `${phrase.promptPhraseId && phrase.id === phrase.responsePhraseId ? "Player → " + phrase.speaker : phrase.speaker + " → Player"} · ${place}${phrase.optional ? " · Optional cultural content" : ""}`,
         "eyebrow",
       ),
     );
@@ -84,6 +84,11 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
       );
       return card;
     }
+    if (phrase.promptPhraseId && phrase.id === phrase.responsePhraseId) {
+      const prompt = content.wordById[phrase.promptPhraseId];
+      const line = ui.node("p", `${phrase.speaker}: ${prompt.ps} (${prompt.roman} — ${prompt.en})`);
+      card.append(line);
+    }
     const ps = ui.node("p", phrase.pashto, "library-pashto");
     ps.lang = "ps";
     ps.dir = "rtl";
@@ -92,7 +97,7 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
       ui.node("p", `${phrase.romanisation} — ${phrase.english}`),
       ui.node(
         "p",
-        "Fixed expression · approximate romanisation; native Laghman review pending.",
+        "User-approved expression and transliteration; no independent native certification.",
         "tiny",
       ),
       ui.button("🔊 Hear " + phrase.english, () =>
@@ -112,6 +117,13 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
       source,
       location: phrase.location,
     });
+    if (phrase.responsePhraseId && phrase.responsePhraseId !== phrase.id) {
+      const response = content.LIBRARY_DATA.phrases.find(p => p.id === phrase.responsePhraseId);
+      const line = ui.node("p", `Player replies: ${response.pashto} (${response.romanisation} — ${response.english})`);
+      line.dataset.responsePhrase = response.id;
+      card.append(line);
+      LibraryEngine.expose(state.progress, content.LIBRARY_DATA, response.id, {day:phrase.day,source,location:phrase.location});
+    }
     appendPhrasePractice(card, phrase, source, phrase.day);
     storage.save();
     return card;
@@ -124,19 +136,10 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
       ui.$("skipDayArea").before(root);
     }
     root.replaceChildren();
-    // Announce the encounter without pre-teaching the English answer or
-    // acquiring the expression before the first location study card.
     const phrase = content.NARRATIVE_DATA.expressions.find(
-      (p) => p.day === day && day > 1 && p.active && !p.optional,
+      (p) => p.day === day && day > 1 && p.active,
     );
-    if (phrase)
-      root.append(
-        ui.node(
-          "p",
-          `${phrase.speaker} will teach you a new greeting today. Meet the village teachers to study it as the first card.`,
-          "tiny muted",
-        ),
-      );
+    if (phrase) root.append(expressionDialogue(phrase, "day-opening"));
   }
   function renderLessonExpression(day, location, mode) {
     let root = ui.$("lessonExpression");

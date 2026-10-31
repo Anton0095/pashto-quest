@@ -54,7 +54,7 @@ report.fixedPhraseExceptions = phrases.map((p) => ({
 const lines = [
   "# Measured instructional sentence delivery",
   "",
-  `**${report.genuinelyGeneratedObservations} / ${report.instructionalSentenceObservations} independently observed sentence surfaces were generated: 100%.** Zero authored sentence surfaces were delivered. The six designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.`,
+  `**${report.genuinelyGeneratedObservations} / ${report.instructionalSentenceObservations} independently observed sentence surfaces were generated: 100%.** Zero authored sentence surfaces were delivered. The ${phrases.length} designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.`,
   "",
   report.basis,
   "",
@@ -110,15 +110,15 @@ const lines = [
   "",
   "## Architecture and limits",
   "",
-  "The runtime contains no authored sentence cards, lesson sentence targets, fixed grammar models or static Pashto dialogue answers. It builds no sentence catalogue before study. Templates compile against the current introduced forms and actual grammar; typed dialogues join compatible generated questions and responses. Frozen attempts retain complete text/gloss, indices, choices, scene, speaker/recipient, source forms and ASTs. A generated label alone is insufficient: bodies are recomposed and checked. Standard visits exclude earlier studied sentence texts; explicit revision/replay handles repetition.",
+  "The runtime contains no authored sentence cards, lesson sentence targets or fixed grammar models; only explicitly registered conventional expressions have fixed conversational responses. It builds no sentence catalogue before study. Templates compile against the current introduced forms and actual grammar; typed dialogues join compatible generated questions and responses. Frozen attempts retain complete text/gloss, indices, choices, scene, speaker/recipient, source forms and ASTs. A generated label alone is insufficient: bodies are recomposed and checked. Standard visits exclude earlier studied sentence texts; explicit revision/replay handles repetition.",
   "",
-  "[Capacity and exact missing forms/features](GENERATION_COVERAGE.md) are separate diagnostics. Unattested inflections, missing counted numeral constructions and unlicensed obliques remain excluded. All language and extracted pronunciation aids remain provisional; automated consistency, Chromium/mobile layouts and mocked audio are not native Laghman review or physical iPhone/Windows testing.",
+  "[Capacity and exact missing forms/features](GENERATION_COVERAGE.md) are separate diagnostics. Unattested inflections, missing counted numeral constructions and unlicensed obliques remain excluded. Base entries and conventional expressions are user-approved; inflections, grammar and composed language remain provisional; automated consistency, Chromium/mobile layouts and mocked audio are not native Laghman review or physical iPhone/Windows testing.",
   "",
 ];
 const exceptionLines = [
   "# Fixed phrase exceptions",
   "",
-  "This is the complete exception register. It is checked against the archived conventional greetings and the two exact user-supplied active expressions; ordinary sentence targets cannot be added as exceptions.",
+  "This is the complete exception register. Exact wording is checked against content/USER_LANGUAGE_APPROVALS.json and active expression identities; ordinary sentence targets cannot be added as exceptions.",
   "",
   "| ID | Pashto | English | Introduction | Reason |",
   "|---|---|---|---:|---|",
@@ -127,9 +127,14 @@ const exceptionLines = [
       `| ${p.id} | ${p.pashto} | ${p.english} | ${p.day} | ${p.exceptionReason} |`,
   ),
   "",
-  "English profile settings are not language teaching. Phonological letters, lexical headwords, individual finite/inflected forms and licensed non-clausal chunks are vocabulary/form references, not hidden fixed-sentence exceptions. Every instructional clause is generated. All six expressions retain their provisional language-review status.",
+  "English profile settings are not language teaching. Phonological letters, lexical headwords, individual finite/inflected forms and licensed non-clausal chunks are vocabulary/form references, not hidden fixed-sentence exceptions. Every instructional clause is generated. All registered expressions are user-approved, without independent native certification.",
   "",
 ];
+exceptionLines.push(
+  "## Expanding the register", "",
+  "The inventory is not a permanent cap. Additional conventional formulas require stable identity, exact wording/sense/transliteration, context and documented approval under [language review](../../LANGUAGE_REVIEW.md), with reviewer, date and reference. Update canonical phrase/expression data, the register, validators and tests together under the [validation policy](../../tests/README.md#choose-validation-by-change-and-risk). Unapproved proposals remain inactive; ordinary sentences cannot be relabelled as phrases to bypass generation.", "",
+  "The Day-7 peace response is introduced on Day 5 and reused conversationally. Three Day-1 phrases and two Pashto tutorial questions remain [inactive proposals](LANGUAGE_PROPOSALS.md). Profile controls remain English until those questions are approved.", ""
+);
 const outputs = [
   [
     "content/INSTRUCTIONAL_DELIVERY_AUDIT.json",

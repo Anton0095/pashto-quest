@@ -52,10 +52,11 @@ for (const width of [375, 1280]) {
     }
     await finishVisit();
     assert(generated >= 2);
-    const getXP = () =>
-      p.evaluate(
-        () => JSON.parse(localStorage.getItem("pashto-town-days-v1")).xp,
-      );
+    const getXP = async () => {
+      // Public UI and durable save must agree before comparing replay rewards.
+      await p.waitForFunction(() => JSON.parse(localStorage.getItem("pashto-town-days-v1")).xp === Number(document.getElementById("xpPill").textContent.match(/\d+/)[0]));
+      return p.evaluate(() => JSON.parse(localStorage.getItem("pashto-town-days-v1")).xp);
+    };
     const xp = await getXP();
     await p.locator("#resultReplay").click();
     await finishVisit();

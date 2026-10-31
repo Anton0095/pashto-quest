@@ -107,7 +107,7 @@ function createLibraryUI({
         card.append(
           ui.node(
             "p",
-            "Fixed expression · native Laghman review pending. Inflections/components add no district words.",
+            "User-approved fixed expression · no independent native certification. Components add no district words.",
             "tiny",
           ),
         );
@@ -286,7 +286,7 @@ function createLibraryUI({
     detail.append(
       ui.node(
         "p",
-        `Planned introduction: Day ${e.introduction.day} · ${e.introduction.district}. ${r.formallyIntroducedDay ? "First word/form study: Day " + r.formallyIntroducedDay : "Not yet formally studied"}. Native language review pending.`,
+        `Planned introduction: Day ${e.introduction.day} · ${e.introduction.district}. ${r.formallyIntroducedDay ? "First word/form study: Day " + r.formallyIntroducedDay : "Not yet formally studied"}. Base wording user-approved; grammar and independent native review pending.`,
         "tiny",
       ),
     );
@@ -325,7 +325,7 @@ function createLibraryUI({
           "p",
           f.romanisation || "Isolated-form romanisation pending review.",
         ),
-        ui.node("p", "Native review pending.", "tiny"),
+        ui.node("p", f.pashto === e.displayLemmaPs ? "Base wording user-approved; morphology and independent native review pending." : "Inflected form unreviewed; independent native review pending.", "tiny"),
       );
       if (f.audioContentId)
         box.append(
@@ -436,7 +436,7 @@ function createLibraryUI({
     root.append(
       ui.node(
         "p",
-        `${content.LIBRARY_DATA.inventorySummary.activeContentLemmas} district draft lemmas are active; promoted entries remain provisional and unchecked. Native review is pending.`,
+        `${content.LIBRARY_DATA.inventorySummary.activeContentLemmas} district lemmas are active and base content is user-approved. Morphology remains provisional; independent native review is pending.`,
       ),
     );
     const message = ui.node("p");

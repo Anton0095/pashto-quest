@@ -71,7 +71,8 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       roman: phrase.romanisation,
       en: phrase.english,
       place: phrase.location || "library",
-      note: "Fixed expression; provisional romanisation, native Laghman review pending.",
+      phrasePromptId: phrase.id === "phrase-day-7-opening" ? "phrase-day-5-opening" : null,
+      note: phrase.userVerified ? "User-approved fixed expression; no independent native certification." : "Provisional fixed expression; native review pending.",
     };
     LIBRARY_DATA.cardTypes[phrase.id] = "greeting";
   }
@@ -88,7 +89,7 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       roman: form.romanisation || "Romanisation pending native review",
       en: entry.englishSenses[0],
       acceptedEnglishAnswers: form.acceptedEnglishAnswers || [],
-      note: "Provisional vocabulary; native Laghman review pending.",
+      note: entry.userVerified ? "Base content user-approved; grammar/forms remain provisional; no independent native certification." : "Provisional vocabulary; native review pending.",
     };
     LIBRARY_DATA.cardDays[id] = entry.introduction.day;
     LIBRARY_DATA.cardTypes[id] = entry.partOfSpeech;
@@ -134,7 +135,7 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
   deepFreeze(LIBRARY_DATA.generationEvidence);
   deepFreeze(LIBRARY_DATA.generationAttestations);
   function registerGenerated(card) {
-    if (wordById[card.id]) return wordById[card.id];
+    if (wordById[card.id] && JSON.stringify(wordById[card.id]) === JSON.stringify(card)) return wordById[card.id];
     if (
       card.type !== "sentence" ||
       card.generated?.origin !== "productive_engine"

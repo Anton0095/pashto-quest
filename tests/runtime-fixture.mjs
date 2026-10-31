@@ -30,7 +30,7 @@ export function runtime() {
  const state={progress:progression.fresh(),session:null,day:1};let raw=null;
  const backend={getItem(){return raw},setItem(k,v){raw=v}},storage=createStorage({state,content,progression,backend});
  const learning=createLearning({state,content,progression}),questions=createQuestions({state,content,progression});
- ({content,progression,state,storage,backend,learning,questions,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine});`,
+ ({createStorage,content,progression,state,storage,backend,learning,questions,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine});`,
     context,
   );
 }

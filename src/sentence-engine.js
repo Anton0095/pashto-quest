@@ -61,7 +61,11 @@ const SentenceEngine = (() => {
       f.romanisation &&
       evidence?.sourceId &&
       attestation?.pashto.includes(f.pashto) &&
-      attestation?.romanisation.includes(f.romanisation) &&
+      (attestation?.romanisation.includes(f.romanisation) ||
+        (e.reviewStatus === "user_approved" && e.userVerified === true &&
+         f === e.forms[0] && f.romanisation === e.romanisation &&
+         evidence.romanisationApproval?.nativeCertificationClaimed === false &&
+         ["reviewer", "date", "reference"].every(k => evidence.romanisationApproval?.[k] && evidence.romanisationApproval[k] === e.userApproval?.[k]))) &&
       evidence.pashtoSpan === f.pashto &&
       evidence.romanisationSpan === f.romanisation &&
       evidence.features &&
@@ -603,7 +607,7 @@ const SentenceEngine = (() => {
     if (!data.generatedCatalog) data.eligibleCache.available = result;
     return result;
   }
-  function restoreCard(data, frames, snapshot) {
+  function restoreProof(data, frames, snapshot) {
     if (!snapshot?.generated) return null;
     if (snapshot.generated.ast?.kind === "clause_coordination") {
       const a = snapshot.generated.ast,
@@ -614,6 +618,24 @@ const SentenceEngine = (() => {
     }
     const f = frames.frames.find((f) => f.id === snapshot.generated.frameId);
     return f ? compose(data, f, { slots: snapshot.generated.slots }) : null;
+  }
+  function restoreCard(data, frames, snapshot) {
+    const card = restoreProof(data, frames, snapshot);
+    if (!card || card.roman === snapshot.roman) return card;
+    // Current schema snapshots retain their exact displayed pronunciation aid.
+    // Only stored, attested prior aids are eligible; no content/proof repair.
+    const ids = new Set(Object.values(snapshot.generated.slots).map(r => r.formId));
+    const prior = data.entries.flatMap(e => e.forms).filter(f => ids.has(f.formId) && f.priorAttestedRomanisation);
+    if (!prior.length) return card;
+    const evidence = {...data.generationEvidence};
+    const entries = data.entries.map(e => ({...e, forms:e.forms.map(f => {
+      if (!prior.includes(f)) return f;
+      const romanisation = f.priorAttestedRomanisation;
+      if (evidence[f.formId]) evidence[f.formId] = {...evidence[f.formId], romanisation};
+      return {...f, romanisation, featureEvidence:{...f.featureEvidence, romanisationSpan:romanisation}};
+    })}));
+    const previous = restoreProof({...data, entries, generationEvidence:evidence}, frames, snapshot);
+    return previous?.roman === snapshot.roman ? previous : card;
   }
   function select(p, data, frames, day, count, seed, recent = []) {
     const lookup = index(data),

@@ -242,6 +242,12 @@ function createChallengeUI({
         ui.$("addressTarget").textContent = `${host} → Player · YOUR RESPONSE → ${q.recipient}`;
       }
     }
+    if (q?.phrasePromptId) {
+      const prompt = content.wordById[q.phrasePromptId];
+      const host = q.speaker || content.teacherFor(state.session.loop, null, "challenge").name;
+      ui.$("guideMessage").textContent = `${host}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). Recognise the conventional reply shown below.`;
+      ui.$("addressTarget").textContent = `${host} → Player · YOUR REPLY → ${host}`;
+    }
     if (resuming && state.session.locked) renderRecordedResponse();
   }
   function renderQuestion(resuming) {
@@ -287,7 +293,7 @@ function createChallengeUI({
     ui.setDialogueSpeaker(host.name);
     target.classList.remove("hidden");
     target.textContent = `${host.name} → Player · YOUR ANSWER → ${host.name}`;
-    if (state.session.loop === 4 || state.session.loop === 5) {
+    if (q.kind === "address") {
       const speaker = q.speaker || "Muhammad Jan";
       ui.setDialogueSpeaker(speaker);
       const recipient = q.recipient || "player";
@@ -311,14 +317,9 @@ function createChallengeUI({
           : "",
       );
     }
-    if (state.session.loop >= 6) {
-      const responseRecipient =
-        q.recipient === "Player" ? q.speaker : q.recipient;
-      ui.setDialogueSpeaker(q.speaker);
-      ui.showParticipants(q.participants || [q.speaker], responseRecipient);
-      target.textContent = `${q.speaker} → Player · YOUR RESPONSE → ${responseRecipient}`;
-      target.classList.remove("hidden");
-      ui.renderMixedPashto(ui.$("guideMessage"), q.comment || q.prompt);
+    if (q.kind === "dialogue") {
+      ui.setDialogueSpeaker(q.speaker || host.name);
+      ui.showParticipants(q.participants || [q.speaker || host.name], q.recipient);
     }
 
     if (q.kind === "dialogue") {

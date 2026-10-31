@@ -46,8 +46,8 @@ reset(t, 0);
 t.state.day = 14;
 assert.deepEqual(
   plain(t.learning.libraryLessonPool(14, "residential")),
-  [],
-  "No greeting injected in an empty visit",
+  ["phrase-day-14-opening"],
+  "The approved daily phrase is available without new Day-14 lemmas",
 );
 const xp = t.state.progress.xp;
 assert.equal(

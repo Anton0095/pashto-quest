@@ -1,8 +1,8 @@
 # Pashto Quest — Current curriculum and content status
 
-> **User approval recorded 31 October 2026:** [USER_LANGUAGE_APPROVALS.json](content/USER_LANGUAGE_APPROVALS.json) records approval of all 473 base lemmas and 18 phrase records (the six existing registered phrases plus twelve Day-3–14 expressions). Day 7 now uses “And peace be upon you” instead of “How is business going?”. This is explicit user verification, not an invented independent native certification. Individual inflections, generated combinations, recordings, excluded candidates and untranslated tutorial/Day-1 slots remain outside that approval. Earlier draft/pending counts below describe the pre-integration runtime snapshot. Codex must reconcile the approval record into canonical data, validators and the generated release before claiming integration complete.
+> **Integrated user approval (31 October 2026):** [approval record](content/USER_LANGUAGE_APPROVALS.json) covers all 473 base lemmas and 18 conventional phrases. نن (“today”) uses the subsequently supplied `nun`. This approves exact base spelling, listed senses and supplied transliteration; inflections, grammatical analyses, generated combinations, recordings and 59 excluded candidates remain outside its scope. No independent native certification is claimed.
 
-The fixed teaching sequence lives in `content/LEARNING_CURRICULUM.json`; lexical identities and attested forms live in `content/LIBRARY_LEXICON.json`. All instructional clauses are dynamically composed after actual word/form study and grammar unlocks. `content/FIXED_PHRASES.json` lists the six currently registered fixed-expression exceptions (see its [expansion gate](docs/grammar/FIXED_PHRASE_EXCEPTIONS.md#expanding-the-register)). Archived Week 1/2 drafts in `docs/grammar/attestations/` are evidence and regression fixtures, never lesson or assessment fallbacks. `GAME_SPEC.md` owns mechanics; `LANGUAGE_REVIEW.md` owns language approval.
+The fixed teaching sequence lives in `content/LEARNING_CURRICULUM.json`; lexical identities and attested forms live in `content/LIBRARY_LEXICON.json`. All instructional clauses are dynamically composed after actual word/form study and grammar unlocks. `content/FIXED_PHRASES.json` lists the eighteen currently registered fixed-expression exceptions (see its [expansion gate](docs/grammar/FIXED_PHRASE_EXCEPTIONS.md#expanding-the-register)). Archived Week 1/2 drafts in `docs/grammar/attestations/` are evidence and regression fixtures, never lesson or assessment fallbacks. `GAME_SPEC.md` owns mechanics; `LANGUAGE_REVIEW.md` owns language approval.
 
 ## Learning sequence
 
@@ -32,8 +32,8 @@ Day 1 Home at default pace teaches house, door, room, big, window and open, plus
 - User-selectable daily district-lemma pace: **0, 4, 8, 12, 16, 20 or 24**; fresh-profile default 24. Schema 7 freezes new plans. Valid schema-7 progress is preserved; older schemas are not converted. Nonzero paces divide evenly among four districts. Day 1 maximum is **six distinct nouns/adjectives per district**; action verbs first become teachable on Day 2.
 - Every lexeme has one `lemmaId` and potentially multiple `formId`s. Inflections, universal vocabulary, expressions and sentence units are not counted as newly introduced district lemmas. Incidental story exposure is tracked separately from assigned and mastered entries.
 - Day 14 assigns **zero new compulsory district lemmas**. Insufficient evidenced, eligible vocabulary must be reported, never silently filled using repeated entries, English-only candidates or fake translations.
-- **Current playable draft:** 473 lexical identities/607 forms: 400 district lemmas (100 each for Home, Lake, Market and School) and 73 universal lemmas. “Playable” does **not** mean native-certified.
-- **Expansion disposition:** all 301 selected candidates are mechanically complete `provisional_playable` drafts; 59 candidates remain rejected, including 7 existing-sense aliases. No candidate is marked native-approved or user-verified.
+- **Current playable inventory:** 473 lexical identities/607 forms: 400 district lemmas (100 each for Home, Lake, Market and School) and 73 universal lemmas. “Playable” does **not** mean native-certified.
+- **Expansion disposition:** all 301 selected candidates were promoted as mechanically complete provisional drafts and their canonical base entries are now user-approved; 59 candidates remain rejected, including 7 existing-sense aliases. The canonical promoted base entries are user-approved; candidate/archive provenance is retained without relabelling excluded candidates. None is independently native-certified.
 - At 24/day, the planner schedules exactly **312** distinct district introductions: six per district on Days 1–13. Each district retains 22 additional entries, and Day 14 remains cumulative review with no compulsory vocabulary.
 - `content/UNIVERSAL_TEACHING_TARGETS.json` contains **40 proposed semantic teaching targets** (pronouns, numbers, question words, position, connectors etc.); they are not automatically 40 translated lexical records.
 
@@ -41,33 +41,33 @@ Day 1 Home at default pace teaches house, door, room, big, window and open, plus
 
 ## Greetings and contextual expressions
 
-`content/NARRATIVE_EXPRESSIONS.json` is the sole authored list of **17 contextual expression slots**. Two exact user-supplied Pashto expressions are **provisionally active**, not native-approved:
+`content/NARRATIVE_EXPRESSIONS.json` is the sole authored list of **17 contextual expression slots**. Fourteen exact user-approved Pashto expressions are active, without independent native certification:
 
 | Day/location | Speaker | English context | Pashto status |
 |---|---|---|---|
-| 1 Home | Muhammad Jan | Welcome! | `ښه راغلاست` — active, provisional |
-| 1 Lake | Saleha | What is your name? | Pending |
-| 1 Market | Edris | How much is this? | Pending |
-| 1 School | Ms Hameed | What is this? | Pending |
-| 2 School | Ms Hameed | Good morning! | `سهار مو پخیر!` — active, provisional |
-| 3 Lake | Saleha | It's nice to see you | Pending |
-| 4 Home | Muhammad Jan | May you not be tired | Pending |
-| 5 School | Ms Hameed | Peace be upon you, with response | Pending |
-| 6 Lake | Mina | Nice to meet you | Pending |
-| 7 Market | Edris | How is business going? | Pending |
-| 8 Lake | Saleha | Where have you been? | Pending |
-| 9 Market | Edris | Please, come in | Pending |
-| 10 Lake | Mina | Excuse me | Pending |
-| 11 Home | Muhammad Jan | Make yourself at home | Pending |
-| 12 School | Ms Hameed | May I ask a question? | Pending |
-| 13 Lake | Saleha | How is your day going? | Pending |
-| 14 Home | Muhammad Jan | Good luck! | Pending / optional |
+| 1 residential | Muhammad Jan | Welcome! | `ښه راغلاست` — user-approved |
+| 1 nature | Saleha | What is your name? | Pending approval |
+| 1 business | Edris | How much is this? | Pending approval |
+| 1 school | Ms Hameed | What is this? | Pending approval |
+| 2 school | Ms Hameed | Good morning! | `سهار مو پخیر!` — user-approved |
+| 3 nature | Saleha | It’s nice to see you | `خوشحاله یم چې تاسې وینم.` — user-approved |
+| 4 residential | Muhammad Jan | May you not be tired | `ستړي مه شئ.` — user-approved |
+| 5 school | Ms Hameed | Peace be upon you | `السلام علیکم.` — user-approved |
+| 6 nature | Mina | Nice to meet you | `ستاسې په لیدو خوشحاله شوم.` — user-approved |
+| 7 business | Edris | And peace be upon you | `وعلیکم السلام.` — user-approved |
+| 8 nature | Saleha | Where have you been? | `چېرته وئ؟` — user-approved |
+| 9 business | Edris | Please, come in | `مهرباني وکړئ، دننه راشئ.` — user-approved |
+| 10 nature | Mina | Excuse me | `وبخښئ.` — user-approved |
+| 11 residential | Muhammad Jan | Make yourself at home | `دا خپل کور وګڼئ.` — user-approved |
+| 12 school | Ms Hameed | May I ask a question? | `اجازه شته چې یوه پوښتنه وکړم؟` — user-approved |
+| 13 nature | Saleha | How is your day going? | `ورځ مو څنګه تېرېږي؟` — user-approved |
+| 14 residential | Muhammad Jan | Good luck! | `بریالي اوسئ!` — user-approved |
 
-A day's active expression is the **first study card** at each of the four location lessons; a local active expression (which may be explicitly provisional) has priority, otherwise the day's active opening expression repeats. An active greeting becomes the **first question** of that day's challenge, without increasing its question count or using its lexical quota. Actual visible presentation alone creates the first encounter. Skipping does not pre-teach an unseen phrase. Pending slots are contextual English dialogue, not acquired Pashto, and cannot receive audio or recognition questions as if translated. Old `مننه` (Thank you) and `خدای پامان` (Goodbye) tutorial cards were reassigned to Day 2 Market and Day 3 Home.
+A day's active expression (including the optional Day-14 greeting) is the **first study card** at each of the four location lessons; a local active expression (which may be explicitly provisional) has priority, otherwise the day's active opening expression repeats. An active greeting becomes the **first question** of that day's challenge, without increasing its question count or using its lexical quota. Actual visible presentation alone creates the first encounter. Skipping does not pre-teach an unseen phrase. Pending slots are contextual English dialogue, not acquired Pashto, and cannot receive audio or recognition questions as if translated. Old `مننه` (Thank you) and `خدای پامان` (Goodbye) tutorial cards were reassigned to Day 2 Market and Day 3 Home.
 
 ## Editorial activation rules
 
-Use `LANGUAGE_REVIEW.md` for exact review evidence. Native Laghman checking is still required for existing Week 1 language, all Week 2 drafts, the 301 provisional candidate entries, the 40 provisional universal targets and 15 pending expressions. The expansion records conventional written-Pashto editorial drafts with mechanical romanisation and explicit uncertainty. `tools/build.py` permits these only under `provisional_playable`; native approval still requires real reviewer evidence.
+Use `LANGUAGE_REVIEW.md` for exact review evidence. Native Laghman checking is still required for existing Week 1 language, all Week 2 drafts, the 301 provisional candidate entries, the 40 linked universal targets and three pending Day-1 expressions. The expansion records conventional written-Pashto editorial drafts with mechanical romanisation and explicit uncertainty. The canonical base entries now use `user_approved`; unshown forms remain provisional. Native approval still requires real reviewer/date/reference evidence.
 
 ## Introductions, composition and retention
 
@@ -79,6 +79,8 @@ When actual study permits, 15-item challenges and 25-item examinations use gener
 
 If a pace or skip route lacks studied forms, the interface reports the deficit and uses word/English grammar tasks. It neither gives extra district lemmas nor prewritten sentence substitutes. Counts and 12/15 or 20/25 pass thresholds remain unchanged. Skip does not introduce forms behind an assessment.
 
-[Measured delivery](docs/grammar/INSTRUCTIONAL_DELIVERY_REPORT.md) reports actual rendered content; [capacity/gaps](docs/grammar/GENERATION_COVERAGE.md) separately reports potential compositions and exact excluded forms. Masculine cardinal One, feminine Two, counted Four/Five and arbitrary noun obliques remain excluded pending evidence. All language is provisional. Story openings, relationships, Hills, home award, graduation and cumulative revision remain intact.
+[Measured delivery](docs/grammar/INSTRUCTIONAL_DELIVERY_REPORT.md) reports actual rendered content; [capacity/gaps](docs/grammar/GENERATION_COVERAGE.md) separately reports potential compositions and exact excluded forms. Masculine cardinal One, feminine Two, counted Four/Five and arbitrary noun obliques remain excluded pending evidence. Base wording is user-approved; morphology and composed language remain provisional. Story openings, relationships, Hills, home award, graduation and cumulative revision remain intact.
 
-The name/gender conversation and fuller contextual greeting sequence remain intended product goals. English profile controls and the two active contextual slots are current limitations; see [delivery status](README.md#product-goal-and-delivery-status). Pending English targets are not permission to teach or assess invented Pashto.
+The name/gender conversation and fuller contextual greeting sequence remain intended product goals. English profile controls and three pending Day-1 contextual slots are current limitations; see [delivery status](README.md#product-goal-and-delivery-status). Pending English targets are not permission to teach or assess invented Pashto.
+
+Days 5 and 7 teach the peace exchange: the character says `السلام علیکم.` and the player replies `وعلیکم السلام.`. One response identity is introduced on Day 5 and reused on Day 7. Studied response assessments use Pashto construction; unseen skip targets retain uncued recognition without revealing their English answer. Neither increases challenge length or district quotas. Wording proposals for the remaining five slots are [inactive and awaiting review](docs/grammar/LANGUAGE_PROPOSALS.md).

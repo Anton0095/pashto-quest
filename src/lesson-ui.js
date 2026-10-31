@@ -194,6 +194,11 @@ function createLessons({
     ui.$("addressTarget").textContent = `${teacher.name} → Player`;
     ui.$("addressTarget").classList.remove("hidden");
     ui.sentenceContext(w, teacher.name, ui.$("teachPanel"), "study");
+    if (w.phrasePromptId) {
+      const prompt = content.wordById[w.phrasePromptId];
+      ui.$("guideMessage").textContent = `${teacher.name}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). You reply: ${w.ps} (${w.en}).`;
+      ui.$("addressTarget").textContent = `${teacher.name} → Player · YOUR REPLY → ${teacher.name}`;
+    }
     ui.$("teachNext").disabled = false;
     ui.$("teachNext").textContent =
       s.cardIndex + 1 < studyList().length

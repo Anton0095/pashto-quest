@@ -130,12 +130,12 @@ function createLearning({ state, content, progression }) {
     // consume lexical quotas, even when repeated at multiple locations.
     const greeting =
       content.NARRATIVE_DATA.expressions.find(
-        (p) => p.day === day && p.location === place && p.active && !p.optional,
+        (p) => p.day === day && p.location === place && p.active,
       ) ||
       content.NARRATIVE_DATA.expressions.find(
-        (p) => p.day === day && p.active && !p.optional,
+        (p) => p.day === day && p.active,
       );
-    const opening = greeting ? [greeting.id] : [];
+    const opening = greeting ? [...new Set([greeting.id, greeting.responsePhraseId].filter(Boolean))] : [];
     // Move former tutorial courtesies into contextual Day 2–3 teaching, without affecting lexical quotas.
     const deferred =
       day === 2 && place === "business"

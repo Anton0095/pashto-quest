@@ -57,7 +57,7 @@ function createSentenceScene({ content, $, node, setDialogueSpeaker }) {
       // A labelled scene board keeps abstract, plural, action and coordinated
       // meanings exact rather than substituting an unrelated stock picture.
       const props = node("div", undefined, "scene-props");
-      const symbols = {house:"🏠",home:"🏠",book:"📖",market:"🏪",school:"🏫",water:"💧",bread:"🫓",tea:"🫖",apple:"🍎",tree:"🌳",flower:"🌸",lake:"🏞️",river:"🏞️",mountain:"⛰️",bird:"🐦",child:"🧒",children:"🧒🧒",car:"🚗",chair:"🪑",table:"🪑",pen:"🖊️",bag:"🎒",food:"🍲",milk:"🥛",rice:"🍚",fish:"🐟",dog:"🐕",cat:"🐈"};
+      const symbols = {house:"🏠",home:"🏠",book:"📖",market:"🏪",school:"🏫",water:"💧",bread:"🫓",tea:"🫖",apple:"🍎",tree:"🌳",flower:"🌸",lake:"🏞️",river:"🏞️",mountain:"⛰️",bird:"🐦",child:"🧒",children:"🧒🧒",car:"🚗",chair:"🪑",table:"▰",pen:"🖊️",bag:"🎒",food:"🍲",milk:"🥛",rice:"🍚",fish:"🐟",dog:"🐕",cat:"🐈"};
       for (const [role, value] of Object.entries(args)) {
         const prop = node("div", undefined, "scene-prop");
         prop.dataset.role = role;

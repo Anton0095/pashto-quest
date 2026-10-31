@@ -101,6 +101,7 @@ function createSaveValidator({ content, progression }) {
         if (q[key]!==undefined && q[key]!==null && typeof q[key]!=="string") return false;
       if (q.grammarDays!==undefined && (!Array.isArray(q.grammarDays)||q.grammarDays.some(n=>!Number.isInteger(n)||n<1||n>14))) return false;
       const w=content.wordById[q.id];
+      if (q.phrasePromptId !== undefined && (q.phrasePromptId !== w?.phrasePromptId || !content.LIBRARY_DATA.phrases.some(p=>p.id===q.phrasePromptId))) return false;
       if (!["choice","address"].includes(q.kind) && (!w || !LibraryEngine.cardAllowed(content.LIBRARY_DATA,q.id,day))) return false;
       if (["word","sentence","construct"].includes(q.kind) && !["ps-en","en-ps"].includes(q.direction)) return false;
       if (q.kind==="word" && (typeof q.unstudied!=="boolean" || (q.unstudied && q.direction!=="ps-en"))) return false;

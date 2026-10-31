@@ -68,7 +68,9 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
         b.type = "button";
         b.className = "choice";
         b.textContent = answer;
+        b.dataset.answer = answer;
         b.addEventListener("click", () => {
+          ui.showAnswerFeedback(choices, w.en, answer, {lock:false});
           if (
             QuestionEngine.evaluate(
               { kind: "word", direction: "ps-en" },

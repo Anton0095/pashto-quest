@@ -1,6 +1,6 @@
 # Coordinated audit remediation
 
-> **PR #23 implementation record.** Stages, test counts and benchmark figures below refer to the recorded releases and logs, not checks rerun for every later edit. “Stage 4 complete” means the planned implementation stage completed, not that all possible defects are closed. See the remaining concurrent-write issue below. Current workflow and check selection are in [AGENTS](../../AGENTS.md) and the [validation policy](../../tests/README.md#choose-validation-by-change-and-risk).
+> **PR #23 implementation record.** Stages, test counts and benchmark figures below refer to the recorded releases and logs, not checks rerun for every later edit. “Stage 4 complete” means the planned implementation stage completed, not that all possible defects are closed. The concurrent-write issue documented at that checkpoint is addressed by the approved-language integration follow-up below. Current workflow and check selection are in [AGENTS](../../AGENTS.md) and the [validation policy](../../tests/README.md#choose-validation-by-change-and-risk).
 
 Starting remote main: `3d2896fa658be678fa0066635d4967821c0c6e43`. Branch: `review/audit-remediation`. Baseline full verification: exit 0, **76 checks**. No source edits preceded the completed baseline. [Original reproductions](audit/original-reproductions.txt).
 
@@ -75,8 +75,23 @@ Both benchmark runs exited 0; the paired-report assertions passed. To reproduce 
 
 The final [delivery report](../grammar/INSTRUCTIONAL_DELIVERY_REPORT.md) records **4,647 / 4,647 generated instructional sentence observations (100%)**, zero authored sentence fallbacks, excluding six designated conventional phrases. Default Day 1 Home still teaches six district lemmas plus the evidenced feminine form, then composes three distinct descriptions before tile construction. The [relative-link check](audit/documentation-links.txt) passed for active Markdown file targets. No native translation/pronunciation certification follows from these technical checks.
 
-## Known open issue: concurrent writes
+<a id="known-open-issue-concurrent-writes"></a>
+
+## Concurrent writes: earlier finding and current resolution
 
 The ordinary stale-tab case is fixed: a tab observing a changed saved payload blocks its next write and offers reload/export. This is conflict detection, not an atomic transaction across tabs. A forced interleaving of read/check → serialization → write can let both tabs pass their checks before either writes; both can report success while the later payload loses the other tab’s update. The ordinary public-controls regression does not establish protection against this interleaving.
 
-This remaining runtime issue is documented, not fixed by the Markdown cleanup. A subsequent persistence change must coordinate concurrent writers and add a targeted simultaneous-write regression, then follow the validation policy for shared persistence changes. Do not describe current storage as fully conflict-safe or atomically protected. Preserve schema-7 saves, first-answer locks and the no-silent-merge/reset rules when addressing it.
+That was the state at the documentation-only checkpoint. The current follow-up serializes participating browser writers with an origin-wide Web Lock around the final comparison and write. Deterministic and real two-page regressions queue both writers before either comparison: exactly one saves; the loser retains memory/export and reloads the winning payload. Same-tab pending snapshots coalesce. No Web Locks means a visible save failure, with export available. Uncoordinated older releases/other scripts are outside this guarantee; there is no merge or cross-schema migration.
+
+
+## Approved-language integration follow-up (31 October 2026)
+
+Starting checkpoint: `4bf9518cf882d8d4995976795f9ed7e9ecf39ccb`, clean `review/audit-remediation`. All 473 base entries and eighteen phrases now carry explicit scoped owner approval; morphology, generated combinations, recordings and the 59 excluded candidates do not inherit approval. نن uses the subsequently supplied `nun`; the previous attested `nan` aid is accepted only for exact schema-7 frozen proof restoration. New compositions use `nun`.
+
+Fourteen contextual slots are active. Three Day-1 slots and two Pashto tutorial questions remain pending, with [inactive wording proposals](../grammar/LANGUAGE_PROPOSALS.md); English profile controls are still a product dependency. Daily expressions appear narratively and first in district lessons/assessments. The Day-7 business question is replaced by the approved peace reply, taught in the Day-5/7 speaker/player exchange. Phrase units add no district lemmas or XP and do not increase assessment lengths.
+
+Dependency tracing retained the single acquisition/SRS, progression/scoring and sentence compiler authorities. The obsolete blanket Day-4/5 assessment speaker override and the later-day generic override were removed in favour of actual question/shared scene context. Tutorial choices now use shared highlighting while preserving retries. A table scene no longer uses a chair icon. Evidence archives and existing regressions remain. No framework rewrite or speculative benchmark optimisation was introduced.
+
+The earlier performance tables and 92-check/4,647-observation results above remain historical evidence for their recorded release. They are not measurements of this follow-up. Physical-device audio, native Laghman certification, unavailable morphology and content approval dependencies remain open. Final follow-up commands/results are recorded in PR #23.
+
+Final follow-up verification: `python3 tools/verify.py` exited **0**, with **101 passing checks and zero failures**. The complete successful browser matrix refreshed release-bound evidence: **4,647 / 4,647 (100%)** generated instructional sentence observations, zero authored fallbacks, excluding eighteen conventional phrase exceptions; 392 district visits and 196 assessments across fourteen days, seven paces and normal/skip routes. The separate no-Web-Locks browser check passed visible failure, continued tutorial, no storage overwrite and exact memory export. Active documentation checks covered 72 relative file targets; `git diff --check` passed. Benchmarks and physical-device audio checks were not rerun. [Final verification command log](audit/approved-language-verification.txt).

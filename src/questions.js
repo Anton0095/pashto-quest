@@ -201,9 +201,10 @@ function createQuestions({ state, content, progression }) {
       let q;
       if (i === 0 && greeting)
         q = {
-          id: greeting.id,
-          kind: "word",
-          direction: "ps-en",
+          id: opening?.responsePhraseId || greeting.id,
+          phrasePromptId: opening?.promptPhraseId,
+          kind: opening?.responsePhraseId && state.progress.library.phrases[opening.responsePhraseId] ? "construct" : "word",
+          direction: opening?.responsePhraseId && state.progress.library.phrases[opening.responsePhraseId] ? "en-ps" : "ps-en",
           vocabularyOrigin: "daily-phrase",
         };
       else if (wanted === "word" && lexical.length)

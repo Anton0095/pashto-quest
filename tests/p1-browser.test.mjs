@@ -50,10 +50,10 @@ for(const width of [375,1280]) {
   await p.evaluate(()=>__test.challenge.resumeChallenge());
   // Inject browser quota and intermittent failures without changing application state.
   const xp=await p.evaluate(()=>__test.state.progress.xp);
-  await p.evaluate(()=>{
+  await p.evaluate(async()=>{
     window.realWrite=Storage.prototype.setItem;
     Storage.prototype.setItem=function(){throw new DOMException('Full','QuotaExceededError')};
-    __test.state.progress.xp+=7;__test.storage.save();
+    __test.state.progress.xp+=7;await __test.storage.save();
   });
   assert(await p.locator('#saveWarning').isVisible());
   assert((await p.locator('#saveWarning').innerText()).includes('has not been saved'));
@@ -62,13 +62,13 @@ for(const width of [375,1280]) {
   assert.equal(await p.evaluate(()=>__test.state.progress.xp),xp+7);
   const downloadPromise=p.waitForEvent('download');await p.locator('#exportSave').click();const download=await downloadPromise;
   const path=await download.path();const {readFileSync}=await import('node:fs');const exported=JSON.parse(readFileSync(path));assert.equal(exported.xp,xp+7);assert(exported.activeChallenge.locked);
-  await p.locator('#retrySave').click();assert(await p.locator('#saveWarning').isVisible());
+  await p.locator('#retrySave').click();await p.evaluate(()=>__test.storage.settled());assert(await p.locator('#saveWarning').isVisible());
   await p.evaluate(()=>Storage.prototype.setItem=window.realWrite);
-  await p.locator('#retrySave').click();assert(!(await p.locator('#saveWarning').isVisible()));
+  await p.locator('#retrySave').click();await p.evaluate(()=>__test.storage.settled());assert(!(await p.locator('#saveWarning').isVisible()));
   await p.reload();assert.equal(await p.evaluate(()=>__test.state.progress.xp),xp+7);assert(!(await p.locator('#saveWarning').isVisible()));
   // A failed write leaves the previous durable save available on reload.
-  await p.evaluate(()=>{
-   Storage.prototype.setItem=()=>{throw Error('Intermittent')};__test.state.progress.xp+=9;__test.storage.save();
+  await p.evaluate(async()=>{
+   Storage.prototype.setItem=()=>{throw Error('Intermittent')};__test.state.progress.xp+=9;await __test.storage.save();
   });await p.reload();assert.equal(await p.evaluate(()=>__test.state.progress.xp),xp+7);
   // No workshops: visible reference, not an automatic grammar unlock.
   await p.evaluate(()=>{const t=__test;t.reset(0);t.state.progress.tutorialDone=true;t.challenge.startChallenge(1);const s=t.state.session;s.index=s.questions.findIndex(q=>q.kind==='choice');s.answered=s.index;t.challenge.showChallengeQuestion()});
@@ -76,16 +76,16 @@ for(const width of [375,1280]) {
   await answerCurrent(p);assert.deepEqual(await p.evaluate(()=>__test.state.progress.library.grammar),{});
   const frozenPrompt=await p.locator('#quizPrompt').innerText();await p.reload();assert.equal(await p.locator('#quizPrompt').innerText(),frozenPrompt);
   // Fill real Chromium localStorage to its native quota, then recover.
-  const nativeQuota=await p.evaluate(()=>{
+  const nativeQuota=await p.evaluate(async()=>{
     let low=0,high=8*1024*1024,quotaErrors=0;
     while(low<high){const n=Math.ceil((low+high)/2);try{localStorage.setItem('quota-fill','x'.repeat(n));low=n}catch(error){if(error.name!=='QuotaExceededError')throw error;quotaErrors++;high=n-1}}
     localStorage.setItem('quota-fill','x'.repeat(low));
     __test.state.progress.xp=123456789;
-    return {quotaErrors,save:__test.storage.save(),bytes:low*2};
+    return {quotaErrors,save:await __test.storage.save(),bytes:low*2};
   });
   console.log('Native Chromium quota filled',width,nativeQuota.bytes,'UTF-16 filler bytes; failed save:',!nativeQuota.save);
   assert(nativeQuota.quotaErrors>0&&nativeQuota.bytes>1024*1024);assert.equal(nativeQuota.save,false);assert(await p.locator('#saveWarning').isVisible());
-  await p.evaluate(()=>localStorage.removeItem('quota-fill'));await p.locator('#retrySave').click();assert(!(await p.locator('#saveWarning').isVisible()));
+  await p.evaluate(()=>localStorage.removeItem('quota-fill'));await p.locator('#retrySave').click();await p.evaluate(()=>__test.storage.settled());assert(!(await p.locator('#saveWarning').isVisible()));
   await p.reload();assert.equal(await p.evaluate(()=>__test.state.progress.xp),123456789);
   // Storage unavailable even at initial read must boot and warn, without modal reset.
   await p.addInitScript(()=>{Storage.prototype.getItem=function(){throw new DOMException('Denied','SecurityError')};Storage.prototype.setItem=function(){throw new DOMException('Denied','SecurityError')}});
