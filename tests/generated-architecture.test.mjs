@@ -123,7 +123,7 @@ for (const pace of t.E.presets)
         new Set(targetTexts).size,
         "No duplicate complete answer texts within an assessment",
       );
-      if (skip && day === 1) assert.equal(qs.filter((q) => q.generated).length, 0);
+      if (skip && pace === 24 && day === 1) assert(qs.some(q => q.generated), "Challenge activation licenses all current assigned words before generation");
       if (day === 14)
         assert.equal(
           Object.values(t.state.progress.library.acquired).reduce(

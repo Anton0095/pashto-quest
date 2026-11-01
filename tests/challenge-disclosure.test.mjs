@@ -9,10 +9,11 @@ for (const width of [375, 1280]) {
     const qs = await p.evaluate(() => __test.state.session.questions);
     assert.equal(qs.length, 15);
     assert(
-      !qs.some((q) => q.generated),
-      "Skip may not construct from scheduled/unseen forms",
+      qs.some((q) => q.generated),
+      "Challenge activation must make the assigned forms available to construction",
     );
-    assert(qs.some((q) => q.adaptation));
+    const introduced=await p.evaluate(()=>Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0));
+    assert(introduced>0);
     while (
       !(await p.evaluate(() => {
         const s = __test.state.session,
@@ -53,13 +54,13 @@ for (const width of [375, 1280]) {
           0,
         ),
       ),
-      0,
+      introduced,
     );
     assert.deepEqual(b.errors, []);
     console.log(
       "PASS disclosure",
       width,
-      "unseen words/phrases masked, generated-only skip deficit adaptation, first feedback reveals meaning, reload preserves direction, no form introductions",
+      "unseen words/phrases masked, activation-licensed sentences, first feedback reveals meaning, reload preserves direction, no additional introductions on submission",
     );
   } finally {
     await b.close();

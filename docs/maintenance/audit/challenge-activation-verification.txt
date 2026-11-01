@@ -1,0 +1,243 @@
+Pashto Quest — challenge activation unlocks — 1 November 2026
+
+The complete verification entry point ran once. It completed every model,
+syntax and browser check, with 114 passes and two outdated assertions:
+- A phrase record was expected not to gain its actual later studiedDay.
+- Starting a challenge was expected to leave the grammar store empty.
+Both assertions were updated for the new product contract and their affected
+suites passed on rerun. Final Library reference wording was aligned with the
+activation policy, then its browser suite and the release-bound matrix were
+rerun successfully on the final frozen HTML before publishing the delivery audit.
+
+All 116 entry-point checks have successful results across the full run and
+focused reruns; both delivery-audit checks also pass. No benchmark or native /
+physical-device audio certification was performed. The final HTML fingerprint
+and 6,676/6,676 generated observations are recorded in the generated delivery audit.
+
+Additional final checks passed: offline build sync, curriculum/inventory/
+generation audit checks, changed JS/Python syntax, documentation links and
+ git diff --check. No approval/native-language evidence was changed.
+
+python3 tools/verify.py — complete run, exit 1
+PASS python3 tools/build.py --check
+PASS python3 tools/curriculum-audit.py --check
+PASS python3 tools/vocabulary-review.py --check
+PASS python3 tests/curriculum-schema.test.py
+PASS node tests/curriculum-first.test.mjs
+PASS node tests/productive-generation.test.mjs
+PASS node tests/generated-architecture.test.mjs
+PASS node tests/generated-dialogue.test.mjs
+PASS node tools/generation-audit.mjs --check
+PASS node tools/district-inventory.mjs --check
+PASS node tests/cleanup-model.test.mjs
+PASS node tests/current-model.test.mjs
+PASS node tests/game-state.test.mjs
+PASS node tests/audio.test.mjs
+FAIL node tests/curriculum-expansion.test.mjs
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '{"day":2,"source":"day-opening","location":"school","studiedDay":2}'
+- '{"day":2,"source":"day-opening","location":"school"}'
+
+    at file:///workspace/pashto-quest/tests/curriculum-expansion.test.mjs:215:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '{"day":2,"source":"day-opening","location":"school","studiedDay":2}',
+  expected: '{"day":2,"source":"day-opening","location":"school"}',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+PASS python3 tests/district-content.test.py
+PASS node tests/challenge-activation.test.mjs
+PASS node tests/construction-completion.test.mjs
+PASS node tests/p1-regression.test.mjs
+PASS node tests/p1-storage.test.mjs
+PASS node tests/generation-cache.test.mjs
+PASS node tests/audit-save.test.mjs
+PASS node tests/audit-teaching.test.mjs
+PASS node tests/audit-compaction.test.mjs
+PASS python3 tests/approved-language.test.py
+PASS node tests/practical-assessment.test.mjs
+PASS node tests/choice-quality.test.mjs
+PASS node tests/concurrent-save.test.mjs
+PASS node tests/approved-sentences.test.mjs
+PASS python3 tests/approval-status.test.py
+PASS node tests/approval-status.test.mjs
+PASS node --check src/answer-feedback.js
+PASS node --check src/app.js
+PASS node --check src/assessment-content.js
+PASS node --check src/audio.js
+PASS node --check src/challenge-ui.js
+PASS node --check src/construction-ui.js
+PASS node --check src/content.js
+PASS node --check src/grammar-ui.js
+PASS node --check src/learning.js
+PASS node --check src/lesson-ui.js
+PASS node --check src/library-engine.js
+PASS node --check src/library-ui.js
+PASS node --check src/narrative-ui.js
+PASS node --check src/progression.js
+PASS node --check src/question-engine.js
+PASS node --check src/questions.js
+PASS node --check src/save-schema.js
+PASS node --check src/sentence-engine.js
+PASS node --check src/sentence-scene.js
+PASS node --check src/storage.js
+PASS node --check src/tutorial-ui.js
+PASS node --check src/ui.js
+PASS node --check src/world-ui.js
+PASS node --check tools/delivery-audit.mjs
+PASS node --check tools/district-inventory.mjs
+PASS node --check tools/generation-audit.mjs
+PASS node --check tools/performance-benchmark.mjs
+PASS node --check tests/approval-status.test.mjs
+PASS node --check tests/approved-flow-browser.test.mjs
+PASS node --check tests/approved-sentences.test.mjs
+PASS node --check tests/audio.test.mjs
+PASS node --check tests/audit-compaction.test.mjs
+PASS node --check tests/audit-save.test.mjs
+PASS node --check tests/audit-tabs.test.mjs
+PASS node --check tests/audit-teaching-browser.test.mjs
+PASS node --check tests/audit-teaching.test.mjs
+PASS node --check tests/browser-fixture.mjs
+PASS node --check tests/challenge-activation.test.mjs
+PASS node --check tests/challenge-disclosure.test.mjs
+PASS node --check tests/choice-quality-browser.test.mjs
+PASS node --check tests/choice-quality.test.mjs
+PASS node --check tests/cleanup-browser.test.mjs
+PASS node --check tests/cleanup-model.test.mjs
+PASS node --check tests/concurrent-save-browser.test.mjs
+PASS node --check tests/concurrent-save.test.mjs
+PASS node --check tests/construction-completion-browser.test.mjs
+PASS node --check tests/construction-completion.test.mjs
+PASS node --check tests/current-model.test.mjs
+PASS node --check tests/curriculum-expansion.test.mjs
+PASS node --check tests/curriculum-first.test.mjs
+PASS node --check tests/full-curriculum.test.mjs
+PASS node --check tests/game-state.test.mjs
+PASS node --check tests/generated-architecture.test.mjs
+PASS node --check tests/generated-dialogue.test.mjs
+PASS node --check tests/generated-learning.test.mjs
+PASS node --check tests/generation-cache.test.mjs
+PASS node --check tests/independent-browser.test.mjs
+PASS node --check tests/location-assessment-browser.test.mjs
+PASS node --check tests/model-fixture.mjs
+PASS node --check tests/narrative-feedback.test.mjs
+PASS node --check tests/p1-browser.test.mjs
+PASS node --check tests/p1-regression.test.mjs
+PASS node --check tests/p1-storage.test.mjs
+PASS node --check tests/practical-assessment-browser.test.mjs
+PASS node --check tests/practical-assessment.test.mjs
+PASS node --check tests/productive-generation.test.mjs
+PASS node --check tests/resume-behaviour.test.mjs
+PASS node --check tests/runtime-fixture.mjs
+PASS compiled release syntax
+PASS node tests/location-assessment-browser.test.mjs
+PASS node tests/construction-completion-browser.test.mjs
+PASS node tests/choice-quality-browser.test.mjs
+PASS node tests/approved-flow-browser.test.mjs
+PASS node tests/concurrent-save-browser.test.mjs
+PASS node tests/audit-teaching-browser.test.mjs
+PASS node tests/audit-tabs.test.mjs
+PASS node tests/narrative-feedback.test.mjs
+FAIL node tests/p1-browser.test.mjs
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ {
++   'grammar-day-1': {
++     day: 1,
++     source: 'challenge-start'
++   }
++ }
+- {}
+
+    at file:///workspace/pashto-quest/tests/p1-browser.test.mjs:75:33 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: { 'grammar-day-1': { day: 1, source: 'challenge-start' } },
+  expected: {},
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+PASS node tests/practical-assessment-browser.test.mjs
+PASS node tests/cleanup-browser.test.mjs
+PASS node tests/generated-learning.test.mjs
+PASS node tests/resume-behaviour.test.mjs
+PASS node tests/challenge-disclosure.test.mjs
+PASS node tests/independent-browser.test.mjs
+PASS node tests/full-curriculum.test.mjs
+Logs: /tmp/pashto-quest-checks-ef4hk9jf
+
+
+node tests/curriculum-expansion.test.mjs — corrected provenance assertion, exit 0
+PASS curriculum expansion: 400 balanced district drafts, all seven paces, action guards, frozen plans, 312 introductions, reserves, honest phrase slots, persistent SRS
+PASS 40 universal semantic targets linked to explicit provisional identities
+
+
+node tests/p1-browser.test.mjs — corrected activation-grammar assertion, exit 0
+Native Chromium quota filled 375 10469814 UTF-16 filler bytes; failed save: true
+PASS P1 browser 375 uncued unknown recall, skip penalty, frozen reload, quota, warning/export/retry, write recovery, intermittent reload, denied startup, responsive nonblocking warning
+Native Chromium quota filled 1280 10469814 UTF-16 filler bytes; failed save: true
+PASS P1 browser 1280 uncued unknown recall, skip penalty, frozen reload, quota, warning/export/retry, write recovery, intermittent reload, denied startup, responsive nonblocking warning
+
+
+node tests/challenge-activation.test.mjs — focused activation/cold-restore model, exit 0
+PASS challenge activation: all current locations available to sentence generation immediately, no visits/grades/XP invented; actual per-form study remains separate; idempotence, cold save, failure retention, future-day denial and cumulative current/previous vocabulary
+
+
+node tests/location-assessment-browser.test.mjs — focused activation/old-attempt browsers, exit 0
+PASS four-location assessment browser 375 sentence targets use all four current locations immediately after activation; no visits or unfinished Home study; hidden unknown meanings; exact reload; honest unlocks and successful completion
+PASS four-location assessment browser 1280 sentence targets use all four current locations immediately after activation; no visits or unfinished Home study; hidden unknown meanings; exact reload; honest unlocks and successful completion
+
+
+node tests/practical-assessment-browser.test.mjs — final Journal text/reference/assessment flows, exit 0
+375 PASS all 33 Journal worked references without unlocks; explicit old-attempt export/pause/retire; 1/6/7/14 × paces 0/4/24 public practical completion, thresholds and unknown-meaning masking
+1280 PASS all 33 Journal worked references without unlocks; explicit old-attempt export/pause/retire; 1/6/7/14 × paces 0/4/24 public practical completion, thresholds and unknown-meaning masking
+
+
+node tests/full-curriculum.test.mjs — final frozen-HTML matrix, exit 0
+PASS matrix pace 0 normal: 0 observed sentence surfaces, all generated
+PASS matrix pace 0 skip: 0 observed sentence surfaces, all generated
+PASS matrix pace 4 normal: 736 observed sentence surfaces, all generated
+PASS matrix pace 4 skip: 330 observed sentence surfaces, all generated
+PASS matrix pace 8 normal: 746 observed sentence surfaces, all generated
+PASS matrix pace 8 skip: 330 observed sentence surfaces, all generated
+PASS matrix pace 12 normal: 768 observed sentence surfaces, all generated
+PASS matrix pace 12 skip: 344 observed sentence surfaces, all generated
+PASS matrix pace 16 normal: 786 observed sentence surfaces, all generated
+PASS matrix pace 16 skip: 352 observed sentence surfaces, all generated
+PASS matrix pace 20 normal: 788 observed sentence surfaces, all generated
+PASS matrix pace 20 skip: 352 observed sentence surfaces, all generated
+PASS matrix pace 24 normal: 792 observed sentence surfaces, all generated
+PASS matrix pace 24 skip: 352 observed sentence surfaces, all generated
+PASS actual delivery: 6676/6676 = 100%; 392 visits, 196 assessments, seven paces, normal/skip, no authored sentence surfaces
+
+
+node tools/delivery-audit.mjs --write; --check — both exit 0
+Measured delivery: 6676/6676 = 100%, zero authored sentences, 18 explicit phrase exceptions, 3 distinct default Home sentences.
+
+
+Mobile capture — no location visits, actual challenge controls
+{
+  target: 'The book is big.',
+  notice: 'Starting this challenge unlocks the day’s assigned words, forms and grammar for sentence practice, including unvisited locations. Study, practice grades and pass rewards are recorded separately.',
+  completedLocations: {},
+  generated: 10
+}

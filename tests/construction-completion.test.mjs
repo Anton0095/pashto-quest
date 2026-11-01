@@ -11,6 +11,18 @@ for (const pace of [0,4,8,12,16,20,24]) {
   assert(!failed.passed);assert.equal(failed.locationBonus,0);
   assert.deepEqual(plain(t.state.progress.library),before.library);assert.deepEqual(plain(t.state.progress.complete),before.complete);
   beginAttempt(t,day);const frozen=plain(t.state.session.questions);
+  const activated=plain(t.state.progress);
+  assert.deepEqual(plain(t.state.progress.complete),before.complete);assert.equal(t.state.progress.xp,before.xp);
+  assert.deepEqual(plain(t.state.progress.library.events),before.library.events);
+  for(const [id,r] of Object.entries(t.state.progress.library.acquired)) {
+   assert.equal(r.totalAttempts,before.library.acquired[id]?.totalAttempts || 0);
+   if(!before.library.acquired[id]) {assert.equal(r.formallyIntroducedDay,undefined);assert.equal(r.masteredAt,undefined);}
+  }
+  t.progression.activateChallenge(t.state.progress,day);assert.deepEqual(plain(t.state.progress),activated,'activation is idempotent');
+  t.progression.completeChallengeOnce(t.state.progress,day,0);
+  assert.deepEqual(plain(t.state.progress.library),activated.library,'failure retains the already unlocked material');
+  assert.deepEqual(plain(t.state.progress.complete),activated.complete);
+  if(day===14)assert.deepEqual(plain(t.state.progress.library.acquired),before.library.acquired,'Day 14 activation adds no forms');
   const existing=plain(t.state.progress.library.acquired);
   const result=t.progression.completeChallengeOnce(t.state.progress,day,[7,14].includes(day)?20:12);
   assert(result.firstPass);assert.deepEqual(plain(plan.locationAssignments),assignments);
@@ -19,7 +31,7 @@ for (const pace of [0,4,8,12,16,20,24]) {
   assert(t.state.progress.library.grammar['grammar-day-'+day]);
   if(day===14)assert.deepEqual(plain(t.state.progress.library.acquired),existing,'Day 14 introduces no forms');
   for(const [loc,ids] of Object.entries(assignments))for(const id of ids){
-   const r=t.state.progress.library.acquired[id];assert(r.introducedFormIds.length);assert.equal(r.unlock.day,day);assert.equal(r.unlock.location,loc);assert.equal(r.unlock.source,'challenge-pass');
+   const r=t.state.progress.library.acquired[id];assert(r.introducedFormIds.length);assert.equal(r.unlock.day,day);assert.equal(r.unlock.location,loc);assert.equal(r.unlock.source,'challenge-start');
   }
   for(const [id,r] of Object.entries(t.state.progress.library.acquired)) {
    assert.equal(r.totalAttempts,existing[id]?.totalAttempts || 0);

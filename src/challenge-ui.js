@@ -70,6 +70,7 @@ function createChallengeUI({
   }
   const hasRetiredQuestions = attempt => attempt?.questions?.some(q => ["choice", "address"].includes(q.kind) || q.grammarConcept);
   function showRetiredAssessment(snapshot) {
+    ui.$("challengeMaterialNotice")?.remove();
     state.session = snapshot;
     state.day = snapshot.loop;
     audio.stopAudio();
@@ -107,6 +108,7 @@ function createChallengeUI({
     ui.$("retiredAssessmentNotice")?.classList.add("hidden");
     audio.stopAudio();
     ui.$("lessonExpression")?.replaceChildren();
+    progression.activateChallenge(state.progress, day);
     const items = snapshot?.questions || questions.selectChallenge(day, { newAttempt: true }),
       spec = progression.getChallengeSpec(day);
     state.session = snapshot || {
@@ -122,6 +124,7 @@ function createChallengeUI({
       built: [],
       locked: false,
       initialLevel: progression.characterStatus(state.progress).level,
+      materialUnlockedAtStart: true,
     };
     if (!snapshot)
       state.session.attemptId = ++state.progress.library.attemptSequence;
@@ -197,6 +200,11 @@ function createChallengeUI({
     const plan = state.progress.library.plans[day];
     if (Object.values(plan.locationAssignments).some(ids => ids.length))
       ui.$("lessonDescription").textContent += " · Includes assigned vocabulary from unvisited or unfinished locations";
+    let notice = ui.$("challengeMaterialNotice");
+    if (!notice) {notice=ui.node("p");notice.id="challengeMaterialNotice";notice.setAttribute("role","status");ui.$("lessonDescription").after(notice);}
+    notice.textContent = snapshot && !snapshot.materialUnlockedAtStart
+      ? "Your saved questions and score are unchanged. The day’s assigned words, forms and grammar are now unlocked. Finish this attempt to start a new challenge using the expanded sentence pool."
+      : "Starting this challenge unlocks the day’s assigned words, forms and grammar for sentence practice, including unvisited locations. Study, practice grades and pass rewards are recorded separately.";
     const deficit = plan.assessmentDeficit;
     if (deficit?.adaptedTasks)
       ui.$("lessonDescription").textContent +=
@@ -447,7 +455,7 @@ function createChallengeUI({
     ui.$("passUnlockNotice")?.remove();
     if(firstPass&&reward.completedLocations?.length){
       const notice=ui.node("aside");notice.id="passUnlockNotice";
-      notice.append(ui.node("p","You have completed this day’s challenge. Words from the locations you skipped are now unlocked and may appear in future activities. Visit the Library to review them."),ui.node("p",`Location completion rewards: +${reward.locationBonus} XP.`),ui.button("Review unlocked vocabulary",()=>libraryReview(reward.newlyUnlocked)));
+      notice.append(ui.node("p","You have completed this day’s challenge. Words from the locations you skipped were unlocked when the challenge began and remain available for future activities. Visit the Library to review them."),ui.node("p",`Location completion rewards: +${reward.locationBonus} XP.`),ui.button("Review unlocked vocabulary",()=>libraryReview(reward.newlyUnlocked)));
       ui.$("resultDescription").after(notice);
     }
     ui.$("resultAccuracy").textContent =

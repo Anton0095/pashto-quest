@@ -201,6 +201,18 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
         return false;
       registerGenerated(card);
     }
+    // A frozen later question may reference choices that were never displayed.
+    // Reconstruct those compiler IDs before any UI/learning surface reads them.
+    const questions = [
+      ...Object.values(progress.library?.plans || {}).flatMap(plan => plan.challengeQuestions || []),
+      ...(progress.activeChallenge?.questions || []),
+    ];
+    for (const q of questions) for (const id of q.choiceIds || []) {
+      if (wordById[id]) continue;
+      const card = SentenceEngine.restoreId(LIBRARY_DATA, LIBRARY_DATA.sentenceFrames, id);
+      if (!card) return false;
+      registerGenerated(card);
+    }
     for (const delivery of Object.values(progress.library?.deliveries || {})) {
       if (delivery.kind !== "generated_sentence" || wordById[delivery.id])
         continue;

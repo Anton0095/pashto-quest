@@ -3,14 +3,14 @@
 function createQuestions({ state, content, progression }) {
   const clone = (x) => JSON.parse(JSON.stringify(x));
   function isUnstudied(id) {
-    return content.LIBRARY_DATA.phrases.some((p) => p.id === id)
-      ? !state.progress.library.phrases[id]
-      : (content.LIBRARY_DATA.sourceMappings[id] || []).some(
-          (r) =>
-            !state.progress.library.acquired[
-              r.lemmaId
-            ]?.introducedFormIds.includes(r.formId),
-        );
+    const phrase = state.progress.library.phrases[id];
+    if (content.LIBRARY_DATA.phrases.some(p => p.id === id))
+      return !phrase || (phrase.source === "challenge-start" && !phrase.studiedDay);
+    return (content.LIBRARY_DATA.sourceMappings[id] || []).some(ref => {
+      const r = state.progress.library.acquired[ref.lemmaId], origin = r?.formUnlocks?.[ref.formId];
+      return !r?.introducedFormIds.includes(ref.formId) ||
+        (origin?.source === "challenge-start" && !origin.studiedDay);
+    });
   }
   function available(day) {
     return SentenceEngine.available(
@@ -109,6 +109,7 @@ function createQuestions({ state, content, progression }) {
     const frozen = state.session?.mode === "challenge" && state.session.loop === day && !state.session.finished && state.session.index < state.session.questions.length
       ? state.session : state.progress.activeChallenge?.loop === day ? state.progress.activeChallenge : null;
     if (!newAttempt && frozen) return clone(frozen.questions);
+    progression.activateChallenge(state.progress, day);
     const random = QuestionEngine.randomFor(plan.seed + day * 7919),
       blueprint = createAssessmentContent({ content, progression }).blueprint(
         day,
@@ -135,11 +136,16 @@ function createQuestions({ state, content, progression }) {
         n,
         seed,
       );
-    const focused = choose(
-      focus,
-      Math.ceil(blueprint.count * 0.7),
-      plan.seed + day,
-    );
+    const assigned = new Set(Object.values(plan.locationAssignments).flat());
+    const usesCurrentVocabulary = card => Object.values(card.generated.slots).some(ref => assigned.has(ref.lemmaId));
+    const current = pool.filter(usesCurrentVocabulary), currentFocus = focus.filter(usesCurrentVocabulary);
+    const targetCount = Math.ceil(blueprint.kinds.filter(k => ["construct", "sentence"].includes(k)).length * 0.7);
+    const targeted = choose(currentFocus.length ? currentFocus : current, targetCount, plan.seed + day);
+    const focused = [...targeted, ...choose(
+      focus.filter(c => !targeted.some(x => x.ps === c.ps)),
+      Math.ceil(blueprint.count * 0.7) - targeted.length,
+      plan.seed + day + 2,
+    )];
     const cards = [
       ...focused,
       ...choose(
@@ -190,8 +196,8 @@ function createQuestions({ state, content, progression }) {
         q = {
           id: opening?.responsePhraseId || greeting.id,
           phrasePromptId: opening?.promptPhraseId,
-          kind: opening?.responsePhraseId && state.progress.library.phrases[opening.responsePhraseId] ? "construct" : "word",
-          direction: opening?.responsePhraseId && state.progress.library.phrases[opening.responsePhraseId] ? "en-ps" : "ps-en",
+          kind: opening?.responsePhraseId && !isUnstudied(opening.responsePhraseId) ? "construct" : "word",
+          direction: opening?.responsePhraseId && !isUnstudied(opening.responsePhraseId) ? "en-ps" : "ps-en",
           vocabularyOrigin: "daily-phrase",
         };
       else if (wanted === "word" && lexical.length)
@@ -206,19 +212,21 @@ function createQuestions({ state, content, progression }) {
           (p) =>
             !used.has(p.answer.ps) && (!p.prompt || !used.has(p.prompt.ps)),
         );
-        const preferred = usable.filter(
+        const currentPairs = usable.filter(p => usesCurrentVocabulary(p.answer));
+        const candidates = currentPairs.length ? currentPairs : usable;
+        const preferred = candidates.filter(
           (p) =>
             goal.focusFamilies.includes(p.family) &&
             !usedDialogueFamilies.has(p.family),
         );
-        const varied = usable.filter(
+        const varied = candidates.filter(
           (p) => !usedDialogueFamilies.has(p.family),
         );
         const choices = preferred.length
           ? preferred
           : varied.length
             ? varied
-            : usable;
+            : candidates;
         const pair = choices.length
           ? choices[Math.floor(random() * choices.length)]
           : null;

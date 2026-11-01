@@ -2112,17 +2112,21 @@ const LibraryEngine = (() => {
     r.encounteredSourceIds = unique(
       [...r.encounteredSourceIds, context.contentId].filter(Boolean),
     );
+    const challengeUnlock = ["challenge-pass", "challenge-start"].includes(context.source);
     if (context.introduce) {
       if (!r.introducedFormIds.includes(ref.formId)) {
         const assigned = Object.values(s.plans).flatMap(plan => Object.entries(plan.locationAssignments)).find(([,ids]) => ids.includes(e.lemmaId))?.[0];
         const location = e.vocabularyClass === "universal" ? "universal" : assigned || (places.includes(context.location) ? context.location : "unrecorded");
-        (r.formUnlocks ||= {})[ref.formId] = {day:context.day, source:context.source === "challenge-pass" ? "challenge-pass" : "study", location};
+        (r.formUnlocks ||= {})[ref.formId] = {day:context.day, source:challengeUnlock ? context.source : "study", location};
         if (!r.introducedFormIds.length) r.unlock = {...r.formUnlocks[ref.formId]};
       }
       r.introducedFormIds = unique([...r.introducedFormIds, ref.formId]);
-      if (context.source !== "challenge-pass") r.formallyIntroducedDay ??= context.day;
+      if (!challengeUnlock) {
+        r.formallyIntroducedDay ??= context.day;
+        if (r.formUnlocks?.[ref.formId]) r.formUnlocks[ref.formId].studiedDay ??= context.day;
+      }
     }
-    if (context.day > 0 && context.source !== "challenge-pass") {
+    if (context.day > 0 && !challengeUnlock) {
       const ledger = (s.dayExposure[context.day] ||= {
         incidentalStoryLemmas: [],
         reviewedExistingLemmas: [],
@@ -2162,6 +2166,8 @@ const LibraryEngine = (() => {
         source: context.source,
         location: context.location,
       };
+      if (["lesson", "review", "library", "tutorial"].includes(context.source))
+        p.library.phrases[id].studiedDay ??= context.day;
       // Encountered but unpractised expressions are due too; optional recognition
       // can be skipped without removing the expression from later review.
       p.library.units[id] ||= {
@@ -2592,17 +2598,18 @@ const LibraryEngine = (() => {
     ].filter((id) => cardAllowed(data, id, day));
     return pool;
   }
-  // Completion unlocks the same finite lesson material, without practice events.
-  function completeDayMaterial(p, data, narrative, day) {
+  // Both activation and pass completion use the same finite lesson material.
+  // Availability never fabricates practice events or successful answers.
+  function unlockDayMaterial(p, data, narrative, day, source) {
     ensurePlan(p, data, day);
-    for (let d = 1; d <= day; d++) unlock(p, d, "challenge-pass");
+    for (let d = 1; d <= day; d++) unlock(p, d, source);
     const newlyUnlocked = new Set(), locationItems = {};
     for (const location of places) {
       const pool = lessonPool(p, data, narrative, day, location);
       locationItems[location] = pool.length;
       for (const id of pool) {
         if (data.phrases.some(f => f.id === id)) {
-          expose(p, data, id, {day, location, source:"challenge-pass"});
+          expose(p, data, id, {day, location, source});
           continue;
         }
         for (const ref of data.sourceMappings[id] || []) {
@@ -2610,7 +2617,7 @@ const LibraryEngine = (() => {
           if (p.library.acquired[e.lemmaId]?.introducedFormIds.includes(ref.formId) || day === 14) continue;
           const planned = Object.entries(p.library.plans[day].locationAssignments).find(([, ids]) => ids.includes(e.lemmaId))?.[0];
           const teachingLocation = e.vocabularyClass === "universal" ? "universal" : planned || e.introduction.district;
-          const r = encounter(p, data, ref, {day, location:teachingLocation, source:"challenge-pass", introduce:true});
+          const r = encounter(p, data, ref, {day, location:teachingLocation, source, introduce:true});
           if (r) newlyUnlocked.add(e.lemmaId);
         }
       }
@@ -2622,7 +2629,7 @@ const LibraryEngine = (() => {
       p.library.grammar["grammar-day-" + day] ||= { day, source };
   }
   return {
-    completeDayMaterial,
+    unlockDayMaterial,
     lessonPool,
     formAllowed,
     schedule,
@@ -3539,6 +3546,13 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
       capped: earned > LEVEL_CAPS[cleared] || level === 10,
     };
   }
+  function activateChallenge(p, day) {
+    if (!LIBRARY_DATA || !allowed(p, day)) return null;
+    const plan = libraryEngine.ensurePlan(p, LIBRARY_DATA, day);
+    // This persistent manifest keeps repeated activation/reload idempotent.
+    plan.challengeActivation ||= libraryEngine.unlockDayMaterial(p, LIBRARY_DATA, NARRATIVE_DATA, day, "challenge-start");
+    return plan.challengeActivation;
+  }
   function completeChallengeOnce(p, day, score) {
     const spec = getChallengeSpec(day);
     if (!Number.isInteger(score) || score < 0 || score > spec.questionCount)
@@ -3557,7 +3571,8 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     };
     let locationBonus = 0, newlyUnlocked = [], completedLocations = [];
     if (firstPass && LIBRARY_DATA) {
-      const material = libraryEngine.completeDayMaterial(p, LIBRARY_DATA, NARRATIVE_DATA, day);
+      const material = p.library.plans[day]?.challengeActivation ||
+        libraryEngine.unlockDayMaterial(p, LIBRARY_DATA, NARRATIVE_DATA, day, "challenge-pass");
       newlyUnlocked = material.newlyUnlocked;
       for (const loc of zoneKeys) if (!p.complete[`${day}-${loc}`]) {
         completedLocations.push(loc);
@@ -3649,6 +3664,7 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     highestClearedDay,
     characterStatus,
     completeChallengeOnce,
+    activateChallenge,
     getChallengeSpec,
     awardXP,
     completeLessonOnce,
@@ -3860,6 +3876,18 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       );
       if (!card || JSON.stringify(card) !== JSON.stringify(snapshot))
         return false;
+      registerGenerated(card);
+    }
+    // A frozen later question may reference choices that were never displayed.
+    // Reconstruct those compiler IDs before any UI/learning surface reads them.
+    const questions = [
+      ...Object.values(progress.library?.plans || {}).flatMap(plan => plan.challengeQuestions || []),
+      ...(progress.activeChallenge?.questions || []),
+    ];
+    for (const q of questions) for (const id of q.choiceIds || []) {
+      if (wordById[id]) continue;
+      const card = SentenceEngine.restoreId(LIBRARY_DATA, LIBRARY_DATA.sentenceFrames, id);
+      if (!card) return false;
       registerGenerated(card);
     }
     for (const delivery of Object.values(progress.library?.deliveries || {})) {
@@ -4442,14 +4470,14 @@ function createLearning({ state, content, progression }) {
 function createQuestions({ state, content, progression }) {
   const clone = (x) => JSON.parse(JSON.stringify(x));
   function isUnstudied(id) {
-    return content.LIBRARY_DATA.phrases.some((p) => p.id === id)
-      ? !state.progress.library.phrases[id]
-      : (content.LIBRARY_DATA.sourceMappings[id] || []).some(
-          (r) =>
-            !state.progress.library.acquired[
-              r.lemmaId
-            ]?.introducedFormIds.includes(r.formId),
-        );
+    const phrase = state.progress.library.phrases[id];
+    if (content.LIBRARY_DATA.phrases.some(p => p.id === id))
+      return !phrase || (phrase.source === "challenge-start" && !phrase.studiedDay);
+    return (content.LIBRARY_DATA.sourceMappings[id] || []).some(ref => {
+      const r = state.progress.library.acquired[ref.lemmaId], origin = r?.formUnlocks?.[ref.formId];
+      return !r?.introducedFormIds.includes(ref.formId) ||
+        (origin?.source === "challenge-start" && !origin.studiedDay);
+    });
   }
   function available(day) {
     return SentenceEngine.available(
@@ -4548,6 +4576,7 @@ function createQuestions({ state, content, progression }) {
     const frozen = state.session?.mode === "challenge" && state.session.loop === day && !state.session.finished && state.session.index < state.session.questions.length
       ? state.session : state.progress.activeChallenge?.loop === day ? state.progress.activeChallenge : null;
     if (!newAttempt && frozen) return clone(frozen.questions);
+    progression.activateChallenge(state.progress, day);
     const random = QuestionEngine.randomFor(plan.seed + day * 7919),
       blueprint = createAssessmentContent({ content, progression }).blueprint(
         day,
@@ -4574,11 +4603,16 @@ function createQuestions({ state, content, progression }) {
         n,
         seed,
       );
-    const focused = choose(
-      focus,
-      Math.ceil(blueprint.count * 0.7),
-      plan.seed + day,
-    );
+    const assigned = new Set(Object.values(plan.locationAssignments).flat());
+    const usesCurrentVocabulary = card => Object.values(card.generated.slots).some(ref => assigned.has(ref.lemmaId));
+    const current = pool.filter(usesCurrentVocabulary), currentFocus = focus.filter(usesCurrentVocabulary);
+    const targetCount = Math.ceil(blueprint.kinds.filter(k => ["construct", "sentence"].includes(k)).length * 0.7);
+    const targeted = choose(currentFocus.length ? currentFocus : current, targetCount, plan.seed + day);
+    const focused = [...targeted, ...choose(
+      focus.filter(c => !targeted.some(x => x.ps === c.ps)),
+      Math.ceil(blueprint.count * 0.7) - targeted.length,
+      plan.seed + day + 2,
+    )];
     const cards = [
       ...focused,
       ...choose(
@@ -4629,8 +4663,8 @@ function createQuestions({ state, content, progression }) {
         q = {
           id: opening?.responsePhraseId || greeting.id,
           phrasePromptId: opening?.promptPhraseId,
-          kind: opening?.responsePhraseId && state.progress.library.phrases[opening.responsePhraseId] ? "construct" : "word",
-          direction: opening?.responsePhraseId && state.progress.library.phrases[opening.responsePhraseId] ? "en-ps" : "ps-en",
+          kind: opening?.responsePhraseId && !isUnstudied(opening.responsePhraseId) ? "construct" : "word",
+          direction: opening?.responsePhraseId && !isUnstudied(opening.responsePhraseId) ? "en-ps" : "ps-en",
           vocabularyOrigin: "daily-phrase",
         };
       else if (wanted === "word" && lexical.length)
@@ -4645,19 +4679,21 @@ function createQuestions({ state, content, progression }) {
           (p) =>
             !used.has(p.answer.ps) && (!p.prompt || !used.has(p.prompt.ps)),
         );
-        const preferred = usable.filter(
+        const currentPairs = usable.filter(p => usesCurrentVocabulary(p.answer));
+        const candidates = currentPairs.length ? currentPairs : usable;
+        const preferred = candidates.filter(
           (p) =>
             goal.focusFamilies.includes(p.family) &&
             !usedDialogueFamilies.has(p.family),
         );
-        const varied = usable.filter(
+        const varied = candidates.filter(
           (p) => !usedDialogueFamilies.has(p.family),
         );
         const choices = preferred.length
           ? preferred
           : varied.length
             ? varied
-            : usable;
+            : candidates;
         const pair = choices.length
           ? choices[Math.floor(random() * choices.length)]
           : null;
@@ -4847,7 +4883,7 @@ function createSaveValidator({ content, progression }) {
           ![r.encounteredFormIds,r.introducedFormIds,r.practisedFormIds].every(strings) ||
           [...r.introducedFormIds,...r.practisedFormIds,...Object.keys(r.forms)].some(id=>!r.encounteredFormIds.includes(id))) return false;
       if (r.formallyIntroducedDay!==undefined && (!integer(r.formallyIntroducedDay)||r.formallyIntroducedDay<1||r.formallyIntroducedDay>14)) return false;
-      const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass"].includes(v.source) && typeof v.location==="string";
+      const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass","challenge-start"].includes(v.source) && typeof v.location==="string" && (v.studiedDay===undefined || (integer(v.studiedDay)&&v.studiedDay>=1&&v.studiedDay<=14));
       if (r.unlock!==undefined && !origin(r.unlock)) return false;
       if (r.formUnlocks!==undefined && (!object(r.formUnlocks) || Object.entries(r.formUnlocks).some(([id,v]) => !r.introducedFormIds.includes(id) || !origin(v)))) return false;
       if (r.masteredAt!==undefined && !time(r.masteredAt)) return false;
@@ -4859,7 +4895,7 @@ function createSaveValidator({ content, progression }) {
       if (!object(r)||!Number.isInteger(r.day)||r.day<1||r.day>14||id!=="grammar-day-"+r.day||typeof r.source!=="string") return false;
     }
     for (const [id,r] of Object.entries(l.phrases)) {
-      if (!content.LIBRARY_DATA.phrases.some(p=>p.id===id)||!object(r)||!integer(r.day)||r.day>14||typeof r.source!=="string") return false;
+      if (!content.LIBRARY_DATA.phrases.some(p=>p.id===id)||!object(r)||!integer(r.day)||r.day>14||typeof r.source!=="string"||(r.studiedDay!==undefined&&(!integer(r.studiedDay)||r.studiedDay>14))) return false;
     }
     if (!Object.values(l.events).every(v=>v===true)) return false;
     for (const r of Object.values(l.deficits)) if (!object(r)||![r.requested,r.available,r.missing].every(integer)||(r.reason!==null&&typeof r.reason!=="string")) return false;
@@ -4868,6 +4904,10 @@ function createSaveValidator({ content, progression }) {
       if (!object(plan)||!integer(plan.seed)||!object(plan.shortfalls)||typeof plan.notice!=="string"||typeof plan.contentGap!=="boolean"||
           !(plan.effectiveDailyTarget===null||LibraryEngine.presets.includes(plan.effectiveDailyTarget))||
           !content.zoneKeys.every(k=>integer(plan.shortfalls[k])&&plan.shortfalls[k]<=6)) return false;
+      if (plan.challengeActivation !== undefined) {
+        const a=plan.challengeActivation;
+        if (!object(a) || !strings(a.newlyUnlocked) || a.newlyUnlocked.some(id=>!content.libraryEntries[id]) || !object(a.locationItems) || !content.zoneKeys.every(loc=>integer(a.locationItems[loc]))) return false;
+      }
       if (plan.generatedPracticeCards!==undefined && (!object(plan.generatedPracticeCards)||Object.values(plan.generatedPracticeCards).some(a=>!Array.isArray(a)))) return false;
       if (plan.challengeQuestions!==undefined && (!Array.isArray(plan.challengeQuestions)||plan.challengeQuestions.length!==progression.getChallengeSpec(plan.day).questionCount)) return false;
     }
@@ -4923,6 +4963,7 @@ function createSaveValidator({ content, progression }) {
       if (["choice","address"].includes(q.kind) && typeof q.correct!=="string") return false;
       if (q.kind==="choice" && (typeof q.prompt!=="string" || !Array.isArray(q.options) || q.options.some(v=>typeof v!=="string") || !q.options.includes(q.correct))) return false;
       if (q.kind==="address" && (!Array.isArray(q.addressOptions)||q.addressOptions.some(a=>!Array.isArray(a)||a.length!==2||a.some(v=>typeof v!=="string"))||!q.addressOptions.some(a=>a[1]===q.correct))) return false;
+      if (q.choiceIds!==undefined && (!Array.isArray(q.choiceIds) || new Set(q.choiceIds).size!==q.choiceIds.length || q.choiceIds.some(id=>typeof id!=="string") || q.choiceIds.some(id=>!content.wordById[id]?.generated || !q.choiceOrder?.includes(content.wordById[id][q.direction === "en-ps" ? "ps" : "en"])))) return false;
       if (q.tileVariant!==undefined && !["exact","distractors"].includes(q.tileVariant)) return false;
       if (q.duds!==undefined && (!Array.isArray(q.duds)||q.duds.some(v=>typeof v!=="string"))) return false;
       if (["construct","dialogue"].includes(q.kind)) {
@@ -4930,7 +4971,7 @@ function createSaveValidator({ content, progression }) {
       } else if (!Array.isArray(q.choiceOrder)||!q.choiceOrder.length||q.choiceOrder.some(v=>typeof v!=="string")||new Set(q.choiceOrder).size!==q.choiceOrder.length) return false;
       if (["choice","address"].includes(q.kind) && !q.choiceOrder.includes(q.correct)) return false;
       if (["sentence","construct","dialogue"].includes(q.kind) && w?.type==="sentence" && !q.generated) return false;
-      for (const card of [q.generated,q.promptGenerated].filter(Boolean)) {
+      for (const card of [q.generated,q.promptGenerated,...(q.choiceIds || []).map(id=>content.wordById[id])].filter(Boolean)) {
         if (!card.generated?.requiredGrammarIds?.every(g=>p.library.grammar[g]) ||
             !Object.values(card.generated.slots).every(r=>p.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))) return false;
       }
@@ -5082,6 +5123,7 @@ function createSaveValidator({ content, progression }) {
         a.attemptId < 1 ||
         !Number.isFinite(a.earned) ||
         a.earned < 0 ||
+        (a.materialUnlockedAtStart!==undefined && typeof a.materialUnlockedAtStart!=="boolean") ||
         !Array.isArray(a.built) ||
         (a.recallDraft !== undefined && (typeof a.recallDraft !== "string" || a.recallDraft.length > 160))
       )
@@ -6288,6 +6330,7 @@ function createLessons({
 }) {
   function begin(id) {
     audio.stopAudio();
+    ui.$("challengeMaterialNotice")?.remove();
     onLessonStart();
     let mode = "standard",
       loc = null,
@@ -6821,6 +6864,7 @@ function createChallengeUI({
   }
   const hasRetiredQuestions = attempt => attempt?.questions?.some(q => ["choice", "address"].includes(q.kind) || q.grammarConcept);
   function showRetiredAssessment(snapshot) {
+    ui.$("challengeMaterialNotice")?.remove();
     state.session = snapshot;
     state.day = snapshot.loop;
     audio.stopAudio();
@@ -6858,6 +6902,7 @@ function createChallengeUI({
     ui.$("retiredAssessmentNotice")?.classList.add("hidden");
     audio.stopAudio();
     ui.$("lessonExpression")?.replaceChildren();
+    progression.activateChallenge(state.progress, day);
     const items = snapshot?.questions || questions.selectChallenge(day, { newAttempt: true }),
       spec = progression.getChallengeSpec(day);
     state.session = snapshot || {
@@ -6873,6 +6918,7 @@ function createChallengeUI({
       built: [],
       locked: false,
       initialLevel: progression.characterStatus(state.progress).level,
+      materialUnlockedAtStart: true,
     };
     if (!snapshot)
       state.session.attemptId = ++state.progress.library.attemptSequence;
@@ -6948,6 +6994,11 @@ function createChallengeUI({
     const plan = state.progress.library.plans[day];
     if (Object.values(plan.locationAssignments).some(ids => ids.length))
       ui.$("lessonDescription").textContent += " · Includes assigned vocabulary from unvisited or unfinished locations";
+    let notice = ui.$("challengeMaterialNotice");
+    if (!notice) {notice=ui.node("p");notice.id="challengeMaterialNotice";notice.setAttribute("role","status");ui.$("lessonDescription").after(notice);}
+    notice.textContent = snapshot && !snapshot.materialUnlockedAtStart
+      ? "Your saved questions and score are unchanged. The day’s assigned words, forms and grammar are now unlocked. Finish this attempt to start a new challenge using the expanded sentence pool."
+      : "Starting this challenge unlocks the day’s assigned words, forms and grammar for sentence practice, including unvisited locations. Study, practice grades and pass rewards are recorded separately.";
     const deficit = plan.assessmentDeficit;
     if (deficit?.adaptedTasks)
       ui.$("lessonDescription").textContent +=
@@ -7198,7 +7249,7 @@ function createChallengeUI({
     ui.$("passUnlockNotice")?.remove();
     if(firstPass&&reward.completedLocations?.length){
       const notice=ui.node("aside");notice.id="passUnlockNotice";
-      notice.append(ui.node("p","You have completed this day’s challenge. Words from the locations you skipped are now unlocked and may appear in future activities. Visit the Library to review them."),ui.node("p",`Location completion rewards: +${reward.locationBonus} XP.`),ui.button("Review unlocked vocabulary",()=>libraryReview(reward.newlyUnlocked)));
+      notice.append(ui.node("p","You have completed this day’s challenge. Words from the locations you skipped were unlocked when the challenge began and remain available for future activities. Visit the Library to review them."),ui.node("p",`Location completion rewards: +${reward.locationBonus} XP.`),ui.button("Review unlocked vocabulary",()=>libraryReview(reward.newlyUnlocked)));
       ui.$("resultDescription").after(notice);
     }
     ui.$("resultAccuracy").textContent =
@@ -7715,7 +7766,7 @@ function createLibraryUI({
         ui.node("h3", "Grammar Journal"),
         ui.node(
           "p",
-          "All explanations and worked analyses are readable reference. Reading here does not complete lessons or unlock generation. Pashto examples require separately studied forms and lesson grammar. Native Laghman review is pending.",
+          "All explanations and worked analyses are readable reference. Reading here does not complete lessons or unlock generation. Pashto examples require forms and grammar unlocked through lessons or challenge activation. Native Laghman review is pending.",
         ),
       );
       if (state.progress.retiredRuleAssessmentJSON) root.append(
@@ -7751,7 +7802,7 @@ function createLibraryUI({
           const ps = ui.node("p", ex.ps, "library-pashto");ps.lang="ps";ps.dir="rtl";
           detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
           ui.sentenceContext(ex, "", detail, "reference");
-        } else detail.append(ui.node("p", "A Pashto example becomes available after compatible form study and lesson grammar unlocks."));
+        } else detail.append(ui.node("p", "A Pashto example becomes available after compatible forms and grammar are unlocked through lessons or challenge activation."));
         root.append(detail);
       }
       return;
@@ -7962,7 +8013,7 @@ function createLibraryUI({
     detail.append(heading);
     const origin = r.unlock;
     const location = origin?.location === "universal" ? "Universal vocabulary" : ({residential:"Home",nature:"Lake",business:"Market",school:"School"}[origin?.location] || "Not recorded");
-    detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.introducedFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
+    detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-start" ? "Unlocked when starting the challenge" : origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.introducedFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
 
     detail.append(
       ui.node(
@@ -8015,7 +8066,7 @@ function createLibraryUI({
           ),
         );
       const formOrigin=r.formUnlocks?.[f.formId];
-      if (formOrigin) box.append(ui.node("p", `Form unlocked: Day ${formOrigin.day} · ${formOrigin.source === "challenge-pass" ? "Challenge pass" : "Study"}`, "tiny"));
+      if (formOrigin) box.append(ui.node("p", `Form unlocked: Day ${formOrigin.day} · ${formOrigin.source === "challenge-start" ? "Challenge activation" : formOrigin.source === "challenge-pass" ? "Challenge pass" : "Study"}`, "tiny"));
       detail.append(box);
     }
     detail.addEventListener("toggle", () => {

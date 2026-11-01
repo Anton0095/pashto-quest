@@ -52,7 +52,7 @@ function createLibraryUI({
         ui.node("h3", "Grammar Journal"),
         ui.node(
           "p",
-          "All explanations and worked analyses are readable reference. Reading here does not complete lessons or unlock generation. Pashto examples require separately studied forms and lesson grammar. Native Laghman review is pending.",
+          "All explanations and worked analyses are readable reference. Reading here does not complete lessons or unlock generation. Pashto examples require forms and grammar unlocked through lessons or challenge activation. Native Laghman review is pending.",
         ),
       );
       if (state.progress.retiredRuleAssessmentJSON) root.append(
@@ -88,7 +88,7 @@ function createLibraryUI({
           const ps = ui.node("p", ex.ps, "library-pashto");ps.lang="ps";ps.dir="rtl";
           detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
           ui.sentenceContext(ex, "", detail, "reference");
-        } else detail.append(ui.node("p", "A Pashto example becomes available after compatible form study and lesson grammar unlocks."));
+        } else detail.append(ui.node("p", "A Pashto example becomes available after compatible forms and grammar are unlocked through lessons or challenge activation."));
         root.append(detail);
       }
       return;
@@ -299,7 +299,7 @@ function createLibraryUI({
     detail.append(heading);
     const origin = r.unlock;
     const location = origin?.location === "universal" ? "Universal vocabulary" : ({residential:"Home",nature:"Lake",business:"Market",school:"School"}[origin?.location] || "Not recorded");
-    detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.introducedFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
+    detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-start" ? "Unlocked when starting the challenge" : origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.introducedFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
 
     detail.append(
       ui.node(
@@ -352,7 +352,7 @@ function createLibraryUI({
           ),
         );
       const formOrigin=r.formUnlocks?.[f.formId];
-      if (formOrigin) box.append(ui.node("p", `Form unlocked: Day ${formOrigin.day} · ${formOrigin.source === "challenge-pass" ? "Challenge pass" : "Study"}`, "tiny"));
+      if (formOrigin) box.append(ui.node("p", `Form unlocked: Day ${formOrigin.day} · ${formOrigin.source === "challenge-start" ? "Challenge activation" : formOrigin.source === "challenge-pass" ? "Challenge pass" : "Study"}`, "tiny"));
       detail.append(box);
     }
     detail.addEventListener("toggle", () => {

@@ -267,8 +267,8 @@ try {
               throw Error("Passed challenge failed to complete locations");
             if (day === 14 && taughtCount() !== oldCount)
               throw Error("Day 14 introduced compulsory vocabulary/forms");
-            if (skip && day === 1 && families.size)
-              throw Error("Skip composed from unintroduced forms");
+            if (skip && day === 1 && pace === 24 && !families.size)
+              throw Error("Challenge activation failed to generate current-day sentences");
             trace.push({
               day,
               generatedFamilies: [...families].sort(),

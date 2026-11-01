@@ -67,17 +67,21 @@ const LibraryEngine = (() => {
     r.encounteredSourceIds = unique(
       [...r.encounteredSourceIds, context.contentId].filter(Boolean),
     );
+    const challengeUnlock = ["challenge-pass", "challenge-start"].includes(context.source);
     if (context.introduce) {
       if (!r.introducedFormIds.includes(ref.formId)) {
         const assigned = Object.values(s.plans).flatMap(plan => Object.entries(plan.locationAssignments)).find(([,ids]) => ids.includes(e.lemmaId))?.[0];
         const location = e.vocabularyClass === "universal" ? "universal" : assigned || (places.includes(context.location) ? context.location : "unrecorded");
-        (r.formUnlocks ||= {})[ref.formId] = {day:context.day, source:context.source === "challenge-pass" ? "challenge-pass" : "study", location};
+        (r.formUnlocks ||= {})[ref.formId] = {day:context.day, source:challengeUnlock ? context.source : "study", location};
         if (!r.introducedFormIds.length) r.unlock = {...r.formUnlocks[ref.formId]};
       }
       r.introducedFormIds = unique([...r.introducedFormIds, ref.formId]);
-      if (context.source !== "challenge-pass") r.formallyIntroducedDay ??= context.day;
+      if (!challengeUnlock) {
+        r.formallyIntroducedDay ??= context.day;
+        if (r.formUnlocks?.[ref.formId]) r.formUnlocks[ref.formId].studiedDay ??= context.day;
+      }
     }
-    if (context.day > 0 && context.source !== "challenge-pass") {
+    if (context.day > 0 && !challengeUnlock) {
       const ledger = (s.dayExposure[context.day] ||= {
         incidentalStoryLemmas: [],
         reviewedExistingLemmas: [],
@@ -117,6 +121,8 @@ const LibraryEngine = (() => {
         source: context.source,
         location: context.location,
       };
+      if (["lesson", "review", "library", "tutorial"].includes(context.source))
+        p.library.phrases[id].studiedDay ??= context.day;
       // Encountered but unpractised expressions are due too; optional recognition
       // can be skipped without removing the expression from later review.
       p.library.units[id] ||= {
@@ -547,17 +553,18 @@ const LibraryEngine = (() => {
     ].filter((id) => cardAllowed(data, id, day));
     return pool;
   }
-  // Completion unlocks the same finite lesson material, without practice events.
-  function completeDayMaterial(p, data, narrative, day) {
+  // Both activation and pass completion use the same finite lesson material.
+  // Availability never fabricates practice events or successful answers.
+  function unlockDayMaterial(p, data, narrative, day, source) {
     ensurePlan(p, data, day);
-    for (let d = 1; d <= day; d++) unlock(p, d, "challenge-pass");
+    for (let d = 1; d <= day; d++) unlock(p, d, source);
     const newlyUnlocked = new Set(), locationItems = {};
     for (const location of places) {
       const pool = lessonPool(p, data, narrative, day, location);
       locationItems[location] = pool.length;
       for (const id of pool) {
         if (data.phrases.some(f => f.id === id)) {
-          expose(p, data, id, {day, location, source:"challenge-pass"});
+          expose(p, data, id, {day, location, source});
           continue;
         }
         for (const ref of data.sourceMappings[id] || []) {
@@ -565,7 +572,7 @@ const LibraryEngine = (() => {
           if (p.library.acquired[e.lemmaId]?.introducedFormIds.includes(ref.formId) || day === 14) continue;
           const planned = Object.entries(p.library.plans[day].locationAssignments).find(([, ids]) => ids.includes(e.lemmaId))?.[0];
           const teachingLocation = e.vocabularyClass === "universal" ? "universal" : planned || e.introduction.district;
-          const r = encounter(p, data, ref, {day, location:teachingLocation, source:"challenge-pass", introduce:true});
+          const r = encounter(p, data, ref, {day, location:teachingLocation, source, introduce:true});
           if (r) newlyUnlocked.add(e.lemmaId);
         }
       }
@@ -577,7 +584,7 @@ const LibraryEngine = (() => {
       p.library.grammar["grammar-day-" + day] ||= { day, source };
   }
   return {
-    completeDayMaterial,
+    unlockDayMaterial,
     lessonPool,
     formAllowed,
     schedule,

@@ -16,6 +16,7 @@ function createLessons({
 }) {
   function begin(id) {
     audio.stopAudio();
+    ui.$("challengeMaterialNotice")?.remove();
     onLessonStart();
     let mode = "standard",
       loc = null,

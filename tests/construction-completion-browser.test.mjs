@@ -68,10 +68,10 @@ for(const width of [375,1280]) {
    await p.locator('#quizNext').click();
   }
   assert(await p.locator('#passUnlockNotice').isVisible());
-  assert((await p.locator('#passUnlockNotice').innerText()).includes('You have completed this day’s challenge. Words from the locations you skipped are now unlocked and may appear in future activities. Visit the Library to review them.'));
+  assert((await p.locator('#passUnlockNotice').innerText()).includes('You have completed this day’s challenge. Words from the locations you skipped were unlocked when the challenge began and remain available for future activities. Visit the Library to review them.'));
   await p.getByRole('button',{name:'Review unlocked vocabulary',exact:true}).click();
   const labels=await p.locator('#libraryEntries .unlock-origin').allTextContents();
-  assert(labels.length);assert(labels.every(l=>l.includes('Unlocked: Day 1')&&l.includes('Unlocked by passing the challenge')));
+  assert(labels.length);assert(labels.every(l=>l.includes('Unlocked: Day 1')&&l.includes('Unlocked when starting the challenge')));
   assert(labels.some(l=>/Lake|Market|School/.test(l)));assert(!labels.some(l=>/· Challenge ·/.test(l)));
   await p.locator('#libraryClose').click();
   // Shared Library construction (both variants) grades once, never awards XP.

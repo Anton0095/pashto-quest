@@ -36,7 +36,7 @@ function createSaveValidator({ content, progression }) {
           ![r.encounteredFormIds,r.introducedFormIds,r.practisedFormIds].every(strings) ||
           [...r.introducedFormIds,...r.practisedFormIds,...Object.keys(r.forms)].some(id=>!r.encounteredFormIds.includes(id))) return false;
       if (r.formallyIntroducedDay!==undefined && (!integer(r.formallyIntroducedDay)||r.formallyIntroducedDay<1||r.formallyIntroducedDay>14)) return false;
-      const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass"].includes(v.source) && typeof v.location==="string";
+      const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass","challenge-start"].includes(v.source) && typeof v.location==="string" && (v.studiedDay===undefined || (integer(v.studiedDay)&&v.studiedDay>=1&&v.studiedDay<=14));
       if (r.unlock!==undefined && !origin(r.unlock)) return false;
       if (r.formUnlocks!==undefined && (!object(r.formUnlocks) || Object.entries(r.formUnlocks).some(([id,v]) => !r.introducedFormIds.includes(id) || !origin(v)))) return false;
       if (r.masteredAt!==undefined && !time(r.masteredAt)) return false;
@@ -48,7 +48,7 @@ function createSaveValidator({ content, progression }) {
       if (!object(r)||!Number.isInteger(r.day)||r.day<1||r.day>14||id!=="grammar-day-"+r.day||typeof r.source!=="string") return false;
     }
     for (const [id,r] of Object.entries(l.phrases)) {
-      if (!content.LIBRARY_DATA.phrases.some(p=>p.id===id)||!object(r)||!integer(r.day)||r.day>14||typeof r.source!=="string") return false;
+      if (!content.LIBRARY_DATA.phrases.some(p=>p.id===id)||!object(r)||!integer(r.day)||r.day>14||typeof r.source!=="string"||(r.studiedDay!==undefined&&(!integer(r.studiedDay)||r.studiedDay>14))) return false;
     }
     if (!Object.values(l.events).every(v=>v===true)) return false;
     for (const r of Object.values(l.deficits)) if (!object(r)||![r.requested,r.available,r.missing].every(integer)||(r.reason!==null&&typeof r.reason!=="string")) return false;
@@ -57,6 +57,10 @@ function createSaveValidator({ content, progression }) {
       if (!object(plan)||!integer(plan.seed)||!object(plan.shortfalls)||typeof plan.notice!=="string"||typeof plan.contentGap!=="boolean"||
           !(plan.effectiveDailyTarget===null||LibraryEngine.presets.includes(plan.effectiveDailyTarget))||
           !content.zoneKeys.every(k=>integer(plan.shortfalls[k])&&plan.shortfalls[k]<=6)) return false;
+      if (plan.challengeActivation !== undefined) {
+        const a=plan.challengeActivation;
+        if (!object(a) || !strings(a.newlyUnlocked) || a.newlyUnlocked.some(id=>!content.libraryEntries[id]) || !object(a.locationItems) || !content.zoneKeys.every(loc=>integer(a.locationItems[loc]))) return false;
+      }
       if (plan.generatedPracticeCards!==undefined && (!object(plan.generatedPracticeCards)||Object.values(plan.generatedPracticeCards).some(a=>!Array.isArray(a)))) return false;
       if (plan.challengeQuestions!==undefined && (!Array.isArray(plan.challengeQuestions)||plan.challengeQuestions.length!==progression.getChallengeSpec(plan.day).questionCount)) return false;
     }
@@ -112,6 +116,7 @@ function createSaveValidator({ content, progression }) {
       if (["choice","address"].includes(q.kind) && typeof q.correct!=="string") return false;
       if (q.kind==="choice" && (typeof q.prompt!=="string" || !Array.isArray(q.options) || q.options.some(v=>typeof v!=="string") || !q.options.includes(q.correct))) return false;
       if (q.kind==="address" && (!Array.isArray(q.addressOptions)||q.addressOptions.some(a=>!Array.isArray(a)||a.length!==2||a.some(v=>typeof v!=="string"))||!q.addressOptions.some(a=>a[1]===q.correct))) return false;
+      if (q.choiceIds!==undefined && (!Array.isArray(q.choiceIds) || new Set(q.choiceIds).size!==q.choiceIds.length || q.choiceIds.some(id=>typeof id!=="string") || q.choiceIds.some(id=>!content.wordById[id]?.generated || !q.choiceOrder?.includes(content.wordById[id][q.direction === "en-ps" ? "ps" : "en"])))) return false;
       if (q.tileVariant!==undefined && !["exact","distractors"].includes(q.tileVariant)) return false;
       if (q.duds!==undefined && (!Array.isArray(q.duds)||q.duds.some(v=>typeof v!=="string"))) return false;
       if (["construct","dialogue"].includes(q.kind)) {
@@ -119,7 +124,7 @@ function createSaveValidator({ content, progression }) {
       } else if (!Array.isArray(q.choiceOrder)||!q.choiceOrder.length||q.choiceOrder.some(v=>typeof v!=="string")||new Set(q.choiceOrder).size!==q.choiceOrder.length) return false;
       if (["choice","address"].includes(q.kind) && !q.choiceOrder.includes(q.correct)) return false;
       if (["sentence","construct","dialogue"].includes(q.kind) && w?.type==="sentence" && !q.generated) return false;
-      for (const card of [q.generated,q.promptGenerated].filter(Boolean)) {
+      for (const card of [q.generated,q.promptGenerated,...(q.choiceIds || []).map(id=>content.wordById[id])].filter(Boolean)) {
         if (!card.generated?.requiredGrammarIds?.every(g=>p.library.grammar[g]) ||
             !Object.values(card.generated.slots).every(r=>p.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))) return false;
       }
@@ -271,6 +276,7 @@ function createSaveValidator({ content, progression }) {
         a.attemptId < 1 ||
         !Number.isFinite(a.earned) ||
         a.earned < 0 ||
+        (a.materialUnlockedAtStart!==undefined && typeof a.materialUnlockedAtStart!=="boolean") ||
         !Array.isArray(a.built) ||
         (a.recallDraft !== undefined && (typeof a.recallDraft !== "string" || a.recallDraft.length > 160))
       )

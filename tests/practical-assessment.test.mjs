@@ -8,6 +8,9 @@ for(const pace of [0,4,8,12,16,20,24])for(const skip of [false,true]) {
   t.state.day=day;
   if(!skip)for(const place of t.content.zoneKeys){study(t,day,place);visits++;}
   t.state.session=null;
+  const completion=plain(t.state.progress.complete),xp=t.state.progress.xp;
+  t.progression.activateChallenge(t.state.progress,day);
+  assert.deepEqual(plain(t.state.progress.complete),completion);assert.equal(t.state.progress.xp,xp);
   const acquisition=plain(t.state.progress.library.acquired),grammar=plain(t.state.progress.library.grammar);
   beginAttempt(t,day);const s=t.state.session;attempts++;
   assert.equal(s.questions.length,[7,14].includes(day)?25:15);
@@ -29,7 +32,9 @@ for(const pace of [0,4,8,12,16,20,24])for(const skip of [false,true]) {
    }
    if(q.kind==='word'&&q.unstudied){assert.equal(q.direction,'ps-en');assert(!q.choiceOrder.some(v=>t.Q.evaluate(q,w,v)));}
   }
-  if(skip && day===1)assert(s.questions.every(q=>!q.generated)); // Later days inherit earlier challenge-pass unlocks.
+  const assignedIds=new Set(Object.values(plan.locationAssignments).flat());
+  const current=t.learning.availableSentences(day).filter(c=>Object.values(c.generated.slots).some(r=>assignedIds.has(r.lemmaId)));
+  if(current.length)assert(s.questions.some(q=>q.generated&&Object.values(q.generated.generated.slots).some(r=>assignedIds.has(r.lemmaId))),"use current-day words immediately, including skipped locations");
   if(t.learning.availableSentences(day).length)assert(s.questions.some(q=>q.generated),"use generated language when eligible material exists");
   if(["construct","dialogue"].includes(s.questions[0].kind))s.tileSequence=[...s.questions[0].tileSequence];
   const frozen=plain(s.questions);t.storage.save();const saved=t.storage.load();assert.equal(t.storage.problem,null,JSON.stringify({pace,skip,day,kinds:s.questions.map(q=>q.kind)}));assert.deepEqual(plain(saved.activeChallenge.questions),frozen);
@@ -55,13 +60,16 @@ console.log('PASS 33 exact retired rule snapshots remain readable and ungradable
 for(const introduced of [false,true]) {
  const t=runtime();reset(t);t.E.ensurePlan(t.state.progress,t.content.LIBRARY_DATA,1);
  if(introduced)for(const id of t.learning.libraryLessonPool(1,'residential'))t.E.expose(t.state.progress,t.content.LIBRARY_DATA,id,{day:1,location:'residential',source:'lesson'});
+ // Simulate an evidence shortage without revoking the activation policy.
+ t.content.LIBRARY_DATA.sentenceFrames={...t.content.LIBRARY_DATA.sentenceFrames,frames:[],compositeFrames:[]};
+ t.progression.activateChallenge(t.state.progress,1);
  const before=plain(t.state.progress);const qs=beginAttempt(t,1),plan=t.state.progress.library.plans[1];
  const targets=qs.filter(q=>(t.content.LIBRARY_DATA.sourceMappings[q.id] || []).length);
  assert.equal(targets.length,14);assert(targets.every(q=>q.kind==='word'));
  const counts=t.content.zoneKeys.map(place=>targets.filter(q=>plan.locationAssignments[place].some(id=>(t.content.LIBRARY_DATA.sourceMappings[q.id] || []).some(ref=>ref.lemmaId===id))).length);
  assert.equal(counts.reduce((n,x)=>n+x,0),14);assert(Math.max(...counts)-Math.min(...counts)<=1);
  assert.equal(new Set(targets.map(q=>t.E.identity(t.content.LIBRARY_DATA,q.id))).size,14,'no repeated target or base/form alias while scheduled words remain');
- assert.deepEqual(plain(t.state.progress.library.acquired),before.library.acquired);assert.deepEqual(plain(t.state.progress.complete),{});assert.deepEqual(plain(t.state.progress.library.grammar),{});assert.equal(t.state.progress.xp,before.xp);
+ assert.deepEqual(plain(t.state.progress.library.acquired),before.library.acquired);assert.deepEqual(plain(t.state.progress.complete),{});assert.deepEqual(plain(t.state.progress.library.grammar),before.library.grammar);assert.equal(t.state.progress.xp,before.xp);
  // Previously saved attempts, including repeated targets, are never rewritten.
  t.state.session.questions[5]=plain(t.state.session.questions[1]);
  const frozen=plain(t.state.session.questions);t.storage.save();const restored=t.storage.load();assert.equal(t.storage.problem,null);

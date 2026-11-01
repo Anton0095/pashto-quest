@@ -58,6 +58,6 @@ if(mode==='all') {
 if(mode==='all'){
  const t=runtime();reset(t,0);const qs=t.questions.selectChallenge(1),q=qs[0];
  q.grammarDays=[14];t.state.session={mode:'challenge',questions:[q],index:0,locked:false,answered:0,correctCount:0,earned:0,attemptId:1,loop:1};
- t.learning.submitChallenge(t.content.wordById[q.id].en);assert.deepEqual(plain(t.state.progress.library.grammar),{});
+ const grammar=plain(t.state.progress.library.grammar);t.learning.submitChallenge(t.content.wordById[q.id].en);assert.deepEqual(plain(t.state.progress.library.grammar),grammar);
  console.log('PASS practical assessment answers cannot grant workshop grammar');
 }

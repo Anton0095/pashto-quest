@@ -192,7 +192,7 @@ const adjectiveGaps = data.entries
 const report = {
   schemaVersion: 2,
   notice:
-    "Diagnostic capacity under provisional form licenses. Runtime builds no sentence catalogue at startup: it compiles after actual study/grammar unlocks. See INSTRUCTIONAL_DELIVERY_AUDIT.json for measured delivery. An exact match to an archived text is still dynamically composed from forms, never retrieved as a teaching target. Clause-pair capacity is algebraic, not an enumerated list or a native-language approval.",
+    "Diagnostic capacity under provisional form licenses. Runtime builds no sentence catalogue at startup: it compiles from forms/grammar licensed by study or explicit challenge activation. See INSTRUCTIONAL_DELIVERY_AUDIT.json for measured delivery. An exact match to an archived text is still dynamically composed from forms, never retrieved as a teaching target. Clause-pair capacity is algebraic, not an enumerated list or a native-language approval.",
   lemmaCount: data.entries.length,
   formCount: refs.size,
   eligibleFormCount: [...refs.values()].filter((x) => x.f.composition.enabled)

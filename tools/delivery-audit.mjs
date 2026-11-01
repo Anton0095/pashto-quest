@@ -88,7 +88,7 @@ const lines = [
   "|---|---|---|---:|",
   ...normal.trace.map(
     (d) =>
-      `| ${d.day} | ${d.generatedFamilies.join(", ") || "None: insufficient studied forms"} | ${d.dialogueFamilies.join(", ") || "None"} | ${d.adapted} |`,
+      `| ${d.day} | ${d.generatedFamilies.join(", ") || "None: insufficient licensed material"} | ${d.dialogueFamilies.join(", ") || "None"} | ${d.adapted} |`,
   ),
   "",
   "## All tested profiles",
@@ -110,7 +110,7 @@ const lines = [
   "",
   "## Architecture and limits",
   "",
-  "The runtime contains no authored sentence cards, lesson sentence targets or fixed grammar models; only explicitly registered conventional expressions have fixed conversational responses. It builds no sentence catalogue before study or first challenge-pass unlock. Templates compile against the current introduced forms and actual grammar; typed dialogues join compatible generated questions and responses, presented as direct English construction targets. First completed challenge passes unlock missed frozen location material with honest provenance; active attempts remain frozen. Frozen attempts retain complete text/gloss, indices, choices, scene, speaker/recipient, source forms and ASTs. A generated label alone is insufficient: bodies are recomposed and checked. Standard visits exclude earlier studied sentence texts; explicit revision/replay handles repetition.",
+  "The runtime contains no authored sentence cards, lesson sentence targets or fixed grammar models; only explicitly registered conventional expressions have fixed conversational responses. It builds no sentence catalogue before study or explicit challenge activation. Templates compile against the current introduced forms and actual grammar; typed dialogues join compatible generated questions and responses, presented as direct English construction targets. Challenge activation unlocks the frozen current-day location material before question generation, with honest provenance and no fabricated study grades. Current-day vocabulary is preferred alongside cumulative revision; active attempts remain frozen. Frozen attempts retain complete text/gloss, indices, choices, scene, speaker/recipient, source forms and ASTs. A generated label alone is insufficient: bodies are recomposed and checked. Standard visits exclude earlier studied sentence texts; explicit revision/replay handles repetition.",
   "",
   "[Capacity and exact missing forms/features](GENERATION_COVERAGE.md) are separate diagnostics. Unattested inflections, missing counted numeral constructions and unlicensed obliques remain excluded. Base entries and conventional expressions are user-approved; inflections, grammar and composed language remain provisional; automated consistency, Chromium/mobile layouts and mocked audio are not native Laghman review or physical iPhone/Windows testing.",
   "",
