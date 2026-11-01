@@ -22,9 +22,47 @@
       ],
       "actions": [
         {
+          "label": "Study at Home",
+          "type": "lesson",
+          "lessonId": "2-residential"
+        },
+        {
           "label": "Day 2 challenge",
           "type": "challenge",
           "day": 2
+        }
+      ]
+    },
+    "day2-ending": {
+      "speaker": "Muhammad Jan",
+      "lines": [
+        "Today’s practice is complete. We will continue tomorrow."
+      ],
+      "actions": []
+    },
+    "day2-lake": {
+      "speaker": "Saleha",
+      "lines": [
+        "We can continue today’s practice here."
+      ],
+      "actions": [
+        {
+          "label": "Study at the Lake",
+          "type": "lesson",
+          "lessonId": "2-nature"
+        }
+      ]
+    },
+    "day2-market": {
+      "speaker": "Edris",
+      "lines": [
+        "We can continue today’s practice here."
+      ],
+      "actions": [
+        {
+          "label": "Study at the Market",
+          "type": "lesson",
+          "lessonId": "2-business"
         }
       ]
     }
@@ -41,33 +79,60 @@
       ],
       "challenge": {
         "day": 2,
-        "npc": "jan-home"
+        "npc": "jan-home",
+        "conditions": [
+          "afterTutorial"
+        ]
       },
       "completion": {
         "challengePassed": 2,
         "terminal": false
-      }
+      },
+      "id": "day-2",
+      "day": 2,
+      "name": "Back to school",
+      "maps": [
+        "village",
+        "library"
+      ],
+      "start": {
+        "map": "village",
+        "x": 39,
+        "y": 28,
+        "facing": "up"
+      },
+      "prerequisites": [
+        "afterTutorial"
+      ],
+      "mandatoryEvents": [],
+      "activeNPCs": [
+        "jan-home",
+        "hameed",
+        "saleha",
+        "edris"
+      ],
+      "endingEvent": "day2-ending",
+      "openingMode": "automatic",
+      "nextChapter": "day-3",
+      "objective": "Visit Ms Hameed at School, then explore the village.",
+      "intro": "Begin with Ms Hameed’s School workshop, then visit the other locations or attempt the daily challenge."
     }
   },
   "npcSchedulePatches": [
     {
       "id": "hameed",
-      "name": "Ms Hameed",
-      "sprite": "hameed",
       "schedule": [
         {
           "day": 2,
           "map": "village",
           "x": 39,
-          "y": 27
+          "y": 27,
+          "event": "day2-school-opening"
         }
-      ],
-      "event": "day2-school-opening"
+      ]
     },
     {
       "id": "jan-home",
-      "name": "Muhammad Jan",
-      "sprite": "elder",
       "schedule": [
         {
           "day": 2,
@@ -75,6 +140,30 @@
           "x": 10,
           "y": 10,
           "event": "day2-home-challenge"
+        }
+      ]
+    },
+    {
+      "id": "saleha",
+      "schedule": [
+        {
+          "day": 2,
+          "map": "village",
+          "x": 38,
+          "y": 11,
+          "event": "day2-lake"
+        }
+      ]
+    },
+    {
+      "id": "edris",
+      "schedule": [
+        {
+          "day": 2,
+          "map": "village",
+          "x": 11,
+          "y": 28,
+          "event": "day2-market"
         }
       ]
     }

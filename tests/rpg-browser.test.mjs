@@ -6,7 +6,7 @@ import {runtime,beginAttempt,correctAnswer} from './runtime-fixture.mjs';
 const data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
 const oracle=runtime(),EDU='pashto-quest-rpg-education-v1',WORLD='pashto-quest-rpg-world-v1';
 for(const width of [375,1280]) {
- const b=await setup({width,rpg:true,bridge:false,offline:true,transform:h=>h.replace("// @TEST_HOOK","window.__fixtureFence=saveFence; // @TEST_HOOK")});const p=b.page;
+ const b=await setup({width,rpg:true,bridge:false,offline:true,transform:h=>h.replace("// @TEST_HOOK","window.__fixtureFence=saveFence;window.__rpgInspect=()=>({physics:rpg.diagnostics(),position:rpg.position,actors:rpg.registry.npcs(1,rpg.position.map)}); // @TEST_HOOK")});const p=b.page;
  let tutorialDone=false;
  try {
   // A production save sentinel must survive every RPG write and reset untouched.
@@ -40,7 +40,10 @@ for(const width of [375,1280]) {
    await walk(24,15);assert.equal((await pos()).map,'library');await walk(6,6);
    await talk('Begin Library tutorial');
    await p.locator('#tutorialInteraction button').getByText('Hello',{exact:true}).click();await p.locator('#teachNext').click();
-   for(const text of ['څنګه','یې؟','Check sentence'])await p.locator('#tutorialInteraction button').getByText(text,{exact:true}).click();
+   await p.locator('#tutorialInteraction button').getByText('څنګه',{exact:true}).click();
+   await durable();const tutorialDraft=await p.locator('#tutorialInteraction .built-sentence').innerText();await p.reload();await p.locator('#tutorialInteraction .built-sentence').waitFor();assert.equal(await p.locator('#tutorialInteraction .built-sentence').innerText(),tutorialDraft,'Exact tutorial tile draft restores');
+   for(const text of ['یې؟','Check sentence'])await p.locator('#tutorialInteraction button').getByText(text,{exact:true}).click();
+   await durable();const tutorialXP=(await progress()).xp;await p.reload();await p.locator('#teachNext:enabled').waitFor();assert.equal((await progress()).xp,tutorialXP,'Correct tutorial reload never scores twice');
    await p.locator('#teachNext').click();await p.locator('#tutorialInteraction button').getByText('Prefer not to say',{exact:true}).click();await p.locator('#teachNext').click();
    await p.locator('#tutorialName').fill('RPG learner');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();tutorialDone=true;
    assert((await progress()).tutorialDone);await p.locator('#resultWorld').click();await walk(6,9);assert.equal((await pos()).map,'village');
@@ -125,5 +128,5 @@ for(const width of [375,1280]) {
   assert(!await p.locator('#lessonScreen').isVisible(),'Future saved challenge is not opened');assert.equal((await progress()).activeChallenge.loop,2,'Unavailable snapshot is preserved, not regraded or rerolled');
   assert.deepEqual(b.errors,[]);
   console.log('PASS RPG public UI',width,'tutorial, all four authentic lessons, Home 3 descriptions, movement/touch controls, Library, frozen partial/locked challenge reload, lesson reload, appearance, completion/reload, early failure/retry, save isolation, Day 2 boundary');
- } finally{await b.close();}
+ } catch(error){console.error('Public RPG failure',await p.evaluate(()=>({position:document.getElementById('rpgCanvas').dataset,inspection:window.__rpgInspect(),hidden:document.hidden,focus:document.hasFocus(),dialogs:[...document.querySelectorAll('dialog[open]')].map(d=>d.id),world:localStorage.getItem('pashto-quest-rpg-world-v1'),objective:document.getElementById('rpgObjective').textContent})));throw error;} finally{await b.close();}
 }

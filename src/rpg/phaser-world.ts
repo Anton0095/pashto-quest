@@ -3,7 +3,7 @@ import type {Actor,Appearance,Direction,Position,WorldData} from './types';
 import {directions,recover} from './world-data';
 
 interface WorldOptions {
-  canvas:HTMLCanvasElement;data:WorldData;
+  canvas:HTMLCanvasElement;data:WorldData;allowedMaps?():string[];
   position():Position;actors():Actor[];appearance():Appearance;active():boolean;
   onMove(position:Position,transition:boolean):void;onFrame():void;
 }
@@ -120,7 +120,7 @@ export class VillageScene extends Phaser.Scene {
     if(signature!==this.actorSignature){
       this.npcGroup?.clear(true,true);this.sensors?.clear(true,true);
       for(const actor of actors){
-        if(actor.sprite){const sprite=this.physics.add.staticSprite(actor.x*16+8,actor.y*16+8,actor.sprite,facingIndex[actor.facing??'down']*2).setDepth(actor.y*16+16);sprite.setData('actor',actor);this.npcGroup?.add(sprite);}
+        if(actor.sprite){const sprite=this.physics.add.staticSprite(actor.x*16+8,actor.y*16+8,actor.sprite,facingIndex[actor.facing??'down']*2).setDepth(actor.y*16+16);sprite.setData('actor',actor);const animation=actor.animations?.[actor.facing??'down'];if(animation&&this.anims.exists(animation))sprite.play(animation);this.npcGroup?.add(sprite);}
         else {const zone=this.add.zone(actor.x*16+8,actor.y*16+8,16,16);this.physics.add.existing(zone,true);zone.setData('actor',actor);this.sensors?.add(zone);}
       }
       this.actorSignature=signature;
@@ -133,9 +133,9 @@ export class VillageScene extends Phaser.Scene {
   nearby():Actor|null {
     if(!this.player||this.movement)return null;
     const p=this.options.position(),[dx,dy]=directions[p.facing];
-    const actors=this.physics.overlapRect(p.x*16-16,p.y*16-16,48,48,false,true).flatMap(body=>{
+    const actors=this.physics.overlapRect(p.x*16-48,p.y*16-48,112,112,false,true).flatMap(body=>{
       const actor=body.gameObject.getData('actor') as Actor|undefined;
-      return actor&&Math.abs(actor.x-p.x)+Math.abs(actor.y-p.y)===1?[actor]:[];
+      return actor&&Math.abs(actor.x-p.x)+Math.abs(actor.y-p.y)>=1&&Math.abs(actor.x-p.x)+Math.abs(actor.y-p.y)<=(actor.interactionRange??1)?[actor]:[];
     });
     return actors.sort((a,b)=>Number(b.x===p.x+dx&&b.y===p.y+dy)-Number(a.x===p.x+dx&&a.y===p.y+dy))[0]??null;
   }
@@ -147,6 +147,8 @@ export class VillageScene extends Phaser.Scene {
     this.player.setFrame(facingIndex[direction]*2);
     this.probe.body?.reset(x*16+8,y*16+8);
     if(!tile||tile.collides||extra?.collides||(this.npcGroup&&this.physics.overlap(this.probe,this.npcGroup))){this.options.onMove({...p,facing:direction},false);return false;}
+    const transition=this.options.data.maps[p.map].transitions.find(t=>t.x===x&&t.y===y);
+    if(transition&&this.options.allowedMaps&&!this.options.allowedMaps().includes(transition.to))return false;
     const target={...p,x,y,facing:direction};
     this.player.play(this.options.appearance()+'-'+direction,true);
     this.movement=this.tweens.add({targets:this.player,x:x*16+8,y:y*16+8,duration:115,

@@ -1,49 +1,34 @@
-# Expanding the RPG
+# Expanding the RPG foundation
 
-This is a strict TypeScript / Phaser 4.2.1 Day 1 prototype. Keep main's learning/progression engines authoritative. Add approved data and narrative before changing generic simulation code.
+Use strict TypeScript adapters and data; keep Phaser as the live world engine and the JavaScript educational services as the learning authorities. The shipped `firstDay=lastDay=1` and terminal Day 1 remain unchanged.
 
-## Add a map
+## Maps and actors
 
-Add a stable key under `maps` in `content/RPG_WORLD.json`. Supply equal-width tile rows using registered symbols and a walkable spawn. Optional equal-size `collision` rows contain `0` (default) or `1` (blocked) and become a separate Phaser tilemap collision layer. Add a transition on the source map and an exit on the destination, keeping return spawns off transition tiles. Declare building-art rectangles and region labels independently from collision tiles. Run `python3 tools/build.py` first to strict-check/bundle the TypeScript, then `node tests/rpg-world.test.mjs` to validate maps, collision and reachability. Add explicit reachability assertions for new objects/NPCs and public-UI navigation through new entrances.
+Add rectangular tile rows, a safe spawn, transitions and optional same-size `collision` rows (`0`/`1`) under `maps`. Register allowed map IDs on each chapter. Terrain/collision, sensors, animation, camera and movement stay in Phaser. Building art and region labels do not replace collision data. Run build, map/reachability and Phaser browser checks after map changes.
 
-For a new terrain kind, add its walkability in data and Phaser Graphics texture generation in `src/rpg/phaser-world.ts`. Phaser owns tilemap rendering, physics/collisions, movement tweens, animation and follow cameras; add no parallel custom engine or lesson/assessment/XP checks there. Existing scene art is original Phaser-generated pixel textures, with no external runtime assets.
+NPC `id` identifies a placement; `characterId` identifies the person across placements/days. Muhammad Jan's conditional village/Library/Home placements share `muhammad-jan`. Saleha keeps `saleha` when moving to School or Hills. Supply name, sprite, optional directional animation keys, interactionRange (1–3), base event and scheduled `{day,map,x,y,event?}` overrides. Optional `defaultLocation:{map,x,y,event?}` supplies a fallback only when no schedule exists for that day; a day-specific schedule overrides it without duplicating the identity. Register placement IDs in chapter `activeNPCs`; conditions can hide a placement. Use a walkable tile with a reachable approach, avoiding simultaneous overlaps. Character interaction flags use `characterId`, never educational completion.
 
-## Add or relocate an NPC
+Events contain a speaker, sequential `lines`, optional per-message `{speaker,text,condition}`, optional eligibility/once-only flag, `setFlags`, and typed actions. Conditions support named predicates plus `flag:name` and `not-flag:name`. Unknown conditions fail closed. Actions can launch lesson/challenge/reference, set a story flag, dispatch another event, return to exploration or show completion. A lesson action can specify `resumeEvent` for the conversation shown on return to the village. Events complete their once-only effects when an eligible action is chosen; backing out before choosing leaves the event replayable. This grants no XP or vocabulary. Story cursors/flags are world state; lesson results are educational state.
 
-Add `{id,name,sprite,schedule,event}` to `npcs`. Each schedule entry has `{day,map,x,y}`; add another day entry to move the same character. Choose an unobstructed tile beside a reachable approach. For conditional variants, give placements separate stable IDs and named registry predicates. Do not place two simultaneously eligible NPCs on the same tile.
+## Day 2 implementation walkthrough (inactive)
 
-Create an event under `events` with the speaker, English dialogue lines and action definitions. Existing lesson IDs connect through an action such as:
+The [registration fixture](day2-registration.example.json) is excluded from release inputs. `rpg-foundation.test.mjs` merges it into an isolated registry and resolves its events without changing any movement, collision, rendering, sentence or assessment module.
 
-```json
-{"label":"Study at School","type":"lesson","lessonId":"2-school"}
-```
+1. **Register Day 2:** on a future content branch, merge `days["2"]` and `events` into the world data. Set Day 1 nonterminal with `nextChapter:"day-2"`, and raise `lastDay` only when reviewed content/tests are ready. `id`, curriculum `day`, display name/intro/objective, maps/spawn, prerequisites, active placements, optional lessons, mandatory events, opening/ending and terminal/next declarations are validated together.
+2. **Opening:** use `openingMode:"automatic"` with `day2-school-opening`. This retains the documented Ms Hameed School workshop. Use `interaction` for a player-initiated opening like Day 1. A chapter trigger prevents repeating opening/ending dispatch after a saved reload.
+3. **Ms Hameed at School:** append the fixture's Day 2 schedule to existing placement `hameed`, preserving `characterId`. Its scheduled event overrides the Day 1 School dialogue.
+4. **School lesson:** the opening's `lessonId:"2-school"` calls the existing lesson service. It supplies grammar, vocabulary and generated content from the existing curriculum. If the normal story must require that visit, add a return event setting an explicit story flag/prerequisite, tested against actual lesson completion; never award a visit from dialogue alone.
+5. **Other lessons:** register `2-residential`, `2-nature`, `2-business` and appropriate event actions. They are optional visits; existing early-challenge semantics remain intact.
+6. **NPC schedule:** append the existing Jan/Saleha/Edris placements for Day 2 (the fixture includes these). Add future relocations to their same identities; do not invent separate characters for each location.
+7. **Challenge:** route the Home scheduled event to `{type:"challenge",day:2}`. Chapter conditions add story access constraints, while `learning.allowed` and the existing activation service retain authority over eligibility, frozen all-district material and scoring. Use the existing 15-question/pass-12 specification.
+8. **Ending:** `day2-ending` supplies the summary after a genuine educational pass and any configured mandatory events. No event choice fabricates success.
+9. **Day 3:** keep `nextChapter:"day-3"`. The Continue control only appears when that chapter is registered, active, meets prerequisites and the educational engine permits it. An unresolved next ID is safe and intentionally produces no advance. Register Day 3 before enabling this transition.
+10. **Tests:** verify registration rejection, inactive cap, conditions, normal/skip opening requirements, relocation, lesson/dialogue return, frozen challenge restore, once-only rewards, interrupted pairing and explicit next selection. Add a full public Day 2 playthrough, then build and run the complete verifier. Preserve Day 1 and the fourteen-day educational matrix.
 
-The lesson adapter launches the existing lesson, pauses exploration and returns through the existing results/navigation path. Do not create a new vocabulary pool, teaching sentence list, reward store or custom answer evaluator. Pending Pashto dialogue stays English until reviewed and explicitly activated through the existing language workflow.
+Day 2 needs reviewed narrative/content and end-to-end integration work, but no new core world or assessment engine. Later concepts should extend typed predicates/events only when a defined story requirement needs them.
 
-## Register another chapter
+## Persistence and release
 
-The inactive [Day 2 example](day2-registration.example.json) supplies a `days["2"]` entry and NPC schedule patches to merge with existing identities (not duplicate NPC IDs). A schedule entry may override `event`, because its fields overlay the NPC definition. It demonstrates a new configuration, opening story event, scheduled teacher, instructional event, existing lesson ID, daily challenge and completion condition. It is deliberately outside the build inputs. It does not enable Day 2 in this prototype.
+Educational schema 7 and world schema 1 remain isolated from production saves. Optional world chapter/dialogue fields extend the current envelope; invalid optional story cursors are discarded, while invalid educational records stay untouched pending explicit reset. Shared construction/tutorial draft state uses the existing transient lesson snapshot. Mismatched world/educational fingerprints discard only the world draft. Web Locks plus the hash-only IndexedDB revision fence remain required; no migration or second score store is added.
 
-For a future conversion branch:
-
-1. Register the new chapter data, events and NPC placements; connect the chapter's opening event to its scripted trigger in the event adapter.
-2. Raise `lastDay` and change the prior chapter's completion from terminal to nonterminal. The policy already resolves configured/allowed days and rejects unregistered chapters; its expansion test demonstrates a Day 2 registration without movement, collision or evaluation changes.
-3. Replace the current Day 1-specific onboarding/objective/completion copy with approved chapter presentation. Extend condition predicates when new narrative concepts require them. The prototype UI's Day 1 visit labels, Home challenge dialogue and terminal summary remain profile presentation that should be generalized before a multi-day release.
-4. Route the new opening story to its existing normal-route lesson/access rules. Keep the educational engine's early-challenge permission and challenge-start availability semantics intact.
-5. Extend public UI, save/reload, reachability and once-only award tests. Rebuild and run the shared full verifier for a multi-day conversion.
-
-The reusable policy, registry, schedules and action dispatch already separate this work from simulation and learning. Autonomous NPC movement or time-of-day schedules would need a bounded scheduling extension with collision-safe destinations; current schedules select stationary placements per day.
-
-## Before Day 2
-
-- Generalize chapter presentation and opening-event dispatch from this bounded Day 1 shell; add story-specific conditions as data-driven predicates.
-- Add classroom/home interiors if narrative needs justify them; keep the Library reference shortcut.
-- Exercise real iPhone Safari touch, Web Locks/local persistence, audio and focus interruption. Chromium viewport/CPU emulation is not hardware evidence.
-- Consider an atomic envelope or revision token shared by world and education saves if seamless resume across abrupt closes is essential. Current pairing safely falls back to the village on mismatch.
-- Preserve partial tutorial construction if exact tutorial-draft restoration is required; current unfinished tutorial arrangement restarts at the same step.
-- Obtain needed language/recording review. Existing base/phrase approvals do not certify generated combinations, inflections, Laghman pronunciation or new dialogue.
-- Replace/develop procedural art where useful, maintaining original or documented licensed assets and offline delivery.
-
-## Typed boundary and build
-
-Run `npm ci` once, then use the existing `python3 tools/build.py` / `--check` commands. `npm run typecheck` checks all new RPG systems in strict mode; `tools/build-rpg.mjs` bundles Phaser locally before Python embeds it into the static release. Only development requires Node/npm; GitHub Pages and offline play use the committed HTML. Extend discriminated `Action`, `WorldData`, `Chapter` and adapter interfaces in `src/rpg/types.ts` when adding new concepts. Keep educational JavaScript services authoritative and connect them through `EducationServices`, rather than copying evaluation/reward logic into TypeScript. See the [pipeline decision](TYPESCRIPT_PHASER_BUILD_PLAN.md).
+Run `npm ci`, `npm run typecheck`, `python3 tools/build.py` and `python3 tools/build.py --check`. Players need only the committed offline HTML/static hosting. Additional dependencies and production Pages changes are unnecessary. Physical Safari/audio and lifecycle checks remain required before a mobile release claim.

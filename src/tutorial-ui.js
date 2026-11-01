@@ -96,7 +96,8 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
       ui.$("teachSpeak").classList.add("hidden");
       for (const id of ["teachPashto", "teachRoman", "teachEnglish", "teachNote"]) ui.$(id).textContent="";
       p.remove();
-      ui.construction.mount(area,w,{kind:"construct"},{retry:true,
+      const draft=state.session.tutorialConstruction ||= {built:[],locked:false};
+      ui.construction.mount(area,w,{kind:"construct"},{retry:true,draft,onChange:()=>storage.save(),
         tiles:w.ps.split(" ").map((word,index)=>({word,index})),
         onAnswer(correct) {
           if (correct) done();

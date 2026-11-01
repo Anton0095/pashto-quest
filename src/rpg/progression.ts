@@ -11,7 +11,7 @@ export function createRPGProgression({state,data,learning,progression}:{state:St
     return Object.keys(data.days).map(Number).filter(d=>configured(d)&&allowed(d)).sort((a,b)=>b-a)[0]||data.firstDay;
   }
   return {
-    configured,clamp,
+    configured,clamp,dispose(){learning.allowed=allowed;learning.placeAccessible=accessible;},
     current(){return state.day=clamp(state.day);},
     lessonAllowed(id:string){return id==='tutorial'||id==='review'||Object.entries(data.days).some(([day,chapter])=>configured(Number(day))&&learning.allowed(Number(day))&&chapter.lessons.includes(id));},
     complete(day:number){return configured(day)&&progression.passedChallenge(state.progress,day);},

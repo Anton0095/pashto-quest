@@ -1,6 +1,6 @@
 import type {SaveFence} from './save-fence';
 import type {WorldData,WorldSave,Session,LessonSession,Content,Progress,QuestionService,Appearance} from './types';
-import {RPGWorldData as RPGWorldEngine} from './world-data';
+import {RPGWorldData} from './world-data';
 /* Independent world schema; never reads, imports or modifies production save keys. */
 export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:QuestionService) {
   const key='pashto-quest-rpg-world-v1';
@@ -10,12 +10,15 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     const raw=input as Partial<WorldSave>|null;
     const out=fresh(data), object=(v:unknown):boolean=>v!==null && typeof v==='object' && !Array.isArray(v);
     if(!raw||!object(raw)||raw.schemaVersion!==1)return out;
-    out.position=RPGWorldEngine.recover(data,raw.position);
+    if(typeof raw.chapter==='string'&&Object.values(data.days).some(c=>c.id===raw.chapter))out.chapter=raw.chapter;
+    out.position=RPGWorldData.recover(data,raw.position);
     if(['masculine','feminine','neutral'].includes(raw.appearance || ''))out.appearance=raw.appearance as Appearance;
     for(const field of ['flags','npcFlags','triggers'] as const) if(object(raw[field]))out[field]=Object.fromEntries(Object.entries(raw[field] || {}).filter(([k,v])=>/^[a-z0-9_-]{1,80}$/i.test(k)&&typeof v==='boolean').slice(0,200));
     if(['world','lesson','complete'].includes(raw.view || ''))out.view=raw.view as WorldSave['view'];
     if(typeof raw.educationFingerprint==='string')out.educationFingerprint=raw.educationFingerprint;
     if(object(raw.lesson))out.lesson=raw.lesson;
+    const cursor=raw.dialogue;
+    if(cursor&&typeof cursor.event==='string'&&data.events[cursor.event]&&Number.isInteger(cursor.index)&&cursor.index>=0&&cursor.index<1000&&(!cursor.resumeEvent||data.events[cursor.resumeEvent]))out.dialogue={event:cursor.event,index:cursor.index,...(cursor.resumeEvent?{resumeEvent:cursor.resumeEvent}:{})};
     return out;
   }
   function lessonSnapshot(s:Session|null):unknown {
@@ -33,6 +36,10 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     const int=(v:unknown,max=1000000):v is number=>typeof v==='number'&&Number.isInteger(v)&&v>=0&&v<=max;
     if(!['cardIndex','attemptId','answered','firstCorrect','earned','tutorialResponses','constructionCount'].every(k=>int(raw[k]??0)))return null;
     if(raw.mode==='tutorial'&&raw.cardIndex>=content.tutorialCards.length)return null;
+    if(raw.tutorialConstruction){
+      const draft=raw.tutorialConstruction,card=content.tutorialCards.find(c=>c.kind==='tiles'),count=card?content.wordById[card.id]?.ps.split(' ').length:0;
+      if(!count||!Array.isArray(draft.order)||draft.order.length!==count||new Set(draft.order).size!==count||draft.order.some(i=>!int(i,count-1))||!Array.isArray(draft.built)||new Set(draft.built).size!==draft.built.length||draft.built.some(i=>!draft.order.includes(i))||typeof draft.locked!=='boolean'||draft.locked&&(!Array.isArray(raw.passed)||!raw.passed.includes(card!.id)))return null;
+    }
     if(raw.mode==='standard'&&raw.loc!==raw.id.split('-')[1])return null;
     if(raw.attemptId>progress.library.attemptSequence || typeof raw.locked!=='boolean')return null;
     for(const field of ['required','studyWords','greetingCards','studySentences','firstAsked','passed'])if(!Array.isArray(raw[field])||(raw[field] as string[]).length>1000||(raw[field] as string[]).some(id=>!content.wordById[id]))return null;
@@ -52,7 +59,7 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     let pending=Promise.resolve(true);
     function save(next:WorldSave) {
       const raw=JSON.stringify(next);
-      const write=()=>{try{const target=access();if(target.getItem(key)!==observed){problem='World save changed in another tab. Reload before continuing; this tab has not overwritten it.';return false;}target.setItem(key,raw);if(target.getItem(key)!==raw)throw Error();observed=raw;problem=null;return true;}catch{problem='World position could not be saved. Keep this tab open and retry.';return false;}};
+      const write=()=>{try{const target=access();if(target.getItem(key)!==observed){problem='World save changed in another tab. Reload before continuing; this tab has not overwritten it.';return false;}if(raw!==observed)target.setItem(key,raw);if(target.getItem(key)!==raw)throw Error();observed=raw;problem=null;return true;}catch{problem='World position could not be saved. Keep this tab open and retry.';return false;}};
       const commit=async()=>{
         if(backend)return write();
         if(!fence){problem='World revision coordination is unavailable. Keep this tab open and retry.';return false;}
@@ -62,7 +69,7 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
         else if(result!=='saved')problem ||= 'World position could not be safely saved. Keep this tab open and retry.';
         return result==='saved';
       };
-      pending=pending.then(()=>globalThis.navigator?.locks?.request?globalThis.navigator.locks.request(key,commit):backend?write():false);return pending;
+      pending=pending.catch(()=>false).then(()=>globalThis.navigator?.locks?.request?globalThis.navigator.locks.request(key,commit):backend?write():(problem='World save coordination is unavailable. Keep this tab open and retry.',false)).catch(()=>{problem='World position could not be safely saved. Keep this tab open and retry.';return false;});return pending;
     }
     return {value,save,authorizeReset(){revisionReset=true;},get problem(){return problem;},settled:()=>pending};
   }

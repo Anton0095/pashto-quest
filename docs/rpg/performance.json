@@ -1,6 +1,6 @@
 {
-  "releaseSha256": "b6c3e42f82caa8663c344a3ec64de2aa5333b733abfd25f2e6d04cc282d5cd13",
-  "releaseBytes": 2991327,
+  "releaseSha256": "a89171407411b6418fac5a7500c6f5b8965bc4fa646073458b39a3b6e42b5ab2",
+  "releaseBytes": 3001116,
   "samples": 20,
   "profiles": [
     {
@@ -9,36 +9,36 @@
       "cpuThrottle": 1,
       "browser": "154.0.8037.57",
       "initialLoad": {
-        "medianMs": 373.1,
-        "p95Ms": 427.6,
-        "minMs": 310.2,
-        "maxMs": 741.8
+        "medianMs": 298.8,
+        "p95Ms": 377.6,
+        "minMs": 226.1,
+        "maxMs": 456.2
       },
       "sceneReady": {
-        "medianMs": 570.3,
-        "p95Ms": 646.4,
-        "minMs": 484.9,
-        "maxMs": 968.1
+        "medianMs": 475.8,
+        "p95Ms": 576.8,
+        "minMs": 383.3,
+        "maxMs": 581.3
       },
       "movement": {
-        "medianMs": 125.8,
-        "p95Ms": 138.4,
-        "minMs": 120.7,
-        "maxMs": 142.3
+        "medianMs": 128.2,
+        "p95Ms": 146.5,
+        "minMs": 119.1,
+        "maxMs": 149.8
       },
       "mapTransition": {
-        "medianMs": 132.9,
-        "p95Ms": 140.7,
-        "minMs": 120,
-        "maxMs": 145.8
+        "medianMs": 133.3,
+        "p95Ms": 144.5,
+        "minMs": 122.6,
+        "maxMs": 146.2
       },
       "sceneUpdateObjectsBefore": 9,
       "sceneUpdateObjectsAfter": 9,
-      "heapBeforeBytes": 6886096,
-      "heapAfterBytes": 8179372,
-      "heapDeltaBytes": 1293276,
+      "heapBeforeBytes": 6904980,
+      "heapAfterBytes": 8202020,
+      "heapDeltaBytes": 1297040,
       "storage": {
-        "pashto-quest-rpg-world-v1": 235,
+        "pashto-quest-rpg-world-v1": 253,
         "pashto-quest-rpg-education-v1": 391,
         "revisionHeads": 2,
         "revisionValuesJsonBytes": 153
@@ -50,36 +50,36 @@
       "cpuThrottle": 4,
       "browser": "154.0.8037.57",
       "initialLoad": {
-        "medianMs": 1324.7,
-        "p95Ms": 2322.6,
-        "minMs": 824.8,
-        "maxMs": 3022
+        "medianMs": 1065,
+        "p95Ms": 1641.5,
+        "minMs": 917.4,
+        "maxMs": 8226.3
       },
       "sceneReady": {
-        "medianMs": 1887,
-        "p95Ms": 3286,
-        "minMs": 1190,
-        "maxMs": 4197
+        "medianMs": 1470.6,
+        "p95Ms": 2216.1,
+        "minMs": 1332.7,
+        "maxMs": 9332.8
       },
       "movement": {
-        "medianMs": 130.8,
-        "p95Ms": 143.8,
-        "minMs": 124.1,
-        "maxMs": 151.1
+        "medianMs": 132.3,
+        "p95Ms": 145.1,
+        "minMs": 121.3,
+        "maxMs": 152.8
       },
       "mapTransition": {
-        "medianMs": 148,
-        "p95Ms": 181.4,
-        "minMs": 121.9,
-        "maxMs": 210.5
+        "medianMs": 149.1,
+        "p95Ms": 170.6,
+        "minMs": 132.9,
+        "maxMs": 186.2
       },
       "sceneUpdateObjectsBefore": 9,
       "sceneUpdateObjectsAfter": 9,
-      "heapBeforeBytes": 6873860,
-      "heapAfterBytes": 8161452,
-      "heapDeltaBytes": 1287592,
+      "heapBeforeBytes": 6920140,
+      "heapAfterBytes": 8191224,
+      "heapDeltaBytes": 1271084,
       "storage": {
-        "pashto-quest-rpg-world-v1": 235,
+        "pashto-quest-rpg-world-v1": 253,
         "pashto-quest-rpg-education-v1": 391,
         "revisionHeads": 2,
         "revisionValuesJsonBytes": 153

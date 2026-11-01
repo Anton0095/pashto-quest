@@ -245,7 +245,9 @@
         }
       ],
       "condition": "beforeGuideMeeting",
-      "event": "welcome"
+      "event": "welcome",
+      "characterId": "muhammad-jan",
+      "interactionRange": 1
     },
     {
       "id": "jan-library",
@@ -260,7 +262,9 @@
         }
       ],
       "event": "library",
-      "condition": "beforeTutorial"
+      "condition": "beforeTutorial",
+      "characterId": "muhammad-jan",
+      "interactionRange": 1
     },
     {
       "id": "jan-home",
@@ -275,7 +279,9 @@
         }
       ],
       "condition": "afterTutorial",
-      "event": "home"
+      "event": "home",
+      "characterId": "muhammad-jan",
+      "interactionRange": 1
     },
     {
       "id": "saleha",
@@ -289,7 +295,9 @@
           "y": 11
         }
       ],
-      "event": "lake"
+      "event": "lake",
+      "characterId": "saleha",
+      "interactionRange": 1
     },
     {
       "id": "edris",
@@ -303,7 +311,9 @@
           "y": 28
         }
       ],
-      "event": "market"
+      "event": "market",
+      "characterId": "edris",
+      "interactionRange": 1
     },
     {
       "id": "hameed",
@@ -317,7 +327,9 @@
           "y": 27
         }
       ],
-      "event": "school"
+      "event": "school",
+      "characterId": "hameed",
+      "interactionRange": 1
     }
   ],
   "objects": [
@@ -380,7 +392,7 @@
           "lessonId": "1-residential"
         },
         {
-          "label": "Day 1 challenge \u00b7 15 questions",
+          "label": "Day 1 challenge · 15 questions",
           "type": "challenge",
           "day": 1
         },
@@ -441,6 +453,13 @@
           "type": "reference"
         }
       ]
+    },
+    "day1-ending": {
+      "speaker": "Muhammad Jan",
+      "lines": [
+        "Congratulations! You have successfully completed Day 1."
+      ],
+      "actions": []
     }
   },
   "days": {
@@ -455,12 +474,43 @@
       ],
       "challenge": {
         "day": 1,
-        "npc": "jan-home"
+        "npc": "jan-home",
+        "conditions": [
+          "afterTutorial"
+        ]
       },
       "completion": {
         "challengePassed": 1,
         "terminal": true
-      }
+      },
+      "id": "day-1",
+      "day": 1,
+      "name": "A first hello",
+      "maps": [
+        "village",
+        "library"
+      ],
+      "start": {
+        "map": "village",
+        "x": 22,
+        "y": 18,
+        "facing": "right"
+      },
+      "prerequisites": [],
+      "mandatoryEvents": [],
+      "activeNPCs": [
+        "jan-welcome",
+        "jan-library",
+        "jan-home",
+        "saleha",
+        "edris",
+        "hameed"
+      ],
+      "nextChapter": null,
+      "objective": "Home ↖  ·  Lake ↗  ·  Market ↙  ·  School ↘  ·  Library ↑",
+      "endingEvent": "day1-ending",
+      "openingMode": "interaction",
+      "intro": "Muhammad Jan will guide you to the Library for your first four activities. Then explore Home, Lake, Market and School in any order. Pass the Day 1 challenge to complete this prototype."
     }
   }
 }

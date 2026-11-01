@@ -54,10 +54,11 @@ function createConstructionUI({ ui, audio }) {
     if (correct) root.append(ui.button("Hear the correct sentence", () => audio.speak(card.id)));
   }
   // Standalone instances share rendering/feedback but keep their own answer locks.
-  function mount(root, card, q, {onAnswer = () => {}, retry = false, tiles: suppliedTiles} = {}) {
-    const model={built:[],locked:false}, tiles=suppliedTiles || QuestionEngine.buildTiles(card,q);
-    const order=QuestionEngine.shuffle(tiles.map(t => t.index));
-    if (order.length>1 && order.every((n,i)=>n===i)) [order[0],order[1]]=[order[1],order[0]];
+  function mount(root, card, q, {onAnswer = () => {}, retry = false, tiles: suppliedTiles, draft, onChange = () => {}} = {}) {
+    const model=draft || {built:[],locked:false}, tiles=suppliedTiles || QuestionEngine.buildTiles(card,q);
+    const order=draft?.order || QuestionEngine.shuffle(tiles.map(t => t.index));
+    if (!draft?.order && order.length>1 && order.every((n,i)=>n===i)) [order[0],order[1]]=[order[1],order[0]];
+    if (draft) draft.order=order;
     root.classList.add("construction-practice");
     root.append(ui.node("h4", card.en), ui.node("p", instructions(tiles.some(t=>t.dud))));
     const area=ui.node("div",undefined,"built-sentence"),bank=ui.node("div",undefined,"word-tiles"), row=ui.node("div",undefined,"buttons build-actions"), result=ui.node("div",undefined,"feedback");
@@ -72,7 +73,7 @@ function createConstructionUI({ ui, audio }) {
       feedback(result,card,q,correct,reward);
     });
     check.className="primary";
-    const render=()=>{area.classList.remove("build-success","build-error");draw({area,bank,undo,clear,check},model,tiles,order,render);};
+    const render=()=>{area.classList.remove("build-success","build-error");draw({area,bank,undo,clear,check},model,tiles,order,render);onChange();};
     row.append(undo,clear,check);root.append(area,bank,row,result);render();
   }
   return {instructions, ready, draw, globalControls, present, feedback, mount};

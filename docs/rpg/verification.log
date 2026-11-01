@@ -15,6 +15,7 @@ PASS node tests/game-state.test.mjs
 PASS node tests/audio.test.mjs
 PASS node tests/curriculum-expansion.test.mjs
 PASS python3 tests/district-content.test.py
+PASS node tests/rpg-foundation.test.mjs
 PASS node tests/rpg-world.test.mjs
 PASS node tests/rpg-persistence.test.mjs
 PASS node tests/assessment-randomness.test.mjs
@@ -107,6 +108,8 @@ PASS node --check tests/productive-generation.test.mjs
 PASS node --check tests/resume-behaviour.test.mjs
 PASS node --check tests/rpg-browser.test.mjs
 PASS node --check tests/rpg-concurrent-browser.test.mjs
+PASS node --check tests/rpg-foundation-browser.test.mjs
+PASS node --check tests/rpg-foundation.test.mjs
 PASS node --check tests/rpg-persistence.test.mjs
 PASS node --check tests/rpg-world.test.mjs
 PASS node --check tests/runtime-fixture.mjs
@@ -121,8 +124,8 @@ PASS node tests/concurrent-save-browser.test.mjs
 PASS node tests/audit-teaching-browser.test.mjs
 PASS node tests/audit-tabs.test.mjs
 PASS node tests/narrative-feedback.test.mjs
-PASS node tests/p1-browser.test.mjs
 PASS node tests/practical-assessment-browser.test.mjs
+PASS node tests/p1-browser.test.mjs
 PASS node tests/generated-learning.test.mjs
 PASS node tests/cleanup-browser.test.mjs
 PASS node tests/resume-behaviour.test.mjs
@@ -131,8 +134,9 @@ PASS node tests/independent-browser.test.mjs
 PASS node tests/full-curriculum.test.mjs
 PASS node tests/phaser-browser.test.mjs
 PASS node tests/rpg-concurrent-browser.test.mjs
-PASS node tests/rpg-browser.test.mjs
 PASS node tests/save-fence-browser.test.mjs
+PASS node tests/rpg-foundation-browser.test.mjs
+PASS node tests/rpg-browser.test.mjs
 PASS node tools/delivery-audit.mjs --write
 PASS node tools/delivery-audit.mjs --check
-Logs: /tmp/pashto-quest-checks-laeugwfy
+Logs: /tmp/pashto-quest-checks-cg_ht9g_
