@@ -186,20 +186,9 @@ try {
                 dialogueFamilies.add(q.dialogueFamily);
                 if (q.answerPs !== card.ps)
                   throw Error("Uncompiled dialogue response");
-                if (q.promptPs) {
-                  observe(t.content.wordById[q.promptGenerated.id]);
-                  if (
-                    document.querySelector("#quizPashto").textContent !==
-                    q.promptGenerated.ps
-                  )
-                    throw Error("Uncompiled dialogue prompt");
-                } else if (
-                  /[\u0600-\u06ff]/.test(
-                    document.querySelector("#quizPashto").textContent,
-                  )
-                )
-                  throw Error("Early dialogue invented a Pashto question");
               }
+              if (["construct","dialogue"].includes(q.kind) && document.querySelector("#quizPashto").textContent !== (q.answerEnglish || card.en))
+                throw Error("Construction must display the direct English target");
               if (q.kind === "word") {
                 const studied = new Set(Object.values(t.content.wordById).filter((c) => {
                   const refs = t.content.LIBRARY_DATA.sourceMappings[c.id] || [];
@@ -274,11 +263,11 @@ try {
               !document.querySelector("#challengeScene svg[aria-label*=Mina]")
             )
               throw Error("Hills scene or Mina introduction lost");
-            if (taughtCount() !== beforeChallenge)
-              throw Error("Challenge introduced a form");
+            if (!t.content.zoneKeys.every(loc=>t.state.progress.complete[day+'-'+loc]))
+              throw Error("Passed challenge failed to complete locations");
             if (day === 14 && taughtCount() !== oldCount)
               throw Error("Day 14 introduced compulsory vocabulary/forms");
-            if (skip && families.size)
+            if (skip && day === 1 && families.size)
               throw Error("Skip composed from unintroduced forms");
             trace.push({
               day,

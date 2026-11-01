@@ -1,5 +1,5 @@
 /* Save factory, XP, assessment outcomes and access rules. No DOM or storage. */
-function createProgression({ curriculum, zoneKeys }, libraryEngine) {
+function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA }, libraryEngine) {
   const SAVE_VERSION = 7;
   const XP_STEP = 200;
   const XP_FLOORS = {
@@ -63,6 +63,15 @@ function createProgression({ curriculum, zoneKeys }, libraryEngine) {
       attempts: previous.attempts + 1,
       passed: previous.passed || passed,
     };
+    let locationBonus = 0, newlyUnlocked = [], completedLocations = [];
+    if (firstPass && LIBRARY_DATA) {
+      const material = libraryEngine.completeDayMaterial(p, LIBRARY_DATA, NARRATIVE_DATA, day);
+      newlyUnlocked = material.newlyUnlocked;
+      for (const loc of zoneKeys) if (!p.complete[`${day}-${loc}`]) {
+        completedLocations.push(loc);
+        locationBonus += completeLessonOnce(p, `${day}-${loc}`, "standard", true, material.locationItems[loc]);
+      }
+    }
     let base = 0,
       topUp = 0;
     if (firstPass && day <= 7) {
@@ -72,7 +81,7 @@ function createProgression({ curriculum, zoneKeys }, libraryEngine) {
       p.xp += topUp;
     }
     if (day === 1 && passed) p.homeGranted = true;
-    return { passed, firstPass, base, topUp };
+    return { passed, firstPass, base, topUp, locationBonus, newlyUnlocked, completedLocations };
   }
   function getChallengeSpec(day) {
     return {

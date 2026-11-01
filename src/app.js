@@ -45,6 +45,7 @@
     window,
     Audio,
   });
+  ui.construction = createConstructionUI({ui, audio});
   const learning = createLearning({ state, content, progression });
   const questions = createQuestions({ state, content, progression });
   const narrative = createNarrative({ state, content, ui, audio, storage, questions });
@@ -71,6 +72,7 @@
     onLessonStart: () => challenge.showChallengeScene(0),
   });
   const challenge = createChallengeUI({
+    libraryReview: ids => library.openLibrary("vocabulary", ids),
     onWorld: () => world.startWorld(),
     state,
     content,

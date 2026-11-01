@@ -42,7 +42,7 @@ node tools/district-inventory.mjs --check
 | `src/library-engine.js` | Sole lemma/form identity, acquisition, SRS and district planner |
 | `src/progression.js` | Save factory/version, XP/reward identity, results, milestones and access rules |
 | `src/sentence-engine.js`, `content/SENTENCE_FRAMES.json` | Bounded feature/semantic unification, licensed draft compositions and deterministic practice selection |
-| `src/question-engine.js` | Shared answer evaluation, approved normalisation and indexed tiles |
+| `src/question-engine.js`, `src/construction-ui.js` | Shared answer evaluation, indexed tiles and consistent construction controls/success audio |
 | `src/learning.js`, `src/questions.js` | Practice transactions, lesson pools, frozen assessments and answer choices |
 | `src/save-schema.js`, `src/storage.js` | Nested current-save validation; Web Locks coordinated persistence, fail-closed without coordination and active challenge snapshots |
 | `src/sentence-scene.js`, `src/answer-feedback.js` | Teacher/listener context and shared correct/wrong presentation |
@@ -62,7 +62,7 @@ Modules expose small factory APIs with explicit state/service dependencies and s
 
 ## How progression works
 
-The Day 1 Library tutorial introduces four question types: choose the meaning of `سلام`, arrange `څنګه یې؟`, select a gender preference and type a player name using English profile controls. Completing all four is required to begin Day 1. A normal day includes narrative openings and district lessons; after the tutorial on Day 1, or immediately on Days 2–14, the player can skip visits and attempt the daily challenge. Skips do not mark unseen locations or vocabulary complete.
+The Day 1 Library tutorial introduces four question types: choose the meaning of `سلام`, arrange `څنګه یې؟`, select a gender preference and type a player name using English profile controls. Completing all four is required to begin Day 1. A normal day includes narrative openings and district lessons; after the tutorial on Day 1, or immediately on Days 2–14, the player can skip visits and attempt the daily challenge. Starting or answering a skipped challenge does not complete unseen visits. Its first successful pass completes all four locations, unlocks their assigned words/forms and grammar without practice grades, and awards missing once-only location bonuses.
 
 Each district selects eligible new **distinct lexical lemmas** in its explicit curated introduction order, at a selected pace of 0/4/8/12/16/20/24 per day. Universal vocabulary, inflections, grammar units and expressions do not consume district quotas. Day 1 teaches descriptions, while action verbs start on Day 2. Day 14 schedules no compulsory new words. Daily challenges have 15 items, pass 12; Days 7 and 14 have 25, pass 20. A passed Day 7 exam unlocks Level 10 and New Resident.
 

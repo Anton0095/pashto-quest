@@ -9,9 +9,10 @@ function createLibraryUI({
   learning,
   questions,
 }) {
-  let libraryLastFocus = null;
-  function openLibrary(tab = "vocabulary") {
+  let libraryLastFocus = null, unlockedFilter = null;
+  function openLibrary(tab = "vocabulary", ids = null) {
     audio.stopAudio();
+    unlockedFilter=ids;
     libraryLastFocus = document.activeElement;
     renderLibrary(tab);
     ui.$("libraryDialog").showModal();
@@ -29,6 +30,21 @@ function createLibraryUI({
       b.setAttribute("aria-pressed", String(b.dataset.libraryTab === tab));
     if (tab === "pace") {
       renderLibraryPace(root);
+      return;
+    }
+    if (tab === "sentences") {
+      root.append(ui.node("h3", "Sentence practice"), ui.node("p", "Build meanings with your unlocked forms and grammar. Voluntary Library practice awards no XP or lesson completion."));
+      const cards=learning.generatedPractice(state.day, state.progress.library.seed + state.progress.library.attemptSequence, 4);
+      if (!cards.length) root.append(ui.node("p", "Study compatible words and lesson grammar to make sentence practice available. Vocabulary and approved expressions are available on the other Library pages."));
+      for (const [i,card] of cards.entries()) {
+        const exercise=ui.node("article");exercise.dataset.sentence=card.id;
+        learning.surface(card.id,"library-construction");
+        ui.construction.mount(exercise,card,questions.constructionQuestion(card,{withDuds:i % 2 === 0}),{onAnswer(correct) {
+          LibraryEngine.practise(state.progress,content.LIBRARY_DATA,card.id,correct,{day:state.day,location:"library",source:"library",eventId:"library-practice:" + ++state.progress.library.attemptSequence});
+          storage.save();ui.hud();return "Library review · no XP";
+        }});
+        root.append(exercise);
+      }
       return;
     }
     if (tab === "grammar") {
@@ -114,6 +130,7 @@ function createLibraryUI({
       return;
     }
     const universal = tab === "universal";
+    if (unlockedFilter) root.append(ui.node("p", "Showing newly unlocked vocabulary, including universal words."), ui.button("Show all vocabulary", () => {unlockedFilter=null;renderLibrary(tab);}));
     root.append(
       ui.node("h3", universal ? "Universal Vocabulary" : "Vocabulary Bank"),
     );
@@ -183,7 +200,7 @@ function createLibraryUI({
         .sort()
         .map((x) => [x, x]),
     ]);
-    const day = select("First encounter", "libraryDay", [
+    const day = select("Unlock day", "libraryDay", [
       ["", "All days"],
       ...content.curriculum.days.map((day) => [
         String(day.day),
@@ -197,9 +214,8 @@ function createLibraryUI({
         "business",
         "nature",
         "school",
-        "challenge",
-        "library",
-      ].map((x) => [x, x]),
+        "universal",
+      ].map((x) => [x, ({residential:"Home",nature:"Lake",business:"Market",school:"School",universal:"Universal vocabulary"}[x])]),
     ]);
     const status = select("Status", "libraryStatus", [
       ["", "All"],
@@ -224,16 +240,16 @@ function createLibraryUI({
       let entries = content.LIBRARY_DATA.entries.filter((e) => {
         const r = state.progress.library.acquired[e.lemmaId];
         return (
-          r &&
-          (e.vocabularyClass === "universal") === universal &&
+          r && (!unlockedFilter || unlockedFilter.includes(e.lemmaId)) &&
+          (unlockedFilter || (e.vocabularyClass === "universal") === universal) &&
           (!query ||
             [e.displayLemmaPs, e.romanisation, ...e.englishSenses]
               .join(" ")
               .toLocaleLowerCase()
               .includes(query)) &&
           (!pos.value || e.partOfSpeech === pos.value) &&
-          (!day.value || String(r.firstEncounteredDay) === day.value) &&
-          (!location.value || r.firstEncounteredLocation === location.value) &&
+          (!day.value || String(r.unlock?.day) === day.value) &&
+          (!location.value || r.unlock?.location === location.value) &&
           (!status.value ||
             (status.value === "due"
               ? r.srsDueAt <= Date.now()
@@ -272,6 +288,7 @@ function createLibraryUI({
     ps.lang = "ps";
     ps.dir = "rtl";
     detail.dataset.lemma = e.lemmaId;
+
     heading.append(
       ps,
       ui.node(
@@ -280,6 +297,10 @@ function createLibraryUI({
       ),
     );
     detail.append(heading);
+    const origin = r.unlock;
+    const location = origin?.location === "universal" ? "Universal vocabulary" : ({residential:"Home",nature:"Lake",business:"Market",school:"School"}[origin?.location] || "Not recorded");
+    detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.introducedFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
+
     detail.append(
       ui.node(
         "p",
@@ -330,6 +351,8 @@ function createLibraryUI({
             audio.speak("library-form:" + f.formId),
           ),
         );
+      const formOrigin=r.formUnlocks?.[f.formId];
+      if (formOrigin) box.append(ui.node("p", `Form unlocked: Day ${formOrigin.day} · ${formOrigin.source === "challenge-pass" ? "Challenge pass" : "Study"}`, "tiny"));
       detail.append(box);
     }
     detail.addEventListener("toggle", () => {
@@ -547,6 +570,7 @@ function createLibraryUI({
       ["vocabulary", "Vocabulary Bank"],
       ["universal", "Universal Vocabulary"],
       ["grammar", "Grammar Journal"],
+      ["sentences", "Sentence practice"],
       ["pace", "Learning Pace"],
       ["phrases", "Useful Expressions"],
     ]) {

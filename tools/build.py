@@ -200,7 +200,7 @@ def build():
     # Explicit dependency order; modules use factories with injected services.
     modules = [
         'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
-        'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'answer-feedback', 'sentence-scene', 'ui',
+        'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'construction-ui', 'answer-feedback', 'sentence-scene', 'ui',
         'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
         'world-ui', 'library-ui', 'app',
     ]

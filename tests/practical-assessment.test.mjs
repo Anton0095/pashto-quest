@@ -23,7 +23,7 @@ for(const pace of [0,4,8,12,16,20,24])for(const skip of [false,true]) {
    }
    if(q.kind==='word'&&q.unstudied){assert.equal(q.direction,'ps-en');assert(!q.choiceOrder.some(v=>t.Q.evaluate(q,w,v)));}
   }
-  if(skip)assert(s.questions.every(q=>!q.generated));
+  if(skip && day===1)assert(s.questions.every(q=>!q.generated)); // Later days inherit earlier challenge-pass unlocks.
   if(t.learning.availableSentences(day).length)assert(s.questions.some(q=>q.generated),"use generated language when eligible material exists");
   if(["construct","dialogue"].includes(s.questions[0].kind))s.tileSequence=[...s.questions[0].tileSequence];
   const frozen=plain(s.questions);t.storage.save();const saved=t.storage.load();assert.equal(t.storage.problem,null,JSON.stringify({pace,skip,day,kinds:s.questions.map(q=>q.kind)}));assert.deepEqual(plain(saved.activeChallenge.questions),frozen);

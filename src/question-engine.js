@@ -20,9 +20,9 @@ const QuestionEngine = (() => {
   function getAnswerTiles(answerPs, duds) {
     const answer = normalizePashtoResponse(answerPs).split(" ").filter(Boolean);
     const extras = (duds || []).map((x) => String(x).trim()).filter(Boolean);
-    if (!answer.length) throw Error("Empty dialogue answer");
+    if (!answer.length) throw Error("Empty construction answer");
     if (extras.length < 2)
-      throw Error("Week 2 tile puzzle requires at least two dud tiles");
+      throw Error("Distractor construction requires at least two dud tiles");
     if (
       extras.some((x) => x.includes(" ") || answer.includes(x)) ||
       new Set(extras).size !== extras.length
@@ -50,11 +50,12 @@ const QuestionEngine = (() => {
       .map((word, index) => ({ word, index }));
   }
   function questionUsesDuds(q, day) {
-    return (
-      (q?.kind === "dialogue" && q.duds?.length >= 2) ||
-      (q?.kind === "construct" && day >= 8 && Array.isArray(q.duds))
-    );
+    // The explicit variant licenses early-day duds. Existing frozen attempts
+    // retain their original day gate; unused metadata never adds new tiles.
+    return ["construct", "dialogue"].includes(q?.kind) && q.tileVariant !== "exact" && q.duds?.length >= 2 &&
+      (q.tileVariant === "distractors" || q.kind === "dialogue" || day >= 8);
   }
+
   function isDialogueAnswerCorrect(q, value) {
     const valid = [q.answerPs, ...(q.acceptedPs || [])];
     return valid.some(

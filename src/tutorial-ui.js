@@ -11,6 +11,7 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
   }
 
   function renderTutorialStep() {
+    ui.$("teachSpeak").classList.remove("hidden");
     const n = state.session.cardIndex,
       c = content.tutorialCards[n],
       w = content.wordById[c.id];
@@ -91,81 +92,16 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
       }
       area.append(choices);
     } else if (c.kind === "tiles") {
-      const answer = [];
-      const built = document.createElement("div");
-      built.id = "tutorialBuilt";
-      built.className = "tutorial-built";
-      built.lang = "ps";
-      built.dir = "rtl";
-      const tiles = document.createElement("div");
-      tiles.className = "tutorial-tiles";
-      tiles.dir = "rtl";
-      tiles.lang = "ps";
-      const row = document.createElement("div");
-      row.className = "buttons";
-      const make = (txt, fn, klass) => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.textContent = txt;
-        b.className = klass;
-        b.addEventListener("click", fn);
-        return b;
-      };
-      const undo = make(
-        "Undo",
-        () => {
-          answer.pop();
-          render();
-        },
-        "secondary",
-      );
-      const clear = make(
-        "Clear",
-        () => {
-          answer.length = 0;
-          render();
-        },
-        "ghost",
-      );
-      const check = make(
-        "Check sentence",
-        () => {
-          if (
-            QuestionEngine.evaluate({ kind: "construct" }, w, answer.join(" "))
-          )
-            done("✓ " + w.ps + " means " + w.en);
-          else {
-            tutorialAnswer(false);
-            feedback.textContent =
-              "Wrong order. Use Undo or Clear, then try again.";
-          }
-        },
-        "primary",
-      );
-      const render = () => {
-        built.textContent = answer.length
-          ? answer.join(" ")
-          : "Tap the words to begin";
-        for (const tile of tiles.children)
-          tile.disabled = answer.includes(tile.dataset.word);
-        undo.disabled = clear.disabled = answer.length === 0;
-        check.disabled = answer.length !== 2;
-      };
-      for (const word of w.ps.split(" ").reverse()) {
-        const tile = make(
-          word,
-          () => {
-            answer.push(word);
-            render();
-          },
-          "choice tutorial-tile",
-        );
-        tile.dataset.word = word;
-        tiles.append(tile);
-      }
-      row.append(undo, clear, check);
-      area.append(built, tiles, row);
-      render();
+      ui.$("lessonScreen").classList.add("construction-active");
+      ui.$("teachSpeak").classList.add("hidden");
+      for (const id of ["teachPashto", "teachRoman", "teachEnglish", "teachNote"]) ui.$(id).textContent="";
+      p.remove();
+      ui.construction.mount(area,w,{kind:"construct"},{retry:true,
+        tiles:w.ps.split(" ").map((word,index)=>({word,index})),
+        onAnswer(correct) {
+          if (correct) done();
+          else tutorialAnswer(false);
+        }});
     } else if (c.kind === "gender") {
       const choices = document.createElement("div");
       choices.className = "choices tutorial-choices";

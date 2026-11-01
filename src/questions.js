@@ -175,6 +175,7 @@ function createQuestions({ state, content, progression }) {
       content.LIBRARY_DATA.phrases.find((p) => p.id === opening?.id) ||
       content.LIBRARY_DATA.phrases.find((p) => p.day === day);
     let wordIndex = 0,
+      constructionIndex = 0,
       deficit = 0;
     for (let i = 0; i < blueprint.count; i++) {
       const wanted = blueprint.kinds[i];
@@ -277,25 +278,7 @@ function createQuestions({ state, content, progression }) {
         if (q.unstudied) q.direction = "ps-en";
       }
       if (["construct", "dialogue"].includes(q.kind)) {
-        const answer = q.answerPs || content.wordById[q.id].ps;
-        const tokens = new Set(
-          QuestionEngine.normalizeAnswer(QuestionEngine.normalizePashtoResponse(answer)).split(" "),
-        );
-        const studiedTokens = content.LIBRARY_DATA.entries.flatMap((e) =>
-          e.forms
-            .filter(
-              (f) =>
-                state.progress.library.acquired[
-                  e.lemmaId
-                ]?.introducedFormIds.includes(f.formId) &&
-                !f.pashto.includes(" "),
-            )
-            .map((f) => f.pashto),
-        );
-        for (const accepted of q.acceptedPs || [])
-          for (const token of QuestionEngine.normalizePashtoResponse(accepted).split(" ")) tokens.add(QuestionEngine.normalizeAnswer(token));
-        const duds = QuestionEngine.shuffle([...new Set(studiedTokens)].filter(t => !tokens.has(QuestionEngine.normalizeAnswer(t))), random).slice(0, 2);
-        if (duds.length === 2) q.duds = duds;
+        Object.assign(q, constructionQuestion(content.wordById[q.id], {question:q, withDuds:constructionIndex++ % 2 === 1, random}));
         q.tileSequence = QuestionEngine.shuffle(
           QuestionEngine.buildTiles(content.wordById[q.id], q, day).map(
             (t) => t.index,
@@ -330,6 +313,29 @@ function createQuestions({ state, content, progression }) {
     };
     return clone(out);
   }
+  // Display-only tiles: introduced forms first, then Day-1 base backup.
+  // The variant is intentional, independent of the size of the vocabulary pool.
+  function constructionQuestion(card, {question = {}, withDuds = false, random = Math.random} = {}) {
+    const q = {...question, id:card.id, kind:question.kind || "construct", direction:"en-ps"};
+    delete q.duds;
+    q.tileVariant="exact";
+    if (!withDuds) return q;
+    const key = t => QuestionEngine.normalizeAnswer(QuestionEngine.normalizePashtoResponse(t));
+    const excluded = new Set([card.ps, q.answerPs, ...(q.acceptedPs || [])].filter(Boolean).flatMap(a => key(a).split(" ")));
+    const day=state.session?.loop || state.day;
+    const introduced = content.LIBRARY_DATA.entries.flatMap(e => e.forms.filter(f =>
+      LibraryEngine.formAllowed(e,f,day) && state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId)).map(f => f.pashto));
+    const backup = content.LIBRARY_DATA.entries.filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1).map(e => e.forms[0].pashto);
+    const duds=[];
+    for (const group of [introduced, backup]) for (const token of QuestionEngine.shuffle(group,random)) {
+      if (duds.length===2) break;
+      const k=key(token);
+      if (!k || k.includes(" ") || excluded.has(k)) continue;
+      duds.push(token);excluded.add(k);
+    }
+    if (duds.length===2) {q.duds=duds;q.tileVariant="distractors";}
+    return q;
+  }
   function originsForChoices(
     w,
     values,
@@ -346,6 +352,7 @@ function createQuestions({ state, content, progression }) {
   }
   return {
     selectChallenge,
+    constructionQuestion,
     explanation: (q, w) => QuestionEngine.explanation(q, w),
     distractors: (w) => answerChoices(w, "ps-en"),
     buildTiles: (w, q = state.session?.questions?.[state.session.index]) =>

@@ -9,6 +9,7 @@ function createChallengeUI({
   audio,
   storage,
   onWorld,
+  libraryReview,
 }) {
   function showChallengeScene(day) {
     let panel = ui.$("challengeScene");
@@ -180,7 +181,7 @@ function createChallengeUI({
     const categories = {
       word: "vocabulary/phrases",
       construct: "construction",
-      dialogue: "dialogue",
+      dialogue: "construction",
       sentence: "translation",
     };
     const counts = items.reduce((out, question) => {
@@ -211,54 +212,7 @@ function createChallengeUI({
     const q = state.session.questions[state.session.index];
     if (!q || !["construct", "dialogue"].includes(q.kind)) return;
     const target = questions.buildTiles(content.wordById[q.id] || null, q);
-    const area = ui.$("builtSentence"),
-      bank = ui.$("wordTiles");
-    area.replaceChildren();
-    bank.replaceChildren();
-    if (!state.session.built.length) {
-      const hint = document.createElement("span");
-      hint.className = "build-placeholder";
-      hint.textContent = "Tap the Pashto tiles below…";
-      area.append(hint);
-    }
-    state.session.built.forEach((idx, pos) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "built-token";
-      b.lang = "ps";
-      b.textContent = target[idx].word;
-      b.disabled = state.session.locked;
-      b.setAttribute("aria-label", `Remove word ${target[idx].word}`);
-      b.addEventListener("click", () => {
-        state.session.built.splice(pos, 1);
-        renderBuiltSentence();
-      });
-      area.append(b);
-    });
-    const tileSequence = state.session.tileSequence || [];
-    for (const index of tileSequence) {
-      const used = state.session.built.includes(index),
-        b = document.createElement("button");
-      b.type = "button";
-      b.className = "word-tile";
-      b.lang = "ps";
-      b.textContent = target[index].word;
-      b.disabled = used || state.session.locked;
-      b.addEventListener("click", () => {
-        state.session.built.push(index);
-        renderBuiltSentence();
-      });
-      bank.append(b);
-    }
-    ui.$("undoTile").disabled =
-      state.session.locked || !state.session.built.length;
-    ui.$("clearTiles").disabled =
-      state.session.locked || !state.session.built.length;
-    ui.$("checkBuild").disabled =
-      state.session.locked ||
-      (questions.questionUsesDuds(q)
-        ? state.session.built.length === 0
-        : state.session.built.length !== target.length);
+    ui.construction.draw(ui.construction.globalControls(), state.session, target, state.session.tileSequence || [], renderBuiltSentence);
     storage.save();
   }
   function showChallengeQuestion(resuming = false) {
@@ -266,16 +220,7 @@ function createChallengeUI({
     ui.clearSentenceScene();
     renderQuestion(resuming);
     const q = state.session?.questions[state.session.index];
-    if (q && ["construct", "dialogue"].includes(q.kind)) {
-      const w = content.wordById[q.id];
-      const host = q.speaker || content.teacherFor(state.session.loop, null, "challenge").name;
-      ui.sentenceContext(w, host, ui.$("quizPanel"), "construct", q);
-      if (q.kind === "dialogue") {
-        ui.$("guideMessage").textContent = `${host}: “${q.promptEnglish}” ${q.sceneEnglish || ""}`;
-        ui.$("addressTarget").textContent = `${host} → Player · YOUR RESPONSE → ${q.recipient}`;
-      }
-    }
-    if (q?.phrasePromptId) {
+    if (q?.phrasePromptId && !["construct", "dialogue"].includes(q.kind)) {
       const prompt = content.wordById[q.phrasePromptId];
       const host = q.speaker || content.teacherFor(state.session.loop, null, "challenge").name;
       ui.$("guideMessage").textContent = `${host}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). Recognise the conventional reply shown below.`;
@@ -285,6 +230,7 @@ function createChallengeUI({
   }
   function renderQuestion(resuming) {
     queueMicrotask(ui.readableQuizSurfaces);
+    ui.$("lessonScreen").classList.remove("construction-active");
     audio.stopAudio();
     ui.$("quizPanel").classList.remove("hidden");
     ui.$("constructionPanel").classList.add("hidden");
@@ -292,8 +238,6 @@ function createChallengeUI({
     const q = state.session.questions[state.session.index];
     if (q) {
       if (q.generated) learning.surface(q.id, "assessment-target");
-      if (q.promptGenerated)
-        learning.surface(q.promptGenerated.id, "dialogue-prompt");
       if (q.kind === "word") learning.surface(q.id, "assessment-word");
       if (q.choiceIds)
         for (const id of q.choiceIds) learning.surface(id, "assessment-choice");
@@ -304,10 +248,7 @@ function createChallengeUI({
     }
     if (q.kind !== "dialogue") learning.libraryExpose(q.id, "challenge");
     queueMicrotask(storage.save);
-    const w =
-      q.kind === "address" || q.kind === "choice" || q.kind === "dialogue"
-        ? null
-        : content.wordById[q.id];
+    const w = content.wordById[q.id];
     if (!resuming) {
       state.session.locked = false;
       state.session.built = [];
@@ -326,63 +267,28 @@ function createChallengeUI({
     ui.setDialogueSpeaker(host.name);
     target.classList.remove("hidden");
     target.textContent = `${host.name} → Player · YOUR ANSWER → ${host.name}`;
-    if (q.kind === "dialogue") {
-      ui.setDialogueSpeaker(q.speaker || host.name);
-      ui.showParticipants(q.participants || [q.speaker || host.name], q.recipient);
-    }
-
-    if (q.kind === "dialogue") {
-      ui.$("quizType").textContent = "🗣️ REPLY IN PASHTO";
-      ui.$("quizPashto").classList.remove("english-question");
-      ui.$("quizPashto").textContent = q.promptPs || q.promptEnglish;
-      ui.$("quizPashto").lang = q.promptPs ? "ps" : "en";
-      ui.$("quizPashto").dir = q.promptPs ? "rtl" : "ltr";
-      ui.$("quizPashto").classList.toggle("english-question", !q.promptPs);
-      ui.$("quizRoman").textContent = [
-        q.promptPs ? q.promptEnglish : "Respond using studied forms",
-        q.sceneEnglish,
-      ]
-        .filter(Boolean)
-        .join(" · ");
-      ui.$("quizPrompt").textContent =
-        `${q.speaker || "Your neighbour"} asks you a question. Build YOUR reply, not a translation of the prompt.`;
-      ui.$("quizPanel").querySelector(".quizword h3").textContent =
-        q.duds?.length >= 2
-          ? "Choose only the tiles you need. Some tiles are distractions."
-          : "Use the tiles to construct your reply.";
-      ui.$("quizSpeak").classList.toggle("hidden", !q.audioId);
-      ui.$("constructionPanel").classList.remove("hidden");
+    if (["construct", "dialogue"].includes(q.kind)) {
+      ui.construction.present(content.wordById[q.id], q, state.session.loop);
       if (!resuming) state.session.tileSequence = q.tileSequence;
       renderBuiltSentence();
-      ui.$("quizFeedback").textContent =
-        "Your first submitted answer counts. Leave unused tiles in the bank.";
+      ui.$("quizFeedback").textContent = "Your first submitted answer counts.";
       ui.$("quizNext").disabled = true;
-      ui.$("quizNext").textContent =
-        state.session.index === state.session.questions.length - 1
-          ? "See results →"
-          : "Next question →";
+      ui.$("quizNext").textContent = state.session.index === state.session.questions.length - 1 ? "See results →" : "Next question →";
       return;
     }
     ui.$("quizType").textContent =
-      q.kind === "construct"
-        ? "🧩 BUILD A SENTENCE"
-        : q.kind === "word"
+      q.kind === "word"
           ? "🧠 WORD RECALL"
           : "📖 SENTENCE RECALL";
     const reverse = q.direction === "en-ps";
-    const isBuild = q.kind === "construct";
     ui.$("quizPashto").textContent = reverse ? w.en : w.ps;
     ui.$("quizPashto").setAttribute("dir", reverse ? "ltr" : "rtl");
     ui.$("quizPashto").setAttribute("lang", reverse ? "en" : "ps");
     ui.$("quizPashto").classList.toggle("english-question", reverse);
-    ui.$("quizRoman").textContent = isBuild
-      ? "Arrange the Pashto tiles below"
-      : reverse
+    ui.$("quizRoman").textContent = reverse
         ? "Recall the Pashto expression"
         : w.roman + (q.unstudied ? " · Not previously studied" : "");
-    ui.$("quizPrompt").textContent = isBuild
-      ? "Build the Pashto sentence for this meaning"
-      : reverse
+    ui.$("quizPrompt").textContent = reverse
         ? "Which Pashto expression means this?"
         : q.kind === "word"
           ? w.type === "greeting"
@@ -390,16 +296,10 @@ function createChallengeUI({
             : "What does this word mean?"
           : "What does this sentence mean?";
     ui.$("quizSpeak").classList.toggle("hidden", reverse);
-    ui.$("quizPanel").querySelector(".quizword h3").textContent = isBuild
-      ? "Put the tiles into natural Pashto order"
-      : reverse
+    ui.$("quizPanel").querySelector(".quizword h3").textContent = reverse
         ? "Choose the correct Pashto"
         : "Choose the correct English meaning";
-    if (isBuild) {
-      ui.$("constructionPanel").classList.remove("hidden");
-      if (!resuming) state.session.tileSequence = q.tileSequence;
-      renderBuiltSentence();
-    } else if (q.kind === "word" && q.unstudied) {
+    if (q.kind === "word" && q.unstudied) {
       ui.$("quizPrompt").textContent = "Not previously studied. Type the English meaning if you already know it, or reveal it after submitting. Your first answer counts.";
       ui.$("quizPanel").querySelector(".quizword h3").textContent = "Recall without a translation clue";
       const form = document.createElement("form");
@@ -463,41 +363,16 @@ function createChallengeUI({
     const { q, w, correct, gain } = result;
     for (const control of ui.$("choices").querySelectorAll("input, button")) control.disabled = true;
     if (q.generated) learning.surface(q.id, "assessment-feedback");
-    if (q.promptGenerated)
-      learning.surface(q.promptGenerated.id, "dialogue-feedback");
     storage.save();
     ui.hud();
-    if (q.kind === "dialogue") {
+    if (["construct", "dialogue"].includes(q.kind)) {
       renderBuiltSentence();
-      ui.$("builtSentence").classList.add(
-        correct ? "build-success" : "build-error",
-      );
-      const f = ui.$("quizFeedback");
-      f.replaceChildren();
-      const heading = document.createElement("strong");
-      heading.className = correct ? "good" : "bad";
-      heading.textContent = correct
-        ? `✓ Your reply makes sense. ${gain ? `+${gain} XP` : "Already rewarded"}`
-        : "✗ Try building the reply from the meaning of the question.";
-      const expected = document.createElement("div");
-      expected.lang = "ps";
-      expected.dir = "rtl";
-      expected.className = "inline-pashto";
-      expected.textContent = q.answerPs;
-      const gloss = document.createElement("div");
-      gloss.textContent = q.answerEnglish || "";
-      f.append(heading, expected, gloss, ui.node("p", questions.explanation(q, w)));
+      ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
+      ui.construction.feedback(ui.$("quizFeedback"), w, q, correct, gain ? `+${gain} XP` : "Already rewarded");
       ui.$("quizNext").disabled = false;
       return;
     }
-    if (q.kind !== "construct")
-      ui.showAnswerFeedback(ui.$("choices"), q.direction === "ps-en" ? w.en : w.ps, value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
-    else {
-      renderBuiltSentence();
-      ui.$("builtSentence").classList.add(
-        correct ? "build-success" : "build-error",
-      );
-    }
+    ui.showAnswerFeedback(ui.$("choices"), q.direction === "ps-en" ? w.en : w.ps, value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
     const feedback = ui.$("quizFeedback");
     feedback.replaceChildren();
     const headline = document.createElement("strong");
@@ -519,7 +394,8 @@ function createChallengeUI({
     ui.$("quizNext").disabled = false;
   }
   function finishChallenge() {
-    if (state.session?.mode !== "challenge" || state.session.finished) return;
+    if (state.session?.mode !== "challenge" || state.session.finished || state.session.answered !== state.session.questions.length) return;
+    audio.stopAudio();
     const s = state.session,
       day = s.loop,
       spec = progression.getChallengeSpec(day);
@@ -565,9 +441,15 @@ function createChallengeUI({
           : `${content.teacherFor(day, null, "challenge").name} → Player: “Well done! Day ${day + 1} is available.”`
         : `Practise and retry: ${spec.passCount}/${s.questions.length} correct required. Your New Resident milestone is retained.`;
     }
+    ui.$("passUnlockNotice")?.remove();
+    if(firstPass&&reward.completedLocations?.length){
+      const notice=ui.node("aside");notice.id="passUnlockNotice";
+      notice.append(ui.node("p","You have completed this day’s challenge. Words from the locations you skipped are now unlocked and may appear in future activities. Visit the Library to review them."),ui.node("p",`Location completion rewards: +${reward.locationBonus} XP.`),ui.button("Review unlocked vocabulary",()=>libraryReview(reward.newlyUnlocked)));
+      ui.$("resultDescription").after(notice);
+    }
     ui.$("resultAccuracy").textContent =
       `${s.correctCount}/${s.questions.length}`;
-    ui.$("resultXP").textContent = `+${s.earned}`;
+    ui.$("resultXP").textContent = `+${s.earned + (reward.locationBonus || 0)}`;
     ui.$("resultKnowledge").textContent = passed ? "PASSED" : "NOT YET";
     ui.$("resultNext").textContent =
       `Total: ${state.progress.xp} XP · Answer rewards: +${s.earned - base - topUp} XP. ${base ? `First-pass bonus: +${base} XP. ` : ""}${topUp ? `Checkpoint catch-up: +${topUp} XP. ` : ""}${graduation ? "Newcomer → New Resident. Week 1 is complete." : passed ? `${storage.persistenceProblem ? "Progress is in this tab; saving failed." : "Progress saved."} Replays do not repeat milestone rewards.` : "No milestone or title awarded. Retry when ready."}`;
@@ -585,6 +467,9 @@ function createChallengeUI({
     if (["construct", "dialogue"].includes(q.kind)) {
       renderBuiltSentence();
       ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
+      ui.construction.feedback(ui.$("quizFeedback"), w, q, correct, "First answer already recorded");
+      ui.$("quizNext").disabled=false;
+      return;
     } else if (!q.unstudied) {
       ui.showAnswerFeedback(ui.$("choices"), q.correct || (q.direction === "en-ps" ? w?.ps : w?.en), value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
     }
@@ -618,11 +503,7 @@ function createChallengeUI({
     if (state.session?.mode !== "challenge" || state.session.locked) return;
     const q = state.session.questions[state.session.index];
     const tiles = questions.buildTiles(content.wordById[q.id] || null, q);
-    if (
-      questions.questionUsesDuds(q)
-        ? state.session.built.length > 0
-        : state.session.built.length === tiles.length
-    )
+    if (ui.construction.ready(tiles, state.session.built))
       answerChallenge(state.session.built.map((i) => tiles[i].word).join(" "));
   }
   return {

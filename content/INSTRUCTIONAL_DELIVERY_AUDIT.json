@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "releaseSha256": "b02e9f3299a3d17dac6b948b7b7bece47638e05166cffab613980c7c9a048756",
+  "releaseSha256": "ac5048949943eb33518838584afb90d59014662cfc0bcdba85fe0a80928797dc",
   "basis": "Actual rendered browser surfaces across fourteen complete profiles; compiler provenance and actual form/grammar unlocks checked independently at each sentence surface.",
-  "instructionalSentenceObservations": 4647,
-  "genuinelyGeneratedObservations": 4647,
+  "instructionalSentenceObservations": 6544,
+  "genuinelyGeneratedObservations": 6544,
   "generatedPercentage": 100,
   "fixedAuthoredSentenceObservations": 0,
   "designatedPhraseExceptions": 6,
@@ -21,7 +21,7 @@
         "instructionalSentences": 0,
         "generatedSentences": 0,
         "generatedPercent": null,
-        "fixedPhrases": 202
+        "fixedPhrases": 204
       },
       "trace": [
         {
@@ -56,21 +56,21 @@
           "day": 5,
           "generatedFamilies": [],
           "dialogueFamilies": [],
-          "adapted": 8,
+          "adapted": 10,
           "introducedForms": 9
         },
         {
           "day": 6,
           "generatedFamilies": [],
           "dialogueFamilies": [],
-          "adapted": 8,
+          "adapted": 10,
           "introducedForms": 16
         },
         {
           "day": 7,
           "generatedFamilies": [],
           "dialogueFamilies": [],
-          "adapted": 18,
+          "adapted": 20,
           "introducedForms": 17
         },
         {
@@ -119,7 +119,7 @@
           "day": 14,
           "generatedFamilies": [],
           "dialogueFamilies": [],
-          "adapted": 18,
+          "adapted": 20,
           "introducedForms": 81
         }
       ],
@@ -132,22 +132,22 @@
         "study": {
           "generated": 0,
           "phrases": 16,
-          "lexical": 81
+          "lexical": 94
         },
         "lesson-practice": {
           "generated": 0,
           "phrases": 16,
-          "lexical": 81
+          "lexical": 94
         },
         "lesson-feedback": {
           "generated": 0,
           "phrases": 16,
-          "lexical": 81
+          "lexical": 94
         },
         "assessment-word": {
           "generated": 0,
           "phrases": 14,
-          "lexical": 42
+          "lexical": 84
         }
       }
     },
@@ -162,7 +162,7 @@
         "instructionalSentences": 0,
         "generatedSentences": 0,
         "generatedPercent": null,
-        "fixedPhrases": 16
+        "fixedPhrases": 21
       },
       "trace": [
         {
@@ -177,91 +177,91 @@
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 4
         },
         {
           "day": 3,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 5
         },
         {
           "day": 4,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 8
         },
         {
           "day": 5,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 9
         },
         {
           "day": 6,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 16
         },
         {
           "day": 7,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 20,
-          "introducedForms": 0
+          "introducedForms": 17
         },
         {
           "day": 8,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 21
         },
         {
           "day": 9,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 43
         },
         {
           "day": 10,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 56
         },
         {
           "day": 11,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 64
         },
         {
           "day": 12,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 76
         },
         {
           "day": 13,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 81
         },
         {
           "day": 14,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 20,
-          "introducedForms": 0
+          "introducedForms": 81
         }
       ],
       "deliveryBySurface": {
@@ -272,8 +272,8 @@
         },
         "assessment-word": {
           "generated": 0,
-          "phrases": 14,
-          "lexical": 42
+          "phrases": 15,
+          "lexical": 84
         }
       }
     },
@@ -282,13 +282,13 @@
       "skip": false,
       "visits": 56,
       "assessments": 14,
-      "observedSentences": 741,
-      "generatedObserved": 741,
+      "observedSentences": 736,
+      "generatedObserved": 736,
       "summary": {
-        "instructionalSentences": 1092,
-        "generatedSentences": 1092,
+        "instructionalSentences": 1081,
+        "generatedSentences": 1081,
         "generatedPercent": 100,
-        "fixedPhrases": 200
+        "fixedPhrases": 202
       },
       "trace": [
         {
@@ -326,6 +326,7 @@
           "day": 4,
           "generatedFamilies": [
             "coordinated_present",
+            "equative_descriptor",
             "present_attributive",
             "present_transitive"
           ],
@@ -351,7 +352,8 @@
           "day": 6,
           "generatedFamilies": [
             "present_attributive",
-            "present_joint_action"
+            "present_joint_action",
+            "present_transitive"
           ],
           "dialogueFamilies": [
             "guided_scene"
@@ -363,8 +365,10 @@
           "day": 7,
           "generatedFamilies": [
             "coordinated_present",
+            "equative_descriptor",
             "present_attributive",
             "present_compound_transitive",
+            "present_joint_action",
             "present_transitive"
           ],
           "dialogueFamilies": [
@@ -394,7 +398,8 @@
             "counted_equative",
             "counted_transitive",
             "demonstrative_transitive",
-            "present_transitive"
+            "equative_noun",
+            "present_joint_action"
           ],
           "dialogueFamilies": [
             "guided_scene"
@@ -405,9 +410,9 @@
         {
           "day": 10,
           "generatedFamilies": [
-            "counted_equative",
+            "coordinated_present",
             "location_adverb_equative",
-            "present_attributive",
+            "present_transitive",
             "where_question"
           ],
           "dialogueFamilies": [
@@ -420,10 +425,11 @@
         {
           "day": 11,
           "generatedFamilies": [
+            "attributive_equative",
+            "demonstrative_transitive",
             "location_adverb_equative",
             "possessive_descriptor",
-            "possessive_equative",
-            "present_transitive"
+            "possessive_equative"
           ],
           "dialogueFamilies": [
             "guided_scene",
@@ -437,7 +443,8 @@
           "generatedFamilies": [
             "count_location",
             "how_many_question",
-            "present_transitive",
+            "location_adverb_equative",
+            "possessive_equative",
             "what_object_question",
             "where_question",
             "which_question",
@@ -446,8 +453,8 @@
           ],
           "dialogueFamilies": [
             "how_many_question",
-            "what_object_question",
-            "who_subject_question"
+            "where_question",
+            "whose_question"
           ],
           "adapted": 0,
           "introducedForms": 160
@@ -455,14 +462,15 @@
         {
           "day": 13,
           "generatedFamilies": [
+            "demonstrative_transitive",
             "location_adverb_equative",
-            "present_transitive",
+            "possessive_equative",
             "present_transitive_adverb"
           ],
           "dialogueFamilies": [
             "guided_scene",
             "where_question",
-            "who_subject_question"
+            "whose_question"
           ],
           "adapted": 0,
           "introducedForms": 169
@@ -472,6 +480,7 @@
           "generatedFamilies": [
             "coordinated_present",
             "count_location",
+            "counted_transitive",
             "demonstrative_descriptor",
             "equative_noun",
             "how_many_question",
@@ -479,8 +488,10 @@
             "possessive_descriptor",
             "possessive_equative",
             "present_attributive",
+            "present_compound_transitive",
             "present_joint_action",
             "present_transitive",
+            "present_transitive_adverb",
             "where_question",
             "which_question",
             "who_subject_question"
@@ -507,45 +518,35 @@
         "study": {
           "generated": 203,
           "phrases": 16,
-          "lexical": 197
+          "lexical": 201
         },
         "lesson-practice": {
           "generated": 203,
           "phrases": 16,
-          "lexical": 197
+          "lexical": 201
         },
         "lesson-feedback": {
           "generated": 203,
           "phrases": 16,
-          "lexical": 197
+          "lexical": 201
         },
         "assessment-word": {
           "generated": 0,
-          "phrases": 12,
-          "lexical": 56
+          "phrases": 14,
+          "lexical": 60
         },
         "assessment-target": {
-          "generated": 130,
+          "generated": 143,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-feedback": {
-          "generated": 130,
+          "generated": 143,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-choice": {
-          "generated": 162,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-prompt": {
-          "generated": 11,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-feedback": {
-          "generated": 11,
+          "generated": 153,
           "phrases": 0,
           "lexical": 0
         }
@@ -556,13 +557,13 @@
       "skip": true,
       "visits": 0,
       "assessments": 14,
-      "observedSentences": 0,
-      "generatedObserved": 0,
+      "observedSentences": 308,
+      "generatedObserved": 308,
       "summary": {
-        "instructionalSentences": 0,
-        "generatedSentences": 0,
-        "generatedPercent": null,
-        "fixedPhrases": 14
+        "instructionalSentences": 445,
+        "generatedSentences": 445,
+        "generatedPercent": 100,
+        "fixedPhrases": 16
       },
       "trace": [
         {
@@ -570,98 +571,219 @@
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 4
         },
         {
           "day": 2,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 16
         },
         {
           "day": 3,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 28
         },
         {
           "day": 4,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor",
+            "present_attributive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 40
         },
         {
           "day": 5,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 50
         },
         {
           "day": 6,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 66
         },
         {
           "day": 7,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 77
         },
         {
           "day": 8,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 85
         },
         {
           "day": 9,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 115
         },
         {
           "day": 10,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_transitive",
+            "demonstrative_transitive",
+            "present_attributive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 132
         },
         {
           "day": 11,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "counted_equative",
+            "counted_transitive",
+            "demonstrative_transitive",
+            "location_adverb_equative",
+            "present_attributive",
+            "where_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 144
         },
         {
           "day": 12,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "demonstrative_transitive",
+            "location_adverb_equative",
+            "present_joint_action",
+            "where_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 160
         },
         {
           "day": 13,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
+            "possessive_equative",
+            "present_attributive",
+            "present_transitive",
+            "where_question",
+            "which_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "which_question",
+            "who_subject_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 169
         },
         {
           "day": 14,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "count_location",
+            "counted_transitive",
+            "demonstrative_descriptor",
+            "equative_noun",
+            "how_many_question",
+            "location_adverb_equative",
+            "possessive_descriptor",
+            "possessive_equative",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_joint_action",
+            "present_transitive",
+            "present_transitive_adverb",
+            "where_question",
+            "which_question",
+            "who_subject_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "how_many_question",
+            "what_object_question",
+            "where_question",
+            "which_question",
+            "who_subject_question",
+            "whose_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 169
         }
       ],
       "deliveryBySurface": {
@@ -672,8 +794,23 @@
         },
         "assessment-word": {
           "generated": 0,
-          "phrases": 12,
-          "lexical": 56
+          "phrases": 14,
+          "lexical": 62
+        },
+        "assessment-target": {
+          "generated": 121,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-feedback": {
+          "generated": 121,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-choice": {
+          "generated": 143,
+          "phrases": 0,
+          "lexical": 0
         }
       }
     },
@@ -682,11 +819,11 @@
       "skip": false,
       "visits": 56,
       "assessments": 14,
-      "observedSentences": 751,
-      "generatedObserved": 751,
+      "observedSentences": 746,
+      "generatedObserved": 746,
       "summary": {
-        "instructionalSentences": 1111,
-        "generatedSentences": 1111,
+        "instructionalSentences": 1100,
+        "generatedSentences": 1100,
         "generatedPercent": 100,
         "fixedPhrases": 200
       },
@@ -737,7 +874,6 @@
         {
           "day": 5,
           "generatedFamilies": [
-            "coordinated_present",
             "present_attributive",
             "present_transitive"
           ],
@@ -752,6 +888,7 @@
           "generatedFamilies": [
             "present_attributive",
             "present_compound_predicate",
+            "present_compound_transitive",
             "present_joint_action",
             "present_transitive"
           ],
@@ -781,8 +918,8 @@
             "attributive_equative",
             "demonstrative_descriptor",
             "demonstrative_transitive",
-            "equative_noun",
-            "present_attributive"
+            "equative_descriptor",
+            "equative_noun"
           ],
           "dialogueFamilies": [
             "guided_scene"
@@ -807,8 +944,9 @@
         {
           "day": 10,
           "generatedFamilies": [
+            "counted_transitive",
+            "demonstrative_transitive",
             "location_adverb_equative",
-            "present_transitive",
             "spatial_equative",
             "where_question"
           ],
@@ -822,12 +960,12 @@
         {
           "day": 11,
           "generatedFamilies": [
-            "counted_transitive",
-            "demonstrative_transitive",
             "location_adverb_equative",
             "possessive_descriptor",
             "possessive_equative",
-            "possessive_spatial"
+            "possessive_spatial",
+            "present_attributive",
+            "present_transitive"
           ],
           "dialogueFamilies": [
             "guided_scene",
@@ -839,10 +977,9 @@
         {
           "day": 12,
           "generatedFamilies": [
-            "demonstrative_descriptor",
+            "count_location",
             "how_many_question",
-            "location_adverb_equative",
-            "possessive_equative",
+            "present_transitive",
             "what_object_question",
             "where_question",
             "which_question",
@@ -850,9 +987,9 @@
             "whose_question"
           ],
           "dialogueFamilies": [
-            "where_question",
-            "which_question",
-            "whose_question"
+            "how_many_question",
+            "what_object_question",
+            "who_subject_question"
           ],
           "adapted": 0,
           "introducedForms": 232
@@ -860,15 +997,16 @@
         {
           "day": 13,
           "generatedFamilies": [
-            "possessive_equative",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
             "present_intransitive_adverb",
             "present_transitive",
             "present_transitive_adverb"
           ],
           "dialogueFamilies": [
             "guided_scene",
-            "who_subject_question",
-            "whose_question"
+            "which_question",
+            "who_subject_question"
           ],
           "adapted": 0,
           "introducedForms": 247
@@ -878,6 +1016,8 @@
           "generatedFamilies": [
             "coordinated_present",
             "count_location",
+            "counted_equative",
+            "counted_transitive",
             "demonstrative_descriptor",
             "equative_descriptor",
             "how_many_question",
@@ -886,7 +1026,6 @@
             "present_attributive",
             "present_intransitive_adverb",
             "present_transitive",
-            "present_transitive_adverb",
             "spatial_equative",
             "what_object_question",
             "which_question"
@@ -913,45 +1052,35 @@
         "study": {
           "generated": 208,
           "phrases": 16,
-          "lexical": 277
+          "lexical": 276
         },
         "lesson-practice": {
           "generated": 208,
           "phrases": 16,
-          "lexical": 277
+          "lexical": 276
         },
         "lesson-feedback": {
           "generated": 208,
           "phrases": 16,
-          "lexical": 277
+          "lexical": 276
         },
         "assessment-word": {
           "generated": 0,
           "phrases": 12,
-          "lexical": 56
+          "lexical": 64
         },
         "assessment-target": {
-          "generated": 138,
+          "generated": 147,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-feedback": {
-          "generated": 138,
+          "generated": 147,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-choice": {
           "generated": 169,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-prompt": {
-          "generated": 13,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-feedback": {
-          "generated": 13,
           "phrases": 0,
           "lexical": 0
         }
@@ -962,13 +1091,13 @@
       "skip": true,
       "visits": 0,
       "assessments": 14,
-      "observedSentences": 0,
-      "generatedObserved": 0,
+      "observedSentences": 308,
+      "generatedObserved": 308,
       "summary": {
-        "instructionalSentences": 0,
-        "generatedSentences": 0,
-        "generatedPercent": null,
-        "fixedPhrases": 14
+        "instructionalSentences": 446,
+        "generatedSentences": 446,
+        "generatedPercent": 100,
+        "fixedPhrases": 16
       },
       "trace": [
         {
@@ -976,98 +1105,218 @@
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 8
         },
         {
           "day": 2,
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 26
         },
         {
           "day": 3,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 45
         },
         {
           "day": 4,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor",
+            "present_attributive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 64
         },
         {
           "day": 5,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 82
         },
         {
           "day": 6,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 107
         },
         {
           "day": 7,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "present_compound_transitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 126
         },
         {
           "day": 8,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 138
         },
         {
           "day": 9,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 173
         },
         {
           "day": 10,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_transitive",
+            "equative_noun",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 196
         },
         {
           "day": 11,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_equative",
+            "counted_transitive",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_predicate",
+            "present_transitive",
+            "spatial_equative"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 212
         },
         {
           "day": 12,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "counted_transitive",
+            "location_adverb_equative",
+            "where_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 232
         },
         {
           "day": 13,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "counted_equative",
+            "demonstrative_transitive",
+            "location_adverb_equative",
+            "possessive_equative",
+            "present_compound_predicate",
+            "present_compound_transitive",
+            "spatial_equative"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question",
+            "whose_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 247
         },
         {
           "day": 14,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "count_location",
+            "counted_equative",
+            "counted_transitive",
+            "demonstrative_descriptor",
+            "equative_descriptor",
+            "how_many_question",
+            "location_adverb_equative",
+            "possessive_equative",
+            "present_attributive",
+            "present_intransitive_adverb",
+            "present_transitive",
+            "spatial_equative",
+            "what_object_question",
+            "which_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "how_many_question",
+            "what_object_question",
+            "where_question",
+            "which_question",
+            "who_subject_question",
+            "whose_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 247
         }
       ],
       "deliveryBySurface": {
@@ -1078,8 +1327,23 @@
         },
         "assessment-word": {
           "generated": 0,
-          "phrases": 12,
-          "lexical": 56
+          "phrases": 14,
+          "lexical": 68
+        },
+        "assessment-target": {
+          "generated": 130,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-feedback": {
+          "generated": 130,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-choice": {
+          "generated": 158,
+          "phrases": 0,
+          "lexical": 0
         }
       }
     },
@@ -1088,11 +1352,11 @@
       "skip": false,
       "visits": 56,
       "assessments": 14,
-      "observedSentences": 773,
-      "generatedObserved": 773,
+      "observedSentences": 768,
+      "generatedObserved": 768,
       "summary": {
-        "instructionalSentences": 1141,
-        "generatedSentences": 1141,
+        "instructionalSentences": 1131,
+        "generatedSentences": 1131,
         "generatedPercent": 100,
         "fixedPhrases": 200
       },
@@ -1149,7 +1413,6 @@
         {
           "day": 5,
           "generatedFamilies": [
-            "coordinated_present",
             "equative_descriptor",
             "present_attributive",
             "present_transitive"
@@ -1165,7 +1428,8 @@
           "generatedFamilies": [
             "present_attributive",
             "present_compound_predicate",
-            "present_joint_action"
+            "present_joint_action",
+            "present_transitive"
           ],
           "dialogueFamilies": [
             "guided_scene"
@@ -1179,7 +1443,7 @@
             "coordinated_present",
             "present_attributive",
             "present_compound_transitive",
-            "present_intransitive",
+            "present_joint_action",
             "present_transitive"
           ],
           "dialogueFamilies": [
@@ -1209,7 +1473,7 @@
             "counted_equative",
             "counted_transitive",
             "present_attributive",
-            "present_transitive"
+            "present_joint_action"
           ],
           "dialogueFamilies": [
             "guided_scene"
@@ -1220,7 +1484,7 @@
         {
           "day": 10,
           "generatedFamilies": [
-            "counted_transitive",
+            "demonstrative_transitive",
             "location_adverb_equative",
             "present_attributive",
             "spatial_equative",
@@ -1236,11 +1500,12 @@
         {
           "day": 11,
           "generatedFamilies": [
+            "attributive_equative",
+            "counted_transitive",
             "location_adverb_equative",
             "possessive_descriptor",
             "possessive_equative",
-            "possessive_spatial",
-            "present_transitive"
+            "possessive_spatial"
           ],
           "dialogueFamilies": [
             "guided_scene",
@@ -1252,10 +1517,10 @@
         {
           "day": 12,
           "generatedFamilies": [
-            "demonstrative_descriptor",
             "how_many_question",
             "location_adverb_equative",
             "possessive_equative",
+            "present_transitive",
             "what_object_question",
             "where_question",
             "which_question",
@@ -1264,7 +1529,7 @@
           ],
           "dialogueFamilies": [
             "where_question",
-            "which_question",
+            "who_subject_question",
             "whose_question"
           ],
           "adapted": 0,
@@ -1273,16 +1538,16 @@
         {
           "day": 13,
           "generatedFamilies": [
-            "demonstrative_descriptor",
-            "demonstrative_transitive",
+            "location_adverb_equative",
+            "possessive_equative",
             "present_intransitive_adverb",
             "present_transitive",
             "present_transitive_adverb"
           ],
           "dialogueFamilies": [
-            "guided_scene",
-            "what_object_question",
-            "which_question"
+            "where_question",
+            "who_subject_question",
+            "whose_question"
           ],
           "adapted": 0,
           "introducedForms": 321
@@ -1292,6 +1557,8 @@
           "generatedFamilies": [
             "coordinated_present",
             "count_location",
+            "counted_equative",
+            "counted_transitive",
             "demonstrative_descriptor",
             "demonstrative_transitive",
             "equative_descriptor",
@@ -1327,45 +1594,35 @@
         "study": {
           "generated": 212,
           "phrases": 16,
-          "lexical": 359
+          "lexical": 356
         },
         "lesson-practice": {
           "generated": 212,
           "phrases": 16,
-          "lexical": 359
+          "lexical": 356
         },
         "lesson-feedback": {
           "generated": 212,
           "phrases": 16,
-          "lexical": 359
+          "lexical": 356
         },
         "assessment-word": {
           "generated": 0,
           "phrases": 12,
-          "lexical": 56
+          "lexical": 60
         },
         "assessment-target": {
-          "generated": 147,
+          "generated": 155,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-feedback": {
-          "generated": 147,
+          "generated": 155,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-choice": {
-          "generated": 177,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-prompt": {
-          "generated": 13,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-feedback": {
-          "generated": 13,
+          "generated": 179,
           "phrases": 0,
           "lexical": 0
         }
@@ -1376,12 +1633,12 @@
       "skip": true,
       "visits": 0,
       "assessments": 14,
-      "observedSentences": 0,
-      "generatedObserved": 0,
+      "observedSentences": 322,
+      "generatedObserved": 322,
       "summary": {
-        "instructionalSentences": 0,
-        "generatedSentences": 0,
-        "generatedPercent": null,
+        "instructionalSentences": 461,
+        "generatedSentences": 461,
+        "generatedPercent": 100,
         "fixedPhrases": 14
       },
       "trace": [
@@ -1390,98 +1647,234 @@
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 13
         },
         {
           "day": 2,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 4,
+          "introducedForms": 36
         },
         {
           "day": 3,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor",
+            "present_attributive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 60
         },
         {
           "day": 4,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor",
+            "present_attributive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 83
         },
         {
           "day": 5,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 107
         },
         {
           "day": 6,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 140
         },
         {
           "day": 7,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_predicate",
+            "present_compound_transitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 165
         },
         {
           "day": 8,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 181
         },
         {
           "day": 9,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 224
         },
         {
           "day": 10,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_transitive",
+            "demonstrative_transitive",
+            "equative_noun",
+            "present_compound_transitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 254
         },
         {
           "day": 11,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_equative",
+            "equative_descriptor",
+            "location_adverb_equative",
+            "present_attributive",
+            "present_compound_predicate",
+            "present_joint_action",
+            "present_transitive",
+            "spatial_equative"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 274
         },
         {
           "day": 12,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "demonstrative_transitive",
+            "location_adverb_equative",
+            "present_transitive",
+            "where_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 298
         },
         {
           "day": 13,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "count_location",
+            "counted_equative",
+            "demonstrative_transitive",
+            "location_adverb_equative",
+            "present_compound_predicate",
+            "present_compound_transitive",
+            "present_transitive",
+            "spatial_equative"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "how_many_question",
+            "who_subject_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 321
         },
         {
           "day": 14,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "count_location",
+            "counted_equative",
+            "counted_transitive",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
+            "equative_descriptor",
+            "how_many_question",
+            "location_adverb_equative",
+            "possessive_equative",
+            "present_attributive",
+            "present_intransitive_adverb",
+            "present_transitive",
+            "spatial_equative",
+            "what_object_question",
+            "which_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "how_many_question",
+            "what_object_question",
+            "where_question",
+            "which_question",
+            "who_subject_question",
+            "whose_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 321
         }
       ],
       "deliveryBySurface": {
@@ -1493,7 +1886,22 @@
         "assessment-word": {
           "generated": 0,
           "phrases": 12,
-          "lexical": 56
+          "lexical": 66
+        },
+        "assessment-target": {
+          "generated": 131,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-feedback": {
+          "generated": 131,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-choice": {
+          "generated": 164,
+          "phrases": 0,
+          "lexical": 0
         }
       }
     },
@@ -1502,11 +1910,11 @@
       "skip": false,
       "visits": 56,
       "assessments": 14,
-      "observedSentences": 791,
-      "generatedObserved": 791,
+      "observedSentences": 786,
+      "generatedObserved": 786,
       "summary": {
-        "instructionalSentences": 1169,
-        "generatedSentences": 1169,
+        "instructionalSentences": 1159,
+        "generatedSentences": 1159,
         "generatedPercent": 100,
         "fixedPhrases": 200
       },
@@ -1563,8 +1971,7 @@
         {
           "day": 5,
           "generatedFamilies": [
-            "equative_descriptor",
-            "present_attributive",
+            "coordinated_present",
             "present_transitive"
           ],
           "dialogueFamilies": [
@@ -1576,7 +1983,9 @@
         {
           "day": 6,
           "generatedFamilies": [
+            "present_attributive",
             "present_compound_predicate",
+            "present_intransitive",
             "present_joint_action",
             "present_transitive"
           ],
@@ -1607,10 +2016,8 @@
             "attributive_equative",
             "demonstrative_descriptor",
             "demonstrative_transitive",
-            "equative_descriptor",
             "equative_noun",
-            "present_attributive",
-            "present_compound_predicate"
+            "present_attributive"
           ],
           "dialogueFamilies": [
             "guided_scene"
@@ -1621,10 +2028,11 @@
         {
           "day": 9,
           "generatedFamilies": [
+            "attributive_equative",
             "counted_equative",
             "counted_transitive",
             "present_attributive",
-            "present_joint_action"
+            "present_transitive"
           ],
           "dialogueFamilies": [
             "guided_scene"
@@ -1635,9 +2043,9 @@
         {
           "day": 10,
           "generatedFamilies": [
-            "counted_transitive",
+            "demonstrative_transitive",
             "location_adverb_equative",
-            "present_attributive",
+            "present_transitive",
             "spatial_equative",
             "where_question"
           ],
@@ -1651,10 +2059,11 @@
         {
           "day": 11,
           "generatedFamilies": [
+            "location_adverb_equative",
             "possessive_descriptor",
             "possessive_equative",
             "possessive_spatial",
-            "spatial_equative"
+            "present_attributive"
           ],
           "dialogueFamilies": [
             "guided_scene",
@@ -1666,9 +2075,8 @@
         {
           "day": 12,
           "generatedFamilies": [
-            "demonstrative_descriptor",
             "how_many_question",
-            "possessive_equative",
+            "location_adverb_equative",
             "present_transitive",
             "what_object_question",
             "where_question",
@@ -1677,9 +2085,9 @@
             "whose_question"
           ],
           "dialogueFamilies": [
-            "which_question",
-            "who_subject_question",
-            "whose_question"
+            "what_object_question",
+            "where_question",
+            "who_subject_question"
           ],
           "adapted": 0,
           "introducedForms": 352
@@ -1688,7 +2096,7 @@
           "day": 13,
           "generatedFamilies": [
             "demonstrative_descriptor",
-            "demonstrative_transitive",
+            "present_attributive",
             "present_intransitive_adverb",
             "present_transitive",
             "present_transitive_adverb"
@@ -1706,8 +2114,9 @@
           "generatedFamilies": [
             "coordinated_present",
             "count_location",
+            "counted_equative",
+            "counted_transitive",
             "demonstrative_descriptor",
-            "demonstrative_transitive",
             "equative_descriptor",
             "how_many_question",
             "location_adverb_equative",
@@ -1741,17 +2150,17 @@
         "study": {
           "generated": 217,
           "phrases": 16,
-          "lexical": 413
+          "lexical": 412
         },
         "lesson-practice": {
           "generated": 217,
           "phrases": 16,
-          "lexical": 413
+          "lexical": 412
         },
         "lesson-feedback": {
           "generated": 217,
           "phrases": 16,
-          "lexical": 413
+          "lexical": 412
         },
         "assessment-word": {
           "generated": 0,
@@ -1759,27 +2168,17 @@
           "lexical": 56
         },
         "assessment-target": {
-          "generated": 151,
+          "generated": 159,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-feedback": {
-          "generated": 151,
+          "generated": 159,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-choice": {
-          "generated": 185,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-prompt": {
-          "generated": 13,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-feedback": {
-          "generated": 13,
+          "generated": 181,
           "phrases": 0,
           "lexical": 0
         }
@@ -1790,12 +2189,12 @@
       "skip": true,
       "visits": 0,
       "assessments": 14,
-      "observedSentences": 0,
-      "generatedObserved": 0,
+      "observedSentences": 330,
+      "generatedObserved": 330,
       "summary": {
-        "instructionalSentences": 0,
-        "generatedSentences": 0,
-        "generatedPercent": null,
+        "instructionalSentences": 474,
+        "generatedSentences": 474,
+        "generatedPercent": 100,
         "fixedPhrases": 14
       },
       "trace": [
@@ -1804,98 +2203,231 @@
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 17
         },
         {
           "day": 2,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 44
         },
         {
           "day": 3,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor",
+            "present_attributive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 72
         },
         {
           "day": 4,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor",
+            "present_attributive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 99
         },
         {
           "day": 5,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 127
         },
         {
           "day": 6,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 164
         },
         {
           "day": 7,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 193
         },
         {
           "day": 8,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 213
         },
         {
           "day": 9,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
+            "equative_noun",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 266
         },
         {
           "day": 10,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_transitive",
+            "demonstrative_transitive",
+            "equative_noun",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 300
         },
         {
           "day": 11,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_equative",
+            "demonstrative_transitive",
+            "equative_descriptor",
+            "present_compound_predicate",
+            "present_transitive",
+            "spatial_equative"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 324
         },
         {
           "day": 12,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "possessive_equative",
+            "present_attributive",
+            "spatial_equative",
+            "where_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 352
         },
         {
           "day": 13,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "counted_equative",
+            "demonstrative_transitive",
+            "location_adverb_equative",
+            "present_compound_predicate",
+            "present_compound_transitive",
+            "present_transitive",
+            "spatial_equative"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "what_object_question",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 377
         },
         {
           "day": 14,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "count_location",
+            "counted_equative",
+            "counted_transitive",
+            "demonstrative_descriptor",
+            "equative_descriptor",
+            "how_many_question",
+            "location_adverb_equative",
+            "possessive_equative",
+            "present_attributive",
+            "present_intransitive_adverb",
+            "present_transitive",
+            "spatial_equative",
+            "what_object_question",
+            "which_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "how_many_question",
+            "what_object_question",
+            "where_question",
+            "which_question",
+            "who_subject_question",
+            "whose_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 377
         }
       ],
       "deliveryBySurface": {
@@ -1907,7 +2439,22 @@
         "assessment-word": {
           "generated": 0,
           "phrases": 12,
-          "lexical": 56
+          "lexical": 62
+        },
+        "assessment-target": {
+          "generated": 138,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-feedback": {
+          "generated": 138,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-choice": {
+          "generated": 169,
+          "phrases": 0,
+          "lexical": 0
         }
       }
     },
@@ -1916,11 +2463,11 @@
       "skip": false,
       "visits": 56,
       "assessments": 14,
-      "observedSentences": 794,
-      "generatedObserved": 794,
+      "observedSentences": 788,
+      "generatedObserved": 788,
       "summary": {
-        "instructionalSentences": 1175,
-        "generatedSentences": 1175,
+        "instructionalSentences": 1162,
+        "generatedSentences": 1162,
         "generatedPercent": 100,
         "fixedPhrases": 200
       },
@@ -1978,6 +2525,7 @@
         {
           "day": 5,
           "generatedFamilies": [
+            "equative_descriptor",
             "present_attributive",
             "present_transitive"
           ],
@@ -1992,8 +2540,7 @@
           "generatedFamilies": [
             "present_attributive",
             "present_compound_predicate",
-            "present_joint_action",
-            "present_transitive"
+            "present_joint_action"
           ],
           "dialogueFamilies": [
             "guided_scene"
@@ -2033,11 +2580,10 @@
         {
           "day": 9,
           "generatedFamilies": [
+            "attributive_equative",
             "counted_equative",
             "counted_transitive",
-            "demonstrative_transitive",
-            "present_attributive",
-            "present_transitive"
+            "present_joint_action"
           ],
           "dialogueFamilies": [
             "guided_scene"
@@ -2066,6 +2612,8 @@
             "possessive_descriptor",
             "possessive_equative",
             "possessive_spatial",
+            "present_joint_action",
+            "present_transitive",
             "spatial_equative"
           ],
           "dialogueFamilies": [
@@ -2078,7 +2626,7 @@
         {
           "day": 12,
           "generatedFamilies": [
-            "demonstrative_descriptor",
+            "count_location",
             "how_many_question",
             "possessive_equative",
             "present_transitive",
@@ -2089,8 +2637,8 @@
             "whose_question"
           ],
           "dialogueFamilies": [
-            "what_object_question",
-            "which_question",
+            "how_many_question",
+            "who_subject_question",
             "whose_question"
           ],
           "adapted": 0,
@@ -2099,14 +2647,14 @@
         {
           "day": 13,
           "generatedFamilies": [
-            "location_adverb_equative",
+            "demonstrative_descriptor",
             "possessive_equative",
             "present_intransitive_adverb",
             "present_transitive",
             "present_transitive_adverb"
           ],
           "dialogueFamilies": [
-            "where_question",
+            "which_question",
             "who_subject_question",
             "whose_question"
           ],
@@ -2118,6 +2666,8 @@
           "generatedFamilies": [
             "coordinated_present",
             "count_location",
+            "counted_equative",
+            "counted_transitive",
             "demonstrative_descriptor",
             "equative_descriptor",
             "how_many_question",
@@ -2152,17 +2702,17 @@
         "study": {
           "generated": 218,
           "phrases": 16,
-          "lexical": 470
+          "lexical": 469
         },
         "lesson-practice": {
           "generated": 218,
           "phrases": 16,
-          "lexical": 470
+          "lexical": 469
         },
         "lesson-feedback": {
           "generated": 218,
           "phrases": 16,
-          "lexical": 470
+          "lexical": 469
         },
         "assessment-word": {
           "generated": 0,
@@ -2170,27 +2720,17 @@
           "lexical": 56
         },
         "assessment-target": {
-          "generated": 150,
+          "generated": 159,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-feedback": {
-          "generated": 150,
+          "generated": 159,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-choice": {
-          "generated": 185,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-prompt": {
-          "generated": 14,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-feedback": {
-          "generated": 14,
+          "generated": 186,
           "phrases": 0,
           "lexical": 0
         }
@@ -2201,12 +2741,12 @@
       "skip": true,
       "visits": 0,
       "assessments": 14,
-      "observedSentences": 0,
-      "generatedObserved": 0,
+      "observedSentences": 330,
+      "generatedObserved": 330,
       "summary": {
-        "instructionalSentences": 0,
-        "generatedSentences": 0,
-        "generatedPercent": null,
+        "instructionalSentences": 476,
+        "generatedSentences": 476,
+        "generatedPercent": 100,
         "fixedPhrases": 14
       },
       "trace": [
@@ -2215,98 +2755,228 @@
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 23
         },
         {
           "day": 2,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 54
         },
         {
           "day": 3,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor",
+            "present_attributive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 86
         },
         {
           "day": 4,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor",
+            "present_attributive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 117
         },
         {
           "day": 5,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 149
         },
         {
           "day": 6,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 190
         },
         {
           "day": 7,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 223
         },
         {
           "day": 8,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 247
         },
         {
           "day": 9,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 305
         },
         {
           "day": 10,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_transitive",
+            "demonstrative_transitive",
+            "equative_noun",
+            "present_compound_transitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 343
         },
         {
           "day": 11,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_equative",
+            "demonstrative_transitive",
+            "equative_descriptor",
+            "present_compound_predicate",
+            "present_transitive",
+            "spatial_equative"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 371
         },
         {
           "day": 12,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "location_adverb_equative",
+            "present_joint_action",
+            "present_transitive",
+            "where_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 403
         },
         {
           "day": 13,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "counted_equative",
+            "demonstrative_transitive",
+            "location_adverb_equative",
+            "possessive_equative",
+            "present_compound_predicate",
+            "present_compound_transitive",
+            "present_transitive",
+            "spatial_equative"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "who_subject_question",
+            "whose_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 429
         },
         {
           "day": 14,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "count_location",
+            "counted_equative",
+            "counted_transitive",
+            "demonstrative_descriptor",
+            "equative_descriptor",
+            "how_many_question",
+            "location_adverb_equative",
+            "possessive_equative",
+            "present_attributive",
+            "present_intransitive_adverb",
+            "present_transitive",
+            "spatial_equative",
+            "what_object_question",
+            "which_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "how_many_question",
+            "what_object_question",
+            "where_question",
+            "which_question",
+            "who_subject_question",
+            "whose_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 429
         }
       ],
       "deliveryBySurface": {
@@ -2318,7 +2988,22 @@
         "assessment-word": {
           "generated": 0,
           "phrases": 12,
-          "lexical": 56
+          "lexical": 62
+        },
+        "assessment-target": {
+          "generated": 137,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-feedback": {
+          "generated": 137,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-choice": {
+          "generated": 172,
+          "phrases": 0,
+          "lexical": 0
         }
       }
     },
@@ -2327,11 +3012,11 @@
       "skip": false,
       "visits": 56,
       "assessments": 14,
-      "observedSentences": 797,
-      "generatedObserved": 797,
+      "observedSentences": 792,
+      "generatedObserved": 792,
       "summary": {
-        "instructionalSentences": 1181,
-        "generatedSentences": 1181,
+        "instructionalSentences": 1170,
+        "generatedSentences": 1170,
         "generatedPercent": 100,
         "fixedPhrases": 200
       },
@@ -2416,9 +3101,9 @@
           "day": 7,
           "generatedFamilies": [
             "coordinated_present",
+            "equative_descriptor",
             "present_attributive",
             "present_compound_transitive",
-            "present_joint_action",
             "present_transitive"
           ],
           "dialogueFamilies": [
@@ -2434,6 +3119,7 @@
             "demonstrative_descriptor",
             "demonstrative_transitive",
             "equative_noun",
+            "present_attributive",
             "present_transitive"
           ],
           "dialogueFamilies": [
@@ -2458,7 +3144,6 @@
         {
           "day": 10,
           "generatedFamilies": [
-            "counted_transitive",
             "demonstrative_transitive",
             "location_adverb_equative",
             "spatial_equative",
@@ -2478,8 +3163,7 @@
             "possessive_descriptor",
             "possessive_equative",
             "possessive_spatial",
-            "present_attributive",
-            "present_transitive"
+            "present_attributive"
           ],
           "dialogueFamilies": [
             "guided_scene",
@@ -2491,9 +3175,9 @@
         {
           "day": 12,
           "generatedFamilies": [
-            "demonstrative_descriptor",
+            "count_location",
             "how_many_question",
-            "location_adverb_equative",
+            "possessive_equative",
             "present_transitive",
             "what_object_question",
             "where_question",
@@ -2502,9 +3186,9 @@
             "whose_question"
           ],
           "dialogueFamilies": [
-            "where_question",
-            "which_question",
-            "who_subject_question"
+            "how_many_question",
+            "who_subject_question",
+            "whose_question"
           ],
           "adapted": 0,
           "introducedForms": 460
@@ -2521,7 +3205,7 @@
           "dialogueFamilies": [
             "guided_scene",
             "how_many_question",
-            "what_object_question"
+            "who_subject_question"
           ],
           "adapted": 0,
           "introducedForms": 489
@@ -2531,6 +3215,8 @@
           "generatedFamilies": [
             "coordinated_present",
             "count_location",
+            "counted_equative",
+            "counted_transitive",
             "demonstrative_descriptor",
             "demonstrative_transitive",
             "equative_descriptor",
@@ -2566,17 +3252,17 @@
         "study": {
           "generated": 220,
           "phrases": 16,
-          "lexical": 526
+          "lexical": 524
         },
         "lesson-practice": {
           "generated": 220,
           "phrases": 16,
-          "lexical": 526
+          "lexical": 524
         },
         "lesson-feedback": {
           "generated": 220,
           "phrases": 16,
-          "lexical": 526
+          "lexical": 524
         },
         "assessment-word": {
           "generated": 0,
@@ -2584,27 +3270,17 @@
           "lexical": 56
         },
         "assessment-target": {
-          "generated": 151,
+          "generated": 158,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-feedback": {
-          "generated": 151,
+          "generated": 158,
           "phrases": 0,
           "lexical": 0
         },
         "assessment-choice": {
-          "generated": 189,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-prompt": {
-          "generated": 12,
-          "phrases": 0,
-          "lexical": 0
-        },
-        "dialogue-feedback": {
-          "generated": 12,
+          "generated": 190,
           "phrases": 0,
           "lexical": 0
         }
@@ -2615,12 +3291,12 @@
       "skip": true,
       "visits": 0,
       "assessments": 14,
-      "observedSentences": 0,
-      "generatedObserved": 0,
+      "observedSentences": 330,
+      "generatedObserved": 330,
       "summary": {
-        "instructionalSentences": 0,
-        "generatedSentences": 0,
-        "generatedPercent": null,
+        "instructionalSentences": 476,
+        "generatedSentences": 476,
+        "generatedPercent": 100,
         "fixedPhrases": 14
       },
       "trace": [
@@ -2629,98 +3305,234 @@
           "generatedFamilies": [],
           "dialogueFamilies": [],
           "adapted": 10,
-          "introducedForms": 0
+          "introducedForms": 29
         },
         {
           "day": 2,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 64
         },
         {
           "day": 3,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor",
+            "present_attributive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 102
         },
         {
           "day": 4,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "equative_descriptor",
+            "present_attributive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 138
         },
         {
           "day": 5,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 175
         },
         {
           "day": 6,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 221
         },
         {
           "day": 7,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 259
         },
         {
           "day": 8,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "equative_descriptor",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_intransitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 287
         },
         {
           "day": 9,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
+            "equative_noun",
+            "present_attributive",
+            "present_compound_transitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 350
         },
         {
           "day": 10,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_transitive",
+            "demonstrative_transitive",
+            "equative_noun",
+            "present_compound_transitive",
+            "present_joint_action",
+            "present_transitive"
+          ],
+          "dialogueFamilies": [
+            "guided_scene"
+          ],
+          "adapted": 0,
+          "introducedForms": 392
         },
         {
           "day": 11,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "attributive_equative",
+            "coordinated_present",
+            "counted_equative",
+            "demonstrative_transitive",
+            "equative_descriptor",
+            "location_adverb_equative",
+            "present_compound_predicate",
+            "present_transitive",
+            "spatial_equative"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 424
         },
         {
           "day": 12,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "location_adverb_equative",
+            "present_attributive",
+            "spatial_equative",
+            "where_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "where_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 460
         },
         {
           "day": 13,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 10,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "counted_equative",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
+            "location_adverb_equative",
+            "present_attributive",
+            "present_compound_predicate",
+            "present_compound_transitive",
+            "present_transitive",
+            "spatial_equative"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "which_question",
+            "who_subject_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 489
         },
         {
           "day": 14,
-          "generatedFamilies": [],
-          "dialogueFamilies": [],
-          "adapted": 20,
-          "introducedForms": 0
+          "generatedFamilies": [
+            "coordinated_present",
+            "count_location",
+            "counted_equative",
+            "counted_transitive",
+            "demonstrative_descriptor",
+            "demonstrative_transitive",
+            "equative_descriptor",
+            "how_many_question",
+            "location_adverb_equative",
+            "possessive_equative",
+            "present_attributive",
+            "present_intransitive_adverb",
+            "present_transitive",
+            "spatial_equative",
+            "what_object_question",
+            "which_question"
+          ],
+          "dialogueFamilies": [
+            "guided_scene",
+            "how_many_question",
+            "what_object_question",
+            "where_question",
+            "which_question",
+            "who_subject_question",
+            "whose_question"
+          ],
+          "adapted": 0,
+          "introducedForms": 489
         }
       ],
       "deliveryBySurface": {
@@ -2732,7 +3544,22 @@
         "assessment-word": {
           "generated": 0,
           "phrases": 12,
-          "lexical": 56
+          "lexical": 62
+        },
+        "assessment-target": {
+          "generated": 141,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-feedback": {
+          "generated": 141,
+          "phrases": 0,
+          "lexical": 0
+        },
+        "assessment-choice": {
+          "generated": 172,
+          "phrases": 0,
+          "lexical": 0
         }
       }
     }

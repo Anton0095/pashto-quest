@@ -1380,25 +1380,6 @@ header {
   min-height: 1.5em;
   margin: 13px 0 0;
 }
-.tutorial-built {
-  min-height: 54px;
-  padding: 12px;
-  border: 1px dashed #8baaba;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  font-size: 1.25rem;
-  text-align: center;
-}
-.tutorial-tiles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.tutorial-tiles .choice {
-  flex: 0 0 auto;
-  min-width: 90px;
-}
 .tutorial-name-row {
   display: flex;
   flex-wrap: wrap;
@@ -1432,6 +1413,15 @@ header {
 .scene-symbol { font-size: 36px; }
 .choice.correct::after { content: " ✓"; }
 .choice.wrong::after { content: " ✗"; }
+
+/* Construction uses direct targets; village narrative remains on other surfaces. */
+.construction-active #addressTarget,
+.construction-active #participants,
+.construction-active .speaker-note,
+.construction-active #challengeScene,
+.construction-active #lessonExpression { display: none; }
+.construction-practice { margin-block: 1rem; }
+.construction-practice .word-tiles { margin-block: 1rem; }
 
     </style>
   </head>
@@ -1953,7 +1943,7 @@ header {
               ><button class="ghost" id="clearTiles" type="button" disabled>
                 Clear</button
               ><button class="primary" id="checkBuild" type="button" disabled>
-                Check sentence ✓
+                Check sentence
               </button>
             </div>
           </div>
@@ -2123,10 +2113,16 @@ const LibraryEngine = (() => {
       [...r.encounteredSourceIds, context.contentId].filter(Boolean),
     );
     if (context.introduce) {
+      if (!r.introducedFormIds.includes(ref.formId)) {
+        const assigned = Object.values(s.plans).flatMap(plan => Object.entries(plan.locationAssignments)).find(([,ids]) => ids.includes(e.lemmaId))?.[0];
+        const location = e.vocabularyClass === "universal" ? "universal" : assigned || (places.includes(context.location) ? context.location : "unrecorded");
+        (r.formUnlocks ||= {})[ref.formId] = {day:context.day, source:context.source === "challenge-pass" ? "challenge-pass" : "study", location};
+        if (!r.introducedFormIds.length) r.unlock = {...r.formUnlocks[ref.formId]};
+      }
       r.introducedFormIds = unique([...r.introducedFormIds, ref.formId]);
-      r.formallyIntroducedDay ??= context.day;
+      if (context.source !== "challenge-pass") r.formallyIntroducedDay ??= context.day;
     }
-    if (context.day > 0) {
+    if (context.day > 0 && context.source !== "challenge-pass") {
       const ledger = (s.dayExposure[context.day] ||= {
         incidentalStoryLemmas: [],
         reviewedExistingLemmas: [],
@@ -2500,11 +2496,134 @@ const LibraryEngine = (() => {
         .map((e) => e.lemmaId),
     };
   }
+  function lessonPool(p, data, narrative, day, place) {
+    const plan = ensurePlan(
+        p,
+        data,
+        day,
+      ),
+      assigned = plan.locationAssignments[place] || [];
+    const lexical = assigned.map((id) => "library-card:" + id);
+    const universals = data.entries
+      .filter(
+        (e) =>
+          day !== 14 &&
+          e.vocabularyClass === "universal" &&
+          e.introduction.day <= day &&
+          !p.library.acquired[
+            e.lemmaId
+          ]?.introducedFormIds.includes(e.forms[0].formId),
+      )
+      .map((e) => "library-card:" + e.lemmaId);
+    const taught = new Set([
+      ...Object.entries(p.library.acquired)
+        .filter(([, record]) => record.introducedFormIds.length)
+        .map(([id]) => id),
+      ...assigned,
+      ...universals.flatMap((id) =>
+        (data.sourceMappings[id] || []).map((r) => r.lemmaId),
+      ),
+    ]);
+    // Finite forms, plurals, adjective variants and whole case-governed chunks
+    // receive individual study cards. Incidental sentences never introduce them.
+    // A current-day workshop may follow this lexical phase; generation still waits
+    // for its actual unlock. Missing earlier workshops are not silently granted.
+    const forms =
+      day === 14
+        ? []
+        : data.entries.flatMap((e) =>
+            taught.has(e.lemmaId)
+              ? e.forms
+                  .filter(
+                    (f) =>
+                      f.formId !== e.forms[0].formId &&
+                      f.composition.enabled &&
+                      formAllowed(e, f, day) &&
+                      f.prerequisiteGrammarIds.every(
+                        (id) =>
+                          p.library.grammar[id] ||
+                          id === "grammar-day-" + day,
+                      ) &&
+                      !p.library.acquired[
+                        e.lemmaId
+                      ]?.introducedFormIds.includes(f.formId),
+                  )
+                  .map((f) => "library-form:" + f.formId)
+              : [],
+          );
+    const review = dueForms(p, data)
+      .filter(
+        ({ entry, form }) =>
+          formAllowed(entry, form, day) &&
+          (day !== 14 ||
+            p.library.acquired[
+              entry.lemmaId
+            ]?.introducedFormIds.includes(form.formId)),
+      )
+      .slice(0, 2)
+      .map(({ form }) => "library-form:" + form.formId);
+    // Use a location's active expression, otherwise repeat this day's active
+    // greeting. Pending translations remain unavailable. Expressions do not
+    // consume lexical quotas, even when repeated at multiple locations.
+    const greeting =
+      narrative.expressions.find(
+        (p) => p.day === day && p.location === place && p.active,
+      ) ||
+      narrative.expressions.find(
+        (p) => p.day === day && p.active,
+      );
+    const opening = greeting ? [...new Set([greeting.id, greeting.responsePhraseId].filter(Boolean))] : [];
+    // Move former tutorial courtesies into contextual Day 2–3 teaching, without affecting lexical quotas.
+    const deferred =
+      day === 2 && place === "business"
+        ? ["g-thanks"]
+        : day === 3 && place === "residential"
+          ? ["g-bye"]
+          : [];
+    const pool = [
+      ...new Set([
+        ...opening,
+        ...deferred,
+        ...lexical,
+        ...universals,
+        ...forms,
+        ...review,
+      ]),
+    ].filter((id) => cardAllowed(data, id, day));
+    return pool;
+  }
+  // Completion unlocks the same finite lesson material, without practice events.
+  function completeDayMaterial(p, data, narrative, day) {
+    ensurePlan(p, data, day);
+    for (let d = 1; d <= day; d++) unlock(p, d, "challenge-pass");
+    const newlyUnlocked = new Set(), locationItems = {};
+    for (const location of places) {
+      const pool = lessonPool(p, data, narrative, day, location);
+      locationItems[location] = pool.length;
+      for (const id of pool) {
+        if (data.phrases.some(f => f.id === id)) {
+          expose(p, data, id, {day, location, source:"challenge-pass"});
+          continue;
+        }
+        for (const ref of data.sourceMappings[id] || []) {
+          const e = data.entries.find(e => e.lemmaId === ref.lemmaId);
+          if (p.library.acquired[e.lemmaId]?.introducedFormIds.includes(ref.formId) || day === 14) continue;
+          const planned = Object.entries(p.library.plans[day].locationAssignments).find(([, ids]) => ids.includes(e.lemmaId))?.[0];
+          const teachingLocation = e.vocabularyClass === "universal" ? "universal" : planned || e.introduction.district;
+          const r = encounter(p, data, ref, {day, location:teachingLocation, source:"challenge-pass", introduce:true});
+          if (r) newlyUnlocked.add(e.lemmaId);
+        }
+      }
+    }
+    return {newlyUnlocked:[...newlyUnlocked], locationItems};
+  }
   function unlock(p, day, source) {
     if (day >= 1 && day <= 14)
       p.library.grammar["grammar-day-" + day] ||= { day, source };
   }
   return {
+    completeDayMaterial,
+    lessonPool,
     formAllowed,
     schedule,
     allowedOnDay,
@@ -3372,7 +3491,7 @@ const SentenceEngine = (() => {
 })();
 
 /* Save factory, XP, assessment outcomes and access rules. No DOM or storage. */
-function createProgression({ curriculum, zoneKeys }, libraryEngine) {
+function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA }, libraryEngine) {
   const SAVE_VERSION = 7;
   const XP_STEP = 200;
   const XP_FLOORS = {
@@ -3436,6 +3555,15 @@ function createProgression({ curriculum, zoneKeys }, libraryEngine) {
       attempts: previous.attempts + 1,
       passed: previous.passed || passed,
     };
+    let locationBonus = 0, newlyUnlocked = [], completedLocations = [];
+    if (firstPass && LIBRARY_DATA) {
+      const material = libraryEngine.completeDayMaterial(p, LIBRARY_DATA, NARRATIVE_DATA, day);
+      newlyUnlocked = material.newlyUnlocked;
+      for (const loc of zoneKeys) if (!p.complete[`${day}-${loc}`]) {
+        completedLocations.push(loc);
+        locationBonus += completeLessonOnce(p, `${day}-${loc}`, "standard", true, material.locationItems[loc]);
+      }
+    }
     let base = 0,
       topUp = 0;
     if (firstPass && day <= 7) {
@@ -3445,7 +3573,7 @@ function createProgression({ curriculum, zoneKeys }, libraryEngine) {
       p.xp += topUp;
     }
     if (day === 1 && passed) p.homeGranted = true;
-    return { passed, firstPass, base, topUp };
+    return { passed, firstPass, base, topUp, locationBonus, newlyUnlocked, completedLocations };
   }
   function getChallengeSpec(day) {
     return {
@@ -3828,9 +3956,9 @@ const QuestionEngine = (() => {
   function getAnswerTiles(answerPs, duds) {
     const answer = normalizePashtoResponse(answerPs).split(" ").filter(Boolean);
     const extras = (duds || []).map((x) => String(x).trim()).filter(Boolean);
-    if (!answer.length) throw Error("Empty dialogue answer");
+    if (!answer.length) throw Error("Empty construction answer");
     if (extras.length < 2)
-      throw Error("Week 2 tile puzzle requires at least two dud tiles");
+      throw Error("Distractor construction requires at least two dud tiles");
     if (
       extras.some((x) => x.includes(" ") || answer.includes(x)) ||
       new Set(extras).size !== extras.length
@@ -3858,11 +3986,12 @@ const QuestionEngine = (() => {
       .map((word, index) => ({ word, index }));
   }
   function questionUsesDuds(q, day) {
-    return (
-      (q?.kind === "dialogue" && q.duds?.length >= 2) ||
-      (q?.kind === "construct" && day >= 8 && Array.isArray(q.duds))
-    );
+    // The explicit variant licenses early-day duds. Existing frozen attempts
+    // retain their original day gate; unused metadata never adds new tiles.
+    return ["construct", "dialogue"].includes(q?.kind) && q.tileVariant !== "exact" && q.duds?.length >= 2 &&
+      (q.tileVariant === "distractors" || q.kind === "dialogue" || day >= 8);
   }
+
   function isDialogueAnswerCorrect(q, value) {
     const valid = [q.answerPs, ...(q.acceptedPs || [])];
     return valid.some(
@@ -4020,100 +4149,7 @@ function createLearning({ state, content, progression }) {
     });
   }
   function libraryLessonPool(day, place) {
-    const plan = LibraryEngine.ensurePlan(
-        state.progress,
-        content.LIBRARY_DATA,
-        day,
-      ),
-      assigned = plan.locationAssignments[place] || [];
-    const lexical = assigned.map((id) => "library-card:" + id);
-    const universals = content.LIBRARY_DATA.entries
-      .filter(
-        (e) =>
-          day !== 14 &&
-          e.vocabularyClass === "universal" &&
-          e.introduction.day <= day &&
-          !state.progress.library.acquired[
-            e.lemmaId
-          ]?.introducedFormIds.includes(e.forms[0].formId),
-      )
-      .map((e) => "library-card:" + e.lemmaId);
-    const taught = new Set([
-      ...Object.entries(state.progress.library.acquired)
-        .filter(([, record]) => record.introducedFormIds.length)
-        .map(([id]) => id),
-      ...assigned,
-      ...universals.flatMap((id) =>
-        (content.LIBRARY_DATA.sourceMappings[id] || []).map((r) => r.lemmaId),
-      ),
-    ]);
-    // Finite forms, plurals, adjective variants and whole case-governed chunks
-    // receive individual study cards. Incidental sentences never introduce them.
-    // A current-day workshop may follow this lexical phase; generation still waits
-    // for its actual unlock. Missing earlier workshops are not silently granted.
-    const forms =
-      day === 14
-        ? []
-        : content.LIBRARY_DATA.entries.flatMap((e) =>
-            taught.has(e.lemmaId)
-              ? e.forms
-                  .filter(
-                    (f) =>
-                      f.formId !== e.forms[0].formId &&
-                      f.composition.enabled &&
-                      LibraryEngine.formAllowed(e, f, day) &&
-                      f.prerequisiteGrammarIds.every(
-                        (id) =>
-                          state.progress.library.grammar[id] ||
-                          id === "grammar-day-" + day,
-                      ) &&
-                      !state.progress.library.acquired[
-                        e.lemmaId
-                      ]?.introducedFormIds.includes(f.formId),
-                  )
-                  .map((f) => "library-form:" + f.formId)
-              : [],
-          );
-    const review = LibraryEngine.dueForms(state.progress, content.LIBRARY_DATA)
-      .filter(
-        ({ entry, form }) =>
-          LibraryEngine.formAllowed(entry, form, day) &&
-          (day !== 14 ||
-            state.progress.library.acquired[
-              entry.lemmaId
-            ]?.introducedFormIds.includes(form.formId)),
-      )
-      .slice(0, 2)
-      .map(({ form }) => "library-form:" + form.formId);
-    // Use a location's active expression, otherwise repeat this day's active
-    // greeting. Pending translations remain unavailable. Expressions do not
-    // consume lexical quotas, even when repeated at multiple locations.
-    const greeting =
-      content.NARRATIVE_DATA.expressions.find(
-        (p) => p.day === day && p.location === place && p.active,
-      ) ||
-      content.NARRATIVE_DATA.expressions.find(
-        (p) => p.day === day && p.active,
-      );
-    const opening = greeting ? [...new Set([greeting.id, greeting.responsePhraseId].filter(Boolean))] : [];
-    // Move former tutorial courtesies into contextual Day 2–3 teaching, without affecting lexical quotas.
-    const deferred =
-      day === 2 && place === "business"
-        ? ["g-thanks"]
-        : day === 3 && place === "residential"
-          ? ["g-bye"]
-          : [];
-    const pool = [
-      ...new Set([
-        ...opening,
-        ...deferred,
-        ...lexical,
-        ...universals,
-        ...forms,
-        ...review,
-      ]),
-    ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day));
-    return pool;
+    return LibraryEngine.lessonPool(state.progress, content.LIBRARY_DATA, content.NARRATIVE_DATA, day, place);
   }
   function availableSentences(day = state.session?.loop || state.day) {
     return SentenceEngine.available(
@@ -4578,6 +4614,7 @@ function createQuestions({ state, content, progression }) {
       content.LIBRARY_DATA.phrases.find((p) => p.id === opening?.id) ||
       content.LIBRARY_DATA.phrases.find((p) => p.day === day);
     let wordIndex = 0,
+      constructionIndex = 0,
       deficit = 0;
     for (let i = 0; i < blueprint.count; i++) {
       const wanted = blueprint.kinds[i];
@@ -4680,25 +4717,7 @@ function createQuestions({ state, content, progression }) {
         if (q.unstudied) q.direction = "ps-en";
       }
       if (["construct", "dialogue"].includes(q.kind)) {
-        const answer = q.answerPs || content.wordById[q.id].ps;
-        const tokens = new Set(
-          QuestionEngine.normalizeAnswer(QuestionEngine.normalizePashtoResponse(answer)).split(" "),
-        );
-        const studiedTokens = content.LIBRARY_DATA.entries.flatMap((e) =>
-          e.forms
-            .filter(
-              (f) =>
-                state.progress.library.acquired[
-                  e.lemmaId
-                ]?.introducedFormIds.includes(f.formId) &&
-                !f.pashto.includes(" "),
-            )
-            .map((f) => f.pashto),
-        );
-        for (const accepted of q.acceptedPs || [])
-          for (const token of QuestionEngine.normalizePashtoResponse(accepted).split(" ")) tokens.add(QuestionEngine.normalizeAnswer(token));
-        const duds = QuestionEngine.shuffle([...new Set(studiedTokens)].filter(t => !tokens.has(QuestionEngine.normalizeAnswer(t))), random).slice(0, 2);
-        if (duds.length === 2) q.duds = duds;
+        Object.assign(q, constructionQuestion(content.wordById[q.id], {question:q, withDuds:constructionIndex++ % 2 === 1, random}));
         q.tileSequence = QuestionEngine.shuffle(
           QuestionEngine.buildTiles(content.wordById[q.id], q, day).map(
             (t) => t.index,
@@ -4733,6 +4752,29 @@ function createQuestions({ state, content, progression }) {
     };
     return clone(out);
   }
+  // Display-only tiles: introduced forms first, then Day-1 base backup.
+  // The variant is intentional, independent of the size of the vocabulary pool.
+  function constructionQuestion(card, {question = {}, withDuds = false, random = Math.random} = {}) {
+    const q = {...question, id:card.id, kind:question.kind || "construct", direction:"en-ps"};
+    delete q.duds;
+    q.tileVariant="exact";
+    if (!withDuds) return q;
+    const key = t => QuestionEngine.normalizeAnswer(QuestionEngine.normalizePashtoResponse(t));
+    const excluded = new Set([card.ps, q.answerPs, ...(q.acceptedPs || [])].filter(Boolean).flatMap(a => key(a).split(" ")));
+    const day=state.session?.loop || state.day;
+    const introduced = content.LIBRARY_DATA.entries.flatMap(e => e.forms.filter(f =>
+      LibraryEngine.formAllowed(e,f,day) && state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId)).map(f => f.pashto));
+    const backup = content.LIBRARY_DATA.entries.filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1).map(e => e.forms[0].pashto);
+    const duds=[];
+    for (const group of [introduced, backup]) for (const token of QuestionEngine.shuffle(group,random)) {
+      if (duds.length===2) break;
+      const k=key(token);
+      if (!k || k.includes(" ") || excluded.has(k)) continue;
+      duds.push(token);excluded.add(k);
+    }
+    if (duds.length===2) {q.duds=duds;q.tileVariant="distractors";}
+    return q;
+  }
   function originsForChoices(
     w,
     values,
@@ -4749,6 +4791,7 @@ function createQuestions({ state, content, progression }) {
   }
   return {
     selectChallenge,
+    constructionQuestion,
     explanation: (q, w) => QuestionEngine.explanation(q, w),
     distractors: (w) => answerChoices(w, "ps-en"),
     buildTiles: (w, q = state.session?.questions?.[state.session.index]) =>
@@ -4796,6 +4839,9 @@ function createSaveValidator({ content, progression }) {
           ![r.encounteredFormIds,r.introducedFormIds,r.practisedFormIds].every(strings) ||
           [...r.introducedFormIds,...r.practisedFormIds,...Object.keys(r.forms)].some(id=>!r.encounteredFormIds.includes(id))) return false;
       if (r.formallyIntroducedDay!==undefined && (!integer(r.formallyIntroducedDay)||r.formallyIntroducedDay<1||r.formallyIntroducedDay>14)) return false;
+      const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass"].includes(v.source) && typeof v.location==="string";
+      if (r.unlock!==undefined && !origin(r.unlock)) return false;
+      if (r.formUnlocks!==undefined && (!object(r.formUnlocks) || Object.entries(r.formUnlocks).some(([id,v]) => !r.introducedFormIds.includes(id) || !origin(v)))) return false;
       if (r.masteredAt!==undefined && !time(r.masteredAt)) return false;
     }
     for (const [day,r] of Object.entries(l.dayExposure)) {
@@ -4869,6 +4915,7 @@ function createSaveValidator({ content, progression }) {
       if (["choice","address"].includes(q.kind) && typeof q.correct!=="string") return false;
       if (q.kind==="choice" && (typeof q.prompt!=="string" || !Array.isArray(q.options) || q.options.some(v=>typeof v!=="string") || !q.options.includes(q.correct))) return false;
       if (q.kind==="address" && (!Array.isArray(q.addressOptions)||q.addressOptions.some(a=>!Array.isArray(a)||a.length!==2||a.some(v=>typeof v!=="string"))||!q.addressOptions.some(a=>a[1]===q.correct))) return false;
+      if (q.tileVariant!==undefined && !["exact","distractors"].includes(q.tileVariant)) return false;
       if (q.duds!==undefined && (!Array.isArray(q.duds)||q.duds.some(v=>typeof v!=="string"))) return false;
       if (["construct","dialogue"].includes(q.kind)) {
         try { if (!validOrder(q.tileSequence,QuestionEngine.buildTiles(w,q,day).length)) return false; } catch { return false; }
@@ -5472,6 +5519,86 @@ function createAudio({
   return { speak, stopAudio, pashtoVoice };
 }
 
+/* One indexed-tile interaction and success feedback for every construction surface. */
+function createConstructionUI({ ui, audio }) {
+  const instructions = hasDuds => hasDuds
+    ? "Choose only the tiles you need. Leave the distractor tiles unused."
+    : "Use every tile once. Put the Pashto words in order.";
+  const ready = (tiles, built) => tiles.some(t => t.dud) ? built.length > 0 : built.length === tiles.length;
+  function draw({area, bank, undo, clear, check}, model, tiles, order, change) {
+    area.replaceChildren();bank.replaceChildren();
+    if (!model.built.length) area.append(ui.node("span", "Tap the Pashto tiles below…", "build-placeholder"));
+    for (const [pos, index] of model.built.entries()) {
+      const b = ui.button(tiles[index].word, () => {
+        if (model.locked) return;
+        model.built.splice(pos, 1);change();
+      });
+      b.className="built-token";b.lang="ps";b.dir="rtl";
+      b.disabled=model.locked;
+      b.setAttribute("aria-label", `Remove word ${tiles[index].word}`);
+      area.append(b);
+    }
+    for (const index of order) {
+      const b = ui.button(tiles[index].word, () => {
+        if (model.locked || model.built.includes(index)) return;
+        model.built.push(index);change();
+      });
+      b.className="word-tile";b.lang="ps";b.dir="rtl";
+      b.dataset.tileIndex=String(index);
+      b.disabled=model.locked || model.built.includes(index);
+      bank.append(b);
+    }
+    undo.disabled=clear.disabled=model.locked || !model.built.length;
+    check.disabled=model.locked || !ready(tiles, model.built);
+  }
+  function globalControls() {
+    return {area:ui.$("builtSentence"),bank:ui.$("wordTiles"),undo:ui.$("undoTile"),clear:ui.$("clearTiles"),check:ui.$("checkBuild")};
+  }
+  function present(card, q, day) {
+    ui.$("lessonScreen").classList.add("construction-active");
+    ui.clearSentenceScene();
+    ui.$("quizType").textContent="BUILD A SENTENCE";
+    ui.$("quizPashto").textContent=q.answerEnglish || card.en;
+    ui.$("quizPashto").lang="en";ui.$("quizPashto").dir="ltr";
+    ui.$("quizPashto").classList.add("english-question");
+    ui.$("quizRoman").textContent="";
+    ui.$("quizPrompt").textContent="Construct this meaning in Pashto.";
+    ui.$("quizPanel").querySelector(".quizword h3").textContent=instructions(QuestionEngine.questionUsesDuds(q,day));
+    ui.$("quizSpeak").classList.add("hidden");
+    ui.$("constructionPanel").classList.remove("hidden");
+  }
+  function feedback(root, card, q, correct, reward = "") {
+    root.replaceChildren();
+    root.append(ui.node("strong", (correct ? "✓ Correct" : "✗ Not quite") + (reward ? " · " + reward : ""), correct ? "good" : "bad"));
+    const ps=ui.node("p", q.answerPs || card.ps, "library-pashto");ps.lang="ps";ps.dir="rtl";
+    root.append(ps, ui.node("p", q.answerEnglish || card.en), ui.node("p", QuestionEngine.explanation({kind:"construct"}, card)));
+    if (correct) root.append(ui.button("Hear the correct sentence", () => audio.speak(card.id)));
+  }
+  // Standalone instances share rendering/feedback but keep their own answer locks.
+  function mount(root, card, q, {onAnswer = () => {}, retry = false, tiles: suppliedTiles} = {}) {
+    const model={built:[],locked:false}, tiles=suppliedTiles || QuestionEngine.buildTiles(card,q);
+    const order=QuestionEngine.shuffle(tiles.map(t => t.index));
+    if (order.length>1 && order.every((n,i)=>n===i)) [order[0],order[1]]=[order[1],order[0]];
+    root.classList.add("construction-practice");
+    root.append(ui.node("h4", card.en), ui.node("p", instructions(tiles.some(t=>t.dud))));
+    const area=ui.node("div",undefined,"built-sentence"),bank=ui.node("div",undefined,"word-tiles"), row=ui.node("div",undefined,"buttons build-actions"), result=ui.node("div",undefined,"feedback");
+    for (const el of [area,bank]) {el.lang="ps";el.dir="rtl";}
+    area.setAttribute("aria-live","polite");result.setAttribute("role","status");
+    const undo=ui.button("↶ Undo",()=>{model.built.pop();render();}),clear=ui.button("Clear",()=>{model.built=[];render();}),check=ui.button("Check sentence",()=>{
+      if (model.locked || !ready(tiles,model.built)) return;
+      const value=model.built.map(i=>tiles[i].word).join(" "), correct=QuestionEngine.evaluate(q,card,value);
+      model.locked=correct || !retry;
+      const reward=onAnswer(correct,value);
+      render();area.classList.add(correct?"build-success":"build-error");
+      feedback(result,card,q,correct,reward);
+    });
+    check.className="primary";
+    const render=()=>{area.classList.remove("build-success","build-error");draw({area,bank,undo,clear,check},model,tiles,order,render);};
+    row.append(undo,clear,check);root.append(area,bank,row,result);render();
+  }
+  return {instructions, ready, draw, globalControls, present, feedback, mount};
+}
+
 /* Shared choice feedback; intentional retry/score policies stay with consumers. */
 // Store values separately from decorated/translated button labels.
   function showAnswerFeedback(root, expected, submitted, { lock = true, accepts = value => value === expected } = {}) {
@@ -5942,6 +6069,7 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
   }
 
   function renderTutorialStep() {
+    ui.$("teachSpeak").classList.remove("hidden");
     const n = state.session.cardIndex,
       c = content.tutorialCards[n],
       w = content.wordById[c.id];
@@ -6022,81 +6150,16 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
       }
       area.append(choices);
     } else if (c.kind === "tiles") {
-      const answer = [];
-      const built = document.createElement("div");
-      built.id = "tutorialBuilt";
-      built.className = "tutorial-built";
-      built.lang = "ps";
-      built.dir = "rtl";
-      const tiles = document.createElement("div");
-      tiles.className = "tutorial-tiles";
-      tiles.dir = "rtl";
-      tiles.lang = "ps";
-      const row = document.createElement("div");
-      row.className = "buttons";
-      const make = (txt, fn, klass) => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.textContent = txt;
-        b.className = klass;
-        b.addEventListener("click", fn);
-        return b;
-      };
-      const undo = make(
-        "Undo",
-        () => {
-          answer.pop();
-          render();
-        },
-        "secondary",
-      );
-      const clear = make(
-        "Clear",
-        () => {
-          answer.length = 0;
-          render();
-        },
-        "ghost",
-      );
-      const check = make(
-        "Check sentence",
-        () => {
-          if (
-            QuestionEngine.evaluate({ kind: "construct" }, w, answer.join(" "))
-          )
-            done("✓ " + w.ps + " means " + w.en);
-          else {
-            tutorialAnswer(false);
-            feedback.textContent =
-              "Wrong order. Use Undo or Clear, then try again.";
-          }
-        },
-        "primary",
-      );
-      const render = () => {
-        built.textContent = answer.length
-          ? answer.join(" ")
-          : "Tap the words to begin";
-        for (const tile of tiles.children)
-          tile.disabled = answer.includes(tile.dataset.word);
-        undo.disabled = clear.disabled = answer.length === 0;
-        check.disabled = answer.length !== 2;
-      };
-      for (const word of w.ps.split(" ").reverse()) {
-        const tile = make(
-          word,
-          () => {
-            answer.push(word);
-            render();
-          },
-          "choice tutorial-tile",
-        );
-        tile.dataset.word = word;
-        tiles.append(tile);
-      }
-      row.append(undo, clear, check);
-      area.append(built, tiles, row);
-      render();
+      ui.$("lessonScreen").classList.add("construction-active");
+      ui.$("teachSpeak").classList.add("hidden");
+      for (const id of ["teachPashto", "teachRoman", "teachEnglish", "teachNote"]) ui.$(id).textContent="";
+      p.remove();
+      ui.construction.mount(area,w,{kind:"construct"},{retry:true,
+        tiles:w.ps.split(" ").map((word,index)=>({word,index})),
+        onAnswer(correct) {
+          if (correct) done();
+          else tutorialAnswer(false);
+        }});
     } else if (c.kind === "gender") {
       const choices = document.createElement("div");
       choices.className = "choices tutorial-choices";
@@ -6288,6 +6351,7 @@ function createLessons({
       profileName: state.progress.playerProfile?.name || "",
       initialLevel: progression.characterStatus(state.progress).level,
       built: [],
+      constructionCount: 0,
       locked: false,
     };
     ui.$("lessonScreen").dataset.week = loop >= 8 ? "2" : "1";
@@ -6322,6 +6386,7 @@ function createLessons({
     if (!state.session) return;
     audio.stopAudio();
     ui.clearSentenceScene();
+    ui.$("lessonScreen").classList.remove("construction-active");
     queueMicrotask(ui.readableQuizSurfaces);
     for (const id of ["teachPanel", "grammarPanel", "quizPanel"])
       ui.$(id).classList.add("hidden");
@@ -6369,6 +6434,7 @@ function createLessons({
     const w = learning.surface(id, "study");
     learning.libraryExpose(id, s.mode === "review" ? "review" : "lesson");
     storage.save();
+    ui.$("teachSpeak").classList.remove("hidden");
     ui.$("teachPanel").classList.remove("hidden");
     ui.$("lessonStages").classList.remove("hidden");
     ui.$("teachCount").textContent =
@@ -6445,29 +6511,8 @@ function createLessons({
   function renderBuild() {
     const s = state.session,
       w = content.wordById[s.activeItem.id],
-      tiles = QuestionEngine.buildTiles(w, { kind: "construct" }, s.loop);
-    ui.$("builtSentence").replaceChildren();
-    ui.$("wordTiles").replaceChildren();
-    for (const i of s.built) {
-      const b = ui.button(tiles[i].word, () => {});
-      b.disabled = true;
-      ui.$("builtSentence").append(b);
-    }
-    for (const index of s.tileOrder) {
-      const tile = tiles[index];
-      const b = ui.button(tile.word, () => {
-        if (s.locked) return;
-        s.built.push(tile.index);
-        renderBuild();
-      });
-      b.lang = "ps";
-      b.dir = "rtl";
-      b.disabled = s.locked || s.built.includes(tile.index);
-      ui.$("wordTiles").append(b);
-    }
-    ui.$("checkBuild").disabled = s.locked || s.built.length !== tiles.length;
-    ui.$("undoTile").disabled = s.locked || !s.built.length;
-    ui.$("clearTiles").disabled = s.locked || !s.built.length;
+      tiles = QuestionEngine.buildTiles(w, s.activeItem, s.loop);
+    ui.construction.draw(ui.construction.globalControls(), s, tiles, s.tileOrder, renderBuild);
   }
   function showQuestion() {
     const s = state.session;
@@ -6480,12 +6525,17 @@ function createLessons({
     ui.$("teachPanel").classList.add("hidden");
     ui.$("grammarPanel").classList.add("hidden");
     ui.$("quizPanel").classList.remove("hidden");
+    ui.$("lessonScreen").classList.remove("construction-active");
     s.activeItem = s.queue[0];
+    if (s.activeItem.kind === "construct") {
+      delete s.activeItem.duds;
+      Object.assign(s.activeItem, questions.constructionQuestion(content.wordById[s.activeItem.id], {withDuds:s.constructionCount++ % 2 === 1}));
+    }
     s.locked = false;
     s.built = [];
     const size = QuestionEngine.buildTiles(
       content.wordById[s.activeItem.id],
-      { kind: "construct" },
+      s.activeItem,
       s.loop,
     ).length;
     s.tileOrder = QuestionEngine.shuffle(
@@ -6522,7 +6572,7 @@ function createLessons({
     ui.setDialogueSpeaker(teacher.name);
     ui.$("guideMessage").textContent = `${teacher.name}: “What does this mean? Choose your answer and we will check it together.”`;
     ui.$("addressTarget").textContent = `${teacher.name} → Player · YOUR ANSWER → ${teacher.name}`;
-    if (build) ui.sentenceContext(w, teacher.name, ui.$("quizPanel"), "construct");
+    if (build) ui.construction.present(w, s.activeItem, s.loop);
     ui.$("builtSentence").classList.remove("build-success", "build-error");
     ui.$("choices").replaceChildren();
     ui.$("constructionPanel").classList.toggle("hidden", !build);
@@ -6546,8 +6596,10 @@ function createLessons({
     storage.save();
     ui.hud();
     ui.showAnswerFeedback(ui.$("choices"), w.en, value, {accepts:v => QuestionEngine.evaluate({kind:"word", direction:"ps-en"}, w, v)});
-    if (state.session.activeItem.kind === "construct")
+    if (state.session.activeItem.kind === "construct") {
+      renderBuild();
       ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
+    }
     else if (w.generated)
       ui.sentenceContext(w, content.teacherFor(state.session.loop, state.session.loc, state.session.mode).name, ui.$("quizPanel"), "study");
     for (const b of ui.$("wordTiles").children) b.disabled = true;
@@ -6556,6 +6608,7 @@ function createLessons({
     ui.$("clearTiles").disabled = true;
     ui.$("quizFeedback").textContent =
       `${correct ? "✓ Correct" : "Not yet — try again shortly"} · +${gain} XP · ${w.ps} (${w.roman}) — ${w.en}. ${QuestionEngine.explanation({kind:state.session.activeItem.kind || "word"}, w)}`;
+    if (state.session.activeItem.kind === "construct") ui.construction.feedback(ui.$("quizFeedback"), w, state.session.activeItem, correct, `+${gain} XP`);
     ui.$("quizNext").disabled = false;
     ui.$("quizNext").textContent = state.session.queue.length
       ? "Next →"
@@ -6571,8 +6624,8 @@ function createLessons({
     )
       return;
     const w = content.wordById[s.activeItem.id],
-      tiles = QuestionEngine.buildTiles(w, { kind: "construct" }, s.loop);
-    if (s.built.length === tiles.length)
+      tiles = QuestionEngine.buildTiles(w, s.activeItem, s.loop);
+    if (ui.construction.ready(tiles, s.built))
       answer(s.built.map((i) => tiles[i].word).join(" "));
   }
   function undoTile() {
@@ -6587,6 +6640,8 @@ function createLessons({
   }
   function finish() {
     if (!state.session) return;
+    audio.stopAudio();
+    ui.$("passUnlockNotice")?.remove();
     const s = state.session;
     const passedRequired = s.required.every((id) => s.passed.has(id));
     if (s.mode === "tutorial") {
@@ -6697,6 +6752,7 @@ function createChallengeUI({
   audio,
   storage,
   onWorld,
+  libraryReview,
 }) {
   function showChallengeScene(day) {
     let panel = ui.$("challengeScene");
@@ -6868,7 +6924,7 @@ function createChallengeUI({
     const categories = {
       word: "vocabulary/phrases",
       construct: "construction",
-      dialogue: "dialogue",
+      dialogue: "construction",
       sentence: "translation",
     };
     const counts = items.reduce((out, question) => {
@@ -6899,54 +6955,7 @@ function createChallengeUI({
     const q = state.session.questions[state.session.index];
     if (!q || !["construct", "dialogue"].includes(q.kind)) return;
     const target = questions.buildTiles(content.wordById[q.id] || null, q);
-    const area = ui.$("builtSentence"),
-      bank = ui.$("wordTiles");
-    area.replaceChildren();
-    bank.replaceChildren();
-    if (!state.session.built.length) {
-      const hint = document.createElement("span");
-      hint.className = "build-placeholder";
-      hint.textContent = "Tap the Pashto tiles below…";
-      area.append(hint);
-    }
-    state.session.built.forEach((idx, pos) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "built-token";
-      b.lang = "ps";
-      b.textContent = target[idx].word;
-      b.disabled = state.session.locked;
-      b.setAttribute("aria-label", `Remove word ${target[idx].word}`);
-      b.addEventListener("click", () => {
-        state.session.built.splice(pos, 1);
-        renderBuiltSentence();
-      });
-      area.append(b);
-    });
-    const tileSequence = state.session.tileSequence || [];
-    for (const index of tileSequence) {
-      const used = state.session.built.includes(index),
-        b = document.createElement("button");
-      b.type = "button";
-      b.className = "word-tile";
-      b.lang = "ps";
-      b.textContent = target[index].word;
-      b.disabled = used || state.session.locked;
-      b.addEventListener("click", () => {
-        state.session.built.push(index);
-        renderBuiltSentence();
-      });
-      bank.append(b);
-    }
-    ui.$("undoTile").disabled =
-      state.session.locked || !state.session.built.length;
-    ui.$("clearTiles").disabled =
-      state.session.locked || !state.session.built.length;
-    ui.$("checkBuild").disabled =
-      state.session.locked ||
-      (questions.questionUsesDuds(q)
-        ? state.session.built.length === 0
-        : state.session.built.length !== target.length);
+    ui.construction.draw(ui.construction.globalControls(), state.session, target, state.session.tileSequence || [], renderBuiltSentence);
     storage.save();
   }
   function showChallengeQuestion(resuming = false) {
@@ -6954,16 +6963,7 @@ function createChallengeUI({
     ui.clearSentenceScene();
     renderQuestion(resuming);
     const q = state.session?.questions[state.session.index];
-    if (q && ["construct", "dialogue"].includes(q.kind)) {
-      const w = content.wordById[q.id];
-      const host = q.speaker || content.teacherFor(state.session.loop, null, "challenge").name;
-      ui.sentenceContext(w, host, ui.$("quizPanel"), "construct", q);
-      if (q.kind === "dialogue") {
-        ui.$("guideMessage").textContent = `${host}: “${q.promptEnglish}” ${q.sceneEnglish || ""}`;
-        ui.$("addressTarget").textContent = `${host} → Player · YOUR RESPONSE → ${q.recipient}`;
-      }
-    }
-    if (q?.phrasePromptId) {
+    if (q?.phrasePromptId && !["construct", "dialogue"].includes(q.kind)) {
       const prompt = content.wordById[q.phrasePromptId];
       const host = q.speaker || content.teacherFor(state.session.loop, null, "challenge").name;
       ui.$("guideMessage").textContent = `${host}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). Recognise the conventional reply shown below.`;
@@ -6973,6 +6973,7 @@ function createChallengeUI({
   }
   function renderQuestion(resuming) {
     queueMicrotask(ui.readableQuizSurfaces);
+    ui.$("lessonScreen").classList.remove("construction-active");
     audio.stopAudio();
     ui.$("quizPanel").classList.remove("hidden");
     ui.$("constructionPanel").classList.add("hidden");
@@ -6980,8 +6981,6 @@ function createChallengeUI({
     const q = state.session.questions[state.session.index];
     if (q) {
       if (q.generated) learning.surface(q.id, "assessment-target");
-      if (q.promptGenerated)
-        learning.surface(q.promptGenerated.id, "dialogue-prompt");
       if (q.kind === "word") learning.surface(q.id, "assessment-word");
       if (q.choiceIds)
         for (const id of q.choiceIds) learning.surface(id, "assessment-choice");
@@ -6992,10 +6991,7 @@ function createChallengeUI({
     }
     if (q.kind !== "dialogue") learning.libraryExpose(q.id, "challenge");
     queueMicrotask(storage.save);
-    const w =
-      q.kind === "address" || q.kind === "choice" || q.kind === "dialogue"
-        ? null
-        : content.wordById[q.id];
+    const w = content.wordById[q.id];
     if (!resuming) {
       state.session.locked = false;
       state.session.built = [];
@@ -7014,63 +7010,28 @@ function createChallengeUI({
     ui.setDialogueSpeaker(host.name);
     target.classList.remove("hidden");
     target.textContent = `${host.name} → Player · YOUR ANSWER → ${host.name}`;
-    if (q.kind === "dialogue") {
-      ui.setDialogueSpeaker(q.speaker || host.name);
-      ui.showParticipants(q.participants || [q.speaker || host.name], q.recipient);
-    }
-
-    if (q.kind === "dialogue") {
-      ui.$("quizType").textContent = "🗣️ REPLY IN PASHTO";
-      ui.$("quizPashto").classList.remove("english-question");
-      ui.$("quizPashto").textContent = q.promptPs || q.promptEnglish;
-      ui.$("quizPashto").lang = q.promptPs ? "ps" : "en";
-      ui.$("quizPashto").dir = q.promptPs ? "rtl" : "ltr";
-      ui.$("quizPashto").classList.toggle("english-question", !q.promptPs);
-      ui.$("quizRoman").textContent = [
-        q.promptPs ? q.promptEnglish : "Respond using studied forms",
-        q.sceneEnglish,
-      ]
-        .filter(Boolean)
-        .join(" · ");
-      ui.$("quizPrompt").textContent =
-        `${q.speaker || "Your neighbour"} asks you a question. Build YOUR reply, not a translation of the prompt.`;
-      ui.$("quizPanel").querySelector(".quizword h3").textContent =
-        q.duds?.length >= 2
-          ? "Choose only the tiles you need. Some tiles are distractions."
-          : "Use the tiles to construct your reply.";
-      ui.$("quizSpeak").classList.toggle("hidden", !q.audioId);
-      ui.$("constructionPanel").classList.remove("hidden");
+    if (["construct", "dialogue"].includes(q.kind)) {
+      ui.construction.present(content.wordById[q.id], q, state.session.loop);
       if (!resuming) state.session.tileSequence = q.tileSequence;
       renderBuiltSentence();
-      ui.$("quizFeedback").textContent =
-        "Your first submitted answer counts. Leave unused tiles in the bank.";
+      ui.$("quizFeedback").textContent = "Your first submitted answer counts.";
       ui.$("quizNext").disabled = true;
-      ui.$("quizNext").textContent =
-        state.session.index === state.session.questions.length - 1
-          ? "See results →"
-          : "Next question →";
+      ui.$("quizNext").textContent = state.session.index === state.session.questions.length - 1 ? "See results →" : "Next question →";
       return;
     }
     ui.$("quizType").textContent =
-      q.kind === "construct"
-        ? "🧩 BUILD A SENTENCE"
-        : q.kind === "word"
+      q.kind === "word"
           ? "🧠 WORD RECALL"
           : "📖 SENTENCE RECALL";
     const reverse = q.direction === "en-ps";
-    const isBuild = q.kind === "construct";
     ui.$("quizPashto").textContent = reverse ? w.en : w.ps;
     ui.$("quizPashto").setAttribute("dir", reverse ? "ltr" : "rtl");
     ui.$("quizPashto").setAttribute("lang", reverse ? "en" : "ps");
     ui.$("quizPashto").classList.toggle("english-question", reverse);
-    ui.$("quizRoman").textContent = isBuild
-      ? "Arrange the Pashto tiles below"
-      : reverse
+    ui.$("quizRoman").textContent = reverse
         ? "Recall the Pashto expression"
         : w.roman + (q.unstudied ? " · Not previously studied" : "");
-    ui.$("quizPrompt").textContent = isBuild
-      ? "Build the Pashto sentence for this meaning"
-      : reverse
+    ui.$("quizPrompt").textContent = reverse
         ? "Which Pashto expression means this?"
         : q.kind === "word"
           ? w.type === "greeting"
@@ -7078,16 +7039,10 @@ function createChallengeUI({
             : "What does this word mean?"
           : "What does this sentence mean?";
     ui.$("quizSpeak").classList.toggle("hidden", reverse);
-    ui.$("quizPanel").querySelector(".quizword h3").textContent = isBuild
-      ? "Put the tiles into natural Pashto order"
-      : reverse
+    ui.$("quizPanel").querySelector(".quizword h3").textContent = reverse
         ? "Choose the correct Pashto"
         : "Choose the correct English meaning";
-    if (isBuild) {
-      ui.$("constructionPanel").classList.remove("hidden");
-      if (!resuming) state.session.tileSequence = q.tileSequence;
-      renderBuiltSentence();
-    } else if (q.kind === "word" && q.unstudied) {
+    if (q.kind === "word" && q.unstudied) {
       ui.$("quizPrompt").textContent = "Not previously studied. Type the English meaning if you already know it, or reveal it after submitting. Your first answer counts.";
       ui.$("quizPanel").querySelector(".quizword h3").textContent = "Recall without a translation clue";
       const form = document.createElement("form");
@@ -7151,41 +7106,16 @@ function createChallengeUI({
     const { q, w, correct, gain } = result;
     for (const control of ui.$("choices").querySelectorAll("input, button")) control.disabled = true;
     if (q.generated) learning.surface(q.id, "assessment-feedback");
-    if (q.promptGenerated)
-      learning.surface(q.promptGenerated.id, "dialogue-feedback");
     storage.save();
     ui.hud();
-    if (q.kind === "dialogue") {
+    if (["construct", "dialogue"].includes(q.kind)) {
       renderBuiltSentence();
-      ui.$("builtSentence").classList.add(
-        correct ? "build-success" : "build-error",
-      );
-      const f = ui.$("quizFeedback");
-      f.replaceChildren();
-      const heading = document.createElement("strong");
-      heading.className = correct ? "good" : "bad";
-      heading.textContent = correct
-        ? `✓ Your reply makes sense. ${gain ? `+${gain} XP` : "Already rewarded"}`
-        : "✗ Try building the reply from the meaning of the question.";
-      const expected = document.createElement("div");
-      expected.lang = "ps";
-      expected.dir = "rtl";
-      expected.className = "inline-pashto";
-      expected.textContent = q.answerPs;
-      const gloss = document.createElement("div");
-      gloss.textContent = q.answerEnglish || "";
-      f.append(heading, expected, gloss, ui.node("p", questions.explanation(q, w)));
+      ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
+      ui.construction.feedback(ui.$("quizFeedback"), w, q, correct, gain ? `+${gain} XP` : "Already rewarded");
       ui.$("quizNext").disabled = false;
       return;
     }
-    if (q.kind !== "construct")
-      ui.showAnswerFeedback(ui.$("choices"), q.direction === "ps-en" ? w.en : w.ps, value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
-    else {
-      renderBuiltSentence();
-      ui.$("builtSentence").classList.add(
-        correct ? "build-success" : "build-error",
-      );
-    }
+    ui.showAnswerFeedback(ui.$("choices"), q.direction === "ps-en" ? w.en : w.ps, value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
     const feedback = ui.$("quizFeedback");
     feedback.replaceChildren();
     const headline = document.createElement("strong");
@@ -7207,7 +7137,8 @@ function createChallengeUI({
     ui.$("quizNext").disabled = false;
   }
   function finishChallenge() {
-    if (state.session?.mode !== "challenge" || state.session.finished) return;
+    if (state.session?.mode !== "challenge" || state.session.finished || state.session.answered !== state.session.questions.length) return;
+    audio.stopAudio();
     const s = state.session,
       day = s.loop,
       spec = progression.getChallengeSpec(day);
@@ -7253,9 +7184,15 @@ function createChallengeUI({
           : `${content.teacherFor(day, null, "challenge").name} → Player: “Well done! Day ${day + 1} is available.”`
         : `Practise and retry: ${spec.passCount}/${s.questions.length} correct required. Your New Resident milestone is retained.`;
     }
+    ui.$("passUnlockNotice")?.remove();
+    if(firstPass&&reward.completedLocations?.length){
+      const notice=ui.node("aside");notice.id="passUnlockNotice";
+      notice.append(ui.node("p","You have completed this day’s challenge. Words from the locations you skipped are now unlocked and may appear in future activities. Visit the Library to review them."),ui.node("p",`Location completion rewards: +${reward.locationBonus} XP.`),ui.button("Review unlocked vocabulary",()=>libraryReview(reward.newlyUnlocked)));
+      ui.$("resultDescription").after(notice);
+    }
     ui.$("resultAccuracy").textContent =
       `${s.correctCount}/${s.questions.length}`;
-    ui.$("resultXP").textContent = `+${s.earned}`;
+    ui.$("resultXP").textContent = `+${s.earned + (reward.locationBonus || 0)}`;
     ui.$("resultKnowledge").textContent = passed ? "PASSED" : "NOT YET";
     ui.$("resultNext").textContent =
       `Total: ${state.progress.xp} XP · Answer rewards: +${s.earned - base - topUp} XP. ${base ? `First-pass bonus: +${base} XP. ` : ""}${topUp ? `Checkpoint catch-up: +${topUp} XP. ` : ""}${graduation ? "Newcomer → New Resident. Week 1 is complete." : passed ? `${storage.persistenceProblem ? "Progress is in this tab; saving failed." : "Progress saved."} Replays do not repeat milestone rewards.` : "No milestone or title awarded. Retry when ready."}`;
@@ -7273,6 +7210,9 @@ function createChallengeUI({
     if (["construct", "dialogue"].includes(q.kind)) {
       renderBuiltSentence();
       ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
+      ui.construction.feedback(ui.$("quizFeedback"), w, q, correct, "First answer already recorded");
+      ui.$("quizNext").disabled=false;
+      return;
     } else if (!q.unstudied) {
       ui.showAnswerFeedback(ui.$("choices"), q.correct || (q.direction === "en-ps" ? w?.ps : w?.en), value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
     }
@@ -7306,11 +7246,7 @@ function createChallengeUI({
     if (state.session?.mode !== "challenge" || state.session.locked) return;
     const q = state.session.questions[state.session.index];
     const tiles = questions.buildTiles(content.wordById[q.id] || null, q);
-    if (
-      questions.questionUsesDuds(q)
-        ? state.session.built.length > 0
-        : state.session.built.length === tiles.length
-    )
+    if (ui.construction.ready(tiles, state.session.built))
       answerChallenge(state.session.built.map((i) => tiles[i].word).join(" "));
   }
   return {
@@ -7725,9 +7661,10 @@ function createLibraryUI({
   learning,
   questions,
 }) {
-  let libraryLastFocus = null;
-  function openLibrary(tab = "vocabulary") {
+  let libraryLastFocus = null, unlockedFilter = null;
+  function openLibrary(tab = "vocabulary", ids = null) {
     audio.stopAudio();
+    unlockedFilter=ids;
     libraryLastFocus = document.activeElement;
     renderLibrary(tab);
     ui.$("libraryDialog").showModal();
@@ -7745,6 +7682,21 @@ function createLibraryUI({
       b.setAttribute("aria-pressed", String(b.dataset.libraryTab === tab));
     if (tab === "pace") {
       renderLibraryPace(root);
+      return;
+    }
+    if (tab === "sentences") {
+      root.append(ui.node("h3", "Sentence practice"), ui.node("p", "Build meanings with your unlocked forms and grammar. Voluntary Library practice awards no XP or lesson completion."));
+      const cards=learning.generatedPractice(state.day, state.progress.library.seed + state.progress.library.attemptSequence, 4);
+      if (!cards.length) root.append(ui.node("p", "Study compatible words and lesson grammar to make sentence practice available. Vocabulary and approved expressions are available on the other Library pages."));
+      for (const [i,card] of cards.entries()) {
+        const exercise=ui.node("article");exercise.dataset.sentence=card.id;
+        learning.surface(card.id,"library-construction");
+        ui.construction.mount(exercise,card,questions.constructionQuestion(card,{withDuds:i % 2 === 0}),{onAnswer(correct) {
+          LibraryEngine.practise(state.progress,content.LIBRARY_DATA,card.id,correct,{day:state.day,location:"library",source:"library",eventId:"library-practice:" + ++state.progress.library.attemptSequence});
+          storage.save();ui.hud();return "Library review · no XP";
+        }});
+        root.append(exercise);
+      }
       return;
     }
     if (tab === "grammar") {
@@ -7830,6 +7782,7 @@ function createLibraryUI({
       return;
     }
     const universal = tab === "universal";
+    if (unlockedFilter) root.append(ui.node("p", "Showing newly unlocked vocabulary, including universal words."), ui.button("Show all vocabulary", () => {unlockedFilter=null;renderLibrary(tab);}));
     root.append(
       ui.node("h3", universal ? "Universal Vocabulary" : "Vocabulary Bank"),
     );
@@ -7899,7 +7852,7 @@ function createLibraryUI({
         .sort()
         .map((x) => [x, x]),
     ]);
-    const day = select("First encounter", "libraryDay", [
+    const day = select("Unlock day", "libraryDay", [
       ["", "All days"],
       ...content.curriculum.days.map((day) => [
         String(day.day),
@@ -7913,9 +7866,8 @@ function createLibraryUI({
         "business",
         "nature",
         "school",
-        "challenge",
-        "library",
-      ].map((x) => [x, x]),
+        "universal",
+      ].map((x) => [x, ({residential:"Home",nature:"Lake",business:"Market",school:"School",universal:"Universal vocabulary"}[x])]),
     ]);
     const status = select("Status", "libraryStatus", [
       ["", "All"],
@@ -7940,16 +7892,16 @@ function createLibraryUI({
       let entries = content.LIBRARY_DATA.entries.filter((e) => {
         const r = state.progress.library.acquired[e.lemmaId];
         return (
-          r &&
-          (e.vocabularyClass === "universal") === universal &&
+          r && (!unlockedFilter || unlockedFilter.includes(e.lemmaId)) &&
+          (unlockedFilter || (e.vocabularyClass === "universal") === universal) &&
           (!query ||
             [e.displayLemmaPs, e.romanisation, ...e.englishSenses]
               .join(" ")
               .toLocaleLowerCase()
               .includes(query)) &&
           (!pos.value || e.partOfSpeech === pos.value) &&
-          (!day.value || String(r.firstEncounteredDay) === day.value) &&
-          (!location.value || r.firstEncounteredLocation === location.value) &&
+          (!day.value || String(r.unlock?.day) === day.value) &&
+          (!location.value || r.unlock?.location === location.value) &&
           (!status.value ||
             (status.value === "due"
               ? r.srsDueAt <= Date.now()
@@ -7988,6 +7940,7 @@ function createLibraryUI({
     ps.lang = "ps";
     ps.dir = "rtl";
     detail.dataset.lemma = e.lemmaId;
+
     heading.append(
       ps,
       ui.node(
@@ -7996,6 +7949,10 @@ function createLibraryUI({
       ),
     );
     detail.append(heading);
+    const origin = r.unlock;
+    const location = origin?.location === "universal" ? "Universal vocabulary" : ({residential:"Home",nature:"Lake",business:"Market",school:"School"}[origin?.location] || "Not recorded");
+    detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.introducedFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
+
     detail.append(
       ui.node(
         "p",
@@ -8046,6 +8003,8 @@ function createLibraryUI({
             audio.speak("library-form:" + f.formId),
           ),
         );
+      const formOrigin=r.formUnlocks?.[f.formId];
+      if (formOrigin) box.append(ui.node("p", `Form unlocked: Day ${formOrigin.day} · ${formOrigin.source === "challenge-pass" ? "Challenge pass" : "Study"}`, "tiny"));
       detail.append(box);
     }
     detail.addEventListener("toggle", () => {
@@ -8263,6 +8222,7 @@ function createLibraryUI({
       ["vocabulary", "Vocabulary Bank"],
       ["universal", "Universal Vocabulary"],
       ["grammar", "Grammar Journal"],
+      ["sentences", "Sentence practice"],
       ["pace", "Learning Pace"],
       ["phrases", "Useful Expressions"],
     ]) {
@@ -8360,6 +8320,7 @@ function createLibraryUI({
     window,
     Audio,
   });
+  ui.construction = createConstructionUI({ui, audio});
   const learning = createLearning({ state, content, progression });
   const questions = createQuestions({ state, content, progression });
   const narrative = createNarrative({ state, content, ui, audio, storage, questions });
@@ -8386,6 +8347,7 @@ function createLibraryUI({
     onLessonStart: () => challenge.showChallengeScene(0),
   });
   const challenge = createChallengeUI({
+    libraryReview: ids => library.openLibrary("vocabulary", ids),
     onWorld: () => world.startWorld(),
     state,
     content,

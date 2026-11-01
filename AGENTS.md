@@ -9,12 +9,12 @@ Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CUR
 - Edit `src/` and playable `content/*.json`, never generated `index.html` directly. Regenerate with `python3 tools/build.py`.
 - `content/LIBRARY_LEXICON.json`: precise lexical classes, explicit uncertainty, per-form grammar gates and curated stable-ID introductions. Authored `loop` is provenance, not a live lemma schedule.
 - `src/library-engine.js`: one acquisition/form-introduction/SRS store and curated-order district planning.
-- `src/sentence-engine.js` + `content/SENTENCE_FRAMES.json`: feature-constrained practice, introduced forms and actually unlocked grammar only. Feature-constrained generated drafts are not native-certified.
+- `src/sentence-engine.js` + `content/SENTENCE_FRAMES.json`: feature-constrained practice, introduced/unlocked forms and actually unlocked grammar only. Feature-constrained generated drafts are not native-certified.
 - `src/progression.js`: current save factory, XP, results, milestones, reward identity and access rules.
 - `src/question-engine.js`: answer evaluation and indexed tiles; `src/learning.js` applies practice transactions. UI renders outcomes.
 - `src/save-schema.js`: current-save shape and compiler-proof validation. `src/storage.js`: Web Locks coordinated I/O with comparison and write inside the lock and active assessment snapshots. `src/app.js` only composes services and wires controls. Keep authored blueprints in content modules/JSON, apart from renderers.
 - `content/LEARNING_CURRICULUM.json`: fixed English teaching sequence; every instructional clause is compiled after actual form study and grammar unlocks. `content/FIXED_PHRASES.json` is the current eighteen-expression exception register; additions follow [phrase review](docs/grammar/FIXED_PHRASE_EXCEPTIONS.md#expanding-the-register). Authored archives are evidence/fixtures only, never teaching fallbacks.
-- Four district keys: `residential`, `nature`, `business`, `school`. Library is reference-only; Hills is a Nature scene.
+- Four district keys: `residential`, `nature`, `business`, `school`. Library offers reference and voluntary zero-XP practice; Hills is a Nature scene.
 - Preserve 14 curriculum days, characters, normal/skip paths and current learning states. Day 1 excludes lexical action verbs; Day 14 has zero compulsory new lemmas.
 - Only **save schema 7** is supported. Do not add old-format migration/backfill/content-repair adapters or silent save resets. Unsupported/corrupt saves remain untouched until explicit user reset.
 - Do not add duplicate SRS/XP stores, replay-farmable rewards, or reveal unseen vocabulary's English meaning before answer submission.
@@ -34,3 +34,7 @@ Report changed files, actual checks, reasons for omitted checks, material limita
 ## Practical assessments and grammar reference
 
 `content/GRAMMAR_REFERENCE.json` belongs to the read-only Library Grammar Journal. All concept explanations and worked analyses are readable without generation unlocks. New daily/weekly assessments must contain only word/phrase recall, sentence meaning/construction or contextual dialogue; insufficient sentence supply uses vocabulary/approved phrases, never English rule/category quizzes. Old grammar-question instructions are superseded. Preserve retired format-7 attempts behind an explicit notice and archive/export them only after the player explicitly chooses retirement; never reroll or regrade them silently.
+
+## Shared construction and challenge completion
+
+`src/construction-ui.js` owns the indexed tile renderer, variant instructions, direct English target and success-only full-sentence audio across lesson/assessment/Library/onboarding construction. No construction role-play or narrative reply instructions. `LibraryEngine.lessonPool` is shared by normal teaching and first challenge-pass completion; progression awards only missing location completion bonuses. Record study versus challenge-pass unlock provenance under stable lemma/form IDs without inventing historic provenance or practice grades. Active assessment knowledge remains frozen until grading completes.

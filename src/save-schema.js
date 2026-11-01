@@ -36,6 +36,9 @@ function createSaveValidator({ content, progression }) {
           ![r.encounteredFormIds,r.introducedFormIds,r.practisedFormIds].every(strings) ||
           [...r.introducedFormIds,...r.practisedFormIds,...Object.keys(r.forms)].some(id=>!r.encounteredFormIds.includes(id))) return false;
       if (r.formallyIntroducedDay!==undefined && (!integer(r.formallyIntroducedDay)||r.formallyIntroducedDay<1||r.formallyIntroducedDay>14)) return false;
+      const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass"].includes(v.source) && typeof v.location==="string";
+      if (r.unlock!==undefined && !origin(r.unlock)) return false;
+      if (r.formUnlocks!==undefined && (!object(r.formUnlocks) || Object.entries(r.formUnlocks).some(([id,v]) => !r.introducedFormIds.includes(id) || !origin(v)))) return false;
       if (r.masteredAt!==undefined && !time(r.masteredAt)) return false;
     }
     for (const [day,r] of Object.entries(l.dayExposure)) {
@@ -109,6 +112,7 @@ function createSaveValidator({ content, progression }) {
       if (["choice","address"].includes(q.kind) && typeof q.correct!=="string") return false;
       if (q.kind==="choice" && (typeof q.prompt!=="string" || !Array.isArray(q.options) || q.options.some(v=>typeof v!=="string") || !q.options.includes(q.correct))) return false;
       if (q.kind==="address" && (!Array.isArray(q.addressOptions)||q.addressOptions.some(a=>!Array.isArray(a)||a.length!==2||a.some(v=>typeof v!=="string"))||!q.addressOptions.some(a=>a[1]===q.correct))) return false;
+      if (q.tileVariant!==undefined && !["exact","distractors"].includes(q.tileVariant)) return false;
       if (q.duds!==undefined && (!Array.isArray(q.duds)||q.duds.some(v=>typeof v!=="string"))) return false;
       if (["construct","dialogue"].includes(q.kind)) {
         try { if (!validOrder(q.tileSequence,QuestionEngine.buildTiles(w,q,day).length)) return false; } catch { return false; }
