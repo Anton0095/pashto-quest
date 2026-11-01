@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 const M=createRequire(import.meta.url)('../work/rpg-model.cjs');
-const data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
+const data=JSON.parse(readFileSync('tests/fixtures/rpg-day1.json','utf8'));
 const fixture=JSON.parse(readFileSync('docs/rpg/day2-registration.example.json','utf8'));
 assert.equal(fixture.active,false);assert(!data.days['2']);
 const future=structuredClone(data);Object.assign(future.days,fixture.days);Object.assign(future.events,fixture.events);

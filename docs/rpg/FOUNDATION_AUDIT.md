@@ -29,4 +29,4 @@ Implementation review also caught an early version of the new ending adapter clo
 - **P2: isolated interaction timeout.** One exploratory public run timed out with School interaction disabled. A position-only reproduction and a fresh complete mobile/desktop playthrough passed; no causal fix is claimed for that isolated observation. Retain the failure diagnostics and monitor repeated/device playthroughs. The final integrated verification result is reported separately.
 - **P3: bounded presentation/assets.** Daily placements are stationary; only the Library has an interior. The prototype uses original procedural art. These remain explicit scope limits.
 
-No P0/P1 issue is intentionally deferred. Full verification and measured comparison are recorded in [validation](RPG_VALIDATION.md), including any failed checks that remain unresolved at delivery.
+No P0/P1 issue is intentionally deferred. Full verification and measured comparison are recorded in [validation](FOUNDATION_VALIDATION.md), including any failed checks that remain unresolved at delivery.

@@ -181,5 +181,10 @@ export function createPhaserWorld(options:WorldOptions):{step:(dir:Direction)=>b
   const scene=new VillageScene(options);
   const game=new Phaser.Game({type:Phaser.CANVAS,canvas:options.canvas,width:options.canvas.width,height:options.canvas.height,backgroundColor:'#293d36',banner:false,
     render:{pixelArt:true,antialias:false},audio:{noAudio:true},physics:{default:'arcade',arcade:{gravity:{x:0,y:0}}},scene:[scene],input:{keyboard:false,mouse:false,touch:false}});
-  return {step:dir=>scene.step(dir),nearby:()=>scene.nearby(),sync:()=>scene.sync(),resize:()=>game.scale.resize(window.innerWidth<600?256:512,window.innerWidth<600?192:320),destroy:()=>game.destroy(false),scene,game};
+  // ScaleManager.canvas is assigned during boot, after the Game constructor.
+  // Mobile viewport events can arrive in that gap; apply the latest size on READY.
+  let destroyed=false;
+  const resize=()=>{if(game.scale.canvas&&!destroyed)game.scale.resize(window.innerWidth<600?256:512,window.innerWidth<600?192:320);};
+  game.events.once(Phaser.Core.Events.READY,resize);
+  return {step:dir=>scene.step(dir),nearby:()=>scene.nearby(),sync:()=>scene.sync(),resize,destroy:()=>{destroyed=true;game.events.off(Phaser.Core.Events.READY,resize);game.destroy(false);},scene,game};
 }

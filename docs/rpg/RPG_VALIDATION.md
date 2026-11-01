@@ -1,71 +1,62 @@
-# Foundation validation
+# Week 1 RPG validation
 
-Branch `feature/rpg-foundation`, from source `b726f01aae250dcec116ceb7ada1e64a5f8f3895`. The prototype still ends after a real Day 1 pass; Day 2 is inactive. Main and production Pages settings are unchanged. See [classified findings](FOUNDATION_AUDIT.md), [architecture](RPG_ARCHITECTURE.md) and the [Day 2 walkthrough](RPG_EXPANSION_GUIDE.md).
+Branch `feature/rpg-week1`, source `04891a4a96e4bd8041361836ec57831958e832ba`. The current default release is Days 1–7; Day 7 is terminal and Day 8 remains inaccessible. Historical [foundation validation](FOUNDATION_VALIDATION.md), [foundation audit](FOUNDATION_AUDIT.md) and their logs retain their recorded release scope.
 
-## Checks and evidence
+## Verification
 
-Required setup/build commands: `npm ci`, `npm run typecheck`, `python3 tools/build.py`, `python3 tools/build.py --check`. The complete entry point is `python3 tools/verify.py`; it preserves all original educational/model/browser suites and adds the foundation suites. **Final integrated result: exit 0, 141 passing checks including all 22 browser suites.** The fourteen-day matrix covered 392 visits, 196 assessments and 6,676 generated sentence surfaces. Both exact-release delivery-audit steps passed. See [complete verification log](verification.log). The final inactive-fixture refinements were additionally checked with `node tests/rpg-foundation.test.mjs`; see [focused model log](foundation-model.log).
+The required `npm ci`, `npm run typecheck`, `python3 tools/build.py` and `python3 tools/build.py --check` commands were run. **Final `python3 tools/verify.py`: exit 0, 147 passing checks including all 23 browser suites.** Both delivery-audit write/check steps passed. The fourteen-day matrix covered 392 visits, 196 assessments and 6,676 generated sentence surfaces. [Complete verification log](week1-verification.log); [both seven-day public routes and chapter-transfer observations](week1-gameplay.log). No original educational assertion was removed. The fourteen-day/seven-pace normal/skip educational matrix remains intact.
 
-Focused coverage:
+Focused additions:
 
-- `rpg-foundation.test.mjs`: chapter registration and invalid references; inactive Day 2 registration/event resolution; prerequisites; opening/ending dispatch; terminal/nonterminal next-chapter gating; stable identities, default locations and daily schedule overrides; conditional actions, persistent flags, once-only story effects and lesson return cursor; validated dialogue state and no-op world writes.
-- `rpg-foundation-browser.test.mjs`: real Phaser blur/focus cancellation, sequential dialogue reload with conditional messages/speaker identity, repeated Library access with unchanged scene object count, viewport orientation, disposed global listeners/dialogs and usable tutorial after game-Canvas initialization failure.
-- `rpg-browser.test.mjs`: independent public Day 1 route, four-step tutorial (partial tiles and recorded correct response restored), name/gender, all four lessons, three distinct Home descriptions, early challenge, failure/retry, frozen partial/locked challenge and completed lesson reload, Library, appearance, genuine completion/reload and inaccessible Day 2. Gameplay never fabricates answers, grades or rewards through a bridge; readonly saved JSON is the question oracle.
-- `phaser-browser.test.mjs`: 375/1280px real tilemaps, four directions, terrain/NPC collision, animation/camera bounds, entrance cancellation by overlay, repeated transitions, same-map reset and optional collision layer; DPR3 pointer/touch emulation.
-- `save-fence-browser.test.mjs` and `rpg-concurrent-browser.test.mjs`: deterministic stale renderer reads, interrupted/ambiguous writes, conflict preservation, explicit reset, denial/recovery and repeated two-renderer winner/loser contests.
-- The unchanged educational matrix covers fourteen days, seven paces and normal/skip routes, grammar/vocabulary provenance, SRS, generation, assessment snapshots, feedback/audio controls, answer restrictions and once-only rewards. Pashto data is unchanged.
+- `rpg-week1.test.mjs` validates all seven registered chapters, normal/skip event resolution, education-gated advancement, terminal/next rules, host/map references, NPC identity/Mina timing, per-day reachability, Hills round trips and the Day 8 cap. It also merges the inactive Day 8 fixture and registers a new map/person through data only.
+- `rpg-week1-browser.test.mjs` plays all seven days through real Phaser/native HTML controls. Desktop normal play completes the actual opening and four district lessons each day; mobile DPR3 early play skips visits through explicit alternate events. It checks failures/retries, partial/locked assessment reload, opening dialogue reload, lesson construction reload, interrupted advancement, Day 5 multi-speaker gathering, Hills entry/return, the 25-question Week 1 exam, genuine Level 10/New Resident and terminal reload. Completed-chapter history transfers check no repeated opening/rewards and stable object counts on revisits, with heap/storage observations.
+- The public driver reads saved frozen question snapshots as its answer oracle and submits through actual controls. It never injects scores, correct responses, XP, visits or graduation through a runtime bridge. Read-only Phaser diagnostics provide object/camera state. Garbage collection diagnostics do not alter learning records.
+- Historical Day 1 model/public tests now use `tests/fixtures/rpg-day1.json` via an HTML data override, keeping their original terminal-Day-1 assertions. They explicitly verify historical configuration compatibility. The new Week 1 routes independently test the actual shipped registry.
+- Foundation lifecycle tests now dispatch a deterministic resize before Phaser READY, proving that startup viewport changes are safe. Existing Phaser movement/collision/camera/transition/overlay tests, save-fence/concurrent-writer tests and all educational suites remain.
 
-The RPG public playthrough uses public controls; position-only/corrupt/future-state fixtures are restricted to dedicated post-playthrough recovery or isolated physics cases. No fixture supplies successful learning results. New lifecycle hooks dispose the test instance or inspect Phaser; they do not ship in the release.
+## Defects and investigation
 
-## Validation history
+1. **Reproduced P1: wrong chapter after pass.** The educational challenge UI selects its next teaching day after a genuine first pass. The old RPG adapter then resolved the new chapter during the previous day's result. A separate selected RPG chapter now remains fixed until durable Continue; educational rewards/progression remain untouched.
+2. **Reproduced P1: pre-boot resize.** A mobile viewport event called `ScaleManager.resize` before its canvas was initialized, throwing “Cannot set properties of undefined (setting width)”. The same error is reproduced by a deterministic pre-READY resize. The wrapper now waits for its canvas/READY and ignores destroyed state; the focused reproduction passes without errors.
+3. **P2 integration/usability:** ineligible lesson actions previously closed dialogue and silently failed inside the existing educational guard. Choices now ask the authoritative `learning.placeAccessible` predicate. The normal public route follows actual prerequisites, including Day 2 School then Market/Lake before Home.
+4. **P3 summary presentation:** completion labels now identify total XP and current level/title, and reloaded chapter headings reflect the selected chapter. Ordinary learning result labels reset through the existing overlay lifecycle.
+5. **School timeout:** normal Day 1 and daily School lessons, repeated Ms Hameed dialog opening/closing, Library-before-interaction, near-School reload and desktop keyboard/mobile touch are covered. The original isolated School-disabled timeout has no reproduced causal diagnosis; no speculative School-specific fix is claimed. Existing generic map/overlay/focus/movement regression coverage remains. This remains a P2 observation to monitor on devices.
 
-One exploratory run timed out on a disabled School interaction after the first three lessons. An isolated position-only check and a fresh full public playthrough at both widths passed; the cause was not established. Preliminary full runs were stopped when final code review found additional ending/draft/schedule corrections. Only the final completed integrated run is used as delivery evidence. No assertions were removed to accept the earlier timeout.
+An early test-helper check assumed compacted inactive educational history had the same byte fingerprint as the stored envelope; that assumption was removed in favor of waiting for the actual saved XP and world debounce. No educational assertions or production storage guarantees were relaxed. One integrated parallel Week 1 run timed out waiting for an expected tile while the other route completed. The driver now explicitly foregrounds/focuses the game and waits for active physics, and each route runs its read-only oracle in a separate Node process. Exact position assertions and genuine public input remain; no School-specific causal fix is claimed. Preliminary gameplay runs exposed the two real integration bugs above; only the completed integrated verifier supplies fresh delivery evidence.
 
-## Save/resume contract
+## Persistence and educational integrity
 
-Educational schema 7, world schema 1 and prototype namespaces remain unchanged. `pashto-town-days-v1` remains untouched in the default RPG. Web Locks and hash-only IndexedDB revision coordination remain in force. Optional world chapter/dialogue metadata is validated. Tutorial tile order, placement and lock now live in the existing lesson session snapshot, alongside supported lesson drafts. Active assessment questions, answers, proofs and first-answer locks remain solely in educational state.
+Educational schema 7/world schema 1, prototype isolation and the Web Locks/IndexedDB revision fence remain. A transfer persists the completed chapter, target spawn and opening in order; it never calls an XP/reward method. Reload may restore the previous committed result or target spawn. Confirmed story events do not replay; unacknowledged work can still be lost across abrupt termination. Paired lesson/tutorial drafts and exact active assessment snapshots retain their existing validation; corrupt/incompatible education remains untouched until explicit reset. World/education are separate transactions, with deterministic safe fallback rather than a false atomicity claim.
 
-Education commits before its paired world snapshot. A mismatched fingerprint or invalid lesson draft returns to exploration and retains valid educational knowledge/results. A valid active assessment has restore priority. Invalid positions recover to a safe tile; corrupt/incompatible educational records stay untouched until explicit reset. This is deterministic recovery across two stores, **not** an atomic two-store transaction. Visibility/pagehide persistence is best effort; abrupt process termination can still lose the latest unacknowledged tile/draft. Conflicts never silently merge or overwrite educational progress.
-
-## Offline/mobile/accessibility
-
-Phaser 4.2.1 and all code/curriculum remain embedded in the committed offline HTML. The existing Python assembler and pinned TypeScript/esbuild pipeline remain the build; no additional dependency or hosting service was introduced. GitHub Pages can serve the static release. Players need no npm/runtime dependency download. Phaser remains the only live world renderer/collision/movement engine.
-
-Native keyboard/touch controls, focus indicators, RTL/LTR construction, audio-optional learning, viewport CSS and pointer cancellation are retained. A compact Learning access disclosure exposes the same educational adapters if rendering fails. Phaser audio stays disabled; existing gesture-triggered educational audio remains authoritative.
-
-Physical iPhone Safari and device voices remain **UNVERIFIED**. Chromium viewport/CPU/DPR/touch emulation is not Safari evidence. The installed Playwright package has no WebKit browser binary (nor Firefox); WebKit automation was therefore not run. No WebKit success is inferred. Remaining manual checks:
-
-1. Current iPhone Safari portrait/landscape: held D-pad, pointer cancellation, diagonal prevention, dialogue proximity, exits/entrances and camera after rotation.
-2. Name keyboard open/dismiss, dynamic viewport, long English/Pashto text, visible focus, VoiceOver reading/focus order and enlarged text.
-3. Library/Menu/lesson transitions, background/foreground while moving, phone interruption, BFCache/back navigation, reload during partial tutorial and locked challenge.
-4. Private mode, denied/full/evicted storage, Web Locks/IndexedDB/Web Crypto failure, concurrent tabs, failed save Retry/Export and explicit incompatible-save reset.
-5. User-gesture audio playback, missing Pashto voice, device mute/interruption and pronunciation/intelligibility with a qualified reviewer. No native-reviewed MP3 pack is claimed.
+Normal finale and skip route are distinct stored facts. A pass's once-only location catch-up cannot fabricate a played normal finale. All four district assignments feed the existing assessment activation. Hills is Nature, not another quota. Day 5/7 peace phrases, grammar/speaker/listener bindings, SRS, unseen-word restrictions, feedback, construction, audio and all fourteen educational days retain their original authorities. No Pashto wording, translation bank or approval status was changed.
 
 ## Performance
 
-Same-host before/after runs use `node tools/rpg-performance.mjs`: 20 samples for desktop 1280px and mobile 375px with 4× CPU throttle; local loopback Chromium. Measurements include HTML parse/startup, Phaser readiness, completed tile/transition (including the intentional 115ms tween), forced-GC heap endpoints, localStorage bytes, logical revision metadata size and scene object counts. They are neither first-pixel latency nor peak heap nor a long-duration leak certification. Host contention differs across runs; timing changes do not isolate code causation. The comparison below is generated from actual JSON artifacts.
+Before/after runs use frozen exact HTML (`RPG_RELEASE`) with 20 local reload samples after initial navigation (browser launch is excluded) at desktop 1280px and mobile 375px/4× CPU throttle. The benchmark records load, scene readiness, committed tile/map transitions (including the 115ms tween), forced-GC heap endpoints, localStorage and logical revision metadata size, and scene update objects. Public history transfers additionally observe repeated chapter changes; their logged timings include the fixed 300ms durability wait and automation overhead, so they are not pure transfer latency. Exact artifacts/results are listed below when complete. Host contention means timings do not isolate code causation; these are neither physical-device results nor peak heap nor long-duration leak certification.
 
-## Expansion readiness
+## Browser and remaining limits
 
-The inactive Day 2 fixture registers the real `2-school`/other district lesson IDs, Ms Hameed opening and scheduled characters, challenge and ending through the same chapter/event services. No movement, rendering, collision, sentence or assessment changes are needed to register it. A full Day 2 release still requires reviewed narrative integration (including required workshop semantics), Day 3 registration before advancement, all route/resume tests, and physical-device review. Stationary daily placements and Library-only interior remain explicit limits.
+Physical iPhone Safari and device voices remain **unverified**. Chromium mobile/DPR/touch/CPU emulation does not establish Safari compatibility. The environment has no installed WebKit binary; no WebKit success is claimed. Remaining manual checks: portrait/landscape and enlarged/RTL text; pointer cancel/held movement during interruptions; virtual name keyboard open/dismiss; overlay focus/VoiceOver; BFCache/background/foreground and storage eviction/denial/conflicts; correct-user-gesture audio, missing voices and actual pronunciation review.
 
-## Exact-build comparison
+All code/curriculum/Phaser remain locally bundled for offline static hosting/GitHub Pages. No deployment setting changed. Stationary NPC placements, procedural art and separate store commits remain explicit limits. Days 8–14 need reviewed RPG narrative/route registrations and public gameplay tests; their educational capabilities were retained, not activated in the RPG.
 
-Baseline: `b6c3e42f82caa8663c344a3ec64de2aa5333b733abfd25f2e6d04cc282d5cd13` (2991327 bytes). Foundation: `a89171407411b6418fac5a7500c6f5b8965bc4fa646073458b39a3b6e42b5ab2` (3001116 bytes). Chromium 154.0.8037.57. [Before JSON](foundation-performance-before.json), [after JSON](performance.json).
+## Exact-release benchmark
 
-| Profile | Metric | Before median / p95 | After median / p95 |
+Foundation: `a89171407411b6418fac5a7500c6f5b8965bc4fa646073458b39a3b6e42b5ab2`, 3001116 bytes. Week 1: `da8457d2e0a5abfee5a201675350c2d1ae0dd9831d8dbe1eb44b336cd45496ea`, 3035726 bytes. [Before JSON](week1-performance-before.json), [after JSON](week1-performance-after.json). Twenty samples per profile, Chromium 154.0.8037.57. Frozen artifacts ensure both profiles use their recorded release.
+
+| Profile | Metric | Foundation median / p95 | Week 1 median / p95 |
 |---|---|---|---|
-| desktop | initialLoad | 233.6 / 471.3 ms | 298.8 / 377.6 ms |
-| desktop | sceneReady | 370.8 / 583.6 ms | 475.8 / 576.8 ms |
-| desktop | movement | 129.2 / 132.3 ms | 128.2 / 146.5 ms |
-| desktop | mapTransition | 132.7 / 142.7 ms | 133.3 / 144.5 ms |
-| mobile4x | initialLoad | 904.1 / 1398.2 ms | 1065 / 1641.5 ms |
-| mobile4x | sceneReady | 1262.5 / 1944.9 ms | 1470.6 / 2216.1 ms |
-| mobile4x | movement | 127 / 142.8 ms | 132.3 / 145.1 ms |
-| mobile4x | mapTransition | 159.5 / 210.9 ms | 149.1 / 170.6 ms |
+| desktop | initialLoad | 208.2 / 355.9 ms | 205.8 / 249.8 ms |
+| desktop | sceneReady | 332.5 / 479.3 ms | 303.5 / 350.2 ms |
+| desktop | movement | 129.2 / 131.9 ms | 130.1 / 132.5 ms |
+| desktop | mapTransition | 131 / 140.5 ms | 131.7 / 139.9 ms |
+| mobile4x | initialLoad | 930.5 / 1255.1 ms | 884.7 / 1523.3 ms |
+| mobile4x | sceneReady | 1308.7 / 1743.5 ms | 1249.6 / 2025.2 ms |
+| mobile4x | movement | 133.7 / 222.8 ms | 134.1 / 147.4 ms |
+| mobile4x | mapTransition | 159.2 / 301.4 ms | 150.5 / 178 ms |
 
-desktop scene objects: 9 → 9; forced-GC heap 6,904,980 → 8,202,020 bytes. Storage endpoints: `{"pashto-quest-rpg-world-v1": 253, "pashto-quest-rpg-education-v1": 391, "revisionHeads": 2, "revisionValuesJsonBytes": 153}`.
+desktop: scene objects 9 → 9; heap 7,012,856 → 8,315,652 bytes; storage `{"pashto-quest-rpg-world-v1": 253, "pashto-quest-rpg-education-v1": 391, "revisionHeads": 2, "revisionValuesJsonBytes": 153}`.
 
-mobile4x scene objects: 9 → 9; forced-GC heap 6,920,140 → 8,191,224 bytes. Storage endpoints: `{"pashto-quest-rpg-world-v1": 253, "pashto-quest-rpg-education-v1": 391, "revisionHeads": 2, "revisionValuesJsonBytes": 153}`.
+mobile4x: scene objects 9 → 9; heap 7,017,776 → 8,301,384 bytes; storage `{"pashto-quest-rpg-world-v1": 253, "pashto-quest-rpg-education-v1": 391, "revisionHeads": 2, "revisionValuesJsonBytes": 153}`.
 
-Release size increased by 9789 bytes with no new dependency. Host contention differs between runs; these timings do not isolate code causation or certify phone performance. Scene counts remain stable. Repeated Library access is also checked by the lifecycle suite; no-op world-write counts are checked by the model suite.
+Release growth: 34610 bytes, with no new dependency. The final runs were sequential after verification; earlier contended timings were excluded. Differences remain subject to host/browser variance and do not certify physical-device performance. The public Week 1 suite also reports same-chapter object counts and forced-GC heap/storage after repeated completed-chapter transfers; compare the same chapter rather than assuming equal actor counts across different days.

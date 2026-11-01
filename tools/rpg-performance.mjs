@@ -2,10 +2,11 @@
 import {writeFileSync,mkdirSync,statSync,readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {setup} from '../tests/browser-fixture.mjs';
-const output={releaseSha256:createHash('sha256').update(readFileSync('index.html')).digest('hex'),releaseBytes:statSync('index.html').size,samples:20,profiles:[],notice:'Local Chromium, loopback HTTP/offline dependencies. Mobile is 375px with 4x CPU throttle, not physical Safari. Navigation includes HTML parse/script work; movement is key dispatch to the next committed tile (includes the 115ms Phaser tween), not first-pixel latency. Heap is forced-GC endpoint, not peak.'};
+const release=process.env.RPG_RELEASE||'index.html';
+const output={releaseSha256:createHash('sha256').update(readFileSync(release)).digest('hex'),releaseBytes:statSync(release).size,samples:20,profiles:[],notice:'Local Chromium, loopback HTTP/offline dependencies. Mobile is 375px with 4x CPU throttle, not physical Safari. Navigation includes HTML parse/script work; movement is key dispatch to the next committed tile (includes the 115ms Phaser tween), not first-pixel latency. Heap is forced-GC endpoint, not peak.'};
 const stats=values=>{const a=[...values].sort((a,b)=>a-b);return {medianMs:+a[Math.floor(a.length/2)].toFixed(2),p95Ms:+a[Math.ceil(a.length*.95)-1].toFixed(2),minMs:+a[0].toFixed(2),maxMs:+a.at(-1).toFixed(2)};};
 for(const [name,width,throttle]of[['desktop',1280,1],['mobile4x',375,4]]){
- const b=await setup({width,rpg:true,bridge:false,transform:h=>h.replace('// @TEST_HOOK','window.__rpgMetrics=()=>rpg.diagnostics();window.__fixtureFence=saveFence;window.__flushRPG=()=>rpg.flush(); // @TEST_HOOK')});const p=b.page;
+ const b=await setup({width,rpg:true,bridge:false,htmlPath:release,transform:h=>h.replace('// @TEST_HOOK','window.__rpgMetrics=()=>rpg.diagnostics();window.__fixtureFence=saveFence;window.__flushRPG=()=>rpg.flush(); // @TEST_HOOK')});const p=b.page;
  try {
   const cdp=await p.context().newCDPSession(p);await cdp.send('Emulation.setCPUThrottlingRate',{rate:throttle});
   const loads=[],ready=[];

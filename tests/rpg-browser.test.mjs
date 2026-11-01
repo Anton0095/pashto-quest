@@ -1,12 +1,13 @@
 /* Default RPG release: all gameplay actions use public UI. Read-only save JSON is the assessment oracle. */
+import {withDay1} from './rpg-profile-fixture.mjs';
 import assert from 'node:assert/strict';
 import {readFileSync,mkdirSync} from 'node:fs';
 import {setup} from './browser-fixture.mjs';
 import {runtime,beginAttempt,correctAnswer} from './runtime-fixture.mjs';
-const data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
+const data=JSON.parse(readFileSync('tests/fixtures/rpg-day1.json','utf8'));
 const oracle=runtime(),EDU='pashto-quest-rpg-education-v1',WORLD='pashto-quest-rpg-world-v1';
 for(const width of [375,1280]) {
- const b=await setup({width,rpg:true,bridge:false,offline:true,transform:h=>h.replace("// @TEST_HOOK","window.__fixtureFence=saveFence;window.__rpgInspect=()=>({physics:rpg.diagnostics(),position:rpg.position,actors:rpg.registry.npcs(1,rpg.position.map)}); // @TEST_HOOK")});const p=b.page;
+ const b=await setup({width,rpg:true,bridge:false,offline:true,transform:h=>withDay1(h).replace("// @TEST_HOOK","window.__fixtureFence=saveFence;window.__rpgInspect=()=>({physics:rpg.diagnostics(),position:rpg.position,actors:rpg.registry.npcs(1,rpg.position.map)}); // @TEST_HOOK")});const p=b.page;
  let tutorialDone=false;
  try {
   // A production save sentinel must survive every RPG write and reset untouched.

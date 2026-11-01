@@ -6,7 +6,7 @@ Actual rendered browser surfaces across fourteen complete profiles; compiler pro
 
 Retained educational navigation profile: fourteen-day shared-engine regression matrix. The default release is a Day 1 RPG, verified separately by rpg-browser.test.mjs at 375/1280px.
 
-Release SHA-256: `a89171407411b6418fac5a7500c6f5b8965bc4fa646073458b39a3b6e42b5ab2`. The complete browser matrix covered 392 normal district visits and 196 assessments, all fourteen days, seven paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
+Release SHA-256: `da8457d2e0a5abfee5a201675350c2d1ae0dd9831d8dbe1eb44b336cd45496ea`. The complete browser matrix covered 392 normal district visits and 196 assessments, all fourteen days, seven paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
 
 ## Day 1 Home: before and after
 
@@ -42,14 +42,14 @@ Default Home needs no other district visit and introduces no action verb. The wi
 | 4 | coordinated_present, present_attributive, present_transitive | guided_scene | 0 |
 | 5 | present_attributive, present_transitive | guided_scene | 0 |
 | 6 | present_attributive, present_compound_predicate, present_joint_action | guided_scene | 0 |
-| 7 | coordinated_present, present_attributive, present_compound_transitive, present_transitive | guided_scene | 0 |
+| 7 | coordinated_present, present_attributive, present_compound_transitive, present_joint_action, present_transitive | guided_scene | 0 |
 | 8 | attributive_equative, demonstrative_descriptor, demonstrative_transitive, equative_noun, present_attributive, present_transitive | guided_scene | 0 |
-| 9 | counted_equative, counted_transitive, present_attributive | guided_scene | 0 |
-| 10 | demonstrative_transitive, location_adverb_equative, spatial_equative, where_question | guided_scene, where_question | 0 |
+| 9 | counted_equative, counted_transitive, present_attributive, present_transitive | guided_scene | 0 |
+| 10 | demonstrative_transitive, location_adverb_equative, present_attributive, spatial_equative, where_question | guided_scene, where_question | 0 |
 | 11 | location_adverb_equative, possessive_descriptor, possessive_equative, possessive_spatial, present_transitive | guided_scene, where_question | 0 |
 | 12 | demonstrative_descriptor, how_many_question, present_transitive, what_object_question, where_question, which_question, who_subject_question, whose_question | what_object_question, which_question, who_subject_question | 0 |
-| 13 | demonstrative_descriptor, present_intransitive_adverb, present_transitive, present_transitive_adverb | what_object_question, which_question, who_subject_question | 0 |
-| 14 | attributive_equative, coordinated_present, count_location, counted_transitive, demonstrative_descriptor, equative_descriptor, equative_noun, how_many_question, location_adverb_equative, possessive_equative, possessive_spatial, present_compound_predicate, present_transitive, present_transitive_adverb, what_object_question, where_question | guided_scene, how_many_question, what_object_question, where_question, which_question, who_subject_question, whose_question | 0 |
+| 13 | possessive_equative, present_intransitive_adverb, present_transitive, present_transitive_adverb | guided_scene, who_subject_question, whose_question | 0 |
+| 14 | coordinated_present, count_location, counted_equative, counted_transitive, demonstrative_descriptor, equative_descriptor, equative_noun, how_many_question, location_adverb_equative, possessive_equative, present_attributive, present_transitive, present_transitive_adverb, which_question, who_subject_question, whose_question | guided_scene, how_many_question, what_object_question, where_question, which_question, who_subject_question, whose_question | 0 |
 
 ## All tested profiles
 

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
-const data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
+const data=JSON.parse(readFileSync('tests/fixtures/rpg-day1.json','utf8'));
 const {createRequire}=await import('node:module');const require=createRequire(import.meta.url);
 const M=require('../work/rpg-model.cjs'),W=M.RPGWorldData,P=M.createPersistenceAPI(data,{});
 const registry=M.createRPGRegistry(data,{beforeTutorial:()=>false,afterTutorial:()=>true,passed:()=>false});

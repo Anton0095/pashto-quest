@@ -10,7 +10,8 @@ export function createStoryDirector({value,event,eligible,changed}:{value:()=>Wo
   function finish(){const s=value(),e=s.dialogue&&resolve(s.dialogue.event);if(!e)return;
     s.triggers[s.dialogue!.event]=true;for(const flag of e.setFlags??[])s.flags[flag]=true;
   }
-  return {open,resolve,get cursor():DialogueCursor|undefined{return value().dialogue;},
+  function status(id:string):'not-started'|'in-progress'|'completed'{return value().triggers[id]?'completed':value().dialogue?.event===id?'in-progress':'not-started';}
+  return {open,resolve,status,get cursor():DialogueCursor|undefined{return value().dialogue;},
     index(index:number){if(value().dialogue)value().dialogue!.index=index;changed();},
     choose(action:Action):boolean {if(!eligible(action.condition))return false;finish();const s=value();delete s.dialogue;
       if(action.type==='flag')s.flags[action.flag]=true;
