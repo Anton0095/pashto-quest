@@ -1451,3 +1451,16 @@ body:has(.rpg-world) .dialect-note {font-size:12px;}
 .rpg-dialogue button[aria-pressed=true] {border-color:#f3d290;background:#59664a;}
 body:has(.rpg-world) header .brand {font-size:16px;}
 @media(max-width:500px){.rpg-world{padding:10px}.rpg-heading h2{font-size:20px}.rpg-heading .eyebrow{flex-basis:100%}.rpg-day{margin-left:0}.rpg-controls{gap:12px}.rpg-controls .tiny{flex-basis:100%;margin:0}.rpg-dialogue{padding:16px}body:has(.rpg-world) .herochar{padding:10px}body:has(.rpg-world) header .brand small{display:none}}
+
+/* Existing HTML learning panels above a paused Phaser canvas. */
+body.rpg-overlay-active #lessonScreen, body.rpg-overlay-active #resultScreen {
+  position:fixed;inset:5vh max(12px,calc((100vw - 1000px)/2));z-index:50;
+  overflow:auto;overscroll-behavior:contain;max-height:90vh;margin:0;
+  box-shadow:0 0 0 100vmax #102322bd;
+}
+body.rpg-overlay-active #navWorld {position:fixed;right:24px;top:5px;z-index:60;}
+body.rpg-overlay-active #worldScreen {pointer-events:none;}
+body.rpg-overlay-active dialog {z-index:80;}
+@supports(height:100dvh){body.rpg-overlay-active #lessonScreen,body.rpg-overlay-active #resultScreen{max-height:90dvh;}}
+
+#rpgCanvas {width:100% !important;height:auto !important;}

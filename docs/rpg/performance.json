@@ -1,6 +1,6 @@
 {
-  "releaseSha256": "f704e1791213266b1761b8ce2967578d7bc3dc91b58fb0247c85e88b236d4236",
-  "releaseBytes": 1595089,
+  "releaseSha256": "b6c3e42f82caa8663c344a3ec64de2aa5333b733abfd25f2e6d04cc282d5cd13",
+  "releaseBytes": 2991327,
   "samples": 20,
   "profiles": [
     {
@@ -9,29 +9,39 @@
       "cpuThrottle": 1,
       "browser": "154.0.8037.57",
       "initialLoad": {
-        "medianMs": 403.2,
-        "p95Ms": 635.9,
-        "minMs": 234.9,
-        "maxMs": 682.1
+        "medianMs": 373.1,
+        "p95Ms": 427.6,
+        "minMs": 310.2,
+        "maxMs": 741.8
+      },
+      "sceneReady": {
+        "medianMs": 570.3,
+        "p95Ms": 646.4,
+        "minMs": 484.9,
+        "maxMs": 968.1
       },
       "movement": {
-        "medianMs": 15.6,
-        "p95Ms": 35.4,
-        "minMs": 1.4,
-        "maxMs": 37.8
+        "medianMs": 125.8,
+        "p95Ms": 138.4,
+        "minMs": 120.7,
+        "maxMs": 142.3
       },
       "mapTransition": {
-        "medianMs": 12.3,
-        "p95Ms": 25.6,
-        "minMs": 0.8,
-        "maxMs": 32.9
+        "medianMs": 132.9,
+        "p95Ms": 140.7,
+        "minMs": 120,
+        "maxMs": 145.8
       },
-      "heapBeforeBytes": 2649512,
-      "heapAfterBytes": 2776220,
-      "heapDeltaBytes": 126708,
+      "sceneUpdateObjectsBefore": 9,
+      "sceneUpdateObjectsAfter": 9,
+      "heapBeforeBytes": 6886096,
+      "heapAfterBytes": 8179372,
+      "heapDeltaBytes": 1293276,
       "storage": {
         "pashto-quest-rpg-world-v1": 235,
-        "pashto-quest-rpg-education-v1": 391
+        "pashto-quest-rpg-education-v1": 391,
+        "revisionHeads": 2,
+        "revisionValuesJsonBytes": 153
       }
     },
     {
@@ -40,31 +50,41 @@
       "cpuThrottle": 4,
       "browser": "154.0.8037.57",
       "initialLoad": {
-        "medianMs": 1673.5,
-        "p95Ms": 2483.2,
-        "minMs": 895.4,
-        "maxMs": 2568.6
+        "medianMs": 1324.7,
+        "p95Ms": 2322.6,
+        "minMs": 824.8,
+        "maxMs": 3022
+      },
+      "sceneReady": {
+        "medianMs": 1887,
+        "p95Ms": 3286,
+        "minMs": 1190,
+        "maxMs": 4197
       },
       "movement": {
-        "medianMs": 22,
-        "p95Ms": 69.2,
-        "minMs": 5.4,
-        "maxMs": 85.6
+        "medianMs": 130.8,
+        "p95Ms": 143.8,
+        "minMs": 124.1,
+        "maxMs": 151.1
       },
       "mapTransition": {
-        "medianMs": 13.6,
-        "p95Ms": 28.8,
-        "minMs": 1.7,
-        "maxMs": 46.4
+        "medianMs": 148,
+        "p95Ms": 181.4,
+        "minMs": 121.9,
+        "maxMs": 210.5
       },
-      "heapBeforeBytes": 2643872,
-      "heapAfterBytes": 2770548,
-      "heapDeltaBytes": 126676,
+      "sceneUpdateObjectsBefore": 9,
+      "sceneUpdateObjectsAfter": 9,
+      "heapBeforeBytes": 6873860,
+      "heapAfterBytes": 8161452,
+      "heapDeltaBytes": 1287592,
       "storage": {
         "pashto-quest-rpg-world-v1": 235,
-        "pashto-quest-rpg-education-v1": 391
+        "pashto-quest-rpg-education-v1": 391,
+        "revisionHeads": 2,
+        "revisionValuesJsonBytes": 153
       }
     }
   ],
-  "notice": "Local Chromium, loopback HTTP/offline dependencies. Mobile is 375px with 4x CPU throttle, not physical Safari. Navigation includes HTML parse/script work; movement is key dispatch to next observed canvas position. Heap is forced-GC endpoint, not peak."
+  "notice": "Local Chromium, loopback HTTP/offline dependencies. Mobile is 375px with 4x CPU throttle, not physical Safari. Navigation includes HTML parse/script work; movement is key dispatch to the next committed tile (includes the 115ms Phaser tween), not first-pixel latency. Heap is forced-GC endpoint, not peak."
 }

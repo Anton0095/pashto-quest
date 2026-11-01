@@ -6,7 +6,7 @@ import {runtime,beginAttempt,correctAnswer} from './runtime-fixture.mjs';
 const data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
 const oracle=runtime(),EDU='pashto-quest-rpg-education-v1',WORLD='pashto-quest-rpg-world-v1';
 for(const width of [375,1280]) {
- const b=await setup({width,rpg:true,bridge:false,offline:true});const p=b.page;
+ const b=await setup({width,rpg:true,bridge:false,offline:true,transform:h=>h.replace("// @TEST_HOOK","window.__fixtureFence=saveFence; // @TEST_HOOK")});const p=b.page;
  let tutorialDone=false;
  try {
   // A production save sentinel must survive every RPG write and reset untouched.
@@ -19,13 +19,20 @@ for(const width of [375,1280]) {
    const queue=[{x:start.x,y:start.y,path:[]}],seen=new Set([start.x+','+start.y]);let path;
    for(let i=0;i<queue.length;i++){const q=queue[i];if(q.x===x&&q.y===y){path=q.path;break;}for(const [dir,dx,dy]of[['ArrowUp',0,-1],['ArrowDown',0,1],['ArrowLeft',-1,0],['ArrowRight',1,0]]){const nx=q.x+dx,ny=q.y+dy,k=nx+','+ny;if(seen.has(k)||!data.tiles[map.tiles[ny]?.[nx]]?.walkable||npcs.some(n=>n.x===nx&&n.y===ny))continue;if(map.transitions.some(t=>t.x===nx&&t.y===ny)&&!(nx===x&&ny===y))continue;seen.add(k);queue.push({x:nx,y:ny,path:[...q.path,dir]});}}
    assert(path,'No public walk route');
-   for(const key of path){await p.keyboard.press(key);await p.waitForTimeout(160);}
+   let expected={...start};
+   for(const key of path){
+    const [dx,dy]={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[key];
+    expected={...expected,x:expected.x+dx,y:expected.y+dy};const entrance=data.maps[expected.map].transitions.find(t=>t.x===expected.x&&t.y===expected.y);
+    if(entrance)expected={map:entrance.to,...entrance.spawn};
+    await p.waitForTimeout(160);await p.keyboard.press(key);
+    await p.waitForFunction(e=>{const c=document.getElementById('rpgCanvas');return c.dataset.map===e.map&&+c.dataset.x===e.x&&+c.dataset.y===e.y;},expected);
+   }
    const end=await pos();if(!map.transitions.some(t=>t.x===x&&t.y===y))assert.deepEqual([end.x,end.y],[x,y]);
   }
   async function talk(label){await p.locator('#rpgInteract').click();await p.locator('#rpgDialogue').getByRole('button',{name:label,exact:true}).click();}
   async function tutorial(){
    await p.locator('#startTutorial').click();
-   const start=await pos();await p.locator('[data-direction=down]').click();await p.waitForTimeout(180);assert.equal((await pos()).y,start.y+1);await p.locator('[data-direction=up]').click();await p.waitForTimeout(180);assert.deepEqual(await pos(),start);
+   const start=await pos();await p.locator('[data-direction=down]').click();await p.waitForFunction(y=>+document.getElementById('rpgCanvas').dataset.y===y,start.y+1);await p.locator('[data-direction=up]').click();await p.waitForFunction(y=>+document.getElementById('rpgCanvas').dataset.y===y,start.y);assert.deepEqual(await pos(),start);
    const before=await pos();p.once('dialog',d=>d.dismiss());await p.locator('#resetProgress').click();assert(await p.locator('#worldScreen').isVisible());assert.deepEqual(await pos(),before,'Cancelled reset preserves world');await p.locator('#rpgInteract').click();
    await p.keyboard.down('ArrowDown');await p.waitForTimeout(350);await p.keyboard.up('ArrowDown');assert.deepEqual(await pos(),before,'Dialogue freezes movement');
    await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();
@@ -106,7 +113,7 @@ for(const width of [375,1280]) {
   assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),'Mobile overflow');
   // Bad world coordinates recover independently of real completed educational progress.
   const stable=await progress();
-  await p.evaluate(k=>{const w=JSON.parse(localStorage.getItem(k));w.position={map:'unavailable',x:999,y:-2};w.view='world';localStorage.setItem(k,JSON.stringify(w));},WORLD);
+  await p.evaluate(async k=>{const current=localStorage.getItem(k),w=JSON.parse(current);w.position={map:'unavailable',x:999,y:-2};w.view='world';await navigator.locks.request(k,()=>__fixtureFence.commit(k,current,JSON.stringify(w),()=>localStorage.getItem(k),()=>{localStorage.setItem(k,JSON.stringify(w));return true;}));},WORLD);
   await p.reload();await p.locator('#worldScreen').waitFor({state:'visible'});assert.equal((await pos()).map,'village');
   const recovered=await progress();assert.equal(recovered.xp,stable.xp);assert.deepEqual(recovered.challenges,stable.challenges);assert.deepEqual(recovered.library.acquired,stable.library.acquired);
   // A valid schema-7 future-day fixture must never make that day playable in this profile.
@@ -114,7 +121,7 @@ for(const width of [375,1280]) {
   for(const q of future.state.session.questions){future.state.session.locked=false;future.learning.submitChallenge(correctAnswer(future,q));future.state.session.index++;}
   future.progression.completeChallengeOnce(future.state.progress,1,15);beginAttempt(future,2);
   const futureRaw=future.storage.snapshot();assert(future.storage.currentSave(JSON.parse(futureRaw)));
-  await p.evaluate(([key,raw])=>localStorage.setItem(key,raw),[EDU,futureRaw]);await p.reload();await p.locator('#worldScreen').waitFor({state:'visible'});
+  await p.evaluate(async([key,raw])=>{const current=localStorage.getItem(key);await navigator.locks.request(key,()=>__fixtureFence.commit(key,current,raw,()=>localStorage.getItem(key),()=>{localStorage.setItem(key,raw);return true;}));},[EDU,futureRaw]);await p.reload();await p.locator('#worldScreen').waitFor({state:'visible'});
   assert(!await p.locator('#lessonScreen').isVisible(),'Future saved challenge is not opened');assert.equal((await progress()).activeChallenge.loop,2,'Unavailable snapshot is preserved, not regraded or rerolled');
   assert.deepEqual(b.errors,[]);
   console.log('PASS RPG public UI',width,'tutorial, all four authentic lessons, Home 3 descriptions, movement/touch controls, Library, frozen partial/locked challenge reload, lesson reload, appearance, completion/reload, early failure/retry, save isolation, Day 2 boundary');

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';import {readFileSync}from'node:fs';import vm from'node:vm';
 const data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
-const {P,policyFactory}=vm.runInNewContext(['rpg-world-engine','rpg-persistence','rpg-progression'].map(n=>readFileSync('src/'+n+'.js','utf8')).join('\n')+';({P:RPGPersistence,policyFactory:createRPGProgression})',{RPG_WORLD_DATA:data});
+const {createRequire}=await import('node:module');const require=createRequire(import.meta.url);const M=require('../work/rpg-model.cjs');
+const P=M.createPersistenceAPI(data,{}),policyFactory=M.createRPGProgression;
 const store=new Map([['pashto-town-days-v1','main-progress']]);const backend={getItem:k=>store.get(k)??null,setItem:(k,v)=>store.set(k,v)};
 const first=P.create(data,backend),second=P.create(data,backend);first.value.position={map:'village',x:24,y:16,facing:'up'};assert(await first.save(first.value));second.value.position.x=2;assert(!await second.save(second.value));assert(second.problem.includes('another tab'));assert.equal(store.get('pashto-town-days-v1'),'main-progress');assert.equal(JSON.parse(store.get(P.key)).position.x,24);
 const denied=P.create(data,{getItem(){throw Error('denied');},setItem(){throw Error('denied');}});assert(!await denied.save(denied.value));assert(denied.problem);

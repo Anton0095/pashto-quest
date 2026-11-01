@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import re
 import sys
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 # runpy-based content checks also resolve the sibling schema module.
@@ -110,7 +111,8 @@ def validate_expressions(data):
             raise ValueError('Expression requires documented linguistic review: ' + identity)
 
 
-def build():
+def build(check_rpg=False):
+    subprocess.run(['node', 'tools/build-rpg.mjs'] + (['--check'] if check_rpg else []), cwd=ROOT, check=True)
     curriculum = json.loads(read('content/LEARNING_CURRICULUM.json'))
     archived1 = json.loads(read('docs/grammar/attestations/WEEK1_AUTHORED.json'))
     archived2 = json.loads(read('docs/grammar/attestations/WEEK2_AUTHORED.json'))
@@ -202,14 +204,14 @@ def build():
         'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
         'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'construction-ui', 'answer-feedback', 'sentence-scene', 'ui',
         'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
-        'world-ui', 'library-ui', 'rpg-world-engine', 'rpg-content', 'rpg-renderer',
-        'rpg-persistence', 'rpg-progression', 'rpg-ui', 'app',
+        'world-ui', 'library-ui',
     ]
     datasets = {'RPG_ENABLED': True, 'RPG_WORLD_DATA': json.loads(read('content/RPG_WORLD.json')), 'LIBRARY_DATA': library,
                 'NARRATIVE_DATA': narrative, 'BUNDLED_AUDIO_IDS': audio_ids}
     script = '\n'.join('const ' + name + '=' + encode(value) + ';'
                        for name, value in datasets.items()) + '\n'
     script += '\n'.join(read('src/' + name + '.js') for name in modules)
+    script += '\n' + read('generated/rpg.bundle.js') + '\n' + read('src/app.js')
     script = '(() => {\n\"use strict\";\n' + script + '\n})();'
     return (read('src/app.html').replace('/* @STYLES */', read('src/app.css'))
             .replace('// @SCRIPT', script))
@@ -219,7 +221,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
-    rendered = build()
+    rendered = build(check_rpg=args.check)
     output = ROOT / 'index.html'
     if args.check:
         if output.read_text(encoding='utf-8') != rendered:

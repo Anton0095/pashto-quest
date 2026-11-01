@@ -4,7 +4,8 @@
   const content = createContent(LIBRARY_DATA, NARRATIVE_DATA);
   const state = { progress: null, session: null, day: 1 };
   const progression = createProgression(content, LibraryEngine);
-  const storage = createStorage({ state, content, progression, key: RPG_ENABLED ? "pashto-quest-rpg-education-v1" : "pashto-town-days-v1" });
+  const saveFence = PashtoRPG.createSaveFence();
+  const storage = createStorage({ state, content, progression, fence: saveFence, key: RPG_ENABLED ? "pashto-quest-rpg-education-v1" : "pashto-town-days-v1" });
   state.progress = storage.load();
   const ui = createUI({ state, content, progression });
   const saveWarning = document.createElement("aside");
@@ -177,6 +178,7 @@
     if (
       confirm("Reset all XP, unlocked locations and spaced-repetition history?")
     ) {
+      storage.authorizeReset();
       state.progress = progression.fresh();
       state.session = null;
       state.day = 1;
@@ -192,7 +194,7 @@
       content.curriculum.days.filter((d) => learning.allowed(d.day)).at(-1)
         ?.day || 1;
   library.libraryInit();
-  const rpg = RPG_ENABLED ? createRPG({state,content,progression,learning,ui,audio,storage,world,lessons,challenge,library}) : null;
+  const rpg = RPG_ENABLED ? PashtoRPG.createRPG({state,content,progression,learning,ui,audio,storage,world,lessons,challenge,library},{data:RPG_WORLD_DATA,questions:QuestionEngine,fence:saveFence}) : null;
   // @TEST_HOOK
   ui.$("lessonScreen").insertBefore(ui.$("addressTarget"), ui.$("teachPanel"));
   storage.save();
@@ -214,11 +216,10 @@
     reset.type = "button";
     reset.className = "primary";
     reset.textContent = "Reset incompatible save and start";
-    reset.addEventListener("click", () => {
+    reset.addEventListener("click", async () => {
       storage.resetProblem();
       state.progress = progression.fresh();
-      storage.save();
-      location.reload();
+      if (await storage.save()) location.reload();
     });
     dialog.addEventListener("cancel", (e) => e.preventDefault());
     dialog.append(message, reset);

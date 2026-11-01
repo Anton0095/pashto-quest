@@ -6,9 +6,9 @@ An offline, browser-based Pashto learning game set in a village in Laghman, Afgh
 
 ## RPG prototype branch
 
-`feature/rpg-prototype` converts the default release into an explorable Day 1 RPG. This branch-specific prototype starts from merged review PR #23; it is not the production main release. Move with arrows/WASD or the touch pad, interact with E/Enter, and use L for the Library. Meet Muhammad Jan, complete the existing Library tutorial, study at Home/Lake/Market/School, and pass the authentic 15-question challenge (12 correct). The prototype ends there; Day 2 stays unavailable. Menu offers independent character appearance; Reset affects only prototype saves.
+`feature/rpg-phaser-typescript` uses strict TypeScript and locally bundled Phaser 4.2.1 to convert the default release into an explorable Day 1 RPG. This branch-specific prototype starts from merged review PR #23; it is not the production main release. Move with arrows/WASD or the touch pad, interact with E/Enter, and use L for the Library. Meet Muhammad Jan, complete the existing Library tutorial, study at Home/Lake/Market/School, and pass the authentic 15-question challenge (12 correct). The prototype ends there; Day 2 stays unavailable. Menu offers independent character appearance; Reset affects only prototype saves.
 
-Run `python3 tools/build.py`, then `python3 -m http.server 8000` and open `http://localhost:8000/`. HTTP/HTTPS is recommended for coordinated browser saves. The release embeds all code/content and has no runtime dependency downloads. For GitHub Pages, deploy this branch's generated release from an isolated preview branch/site; do not repoint the production Pages source or merge into main. No Pages hosting setting is changed by this delivery.
+For development run `npm ci` once, then `python3 tools/build.py` and `python3 -m http.server 8000` and open `http://localhost:8000/`. HTTP/HTTPS is recommended for coordinated browser saves. The release embeds all code/content and has no runtime dependency downloads. For GitHub Pages, deploy this branch's generated release from an isolated preview branch/site; do not repoint the production Pages source or merge into main. No Pages hosting setting is changed by this delivery.
 
 See [RPG architecture](docs/rpg/RPG_ARCHITECTURE.md), [expansion guide](docs/rpg/RPG_EXPANSION_GUIDE.md) and [validation/performance report](docs/rpg/RPG_VALIDATION.md). The default RPG and retained fourteen-day educational regression profiles share the same educational engines. Prototype saves use separate keys and never import production progress.
 
@@ -26,13 +26,14 @@ Open the generated `index.html` in a modern browser, or serve the repository wit
 python3 -m http.server 8000
 ```
 
-The game needs no backend, account, API key or runtime JSON fetch. The generated release embeds source data. A browser may impose restrictions when opening local files; local HTTP hosting is a useful development alternative. Progress is kept in browser local storage. Audio is optional: bundled `audio/<id>.mp3` recordings take priority when supplied; otherwise the game attempts a detected Pashto device voice and warns about uncertain fallback. No native-reviewed MP3 pack is currently committed. Physical iPhone Safari and Windows speech quality have not been independently verified.
+The game needs no backend, account, API key or runtime JSON fetch. The generated release embeds source data. A browser may impose restrictions when opening local files; local HTTP hosting is a useful development alternative. Progress JSON is kept in browser local storage; IndexedDB holds only hash/revision metadata for safe cross-tab coordination. Browser Web Locks, IndexedDB and Web Crypto are required for coordinated saving; failures retain progress in this tab with Retry/Export. Audio is optional: bundled `audio/<id>.mp3` recordings take priority when supplied; otherwise the game attempts a detected Pashto device voice and warns about uncertain fallback. No native-reviewed MP3 pack is currently committed. Physical iPhone Safari and Windows speech quality have not been independently verified.
 
 ## Development
 
-Use Python 3 for the standard-library builder and Node.js/Playwright/Chromium for full tests. Choose commands using the [risk-based validation policy](tests/README.md#choose-validation-by-change-and-risk). The commands below are a reference, not a checklist for every edit; Markdown-only changes need no build or gameplay tests.
+Use Python 3 for the offline builder and Node.js/npm for the strict TypeScript/Phaser build. Run `npm ci` once; players need no Node/npm or runtime downloads. Full tests use Playwright/Chromium. Choose commands using the [risk-based validation policy](tests/README.md#choose-validation-by-change-and-risk). The commands below are a reference, not a checklist for every edit; Markdown-only changes need no build or gameplay tests.
 
 ```sh
+npm run typecheck                  # strict RPG TypeScript contracts
 python3 tools/build.py              # update generated offline index.html
 python3 tools/build.py --check      # check generated release matches sources
 python3 tools/verify.py             # model, syntax, build and browser suites
@@ -46,6 +47,8 @@ node tools/district-inventory.mjs --check
 | Source | Owns |
 |---|---|
 | `src/app.js` | Browser composition, shared runtime state and event wiring |
+| `src/rpg/*.ts` | Strict RPG types/adapters, Phaser scene, maps/actors/events and world persistence |
+| `tools/build-rpg.mjs`, `generated/rpg.bundle.js` | TypeScript checks and locally bundled Phaser/RPG artifact |
 | `src/content.js`, `src/assessment-content.js` | On-demand generated-card registry, English narrative and task blueprints |
 | `src/library-engine.js` | Sole lemma/form identity, acquisition, SRS and district planner |
 | `src/progression.js` | Save factory/version, XP/reward identity, results, milestones and access rules |
@@ -64,7 +67,7 @@ node tools/district-inventory.mjs --check
 | `content/DISTRICT_VOCABULARY_CANDIDATES.json`, `content/UNIVERSAL_TEACHING_TARGETS.json` | Inactive editorial candidates, not playable translations |
 | `tools/build.py`, `tools/verify.py` | Offline assembly/validation and complete verification |
 
-Modules expose small factory APIs with explicit state/service dependencies and screen-transition callbacks. UI submits answers through `learning.js`; it does not maintain a second score, XP or SRS store. `tools/build.py` assembles the modules in explicit dependency order inside one private script closure. The generated game needs no module loader, framework, package manager or network requests for code/curriculum. Runtime dependencies remain browser DOM, local storage and optional Audio/Web Speech APIs; development uses Python and Node/Playwright/Chromium.
+Modules expose small factory APIs with explicit state/service dependencies and screen-transition callbacks. UI submits answers through `learning.js`; it does not maintain a second score, XP or SRS store. `tools/build.py` assembles the modules in explicit dependency order inside one private script closure. The generated game embeds Phaser and the strict-checked RPG bundle alongside the educational modules. Players need no module loader, dependency installation or network requests for code/curriculum. Browser DOM, Canvas, local storage and optional Audio/Web Speech APIs provide the platform; development uses Python, npm/TypeScript/esbuild and Node/Playwright/Chromium.
 
 `docs/reference/WEEK2_LESSON_DATA.json` archives the historical English editorial targets and is never read by the runtime/builder; `tests/curriculum-contract.json` preserves authored-content regression fixtures. `content/DISTRICT_INVENTORY_REPORT.json` is an inventory output. Do not delete data files just because some names overlap.
 

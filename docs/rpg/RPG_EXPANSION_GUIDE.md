@@ -1,12 +1,12 @@
 # Expanding the RPG
 
-This is a branch-specific Day 1 prototype. Keep main's learning/progression engines authoritative. Add approved data and narrative before changing generic simulation code.
+This is a strict TypeScript / Phaser 4.2.1 Day 1 prototype. Keep main's learning/progression engines authoritative. Add approved data and narrative before changing generic simulation code.
 
 ## Add a map
 
-Add a stable key under `maps` in `content/RPG_WORLD.json`. Supply equal-width tile rows using registered symbols and a walkable spawn. Add a transition on the source map and an exit on the destination, keeping return spawns off transition tiles. Declare building-art rectangles and region labels independently from collision tiles. Run `node tests/rpg-world.test.mjs` to validate maps, collision and reachability. Add explicit reachability assertions for new objects/NPCs and public-UI navigation through new entrances.
+Add a stable key under `maps` in `content/RPG_WORLD.json`. Supply equal-width tile rows using registered symbols and a walkable spawn. Optional equal-size `collision` rows contain `0` (default) or `1` (blocked) and become a separate Phaser tilemap collision layer. Add a transition on the source map and an exit on the destination, keeping return spawns off transition tiles. Declare building-art rectangles and region labels independently from collision tiles. Run `python3 tools/build.py` first to strict-check/bundle the TypeScript, then `node tests/rpg-world.test.mjs` to validate maps, collision and reachability. Add explicit reachability assertions for new objects/NPCs and public-UI navigation through new entrances.
 
-For a new terrain kind, add its walkability in data and integer pixel drawing in `rpg-renderer.js`. Do not add lesson, assessment, day or XP checks to the renderer or world engine. Existing scene art is original procedural artwork, with no external runtime assets.
+For a new terrain kind, add its walkability in data and Phaser Graphics texture generation in `src/rpg/phaser-world.ts`. Phaser owns tilemap rendering, physics/collisions, movement tweens, animation and follow cameras; add no parallel custom engine or lesson/assessment/XP checks there. Existing scene art is original Phaser-generated pixel textures, with no external runtime assets.
 
 ## Add or relocate an NPC
 
@@ -43,3 +43,7 @@ The reusable policy, registry, schedules and action dispatch already separate th
 - Preserve partial tutorial construction if exact tutorial-draft restoration is required; current unfinished tutorial arrangement restarts at the same step.
 - Obtain needed language/recording review. Existing base/phrase approvals do not certify generated combinations, inflections, Laghman pronunciation or new dialogue.
 - Replace/develop procedural art where useful, maintaining original or documented licensed assets and offline delivery.
+
+## Typed boundary and build
+
+Run `npm ci` once, then use the existing `python3 tools/build.py` / `--check` commands. `npm run typecheck` checks all new RPG systems in strict mode; `tools/build-rpg.mjs` bundles Phaser locally before Python embeds it into the static release. Only development requires Node/npm; GitHub Pages and offline play use the committed HTML. Extend discriminated `Action`, `WorldData`, `Chapter` and adapter interfaces in `src/rpg/types.ts` when adding new concepts. Keep educational JavaScript services authoritative and connect them through `EducationServices`, rather than copying evaluation/reward logic into TypeScript. See the [pipeline decision](TYPESCRIPT_PHASER_BUILD_PLAN.md).

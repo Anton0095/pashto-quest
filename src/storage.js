@@ -4,13 +4,14 @@ function createStorage({
   content,
   progression,
   backend,
+  fence,
   key = "pashto-town-days-v1",
   locks = backend ? null : globalThis.navigator?.locks,
 }) {
   const KEY = key;
   let saveProblem = null, persistenceProblem = null, readBlocked = false;
   let notifyPersistence = () => {};
-  let observed, conflict = false;
+  let observed, conflict = false, revisionReset = false;
   try { observed = accessInitial(); } catch {}
   function accessInitial() { return (backend || globalThis.localStorage).getItem(KEY); }
   function checkExternalChange() {
@@ -69,17 +70,23 @@ function createStorage({
     LibraryEngine.compactHistory(state.progress, [state.session, state.progress.activeChallenge]);
     return JSON.stringify(state.progress);
   }
-  function write(raw) {
-    if (saveProblem) return false;
+  function prepareWrite() {
     try {
-      const target = access();
       if (readBlocked) {
-        if (target.getItem(KEY))
+        if (access().getItem(KEY))
           return persistenceFailure("Progress has not been saved: existing progress could not be read at startup. Export this tab’s progress, then reload to recover the existing save. Retry will not overwrite it.");
         readBlocked = false;
         observed = null;
       }
-      if (!checkExternalChange()) return false;
+      return checkExternalChange();
+    } catch {
+      return persistenceFailure("Progress has not been saved: browser storage is full or unavailable. Progress stays in this tab. Retry or export before closing it.");
+    }
+  }
+  function write(raw) {
+    if (saveProblem || !prepareWrite()) return false;
+    try {
+      const target = access();
       if (raw !== observed) {
         target.setItem(KEY, raw);
         if (target.getItem(KEY) !== raw) throw Error("Storage did not retain progress");
@@ -88,7 +95,7 @@ function createStorage({
       persistenceProblem = null;
       notifyPersistence(null);
       return true;
-    } catch (error) {
+    } catch {
       return persistenceFailure("Progress has not been saved: browser storage is full or unavailable. Progress stays in this tab. Retry or export before closing it.");
     }
   }
@@ -111,9 +118,28 @@ function createStorage({
     const request = {raw, promise:null};
     queuedSave = request;
     pending++;
-    request.promise = locks.request(KEY, { mode: "exclusive" }, () => {
-      try { return write(request.raw); }
-      finally { if (queuedSave === request) queuedSave = null; }
+    request.promise = locks.request(KEY, { mode: "exclusive" }, async () => {
+      // Freeze the started request. Later same-tab saves coalesce into one next
+      // request while revision transactions are pending, never into this write.
+      if (queuedSave === request) queuedSave = null;
+      const raw = request.raw;
+      if (backend) return write(raw);
+      if (!prepareWrite()) return false;
+      if (!fence)
+        return persistenceFailure("Progress has not been saved: safe revision coordination is unavailable. Retry or export before closing this tab.");
+      if (revisionReset) {
+        if (!await fence.rebase(KEY, observed, () => access().getItem(KEY)))
+          return persistenceFailure("Progress reset could not be safely coordinated. Retry or export before closing this tab.");
+        revisionReset = false;
+      }
+      const result = await fence.commit(KEY, observed, raw, () => access().getItem(KEY), () => write(raw));
+      if (result === "conflict") {
+        conflict = true;
+        return persistenceFailure("Newer saved progress exists in another tab. This tab has not overwritten it. Export this tab’s progress if needed, then reload to use the newer save. Progress records are not merged.");
+      }
+      if (result !== "saved")
+        return persistenceProblem ? false : persistenceFailure("Progress has not been saved: safe revision coordination failed. Retry or export before closing this tab.");
+      return true;
     }).catch(() => {
       if (queuedSave === request) queuedSave = null;
       return persistenceFailure("Progress has not been saved: browser save coordination failed. Retry or export before closing this tab.");
@@ -140,7 +166,9 @@ function createStorage({
     get problem() {
       return saveProblem;
     },
+    authorizeReset() { revisionReset = true; },
     resetProblem() {
+      revisionReset = true;
       saveProblem = null;
     },
   };
