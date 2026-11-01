@@ -202,9 +202,10 @@ def build():
         'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
         'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'construction-ui', 'answer-feedback', 'sentence-scene', 'ui',
         'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
-        'world-ui', 'library-ui', 'app',
+        'world-ui', 'library-ui', 'rpg-world-engine', 'rpg-content', 'rpg-renderer',
+        'rpg-persistence', 'rpg-progression', 'rpg-ui', 'app',
     ]
-    datasets = {'LIBRARY_DATA': library,
+    datasets = {'RPG_ENABLED': True, 'RPG_WORLD_DATA': json.loads(read('content/RPG_WORLD.json')), 'LIBRARY_DATA': library,
                 'NARRATIVE_DATA': narrative, 'BUNDLED_AUDIO_IDS': audio_ids}
     script = '\n'.join('const ' + name + '=' + encode(value) + ';'
                        for name, value in datasets.items()) + '\n'

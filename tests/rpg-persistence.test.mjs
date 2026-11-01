@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';import {readFileSync}from'node:fs';import vm from'node:vm';
+const data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
+const {P,policyFactory}=vm.runInNewContext(['rpg-world-engine','rpg-persistence','rpg-progression'].map(n=>readFileSync('src/'+n+'.js','utf8')).join('\n')+';({P:RPGPersistence,policyFactory:createRPGProgression})',{RPG_WORLD_DATA:data});
+const store=new Map([['pashto-town-days-v1','main-progress']]);const backend={getItem:k=>store.get(k)??null,setItem:(k,v)=>store.set(k,v)};
+const first=P.create(data,backend),second=P.create(data,backend);first.value.position={map:'village',x:24,y:16,facing:'up'};assert(await first.save(first.value));second.value.position.x=2;assert(!await second.save(second.value));assert(second.problem.includes('another tab'));assert.equal(store.get('pashto-town-days-v1'),'main-progress');assert.equal(JSON.parse(store.get(P.key)).position.x,24);
+const denied=P.create(data,{getItem(){throw Error('denied');},setItem(){throw Error('denied');}});assert(!await denied.save(denied.value));assert(denied.problem);
+for(const raw of [null,{},[],{schemaVersion:3},{schemaVersion:1,position:{map:'missing',x:900,y:-1}},{schemaVersion:1,position:{map:'village',x:35,y:4}}]){const fixed=P.validate(data,raw);assert.equal(fixed.schemaVersion,1);assert(data.tiles[data.maps[fixed.position.map].tiles[fixed.position.y][fixed.position.x]].walkable);}
+const learning={allowed:d=>d>=1&&d<=14,placeAccessible:()=>true},state={day:14,progress:{}},progression={passedChallenge:()=>true};const policy=policyFactory({state,data,learning,progression});assert.equal(policy.current(),1);assert(!learning.allowed(2));assert(!learning.placeAccessible(2,'school'));assert(!policy.lessonAllowed('2-school'));assert(policy.lessonAllowed('1-residential'));assert(policy.terminal(1));assert(!policy.terminal(2));
+// Expanded policy uses new chapter data without a movement/rendering/evaluation change.
+const expanded=structuredClone(data);expanded.lastDay=2;expanded.days['2']={lessons:['2-school'],completion:{terminal:true}};
+const futureLearning={allowed:d=>d<=2,placeAccessible:()=>true};const future=policyFactory({state:{day:2,progress:{}},data:expanded,learning:futureLearning,progression});assert.equal(future.current(),2);assert(future.lessonAllowed('2-school'));
+for(const invalid of [null,{},[],{mode:'standard',id:'2-school'},{mode:'standard',id:'1-residential',loop:1,phase:'quiz',tileOrder:'bad'}])assert.equal(P.restoreLesson(invalid,{wordById:{}},{}),null);
+console.log('PASS RPG persistence and policy: separate keys, competing writer protection, corrupted coordinates/schema recovery, Day 2 cap, data-driven expansion');

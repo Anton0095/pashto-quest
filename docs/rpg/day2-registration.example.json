@@ -1,0 +1,82 @@
+{
+  "active": false,
+  "notice": "Documentation example only; excluded from the release builder. English story copy needs editorial review before activation.",
+  "events": {
+    "day2-school-opening": {
+      "speaker": "Ms Hameed",
+      "lines": [
+        "Welcome back. Today we begin at school, then practise with our neighbours."
+      ],
+      "actions": [
+        {
+          "label": "Begin the Day 2 school lesson",
+          "type": "lesson",
+          "lessonId": "2-school"
+        }
+      ]
+    },
+    "day2-home-challenge": {
+      "speaker": "Muhammad Jan",
+      "lines": [
+        "You may try today's challenge now, or keep studying first."
+      ],
+      "actions": [
+        {
+          "label": "Day 2 challenge",
+          "type": "challenge",
+          "day": 2
+        }
+      ]
+    }
+  },
+  "days": {
+    "2": {
+      "openingEvent": "day2-school-opening",
+      "tutorialLessonId": "tutorial",
+      "lessons": [
+        "2-school",
+        "2-business",
+        "2-nature",
+        "2-residential"
+      ],
+      "challenge": {
+        "day": 2,
+        "npc": "jan-home"
+      },
+      "completion": {
+        "challengePassed": 2,
+        "terminal": false
+      }
+    }
+  },
+  "npcSchedulePatches": [
+    {
+      "id": "hameed",
+      "name": "Ms Hameed",
+      "sprite": "hameed",
+      "schedule": [
+        {
+          "day": 2,
+          "map": "village",
+          "x": 39,
+          "y": 27
+        }
+      ],
+      "event": "day2-school-opening"
+    },
+    {
+      "id": "jan-home",
+      "name": "Muhammad Jan",
+      "sprite": "elder",
+      "schedule": [
+        {
+          "day": 2,
+          "map": "village",
+          "x": 10,
+          "y": 10,
+          "event": "day2-home-challenge"
+        }
+      ]
+    }
+  ]
+}

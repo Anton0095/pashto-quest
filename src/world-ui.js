@@ -19,6 +19,7 @@ function createWorld({
     );
   }
   function navigatePlace(day, place) {
+    if (state.rpg) return state.rpg.navigatePlace(day,place);
     if (place === "library") {
       onLibrary();
       return;
@@ -89,6 +90,7 @@ function createWorld({
         : "Visit Home, Lake and School in any order; then take the weekly examination.";
   }
   function startWorld() {
+    if (state.rpg) return state.rpg.startWorld();
     audio.stopAudio();
     ui.$("addressTarget").classList.add("hidden");
     if (!state.progress.tutorialDone) {

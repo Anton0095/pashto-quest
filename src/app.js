@@ -4,7 +4,7 @@
   const content = createContent(LIBRARY_DATA, NARRATIVE_DATA);
   const state = { progress: null, session: null, day: 1 };
   const progression = createProgression(content, LibraryEngine);
-  const storage = createStorage({ state, content, progression });
+  const storage = createStorage({ state, content, progression, key: RPG_ENABLED ? "pashto-quest-rpg-education-v1" : "pashto-town-days-v1" });
   state.progress = storage.load();
   const ui = createUI({ state, content, progression });
   const saveWarning = document.createElement("aside");
@@ -129,7 +129,7 @@
       audio.speak(state.session.activeItem.id);
   });
   ui.$("startTutorial").addEventListener("click", () =>
-    lessons.begin("tutorial"),
+    RPG_ENABLED ? world.startWorld() : lessons.begin("tutorial"),
   );
   ui.$("replayGuide").addEventListener("click", () =>
     lessons.begin("tutorial"),
@@ -180,8 +180,9 @@
       state.progress = progression.fresh();
       state.session = null;
       state.day = 1;
+      state.rpg?.reset();
       storage.save();
-      library.prepareOnboarding();
+      if (!RPG_ENABLED) library.prepareOnboarding();
       ui.hud();
       ui.view("introScreen");
     }
@@ -191,13 +192,15 @@
       content.curriculum.days.filter((d) => learning.allowed(d.day)).at(-1)
         ?.day || 1;
   library.libraryInit();
+  const rpg = RPG_ENABLED ? createRPG({state,content,progression,learning,ui,audio,storage,world,lessons,challenge,library}) : null;
   // @TEST_HOOK
   ui.$("lessonScreen").insertBefore(ui.$("addressTarget"), ui.$("teachPanel"));
   storage.save();
   ui.hud();
   // Restore the visible assessment first. Rendering an immediately hidden day
   // opening here would incorrectly acquire a greeting the player never saw.
-  if (!state.progress.activeChallenge || !challenge.resumeChallenge()) {
+  if (rpg) rpg.boot();
+  else if (!state.progress.activeChallenge || !challenge.resumeChallenge()) {
     if (state.progress.tutorialDone) world.startWorld();
     else ui.view("introScreen");
   }

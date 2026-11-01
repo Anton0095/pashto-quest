@@ -1,0 +1,70 @@
+{
+  "releaseSha256": "f704e1791213266b1761b8ce2967578d7bc3dc91b58fb0247c85e88b236d4236",
+  "releaseBytes": 1595089,
+  "samples": 20,
+  "profiles": [
+    {
+      "name": "desktop",
+      "width": 1280,
+      "cpuThrottle": 1,
+      "browser": "154.0.8037.57",
+      "initialLoad": {
+        "medianMs": 403.2,
+        "p95Ms": 635.9,
+        "minMs": 234.9,
+        "maxMs": 682.1
+      },
+      "movement": {
+        "medianMs": 15.6,
+        "p95Ms": 35.4,
+        "minMs": 1.4,
+        "maxMs": 37.8
+      },
+      "mapTransition": {
+        "medianMs": 12.3,
+        "p95Ms": 25.6,
+        "minMs": 0.8,
+        "maxMs": 32.9
+      },
+      "heapBeforeBytes": 2649512,
+      "heapAfterBytes": 2776220,
+      "heapDeltaBytes": 126708,
+      "storage": {
+        "pashto-quest-rpg-world-v1": 235,
+        "pashto-quest-rpg-education-v1": 391
+      }
+    },
+    {
+      "name": "mobile4x",
+      "width": 375,
+      "cpuThrottle": 4,
+      "browser": "154.0.8037.57",
+      "initialLoad": {
+        "medianMs": 1673.5,
+        "p95Ms": 2483.2,
+        "minMs": 895.4,
+        "maxMs": 2568.6
+      },
+      "movement": {
+        "medianMs": 22,
+        "p95Ms": 69.2,
+        "minMs": 5.4,
+        "maxMs": 85.6
+      },
+      "mapTransition": {
+        "medianMs": 13.6,
+        "p95Ms": 28.8,
+        "minMs": 1.7,
+        "maxMs": 46.4
+      },
+      "heapBeforeBytes": 2643872,
+      "heapAfterBytes": 2770548,
+      "heapDeltaBytes": 126676,
+      "storage": {
+        "pashto-quest-rpg-world-v1": 235,
+        "pashto-quest-rpg-education-v1": 391
+      }
+    }
+  ],
+  "notice": "Local Chromium, loopback HTTP/offline dependencies. Mobile is 375px with 4x CPU throttle, not physical Safari. Navigation includes HTML parse/script work; movement is key dispatch to next observed canvas position. Heap is forced-GC endpoint, not peak."
+}

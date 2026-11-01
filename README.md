@@ -4,6 +4,14 @@
 
 An offline, browser-based Pashto learning game set in a village in Laghman, Afghanistan. Four teaching districts (Home, Lake, Market and School), a reference Library and a recurring cast support 14 narrative days of cumulative language study. Base entries and registered phrases are user-approved; grammar and inflected forms remain drafts, without independent native certification.
 
+## RPG prototype branch
+
+`feature/rpg-prototype` converts the default release into an explorable Day 1 RPG. This branch-specific prototype starts from merged review PR #23; it is not the production main release. Move with arrows/WASD or the touch pad, interact with E/Enter, and use L for the Library. Meet Muhammad Jan, complete the existing Library tutorial, study at Home/Lake/Market/School, and pass the authentic 15-question challenge (12 correct). The prototype ends there; Day 2 stays unavailable. Menu offers independent character appearance; Reset affects only prototype saves.
+
+Run `python3 tools/build.py`, then `python3 -m http.server 8000` and open `http://localhost:8000/`. HTTP/HTTPS is recommended for coordinated browser saves. The release embeds all code/content and has no runtime dependency downloads. For GitHub Pages, deploy this branch's generated release from an isolated preview branch/site; do not repoint the production Pages source or merge into main. No Pages hosting setting is changed by this delivery.
+
+See [RPG architecture](docs/rpg/RPG_ARCHITECTURE.md), [expansion guide](docs/rpg/RPG_EXPANSION_GUIDE.md) and [validation/performance report](docs/rpg/RPG_VALIDATION.md). The default RPG and retained fourteen-day educational regression profiles share the same educational engines. Prototype saves use separate keys and never import production progress.
+
 ## Product goal and delivery status
 
 The aim is cumulative Pashto learning through a coherent village story: recurring characters teach language that fits their scene, speaker and listener. Text, meaning and any illustration must agree; for example, Muhammad Jan describing an open window needs an open-window scene. Correct and incorrect answer feedback should behave consistently on every lesson surface, including forced story lessons and optional expressions. These are general requirements, not exceptions for individual days.

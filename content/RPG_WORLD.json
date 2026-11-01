@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "firstDay": 1,
+  "lastDay": 1,
+  "start": {
+    "map": "village",
+    "x": 22,
+    "y": 18,
+    "facing": "right"
+  },
+  "tiles": {
+    "g": {
+      "walkable": true,
+      "kind": "grass"
+    },
+    "p": {
+      "walkable": true,
+      "kind": "path"
+    },
+    "c": {
+      "walkable": true,
+      "kind": "courtyard"
+    },
+    "f": {
+      "walkable": true,
+      "kind": "flowers"
+    },
+    "w": {
+      "walkable": false,
+      "kind": "water"
+    },
+    "t": {
+      "walkable": false,
+      "kind": "tree"
+    },
+    "b": {
+      "walkable": false,
+      "kind": "wall"
+    },
+    "d": {
+      "walkable": true,
+      "kind": "door"
+    },
+    "s": {
+      "walkable": false,
+      "kind": "stall"
+    },
+    ".": {
+      "walkable": true,
+      "kind": "floor"
+    },
+    "r": {
+      "walkable": false,
+      "kind": "rug"
+    }
+  },
+  "maps": {
+    "village": {
+      "name": "Laghman Village",
+      "tiles": [
+        "tttttttttttttttttttttttttttttttttttttttttttttttttttt",
+        "tggggggggggggggggggggggggggggggggggggggggggggggggggt",
+        "tggggggggggggggggfgggggpppgggggggggggggggggggggggggt",
+        "tggtggfggggggggggggggtgpppggggggwwwwwwwwwwwwwwwggggt",
+        "tgggcbbbbbbbbbccbbbbgggpppggggggwwwwwwwwwwwwwwwggggt",
+        "tgggcbbbbbbbbbccbbbbgggpppgtgggwwwwwwwwwwwwwwwwggggt",
+        "tgggcbbbbbbbbbccbbbbgggpppgggggwwwwwwwwwwwwwwwwggggt",
+        "tgggcbbbbdbbbbccbdbbgggpppgggggwwwwwwwwwwwwwwwwggggt",
+        "tgggcccccccccccccggggggpppgggfgwwwwwwwwwwwwwwwwggggt",
+        "tgggcccccccccccccgfggggpppgggtggwwwwwwwwwwwwwwwggggt",
+        "tggggggfpppggggggggggggpppggggggggggwwwwwwwwggfggggt",
+        "tgggggggppppppppppppppppppppppppppppppppppgggggggggt",
+        "tgggggggpppppppppppppbbbbbbbbpppppppppppppgggggggggt",
+        "tgggggggpppggfgggggggbbbbbbbbgggggggggpppggggggtgggt",
+        "tgfgggggpppggggggggggbbbbbbbbgggggggggpppfgggggggggt",
+        "tggtggggpppggggggggggbbbdbbbbgfgggggggpppggggggggggt",
+        "tgggggggpppggggggggfgggpppggggggggggggpppggtgggggggt",
+        "tggppppppppppppppppppppppppppppppppppppppppppppppggt",
+        "tggppppppppppppppppppppppppppppppppppppppppppppppggt",
+        "tggppppppppppppppppppppppppppppppppppppppppppppppggt",
+        "tgggggggpppgggfggggggggpppggggggggggggpppggggggggggt",
+        "tgtfggggpppggggggggggggpppggggggggggggpppgfggggggggt",
+        "tgggggggpppggggggggggggpppgggggfggcbbbbbbbbbbcgggggt",
+        "tggcssssccssssccsssgfggpppggggggggcbbbbbbbbbbcgggggt",
+        "tggcssssccssssccsssggtgpppggggggggcbbbbbbbbbbcggtggt",
+        "tggcccccccccccccccgggggpppgtggggggcbbbbdbbbbbcgggggt",
+        "tggcsssscccccsssscgggggpppfgggggggccccccccccccgggggt",
+        "tggcccccccccccccccgggggpppggggggggccccccccccccgggggt",
+        "tgggfgggpppppppppppppppppppppppppppppppppppfgggggggt",
+        "tgggggggpppppppppppppppppppppppppppppppppppggggggggt",
+        "tgggggggpppppppppppppppppppppppppppppppppppggggggggt",
+        "tgggggggpppggggggggggggpppgggggggggggggggggggtgggfgt",
+        "tggggggggggggggggggggggpppggggggggggggfggggggggggggt",
+        "tggggggggggggggggtgggggpppgfgggggggggggggggggggggggt",
+        "tgggggggtgggggggfggggggpppgggtgggggggggggggggggggggt",
+        "tggggfgggggggggggggggggpppggggggggggggggggggfggggggt",
+        "tggggggggggggggggggggggggggggggggggggggggggggggggggt",
+        "tttttttttttttttttttttttttttttttttttttttttttttttttttt"
+      ],
+      "spawn": {
+        "x": 22,
+        "y": 18
+      },
+      "regions": [
+        {
+          "id": "residential",
+          "name": "HOME",
+          "x": 3,
+          "y": 3,
+          "w": 17,
+          "h": 10
+        },
+        {
+          "id": "nature",
+          "name": "LAKE",
+          "x": 30,
+          "y": 2,
+          "w": 18,
+          "h": 13
+        },
+        {
+          "id": "business",
+          "name": "MARKET",
+          "x": 2,
+          "y": 22,
+          "w": 18,
+          "h": 10
+        },
+        {
+          "id": "school",
+          "name": "SCHOOL",
+          "x": 33,
+          "y": 21,
+          "w": 15,
+          "h": 11
+        },
+        {
+          "id": "library",
+          "name": "LIBRARY",
+          "x": 21,
+          "y": 11,
+          "w": 8,
+          "h": 6
+        }
+      ],
+      "buildings": [
+        {
+          "x": 5,
+          "y": 4,
+          "w": 9,
+          "h": 4,
+          "label": "Home",
+          "color": "#c49a65"
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "w": 4,
+          "h": 4,
+          "label": "",
+          "color": "#b68e61"
+        },
+        {
+          "x": 21,
+          "y": 12,
+          "w": 8,
+          "h": 4,
+          "label": "Library",
+          "color": "#d5b276"
+        },
+        {
+          "x": 35,
+          "y": 22,
+          "w": 10,
+          "h": 4,
+          "label": "School",
+          "color": "#c5ae83"
+        }
+      ],
+      "transitions": [
+        {
+          "x": 24,
+          "y": 15,
+          "to": "library",
+          "spawn": {
+            "x": 6,
+            "y": 8
+          }
+        }
+      ]
+    },
+    "library": {
+      "name": "Village Library",
+      "tiles": [
+        "bbbbbbbbbbbbbb",
+        "bssssbbssssssb",
+        "b............b",
+        "b............b",
+        "bs..........sb",
+        "bs..........sb",
+        "b............b",
+        "b.....rr.....b",
+        "b............b",
+        "bbbbbbddbbbbbb"
+      ],
+      "spawn": {
+        "x": 6,
+        "y": 8
+      },
+      "regions": [],
+      "buildings": [],
+      "transitions": [
+        {
+          "x": 6,
+          "y": 9,
+          "to": "village",
+          "spawn": {
+            "x": 24,
+            "y": 16
+          }
+        },
+        {
+          "x": 7,
+          "y": 9,
+          "to": "village",
+          "spawn": {
+            "x": 24,
+            "y": 16
+          }
+        }
+      ]
+    }
+  },
+  "npcs": [
+    {
+      "id": "jan-welcome",
+      "name": "Muhammad Jan",
+      "sprite": "elder",
+      "schedule": [
+        {
+          "day": 1,
+          "map": "village",
+          "x": 23,
+          "y": 18
+        }
+      ],
+      "condition": "beforeGuideMeeting",
+      "event": "welcome"
+    },
+    {
+      "id": "jan-library",
+      "name": "Muhammad Jan",
+      "sprite": "elder",
+      "schedule": [
+        {
+          "day": 1,
+          "map": "library",
+          "x": 6,
+          "y": 5
+        }
+      ],
+      "event": "library",
+      "condition": "beforeTutorial"
+    },
+    {
+      "id": "jan-home",
+      "name": "Muhammad Jan",
+      "sprite": "elder",
+      "schedule": [
+        {
+          "day": 1,
+          "map": "village",
+          "x": 10,
+          "y": 10
+        }
+      ],
+      "condition": "afterTutorial",
+      "event": "home"
+    },
+    {
+      "id": "saleha",
+      "name": "Saleha",
+      "sprite": "saleha",
+      "schedule": [
+        {
+          "day": 1,
+          "map": "village",
+          "x": 38,
+          "y": 11
+        }
+      ],
+      "event": "lake"
+    },
+    {
+      "id": "edris",
+      "name": "Edris",
+      "sprite": "edris",
+      "schedule": [
+        {
+          "day": 1,
+          "map": "village",
+          "x": 11,
+          "y": 28
+        }
+      ],
+      "event": "market"
+    },
+    {
+      "id": "hameed",
+      "name": "Ms Hameed",
+      "sprite": "hameed",
+      "schedule": [
+        {
+          "day": 1,
+          "map": "village",
+          "x": 39,
+          "y": 27
+        }
+      ],
+      "event": "school"
+    }
+  ],
+  "objects": [
+    {
+      "id": "library-shelf",
+      "name": "Reference shelves",
+      "map": "library",
+      "x": 1,
+      "y": 4,
+      "event": "reference"
+    }
+  ],
+  "events": {
+    "welcome": {
+      "speaker": "Muhammad Jan",
+      "lines": [
+        "Welcome to our village in Laghman. Walk with me to the Library; we will begin with a first hello.",
+        "Use the arrows or WASD to move. Stand next to a person and press E, Enter or Interact. The paths connect all four neighbourhoods."
+      ],
+      "actions": [
+        {
+          "label": "I will meet you at the Library",
+          "type": "flag",
+          "flag": "metGuide"
+        }
+      ]
+    },
+    "library": {
+      "speaker": "Muhammad Jan",
+      "lines": [
+        "Our Library holds everything you learn. Let us practise choosing a meaning, arranging Pashto words, choosing your gender preference, and giving your name."
+      ],
+      "actions": [
+        {
+          "label": "Begin Library tutorial",
+          "type": "tutorial",
+          "condition": "beforeTutorial"
+        },
+        {
+          "label": "Open Library",
+          "type": "reference",
+          "condition": "afterTutorial"
+        },
+        {
+          "label": "Replay tutorial",
+          "type": "tutorial",
+          "condition": "afterTutorial"
+        }
+      ]
+    },
+    "home": {
+      "speaker": "Muhammad Jan",
+      "lines": [
+        "Welcome home. We can study descriptions together, or you can try the Day 1 challenge whenever you feel ready. You do not need to finish all four lessons first."
+      ],
+      "actions": [
+        {
+          "label": "Study at Home",
+          "type": "lesson",
+          "lessonId": "1-residential"
+        },
+        {
+          "label": "Day 1 challenge \u00b7 15 questions",
+          "type": "challenge",
+          "day": 1
+        },
+        {
+          "label": "Review prototype results",
+          "type": "completion",
+          "condition": "passed"
+        }
+      ]
+    },
+    "lake": {
+      "speaker": "Saleha",
+      "lines": [
+        "Welcome to the lake. Let us learn the words for the world around us."
+      ],
+      "actions": [
+        {
+          "label": "Study at the Lake",
+          "type": "lesson",
+          "lessonId": "1-nature"
+        }
+      ]
+    },
+    "market": {
+      "speaker": "Edris",
+      "lines": [
+        "Welcome to our market. There is plenty to learn among the stalls."
+      ],
+      "actions": [
+        {
+          "label": "Study at the Market",
+          "type": "lesson",
+          "lessonId": "1-business"
+        }
+      ]
+    },
+    "school": {
+      "speaker": "Ms Hameed",
+      "lines": [
+        "Welcome to school. We will build on the words and forms you learn throughout the village."
+      ],
+      "actions": [
+        {
+          "label": "Study at School",
+          "type": "lesson",
+          "lessonId": "1-school"
+        }
+      ]
+    },
+    "reference": {
+      "speaker": "Library",
+      "lines": [
+        "Your vocabulary, expressions and grammar reference are always available here. Voluntary Library practice awards no XP."
+      ],
+      "actions": [
+        {
+          "label": "Open Library",
+          "type": "reference"
+        }
+      ]
+    }
+  },
+  "days": {
+    "1": {
+      "openingEvent": "welcome",
+      "tutorialLessonId": "tutorial",
+      "lessons": [
+        "1-residential",
+        "1-nature",
+        "1-business",
+        "1-school"
+      ],
+      "challenge": {
+        "day": 1,
+        "npc": "jan-home"
+      },
+      "completion": {
+        "challengePassed": 1,
+        "terminal": true
+      }
+    }
+  }
+}

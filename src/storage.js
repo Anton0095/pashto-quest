@@ -4,9 +4,10 @@ function createStorage({
   content,
   progression,
   backend,
+  key = "pashto-town-days-v1",
   locks = backend ? null : globalThis.navigator?.locks,
 }) {
-  const KEY = "pashto-town-days-v1";
+  const KEY = key;
   let saveProblem = null, persistenceProblem = null, readBlocked = false;
   let notifyPersistence = () => {};
   let observed, conflict = false;
