@@ -16,6 +16,7 @@ function createLessons({
 }) {
   function begin(id) {
     audio.stopAudio();
+    ui.$("challengeMaterialNotice")?.remove();
     onLessonStart();
     let mode = "standard",
       loc = null,
@@ -87,6 +88,7 @@ function createLessons({
       profileName: state.progress.playerProfile?.name || "",
       initialLevel: progression.characterStatus(state.progress).level,
       built: [],
+      constructionCount: 0,
       locked: false,
     };
     ui.$("lessonScreen").dataset.week = loop >= 8 ? "2" : "1";
@@ -121,6 +123,7 @@ function createLessons({
     if (!state.session) return;
     audio.stopAudio();
     ui.clearSentenceScene();
+    ui.$("lessonScreen").classList.remove("construction-active");
     queueMicrotask(ui.readableQuizSurfaces);
     for (const id of ["teachPanel", "grammarPanel", "quizPanel"])
       ui.$(id).classList.add("hidden");
@@ -168,6 +171,7 @@ function createLessons({
     const w = learning.surface(id, "study");
     learning.libraryExpose(id, s.mode === "review" ? "review" : "lesson");
     storage.save();
+    ui.$("teachSpeak").classList.remove("hidden");
     ui.$("teachPanel").classList.remove("hidden");
     ui.$("lessonStages").classList.remove("hidden");
     ui.$("teachCount").textContent =
@@ -194,6 +198,11 @@ function createLessons({
     ui.$("addressTarget").textContent = `${teacher.name} → Player`;
     ui.$("addressTarget").classList.remove("hidden");
     ui.sentenceContext(w, teacher.name, ui.$("teachPanel"), "study");
+    if (w.phrasePromptId) {
+      const prompt = content.wordById[w.phrasePromptId];
+      ui.$("guideMessage").textContent = `${teacher.name}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). You reply: ${w.ps} (${w.en}).`;
+      ui.$("addressTarget").textContent = `${teacher.name} → Player · YOUR REPLY → ${teacher.name}`;
+    }
     ui.$("teachNext").disabled = false;
     ui.$("teachNext").textContent =
       s.cardIndex + 1 < studyList().length
@@ -239,29 +248,8 @@ function createLessons({
   function renderBuild() {
     const s = state.session,
       w = content.wordById[s.activeItem.id],
-      tiles = QuestionEngine.buildTiles(w, { kind: "construct" }, s.loop);
-    ui.$("builtSentence").replaceChildren();
-    ui.$("wordTiles").replaceChildren();
-    for (const i of s.built) {
-      const b = ui.button(tiles[i].word, () => {});
-      b.disabled = true;
-      ui.$("builtSentence").append(b);
-    }
-    for (const index of s.tileOrder) {
-      const tile = tiles[index];
-      const b = ui.button(tile.word, () => {
-        if (s.locked) return;
-        s.built.push(tile.index);
-        renderBuild();
-      });
-      b.lang = "ps";
-      b.dir = "rtl";
-      b.disabled = s.locked || s.built.includes(tile.index);
-      ui.$("wordTiles").append(b);
-    }
-    ui.$("checkBuild").disabled = s.locked || s.built.length !== tiles.length;
-    ui.$("undoTile").disabled = s.locked || !s.built.length;
-    ui.$("clearTiles").disabled = s.locked || !s.built.length;
+      tiles = QuestionEngine.buildTiles(w, s.activeItem, s.loop);
+    ui.construction.draw(ui.construction.globalControls(), s, tiles, s.tileOrder, renderBuild);
   }
   function showQuestion() {
     const s = state.session;
@@ -274,12 +262,17 @@ function createLessons({
     ui.$("teachPanel").classList.add("hidden");
     ui.$("grammarPanel").classList.add("hidden");
     ui.$("quizPanel").classList.remove("hidden");
+    ui.$("lessonScreen").classList.remove("construction-active");
     s.activeItem = s.queue[0];
+    if (s.activeItem.kind === "construct") {
+      delete s.activeItem.duds;
+      Object.assign(s.activeItem, questions.constructionQuestion(content.wordById[s.activeItem.id], {withDuds:s.constructionCount++ % 2 === 1}));
+    }
     s.locked = false;
     s.built = [];
     const size = QuestionEngine.buildTiles(
       content.wordById[s.activeItem.id],
-      { kind: "construct" },
+      s.activeItem,
       s.loop,
     ).length;
     s.tileOrder = QuestionEngine.shuffle(
@@ -316,7 +309,7 @@ function createLessons({
     ui.setDialogueSpeaker(teacher.name);
     ui.$("guideMessage").textContent = `${teacher.name}: “What does this mean? Choose your answer and we will check it together.”`;
     ui.$("addressTarget").textContent = `${teacher.name} → Player · YOUR ANSWER → ${teacher.name}`;
-    if (build) ui.sentenceContext(w, teacher.name, ui.$("quizPanel"), "construct");
+    if (build) ui.construction.present(w, s.activeItem, s.loop);
     ui.$("builtSentence").classList.remove("build-success", "build-error");
     ui.$("choices").replaceChildren();
     ui.$("constructionPanel").classList.toggle("hidden", !build);
@@ -339,9 +332,11 @@ function createLessons({
     learning.surface(w.id, "lesson-feedback");
     storage.save();
     ui.hud();
-    ui.showAnswerFeedback(ui.$("choices"), w.en, value);
-    if (state.session.activeItem.kind === "construct")
+    ui.showAnswerFeedback(ui.$("choices"), w.en, value, {accepts:v => QuestionEngine.evaluate({kind:"word", direction:"ps-en"}, w, v)});
+    if (state.session.activeItem.kind === "construct") {
+      renderBuild();
       ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
+    }
     else if (w.generated)
       ui.sentenceContext(w, content.teacherFor(state.session.loop, state.session.loc, state.session.mode).name, ui.$("quizPanel"), "study");
     for (const b of ui.$("wordTiles").children) b.disabled = true;
@@ -349,7 +344,8 @@ function createLessons({
     ui.$("undoTile").disabled = true;
     ui.$("clearTiles").disabled = true;
     ui.$("quizFeedback").textContent =
-      `${correct ? "✓ Correct" : "Not yet — try again shortly"} · +${gain} XP · ${w.ps} (${w.roman}) — ${w.en}`;
+      `${correct ? "✓ Correct" : "Not yet — try again shortly"} · +${gain} XP · ${w.ps} (${w.roman}) — ${w.en}. ${QuestionEngine.explanation({kind:state.session.activeItem.kind || "word"}, w)}`;
+    if (state.session.activeItem.kind === "construct") ui.construction.feedback(ui.$("quizFeedback"), w, state.session.activeItem, correct, `+${gain} XP`);
     ui.$("quizNext").disabled = false;
     ui.$("quizNext").textContent = state.session.queue.length
       ? "Next →"
@@ -365,8 +361,8 @@ function createLessons({
     )
       return;
     const w = content.wordById[s.activeItem.id],
-      tiles = QuestionEngine.buildTiles(w, { kind: "construct" }, s.loop);
-    if (s.built.length === tiles.length)
+      tiles = QuestionEngine.buildTiles(w, s.activeItem, s.loop);
+    if (ui.construction.ready(tiles, s.built))
       answer(s.built.map((i) => tiles[i].word).join(" "));
   }
   function undoTile() {
@@ -381,6 +377,8 @@ function createLessons({
   }
   function finish() {
     if (!state.session) return;
+    audio.stopAudio();
+    ui.$("passUnlockNotice")?.remove();
     const s = state.session;
     const passedRequired = s.required.every((id) => s.passed.has(id));
     if (s.mode === "tutorial") {

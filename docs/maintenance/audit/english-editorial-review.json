@@ -1,0 +1,995 @@
+{
+  "status": "requires_editorial_decision_not_automatically_accepted",
+  "forms": [
+    {
+      "lemmaId": "lemma:v-open",
+      "formId": "lemma:v-open:present:0",
+      "englishGloss": "I open",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-open",
+      "formId": "lemma:v-open:present:1",
+      "englishGloss": "You (informal) open",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-open",
+      "formId": "lemma:v-open:present:2",
+      "englishGloss": "He/she opens",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-open",
+      "formId": "lemma:v-open:present:3",
+      "englishGloss": "We open",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-open",
+      "formId": "lemma:v-open:present:4",
+      "englishGloss": "You (polite/plural) open",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-open",
+      "formId": "lemma:v-open:licensed:6",
+      "englishGloss": "They open",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-drink",
+      "formId": "lemma:v-drink:present:0",
+      "englishGloss": "I drink",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-drink",
+      "formId": "lemma:v-drink:present:1",
+      "englishGloss": "You (informal) drink",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-drink",
+      "formId": "lemma:v-drink:present:2",
+      "englishGloss": "He/she drinks",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-drink",
+      "formId": "lemma:v-drink:present:3",
+      "englishGloss": "We drink",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-drink",
+      "formId": "lemma:v-drink:present:4",
+      "englishGloss": "You (polite/plural) drink",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-drink",
+      "formId": "lemma:v-drink:licensed:6",
+      "englishGloss": "They drink",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-eat",
+      "formId": "lemma:v-eat:present:0",
+      "englishGloss": "I eat",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-eat",
+      "formId": "lemma:v-eat:present:2",
+      "englishGloss": "He/she eats",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-eat",
+      "formId": "lemma:v-eat:licensed:3",
+      "englishGloss": "They eat",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-read",
+      "formId": "lemma:v-read:present:0",
+      "englishGloss": "I read",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-read",
+      "formId": "lemma:v-read:present:1",
+      "englishGloss": "You (informal) read",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-read",
+      "formId": "lemma:v-read:present:2",
+      "englishGloss": "He/she reads",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-read",
+      "formId": "lemma:v-read:present:3",
+      "englishGloss": "We read",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-read",
+      "formId": "lemma:v-read:present:4",
+      "englishGloss": "You (polite/plural) read",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-read",
+      "formId": "lemma:v-read:licensed:6",
+      "englishGloss": "They read",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-live",
+      "formId": "lemma:v-live:form:0",
+      "englishGloss": "To live / reside",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:v-live",
+      "formId": "lemma:v-live:present:0",
+      "englishGloss": "To live / reside — first person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-live",
+      "formId": "lemma:v-live:present:2",
+      "englishGloss": "To live / reside — third person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-live",
+      "formId": "lemma:v-live:present:3",
+      "englishGloss": "To live / reside — first person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-live",
+      "formId": "lemma:v-live:present:4",
+      "englishGloss": "To live / reside — second respectful person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-see",
+      "formId": "lemma:v-see:present:0",
+      "englishGloss": "I see",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-see",
+      "formId": "lemma:v-see:present:1",
+      "englishGloss": "You (informal) see",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-see",
+      "formId": "lemma:v-see:present:2",
+      "englishGloss": "He/she sees",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-see",
+      "formId": "lemma:v-see:present:3",
+      "englishGloss": "We see",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-see",
+      "formId": "lemma:v-see:present:4",
+      "englishGloss": "You (polite/plural) see",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-see",
+      "formId": "lemma:v-see:licensed:6",
+      "englishGloss": "They see",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-buy",
+      "formId": "lemma:v-buy:form:0",
+      "englishGloss": "To buy / take",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:v-buy",
+      "formId": "lemma:v-buy:present:0",
+      "englishGloss": "I buy",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-buy",
+      "formId": "lemma:v-buy:present:1",
+      "englishGloss": "You (informal) buy",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-buy",
+      "formId": "lemma:v-buy:present:2",
+      "englishGloss": "He/she buys",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-buy",
+      "formId": "lemma:v-buy:present:3",
+      "englishGloss": "We buy",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-buy",
+      "formId": "lemma:v-buy:present:4",
+      "englishGloss": "You (polite/plural) buy",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-buy",
+      "formId": "lemma:v-buy:licensed:6",
+      "englishGloss": "They buy",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-write",
+      "formId": "lemma:v-write:present:0",
+      "englishGloss": "I write",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-write",
+      "formId": "lemma:v-write:present:1",
+      "englishGloss": "You (informal) write",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-write",
+      "formId": "lemma:v-write:present:2",
+      "englishGloss": "He/she writes",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-write",
+      "formId": "lemma:v-write:present:3",
+      "englishGloss": "We write",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-write",
+      "formId": "lemma:v-write:present:4",
+      "englishGloss": "You (polite/plural) write",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-write",
+      "formId": "lemma:v-write:licensed:6",
+      "englishGloss": "They write",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-clean",
+      "formId": "lemma:v-clean:present:0",
+      "englishGloss": "To clean — first person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-clean",
+      "formId": "lemma:v-clean:present:1",
+      "englishGloss": "You (informal) clean",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-clean",
+      "formId": "lemma:v-clean:present:2",
+      "englishGloss": "He/she cleans",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-clean",
+      "formId": "lemma:v-clean:present:3",
+      "englishGloss": "We clean",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-clean",
+      "formId": "lemma:v-clean:licensed:5",
+      "englishGloss": "They clean",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-swim",
+      "formId": "lemma:v-swim:present:1",
+      "englishGloss": "To swim — second informal person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-give",
+      "formId": "lemma:v-give:present:1",
+      "englishGloss": "To give — second informal person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-give",
+      "formId": "lemma:v-give:present:2",
+      "englishGloss": "To give — third person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-give",
+      "formId": "lemma:v-give:present:3",
+      "englishGloss": "To give — first person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-give",
+      "formId": "lemma:v-give:present:4",
+      "englishGloss": "To give — second respectful person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-learn",
+      "formId": "lemma:v-learn:present:1",
+      "englishGloss": "You learn",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-learn",
+      "formId": "lemma:v-learn:present:2",
+      "englishGloss": "They learn",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-learn",
+      "formId": "lemma:v-learn:present:3",
+      "englishGloss": "We learn",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-learn",
+      "formId": "lemma:v-learn:present:4",
+      "englishGloss": "You learn",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-talk",
+      "formId": "lemma:v-talk:present:3",
+      "englishGloss": "We talk",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-go",
+      "formId": "lemma:v-go:present:2",
+      "englishGloss": "He/she walks",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-go",
+      "formId": "lemma:v-go:present:3",
+      "englishGloss": "We walk",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-go",
+      "formId": "lemma:v-go:present:4",
+      "englishGloss": "You (polite/plural) walk",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-go",
+      "formId": "lemma:v-go:licensed:4",
+      "englishGloss": "They walk",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-sell",
+      "formId": "lemma:v-sell:present:2",
+      "englishGloss": "To sell — third person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-sell",
+      "formId": "lemma:v-sell:present:3",
+      "englishGloss": "To sell — first person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-sell",
+      "formId": "lemma:v-sell:present:4",
+      "englishGloss": "To sell — second respectful person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-play",
+      "formId": "lemma:v-play:present:2",
+      "englishGloss": "To play — third person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-walk3",
+      "formId": "lemma:v-walk3:form:0",
+      "englishGloss": "To walk / stroll",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:v-walk3",
+      "formId": "lemma:v-walk3:present:0",
+      "englishGloss": "I walk",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-walk3",
+      "formId": "lemma:v-walk3:present:2",
+      "englishGloss": "They walk",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-walk3",
+      "formId": "lemma:v-walk3:present:3",
+      "englishGloss": "We walk",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-walk3",
+      "formId": "lemma:v-walk3:present:4",
+      "englishGloss": "You (polite/plural) walk",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-sit3",
+      "formId": "lemma:v-sit3:present:0",
+      "englishGloss": "To sit — first person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-want3",
+      "formId": "lemma:v-want3:present:0",
+      "englishGloss": "To want — first person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-want3",
+      "formId": "lemma:v-want3:present:1",
+      "englishGloss": "To want — second informal person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-carry3",
+      "formId": "lemma:v-carry3:form:0",
+      "englishGloss": "To carry / take",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:v-carry3",
+      "formId": "lemma:v-carry3:present:0",
+      "englishGloss": "I carry",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-carry3",
+      "formId": "lemma:v-carry3:present:1",
+      "englishGloss": "You (informal) carry",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-carry3",
+      "formId": "lemma:v-carry3:present:2",
+      "englishGloss": "He/she carries",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-carry3",
+      "formId": "lemma:v-carry3:present:3",
+      "englishGloss": "We carry",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-carry3",
+      "formId": "lemma:v-carry3:present:4",
+      "englishGloss": "You (polite/plural) carry",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-carry3",
+      "formId": "lemma:v-carry3:licensed:6",
+      "englishGloss": "They carry",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-close2",
+      "formId": "lemma:v-close2:present:2",
+      "englishGloss": "He/she closes",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-sell2",
+      "formId": "lemma:v-sell2:present:2",
+      "englishGloss": "To sell — third person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-sell2",
+      "formId": "lemma:v-sell2:present:4",
+      "englishGloss": "To sell — second respectful person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-throw2",
+      "formId": "lemma:v-throw2:present:2",
+      "englishGloss": "To throw — third person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:v-catch2",
+      "formId": "lemma:v-catch2:form:0",
+      "englishGloss": "To catch / hold",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:v-catch2",
+      "formId": "lemma:v-catch2:present:2",
+      "englishGloss": "To catch / hold — third person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:w6-run",
+      "formId": "lemma:w6-run:present:0",
+      "englishGloss": "I run",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:w6-run",
+      "formId": "lemma:w6-run:present:2",
+      "englishGloss": "He/she runs",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:w6-run",
+      "formId": "lemma:w6-run:present:3",
+      "englishGloss": "We run",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:w6-run",
+      "formId": "lemma:w6-run:licensed:4",
+      "englishGloss": "They run",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:vocab6-house-help",
+      "formId": "lemma:vocab6-house-help:present:1",
+      "englishGloss": "To help — second informal person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:vocab6-house-help",
+      "formId": "lemma:vocab6-house-help:present:2",
+      "englishGloss": "To help — third person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:vocab6-house-help",
+      "formId": "lemma:vocab6-house-help:present:4",
+      "englishGloss": "To help — second respectful person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:vocab7-river-watch",
+      "formId": "lemma:vocab7-river-watch:present:2",
+      "englishGloss": "To watch — third person",
+      "form": "finite"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:wake",
+      "formId": "lemma:expansion:verb:wake:citation",
+      "englishGloss": "Wake",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:sleep",
+      "formId": "lemma:expansion:verb:sleep:citation",
+      "englishGloss": "Sleep",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:rest",
+      "formId": "lemma:expansion:verb:rest:citation",
+      "englishGloss": "Rest",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:cook",
+      "formId": "lemma:expansion:verb:cook:citation",
+      "englishGloss": "Cook",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:boil",
+      "formId": "lemma:expansion:verb:boil:citation",
+      "englishGloss": "Boil",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:fry",
+      "formId": "lemma:expansion:verb:fry:citation",
+      "englishGloss": "Fry",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:stir",
+      "formId": "lemma:expansion:verb:stir:citation",
+      "englishGloss": "Stir",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:serve",
+      "formId": "lemma:expansion:verb:serve:citation",
+      "englishGloss": "Serve",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:wash",
+      "formId": "lemma:expansion:verb:wash:citation",
+      "englishGloss": "Wash",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:rinse",
+      "formId": "lemma:expansion:verb:rinse:citation",
+      "englishGloss": "Rinse",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:sweep",
+      "formId": "lemma:expansion:verb:sweep:citation",
+      "englishGloss": "Sweep",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:mop",
+      "formId": "lemma:expansion:verb:mop:citation",
+      "englishGloss": "Mop",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:fold",
+      "formId": "lemma:expansion:verb:fold:citation",
+      "englishGloss": "Fold",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:tidy",
+      "formId": "lemma:expansion:verb:tidy:citation",
+      "englishGloss": "Tidy",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:invite",
+      "formId": "lemma:expansion:verb:invite:citation",
+      "englishGloss": "Invite",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:visit",
+      "formId": "lemma:expansion:verb:visit:citation",
+      "englishGloss": "Visit",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:knock",
+      "formId": "lemma:expansion:verb:knock:citation",
+      "englishGloss": "Knock",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:lock",
+      "formId": "lemma:expansion:verb:lock:citation",
+      "englishGloss": "Lock",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:grow",
+      "formId": "lemma:expansion:verb:grow:citation",
+      "englishGloss": "Grow",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:bloom",
+      "formId": "lemma:expansion:verb:bloom:citation",
+      "englishGloss": "Bloom",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:climb",
+      "formId": "lemma:expansion:verb:climb:citation",
+      "englishGloss": "Climb",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:hike",
+      "formId": "lemma:expansion:verb:hike:citation",
+      "englishGloss": "Hike",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:float",
+      "formId": "lemma:expansion:verb:float:citation",
+      "englishGloss": "Float",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:fly",
+      "formId": "lemma:expansion:verb:fly:citation",
+      "englishGloss": "Fly",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:jump",
+      "formId": "lemma:expansion:verb:jump:citation",
+      "englishGloss": "Jump",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:plant",
+      "formId": "lemma:expansion:verb:plant:citation",
+      "englishGloss": "Plant",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:harvest",
+      "formId": "lemma:expansion:verb:harvest:citation",
+      "englishGloss": "Harvest",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:feed",
+      "formId": "lemma:expansion:verb:feed:citation",
+      "englishGloss": "Feed",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:dig",
+      "formId": "lemma:expansion:verb:dig:citation",
+      "englishGloss": "Dig",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:follow",
+      "formId": "lemma:expansion:verb:follow:citation",
+      "englishGloss": "Follow",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:cross",
+      "formId": "lemma:expansion:verb:cross:citation",
+      "englishGloss": "Cross",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:flow",
+      "formId": "lemma:expansion:verb:flow:citation",
+      "englishGloss": "Flow",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:pay",
+      "formId": "lemma:expansion:verb:pay:citation",
+      "englishGloss": "Pay",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:exchange",
+      "formId": "lemma:expansion:verb:exchange:citation",
+      "englishGloss": "Exchange",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:bargain",
+      "formId": "lemma:expansion:verb:bargain:citation",
+      "englishGloss": "Bargain",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:weigh",
+      "formId": "lemma:expansion:verb:weigh:citation",
+      "englishGloss": "Weigh",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:pack",
+      "formId": "lemma:expansion:verb:pack:citation",
+      "englishGloss": "Pack",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:unpack",
+      "formId": "lemma:expansion:verb:unpack:citation",
+      "englishGloss": "Unpack",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:order",
+      "formId": "lemma:expansion:verb:order:citation",
+      "englishGloss": "Order",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:deliver",
+      "formId": "lemma:expansion:verb:deliver:citation",
+      "englishGloss": "Deliver",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:spend",
+      "formId": "lemma:expansion:verb:spend:citation",
+      "englishGloss": "Spend",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:earn",
+      "formId": "lemma:expansion:verb:earn:citation",
+      "englishGloss": "Earn",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:charge",
+      "formId": "lemma:expansion:verb:charge:citation",
+      "englishGloss": "Charge",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:repair",
+      "formId": "lemma:expansion:verb:repair:citation",
+      "englishGloss": "Repair",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:bake",
+      "formId": "lemma:expansion:verb:bake:citation",
+      "englishGloss": "Bake",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:grind",
+      "formId": "lemma:expansion:verb:grind:citation",
+      "englishGloss": "Grind",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:cut",
+      "formId": "lemma:expansion:verb:cut:citation",
+      "englishGloss": "Cut",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:sew",
+      "formId": "lemma:expansion:verb:sew:citation",
+      "englishGloss": "Sew",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:study",
+      "formId": "lemma:expansion:verb:study:citation",
+      "englishGloss": "Study",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:practise",
+      "formId": "lemma:expansion:verb:practise:citation",
+      "englishGloss": "Practise",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:revise",
+      "formId": "lemma:expansion:verb:revise:citation",
+      "englishGloss": "Revise",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:explain",
+      "formId": "lemma:expansion:verb:explain:citation",
+      "englishGloss": "Explain",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:repeat",
+      "formId": "lemma:expansion:verb:repeat:citation",
+      "englishGloss": "Repeat",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:ask",
+      "formId": "lemma:expansion:verb:ask:citation",
+      "englishGloss": "Ask",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:answer",
+      "formId": "lemma:expansion:verb:answer:citation",
+      "englishGloss": "Answer",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:compare",
+      "formId": "lemma:expansion:verb:compare:citation",
+      "englishGloss": "Compare",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:classify",
+      "formId": "lemma:expansion:verb:classify:citation",
+      "englishGloss": "Classify",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:sort",
+      "formId": "lemma:expansion:verb:sort:citation",
+      "englishGloss": "Sort",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:estimate",
+      "formId": "lemma:expansion:verb:estimate:citation",
+      "englishGloss": "Estimate",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:calculate",
+      "formId": "lemma:expansion:verb:calculate:citation",
+      "englishGloss": "Calculate",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:solve",
+      "formId": "lemma:expansion:verb:solve:citation",
+      "englishGloss": "Solve",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:draw",
+      "formId": "lemma:expansion:verb:draw:citation",
+      "englishGloss": "Draw",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:copy",
+      "formId": "lemma:expansion:verb:copy:citation",
+      "englishGloss": "Copy",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:correct",
+      "formId": "lemma:expansion:verb:correct:citation",
+      "englishGloss": "Correct",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:check",
+      "formId": "lemma:expansion:verb:check:citation",
+      "englishGloss": "Check",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:memorise",
+      "formId": "lemma:expansion:verb:memorise:citation",
+      "englishGloss": "Memorise",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:discuss",
+      "formId": "lemma:expansion:verb:discuss:citation",
+      "englishGloss": "Discuss",
+      "form": "infinitive"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:listen",
+      "formId": "lemma:expansion:verb:listen:citation",
+      "englishGloss": "Listen",
+      "form": "infinitive"
+    }
+  ]
+}

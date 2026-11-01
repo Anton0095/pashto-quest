@@ -1,16 +1,16 @@
 /* Every assessment proposition and Pashto reply is compiled from actual unlocks.
- * Deficits adapt to vocabulary/English grammar tasks, never authored sentence targets. */
-function createQuestions({ state, content, progression, storage }) {
+ * Deficits adapt to vocabulary/approved phrase practice, never authored sentence targets. */
+function createQuestions({ state, content, progression, seedSource = QuestionEngine.randomSeed }) {
   const clone = (x) => JSON.parse(JSON.stringify(x));
   function isUnstudied(id) {
-    return content.LIBRARY_DATA.phrases.some((p) => p.id === id)
-      ? !state.progress.library.phrases[id]
-      : (content.LIBRARY_DATA.sourceMappings[id] || []).some(
-          (r) =>
-            !state.progress.library.acquired[
-              r.lemmaId
-            ]?.introducedFormIds.includes(r.formId),
-        );
+    const phrase = state.progress.library.phrases[id];
+    if (content.LIBRARY_DATA.phrases.some(p => p.id === id))
+      return !phrase || (phrase.source === "challenge-start" && !phrase.studiedDay);
+    return (content.LIBRARY_DATA.sourceMappings[id] || []).some(ref => {
+      const r = state.progress.library.acquired[ref.lemmaId], origin = r?.formUnlocks?.[ref.formId];
+      return !r?.introducedFormIds.includes(ref.formId) ||
+        (origin?.source === "challenge-start" && !origin.studiedDay);
+    });
   }
   function available(day) {
     return SentenceEngine.available(
@@ -28,61 +28,56 @@ function createQuestions({ state, content, progression, storage }) {
     uncued = false,
   ) {
     const field = direction === "ps-en" ? "en" : "ps";
-    const peers =
-      w.type === "sentence"
-        ? available(day)
-        : Object.values(content.wordById).filter(
-            (c) =>
-              c.type === w.type &&
-              LibraryEngine.cardAllowed(content.LIBRARY_DATA, c.id, day) &&
-              !isUnstudied(c.id),
-          );
-    const seen = new Set();
-    const choices = [
-      ...new Set(
-        QuestionEngine.shuffle(
-          peers.filter((c) => c.ps !== w.ps && c[field].trim().toLocaleLowerCase("en") !== w[field].trim().toLocaleLowerCase("en")),
-          random,
-        ).map((c) => c[field]),
-      ),
-    ].filter((value) => {
-      const key = value.trim().toLocaleLowerCase("en");
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    }).slice(0, 3);
-    while (choices.length < 3)
-      choices.push(
-        ["A different meaning", "Another response", "None of these"][
-          choices.length
-        ],
-      );
+    const peers = w.type === "sentence" ? available(day) : Object.values(content.wordById).filter(c =>
+      !["sentence", "profile"].includes(c.type) && (c.type !== "greeting" || w.type === "greeting") && !isUnstudied(c.id) &&
+      (content.LIBRARY_DATA.phrases.some(p => p.id === c.id) || (content.LIBRARY_DATA.sourceMappings[c.id] || []).length) &&
+      LibraryEngine.cardAllowed(content.LIBRARY_DATA, c.id, day));
+    // Backup choices are display-only base forms, never an acquisition transaction.
+    const backup = w.type === "sentence" ? [] : content.LIBRARY_DATA.entries
+      .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
+      .map(e => content.wordById["library-card:" + e.lemmaId]);
+    const meanings = new Set(QuestionEngine.meaningKeys(w));
+    const forms = new Set([QuestionEngine.normalizeAnswer(w.ps)]);
+    const labels = new Set([w[field].normalize("NFC").trim().toLocaleLowerCase("en")]);
+    const choices = [];
+    for (const group of [peers, backup]) for (const c of QuestionEngine.shuffle(group, random)) {
+      if (choices.length === 3) break;
+      const keys = QuestionEngine.meaningKeys(c), ps = QuestionEngine.normalizeAnswer(c.ps);
+      const label = c[field].normalize("NFC").trim().toLocaleLowerCase("en");
+      if (forms.has(ps) || labels.has(label) || keys.some(k => meanings.has(k))) continue;
+      // Check the evaluator too: no accepted answer can become a distractor.
+      if (QuestionEngine.evaluate({kind:w.type === "sentence" ? "sentence" : "word", direction}, w, c[field])) continue;
+      choices.push(c[field]);labels.add(label);forms.add(ps);keys.forEach(k => meanings.add(k));
+    }
+    while (choices.length < 3) choices.push(["A different meaning", "Another response", "None of these"][choices.length]);
     // An unseen target uses uncued recall, not a visible translation option.
     const target = uncued ? [] : [w[field]];
     return QuestionEngine.shuffle([...target, ...choices], random);
   }
+  // Terminology-heavy editorial glosses are reference/study material, not
+  // practical recall answers. Their licensed forms remain usable in clauses.
+  const practicalMeaning = id => !/\b(?:first|second|third)[ -]person\b|\b(?:masculine|feminine|singular|plural)\b/i.test(content.wordById[id]?.en || "");
   function lexicalPool(day, random) {
-    const plan = state.progress.library.plans[day],
-      first = [],
-      rest = [];
-    for (const place of content.zoneKeys) {
-      const ids = QuestionEngine.shuffle(
-        plan.locationAssignments[place] || [],
-        random,
-      ).map((id) => "library-card:" + id);
-      if (ids.length) first.push(ids[0]);
-      rest.push(...ids.slice(1));
-    }
+    const plan = state.progress.library.plans[day];
+    // Every location contributes regardless of visit completion. Interleave the
+    // frozen assignments so additional recall tasks stay balanced as well.
+    const rows = QuestionEngine.shuffle(content.zoneKeys, random).map(place => QuestionEngine.shuffle(
+      plan.locationAssignments[place] || [], random,
+    ).map(id => "library-card:" + id).filter(id =>
+      LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id)));
+    const scheduled = [];
+    for (let i = 0; i < Math.max(0, ...rows.map(row => row.length)); i++)
+      for (const row of rows) if (row[i]) scheduled.push(row[i]);
     const due = new Set(
       LibraryEngine.dueForms(state.progress, content.LIBRARY_DATA).map(
         (x) => x.entry.lemmaId,
       ),
     );
-    const grammarWords = content.LIBRARY_DATA.entries
+    const grammarWords = QuestionEngine.shuffle(content.LIBRARY_DATA.entries
       .filter(
         (e) => e.vocabularyClass === "universal" && e.introduction.day === day,
       )
-      .map((e) => "library-card:" + e.lemmaId);
+      .map((e) => "library-card:" + e.lemmaId), random);
     const review = QuestionEngine.shuffle(
       content.LIBRARY_DATA.entries
         .filter(
@@ -93,50 +88,31 @@ function createQuestions({ state, content, progression, storage }) {
         .map((e) => "library-card:" + e.lemmaId),
       random,
     );
-    const phrases = content.LIBRARY_DATA.phrases
+    const phrases = QuestionEngine.shuffle(content.LIBRARY_DATA.phrases
       .filter((p) => state.progress.library.phrases[p.id] || p.day === day)
-      .map((p) => p.id);
+      .map((p) => p.id), random);
     return [
       ...new Set([
-        ...first,
+        ...scheduled,
         ...grammarWords,
-        ...QuestionEngine.shuffle(rest, random),
         ...review,
         ...phrases,
       ]),
-    ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day));
+    ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id));
   }
-  function grammarQuestion(day, index) {
-    const bank = content.LIBRARY_DATA.grammarAssessment.concepts;
-    const taught = bank.filter((c) => c.day <= day &&
-      state.progress.library.grammar["grammar-day-" + c.day]);
-    // A skipped workshop grants no grammar. A visible Day-1 reference supports
-    // guided discrimination instead of claiming unaided recall of untaught rules.
-    const guided = !taught.length;
-    const concepts = guided ? bank.filter((c) => c.day === 1) : taught;
-    const offset = state.progress.library.plans[day].seed % concepts.length;
-    const c = concepts[(index + offset) % concepts.length];
-    const contexts = ["Check a learner’s analysis", "Choose the matching grammatical roles", "Resolve the agreement or role choice"];
-    return {
-      id: `grammar:${day}:${index}`,
-      kind: "choice", direction: "en-ps", section: guided ? "guided grammar" : "grammar recall",
-      prompt: `${guided ? "Reference: " + c.reference + "\n\n" : ""}${contexts[Math.floor(index / concepts.length) % contexts.length]}. ${c.case}`,
-      correct: c.correct, options: [c.correct, ...c.misconceptions],
-      grammarDays: guided ? [] : [c.day], grammarConcept: c.id,
-      reference: guided ? c.reference : null,
-      adaptation: guided
-        ? "Guided English rule application; the reference is shown here. No workshop or future grammar is unlocked."
-        : "English application of a previously visited grammar workshop; no fixed Pashto sentence fallback.",
-    };
-  }
-  function selectChallenge(day) {
+  function selectChallenge(day, { newAttempt = false } = {}) {
     const plan = LibraryEngine.ensurePlan(
       state.progress,
       content.LIBRARY_DATA,
       day,
     );
-    if (plan.challengeQuestions) return clone(plan.challengeQuestions);
-    const random = QuestionEngine.randomFor(plan.seed + day * 7919),
+    const frozen = state.session?.mode === "challenge" && state.session.loop === day && !state.session.finished && state.session.index < state.session.questions.length
+      ? state.session : state.progress.activeChallenge?.loop === day ? state.progress.activeChallenge : null;
+    if (!newAttempt && frozen) return clone(frozen.questions);
+    const seed = seedSource();
+    if (!Number.isInteger(seed) || seed < 0 || seed > 0xffffffff) throw new RangeError("Invalid assessment random seed");
+    progression.activateChallenge(state.progress, day);
+    const random = QuestionEngine.randomFor(seed),
       blueprint = createAssessmentContent({ content, progression }).blueprint(
         day,
       );
@@ -162,17 +138,34 @@ function createQuestions({ state, content, progression, storage }) {
         n,
         seed,
       );
-    const focused = choose(
-      focus,
-      Math.ceil(blueprint.count * 0.7),
-      plan.seed + day,
-    );
+    const assigned = new Set(Object.values(plan.locationAssignments).flat());
+    const usesCurrentVocabulary = card => Object.values(card.generated.slots).some(ref => assigned.has(ref.lemmaId));
+    const current = pool.filter(usesCurrentVocabulary), currentFocus = focus.filter(usesCurrentVocabulary);
+    const targetCount = Math.ceil(blueprint.kinds.filter(k => ["construct", "sentence"].includes(k)).length * 0.7);
+    const preferred = currentFocus.length ? currentFocus : current;
+    const targeted = [];
+    // Random sampling remains constrained by four-location coverage. Select
+    // within each compatible cohort before filling the remaining current slots.
+    for (const place of QuestionEngine.shuffle(content.zoneKeys, random)) {
+      if (targeted.length >= targetCount) break;
+      const ids = new Set(plan.locationAssignments[place]);
+      const covers = c => Object.values(c.generated.slots).some(ref => ids.has(ref.lemmaId));
+      if (targeted.some(covers)) continue;
+      const candidates = preferred.filter(covers).filter(c => !targeted.some(x => x.ps === c.ps));
+      targeted.push(...choose(candidates, 1, Math.floor(random() * 0x100000000)));
+    }
+    targeted.push(...choose(preferred.filter(c => !targeted.some(x => x.ps === c.ps)), targetCount - targeted.length, seed));
+    const focused = [...targeted, ...choose(
+      focus.filter(c => !targeted.some(x => x.ps === c.ps)),
+      Math.ceil(blueprint.count * 0.7) - targeted.length,
+      (seed + 2) >>> 0,
+    )];
     const cards = [
       ...focused,
       ...choose(
         pool.filter((c) => !focused.some((x) => x.ps === c.ps)),
         blueprint.count,
-        plan.seed + day + 1,
+        (seed + 1) >>> 0,
       ),
     ]
       .slice(0, blueprint.count)
@@ -180,10 +173,25 @@ function createQuestions({ state, content, progression, storage }) {
     const pairs = SentenceEngine.dialogues(
       pool,
       content.LIBRARY_DATA,
-      plan.seed + day,
+      (seed + 3) >>> 0,
     );
-    const lexical = lexicalPool(day, random),
-      used = new Set(),
+    const lexical = lexicalPool(day, random);
+    const studiedForms = QuestionEngine.shuffle(content.LIBRARY_DATA.entries.flatMap(e => e.forms
+      .filter(f => state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId))
+      .map(f => "library-form:" + f.formId)), random);
+    const recallIdentities = new Set();
+    const practical = [...lexical, ...studiedForms,
+      ...QuestionEngine.shuffle(content.LIBRARY_DATA.phrases.filter(p => p.active && p.day <= day).map(p => p.id), random)]
+      .filter(id => {
+        if (!LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) || !practicalMeaning(id)) return false;
+        const identity = LibraryEngine.identity(content.LIBRARY_DATA, id);
+        if (recallIdentities.has(identity)) return false;
+        recallIdentities.add(identity);
+        return true;
+      });
+    if (!practical.length) throw Error("No approved practical assessment material available");
+    const used = new Set(),
+      usedRecall = new Set(),
       out = [],
       usedDialogueFamilies = new Set();
     const opening = content.NARRATIVE_DATA.expressions.find(
@@ -193,15 +201,17 @@ function createQuestions({ state, content, progression, storage }) {
       content.LIBRARY_DATA.phrases.find((p) => p.id === opening?.id) ||
       content.LIBRARY_DATA.phrases.find((p) => p.day === day);
     let wordIndex = 0,
+      constructionIndex = 0,
       deficit = 0;
     for (let i = 0; i < blueprint.count; i++) {
       const wanted = blueprint.kinds[i];
       let q;
       if (i === 0 && greeting)
         q = {
-          id: greeting.id,
-          kind: "word",
-          direction: "ps-en",
+          id: opening?.responsePhraseId || greeting.id,
+          phrasePromptId: opening?.promptPhraseId,
+          kind: opening?.responsePhraseId && !isUnstudied(opening.responsePhraseId) ? "construct" : "word",
+          direction: opening?.responsePhraseId && !isUnstudied(opening.responsePhraseId) ? "en-ps" : "ps-en",
           vocabularyOrigin: "daily-phrase",
         };
       else if (wanted === "word" && lexical.length)
@@ -211,60 +221,26 @@ function createQuestions({ state, content, progression, storage }) {
           direction: "ps-en",
           vocabularyOrigin: "curriculum",
         };
-      else if (wanted === "address") {
-        const familiar =
-            content.libraryEntries["lemma:universal:pronouns-1"]?.forms[0],
-          polite = content.libraryEntries["lemma:w6-you-all"]?.forms[0];
-        if (
-          familiar &&
-          polite &&
-          state.progress.library.acquired[
-            "lemma:universal:pronouns-1"
-          ]?.introducedFormIds.includes(familiar.formId) &&
-          state.progress.library.acquired[
-            "lemma:w6-you-all"
-          ]?.introducedFormIds.includes(polite.formId)
-        ) {
-          const scopes = [
-              ["Saleha", "familiar"],
-              ["Muhammad Jan", "respectful"],
-              [day >= 6 ? "Saleha and Mina" : "Saleha and Edris", "group"],
-            ],
-            [recipient, scope] = scopes[i % scopes.length];
-          q = {
-            id: "address:" + day + ":" + i,
-            kind: "address",
-            recipient,
-            scope,
-            correct: scope === "familiar" ? familiar.pashto : polite.pashto,
-            comment:
-              "Address " +
-              recipient +
-              ". Choose the pronoun appropriate to this listener.",
-            addressOptions: [
-              [familiar.pashto + " · familiar singular", familiar.pashto],
-              [polite.pashto + " · respectful or plural", polite.pashto],
-            ],
-          };
-        }
-      } else if (wanted === "dialogue") {
+      else if (wanted === "dialogue") {
         const usable = pairs.filter(
           (p) =>
             !used.has(p.answer.ps) && (!p.prompt || !used.has(p.prompt.ps)),
         );
-        const preferred = usable.filter(
+        const currentPairs = usable.filter(p => usesCurrentVocabulary(p.answer));
+        const candidates = currentPairs.length ? currentPairs : usable;
+        const preferred = candidates.filter(
           (p) =>
             goal.focusFamilies.includes(p.family) &&
             !usedDialogueFamilies.has(p.family),
         );
-        const varied = usable.filter(
+        const varied = candidates.filter(
           (p) => !usedDialogueFamilies.has(p.family),
         );
         const choices = preferred.length
           ? preferred
           : varied.length
             ? varied
-            : usable;
+            : candidates;
         const pair = choices.length
           ? choices[Math.floor(random() * choices.length)]
           : null;
@@ -317,40 +293,22 @@ function createQuestions({ state, content, progression, storage }) {
       }
       if (!q) {
         deficit++;
-        q = grammarQuestion(day, deficit - 1);
+        const id = practical.find(id => !usedRecall.has(LibraryEngine.identity(content.LIBRARY_DATA, id))) ||
+          practical[(deficit - 1) % practical.length];
+        q = {id, kind:"word", direction:"ps-en", vocabularyOrigin:"practical-review",
+          adaptation:"Not enough distinct studied sentences; practise vocabulary or approved phrases. A small pool may repeat without extra word introductions or repeated XP."};
       }
+      if (!q.generated) usedRecall.add(LibraryEngine.identity(content.LIBRARY_DATA, q.id));
       q.speaker ||= content.teacherFor(day, null, "challenge").name;
       q.recipient ||= "Player";
-      q.comment = blueprint.scenario;
+      q.comment ||= blueprint.scenario;
       q.requestedKind = wanted;
       if (q.kind === "word") {
         q.unstudied = isUnstudied(q.id);
         if (q.unstudied) q.direction = "ps-en";
       }
-      if (q.kind === "choice")
-        q.choiceOrder = QuestionEngine.shuffle(q.options, random);
-      else if (q.kind === "address")
-        q.choiceOrder = q.addressOptions.map((x) => x[1]);
-      else if (["construct", "dialogue"].includes(q.kind)) {
-        const answer = q.answerPs || content.wordById[q.id].ps;
-        const tokens = new Set(
-          QuestionEngine.normalizePashtoResponse(answer).split(" "),
-        );
-        const studiedTokens = content.LIBRARY_DATA.entries.flatMap((e) =>
-          e.forms
-            .filter(
-              (f) =>
-                state.progress.library.acquired[
-                  e.lemmaId
-                ]?.introducedFormIds.includes(f.formId) &&
-                !f.pashto.includes(" "),
-            )
-            .map((f) => f.pashto),
-        );
-        const duds = [...new Set(studiedTokens)]
-          .filter((t) => !tokens.has(t))
-          .slice(0, 2);
-        if (duds.length === 2) q.duds = duds;
+      if (["construct", "dialogue"].includes(q.kind)) {
+        Object.assign(q, constructionQuestion(content.wordById[q.id], {question:q, withDuds:constructionIndex++ % 2 === 1, random}));
         q.tileSequence = QuestionEngine.shuffle(
           QuestionEngine.buildTiles(content.wordById[q.id], q, day).map(
             (t) => t.index,
@@ -378,13 +336,35 @@ function createQuestions({ state, content, progression, storage }) {
       requestedSentences: blueprint.kinds.filter((k) => k !== "word").length,
       generatedSentences: out.filter((q) => q.generated).length,
       adaptedTasks: deficit,
+      practicalPoolSize: practical.length,
       reason: deficit
-        ? "Not enough distinct licensed sentences from actually introduced forms and grammar; English grammar tasks preserve assessment length."
+        ? "Not enough distinct licensed sentences from actually introduced forms and grammar; Vocabulary/approved phrase practice preserves assessment length; a small eligible pool may repeat."
         : null,
     };
-    plan.challengeQuestions = clone(out);
-    storage.save();
     return clone(out);
+  }
+  // Display-only tiles: introduced forms first, then Day-1 base backup.
+  // The variant is intentional, independent of the size of the vocabulary pool.
+  function constructionQuestion(card, {question = {}, withDuds = false, random = Math.random} = {}) {
+    const q = {...question, id:card.id, kind:question.kind || "construct", direction:"en-ps"};
+    delete q.duds;
+    q.tileVariant="exact";
+    if (!withDuds) return q;
+    const key = t => QuestionEngine.normalizeAnswer(QuestionEngine.normalizePashtoResponse(t));
+    const excluded = new Set([card.ps, q.answerPs, ...(q.acceptedPs || [])].filter(Boolean).flatMap(a => key(a).split(" ")));
+    const day=state.session?.loop || state.day;
+    const introduced = content.LIBRARY_DATA.entries.flatMap(e => e.forms.filter(f =>
+      LibraryEngine.formAllowed(e,f,day) && state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId)).map(f => f.pashto));
+    const backup = content.LIBRARY_DATA.entries.filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1).map(e => e.forms[0].pashto);
+    const duds=[];
+    for (const group of [introduced, backup]) for (const token of QuestionEngine.shuffle(group,random)) {
+      if (duds.length===2) break;
+      const k=key(token);
+      if (!k || k.includes(" ") || excluded.has(k)) continue;
+      duds.push(token);excluded.add(k);
+    }
+    if (duds.length===2) {q.duds=duds;q.tileVariant="distractors";}
+    return q;
   }
   function originsForChoices(
     w,
@@ -402,6 +382,8 @@ function createQuestions({ state, content, progression, storage }) {
   }
   return {
     selectChallenge,
+    constructionQuestion,
+    explanation: (q, w) => QuestionEngine.explanation(q, w),
     distractors: (w) => answerChoices(w, "ps-en"),
     buildTiles: (w, q = state.session?.questions?.[state.session.index]) =>
       QuestionEngine.buildTiles(w, q, state.session?.loop),

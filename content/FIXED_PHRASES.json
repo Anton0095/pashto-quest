@@ -1,86 +1,402 @@
 {
   "schemaVersion": 1,
-  "policy": "Only these six conventional expressions are exempt from productive sentence generation. Profile questions are English UI, not Pashto phrase exceptions. Inflected forms and licensed grammatical chunks are vocabulary, not hidden sentence exceptions.",
+  "policy": "Only registered conventional expressions are exempt from generation. User approval applies to exact wording, not native certification or recordings.",
   "phrases": [
     {
       "id": "g-hello",
       "pashto": "سلام",
       "romanisation": "salaam",
       "english": "Hello",
-      "reviewStatus": "needsReview",
+      "reviewStatus": "user_approved",
       "kind": "fixed_phrase",
       "day": 0,
       "location": "library",
       "speaker": "Muhammad Jan",
       "active": true,
-      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase."
+      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase.",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "g-how",
       "pashto": "څنګه یې؟",
       "romanisation": "tsanga ye?",
       "english": "How are you?",
-      "reviewStatus": "needsReview",
+      "reviewStatus": "user_approved",
       "kind": "fixed_phrase",
       "day": 0,
       "location": "library",
       "speaker": "Muhammad Jan",
       "active": true,
-      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase."
+      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase.",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "g-thanks",
       "pashto": "مننه",
       "romanisation": "manana",
       "english": "Thank you",
-      "reviewStatus": "needsReview",
+      "reviewStatus": "user_approved",
       "kind": "fixed_phrase",
       "day": 2,
       "location": "business",
       "speaker": "Muhammad Jan",
       "active": true,
-      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase."
+      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase.",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "g-bye",
       "pashto": "خدای پامان",
       "romanisation": "khudaay paamaan",
       "english": "Goodbye",
-      "reviewStatus": "needsReview",
+      "reviewStatus": "user_approved",
       "kind": "fixed_phrase",
       "day": 3,
       "location": "residential",
       "speaker": "Muhammad Jan",
       "active": true,
-      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase."
+      "exceptionReason": "Conventional greeting or conversational formula, intentionally taught as one complete phrase.",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-d1-home-welcome",
       "pashto": "ښه راغلاست",
       "romanisation": "kha raaghlaast",
       "english": "Welcome!",
-      "reviewStatus": "provisional_playable",
-      "userVerified": false,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
       "kind": "fixed_phrase",
       "day": 1,
       "location": "residential",
       "speaker": "Muhammad Jan",
       "active": true,
-      "exceptionReason": "User-supplied conventional welcome or morning greeting, intentionally taught whole."
+      "exceptionReason": "User-supplied conventional welcome or morning greeting, intentionally taught whole.",
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-day-2-opening",
       "pashto": "سهار مو پخیر!",
       "romanisation": "sahaar mo pakheer",
       "english": "Good morning!",
-      "reviewStatus": "provisional_playable",
-      "userVerified": false,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
       "kind": "fixed_phrase",
       "day": 2,
       "location": "school",
       "speaker": "Ms Hameed",
       "active": true,
-      "exceptionReason": "User-supplied conventional welcome or morning greeting, intentionally taught whole."
+      "exceptionReason": "User-supplied conventional welcome or morning greeting, intentionally taught whole.",
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-3-opening",
+      "kind": "fixed_phrase",
+      "location": "nature",
+      "speaker": "Saleha",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "خوشحاله یم چې تاسې وینم.",
+      "romanisation": "Khwashaala yam che taase weenam.",
+      "english": "It’s nice to see you",
+      "day": 3,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-4-opening",
+      "kind": "fixed_phrase",
+      "location": "residential",
+      "speaker": "Muhammad Jan",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "ستړي مه شئ.",
+      "romanisation": "Starray ma shəy.",
+      "english": "May you not be tired",
+      "day": 4,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-5-opening",
+      "kind": "fixed_phrase",
+      "location": "school",
+      "speaker": "Ms Hameed",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "السلام علیکم.",
+      "romanisation": "As-salaamu alaykum.",
+      "english": "Peace be upon you",
+      "day": 5,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-6-opening",
+      "kind": "fixed_phrase",
+      "location": "nature",
+      "speaker": "Mina",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "ستاسې په لیدو خوشحاله شوم.",
+      "romanisation": "Staase pa leedo khwashaala shwum.",
+      "english": "Nice to meet you",
+      "day": 6,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-7-opening",
+      "kind": "fixed_phrase",
+      "location": "business",
+      "speaker": "Edris",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "وعلیکم السلام.",
+      "romanisation": "Wa alaykum as-salaam.",
+      "english": "And peace be upon you",
+      "day": 5,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-8-opening",
+      "kind": "fixed_phrase",
+      "location": "nature",
+      "speaker": "Saleha",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "چېرته وئ؟",
+      "romanisation": "Cherta way?",
+      "english": "Where have you been?",
+      "day": 8,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-9-opening",
+      "kind": "fixed_phrase",
+      "location": "business",
+      "speaker": "Edris",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "مهرباني وکړئ، دننه راشئ.",
+      "romanisation": "Mehrabaani wakṛəy, danana raashəy.",
+      "english": "Please, come in",
+      "day": 9,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-10-opening",
+      "kind": "fixed_phrase",
+      "location": "nature",
+      "speaker": "Mina",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "وبخښئ.",
+      "romanisation": "Wubakhshəy.",
+      "english": "Excuse me",
+      "day": 10,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-11-opening",
+      "kind": "fixed_phrase",
+      "location": "residential",
+      "speaker": "Muhammad Jan",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "دا خپل کور وګڼئ.",
+      "romanisation": "Daa khpal kor wagaṇəy.",
+      "english": "Make yourself at home",
+      "day": 11,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-12-opening",
+      "kind": "fixed_phrase",
+      "location": "school",
+      "speaker": "Ms Hameed",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "اجازه شته چې یوه پوښتنه وکړم؟",
+      "romanisation": "Ijaaza shta che yawa pukhtana wakṛam?",
+      "english": "May I ask a question?",
+      "day": 12,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-13-opening",
+      "kind": "fixed_phrase",
+      "location": "nature",
+      "speaker": "Saleha",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "ورځ مو څنګه تېرېږي؟",
+      "romanisation": "Wradz mo tsanga teregi?",
+      "english": "How is your day going?",
+      "day": 13,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
+    },
+    {
+      "id": "phrase-day-14-opening",
+      "kind": "fixed_phrase",
+      "location": "residential",
+      "speaker": "Muhammad Jan",
+      "active": true,
+      "exceptionReason": "User-approved conventional conversational expression, explicitly taught whole.",
+      "pashto": "بریالي اوسئ!",
+      "romanisation": "Baryaali osəy!",
+      "english": "Good luck!",
+      "day": 14,
+      "reviewStatus": "user_approved",
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     }
   ]
 }

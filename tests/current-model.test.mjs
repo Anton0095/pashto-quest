@@ -124,7 +124,7 @@ assert.deepEqual(report.candidateDisposition, {
   rejected: 59,
   replaced: 0,
 });
-assert.equal(report.byReviewStatus.provisional_playable, 341);
+assert.equal(report.byReviewStatus.user_approved, 473);
 assert.equal(report.duplicateLemmaIds.length, 0);
 assert(report.schedules.every((s) => s.days[13].assigned === 0));
 console.log(

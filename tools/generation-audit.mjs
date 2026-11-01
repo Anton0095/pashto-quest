@@ -192,7 +192,7 @@ const adjectiveGaps = data.entries
 const report = {
   schemaVersion: 2,
   notice:
-    "Diagnostic capacity under provisional form licenses. Runtime builds no sentence catalogue at startup: it compiles after actual study/grammar unlocks. See INSTRUCTIONAL_DELIVERY_AUDIT.json for measured delivery. An exact match to an archived text is still dynamically composed from forms, never retrieved as a teaching target. Clause-pair capacity is algebraic, not an enumerated list or a native-language approval.",
+    "Diagnostic capacity under provisional form licenses. Runtime builds no sentence catalogue at startup: it compiles from forms/grammar licensed by study or explicit challenge activation. See INSTRUCTIONAL_DELIVERY_AUDIT.json for measured delivery. An exact match to an archived text is still dynamically composed from forms, never retrieved as a teaching target. Clause-pair capacity is algebraic, not an enumerated list or a native-language approval.",
   lemmaCount: data.entries.length,
   formCount: refs.size,
   eligibleFormCount: [...refs.values()].filter((x) => x.f.composition.enabled)
@@ -216,7 +216,7 @@ const lines = [
   "",
   `Inventory: ${report.lemmaCount} lemmas / ${report.formCount} forms; ${report.eligibleFormCount} composition-eligible forms. ${report.frameCount} typed templates across ${report.familyCount} families.`,
   "",
-  "**This is not the delivery percentage.** [The measured delivery report](INSTRUCTIONAL_DELIVERY_REPORT.md) checks actual lessons and assessments. There are zero playable authored sentence fallbacks; the [six fixed expressions](FIXED_PHRASE_EXCEPTIONS.md) are the only whole-phrase exceptions.",
+  "**This is not the delivery percentage.** [The measured delivery report](INSTRUCTIONAL_DELIVERY_REPORT.md) checks actual lessons and assessments. There are zero playable authored sentence fallbacks; the [registered fixed expressions](FIXED_PHRASE_EXCEPTIONS.md) are the only whole-phrase exceptions.",
   "",
   "## Potential by grammar family and day",
   "",

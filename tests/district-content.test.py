@@ -29,6 +29,7 @@ class ActivationTests(unittest.TestCase):
     def test_candidate_cannot_claim_activation_without_review(self):
         broken = copy.deepcopy(data)
         broken['entries'][0]['promotionCandidateId'] = 'candidate:noun:mother'
+        broken['entries'][0]['userApproval'] = {}
         with self.assertRaises(ValueError):
             validate(broken)
 

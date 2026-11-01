@@ -1,0 +1,81 @@
+PASS python3 tools/build.py --check
+PASS python3 tools/curriculum-audit.py --check
+PASS python3 tools/vocabulary-review.py --check
+PASS python3 tests/curriculum-schema.test.py
+PASS node tests/curriculum-first.test.mjs
+PASS node tests/productive-generation.test.mjs
+PASS node tests/generated-architecture.test.mjs
+PASS node tests/generated-dialogue.test.mjs
+PASS node tools/generation-audit.mjs --check
+PASS node tools/district-inventory.mjs --check
+PASS node tests/cleanup-model.test.mjs
+PASS node tests/current-model.test.mjs
+PASS node tests/game-state.test.mjs
+PASS node tests/audio.test.mjs
+PASS node tests/curriculum-expansion.test.mjs
+PASS python3 tests/district-content.test.py
+PASS node tests/p1-regression.test.mjs
+PASS node tests/p1-storage.test.mjs
+PASS node tests/generation-cache.test.mjs
+PASS node tests/audit-save.test.mjs
+PASS node --check src/app.js
+PASS node --check src/assessment-content.js
+PASS node --check src/audio.js
+PASS node --check src/challenge-ui.js
+PASS node --check src/content.js
+PASS node --check src/grammar-ui.js
+PASS node --check src/learning.js
+PASS node --check src/lesson-ui.js
+PASS node --check src/library-engine.js
+PASS node --check src/library-ui.js
+PASS node --check src/narrative-ui.js
+PASS node --check src/progression.js
+PASS node --check src/question-engine.js
+PASS node --check src/questions.js
+PASS node --check src/sentence-engine.js
+PASS node --check src/storage.js
+PASS node --check src/tutorial-ui.js
+PASS node --check src/ui.js
+PASS node --check src/world-ui.js
+PASS node --check tools/delivery-audit.mjs
+PASS node --check tools/district-inventory.mjs
+PASS node --check tools/generation-audit.mjs
+PASS node --check tools/performance-benchmark.mjs
+PASS node --check tests/audio.test.mjs
+PASS node --check tests/audit-save.test.mjs
+PASS node --check tests/audit-tabs.test.mjs
+PASS node --check tests/browser-fixture.mjs
+PASS node --check tests/challenge-disclosure.test.mjs
+PASS node --check tests/cleanup-browser.test.mjs
+PASS node --check tests/cleanup-model.test.mjs
+PASS node --check tests/current-model.test.mjs
+PASS node --check tests/curriculum-expansion.test.mjs
+PASS node --check tests/curriculum-first.test.mjs
+PASS node --check tests/full-curriculum.test.mjs
+PASS node --check tests/game-state.test.mjs
+PASS node --check tests/generated-architecture.test.mjs
+PASS node --check tests/generated-dialogue.test.mjs
+PASS node --check tests/generated-learning.test.mjs
+PASS node --check tests/generation-cache.test.mjs
+PASS node --check tests/independent-browser.test.mjs
+PASS node --check tests/model-fixture.mjs
+PASS node --check tests/narrative-feedback.test.mjs
+PASS node --check tests/p1-browser.test.mjs
+PASS node --check tests/p1-regression.test.mjs
+PASS node --check tests/p1-storage.test.mjs
+PASS node --check tests/productive-generation.test.mjs
+PASS node --check tests/resume-behaviour.test.mjs
+PASS node --check tests/runtime-fixture.mjs
+PASS compiled release syntax
+PASS node tests/narrative-feedback.test.mjs
+PASS node tests/p1-browser.test.mjs
+PASS node tests/cleanup-browser.test.mjs
+PASS node tests/audit-tabs.test.mjs
+PASS node tests/resume-behaviour.test.mjs
+PASS node tests/generated-learning.test.mjs
+PASS node tests/challenge-disclosure.test.mjs
+PASS node tests/independent-browser.test.mjs
+PASS node tests/full-curriculum.test.mjs
+PASS node tools/delivery-audit.mjs --write
+PASS node tools/delivery-audit.mjs --check
+Logs: /tmp/pashto-quest-checks-5qew8905

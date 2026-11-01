@@ -1,5 +1,7 @@
 # Post-generator cleanup dependency review
 
+> **Historical maintenance record.** Decisions, imperatives, branch names, results and remaining-debt statements below describe the recorded baseline/deliverable, not a current work order. Preserve historical counts and measurements. Use [current documentation roles](../../README.md#documentation-roles-and-precedence), [AGENTS](../../AGENTS.md) and the [validation policy](../../tests/README.md#choose-validation-by-change-and-risk) for new work. Screenshot links below are pinned to the preserved pre-remediation main snapshot (`3d2896f`), rather than mutable paths that later suites overwrite.
+
 Baseline: PR #22 head `688311e`, reviewed against [the cleanup request](https://github.com/Anton0095/pashto-quest/pull/22#issuecomment-6459392070). This inventory was collected before editing runtime code. The generator’s composition behaviour, form licenses, grammar frames, attestation banks and regression fixtures are protected.
 
 | Suspect / declaration | Actual consumers and effects at baseline | Classification and decision |
@@ -58,7 +60,7 @@ Before/after screenshots below are actual browser captures, not mockups:
 
 | View | Before | After |
 |---|---|---|
-| Pace, 375px | [before](cleanup/before-pace-375.png) | [after](cleanup/after-pace-375.png) |
-| Pace, 1280px | [before](cleanup/before-pace-1280.png) | [after](cleanup/after-pace-1280.png) |
-| Visiting teacher, 375px | [before](cleanup/before-teacher-375.png) | [after](cleanup/after-teacher-375.png) |
-| Visiting teacher, 1280px | [before](cleanup/before-teacher-1280.png) | [after](cleanup/after-teacher-1280.png) |
+| Pace, 375px | [before](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/maintenance/cleanup/before-pace-375.png) | [after](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/maintenance/cleanup/after-pace-375.png) |
+| Pace, 1280px | [before](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/maintenance/cleanup/before-pace-1280.png) | [after](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/maintenance/cleanup/after-pace-1280.png) |
+| Visiting teacher, 375px | [before](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/maintenance/cleanup/before-teacher-375.png) | [after](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/maintenance/cleanup/after-teacher-375.png) |
+| Visiting teacher, 1280px | [before](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/maintenance/cleanup/before-teacher-1280.png) | [after](https://github.com/Anton0095/pashto-quest/blob/3d2896fa658be678fa0066635d4967821c0c6e43/docs/maintenance/cleanup/after-teacher-1280.png) |

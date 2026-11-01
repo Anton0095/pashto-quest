@@ -5,7 +5,7 @@
       "id": "description-order",
       "day": 1,
       "reference": "A description orders noun, adjective, then present equative.",
-      "case": "Arrange the roles in a simple description.",
+      "case": "Use the neutral noun–predicate order taught here, without topicalisation or emphasis. Arrange noun, predicate adjective and present equative.",
       "correct": "Noun → adjective → equative",
       "misconceptions": [
         "Adjective → noun → equative",
@@ -16,8 +16,8 @@
     {
       "id": "feminine-description",
       "day": 1,
-      "reference": "Adjective and present equative agree with the described noun in gender and number.",
-      "case": "The described noun is feminine singular. Which pair agrees?",
+      "reference": "For an adjective with distinct gender inflections, choose the noun’s gender/number form and the matching present equative. Invariant adjectives can share one surface form across genders; surface spelling alone does not establish disagreement.",
+      "case": "In a neutral present descriptive clause, the noun is feminine singular and the adjective has distinct masculine and feminine inflections. Which pair agrees?",
       "correct": "Feminine singular adjective + feminine singular equative",
       "misconceptions": [
         "Masculine singular adjective + feminine singular equative",
@@ -28,8 +28,8 @@
     {
       "id": "masculine-description",
       "day": 1,
-      "reference": "Adjective and present equative agree with the described noun in gender and number.",
-      "case": "The described noun is masculine singular. Which pair agrees?",
+      "reference": "For an adjective with distinct gender inflections, choose the noun’s gender/number form and the matching present equative. Invariant adjectives can share one surface form across genders; surface spelling alone does not establish disagreement.",
+      "case": "In a neutral present descriptive clause, the noun is masculine singular and the adjective has distinct masculine and feminine inflections. Which pair agrees?",
       "correct": "Masculine singular adjective + masculine singular equative",
       "misconceptions": [
         "Feminine singular adjective + masculine singular equative",
@@ -40,8 +40,8 @@
     {
       "id": "plural-description",
       "day": 1,
-      "reference": "Adjective and present equative agree with the described noun in gender and number.",
-      "case": "The described noun is plural. What number must its agreeing forms have?",
+      "reference": "Use plural adjective agreement and a plural present equative for this plural noun. An invariant adjective may have the same spelling in singular and plural; that spelling alone is not an error.",
+      "case": "In a neutral present description, the noun is plural and the adjective has distinct singular and plural inflections. Which number features must adjective and equative have?",
       "correct": "Plural adjective and plural equative",
       "misconceptions": [
         "Singular adjective and plural equative",
@@ -89,7 +89,7 @@
       "id": "noun-before-adjective",
       "day": 1,
       "reference": "A descriptive predicate follows its noun; noun-phrase adjective placement is a later construction.",
-      "case": "In a simple description, which role immediately precedes the adjective?",
+      "case": "In the taught neutral noun–predicate description order, which role immediately precedes the predicate adjective?",
       "correct": "The noun being described",
       "misconceptions": [
         "The present equative",
@@ -101,7 +101,7 @@
       "id": "sov-order",
       "day": 2,
       "reference": "A present action clause normally orders subject, object, then the complete finite verb.",
-      "case": "A subject reads an object. Arrange the roles.",
+      "case": "Use the neutral unmarked SOV order taught here, without topicalisation or emphasis. A subject reads an object: arrange the roles.",
       "correct": "Subject → object → finite verb",
       "misconceptions": [
         "Subject → finite verb → object",
@@ -113,7 +113,7 @@
       "id": "third-person",
       "day": 2,
       "reference": "He, she and one named person are third-person singular subjects.",
-      "case": "One named person performs a present action. Which verb features apply?",
+      "case": "One named person, who is neither speaker nor listener, performs a present action. Which subject-agreement features apply?",
       "correct": "Third person singular",
       "misconceptions": [
         "First person singular",
@@ -161,7 +161,7 @@
       "id": "familiar-you",
       "day": 4,
       "reference": "One familiar friend is addressed with informal second-person singular and a matching finite verb.",
-      "case": "The speaker addresses one familiar friend. Choose the agreement.",
+      "case": "The speaker explicitly chooses informal singular address for one familiar friend. Choose the agreement.",
       "correct": "Second person singular",
       "misconceptions": [
         "First person singular",
@@ -281,7 +281,7 @@
       "id": "plural-form",
       "day": 9,
       "reference": "Each noun’s direct plural must be separately studied; plural agreement follows the noun’s actual gender and number.",
-      "case": "A noun changes from its studied singular to its studied direct plural. What must the description do?",
+      "case": "A noun changes to its studied direct plural. The predicate adjective has distinct singular/plural inflections. What must the description do?",
       "correct": "Use matching plural adjective and equative forms",
       "misconceptions": [
         "Keep singular adjective and equative forms",
@@ -352,7 +352,7 @@
     {
       "id": "who-what",
       "day": 12,
-      "reference": "Who asks about a person; what asks about an object; replies must preserve the referent.",
+      "reference": "A person-identity question requires a reply identifying that same person. Do not substitute an unrelated object, place or quantity; question-word uses depend on context.",
       "case": "A question asks for a person’s identity. Which reply type matches?",
       "correct": "The same person’s identity",
       "misconceptions": [

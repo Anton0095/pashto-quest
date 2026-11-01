@@ -20,9 +20,9 @@ const QuestionEngine = (() => {
   function getAnswerTiles(answerPs, duds) {
     const answer = normalizePashtoResponse(answerPs).split(" ").filter(Boolean);
     const extras = (duds || []).map((x) => String(x).trim()).filter(Boolean);
-    if (!answer.length) throw Error("Empty dialogue answer");
+    if (!answer.length) throw Error("Empty construction answer");
     if (extras.length < 2)
-      throw Error("Week 2 tile puzzle requires at least two dud tiles");
+      throw Error("Distractor construction requires at least two dud tiles");
     if (
       extras.some((x) => x.includes(" ") || answer.includes(x)) ||
       new Set(extras).size !== extras.length
@@ -50,15 +50,16 @@ const QuestionEngine = (() => {
       .map((word, index) => ({ word, index }));
   }
   function questionUsesDuds(q, day) {
-    return (
-      (q?.kind === "dialogue" && q.duds?.length >= 2) ||
-      (q?.kind === "construct" && day >= 8 && Array.isArray(q.duds))
-    );
+    // The explicit variant licenses early-day duds. Existing frozen attempts
+    // retain their original day gate; unused metadata never adds new tiles.
+    return ["construct", "dialogue"].includes(q?.kind) && q.tileVariant !== "exact" && q.duds?.length >= 2 &&
+      (q.tileVariant === "distractors" || q.kind === "dialogue" || day >= 8);
   }
+
   function isDialogueAnswerCorrect(q, value) {
     const valid = [q.answerPs, ...(q.acceptedPs || [])];
     return valid.some(
-      (v) => normalizePashtoResponse(v) === normalizePashtoResponse(value),
+      (v) => normalizeAnswer(normalizePashtoResponse(v)) === normalizeAnswer(normalizePashtoResponse(value)),
     );
   }
   function buildTiles(w, q, day) {
@@ -78,15 +79,46 @@ const QuestionEngine = (() => {
     }
     return a;
   }
+  const englishKey = value => String(value || "").normalize("NFC").trim().toLocaleLowerCase("en").replace(/\s+/g, " ").replace(/[.!?]+$/, "");
+  function englishAnswers(card) {
+    // Slash-separated listed senses and explicit form-specific alternatives only.
+    return [...new Set([card?.en, ...(card?.acceptedEnglishAnswers || [])].filter(Boolean).flatMap(v => {
+      if (!/^(?:to )?[a-z]+\s*\/\s*[a-z]+$/i.test(v)) return [v];
+      const parts = v.split(/\s*\/\s*/);
+      if (!/^to /i.test(v)) return [v, ...parts];
+      const verbs = parts.map(p => p.replace(/^to /i, ""));
+      return [v, ...verbs, ...verbs.map(p => "To " + p)];
+    }))];
+  }
+  function meaningKeys(card) {
+    // Conservative exclusions do not add accepted synonyms or inflect words.
+    return englishAnswers(card).map(v => englishKey(v).replace(/^to /, ""));
+  }
+  function explanation(q, card) {
+    if (["choice", "address"].includes(q.kind) || q.grammarConcept) return "This saved rule-analysis question is retired. Its original answer and score are preserved; explicitly retire the attempt to start practical language practice.";
+    if (q.explanation || q.reference) return q.explanation || q.reference;
+    if (q.kind === "word") return `For this exact form, the listed meaning is ${card.en}. Listed senses and explicit accepted alternatives are equivalent answers; another word's meaning is not.`;
+    if (q.kind === "dialogue") return "The reply must preserve the question's referent and requested information, using the studied forms and their agreement.";
+    return "Use the same referents and meaning, with the studied word order and matching noun, adjective, equative or verb features.";
+  }
   function evaluate(q, card, value) {
     if (q.kind === "dialogue") return isDialogueAnswerCorrect(q, value);
-    if (q.kind === "address" || q.kind === "choice")
-      return normalizeAnswer(value) === normalizeAnswer(q.correct);
+    if (["choice", "address"].includes(q.kind) || q.grammarConcept) return false;
     if (q.kind === "construct")
       return normalizeAnswer(value) === normalizeAnswer(card.ps);
-    if (q.kind === "word" && q.unstudied)
-      return String(value).trim().toLocaleLowerCase("en") === card.en.trim().toLocaleLowerCase("en");
-    return value === (q.direction === "en-ps" ? card.ps : card.en);
+    if (q.kind === "word" && q.direction !== "en-ps") {
+      return englishAnswers(card).some(answer => englishKey(answer) === englishKey(value));
+    }
+    if (q.direction === "en-ps") return normalizeAnswer(value) === normalizeAnswer(card.ps);
+    return englishAnswers(card).some(answer => englishKey(answer) === englishKey(value));
+  }
+  // Fresh per-attempt entropy; the resulting questions, not a replayed seed,
+  // are authoritative when a saved assessment resumes.
+  function randomSeed() {
+    if (globalThis.crypto?.getRandomValues) {
+      try { return globalThis.crypto.getRandomValues(new Uint32Array(1))[0]; } catch {}
+    }
+    return Math.floor(Math.random() * 0x100000000);
   }
   function randomFor(seed) {
     return () => {
@@ -95,6 +127,9 @@ const QuestionEngine = (() => {
     };
   }
   return {
+    englishAnswers,
+    meaningKeys,
+    explanation,
     normalizeAnswer,
     normalizePashtoResponse,
     getAnswerTiles,
@@ -105,5 +140,6 @@ const QuestionEngine = (() => {
     shuffle,
     evaluate,
     randomFor,
+    randomSeed,
   };
 })();

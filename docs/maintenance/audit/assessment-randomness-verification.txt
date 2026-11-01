@@ -1,0 +1,70 @@
+Pashto Quest — assessment randomness validation — 1 November 2026
+
+The previous implementation shuffled using the same per-day curriculum seed.
+Eight explicitly new default-Day-1 attempts reproduced one word set and one
+sentence set. New attempts now request fresh entropy (Web Crypto, with a Math
+random fallback), then use a reproducible per-attempt stream throughout sampling.
+No seed is needed to restore an active attempt: its saved questions/choices/tiles
+remain authoritative and resume without consuming new assessment entropy.
+
+Sampling is constrained: frozen curated assignments, four-location coverage,
+current-day/revision priorities and grammar/semantic licenses remain. The daily
+opening phrase stays prescribed; small pools or chance may repeat targets.
+Candidate cohorts and location order are shuffled without changing the curriculum.
+
+Final results: seven focused model suites and one browser suite passed, including
+196 model assessments across all fourteen days, seven paces and normal/skip,
+256 controlled draw samples and native browser entropy/reload checks at 375/1280.
+Offline rebuild/check, changed syntax, changed documentation links and diff
+whitespace checks passed. No lexicon, compiler, activation, evaluator, grading,
+SRS/XP, save-schema or storage implementation changed. The full suite, full
+browser matrix and benchmarks were not repeated for this selection-only change.
+The existing release-bound delivery report retains its f09fd26 measurement and
+fingerprint; it is not claimed as a new measurement of this release.
+
+
+Baseline: f09fd26, eight explicitly new attempts
+{"baselineCommit":"f09fd26","newAttempts":8,"distinctWordSets":1,"distinctSentenceSets":1}
+
+
+node tests/assessment-randomness.test.mjs — exit 0
+PASS random assessment sampling: 256 draws, 188 word sets, 256 sentence sets, all 24 assigned words sampled (22–58 times each), four-location/grammar constraints, explicit-seed reproducibility, Web Crypto/fallback and zero-entropy frozen restore
+
+
+node tests/assessment-randomness-browser.test.mjs — exit 0
+PASS random assessment browser 375 fresh native entropy on new/retry attempts, none on reload, exact words/choices/partial tiles/locked scores and SRS, frozen curriculum and mobile layout
+PASS random assessment browser 1280 fresh native entropy on new/retry attempts, none on reload, exact words/choices/partial tiles/locked scores and SRS, frozen curriculum and mobile layout
+
+
+Focused practical model — exit 0
+PASS practical assessments: 196 attempts, 392 model visits, all 14 days × 7 paces × normal/skip, exact thresholds, no rule quizzes, eligibility, masking and frozen restoration
+PASS 33 exact retired rule snapshots remain readable and ungradable, without resets or rerolls
+PASS four-location targets before visits across every day/pace/route; balanced shortage recall; no base/form alias repeats; unchanged unlocks/rewards and exact old repeated-target attempt restore
+
+
+Focused p1-regression model — exit 0
+A choices [ 'Big', 'Window', 'House', 'door' ] unintroduced meanings []
+PASS P1-A
+B practical tasks 15
+PASS P1-B
+C result false persistence warning Progress has not been saved: browser storage is full or unavailable. Progress stays in this tab. Retry or export before closing it.
+PASS P1-C
+PASS P1-A extended: encounter/intro separation, partial day, revision, all 14 skipped days × seven paces, saved choices
+PASS read-only reference bank replaces English grammar quiz generation
+PASS practical assessment answers cannot grant workshop grammar
+
+
+Focused game-state model — exit 0
+PASS state: schema 7, partial/locked generated snapshots, all 28 families including composite AST restoration, slots/romanisation/tile tamper rejection, first-answer lock, non-farmable XP, cold-load shared-meaning SRS and explicit old-save reset
+
+
+Focused challenge-activation model — exit 0
+PASS challenge activation: all current locations available to sentence generation immediately, no visits/grades/XP invented; actual per-form study remains separate; idempotence, cold save, failure retention, future-day denial and cumulative current/previous vocabulary
+
+
+Focused audit-teaching model — exit 0
+PASS construction retry/completion, fresh knowledge, frozen draw, explicit infinitive vs finite answers and seeded studied duds
+
+
+Focused choice-quality model — exit 0
+PASS same-lesson/mixed-POS priority, real Day1 fallback, unchanged acquisition, accepted-sense/variant exclusions, 33 Journal reference concepts, frozen retired snapshots and blocked grading

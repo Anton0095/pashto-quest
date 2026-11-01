@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
 export const plain = (x) => JSON.parse(JSON.stringify(x));
-export function runtime() {
+export function runtime({seedSource} = {}) {
   const html = readFileSync("index.html", "utf8");
   const context = Object.fromEntries(
     ["LIBRARY_DATA", "NARRATIVE_DATA"].map((n) => [
@@ -11,6 +11,7 @@ export function runtime() {
       ),
     ]),
   );
+  context.assessmentSeedSource = seedSource;
   const modules = [
     "library-engine",
     "sentence-engine",
@@ -20,6 +21,7 @@ export function runtime() {
     "learning",
     "assessment-content",
     "questions",
+    "save-schema",
     "storage",
   ];
   return vm.runInNewContext(
@@ -28,8 +30,8 @@ export function runtime() {
  const content=createContent(LIBRARY_DATA,NARRATIVE_DATA),progression=createProgression(content,LibraryEngine);
  const state={progress:progression.fresh(),session:null,day:1};let raw=null;
  const backend={getItem(){return raw},setItem(k,v){raw=v}},storage=createStorage({state,content,progression,backend});
- const learning=createLearning({state,content,progression}),questions=createQuestions({state,content,progression,storage});
- ({content,progression,state,storage,backend,learning,questions,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine});`,
+ const learning=createLearning({state,content,progression}),questions=createQuestions({state,content,progression,seedSource:assessmentSeedSource});
+ ({createStorage,content,progression,state,storage,backend,learning,questions,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine});`,
     context,
   );
 }
@@ -99,6 +101,7 @@ export function beginAttempt(t, day) {
     attemptId: ++t.state.progress.library.attemptSequence,
     locked: false,
     built: [],
+    tileSequence: items[0]?.tileSequence,
   };
   return items;
 }

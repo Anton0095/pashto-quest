@@ -60,100 +60,7 @@ function createLearning({ state, content, progression }) {
     });
   }
   function libraryLessonPool(day, place) {
-    const plan = LibraryEngine.ensurePlan(
-        state.progress,
-        content.LIBRARY_DATA,
-        day,
-      ),
-      assigned = plan.locationAssignments[place] || [];
-    const lexical = assigned.map((id) => "library-card:" + id);
-    const universals = content.LIBRARY_DATA.entries
-      .filter(
-        (e) =>
-          day !== 14 &&
-          e.vocabularyClass === "universal" &&
-          e.introduction.day <= day &&
-          !state.progress.library.acquired[
-            e.lemmaId
-          ]?.introducedFormIds.includes(e.forms[0].formId),
-      )
-      .map((e) => "library-card:" + e.lemmaId);
-    const taught = new Set([
-      ...Object.entries(state.progress.library.acquired)
-        .filter(([, record]) => record.introducedFormIds.length)
-        .map(([id]) => id),
-      ...assigned,
-      ...universals.flatMap((id) =>
-        (content.LIBRARY_DATA.sourceMappings[id] || []).map((r) => r.lemmaId),
-      ),
-    ]);
-    // Finite forms, plurals, adjective variants and whole case-governed chunks
-    // receive individual study cards. Incidental sentences never introduce them.
-    // A current-day workshop may follow this lexical phase; generation still waits
-    // for its actual unlock. Missing earlier workshops are not silently granted.
-    const forms =
-      day === 14
-        ? []
-        : content.LIBRARY_DATA.entries.flatMap((e) =>
-            taught.has(e.lemmaId)
-              ? e.forms
-                  .filter(
-                    (f) =>
-                      f.formId !== e.forms[0].formId &&
-                      f.composition.enabled &&
-                      LibraryEngine.formAllowed(e, f, day) &&
-                      f.prerequisiteGrammarIds.every(
-                        (id) =>
-                          state.progress.library.grammar[id] ||
-                          id === "grammar-day-" + day,
-                      ) &&
-                      !state.progress.library.acquired[
-                        e.lemmaId
-                      ]?.introducedFormIds.includes(f.formId),
-                  )
-                  .map((f) => "library-form:" + f.formId)
-              : [],
-          );
-    const review = LibraryEngine.dueForms(state.progress, content.LIBRARY_DATA)
-      .filter(
-        ({ entry, form }) =>
-          LibraryEngine.formAllowed(entry, form, day) &&
-          (day !== 14 ||
-            state.progress.library.acquired[
-              entry.lemmaId
-            ]?.introducedFormIds.includes(form.formId)),
-      )
-      .slice(0, 2)
-      .map(({ form }) => "library-form:" + form.formId);
-    // Use a location's active expression, otherwise repeat this day's active
-    // greeting. Pending translations remain unavailable. Expressions do not
-    // consume lexical quotas, even when repeated at multiple locations.
-    const greeting =
-      content.NARRATIVE_DATA.expressions.find(
-        (p) => p.day === day && p.location === place && p.active && !p.optional,
-      ) ||
-      content.NARRATIVE_DATA.expressions.find(
-        (p) => p.day === day && p.active && !p.optional,
-      );
-    const opening = greeting ? [greeting.id] : [];
-    // Move former tutorial courtesies into contextual Day 2–3 teaching, without affecting lexical quotas.
-    const deferred =
-      day === 2 && place === "business"
-        ? ["g-thanks"]
-        : day === 3 && place === "residential"
-          ? ["g-bye"]
-          : [];
-    const pool = [
-      ...new Set([
-        ...opening,
-        ...deferred,
-        ...lexical,
-        ...universals,
-        ...forms,
-        ...review,
-      ]),
-    ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day));
-    return pool;
+    return LibraryEngine.lessonPool(state.progress, content.LIBRARY_DATA, content.NARRATIVE_DATA, day, place);
   }
   function availableSentences(day = state.session?.loop || state.day) {
     return SentenceEngine.available(
@@ -296,10 +203,10 @@ function createLearning({ state, content, progression }) {
     const rows = Object.values(state.progress.library.deliveries);
     const sentences = rows.filter((d) => d.kind === "generated_sentence");
     return {
-      instructionalSentences: sentences.length,
-      generatedSentences: sentences.length,
+      instructionalSentences: sentences.reduce((n,d) => n + (d.count || 1), 0),
+      generatedSentences: sentences.reduce((n,d) => n + (d.count || 1), 0),
       generatedPercent: sentences.length ? 100 : null,
-      fixedPhrases: rows.filter((d) => d.kind === "fixed_phrase").length,
+      fixedPhrases: rows.filter((d) => d.kind === "fixed_phrase").reduce((n,d) => n + (d.count || 1), 0),
     };
   }
   function completeRound(day) {
@@ -323,6 +230,7 @@ function createLearning({ state, content, progression }) {
     if (s?.mode !== "challenge" || s.locked || s.finished) return null;
     const q = s.questions[s.index],
       w = content.wordById[q.id];
+    if (["choice", "address"].includes(q.kind) || q.grammarConcept) return null;
     const correct = QuestionEngine.evaluate(q, w, value);
     libraryPractice(
       q.id,
@@ -338,9 +246,7 @@ function createLearning({ state, content, progression }) {
     const key =
       q.kind === "dialogue"
         ? `week2-dialogue:${s.loop}:${q.id}`
-        : q.kind === "choice"
-          ? `${s.loop}:choice:${q.id}`
-          : `${s.loop}:${q.kind}:${q.direction}:${q.id}`;
+        : `${s.loop}:${q.kind}:${q.direction}:${q.id}`;
     const gain =
       correct && q.kind !== "address" && !expression
         ? progression.awardXP(state.progress, key, 5)
@@ -396,6 +302,7 @@ function createLearning({ state, content, progression }) {
       s.earned += gain;
     } else
       s.queue.splice(Math.min(2, s.queue.length), 0, {
+        ...item,
         id: w.id,
         retries: item.retries + 1,
       });

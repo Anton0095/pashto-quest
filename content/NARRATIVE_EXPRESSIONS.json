@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "activationPolicy": "Only the two explicitly supplied Pashto expressions are enabled as provisional. Other translations require documented linguistic review before activation. Pending targets never enter the playable phrase bank, SRS or audio registry.",
+  "activationPolicy": "Only exact user-approved or evidenced native-approved expressions are active. Three untranslated Day-1 slots remain inactive.",
   "expressions": [
     {
       "id": "phrase-d1-home-welcome",
@@ -11,14 +11,13 @@
       "english": "Welcome!",
       "pashto": "ښه راغلاست",
       "romanisation": "kha raaghlaast",
-      "romanisationStatus": "provisional",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-d1-home-welcome",
       "active": true,
-      "reviewStatus": "needsNativeLaghmanReview",
+      "reviewStatus": "user_approved",
       "source": {
-        "type": "user-supplied established Pashto wording",
-        "reference": "Curriculum Expansion and Narrative Greetings request, section 6, 2026-10-24",
-        "verification": "Explicitly authorized draft expression; qualified local review and pronunciation still pending."
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
       },
       "nativeReview": {
         "status": "pending",
@@ -27,7 +26,21 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      },
+      "priorSource": {
+        "type": "user-supplied established Pashto wording",
+        "reference": "Curriculum Expansion and Narrative Greetings request, section 6, 2026-10-24",
+        "verification": "Explicitly authorized draft expression; qualified local review and pronunciation still pending."
+      }
     },
     {
       "id": "phrase-d1-lake-name",
@@ -107,14 +120,13 @@
       "english": "Good morning!",
       "pashto": "سهار مو پخیر!",
       "romanisation": "sahaar mo pakheer",
-      "romanisationStatus": "provisional",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-2-opening",
       "active": true,
-      "reviewStatus": "needsNativeLaghmanReview",
+      "reviewStatus": "user_approved",
       "source": {
-        "type": "user-supplied attested Afghan Pashto wording",
-        "reference": "Curriculum Expansion and Narrative Greetings request, section 7, 2026-10-24",
-        "verification": "User identifies Afghan learning materials but supplies no title/URL. External bibliographic verification blocked by network access; exact source and native Laghman review pending. No certification claimed."
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
       },
       "nativeReview": {
         "status": "pending",
@@ -123,7 +135,21 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      },
+      "priorSource": {
+        "type": "user-supplied attested Afghan Pashto wording",
+        "reference": "Curriculum Expansion and Narrative Greetings request, section 7, 2026-10-24",
+        "verification": "User identifies Afghan learning materials but supplies no title/URL. External bibliographic verification blocked by network access; exact source and native Laghman review pending. No certification claimed."
+      }
     },
     {
       "id": "phrase-day-3-opening",
@@ -132,13 +158,16 @@
       "speaker": "Saleha",
       "recipient": "Player",
       "english": "It’s nice to see you",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "pashto": "خوشحاله یم چې تاسې وینم.",
+      "romanisation": "Khwashaala yam che taase weenam.",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-3-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -146,7 +175,16 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-day-4-opening",
@@ -155,13 +193,16 @@
       "speaker": "Muhammad Jan",
       "recipient": "Player",
       "english": "May you not be tired",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "pashto": "ستړي مه شئ.",
+      "romanisation": "Starray ma shəy.",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-4-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -169,7 +210,16 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-day-5-opening",
@@ -177,14 +227,17 @@
       "location": "school",
       "speaker": "Ms Hameed",
       "recipient": "Player",
-      "english": "Peace be upon you (and its response)",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "english": "Peace be upon you",
+      "pashto": "السلام علیکم.",
+      "romanisation": "As-salaamu alaykum.",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-5-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -192,7 +245,18 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      },
+      "responsePhraseId": "phrase-day-7-opening",
+      "promptPhraseId": "phrase-day-5-opening"
     },
     {
       "id": "phrase-day-6-opening",
@@ -201,13 +265,16 @@
       "speaker": "Mina",
       "recipient": "Player",
       "english": "Nice to meet you",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "pashto": "ستاسې په لیدو خوشحاله شوم.",
+      "romanisation": "Staase pa leedo khwashaala shwum.",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-6-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -215,7 +282,16 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-day-7-opening",
@@ -223,14 +299,17 @@
       "location": "business",
       "speaker": "Edris",
       "recipient": "Player",
-      "english": "How is business going?",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "english": "And peace be upon you",
+      "pashto": "وعلیکم السلام.",
+      "romanisation": "Wa alaykum as-salaam.",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-7-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -238,7 +317,18 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      },
+      "responsePhraseId": "phrase-day-7-opening",
+      "promptPhraseId": "phrase-day-5-opening"
     },
     {
       "id": "phrase-day-8-opening",
@@ -247,13 +337,16 @@
       "speaker": "Saleha",
       "recipient": "Player",
       "english": "Where have you been?",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "pashto": "چېرته وئ؟",
+      "romanisation": "Cherta way?",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-8-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -261,7 +354,16 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-day-9-opening",
@@ -270,13 +372,16 @@
       "speaker": "Edris",
       "recipient": "Player",
       "english": "Please, come in",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "pashto": "مهرباني وکړئ، دننه راشئ.",
+      "romanisation": "Mehrabaani wakṛəy, danana raashəy.",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-9-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -284,7 +389,16 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-day-10-opening",
@@ -293,13 +407,16 @@
       "speaker": "Mina",
       "recipient": "Player",
       "english": "Excuse me",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "pashto": "وبخښئ.",
+      "romanisation": "Wubakhshəy.",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-10-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -307,7 +424,16 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-day-11-opening",
@@ -316,13 +442,16 @@
       "speaker": "Muhammad Jan",
       "recipient": "Player",
       "english": "Make yourself at home",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "pashto": "دا خپل کور وګڼئ.",
+      "romanisation": "Daa khpal kor wagaṇəy.",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-11-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -330,7 +459,16 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-day-12-opening",
@@ -339,13 +477,16 @@
       "speaker": "Ms Hameed",
       "recipient": "Player",
       "english": "May I ask a question?",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "pashto": "اجازه شته چې یوه پوښتنه وکړم؟",
+      "romanisation": "Ijaaza shta che yawa pukhtana wakṛam?",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-12-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -353,7 +494,16 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-day-13-opening",
@@ -362,13 +512,16 @@
       "speaker": "Saleha",
       "recipient": "Player",
       "english": "How is your day going?",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "pashto": "ورځ مو څنګه تېرېږي؟",
+      "romanisation": "Wradz mo tsanga teregi?",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-13-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -376,7 +529,16 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": false
+      "optional": false,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     },
     {
       "id": "phrase-day-14-opening",
@@ -385,13 +547,16 @@
       "speaker": "Muhammad Jan",
       "recipient": "Player",
       "english": "Good luck!",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
+      "pashto": "بریالي اوسئ!",
+      "romanisation": "Baryaali osəy!",
+      "romanisationStatus": "user_approved",
       "audioContentId": "phrase-day-14-opening",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
+      "active": true,
+      "reviewStatus": "user_approved",
+      "source": {
+        "type": "explicit_user_confirmation",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json"
+      },
       "nativeReview": {
         "status": "pending",
         "reviewer": null,
@@ -399,7 +564,16 @@
       },
       "kind": "fixed conversational expression",
       "countsTowardDailyQuota": false,
-      "optional": true
+      "optional": true,
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-10-31",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "nativeCertificationClaimed": false
+      }
     }
   ]
 }

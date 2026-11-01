@@ -31,6 +31,8 @@ const LibraryEngine = (() => {
       grammar: {},
       events: {},
       attemptSequence: 0,
+      retiredAttemptSequence: 0,
+      protectedAttemptIds: [],
       deliveries: {},
       deficits: {},
     };
@@ -65,11 +67,21 @@ const LibraryEngine = (() => {
     r.encounteredSourceIds = unique(
       [...r.encounteredSourceIds, context.contentId].filter(Boolean),
     );
+    const challengeUnlock = ["challenge-pass", "challenge-start"].includes(context.source);
     if (context.introduce) {
+      if (!r.introducedFormIds.includes(ref.formId)) {
+        const assigned = Object.values(s.plans).flatMap(plan => Object.entries(plan.locationAssignments)).find(([,ids]) => ids.includes(e.lemmaId))?.[0];
+        const location = e.vocabularyClass === "universal" ? "universal" : assigned || (places.includes(context.location) ? context.location : "unrecorded");
+        (r.formUnlocks ||= {})[ref.formId] = {day:context.day, source:challengeUnlock ? context.source : "study", location};
+        if (!r.introducedFormIds.length) r.unlock = {...r.formUnlocks[ref.formId]};
+      }
       r.introducedFormIds = unique([...r.introducedFormIds, ref.formId]);
-      r.formallyIntroducedDay ??= context.day;
+      if (!challengeUnlock) {
+        r.formallyIntroducedDay ??= context.day;
+        if (r.formUnlocks?.[ref.formId]) r.formUnlocks[ref.formId].studiedDay ??= context.day;
+      }
     }
-    if (context.day > 0) {
+    if (context.day > 0 && !challengeUnlock) {
       const ledger = (s.dayExposure[context.day] ||= {
         incidentalStoryLemmas: [],
         reviewedExistingLemmas: [],
@@ -109,6 +121,8 @@ const LibraryEngine = (() => {
         source: context.source,
         location: context.location,
       };
+      if (["lesson", "review", "library", "tutorial"].includes(context.source))
+        p.library.phrases[id].studiedDay ??= context.day;
       // Encountered but unpractised expressions are due too; optional recognition
       // can be skipped without removing the expression from later review.
       p.library.units[id] ||= {
@@ -169,9 +183,50 @@ const LibraryEngine = (() => {
     }
     return p.library.units[data.sentenceOrigins?.[id] || id] || {};
   }
+  function eventAttempt(event) {
+    const match = /^(?:(?:lesson|challenge|tutorial):([1-9]\d*):(?:0|[1-9]\d*)|(?:phrase|library-practice):([1-9]\d*))$/.exec(event);
+    const id = match && Number(match[1] || match[2]);
+    return Number.isSafeInteger(id) ? id : null;
+  }
+  // Monotonic attempt IDs make closed practice events rejectable without an
+  // unbounded event set. Preserve both the current UI session (even finished)
+  // and paused assessment, whose exact per-attempt deduplication still matters.
+  // Unknown event namespaces are retained. Delivery counts/identity survive;
+  // acquisition, SRS, rewards and frozen compiler proofs are never compacted.
+  function compactHistory(p, sessions) {
+    const l = p.library;
+    const protectedIds = [...new Set(sessions.filter(Boolean).map(s => s.attemptId).filter(id => Number.isSafeInteger(id) && id > 0 && id <= l.attemptSequence))].sort((a,b) => a-b);
+    if (l.retiredAttemptSequence === l.attemptSequence && JSON.stringify(l.protectedAttemptIds) === JSON.stringify(protectedIds)) return;
+    l.retiredAttemptSequence = l.attemptSequence;
+    l.protectedAttemptIds = protectedIds;
+    for (const key of Object.keys(l.events)) {
+      const id = eventAttempt(key);
+      if (id !== null && id <= l.retiredAttemptSequence && !protectedIds.includes(id)) delete l.events[key];
+    }
+    for (const [key, row] of Object.entries(l.deliveries)) {
+      const match = /^([1-9]\d*):/.exec(key), id = match && Number(match[1]);
+      if (!Number.isSafeInteger(id) || id > l.retiredAttemptSequence || protectedIds.includes(id)) continue;
+      let hash = 2166136261;
+      const identity = JSON.stringify([row.id, row.mode, row.surface]);
+      for (let i=0; i<identity.length; i++) hash = Math.imul(hash ^ identity.charCodeAt(i), 16777619);
+      let summaryKey = `h:${hash >>> 0}`;
+      const same = r => r.id === row.id && r.mode === row.mode && r.surface === row.surface;
+      while (l.deliveries[summaryKey] && !same(l.deliveries[summaryKey])) summaryKey += ":";
+      const prior = l.deliveries[summaryKey];
+      if (prior) {
+        prior.count = (prior.count || 1) + (row.count || 1);
+        const lastDay = Math.max(prior.lastDay || prior.day, row.lastDay || row.day);
+        prior.day = Math.min(prior.day, row.day);
+        if (lastDay !== prior.day) prior.lastDay = lastDay;
+      } else l.deliveries[summaryKey] = {...row};
+      delete l.deliveries[key];
+    }
+  }
   function practise(p, data, id, correct, context) {
     if (!cardAllowed(data, id, context.day)) return false;
     const event = context.eventId;
+    const attempt = eventAttempt(event);
+    if (attempt !== null && attempt <= (p.library.retiredAttemptSequence || 0) && !(p.library.protectedAttemptIds || []).includes(attempt)) return false;
     if (p.library.events[event]) return false;
     p.library.events[event] = true;
     expose(p, data, id, context);
@@ -402,11 +457,135 @@ const LibraryEngine = (() => {
         .map((e) => e.lemmaId),
     };
   }
+  function lessonPool(p, data, narrative, day, place) {
+    const plan = ensurePlan(
+        p,
+        data,
+        day,
+      ),
+      assigned = plan.locationAssignments[place] || [];
+    const lexical = assigned.map((id) => "library-card:" + id);
+    const universals = data.entries
+      .filter(
+        (e) =>
+          day !== 14 &&
+          e.vocabularyClass === "universal" &&
+          e.introduction.day <= day &&
+          !p.library.acquired[
+            e.lemmaId
+          ]?.introducedFormIds.includes(e.forms[0].formId),
+      )
+      .map((e) => "library-card:" + e.lemmaId);
+    const taught = new Set([
+      ...Object.entries(p.library.acquired)
+        .filter(([, record]) => record.introducedFormIds.length)
+        .map(([id]) => id),
+      ...assigned,
+      ...universals.flatMap((id) =>
+        (data.sourceMappings[id] || []).map((r) => r.lemmaId),
+      ),
+    ]);
+    // Finite forms, plurals, adjective variants and whole case-governed chunks
+    // receive individual study cards. Incidental sentences never introduce them.
+    // A current-day workshop may follow this lexical phase; generation still waits
+    // for its actual unlock. Missing earlier workshops are not silently granted.
+    const forms =
+      day === 14
+        ? []
+        : data.entries.flatMap((e) =>
+            taught.has(e.lemmaId)
+              ? e.forms
+                  .filter(
+                    (f) =>
+                      f.formId !== e.forms[0].formId &&
+                      f.composition.enabled &&
+                      formAllowed(e, f, day) &&
+                      f.prerequisiteGrammarIds.every(
+                        (id) =>
+                          p.library.grammar[id] ||
+                          id === "grammar-day-" + day,
+                      ) &&
+                      !p.library.acquired[
+                        e.lemmaId
+                      ]?.introducedFormIds.includes(f.formId),
+                  )
+                  .map((f) => "library-form:" + f.formId)
+              : [],
+          );
+    const review = dueForms(p, data)
+      .filter(
+        ({ entry, form }) =>
+          formAllowed(entry, form, day) &&
+          (day !== 14 ||
+            p.library.acquired[
+              entry.lemmaId
+            ]?.introducedFormIds.includes(form.formId)),
+      )
+      .slice(0, 2)
+      .map(({ form }) => "library-form:" + form.formId);
+    // Use a location's active expression, otherwise repeat this day's active
+    // greeting. Pending translations remain unavailable. Expressions do not
+    // consume lexical quotas, even when repeated at multiple locations.
+    const greeting =
+      narrative.expressions.find(
+        (p) => p.day === day && p.location === place && p.active,
+      ) ||
+      narrative.expressions.find(
+        (p) => p.day === day && p.active,
+      );
+    const opening = greeting ? [...new Set([greeting.id, greeting.responsePhraseId].filter(Boolean))] : [];
+    // Move former tutorial courtesies into contextual Day 2–3 teaching, without affecting lexical quotas.
+    const deferred =
+      day === 2 && place === "business"
+        ? ["g-thanks"]
+        : day === 3 && place === "residential"
+          ? ["g-bye"]
+          : [];
+    const pool = [
+      ...new Set([
+        ...opening,
+        ...deferred,
+        ...lexical,
+        ...universals,
+        ...forms,
+        ...review,
+      ]),
+    ].filter((id) => cardAllowed(data, id, day));
+    return pool;
+  }
+  // Both activation and pass completion use the same finite lesson material.
+  // Availability never fabricates practice events or successful answers.
+  function unlockDayMaterial(p, data, narrative, day, source) {
+    ensurePlan(p, data, day);
+    for (let d = 1; d <= day; d++) unlock(p, d, source);
+    const newlyUnlocked = new Set(), locationItems = {};
+    for (const location of places) {
+      const pool = lessonPool(p, data, narrative, day, location);
+      locationItems[location] = pool.length;
+      for (const id of pool) {
+        if (data.phrases.some(f => f.id === id)) {
+          expose(p, data, id, {day, location, source});
+          continue;
+        }
+        for (const ref of data.sourceMappings[id] || []) {
+          const e = data.entries.find(e => e.lemmaId === ref.lemmaId);
+          if (p.library.acquired[e.lemmaId]?.introducedFormIds.includes(ref.formId) || day === 14) continue;
+          const planned = Object.entries(p.library.plans[day].locationAssignments).find(([, ids]) => ids.includes(e.lemmaId))?.[0];
+          const teachingLocation = e.vocabularyClass === "universal" ? "universal" : planned || e.introduction.district;
+          const r = encounter(p, data, ref, {day, location:teachingLocation, source, introduce:true});
+          if (r) newlyUnlocked.add(e.lemmaId);
+        }
+      }
+    }
+    return {newlyUnlocked:[...newlyUnlocked], locationItems};
+  }
   function unlock(p, day, source) {
     if (day >= 1 && day <= 14)
       p.library.grammar["grammar-day-" + day] ||= { day, source };
   }
   return {
+    unlockDayMaterial,
+    lessonPool,
     formAllowed,
     schedule,
     allowedOnDay,
@@ -423,6 +602,7 @@ const LibraryEngine = (() => {
     encounter,
     expose,
     practise,
+    compactHistory,
     status,
     summary,
     available,

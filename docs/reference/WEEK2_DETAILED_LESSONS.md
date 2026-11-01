@@ -1,5 +1,7 @@
 # Pashto Quest — Week 2: Detailed Lesson Content (Days 8–14)
 
+> **Historical editorial archive — not active instructions.** All implementation imperatives, old API names, fixed sentence sets, branch directions and “not implemented” status statements below belong to the original planning checkpoint. Do not restore them or treat them as unfinished work. Current goals/mechanics are in [README](../../README.md) and [GAME_SPEC](../../GAME_SPEC.md); workflow is in [AGENTS](../../AGENTS.md). Runtime instructional clauses are generated, not copied from these targets. Historical example language remains provisional.
+
 **Status:** Complete English-language lesson plan and model Pashto phrases; **not yet integrated into the playable HTML.** Pashto examples are candidates, not a certified Laghman native-speaker corpus. No new gameplay features are authorised by this content package.
 
 ## Established constraints

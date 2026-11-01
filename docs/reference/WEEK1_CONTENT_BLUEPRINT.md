@@ -1,6 +1,8 @@
 # Pashto Quest — Days 6–7 narrative and learning-content blueprint
 
-Current implementation/workflow: see README.md and docs/CLEANUP_REVIEW.md. Historical status notes below are curriculum context, not instructions to restore removed migrations or prototype code.
+> **Historical editorial archive — not active instructions.** All implementation imperatives, old API names, fixed sentence sets, branch directions and “not implemented” status statements below belong to the original planning checkpoint. Do not restore them or treat them as unfinished work. Current goals/mechanics are in [README](../../README.md) and [GAME_SPEC](../../GAME_SPEC.md); workflow is in [AGENTS](../../AGENTS.md). Runtime instructional clauses are generated, not copied from these targets. Historical example language remains provisional.
+
+Current implementation/workflow: see [README](../../README.md) and [AGENTS](../../AGENTS.md); the [cleanup review](../maintenance/CLEANUP_REVIEW.md) records a later historical checkpoint. Historical status notes below are curriculum context, not instructions to restore removed migrations or prototype code.
 **Status:** Authoring specification for Codex. This is **not** implemented in the reference game. Example English meanings below are the semantic targets for Pashto sentence cards. Codex should reuse valid existing `GAME_DATA.words` entries where available, add stable new IDs for genuinely new material, and produce Pashto spellings/romanisations subject to local Laghman native review. Avoid automated word swaps that create nonsense or change a verb's grammatical role.
 
 ## Shared implementation rules

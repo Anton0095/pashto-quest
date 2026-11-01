@@ -61,7 +61,11 @@ const SentenceEngine = (() => {
       f.romanisation &&
       evidence?.sourceId &&
       attestation?.pashto.includes(f.pashto) &&
-      attestation?.romanisation.includes(f.romanisation) &&
+      (attestation?.romanisation.includes(f.romanisation) ||
+        (e.reviewStatus === "user_approved" && e.userVerified === true &&
+         f === e.forms[0] && f.romanisation === e.romanisation &&
+         evidence.romanisationApproval?.nativeCertificationClaimed === false &&
+         ["reviewer", "date", "reference"].every(k => evidence.romanisationApproval?.[k] && evidence.romanisationApproval[k] === e.userApproval?.[k]))) &&
       evidence.pashtoSpan === f.pashto &&
       evidence.romanisationSpan === f.romanisation &&
       evidence.features &&
@@ -243,6 +247,9 @@ const SentenceEngine = (() => {
         return null;
       slots[name] = item;
     }
+    return resolveSlots(frame, slots);
+  }
+  function resolveSlots(frame, slots) {
     if (!compatible(frame, slots)) return null;
     const n = slots[frame.copulaFrom];
     const copula = n
@@ -258,13 +265,15 @@ const SentenceEngine = (() => {
   function compose(data, frame, binding, lookup, attestations) {
     const resolved = resolve(data, frame, binding, lookup);
     if (!resolved) return null;
+    return renderResolved(data, frame, resolved, attestations);
+  }
+  function renderResolved(data, frame, resolved, attestations, lazy = false, lookup = null) {
     const { slots, copula } = resolved;
     const render = (key) =>
       frame.pashtoPattern.replace(/\{([a-z]+)\}/g, (_, name) =>
         name === "copula" ? copula[key] : slots[name].value[key],
       );
     const ps = render("pashto"),
-      roman = render("romanisation"),
       en = english(frame, slots);
     if (!en || /undefined|null/.test(en)) return null;
     const source = (attestations?.get(ps) ||
@@ -291,63 +300,93 @@ const SentenceEngine = (() => {
       slots.subject?.value.composition.register === "informal"
         ? "Saleha"
         : "Ms Hameed";
-    return {
-      id: `generated:${frame.id}:${bindingId}`,
-      type: "sentence",
-      ps,
-      en,
-      roman,
-      loop: Math.max(
-        frame.earliestDay,
-        ...Object.values(slots).map(({ entry, value }) =>
-          Math.max(entry.introduction.day, value.firstAllowedDay),
-        ),
-      ),
-      place: (slots.noun || slots.verb || slots.subject).entry.primaryDistrict,
-      speaker: "Player",
-      recipient: addressee,
-      note: "Practice with studied forms; language and pronunciation remain provisional.",
-      dialect: "",
-      generated: {
-        origin: "productive_engine",
-        frameId: frame.id,
-        family: frame.family,
-        bindingId,
-        slots: refs,
-        requiredGrammarIds,
-        terminals: copula ? [copula] : [],
-        sourceId: source?.sourceId || null,
-        outputKind: source ? "authored_attestation" : "composed_draft",
-        formEvidenceSourceIds: unique(
-          Object.values(slots).map((s) => s.value.featureEvidence.sourceId),
-        ),
-        answerType: frame.answerType || null,
-        subjects: slots.subject
-          ? [
-              {
-                person: feature(slots.subject, "person"),
-                number: feature(slots.subject, "number"),
-                formId: slots.subject.value.formId,
-              },
-            ]
-          : [],
-        semanticArguments: Object.fromEntries(
-          Object.entries(slots).map(([k, s]) => [
-            k,
-            s.value.composition.english ||
-              s.entry.generationSemantics?.base ||
-              s.entry.generationSemantics?.singular ||
-              s.value.pashto,
-          ]),
-        ),
-        speaker: "Player",
-        addressee,
-        register: slots.subject?.value.composition.register || null,
-        reviewStatus: "needs_native_review",
-        userVerified: false,
-        pronunciationStatus: "provisional_authored_span",
-      },
+    const details = lazy ? null : detailValues(frame, slots, copula);
+    const generated = {
+      origin: "productive_engine",
+      frameId: frame.id,
+      family: frame.family,
+      bindingId,
+      slots: refs,
+      requiredGrammarIds,
     };
+    setDetail(generated, "terminals", details);
+    generated.sourceId = source?.sourceId || null;
+    generated.outputKind = source ? "authored_attestation" : "composed_draft";
+    setDetail(generated, "formEvidenceSourceIds", details);
+    generated.answerType = frame.answerType || null;
+    setDetail(generated, "subjects", details);
+    setDetail(generated, "semanticArguments", details);
+    generated.speaker = "Player";
+    generated.addressee = addressee;
+    generated.register = slots.subject?.value.composition.register || null;
+    generated.reviewStatus = "needs_native_review";
+    generated.userVerified = false;
+    generated.pronunciationStatus = "provisional_authored_span";
+    const card = {id: `generated:${frame.id}:${bindingId}`, type: "sentence", ps, en};
+    setDetail(card, "roman", details);
+    card.loop = Math.max(frame.earliestDay, ...Object.values(slots).map(({entry, value}) => Math.max(entry.introduction.day, value.firstAllowedDay)));
+    card.place = (slots.noun || slots.verb || slots.subject).entry.primaryDistrict;
+    card.speaker = "Player";
+    card.recipient = addressee;
+    card.note = "Practice with studied forms; language and pronunciation remain provisional.";
+    card.dialect = "";
+    card.generated = generated;
+    if (lazy) {
+      const context = {card, frame, lookup, copula};
+      Object.defineProperty(card, detailContext, {value: context, configurable: true});
+      Object.defineProperty(generated, detailContext, {value: context, configurable: true});
+    }
+    return card;
+  }
+  // Only immutable compiler inputs use deferred display/provenance allocation.
+  // Selection still sees every candidate, in its original order, with exact text,
+  // grammar and stable bindings. Public compose/restore remain eager proofs.
+  const immutableInputs = new WeakSet();
+  function immutableTree(value) {
+    if (!value || typeof value !== "object") return true;
+    if (immutableInputs.has(value)) return true;
+    if (!Object.isFrozen(value) || !Object.values(value).every(immutableTree)) return false;
+    immutableInputs.add(value);
+    return true;
+  }
+  // Context belongs to the candidate graph, not a global ephemeron table.
+  // The private non-enumerable symbol never enters canonical JSON/proofs.
+  const detailContext = Symbol("compiler candidate details");
+  const deferredKeys = ["roman", "terminals", "formEvidenceSourceIds", "subjects", "semanticArguments"];
+  function detailValues(frame, slots, copula) {
+    return {
+        roman: frame.pashtoPattern.replace(/\{([a-z]+)\}/g, (_, name) => name === "copula" ? copula.romanisation : slots[name].value.romanisation),
+        terminals: copula ? [copula] : [],
+        formEvidenceSourceIds: unique(Object.values(slots).map(s => s.value.featureEvidence.sourceId)),
+        subjects: slots.subject ? [{person: feature(slots.subject, "person"), number: feature(slots.subject, "number"), formId: slots.subject.value.formId}] : [],
+        semanticArguments: Object.fromEntries(Object.entries(slots).map(([k,s]) => [k, s.value.composition.english || s.entry.generationSemantics?.base || s.entry.generationSemantics?.singular || s.value.pashto])),
+      };
+  }
+  function materialize(owner, key) {
+    const context = owner[detailContext];
+    if (!context.values) {
+      const {frame, lookup, copula, card} = context;
+      const slots = Object.fromEntries(Object.entries(card.generated.slots).map(([name, ref]) => [name, lookup.get(ref.formId)]));
+      context.values = detailValues(frame, slots, copula);
+      for (const name of deferredKeys) {
+        const target = name === "roman" ? card : card.generated;
+        if (Object.getOwnPropertyDescriptor(target, name).configurable)
+          Object.defineProperty(target, name, {value: context.values[name], enumerable: true, configurable: true, writable: true});
+      }
+      if (deferredKeys.every(name => "value" in Object.getOwnPropertyDescriptor(name === "roman" ? card : card.generated, name))) {
+        delete card[detailContext]; delete card.generated[detailContext];
+      }
+      context.frame = context.lookup = context.copula = context.card = null;
+    }
+    return context.values[key];
+  }
+  const deferredDescriptors = Object.fromEntries(deferredKeys.map(key => [key, {get: function() {return materialize(this, key)}, enumerable: true, configurable: true}]));
+  function setDetail(owner, key, values) {
+    // Initialise each field once in canonical order. Replacing an existing
+    // value with an accessor forces dictionary storage in Chromium; rebuilding
+    // intermediate card objects instead adds avoidable GC pressure.
+    if (values) owner[key] = values[key];
+    else Object.defineProperty(owner, key, deferredDescriptors[key]);
   }
   function formAvailable(p, item, day) {
     if (!item) return false;
@@ -365,6 +404,7 @@ const SentenceEngine = (() => {
     const lookup = index(data),
       out = [],
       attestations = new Map();
+    const lazy = immutableTree(frames) && immutableTree(data.entries) && immutableTree(data.generationEvidence) && immutableTree(data.generationAttestations);
     for (const a of data.generationAttestations || [])
       attestations.set(a.pashto, [...(attestations.get(a.pashto) || []), a]);
     const items = [...lookup.values()].filter(
@@ -372,7 +412,7 @@ const SentenceEngine = (() => {
     );
     for (const frame of frames.frames) {
       if (
-        frame.earliestDay > day ||
+        frame.scope !== "feature_vetted_draft" || frame.earliestDay > day ||
         (p && !frame.requiredGrammarIds.every((id) => p.library.grammar[id]))
       )
         continue;
@@ -383,15 +423,9 @@ const SentenceEngine = (() => {
       const slots = {};
       function visit(i) {
         if (i === candidates.length) {
-          const binding = {
-            slots: Object.fromEntries(
-              Object.entries(slots).map(([k, s]) => [
-                k,
-                { lemmaId: s.entry.lemmaId, formId: s.value.formId },
-              ]),
-            ),
-          };
-          const card = compose(data, frame, binding, lookup, attestations);
+          // Candidate lists already establish slot licensing and exact references.
+          const resolved = resolveSlots(frame, slots);
+          const card = resolved && renderResolved(data, frame, resolved, attestations, lazy, lookup);
           if (
             card &&
             card.loop <= day &&
@@ -538,6 +572,7 @@ const SentenceEngine = (() => {
             ),
         )
       : data.eligibleCache.cards;
+    if (!data.generatedCatalog && data.eligibleCache.available) return data.eligibleCache.available;
     if (day < 4 || !p.library.grammar["grammar-day-4"]) return base;
     const connector = [...lookup.values()].find(
       (x) =>
@@ -568,9 +603,11 @@ const SentenceEngine = (() => {
         seen.add(c.id);
       }
     }
-    return [...base, ...extra];
+    const result = [...base, ...extra];
+    if (!data.generatedCatalog) data.eligibleCache.available = result;
+    return result;
   }
-  function restoreCard(data, frames, snapshot) {
+  function restoreProof(data, frames, snapshot) {
     if (!snapshot?.generated) return null;
     if (snapshot.generated.ast?.kind === "clause_coordination") {
       const a = snapshot.generated.ast,
@@ -581,6 +618,24 @@ const SentenceEngine = (() => {
     }
     const f = frames.frames.find((f) => f.id === snapshot.generated.frameId);
     return f ? compose(data, f, { slots: snapshot.generated.slots }) : null;
+  }
+  function restoreCard(data, frames, snapshot) {
+    const card = restoreProof(data, frames, snapshot);
+    if (!card || card.roman === snapshot.roman) return card;
+    // Current schema snapshots retain their exact displayed pronunciation aid.
+    // Only stored, attested prior aids are eligible; no content/proof repair.
+    const ids = new Set(Object.values(snapshot.generated.slots).map(r => r.formId));
+    const prior = data.entries.flatMap(e => e.forms).filter(f => ids.has(f.formId) && f.priorAttestedRomanisation);
+    if (!prior.length) return card;
+    const evidence = {...data.generationEvidence};
+    const entries = data.entries.map(e => ({...e, forms:e.forms.map(f => {
+      if (!prior.includes(f)) return f;
+      const romanisation = f.priorAttestedRomanisation;
+      if (evidence[f.formId]) evidence[f.formId] = {...evidence[f.formId], romanisation};
+      return {...f, romanisation, featureEvidence:{...f.featureEvidence, romanisationSpan:romanisation}};
+    })}));
+    const previous = restoreProof({...data, entries, generationEvidence:evidence}, frames, snapshot);
+    return previous?.roman === snapshot.roman ? previous : card;
   }
   function select(p, data, frames, day, count, seed, recent = []) {
     const lookup = index(data),

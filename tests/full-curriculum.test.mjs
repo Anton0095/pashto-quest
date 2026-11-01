@@ -186,37 +186,26 @@ try {
                 dialogueFamilies.add(q.dialogueFamily);
                 if (q.answerPs !== card.ps)
                   throw Error("Uncompiled dialogue response");
-                if (q.promptPs) {
-                  observe(t.content.wordById[q.promptGenerated.id]);
-                  if (
-                    document.querySelector("#quizPashto").textContent !==
-                    q.promptGenerated.ps
-                  )
-                    throw Error("Uncompiled dialogue prompt");
-                } else if (
-                  /[\u0600-\u06ff]/.test(
-                    document.querySelector("#quizPashto").textContent,
-                  )
-                )
-                  throw Error("Early dialogue invented a Pashto question");
               }
+              if (["construct","dialogue"].includes(q.kind) && document.querySelector("#quizPashto").textContent !== (q.answerEnglish || card.en))
+                throw Error("Construction must display the direct English target");
               if (q.kind === "word") {
                 const studied = new Set(Object.values(t.content.wordById).filter((c) => {
                   const refs = t.content.LIBRARY_DATA.sourceMappings[c.id] || [];
                   return t.state.progress.library.phrases[c.id] || (refs.length && refs.every((r) =>
                     t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId)));
                 }).map((c) => c.en));
+                const backup = new Set(t.content.LIBRARY_DATA.entries
+                  .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
+                  .map(e => e.englishSenses[0]));
                 for (const text of q.choiceOrder)
-                  if (!studied.has(text) && !["A different meaning", "Another response", "None of these"].includes(text))
-                    throw Error("Unstudied distractor meaning: " + text);
+                  if (!studied.has(text) && !backup.has(text) && !["A different meaning", "Another response", "None of these"].includes(text))
+                    throw Error("Distractor is neither studied nor Day-1 backup: " + text);
                 if (q.unstudied && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === card.en))
                   throw Error("Unstudied target meaning offered as a clue");
               }
-              if (q.kind === "choice" && q.grammarConcept) {
-                if (!q.grammarDays.every((day) => t.state.progress.library.grammar["grammar-day-" + day]))
-                  throw Error("Grammar assessment required an unvisited workshop");
-                if (q.reference && !q.prompt.includes(q.reference)) throw Error("Missing guided grammar reference");
-              }
+              if (["choice", "address"].includes(q.kind) || q.grammarConcept)
+                throw Error("Retired grammar-rule question generated in a practical assessment");
               if (q.kind === "word" && q.unstudied) {
                 if (
                   q.direction !== "ps-en" ||
@@ -274,12 +263,12 @@ try {
               !document.querySelector("#challengeScene svg[aria-label*=Mina]")
             )
               throw Error("Hills scene or Mina introduction lost");
-            if (taughtCount() !== beforeChallenge)
-              throw Error("Challenge introduced a form");
+            if (!t.content.zoneKeys.every(loc=>t.state.progress.complete[day+'-'+loc]))
+              throw Error("Passed challenge failed to complete locations");
             if (day === 14 && taughtCount() !== oldCount)
               throw Error("Day 14 introduced compulsory vocabulary/forms");
-            if (skip && families.size)
-              throw Error("Skip composed from unintroduced forms");
+            if (skip && day === 1 && pace === 24 && !families.size)
+              throw Error("Challenge activation failed to generate current-day sentences");
             trace.push({
               day,
               generatedFamilies: [...families].sort(),

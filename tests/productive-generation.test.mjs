@@ -104,8 +104,10 @@ for(const key of ['case','number','person','aspect','tense']) {
  if(key==='case')f.romanisation=null;else f.morphology[key]=null;
  reject(d,frameFor(read1),b,'missing feature '+key);
 }
-const pp=player(14);const unverified=S.select(pp,data,frames,14,100,25);
-assert(unverified.some(c=>Object.values(c.generated.slots).some(r=>entry(data,r.lemmaId).userVerified===false)));
+const pp=player(14),provisional=cloneData();
+for(const e of provisional.entries) {e.userVerified=false;e.reviewStatus='provisional_playable';}
+const unverified=S.select(pp,provisional,frames,14,100,25);
+assert(unverified.some(c=>Object.values(c.generated.slots).some(r=>entry(provisional,r.lemmaId).userVerified===false)));
 assert(data.entries.filter(e=>e.reviewStatus==='provisional_playable').every(e=>e.userVerified===false));
 assert.equal(E.ensurePlan(p,data,14).requestedDailyTarget,0);
 console.log(`PASS productive generation: ${fixtures.positiveAuthoredRegression.length} positive + ${fixtures.mustReject.length} negative research fixtures; ${checked} independently checked bindings, ${variants.size} seeded variants, all days/unlocks and provisional status`);

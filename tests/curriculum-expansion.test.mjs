@@ -167,7 +167,7 @@ for (let day = 1; day <= 13; day++)
 assert.equal(312 - assignedCount, 4);
 // Pending phrase slots are explicit editorial targets, never acquired by a plan.
 assert.equal(narrative.expressions.length, 17);
-assert.equal(narrative.expressions.filter((e) => e.active).length, 2);
+assert.equal(narrative.expressions.filter((e) => e.active).length, 14);
 assert.equal(narrative.expressions.filter((e) => e.day === 1).length, 4);
 const speakers = [
   "Ms Hameed",
@@ -206,15 +206,16 @@ E.expose(phraseProgress, activeData, morning.id, {
 });
 assert.equal(E.cardStat(phraseProgress, activeData, morning.id).stage, 0);
 assert.equal(E.cardStat(phraseProgress, activeData, morning.id).srsDueAt, 0);
-const encounter = JSON.stringify(phraseProgress.library.phrases[morning.id]);
+const encounter = JSON.parse(JSON.stringify(phraseProgress.library.phrases[morning.id]));
 E.expose(phraseProgress, activeData, morning.id, {
   day: 2,
   source: "lesson",
   location: "school",
 });
-assert.equal(
-  JSON.stringify(phraseProgress.library.phrases[morning.id]),
-  encounter,
+assert.deepEqual(
+  JSON.parse(JSON.stringify(phraseProgress.library.phrases[morning.id])),
+  {...encounter, studiedDay:2},
+  "actual study is added without replacing the original encounter provenance",
 );
 E.practise(phraseProgress, activeData, morning.id, true, {
   day: 2,

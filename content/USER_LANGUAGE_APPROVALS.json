@@ -1,0 +1,3957 @@
+{
+  "schemaVersion": 1,
+  "status": "integrated_user_approval",
+  "recordedDate": "2026-10-31",
+  "reviewer": "Yaqub Forrest (project owner)",
+  "approvalType": "explicit_user_confirmation",
+  "nativeCertificationClaimed": false,
+  "sourceCommit": "a733e037cb82f9c25a5d39af8a9b5e231934a045",
+  "reference": "Pashto Quest project conversation: first 24 base words approved, remaining 449 approved, then instruction to alter files to reflect correctness. Phrase table expressly approved with business question replaced by peace response.",
+  "scope": {
+    "approved": "Exact base lemma spelling, listed English sense and supplied transliteration; exact phrase wording/transliteration below.",
+    "notApproved": "Unshown inflected forms, generated sentences, grammar features, automatic new synonyms, recordings, new tutorial translations or the 59 excluded candidates.",
+    "missingTransliteration": "Today / نن: project owner supplied nun explicitly in the implementation request on 2026-10-31.",
+    "nativeReview": "User verification is real approval. Reviewer dialect credentials were not asserted; do not invent independent native certification.",
+    "activation": "This is the authoritative approval handoff. Existing runtime JSON/HTML and generated reports remain at their pre-integration snapshot until Codex reconciles statuses and integrates content."
+  },
+  "lemmas": [
+    {
+      "lemmaId": "lemma:n-house",
+      "pashto": "کور",
+      "englishSenses": [
+        "House"
+      ],
+      "romanisation": "kor"
+    },
+    {
+      "lemmaId": "lemma:n-door",
+      "pashto": "دروازه",
+      "englishSenses": [
+        "Door"
+      ],
+      "romanisation": "darwaaza"
+    },
+    {
+      "lemmaId": "lemma:n-room",
+      "pashto": "کوټه",
+      "englishSenses": [
+        "Room"
+      ],
+      "romanisation": "koṭa"
+    },
+    {
+      "lemmaId": "lemma:v-open",
+      "pashto": "خلاصول",
+      "englishSenses": [
+        "To open"
+      ],
+      "romanisation": "khlaasawul"
+    },
+    {
+      "lemmaId": "lemma:a-big",
+      "pashto": "لوی",
+      "englishSenses": [
+        "Big"
+      ],
+      "romanisation": "loy"
+    },
+    {
+      "lemmaId": "lemma:n-water",
+      "pashto": "اوبه",
+      "englishSenses": [
+        "Water"
+      ],
+      "romanisation": "oba"
+    },
+    {
+      "lemmaId": "lemma:n-river",
+      "pashto": "سیند",
+      "englishSenses": [
+        "River"
+      ],
+      "romanisation": "seend"
+    },
+    {
+      "lemmaId": "lemma:v-drink",
+      "pashto": "څښل",
+      "englishSenses": [
+        "To drink"
+      ],
+      "romanisation": "ts-khal"
+    },
+    {
+      "lemmaId": "lemma:a-cold",
+      "pashto": "سوړ",
+      "englishSenses": [
+        "Cold"
+      ],
+      "romanisation": "soṛ"
+    },
+    {
+      "lemmaId": "lemma:n-market",
+      "pashto": "بازار",
+      "englishSenses": [
+        "Market"
+      ],
+      "romanisation": "baazaar"
+    },
+    {
+      "lemmaId": "lemma:n-bread",
+      "pashto": "ډوډۍ",
+      "englishSenses": [
+        "Bread / food"
+      ],
+      "romanisation": "ḍoḍay"
+    },
+    {
+      "lemmaId": "lemma:n-shop",
+      "pashto": "دوکان",
+      "englishSenses": [
+        "Shop"
+      ],
+      "romanisation": "dukaan"
+    },
+    {
+      "lemmaId": "lemma:v-eat",
+      "pashto": "خوړل",
+      "englishSenses": [
+        "To eat"
+      ],
+      "romanisation": "khoṛal"
+    },
+    {
+      "lemmaId": "lemma:a-fresh",
+      "pashto": "تازه",
+      "englishSenses": [
+        "Fresh"
+      ],
+      "romanisation": "taaza"
+    },
+    {
+      "lemmaId": "lemma:n-book",
+      "pashto": "کتاب",
+      "englishSenses": [
+        "Book",
+        "Books"
+      ],
+      "romanisation": "kitaab"
+    },
+    {
+      "lemmaId": "lemma:n-school",
+      "pashto": "ښوونځی",
+      "englishSenses": [
+        "School"
+      ],
+      "romanisation": "khwunzay"
+    },
+    {
+      "lemmaId": "lemma:v-read",
+      "pashto": "لوستل",
+      "englishSenses": [
+        "To read"
+      ],
+      "romanisation": "lwastal"
+    },
+    {
+      "lemmaId": "lemma:a-new",
+      "pashto": "نوی",
+      "englishSenses": [
+        "New"
+      ],
+      "romanisation": "naway"
+    },
+    {
+      "lemmaId": "lemma:n-window",
+      "pashto": "کړکۍ",
+      "englishSenses": [
+        "Window"
+      ],
+      "romanisation": "kəṛkəy"
+    },
+    {
+      "lemmaId": "lemma:v-live",
+      "pashto": "اوسېدل",
+      "englishSenses": [
+        "To live / reside"
+      ],
+      "romanisation": "osedal"
+    },
+    {
+      "lemmaId": "lemma:a-small",
+      "pashto": "کوچنی",
+      "englishSenses": [
+        "Small"
+      ],
+      "romanisation": "kochnay"
+    },
+    {
+      "lemmaId": "lemma:n-fish",
+      "pashto": "کب",
+      "englishSenses": [
+        "Fish"
+      ],
+      "romanisation": "kab"
+    },
+    {
+      "lemmaId": "lemma:v-see",
+      "pashto": "لیدل",
+      "englishSenses": [
+        "To see"
+      ],
+      "romanisation": "leedal"
+    },
+    {
+      "lemmaId": "lemma:a-clean",
+      "pashto": "پاک",
+      "englishSenses": [
+        "Clean"
+      ],
+      "romanisation": "paak"
+    },
+    {
+      "lemmaId": "lemma:n-apple",
+      "pashto": "مڼه",
+      "englishSenses": [
+        "Apple"
+      ],
+      "romanisation": "maṇa"
+    },
+    {
+      "lemmaId": "lemma:v-buy",
+      "pashto": "اخیستل",
+      "englishSenses": [
+        "To buy / take"
+      ],
+      "romanisation": "akheestal"
+    },
+    {
+      "lemmaId": "lemma:a-expensive",
+      "pashto": "ګران",
+      "englishSenses": [
+        "Expensive"
+      ],
+      "romanisation": "graan"
+    },
+    {
+      "lemmaId": "lemma:n-pen",
+      "pashto": "قلم",
+      "englishSenses": [
+        "Pen"
+      ],
+      "romanisation": "qalam"
+    },
+    {
+      "lemmaId": "lemma:v-write",
+      "pashto": "لیکل",
+      "englishSenses": [
+        "To write"
+      ],
+      "romanisation": "leekal"
+    },
+    {
+      "lemmaId": "lemma:a-easy",
+      "pashto": "اسانه",
+      "englishSenses": [
+        "Easy"
+      ],
+      "romanisation": "asaana"
+    },
+    {
+      "lemmaId": "lemma:n-table",
+      "pashto": "مېز",
+      "englishSenses": [
+        "Table"
+      ],
+      "romanisation": "mez"
+    },
+    {
+      "lemmaId": "lemma:v-clean",
+      "pashto": "پاکول",
+      "englishSenses": [
+        "To clean"
+      ],
+      "romanisation": "paakawul"
+    },
+    {
+      "lemmaId": "lemma:a-old",
+      "pashto": "زوړ",
+      "englishSenses": [
+        "Old"
+      ],
+      "romanisation": "zoṛ"
+    },
+    {
+      "lemmaId": "lemma:n-pond",
+      "pashto": "ډنډ",
+      "englishSenses": [
+        "Pond"
+      ],
+      "romanisation": "ḍanḍ"
+    },
+    {
+      "lemmaId": "lemma:v-swim",
+      "pashto": "لامبو وهل",
+      "englishSenses": [
+        "To swim"
+      ],
+      "romanisation": "laambo wahal"
+    },
+    {
+      "lemmaId": "lemma:a-deep",
+      "pashto": "ژور",
+      "englishSenses": [
+        "Deep"
+      ],
+      "romanisation": "zhor"
+    },
+    {
+      "lemmaId": "lemma:n-money",
+      "pashto": "پیسې",
+      "englishSenses": [
+        "Money"
+      ],
+      "romanisation": "pese"
+    },
+    {
+      "lemmaId": "lemma:v-give",
+      "pashto": "ورکول",
+      "englishSenses": [
+        "To give"
+      ],
+      "romanisation": "warkawul"
+    },
+    {
+      "lemmaId": "lemma:a-cheap",
+      "pashto": "ارزان",
+      "englishSenses": [
+        "Cheap / inexpensive"
+      ],
+      "romanisation": "arzaan"
+    },
+    {
+      "lemmaId": "lemma:n-lesson",
+      "pashto": "درس",
+      "englishSenses": [
+        "Lesson"
+      ],
+      "romanisation": "dars"
+    },
+    {
+      "lemmaId": "lemma:v-learn",
+      "pashto": "زده کول",
+      "englishSenses": [
+        "To learn"
+      ],
+      "romanisation": "zda kawul"
+    },
+    {
+      "lemmaId": "lemma:a-good",
+      "pashto": "ښه",
+      "englishSenses": [
+        "Good"
+      ],
+      "romanisation": "kha"
+    },
+    {
+      "lemmaId": "lemma:n-family",
+      "pashto": "کورنۍ",
+      "englishSenses": [
+        "Family"
+      ],
+      "romanisation": "koranay"
+    },
+    {
+      "lemmaId": "lemma:v-talk",
+      "pashto": "خبرې کول",
+      "englishSenses": [
+        "To talk"
+      ],
+      "romanisation": "khabare kawul"
+    },
+    {
+      "lemmaId": "lemma:a-happy",
+      "pashto": "خوشحاله",
+      "englishSenses": [
+        "Happy"
+      ],
+      "romanisation": "khoshhaala"
+    },
+    {
+      "lemmaId": "lemma:n-tea",
+      "pashto": "چای",
+      "englishSenses": [
+        "Tea"
+      ],
+      "romanisation": "chaay"
+    },
+    {
+      "lemmaId": "lemma:v-go",
+      "pashto": "تلل",
+      "englishSenses": [
+        "To go"
+      ],
+      "romanisation": "tlal"
+    },
+    {
+      "lemmaId": "lemma:a-hot",
+      "pashto": "تود",
+      "englishSenses": [
+        "Hot / warm"
+      ],
+      "romanisation": "tod"
+    },
+    {
+      "lemmaId": "lemma:n-fruit",
+      "pashto": "مېوه",
+      "englishSenses": [
+        "Fruit"
+      ],
+      "romanisation": "mewa"
+    },
+    {
+      "lemmaId": "lemma:v-sell",
+      "pashto": "پلورل",
+      "englishSenses": [
+        "To sell"
+      ],
+      "romanisation": "ploral"
+    },
+    {
+      "lemmaId": "lemma:a-sweet",
+      "pashto": "خوږ",
+      "englishSenses": [
+        "Sweet"
+      ],
+      "romanisation": "khog"
+    },
+    {
+      "lemmaId": "lemma:n-language",
+      "pashto": "پښتو",
+      "englishSenses": [
+        "Pashto (language)"
+      ],
+      "romanisation": "pakhto"
+    },
+    {
+      "lemmaId": "lemma:n-student",
+      "pashto": "زده کوونکی",
+      "englishSenses": [
+        "Student"
+      ],
+      "romanisation": "zda kawoonkay"
+    },
+    {
+      "lemmaId": "lemma:a-difficult",
+      "pashto": "ستونزمن",
+      "englishSenses": [
+        "Difficult"
+      ],
+      "romanisation": "stoonzman"
+    },
+    {
+      "lemmaId": "lemma:n-guest",
+      "pashto": "مېلمه",
+      "englishSenses": [
+        "Guest",
+        "Visitors"
+      ],
+      "romanisation": "melma"
+    },
+    {
+      "lemmaId": "lemma:a-dark",
+      "pashto": "تیاره",
+      "englishSenses": [
+        "Dark"
+      ],
+      "romanisation": "tiyaara"
+    },
+    {
+      "lemmaId": "lemma:n-rain",
+      "pashto": "باران",
+      "englishSenses": [
+        "Rain"
+      ],
+      "romanisation": "baaraan"
+    },
+    {
+      "lemmaId": "lemma:a-calm",
+      "pashto": "ارام",
+      "englishSenses": [
+        "Calm"
+      ],
+      "romanisation": "araam"
+    },
+    {
+      "lemmaId": "lemma:n-vegetables",
+      "pashto": "سبزي",
+      "englishSenses": [
+        "Vegetables"
+      ],
+      "romanisation": "sabzee"
+    },
+    {
+      "lemmaId": "lemma:a-ripe",
+      "pashto": "پخه",
+      "englishSenses": [
+        "Ripe / cooked (feminine)"
+      ],
+      "romanisation": "pakha"
+    },
+    {
+      "lemmaId": "lemma:n-notebook",
+      "pashto": "کتابچه",
+      "englishSenses": [
+        "Notebook",
+        "Notebooks"
+      ],
+      "romanisation": "kitaabcha"
+    },
+    {
+      "lemmaId": "lemma:a-useful",
+      "pashto": "ګټور",
+      "englishSenses": [
+        "Useful"
+      ],
+      "romanisation": "gaṭwar"
+    },
+    {
+      "lemmaId": "lemma:n-children",
+      "pashto": "ماشومان",
+      "englishSenses": [
+        "Children"
+      ],
+      "romanisation": "maashoomaan"
+    },
+    {
+      "lemmaId": "lemma:v-play",
+      "pashto": "لوبې کول",
+      "englishSenses": [
+        "To play"
+      ],
+      "romanisation": "lobe kawul"
+    },
+    {
+      "lemmaId": "lemma:a-loud",
+      "pashto": "لوړ",
+      "englishSenses": [
+        "Loud / high"
+      ],
+      "romanisation": "loṛ"
+    },
+    {
+      "lemmaId": "lemma:n-bird3",
+      "pashto": "مرغان",
+      "englishSenses": [
+        "Birds",
+        "Bird"
+      ],
+      "romanisation": "marghaan"
+    },
+    {
+      "lemmaId": "lemma:a-clear",
+      "pashto": "روڼ",
+      "englishSenses": [
+        "Clear / bright"
+      ],
+      "romanisation": "roṇ"
+    },
+    {
+      "lemmaId": "lemma:n-people",
+      "pashto": "خلک",
+      "englishSenses": [
+        "People"
+      ],
+      "romanisation": "khalak"
+    },
+    {
+      "lemmaId": "lemma:v-like",
+      "pashto": "خوښول",
+      "englishSenses": [
+        "To like"
+      ],
+      "romanisation": "khoshawul"
+    },
+    {
+      "lemmaId": "lemma:a-many",
+      "pashto": "ډېر",
+      "englishSenses": [
+        "Many / much"
+      ],
+      "romanisation": "ḍer"
+    },
+    {
+      "lemmaId": "lemma:a-important",
+      "pashto": "مهم",
+      "englishSenses": [
+        "Important"
+      ],
+      "romanisation": "mohem"
+    },
+    {
+      "lemmaId": "lemma:a-open-state",
+      "pashto": "خلاص",
+      "englishSenses": [
+        "Open"
+      ],
+      "romanisation": "khlaas"
+    },
+    {
+      "lemmaId": "lemma:a-blue",
+      "pashto": "شین",
+      "englishSenses": [
+        "Blue / green"
+      ],
+      "romanisation": "sheen"
+    },
+    {
+      "lemmaId": "lemma:v-walk3",
+      "pashto": "ګرځېدل",
+      "englishSenses": [
+        "To walk / stroll"
+      ],
+      "romanisation": "garzedal"
+    },
+    {
+      "lemmaId": "lemma:v-sit3",
+      "pashto": "کېناستل",
+      "englishSenses": [
+        "To sit"
+      ],
+      "romanisation": "kenastal"
+    },
+    {
+      "lemmaId": "lemma:n-word3",
+      "pashto": "کلمه",
+      "englishSenses": [
+        "Word"
+      ],
+      "romanisation": "kalima"
+    },
+    {
+      "lemmaId": "lemma:n-potato3",
+      "pashto": "کچالو",
+      "englishSenses": [
+        "Potatoes"
+      ],
+      "romanisation": "kachaaloo"
+    },
+    {
+      "lemmaId": "lemma:n-onion3",
+      "pashto": "پیاز",
+      "englishSenses": [
+        "Onions"
+      ],
+      "romanisation": "pyaaz"
+    },
+    {
+      "lemmaId": "lemma:n-bag3",
+      "pashto": "کڅوړه",
+      "englishSenses": [
+        "Bag"
+      ],
+      "romanisation": "katswaṛa"
+    },
+    {
+      "lemmaId": "lemma:v-want3",
+      "pashto": "غوښتل",
+      "englishSenses": [
+        "To want"
+      ],
+      "romanisation": "ghwakhtal"
+    },
+    {
+      "lemmaId": "lemma:v-carry3",
+      "pashto": "وړل",
+      "englishSenses": [
+        "To carry / take",
+        "To carry"
+      ],
+      "romanisation": "wṛal"
+    },
+    {
+      "lemmaId": "lemma:v-close2",
+      "pashto": "بندول",
+      "englishSenses": [
+        "To close"
+      ],
+      "romanisation": "bandawul"
+    },
+    {
+      "lemmaId": "lemma:v-sell2",
+      "pashto": "خرڅول",
+      "englishSenses": [
+        "To sell"
+      ],
+      "romanisation": "khartsawul"
+    },
+    {
+      "lemmaId": "lemma:n-milk2",
+      "pashto": "شیدې",
+      "englishSenses": [
+        "Milk"
+      ],
+      "romanisation": "sheede"
+    },
+    {
+      "lemmaId": "lemma:v-throw2",
+      "pashto": "غورځول",
+      "englishSenses": [
+        "To throw"
+      ],
+      "romanisation": "ghurzawul"
+    },
+    {
+      "lemmaId": "lemma:v-catch2",
+      "pashto": "نیول",
+      "englishSenses": [
+        "To catch / hold"
+      ],
+      "romanisation": "newul"
+    },
+    {
+      "lemmaId": "lemma:n-stone2",
+      "pashto": "تیږه",
+      "englishSenses": [
+        "Stone"
+      ],
+      "romanisation": "tega"
+    },
+    {
+      "lemmaId": "lemma:n-chair4",
+      "pashto": "څوکۍ",
+      "englishSenses": [
+        "Chair",
+        "Chairs"
+      ],
+      "romanisation": "tsokey"
+    },
+    {
+      "lemmaId": "lemma:n-basket4",
+      "pashto": "ټوکرۍ",
+      "englishSenses": [
+        "Basket",
+        "Baskets"
+      ],
+      "romanisation": "tokaray"
+    },
+    {
+      "lemmaId": "lemma:n-question4",
+      "pashto": "پوښتنه",
+      "englishSenses": [
+        "Question",
+        "Questions"
+      ],
+      "romanisation": "pushtana"
+    },
+    {
+      "lemmaId": "lemma:n-sentence4",
+      "pashto": "جمله",
+      "englishSenses": [
+        "Sentence",
+        "Sentences"
+      ],
+      "romanisation": "jumla"
+    },
+    {
+      "lemmaId": "lemma:w6-we",
+      "pashto": "موږ",
+      "englishSenses": [
+        "We"
+      ],
+      "romanisation": "moong"
+    },
+    {
+      "lemmaId": "lemma:w6-together",
+      "pashto": "یو ځای",
+      "englishSenses": [
+        "Together"
+      ],
+      "romanisation": "yaw dzay"
+    },
+    {
+      "lemmaId": "lemma:w6-you-all",
+      "pashto": "تاسې",
+      "englishSenses": [
+        "You all"
+      ],
+      "romanisation": "taase"
+    },
+    {
+      "lemmaId": "lemma:w6-run",
+      "pashto": "منډې وهل",
+      "englishSenses": [
+        "To run"
+      ],
+      "romanisation": "mande wahal"
+    },
+    {
+      "lemmaId": "lemma:w6-hills",
+      "pashto": "غونډۍ",
+      "englishSenses": [
+        "Hills"
+      ],
+      "romanisation": "ghuṇḍay"
+    },
+    {
+      "lemmaId": "lemma:w2-d9-vocab-2",
+      "pashto": "دوه",
+      "englishSenses": [
+        "Two"
+      ],
+      "romanisation": "dwa"
+    },
+    {
+      "lemmaId": "lemma:vocab6-house-help",
+      "pashto": "مرسته کول",
+      "englishSenses": [
+        "To help"
+      ],
+      "romanisation": "mrasta kawal"
+    },
+    {
+      "lemmaId": "lemma:vocab6-market-choose",
+      "pashto": "غوره کول",
+      "englishSenses": [
+        "To choose"
+      ],
+      "romanisation": "ghwara kawal"
+    },
+    {
+      "lemmaId": "lemma:vocab6-school-answers",
+      "pashto": "ځوابونه",
+      "englishSenses": [
+        "Answers"
+      ],
+      "romanisation": "dzawaaboona"
+    },
+    {
+      "lemmaId": "lemma:vocab7-market-customers",
+      "pashto": "پېرودونکي",
+      "englishSenses": [
+        "Customers"
+      ],
+      "romanisation": "perodoonkee"
+    },
+    {
+      "lemmaId": "lemma:vocab7-market-stall",
+      "pashto": "غرفه",
+      "englishSenses": [
+        "Stall"
+      ],
+      "romanisation": "ghurfa"
+    },
+    {
+      "lemmaId": "lemma:vocab7-river-bottles",
+      "pashto": "بوتلونه",
+      "englishSenses": [
+        "Bottles"
+      ],
+      "romanisation": "botloona"
+    },
+    {
+      "lemmaId": "lemma:vocab7-river-watch",
+      "pashto": "کتل",
+      "englishSenses": [
+        "To watch"
+      ],
+      "romanisation": "katal"
+    },
+    {
+      "lemmaId": "lemma:w2-d8-vocab-1",
+      "pashto": "دا",
+      "englishSenses": [
+        "This / these"
+      ],
+      "romanisation": "daa"
+    },
+    {
+      "lemmaId": "lemma:w2-d8-vocab-2",
+      "pashto": "هغه",
+      "englishSenses": [
+        "That / those"
+      ],
+      "romanisation": "hagha"
+    },
+    {
+      "lemmaId": "lemma:w2-d8-vocab-3",
+      "pashto": "نږدې",
+      "englishSenses": [
+        "Near"
+      ],
+      "romanisation": "negde"
+    },
+    {
+      "lemmaId": "lemma:w2-d8-vocab-4",
+      "pashto": "لرې",
+      "englishSenses": [
+        "Far"
+      ],
+      "romanisation": "lare"
+    },
+    {
+      "lemmaId": "lemma:w2-d9-vocab-1",
+      "pashto": "یو",
+      "englishSenses": [
+        "One"
+      ],
+      "romanisation": "yaw"
+    },
+    {
+      "lemmaId": "lemma:w2-d9-vocab-3",
+      "pashto": "درې",
+      "englishSenses": [
+        "Three"
+      ],
+      "romanisation": "dre"
+    },
+    {
+      "lemmaId": "lemma:w2-d9-vocab-4",
+      "pashto": "څلور",
+      "englishSenses": [
+        "Four"
+      ],
+      "romanisation": "tsalor"
+    },
+    {
+      "lemmaId": "lemma:w2-d9-vocab-5",
+      "pashto": "پنځه",
+      "englishSenses": [
+        "Five"
+      ],
+      "romanisation": "pindza"
+    },
+    {
+      "lemmaId": "lemma:w2-d10-vocab-1",
+      "pashto": "دلته",
+      "englishSenses": [
+        "Here"
+      ],
+      "romanisation": "dalta"
+    },
+    {
+      "lemmaId": "lemma:w2-d10-vocab-2",
+      "pashto": "هلته",
+      "englishSenses": [
+        "There"
+      ],
+      "romanisation": "halta"
+    },
+    {
+      "lemmaId": "lemma:w2-d10-vocab-3",
+      "pashto": "چېرته",
+      "englishSenses": [
+        "Where"
+      ],
+      "romanisation": "cherta"
+    },
+    {
+      "lemmaId": "lemma:w2-d11-vocab-1",
+      "pashto": "زما",
+      "englishSenses": [
+        "My / mine"
+      ],
+      "romanisation": "zmaa"
+    },
+    {
+      "lemmaId": "lemma:w2-d11-vocab-2",
+      "pashto": "ستاسې",
+      "englishSenses": [
+        "Your (respectful or plural)"
+      ],
+      "romanisation": "staase"
+    },
+    {
+      "lemmaId": "lemma:w2-d11-vocab-3",
+      "pashto": "زموږ",
+      "englishSenses": [
+        "Our"
+      ],
+      "romanisation": "zmoong"
+    },
+    {
+      "lemmaId": "lemma:w2-d12-vocab-1",
+      "pashto": "څوک",
+      "englishSenses": [
+        "Who"
+      ],
+      "romanisation": "tsok"
+    },
+    {
+      "lemmaId": "lemma:w2-d12-vocab-2",
+      "pashto": "څه",
+      "englishSenses": [
+        "What"
+      ],
+      "romanisation": "tsa"
+    },
+    {
+      "lemmaId": "lemma:w2-d12-vocab-3",
+      "pashto": "کوم",
+      "englishSenses": [
+        "Which (masculine)"
+      ],
+      "romanisation": "koom"
+    },
+    {
+      "lemmaId": "lemma:w2-d12-vocab-5",
+      "pashto": "څو",
+      "englishSenses": [
+        "How many"
+      ],
+      "romanisation": "tso"
+    },
+    {
+      "lemmaId": "lemma:w2-d13-vocab-1",
+      "pashto": "نن",
+      "englishSenses": [
+        "Today"
+      ],
+      "romanisation": "nun"
+    },
+    {
+      "lemmaId": "lemma:w2-d13-vocab-2",
+      "pashto": "ژر",
+      "englishSenses": [
+        "Quickly"
+      ],
+      "romanisation": "zhar"
+    },
+    {
+      "lemmaId": "lemma:w2-d13-vocab-3",
+      "pashto": "تل",
+      "englishSenses": [
+        "Always"
+      ],
+      "romanisation": "tal"
+    },
+    {
+      "lemmaId": "lemma:w2-d13-vocab-4",
+      "pashto": "ورو ورو",
+      "englishSenses": [
+        "Slowly"
+      ],
+      "romanisation": "wro wro"
+    },
+    {
+      "lemmaId": "lemma:w2-d13-vocab-5",
+      "pashto": "کله کله",
+      "englishSenses": [
+        "Sometimes"
+      ],
+      "romanisation": "kala kala"
+    },
+    {
+      "lemmaId": "lemma:pronoun:third-person",
+      "pashto": "هغه",
+      "englishSenses": [
+        "He / she"
+      ],
+      "romanisation": "hagha"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:mother",
+      "pashto": "مور",
+      "englishSenses": [
+        "Mother"
+      ],
+      "romanisation": "mor"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:father",
+      "pashto": "پلار",
+      "englishSenses": [
+        "Father"
+      ],
+      "romanisation": "plar"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:brother",
+      "pashto": "ورور",
+      "englishSenses": [
+        "Brother"
+      ],
+      "romanisation": "oror"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sister",
+      "pashto": "خور",
+      "englishSenses": [
+        "Sister"
+      ],
+      "romanisation": "khor"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:baby",
+      "pashto": "ماشوم",
+      "englishSenses": [
+        "Baby"
+      ],
+      "romanisation": "mashom"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:grandmother",
+      "pashto": "انا",
+      "englishSenses": [
+        "Grandmother"
+      ],
+      "romanisation": "ana"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:grandfather",
+      "pashto": "نيکه",
+      "englishSenses": [
+        "Grandfather"
+      ],
+      "romanisation": "nika"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:uncle",
+      "pashto": "تره",
+      "englishSenses": [
+        "Uncle"
+      ],
+      "romanisation": "tra"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:aunt",
+      "pashto": "ترور",
+      "englishSenses": [
+        "Aunt"
+      ],
+      "romanisation": "tror"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:cousin",
+      "pashto": "د تره زوی",
+      "englishSenses": [
+        "Cousin"
+      ],
+      "romanisation": "d tra zoay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:neighbour",
+      "pashto": "ګاونډی",
+      "englishSenses": [
+        "Neighbour"
+      ],
+      "romanisation": "gaonday"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:parent",
+      "pashto": "مور او پلار",
+      "englishSenses": [
+        "Parent"
+      ],
+      "romanisation": "mor ao plar"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:husband",
+      "pashto": "مېړه",
+      "englishSenses": [
+        "Husband"
+      ],
+      "romanisation": "mera"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:wife",
+      "pashto": "مېرمن",
+      "englishSenses": [
+        "Wife"
+      ],
+      "romanisation": "mermn"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:kitchen",
+      "pashto": "پخلنځی",
+      "englishSenses": [
+        "Kitchen"
+      ],
+      "romanisation": "pkhlndzay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:bedroom",
+      "pashto": "د خوب کوټه",
+      "englishSenses": [
+        "Bedroom"
+      ],
+      "romanisation": "d khob kota"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:bathroom",
+      "pashto": "تشناب",
+      "englishSenses": [
+        "Bathroom"
+      ],
+      "romanisation": "tshnab"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:courtyard",
+      "pashto": "انګړ",
+      "englishSenses": [
+        "Courtyard"
+      ],
+      "romanisation": "angr"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:roof",
+      "pashto": "چت",
+      "englishSenses": [
+        "Roof"
+      ],
+      "romanisation": "cht"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:wall",
+      "pashto": "دېوال",
+      "englishSenses": [
+        "Wall"
+      ],
+      "romanisation": "deoal"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:ceiling",
+      "pashto": "سقف",
+      "englishSenses": [
+        "Ceiling"
+      ],
+      "romanisation": "sqf"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:floor",
+      "pashto": "فرش",
+      "englishSenses": [
+        "Floor"
+      ],
+      "romanisation": "frsh"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:stair",
+      "pashto": "زینه",
+      "englishSenses": [
+        "Stair"
+      ],
+      "romanisation": "zayna"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:gate",
+      "pashto": "دروازه",
+      "englishSenses": [
+        "Gate"
+      ],
+      "romanisation": "droaza"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:fence",
+      "pashto": "کټاره",
+      "englishSenses": [
+        "Fence"
+      ],
+      "romanisation": "ktara"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:garden",
+      "pashto": "باغچه",
+      "englishSenses": [
+        "Garden"
+      ],
+      "romanisation": "baghcha"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:pillow",
+      "pashto": "بالښت",
+      "englishSenses": [
+        "Pillow"
+      ],
+      "romanisation": "balkht"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:blanket",
+      "pashto": "کمبل",
+      "englishSenses": [
+        "Blanket"
+      ],
+      "romanisation": "kmbl"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:bed",
+      "pashto": "کټ",
+      "englishSenses": [
+        "Bed"
+      ],
+      "romanisation": "kt"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:mattress",
+      "pashto": "توشک",
+      "englishSenses": [
+        "Mattress"
+      ],
+      "romanisation": "toshk"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:carpet",
+      "pashto": "غالۍ",
+      "englishSenses": [
+        "Carpet"
+      ],
+      "romanisation": "ghalai"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:curtain",
+      "pashto": "پرده",
+      "englishSenses": [
+        "Curtain"
+      ],
+      "romanisation": "prda"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:key",
+      "pashto": "کيلۍ",
+      "englishSenses": [
+        "Key"
+      ],
+      "romanisation": "kilai"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:lock",
+      "pashto": "قلف",
+      "englishSenses": [
+        "Lock"
+      ],
+      "romanisation": "qlf"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:lamp",
+      "pashto": "څراغ",
+      "englishSenses": [
+        "Lamp"
+      ],
+      "romanisation": "tsragh"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:mirror",
+      "pashto": "هنداره",
+      "englishSenses": [
+        "Mirror"
+      ],
+      "romanisation": "andara"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:soap",
+      "pashto": "صابون",
+      "englishSenses": [
+        "Soap"
+      ],
+      "romanisation": "sabon"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:towel",
+      "pashto": "توليه",
+      "englishSenses": [
+        "Towel"
+      ],
+      "romanisation": "tolia"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:toothbrush",
+      "pashto": "د غاښونو برس",
+      "englishSenses": [
+        "Toothbrush"
+      ],
+      "romanisation": "d ghakhono brs"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:toothpaste",
+      "pashto": "د غاښونو کريم",
+      "englishSenses": [
+        "Toothpaste"
+      ],
+      "romanisation": "d ghakhono krim"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:plate",
+      "pashto": "پلېټ",
+      "englishSenses": [
+        "Plate"
+      ],
+      "romanisation": "plet"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:bowl",
+      "pashto": "کاسه",
+      "englishSenses": [
+        "Bowl"
+      ],
+      "romanisation": "kasa"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:spoon",
+      "pashto": "کاچوغه",
+      "englishSenses": [
+        "Spoon"
+      ],
+      "romanisation": "kachogha"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:pot",
+      "pashto": "ديګ",
+      "englishSenses": [
+        "Pot"
+      ],
+      "romanisation": "dig"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:pan",
+      "pashto": "کړايي",
+      "englishSenses": [
+        "Pan"
+      ],
+      "romanisation": "kraii"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:kettle",
+      "pashto": "چاینک",
+      "englishSenses": [
+        "Kettle"
+      ],
+      "romanisation": "chaaynk"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:stove",
+      "pashto": "نغری",
+      "englishSenses": [
+        "Stove"
+      ],
+      "romanisation": "nghray"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sink",
+      "pashto": "د لوښو ځای",
+      "englishSenses": [
+        "Sink"
+      ],
+      "romanisation": "d lokho dzaay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:broom",
+      "pashto": "جارو",
+      "englishSenses": [
+        "Broom"
+      ],
+      "romanisation": "jaro"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:bucket",
+      "pashto": "سطل",
+      "englishSenses": [
+        "Bucket"
+      ],
+      "romanisation": "stl"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:shirt",
+      "pashto": "کميس",
+      "englishSenses": [
+        "Shirt"
+      ],
+      "romanisation": "kmis"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:trousers",
+      "pashto": "پرتوګ",
+      "englishSenses": [
+        "Trousers"
+      ],
+      "romanisation": "prtog"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:shoe",
+      "pashto": "بوټ",
+      "englishSenses": [
+        "Shoe"
+      ],
+      "romanisation": "bot"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sock",
+      "pashto": "جراب",
+      "englishSenses": [
+        "Sock"
+      ],
+      "romanisation": "jrab"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:wake",
+      "pashto": "ويښېدل",
+      "englishSenses": [
+        "Wake"
+      ],
+      "romanisation": "oikhedl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:sleep",
+      "pashto": "ويده کېدل",
+      "englishSenses": [
+        "Sleep"
+      ],
+      "romanisation": "oida kedl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:rest",
+      "pashto": "آرام کول",
+      "englishSenses": [
+        "Rest"
+      ],
+      "romanisation": "aaram kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:cook",
+      "pashto": "پخول",
+      "englishSenses": [
+        "Cook"
+      ],
+      "romanisation": "pkhol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:boil",
+      "pashto": "ايشول",
+      "englishSenses": [
+        "Boil"
+      ],
+      "romanisation": "aishol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:fry",
+      "pashto": "سره کول",
+      "englishSenses": [
+        "Fry"
+      ],
+      "romanisation": "sra kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:stir",
+      "pashto": "ښورول",
+      "englishSenses": [
+        "Stir"
+      ],
+      "romanisation": "khorol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:serve",
+      "pashto": "وړاندې کول",
+      "englishSenses": [
+        "Serve"
+      ],
+      "romanisation": "orande kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:wash",
+      "pashto": "مينځل",
+      "englishSenses": [
+        "Wash"
+      ],
+      "romanisation": "mindzl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:rinse",
+      "pashto": "کنګالول",
+      "englishSenses": [
+        "Rinse"
+      ],
+      "romanisation": "kngalol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:sweep",
+      "pashto": "جارو کول",
+      "englishSenses": [
+        "Sweep"
+      ],
+      "romanisation": "jaro kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:mop",
+      "pashto": "پوچ کول",
+      "englishSenses": [
+        "Mop"
+      ],
+      "romanisation": "poch kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:fold",
+      "pashto": "قات کول",
+      "englishSenses": [
+        "Fold"
+      ],
+      "romanisation": "qat kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:tidy",
+      "pashto": "سمول",
+      "englishSenses": [
+        "Tidy"
+      ],
+      "romanisation": "smol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:invite",
+      "pashto": "بلنه ورکول",
+      "englishSenses": [
+        "Invite"
+      ],
+      "romanisation": "blna orkol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:visit",
+      "pashto": "ليدل",
+      "englishSenses": [
+        "Visit"
+      ],
+      "romanisation": "lidl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:knock",
+      "pashto": "ټکول",
+      "englishSenses": [
+        "Knock"
+      ],
+      "romanisation": "tkol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:lock",
+      "pashto": "قلف کول",
+      "englishSenses": [
+        "Lock"
+      ],
+      "romanisation": "qlf kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:comfortable",
+      "pashto": "آرام",
+      "englishSenses": [
+        "Comfortable"
+      ],
+      "romanisation": "aaram"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:soft",
+      "pashto": "نرم",
+      "englishSenses": [
+        "Soft"
+      ],
+      "romanisation": "nrm"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:quiet",
+      "pashto": "غلی",
+      "englishSenses": [
+        "Quiet"
+      ],
+      "romanisation": "ghlay"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:noisy",
+      "pashto": "شورماشور",
+      "englishSenses": [
+        "Noisy"
+      ],
+      "romanisation": "shormashor"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:tidy",
+      "pashto": "منظم",
+      "englishSenses": [
+        "Tidy"
+      ],
+      "romanisation": "mnzm"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:messy",
+      "pashto": "ګډوډ",
+      "englishSenses": [
+        "Messy"
+      ],
+      "romanisation": "gdod"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:forest",
+      "pashto": "ځنګل",
+      "englishSenses": [
+        "Forest"
+      ],
+      "romanisation": "dzngl"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:tree",
+      "pashto": "ونه",
+      "englishSenses": [
+        "Tree"
+      ],
+      "romanisation": "ona"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:branch",
+      "pashto": "څانګه",
+      "englishSenses": [
+        "Branch"
+      ],
+      "romanisation": "tsanga"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:leaf",
+      "pashto": "پاڼه",
+      "englishSenses": [
+        "Leaf"
+      ],
+      "romanisation": "pana"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:root",
+      "pashto": "ريښه",
+      "englishSenses": [
+        "Root"
+      ],
+      "romanisation": "rikha"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:flower",
+      "pashto": "ګل",
+      "englishSenses": [
+        "Flower"
+      ],
+      "romanisation": "gl"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:seed",
+      "pashto": "تخم",
+      "englishSenses": [
+        "Seed"
+      ],
+      "romanisation": "tkhm"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:grass",
+      "pashto": "واښه",
+      "englishSenses": [
+        "Grass"
+      ],
+      "romanisation": "oakha"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:soil",
+      "pashto": "خاوره",
+      "englishSenses": [
+        "Soil"
+      ],
+      "romanisation": "khaora"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:mud",
+      "pashto": "خټه",
+      "englishSenses": [
+        "Mud"
+      ],
+      "romanisation": "khta"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:pebble",
+      "pashto": "کاڼی",
+      "englishSenses": [
+        "Pebble"
+      ],
+      "romanisation": "kanay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:mountain",
+      "pashto": "غر",
+      "englishSenses": [
+        "Mountain"
+      ],
+      "romanisation": "ghr"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:valley",
+      "pashto": "دره",
+      "englishSenses": [
+        "Valley"
+      ],
+      "romanisation": "dra"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:meadow",
+      "pashto": "څړځای",
+      "englishSenses": [
+        "Meadow"
+      ],
+      "romanisation": "tsrdzaay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:field",
+      "pashto": "پټی",
+      "englishSenses": [
+        "Field"
+      ],
+      "romanisation": "ptay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:orchard",
+      "pashto": "بڼ",
+      "englishSenses": [
+        "Orchard"
+      ],
+      "romanisation": "bn"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:stream",
+      "pashto": "وياله",
+      "englishSenses": [
+        "Stream"
+      ],
+      "romanisation": "oiala"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:waterfall",
+      "pashto": "آبشار",
+      "englishSenses": [
+        "Waterfall"
+      ],
+      "romanisation": "aabshar"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:spring",
+      "pashto": "چينه",
+      "englishSenses": [
+        "Spring"
+      ],
+      "romanisation": "china"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:shore",
+      "pashto": "غاړه",
+      "englishSenses": [
+        "Shore"
+      ],
+      "romanisation": "ghara"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:riverbank",
+      "pashto": "د سيند غاړه",
+      "englishSenses": [
+        "Riverbank"
+      ],
+      "romanisation": "d sind ghara"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:cloud",
+      "pashto": "وريځ",
+      "englishSenses": [
+        "Cloud"
+      ],
+      "romanisation": "oridz"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:fog",
+      "pashto": "لوخړه",
+      "englishSenses": [
+        "Fog"
+      ],
+      "romanisation": "lokhra"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:wind",
+      "pashto": "باد",
+      "englishSenses": [
+        "Wind"
+      ],
+      "romanisation": "bad"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:snow",
+      "pashto": "واوره",
+      "englishSenses": [
+        "Snow"
+      ],
+      "romanisation": "oaora"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:ice",
+      "pashto": "يخ",
+      "englishSenses": [
+        "Ice"
+      ],
+      "romanisation": "ikh"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sunlight",
+      "pashto": "د لمر رڼا",
+      "englishSenses": [
+        "Sunlight"
+      ],
+      "romanisation": "d lmr rna"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:shade",
+      "pashto": "سيوری",
+      "englishSenses": [
+        "Shade"
+      ],
+      "romanisation": "sioray"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:star",
+      "pashto": "ستوری",
+      "englishSenses": [
+        "Star"
+      ],
+      "romanisation": "storay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:moon",
+      "pashto": "سپوږمۍ",
+      "englishSenses": [
+        "Moon"
+      ],
+      "romanisation": "spogmai"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sun",
+      "pashto": "لمر",
+      "englishSenses": [
+        "Sun"
+      ],
+      "romanisation": "lmr"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sky",
+      "pashto": "آسمان",
+      "englishSenses": [
+        "Sky"
+      ],
+      "romanisation": "aasman"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:weather",
+      "pashto": "هوا",
+      "englishSenses": [
+        "Weather"
+      ],
+      "romanisation": "aoa"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:goat",
+      "pashto": "وزه",
+      "englishSenses": [
+        "Goat"
+      ],
+      "romanisation": "oza"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sheep",
+      "pashto": "پسه",
+      "englishSenses": [
+        "Sheep"
+      ],
+      "romanisation": "psa"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:cow",
+      "pashto": "غوا",
+      "englishSenses": [
+        "Cow"
+      ],
+      "romanisation": "ghoa"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:horse",
+      "pashto": "آس",
+      "englishSenses": [
+        "Horse"
+      ],
+      "romanisation": "aas"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:donkey",
+      "pashto": "خر",
+      "englishSenses": [
+        "Donkey"
+      ],
+      "romanisation": "khr"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:chicken",
+      "pashto": "چرګه",
+      "englishSenses": [
+        "Chicken"
+      ],
+      "romanisation": "chrga"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:rooster",
+      "pashto": "چرګ",
+      "englishSenses": [
+        "Rooster"
+      ],
+      "romanisation": "chrg"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:duck",
+      "pashto": "هيلۍ",
+      "englishSenses": [
+        "Duck"
+      ],
+      "romanisation": "ailai"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:eagle",
+      "pashto": "باز",
+      "englishSenses": [
+        "Eagle"
+      ],
+      "romanisation": "baz"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:butterfly",
+      "pashto": "پتنګ",
+      "englishSenses": [
+        "Butterfly"
+      ],
+      "romanisation": "ptng"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:bee",
+      "pashto": "مچۍ",
+      "englishSenses": [
+        "Bee"
+      ],
+      "romanisation": "mchai"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:ant",
+      "pashto": "مېږی",
+      "englishSenses": [
+        "Ant"
+      ],
+      "romanisation": "megay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:rabbit",
+      "pashto": "سوی",
+      "englishSenses": [
+        "Rabbit"
+      ],
+      "romanisation": "soay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:frog",
+      "pashto": "چونګښه",
+      "englishSenses": [
+        "Frog"
+      ],
+      "romanisation": "chongkha"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:snake",
+      "pashto": "مار",
+      "englishSenses": [
+        "Snake"
+      ],
+      "romanisation": "mar"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:spider",
+      "pashto": "غڼې",
+      "englishSenses": [
+        "Spider"
+      ],
+      "romanisation": "ghne"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:insect",
+      "pashto": "حشره",
+      "englishSenses": [
+        "Insect"
+      ],
+      "romanisation": "hshra"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:grow",
+      "pashto": "وده کول",
+      "englishSenses": [
+        "Grow"
+      ],
+      "romanisation": "oda kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:bloom",
+      "pashto": "غوړېدل",
+      "englishSenses": [
+        "Bloom"
+      ],
+      "romanisation": "ghoredl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:climb",
+      "pashto": "ختل",
+      "englishSenses": [
+        "Climb"
+      ],
+      "romanisation": "khtl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:hike",
+      "pashto": "غر ته تلل",
+      "englishSenses": [
+        "Hike"
+      ],
+      "romanisation": "ghr ta tll"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:float",
+      "pashto": "لامبو وهل",
+      "englishSenses": [
+        "Float"
+      ],
+      "romanisation": "lambo oal"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:fly",
+      "pashto": "الوتل",
+      "englishSenses": [
+        "Fly"
+      ],
+      "romanisation": "alotl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:jump",
+      "pashto": "ټوپ وهل",
+      "englishSenses": [
+        "Jump"
+      ],
+      "romanisation": "top oal"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:plant",
+      "pashto": "کرل",
+      "englishSenses": [
+        "Plant"
+      ],
+      "romanisation": "krl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:harvest",
+      "pashto": "رېبل",
+      "englishSenses": [
+        "Harvest"
+      ],
+      "romanisation": "rebl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:feed",
+      "pashto": "خواړه ورکول",
+      "englishSenses": [
+        "Feed"
+      ],
+      "romanisation": "khoara orkol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:dig",
+      "pashto": "کيندل",
+      "englishSenses": [
+        "Dig"
+      ],
+      "romanisation": "kindl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:follow",
+      "pashto": "تعقيبول",
+      "englishSenses": [
+        "Follow"
+      ],
+      "romanisation": "t'qibol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:cross",
+      "pashto": "اوښتل",
+      "englishSenses": [
+        "Cross"
+      ],
+      "romanisation": "aokhtl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:flow",
+      "pashto": "بهېدل",
+      "englishSenses": [
+        "Flow"
+      ],
+      "romanisation": "baedl"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:shallow",
+      "pashto": "کم ژور",
+      "englishSenses": [
+        "Shallow"
+      ],
+      "romanisation": "km zhor"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:steep",
+      "pashto": "ځوړ",
+      "englishSenses": [
+        "Steep"
+      ],
+      "romanisation": "dzor"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:slippery",
+      "pashto": "ښوېېدونکی",
+      "englishSenses": [
+        "Slippery"
+      ],
+      "romanisation": "khoeedonkay"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:wild",
+      "pashto": "وحشي",
+      "englishSenses": [
+        "Wild"
+      ],
+      "romanisation": "ohshi"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:cloudy",
+      "pashto": "وريځمن",
+      "englishSenses": [
+        "Cloudy"
+      ],
+      "romanisation": "oridzmn"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:muddy",
+      "pashto": "خټين",
+      "englishSenses": [
+        "Muddy"
+      ],
+      "romanisation": "khtin"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:windy",
+      "pashto": "بادجن",
+      "englishSenses": [
+        "Windy"
+      ],
+      "romanisation": "badjn"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:rocky",
+      "pashto": "ډبرين",
+      "englishSenses": [
+        "Rocky"
+      ],
+      "romanisation": "dbrin"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:grassy",
+      "pashto": "واښين",
+      "englishSenses": [
+        "Grassy"
+      ],
+      "romanisation": "oakhin"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:bakery",
+      "pashto": "نانوايي",
+      "englishSenses": [
+        "Bakery"
+      ],
+      "romanisation": "nanoaii"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:butcher",
+      "pashto": "قصاب",
+      "englishSenses": [
+        "Butcher"
+      ],
+      "romanisation": "qsab"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:pharmacy",
+      "pashto": "درملتون",
+      "englishSenses": [
+        "Pharmacy"
+      ],
+      "romanisation": "drmlton"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:tailor",
+      "pashto": "خياط",
+      "englishSenses": [
+        "Tailor"
+      ],
+      "romanisation": "khiat"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:carpenter",
+      "pashto": "ترکاڼ",
+      "englishSenses": [
+        "Carpenter"
+      ],
+      "romanisation": "trkan"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:mechanic",
+      "pashto": "ميخانيک",
+      "englishSenses": [
+        "Mechanic"
+      ],
+      "romanisation": "mikhanik"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:post-office",
+      "pashto": "پوسته خانه",
+      "englishSenses": [
+        "Post Office"
+      ],
+      "romanisation": "posta khana"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:cafe",
+      "pashto": "کافه",
+      "englishSenses": [
+        "Cafe"
+      ],
+      "romanisation": "kafa"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:restaurant",
+      "pashto": "رستورانت",
+      "englishSenses": [
+        "Restaurant"
+      ],
+      "romanisation": "rstorant"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:counter",
+      "pashto": "کاونټر",
+      "englishSenses": [
+        "Counter"
+      ],
+      "romanisation": "kaontr"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:shelf",
+      "pashto": "المارۍ",
+      "englishSenses": [
+        "Shelf"
+      ],
+      "romanisation": "almarai"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:receipt",
+      "pashto": "رسيد",
+      "englishSenses": [
+        "Receipt"
+      ],
+      "romanisation": "rsid"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:bill",
+      "pashto": "بل",
+      "englishSenses": [
+        "Bill"
+      ],
+      "romanisation": "bl"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:change",
+      "pashto": "پاتې پيسې",
+      "englishSenses": [
+        "Change"
+      ],
+      "romanisation": "pate pise"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:coin",
+      "pashto": "سکه",
+      "englishSenses": [
+        "Coin"
+      ],
+      "romanisation": "ska"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:bank",
+      "pashto": "بانک",
+      "englishSenses": [
+        "Bank"
+      ],
+      "romanisation": "bank"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:wallet",
+      "pashto": "بټوه",
+      "englishSenses": [
+        "Wallet"
+      ],
+      "romanisation": "btoa"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:purse",
+      "pashto": "کڅوړه",
+      "englishSenses": [
+        "Purse"
+      ],
+      "romanisation": "ktsora"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:price",
+      "pashto": "بيه",
+      "englishSenses": [
+        "Price"
+      ],
+      "romanisation": "bia"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:discount",
+      "pashto": "تخفيف",
+      "englishSenses": [
+        "Discount"
+      ],
+      "romanisation": "tkhfif"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:order",
+      "pashto": "فرمايش",
+      "englishSenses": [
+        "Order"
+      ],
+      "romanisation": "frmaish"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:delivery",
+      "pashto": "رسونه",
+      "englishSenses": [
+        "Delivery"
+      ],
+      "romanisation": "rsona"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:parcel",
+      "pashto": "پارسل",
+      "englishSenses": [
+        "Parcel"
+      ],
+      "romanisation": "parsl"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:box",
+      "pashto": "بکس",
+      "englishSenses": [
+        "Box"
+      ],
+      "romanisation": "bks"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:crate",
+      "pashto": "صندوق",
+      "englishSenses": [
+        "Crate"
+      ],
+      "romanisation": "sndoq"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sack",
+      "pashto": "بوجۍ",
+      "englishSenses": [
+        "Sack"
+      ],
+      "romanisation": "bojai"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:seller",
+      "pashto": "پلورونکی",
+      "englishSenses": [
+        "Seller"
+      ],
+      "romanisation": "ploronkay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:buyer",
+      "pashto": "پېرودونکی",
+      "englishSenses": [
+        "Buyer"
+      ],
+      "romanisation": "perodonkay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:queue",
+      "pashto": "کتار",
+      "englishSenses": [
+        "Queue"
+      ],
+      "romanisation": "ktar"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:scale",
+      "pashto": "تله",
+      "englishSenses": [
+        "Scale"
+      ],
+      "romanisation": "tla"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:kilogram",
+      "pashto": "کيلوګرام",
+      "englishSenses": [
+        "Kilogram"
+      ],
+      "romanisation": "kilogram"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:litre",
+      "pashto": "ليټر",
+      "englishSenses": [
+        "Litre"
+      ],
+      "romanisation": "litr"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:dozen",
+      "pashto": "درجن",
+      "englishSenses": [
+        "Dozen"
+      ],
+      "romanisation": "drjn"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:spice",
+      "pashto": "مساله",
+      "englishSenses": [
+        "Spice"
+      ],
+      "romanisation": "msala"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:rice",
+      "pashto": "وريجې",
+      "englishSenses": [
+        "Rice"
+      ],
+      "romanisation": "orije"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:flour",
+      "pashto": "اوړه",
+      "englishSenses": [
+        "Flour"
+      ],
+      "romanisation": "aora"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sugar",
+      "pashto": "بوره",
+      "englishSenses": [
+        "Sugar"
+      ],
+      "romanisation": "bora"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:salt",
+      "pashto": "مالګه",
+      "englishSenses": [
+        "Salt"
+      ],
+      "romanisation": "malga"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:coffee",
+      "pashto": "قهوه",
+      "englishSenses": [
+        "Coffee"
+      ],
+      "romanisation": "qaoa"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:egg",
+      "pashto": "هګۍ",
+      "englishSenses": [
+        "Egg"
+      ],
+      "romanisation": "agai"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:tomato",
+      "pashto": "رومي بانجان",
+      "englishSenses": [
+        "Tomato"
+      ],
+      "romanisation": "romi banjan"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:cucumber",
+      "pashto": "بادرنګ",
+      "englishSenses": [
+        "Cucumber"
+      ],
+      "romanisation": "badrng"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:grape",
+      "pashto": "انګور",
+      "englishSenses": [
+        "Grape"
+      ],
+      "romanisation": "angor"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:banana",
+      "pashto": "کېله",
+      "englishSenses": [
+        "Banana"
+      ],
+      "romanisation": "kela"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:lemon",
+      "pashto": "ليمو",
+      "englishSenses": [
+        "Lemon"
+      ],
+      "romanisation": "limo"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:melon",
+      "pashto": "خټکی",
+      "englishSenses": [
+        "Melon"
+      ],
+      "romanisation": "khtkay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:bean",
+      "pashto": "لوبيا",
+      "englishSenses": [
+        "Bean"
+      ],
+      "romanisation": "lobia"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:lentil",
+      "pashto": "دال",
+      "englishSenses": [
+        "Lentil"
+      ],
+      "romanisation": "dal"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:nut",
+      "pashto": "مغز",
+      "englishSenses": [
+        "Nut"
+      ],
+      "romanisation": "mghz"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:almond",
+      "pashto": "بادام",
+      "englishSenses": [
+        "Almond"
+      ],
+      "romanisation": "badam"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:pay",
+      "pashto": "پيسې ورکول",
+      "englishSenses": [
+        "Pay"
+      ],
+      "romanisation": "pise orkol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:exchange",
+      "pashto": "بدلول",
+      "englishSenses": [
+        "Exchange"
+      ],
+      "romanisation": "bdlol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:bargain",
+      "pashto": "چنې وهل",
+      "englishSenses": [
+        "Bargain"
+      ],
+      "romanisation": "chne oal"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:weigh",
+      "pashto": "تلل",
+      "englishSenses": [
+        "Weigh"
+      ],
+      "romanisation": "tll"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:pack",
+      "pashto": "بسته کول",
+      "englishSenses": [
+        "Pack"
+      ],
+      "romanisation": "bsta kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:unpack",
+      "pashto": "خلاصول",
+      "englishSenses": [
+        "Unpack"
+      ],
+      "romanisation": "khlasol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:order",
+      "pashto": "فرمايش ورکول",
+      "englishSenses": [
+        "Order"
+      ],
+      "romanisation": "frmaish orkol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:deliver",
+      "pashto": "رسول",
+      "englishSenses": [
+        "Deliver"
+      ],
+      "romanisation": "rsol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:spend",
+      "pashto": "لګول",
+      "englishSenses": [
+        "Spend"
+      ],
+      "romanisation": "lgol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:earn",
+      "pashto": "ګټل",
+      "englishSenses": [
+        "Earn"
+      ],
+      "romanisation": "gtl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:charge",
+      "pashto": "بيه اخيستل",
+      "englishSenses": [
+        "Charge"
+      ],
+      "romanisation": "bia akhistl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:repair",
+      "pashto": "جوړول",
+      "englishSenses": [
+        "Repair"
+      ],
+      "romanisation": "jorol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:bake",
+      "pashto": "پخول",
+      "englishSenses": [
+        "Bake"
+      ],
+      "romanisation": "pkhol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:grind",
+      "pashto": "ميده کول",
+      "englishSenses": [
+        "Grind"
+      ],
+      "romanisation": "mida kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:cut",
+      "pashto": "پرېکول",
+      "englishSenses": [
+        "Cut"
+      ],
+      "romanisation": "prekol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:sew",
+      "pashto": "ګنډل",
+      "englishSenses": [
+        "Sew"
+      ],
+      "romanisation": "gndl"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:stale",
+      "pashto": "زړېدلی",
+      "englishSenses": [
+        "Stale"
+      ],
+      "romanisation": "zredlay"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:raw",
+      "pashto": "خام",
+      "englishSenses": [
+        "Raw"
+      ],
+      "romanisation": "kham"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:available",
+      "pashto": "شته",
+      "englishSenses": [
+        "Available"
+      ],
+      "romanisation": "shta"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:heavy",
+      "pashto": "دروند",
+      "englishSenses": [
+        "Heavy"
+      ],
+      "romanisation": "drond"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:lightweight",
+      "pashto": "سپک",
+      "englishSenses": [
+        "Lightweight"
+      ],
+      "romanisation": "spk"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:classroom",
+      "pashto": "ټولګی",
+      "englishSenses": [
+        "Classroom"
+      ],
+      "romanisation": "tolgay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:timetable",
+      "pashto": "مهالوېش",
+      "englishSenses": [
+        "Timetable"
+      ],
+      "romanisation": "maaloesh"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:teacher",
+      "pashto": "ښوونکی",
+      "englishSenses": [
+        "Teacher"
+      ],
+      "romanisation": "khoonkay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:principal",
+      "pashto": "مدير",
+      "englishSenses": [
+        "Principal"
+      ],
+      "romanisation": "mdir"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:desk",
+      "pashto": "مېز",
+      "englishSenses": [
+        "Desk"
+      ],
+      "romanisation": "mez"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:blackboard",
+      "pashto": "توره تخته",
+      "englishSenses": [
+        "Blackboard"
+      ],
+      "romanisation": "tora tkhta"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:whiteboard",
+      "pashto": "سپينه تخته",
+      "englishSenses": [
+        "Whiteboard"
+      ],
+      "romanisation": "spina tkhta"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:chalk",
+      "pashto": "تباشير",
+      "englishSenses": [
+        "Chalk"
+      ],
+      "romanisation": "tbashir"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:marker",
+      "pashto": "مارکر",
+      "englishSenses": [
+        "Marker"
+      ],
+      "romanisation": "markr"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:eraser",
+      "pashto": "پاکوونکی",
+      "englishSenses": [
+        "Eraser"
+      ],
+      "romanisation": "pakoonkay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:pencil",
+      "pashto": "پنسل",
+      "englishSenses": [
+        "Pencil"
+      ],
+      "romanisation": "pnsl"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sharpener",
+      "pashto": "پنسل تراش",
+      "englishSenses": [
+        "Sharpener"
+      ],
+      "romanisation": "pnsl trash"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:ruler",
+      "pashto": "خط کش",
+      "englishSenses": [
+        "Ruler"
+      ],
+      "romanisation": "kht ksh"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:textbook",
+      "pashto": "درسي کتاب",
+      "englishSenses": [
+        "Textbook"
+      ],
+      "romanisation": "drsi ktab"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:workbook",
+      "pashto": "کاري کتاب",
+      "englishSenses": [
+        "Workbook"
+      ],
+      "romanisation": "kari ktab"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:folder",
+      "pashto": "دوسيه",
+      "englishSenses": [
+        "Folder"
+      ],
+      "romanisation": "dosia"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:page",
+      "pashto": "مخ",
+      "englishSenses": [
+        "Page"
+      ],
+      "romanisation": "mkh"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:chapter",
+      "pashto": "څپرکی",
+      "englishSenses": [
+        "Chapter"
+      ],
+      "romanisation": "tsprkay"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:paragraph",
+      "pashto": "فقره",
+      "englishSenses": [
+        "Paragraph"
+      ],
+      "romanisation": "fqra"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:letter",
+      "pashto": "توری",
+      "englishSenses": [
+        "Letter"
+      ],
+      "romanisation": "toray"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:alphabet",
+      "pashto": "الفبا",
+      "englishSenses": [
+        "Alphabet"
+      ],
+      "romanisation": "alfba"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:vowel",
+      "pashto": "واول",
+      "englishSenses": [
+        "Vowel"
+      ],
+      "romanisation": "oaol"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:consonant",
+      "pashto": "بې غږه توری",
+      "englishSenses": [
+        "Consonant"
+      ],
+      "romanisation": "be ghga toray"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sum",
+      "pashto": "جمع",
+      "englishSenses": [
+        "Sum"
+      ],
+      "romanisation": "jm'"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:equation",
+      "pashto": "معادله",
+      "englishSenses": [
+        "Equation"
+      ],
+      "romanisation": "m'adla"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:exam",
+      "pashto": "ازموينه",
+      "englishSenses": [
+        "Exam"
+      ],
+      "romanisation": "azmoina"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:quiz",
+      "pashto": "لنډه ازموينه",
+      "englishSenses": [
+        "Quiz"
+      ],
+      "romanisation": "lnda azmoina"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:homework",
+      "pashto": "کورنی کار",
+      "englishSenses": [
+        "Homework"
+      ],
+      "romanisation": "kornay kar"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:grade",
+      "pashto": "درجه",
+      "englishSenses": [
+        "Grade"
+      ],
+      "romanisation": "drja"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:mark",
+      "pashto": "نمره",
+      "englishSenses": [
+        "Mark"
+      ],
+      "romanisation": "nmra"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:subject",
+      "pashto": "مضمون",
+      "englishSenses": [
+        "Subject"
+      ],
+      "romanisation": "mzmon"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:recess",
+      "pashto": "تفريح",
+      "englishSenses": [
+        "Recess"
+      ],
+      "romanisation": "tfrih"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:library",
+      "pashto": "کتابتون",
+      "englishSenses": [
+        "Library"
+      ],
+      "romanisation": "ktabton"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:dictionary",
+      "pashto": "قاموس",
+      "englishSenses": [
+        "Dictionary"
+      ],
+      "romanisation": "qamos"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:computer",
+      "pashto": "کمپيوټر",
+      "englishSenses": [
+        "Computer"
+      ],
+      "romanisation": "kmpiotr"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:keyboard",
+      "pashto": "کيبورډ",
+      "englishSenses": [
+        "Keyboard"
+      ],
+      "romanisation": "kibord"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:screen",
+      "pashto": "پرده",
+      "englishSenses": [
+        "Screen"
+      ],
+      "romanisation": "prda"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:projector",
+      "pashto": "پروجکټور",
+      "englishSenses": [
+        "Projector"
+      ],
+      "romanisation": "projktor"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:globe",
+      "pashto": "کره",
+      "englishSenses": [
+        "Globe"
+      ],
+      "romanisation": "kra"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:map",
+      "pashto": "نقشه",
+      "englishSenses": [
+        "Map"
+      ],
+      "romanisation": "nqsha"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:science",
+      "pashto": "ساينس",
+      "englishSenses": [
+        "Science"
+      ],
+      "romanisation": "sains"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:experiment",
+      "pashto": "تجربه",
+      "englishSenses": [
+        "Experiment"
+      ],
+      "romanisation": "tjrba"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:graph",
+      "pashto": "ګراف",
+      "englishSenses": [
+        "Graph"
+      ],
+      "romanisation": "graf"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:chart",
+      "pashto": "چارټ",
+      "englishSenses": [
+        "Chart"
+      ],
+      "romanisation": "chart"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:uniform",
+      "pashto": "يونيفورم",
+      "englishSenses": [
+        "Uniform"
+      ],
+      "romanisation": "ioniform"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:backpack",
+      "pashto": "بکس",
+      "englishSenses": [
+        "Backpack"
+      ],
+      "romanisation": "bks"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:art",
+      "pashto": "هنر",
+      "englishSenses": [
+        "Art"
+      ],
+      "romanisation": "anr"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:paintbrush",
+      "pashto": "رنګمال برس",
+      "englishSenses": [
+        "Paintbrush"
+      ],
+      "romanisation": "rngmal brs"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:colour",
+      "pashto": "رنګ",
+      "englishSenses": [
+        "Colour"
+      ],
+      "romanisation": "rng"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:paint",
+      "pashto": "رنګمالۍ",
+      "englishSenses": [
+        "Paint"
+      ],
+      "romanisation": "rngmalai"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:scissors",
+      "pashto": "قينچي",
+      "englishSenses": [
+        "Scissors"
+      ],
+      "romanisation": "qinchi"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:study",
+      "pashto": "زده کړه کول",
+      "englishSenses": [
+        "Study"
+      ],
+      "romanisation": "zda kra kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:practise",
+      "pashto": "تمرین کول",
+      "englishSenses": [
+        "Practise"
+      ],
+      "romanisation": "tmrayn kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:revise",
+      "pashto": "بياکتنه کول",
+      "englishSenses": [
+        "Revise"
+      ],
+      "romanisation": "biaktna kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:explain",
+      "pashto": "تشريح کول",
+      "englishSenses": [
+        "Explain"
+      ],
+      "romanisation": "tshrih kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:repeat",
+      "pashto": "تکرارول",
+      "englishSenses": [
+        "Repeat"
+      ],
+      "romanisation": "tkrarol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:ask",
+      "pashto": "پوښتل",
+      "englishSenses": [
+        "Ask"
+      ],
+      "romanisation": "pokhtl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:answer",
+      "pashto": "ځواب ورکول",
+      "englishSenses": [
+        "Answer"
+      ],
+      "romanisation": "dzoab orkol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:compare",
+      "pashto": "پرتله کول",
+      "englishSenses": [
+        "Compare"
+      ],
+      "romanisation": "prtla kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:classify",
+      "pashto": "ډلبندي کول",
+      "englishSenses": [
+        "Classify"
+      ],
+      "romanisation": "dlbndi kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:sort",
+      "pashto": "ترتيبول",
+      "englishSenses": [
+        "Sort"
+      ],
+      "romanisation": "trtibol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:estimate",
+      "pashto": "اټکل کول",
+      "englishSenses": [
+        "Estimate"
+      ],
+      "romanisation": "atkl kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:calculate",
+      "pashto": "حسابول",
+      "englishSenses": [
+        "Calculate"
+      ],
+      "romanisation": "hsabol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:solve",
+      "pashto": "حل کول",
+      "englishSenses": [
+        "Solve"
+      ],
+      "romanisation": "hl kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:draw",
+      "pashto": "رسمول",
+      "englishSenses": [
+        "Draw"
+      ],
+      "romanisation": "rsmol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:copy",
+      "pashto": "نقلول",
+      "englishSenses": [
+        "Copy"
+      ],
+      "romanisation": "nqlol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:correct",
+      "pashto": "سمول",
+      "englishSenses": [
+        "Correct"
+      ],
+      "romanisation": "smol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:check",
+      "pashto": "کتل",
+      "englishSenses": [
+        "Check"
+      ],
+      "romanisation": "ktl"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:memorise",
+      "pashto": "يادول",
+      "englishSenses": [
+        "Memorise"
+      ],
+      "romanisation": "iadol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:discuss",
+      "pashto": "بحث کول",
+      "englishSenses": [
+        "Discuss"
+      ],
+      "romanisation": "bhs kol"
+    },
+    {
+      "lemmaId": "lemma:expansion:verb:listen",
+      "pashto": "اورېدل",
+      "englishSenses": [
+        "Listen"
+      ],
+      "romanisation": "aoredl"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:correct",
+      "pashto": "سم",
+      "englishSenses": [
+        "Correct"
+      ],
+      "romanisation": "sm"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:incorrect",
+      "pashto": "ناسم",
+      "englishSenses": [
+        "Incorrect"
+      ],
+      "romanisation": "nasm"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:creative",
+      "pashto": "نوښتګر",
+      "englishSenses": [
+        "Creative"
+      ],
+      "romanisation": "nokhtgr"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:absent",
+      "pashto": "غير حاضر",
+      "englishSenses": [
+        "Absent"
+      ],
+      "romanisation": "ghir hazr"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:present",
+      "pashto": "حاضر",
+      "englishSenses": [
+        "Present"
+      ],
+      "romanisation": "hazr"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:finished",
+      "pashto": "بشپړ",
+      "englishSenses": [
+        "Finished"
+      ],
+      "romanisation": "bshpr"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:unfinished",
+      "pashto": "نابشپړ",
+      "englishSenses": [
+        "Unfinished"
+      ],
+      "romanisation": "nabshpr"
+    },
+    {
+      "lemmaId": "lemma:expansion:adjective:neat",
+      "pashto": "پاک او منظم",
+      "englishSenses": [
+        "Neat"
+      ],
+      "romanisation": "pak ao mnzm"
+    },
+    {
+      "lemmaId": "lemma:universal:pronouns-0",
+      "pashto": "زه",
+      "englishSenses": [
+        "I"
+      ],
+      "romanisation": "za"
+    },
+    {
+      "lemmaId": "lemma:universal:pronouns-1",
+      "pashto": "ته",
+      "englishSenses": [
+        "Informal singular you"
+      ],
+      "romanisation": "ta"
+    },
+    {
+      "lemmaId": "lemma:universal:pronouns-2",
+      "pashto": "هغوی",
+      "englishSenses": [
+        "They"
+      ],
+      "romanisation": "aghoay"
+    },
+    {
+      "lemmaId": "lemma:universal:questionWords-0",
+      "pashto": "ولې",
+      "englishSenses": [
+        "Why"
+      ],
+      "romanisation": "ole"
+    },
+    {
+      "lemmaId": "lemma:universal:questionWords-1",
+      "pashto": "کله",
+      "englishSenses": [
+        "When"
+      ],
+      "romanisation": "kla"
+    },
+    {
+      "lemmaId": "lemma:universal:questionWords-2",
+      "pashto": "څنګه",
+      "englishSenses": [
+        "How"
+      ],
+      "romanisation": "tsnga"
+    },
+    {
+      "lemmaId": "lemma:universal:questionWords-3",
+      "pashto": "د چا",
+      "englishSenses": [
+        "Whose"
+      ],
+      "romanisation": "d cha"
+    },
+    {
+      "lemmaId": "lemma:universal:questionWords-4",
+      "pashto": "څومره",
+      "englishSenses": [
+        "How much"
+      ],
+      "romanisation": "tsomra"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-0",
+      "pashto": "صفر",
+      "englishSenses": [
+        "Zero"
+      ],
+      "romanisation": "sfr"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-1",
+      "pashto": "شپږ",
+      "englishSenses": [
+        "Six"
+      ],
+      "romanisation": "shpg"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-2",
+      "pashto": "اووه",
+      "englishSenses": [
+        "Seven"
+      ],
+      "romanisation": "aooa"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-3",
+      "pashto": "اته",
+      "englishSenses": [
+        "Eight"
+      ],
+      "romanisation": "ata"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-4",
+      "pashto": "نهه",
+      "englishSenses": [
+        "Nine"
+      ],
+      "romanisation": "naa"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-5",
+      "pashto": "لس",
+      "englishSenses": [
+        "Ten"
+      ],
+      "romanisation": "ls"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-6",
+      "pashto": "يوولس",
+      "englishSenses": [
+        "Eleven"
+      ],
+      "romanisation": "iools"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-7",
+      "pashto": "دولس",
+      "englishSenses": [
+        "Twelve"
+      ],
+      "romanisation": "dols"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-8",
+      "pashto": "ديارلس",
+      "englishSenses": [
+        "Thirteen"
+      ],
+      "romanisation": "diarls"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-9",
+      "pashto": "څوارلس",
+      "englishSenses": [
+        "Fourteen"
+      ],
+      "romanisation": "tsoarls"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-10",
+      "pashto": "پنځلس",
+      "englishSenses": [
+        "Fifteen"
+      ],
+      "romanisation": "pndzls"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-11",
+      "pashto": "شپاړس",
+      "englishSenses": [
+        "Sixteen"
+      ],
+      "romanisation": "shpars"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-12",
+      "pashto": "اوولس",
+      "englishSenses": [
+        "Seventeen"
+      ],
+      "romanisation": "aools"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-13",
+      "pashto": "اتلس",
+      "englishSenses": [
+        "Eighteen"
+      ],
+      "romanisation": "atls"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-14",
+      "pashto": "نولس",
+      "englishSenses": [
+        "Nineteen"
+      ],
+      "romanisation": "nols"
+    },
+    {
+      "lemmaId": "lemma:universal:numbers-15",
+      "pashto": "شل",
+      "englishSenses": [
+        "Twenty"
+      ],
+      "romanisation": "shl"
+    },
+    {
+      "lemmaId": "lemma:universal:positionDirection-0",
+      "pashto": "دننه",
+      "englishSenses": [
+        "In"
+      ],
+      "romanisation": "dnna"
+    },
+    {
+      "lemmaId": "lemma:universal:positionDirection-1",
+      "pashto": "بهر",
+      "englishSenses": [
+        "Out"
+      ],
+      "romanisation": "bar"
+    },
+    {
+      "lemmaId": "lemma:universal:positionDirection-2",
+      "pashto": "پورته",
+      "englishSenses": [
+        "Up"
+      ],
+      "romanisation": "porta"
+    },
+    {
+      "lemmaId": "lemma:universal:positionDirection-3",
+      "pashto": "ښکته",
+      "englishSenses": [
+        "Down"
+      ],
+      "romanisation": "khkta"
+    },
+    {
+      "lemmaId": "lemma:universal:positionDirection-4",
+      "pashto": "کيڼ",
+      "englishSenses": [
+        "Left"
+      ],
+      "romanisation": "kin"
+    },
+    {
+      "lemmaId": "lemma:universal:positionDirection-5",
+      "pashto": "ښی",
+      "englishSenses": [
+        "Right"
+      ],
+      "romanisation": "khay"
+    },
+    {
+      "lemmaId": "lemma:universal:positionDirection-6",
+      "pashto": "پر",
+      "englishSenses": [
+        "On"
+      ],
+      "romanisation": "pr"
+    },
+    {
+      "lemmaId": "lemma:universal:positionDirection-7",
+      "pashto": "لاندې",
+      "englishSenses": [
+        "Under"
+      ],
+      "romanisation": "lande"
+    },
+    {
+      "lemmaId": "lemma:universal:positionDirection-8",
+      "pashto": "شاته",
+      "englishSenses": [
+        "Behind"
+      ],
+      "romanisation": "shata"
+    },
+    {
+      "lemmaId": "lemma:universal:positionDirection-9",
+      "pashto": "مخې ته",
+      "englishSenses": [
+        "In front"
+      ],
+      "romanisation": "mkhe ta"
+    },
+    {
+      "lemmaId": "lemma:universal:connectors-0",
+      "pashto": "او",
+      "englishSenses": [
+        "And"
+      ],
+      "romanisation": "ao"
+    },
+    {
+      "lemmaId": "lemma:universal:connectors-1",
+      "pashto": "يا",
+      "englishSenses": [
+        "Or"
+      ],
+      "romanisation": "ia"
+    },
+    {
+      "lemmaId": "lemma:universal:connectors-2",
+      "pashto": "خو",
+      "englishSenses": [
+        "But"
+      ],
+      "romanisation": "kho"
+    },
+    {
+      "lemmaId": "lemma:universal:connectors-3",
+      "pashto": "ځکه چې",
+      "englishSenses": [
+        "Because"
+      ],
+      "romanisation": "dzka che"
+    },
+    {
+      "lemmaId": "lemma:universal:connectors-4",
+      "pashto": "سره",
+      "englishSenses": [
+        "With"
+      ],
+      "romanisation": "sra"
+    },
+    {
+      "lemmaId": "lemma:universal:connectors-5",
+      "pashto": "بې له",
+      "englishSenses": [
+        "Without"
+      ],
+      "romanisation": "be la"
+    },
+    {
+      "lemmaId": "lemma:person:mina",
+      "pashto": "مینا",
+      "englishSenses": [
+        "Mina"
+      ],
+      "romanisation": "meena"
+    },
+    {
+      "lemmaId": "lemma:person:saleha",
+      "pashto": "صالحه",
+      "englishSenses": [
+        "Saleha"
+      ],
+      "romanisation": "saaleha"
+    },
+    {
+      "lemmaId": "lemma:person:muhammad-jan",
+      "pashto": "محمد جان",
+      "englishSenses": [
+        "Muhammad Jan"
+      ],
+      "romanisation": "muhammad jaan"
+    },
+    {
+      "lemmaId": "lemma:person:edris",
+      "pashto": "ادریس",
+      "englishSenses": [
+        "Edris"
+      ],
+      "romanisation": "edrees"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "g-hello",
+      "day": 0,
+      "english": "Hello",
+      "pashto": "سلام",
+      "romanisation": "salaam"
+    },
+    {
+      "id": "g-how",
+      "day": 0,
+      "english": "How are you?",
+      "pashto": "څنګه یې؟",
+      "romanisation": "tsanga ye?"
+    },
+    {
+      "id": "g-thanks",
+      "day": 2,
+      "english": "Thank you",
+      "pashto": "مننه",
+      "romanisation": "manana"
+    },
+    {
+      "id": "g-bye",
+      "day": 3,
+      "english": "Goodbye",
+      "pashto": "خدای پامان",
+      "romanisation": "khudaay paamaan"
+    },
+    {
+      "id": "phrase-d1-home-welcome",
+      "day": 1,
+      "english": "Welcome!",
+      "pashto": "ښه راغلاست",
+      "romanisation": "kha raaghlaast"
+    },
+    {
+      "id": "phrase-day-2-opening",
+      "day": 2,
+      "english": "Good morning!",
+      "pashto": "سهار مو پخیر!",
+      "romanisation": "sahaar mo pakheer"
+    },
+    {
+      "id": "phrase-day-3-opening",
+      "day": 3,
+      "english": "It’s nice to see you",
+      "pashto": "خوشحاله یم چې تاسې وینم.",
+      "romanisation": "Khwashaala yam che taase weenam."
+    },
+    {
+      "id": "phrase-day-4-opening",
+      "day": 4,
+      "english": "May you not be tired",
+      "pashto": "ستړي مه شئ.",
+      "romanisation": "Starray ma shəy."
+    },
+    {
+      "id": "phrase-day-5-opening",
+      "day": 5,
+      "english": "Peace be upon you",
+      "pashto": "السلام علیکم.",
+      "romanisation": "As-salaamu alaykum."
+    },
+    {
+      "id": "phrase-day-6-opening",
+      "day": 6,
+      "english": "Nice to meet you",
+      "pashto": "ستاسې په لیدو خوشحاله شوم.",
+      "romanisation": "Staase pa leedo khwashaala shwum."
+    },
+    {
+      "id": "phrase-day-7-opening",
+      "day": 7,
+      "english": "And peace be upon you",
+      "pashto": "وعلیکم السلام.",
+      "romanisation": "Wa alaykum as-salaam."
+    },
+    {
+      "id": "phrase-day-8-opening",
+      "day": 8,
+      "english": "Where have you been?",
+      "pashto": "چېرته وئ؟",
+      "romanisation": "Cherta way?"
+    },
+    {
+      "id": "phrase-day-9-opening",
+      "day": 9,
+      "english": "Please, come in",
+      "pashto": "مهرباني وکړئ، دننه راشئ.",
+      "romanisation": "Mehrabaani wakṛəy, danana raashəy."
+    },
+    {
+      "id": "phrase-day-10-opening",
+      "day": 10,
+      "english": "Excuse me",
+      "pashto": "وبخښئ.",
+      "romanisation": "Wubakhshəy."
+    },
+    {
+      "id": "phrase-day-11-opening",
+      "day": 11,
+      "english": "Make yourself at home",
+      "pashto": "دا خپل کور وګڼئ.",
+      "romanisation": "Daa khpal kor wagaṇəy."
+    },
+    {
+      "id": "phrase-day-12-opening",
+      "day": 12,
+      "english": "May I ask a question?",
+      "pashto": "اجازه شته چې یوه پوښتنه وکړم؟",
+      "romanisation": "Ijaaza shta che yawa pukhtana wakṛam?"
+    },
+    {
+      "id": "phrase-day-13-opening",
+      "day": 13,
+      "english": "How is your day going?",
+      "pashto": "ورځ مو څنګه تېرېږي؟",
+      "romanisation": "Wradz mo tsanga teregi?"
+    },
+    {
+      "id": "phrase-day-14-opening",
+      "day": 14,
+      "english": "Good luck!",
+      "pashto": "بریالي اوسئ!",
+      "romanisation": "Baryaali osəy!"
+    }
+  ],
+  "phraseReplacement": {
+    "id": "phrase-day-7-opening",
+    "removedEnglish": "How is business going?",
+    "replacementEnglish": "And peace be upon you",
+    "pashto": "وعلیکم السلام.",
+    "romanisation": "Wa alaykum as-salaam.",
+    "teachingNote": "Introduce as the reply to the Day-5 peace greeting. The other person says السلام علیکم and the player replies وعلیکم السلام; do not ask the player to translate the removed business question. Reuse the same approved response for the Day-5 exchange."
+  },
+  "stillUntranslatedPhraseIds": [
+    "phrase-d1-lake-name",
+    "phrase-d1-market-price",
+    "phrase-d1-school-what"
+  ],
+  "stillUntranslatedTutorialProposals": [
+    "proposal:tutorial-gender",
+    "proposal:tutorial-name"
+  ]
+}

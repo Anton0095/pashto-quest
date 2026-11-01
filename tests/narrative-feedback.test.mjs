@@ -97,14 +97,14 @@ for (const width of [375,1280]) {
     // Save/reload must restore correct and wrong choice colours without reaward.
     for(const right of [false,true]) {
       const expected=await p.evaluate(right=>{
-        const t=__test;t.reset(0);t.state.progress.tutorialDone=true;t.challenge.startChallenge(1);
-        const s=t.state.session;s.index=s.questions.findIndex(q=>q.kind==='choice');s.answered=s.index;t.challenge.showChallengeQuestion();
-        const q=s.questions[s.index],value=right?q.correct:q.choiceOrder.find(x=>x!==q.correct);
+        const t=__test;t.reset(0);t.state.progress.tutorialDone=true;t.learning.libraryExpose('phrase-d1-home-welcome','lesson');t.challenge.startChallenge(1);
+        const s=t.state.session;s.index=s.questions.findIndex(q=>q.kind==='word'&&!q.unstudied);s.answered=s.index;t.challenge.showChallengeQuestion();
+        const q=s.questions[s.index],value=right?t.content.wordById[q.id].en:q.choiceOrder.find(x=>!t.Q.evaluate(q,t.content.wordById[q.id],x));
         [...document.querySelectorAll('#choices button')].find(b=>b.dataset.answer===value).click();
-        return {correct:q.correct,xp:t.state.progress.xp};
+        return {correct:t.content.wordById[q.id].en,xp:t.state.progress.xp};
       },right);
       assert.equal(await p.locator('#choices .correct').count(),1);
-      await p.reload();
+      await p.evaluate(()=>__test.storage.settled());await p.reload();
       assert.equal(await p.locator('#choices .correct').innerText(),expected.correct);
       assert.equal(await p.locator('#choices .wrong').count(),right?0:1);
       assert.equal(await p.evaluate(()=>__test.state.progress.xp),expected.xp);

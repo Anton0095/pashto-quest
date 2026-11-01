@@ -71,7 +71,8 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       roman: phrase.romanisation,
       en: phrase.english,
       place: phrase.location || "library",
-      note: "Fixed expression; provisional romanisation, native Laghman review pending.",
+      phrasePromptId: phrase.id === "phrase-day-7-opening" ? "phrase-day-5-opening" : null,
+      note: phrase.userVerified ? "User-approved fixed expression; no independent native certification." : "Provisional fixed expression; native review pending.",
     };
     LIBRARY_DATA.cardTypes[phrase.id] = "greeting";
   }
@@ -87,7 +88,8 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       ps: form.pashto,
       roman: form.romanisation || "Romanisation pending native review",
       en: entry.englishSenses[0],
-      note: "Provisional vocabulary; native Laghman review pending.",
+      acceptedEnglishAnswers: [...new Set([...(form.acceptedEnglishAnswers || []), form.englishGloss])],
+      note: entry.userVerified ? "Base content user-approved; grammar/forms remain provisional; no independent native certification." : "Provisional vocabulary; native review pending.",
     };
     LIBRARY_DATA.cardDays[id] = entry.introduction.day;
     LIBRARY_DATA.cardTypes[id] = entry.partOfSpeech;
@@ -107,6 +109,10 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
         ps: form.pashto,
         roman: form.romanisation || "Romanisation pending native review",
         en: form.englishGloss,
+        // Share the reviewed primary base sense only with this exact base form.
+        // Do not copy aggregate plural/other-form senses onto inflections.
+        acceptedEnglishAnswers: [...new Set([...(form.acceptedEnglishAnswers || []),
+          ...(form === entry.forms[0] && form.pashto === entry.displayLemmaPs ? [entry.englishSenses[0]] : [])])],
         note: "Attested form · native review pending.",
       };
       LIBRARY_DATA.cardDays[id] = form.firstAllowedDay;
@@ -127,11 +133,12 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
   };
   // Lexical evidence is build-time data. Acquisition lives in progress, never here.
   // Immutable roots allow compiler views to share one index without stale edits.
+  deepFreeze(LIBRARY_DATA.sentenceFrames);
   deepFreeze(LIBRARY_DATA.entries);
   deepFreeze(LIBRARY_DATA.generationEvidence);
   deepFreeze(LIBRARY_DATA.generationAttestations);
   function registerGenerated(card) {
-    if (wordById[card.id]) return wordById[card.id];
+    if (wordById[card.id] && JSON.stringify(wordById[card.id]) === JSON.stringify(card)) return wordById[card.id];
     if (
       card.type !== "sentence" ||
       card.generated?.origin !== "productive_engine"
@@ -192,6 +199,18 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       );
       if (!card || JSON.stringify(card) !== JSON.stringify(snapshot))
         return false;
+      registerGenerated(card);
+    }
+    // A frozen later question may reference choices that were never displayed.
+    // Reconstruct those compiler IDs before any UI/learning surface reads them.
+    const questions = [
+      ...Object.values(progress.library?.plans || {}).flatMap(plan => plan.challengeQuestions || []),
+      ...(progress.activeChallenge?.questions || []),
+    ];
+    for (const q of questions) for (const id of q.choiceIds || []) {
+      if (wordById[id]) continue;
+      const card = SentenceEngine.restoreId(LIBRARY_DATA, LIBRARY_DATA.sentenceFrames, id);
+      if (!card) return false;
       registerGenerated(card);
     }
     for (const delivery of Object.values(progress.library?.deliveries || {})) {

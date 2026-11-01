@@ -1372,25 +1372,6 @@ header {
   min-height: 1.5em;
   margin: 13px 0 0;
 }
-.tutorial-built {
-  min-height: 54px;
-  padding: 12px;
-  border: 1px dashed #8baaba;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  font-size: 1.25rem;
-  text-align: center;
-}
-.tutorial-tiles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.tutorial-tiles .choice {
-  flex: 0 0 auto;
-  min-width: 90px;
-}
 .tutorial-name-row {
   display: flex;
   flex-wrap: wrap;
@@ -1424,3 +1405,12 @@ header {
 .scene-symbol { font-size: 36px; }
 .choice.correct::after { content: " ✓"; }
 .choice.wrong::after { content: " ✗"; }
+
+/* Construction uses direct targets; village narrative remains on other surfaces. */
+.construction-active #addressTarget,
+.construction-active #participants,
+.construction-active .speaker-note,
+.construction-active #challengeScene,
+.construction-active #lessonExpression { display: none; }
+.construction-practice { margin-block: 1rem; }
+.construction-practice .word-tiles { margin-block: 1rem; }
