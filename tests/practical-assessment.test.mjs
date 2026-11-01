@@ -14,6 +14,12 @@ for(const pace of [0,4,8,12,16,20,24])for(const skip of [false,true]) {
   assert.equal(t.progression.getChallengeSpec(day).passCount,[7,14].includes(day)?20:12);
   assert(s.questions.every(q=>['word','sentence','construct','dialogue'].includes(q.kind)&&!q.grammarConcept));
   assert.deepEqual(plain(t.state.progress.library.acquired),acquisition);assert.deepEqual(plain(t.state.progress.library.grammar),grammar);
+  // Assignment alone makes a word an assessment target; no visit/grade gate.
+  const plan=t.state.progress.library.plans[day];
+  for(const place of t.content.zoneKeys) {
+   const assigned=plan.locationAssignments[place];
+   if(assigned.length)assert(s.questions.some(q=>q.kind==='word' && (t.content.LIBRARY_DATA.sourceMappings[q.id] || []).some(ref=>assigned.includes(ref.lemmaId))),`Missing ${place} targets: day ${day}, pace ${pace}, skip ${skip}`);
+  }
   for(const q of s.questions) {
    const w=t.content.wordById[q.id];assert(w);
    if(q.kind==="word")assert(!/\b(?:first|second|third)[ -]person\b|\b(?:masculine|feminine|singular|plural)\b/i.test(w.en),"no category labels as recall answers");
@@ -44,3 +50,21 @@ for(const c of fixtures){
  const before=plain(legacy.state.progress);assert.equal(legacy.learning.submitChallenge(c.correct),null);assert.deepEqual(plain(legacy.state.progress),before);
 }
 console.log('PASS 33 exact retired rule snapshots remain readable and ungradable, without resets or rerolls');
+
+// Shortage recall exhausts distinct scheduled words before aliases/revision.
+for(const introduced of [false,true]) {
+ const t=runtime();reset(t);t.E.ensurePlan(t.state.progress,t.content.LIBRARY_DATA,1);
+ if(introduced)for(const id of t.learning.libraryLessonPool(1,'residential'))t.E.expose(t.state.progress,t.content.LIBRARY_DATA,id,{day:1,location:'residential',source:'lesson'});
+ const before=plain(t.state.progress);const qs=beginAttempt(t,1),plan=t.state.progress.library.plans[1];
+ const targets=qs.filter(q=>(t.content.LIBRARY_DATA.sourceMappings[q.id] || []).length);
+ assert.equal(targets.length,14);assert(targets.every(q=>q.kind==='word'));
+ const counts=t.content.zoneKeys.map(place=>targets.filter(q=>plan.locationAssignments[place].some(id=>(t.content.LIBRARY_DATA.sourceMappings[q.id] || []).some(ref=>ref.lemmaId===id))).length);
+ assert.equal(counts.reduce((n,x)=>n+x,0),14);assert(Math.max(...counts)-Math.min(...counts)<=1);
+ assert.equal(new Set(targets.map(q=>t.E.identity(t.content.LIBRARY_DATA,q.id))).size,14,'no repeated target or base/form alias while scheduled words remain');
+ assert.deepEqual(plain(t.state.progress.library.acquired),before.library.acquired);assert.deepEqual(plain(t.state.progress.complete),{});assert.deepEqual(plain(t.state.progress.library.grammar),{});assert.equal(t.state.progress.xp,before.xp);
+ // Previously saved attempts, including repeated targets, are never rewritten.
+ t.state.session.questions[5]=plain(t.state.session.questions[1]);
+ const frozen=plain(t.state.session.questions);t.storage.save();const restored=t.storage.load();assert.equal(t.storage.problem,null);
+ t.state.session=null;t.state.progress=restored;assert.deepEqual(plain(t.questions.selectChallenge(1)),frozen);
+}
+console.log('PASS four-location targets before visits across every day/pace/route; balanced shortage recall; no base/form alias repeats; unchanged unlocks/rewards and exact old repeated-target attempt restore');

@@ -58,17 +58,16 @@ function createQuestions({ state, content, progression }) {
   // practical recall answers. Their licensed forms remain usable in clauses.
   const practicalMeaning = id => !/\b(?:first|second|third)[ -]person\b|\b(?:masculine|feminine|singular|plural)\b/i.test(content.wordById[id]?.en || "");
   function lexicalPool(day, random) {
-    const plan = state.progress.library.plans[day],
-      first = [],
-      rest = [];
-    for (const place of content.zoneKeys) {
-      const ids = QuestionEngine.shuffle(
-        plan.locationAssignments[place] || [],
-        random,
-      ).map((id) => "library-card:" + id);
-      if (ids.length) first.push(ids[0]);
-      rest.push(...ids.slice(1));
-    }
+    const plan = state.progress.library.plans[day];
+    // Every location contributes regardless of visit completion. Interleave the
+    // frozen assignments so additional recall tasks stay balanced as well.
+    const rows = content.zoneKeys.map(place => QuestionEngine.shuffle(
+      plan.locationAssignments[place] || [], random,
+    ).map(id => "library-card:" + id).filter(id =>
+      LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id)));
+    const scheduled = [];
+    for (let i = 0; i < Math.max(0, ...rows.map(row => row.length)); i++)
+      for (const row of rows) if (row[i]) scheduled.push(row[i]);
     const due = new Set(
       LibraryEngine.dueForms(state.progress, content.LIBRARY_DATA).map(
         (x) => x.entry.lemmaId,
@@ -94,9 +93,8 @@ function createQuestions({ state, content, progression }) {
       .map((p) => p.id);
     return [
       ...new Set([
-        ...first,
+        ...scheduled,
         ...grammarWords,
-        ...QuestionEngine.shuffle(rest, random),
         ...review,
         ...phrases,
       ]),
@@ -161,11 +159,19 @@ function createQuestions({ state, content, progression }) {
     const studiedForms = content.LIBRARY_DATA.entries.flatMap(e => e.forms
       .filter(f => state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId))
       .map(f => "library-form:" + f.formId));
-    const practical = [...new Set([...studiedForms, ...lexical,
-      ...content.LIBRARY_DATA.phrases.filter(p => p.active && p.day <= day).map(p => p.id)])]
-      .filter(id => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id));
+    const recallIdentities = new Set();
+    const practical = [...lexical, ...studiedForms,
+      ...content.LIBRARY_DATA.phrases.filter(p => p.active && p.day <= day).map(p => p.id)]
+      .filter(id => {
+        if (!LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) || !practicalMeaning(id)) return false;
+        const identity = LibraryEngine.identity(content.LIBRARY_DATA, id);
+        if (recallIdentities.has(identity)) return false;
+        recallIdentities.add(identity);
+        return true;
+      });
     if (!practical.length) throw Error("No approved practical assessment material available");
     const used = new Set(),
+      usedRecall = new Set(),
       out = [],
       usedDialogueFamilies = new Set();
     const opening = content.NARRATIVE_DATA.expressions.find(
@@ -265,10 +271,12 @@ function createQuestions({ state, content, progression }) {
       }
       if (!q) {
         deficit++;
-        const id = practical[(deficit - 1) % practical.length];
+        const id = practical.find(id => !usedRecall.has(LibraryEngine.identity(content.LIBRARY_DATA, id))) ||
+          practical[(deficit - 1) % practical.length];
         q = {id, kind:"word", direction:"ps-en", vocabularyOrigin:"practical-review",
           adaptation:"Not enough distinct studied sentences; practise vocabulary or approved phrases. A small pool may repeat without extra word introductions or repeated XP."};
       }
+      if (!q.generated) usedRecall.add(LibraryEngine.identity(content.LIBRARY_DATA, q.id));
       q.speaker ||= content.teacherFor(day, null, "challenge").name;
       q.recipient ||= "Player";
       q.comment ||= blueprint.scenario;

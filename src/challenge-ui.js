@@ -194,10 +194,13 @@ function createChallengeUI({
       )
         .map(([kind, count]) => `${count} ${categories[kind]}`)
         .join(" · ")}`;
-    const deficit = state.progress.library.plans[day]?.assessmentDeficit;
+    const plan = state.progress.library.plans[day];
+    if (Object.values(plan.locationAssignments).some(ids => ids.length))
+      ui.$("lessonDescription").textContent += " · Includes assigned vocabulary from unvisited or unfinished locations";
+    const deficit = plan.assessmentDeficit;
     if (deficit?.adaptedTasks)
       ui.$("lessonDescription").textContent +=
-        ` · ${deficit.adaptedTasks} vocabulary/phrase review tasks: insufficient distinct studied sentence combinations; review pool ${deficit.practicalPoolSize || "limited"}, items may repeat`;
+        ` · ${deficit.adaptedTasks} vocabulary/phrase recall tasks: insufficient distinct studied sentence combinations; practice pool ${deficit.practicalPoolSize || "limited"}, items may repeat`;
     ui.$("lessonScreen").dataset.week = day >= 8 ? "2" : "1";
     ui.$("lessonScreen").dataset.day = String(day);
     showChallengeScene(day);
