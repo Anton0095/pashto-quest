@@ -1,6 +1,6 @@
 /* Every assessment proposition and Pashto reply is compiled from actual unlocks.
  * Deficits adapt to vocabulary/approved phrase practice, never authored sentence targets. */
-function createQuestions({ state, content, progression }) {
+function createQuestions({ state, content, progression, seedSource = QuestionEngine.randomSeed }) {
   const clone = (x) => JSON.parse(JSON.stringify(x));
   function isUnstudied(id) {
     const phrase = state.progress.library.phrases[id];
@@ -61,7 +61,7 @@ function createQuestions({ state, content, progression }) {
     const plan = state.progress.library.plans[day];
     // Every location contributes regardless of visit completion. Interleave the
     // frozen assignments so additional recall tasks stay balanced as well.
-    const rows = content.zoneKeys.map(place => QuestionEngine.shuffle(
+    const rows = QuestionEngine.shuffle(content.zoneKeys, random).map(place => QuestionEngine.shuffle(
       plan.locationAssignments[place] || [], random,
     ).map(id => "library-card:" + id).filter(id =>
       LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id)));
@@ -73,11 +73,11 @@ function createQuestions({ state, content, progression }) {
         (x) => x.entry.lemmaId,
       ),
     );
-    const grammarWords = content.LIBRARY_DATA.entries
+    const grammarWords = QuestionEngine.shuffle(content.LIBRARY_DATA.entries
       .filter(
         (e) => e.vocabularyClass === "universal" && e.introduction.day === day,
       )
-      .map((e) => "library-card:" + e.lemmaId);
+      .map((e) => "library-card:" + e.lemmaId), random);
     const review = QuestionEngine.shuffle(
       content.LIBRARY_DATA.entries
         .filter(
@@ -88,9 +88,9 @@ function createQuestions({ state, content, progression }) {
         .map((e) => "library-card:" + e.lemmaId),
       random,
     );
-    const phrases = content.LIBRARY_DATA.phrases
+    const phrases = QuestionEngine.shuffle(content.LIBRARY_DATA.phrases
       .filter((p) => state.progress.library.phrases[p.id] || p.day === day)
-      .map((p) => p.id);
+      .map((p) => p.id), random);
     return [
       ...new Set([
         ...scheduled,
@@ -109,8 +109,10 @@ function createQuestions({ state, content, progression }) {
     const frozen = state.session?.mode === "challenge" && state.session.loop === day && !state.session.finished && state.session.index < state.session.questions.length
       ? state.session : state.progress.activeChallenge?.loop === day ? state.progress.activeChallenge : null;
     if (!newAttempt && frozen) return clone(frozen.questions);
+    const seed = seedSource();
+    if (!Number.isInteger(seed) || seed < 0 || seed > 0xffffffff) throw new RangeError("Invalid assessment random seed");
     progression.activateChallenge(state.progress, day);
-    const random = QuestionEngine.randomFor(plan.seed + day * 7919),
+    const random = QuestionEngine.randomFor(seed),
       blueprint = createAssessmentContent({ content, progression }).blueprint(
         day,
       );
@@ -140,18 +142,30 @@ function createQuestions({ state, content, progression }) {
     const usesCurrentVocabulary = card => Object.values(card.generated.slots).some(ref => assigned.has(ref.lemmaId));
     const current = pool.filter(usesCurrentVocabulary), currentFocus = focus.filter(usesCurrentVocabulary);
     const targetCount = Math.ceil(blueprint.kinds.filter(k => ["construct", "sentence"].includes(k)).length * 0.7);
-    const targeted = choose(currentFocus.length ? currentFocus : current, targetCount, plan.seed + day);
+    const preferred = currentFocus.length ? currentFocus : current;
+    const targeted = [];
+    // Random sampling remains constrained by four-location coverage. Select
+    // within each compatible cohort before filling the remaining current slots.
+    for (const place of QuestionEngine.shuffle(content.zoneKeys, random)) {
+      if (targeted.length >= targetCount) break;
+      const ids = new Set(plan.locationAssignments[place]);
+      const covers = c => Object.values(c.generated.slots).some(ref => ids.has(ref.lemmaId));
+      if (targeted.some(covers)) continue;
+      const candidates = preferred.filter(covers).filter(c => !targeted.some(x => x.ps === c.ps));
+      targeted.push(...choose(candidates, 1, Math.floor(random() * 0x100000000)));
+    }
+    targeted.push(...choose(preferred.filter(c => !targeted.some(x => x.ps === c.ps)), targetCount - targeted.length, seed));
     const focused = [...targeted, ...choose(
       focus.filter(c => !targeted.some(x => x.ps === c.ps)),
       Math.ceil(blueprint.count * 0.7) - targeted.length,
-      plan.seed + day + 2,
+      (seed + 2) >>> 0,
     )];
     const cards = [
       ...focused,
       ...choose(
         pool.filter((c) => !focused.some((x) => x.ps === c.ps)),
         blueprint.count,
-        plan.seed + day + 1,
+        (seed + 1) >>> 0,
       ),
     ]
       .slice(0, blueprint.count)
@@ -159,15 +173,15 @@ function createQuestions({ state, content, progression }) {
     const pairs = SentenceEngine.dialogues(
       pool,
       content.LIBRARY_DATA,
-      plan.seed + day,
+      (seed + 3) >>> 0,
     );
     const lexical = lexicalPool(day, random);
-    const studiedForms = content.LIBRARY_DATA.entries.flatMap(e => e.forms
+    const studiedForms = QuestionEngine.shuffle(content.LIBRARY_DATA.entries.flatMap(e => e.forms
       .filter(f => state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId))
-      .map(f => "library-form:" + f.formId));
+      .map(f => "library-form:" + f.formId)), random);
     const recallIdentities = new Set();
     const practical = [...lexical, ...studiedForms,
-      ...content.LIBRARY_DATA.phrases.filter(p => p.active && p.day <= day).map(p => p.id)]
+      ...QuestionEngine.shuffle(content.LIBRARY_DATA.phrases.filter(p => p.active && p.day <= day).map(p => p.id), random)]
       .filter(id => {
         if (!LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) || !practicalMeaning(id)) return false;
         const identity = LibraryEngine.identity(content.LIBRARY_DATA, id);

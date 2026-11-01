@@ -112,6 +112,14 @@ const QuestionEngine = (() => {
     if (q.direction === "en-ps") return normalizeAnswer(value) === normalizeAnswer(card.ps);
     return englishAnswers(card).some(answer => englishKey(answer) === englishKey(value));
   }
+  // Fresh per-attempt entropy; the resulting questions, not a replayed seed,
+  // are authoritative when a saved assessment resumes.
+  function randomSeed() {
+    if (globalThis.crypto?.getRandomValues) {
+      try { return globalThis.crypto.getRandomValues(new Uint32Array(1))[0]; } catch {}
+    }
+    return Math.floor(Math.random() * 0x100000000);
+  }
   function randomFor(seed) {
     return () => {
       seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
@@ -132,5 +140,6 @@ const QuestionEngine = (() => {
     shuffle,
     evaluate,
     randomFor,
+    randomSeed,
   };
 })();
