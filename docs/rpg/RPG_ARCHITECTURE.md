@@ -1,6 +1,6 @@
 # TypeScript / Phaser Week 1 architecture
 
-The Week 1 branch starts from foundation `04891a4`. Phaser 4.2.1 remains locally bundled; TypeScript RPG modules remain strict. The existing Python/esbuild pipeline and JavaScript educational authorities are retained. See [Week 1 implementation](WEEK1_IMPLEMENTATION.md) for registry, route flow, schedules and play instructions.
+The multiday overhaul is based on main `5606c36` (the merged Week 1/foundation work). Phaser 4.2.1 remains locally bundled; TypeScript RPG modules remain strict. The existing Python/esbuild pipeline and JavaScript educational authorities are retained. See the current [overhaul report](MULTIDAY_OVERHAUL.md) and historical [Week 1 implementation](WEEK1_IMPLEMENTATION.md) for registry, route flow, schedules and play instructions.
 
 | Module | Responsibility |
 |---|---|
@@ -11,6 +11,7 @@ The Week 1 branch starts from foundation `04891a4`. Phaser 4.2.1 remains locally
 | `content.ts` | Validated maps/identities/schedules/events, conditional choices and multi-speaker/listener DOM dialogue |
 | `ui.ts` | Selected RPG chapter, educational adapters, serialized chapter transfer, native overlays, keyboard/touch lifecycle and completion/history UI |
 | `phaser-world.ts` | Sole live world engine: tilemaps, collisions, bodies, sensors, movement/tweens/animation, camera, procedural textures and resource cleanup |
+| `movement.ts` | A* paths, clear NPC interaction lines, automatic/manual instruction arbitration over the Phaser stepper |
 | `world-data.ts` | Static content validation, walkability for spawn/reachability and invalid-position recovery; no parallel movement engine |
 | `progression.ts` | Registered profile cap (Days 1–7); wraps existing educational eligibility, never recalculates rewards |
 | `persistence.ts` | World schema-1 validation, optional route/chapter/cursor, paired transient lesson restoration and retryable coordinated writes |
@@ -41,4 +42,20 @@ Production key `pashto-town-days-v1` remains unused by the default RPG. Educatio
 
 A chapter transfer is serialized: persist the completed chapter, write the target chapter/spawn, start its scene/opening, then persist the opening cursor. It never calls a reward function. An interruption may restore the last committed completed chapter (Continue can be retried) or the committed target spawn. Educational knowledge and frozen assessments remain authoritative. Unpaired lesson drafts are discarded; invalid positions recover safely. World/education transactions are separate, so unacknowledged story/position/draft work can still be lost; lifecycle flush is best effort, not atomic shutdown persistence.
 
-Current educational components remain HTML/CSS above the paused world. Library, optional audio fallback, RTL/LTR tiles, focus and touch cancellation are retained. Native Learning access remains available after Canvas failure. Disposal aborts scoped global listeners, removes dialogs, restores service wrappers and destroys Phaser resources. The existing scene/map lifecycle tests remain intact.
+Current educational components remain HTML/CSS above the paused world. Library, optional audio fallback, RTL/LTR tiles, focus and touch cancellation are retained. Native Quick travel remains available after Canvas failure. Disposal aborts scoped global listeners, removes dialogs, restores service wrappers and destroys Phaser resources. The existing scene/map lifecycle tests remain intact.
+
+## Map hierarchy, portraits and movement
+
+The RPG toolbar contains Library and Menu; duplicate header Library is hidden while exploring and remains available during educational overlays. The progress card follows the canvas. Regional notes and reset live inside Menu. Pashto recall prompts precede transliteration, audio and instructions; direct English construction targets remain unchanged to avoid revealing the answer. The shared English-choice formatter changes labels only; original values stay in `data-answer` and all scoring still uses them.
+
+`content/CHARACTER_PORTRAITS.json` maps immutable character IDs to named expressions. Nulls expose the five missing approved assets. `src/character-portraits.js` renders portraits for both the shared educational UI and RPG dialogue; each story message may declare `characterId`/`expression`. New PNG/WebP assets under `assets/portraits/` are embedded by the builder, preserving offline play. No backgrounds or screenshots are used as portraits.
+
+A* uses the static tile/collision grid, current actor occupancy and chapter map permissions. Phaser remains the only animated stepper. One controller accepts automatic routes and manual overrides; it revalidates after interrupted tweens, cancels at map changes and overlays, and rejects inaccessible targets. NPC targets resolve to reachable interaction tiles; interaction also requires a clear orthogonal line. DOM Pointer Events convert client coordinates through the scaled canvas and Phaser camera. `touch-action:none` prevents map gestures scrolling the page. Scene shutdown removes its pointer listener. Scene relocation stops old tweens before quick travel can change position.
+
+Quick travel resolves actors by their existing lesson actions, then derives the displayed destination from map regions. A visiting teacher can therefore appear as “Lake · Muhammad Jan” while retaining the Home district assignment. A completed Day 6 route can name Hills. Travel uses a safe adjacent tile and the ordinary interaction dispatcher; guarded fallback lessons remain available if Canvas cannot start. Opening/lesson locks and explicit skip exposition remain authoritative.
+
+Completion predicates `complete:<lesson>`, `not-complete:<lesson>`, `allLessons`, `not-allLessons` and `all:<predicate>|<predicate>` drive teacher schedules. On Day 6 Saleha moves from Lake to Home after Nature practice and returns after Home practice; Muhammad Jan visits Market. On Day 7 Saleha teaches School while Ms Hameed teaches at Lake, then Ms Hameed returns to School for the exam. On Day 5 Ms Hameed joins the other three adults at Lake after the visits. These changes align world speakers with the existing curriculum without changing its teachers or lesson IDs.
+
+Day 7 is nonterminal and links to `day-8`; its `presentation.milestoneTitle` presents graduation independently of terminal policy. The chapter director resolves only registered, eligible next chapters. A model test activates the existing Day 8 fixture and verifies this transition without changing engine code. No production day-skip harness or unreviewed Week 2 story is activated.
+
+No persisted fields or schema versions change. Routes are transient input state; refresh restores the last committed tile, story cursor, paired lesson or exact active assessment. Existing world route/chapter flags and educational reward identities remain the only progression records. The two-store non-atomic persistence limitation described above still applies.

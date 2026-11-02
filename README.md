@@ -4,13 +4,15 @@
 
 An offline, browser-based Pashto learning game set in a village in Laghman, Afghanistan. Four teaching districts (Home, Lake, Market and School), a reference Library and a recurring cast support 14 narrative days of cumulative language study. Base entries and registered phrases are user-approved; grammar and inflected forms remain drafts, without independent native certification.
 
-## RPG Week 1 branch
+## RPG interface and Week 1
 
-`feature/rpg-week1` expands the reviewed `feature/rpg-foundation` into playable Days 1–7 using strict TypeScript and locally bundled Phaser 4.2.1. Move with arrows/WASD or touch directions, interact with E/Enter, and use L for the Library. Complete the four-step tutorial, then follow each day's normal story/lessons or explicitly take the early challenge. Days 1–6 use 15 questions/pass 12; Day 7 uses the existing 25-question/pass-20 Week 1 exam. Graduation displays the actual progression milestone. Day 8 remains unavailable through the RPG; the fourteen-day educational backend is preserved.
+The default release uses strict TypeScript and locally bundled Phaser 4.2.1. Click or tap to walk, select an NPC to approach and talk, or use arrows/WASD and the touch directions. The world appears first; Level, title, XP and encountered words sit below it. Menu contains the collapsible Laghman/pronunciation information. Library remains independently accessible.
 
-For development run `npm ci`, then `python3 tools/build.py` and `python3 -m http.server 8000`; open `http://localhost:8000/`. Players need only the committed static release, with no runtime dependency downloads. No production Pages configuration is changed.
+Quick travel names actual destinations, follows lesson locks and opens the same NPC conversations as walking. Visiting teachers move with the narrative; the Day 6 Nature finale appears as Hills. Days 1–6 retain 15 questions/pass 12; Day 7 retains the 25-question/pass-20 weekly examination. Normal and explicit early-challenge routes use the existing educational, audio, XP and save systems. Week 1 graduation is a milestone linked to `day-8`; the Day 8–14 RPG story registrations remain future work, while their educational backend remains intact.
 
-See [Week 1 implementation and play instructions](docs/rpg/WEEK1_IMPLEMENTATION.md), [architecture](docs/rpg/RPG_ARCHITECTURE.md), [expansion guide](docs/rpg/RPG_EXPANSION_GUIDE.md) and [validation/performance](docs/rpg/RPG_VALIDATION.md). RPG saves remain isolated from production. Main and the source development branches are untouched.
+The reusable dialogue portrait component supports stable character IDs and expressions, including speaker changes. **All five approved portrait assets are missing**; named placeholders explicitly say “Portrait unavailable”. No replacement artwork is represented as approved.
+
+See the [overhaul audit and delivery report](docs/rpg/MULTIDAY_OVERHAUL.md), [architecture](docs/rpg/RPG_ARCHITECTURE.md) and [expansion guide](docs/rpg/RPG_EXPANSION_GUIDE.md). Educational schema 7 and world schema 1 saves retain their namespaces and coordination. No save migration or reset is introduced. Physical iPhone Safari remains untested.
 
 ## Product goal and delivery status
 
