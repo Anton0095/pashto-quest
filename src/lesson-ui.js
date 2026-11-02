@@ -324,7 +324,7 @@ function createLessons({
     if (build) renderBuild();
     else
       for (const choice of (s.choices = restore && s.choices ? s.choices : questions.distractors(w))) {
-        const b = ui.button(choice, () => answer(choice));
+        const b = ui.button(ui.englishChoice(choice), () => answer(choice));
         b.className = "choice";
         b.dataset.answer = choice;
         ui.$("choices").append(b);

@@ -22,7 +22,7 @@ function createUI({ state, content, progression }) {
       el.className = "interlocutor" + (name === recipient ? " respondent" : "");
       const icon = document.createElement("span");
       icon.className = "portrait";
-      icon.textContent = person.face;
+      icon.append(renderCharacterPortrait(person.name));
       const body = document.createElement("span");
       const strong = document.createElement("b");
       strong.textContent = name;
@@ -38,7 +38,7 @@ function createUI({ state, content, progression }) {
   function setDialogueSpeaker(name) {
     const person = content.peopleByName[name] || { name, face: "🧑" };
     $("speakerName").textContent = person.name + " · speaking";
-    $("speakerIcon").textContent = person.face;
+    $("speakerIcon").replaceChildren(renderCharacterPortrait(person.name));
   }
   function setSpeaker(loop, loc, mode) {
     const person = content.teacherFor(loop, loc, mode);
@@ -76,7 +76,7 @@ function createUI({ state, content, progression }) {
       content.LIBRARY_DATA,
     );
     $("knownPill").textContent =
-      `${bankCount.encountered} content lemmas encountered`;
+      `${bankCount.encountered} words encountered`;
     $("characterSubtitle").textContent =
       status.level === 10
         ? "Week 1 complete · New Resident"
@@ -149,7 +149,7 @@ function createUI({ state, content, progression }) {
   }
   function node(tag, text, cls) {
     const e = document.createElement(tag);
-    if (text !== undefined) e.textContent = text;
+    if (text !== undefined) e.textContent = playerVocabularyText(text);
     if (cls) e.className = cls;
     return e;
   }
@@ -162,6 +162,8 @@ function createUI({ state, content, progression }) {
 
 
   return {
+    portrait: renderCharacterPortrait,
+    englishChoice: formatEnglishChoice,
     displayPlace,
     showParticipants,
     setDialogueSpeaker,

@@ -40,17 +40,19 @@ export function createRPGRegistry(data:WorldData, conditions:Record<string,()=>b
 /* Dialogue owns sequence state only. Actions are dispatched by the profile adapter. */
 export function createRPGDialogue({dialog,ui,onAction,onClose,onIndex,eligible}:{dialog:HTMLDialogElement;ui:UI;onAction:(action:Action)=>void;onClose:()=>void;onIndex:(index:number)=>void;eligible:(condition?:string)=>boolean}) {
   let current:StoryEvent|null=null,index=0,actionClose=false;
-  const speaker=ui.node('h2'), text=ui.node('p'), actions=ui.node('div',undefined,'buttons');
+  const portrait=ui.node('div',undefined,'rpg-dialogue-portrait'), speaker=ui.node('h2'), text=ui.node('p'), actions=ui.node('div',undefined,'buttons');
   text.setAttribute('aria-live','polite');
   const close=ui.button('Back to village',()=>dialog.close());close.className='ghost';
-  dialog.append(speaker,text,actions,close);
+  dialog.append(portrait,speaker,text,actions,close);
   const closed=()=>{if(!dialog.open)current=null;if(!actionClose)onClose();actionClose=false;};
   dialog.addEventListener('close',closed);
   function render() {
     if(!current)return;
-    const messages=current.messages?.filter(m=>eligible(m.condition))??current.lines.map(text=>({speaker:current!.speaker,text}));
+    const messages=current.messages?.filter(m=>eligible(m.condition))??current.lines.map(text=>({speaker:current!.speaker,characterId:current!.characterId,expression:current!.expression,text}));
     index=Math.min(index,Math.max(0,messages.length-1));
     const message=messages[index];const listener=message&&'listener' in message?message.listener:current.listener;
+    const frame=ui.portrait(message?.characterId??(message?.speaker&&message.speaker!==current.speaker?message.speaker:current.characterId??current.speaker),message?.expression??current.expression);
+    portrait.replaceChildren(frame);portrait.classList.toggle('hidden',frame.classList.contains('hidden'));
     speaker.textContent=(message?.speaker??current.speaker)+(listener?' → '+listener:'');text.textContent=messages[index]?.text??'';actions.replaceChildren();onIndex(index);
     if(index<messages.length-1) actions.append(ui.button('Continue',()=>{index++;render();}));
     else for(const action of current.actions.filter(a=>eligible(a.condition))) actions.append(ui.button(action.label,()=>{if(!current||!eligible(action.condition))return;current=null;actionClose=true;dialog.close();onAction(action);}));

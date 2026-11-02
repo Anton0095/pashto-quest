@@ -343,7 +343,7 @@ function createChallengeUI({
         const b = document.createElement("button");
         b.type = "button";
         b.className = "choice";
-        b.textContent = value;
+        b.textContent = reverse ? value : ui.englishChoice(value);
         b.dataset.answer = value;
         if (reverse) {
           b.lang = "ps";

@@ -151,8 +151,8 @@ function createLibraryUI({
       ui.node(
         "p",
         universal
-          ? `${encounteredUniversal} encountered universal lemmas · ${sum.encountered + encounteredUniversal} distinct lexical lemmas overall. Universal words never consume district quotas.`
-          : `${sum.encountered} encountered · ${sum.practised} practised · ${sum.mastered} mastered content lemmas. ${encounteredUniversal} universal lemmas appear separately. Inflections count under one entry.`,
+          ? `${encounteredUniversal} encountered universal words · ${sum.encountered + encounteredUniversal} distinct words overall. Universal words never consume district quotas.`
+          : `${sum.encountered} encountered · ${sum.practised} practised · ${sum.mastered} mastered words. ${encounteredUniversal} universal words appear separately. Inflections count under one entry.`,
         "notice",
       ),
     );
@@ -169,7 +169,7 @@ function createLibraryUI({
       root.append(
         ui.node(
           "p",
-          `Day ${state.day}: ${ids.length} scheduled · ${seen} scheduled lemmas actually encountered. ${actual} incidental story lemmas · ${tally.reviewedExistingLemmas.length} existing lemmas revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap ? plan.notice : ""}`,
+          `Day ${state.day}: ${ids.length} scheduled · ${seen} scheduled words actually encountered. ${actual} incidental story words · ${tally.reviewedExistingLemmas.length} existing words revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap ? plan.notice : ""}`,
         ),
       );
     }
@@ -399,7 +399,7 @@ function createLibraryUI({
     const options = questions.distractors(card);
     let answered = false;
     for (const option of QuestionEngine.shuffle(options)) {
-      const b = ui.button(option, () => {
+      const b = ui.button(ui.englishChoice(option), () => {
         if (answered) return;
         answered = true;
         const eventId = "library-practice:" + ++state.progress.library.attemptSequence;
@@ -444,7 +444,7 @@ function createLibraryUI({
       ui.node("h3", "Learning Pace"),
       ui.node(
         "p",
-        `Current Day ${state.day}: ${plan ? (current !== null && current !== undefined ? current + " new scheduled content lemmas" : "content gap; " + Object.values(plan.locationAssignments).flat().length + " available scheduled lemmas") : "not started"}. Requested pace: ${paceSummary(state.progress.library.requestedDailyTarget)}.`,
+        `Current Day ${state.day}: ${plan ? (current !== null && current !== undefined ? current + " new scheduled words" : "content gap; " + Object.values(plan.locationAssignments).flat().length + " available scheduled words") : "not started"}. Requested pace: ${paceSummary(state.progress.library.requestedDailyTarget)}.`,
       ),
     );
     root.append(
@@ -457,7 +457,7 @@ function createLibraryUI({
     root.append(
       ui.node(
         "p",
-        `${content.LIBRARY_DATA.inventorySummary.activeContentLemmas} district lemmas are active and base content is user-approved. Morphology remains provisional; independent native review is pending.`,
+        `${content.LIBRARY_DATA.inventorySummary.activeContentLemmas} district words are active and base content is user-approved. Morphology remains provisional; independent native review is pending.`,
       ),
     );
     const message = ui.node("p");

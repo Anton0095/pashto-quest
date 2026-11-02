@@ -378,18 +378,18 @@
           "event": "day5-residential"
         },
         {
-          "day": 6,
-          "map": "village",
-          "x": 10,
-          "y": 10,
-          "event": "day6-residential"
-        },
-        {
           "day": 7,
           "map": "village",
           "x": 10,
           "y": 10,
           "event": "day7-residential"
+        },
+        {
+          "day": 6,
+          "map": "village",
+          "x": 11,
+          "y": 28,
+          "event": "day6-business"
         }
       ],
       "condition": "afterTutorial",
@@ -441,7 +441,24 @@
           "map": "village",
           "x": 38,
           "y": 11,
-          "event": "day6-nature"
+          "event": "day6-nature",
+          "condition": "not-complete:6-nature"
+        },
+        {
+          "day": 6,
+          "map": "village",
+          "x": 10,
+          "y": 10,
+          "event": "day6-residential",
+          "condition": "all:complete:6-nature|not-complete:6-residential"
+        },
+        {
+          "day": 6,
+          "map": "village",
+          "x": 38,
+          "y": 11,
+          "event": "day6-nature",
+          "condition": "complete:6-residential"
         },
         {
           "day": 6,
@@ -453,9 +470,18 @@
         {
           "day": 7,
           "map": "village",
+          "x": 39,
+          "y": 27,
+          "event": "day7-school",
+          "condition": "not-complete:7-school"
+        },
+        {
+          "day": 7,
+          "map": "village",
           "x": 38,
           "y": 11,
-          "event": "day7-nature"
+          "event": "day7-saleha-visit",
+          "condition": "complete:7-school"
         }
       ],
       "event": "lake",
@@ -502,18 +528,18 @@
           "event": "day5-business"
         },
         {
-          "day": 6,
-          "map": "village",
-          "x": 11,
-          "y": 28,
-          "event": "day6-business"
-        },
-        {
           "day": 7,
           "map": "village",
           "x": 11,
           "y": 28,
           "event": "day7-business"
+        },
+        {
+          "day": 6,
+          "map": "village",
+          "x": 13,
+          "y": 28,
+          "event": "day6-edris-visit"
         }
       ],
       "event": "market",
@@ -553,13 +579,6 @@
           "event": "day4-school"
         },
         {
-          "day": 5,
-          "map": "village",
-          "x": 39,
-          "y": 27,
-          "event": "day5-school"
-        },
-        {
           "day": 6,
           "map": "village",
           "x": 39,
@@ -569,9 +588,34 @@
         {
           "day": 7,
           "map": "village",
+          "x": 37,
+          "y": 12,
+          "event": "day7-nature",
+          "condition": "not-allLessons"
+        },
+        {
+          "day": 7,
+          "map": "village",
           "x": 39,
           "y": 27,
-          "event": "day7-school"
+          "event": "day7-exam",
+          "condition": "allLessons"
+        },
+        {
+          "day": 5,
+          "map": "village",
+          "x": 37,
+          "y": 13,
+          "event": "day5-school",
+          "condition": "allLessons"
+        },
+        {
+          "day": 5,
+          "map": "village",
+          "x": 39,
+          "y": 27,
+          "event": "day5-school",
+          "condition": "not-allLessons"
         }
       ],
       "event": "school",
@@ -582,7 +626,7 @@
       "id": "mina",
       "characterId": "mina",
       "name": "Mina",
-      "sprite": "saleha",
+      "sprite": "mina",
       "interactionRange": 1,
       "event": "day6-opening",
       "schedule": [
@@ -641,7 +685,8 @@
           "type": "flag",
           "flag": "metGuide"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "library": {
       "speaker": "Muhammad Jan",
@@ -664,7 +709,8 @@
           "type": "tutorial",
           "condition": "afterTutorial"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "home": {
       "speaker": "Muhammad Jan",
@@ -688,7 +734,8 @@
           "type": "completion",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "lake": {
       "speaker": "Saleha",
@@ -702,7 +749,8 @@
           "lessonId": "1-nature",
           "condition": "lesson:1-nature"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "market": {
       "speaker": "Edris",
@@ -716,7 +764,8 @@
           "lessonId": "1-business",
           "condition": "lesson:1-business"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "school": {
       "speaker": "Ms Hameed",
@@ -730,7 +779,8 @@
           "lessonId": "1-school",
           "condition": "lesson:1-school"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "reference": {
       "speaker": "Library",
@@ -749,7 +799,8 @@
       "lines": [
         "Congratulations! You have successfully completed Day 1."
       ],
-      "actions": []
+      "actions": [],
+      "characterId": "muhammad-jan"
     },
     "day2-opening": {
       "speaker": "Ms Hameed",
@@ -770,19 +821,21 @@
           "label": "Explore first",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day2-after-opening": {
       "speaker": "Ms Hameed",
       "lines": [
-        "Continue practising at the other locations, or choose the early challenge. Your lesson result is recorded only by the learning system."
+        "Continue practising with our neighbours, or choose the early challenge when you are ready."
       ],
       "actions": [
         {
           "label": "Return to village",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day2-finale": {
       "speaker": "Muhammad Jan",
@@ -799,7 +852,8 @@
           "day": 2,
           "route": "normal"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day2-skip": {
       "speaker": "Muhammad Jan",
@@ -825,7 +879,8 @@
           "type": "explore",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day2-ending": {
       "speaker": "Muhammad Jan",
@@ -839,7 +894,8 @@
           "label": "Finish Day 2",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day2-residential": {
       "speaker": "Muhammad Jan",
@@ -870,7 +926,8 @@
           "type": "completion",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day2-nature": {
       "speaker": "Saleha",
@@ -885,7 +942,8 @@
           "lessonId": "2-nature",
           "condition": "lesson:2-nature"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day2-business": {
       "speaker": "Edris",
@@ -900,7 +958,8 @@
           "lessonId": "2-business",
           "condition": "lesson:2-business"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "day2-school": {
       "speaker": "Ms Hameed",
@@ -921,7 +980,8 @@
           "lessonId": "2-school",
           "condition": "lesson:2-school"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day3-opening": {
       "speaker": "Saleha",
@@ -942,19 +1002,21 @@
           "label": "Explore first",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day3-after-opening": {
       "speaker": "Saleha",
       "lines": [
-        "Continue practising at the other locations, or choose the early challenge. Your lesson result is recorded only by the learning system."
+        "Continue practising with our neighbours, or choose the early challenge when you are ready."
       ],
       "actions": [
         {
           "label": "Return to village",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day3-finale": {
       "speaker": "Edris",
@@ -962,7 +1024,7 @@
       "condition": "allLessons",
       "once": true,
       "lines": [
-        "You are buying produce for dinner. Edris will help you practise speaking about what you need. The following language tasks come from your compiled daily assessment."
+        "You are buying produce for dinner. Edris will help you practise speaking about what you need."
       ],
       "actions": [
         {
@@ -971,7 +1033,8 @@
           "day": 3,
           "route": "normal"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "day3-skip": {
       "speaker": "Edris",
@@ -997,7 +1060,8 @@
           "type": "explore",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "day3-ending": {
       "speaker": "Edris",
@@ -1011,7 +1075,8 @@
           "label": "Finish Day 3",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "day3-residential": {
       "speaker": "Muhammad Jan",
@@ -1026,7 +1091,8 @@
           "lessonId": "3-residential",
           "condition": "lesson:3-residential"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day3-nature": {
       "speaker": "Saleha",
@@ -1047,7 +1113,8 @@
           "lessonId": "3-nature",
           "condition": "lesson:3-nature"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day3-business": {
       "speaker": "Edris",
@@ -1078,7 +1145,8 @@
           "type": "completion",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "day3-school": {
       "speaker": "Ms Hameed",
@@ -1093,7 +1161,8 @@
           "lessonId": "3-school",
           "condition": "lesson:3-school"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day4-opening": {
       "speaker": "Muhammad Jan",
@@ -1114,19 +1183,21 @@
           "label": "Explore first",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day4-after-opening": {
       "speaker": "Muhammad Jan",
       "lines": [
-        "Continue practising at the other locations, or choose the early challenge. Your lesson result is recorded only by the learning system."
+        "Continue practising with our neighbours, or choose the early challenge when you are ready."
       ],
       "actions": [
         {
           "label": "Return to village",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day4-finale": {
       "speaker": "Muhammad Jan",
@@ -1143,7 +1214,8 @@
           "day": 4,
           "route": "normal"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day4-skip": {
       "speaker": "Muhammad Jan",
@@ -1169,7 +1241,8 @@
           "type": "explore",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day4-ending": {
       "speaker": "Muhammad Jan",
@@ -1183,7 +1256,8 @@
           "label": "Finish Day 4",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day4-residential": {
       "speaker": "Muhammad Jan",
@@ -1220,7 +1294,8 @@
           "type": "completion",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day4-nature": {
       "speaker": "Saleha",
@@ -1235,7 +1310,8 @@
           "lessonId": "4-nature",
           "condition": "lesson:4-nature"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day4-business": {
       "speaker": "Edris",
@@ -1250,7 +1326,8 @@
           "lessonId": "4-business",
           "condition": "lesson:4-business"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "day4-school": {
       "speaker": "Ms Hameed",
@@ -1265,7 +1342,8 @@
           "lessonId": "4-school",
           "condition": "lesson:4-school"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day5-opening": {
       "speaker": "Ms Hameed",
@@ -1286,19 +1364,21 @@
           "label": "Explore first",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day5-after-opening": {
       "speaker": "Ms Hameed",
       "lines": [
-        "Continue practising at the other locations, or choose the early challenge. Your lesson result is recorded only by the learning system."
+        "Continue practising with our neighbours, or choose the early challenge when you are ready."
       ],
       "actions": [
         {
           "label": "Return to village",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day5-finale": {
       "speaker": "Saleha",
@@ -1320,19 +1400,23 @@
         {
           "speaker": "Saleha",
           "listener": "Player",
-          "text": "Join the neighbours at the Lake and consider who is speaking to a friend, an elder or a group."
+          "text": "Join the neighbours at the Lake and consider who is speaking to a friend, an elder or a group.",
+          "characterId": "saleha"
         },
         {
           "speaker": "Muhammad Jan",
           "listener": "Player and neighbours",
-          "text": "We are ready to listen. Use the meanings and constructions supplied by your learning activities."
+          "text": "We are ready to listen. Practise the words and sentences you have learned with us.",
+          "characterId": "muhammad-jan"
         },
         {
           "speaker": "Saleha",
           "listener": "Player",
-          "text": "Your answers will be graded by the existing assessment. We will continue after your result."
+          "text": "Listen to each person and choose your words carefully. We will continue when you finish.",
+          "characterId": "saleha"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day5-skip": {
       "speaker": "Saleha",
@@ -1358,7 +1442,8 @@
           "type": "explore",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day5-ending": {
       "speaker": "Saleha",
@@ -1372,13 +1457,14 @@
           "label": "Finish Day 5",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day5-residential": {
       "speaker": "Muhammad Jan",
       "listener": "Player",
       "lines": [
-        "We can practise Day 5 here at Home."
+        "I am visiting the Lake today. Let us practise the words from Home together."
       ],
       "actions": [
         {
@@ -1387,7 +1473,8 @@
           "lessonId": "5-residential",
           "condition": "lesson:5-residential"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day5-nature": {
       "speaker": "Saleha",
@@ -1418,13 +1505,14 @@
           "type": "completion",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day5-business": {
       "speaker": "Edris",
       "listener": "Player",
       "lines": [
-        "We can practise Day 5 here at Market."
+        "I have joined the neighbours by the Lake. We can practise our Market words here."
       ],
       "actions": [
         {
@@ -1433,13 +1521,14 @@
           "lessonId": "5-business",
           "condition": "lesson:5-business"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "day5-school": {
       "speaker": "Ms Hameed",
       "listener": "Player",
       "lines": [
-        "We can practise Day 5 here at School."
+        "We can practise our School words together. When everyone is ready, I will join the Lake gathering."
       ],
       "actions": [
         {
@@ -1454,7 +1543,8 @@
           "lessonId": "5-school",
           "condition": "lesson:5-school"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day6-opening": {
       "speaker": "Saleha",
@@ -1480,19 +1570,22 @@
         {
           "speaker": "Saleha",
           "listener": "Player",
-          "text": "This is my sister Mina. We are learning together today."
+          "text": "This is my sister Mina. We are learning together today.",
+          "characterId": "saleha"
         },
         {
           "speaker": "Mina",
           "listener": "Player",
-          "text": "Let us begin at the Lake. Later we can meet in the Hills."
+          "text": "Let us begin at the Lake. Later we can meet in the Hills.",
+          "characterId": "mina"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day6-after-opening": {
       "speaker": "Saleha",
       "lines": [
-        "Continue practising at the other locations, or choose the early challenge. Your lesson result is recorded only by the learning system."
+        "Continue practising with our neighbours, or choose the early challenge when you are ready."
       ],
       "actions": [
         {
@@ -1509,7 +1602,8 @@
             "facing": "right"
           }
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day6-finale": {
       "speaker": "Saleha",
@@ -1531,19 +1625,23 @@
         {
           "speaker": "Saleha",
           "listener": "Player",
-          "text": "Saleha and Mina meet you in the Hills. Speak together using the group and compound-subject material you studied."
+          "text": "Saleha and Mina meet you in the Hills. Speak together using the group and compound-subject material you studied.",
+          "characterId": "saleha"
         },
         {
           "speaker": "Mina",
           "listener": "Player and neighbours",
-          "text": "We are ready to listen. Use the meanings and constructions supplied by your learning activities."
+          "text": "We are ready to listen. Practise the words and sentences you have learned with us.",
+          "characterId": "mina"
         },
         {
           "speaker": "Saleha",
           "listener": "Player",
-          "text": "Your answers will be graded by the existing assessment. We will continue after your result."
+          "text": "Listen to each person and choose your words carefully. We will continue when you finish.",
+          "characterId": "saleha"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day6-skip": {
       "speaker": "Saleha",
@@ -1569,7 +1667,8 @@
           "type": "explore",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day6-ending": {
       "speaker": "Saleha",
@@ -1583,10 +1682,11 @@
           "label": "Finish Day 6",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day6-residential": {
-      "speaker": "Muhammad Jan",
+      "speaker": "Saleha",
       "listener": "Player",
       "lines": [
         "We can practise Day 6 here at Home."
@@ -1598,7 +1698,8 @@
           "lessonId": "6-residential",
           "condition": "lesson:6-residential"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day6-nature": {
       "speaker": "Saleha",
@@ -1619,10 +1720,11 @@
           "lessonId": "6-nature",
           "condition": "lesson:6-nature"
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day6-business": {
-      "speaker": "Edris",
+      "speaker": "Muhammad Jan",
       "listener": "Player",
       "lines": [
         "We can practise Day 6 here at Market."
@@ -1634,7 +1736,8 @@
           "lessonId": "6-business",
           "condition": "lesson:6-business"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day6-school": {
       "speaker": "Ms Hameed",
@@ -1649,7 +1752,8 @@
           "lessonId": "6-school",
           "condition": "lesson:6-school"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day6-hills": {
       "speaker": "Saleha",
@@ -1669,7 +1773,8 @@
           "type": "challenge",
           "day": 6
         }
-      ]
+      ],
+      "characterId": "saleha"
     },
     "day6-arrival": {
       "speaker": "Mina",
@@ -1683,7 +1788,8 @@
           "label": "Follow the trail",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "mina"
     },
     "hills-reference": {
       "speaker": "Trail marker",
@@ -1716,19 +1822,21 @@
           "label": "Explore first",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "day7-after-opening": {
       "speaker": "Edris",
       "lines": [
-        "Continue practising at the other locations, or choose the early challenge. Your lesson result is recorded only by the learning system."
+        "Continue practising with our neighbours, or choose the early challenge when you are ready."
       ],
       "actions": [
         {
           "label": "Return to village",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "day7-finale": {
       "speaker": "Ms Hameed",
@@ -1750,19 +1858,23 @@
         {
           "speaker": "Ms Hameed",
           "listener": "Player",
-          "text": "Ms Hameed will assess practical language from across Week 1, including they and cumulative pronoun practice."
+          "text": "Ms Hameed will assess practical language from across Week 1, including they and cumulative pronoun practice.",
+          "characterId": "hameed"
         },
         {
           "speaker": "Edris",
           "listener": "Player and neighbours",
-          "text": "We are ready to listen. Use the meanings and constructions supplied by your learning activities."
+          "text": "We are ready to listen. Practise the words and sentences you have learned with us.",
+          "characterId": "edris"
         },
         {
           "speaker": "Ms Hameed",
           "listener": "Player",
-          "text": "Your answers will be graded by the existing assessment. We will continue after your result."
+          "text": "Listen to each person and choose your words carefully. We will continue when you finish.",
+          "characterId": "hameed"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day7-skip": {
       "speaker": "Ms Hameed",
@@ -1788,7 +1900,8 @@
           "type": "explore",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day7-ending": {
       "speaker": "Ms Hameed",
@@ -1802,7 +1915,8 @@
           "label": "Finish Week 1",
           "type": "explore"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day7-residential": {
       "speaker": "Muhammad Jan",
@@ -1817,10 +1931,11 @@
           "lessonId": "7-residential",
           "condition": "lesson:7-residential"
         }
-      ]
+      ],
+      "characterId": "muhammad-jan"
     },
     "day7-nature": {
-      "speaker": "Saleha",
+      "speaker": "Ms Hameed",
       "listener": "Player",
       "lines": [
         "We can practise Day 7 here at Lake."
@@ -1832,7 +1947,8 @@
           "lessonId": "7-nature",
           "condition": "lesson:7-nature"
         }
-      ]
+      ],
+      "characterId": "hameed"
     },
     "day7-business": {
       "speaker": "Edris",
@@ -1853,10 +1969,11 @@
           "lessonId": "7-business",
           "condition": "lesson:7-business"
         }
-      ]
+      ],
+      "characterId": "edris"
     },
     "day7-school": {
-      "speaker": "Ms Hameed",
+      "speaker": "Saleha",
       "listener": "Player",
       "lines": [
         "We can practise Day 7 here at School."
@@ -1884,7 +2001,59 @@
           "type": "completion",
           "condition": "passed"
         }
-      ]
+      ],
+      "characterId": "saleha"
+    },
+    "day6-edris-visit": {
+      "speaker": "Edris",
+      "listener": "Player",
+      "lines": [
+        "Muhammad Jan is visiting the Market. He will help you practise speaking about what we do together."
+      ],
+      "actions": [],
+      "characterId": "edris"
+    },
+    "day7-exam": {
+      "speaker": "Ms Hameed",
+      "listener": "Player",
+      "lines": [
+        "Your weekly examination is ready. Show us what you remember from our first week together."
+      ],
+      "actions": [
+        {
+          "label": "Join Week 1 examination",
+          "type": "event",
+          "event": "day7-finale",
+          "condition": "allLessons"
+        },
+        {
+          "label": "Day 7 challenge · 25 questions",
+          "type": "challenge",
+          "day": 7
+        },
+        {
+          "label": "Review day results",
+          "type": "completion",
+          "condition": "passed"
+        }
+      ],
+      "characterId": "hameed"
+    },
+    "day7-saleha-visit": {
+      "speaker": "Saleha",
+      "listener": "Player",
+      "lines": [
+        "We have finished our School practice. Ms Hameed will lead your weekly examination when your visits are complete."
+      ],
+      "actions": [
+        {
+          "label": "Study at School",
+          "type": "lesson",
+          "lessonId": "7-school",
+          "condition": "lesson:7-school"
+        }
+      ],
+      "characterId": "saleha"
     }
   },
   "days": {
@@ -1937,8 +2106,7 @@
       "openingMode": "interaction",
       "intro": "Muhammad Jan will guide you to the Library for your first four activities. Then explore Home, Lake, Market and School in any order. Pass the Day 1 challenge to begin your first week.",
       "presentation": {
-        "completeTitle": "Day 1 complete",
-        "terminalTitle": "Pashto Quest — RPG Prototype Complete"
+        "completeTitle": "Day 1 complete"
       }
     },
     "2": {
@@ -2309,10 +2477,10 @@
       },
       "completion": {
         "challengePassed": 7,
-        "terminal": true
+        "terminal": false
       },
       "endingEvent": "day7-ending",
-      "nextChapter": null,
+      "nextChapter": "day-8",
       "objective": "Normal: begin at Market, visit four districts, then Week 1 examination. Early challenge: speak to Ms Hameed at School.",
       "routes": {
         "normal": {
@@ -2325,7 +2493,8 @@
       },
       "presentation": {
         "completeTitle": "Week 1 completed",
-        "terminalTitle": "Pashto Quest — Week 1 Complete"
+        "terminalTitle": "Pashto Quest — Week 1 Complete",
+        "milestoneTitle": "Pashto Quest — Week 1 Complete"
       }
     }
   }

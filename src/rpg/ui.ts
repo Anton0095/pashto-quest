@@ -7,6 +7,7 @@ import {createChapterDirector} from './chapters';
 import {createStoryDirector} from './story';
 import {createChapterRoutes} from './routes';
 import {createPhaserWorld} from './phaser-world';
+import {approachTiles,facingToward} from './movement';
 /* RPG profile adapters. Education remains authoritative; world state owns no rewards. */
 export function createRPG({state,content,progression,learning,ui,audio,storage,world,lessons,challenge,library}:EducationServices,dependencies:RPGDependencies) {
   const data=dependencies.data,RPGPersistence=createPersistenceAPI(data,dependencies.questions),persistence=RPGPersistence.create(data,undefined,dependencies.fence);
@@ -15,6 +16,10 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
   const conditions={beforeGuideMeeting:()=>!state.progress.tutorialDone&&!save.flags.metGuide,beforeTutorial:()=>!state.progress.tutorialDone,afterTutorial:()=>state.progress.tutorialDone,passed:()=>progression.passedChallenge(state.progress,current())};
   function eligible(condition?:string):boolean {
     if(!condition)return true;
+    if(condition.startsWith('all:'))return condition.slice(4).split('|').every(eligible);
+    if(condition.startsWith('complete:'))return !!state.progress.complete[condition.slice(9)];
+    if(condition.startsWith('not-complete:'))return !state.progress.complete[condition.slice(13)];
+    if(condition==='not-allLessons')return !chapter().lessons.every(id=>state.progress.complete[id]);
     if(condition.startsWith('flag:'))return !!save.flags[condition.slice(5)];
     if(condition.startsWith('not-flag:'))return !save.flags[condition.slice(9)];
     if(condition.startsWith('event:'))return !!save.triggers[condition.slice(6)];
@@ -45,7 +50,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
     if(policy.terminal(current())){
       ui.$('xpAmount').textContent='Day '+current()+' complete · XP recorded';
       ui.$('xpBar').setAttribute('aria-valuetext',ui.$('xpAmount').textContent);
-      ui.$('characterSubtitle').textContent='Welcome, '+state.progress.playerProfile.name+' · '+(chapter().presentation?.terminalTitle??'RPG prototype complete.');
+      ui.$('characterSubtitle').textContent='Welcome, '+state.progress.playerProfile.name+' · '+(chapter().presentation?.terminalTitle??'Chapter complete.');
     }
   };
   // These entry guards also protect replay and restored snapshots.
@@ -64,9 +69,12 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
   const menuButton=ui.button('Menu · Esc',()=>openMenu());menuButton.id='rpgMenuButton';
   tools.append(libButton,menuButton);heading.append(tools);root.append(heading);
   const viewport=ui.node('div',undefined,'rpg-viewport'),canvas=document.createElement('canvas');
-  canvas.id='rpgCanvas';canvas.width=window.innerWidth<600?256:512;canvas.height=window.innerWidth<600?192:320;canvas.tabIndex=0;canvas.setAttribute('aria-label','Village exploration. Use arrow keys or WASD to move; E or Enter to interact.');
+  canvas.id='rpgCanvas';canvas.width=window.innerWidth<600?256:512;canvas.height=window.innerWidth<600?192:320;canvas.tabIndex=0;canvas.setAttribute('aria-label','Village exploration. Use arrow keys or WASD to move; E or Enter to interact. Click or tap to move; select a character to approach and talk.');
   const locationNote=ui.node('p','','rpg-location-note');locationNote.id='rpgObjective';locationNote.setAttribute('role','status');
-  viewport.append(canvas);root.append(viewport,locationNote);
+  viewport.append(canvas);root.append(viewport,document.querySelector<HTMLElement>('.herochar')!,locationNote);
+  const progressCard=document.querySelector<HTMLElement>('.herochar .char-content')!;
+  progressCard.append(ui.$('xpPill'),ui.$('knownPill'));
+  ui.$('navLibrary').classList.add('hidden');
   const controls=ui.node('div',undefined,'rpg-controls'),dpad=ui.node('div',undefined,'rpg-dpad');dpad.setAttribute('aria-label','Directional controls');
   const interactButton=ui.button('Interact · E',()=>interact());interactButton.id='rpgInteract';interactButton.className='primary';
   for(const [direction,label]of [['up','↑'],['left','←'],['down','↓'],['right','→']] as const) {
@@ -75,7 +83,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
     for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,()=>{held=null;});
     b.addEventListener('click',e=>{if(e.detail===0)move(direction,performance.now(),true);});dpad.append(b);
   }
-  const controlHelp=ui.node('p','Move with WASD or arrows. E / Enter to talk. L opens your Library.','tiny muted');
+  const controlHelp=ui.node('p','Click or tap to walk or approach a character. Arrows / WASD and touch arrows also work. E / Enter to talk.','tiny muted');
   controls.append(dpad,interactButton,controlHelp);root.append(controls);
   const visits=ui.node('div',undefined,'rpg-visits');visits.id='rpgVisits';root.append(visits);
   const notice=ui.node('p','','tiny');notice.id='rpgSaveNotice';notice.setAttribute('role','status');root.append(notice);
@@ -85,27 +93,55 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
   menu.append(ui.node('h2','Your journey'),ui.node('p','Explore at your own pace. Challenge access follows the current chapter and educational prerequisites.'));
   const appearance=ui.node('fieldset'),legend=ui.node('legend','Character appearance');appearance.append(legend);
   for(const kind of ['masculine','feminine','neutral'] as const) {const b=ui.button(kind[0].toUpperCase()+kind.slice(1),()=>{save.appearance=kind;dirty=true;refreshAppearance();scheduleSave();});b.dataset.appearance=kind;appearance.append(b);}
+  menu.append(ui.$('dialectGuide'),ui.$('resetProgress'));
   menu.append(appearance,ui.button('Open Library',()=>{menu.close();openLibrary();}),ui.button('Due review',()=>{menu.close();lessons.begin('review');}),ui.button('Journey results',()=>{menu.close();if(conditions.passed())showCompletion();else dialogue.open({speaker:'Muhammad Jan',lines:['Complete the Day '+current()+' challenge with at least '+progression.getChallengeSpec(current()).passCount+' out of '+progression.getChallengeSpec(current()).questionCount+' correct answers.'],actions:[]});}),ui.button('Resume village',()=>menu.close()));
   const history=ui.node('details');history.append(ui.node('summary','Revisit completed chapters'));const historyButtons=ui.node('div',undefined,'buttons');history.append(historyButtons);menu.append(history);
-  function openMenu(){historyButtons.replaceChildren();for(const c of Object.values(data.days))if(policy.configured(c.day)&&learning.allowed(c.day)&&progression.passedChallenge(state.progress,c.day))historyButtons.append(ui.button('Revisit Day '+c.day,()=>{menu.close();void enterChapter(c.day);}));menu.showModal();}
-  document.body.append(menu);menu.addEventListener('close',()=>{held=null;canvas.focus();dirty=true;});
+  function openMenu(){held=null;engine?.cancelRoute();historyButtons.replaceChildren();for(const c of Object.values(data.days))if(policy.configured(c.day)&&learning.allowed(c.day)&&progression.passedChallenge(state.progress,c.day))historyButtons.append(ui.button('Revisit Day '+c.day,()=>{menu.close();void enterChapter(c.day);}));menu.showModal();}
+  document.body.append(menu);ui.$('resetProgress').addEventListener('click',()=>menu.close(),{signal:listeners.signal});menu.addEventListener('close',()=>{held=null;canvas.focus();dirty=true;});
   function refreshAppearance(){for(const b of appearance.querySelectorAll('button'))b.setAttribute('aria-pressed',String(b.dataset.appearance===save.appearance));}refreshAppearance();
   let engine:ReturnType<typeof createPhaserWorld>|undefined;
   try {if(!canvas.getContext('2d'))throw Error('Canvas unavailable');
   engine=createPhaserWorld({canvas,data,allowedMaps:()=>chapter().maps,position:()=>save.position,actors:()=>registry.objects(current(),save.position.map).map(n=>({...n,facing:facings.get(n.id)||'down'})),appearance:()=>save.appearance,active,
+    onInteract(){interact();},
     onMove(position,transition){const moved=save.position.x!==position.x||save.position.y!==position.y||save.position.map!==position.map;save.position=position;if(moved)save.flags.moved=true;if(transition)held=null;dirty=true;scheduleSave();},
     onFrame(){if(!active()){held=null;return;}if(dirty)draw();if(visitMap())return;const target=engine?.nearby()?.id||'';if(target!==lastTarget){lastTarget=target;dirty=true;}if(held)move(held,performance.now());if(dirty)draw();}});
-  }catch{renderFailed=true;notice.textContent='The map could not start. Use Learning access below; your learning progress remains available.';}
-  const access=ui.node('details'),summary=ui.node('summary','Learning access');access.append(summary);
+  }catch{renderFailed=true;notice.textContent='The map could not start. Use Quick travel below; your learning progress remains available.';}
+  const access=ui.node('details'),summary=ui.node('summary','Quick travel');access.append(summary);
   const accessButtons=ui.node('div',undefined,'buttons');
-  access.append(ui.node('p','Keyboard and map fallback: the same lessons, challenge and reference.', 'tiny'),accessButtons);root.append(access);
+  access.append(ui.node('p','Travel to a character and use the same conversation as walking. Locked lessons follow your story progress.', 'tiny'),accessButtons);root.append(access);
+  const locationNames:Record<string,string>={residential:'Home',nature:'Lake',business:'Market',school:'School'};
+  function quickDestination(id:string):{label:string;actor?:Actor} {
+    const loc=id.split('-')[1],c=chapter();
+    // A Nature finale can change scenes without creating a fifth district.
+    const finale=loc==='nature'&&eligible('allLessons')&&c.challenge?.location==='hills';
+    const maps=finale?[c.challenge!.map!]:c.maps;
+    for(const map of maps){
+      const actor=registry.npcs(current(),map).find(a=>finale?a.id===c.challenge?.npc:data.events[a.event]?.actions.some(action=>action.type==='lesson'&&action.lessonId===id));
+      if(actor){
+        const region=data.maps[map].regions.find(r=>actor.x>=r.x&&actor.x<r.x+r.w&&actor.y>=r.y&&actor.y<r.y+r.h);
+        const actual=finale?data.maps[map].name.split(' · ')[0]:region&&locationNames[region.id]||locationNames[loc];
+        return {label:actual+(actual!==locationNames[loc]&&!finale?' · '+actor.name:''),actor};
+      }
+    }
+    return {label:locationNames[loc]};
+  }
+  async function quickTravel(id:string){
+    if(!eligible('lesson:'+id)||!active()&&!(renderFailed&&currentView==='world'&&!document.querySelector('dialog[open]')))return;
+    const target=quickDestination(id).actor;
+    if(!target||renderFailed){lessons.begin(id);return;}
+    const tiles=approachTiles(data,target.map,target,registry.objects(current(),target.map));
+    const tile=tiles[0];if(!tile)return;
+    held=null;engine?.cancelRoute();
+    await travel({map:target.map,x:tile.x,y:tile.y,facing:facingToward(tile,target)});
+    if(!dialogue.isOpen)interact();
+  }
   function refreshAccess(){accessButtons.replaceChildren();
     if(!state.progress.tutorialDone)accessButtons.append(ui.button('Begin Library tutorial',()=>lessons.begin(chapter().tutorialLessonId??'tutorial')));
-    else for(const id of chapter().lessons){const b=ui.button('Study '+id,()=>lessons.begin(id));b.disabled=!eligible('lesson:'+id);accessButtons.append(b);}
+    else for(const id of chapter().lessons){const destination=quickDestination(id);const b=ui.button(destination.label,()=>void quickTravel(id));b.dataset.destination=id.split('-')[1];b.disabled=!eligible('lesson:'+id);accessButtons.append(b);}
     if(chapters.challengeAvailable())accessButtons.append(ui.button('Day '+current()+' challenge',()=>act({label:'Challenge',type:'challenge',day:current()})));
     accessButtons.append(ui.button('Open Library',openLibrary));
   }
-  canvas.addEventListener('contextlost',()=>{renderFailed=true;held=null;refreshAccess();access.open=true;notice.textContent='Map rendering was interrupted. Learning access remains available.';},{signal:listeners.signal});
+  canvas.addEventListener('contextlost',()=>{renderFailed=true;held=null;refreshAccess();access.open=true;notice.textContent='Map rendering was interrupted. Quick travel remains available.';},{signal:listeners.signal});
   // Restore a paired lesson before the first educational snapshot compacts history.
   // Otherwise that snapshot would retire the lesson's deduplication events.
   const pairedLesson = !state.progress.activeChallenge && save.view==='lesson' &&
@@ -114,10 +150,10 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
   if(pairedLesson) state.session=pairedLesson;
   const oldView=ui.view;
   ui.view=name=>{
-    held=null;audio.stopAudio();current();document.querySelector<HTMLElement>('.brand')!.textContent='✦ PASHTO QUEST · '+chapter().name;
+    held=null;engine?.cancelRoute();audio.stopAudio();current();document.querySelector<HTMLElement>('.brand')!.textContent='✦ PASHTO QUEST · '+chapter().name;
     if(name==='resultScreen'){ui.$('resultXPLabel').textContent='XP gained';ui.$('resultKnowledgeLabel').textContent='Items practised';ui.$('resultScreen').querySelector<HTMLElement>('.eyebrow')!.textContent='LESSON FINISHED';}
     currentView=name==='worldScreen'?'world':name==='lessonScreen'?'lesson':name==='resultScreen'?'result':'intro';
-    oldView(name);
+    oldView(name);ui.$('navLibrary').classList.toggle('hidden',name==='worldScreen'||name==='introScreen');
     const overlay=name==='lessonScreen'||name==='resultScreen';document.body.classList.toggle('rpg-overlay-active',overlay);if(overlay)root.classList.remove('hidden');
     if(name==='lessonScreen'&&state.session?.mode==='challenge'&&state.session.loop===chapter().challenge?.day){const caption=ui.$('challengeScene')?.querySelector('.eyebrow');if(caption)caption.textContent='DAY '+current()+' · CHAPTER CHALLENGE';}
     if(name==='resultScreen') {
@@ -139,11 +175,12 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
     title.textContent=data.maps[save.position.map].name;
     interactButton.disabled=!near;interactButton.textContent=near?'Talk · '+near.name:'Interact · E';
     locationNote.textContent=!state.progress.tutorialDone?(save.flags.metGuide?'Meet Muhammad Jan inside the Library, north of the village crossroads.':'Muhammad Jan is beside you. Approach him and press Interact.'):
-      conditions.passed()?'Day '+current()+' complete. Explore, revisit lessons or review your Library.'+(chapter().completion.terminal?' This RPG milestone ends here.':''):near?'Nearby: '+near.name+' · Press E or Interact.':chapter().objective;
+      conditions.passed()?'Day '+current()+' complete. Explore, revisit lessons or review your Library.':near?'Nearby: '+near.name+' · Press E or Interact.':chapter().objective;
     visits.replaceChildren();for(const loc of content.zoneKeys)visits.append(ui.node('span',(state.progress.complete[current()+'-'+loc]?'✓ ':'○ ')+({residential:'Home',nature:'Lake',business:'Market',school:'School'}[loc])));
-    notice.textContent=persistence.problem||(renderFailed?'Map unavailable. Use Learning access below.':'');dirty=false;
+    notice.textContent=persistence.problem||(renderFailed?'Map unavailable. Use Quick travel below.':'');dirty=false;
   }
   function move(direction:Direction,now:number,immediate=false):boolean {
+    engine?.cancelRoute();
     if(!active()||now-lastMove<(immediate?100:150))return false;
     lastMove=now;return engine?.step(direction)??false;
   }
@@ -196,7 +233,8 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
   }
   async function travel(position:WorldSave['position']){
     if(!chapter().maps.includes(position.map))return;
-    save.position=RPGWorldData.recover(data,position);engine?.sync();dirty=true;
+    engine?.cancelRoute();
+    save.position=RPGWorldData.recover(data,position);engine?.relocate();dirty=true;
     await persist();visitMap();
   }
   async function advance(){
@@ -215,7 +253,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
       startWorld();await persist();
     }finally{advancing=false;}
   }
-  function openLibrary(){held=null;library.openLibrary();}
+  function openLibrary(){held=null;engine?.cancelRoute();library.openLibrary();}
   function startWorld(){
     audio.stopAudio();current();state.session=null;save.flags.started=true;
     if(!chapter().maps.includes(save.position.map))save.position={...chapter().start};
@@ -231,7 +269,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
   function showCompletion(){
     if(!chapters.complete())return;
     current();document.querySelector<HTMLElement>('.brand')!.textContent='✦ PASHTO QUEST · '+chapter().name;currentView='complete';oldView('resultScreen');root.classList.remove('hidden');document.body.classList.add('rpg-overlay-active');
-    ui.$('resultHeading').textContent=chapter().completion.terminal?(chapter().presentation?.terminalTitle??'Pashto Quest — RPG Prototype Complete'):(chapter().presentation?.completeTitle??'Day '+current()+' complete');
+    ui.$('resultHeading').textContent=chapter().presentation?.milestoneTitle??(chapter().completion.terminal?(chapter().presentation?.terminalTitle??'Pashto Quest — RPG Prototype Complete'):(chapter().presentation?.completeTitle??'Day '+current()+' complete'));
     const dispatched=chapters.ending();
     if(!dispatched&&chapter().endingEvent&&story.status(chapter().endingEvent!)!=='completed')openEvent(chapter().endingEvent!);
     const ending=chapter().endingEvent&&registry.event(chapter().endingEvent!);
@@ -246,7 +284,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
     const status=progression.characterStatus(state.progress);ui.$('resultXP').textContent=status.xp+' XP';
     ui.$('resultKnowledge').textContent='Level '+status.level+' · '+status.title;
     const acquired=Object.keys(state.progress.library.acquired);const district=acquired.filter(id=>content.libraryEntries[id]?.countsTowardDailyQuota).length;
-    ui.$('resultNext').textContent=acquired.length+' vocabulary lemmas unlocked ('+district+' district, '+(acquired.length-district)+' universal). Day '+current()+' completed.'+(chapter().completion.terminal?' This RPG milestone ends here; Day '+(current()+1)+' is unavailable.':'');
+    ui.$('resultNext').textContent=acquired.length+' words unlocked ('+district+' district, '+(acquired.length-district)+' universal). Day '+current()+' completed.'+(!chapters.next()?' Further chapters will appear when their story content is registered.':'');
     ui.$('resultWorld').textContent='Return to village';ui.$('resultReplay').classList.add('hidden');
     let extra=ui.$('rpgCompletionExtra');if(!extra){extra=ui.node('div',undefined,'buttons');extra.id='rpgCompletionExtra';ui.$('resultScreen').append(extra);}extra.replaceChildren();
     extra.append(ui.button('Review Library',()=>openLibrary()),ui.button('Replay / reset journey',()=>ui.$('resetProgress').click()));
@@ -260,7 +298,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
     save.view=currentView==='lesson'?'lesson':currentView==='complete'?'complete':'world';
     save.lesson=currentView==='lesson'?RPGPersistence.lessonSnapshot(state.session):null;
     save.educationFingerprint=RPGPersistence.fingerprint(storage.snapshot());
-    const saved=await persistence.save(save);notice.textContent=persistence.problem||(renderFailed?'Map unavailable. Use Learning access below.':'');return saved;
+    const saved=await persistence.save(save);notice.textContent=persistence.problem||(renderFailed?'Map unavailable. Use Quick travel below.':'');return saved;
   }
   function scheduleSave(){if(disposed)return;clearTimeout(timer);timer=setTimeout(()=>void persist(),180);}
   const keys:Record<string,Direction>={ArrowUp:'up',w:'up',W:'up',ArrowDown:'down',s:'down',S:'down',ArrowLeft:'left',a:'left',A:'left',ArrowRight:'right',d:'right',D:'right'};
@@ -276,7 +314,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,w
   document.addEventListener('input',()=>{if(currentView==='lesson')scheduleSave();},{signal:listeners.signal});
   function configureIntro(){const intro=ui.$('introScreen'),begin=ui.$('startTutorial'),pace=ui.$('onboardingPace');intro.replaceChildren();
     intro.append(ui.node('p','DAY '+current()+' · LAGHMAN, AFGHANISTAN','eyebrow'),ui.node('h2',chapter().name,'headline'),ui.node('p','Make a new home in a Pashto-speaking village. Explore its paths, meet your neighbours and learn the words that connect you.'),ui.node('p',chapter().intro));
-    if(pace)intro.append(pace);begin.textContent='Enter the village →';intro.append(begin,ui.node('p','Arrows / WASD to move · E to interact · L for Library. Touch controls are available. Your prototype progress is saved separately.','tiny muted'));
+    if(pace)intro.append(pace);begin.textContent='Enter the village →';intro.append(begin,ui.node('p','Arrows / WASD to move · E to interact · L for Library. Touch controls are available. Your RPG progress is saved separately.','tiny muted'));
   }
   configureIntro();
   function boot(){

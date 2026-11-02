@@ -202,12 +202,22 @@ def build(check_rpg=False):
     # Explicit dependency order; modules use factories with injected services.
     modules = [
         'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
-        'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'construction-ui', 'answer-feedback', 'sentence-scene', 'ui',
+        'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'character-portraits', 'construction-ui', 'answer-feedback', 'sentence-scene', 'ui',
         'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
         'world-ui', 'library-ui',
     ]
     datasets = {'RPG_ENABLED': True, 'RPG_WORLD_DATA': json.loads(read('content/RPG_WORLD.json')), 'LIBRARY_DATA': library,
-                'NARRATIVE_DATA': narrative, 'BUNDLED_AUDIO_IDS': audio_ids}
+                'NARRATIVE_DATA': narrative, 'CHARACTER_PORTRAITS': json.loads(read('content/CHARACTER_PORTRAITS.json')), 'BUNDLED_AUDIO_IDS': audio_ids}
+    portraits = datasets['CHARACTER_PORTRAITS']
+    import base64
+    for character in portraits['characters'].values():
+        for expression, source in character['expressions'].items():
+            if source:
+                asset = (ROOT / source).resolve()
+                if not asset.is_relative_to(ROOT / 'assets' / 'portraits') or asset.suffix.lower() not in ['.png', '.webp']:
+                    raise ValueError('Portrait must be a PNG/WebP under assets/portraits')
+                mime = 'image/png' if asset.suffix.lower() == '.png' else 'image/webp'
+                character['expressions'][expression] = 'data:' + mime + ';base64,' + base64.b64encode(asset.read_bytes()).decode('ascii')
     script = '\n'.join('const ' + name + '=' + encode(value) + ';'
                        for name, value in datasets.items()) + '\n'
     script += '\n'.join(read('src/' + name + '.js') for name in modules)

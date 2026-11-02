@@ -7,14 +7,14 @@ export interface Position extends Point {map:string; facing:Direction}
 export interface Transition extends Point {to:string; spawn:Point}
 export interface WorldMap {name:string; tiles:string[]; collision?:string[]; spawn:Point; transitions:Transition[]; regions:Array<Point & {id:string;name:string;w:number;h:number}>; buildings:Array<Point & {w:number;h:number;label:string;color:string}>}
 export type Action = {label:string;condition?:string} & ({type:'flag';flag:string}|{type:'tutorial'|'reference'|'completion'}|{type:'lesson';lessonId:string;resumeEvent?:string}|{type:'challenge';day:number;route?:'normal'|'skip'}|{type:'event';event:string}|{type:'explore'}|{type:'scene';position:Position});
-export interface StoryEvent {listener?:string;trigger?:'interaction'|'map';speaker:string;lines:string[];messages?:Array<{speaker:string;listener?:string;text:string;condition?:string}>;condition?:string;once?:boolean;setFlags?:string[];actions:Action[]}
+export interface StoryEvent {characterId?:string;expression?:string;listener?:string;trigger?:'interaction'|'map';speaker:string;lines:string[];messages?:Array<{characterId?:string;expression?:string;speaker:string;listener?:string;text:string;condition?:string}>;condition?:string;once?:boolean;setFlags?:string[];actions:Action[]}
 export interface Schedule extends Point {condition?:string;day:number;map:string;event?:string}
 export interface NPC {defaultLocation?:Omit<Schedule,'day'>;characterId:string;interactionRange?:number;animations?:Partial<Record<Direction,string>>;id:string;name:string;sprite:string;condition?:string;event:string;schedule:Schedule[]}
 export interface WorldObject extends Point {id:string;name:string;map:string;event:string;condition?:string}
 export type Actor = WorldObject & {characterId?:string;interactionRange?:number;animations?:Partial<Record<Direction,string>>;sprite?:string;schedule?:Schedule[];facing?:Direction};
 export type ChapterRoute='normal'|'skip';
 export interface ChapterRoutes {normal:{opening?:string;finale?:string};skip:{event?:string}}
-export interface Chapter {routes?:ChapterRoutes;mapEvents?:Record<string,string[]>;presentation?:{completeTitle?:string;terminalTitle?:string};id:string;day:number;name:string;intro:string;maps:string[];start:Position;prerequisites:string[];mandatoryEvents:string[];activeNPCs:string[];endingEvent?:string;nextChapter:string|null;objective:string;openingMode?:'automatic'|'interaction';openingEvent?:string;tutorialLessonId?:string;lessons:string[];challenge?:{day:number;npc:string;location?:string;map?:string;conditions?:string[]};completion:{challengePassed?:number;terminal:boolean}}
+export interface Chapter {routes?:ChapterRoutes;mapEvents?:Record<string,string[]>;presentation?:{milestoneTitle?:string;completeTitle?:string;terminalTitle?:string};id:string;day:number;name:string;intro:string;maps:string[];start:Position;prerequisites:string[];mandatoryEvents:string[];activeNPCs:string[];endingEvent?:string;nextChapter:string|null;objective:string;openingMode?:'automatic'|'interaction';openingEvent?:string;tutorialLessonId?:string;lessons:string[];challenge?:{day:number;npc:string;location?:string;map?:string;conditions?:string[]};completion:{challengePassed?:number;terminal:boolean}}
 export interface WorldData {schemaVersion:number;firstDay:number;lastDay:number;start:Position;tiles:Record<string,{walkable:boolean;kind:string}>;maps:Record<string,WorldMap>;npcs:NPC[];objects:WorldObject[];events:Record<string,StoryEvent>;days:Record<string,Chapter>}
 export interface Question {id:string;kind:'word'|'construct';retries:number;[key:string]:unknown}
 export interface LessonSession {
@@ -36,7 +36,7 @@ export interface UI {
   $(id:string):HTMLElement;
   node<K extends keyof HTMLElementTagNameMap>(tag:K,text?:string,cls?:string):HTMLElementTagNameMap[K];
   button(text:string,fn:(event:MouseEvent)=>void):HTMLButtonElement;
-  hud():void;view(name:string):void;
+  hud():void;view(name:string):void;portrait(identity:string,expression?:string):HTMLElement;
 }
 export interface Learning {allowed(day:number):boolean;placeAccessible(day:number,place:string):boolean}
 export interface Progression {passedChallenge(progress:Progress,day:number):boolean;characterStatus(progress:Progress):{xp:number;level:number;title:string};getChallengeSpec(day:number):{passCount:number;questionCount:number}}
