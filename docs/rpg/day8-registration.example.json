@@ -1,0 +1,261 @@
+{
+  "active": false,
+  "notice": "Excluded from the builder. English narrative example; requires review, schedules and end-to-end tests before activation.",
+  "days": {
+    "8": {
+      "id": "day-8",
+      "day": 8,
+      "name": "This One or That One?",
+      "intro": "Saleha describes nearby and distant objects at the Lake.",
+      "maps": [
+        "village",
+        "library"
+      ],
+      "start": {
+        "map": "village",
+        "x": 38,
+        "y": 12,
+        "facing": "up"
+      },
+      "prerequisites": [
+        "afterTutorial"
+      ],
+      "mandatoryEvents": [],
+      "activeNPCs": [
+        "jan-home",
+        "saleha",
+        "edris",
+        "hameed",
+        "mina"
+      ],
+      "openingMode": "automatic",
+      "openingEvent": "day8-opening",
+      "lessons": [
+        "8-residential",
+        "8-nature",
+        "8-business",
+        "8-school"
+      ],
+      "challenge": {
+        "day": 8,
+        "npc": "saleha",
+        "map": "village",
+        "location": "nature",
+        "conditions": [
+          "afterTutorial"
+        ]
+      },
+      "completion": {
+        "challengePassed": 8,
+        "terminal": false
+      },
+      "endingEvent": "day8-ending",
+      "nextChapter": "day-9",
+      "objective": "Normal: begin with Saleha at the Lake. Early challenge remains available.",
+      "routes": {
+        "normal": {
+          "opening": "day8-opening",
+          "finale": "day8-finale"
+        },
+        "skip": {
+          "event": "day8-skip"
+        }
+      },
+      "presentation": {
+        "completeTitle": "Day 8 complete"
+      }
+    }
+  },
+  "events": {
+    "day8-opening": {
+      "speaker": "Saleha",
+      "listener": "Player",
+      "lines": [
+        "Let us practise nearby and distant objects."
+      ],
+      "once": true,
+      "actions": [
+        {
+          "label": "Begin Nature lesson",
+          "type": "lesson",
+          "lessonId": "8-nature"
+        }
+      ]
+    },
+    "day8-finale": {
+      "speaker": "Saleha",
+      "listener": "Player",
+      "lines": [
+        "Use your licensed demonstrative forms in the existing assessment."
+      ],
+      "once": true,
+      "actions": [
+        {
+          "label": "Start Day 8 challenge",
+          "type": "challenge",
+          "day": 8,
+          "route": "normal"
+        }
+      ]
+    },
+    "day8-skip": {
+      "speaker": "Saleha",
+      "listener": "Player",
+      "lines": [
+        "You can take the assessment without the visits."
+      ],
+      "once": true,
+      "actions": [
+        {
+          "label": "Start Day 8 challenge",
+          "type": "challenge",
+          "day": 8,
+          "route": "skip"
+        }
+      ]
+    },
+    "day8-ending": {
+      "speaker": "Saleha",
+      "listener": "Player",
+      "lines": [
+        "Day 8 is complete."
+      ],
+      "once": true,
+      "actions": [
+        {
+          "label": "Finish Day 8",
+          "type": "explore"
+        }
+      ]
+    },
+    "day8-residential": {
+      "speaker": "Muhammad Jan",
+      "listener": "Player",
+      "lines": [
+        "We can practise today\u2019s existing lesson here."
+      ],
+      "actions": [
+        {
+          "label": "Study residential",
+          "type": "lesson",
+          "lessonId": "8-residential"
+        }
+      ]
+    },
+    "day8-nature": {
+      "speaker": "Saleha",
+      "listener": "Player",
+      "lines": [
+        "We can practise today\u2019s existing lesson here."
+      ],
+      "actions": [
+        {
+          "label": "Study nature",
+          "type": "lesson",
+          "lessonId": "8-nature"
+        },
+        {
+          "label": "Normal finale",
+          "type": "event",
+          "event": "day8-finale",
+          "condition": "allLessons"
+        },
+        {
+          "label": "Day 8 challenge",
+          "type": "challenge",
+          "day": 8
+        }
+      ]
+    },
+    "day8-business": {
+      "speaker": "Edris",
+      "listener": "Player",
+      "lines": [
+        "We can practise today\u2019s existing lesson here."
+      ],
+      "actions": [
+        {
+          "label": "Study business",
+          "type": "lesson",
+          "lessonId": "8-business"
+        }
+      ]
+    },
+    "day8-school": {
+      "speaker": "Ms Hameed",
+      "listener": "Player",
+      "lines": [
+        "We can practise today\u2019s existing lesson here."
+      ],
+      "actions": [
+        {
+          "label": "Study school",
+          "type": "lesson",
+          "lessonId": "8-school"
+        }
+      ]
+    }
+  },
+  "npcSchedulePatches": [
+    {
+      "id": "jan-home",
+      "schedule": [
+        {
+          "day": 8,
+          "map": "village",
+          "x": 10,
+          "y": 10,
+          "event": "day8-residential"
+        }
+      ]
+    },
+    {
+      "id": "saleha",
+      "schedule": [
+        {
+          "day": 8,
+          "map": "village",
+          "x": 38,
+          "y": 11,
+          "event": "day8-nature"
+        }
+      ]
+    },
+    {
+      "id": "edris",
+      "schedule": [
+        {
+          "day": 8,
+          "map": "village",
+          "x": 11,
+          "y": 28,
+          "event": "day8-business"
+        }
+      ]
+    },
+    {
+      "id": "hameed",
+      "schedule": [
+        {
+          "day": 8,
+          "map": "village",
+          "x": 39,
+          "y": 27,
+          "event": "day8-school"
+        }
+      ]
+    },
+    {
+      "id": "mina",
+      "schedule": [
+        {
+          "day": 8,
+          "map": "village",
+          "x": 40,
+          "y": 11,
+          "event": "day8-nature"
+        }
+      ]
+    }
+  ]
+}

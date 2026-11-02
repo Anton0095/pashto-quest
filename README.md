@@ -4,13 +4,13 @@
 
 An offline, browser-based Pashto learning game set in a village in Laghman, Afghanistan. Four teaching districts (Home, Lake, Market and School), a reference Library and a recurring cast support 14 narrative days of cumulative language study. Base entries and registered phrases are user-approved; grammar and inflected forms remain drafts, without independent native certification.
 
-## RPG prototype branch
+## RPG Week 1 branch
 
-`feature/rpg-foundation` hardens the prototype from `feature/rpg-phaser-typescript` and uses strict TypeScript and locally bundled Phaser 4.2.1 to convert the default release into an explorable Day 1 RPG. This branch-specific prototype starts from merged review PR #23; it is not the production main release. Move with arrows/WASD or the touch pad, interact with E/Enter, and use L for the Library. Meet Muhammad Jan, complete the existing Library tutorial, study at Home/Lake/Market/School, and pass the authentic 15-question challenge (12 correct). The prototype ends there; Day 2 stays unavailable. Menu offers independent character appearance; Reset affects only prototype saves.
+`feature/rpg-week1` expands the reviewed `feature/rpg-foundation` into playable Days 1–7 using strict TypeScript and locally bundled Phaser 4.2.1. Move with arrows/WASD or touch directions, interact with E/Enter, and use L for the Library. Complete the four-step tutorial, then follow each day's normal story/lessons or explicitly take the early challenge. Days 1–6 use 15 questions/pass 12; Day 7 uses the existing 25-question/pass-20 Week 1 exam. Graduation displays the actual progression milestone. Day 8 remains unavailable through the RPG; the fourteen-day educational backend is preserved.
 
-For development run `npm ci` once, then `python3 tools/build.py` and `python3 -m http.server 8000` and open `http://localhost:8000/`. HTTP/HTTPS is recommended for coordinated browser saves. The release embeds all code/content and has no runtime dependency downloads. For GitHub Pages, deploy this branch's generated release from an isolated preview branch/site; do not repoint the production Pages source or merge into main. No Pages hosting setting is changed by this delivery.
+For development run `npm ci`, then `python3 tools/build.py` and `python3 -m http.server 8000`; open `http://localhost:8000/`. Players need only the committed static release, with no runtime dependency downloads. No production Pages configuration is changed.
 
-See [RPG architecture](docs/rpg/RPG_ARCHITECTURE.md), [expansion guide](docs/rpg/RPG_EXPANSION_GUIDE.md) and [validation/performance report](docs/rpg/RPG_VALIDATION.md). The default RPG and retained fourteen-day educational regression profiles share the same educational engines. Prototype saves use separate keys and never import production progress.
+See [Week 1 implementation and play instructions](docs/rpg/WEEK1_IMPLEMENTATION.md), [architecture](docs/rpg/RPG_ARCHITECTURE.md), [expansion guide](docs/rpg/RPG_EXPANSION_GUIDE.md) and [validation/performance](docs/rpg/RPG_VALIDATION.md). RPG saves remain isolated from production. Main and the source development branches are untouched.
 
 ## Product goal and delivery status
 

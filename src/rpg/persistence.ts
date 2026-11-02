@@ -11,6 +11,7 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     const out=fresh(data), object=(v:unknown):boolean=>v!==null && typeof v==='object' && !Array.isArray(v);
     if(!raw||!object(raw)||raw.schemaVersion!==1)return out;
     if(typeof raw.chapter==='string'&&Object.values(data.days).some(c=>c.id===raw.chapter))out.chapter=raw.chapter;
+    if(raw.routes&&object(raw.routes))out.routes=Object.fromEntries(Object.entries(raw.routes).filter(([id,route])=>Object.values(data.days).some(c=>c.id===id)&&['normal','skip'].includes(route)));
     out.position=RPGWorldData.recover(data,raw.position);
     if(['masculine','feminine','neutral'].includes(raw.appearance || ''))out.appearance=raw.appearance as Appearance;
     for(const field of ['flags','npcFlags','triggers'] as const) if(object(raw[field]))out[field]=Object.fromEntries(Object.entries(raw[field] || {}).filter(([k,v])=>/^[a-z0-9_-]{1,80}$/i.test(k)&&typeof v==='boolean').slice(0,200));

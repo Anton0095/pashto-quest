@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {setup} from './browser-fixture.mjs';
 for(const width of [375,1280]){
- const b=await setup({width,rpg:true,bridge:false,offline:true,transform:h=>h.replace('// @TEST_HOOK',"RPG_WORLD_DATA.events.welcome.messages=[{speaker:'Hidden',text:'Ineligible',condition:'afterTutorial'},...RPG_WORLD_DATA.events.welcome.lines.map((text,i)=>({speaker:i?'Saleha':'Muhammad Jan',text}))];window.__diag=()=>rpg.diagnostics();window.__flush=()=>rpg.flush();window.__dispose=()=>rpg.dispose(); // @TEST_HOOK")});const p=b.page;
+ const b=await setup({width,rpg:true,bridge:false,offline:true,transform:h=>h.replace('// @TEST_HOOK',"window.dispatchEvent(new Event('resize'));RPG_WORLD_DATA.events.welcome.messages=[{speaker:'Hidden',text:'Ineligible',condition:'afterTutorial'},...RPG_WORLD_DATA.events.welcome.lines.map((text,i)=>({speaker:i?'Saleha':'Muhammad Jan',text}))];window.__diag=()=>rpg.diagnostics();window.__flush=()=>rpg.flush();window.__dispose=()=>rpg.dispose(); // @TEST_HOOK")});const p=b.page;
  try{
   await p.locator('#startTutorial').click();await p.waitForFunction(()=>__diag()?.version);
   await p.keyboard.press('ArrowDown');await p.evaluate(()=>window.dispatchEvent(new Event('blur')));await p.waitForTimeout(220);

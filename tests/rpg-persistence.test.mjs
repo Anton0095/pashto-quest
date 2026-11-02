@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';import {readFileSync}from'node:fs';import vm from'node:vm';
-const data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
+const data=JSON.parse(readFileSync('tests/fixtures/rpg-day1.json','utf8'));
 const {createRequire}=await import('node:module');const require=createRequire(import.meta.url);const M=require('../work/rpg-model.cjs');
 const P=M.createPersistenceAPI(data,{}),policyFactory=M.createRPGProgression;
 const store=new Map([['pashto-town-days-v1','main-progress']]);const backend={getItem:k=>store.get(k)??null,setItem:(k,v)=>store.set(k,v)};

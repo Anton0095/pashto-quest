@@ -1,0 +1,90 @@
+{
+  "releaseSha256": "a89171407411b6418fac5a7500c6f5b8965bc4fa646073458b39a3b6e42b5ab2",
+  "releaseBytes": 3001116,
+  "samples": 20,
+  "profiles": [
+    {
+      "name": "desktop",
+      "width": 1280,
+      "cpuThrottle": 1,
+      "browser": "154.0.8037.57",
+      "initialLoad": {
+        "medianMs": 298.8,
+        "p95Ms": 377.6,
+        "minMs": 226.1,
+        "maxMs": 456.2
+      },
+      "sceneReady": {
+        "medianMs": 475.8,
+        "p95Ms": 576.8,
+        "minMs": 383.3,
+        "maxMs": 581.3
+      },
+      "movement": {
+        "medianMs": 128.2,
+        "p95Ms": 146.5,
+        "minMs": 119.1,
+        "maxMs": 149.8
+      },
+      "mapTransition": {
+        "medianMs": 133.3,
+        "p95Ms": 144.5,
+        "minMs": 122.6,
+        "maxMs": 146.2
+      },
+      "sceneUpdateObjectsBefore": 9,
+      "sceneUpdateObjectsAfter": 9,
+      "heapBeforeBytes": 6904980,
+      "heapAfterBytes": 8202020,
+      "heapDeltaBytes": 1297040,
+      "storage": {
+        "pashto-quest-rpg-world-v1": 253,
+        "pashto-quest-rpg-education-v1": 391,
+        "revisionHeads": 2,
+        "revisionValuesJsonBytes": 153
+      }
+    },
+    {
+      "name": "mobile4x",
+      "width": 375,
+      "cpuThrottle": 4,
+      "browser": "154.0.8037.57",
+      "initialLoad": {
+        "medianMs": 1065,
+        "p95Ms": 1641.5,
+        "minMs": 917.4,
+        "maxMs": 8226.3
+      },
+      "sceneReady": {
+        "medianMs": 1470.6,
+        "p95Ms": 2216.1,
+        "minMs": 1332.7,
+        "maxMs": 9332.8
+      },
+      "movement": {
+        "medianMs": 132.3,
+        "p95Ms": 145.1,
+        "minMs": 121.3,
+        "maxMs": 152.8
+      },
+      "mapTransition": {
+        "medianMs": 149.1,
+        "p95Ms": 170.6,
+        "minMs": 132.9,
+        "maxMs": 186.2
+      },
+      "sceneUpdateObjectsBefore": 9,
+      "sceneUpdateObjectsAfter": 9,
+      "heapBeforeBytes": 6920140,
+      "heapAfterBytes": 8191224,
+      "heapDeltaBytes": 1271084,
+      "storage": {
+        "pashto-quest-rpg-world-v1": 253,
+        "pashto-quest-rpg-education-v1": 391,
+        "revisionHeads": 2,
+        "revisionValuesJsonBytes": 153
+      }
+    }
+  ],
+  "notice": "Local Chromium, loopback HTTP/offline dependencies. Mobile is 375px with 4x CPU throttle, not physical Safari. Navigation includes HTML parse/script work; movement is key dispatch to the next committed tile (includes the 115ms Phaser tween), not first-pixel latency. Heap is forced-GC endpoint, not peak."
+}

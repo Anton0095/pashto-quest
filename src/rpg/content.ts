@@ -14,7 +14,11 @@ export function createRPGRegistry(data:WorldData, conditions:Record<string,()=>b
     for(const slot of npc.schedule)if(!Number.isInteger(slot.day)||!data.maps[slot.map]||slot.event&&!data.events[slot.event]||!RPGWorldData.walkable(data,slot.map,slot.x,slot.y))throw Error('Invalid NPC schedule: '+npc.id);
   }
   for(const object of data.objects)if(!data.maps[object.map]||!data.events[object.event])throw Error('Invalid world object: '+object.id);
+  const stable=/^[a-zA-Z0-9_-]{1,80}$/;
   for(const [id,e] of Object.entries(data.events)){
+    if(!stable.test(id)||(e.setFlags??[]).some(flag=>!stable.test(flag)))throw Error('Invalid event/flag identity: '+id);
+    for(const action of e.actions){if(action.type==='scene'&&!RPGWorldData.walkable(data,action.position.map,action.position.x,action.position.y))throw Error('Invalid scene destination: '+id);}
+
     if(!e.speaker||!Array.isArray(e.lines)||!e.lines.length||e.lines.some(l=>typeof l!=='string')||!Array.isArray(e.actions))throw Error('Invalid story: '+id);
     for(const a of e.actions)if(a.type==='event'&&!data.events[a.event]||a.type==='lesson'&&a.resumeEvent&&!data.events[a.resumeEvent])throw Error('Invalid event link: '+id);
   }
@@ -22,7 +26,7 @@ export function createRPGRegistry(data:WorldData, conditions:Record<string,()=>b
   function npcs(day:number,map:string):Actor[] {
     return data.npcs.filter(n=>data.days[String(day)]?.activeNPCs.includes(n.id)&&eligible(n.condition)).flatMap(n=>{
       const daily=n.schedule.filter(s=>s.day===day);
-      const slot=daily.find(s=>s.map===map)??(!daily.length&&n.defaultLocation?.map===map?n.defaultLocation:undefined);
+      const slot=daily.find(s=>s.map===map&&eligible(s.condition))??(!daily.length&&n.defaultLocation?.map===map?n.defaultLocation:undefined);
       return slot ? [{...n,...slot}] : [];
     });
   }
@@ -46,7 +50,8 @@ export function createRPGDialogue({dialog,ui,onAction,onClose,onIndex,eligible}:
     if(!current)return;
     const messages=current.messages?.filter(m=>eligible(m.condition))??current.lines.map(text=>({speaker:current!.speaker,text}));
     index=Math.min(index,Math.max(0,messages.length-1));
-    speaker.textContent=messages[index]?.speaker??current.speaker;text.textContent=messages[index]?.text??'';actions.replaceChildren();onIndex(index);
+    const message=messages[index];const listener=message&&'listener' in message?message.listener:current.listener;
+    speaker.textContent=(message?.speaker??current.speaker)+(listener?' → '+listener:'');text.textContent=messages[index]?.text??'';actions.replaceChildren();onIndex(index);
     if(index<messages.length-1) actions.append(ui.button('Continue',()=>{index++;render();}));
     else for(const action of current.actions.filter(a=>eligible(a.condition))) actions.append(ui.button(action.label,()=>{if(!current||!eligible(action.condition))return;current=null;actionClose=true;dialog.close();onAction(action);}));
   }
