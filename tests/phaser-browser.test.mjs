@@ -33,7 +33,7 @@ for(const width of [375,1280]){
   const paused=await pos();await p.keyboard.press('ArrowDown');await p.waitForTimeout(200);assert.deepEqual(await pos(),paused);assert(await p.evaluate(()=>__phaserDiagnostics().physicsPaused));
   assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2));assert.deepEqual(b.errors,[]);
   console.log('PASS Phaser',width,'real tilemap, Arcade terrain/NPC collision, 4-way movement, camera, transitions, paused HTML overlay and offline bundle');
-  await p.locator('#navWorld').click();p.once('dialog',d=>d.accept());await p.locator('#resetProgress').click();await p.locator('#startTutorial').click();await p.waitForFunction(()=>__phaserDiagnostics().player.x===22&&__phaserDiagnostics().player.y===18);assert.deepEqual(await pos(),{x:22,y:18,map:'village'},'Same-map reset synchronizes the Phaser body and save');
+  await p.locator('#navWorld').click();p.once('dialog',d=>d.accept());await p.locator('#rpgMenuButton').click();await p.locator('#resetProgress').click();await p.locator('#startTutorial').click();await p.waitForFunction(()=>__phaserDiagnostics().player.x===22&&__phaserDiagnostics().player.y===18);assert.deepEqual(await pos(),{x:22,y:18,map:'village'},'Same-map reset synchronizes the Phaser body and save');
   if(width===375){
    const context=await b.browser.newContext({viewport:{width:375,height:812},deviceScaleFactor:3,isMobile:true,hasTouch:true});
    const touch=await context.newPage();const touchErrors=[];touch.on('pageerror',e=>touchErrors.push(e.message));await touch.goto(b.url);

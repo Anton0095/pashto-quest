@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';import {readFileSync}from'node:fs';import{createRequire}from'node:module';
 const M=createRequire(import.meta.url)('../work/rpg-model.cjs'),data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
-const registry=M.createRPGRegistry(data,{afterTutorial:()=>true,beforeTutorial:()=>false,beforeGuideMeeting:()=>false,allLessons:()=>true,passed:()=>false,notPassed:()=>true});
-assert.equal(data.lastDay,7);assert.equal(Object.keys(data.days).length,7);assert(!registry.day(8));assert(!data.days['1'].completion.terminal);assert(data.days['7'].completion.terminal);
+const registry=M.createRPGRegistry(data,{'not-complete:6-nature':()=>true,'not-complete:7-school':()=>true,'not-allLessons':()=>true,afterTutorial:()=>true,beforeTutorial:()=>false,beforeGuideMeeting:()=>false,allLessons:()=>true,passed:()=>false,notPassed:()=>true});
+assert.equal(data.lastDay,7);assert.equal(Object.keys(data.days).length,7);assert(!registry.day(8));assert(!data.days['1'].completion.terminal);assert(!data.days['7'].completion.terminal);
 for(let day=1;day<=7;day++){
- const c=data.days[day];assert.equal(c.day,day);assert.equal(new Set(c.lessons).size,4);assert.equal(c.challenge.day,day);assert.equal(c.nextChapter,day<7?'day-'+(day+1):null);
+ const c=data.days[day];assert.equal(c.day,day);assert.equal(new Set(c.lessons).size,4);assert.equal(c.challenge.day,day);assert.equal(c.nextChapter,'day-'+(day+1));
  let save=M.createPersistenceAPI(data,{}).fresh(data),progress={complete:{},challenges:{}},permitted=true,passed=false;
  const route=M.createChapterRoutes({chapter:()=>c,progress:()=>progress,save:()=>save});
  const director=M.createChapterDirector({data,state:{day,progress},learning:{allowed:()=>permitted},progression:{passedChallenge:()=>passed},eligible:()=>true,dispatch:()=>{},triggers:()=>save.triggers,routeComplete:()=>route.complete()});
@@ -22,3 +22,5 @@ const fixture=JSON.parse(readFileSync('docs/rpg/day8-registration.example.json',
 const expanded=structuredClone(data);Object.assign(expanded.days,fixture.days);Object.assign(expanded.events,fixture.events);for(const patch of fixture.npcSchedulePatches)expanded.npcs.find(n=>n.id===patch.id).schedule.push(...patch.schedule);
 expanded.maps.orchard={...structuredClone(expanded.maps.hills),name:'Fixture orchard'};expanded.days[8].maps.push('orchard');expanded.npcs.push({id:'guest',characterId:'guest',name:'Guest',sprite:'edris',event:'day8-opening',schedule:[{day:8,map:'orchard',x:4,y:12}]});expanded.days[8].activeNPCs.push('guest');M.validateChapters(expanded);const extended=M.createRPGRegistry(expanded,{});assert.equal(extended.npcs(8,'orchard')[0].characterId,'guest');assert(!policy.configured(8));
 console.log('PASS inactive Day8, new map and new NPC registration without engine or educational changes');
+
+expanded.lastDay=8;const futureState={day:7,progress:{}};const futureDirector=M.createChapterDirector({data:expanded,state:futureState,learning:{allowed:()=>true},progression:{passedChallenge:()=>true},eligible:()=>true,triggers:()=>({}),routeComplete:()=>true,dispatch:()=>{}});assert.equal(futureDirector.next().day,8,'Registered Day8 follows graduation without changing engine or Day7 terminal policy');

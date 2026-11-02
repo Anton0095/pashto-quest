@@ -16,6 +16,7 @@ for(const width of [375,1280]) {
    const before=await p.evaluate(()=>({introduced:Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0),complete:__test.state.progress.complete,grammar:__test.state.progress.library.grammar}));
    assert.deepEqual(before.complete,{});assert.deepEqual(before.grammar,{});
    await p.evaluate(()=>__test.challenge.startChallenge(1));
+   if(!await p.locator(".question-context").evaluate(d=>d.open))await p.locator(".question-context summary").click();
    assert((await p.locator("#lessonDescription").innerText()).includes("Includes assigned vocabulary from unvisited or unfinished locations"));
    const activated=await p.evaluate(()=>({introduced:Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0),complete:__test.state.progress.complete,grammar:__test.state.progress.library.grammar}));
    assert(activated.introduced>before.introduced);assert.deepEqual(activated.complete,{});assert(activated.grammar['grammar-day-1']);
@@ -59,6 +60,7 @@ for(const width of [375,1280]) {
     await t.storage.save();return JSON.parse(JSON.stringify(s.questions));
   });
   await p.reload();assert.deepEqual(await p.evaluate(()=>__test.state.session.questions),old);
+  await p.locator('.question-context summary').click();
   assert((await p.locator('#challengeMaterialNotice').innerText()).includes('Your saved questions and score are unchanged'));
   assert(await p.evaluate(()=>__test.learning.availableSentences(1).length>0));
   assert.equal(await p.evaluate(()=>__test.state.session.answered),0);

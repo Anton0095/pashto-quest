@@ -119,6 +119,6 @@ export async function answerCurrent(page) {
   else
     await page
       .locator("#choices button")
-      .getByText(q.answer, { exact: true })
+      .getByText((q.answer).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true})
       .click();
 }
