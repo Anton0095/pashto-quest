@@ -8,14 +8,14 @@ Branch `feature/rpg-multiday-overhaul`, based on main `5606c3602b90386e82cc8504d
 |---|---|---|
 | 1. World first | Complete | Map precedes compact Level/title/XP/word progress. Menu contains collapsed regional/pronunciation notes and reset. Independent Library and Menu remain. |
 | 2. Player terminology | Complete | Player labels use “word”; lemma IDs, counting, inflections and technical documentation remain unchanged. |
-| 3. Pixel portraits | Partial: artwork blocked | Shared character-ID/expression component, speaker switching, mobile frames and offline asset embedding are implemented. All five approved portrait assets are absent. Named missing-art frames are explicit. |
+| 3. Pixel portraits | Complete | Five approved portraits extracted from supplied screenshots, registered by character ID, embedded offline and loaded through Phaser. Dynamic DOM dialogue/buttons, speaker switching and pixelated scaling verified at 375/1280px. |
 | 4. Pashto first | Complete | Pashto recall presents Pashto → transliteration → audio → instructions → controls → feedback. Assessment metadata is compact; detail is collapsible. Reverse translation and construction retain their English source/target so the Pashto answer stays hidden. |
 | 5. Capitalise English choices | Complete | Shared display formatter preserves original answer values and existing mixed capitals/acronyms. Lessons, assessments, optional expressions and Library use it. |
 | 6. Quick travel | Complete | Location/character labels replace raw lesson IDs. Actor regions follow visiting teachers; Day 6 finale names Hills. The ordinary conversation dispatcher and lesson/skip guards apply. |
 | 7. Click/tap movement | Complete in tested Chromium | A*, same animated stepper, terrain/extra collision/actor occupancy, camera conversion, rapid rerouting, manual override, NPC approach, clear interaction lines and overlay cancellation. Physical Safari remains untested. |
 | 8. Multiday progression | Complete for Days 1–7 | Existing genuine-pass/ending/Continue transaction retained and tested. Day 7 becomes a nonterminal graduation milestone linked to Day 8; registering the next chapter enables transition without engine changes. Week 2 story remains unregistered. |
 
-The overhaul is **not fully complete** because approved portrait artwork has not been supplied. Missing assets: `muhammad-jan`, `edris`, `saleha`, `hameed`, `mina` (all neutral portraits, with future expressions supported). Their intended appearance is recorded in `content/CHARACTER_PORTRAITS.json`. No unrelated imagery or newly generated replacement is represented as approved.
+All eight changes are implemented. The five previously missing approved portraits were supplied on main (`da13112`) and integrated in the portrait follow-up. `content/CHARACTER_PORTRAITS.json` records the original file and crop rectangle for each character. Crops retain original pixels with transparent padding to 480×560; no resizing, smoothing or baked dialogue controls are used.
 
 ## Repository audit and discrepancies
 
@@ -25,7 +25,7 @@ The task mentions 15-question day challenges. Current approved mechanics specify
 
 Days 6/7 map hosts previously disagreed with existing curricular teachers: Saleha leads Day 6 Home and Day 7 School, Muhammad Jan leads Day 6 Market, and Ms Hameed leads Day 7 Lake. Conditional schedules and event speakers now match those bindings; the curriculum itself is unchanged. Day 5 Home/Market teachers already visited Lake, but dialogue incorrectly said “here at Home/Market”; it now names the visit and Quick travel names the actual Lake destination. Ms Hameed joins the Lake gathering after the four visits.
 
-The initial task references supplied portrait mockups. None are in the repository or uploaded attachment. Existing screenshots and procedural map sprites are not approved portrait assets. Day 1's three pending contextual expressions and English profile controls remain existing educational limitations; no new Pashto translations or approval claims were invented.
+The initial task references supplied portrait mockups. They were initially absent; the portrait follow-up fetched them from main. The supplied dialogue screenshots are now the approved extraction sources. Day 1's three pending contextual expressions and English profile controls remain existing educational limitations; no new Pashto translations or approval claims were invented.
 
 ## B. Narrative verification matrix
 
@@ -60,7 +60,7 @@ Educational schema 7 and world schema 1 are unchanged. No migration or silent re
 | Severity | Finding / disposition |
 |---|---|
 | P0 | No unresolved gameplay/progression corruption found by the reported checks. Save-failure and conflict paths retain the existing visible failure handling. |
-| P1 | Five missing approved portraits prevent completion of the requested visual feature. Component and mapping are ready; no art is silently substituted. |
+| P1 — resolved | All five approved portraits are now extracted and integrated through Phaser; the missing-art blocker is closed. |
 | P1 — fixed | Day 6/7 map teachers disagreed with the approved curriculum. Completion-conditioned placements and event identities now match actual instructors; the early weekly-exam invitation follows Ms Hameed while she visits Lake. |
 | P2 — fixed | Day 5 visiting teachers named the wrong physical locations; Quick travel exposed raw lesson IDs. Actual destination names now reflect scenes. |
 | P2 | Actual iPhone Safari/WebKit device input, audio quality, lifecycle and storage eviction are not verified here. No bundled native-reviewed MP3 pack is added. |
@@ -69,7 +69,7 @@ Educational schema 7 and world schema 1 are unchanged. No migration or silent re
 
 ## D. Testing evidence
 
-The final clean `python3 tools/verify.py` run exited **0: 158 successful checks, zero failures**. It includes all models, JavaScript/compiled syntax, strict TypeScript, build/report checks and all browser suites. The [complete command log](overhaul/verification.log) and [public normal/early Week 1 gameplay log](overhaul/week1-gameplay.log) are committed alongside the evidence.
+Before the portrait follow-up, the clean `python3 tools/verify.py` run exited **0: 158 successful checks, zero failures**. It includes all models, JavaScript/compiled syntax, strict TypeScript, build/report checks and all browser suites. The [complete command log](overhaul/verification.log) and [public normal/early Week 1 gameplay log](overhaul/week1-gameplay.log) are committed alongside the evidence.
 
 | Commands executed | Final result |
 |---|---|
@@ -93,4 +93,12 @@ There is no configured lint script; strict TypeScript and existing JavaScript sy
 
 ## E. Days 8–14 next steps
 
-Register Day 8's reviewed opening/return/finale/skip/ending and character schedules from the inactive example, raise `lastDay`, then add Days 9–14 against existing curriculum teachers and goals. Preserve Day 14's zero-new-forms rule, 25-question final and Level 10/title rules. Check teacher/scene consistency, incoming/outgoing map paths, greeting licensing, hidden unstudied recall, failed/early routes, exact paused snapshots, reload and first-pass rewards for each registration. Supply the five approved PNG/WebP portrait assets under `assets/portraits/` and update the expression manifest. Extend the same public gameplay sequence into Week 2 and run actual Safari/device checks before claiming that coverage.
+Register Day 8's reviewed opening/return/finale/skip/ending and character schedules from the inactive example, raise `lastDay`, then add Days 9–14 against existing curriculum teachers and goals. Preserve Day 14's zero-new-forms rule, 25-question final and Level 10/title rules. Check teacher/scene consistency, incoming/outgoing map paths, greeting licensing, hidden unstudied recall, failed/early routes, exact paused snapshots, reload and first-pass rewards for each registration. Extend the same public gameplay sequence into Week 2 and run actual Safari/device checks before claiming that coverage.
+
+## Approved portrait follow-up
+
+Main `da13112` supplied five full dialogue screenshots. Each 455×532 crop uses `[90,310,545,842]` and transparent padding to a consistent 480×560 canvas, preserving the original pixels. Optimized PNGs live under `assets/portraits/`; source screenshots remain under `public/assets/portraits/`. Character IDs are `edris`, `saleha`, `hameed`, `muhammad-jan` and `mina`.
+
+The builder embeds the extracted files. Phaser's scene preload uses `Loader.image` with character/expression texture keys; the shared DOM portrait component receives the decoded texture sources from the Phaser texture manager. Loading/error states remain explicit, and Canvas failure retains the accessible DOM-image fallback. Dialogue text, buttons and layouts are never part of the extracted asset. CSS `image-rendering:pixelated` prevents browser smoothing.
+
+This isolated presentation follow-up uses focused validation: production build/check, strict TypeScript, presentation model, all-five-speaker portrait tests at mobile/desktop widths, foundation lifecycle/Canvas fallback and overhaul mouse/touch/interface regressions. The earlier 158-check full run and its release hash above remain evidence for that earlier release; the portrait follow-up does not claim a refreshed full fourteen-day delivery matrix or physical Safari coverage. Current portrait captures are linked as [mobile](overhaul/portrait-375.png) and [desktop](overhaul/portrait-1280.png).

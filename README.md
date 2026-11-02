@@ -10,7 +10,7 @@ The default release uses strict TypeScript and locally bundled Phaser 4.2.1. Cli
 
 Quick travel names actual destinations, follows lesson locks and opens the same NPC conversations as walking. Visiting teachers move with the narrative; the Day 6 Nature finale appears as Hills. Days 1–6 retain 15 questions/pass 12; Day 7 retains the 25-question/pass-20 weekly examination. Normal and explicit early-challenge routes use the existing educational, audio, XP and save systems. Week 1 graduation is a milestone linked to `day-8`; the Day 8–14 RPG story registrations remain future work, while their educational backend remains intact.
 
-The reusable dialogue portrait component supports stable character IDs and expressions, including speaker changes. **All five approved portrait assets are missing**; named placeholders explicitly say “Portrait unavailable”. No replacement artwork is represented as approved.
+The reusable dialogue portrait component supports stable character IDs and expressions, including speaker changes. All five approved portraits are extracted from the supplied screenshots in `public/assets/portraits/`, registered by character ID, embedded for offline use and loaded through Phaser. Original pixels and nearest-neighbour display preserve the pixel art; dialogue and buttons remain dynamic DOM content.
 
 See the [overhaul audit and delivery report](docs/rpg/MULTIDAY_OVERHAUL.md), [architecture](docs/rpg/RPG_ARCHITECTURE.md) and [expansion guide](docs/rpg/RPG_EXPANSION_GUIDE.md). Educational schema 7 and world schema 1 saves retain their namespaces and coordination. No save migration or reset is introduced. Physical iPhone Safari remains untested.
 

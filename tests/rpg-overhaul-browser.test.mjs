@@ -22,7 +22,7 @@ for(const width of [375,1280]){
   const before=await d.pos();await p.locator('[data-direction=down]').click();await p.waitForTimeout(200);assert.notDeepEqual(await d.pos(),before,'Touch arrows still move');
   await select({x:24,y:20});await p.locator('#rpgLibrary').click();const paused=await d.pos();await p.waitForTimeout(300);assert.deepEqual(await d.pos(),paused);await p.locator('#libraryClose').click();await p.waitForTimeout(300);assert.deepEqual(await d.pos(),paused,'Closing a modal does not restart an old route');
   // Select Jan's tile: path to an adjacent tile and automatically face/talk.
-  await select({x:23,y:18});await p.locator('#rpgDialogue').waitFor();assert.equal(await p.locator('#rpgDialogue [data-character-id]').getAttribute('data-character-id'),'muhammad-jan');assert.equal(await p.locator('#rpgDialogue [data-portrait-status]').getAttribute('data-portrait-status'),'missing');await p.getByRole('button',{name:'Back to village',exact:true}).click();
+  await select({x:23,y:18});await p.locator('#rpgDialogue').waitFor();assert.equal(await p.locator('#rpgDialogue [data-character-id]').getAttribute('data-character-id'),'muhammad-jan');assert.equal(await p.locator('#rpgDialogue [data-portrait-status]').getAttribute('data-portrait-status'),'available');await p.getByRole('button',{name:'Back to village',exact:true}).click();
   await d.tutorial();
   await p.getByText('Quick travel',{exact:true}).click();
   assert.deepEqual(await p.locator('[data-destination]').allTextContents(),['Home','Lake','Market','School']);

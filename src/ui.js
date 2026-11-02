@@ -163,6 +163,8 @@ function createUI({ state, content, progression }) {
 
   return {
     portrait: renderCharacterPortrait,
+    usePhaserPortraits,
+    portraitReady: registerPortraitTexture,
     englishChoice: formatEnglishChoice,
     displayPlace,
     showParticipants,

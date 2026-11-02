@@ -7,5 +7,5 @@ for(const [raw,display] of [['market','Market'],['cold','Cold'],['bread / food',
 assert.equal(words('8 content lemmas encountered · Daily lemma target · Lemma bank'),'8 words encountered · Daily word target · Word bank');
 const portraits=JSON.parse(readFileSync('content/CHARACTER_PORTRAITS.json','utf8'));
 assert.deepEqual(Object.keys(portraits.characters).sort(),['edris','hameed','mina','muhammad-jan','saleha']);
-assert(Object.values(portraits.characters).every(c=>c.expressions.neutral===null),'Missing approved art must remain explicit');
-console.log('PASS English choice capitalization without source mutation, word labels and explicit missing portrait manifest');
+assert(Object.values(portraits.characters).every(c=>c.expressions.neutral&&readFileSync(c.expressions.neutral).length),'All approved portraits must exist');
+console.log('PASS English choice capitalization without source mutation, word labels and approved extracted portrait manifest');

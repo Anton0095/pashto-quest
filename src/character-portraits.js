@@ -1,3 +1,11 @@
+let phaserPortraitMode = false;
+const portraitTextures = new Map(), pendingPortraits = new Map();
+function usePhaserPortraits(enabled = true) { phaserPortraitMode = enabled; }
+function registerPortraitTexture(key, source) {
+  portraitTextures.set(key, source);
+  for (const render of pendingPortraits.get(key) || []) render(source);
+  pendingPortraits.delete(key);
+}
 /* One character-identity portrait renderer for educational and RPG dialogue. */
 function renderCharacterPortrait(identity, expression = "neutral") {
   const entries = Object.entries(CHARACTER_PORTRAITS.characters);
@@ -17,7 +25,9 @@ function renderCharacterPortrait(identity, expression = "neutral") {
     label.textContent = "Portrait unavailable";
     frame.append(initials, label);
   };
-  const source = character.expressions[expression] || character.expressions.neutral;
+  const variant = character.expressions[expression] ? expression : "neutral";
+  const key = id + ":" + variant;
+  const render = source => {
   if (source) {
     const img = document.createElement("img");
     img.width = img.height = CHARACTER_PORTRAITS.resolution;
@@ -26,8 +36,15 @@ function renderCharacterPortrait(identity, expression = "neutral") {
     img.addEventListener("error", unavailable, {once: true});
     frame.dataset.portraitStatus = "available";
     frame.setAttribute("aria-label", character.name);
-    frame.append(img);
+    frame.replaceChildren(img);
   } else unavailable();
+  };
+  if (phaserPortraitMode && character.expressions[variant] && !portraitTextures.has(key)) {
+    frame.dataset.portraitStatus = "loading";
+    frame.textContent = "Loading portrait…";
+    if (!pendingPortraits.has(key)) pendingPortraits.set(key, new Set());
+    pendingPortraits.get(key).add(render);
+  } else render(phaserPortraitMode ? portraitTextures.get(key) : character.expressions[variant]);
   return frame;
 }
 

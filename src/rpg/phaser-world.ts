@@ -4,6 +4,7 @@ import {createMovementController,canInteract,facingToward} from './movement';
 import {directions,recover} from './world-data';
 
 interface WorldOptions {
+  portraits?:{characters:Record<string,{expressions:Record<string,string|null>}>};portraitReady(key:string,source:string):void;
   canvas:HTMLCanvasElement;data:WorldData;allowedMaps?():string[];
   position():Position;actors():Actor[];appearance():Appearance;active():boolean;
   onMove(position:Position,transition:boolean):void;onFrame():void;onInteract(actor:Actor):void;
@@ -28,7 +29,18 @@ export class VillageScene extends Phaser.Scene {
   private controller?:ReturnType<typeof createMovementController>;
   private pointer?: (event:PointerEvent)=>void;
   constructor(private readonly options:WorldOptions){super('village');}
+  preload():void {
+    for(const [id,character] of Object.entries(this.options.portraits?.characters??{}))for(const [expression,source] of Object.entries(character.expressions))if(source)this.load.image('portrait:'+id+':'+expression,source);
+    this.load.on('loaderror',(file:{key:string})=>{if(file.key.startsWith('portrait:'))this.options.portraitReady(file.key.slice(9),'');});
+  }
   create():void {
+    for(const [id,character] of Object.entries(this.options.portraits?.characters??{}))for(const expression of Object.keys(character.expressions)){
+      const key=id+':'+expression;
+      if(this.textures.exists('portrait:'+key)){
+        const source=this.textures.get('portrait:'+key).getSourceImage();
+        this.options.portraitReady(key,source instanceof HTMLImageElement?source.src:(source as HTMLCanvasElement).toDataURL());
+      }
+    }
     this.createArt();
     this.loadMap();
     this.controller=createMovementController({data:this.options.data,position:this.options.position,actors:this.options.actors,allowedMaps:()=>this.options.allowedMaps?.()??Object.keys(this.options.data.maps),step:dir=>this.step(dir),moving:()=>!!this.movement,

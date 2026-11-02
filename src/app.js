@@ -194,7 +194,7 @@
       content.curriculum.days.filter((d) => learning.allowed(d.day)).at(-1)
         ?.day || 1;
   library.libraryInit();
-  const rpg = RPG_ENABLED ? PashtoRPG.createRPG({state,content,progression,learning,ui,audio,storage,world,lessons,challenge,library},{data:RPG_WORLD_DATA,questions:QuestionEngine,fence:saveFence}) : null;
+  const rpg = RPG_ENABLED ? PashtoRPG.createRPG({state,content,progression,learning,ui,audio,storage,world,lessons,challenge,library},{data:RPG_WORLD_DATA,portraits:CHARACTER_PORTRAITS,questions:QuestionEngine,fence:saveFence}) : null;
   // @TEST_HOOK
   ui.$("lessonScreen").insertBefore(ui.$("addressTarget"), ui.$("teachPanel"));
   storage.save();

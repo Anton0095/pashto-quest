@@ -36,7 +36,7 @@ export interface UI {
   $(id:string):HTMLElement;
   node<K extends keyof HTMLElementTagNameMap>(tag:K,text?:string,cls?:string):HTMLElementTagNameMap[K];
   button(text:string,fn:(event:MouseEvent)=>void):HTMLButtonElement;
-  hud():void;view(name:string):void;portrait(identity:string,expression?:string):HTMLElement;
+  hud():void;view(name:string):void;portrait(identity:string,expression?:string):HTMLElement;usePhaserPortraits(enabled?:boolean):void;portraitReady(key:string,source:string):void;
 }
 export interface Learning {allowed(day:number):boolean;placeAccessible(day:number,place:string):boolean}
 export interface Progression {passedChallenge(progress:Progress,day:number):boolean;characterStatus(progress:Progress):{xp:number;level:number;title:string};getChallengeSpec(day:number):{passCount:number;questionCount:number}}
@@ -45,4 +45,4 @@ export interface EducationServices {state:State;content:Content;progression:Prog
 export interface DialogueCursor {event:string;index:number;resumeEvent?:string}
 export interface WorldSave {routes?:Record<string,ChapterRoute>;chapter?:string;dialogue?:DialogueCursor;schemaVersion:1;position:Position;appearance:Appearance;flags:Record<string,boolean>;npcFlags:Record<string,boolean>;triggers:Record<string,boolean>;view:'world'|'lesson'|'complete';lesson:unknown;educationFingerprint:string|null}
 export interface QuestionService {buildTiles(card:Card|undefined,question:Question|undefined,day:number):Array<{index:number;word:string}>}
-export interface RPGDependencies {fence:SaveFence;data:WorldData;questions:QuestionService}
+export interface RPGDependencies {portraits?:{characters:Record<string,{expressions:Record<string,string|null>}>};fence:SaveFence;data:WorldData;questions:QuestionService}
