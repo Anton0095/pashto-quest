@@ -96,7 +96,8 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
       ui.$("teachSpeak").classList.add("hidden");
       for (const id of ["teachPashto", "teachRoman", "teachEnglish", "teachNote"]) ui.$(id).textContent="";
       p.remove();
-      ui.construction.mount(area,w,{kind:"construct"},{retry:true,
+      const draft=state.session.tutorialConstruction ||= {built:[],locked:false};
+      ui.construction.mount(area,w,{kind:"construct"},{retry:true,draft,onChange:()=>storage.save(),
         tiles:w.ps.split(" ").map((word,index)=>({word,index})),
         onAnswer(correct) {
           if (correct) done();
@@ -132,7 +133,8 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
       field.maxLength = 40;
       field.autocomplete = "given-name";
       field.placeholder = "Name you would like to use";
-      field.value = state.progress.playerProfile?.name || "";
+      field.value = state.session.profileName || state.progress.playerProfile?.name || "";
+      field.addEventListener("input",()=>{state.session.profileName=field.value;storage.save();});
       field.setAttribute("aria-label", "Your name");
       const b = document.createElement("button");
       b.type = "button";
@@ -159,6 +161,11 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
       area.append(row);
     }
     area.append(feedback);
+    if (state.session.passed.has(c.id)) {
+      ui.$("teachNext").disabled=false;
+      feedback.textContent="Your response is recorded. Continue when ready.";
+      for (const el of area.querySelectorAll("button,input")) el.disabled=true;
+    }
   }
 
   return { renderTutorialStep };

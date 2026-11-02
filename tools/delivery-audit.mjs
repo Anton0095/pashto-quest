@@ -51,12 +51,17 @@ report.fixedPhraseExceptions = phrases.map((p) => ({
   english: p.english,
   reason: p.exceptionReason,
 }));
+report.navigationProfile = read('index.html').includes('const RPG_ENABLED=true;')
+  ? 'Retained educational navigation profile: fourteen-day shared-engine regression matrix. The default release is a Day 1 RPG, verified separately by rpg-browser.test.mjs at 375/1280px.'
+  : 'Educational navigation profile.';
 const lines = [
   "# Measured instructional sentence delivery",
   "",
   `**${report.genuinelyGeneratedObservations} / ${report.instructionalSentenceObservations} independently observed sentence surfaces were generated: 100%.** Zero authored sentence surfaces were delivered. The ${phrases.length} designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.`,
   "",
   report.basis,
+  "",
+  report.navigationProfile,
   "",
   `Release SHA-256: \`${report.releaseSha256}\`. The complete browser matrix covered 392 normal district visits and 196 assessments, all fourteen days, seven paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.`,
   ``,

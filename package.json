@@ -1,0 +1,13 @@
+{
+  "name": "pashto-quest-rpg",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:rpg": "node tools/build-rpg.mjs",
+    "build": "python3 tools/build.py",
+    "verify": "python3 tools/verify.py"
+  },
+  "dependencies": {"phaser": "4.2.1"},
+  "devDependencies": {"esbuild": "0.28.2", "typescript": "7.0.2"}
+}

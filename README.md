@@ -4,6 +4,14 @@
 
 An offline, browser-based Pashto learning game set in a village in Laghman, Afghanistan. Four teaching districts (Home, Lake, Market and School), a reference Library and a recurring cast support 14 narrative days of cumulative language study. Base entries and registered phrases are user-approved; grammar and inflected forms remain drafts, without independent native certification.
 
+## RPG Week 1 branch
+
+`feature/rpg-week1` expands the reviewed `feature/rpg-foundation` into playable Days 1–7 using strict TypeScript and locally bundled Phaser 4.2.1. Move with arrows/WASD or touch directions, interact with E/Enter, and use L for the Library. Complete the four-step tutorial, then follow each day's normal story/lessons or explicitly take the early challenge. Days 1–6 use 15 questions/pass 12; Day 7 uses the existing 25-question/pass-20 Week 1 exam. Graduation displays the actual progression milestone. Day 8 remains unavailable through the RPG; the fourteen-day educational backend is preserved.
+
+For development run `npm ci`, then `python3 tools/build.py` and `python3 -m http.server 8000`; open `http://localhost:8000/`. Players need only the committed static release, with no runtime dependency downloads. No production Pages configuration is changed.
+
+See [Week 1 implementation and play instructions](docs/rpg/WEEK1_IMPLEMENTATION.md), [architecture](docs/rpg/RPG_ARCHITECTURE.md), [expansion guide](docs/rpg/RPG_EXPANSION_GUIDE.md) and [validation/performance](docs/rpg/RPG_VALIDATION.md). RPG saves remain isolated from production. Main and the source development branches are untouched.
+
 ## Product goal and delivery status
 
 The aim is cumulative Pashto learning through a coherent village story: recurring characters teach language that fits their scene, speaker and listener. Text, meaning and any illustration must agree; for example, Muhammad Jan describing an open window needs an open-window scene. Correct and incorrect answer feedback should behave consistently on every lesson surface, including forced story lessons and optional expressions. These are general requirements, not exceptions for individual days.
@@ -18,13 +26,14 @@ Open the generated `index.html` in a modern browser, or serve the repository wit
 python3 -m http.server 8000
 ```
 
-The game needs no backend, account, API key or runtime JSON fetch. The generated release embeds source data. A browser may impose restrictions when opening local files; local HTTP hosting is a useful development alternative. Progress is kept in browser local storage. Audio is optional: bundled `audio/<id>.mp3` recordings take priority when supplied; otherwise the game attempts a detected Pashto device voice and warns about uncertain fallback. No native-reviewed MP3 pack is currently committed. Physical iPhone Safari and Windows speech quality have not been independently verified.
+The game needs no backend, account, API key or runtime JSON fetch. The generated release embeds source data. A browser may impose restrictions when opening local files; local HTTP hosting is a useful development alternative. Progress JSON is kept in browser local storage; IndexedDB holds only hash/revision metadata for safe cross-tab coordination. Browser Web Locks, IndexedDB and Web Crypto are required for coordinated saving; failures retain progress in this tab with Retry/Export. Audio is optional: bundled `audio/<id>.mp3` recordings take priority when supplied; otherwise the game attempts a detected Pashto device voice and warns about uncertain fallback. No native-reviewed MP3 pack is currently committed. Physical iPhone Safari and Windows speech quality have not been independently verified.
 
 ## Development
 
-Use Python 3 for the standard-library builder and Node.js/Playwright/Chromium for full tests. Choose commands using the [risk-based validation policy](tests/README.md#choose-validation-by-change-and-risk). The commands below are a reference, not a checklist for every edit; Markdown-only changes need no build or gameplay tests.
+Use Python 3 for the offline builder and Node.js/npm for the strict TypeScript/Phaser build. Run `npm ci` once; players need no Node/npm or runtime downloads. Full tests use Playwright/Chromium. Choose commands using the [risk-based validation policy](tests/README.md#choose-validation-by-change-and-risk). The commands below are a reference, not a checklist for every edit; Markdown-only changes need no build or gameplay tests.
 
 ```sh
+npm run typecheck                  # strict RPG TypeScript contracts
 python3 tools/build.py              # update generated offline index.html
 python3 tools/build.py --check      # check generated release matches sources
 python3 tools/verify.py             # model, syntax, build and browser suites
@@ -38,6 +47,8 @@ node tools/district-inventory.mjs --check
 | Source | Owns |
 |---|---|
 | `src/app.js` | Browser composition, shared runtime state and event wiring |
+| `src/rpg/*.ts` | Strict RPG types/adapters, Phaser scene, maps/actors/events and world persistence |
+| `tools/build-rpg.mjs`, `generated/rpg.bundle.js` | TypeScript checks and locally bundled Phaser/RPG artifact |
 | `src/content.js`, `src/assessment-content.js` | On-demand generated-card registry, English narrative and task blueprints |
 | `src/library-engine.js` | Sole lemma/form identity, acquisition, SRS and district planner |
 | `src/progression.js` | Save factory/version, XP/reward identity, results, milestones and access rules |
@@ -56,7 +67,7 @@ node tools/district-inventory.mjs --check
 | `content/DISTRICT_VOCABULARY_CANDIDATES.json`, `content/UNIVERSAL_TEACHING_TARGETS.json` | Inactive editorial candidates, not playable translations |
 | `tools/build.py`, `tools/verify.py` | Offline assembly/validation and complete verification |
 
-Modules expose small factory APIs with explicit state/service dependencies and screen-transition callbacks. UI submits answers through `learning.js`; it does not maintain a second score, XP or SRS store. `tools/build.py` assembles the modules in explicit dependency order inside one private script closure. The generated game needs no module loader, framework, package manager or network requests for code/curriculum. Runtime dependencies remain browser DOM, local storage and optional Audio/Web Speech APIs; development uses Python and Node/Playwright/Chromium.
+Modules expose small factory APIs with explicit state/service dependencies and screen-transition callbacks. UI submits answers through `learning.js`; it does not maintain a second score, XP or SRS store. `tools/build.py` assembles the modules in explicit dependency order inside one private script closure. The generated game embeds Phaser and the strict-checked RPG bundle alongside the educational modules. Players need no module loader, dependency installation or network requests for code/curriculum. Browser DOM, Canvas, local storage and optional Audio/Web Speech APIs provide the platform; development uses Python, npm/TypeScript/esbuild and Node/Playwright/Chromium.
 
 `docs/reference/WEEK2_LESSON_DATA.json` archives the historical English editorial targets and is never read by the runtime/builder; `tests/curriculum-contract.json` preserves authored-content regression fixtures. `content/DISTRICT_INVENTORY_REPORT.json` is an inventory output. Do not delete data files just because some names overlap.
 

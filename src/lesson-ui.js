@@ -91,6 +91,10 @@ function createLessons({
       constructionCount: 0,
       locked: false,
     };
+    presentSession();
+  }
+  function presentSession(restore=false) {
+    const {loop,mode,loc}=state.session;
     ui.$("lessonScreen").dataset.week = loop >= 8 ? "2" : "1";
     ui.$("lessonScreen").dataset.day = String(loop);
     ui.$("lessonEyebrow").textContent =
@@ -117,7 +121,8 @@ function createLessons({
     ui.hud();
     ui.view("lessonScreen");
     storage.save();
-    renderPhase();
+    if (restore && state.session.phase === "quiz") showQuestion(true);
+    else renderPhase();
   }
   function renderPhase() {
     if (!state.session) return;
@@ -250,11 +255,12 @@ function createLessons({
       w = content.wordById[s.activeItem.id],
       tiles = QuestionEngine.buildTiles(w, s.activeItem, s.loop);
     ui.construction.draw(ui.construction.globalControls(), s, tiles, s.tileOrder, renderBuild);
+    if (typeof RPG_ENABLED!=="undefined" && RPG_ENABLED) storage.save();
   }
-  function showQuestion() {
+  function showQuestion(restore=false) {
     const s = state.session;
     if (!s) return;
-    if (!s.queue.length) {
+    if (!s.queue.length && !(restore && s.activeItem)) {
       finish();
       return;
     }
@@ -263,6 +269,7 @@ function createLessons({
     ui.$("grammarPanel").classList.add("hidden");
     ui.$("quizPanel").classList.remove("hidden");
     ui.$("lessonScreen").classList.remove("construction-active");
+    if (!restore) {
     s.activeItem = s.queue[0];
     if (s.activeItem.kind === "construct") {
       delete s.activeItem.duds;
@@ -283,6 +290,7 @@ function createLessons({
     );
     if (size > 1 && s.tileOrder.every((n, i) => n === i))
       [s.tileOrder[0], s.tileOrder[1]] = [s.tileOrder[1], s.tileOrder[0]];
+    }
     const w = learning.surface(s.activeItem.id, "lesson-practice"),
       build = s.activeItem.kind === "construct";
     ui.$("quizCounter").textContent =
@@ -315,7 +323,7 @@ function createLessons({
     ui.$("constructionPanel").classList.toggle("hidden", !build);
     if (build) renderBuild();
     else
-      for (const choice of questions.distractors(w)) {
+      for (const choice of (s.choices = restore && s.choices ? s.choices : questions.distractors(w))) {
         const b = ui.button(choice, () => answer(choice));
         b.className = "choice";
         b.dataset.answer = choice;
@@ -323,11 +331,18 @@ function createLessons({
       }
     ui.$("quizFeedback").textContent = "Submit your answer to continue.";
     ui.$("quizNext").disabled = true;
+    if (restore && s.locked) {
+      for (const b of ui.$("choices").children) b.disabled=true;
+      if (build) {renderBuild();ui.construction.feedback(ui.$("quizFeedback"),w,s.activeItem,QuestionEngine.evaluate(s.activeItem,w,s.submittedAnswer || ""));}
+      else {ui.showAnswerFeedback(ui.$("choices"),w.en,s.submittedAnswer);ui.$("quizFeedback").textContent=s.feedbackText || "Your first response is recorded.";}
+      ui.$("quizNext").disabled=false;
+    }
     storage.save();
   }
   function answer(value) {
     const result = learning.submitLesson(value);
     if (!result) return;
+    state.session.submittedAnswer=value;
     const { w, correct, gain } = result;
     learning.surface(w.id, "lesson-feedback");
     storage.save();
@@ -347,6 +362,7 @@ function createLessons({
       `${correct ? "✓ Correct" : "Not yet — try again shortly"} · +${gain} XP · ${w.ps} (${w.roman}) — ${w.en}. ${QuestionEngine.explanation({kind:state.session.activeItem.kind || "word"}, w)}`;
     if (state.session.activeItem.kind === "construct") ui.construction.feedback(ui.$("quizFeedback"), w, state.session.activeItem, correct, `+${gain} XP`);
     ui.$("quizNext").disabled = false;
+    state.session.feedbackText=ui.$("quizFeedback").textContent;
     ui.$("quizNext").textContent = state.session.queue.length
       ? "Next →"
       : "Finish lesson →";
@@ -376,7 +392,7 @@ function createLessons({
     renderBuild();
   }
   function finish() {
-    if (!state.session) return;
+    if (!state.session || state.session.finished) return;
     audio.stopAudio();
     ui.$("passUnlockNotice")?.remove();
     const s = state.session;
@@ -393,6 +409,7 @@ function createLessons({
         gender: s.profileGender,
       };
     }
+    s.finished=true;
     const bonus = progression.completeLessonOnce(
       state.progress,
       s.id,
@@ -464,6 +481,7 @@ function createLessons({
     ui.view("resultScreen");
   }
   return {
+    resume(snapshot) { state.session=snapshot;onLessonStart();presentSession(true); },
     begin,
     studyList,
     afterStudy,

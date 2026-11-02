@@ -13,13 +13,15 @@ try {
 export const hook = `window.__test={state,audio,content,progression,learning,questions,lessons,challenge,grammar,storage,world,library,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine,nextQuestion,reset(pace=24){state.progress=progression.fresh();state.progress.library.requestedDailyTarget=pace;state.session=null;state.day=1;storage.resetProblem();storage.save();ui.view('introScreen')},day(day){state.day=day;world.startWorld()}};`;
 export async function setup({
   width = 375,
+  mobile = false,
+  rpg = false,
   bridge = true,
   offline = false,
   htmlPath = "index.html",
   transform = (html) => html,
 } = {}) {
   mkdirSync("work", { recursive: true });
-  const html = transform(readFileSync(htmlPath, "utf8")).replace(
+  const html = transform(readFileSync(htmlPath, "utf8").replace("const RPG_ENABLED=true;", `const RPG_ENABLED=${rpg};`)).replace(
     "// @TEST_HOOK",
     bridge ? hook : "",
   );
@@ -32,9 +34,9 @@ export async function setup({
     executablePath: process.env.CHROMIUM_PATH || "/usr/bin/chromium",
     args: ["--no-sandbox"],
   });
-  const page = await browser.newPage({ viewport: { width, height: 1000 } }),
-    errors = [];
-  page.on("pageerror", (e) => errors.push(e.message));
+  const page = await browser.newPage({ viewport: { width, height: 1000 }, ...(mobile?{isMobile:true,hasTouch:true,deviceScaleFactor:3}:{}) }),
+    errors = [], errorStacks = [];
+  page.on("pageerror", (e) => {errors.push(e.message);errorStacks.push(e.stack);});
   const url = "http://127.0.0.1:" + server.address().port;
   if (offline) {
     await page.route("**/*", (route) =>
@@ -49,6 +51,7 @@ export async function setup({
     browser,
     server,
     errors,
+    errorStacks,
     url,
     async close() {
       await browser.close();

@@ -1414,3 +1414,53 @@ header {
 .construction-active #lessonExpression { display: none; }
 .construction-practice { margin-block: 1rem; }
 .construction-practice .word-tiles { margin-block: 1rem; }
+
+/* RPG profile: compact village shell; educational panels retain their RTL styles. */
+body:has(.rpg-world) {background:#192c2b;}
+body:has(.rpg-world) .app {max-width:1060px;}
+body:has(.rpg-world) .herochar {padding:14px 20px;margin-bottom:14px;}
+body:has(.rpg-world) .herochar .avatar {font-size:30px;}
+body:has(.rpg-world) .herochar h1 {font-size:20px;}
+body:has(.rpg-world) .dialect-note {font-size:12px;}
+.rpg-world {padding:20px;background:#233e3b;border-color:#77927a;}
+.rpg-heading {display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px;margin-bottom:14px;}
+.rpg-heading .eyebrow {flex-basis:60%;margin:0;color:#d6c78e;}
+.rpg-heading h2 {margin:0;flex:1;font-family:monospace;font-size:25px;color:#f1e7c8;}
+.rpg-day {font:11px monospace;color:#bed1b3;margin-left:auto;}
+.rpg-tools {gap:7px;}
+.rpg-tools button {font-size:13px;padding:10px;}
+.rpg-viewport {background:#263e35;border:5px solid #a59870;box-shadow:0 0 0 2px #172b29;overflow:hidden;}
+#rpgCanvas {display:block;width:100%;height:auto;image-rendering:pixelated;outline-offset:-3px;touch-action:none;}
+.rpg-location-note {font-size:13px;min-height:38px;color:#e9dcb4;margin:12px 0;}
+.rpg-controls {display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.rpg-dpad {display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(2,44px);gap:4px;touch-action:none;}
+.rpg-dpad button {padding:0;font-size:22px;user-select:none;touch-action:none;border-radius:6px;}
+.rpg-dpad [data-direction=up] {grid-column:2;}
+.rpg-dpad [data-direction=left] {grid-row:2;grid-column:1;}
+.rpg-dpad [data-direction=down] {grid-row:2;grid-column:2;}
+.rpg-dpad [data-direction=right] {grid-row:2;grid-column:3;}
+#rpgInteract {min-height:54px;max-width:200px;flex:1;}
+.rpg-controls .tiny {flex:1;min-width:150px;}
+.rpg-visits {display:flex;gap:12px;flex-wrap:wrap;border-top:1px solid #617b63;padding-top:14px;margin-top:15px;font:13px monospace;color:#d5d4a9;}
+.rpg-dialogue {max-width:540px;width:calc(100% - 32px);border:3px solid #b4a57c;border-radius:8px;background:#263f3b;color:#f4ead1;padding:24px;box-shadow:0 16px 80px #0008;}
+.rpg-dialogue::backdrop {background:#132725b5;}
+.rpg-dialogue h2 {font-family:monospace;color:#ebd39c;}
+.rpg-dialogue p {line-height:1.7;}
+.rpg-dialogue .buttons {display:flex;flex-wrap:wrap;gap:10px;}
+.rpg-dialogue fieldset {margin:16px 0;display:flex;gap:8px;flex-wrap:wrap;border-color:#8a946f;}
+.rpg-dialogue button[aria-pressed=true] {border-color:#f3d290;background:#59664a;}
+body:has(.rpg-world) header .brand {font-size:16px;}
+@media(max-width:500px){.rpg-world{padding:10px}.rpg-heading h2{font-size:20px}.rpg-heading .eyebrow{flex-basis:100%}.rpg-day{margin-left:0}.rpg-controls{gap:12px}.rpg-controls .tiny{flex-basis:100%;margin:0}.rpg-dialogue{padding:16px}body:has(.rpg-world) .herochar{padding:10px}body:has(.rpg-world) header .brand small{display:none}}
+
+/* Existing HTML learning panels above a paused Phaser canvas. */
+body.rpg-overlay-active #lessonScreen, body.rpg-overlay-active #resultScreen {
+  position:fixed;inset:5vh max(12px,calc((100vw - 1000px)/2));z-index:50;
+  overflow:auto;overscroll-behavior:contain;max-height:90vh;margin:0;
+  box-shadow:0 0 0 100vmax #102322bd;
+}
+body.rpg-overlay-active #navWorld {position:fixed;right:24px;top:5px;z-index:60;}
+body.rpg-overlay-active #worldScreen {pointer-events:none;}
+body.rpg-overlay-active dialog {z-index:80;}
+@supports(height:100dvh){body.rpg-overlay-active #lessonScreen,body.rpg-overlay-active #resultScreen{max-height:90dvh;}}
+
+#rpgCanvas {width:100% !important;height:auto !important;}
