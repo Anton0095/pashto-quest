@@ -60,7 +60,26 @@ function createLearning({ state, content, progression }) {
     });
   }
   function libraryLessonPool(day, place) {
-    return LibraryEngine.lessonPool(state.progress, content.LIBRARY_DATA, content.NARRATIVE_DATA, day, place);
+    const plan=LibraryEngine.ensurePlan(state.progress,content.LIBRARY_DATA,day);
+    if(state.reviewCampaign&&plan.studyPools?.[place])return [...plan.studyPools[place]];
+    const pool=LibraryEngine.lessonPool(state.progress, content.LIBRARY_DATA, content.NARRATIVE_DATA, day, place);
+    if(state.reviewCampaign){
+      // Current-format saves predating studyPools retain assignments and unlock provenance.
+      // Include their already-learned universal words and forms, bounded to the reviewed day.
+      for(const entry of content.LIBRARY_DATA.entries){
+        const record=state.progress.library.acquired[entry.lemmaId];
+        if(!record)continue;
+        for(const form of entry.forms){
+          const origin=record.formUnlocks?.[form.formId]||record.unlock;
+          if(!record.introducedFormIds.includes(form.formId)||!origin||origin.day>day||!LibraryEngine.formAllowed(entry,form,day))continue;
+          if(form===entry.forms[0]&&entry.vocabularyClass==='universal')pool.push('library-card:'+entry.lemmaId);
+          else if(form!==entry.forms[0])pool.push('library-form:'+form.formId);
+        }
+      }
+      return [...new Set(pool)];
+    }
+    (plan.studyPools ||= {})[place] ||= [...pool];
+    return pool;
   }
   function availableSentences(day = state.session?.loop || state.day) {
     return SentenceEngine.available(

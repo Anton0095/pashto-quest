@@ -16,9 +16,9 @@ See the [overhaul audit and delivery report](docs/rpg/MULTIDAY_OVERHAUL.md), [ar
 
 ## Product goal and delivery status
 
-The aim is cumulative Pashto learning through a coherent village story: recurring characters teach language that fits their scene, speaker and listener. Text, meaning and any illustration must agree; for example, Muhammad Jan describing an open window needs an open-window scene. Correct and incorrect answer feedback should behave consistently on every lesson surface, including forced story lessons and optional expressions. These are general requirements, not exceptions for individual days.
+The aim is cumulative Pashto learning through a coherent village story: recurring characters teach language that fits their scene, speaker and listener. Text, meaning and the surrounding story must agree. Supplementary illustrated vocabulary/sentence-preview boards have been removed in favor of compact activities. Correct and incorrect answer feedback should behave consistently on every lesson surface, including forced story lessons and optional expressions. These are general requirements, not exceptions for individual days.
 
-The intended onboarding includes a Pashto conversation about the learner’s name/gender, and the narrative calls for contextual greetings throughout the days. The current implementation uses English profile controls and has fourteen active user-approved contextual expression slots out of seventeen. These are delivery gaps, not a redefinition of that goal. The remaining three Day-1 slots and two tutorial questions need reviewed language and explicit activation; do not invent translations or claim that English controls fulfil the Pashto conversation. Visual relevance is an acceptance requirement, not a claim that every scene already has a bespoke illustration.
+Onboarding now teaches two fixed greetings and two separately owner-approved Pashto questions: language selection and Muhammad Jan’s name. Optional player name/gender settings live in Library → Player Profile, defaulting to Player / Prefer not to say. The [two exact tutorial prompts and approval](content/TUTORIAL_PROMPTS.json) are distinct from the eighteen conventional expressions. Three Day-1 contextual expression proposals remain inactive.
 
 ## Play
 
@@ -64,6 +64,7 @@ node tools/district-inventory.mjs --check
 | `src/audio.js` | Common MP3/device-voice player and cancellation |
 | `src/app.html`, `src/app.css` | UI shell and styles |
 | `content/LEARNING_CURRICULUM.json`, `content/FIXED_PHRASES.json` | Curriculum, grammar, story/people, assessment scenes and eighteen conventional expression exceptions |
+| `content/TUTORIAL_PROMPTS.json` | Two separately owner-approved authored onboarding questions; no curricular generation unlocks |
 | `content/GRAMMAR_REFERENCE.json` | Read-only Grammar Journal explanations and worked analyses; never an assessment bank |
 | `content/LIBRARY_LEXICON.json`, `content/NARRATIVE_EXPRESSIONS.json` | Lexical forms/mappings and active/pending expression identities |
 | `content/DISTRICT_VOCABULARY_CANDIDATES.json`, `content/UNIVERSAL_TEACHING_TARGETS.json` | Inactive editorial candidates, not playable translations |
@@ -75,7 +76,7 @@ Modules expose small factory APIs with explicit state/service dependencies and s
 
 ## How progression works
 
-The Day 1 Library tutorial introduces four question types: choose the meaning of `سلام`, arrange `څنګه یې؟`, select a gender preference and type a player name using English profile controls. Completing all four is required to begin Day 1. A normal day includes narrative openings and district lessons; after the tutorial on Day 1, or immediately on Days 2–14, the player can skip visits and attempt the daily challenge. Starting a challenge unlocks the day’s frozen assigned words, evidenced forms and grammar from all four locations before generating its sentence tasks. It records challenge-start availability separately from actual study, with no fabricated grades, XP or visit completion. Its first successful pass completes all four locations and awards missing once-only location bonuses.
+The Day 1 Library tutorial introduces four question types: choose the meaning of `سلام`, arrange `څنګه یې؟`, select `پښتو` in response to “What language are you learning?” and type Muhammad Jan’s name in English. Completing all four is required to begin Day 1. A normal day includes narrative openings and district lessons; after the tutorial on Day 1, or immediately on Days 2–14, the player can skip visits and attempt the daily challenge. Starting a challenge unlocks the day’s frozen assigned words, evidenced forms and grammar from all four locations before generating its sentence tasks. It records challenge-start availability separately from actual study, with no fabricated grades, XP or visit completion. Its first successful pass completes all four locations and awards missing once-only location bonuses. In the RPG, passing keeps the current day active: return home and sleep, or use Quick travel → Sleep, to begin the next day. The explorable house also opens the shared Library and offers zero-XP dream lessons from completed days. See [house, sleep and dream behavior](docs/rpg/HOUSE_SLEEP_DREAM.md).
 
 Each district selects eligible new **distinct lexical lemmas** in its explicit curated introduction order, at a selected pace of 0/4/8/12/16/20/24 per day. Universal vocabulary, inflections, grammar units and expressions do not consume district quotas. Day 1 teaches descriptions, while action verbs start on Day 2. Day 14 schedules no compulsory new words. Daily challenges have 15 items, pass 12; Days 7 and 14 have 25, pass 20. A passed Day 7 exam unlocks Level 10 and New Resident.
 

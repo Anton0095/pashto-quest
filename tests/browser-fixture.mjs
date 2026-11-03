@@ -74,10 +74,10 @@ export async function tutorial(page) {
   await page.locator("#teachNext").click();
   await page
     .locator("#tutorialInteraction button")
-    .getByText("Prefer not to say", { exact: true })
+    .getByText("پښتو", { exact: true })
     .click();
   await page.locator("#teachNext").click();
-  await page.locator("#tutorialName").fill("Pashto learner");
+  await page.locator("#tutorialName").fill("Muhammad Jan");
   await page.locator("#tutorialSaveName").click();
   await page.locator("#teachNext").click();
 }

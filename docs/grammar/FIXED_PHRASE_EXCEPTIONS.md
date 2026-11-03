@@ -23,10 +23,10 @@ This is the complete exception register. Exact wording is checked against conten
 | phrase-day-13-opening | ورځ مو څنګه تېرېږي؟ | How is your day going? | 13 | User-approved conventional conversational expression, explicitly taught whole. |
 | phrase-day-14-opening | بریالي اوسئ! | Good luck! | 14 | User-approved conventional conversational expression, explicitly taught whole. |
 
-English profile settings are not language teaching. Phonological letters, lexical headwords, individual finite/inflected forms and licensed non-clausal chunks are vocabulary/form references, not hidden fixed-sentence exceptions. Every instructional clause is generated. All registered expressions are user-approved, without independent native certification.
+English profile settings are not language teaching. Phonological letters, lexical headwords, individual finite/inflected forms and licensed non-clausal chunks are vocabulary/form references, not hidden fixed-sentence exceptions. Every ordinary curricular clause is generated; the two expressly approved onboarding questions are recorded separately in [TUTORIAL_PROMPTS.json](../../content/TUTORIAL_PROMPTS.json). All registered expressions are user-approved, without independent native certification.
 
 ## Expanding the register
 
 The inventory is not a permanent cap. Additional conventional formulas require stable identity, exact wording/sense/transliteration, context and documented approval under [language review](../../LANGUAGE_REVIEW.md), with reviewer, date and reference. Update canonical phrase/expression data, the register, validators and tests together under the [validation policy](../../tests/README.md#choose-validation-by-change-and-risk). Unapproved proposals remain inactive; ordinary sentences cannot be relabelled as phrases to bypass generation.
 
-The Day-7 peace response is introduced on Day 5 and reused conversationally. Three Day-1 phrases and two Pashto tutorial questions remain [inactive proposals](LANGUAGE_PROPOSALS.md). Profile controls remain English until those questions are approved.
+The Day-7 peace response is introduced on Day 5 and reused conversationally. Three Day-1 phrases and the superseded profile questions remain [inactive proposals](LANGUAGE_PROPOSALS.md). The two replacement onboarding questions were separately owner-approved on 3 November 2026; optional profile controls are in the Library.

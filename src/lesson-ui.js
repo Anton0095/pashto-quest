@@ -111,7 +111,7 @@ function createLessons({
           : ui.displayPlace(loc);
     ui.$("lessonDescription").textContent =
       mode === "tutorial"
-        ? "Two conventional greetings and two English profile settings"
+        ? "Four guided conversation activities"
         : mode === "review"
           ? "Previously studied material due for recall"
           : content.curriculum.days[loop - 1].topic;
@@ -397,18 +397,7 @@ function createLessons({
     ui.$("passUnlockNotice")?.remove();
     const s = state.session;
     const passedRequired = s.required.every((id) => s.passed.has(id));
-    if (s.mode === "tutorial") {
-      if (
-        !passedRequired ||
-        !s.profileName.trim() ||
-        !["male", "female", "unspecified"].includes(s.profileGender)
-      )
-        return;
-      state.progress.playerProfile = {
-        name: s.profileName.trim(),
-        gender: s.profileGender,
-      };
-    }
+    if (s.mode === "tutorial" && !passedRequired) return;
     s.finished=true;
     const bonus = progression.completeLessonOnce(
       state.progress,
@@ -423,7 +412,7 @@ function createLessons({
     let title, desc, follow;
     if (s.mode === "tutorial") {
       title = `Muhammad Jan welcomes ${state.progress.playerProfile.name}!`;
-      desc = `Welcome, ${state.progress.playerProfile.name}! You practised choosing a meaning, arranging words, selecting an answer, and typing your name. Day 1 is now open.`;
+      desc = `Welcome, ${state.progress.playerProfile.name}! You practised choosing a meaning, arranging words, selecting an answer, and typing a response. Day 1 is now open.`;
       follow =
         "Explore home, market, lake and school in any order, or use “Skip to Muhammad Jan’s check-in” on the town screen. His 15-question Library home-award challenge is available now.";
     } else if (s.mode === "review") {

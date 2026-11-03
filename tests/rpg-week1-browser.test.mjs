@@ -43,16 +43,27 @@ async function play(route){
    await d.assessment(day,{reload:[2,6,7].includes(day)});let s=await d.progress();assert(s.challenges[day].passed);for(const id of c.lessons)assert(s.complete[id]);
    if(day>1)await d.dialogue(day===7?'Finish Week 1':`Finish Day ${day}`);
    await d.durable();let xp=(await d.progress()).xp;await p.reload();await p.locator('#resultScreen').waitFor();assert.equal((await d.progress()).xp,xp);assert(!await p.locator('#rpgDialogue').isVisible(),'Completed ending never reopens');
-   if(day<7){await p.locator('#rpgAdvance').click();if(day===3){await p.reload();if(await p.locator('#rpgAdvance').isVisible())await p.locator('#rpgAdvance').click();}await p.locator('#rpgDialogue').waitFor();await d.durable();assert.equal((await d.progress()).xp,xp,'Advancement awards no duplicate XP');const position=await d.pos();assert.deepEqual(position,{map:data.days[day+1].start.map,x:data.days[day+1].start.x,y:data.days[day+1].start.y});}
+   if(day<7){
+    await p.locator('#rpgCompletionExtra').getByRole('button',{name:'Go home',exact:true}).click();
+    assert.equal((await d.pos()).map,'house');
+    assert((await p.locator('.rpg-day').innerText()).includes('DAY '+day+' /'),'Challenge pass keeps the active day');
+    if(!await p.locator('#quickSleep').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();
+    await p.locator('#rpgDialogue').waitFor();await p.locator('#sleepTransition').waitFor({state:'detached'});
+    await d.durable();assert.equal((await d.progress()).xp,xp,'Sleep awards no duplicate XP');const position=await d.pos();assert.deepEqual(position,{map:data.days[day+1].start.map,x:data.days[day+1].start.x,y:data.days[day+1].start.y});
+   }
    else{assert.equal(await p.locator('#rpgAdvance').count(),0);assert.equal(await p.locator('#resultHeading').innerText(),'Pashto Quest — Week 1 Complete');assert((await p.locator('#resultKnowledge').innerText()).includes('Level 10 · New Resident'));assert.equal(await p.locator('#resultXPLabel').innerText(),'Total XP');assert.equal(await p.locator('#resultKnowledgeLabel').innerText(),'Current level and title');assert.equal(s.challenges[7].best,25);assert(!s.challenges[8]);mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:`work/overhaul/graduation-${route}.png`,fullPage:true});await p.locator('#resultWorld').click();await p.locator('#rpgLibrary').click();await p.locator('#libraryClose').click();await d.durable();assert.equal((await d.progress()).xp,xp);}
    console.log('PASS public Week1',route,'day',day,'XP',(await d.progress()).xp);
   }
-  // Public history transfers exercise repeated real chapter changes without re-awarding learning.
-  const cdp=await p.context().newCDPSession(p);await cdp.send('HeapProfiler.collectGarbage');const heapBefore=(await cdp.send('Runtime.getHeapUsage')).usedSize;const counts={},transfers=[];const finalXP=(await d.progress()).xp;
+  // Completed-day selectors retain the active campaign chapter and canonical rewards.
+  const finalXP=(await d.progress()).xp;
   for(const visit of [1,2,3,4,5,6,7,1,7]){
-   await p.locator('#rpgMenuButton').click();if(!await p.getByRole('button',{name:'Revisit Day '+visit,exact:true}).isVisible())await p.getByText('Revisit completed chapters',{exact:true}).click();const start=Date.now();await p.getByRole('button',{name:'Revisit Day '+visit,exact:true}).click();await p.waitForFunction(day=>document.getElementById('rpgLocation').parentElement.textContent.includes('DAY '+day+' /'),visit);await d.durable();transfers.push(Date.now()-start);assert(!await p.locator('#rpgDialogue').isVisible(),'Confirmed opening remains completed');assert.equal((await d.progress()).xp,finalXP);const objects=(await p.evaluate(()=>__week1Inspect())).updateObjects;if(counts[visit]!==undefined)assert.equal(objects,counts[visit],'Same chapter releases old objects');counts[visit]=objects;
+   await p.locator('#rpgMenuButton').click();
+   if(!await p.getByRole('button',{name:'Dream Day '+visit,exact:true}).isVisible())await p.getByText('Dream — Review completed days',{exact:true}).click();
+   await p.getByRole('button',{name:'Dream Day '+visit,exact:true}).click();await p.locator('#dreamMenu').waitFor();
+   assert.equal(await p.locator('[data-dream-lesson]').count(),4);assert((await p.locator('.rpg-day').innerText()).includes('DAY 7 /'));
+   await p.locator('#dreamMenu').getByRole('button',{name:'Return to house',exact:true}).click();
+   assert.equal((await d.pos()).map,'house');assert.equal((await d.progress()).xp,finalXP);
   }
-  await cdp.send('HeapProfiler.collectGarbage');const heapAfter=(await cdp.send('Runtime.getHeapUsage')).usedSize;const bytes=await p.evaluate(()=>Object.fromEntries(['pashto-quest-rpg-world-v1','pashto-quest-rpg-education-v1'].map(k=>[k,new TextEncoder().encode(localStorage.getItem(k)||'').length])));console.log('Chapter transfer observations',route,JSON.stringify({counts,transfersMs:transfers,heapBefore,heapAfter,bytes}));
   await p.locator('#rpgMenuButton').click();await p.getByRole('button',{name:'Journey results',exact:true}).click();assert.equal(await p.locator('#resultHeading').innerText(),'Pashto Quest — Week 1 Complete');assert.equal(await p.locator('#rpgAdvance').count(),0);
   assert.equal(await p.evaluate(()=>localStorage.getItem('pashto-town-days-v1')),'untouched-production');assert.deepEqual(b.errors,[]);assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2));
  }catch(error){console.error('Week1 route failure',route,await p.evaluate(()=>({diag:window.__week1Inspect(),focus:document.hasFocus(),hidden:document.hidden,inputLog:window.__inputLog,canvas:document.getElementById('rpgCanvas').dataset,dialog:document.getElementById('rpgDialogue').innerText,open:document.getElementById('rpgDialogue').open,world:localStorage.getItem('pashto-quest-rpg-world-v1')})));throw error;}finally{await b.close();}

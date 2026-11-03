@@ -51,7 +51,7 @@ export class VillageScene extends Phaser.Scene {
       const bounds=this.options.canvas.getBoundingClientRect();
       const point=this.cameras.main.getWorldPoint((event.clientX-bounds.left)*this.scale.width/bounds.width,(event.clientY-bounds.top)*this.scale.height/bounds.height);
       const tile={x:Math.floor(point.x/tileSize),y:Math.floor(point.y/tileSize)};
-      const actor=this.options.actors().find(a=>a.x===tile.x&&a.y===tile.y);
+      const actor=this.options.actors().find(a=>{const b=a.interactionBounds;return b?tile.x>=b.x&&tile.x<b.x+b.w&&tile.y>=b.y&&tile.y<b.y+b.h:a.x===tile.x&&a.y===tile.y;});
       this.options.canvas.dataset.route=this.controller!.navigate(tile,actor)?'moving':'unreachable';
     };
     this.options.canvas.addEventListener('pointerdown',this.pointer);
@@ -61,12 +61,13 @@ export class VillageScene extends Phaser.Scene {
   }
   private createArt():void {
     const graphics=this.make.graphics({x:0,y:0});
-    const colors:Record<string,number>={g:0x8ca66b,f:0x8ca66b,p:0xd5bf8b,c:0xc8b687,w:0x6aa9af,t:0x8ca66b,b:0xcbb183,d:0x756449,s:0x9d7958,'.':0xd1ba8c,r:0xa76e58};
+    const colors:Record<string,number>={g:0x8ca66b,f:0x8ca66b,p:0xd5bf8b,c:0xc8b687,w:0x6aa9af,t:0x8ca66b,b:0xcbb183,d:0x756449,s:0x9d7958,'.':0xd1ba8c,r:0xa76e58,i:0xb38d62,u:0x9e4350,e:0x6b493d,k:0x6b493d,q:0x8a5c3a,z:0x426f78,P:0x6c6a40};
     Object.keys(this.options.data.tiles).forEach((symbol,index)=>{
       const x=index*16;
       graphics.fillStyle(colors[symbol]??0x8ca66b).fillRect(x,0,16,16);
       if(['g','f','t'].includes(symbol))graphics.fillStyle(0x78935a).fillRect(x+3,6,2,2).fillRect(x+11,12,2,1);
       if(['p','c','.'].includes(symbol))graphics.fillStyle(0xbfaa79).fillRect(x+2,5,2,1).fillRect(x+11,12,2,1);
+      if(symbol==='i'){graphics.fillStyle(0xb99469).fillRect(x+2,4,2,1).fillRect(x+11,11,2,1);}
       if(symbol==='w')graphics.fillStyle(0x96c5c2).fillRect(x+2,4,7,1).fillRect(x+9,12,4,1);
       if(symbol==='t'){
         graphics.fillStyle(0x77664b).fillRect(x+7,8,3,8);
@@ -122,6 +123,37 @@ export class VillageScene extends Phaser.Scene {
       this.extraCollision?.setCollision(0).setVisible(false);
     }else this.extraCollision=undefined;
     const art=this.add.graphics().setDepth(1);
+    for(const f of definition.furniture??[]){
+      const x=f.x*16,y=f.y*16,w=f.w*16,h=f.h*16;
+      if(['rug','tapestry'].includes(f.kind)){
+        art.fillStyle(0x783444).fillRect(x,y,w,h);art.lineStyle(2,0xe8c388).strokeRect(x+3,y+3,w-6,h-6);
+        for(let i=12;i<w-5;i+=16)for(let j=12;j<h-5;j+=16){art.fillStyle((i+j)%32?0xc18b65:0x446d72);art.fillRect(x+i,y+j,6,6);}
+      }else if(f.kind==='bed'){
+        art.fillStyle(0x573a2c).fillRect(x,y,w,h);art.fillStyle(0xe7d7ab).fillRect(x+4,y+5,w-8,14);art.fillStyle(0x994f43).fillRect(x+4,y+23,w-8,h-28);art.fillStyle(0xd6b67a).fillRect(x+7,y+27,w-14,4);
+      }else if(f.kind==='bookshelf'){
+        art.fillStyle(0x614631).fillRect(x,y,w,h);for(let j=4;j<h-4;j+=13)for(let i=5;i<w-5;i+=8){art.fillStyle([0xb16848,0xd4b578,0x467c7b][i%3]).fillRect(x+i,y+j,5,9);}art.lineStyle(2,0xd4b578).strokeRect(x,y,w,h);
+      }else if(f.kind==='window'){
+        art.fillStyle(0x5a9eb0).fillRect(x,y,w,h);art.lineStyle(2,0xe6c492).strokeRect(x,y,w,h);art.lineBetween(x+w/2,y,x+w/2,y+h);
+      }else if(f.kind==='table'){
+        art.fillStyle(0x5b3c2c).fillRect(x+2,y+3,w-4,h-3);art.fillStyle(0xb98255).fillRect(x,y,w,h-5);art.fillStyle(0xe6d1a1).fillRect(x+10,y+6,8,8);art.fillStyle(0x6d8a86).fillRect(x+29,y+2,10,14);art.fillStyle(0x3d6266).fillRect(x+31,y,6,4);
+      }else if(f.kind==='cushion'){
+        art.fillStyle(0x3c717b).fillRect(x+1,y+2,w-2,h-4);art.lineStyle(1,0xd2af77).strokeRect(x+3,y+4,w-6,h-8);
+      }else if(f.kind==='lantern'){
+        art.fillStyle(0xd5b276).fillRect(x+3,y+h-4,w-6,4);art.fillStyle(0x6e5031).fillRect(x+10,y+5,12,22);art.fillStyle(0xf3c95e).fillRect(x+13,y+10,6,13);art.lineStyle(2,0x6e5031).strokeRect(x+13,y+1,6,6);
+      }else if(f.kind==='chest'){
+        art.fillStyle(0x765032).fillRect(x,y,w,h);art.fillStyle(0xb68a51).fillRect(x+2,y+2,w-4,4);art.fillStyle(0xd6ba73).fillRect(x+w/2-2,y+7,4,5);
+      }else if(f.kind==='basket'){
+        art.fillStyle(0x9f6c3e).fillRect(x+1,y+5,w-2,h-5);art.lineStyle(2,0xd7b478).strokeRect(x+3,y+3,w-6,h-4);for(let yy=10;yy<h;yy+=6)art.lineBetween(x+1,y+yy,x+w-1,y+yy);
+      }else if(f.kind==='pottery'){
+        art.fillStyle(0x99603b).fillRect(x+2,y+5,w-4,h-5);art.fillStyle(0xc48b55).fillRect(x+5,y,w-10,6);
+      }else if(f.kind==='plant'){
+        art.fillStyle(0xad6e47).fillRect(x+4,y+9,9,7);art.fillStyle(0x44754b).fillRect(x+1,y+1,14,9);
+      }
+    }
+    if(p.map==='house'){
+      art.fillStyle(0x624332).fillRect(12*16,17*16,16,16);art.fillStyle(0xe6c492).fillRect(12*16,17*16,16,3);
+      this.add.text(12*16+8,17*16-2,'EXIT ↓',{fontFamily:'monospace',fontSize:'7px',color:'#fff1cb',backgroundColor:'#624332'}).setOrigin(.5,1).setDepth(2);
+    }
     for(const b of definition.buildings){
       const x=b.x*16,y=b.y*16,w=b.w*16,h=b.h*16;
       art.fillStyle(Phaser.Display.Color.HexStringToColor(b.color).color).fillRect(x,y+7,w,h-7);
@@ -139,7 +171,8 @@ export class VillageScene extends Phaser.Scene {
     if(this.extraCollision)this.physics.add.collider(this.player,this.extraCollision);
     this.physics.add.collider(this.player,this.npcGroup);
     this.physics.world.setBounds(0,0,definition.tiles[0].length*16,definition.tiles.length*16);
-    this.cameras.main.setBounds(0,0,definition.tiles[0].length*16,definition.tiles.length*16).startFollow(this.player,true,1,1).setRoundPixels(true);
+    const mapWidth=definition.tiles[0].length*16,mapHeight=definition.tiles.length*16;
+    this.cameras.main.setBounds(Math.min(0,(mapWidth-this.scale.width)/2),Math.min(0,(mapHeight-this.scale.height)/2),Math.max(mapWidth,this.scale.width),Math.max(mapHeight,this.scale.height)).startFollow(this.player,true,1,1).setRoundPixels(true);
     this.marker=this.add.text(0,0,'!',{fontFamily:'monospace',fontSize:'10px',color:'#69593e',backgroundColor:'#fff0b9'}).setOrigin(.5,1).setDepth(10000);
     this.actorSignature='';this.sync();
   }

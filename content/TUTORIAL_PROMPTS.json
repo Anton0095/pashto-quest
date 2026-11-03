@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "approval": {
+    "status": "user_approved",
+    "reviewer": "Project owner (task conversation)",
+    "date": "2026-11-03",
+    "reference": "Explicit reply: Approve these exact tutorial prompts",
+    "scope": "Exact Pashto wording, English sense, romanisation and Muhammad Jan tutorial contexts below; no independent native certification or recordings.",
+    "nativeCertificationClaimed": false
+  },
+  "prompts": [
+    {
+      "id": "tutorial-language",
+      "pashto": "ته کومه ژبه زده کوې؟",
+      "romanisation": "Ta kuma zhaba zda kawe?",
+      "english": "What language are you learning?",
+      "speaker": "Muhammad Jan",
+      "response": "Select پښتو — Pashto"
+    },
+    {
+      "id": "tutorial-guide-name",
+      "pashto": "زما نوم څه دی؟",
+      "romanisation": "Zmaa num tsa day?",
+      "english": "What is my name?",
+      "speaker": "Muhammad Jan",
+      "response": "Type Muhammad Jan in English; reasonable spelling variants accepted"
+    }
+  ]
+}

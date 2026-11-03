@@ -25,7 +25,10 @@ for(const width of [375,1280]) {
     const [dx,dy]={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[key];
     expected={...expected,x:expected.x+dx,y:expected.y+dy};const entrance=data.maps[expected.map].transitions.find(t=>t.x===expected.x&&t.y===expected.y);
     if(entrance)expected={map:entrance.to,...entrance.spawn};
-    await p.waitForTimeout(160);await p.keyboard.press(key);
+    // Keyboard-activate the public D-pad for a deterministic one-tile pulse.
+    // Held arrow input is covered independently by phaser-browser.test.mjs.
+    const direction={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'}[key];
+    await p.waitForTimeout(160);await p.locator('[data-direction='+direction+']').press('Enter');
     await p.waitForFunction(e=>{const c=document.getElementById('rpgCanvas');return c.dataset.map===e.map&&+c.dataset.x===e.x&&+c.dataset.y===e.y;},expected);
    }
    const end=await pos();if(!map.transitions.some(t=>t.x===x&&t.y===y))assert.deepEqual([end.x,end.y],[x,y]);
@@ -45,8 +48,8 @@ for(const width of [375,1280]) {
    await durable();const tutorialDraft=await p.locator('#tutorialInteraction .built-sentence').innerText();await p.reload();await p.locator('#tutorialInteraction .built-sentence').waitFor();assert.equal(await p.locator('#tutorialInteraction .built-sentence').innerText(),tutorialDraft,'Exact tutorial tile draft restores');
    for(const text of ['یې؟','Check sentence'])await p.locator('#tutorialInteraction button').getByText(text,{exact:true}).click();
    await durable();const tutorialXP=(await progress()).xp;await p.reload();await p.locator('#teachNext:enabled').waitFor();assert.equal((await progress()).xp,tutorialXP,'Correct tutorial reload never scores twice');
-   await p.locator('#teachNext').click();await p.locator('#tutorialInteraction button').getByText('Prefer not to say',{exact:true}).click();await p.locator('#teachNext').click();
-   await p.locator('#tutorialName').fill('RPG learner');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();tutorialDone=true;
+   await p.locator('#teachNext').click();await p.locator('#tutorialInteraction button').getByText('پښتو',{exact:true}).click();await p.locator('#teachNext').click();
+   await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();tutorialDone=true;
    assert((await progress()).tutorialDone);await p.locator('#resultWorld').click();await walk(6,9);assert.equal((await pos()).map,'village');
   }
   const known=new Map();

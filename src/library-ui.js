@@ -28,6 +28,18 @@ function createLibraryUI({
     ui.$("libraryDialog").dataset.tab = tab;
     for (const b of document.querySelectorAll("[data-library-tab]"))
       b.setAttribute("aria-pressed", String(b.dataset.libraryTab === tab));
+    if(tab==='profile'){
+      const box=ui.node('form');box.id='libraryProfile';
+      const name=ui.node('input');name.id='playerProfileName';name.maxLength=40;name.value=state.progress.playerProfile.name||'Player';name.setAttribute('aria-label','Player name');
+      const gender=ui.node('select');gender.id='playerProfileGender';gender.setAttribute('aria-label','Gender preference');
+      for(const [value,label] of [['male','Male'],['female','Female'],['unspecified','Prefer not to say']]){const option=ui.node('option',label);option.value=value;gender.append(option);}
+      gender.value=state.progress.playerProfile.gender;
+      for(const [label,input] of [['Name',name],['Gender',gender]]){const row=ui.node('label',label+' ');row.append(input);box.append(row);}
+      const feedback=ui.node('p');feedback.id='profileFeedback';feedback.setAttribute('role','status');
+      const save=ui.button('Save profile',()=>{});save.type='submit';save.disabled=!!state.reviewCampaign;
+      box.addEventListener('submit',async event=>{event.preventDefault();if(state.reviewCampaign)return;state.progress.playerProfile={name:name.value.trim()||'Player',gender:gender.value};save.disabled=true;const ok=await storage.save();save.disabled=false;ui.hud();feedback.textContent=ok?'Profile saved.':'Profile is in memory; saving failed. Use the save recovery controls and retry.';});
+      box.append(save,feedback);root.append(ui.node('h3','Player Profile'),ui.node('p',state.reviewCampaign?'Exit dream practice to edit your campaign profile.':'Optional settings. You can change these at any time.'),box);return;
+    }
     if (tab === "pace") {
       renderLibraryPace(root);
       return;
@@ -567,6 +579,7 @@ function createLibraryUI({
     const nav = ui.node("nav");
     nav.setAttribute("aria-label", "Library pages");
     for (const [tab, label] of [
+      ["profile", "Player Profile"],
       ["vocabulary", "Vocabulary Bank"],
       ["universal", "Universal Vocabulary"],
       ["grammar", "Grammar Journal"],

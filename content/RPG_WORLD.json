@@ -52,6 +52,34 @@
     "r": {
       "walkable": false,
       "kind": "rug"
+    },
+    "i": {
+      "walkable": true,
+      "kind": "indoor floor"
+    },
+    "u": {
+      "walkable": true,
+      "kind": "traditional rug"
+    },
+    "e": {
+      "walkable": false,
+      "kind": "bed"
+    },
+    "k": {
+      "walkable": false,
+      "kind": "bookshelf"
+    },
+    "q": {
+      "walkable": false,
+      "kind": "table"
+    },
+    "z": {
+      "walkable": false,
+      "kind": "cushion"
+    },
+    "P": {
+      "walkable": false,
+      "kind": "plant"
     }
   },
   "maps": {
@@ -203,6 +231,15 @@
             "x": 2,
             "y": 12
           }
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "to": "house",
+          "spawn": {
+            "x": 12,
+            "y": 15
+          }
         }
       ]
     },
@@ -301,6 +338,139 @@
         }
       ],
       "buildings": []
+    },
+    "house": {
+      "name": "Your House",
+      "tiles": [
+        "bbbbbbbbbbbbbbbbbbbbbbbb",
+        "biiiiiiiiiiiiiiiiiiiiiib",
+        "biiiiiiiiiiiiiiiiiiiiiib",
+        "biiiiiiiiiiiiiiiiiiiiiib",
+        "biiiiiiiiiiiiiiiiiiiiiib",
+        "biikkkkiiiiiiiiiiiiiiiib",
+        "biikkkkiiiiiiiiiiieeeeib",
+        "biikkkkiiiiiiiiiiieeeeib",
+        "biikkkkiiiiiiiiiiieeeeib",
+        "biikkkkuuuuuuuuuuieeeeib",
+        "biiiiiiuuuqqqquuuieeeeib",
+        "biiiiiiuzuqqqquzuieeeeib",
+        "biiiiiiuzuuuuuuzuiiiiiib",
+        "biiiiiiuuuuuuuuuuiiiiPib",
+        "biqiiiiiiiiiiiiiiiiiiiib",
+        "biqiiiiiiiiiiiiiiiqqqiib",
+        "biiiiiiiiiiiiiiiiiiiiiib",
+        "bbbbbbbbbbbbdbbbbbbbbbbb"
+      ],
+      "spawn": {
+        "x": 12,
+        "y": 15
+      },
+      "transitions": [
+        {
+          "x": 12,
+          "y": 17,
+          "to": "village",
+          "spawn": {
+            "x": 9,
+            "y": 8
+          }
+        }
+      ],
+      "regions": [],
+      "buildings": [],
+      "furniture": [
+        {
+          "kind": "rug",
+          "x": 7,
+          "y": 9,
+          "w": 10,
+          "h": 5
+        },
+        {
+          "kind": "bed",
+          "x": 18,
+          "y": 6,
+          "w": 4,
+          "h": 6
+        },
+        {
+          "kind": "bookshelf",
+          "x": 3,
+          "y": 5,
+          "w": 4,
+          "h": 5
+        },
+        {
+          "kind": "window",
+          "x": 5,
+          "y": 1,
+          "w": 2,
+          "h": 2
+        },
+        {
+          "kind": "window",
+          "x": 16,
+          "y": 1,
+          "w": 2,
+          "h": 2
+        },
+        {
+          "kind": "tapestry",
+          "x": 10,
+          "y": 1,
+          "w": 3,
+          "h": 3
+        },
+        {
+          "kind": "lantern",
+          "x": 11,
+          "y": 5,
+          "w": 2,
+          "h": 2
+        },
+        {
+          "kind": "table",
+          "x": 10,
+          "y": 10,
+          "w": 4,
+          "h": 2
+        },
+        {
+          "kind": "cushion",
+          "x": 8,
+          "y": 11,
+          "w": 1,
+          "h": 2
+        },
+        {
+          "kind": "cushion",
+          "x": 15,
+          "y": 11,
+          "w": 1,
+          "h": 2
+        },
+        {
+          "kind": "pottery",
+          "x": 21,
+          "y": 13,
+          "w": 1,
+          "h": 1
+        },
+        {
+          "kind": "chest",
+          "x": 18,
+          "y": 15,
+          "w": 3,
+          "h": 1
+        },
+        {
+          "kind": "basket",
+          "x": 2,
+          "y": 14,
+          "w": 1,
+          "h": 2
+        }
+      ]
     }
   },
   "npcs": [
@@ -670,6 +840,34 @@
       "x": 5,
       "y": 11,
       "event": "hills-reference"
+    },
+    {
+      "id": "house-bed",
+      "name": "Bed",
+      "map": "house",
+      "x": 18,
+      "y": 10,
+      "event": "house-bed",
+      "interactionBounds": {
+        "x": 18,
+        "y": 6,
+        "w": 4,
+        "h": 6
+      }
+    },
+    {
+      "id": "house-bookshelf",
+      "name": "Bookshelf",
+      "map": "house",
+      "x": 6,
+      "y": 8,
+      "event": "house-bookshelf",
+      "interactionBounds": {
+        "x": 3,
+        "y": 5,
+        "w": 4,
+        "h": 5
+      }
     }
   ],
   "events": {
@@ -2059,6 +2257,34 @@
         }
       ],
       "characterId": "saleha"
+    },
+    "house-bed": {
+      "speaker": "Bed",
+      "lines": [
+        "Rest here, or dream about a day you have completed."
+      ],
+      "actions": [
+        {
+          "type": "sleep",
+          "label": "Sleep — Begin the next day"
+        },
+        {
+          "type": "dream",
+          "label": "Dream — Review previous lessons"
+        }
+      ]
+    },
+    "house-bookshelf": {
+      "speaker": "Bookshelf",
+      "lines": [
+        "Your village Library is always available here."
+      ],
+      "actions": [
+        {
+          "type": "reference",
+          "label": "Open Library"
+        }
+      ]
     }
   },
   "days": {
@@ -2087,7 +2313,8 @@
       "name": "A first hello",
       "maps": [
         "village",
-        "library"
+        "library",
+        "house"
       ],
       "start": {
         "map": "village",
@@ -2121,7 +2348,8 @@
       "intro": "We will use he and she with the first action verbs, placing the subject, object and verb in their licensed order.",
       "maps": [
         "village",
-        "library"
+        "library",
+        "house"
       ],
       "start": {
         "map": "village",
@@ -2184,7 +2412,8 @@
       "intro": "Tell us about yourself using I and the first-person forms you study today.",
       "maps": [
         "village",
-        "library"
+        "library",
+        "house"
       ],
       "start": {
         "map": "village",
@@ -2247,7 +2476,8 @@
       "intro": "Practise speaking to one friend with informal you, and combine the licensed I and you clauses.",
       "maps": [
         "village",
-        "library"
+        "library",
+        "house"
       ],
       "start": {
         "map": "village",
@@ -2310,7 +2540,8 @@
       "intro": "Today we address elders and groups respectfully. The existing lesson teaches the approved peace greeting and response.",
       "maps": [
         "village",
-        "library"
+        "library",
+        "house"
       ],
       "start": {
         "map": "village",
@@ -2374,7 +2605,8 @@
       "maps": [
         "village",
         "library",
-        "hills"
+        "hills",
+        "house"
       ],
       "start": {
         "map": "village",
@@ -2444,7 +2676,8 @@
       "maps": [
         "village",
         "library",
-        "hills"
+        "hills",
+        "house"
       ],
       "start": {
         "map": "village",
