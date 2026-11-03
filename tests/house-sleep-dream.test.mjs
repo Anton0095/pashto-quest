@@ -13,7 +13,9 @@ for(let day=1;day<=7;day++){
   if(!seen.has(k)&&M.RPGWorldData.walkable(data,'house',p.x,p.y,occupants)){seen.add(k);queue.push(p);}
  }
  for(const object of occupants)assert(M.approachTiles(data,'house',object,occupants).some(p=>seen.has(p.x+','+p.y)),object.id+' must be accessible');
- assert(seen.has('12,17'),'Exit reachable');assert(seen.has('8,10'),'Rug walkable');
+ for(const exit of data.maps.house.transitions)assert(seen.has(exit.x+','+exit.y),'Every visible doorway tile must be reachable');
+ assert(!M.RPGWorldData.walkable(data,'house',12,2),'Rear wall cannot be walked through');
+ assert(!M.RPGWorldData.walkable(data,'house',7,11),'Square cushion collision');assert(seen.has('8,10'),'Rug walkable');
  assert(!M.RPGWorldData.walkable(data,'house',18,6),'Bed collision');assert(!M.RPGWorldData.walkable(data,'house',3,5),'Bookshelf collision');
 }
 const P=M.createPersistenceAPI(data,{});

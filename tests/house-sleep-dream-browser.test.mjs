@@ -38,7 +38,7 @@ for(const width of [1280,375]){
   await bed('Sleep — Begin the next day');assert((await p.locator('#rpgDialogue').innerText()).includes('required challenge'));await closeDialog();assert((await activeDay()).includes('DAY 1 /'));
   const blocked=await d.pos();await p.waitForTimeout(180);await p.keyboard.press('ArrowRight');await p.waitForTimeout(200);assert.deepEqual(await d.pos(),blocked,'Bed footprint blocks keyboard movement');
   // Pointer/touch navigation and object approach use existing Phaser controller.
-  await clickTile(16,11);await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.x==='16'&&document.getElementById('rpgCanvas').dataset.y==='11');
+  await clickTile(16,10);await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.x==='16'&&document.getElementById('rpgCanvas').dataset.y==='10');
   await clickTile(20,8);await p.locator('#rpgDialogue').waitFor();assert((await p.locator('#rpgDialogue').innerText()).includes('Dream'));await closeDialog();
   await d.pathTo({map:'house',x:7,y:8},1);await clickTile(4,7);await p.locator('#rpgDialogue').waitFor();await d.dialogue('Open Library');await p.locator('#libraryDialog').waitFor();
   const shelf=await d.pos();await p.locator('[data-library-tab=profile]').click();assert.equal(await p.locator('#playerProfileName').inputValue(),'Player');assert.equal(await p.locator('#playerProfileGender').inputValue(),'unspecified');
@@ -46,7 +46,7 @@ for(const width of [1280,375]){
   await p.locator('#libraryClose').click();assert.deepEqual(await d.pos(),shelf);await d.durable();await p.reload();await p.locator('#rpgCanvas[data-map=house]').waitFor();
   assert.deepEqual(await d.pos(),shelf);assert.equal((await d.progress()).playerProfile.name,'Laghman learner');assert.equal((await d.progress()).playerProfile.gender,'female');
   // Pixel-art screenshots of the actual playable scene, not design mockups.
-  await d.pathTo({map:'house',x:12,y:9},1);mkdirSync('docs/rpg/house',{recursive:true});await p.screenshot({path:`docs/rpg/house/interior-${width}.png`,fullPage:true});
+  await d.pathTo({map:'house',x:12,y:15},1);mkdirSync('docs/rpg/house',{recursive:true});await p.screenshot({path:`docs/rpg/house/interior-${width}.png`,fullPage:true});
   await fixture({passed:1});await p.evaluate(()=>__test.challenge.startChallenge(1));await p.locator('#quizPanel').waitFor();await p.locator('#navWorld').click();
   await bed('Sleep — Begin the next day');assert((await p.locator('#rpgDialogue').innerText()).includes('paused challenge'));await closeDialog();assert((await activeDay()).includes('DAY 1 /'));assert((await d.progress()).activeChallenge);
   await fixture({passed:1});const beforeSleep=await d.progress();assert((await activeDay()).includes('DAY 1 /'),'A recorded pass does not auto-advance');
