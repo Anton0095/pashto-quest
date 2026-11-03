@@ -343,9 +343,9 @@
       "name": "Your House",
       "tiles": [
         "bbbbbbbbbbbbbbbbbbbbbbbb",
-        "biiiiiiiiiiiiiiiiiiiiiib",
-        "biiiiiiiiiiiiiiiiiiiiiib",
-        "biiiiiiiiiiiiiiiiiiiiiib",
+        "bbbbbbbbbbbbbbbbbbbbbbbb",
+        "bbbbbbbbbbbbbbbbbbbbbbbb",
+        "bbbbbbbbbbbbbbbbbbbbbbbb",
         "biiiiiiiiiiiiiiiiiiiiiib",
         "biikkkkiiiiiiiiiiiiiiiib",
         "biikkkkiiiiiiiiiiieeeeib",
@@ -353,13 +353,13 @@
         "biikkkkiiiiiiiiiiieeeeib",
         "biikkkkuuuuuuuuuuieeeeib",
         "biiiiiiuuuqqqquuuieeeeib",
-        "biiiiiiuzuqqqquzuieeeeib",
-        "biiiiiiuzuuuuuuzuiiiiiib",
-        "biiiiiiuuuuuuuuuuiiiiPib",
-        "biqiiiiiiiiiiiiiiiiiiiib",
-        "biqiiiiiiiiiiiiiiiqqqiib",
+        "biiiiiizzuqqqquzzieeeeib",
+        "biiiiiizzuuuuuuzziiiiiib",
+        "biiiiiiuuuuuuuuuuiiiPPib",
+        "biqqiiiiiiiiiiiiiiiiPPib",
+        "biqqqqiiiiiiiiiiiiqqqiib",
         "biiiiiiiiiiiiiiiiiiiiiib",
-        "bbbbbbbbbbbbdbbbbbbbbbbb"
+        "bbbbbbbbbbbdddbbbbbbbbbb"
       ],
       "spawn": {
         "x": 12,
@@ -368,6 +368,24 @@
       "transitions": [
         {
           "x": 12,
+          "y": 17,
+          "to": "village",
+          "spawn": {
+            "x": 9,
+            "y": 8
+          }
+        },
+        {
+          "x": 11,
+          "y": 17,
+          "to": "village",
+          "spawn": {
+            "x": 9,
+            "y": 8
+          }
+        },
+        {
+          "x": 13,
           "y": 17,
           "to": "village",
           "spawn": {
@@ -437,24 +455,24 @@
         },
         {
           "kind": "cushion",
-          "x": 8,
+          "x": 7,
           "y": 11,
-          "w": 1,
+          "w": 2,
           "h": 2
         },
         {
           "kind": "cushion",
           "x": 15,
           "y": 11,
-          "w": 1,
+          "w": 2,
           "h": 2
         },
         {
           "kind": "pottery",
-          "x": 21,
+          "x": 20,
           "y": 13,
-          "w": 1,
-          "h": 1
+          "w": 2,
+          "h": 2
         },
         {
           "kind": "chest",
@@ -467,8 +485,22 @@
           "kind": "basket",
           "x": 2,
           "y": 14,
-          "w": 1,
+          "w": 2,
           "h": 2
+        },
+        {
+          "kind": "wall-rug",
+          "x": 1,
+          "y": 5,
+          "w": 1,
+          "h": 6
+        },
+        {
+          "kind": "stool",
+          "x": 4,
+          "y": 15,
+          "w": 2,
+          "h": 1
         }
       ]
     }

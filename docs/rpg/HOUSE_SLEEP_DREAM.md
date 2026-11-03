@@ -64,3 +64,25 @@ All four affected browser commands subsequently passed on the final runtime:
 `tutorial-profile-browser.test.mjs`, the original Phaser/concurrency/fence/browser regressions and every model check passed in the complete run. Final strict TypeScript, build check, new house model, changed-script syntax, delivery-audit write/check and whitespace checks also passed. There are no known outstanding functional failures.
 
 The measured shared-engine matrix observed 392 district visits and 196 assessments across fourteen days, seven paces and normal/skip routes: 6,676 curricular sentence surfaces retained generated provenance. The eighteen conventional expressions and two separately approved authored tutorial questions are explicitly outside that curricular denominator; the report records the latter identities separately. Chromium mobile emulation is not physical iPhone Safari or Android hardware testing. No physical-device audio playback or independent native dialect certification is claimed. The project has no standalone lint script; syntax, strict TypeScript and build checks are included in verification.
+
+## Reference image visual review — 3 November 2026
+
+The actual pixels of `docs/design/house-interior-reference.png` were opened and visually inspected, then compared with the previous playable capture and new desktop/mobile captures. Filename/metadata inspection was not used as a substitute.
+
+| Element | Discrepancy observed | Visual correction |
+|---|---|---|
+| Room / layout | Flat tan floor with a thin wall outline lacked the reference's recessed rear wall, beam and side/front wall depth. | Warm plaster and timber layers, floor flecks, side wall trim, lantern niche; the rear wall is solid. Bookshelf-left, bed-right and central seating arrangement retained. |
+| Bed | Plain rectangular blanket and pillow; no visible bed structure. | Timber posts, head/foot boards, layered pillow/sheet, woven red/gold medallion blanket and crisp cast shadow. |
+| Bookshelf | Six densely repeated rows looked unlike the three shelf compartments in the reference. | Three recessed compartments with varied book heights/spines, shelf planks, wooden frame and feet. |
+| Rug / table / seating | Sparse square rug marks, rectangular table and narrow blue cushions. | Woven border, small cross motifs and fringe; stepped oval tabletop with jug/cup and visible legs; square striped cushions. |
+| Decorations | Plain wall square, tiny urn and basket; side hanging and stool missing. | Central medallion hanging, patterned side runner, shaded lantern niche, larger ceramic urn/woven basket, wooden stool and banded chest. |
+| Entrance | Narrow single-tile opening was hard to distinguish from the wall. | Recessed bottom-centre opening, jambs and a light threshold. All three visible doorway tiles return to the same exterior courtyard. |
+| Pixel appearance | Flat blocks conveyed positions but little material detail. | Integer-aligned pixel rectangles/stepped shapes and a restrained warm palette. Existing nearest-neighbour display and tile scale retained. |
+
+![Previous playable room](house/interior-before-reference-review.png)
+
+The updated actual room is shown in the desktop/mobile screenshots above. The bed and bookshelf retain their existing object IDs, interaction anchors and full click/tap bounds. Sleep, dream, Library, XP and save implementations were not rewritten. Collision footprints now match the square cushions, larger corner objects, rear wall and widened entrance; existing collision recovery safely handles a previously saved position that has become a wall.
+
+The reference's fine painted grain, soft ambient illumination, exact high-resolution textile ornament and deep perspective doorway are approximated at the established 16-pixel tile scale. The room keeps its existing map proportions. The mockup's permanently visible side panels and decorative labels are not baked into the map: sleep/dream and Library remain live responsive menus. Every room object in the reference is represented; no new interactive behavior was invented for its decorative basket, stool, urn or chest.
+
+This is an isolated visual/map follow-up. Focused validation covers strict TypeScript/build, house reachability and collision, the full house/sleep/dream browser flow at 375/1280px, and the original Phaser movement/collision/touch suite. The earlier full curriculum measurements remain evidence for their recorded release, not a newly measured full matrix for this art revision. Their recorded SHA-256 is `13f54f0ed03e4cd670ab63f6f64060db7c0728cd4bfb6b4e19ea2ddde02126ce`; the new visual build is `09a0d682c3c70a1d1327f1fe082c0e4c439d4b04b7e088160140cd728b9c7d19`. No measured observations or historical audit fingerprint were changed to claim a fresh matrix. Physical mobile devices remain unverified.
