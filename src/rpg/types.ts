@@ -20,7 +20,6 @@ export interface Question {id:string;kind:'word'|'construct';retries:number;[key
 export interface LessonSession {
   mode:'tutorial'|'standard'|'review';id:string;loop:number;loc:string|null;phase:string;cardIndex:number;attemptId:number;
   answered:number;firstCorrect:number;earned:number;tutorialResponses:number;constructionCount:number;locked:boolean;finished?:boolean;
-  profileGender:'male'|'female'|'unspecified';profileName:string;
   required:string[];studyWords:string[];greetingCards:string[];studySentences:string[];firstAsked:Set<string>;passed:Set<string>;
   tutorialConstruction?:{built:number[];order:number[];locked:boolean};
   queue:Question[];activeItem?:Question;built:number[];tileOrder?:number[];choices?:string[];

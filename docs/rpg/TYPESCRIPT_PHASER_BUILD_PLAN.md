@@ -1,5 +1,7 @@
 # TypeScript and Phaser build decision
 
+> Historical checkpoint document. Day limits, prototype controls and implementation status below describe its original checkpoint. Use [current architecture](RPG_ARCHITECTURE.md), [house/sleep/dream](HOUSE_SLEEP_DREAM.md) and the [post-merge audit](../maintenance/POST_MERGE_AUDIT.md) for the shipped game.
+
 Inspected before implementation: the prototype at `2c2f8f7aa0fa941d0f73b388451014243ff4888d` uses a Python assembler with explicit JavaScript module order, embedded curriculum, no package manifest, browser-local saves and a generated single-file `index.html`. Its educational authorities and fourteen-day regression fixture can be retained. The custom `rpg-world-engine.js`/`rpg-renderer.js` are replaced, not wrapped underneath Phaser.
 
 The proposed minimum change was recorded before implementation: pin Phaser plus TypeScript/esbuild, check only the RPG TypeScript with `strict: true`, bundle Phaser and that entry point locally, then let the existing Python assembler embed the result. Keep all educational JavaScript, HTML/CSS interfaces, save keys/validation and shared regression tests. No application framework, development server framework, runtime CDN, TypeScript migration of educational engines, or server database is needed.

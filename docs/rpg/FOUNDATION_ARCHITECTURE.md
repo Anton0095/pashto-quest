@@ -1,5 +1,7 @@
 # TypeScript / Phaser RPG architecture
 
+> Historical checkpoint document. Day limits, prototype controls and implementation status below describe its original checkpoint. Use [current architecture](RPG_ARCHITECTURE.md), [house/sleep/dream](HOUSE_SLEEP_DREAM.md) and the [post-merge audit](../maintenance/POST_MERGE_AUDIT.md) for the shipped game.
+
 Branch `feature/rpg-foundation` starts from `feature/rpg-phaser-typescript` at `b726f01` and hardens the implementation that replaces the custom JavaScript RPG engine from `feature/rpg-prototype` (`2c2f8f7`) with strict TypeScript and locally bundled Phaser **4.2.1**. Main remains untouched. The original prototype's base is `a28d028` (merged review PR #23). The [build decision](TYPESCRIPT_PHASER_BUILD_PLAN.md) records the pipeline inspection and minimum changes proposed before implementation.
 
 ## Module ownership

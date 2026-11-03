@@ -8,12 +8,11 @@ const samples=Number(arg('--samples','20'));
 const coldOnly=process.argv.includes('--cold-only');
 const output=arg('--output','work/p1/performance.json');
 const htmlPath=arg('--release','index.html');
-const releaseText=readFileSync(htmlPath,'utf8');
 const profile=arg('--profile','all');
 const onlyPace=arg('--pace','all');
 mkdirSync('work/p1',{recursive:true});
-const report={schemaVersion:1,releaseSha256:createHash('sha256').update(readFileSync(htmlPath)).digest('hex'),samples,date:new Date().toISOString(),host:{platform:os.platform(),arch:os.arch(),cpus:os.cpus().length,cpu:os.cpus()[0]?.model,node:process.version},method:'Sequential isolated Chromium profiles; desktop 1280px normal CPU; mobile 375px with CDP 4× CPU slowdown. Cold means eligibility-cache miss, not a cold operating-system cache. JS heap from CDP after forced GC; sampled pre-GC high water is not an exact peak. Instrumented lexical-index calls/timing are diagnostic overhead. Each of ten revision sessions replays Day-14 Home, practises up to ten due items, visits a Library entry and returns to town. A 90-day synthetic clock advance makes revision due without altering SRS records.',profiles:[]};
-const transform=()=>releaseText.replace('  const index = (data) => {','  const __rawIndex = (data) => {').replace('    const sources = new Map(','    window.__bench.indexRebuilds++;\n    const sources = new Map(').replace('  const feature = (item, key) =>',`  const index = (data) => {
+const report={schemaVersion:1,releaseSha256:createHash('sha256').update(readFileSync(htmlPath)).digest('hex'),samples,date:new Date().toISOString(),host:{platform:os.platform(),arch:os.arch(),cpus:os.cpus().length,cpu:os.cpus()[0]?.model,node:process.version},method:'Sequential isolated Chromium profiles; desktop 1280px normal CPU; mobile 375px with CDP 4× CPU slowdown. Cold means eligibility-cache miss, not a cold operating-system cache. JS heap from CDP after forced GC; sampled pre-GC high water is not an exact peak. Instrumented lexical-index calls/timing are diagnostic overhead. Raw storage probes use a disposable key and every phase awaits coordinated saves. Each of ten revision sessions replays Day-14 Home, practises up to ten due items, visits a Library entry and returns to town. A 90-day synthetic clock advance makes revision due without altering SRS records.',profiles:[]};
+const transform=html=>html.replace('  const index = (data) => {','  const __rawIndex = (data) => {').replace('    const sources = new Map(','    window.__bench.indexRebuilds++;\n    const sources = new Map(').replace('  const feature = (item, key) =>',`  const index = (data) => {
     window.__bench ||= {indexCalls:0,indexRebuilds:0,indexMs:0};
     const t=performance.now();window.__bench.indexCalls++;
     try{return __rawIndex(data)}finally{window.__bench.indexMs+=performance.now()-t}
@@ -44,12 +43,14 @@ for(const mode of ['desktop','mobile4x'].filter(m=>profile==='all'||m===profile)
    };
    window.benchFinish=()=>{const t=__test,s=t.state.session;while(!s.finished){const q=s.questions[s.index],c=t.content.wordById[q.id];t.challenge.answerChallenge(q.answerPs||q.correct||(q.kind==='construct'?c.ps:q.direction==='en-ps'?c.ps:c.en));t.nextQuestion()}};
   });
+  const settled=()=>p.evaluate(async()=>{if(!await __test.storage.settled()||__test.storage.persistenceProblem)throw Error('Benchmark save failed: '+__test.storage.persistenceProblem);});
+  await settled();
   const row={mode,pace,initialHeap,initialBootMs:initialBoot,days:[]};report.profiles.push(row);
   for(let day=1;day<=(coldOnly?1:14);day++){
    const route=await p.evaluate(day=>{const t=__test;t.day(day);const o=t.content.dayById[day].opening;return day===2?['school','nature','business','residential']:[o,...t.content.zoneKeys.filter(p=>p!==o)]},day);
    for(const place of route){await p.evaluate(({day,place})=>benchStudy(day,place),{day,place});await p.evaluate(()=>new Promise(r=>setTimeout(r,0)))}
    const opening=await p.evaluate(day=>{const start=performance.now();__test.challenge.startChallenge(day);__test.storage.save();return {ms:performance.now()-start,activeBytes:new TextEncoder().encode(JSON.stringify(__test.state.progress.activeChallenge)).length}},day);
-   await p.evaluate(()=>benchFinish());
+   await p.evaluate(()=>benchFinish());await settled();
    if([1,7,13,14].includes(day)){
     const details=await p.evaluate(({day,samples})=>{
      const t=__test,d=t.content.LIBRARY_DATA,f=d.sentenceFrames,progress=t.state.progress,plan=progress.library.plans[day];
@@ -74,7 +75,9 @@ for(const mode of ['desktop','mobile4x'].filter(m=>profile==='all'||m===profile)
      const original=plan.challengeQuestions;
      measure('challengeCreation',()=>{delete plan.challengeQuestions;t.questions.selectChallenge(day)});plan.challengeQuestions=original;
      measure('serialisation',()=>JSON.stringify(progress));
-     const raw=JSON.stringify(progress);measure('storageWriteOnly',()=>localStorage.setItem('pashto-town-days-v1',raw));
+     const raw=JSON.stringify(progress);// Probe raw storage without bypassing the game's revision fence.
+     const scratch='pashto-quest-benchmark-write-only';
+     try{measure('storageWriteOnly',()=>localStorage.setItem(scratch,raw));}finally{localStorage.removeItem(scratch);}
      measure('completeSave',()=>t.storage.save());
      // Eligibility cache must observe both form and grammar unlock changes, never just day.
      const acquired=Object.values(progress.library.acquired).find(r=>r.introducedFormIds.length);
@@ -85,6 +88,7 @@ for(const mode of ['desktop','mobile4x'].filter(m=>profile==='all'||m===profile)
      const snapshotBytes=Object.values(progress.library.plans).reduce((n,p)=>n+bytes(JSON.stringify(p.generatedPracticeCards||{}))+bytes(JSON.stringify(p.challengeQuestions||[])),0);
      return {day,metrics,poolSize:pool.length,baseCacheCards:d.eligibleCache.cards.length,cacheIdentityRetained,formInvalidation,grammarInvalidation,storage:{utf8Bytes:bytes(raw),utf16Bytes:raw.length*2,librarySections:sizes,generatedAndQuestionSnapshotBytes:snapshotBytes,activeChallengeBytes:bytes(JSON.stringify(progress.activeChallenge||null))},registeredCards:Object.keys(t.content.wordById).length};
     },{day,samples});
+    await settled();
     details.trueColdFirstGenerationMs=await p.evaluate(()=>window.__firstGenerationMs);details.challengeOpenMs=opening.ms;details.activeChallengeSnapshotBytes=opening.activeBytes;details.heapBeforeGC=await cdp.send('Runtime.getHeapUsage');await cdp.send('HeapProfiler.collectGarbage');details.heapAfterGC=await cdp.send('Runtime.getHeapUsage');row.days.push(details);writeFileSync(output,JSON.stringify(report,null,2)+'\n');
     console.log(mode,'pace',pace,'day',day,'pool',details.poolSize,'storage',details.storage.utf8Bytes,'heap',details.heapAfterGC.usedSize);
    }
@@ -105,6 +109,7 @@ for(const mode of ['desktop','mobile4x'].filter(m=>profile==='all'||m===profile)
     document.querySelector('#libraryDialog').close();t.storage.save();window.lastReviewMs=performance.now()-start;
    },i);
    await p.evaluate(()=>new Promise(r=>setTimeout(r,0)));
+   await settled();
    const bytes=await p.evaluate(()=>{const raw=localStorage.getItem('pashto-town-days-v1');return {utf8Bytes:new TextEncoder().encode(raw).length,utf16Bytes:raw.length*2,reviewedItems:window.lastReviewCount,durationMs:window.lastReviewMs,saveProblem:__test.storage.persistenceProblem}});
    await cdp.send('HeapProfiler.collectGarbage');revision.push({session:i+1,...bytes,heap:await cdp.send('Runtime.getHeapUsage')});console.log(mode,pace,'revision',i+1,bytes.reviewedItems,bytes.utf8Bytes,bytes.durationMs);row.repeatedRevision=revision;writeFileSync(output,JSON.stringify(report,null,2)+'\n');
   }

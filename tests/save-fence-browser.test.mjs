@@ -22,12 +22,22 @@ try{
   const denied=__newFence(),native=IDBFactory.prototype.open;IDBFactory.prototype.open=()=>{throw new DOMException('Denied','SecurityError');};
   try{output.denied=await denied.commit('fence-denied',null,'bad',()=>null,()=>{writes++;return true;});}finally{IDBFactory.prototype.open=native;}
   output.deniedWrites=writes;output.deniedRetry=await navigator.locks.request('fence-denied',()=>denied.commit('fence-denied',null,'ok',()=>localStorage.getItem('fence-denied'),()=>{localStorage.setItem('fence-denied','ok');return true;}));
+  // Identical inputs still consult the revision head, without hashing the same bytes repeatedly.
+  const nativeDigest=crypto.subtle.digest.bind(crypto.subtle);let hashes=0;
+  crypto.subtle.digest=(...args)=>{hashes++;return nativeDigest(...args);};
+  try{
+   output.noop=await run('fence-test-cas','after','after');output.noopHashes=hashes;hashes=0;
+   output.changed=await run('fence-test-cas','after','next');output.changedHashes=hashes;hashes=0;
+   output.staleNoop=await run('fence-test-cas','after','after',()=>{writes++;return true;},()=> 'after');
+   output.staleNoopWrites=writes;output.staleNoopValue=localStorage.getItem('fence-test-cas');
+  }finally{crypto.subtle.digest=nativeDigest;}
   return output;
  });
  assert.equal(result.first,'saved');assert.equal(result.advance,'saved');assert.equal(result.cached,'conflict');assert.equal(result.cachedWrites,0);assert.equal(result.retained,'after');
  assert.equal(result.before,'saved');assert.equal(result.after,'saved');assert.equal(result.beforeValue,'d');assert.equal(result.afterValue,'d');assert.equal(result.unexpected,'conflict');assert.equal(result.unexpectedValue,'x');
  assert.equal(result.ambiguous,'failed');assert.equal(result.ambiguousReload,'saved');
  assert.equal(result.failed,'failed');assert.equal(result.retry,'saved');assert.equal(result.retryValue,'d');assert.equal(result.automaticReset,'conflict');assert(result.authorizedReset);assert.equal(result.resetValueBeforeWrite,'corrupt');assert.equal(result.afterReset,'saved');assert.equal(result.denied,'failed');assert.equal(result.deniedWrites,0);assert.equal(result.deniedRetry,'saved');
+ assert.equal(result.noop,'saved');assert.equal(result.noopHashes,1);assert.equal(result.changed,'saved');assert.equal(result.changedHashes,2);assert.equal(result.staleNoop,'conflict');assert.equal(result.staleNoopWrites,0);assert.equal(result.staleNoopValue,'next');
  // Existing explicit invalid-save reset also rebases its metadata; no automatic migration.
  await p.evaluate(()=>{const k='pashto-town-days-v1',raw=JSON.parse(localStorage.getItem(k));raw.saveSchemaVersion=0;localStorage.setItem(k,JSON.stringify(raw));});
  await p.reload();await p.locator('#saveCompatibility').waitFor({state:'visible'});await p.getByRole('button',{name:'Reset incompatible save and start',exact:true}).click();await p.locator('#saveCompatibility').waitFor({state:'detached'});await p.evaluate(()=>__test.storage.settled());assert.equal(await p.evaluate(()=>__test.state.progress.saveSchemaVersion),7);assert(!await p.locator('#saveWarning').isVisible());

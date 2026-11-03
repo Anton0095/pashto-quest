@@ -1,7 +1,6 @@
 /* Shared DOM/RTL helpers, character display, HUD and screen switching. */
 function createUI({ state, content, progression }) {
   const $ = (id) => document.getElementById(id);
-  const { clearSentenceScene, sentenceContext } = createSentenceScene({setConversation});
   function displayPlace(loc) {
     return loc === "library"
       ? "Library"
@@ -18,18 +17,29 @@ function createUI({ state, content, progression }) {
   function setConversation(context){
     Object.assign(conversation,context);
     const instructor=personName(conversation.instructorId),speaker=personName(conversation.speakerId),partner=personName(conversation.partnerId);
-    const root=$('participants');root.replaceChildren();
-    $('speakerIcon').replaceChildren(renderCharacterPortrait(instructor));
-    $('speakerName').textContent=instructor+(instructor===speaker?' · speaking':' · Instructor');
-    if(partner&&partner!==instructor){
-      const frame=node('div',undefined,'conversation-partner');
-      frame.append(renderCharacterPortrait(partner),node('strong',partner+(partner===speaker?' · speaking':' · Your conversation partner')));
-      root.append(frame);
+    const root=$('participants'),icon=$('speakerIcon'),name=$('speakerName');
+    if(icon.dataset.person!==instructor){
+      icon.replaceChildren(renderCharacterPortrait(instructor));icon.dataset.person=instructor;
     }
-    $('speakerName').dataset.activeSpeaker=speaker;
-    $('speakerName').dataset.conversationPartner=partner;
+    const label=instructor+(instructor===speaker?' · speaking':' · Instructor');
+    if(name.textContent!==label)name.textContent=label;
+    if(partner&&partner!==instructor){
+      let frame=root.firstElementChild;
+      if(frame?.dataset.person!==partner){
+        frame=node('div',undefined,'conversation-partner');frame.dataset.person=partner;
+        frame.append(renderCharacterPortrait(partner),node('strong'));root.replaceChildren(frame);
+      }
+      const label=partner+(partner===speaker?' · speaking':' · Your conversation partner');
+      if(frame.lastElementChild.textContent!==label)frame.lastElementChild.textContent=label;
+    }else if(root.childNodes.length)root.replaceChildren();
+    if(name.dataset.activeSpeaker!==speaker)name.dataset.activeSpeaker=speaker;
+    if(name.dataset.conversationPartner!==partner)name.dataset.conversationPartner=partner;
   }
-  function showParticipants(names,recipient=''){setConversation({partnerId:recipient&&recipient!=='Player'?recipient:conversation.instructorId});}
+  function setSentenceConversation(w,host,context={}) {
+    if(!w?.generated)return;
+    const partner=context.dialogueContext?.responseAddressee || (context.recipient&&context.recipient!=='Player'?context.recipient:host);
+    setConversation({instructorId:host,speakerId:context.speaker||host,partnerId:partner});
+  }
   function setDialogueSpeaker(name){setConversation({speakerId:name,...(personName(name)!==personName(conversation.instructorId)?{partnerId:name}:{})});}
   function setSpeaker(loop,loc,mode){const person=content.teacherFor(loop,loc,mode);setConversation({instructorId:person.name,speakerId:person.name,partnerId:person.name});return person;}
   function hud() {
@@ -144,7 +154,6 @@ function createUI({ state, content, progression }) {
     englishChoice: formatEnglishChoice,
     displayPlace,
     setConversation,
-    showParticipants,
     setDialogueSpeaker,
     setSpeaker,
     hud,
@@ -154,8 +163,7 @@ function createUI({ state, content, progression }) {
     node,
     button,
     showAnswerFeedback,
-    clearSentenceScene,
-    sentenceContext,
+    setSentenceConversation,
     $,
   };
 }

@@ -1,5 +1,7 @@
 # Expanding the RPG foundation
 
+> Historical checkpoint document. Day limits, prototype controls and implementation status below describe its original checkpoint. Use [current architecture](RPG_ARCHITECTURE.md), [house/sleep/dream](HOUSE_SLEEP_DREAM.md) and the [post-merge audit](../maintenance/POST_MERGE_AUDIT.md) for the shipped game.
+
 Use strict TypeScript adapters and data; keep Phaser as the live world engine and the JavaScript educational services as the learning authorities. The shipped `firstDay=lastDay=1` and terminal Day 1 remain unchanged.
 
 ## Maps and actors

@@ -35,7 +35,6 @@ function createConstructionUI({ ui, audio }) {
   }
   function present(card, q, day) {
     ui.$("lessonScreen").classList.add("construction-active");
-    ui.clearSentenceScene();
     ui.$("quizType").textContent="BUILD A SENTENCE";
     ui.$("quizPashto").textContent=q.answerEnglish || card.en;
     ui.$("quizPashto").lang="en";ui.$("quizPashto").dir="ltr";

@@ -84,8 +84,6 @@ function createLessons({
       passed: new Set(),
       earned: 0,
       tutorialResponses: 0,
-      profileGender: state.progress.playerProfile?.gender || "unspecified",
-      profileName: state.progress.playerProfile?.name || "",
       initialLevel: progression.characterStatus(state.progress).level,
       built: [],
       constructionCount: 0,
@@ -127,7 +125,6 @@ function createLessons({
   function renderPhase() {
     if (!state.session) return;
     audio.stopAudio();
-    ui.clearSentenceScene();
     ui.$("lessonScreen").classList.remove("construction-active");
     queueMicrotask(ui.readableQuizSurfaces);
     for (const id of ["teachPanel", "grammarPanel", "quizPanel"])
@@ -200,13 +197,10 @@ function createLessons({
         : w.generated
           ? `${voice}: ${guidance}`
           : `${voice}: “Let us learn ‘${w.en}’ together. Listen, then try saying it.”`;
-    ui.$("addressTarget").textContent = `${teacher.name} → Player`;
-    ui.$("addressTarget").classList.remove("hidden");
-    ui.sentenceContext(w, teacher.name, ui.$("teachPanel"), "study");
+    ui.setSentenceConversation(w, teacher.name);
     if (w.phrasePromptId) {
       const prompt = content.wordById[w.phrasePromptId];
       ui.$("guideMessage").textContent = `${teacher.name}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). You reply: ${w.ps} (${w.en}).`;
-      ui.$("addressTarget").textContent = `${teacher.name} → Player · YOUR REPLY → ${teacher.name}`;
     }
     ui.$("teachNext").disabled = false;
     ui.$("teachNext").textContent =
@@ -312,11 +306,9 @@ function createLessons({
       ? "Put the studied Pashto forms in order"
       : "Choose the correct meaning";
     ui.$("quizSpeak").classList.toggle("hidden", build);
-    ui.clearSentenceScene();
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
     ui.setDialogueSpeaker(teacher.name);
     ui.$("guideMessage").textContent = `${teacher.name}: “What does this mean? Choose your answer and we will check it together.”`;
-    ui.$("addressTarget").textContent = `${teacher.name} → Player · YOUR ANSWER → ${teacher.name}`;
     if (build) ui.construction.present(w, s.activeItem, s.loop);
     ui.$("builtSentence").classList.remove("build-success", "build-error");
     ui.$("choices").replaceChildren();
@@ -353,7 +345,7 @@ function createLessons({
       ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
     }
     else if (w.generated)
-      ui.sentenceContext(w, content.teacherFor(state.session.loop, state.session.loc, state.session.mode).name, ui.$("quizPanel"), "study");
+      ui.setSentenceConversation(w, content.teacherFor(state.session.loop, state.session.loc, state.session.mode).name);
     for (const b of ui.$("wordTiles").children) b.disabled = true;
     ui.$("checkBuild").disabled = true;
     ui.$("undoTile").disabled = true;

@@ -57,7 +57,7 @@ report.onboardingQuestionExceptions = onboarding.prompts.map(p=>({
   approvalReference:"content/TUTORIAL_PROMPTS.json",nativeCertificationClaimed:false,
 }));
 report.navigationProfile = read('index.html').includes('const RPG_ENABLED=true;')
-  ? 'Retained educational navigation profile: fourteen-day shared-engine regression matrix. The default release is a Days 1–7 RPG, verified separately by the public normal/skip routes in rpg-week1-browser.test.mjs and movement/interface checks at 375/1280px.'
+  ? 'Test-only educational navigation harness: fourteen-day shared-engine regression matrix. The default release is a Days 1–7 RPG, verified separately by the public normal/skip routes in rpg-week1-browser.test.mjs and movement/interface checks at 375/1280px.'
   : 'Educational navigation profile.';
 const lines = [
   "# Measured instructional sentence delivery",

@@ -51,8 +51,11 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     if(!Array.isArray(raw.built)||new Set(raw.built).size!==raw.built.length)return null;
     if(raw.tileOrder!==undefined){if(!Array.isArray(raw.tileOrder)||!raw.activeItem)return null;const tiles=QuestionEngine.buildTiles(content.wordById[raw.activeItem?.id],raw.activeItem,raw.loop);if(raw.tileOrder.length!==tiles.length || new Set(raw.tileOrder).size!==tiles.length || raw.tileOrder.some(i=>!int(i,tiles.length-1)) || raw.built.some(i=>!raw.tileOrder?.includes(i)))return null;}
     if(raw.choices && (!Array.isArray(raw.choices)||raw.choices.some(c=>typeof c!=='string'||c.length>1000)))return null;
-    if(!['male','female','unspecified'].includes(raw.profileGender)||typeof raw.profileName!=='string'||raw.profileName.length>40)return null;
+    // Older supported format-7 snapshots may carry the retired tutorial fields.
+    if(raw.profileGender!==undefined&&(typeof raw.profileGender!=='string'||!['male','female','unspecified'].includes(raw.profileGender)))return null;
+    if(raw.profileName!==undefined&&(typeof raw.profileName!=='string'||raw.profileName.length>40))return null;
     const s=JSON.parse(JSON.stringify(raw)) as LessonSession;
+    delete s.profileName;delete s.profileGender;
     // Reconcile only the superseded profile steps of a valid, paused format-7 tutorial.
     // Keep retained greeting responses and earned XP; do not repeat completed tutorials.
     if(s.mode==='tutorial'&&s.required.some(id=>['tutorial-gender','tutorial-name'].includes(id))){
