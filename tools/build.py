@@ -182,6 +182,13 @@ def build(check_rpg=False):
             raise ValueError('Invalid Grammar Journal reference: ' + concept['id'])
         concept_ids.add(concept['id'])
     library.pop('grammar', None)
+    onboarding = json.loads(read('content/TUTORIAL_PROMPTS.json'))
+    if (onboarding.get('approval', {}).get('status') != 'user_approved'
+            or onboarding['approval'].get('nativeCertificationClaimed') is not False
+            or {p['id'] for p in onboarding['prompts']} != {'tutorial-language', 'tutorial-guide-name'}
+            or any(not all(p.get(k) for k in ['pashto', 'romanisation', 'english', 'speaker', 'response']) for p in onboarding['prompts'])):
+        raise ValueError('Unapproved/incomplete onboarding prompts')
+    library['tutorialPrompts'] = onboarding['prompts']
     library['phrases'] = json.loads(read('content/FIXED_PHRASES.json'))['phrases']
     fixed_sources = {p['id']: p['ps'] for p in archived1['words'] if p.get('type') == 'greeting'}
     fixed_sources.update({p['id']: p['pashto'] for p in narrative['expressions'] if p['active']})

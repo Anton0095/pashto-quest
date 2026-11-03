@@ -1,7 +1,7 @@
 /* Shared DOM/RTL helpers, character display, HUD and screen switching. */
 function createUI({ state, content, progression }) {
   const $ = (id) => document.getElementById(id);
-  const { clearSentenceScene, sentenceContext } = createSentenceScene({content,$,node,setDialogueSpeaker});
+  const { clearSentenceScene, sentenceContext } = createSentenceScene({setConversation});
   function displayPlace(loc) {
     return loc === "library"
       ? "Library"
@@ -13,49 +13,25 @@ function createUI({ state, content, progression }) {
           ? "The Lake"
           : content.zones[loc].name;
   }
-  function showParticipants(names, recipient = "") {
-    const root = $("participants");
-    root.replaceChildren();
-    for (const name of [...new Set(names)]) {
-      const person = content.peopleByName[name] || { name, face: "🧑" };
-      const el = document.createElement("div");
-      el.className = "interlocutor" + (name === recipient ? " respondent" : "");
-      const icon = document.createElement("span");
-      icon.className = "portrait";
-      icon.append(renderCharacterPortrait(person.name));
-      const body = document.createElement("span");
-      const strong = document.createElement("b");
-      strong.textContent = name;
-      const role = document.createElement("span");
-      role.textContent =
-        (person.role || "Visitor") +
-        (name === recipient ? " · Person you address" : "");
-      body.append(strong, role);
-      el.append(icon, body);
-      root.append(el);
+  const conversation={instructorId:'Muhammad Jan',speakerId:'Muhammad Jan',partnerId:'Muhammad Jan'};
+  function personName(id){return CHARACTER_PORTRAITS.characters[id]?.name || content.peopleByName[id]?.name || id;}
+  function setConversation(context){
+    Object.assign(conversation,context);
+    const instructor=personName(conversation.instructorId),speaker=personName(conversation.speakerId),partner=personName(conversation.partnerId);
+    const root=$('participants');root.replaceChildren();
+    $('speakerIcon').replaceChildren(renderCharacterPortrait(instructor));
+    $('speakerName').textContent=instructor+(instructor===speaker?' · speaking':' · Instructor');
+    if(partner&&partner!==instructor){
+      const frame=node('div',undefined,'conversation-partner');
+      frame.append(renderCharacterPortrait(partner),node('strong',partner+(partner===speaker?' · speaking':' · Your conversation partner')));
+      root.append(frame);
     }
+    $('speakerName').dataset.activeSpeaker=speaker;
+    $('speakerName').dataset.conversationPartner=partner;
   }
-  function setDialogueSpeaker(name) {
-    const person = content.peopleByName[name] || { name, face: "🧑" };
-    $("speakerName").textContent = person.name + " · speaking";
-    $("speakerIcon").replaceChildren(renderCharacterPortrait(person.name));
-  }
-  function setSpeaker(loop, loc, mode) {
-    const person = content.teacherFor(loop, loc, mode);
-    setDialogueSpeaker(person.name);
-    showParticipants(
-      mode === "challenge" && loop === 6
-        ? ["Saleha", "Mina"]
-        : mode === "challenge" && loop === 7
-          ? ["Ms Hameed"]
-          : mode === "challenge" && loop === 5
-            ? ["Saleha", "Muhammad Jan", "Ms Hameed", "Edris"]
-            : mode === "standard" && loop >= 5
-              ? content.peopleAt[loop]?.[loc] || [person.name]
-              : [person.name],
-    );
-    return person;
-  }
+  function showParticipants(names,recipient=''){setConversation({partnerId:recipient&&recipient!=='Player'?recipient:conversation.instructorId});}
+  function setDialogueSpeaker(name){setConversation({speakerId:name,...(personName(name)!==personName(conversation.instructorId)?{partnerId:name}:{})});}
+  function setSpeaker(loop,loc,mode){const person=content.teacherFor(loop,loc,mode);setConversation({instructorId:person.name,speakerId:person.name,partnerId:person.name});return person;}
   function hud() {
     const status = progression.characterStatus(state.progress),
       within = status.xp % progression.XP_STEP,
@@ -167,6 +143,7 @@ function createUI({ state, content, progression }) {
     portraitReady: registerPortraitTexture,
     englishChoice: formatEnglishChoice,
     displayPlace,
+    setConversation,
     showParticipants,
     setDialogueSpeaker,
     setSpeaker,

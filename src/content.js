@@ -239,14 +239,14 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       help: "Arrange the words of this conventional greeting, taught as one fixed phrase.",
     },
     {
-      id: "tutorial-gender",
-      kind: "gender",
-      help: "Optional profile preference. This is an English interface question, not Pashto language instruction.",
+      id: "tutorial-language",
+      kind: "pashto-choice",
+      help: "Select the Pashto name of the language you are learning.",
     },
     {
-      id: "tutorial-name",
-      kind: "name",
-      help: "Choose your player name. This is an English interface question, not Pashto language instruction.",
+      id: "tutorial-guide-name",
+      kind: "text",
+      help: "Muhammad Jan asks his name. Type his name in English.",
     },
   ];
   for (const [id, en] of [
@@ -263,6 +263,19 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       note: "English profile setting",
     };
     LIBRARY_DATA.cardTypes[id] = "profile";
+  }
+  // Onboarding-only response cards: not lexical acquisitions or generation exceptions.
+  // Exact native questions are separately approved onboarding prompts, never generation targets.
+  wordById["tutorial-language"]={id:"tutorial-language",type:"profile",loop:0,
+    ps:"",roman:"",en:"What language are you learning?",answerPs:"پښتو",
+    choices:["پښتو","دري","اردو","انګلیسي"],
+    provenance:"Pashto distractors are provisional UI labels; not acquired vocabulary or native-certified."};
+  wordById["tutorial-guide-name"]={id:"tutorial-guide-name",type:"profile",loop:0,
+    ps:"",roman:"",en:"What is my name?",answerEnglish:"Muhammad Jan",
+    acceptedEnglishAnswers:["Mohammad Jan","Mohammed Jan","Muhammed Jan","Muhamad Jan","Mohamad Jan"]};
+  for(const id of ["tutorial-language","tutorial-guide-name"]) LIBRARY_DATA.cardTypes[id]="profile";
+  for(const prompt of LIBRARY_DATA.tutorialPrompts || []){
+    Object.assign(wordById[prompt.id],{ps:prompt.pashto,roman:prompt.romanisation,en:prompt.english});
   }
   const tutorialIds = tutorialCards.map((c) => c.id);
   return {

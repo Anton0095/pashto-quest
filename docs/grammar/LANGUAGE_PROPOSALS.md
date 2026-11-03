@@ -10,4 +10,13 @@ These are new editorial proposals for owner review, not approved teaching conten
 | proposal:tutorial-name | ستاسې نوم څه دی؟ | Staase num tsa day? | Muhammad Jan asks the player’s chosen name; typed reply remains the chosen name. |
 | proposal:tutorial-gender | تاسې نارینه یاست که ښځینه؟ | Taase naareena yaast ka khadzina? | Proposed male/female question; review wording, respectful agreement and whether this conveys an optional profile preference appropriately. “Prefer not to say” must remain available. |
 
-Each still needs item-specific approval of exact wording, sense, transliteration, speaker/listener and accepted responses, with reviewer/date/reference. The gender prompt especially needs an editorial decision on preference versus identity and an approved privacy-preserving response. Until then the two tutorial profile controls remain explicitly English settings; this does not complete the intended Pashto conversation. Independent native Laghman naturalness and audio review are additional, separate checks.
+Each still needs item-specific approval of exact wording, sense, transliteration, speaker/listener and accepted responses, with reviewer/date/reference. The gender prompt especially needs an editorial decision on preference versus identity and an approved privacy-preserving response. Those old profile questions are superseded by the new tutorial interactions below. Independent native Laghman naturalness and audio review are additional, separate checks.
+
+## Second improvement package — approved tutorial wording
+
+The two replacement tutorial questions were expressly approved by the project owner on 3 November 2026, in reply to the exact wording proposal. See [the canonical prompt and approval record](../../content/TUTORIAL_PROMPTS.json). They are onboarding-only authored questions, separate from the eighteen conventional expressions and generated curricular sentences. They do not unlock grammar, add lexical acquisitions or enter the generation bank.
+
+- ته کومه ژبه زده کوې؟ — “What language are you learning?” — *Ta kuma zhaba zda kawe?*
+- زما نوم څه دی؟ — “What is my name?” — *Zmaa num tsa day?*
+
+Both use the documented romanisation conventions (zh, tsa, day, long aa) and supplied exact spelling. No independent native Laghman certification or recording is claimed. Audio uses the existing browser Pashto voice fallback, with an honest unavailable message when unsupported. The older profile-question proposals above are superseded and remain inactive; optional name/gender settings now live in the Library.

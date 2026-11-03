@@ -29,10 +29,10 @@ try {
               click(area, "څنګه");
               click(area, "یې؟");
               click(area, "Check sentence");
-            } else if (step === 2) click(area, "Prefer not to say");
+            } else if (step === 2) click(area, "پښتو");
             else {
-              document.querySelector("#tutorialName").value = "Matrix learner";
-              click(area, "Use this name");
+              document.querySelector("#tutorialName").value = "Muhammad Jan";
+              click(area, "Check answer");
             }
             t.lessons.afterStudy();
             await Promise.resolve();

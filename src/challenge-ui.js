@@ -16,7 +16,7 @@ function createChallengeUI({
     if (!panel) {
       panel = document.createElement("div");
       panel.id = "challengeScene";
-      ui.$("lessonScreen").insertBefore(panel, ui.$("participants"));
+      ui.$("lessonScreen").insertBefore(panel, document.querySelector(".speaker-note"));
     }
     panel.replaceChildren();
     panel.classList.toggle("hidden", day < 6 && day !== 1);
@@ -275,7 +275,7 @@ function createChallengeUI({
       q.comment || content.curriculum.days[state.session.loop - 1].challenge;
     const target = ui.$("addressTarget");
     const host = content.teacherFor(state.session.loop, null, "challenge");
-    ui.setDialogueSpeaker(host.name);
+    ui.setConversation({instructorId:host.name,speakerId:q.speaker||host.name,partnerId:q.dialogueContext?.responseAddressee || (q.recipient&&q.recipient!=='Player'?q.recipient:host.name)});
     target.classList.remove("hidden");
     target.textContent = `${host.name} → Player · YOUR ANSWER → ${host.name}`;
     if (["construct", "dialogue"].includes(q.kind)) {
@@ -400,7 +400,7 @@ function createChallengeUI({
     detail.textContent = `${w.ps} (${w.roman}) — ${w.en}. ${questions.explanation(q, w)}`;
     feedback.append(headline, detail);
     if (w.generated)
-      ui.sentenceContext(w, q.speaker || content.teacherFor(state.session.loop, null, "challenge").name, ui.$("quizPanel"), "study", q);
+      ui.sentenceContext(w, content.teacherFor(state.session.loop, null, "challenge").name, ui.$("quizPanel"), "study", q);
     ui.$("quizSpeak").classList.remove("hidden");
     ui.$("quizNext").disabled = false;
   }
@@ -419,7 +419,7 @@ function createChallengeUI({
       { passed, firstPass, base, topUp } = reward;
     s.earned += base + topUp;
     const graduation = day === 7 && firstPass;
-    if (firstPass && day < content.curriculum.days.length) state.day = day + 1;
+    if (!state.rpg && firstPass && day < content.curriculum.days.length) state.day = day + 1;
     storage.save();
     ui.hud();
     ui.$("resultHeading").textContent = graduation

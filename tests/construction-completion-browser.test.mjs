@@ -18,7 +18,7 @@ for(const width of [375,1280]) {
     variants.add(Boolean(item.duds));
     assert.equal(await p.locator('#quizPashto').innerText(),await p.evaluate(id=>__test.content.wordById[id].en,item.id));
     assert.equal(await p.locator('#guideMessage').isVisible(),false);
-    assert.equal(await p.locator('#participants').isVisible(),false);
+    assert.equal(await p.locator('#participants [data-character-id]').count(),0,'Construction with the instructor uses one portrait');
     assert.equal(await p.locator('#quizSpeak').isVisible(),false);
     assert.equal(await p.getByRole('button',{name:'Hear the correct sentence',exact:true}).count(),0);
    }

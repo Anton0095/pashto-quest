@@ -19,7 +19,7 @@ function createSaveValidator({ content, progression }) {
     const time = v => Number.isFinite(v) && v >= 0;
     const strings = v => Array.isArray(v) && v.every(x => typeof x === "string") && new Set(v).size === v.length;
     const stats = v => object(v) && integer(v.totalAttempts) && integer(v.correctAttempts) && v.correctAttempts <= v.totalAttempts && integer(v.stage) && v.stage <= 5 && time(v.srsDueAt);
-    if (!object(p) || !object(p.library)) return false;
+    if (!object(p) || !object(p.library) || p.reviewOnly !== undefined) return false;
     const l = p.library;
     if (!integer(l.seed) || !["units","acquired","plans","dayExposure","grammar","phrases","events","deliveries","deficits"].every(k=>object(l[k]))) return false;
     if (l.retiredAttemptSequence !== undefined && (!integer(l.retiredAttemptSequence) || l.retiredAttemptSequence > l.attemptSequence)) return false;
@@ -61,6 +61,7 @@ function createSaveValidator({ content, progression }) {
         const a=plan.challengeActivation;
         if (!object(a) || !strings(a.newlyUnlocked) || a.newlyUnlocked.some(id=>!content.libraryEntries[id]) || !object(a.locationItems) || !content.zoneKeys.every(loc=>integer(a.locationItems[loc]))) return false;
       }
+      if(plan.studyPools!==undefined&&(!object(plan.studyPools)||Object.entries(plan.studyPools).some(([loc,ids])=>!content.zoneKeys.includes(loc)||!strings(ids)||ids.some(id=>!content.wordById[id]||content.wordById[id].type==='sentence'))))return false;
       if (plan.generatedPracticeCards!==undefined && (!object(plan.generatedPracticeCards)||Object.values(plan.generatedPracticeCards).some(a=>!Array.isArray(a)))) return false;
       if (plan.challengeQuestions!==undefined && (!Array.isArray(plan.challengeQuestions)||plan.challengeQuestions.length!==progression.getChallengeSpec(plan.day).questionCount)) return false;
     }

@@ -31,14 +31,11 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
     ui.$("teachNote").textContent = c.help;
-    ui.$("addressTarget").textContent =
-      "Muhammad Jan → Player · Your answer → Muhammad Jan";
-    ui.$("addressTarget").classList.remove("hidden");
     ui.$("guideMessage").textContent = [
       "First, select what Salaam means. You can try again if you make a mistake.",
       "Arrange this conventional greeting, taught as a complete phrase.",
-      "This time you answer about yourself. There is no wrong choice.",
-      "Now type the name you would like me to call you.",
+      "Select the Pashto response for the language you are learning.",
+      "Muhammad Jan: Type my name in English. Your player profile can be set later in the Library.",
     ][n];
     ui.$("teachNext").disabled = true;
     ui.$("teachNext").textContent =
@@ -103,62 +100,31 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
           if (correct) done();
           else tutorialAnswer(false);
         }});
-    } else if (c.kind === "gender") {
-      const choices = document.createElement("div");
-      choices.className = "choices tutorial-choices";
-      for (const [gender, label] of [
-        ["male", "Male"],
-        ["female", "Female"],
-        ["unspecified", "Prefer not to say"],
-      ]) {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.className = "choice";
-        b.dataset.gender = gender;
-        b.textContent = label;
-        b.addEventListener("click", () => {
-          state.session.profileGender = gender;
-          done("✓ Thank you. You can change this by replaying the tutorial.");
+    } else if (c.kind === "pashto-choice") {
+      const choices=document.createElement("div");choices.className="choices tutorial-choices";
+      for(const answer of QuestionEngine.shuffle(w.choices)){
+        const b=ui.button(answer,()=>{
+          const correct=QuestionEngine.evaluate({kind:"word",direction:"en-ps"},{ps:w.answerPs},answer);
+          b.classList.add(correct?"correct":"wrong");
+          if(correct)done("✓ پښتو — Pashto. Continue.");
+          else{tutorialAnswer(false);feedback.textContent="Not quite. Choose the Pashto name for Pashto and try again.";}
         });
-        choices.append(b);
+        b.classList.add("pashto-option");b.lang="ps";b.dir="rtl";b.dataset.answer=answer;choices.append(b);
       }
       area.append(choices);
     } else {
-      const row = document.createElement("div");
-      row.className = "tutorial-name-row";
-      const field = document.createElement("input");
-      field.id = "tutorialName";
-      field.type = "text";
-      field.className = "tutorial-name-input";
-      field.maxLength = 40;
-      field.autocomplete = "given-name";
-      field.placeholder = "Name you would like to use";
-      field.value = state.session.profileName || state.progress.playerProfile?.name || "";
-      field.addEventListener("input",()=>{state.session.profileName=field.value;storage.save();});
-      field.setAttribute("aria-label", "Your name");
-      const b = document.createElement("button");
-      b.type = "button";
-      b.id = "tutorialSaveName";
-      b.className = "primary";
-      b.textContent = "Use this name";
-      const accept = () => {
-        const name = field.value.trim();
-        if (!name) {
-          feedback.textContent = "Enter a name up to 40 characters.";
-          return;
-        }
-        state.session.profileName = name;
-        done(`✓ Nice to meet you, ${name}!`);
-      };
-      b.addEventListener("click", accept);
-      field.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          accept();
-        }
+      const row=document.createElement("form");row.className="tutorial-name-row";
+      const field=document.createElement("input");field.id="tutorialName";field.type="text";field.maxLength=40;
+      field.className="tutorial-name-input";field.autocomplete="off";field.placeholder="Type his name in English";
+      field.setAttribute("aria-label","Muhammad Jan’s name in English");
+      const b=document.createElement("button");b.type="submit";b.id="tutorialSaveName";b.className="primary";b.textContent="Check answer";
+      row.addEventListener("submit",event=>{
+        event.preventDefault();
+        const correct=QuestionEngine.evaluate({kind:"word",direction:"ps-en"},{en:w.answerEnglish,acceptedEnglishAnswers:w.acceptedEnglishAnswers},field.value);
+        if(correct)done("✓ Muhammad Jan. You can set your own name and gender in Library → Player Profile whenever you like.");
+        else{tutorialAnswer(false);feedback.textContent="Not quite. His name is Muhammad Jan. Try again.";}
       });
-      row.append(field, b);
-      area.append(row);
+      row.append(field,b);area.append(row);
     }
     area.append(feedback);
     if (state.session.passed.has(c.id)) {

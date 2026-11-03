@@ -63,6 +63,7 @@ function createStorage({
     }
   }
   function snapshot() {
+    if(state.reviewCampaign)return JSON.stringify(state.reviewCampaign);
     if (state.session?.mode === "challenge") {
       if (state.session.finished) delete state.progress.activeChallenge;
       else state.progress.activeChallenge = JSON.parse(JSON.stringify(state.session));

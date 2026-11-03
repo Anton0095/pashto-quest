@@ -1396,20 +1396,12 @@ header {
 .recall-input { width: 100%; max-width: 100%; box-sizing: border-box; padding: 12px; }
 
 
-/* Clause-driven scenes stay embedded in the offline release. */
-.sentence-scene { margin: 0 0 18px; padding: 14px; border: 1px solid #7190a5; border-radius: 16px; background: #203f50; text-align: center; }
-.sentence-scene svg { display: block; width: min(100%, 320px); margin: auto; max-height: 180px; }
-.sentence-scene figcaption { margin-top: 8px; color: #fffdf6; font-size: 16px; }
-.scene-props { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.scene-prop { display: grid; gap: 4px; align-content: center; padding: 10px; min-width: 65px; border-radius: 10px; background: #315668; color: #fffdf6; }
-.scene-symbol { font-size: 36px; }
 .choice.correct::after { content: " ✓"; }
 .choice.wrong::after { content: " ✗"; }
 
 /* Construction uses direct targets; village narrative remains on other surfaces. */
 .construction-active #addressTarget,
-.construction-active #participants,
-.construction-active .speaker-note,
+.construction-active #guideMessage,
 .construction-active #challengeScene,
 .construction-active #lessonExpression { display: none; }
 .construction-practice { margin-block: 1rem; }
@@ -1497,3 +1489,19 @@ body:has(.rpg-world) .herochar .pill {display:inline-block;margin:5px 6px 0 0;fo
   .rpg-controls {gap:10px;}
   .rpg-controls .tiny {margin:4px 0;}
 }
+
+/* Compact, reusable conversation context; obsolete summary bars stay absent. */
+#addressTarget {display:none!important;}
+#participants:empty {display:none;}
+#participants {border:0;padding:0;margin:0;display:flex;}
+.conversation-partner {display:flex;align-items:center;gap:8px;}
+.speaker-note {flex-wrap:wrap;}
+.sentence-answer-line {display:flex;align-items:baseline;justify-content:center;gap:8px 20px;flex-wrap:wrap;}
+.sentence-answer-line p {margin:6px 0;}
+.sentence-roman {direction:ltr;overflow-wrap:anywhere;color:var(--muted);}
+#libraryProfile input,#libraryProfile select {font:inherit;padding:10px;max-width:100%;}
+#libraryProfile label {display:block;margin:12px 0;}
+
+.sleep-transition {position:fixed;inset:0;z-index:10000;background:#101f2df2;display:grid;place-content:center;color:#ffe0a2;font-size:24px;animation:sleep-fade .35s ease;}
+@keyframes sleep-fade {from{opacity:0;}to{opacity:1;}}
+#dreamMenu button {display:block;margin:8px 0;max-width:100%;}

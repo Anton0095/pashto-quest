@@ -1,6 +1,6 @@
 # TypeScript / Phaser Week 1 architecture
 
-The multiday overhaul is based on main `5606c36` (the merged Week 1/foundation work). Phaser 4.2.1 remains locally bundled; TypeScript RPG modules remain strict. The existing Python/esbuild pipeline and JavaScript educational authorities are retained. See the current [overhaul report](MULTIDAY_OVERHAUL.md) and historical [Week 1 implementation](WEEK1_IMPLEMENTATION.md) for registry, route flow, schedules and play instructions.
+The multiday overhaul is based on main `5606c36` (the merged Week 1/foundation work). Phaser 4.2.1 remains locally bundled; TypeScript RPG modules remain strict. The existing Python/esbuild pipeline and JavaScript educational authorities are retained. See the current [house/sleep/dream state handling](HOUSE_SLEEP_DREAM.md), [overhaul report](MULTIDAY_OVERHAUL.md) and historical [Week 1 implementation](WEEK1_IMPLEMENTATION.md) for registry, route flow, schedules and play instructions.
 
 | Module | Responsibility |
 |---|---|

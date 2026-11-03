@@ -20,7 +20,7 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     complete: {},
     challenges: {},
     tutorialDone: false,
-    playerProfile: { name: "", gender: "unspecified" },
+    playerProfile: { name: "Player", gender: "unspecified" },
   });
   function highestClearedDay(p) {
     let day = 0;
@@ -104,12 +104,14 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
   }
 
   function awardXP(p, key, amount) {
+    if(p.reviewOnly)return 0;
     if (p.rewards[key]) return 0;
     p.rewards[key] = true;
     p.xp += amount;
     return amount;
   }
   function completeLessonOnce(p, id, mode, passed, itemCount) {
+    if(p.reviewOnly)return 0;
     if (!passed) return 0;
     if (mode === "tutorial" && !p.tutorialDone) p.tutorialDone = true;
     else if (mode === "standard" && !p.complete[id]) p.complete[id] = true;
