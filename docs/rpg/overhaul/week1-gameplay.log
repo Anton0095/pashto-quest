@@ -1,0 +1,52 @@
+START normal day 1
+START skip day 1
+PASS public lesson 1 residential
+PASS public Week1 skip day 1 XP 310
+START skip day 2
+PASS public lesson 1 nature
+PASS public lesson 1 business
+PASS public lesson 1 school
+PASS public Week1 skip day 2 XP 555
+START skip day 3
+PASS public Week1 normal day 1 XP 720
+START normal day 2
+PASS public Week1 skip day 3 XP 805
+START skip day 4
+PASS public lesson 2 business
+PASS public Week1 skip day 4 XP 1050
+START skip day 5
+PASS public lesson 2 nature
+PASS public Week1 skip day 5 XP 1295
+START skip day 6
+PASS public lesson 2 residential
+PASS public Week1 skip day 6 XP 1600
+START skip day 7
+PASS public Week1 normal day 2 XP 1475
+START normal day 3
+PASS public lesson 3 residential
+PASS public Week1 skip day 7 XP 1900
+PASS public lesson 3 business
+Chapter transfer observations skip {"counts":{"1":9,"2":9,"3":9,"4":9,"5":9,"6":10,"7":10},"transfersMs":[465,476,434,488,488,396,424,406,407],"heapBefore":10026252,"heapAfter":10441452,"bytes":{"pashto-quest-rpg-world-v1":1275,"pashto-quest-rpg-education-v1":322154}}
+PASS public lesson 3 school
+PASS public Week1 normal day 3 XP 2260
+START normal day 4
+PASS public lesson 4 nature
+PASS public lesson 4 business
+PASS public lesson 4 school
+PASS public Week1 normal day 4 XP 3025
+START normal day 5
+PASS public lesson 5 residential
+PASS public lesson 5 nature
+PASS public lesson 5 business
+PASS public Week1 normal day 5 XP 3800
+START normal day 6
+PASS public lesson 6 residential
+PASS public lesson 6 business
+PASS public lesson 6 school
+PASS public Week1 normal day 6 XP 4665
+START normal day 7
+PASS public lesson 7 residential
+PASS public lesson 7 nature
+PASS public lesson 7 school
+PASS public Week1 normal day 7 XP 5500
+Chapter transfer observations normal {"counts":{"1":9,"2":9,"3":9,"4":9,"5":9,"6":10,"7":10},"transfersMs":[442,441,413,436,408,499,435,430,418],"heapBefore":11724904,"heapAfter":12139532,"bytes":{"pashto-quest-rpg-world-v1":1806,"pashto-quest-rpg-education-v1":741667}}

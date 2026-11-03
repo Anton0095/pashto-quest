@@ -10,6 +10,7 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     const raw=input as Partial<WorldSave>|null;
     const out=fresh(data), object=(v:unknown):boolean=>v!==null && typeof v==='object' && !Array.isArray(v);
     if(!raw||!object(raw)||raw.schemaVersion!==1)return out;
+    if(raw.sleepIntent&&Number.isInteger(raw.sleepIntent.from)&&Number.isInteger(raw.sleepIntent.to)&&data.days[String(raw.sleepIntent.from)]&&data.days[String(raw.sleepIntent.to)]&&data.days[String(raw.sleepIntent.from)].nextChapter===data.days[String(raw.sleepIntent.to)].id)out.sleepIntent={...raw.sleepIntent};
     if(typeof raw.chapter==='string'&&Object.values(data.days).some(c=>c.id===raw.chapter))out.chapter=raw.chapter;
     if(raw.routes&&object(raw.routes))out.routes=Object.fromEntries(Object.entries(raw.routes).filter(([id,route])=>Object.values(data.days).some(c=>c.id===id)&&['normal','skip'].includes(route)));
     out.position=RPGWorldData.recover(data,raw.position);
@@ -51,7 +52,15 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     if(raw.tileOrder!==undefined){if(!Array.isArray(raw.tileOrder)||!raw.activeItem)return null;const tiles=QuestionEngine.buildTiles(content.wordById[raw.activeItem?.id],raw.activeItem,raw.loop);if(raw.tileOrder.length!==tiles.length || new Set(raw.tileOrder).size!==tiles.length || raw.tileOrder.some(i=>!int(i,tiles.length-1)) || raw.built.some(i=>!raw.tileOrder?.includes(i)))return null;}
     if(raw.choices && (!Array.isArray(raw.choices)||raw.choices.some(c=>typeof c!=='string'||c.length>1000)))return null;
     if(!['male','female','unspecified'].includes(raw.profileGender)||typeof raw.profileName!=='string'||raw.profileName.length>40)return null;
-    const s=JSON.parse(JSON.stringify(raw)) as LessonSession;for(const field of ['firstAsked','passed'])s[field as 'firstAsked'|'passed']=new Set(s[field] as unknown as string[]);return s;
+    const s=JSON.parse(JSON.stringify(raw)) as LessonSession;
+    // Reconcile only the superseded profile steps of a valid, paused format-7 tutorial.
+    // Keep retained greeting responses and earned XP; do not repeat completed tutorials.
+    if(s.mode==='tutorial'&&s.required.some(id=>['tutorial-gender','tutorial-name'].includes(id))){
+      s.required=content.tutorialCards.map(c=>c.id);s.cardIndex=Math.min(s.cardIndex,2);
+      s.passed=(s.passed as unknown as string[]).filter(id=>!['tutorial-gender','tutorial-name'].includes(id)) as unknown as Set<string>;
+      s.firstAsked=(s.firstAsked as unknown as string[]).filter(id=>!['tutorial-gender','tutorial-name'].includes(id)) as unknown as Set<string>;
+    }
+    for(const field of ['firstAsked','passed'])s[field as 'firstAsked'|'passed']=new Set(s[field] as unknown as string[]);return s;
   }
   function create(data:WorldData,backend?:Pick<Storage,'getItem'|'setItem'>,fence?:SaveFence) {
     const access=()=>backend || globalThis.localStorage;

@@ -1396,20 +1396,12 @@ header {
 .recall-input { width: 100%; max-width: 100%; box-sizing: border-box; padding: 12px; }
 
 
-/* Clause-driven scenes stay embedded in the offline release. */
-.sentence-scene { margin: 0 0 18px; padding: 14px; border: 1px solid #7190a5; border-radius: 16px; background: #203f50; text-align: center; }
-.sentence-scene svg { display: block; width: min(100%, 320px); margin: auto; max-height: 180px; }
-.sentence-scene figcaption { margin-top: 8px; color: #fffdf6; font-size: 16px; }
-.scene-props { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.scene-prop { display: grid; gap: 4px; align-content: center; padding: 10px; min-width: 65px; border-radius: 10px; background: #315668; color: #fffdf6; }
-.scene-symbol { font-size: 36px; }
 .choice.correct::after { content: " ✓"; }
 .choice.wrong::after { content: " ✗"; }
 
 /* Construction uses direct targets; village narrative remains on other surfaces. */
 .construction-active #addressTarget,
-.construction-active #participants,
-.construction-active .speaker-note,
+.construction-active #guideMessage,
 .construction-active #challengeScene,
 .construction-active #lessonExpression { display: none; }
 .construction-practice { margin-block: 1rem; }
@@ -1464,3 +1456,52 @@ body.rpg-overlay-active dialog {z-index:80;}
 @supports(height:100dvh){body.rpg-overlay-active #lessonScreen,body.rpg-overlay-active #resultScreen{max-height:90dvh;}}
 
 #rpgCanvas {width:100% !important;height:auto !important;}
+
+/* World first: one progress card under the map, regional notes inside Menu. */
+body:has(.rpg-world) header {margin-bottom:8px;}
+body:has(.rpg-world) .herochar {padding:10px 12px;margin:10px 0;gap:12px;}
+body:has(.rpg-world) .herochar h1 {font-size:17px;margin:0;}
+body:has(.rpg-world) .herochar .pill {display:inline-block;margin:5px 6px 0 0;font-size:12px;}
+.rpg-world {padding:12px;}
+.rpg-heading {margin-bottom:10px;gap:6px 12px;}
+.rpg-location-note {min-height:0;margin:8px 0;}
+.rpg-visits {margin-top:8px;padding-top:8px;}
+.rpg-dialogue {max-height:88vh;overflow:auto;overscroll-behavior:contain;}
+.rpg-dialogue-portrait {float:left;margin:0 14px 8px 0;}
+.rpg-dialogue .buttons {clear:both;}
+.character-portrait {display:inline-flex;vertical-align:middle;flex:0 0 auto;align-items:center;justify-content:center;flex-direction:column;width:80px;height:80px;border:3px solid #b4a57c;background:#192c2b;color:#f4ead1;font:20px monospace;text-align:center;overflow:hidden;}
+.character-portrait img {display:block;width:100%;height:100%;object-fit:contain;image-rendering:pixelated;}
+.character-portrait small {font:9px/1.2 system-ui;max-width:70px;}
+.interlocutor .character-portrait {width:56px;height:56px;font-size:14px;}
+.interlocutor .character-portrait small {font-size:8px;}
+.speaker-note > #speakerIcon {font-size:inherit;}
+.quizword .label {margin-top:12px;}
+.question-meta {font-size:11px;gap:6px;}
+.question-context {font-size:12px;}
+.question-context summary {cursor:pointer;}
+#quizPanel .quizword [lang=ps] {font-size:clamp(30px,5vw,46px);line-height:1.8;}
+@media(max-width:600px){
+  body:has(.rpg-world){padding:8px 6px 20px;}
+  .rpg-heading h2 {font-size:19px;}
+  .rpg-dialogue {padding:14px;width:calc(100% - 16px);}
+  .character-portrait {width:64px;height:64px;font-size:17px;}
+  .rpg-dialogue h2 {font-size:19px;}
+  .rpg-controls {gap:10px;}
+  .rpg-controls .tiny {margin:4px 0;}
+}
+
+/* Compact, reusable conversation context; obsolete summary bars stay absent. */
+#addressTarget {display:none!important;}
+#participants:empty {display:none;}
+#participants {border:0;padding:0;margin:0;display:flex;}
+.conversation-partner {display:flex;align-items:center;gap:8px;}
+.speaker-note {flex-wrap:wrap;}
+.sentence-answer-line {display:flex;align-items:baseline;justify-content:center;gap:8px 20px;flex-wrap:wrap;}
+.sentence-answer-line p {margin:6px 0;}
+.sentence-roman {direction:ltr;overflow-wrap:anywhere;color:var(--muted);}
+#libraryProfile input,#libraryProfile select {font:inherit;padding:10px;max-width:100%;}
+#libraryProfile label {display:block;margin:12px 0;}
+
+.sleep-transition {position:fixed;inset:0;z-index:10000;background:#101f2df2;display:grid;place-content:center;color:#ffe0a2;font-size:24px;animation:sleep-fade .35s ease;}
+@keyframes sleep-fade {from{opacity:0;}to{opacity:1;}}
+#dreamMenu button {display:block;margin:8px 0;max-width:100%;}

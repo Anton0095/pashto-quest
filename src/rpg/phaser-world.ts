@@ -1,11 +1,14 @@
 import Phaser from 'phaser';
+import {drawInteriorArt} from './house-art';
 import type {Actor,Appearance,Direction,Position,WorldData} from './types';
+import {createMovementController,canInteract,facingToward} from './movement';
 import {directions,recover} from './world-data';
 
 interface WorldOptions {
+  portraits?:{characters:Record<string,{expressions:Record<string,string|null>}>};portraitReady(key:string,source:string):void;
   canvas:HTMLCanvasElement;data:WorldData;allowedMaps?():string[];
   position():Position;actors():Actor[];appearance():Appearance;active():boolean;
-  onMove(position:Position,transition:boolean):void;onFrame():void;
+  onMove(position:Position,transition:boolean):void;onFrame():void;onInteract(actor:Actor):void;
 }
 const tileSize=16;
 const facingIndex:Record<Direction,number>={down:0,left:1,right:2,up:3};
@@ -24,21 +27,48 @@ export class VillageScene extends Phaser.Scene {
   private movement?:Phaser.Tweens.Tween;
   private actorSignature='';
   private wasActive=false;
+  private controller?:ReturnType<typeof createMovementController>;
+  private pointer?: (event:PointerEvent)=>void;
   constructor(private readonly options:WorldOptions){super('village');}
+  preload():void {
+    for(const [id,character] of Object.entries(this.options.portraits?.characters??{}))for(const [expression,source] of Object.entries(character.expressions))if(source)this.load.image('portrait:'+id+':'+expression,source);
+    this.load.on('loaderror',(file:{key:string})=>{if(file.key.startsWith('portrait:'))this.options.portraitReady(file.key.slice(9),'');});
+  }
   create():void {
+    for(const [id,character] of Object.entries(this.options.portraits?.characters??{}))for(const expression of Object.keys(character.expressions)){
+      const key=id+':'+expression;
+      if(this.textures.exists('portrait:'+key)){
+        const source=this.textures.get('portrait:'+key).getSourceImage();
+        this.options.portraitReady(key,source instanceof HTMLImageElement?source.src:(source as HTMLCanvasElement).toDataURL());
+      }
+    }
     this.createArt();
     this.loadMap();
+    this.controller=createMovementController({data:this.options.data,position:this.options.position,actors:this.options.actors,allowedMaps:()=>this.options.allowedMaps?.()??Object.keys(this.options.data.maps),step:dir=>this.step(dir),moving:()=>!!this.movement,
+      arrived:actor=>{const p=this.options.position();this.options.onMove({...p,facing:facingToward(p,actor)},false);this.player?.setFrame(facingIndex[facingToward(p,actor)]*2);this.options.onInteract(actor);}});
+    this.pointer=event=>{
+      if(!this.options.active()||!event.isPrimary||event.button!==0)return;
+      event.preventDefault();this.options.canvas.focus();
+      const bounds=this.options.canvas.getBoundingClientRect();
+      const point=this.cameras.main.getWorldPoint((event.clientX-bounds.left)*this.scale.width/bounds.width,(event.clientY-bounds.top)*this.scale.height/bounds.height);
+      const tile={x:Math.floor(point.x/tileSize),y:Math.floor(point.y/tileSize)};
+      const actor=this.options.actors().find(a=>{const b=a.interactionBounds;return b?tile.x>=b.x&&tile.x<b.x+b.w&&tile.y>=b.y&&tile.y<b.y+b.h:a.x===tile.x&&a.y===tile.y;});
+      this.options.canvas.dataset.route=this.controller!.navigate(tile,actor)?'moving':'unreachable';
+    };
+    this.options.canvas.addEventListener('pointerdown',this.pointer);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN,()=>{if(this.pointer)this.options.canvas.removeEventListener('pointerdown',this.pointer);this.controller?.cancel();});
     this.physics.pause();
     this.game.canvas.dataset.phaser=Phaser.VERSION;
   }
   private createArt():void {
     const graphics=this.make.graphics({x:0,y:0});
-    const colors:Record<string,number>={g:0x8ca66b,f:0x8ca66b,p:0xd5bf8b,c:0xc8b687,w:0x6aa9af,t:0x8ca66b,b:0xcbb183,d:0x756449,s:0x9d7958,'.':0xd1ba8c,r:0xa76e58};
+    const colors:Record<string,number>={g:0x8ca66b,f:0x8ca66b,p:0xd5bf8b,c:0xc8b687,w:0x6aa9af,t:0x8ca66b,b:0xcbb183,d:0x756449,s:0x9d7958,'.':0xd1ba8c,r:0xa76e58,i:0xb38d62,u:0x9e4350,e:0x6b493d,k:0x6b493d,q:0x8a5c3a,z:0x426f78,P:0x6c6a40};
     Object.keys(this.options.data.tiles).forEach((symbol,index)=>{
       const x=index*16;
       graphics.fillStyle(colors[symbol]??0x8ca66b).fillRect(x,0,16,16);
       if(['g','f','t'].includes(symbol))graphics.fillStyle(0x78935a).fillRect(x+3,6,2,2).fillRect(x+11,12,2,1);
       if(['p','c','.'].includes(symbol))graphics.fillStyle(0xbfaa79).fillRect(x+2,5,2,1).fillRect(x+11,12,2,1);
+      if(symbol==='i'){graphics.fillStyle(0xb99469).fillRect(x+2,4,2,1).fillRect(x+11,11,2,1);}
       if(symbol==='w')graphics.fillStyle(0x96c5c2).fillRect(x+2,4,7,1).fillRect(x+9,12,4,1);
       if(symbol==='t'){
         graphics.fillStyle(0x77664b).fillRect(x+7,8,3,8);
@@ -52,7 +82,7 @@ export class VillageScene extends Phaser.Scene {
       }
     });
     graphics.generateTexture('village-tiles',Object.keys(this.options.data.tiles).length*16,16).clear();
-    const palettes:Record<string,[number,number]>={elder:[0xf0e5ce,0xf7f0d9],saleha:[0x316f74,0xeec970],edris:[0x9a613b,0xe4d1aa],hameed:[0x74618c,0xd6bfdf],masculine:[0x447b9b,0xd7e8e6],feminine:[0xae6380,0xf0c4ab],neutral:[0x6e7e50,0xdbe2bd]};
+    const palettes:Record<string,[number,number]>={elder:[0xf0e5ce,0xf7f0d9],saleha:[0x316f74,0xeec970],edris:[0x9a613b,0xe4d1aa],hameed:[0x74618c,0xd6bfdf],masculine:[0x447b9b,0xd7e8e6],feminine:[0xae6380,0xf0c4ab],neutral:[0x6e7e50,0xdbe2bd],mina:[0x316f74,0x44332c]};
     for(const [kind,[robe,head]] of Object.entries(palettes)){
       for(const [dir,idx]of Object.entries(facingIndex))for(let step=0;step<2;step++){
         const x=step*16,y=idx*16;
@@ -63,6 +93,8 @@ export class VillageScene extends Phaser.Scene {
         if(['saleha','hameed','feminine'].includes(kind))graphics.fillRect(x+3,y+1,2,9).fillRect(x+11,y+1,2,9);
         graphics.fillStyle(0x3e3b39).fillRect(x+5,y+13+step,3,2).fillRect(x+10,y+13-step,3,2);
         if(dir!=='up')graphics.fillStyle(0x2f3232).fillRect(x+(dir==='left'?5:9),y+4,1,1);
+        if(kind==='edris')graphics.fillStyle(0x48362c).fillRect(x+6,y+6,5,3);
+        if(kind==='mina')graphics.fillStyle(0x44332c).fillRect(x+3,y+1,2,7).fillRect(x+11,y+1,2,7);
         if(kind==='elder')graphics.fillStyle(0xeee9d9).fillRect(x+6,y+6,5,3);
       }
       graphics.generateTexture(kind,32,64).clear();
@@ -73,7 +105,7 @@ export class VillageScene extends Phaser.Scene {
     graphics.destroy();
   }
   private loadMap():void {
-    this.movement?.stop();this.movement=undefined;
+    this.controller?.cancel();this.movement?.stop();this.movement=undefined;
     this.physics.world.colliders.destroy();
     this.npcGroup?.destroy(true);this.sensors?.destroy(true);
     for(const object of this.children.getAll())object.destroy();this.map?.destroy();this.extraMap?.destroy();this.extraMap=undefined;
@@ -92,6 +124,7 @@ export class VillageScene extends Phaser.Scene {
       this.extraCollision?.setCollision(0).setVisible(false);
     }else this.extraCollision=undefined;
     const art=this.add.graphics().setDepth(1);
+    if(p.map==='house'||definition.furniture?.length)drawInteriorArt(this,definition,p.map==='house');
     for(const b of definition.buildings){
       const x=b.x*16,y=b.y*16,w=b.w*16,h=b.h*16;
       art.fillStyle(Phaser.Display.Color.HexStringToColor(b.color).color).fillRect(x,y+7,w,h-7);
@@ -109,7 +142,8 @@ export class VillageScene extends Phaser.Scene {
     if(this.extraCollision)this.physics.add.collider(this.player,this.extraCollision);
     this.physics.add.collider(this.player,this.npcGroup);
     this.physics.world.setBounds(0,0,definition.tiles[0].length*16,definition.tiles.length*16);
-    this.cameras.main.setBounds(0,0,definition.tiles[0].length*16,definition.tiles.length*16).startFollow(this.player,true,1,1).setRoundPixels(true);
+    const mapWidth=definition.tiles[0].length*16,mapHeight=definition.tiles.length*16;
+    this.cameras.main.setBounds(Math.min(0,(mapWidth-this.scale.width)/2),Math.min(0,(mapHeight-this.scale.height)/2),Math.max(mapWidth,this.scale.width),Math.max(mapHeight,this.scale.height)).startFollow(this.player,true,1,1).setRoundPixels(true);
     this.marker=this.add.text(0,0,'!',{fontFamily:'monospace',fontSize:'10px',color:'#69593e',backgroundColor:'#fff0b9'}).setOrigin(.5,1).setDepth(10000);
     this.actorSignature='';this.sync();
   }
@@ -135,10 +169,15 @@ export class VillageScene extends Phaser.Scene {
     const p=this.options.position(),[dx,dy]=directions[p.facing];
     const actors=this.physics.overlapRect(p.x*16-48,p.y*16-48,112,112,false,true).flatMap(body=>{
       const actor=body.gameObject.getData('actor') as Actor|undefined;
-      return actor&&Math.abs(actor.x-p.x)+Math.abs(actor.y-p.y)>=1&&Math.abs(actor.x-p.x)+Math.abs(actor.y-p.y)<=(actor.interactionRange??1)?[actor]:[];
+      return actor&&canInteract(this.options.data,p,actor,this.options.actors())?[actor]:[];
     });
     return actors.sort((a,b)=>Number(b.x===p.x+dx&&b.y===p.y+dy)-Number(a.x===p.x+dx&&a.y===p.y+dy))[0]??null;
   }
+  relocate():void {
+    this.controller?.cancel();this.movement?.stop();this.movement=undefined;this.player?.anims.stop();this.sync();
+  }
+  cancelRoute():void {this.controller?.cancel();}
+  manual(direction:Direction):boolean {return this.controller?.manual(direction)??this.step(direction);}
   step(direction:Direction):boolean {
     if(!this.player||!this.probe||!this.terrain||this.movement||!this.options.active())return false;
     this.sync();
@@ -169,15 +208,16 @@ export class VillageScene extends Phaser.Scene {
   update():void {
     const active=this.options.active();
     if(!active&&this.wasActive){
-      this.movement?.stop();this.movement=undefined;
+      this.controller?.cancel();this.movement?.stop();this.movement=undefined;
       const p=this.options.position();this.player?.body?.reset(p.x*16+8,p.y*16+8);this.player?.anims.stop();this.player?.setFrame(facingIndex[p.facing]*2);this.physics.pause();
     }else if(active&&!this.wasActive)this.physics.resume();
     this.wasActive=active;
     if(active){this.sync();const target=this.nearby();this.marker?.setVisible(!!target);if(target)this.marker?.setPosition(target.x*16+8,target.y*16-5);}
+    if(active)this.controller?.tick();else this.controller?.cancel();
     this.options.onFrame();
   }
 }
-export function createPhaserWorld(options:WorldOptions):{step:(dir:Direction)=>boolean;nearby:()=>Actor|null;sync:()=>void;resize:()=>void;destroy:()=>void;scene:VillageScene;game:Phaser.Game} {
+export function createPhaserWorld(options:WorldOptions):{step:(dir:Direction)=>boolean;cancelRoute:()=>void;relocate:()=>void;nearby:()=>Actor|null;sync:()=>void;resize:()=>void;destroy:()=>void;scene:VillageScene;game:Phaser.Game} {
   const scene=new VillageScene(options);
   const game=new Phaser.Game({type:Phaser.CANVAS,canvas:options.canvas,width:options.canvas.width,height:options.canvas.height,backgroundColor:'#293d36',banner:false,
     render:{pixelArt:true,antialias:false},audio:{noAudio:true},physics:{default:'arcade',arcade:{gravity:{x:0,y:0}}},scene:[scene],input:{keyboard:false,mouse:false,touch:false}});
@@ -186,5 +226,5 @@ export function createPhaserWorld(options:WorldOptions):{step:(dir:Direction)=>b
   let destroyed=false;
   const resize=()=>{if(game.scale.canvas&&!destroyed)game.scale.resize(window.innerWidth<600?256:512,window.innerWidth<600?192:320);};
   game.events.once(Phaser.Core.Events.READY,resize);
-  return {step:dir=>scene.step(dir),nearby:()=>scene.nearby(),sync:()=>scene.sync(),resize,destroy:()=>{destroyed=true;game.events.off(Phaser.Core.Events.READY,resize);game.destroy(false);},scene,game};
+  return {step:dir=>scene.manual(dir),cancelRoute:()=>scene.cancelRoute(),relocate:()=>scene.relocate(),nearby:()=>scene.nearby(),sync:()=>scene.sync(),resize,destroy:()=>{destroyed=true;game.events.off(Phaser.Core.Events.READY,resize);game.destroy(false);},scene,game};
 }

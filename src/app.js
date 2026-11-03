@@ -194,9 +194,11 @@
       content.curriculum.days.filter((d) => learning.allowed(d.day)).at(-1)
         ?.day || 1;
   library.libraryInit();
-  const rpg = RPG_ENABLED ? PashtoRPG.createRPG({state,content,progression,learning,ui,audio,storage,world,lessons,challenge,library},{data:RPG_WORLD_DATA,questions:QuestionEngine,fence:saveFence}) : null;
+  const rpg = RPG_ENABLED ? PashtoRPG.createRPG({state,content,progression,learning,ui,audio,storage,world,lessons,challenge,library},{data:RPG_WORLD_DATA,portraits:CHARACTER_PORTRAITS,questions:QuestionEngine,fence:saveFence}) : null;
+  // Match paired lesson snapshots before applying the optional profile default.
+  if(!state.progress.playerProfile.name.trim())state.progress.playerProfile.name="Player";
   // @TEST_HOOK
-  ui.$("lessonScreen").insertBefore(ui.$("addressTarget"), ui.$("teachPanel"));
+  ui.$("speakerName").parentElement.append(ui.$("participants"));
   storage.save();
   ui.hud();
   // Restore the visible assessment first. Rendering an immediately hidden day

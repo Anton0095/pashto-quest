@@ -1,0 +1,91 @@
+{
+  "resolution": 560,
+  "notice": "Approved portraits extracted losslessly from the supplied dialogue screenshots on main; dialogue and controls remain DOM content.",
+  "characters": {
+    "muhammad-jan": {
+      "name": "Muhammad Jan",
+      "appearance": "Afghan village elder, about 65, traditional clothing, white beard",
+      "expressions": {
+        "neutral": "assets/portraits/muhammad-jan.png"
+      },
+      "source": {
+        "path": "public/assets/portraits/Muhammad Jan Portrait.png",
+        "crop": [
+          90,
+          310,
+          545,
+          842
+        ],
+        "method": "Original pixels, transparent padding, no resampling"
+      }
+    },
+    "edris": {
+      "name": "Edris",
+      "appearance": "Adult Afghan market trader, traditional clothing and beard",
+      "expressions": {
+        "neutral": "assets/portraits/edris.png"
+      },
+      "source": {
+        "path": "public/assets/portraits/Edris Portrait.png",
+        "crop": [
+          90,
+          310,
+          545,
+          842
+        ],
+        "method": "Original pixels, transparent padding, no resampling"
+      }
+    },
+    "saleha": {
+      "name": "Saleha",
+      "appearance": "Afghan woman in her 20s, wearing hijab",
+      "expressions": {
+        "neutral": "assets/portraits/saleha.png"
+      },
+      "source": {
+        "path": "public/assets/portraits/Saleha Portrait.png",
+        "crop": [
+          90,
+          310,
+          545,
+          842
+        ],
+        "method": "Original pixels, transparent padding, no resampling"
+      }
+    },
+    "hameed": {
+      "name": "Ms Hameed",
+      "appearance": "Afghan woman in her 40s, wearing hijab",
+      "expressions": {
+        "neutral": "assets/portraits/hameed.png"
+      },
+      "source": {
+        "path": "public/assets/portraits/Ms Hameed Portrait.png",
+        "crop": [
+          90,
+          310,
+          545,
+          842
+        ],
+        "method": "Original pixels, transparent padding, no resampling"
+      }
+    },
+    "mina": {
+      "name": "Mina",
+      "appearance": "Girl about 10, Saleha's younger sister, similar facial features, no hijab",
+      "expressions": {
+        "neutral": "assets/portraits/mina.png"
+      },
+      "source": {
+        "path": "public/assets/portraits/Mina Portrait.png",
+        "crop": [
+          90,
+          310,
+          545,
+          842
+        ],
+        "method": "Original pixels, transparent padding, no resampling"
+      }
+    }
+  }
+}

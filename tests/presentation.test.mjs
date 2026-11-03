@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+const source=readFileSync('src/character-portraits.js','utf8');
+const {format,words}=vm.runInNewContext(source+';({format:formatEnglishChoice,words:playerVocabularyText})');
+for(const [raw,display] of [['market','Market'],['cold','Cold'],['bread / food','Bread / food'],['Edris','Edris'],['USA','USA'],['iPhone','iPhone'],['mRNA','mRNA'],['  “open','  “Open'],['کور','کور'],['','']])assert.equal(format(raw),display);
+assert.equal(words('8 content lemmas encountered · Daily lemma target · Lemma bank'),'8 words encountered · Daily word target · Word bank');
+const portraits=JSON.parse(readFileSync('content/CHARACTER_PORTRAITS.json','utf8'));
+assert.deepEqual(Object.keys(portraits.characters).sort(),['edris','hameed','mina','muhammad-jan','saleha']);
+assert(Object.values(portraits.characters).every(c=>c.expressions.neutral&&readFileSync(c.expressions.neutral).length),'All approved portraits must exist');
+console.log('PASS English choice capitalization without source mutation, word labels and approved extracted portrait manifest');

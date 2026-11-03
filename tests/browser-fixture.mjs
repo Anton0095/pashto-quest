@@ -74,10 +74,10 @@ export async function tutorial(page) {
   await page.locator("#teachNext").click();
   await page
     .locator("#tutorialInteraction button")
-    .getByText("Prefer not to say", { exact: true })
+    .getByText("پښتو", { exact: true })
     .click();
   await page.locator("#teachNext").click();
-  await page.locator("#tutorialName").fill("Pashto learner");
+  await page.locator("#tutorialName").fill("Muhammad Jan");
   await page.locator("#tutorialSaveName").click();
   await page.locator("#teachNext").click();
 }
@@ -119,6 +119,6 @@ export async function answerCurrent(page) {
   else
     await page
       .locator("#choices button")
-      .getByText(q.answer, { exact: true })
+      .getByText((q.answer).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true})
       .click();
 }

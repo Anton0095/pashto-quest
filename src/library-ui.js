@@ -28,6 +28,18 @@ function createLibraryUI({
     ui.$("libraryDialog").dataset.tab = tab;
     for (const b of document.querySelectorAll("[data-library-tab]"))
       b.setAttribute("aria-pressed", String(b.dataset.libraryTab === tab));
+    if(tab==='profile'){
+      const box=ui.node('form');box.id='libraryProfile';
+      const name=ui.node('input');name.id='playerProfileName';name.maxLength=40;name.value=state.progress.playerProfile.name||'Player';name.setAttribute('aria-label','Player name');
+      const gender=ui.node('select');gender.id='playerProfileGender';gender.setAttribute('aria-label','Gender preference');
+      for(const [value,label] of [['male','Male'],['female','Female'],['unspecified','Prefer not to say']]){const option=ui.node('option',label);option.value=value;gender.append(option);}
+      gender.value=state.progress.playerProfile.gender;
+      for(const [label,input] of [['Name',name],['Gender',gender]]){const row=ui.node('label',label+' ');row.append(input);box.append(row);}
+      const feedback=ui.node('p');feedback.id='profileFeedback';feedback.setAttribute('role','status');
+      const save=ui.button('Save profile',()=>{});save.type='submit';save.disabled=!!state.reviewCampaign;
+      box.addEventListener('submit',async event=>{event.preventDefault();if(state.reviewCampaign)return;state.progress.playerProfile={name:name.value.trim()||'Player',gender:gender.value};save.disabled=true;const ok=await storage.save();save.disabled=false;ui.hud();feedback.textContent=ok?'Profile saved.':'Profile is in memory; saving failed. Use the save recovery controls and retry.';});
+      box.append(save,feedback);root.append(ui.node('h3','Player Profile'),ui.node('p',state.reviewCampaign?'Exit dream practice to edit your campaign profile.':'Optional settings. You can change these at any time.'),box);return;
+    }
     if (tab === "pace") {
       renderLibraryPace(root);
       return;
@@ -151,8 +163,8 @@ function createLibraryUI({
       ui.node(
         "p",
         universal
-          ? `${encounteredUniversal} encountered universal lemmas · ${sum.encountered + encounteredUniversal} distinct lexical lemmas overall. Universal words never consume district quotas.`
-          : `${sum.encountered} encountered · ${sum.practised} practised · ${sum.mastered} mastered content lemmas. ${encounteredUniversal} universal lemmas appear separately. Inflections count under one entry.`,
+          ? `${encounteredUniversal} encountered universal words · ${sum.encountered + encounteredUniversal} distinct words overall. Universal words never consume district quotas.`
+          : `${sum.encountered} encountered · ${sum.practised} practised · ${sum.mastered} mastered words. ${encounteredUniversal} universal words appear separately. Inflections count under one entry.`,
         "notice",
       ),
     );
@@ -169,7 +181,7 @@ function createLibraryUI({
       root.append(
         ui.node(
           "p",
-          `Day ${state.day}: ${ids.length} scheduled · ${seen} scheduled lemmas actually encountered. ${actual} incidental story lemmas · ${tally.reviewedExistingLemmas.length} existing lemmas revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap ? plan.notice : ""}`,
+          `Day ${state.day}: ${ids.length} scheduled · ${seen} scheduled words actually encountered. ${actual} incidental story words · ${tally.reviewedExistingLemmas.length} existing words revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap ? plan.notice : ""}`,
         ),
       );
     }
@@ -399,7 +411,7 @@ function createLibraryUI({
     const options = questions.distractors(card);
     let answered = false;
     for (const option of QuestionEngine.shuffle(options)) {
-      const b = ui.button(option, () => {
+      const b = ui.button(ui.englishChoice(option), () => {
         if (answered) return;
         answered = true;
         const eventId = "library-practice:" + ++state.progress.library.attemptSequence;
@@ -444,7 +456,7 @@ function createLibraryUI({
       ui.node("h3", "Learning Pace"),
       ui.node(
         "p",
-        `Current Day ${state.day}: ${plan ? (current !== null && current !== undefined ? current + " new scheduled content lemmas" : "content gap; " + Object.values(plan.locationAssignments).flat().length + " available scheduled lemmas") : "not started"}. Requested pace: ${paceSummary(state.progress.library.requestedDailyTarget)}.`,
+        `Current Day ${state.day}: ${plan ? (current !== null && current !== undefined ? current + " new scheduled words" : "content gap; " + Object.values(plan.locationAssignments).flat().length + " available scheduled words") : "not started"}. Requested pace: ${paceSummary(state.progress.library.requestedDailyTarget)}.`,
       ),
     );
     root.append(
@@ -457,7 +469,7 @@ function createLibraryUI({
     root.append(
       ui.node(
         "p",
-        `${content.LIBRARY_DATA.inventorySummary.activeContentLemmas} district lemmas are active and base content is user-approved. Morphology remains provisional; independent native review is pending.`,
+        `${content.LIBRARY_DATA.inventorySummary.activeContentLemmas} district words are active and base content is user-approved. Morphology remains provisional; independent native review is pending.`,
       ),
     );
     const message = ui.node("p");
@@ -567,6 +579,7 @@ function createLibraryUI({
     const nav = ui.node("nav");
     nav.setAttribute("aria-label", "Library pages");
     for (const [tab, label] of [
+      ["profile", "Player Profile"],
       ["vocabulary", "Vocabulary Bank"],
       ["universal", "Universal Vocabulary"],
       ["grammar", "Grammar Journal"],

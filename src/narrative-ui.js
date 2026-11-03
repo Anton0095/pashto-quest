@@ -20,7 +20,7 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
     // Allocate an attempt only on actual response, not each time a surface is rendered.
     let answered = false;
     for (const option of QuestionEngine.shuffle(options)) {
-      const button = ui.button(option, () => {
+      const button = ui.button(ui.englishChoice(option), () => {
           if (answered) return;
           answered = true;
           ui.showAnswerFeedback(box, phrase.english, option, {accepts:v => QuestionEngine.evaluate({kind:"word", direction:"ps-en"}, content.wordById[phrase.id], v)});

@@ -182,6 +182,13 @@ def build(check_rpg=False):
             raise ValueError('Invalid Grammar Journal reference: ' + concept['id'])
         concept_ids.add(concept['id'])
     library.pop('grammar', None)
+    onboarding = json.loads(read('content/TUTORIAL_PROMPTS.json'))
+    if (onboarding.get('approval', {}).get('status') != 'user_approved'
+            or onboarding['approval'].get('nativeCertificationClaimed') is not False
+            or {p['id'] for p in onboarding['prompts']} != {'tutorial-language', 'tutorial-guide-name'}
+            or any(not all(p.get(k) for k in ['pashto', 'romanisation', 'english', 'speaker', 'response']) for p in onboarding['prompts'])):
+        raise ValueError('Unapproved/incomplete onboarding prompts')
+    library['tutorialPrompts'] = onboarding['prompts']
     library['phrases'] = json.loads(read('content/FIXED_PHRASES.json'))['phrases']
     fixed_sources = {p['id']: p['ps'] for p in archived1['words'] if p.get('type') == 'greeting'}
     fixed_sources.update({p['id']: p['pashto'] for p in narrative['expressions'] if p['active']})
@@ -202,12 +209,22 @@ def build(check_rpg=False):
     # Explicit dependency order; modules use factories with injected services.
     modules = [
         'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
-        'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'construction-ui', 'answer-feedback', 'sentence-scene', 'ui',
+        'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'character-portraits', 'construction-ui', 'answer-feedback', 'sentence-scene', 'ui',
         'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
         'world-ui', 'library-ui',
     ]
     datasets = {'RPG_ENABLED': True, 'RPG_WORLD_DATA': json.loads(read('content/RPG_WORLD.json')), 'LIBRARY_DATA': library,
-                'NARRATIVE_DATA': narrative, 'BUNDLED_AUDIO_IDS': audio_ids}
+                'NARRATIVE_DATA': narrative, 'CHARACTER_PORTRAITS': json.loads(read('content/CHARACTER_PORTRAITS.json')), 'BUNDLED_AUDIO_IDS': audio_ids}
+    portraits = datasets['CHARACTER_PORTRAITS']
+    import base64
+    for character in portraits['characters'].values():
+        for expression, source in character['expressions'].items():
+            if source:
+                asset = (ROOT / source).resolve()
+                if not asset.is_relative_to(ROOT / 'assets' / 'portraits') or asset.suffix.lower() not in ['.png', '.webp']:
+                    raise ValueError('Portrait must be a PNG/WebP under assets/portraits')
+                mime = 'image/png' if asset.suffix.lower() == '.png' else 'image/webp'
+                character['expressions'][expression] = 'data:' + mime + ';base64,' + base64.b64encode(asset.read_bytes()).decode('ascii')
     script = '\n'.join('const ' + name + '=' + encode(value) + ';'
                        for name, value in datasets.items()) + '\n'
     script += '\n'.join(read('src/' + name + '.js') for name in modules)

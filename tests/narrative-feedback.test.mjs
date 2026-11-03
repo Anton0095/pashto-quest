@@ -42,15 +42,15 @@ for (const width of [375,1280]) {
       const families=new Map(cards.map(c=>[c.generated.family,c]));
       for(const c of families.values()) {
         ui.sentenceContext(c,'Muhammad Jan',$('quizPanel'),'construct');
-        require($('quizPanel').querySelector('.sentence-scene').getAttribute('aria-label')===c.en,'Scene does not match generated meaning');
-        require($('guideMessage').textContent.includes(c.en),'Narrative does not match target');
+        require(!$('quizPanel').querySelector('.sentence-scene'),'Removed visual preview returned');
+        require($('speakerName').dataset.conversationPartner,'Missing conversation identity');
         require($('speakerName').textContent.includes('Muhammad Jan'),'Wrong speaker');
       }
       for(const state of ['open']) {
         const c=cards.find(c=>c.generated.semanticArguments?.noun==='window'&&c.generated.semanticArguments?.adjective===state);
         require(c,'No actual '+state+' window composition');
         ui.sentenceContext(c,'Muhammad Jan',$('quizPanel'),'study');
-        require($('quizPanel').querySelector('figure[data-object="window"][data-state="'+state+'"] svg'),'Wrong window illustration');
+        require(!$('quizPanel').querySelector('figure'),'Removed vocabulary illustration returned');
       }
       // Exercise construction feedback and reset through the real lesson UI.
       const target=cards.find(c=>c.loop===1&&c.generated.semanticArguments?.noun==='window'&&c.generated.semanticArguments?.adjective==='open');

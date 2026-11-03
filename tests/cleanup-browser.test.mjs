@@ -158,13 +158,8 @@ for (const width of [375, 1280]) {
           lesson.teacher + ":",
         ),
       );
-      assert(
-        (await p.locator("#addressTarget").innerText()).includes(
-          lesson.teacher + " → Player",
-        ),
-      );
-      for (const person of lesson.participants)
-        assert((await p.locator("#participants").innerText()).includes(person));
+      assert(!await p.locator("#addressTarget").isVisible());
+      assert.equal(await p.locator("#participants [data-character-id]").count(),0,"Same instructor and partner share one portrait");
       if (day === 6)
         await p.screenshot({
           path: `docs/maintenance/cleanup/after-teacher-${width}.png`,

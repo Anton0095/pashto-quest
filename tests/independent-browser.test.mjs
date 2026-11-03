@@ -43,7 +43,7 @@ for (const width of [375, 1280]) {
             assert(meaning, prompt);
             await p
               .locator("#choices button")
-              .getByText(meaning, { exact: true })
+              .getByText((meaning).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true})
               .click();
           }
           await p.locator("#quizNext").click();

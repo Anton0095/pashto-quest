@@ -7,3 +7,5 @@ export {createSaveFence} from './save-fence';
 export {validateChapters,createChapterDirector} from './chapters';
 export {createStoryDirector} from './story';
 export {createChapterRoutes} from './routes';
+
+export {findPath,canInteract,approachTiles,createMovementController} from './movement';

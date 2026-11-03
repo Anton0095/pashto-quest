@@ -344,7 +344,7 @@ function createWorld({
         seen = ids.filter((id) => state.progress.library.acquired[id]).length;
       const quota = ui.node(
         "span",
-        `${seen}/${ids.length} scheduled content lemmas encountered${plan.shortfalls[place] ? " · " + plan.shortfalls[place] + " short of requested quota" : ""}`,
+        `${seen}/${ids.length} scheduled words encountered${plan.shortfalls[place] ? " · " + plan.shortfalls[place] + " short of requested quota" : ""}`,
         "tiny",
       );
       placeCard.append(quota);

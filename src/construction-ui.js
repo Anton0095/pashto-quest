@@ -50,7 +50,9 @@ function createConstructionUI({ ui, audio }) {
     root.replaceChildren();
     root.append(ui.node("strong", (correct ? "✓ Correct" : "✗ Not quite") + (reward ? " · " + reward : ""), correct ? "good" : "bad"));
     const ps=ui.node("p", q.answerPs || card.ps, "library-pashto");ps.lang="ps";ps.dir="rtl";
-    root.append(ps, ui.node("p", q.answerEnglish || card.en), ui.node("p", QuestionEngine.explanation({kind:"construct"}, card)));
+    const line=ui.node("div",undefined,"sentence-answer-line");
+    line.append(ps,ui.node("p",card.roman,"sentence-roman"));
+    root.append(line, ui.node("p", q.answerEnglish || card.en), ui.node("p", QuestionEngine.explanation({kind:"construct"}, card)));
     if (correct) root.append(ui.button("Hear the correct sentence", () => audio.speak(card.id)));
   }
   // Standalone instances share rendering/feedback but keep their own answer locks.

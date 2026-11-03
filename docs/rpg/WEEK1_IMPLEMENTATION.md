@@ -1,5 +1,7 @@
 # Playable RPG Week 1
 
+> Historical Week 1 implementation record. The [multiday overhaul](MULTIDAY_OVERHAUL.md) supersedes the terminal Day 7 policy, interface, movement, teacher placements and portrait handling described below.
+
 Branch: `feature/rpg-week1`, based on reviewed foundation `04891a4a96e4bd8041361836ec57831958e832ba`. The default release now covers Days 1–7. Day 7 is terminal; the unchanged Days 8–14 educational curriculum remains available to regression tests, not the RPG player. Production main/Pages configuration is unchanged.
 
 ## Registry and routes
@@ -53,7 +55,7 @@ The shared event engine handles sequential messages, per-message speaker/listene
 
 The educational UI selects its next teaching day after a pass. The RPG now keeps its selected chapter separately until Continue; this fixes a reproduced bug where a Day 1 pass tried to resolve Day 2's skip event instead of Day 1's ending. No educational progression logic was changed.
 
-Advancement checks a genuine recorded pass, the chosen route's actual narrative resolution and the completed ending. It disables repeat advancement, waits for successful educational/world persistence, writes the next chapter/spawn, then starts the existing scene and opening. Interrupted saves recover to the previous committed result (Continue can be retried) or the next committed spawn; no reward function runs during transfer. Confirmed openings/endings do not repeat after reload. Menu → Revisit completed chapters lets players return to eligible days and their lessons without resetting knowledge or rewards.
+Historical pre-sleep behavior (superseded by [house/sleep/dream](HOUSE_SLEEP_DREAM.md)): advancement checked a genuine recorded pass, the chosen route's actual narrative resolution and the completed ending. It disables repeat advancement, waits for successful educational/world persistence, writes the next chapter/spawn, then starts the existing scene and opening. Interrupted saves recover to the previous committed result (Continue can be retried) or the next committed spawn; no reward function runs during transfer. Confirmed openings/endings do not repeat after reload. Menu → Revisit completed chapters lets players return to eligible days and their lessons without resetting knowledge or rewards.
 
 Educational schema 7, world schema 1, namespace isolation, Web Locks and the hash-only IndexedDB revision fence remain. Optional `routes` extends world state; frozen questions, submitted answers and scoring locks remain educational authority. Paired tutorial/lesson snapshots still restore before compaction. A valid active challenge determines the chapter shown on resume. Invalid/mismatched world drafts fall back safely while preserving validated educational progress. Unsupported/corrupt educational saves remain untouched until explicit reset. There is no obsolete-format migration and no atomic two-store guarantee: process termination can lose unacknowledged position/story/draft work. Lifecycle saves remain best effort.
 

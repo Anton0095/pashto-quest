@@ -25,7 +25,10 @@ for(const width of [375,1280]) {
     const [dx,dy]={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[key];
     expected={...expected,x:expected.x+dx,y:expected.y+dy};const entrance=data.maps[expected.map].transitions.find(t=>t.x===expected.x&&t.y===expected.y);
     if(entrance)expected={map:entrance.to,...entrance.spawn};
-    await p.waitForTimeout(160);await p.keyboard.press(key);
+    // Keyboard-activate the public D-pad for a deterministic one-tile pulse.
+    // Held arrow input is covered independently by phaser-browser.test.mjs.
+    const direction={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'}[key];
+    await p.waitForTimeout(160);await p.locator('[data-direction='+direction+']').press('Enter');
     await p.waitForFunction(e=>{const c=document.getElementById('rpgCanvas');return c.dataset.map===e.map&&+c.dataset.x===e.x&&+c.dataset.y===e.y;},expected);
    }
    const end=await pos();if(!map.transitions.some(t=>t.x===x&&t.y===y))assert.deepEqual([end.x,end.y],[x,y]);
@@ -34,7 +37,7 @@ for(const width of [375,1280]) {
   async function tutorial(){
    await p.locator('#startTutorial').click();
    const start=await pos();await p.locator('[data-direction=down]').click();await p.waitForFunction(y=>+document.getElementById('rpgCanvas').dataset.y===y,start.y+1);await p.locator('[data-direction=up]').click();await p.waitForFunction(y=>+document.getElementById('rpgCanvas').dataset.y===y,start.y);assert.deepEqual(await pos(),start);
-   const before=await pos();p.once('dialog',d=>d.dismiss());await p.locator('#resetProgress').click();assert(await p.locator('#worldScreen').isVisible());assert.deepEqual(await pos(),before,'Cancelled reset preserves world');await p.locator('#rpgInteract').click();
+   const before=await pos();p.once('dialog',d=>d.dismiss());await p.locator('#rpgMenuButton').click();await p.locator('#resetProgress').click();assert(await p.locator('#worldScreen').isVisible());assert.deepEqual(await pos(),before,'Cancelled reset preserves world');await p.locator('#rpgInteract').click();
    await p.keyboard.down('ArrowDown');await p.waitForTimeout(350);await p.keyboard.up('ArrowDown');assert.deepEqual(await pos(),before,'Dialogue freezes movement');
    await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();
    await p.locator('#rpgDialogue').getByRole('button',{name:'I will meet you at the Library',exact:true}).click();
@@ -45,8 +48,8 @@ for(const width of [375,1280]) {
    await durable();const tutorialDraft=await p.locator('#tutorialInteraction .built-sentence').innerText();await p.reload();await p.locator('#tutorialInteraction .built-sentence').waitFor();assert.equal(await p.locator('#tutorialInteraction .built-sentence').innerText(),tutorialDraft,'Exact tutorial tile draft restores');
    for(const text of ['یې؟','Check sentence'])await p.locator('#tutorialInteraction button').getByText(text,{exact:true}).click();
    await durable();const tutorialXP=(await progress()).xp;await p.reload();await p.locator('#teachNext:enabled').waitFor();assert.equal((await progress()).xp,tutorialXP,'Correct tutorial reload never scores twice');
-   await p.locator('#teachNext').click();await p.locator('#tutorialInteraction button').getByText('Prefer not to say',{exact:true}).click();await p.locator('#teachNext').click();
-   await p.locator('#tutorialName').fill('RPG learner');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();tutorialDone=true;
+   await p.locator('#teachNext').click();await p.locator('#tutorialInteraction button').getByText('پښتو',{exact:true}).click();await p.locator('#teachNext').click();
+   await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();tutorialDone=true;
    assert((await progress()).tutorialDone);await p.locator('#resultWorld').click();await walk(6,9);assert.equal((await pos()).map,'village');
   }
   const known=new Map();
@@ -68,7 +71,7 @@ for(const width of [375,1280]) {
        if(reload&&!reloaded&&i===0){await durable();const before=await p.locator('#builtSentence').innerText();await p.reload();await p.locator('#constructionPanel').waitFor({state:'visible'});assert.equal(await p.locator('#builtSentence').innerText(),before);reloaded=true;}
       }
       await p.locator('#checkBuild').click();
-     }else {const ps=await p.locator('#quizPashto').innerText();assert(known.has(ps),ps);await p.locator('#choices button').getByText(known.get(ps),{exact:true}).click();}
+     }else {const ps=await p.locator('#quizPashto').innerText();assert(known.has(ps),ps);await p.locator('#choices button').getByText((known.get(ps)).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true}).click();}
      await p.locator('#quizNext').click();
     }
    }
@@ -86,7 +89,7 @@ for(const width of [375,1280]) {
      else for(const token of answerFor(q).replace(/[.!؟،]/g,'').split(/\s+/).filter(Boolean))await p.locator('#wordTiles button:enabled').getByText(token,{exact:true}).first().click();
      if(reload&&!reloaded){await durable();const before=(await progress()).activeChallenge;await p.reload();await p.locator('#quizPanel').waitFor({state:'visible'});const after=(await progress()).activeChallenge;assert.deepEqual(after.questions,before.questions);assert.deepEqual(after.built,before.built);reloaded=true;}
      await p.locator('#checkBuild').click();
-    }else {const choices=p.locator('#choices button');if(fail){const labels=await choices.allTextContents();await choices.nth(Math.max(0,labels.findIndex(t=>t!==answerFor(q)))).click();}else await choices.getByText(answerFor(q),{exact:true}).click();}
+    }else {const choices=p.locator('#choices button');if(fail){const labels=await choices.evaluateAll(bs=>bs.map(b=>b.dataset.answer));await choices.nth(Math.max(0,labels.findIndex(t=>t!==answerFor(q)))).click();}else await choices.getByText((answerFor(q)).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true}).click();}
     if(reload&&i===3){await durable();const before=(await progress()).activeChallenge;const xp=(await progress()).xp;await p.reload();await p.locator('#quizPanel').waitFor({state:'visible'});const after=(await progress()).activeChallenge;assert(after.locked);assert.equal(after.correctCount,before.correctCount);assert.equal((await progress()).xp,xp);assert.deepEqual(after.questions,before.questions);}
     await p.locator('#quizNext').click();
    }
@@ -109,7 +112,7 @@ for(const width of [375,1280]) {
   await p.locator('#resultWorld').click();await p.screenshot({path:`docs/rpg/screenshots/village-${width}.png`,fullPage:true});
   // No chapter navigation or future-day restoration is exposed.
   assert.equal(await p.locator('#chapterButtons').count(),0);assert.equal((await progress()).challenges[2],undefined);
-  p.once('dialog',d=>d.accept());await p.locator('#resetProgress').click();tutorialDone=false;await tutorial();
+  p.once('dialog',d=>d.accept());await p.locator('#rpgMenuButton').click();await p.locator('#resetProgress').click();tutorialDone=false;await tutorial();
   await walk(10,11);assert.equal(Object.keys((await progress()).complete).filter(id=>id.startsWith('1-')).length,0);
   await talk('Day 1 challenge · 15 questions');await assessment({fail:true,reload:true});assert(!(await progress()).challenges[1].passed);assert.equal(Object.keys((await progress()).complete).filter(id=>id.startsWith('1-')).length,0);
   await p.locator('#resultReplay').click();await assessment();const pass=await progress();assert(pass.challenges[1].passed);for(const loc of ['residential','nature','business','school'])assert(pass.complete['1-'+loc]);
