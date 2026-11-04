@@ -20,6 +20,8 @@ Record actual commands/results and why broader checks were unnecessary or omitte
 
 For RPG map/art changes without educational engine changes, `python3 tools/verify.py --rpg` runs strict type/build checks, all world/chapter/movement/recovery models, script syntax and every RPG browser suite (including both seven-day public routes). It retains the historical educational delivery report: the fourteen-day learning matrix is outside this focused scope, and no report fingerprint is refreshed. Use the complete verifier for shared educational or persistence-contract changes.
 
+The seven-day public route driver uses lock-respecting Quick travel for long outdoor teaching trips on the larger village. Physical teacher approaches, interior/Hills transitions and D-pad motion remain real UI actions; independent grid tests cover every scheduled placement and all walkable tiles. No grade, reward or narrative completion is injected by that driver.
+
 ## Suite reference
 
 When full verification is warranted, run `python3 tools/verify.py` from the repository root with Python 3, Node.js, Playwright and Chromium. Browser suites honour `CHROMIUM_PATH` and the managed cloud runtime fallback. `--quick` explicitly excludes browsers and cannot refresh the measured delivery report. When release inputs change, edit sources and run `python3 tools/build.py` first; never edit the offline release directly.

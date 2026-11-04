@@ -4,7 +4,18 @@ import {createRequire} from 'node:module';
 const M=createRequire(import.meta.url)('../work/rpg-model.cjs');
 const data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8')),map=data.maps.village,W=M.RPGWorldData;
 assert.equal(map.tiles.length,64);assert.equal(map.tiles[0].length,96);assert(W.validate(data));
-function reachable(start,actors=[]){const queue=[start],seen=new Set([`${start.x},${start.y}`]);for(let i=0;i<queue.length;i++)for(const [dx,dy]of Object.values(W.directions)){const x=queue[i].x+dx,y=queue[i].y+dy,k=`${x},${y}`;if(!seen.has(k)&&W.walkable(data,start.map,x,y,actors)){seen.add(k);queue.push({map:start.map,x,y});}}return seen;}
+function reachable(start,actors=[]){
+ const queue=[start],seen=new Set([`${start.x},${start.y}`]);
+ for(let i=0;i<queue.length;i++){
+  const p=queue[i];
+  if(i>0&&data.maps[start.map].transitions.some(t=>t.x===p.x&&t.y===p.y))continue;
+  for(const [dx,dy]of Object.values(W.directions)){
+   const x=p.x+dx,y=p.y+dy,k=`${x},${y}`;
+   if(!seen.has(k)&&W.walkable(data,start.map,x,y,actors)){seen.add(k);queue.push({map:start.map,x,y});}
+  }
+ }
+ return seen;
+}
 const seen=reachable({map:'village',...map.spawn});
 for(const t of map.transitions){assert(seen.has(`${t.x},${t.y}`));assert(W.walkable(data,t.to,t.spawn.x,t.spawn.y));}
 assert.equal(map.reservedExits.length,3);
@@ -20,7 +31,7 @@ for(const npc of data.npcs)for(const slot of npc.schedule){
 }
 // Existing schema-1 world state recovers deterministically; unrelated records survive.
 const P=M.createPersistenceAPI(data,{}),raw={schemaVersion:1,chapter:'day-6',appearance:'feminine',flags:{metGuide:true},triggers:{welcome:true},routes:{'day-6':'skip'},position:{map:'village',x:75,y:13,facing:'up'}};
-for(const [x,y]of [[46,0],[32,24],[1,1]])assert.deepEqual(P.validate(data,{...raw,position:{map:'village',x,y}}).position,{map:'village',...map.spawn,facing:'down'});
+for(const [x,y]of [[46,0],[95,32],[32,24],[1,1]])assert.deepEqual(P.validate(data,{...raw,position:{map:'village',x,y}}).position,{map:'village',...map.spawn,facing:'down'});
 const recovered=P.validate(data,raw);assert.deepEqual(recovered.position,{map:'village',...map.spawn,facing:'down'});for(const k of ['chapter','appearance','flags','triggers','routes'])assert.deepEqual(recovered[k],raw[k]);
 assert.deepEqual(P.validate(data,{...raw,position:{map:'house',x:12,y:15,facing:'up'}}).position,{map:'house',x:12,y:15,facing:'up'});
 console.log('PASS 96×64 village: districts, every schedule, dock, water/solid collision, entrances, reserved boundaries and schema-1 recovery');

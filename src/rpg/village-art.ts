@@ -4,17 +4,24 @@ import type {WorldMap} from './types';
 /** Seeded, integer pixel artwork. Geometry and collision remain in the registry.
  * Static ground is baked once; building and tree foregrounds use footpoint depth.
  * Textures are reused across map visits, and released with the Phaser game. */
+interface PixelPainter {fillStyle(color:number):PixelPainter;fillRect(x:number,y:number,w:number,h:number):PixelPainter}
+
 export function drawVillageArt(scene:Phaser.Scene,map:WorldMap):void {
   const unit=16,width=map.tiles[0].length*unit,height=map.tiles.length*unit;
   const groundKey='afghan-village-ground';
   const hash=(x:number,y:number)=>((Math.imul(x+17,73856093)^Math.imul(y+41,19349663))>>>0);
-  function texture(key:string,w:number,h:number,draw:(g:Phaser.GameObjects.Graphics)=>void){
+  function texture(key:string,w:number,h:number,draw:(g:PixelPainter)=>void){
     if(!scene.textures.exists(key)){
-      const g=scene.make.graphics({x:0,y:0});draw(g);g.generateTexture(key,w,h);g.destroy();
+      const canvas=scene.textures.createCanvas(key,w,h);if(!canvas)throw Error('Cannot create village texture: '+key);
+      const context=canvas.context;context.imageSmoothingEnabled=false;
+      // Draw pixels directly into the Phaser CanvasTexture, avoiding a large
+      // temporary Graphics command buffer and a second rasterisation/copy.
+      const painter:PixelPainter={fillStyle(color){context.fillStyle='#'+color.toString(16).padStart(6,'0');return this;},fillRect(x,y,w,h){context.fillRect(x,y,w,h);return this;}};
+      draw(painter);canvas.refresh();
     }
     return key;
   }
-  function rect(g:Phaser.GameObjects.Graphics,c:number,x:number,y:number,w:number,h:number){g.fillStyle(c).fillRect(Math.floor(x),Math.floor(y),w,h);}
+  function rect(g:PixelPainter,c:number,x:number,y:number,w:number,h:number){g.fillStyle(c).fillRect(Math.floor(x),Math.floor(y),w,h);}
   texture(groundKey,width,height,g=>{
     for(let y=0;y<map.tiles.length;y++)for(let x=0;x<map.tiles[y].length;x++){
       const t=map.tiles[y][x],px=x*16,py=y*16,n=hash(x,y);
