@@ -20,6 +20,8 @@ This is the current architecture after the merged Week 1, movement and house/sle
 
 ## Authority and chapter selection
 
+Day transfers use `daily-flow.ts` to resolve a safe spawn beside the current bed object; ordinary resumption retains saved position. The same module supplies optional chapter-configured Muhammad Jan guidance, with available destinations resolved through live schedules. See [daily flow and responsive learning](DAILY_FLOW.md).
+
 The [curriculum](../../CURRICULUM.md) and educational engine cover Days 1–14; the playable registry in `content/RPG_WORLD.json` covers Days 1–7. Days 8–14 need additional narrative, map and event registration. [GAME_SPEC](../../GAME_SPEC.md) owns mechanics and the [README](../../README.md#documentation-roles-and-precedence) defines documentation roles; the post-merge audit records release-specific findings and evidence.
 
 The educational services still own vocabulary/form introduction, SRS, grammar, sentence generation, question/answer evaluation, frozen assessments, audio, XP, once-only visit bonuses, levels and titles. No educational engine was migrated or replaced. Districts remain Home/Residential, Lake/Nature, Market/Business and School; Hills is a Nature scene.

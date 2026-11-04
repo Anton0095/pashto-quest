@@ -18,7 +18,7 @@ for (const width of [375, 1280]) {
       !(await p.evaluate(() => {
         const s = __test.state.session,
           q = s.questions[s.index];
-        return q.kind === "word" && q.unstudied;
+        return q.kind === "word" && q.unstudied && !q.recognition;
       }))
     ) {
       await answerCurrent(p);

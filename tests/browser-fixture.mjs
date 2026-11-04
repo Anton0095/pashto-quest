@@ -68,7 +68,7 @@ export async function tutorial(page) {
     .getByText("Hello", { exact: true })
     .click();
   await page.locator("#teachNext").click();
-  for (const text of ["څنګه", "یې؟", "Check sentence"])
+  for (const text of ["How are you?"])
     await page
       .locator("#tutorialInteraction button")
       .getByText(text, { exact: true })
@@ -92,13 +92,14 @@ export async function answerCurrent(page) {
     return {
       kind: q.kind,
       unstudied: q.unstudied,
+      recognition: q.recognition,
       answer:
         q.answerPs ||
         q.correct ||
         (q.kind === "construct" ? w.ps : q.direction === "en-ps" ? w.ps : w.en),
     };
   });
-  if (q.unstudied) {
+  if (q.unstudied && !q.recognition) {
     await page.locator("#unseenRecall").fill(q.answer);
     await page.getByRole("button", {name:"Submit meaning",exact:true}).click();
   } else if (["construct", "dialogue"].includes(q.kind)) {

@@ -23,17 +23,18 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
     ui.$("teachCount").textContent = `TUTORIAL · CARD ${n + 1}/4`;
     ui.$("teachType").textContent = [
       "Choose a meaning",
-      "Arrange Pashto words",
+      "Select the correct translation",
       "Answer a question",
       "Type a response",
     ][n];
     ui.$("teachPashto").textContent = w.ps;
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
+    ui.$("teachNote").classList.remove("hidden");
     ui.$("teachNote").textContent = c.help;
     ui.$("guideMessage").textContent = [
       "First, select what Salaam means. You can try again if you make a mistake.",
-      "Arrange this conventional greeting, taught as a complete phrase.",
+      "Select the English translation of this conventional greeting.",
       "Select the Pashto response for the language you are learning.",
       "Muhammad Jan: Type my name in English. Your player profile can be set later in the Library.",
     ][n];
@@ -78,7 +79,7 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
           ) {
             b.classList.add("correct");
             done(
-              "✓ Salaam means Hello. That is how you answer multiple choice.",
+              "✓ Correct translation. Continue.",
             );
           } else {
             tutorialAnswer(false);

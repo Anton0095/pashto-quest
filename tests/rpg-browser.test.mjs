@@ -44,9 +44,7 @@ for(const width of [375,1280]) {
    await walk(24,15);assert.equal((await pos()).map,'library');await walk(6,6);
    await talk('Begin Library tutorial');
    await p.locator('#tutorialInteraction button').getByText('Hello',{exact:true}).click();await p.locator('#teachNext').click();
-   await p.locator('#tutorialInteraction button').getByText('څنګه',{exact:true}).click();
-   await durable();const tutorialDraft=await p.locator('#tutorialInteraction .built-sentence').innerText();await p.reload();await p.locator('#tutorialInteraction .built-sentence').waitFor();assert.equal(await p.locator('#tutorialInteraction .built-sentence').innerText(),tutorialDraft,'Exact tutorial tile draft restores');
-   for(const text of ['یې؟','Check sentence'])await p.locator('#tutorialInteraction button').getByText(text,{exact:true}).click();
+   await durable();await p.reload();await p.locator('#tutorialInteraction button').getByText('How are you?',{exact:true}).click();
    await durable();const tutorialXP=(await progress()).xp;await p.reload();await p.locator('#teachNext:enabled').waitFor();assert.equal((await progress()).xp,tutorialXP,'Correct tutorial reload never scores twice');
    await p.locator('#teachNext').click();await p.locator('#tutorialInteraction button').getByText('پښتو',{exact:true}).click();await p.locator('#teachNext').click();
    await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();tutorialDone=true;
@@ -83,7 +81,7 @@ for(const width of [375,1280]) {
    for(let i=0;i<15;i++){
     const saved=await progress();assert(saved.activeChallenge);oracle.content.restoreGenerated(saved);
     const q=saved.activeChallenge.questions[saved.activeChallenge.index];
-    if(q.unstudied){assert(!(await p.locator('#choices').innerText()).includes(answerFor(q)));await p.locator('#unseenRecall').fill(fail?'deliberately incorrect':answerFor(q));await p.getByRole('button',{name:'Submit meaning',exact:true}).click();}
+    if(q.unstudied&&!q.recognition){assert(!(await p.locator('#choices').innerText()).includes(answerFor(q)));await p.locator('#unseenRecall').fill(fail?'deliberately incorrect':answerFor(q));await p.getByRole('button',{name:'Submit meaning',exact:true}).click();}
     else if(['construct','dialogue'].includes(q.kind)){
      if(fail){const tiles=p.locator('#wordTiles button:enabled');while(await tiles.count()){await tiles.last().click();if(q.duds?.length)break;}}
      else for(const token of answerFor(q).replace(/[.!؟،]/g,'').split(/\s+/).filter(Boolean))await p.locator('#wordTiles button:enabled').getByText(token,{exact:true}).first().click();

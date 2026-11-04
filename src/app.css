@@ -1465,3 +1465,20 @@ body:has(.rpg-world) .herochar .pill {display:inline-block;margin:5px 6px 0 0;fo
 .sleep-transition {position:fixed;inset:0;z-index:10000;background:#101f2df2;display:grid;place-content:center;color:#ffe0a2;font-size:24px;animation:sleep-fade .35s ease;}
 @keyframes sleep-fade {from{opacity:0;}to{opacity:1;}}
 #dreamMenu button {display:block;margin:8px 0;max-width:100%;}
+
+/* A bounded application viewport; small screens scroll panels, not the page. */
+body:has(.rpg-world) {height:100vh;height:100dvh;overflow:hidden;padding:0;}
+body:has(.rpg-world) .app {box-sizing:border-box;height:100vh;height:100dvh;overflow:auto;padding:8px 12px;overscroll-behavior:contain;}
+body:has(.rpg-world) #rpgCanvas {width:min(100%,calc(clamp(120px,38vh,360px) * var(--map-ratio,1.6))) !important;width:min(100%,calc(clamp(120px,38dvh,360px) * var(--map-ratio,1.6))) !important;max-height:none;max-width:100%;margin:auto;}
+body.rpg-overlay-active #lessonScreen,body.rpg-overlay-active #resultScreen {inset:8px max(8px,calc((100vw - 1000px)/2));height:calc(100vh - 16px);height:calc(100dvh - 16px);max-height:none;box-sizing:border-box;padding:12px;scrollbar-gutter:stable;}
+body.rpg-overlay-active .lesson-top,body.rpg-overlay-active .quizword {padding:10px;margin-bottom:8px;}
+body.rpg-overlay-active .pashto {margin:6px 0;}
+body.rpg-overlay-active #quizFeedback {min-height:64px;}
+@media(min-width:850px){body.rpg-overlay-active .speaker-note {max-height:100px;overflow:auto;}body.rpg-overlay-active #teachPanel {padding:10px;}body.rpg-overlay-active .pashto {font-size:clamp(28px,4vh,42px);}}
+
+body.rpg-overlay-active #quizPanel {display:flex;flex-direction:column;height:calc(100vh - 180px);height:calc(100dvh - 180px);min-height:200px;}
+body.rpg-overlay-active #questionBody {flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;}
+body.rpg-overlay-active #quizPanel > .feedback {flex:none;min-height:100px;margin-top:8px;align-items:flex-end;}
+body.rpg-overlay-active #quizFeedback {max-height:min(40vh,300px);max-height:min(40dvh,300px);overflow:auto;}
+body.rpg-overlay-active #quizFeedback p {margin:4px 0;}
+body.rpg-overlay-active #quizNext {position:static;flex-shrink:0;}

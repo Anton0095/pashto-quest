@@ -36,6 +36,7 @@ class ActivationTests(unittest.TestCase):
     def test_pending_expression_cannot_be_activated_without_language(self):
         expressions = json.loads(Path('content/NARRATIVE_EXPRESSIONS.json').read_text())
         expressions['expressions'][1]['active'] = True
+        expressions['expressions'][1]['pashto'] = None
         with self.assertRaises(ValueError):
             validate_expressions(expressions)
 

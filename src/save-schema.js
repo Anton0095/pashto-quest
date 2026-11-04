@@ -113,6 +113,7 @@ function createSaveValidator({ content, progression }) {
       if (q.phrasePromptId !== undefined && (q.phrasePromptId !== w?.phrasePromptId || !content.LIBRARY_DATA.phrases.some(p=>p.id===q.phrasePromptId))) return false;
       if (!["choice","address"].includes(q.kind) && (!w || !LibraryEngine.cardAllowed(content.LIBRARY_DATA,q.id,day))) return false;
       if (["word","sentence","construct"].includes(q.kind) && !["ps-en","en-ps"].includes(q.direction)) return false;
+      if(q.recognition!==undefined && (typeof q.recognition!=="boolean" || q.recognition && (q.kind!=="word" || q.direction!=="ps-en" || !Array.isArray(q.choiceOrder) || q.choiceOrder.filter(v=>QuestionEngine.evaluate(q,w,v)).length!==1)))return false;
       if (q.kind==="word" && (typeof q.unstudied!=="boolean" || (q.unstudied && q.direction!=="ps-en"))) return false;
       if (["choice","address"].includes(q.kind) && typeof q.correct!=="string") return false;
       if (q.kind==="choice" && (typeof q.prompt!=="string" || !Array.isArray(q.options) || q.options.some(v=>typeof v!=="string") || !q.options.includes(q.correct))) return false;

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "activationPolicy": "Only exact user-approved or evidenced native-approved expressions are active. Three untranslated Day-1 slots remain inactive.",
+  "activationPolicy": "Approved daily greetings only; pending alternative location slots removed from playable content.",
   "expressions": [
     {
       "id": "phrase-d1-home-welcome",
@@ -41,75 +41,6 @@
         "reference": "Curriculum Expansion and Narrative Greetings request, section 6, 2026-10-24",
         "verification": "Explicitly authorized draft expression; qualified local review and pronunciation still pending."
       }
-    },
-    {
-      "id": "phrase-d1-lake-name",
-      "day": 1,
-      "location": "nature",
-      "speaker": "Saleha",
-      "recipient": "Player",
-      "english": "What is your name?",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
-      "audioContentId": "phrase-d1-lake-name",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
-      "nativeReview": {
-        "status": "pending",
-        "reviewer": null,
-        "reference": null
-      },
-      "kind": "fixed conversational expression",
-      "countsTowardDailyQuota": false,
-      "optional": false
-    },
-    {
-      "id": "phrase-d1-market-price",
-      "day": 1,
-      "location": "business",
-      "speaker": "Edris",
-      "recipient": "Player",
-      "english": "How much is this?",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
-      "audioContentId": "phrase-d1-market-price",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
-      "nativeReview": {
-        "status": "pending",
-        "reviewer": null,
-        "reference": null
-      },
-      "kind": "fixed conversational expression",
-      "countsTowardDailyQuota": false,
-      "optional": false
-    },
-    {
-      "id": "phrase-d1-school-what",
-      "day": 1,
-      "location": "school",
-      "speaker": "Ms Hameed",
-      "recipient": "Player",
-      "english": "What is this?",
-      "pashto": null,
-      "romanisation": null,
-      "romanisationStatus": "pending",
-      "audioContentId": "phrase-d1-school-what",
-      "active": false,
-      "reviewStatus": "needsTranslationAndGrammaticalReview",
-      "source": null,
-      "nativeReview": {
-        "status": "pending",
-        "reviewer": null,
-        "reference": null
-      },
-      "kind": "fixed conversational expression",
-      "countsTowardDailyQuota": false,
-      "optional": false
     },
     {
       "id": "phrase-day-2-opening",

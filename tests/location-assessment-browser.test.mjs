@@ -30,7 +30,7 @@ for(const width of [375,1280]) {
    assert.deepEqual(coverage.counts,[1,1,1,1]);assert.equal(new Set(coverage.identities).size,4);assert.deepEqual(coverage.sentenceLocations,["business","nature","residential","school"]);
    for(let i=0;i<15;i++) {
     const info=await p.evaluate(()=>{const t=__test,q=t.state.session.questions[t.state.session.index];return {q,en:t.content.wordById[q.id].en}});
-    if(info.q.unstudied) {
+    if(info.q.unstudied&&!info.q.recognition) {
      assert(await p.locator('#unseenRecall').isVisible());
      assert(!(await p.locator('#choices').innerText()).includes(info.en));
     }

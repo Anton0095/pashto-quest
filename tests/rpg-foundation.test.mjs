@@ -42,7 +42,7 @@ try{
 console.log('PASS relocated stable character and rejected-lock retry without a poisoned world queue');
 // Corrupt optional world drafts may be discarded; they never create a recorded answer.
 const {runtime}=await import('./runtime-fixture.mjs');const education=runtime();
-const tileCard=education.content.tutorialCards.find(c=>c.kind==='tiles');const indices=education.content.wordById[tileCard.id].ps.split(' ').map((_w,i)=>i);
+const tileCard=education.content.tutorialCards.find(c=>c.id==='g-how');const indices=education.content.wordById[tileCard.id].ps.split(' ').map((_w,i)=>i);
 const rawTutorial={mode:'tutorial',id:'tutorial',loop:0,phase:'tutorial',cardIndex:1,attemptId:0,locked:false,profileGender:'unspecified',profileName:'',required:[],studyWords:[],greetingCards:[],studySentences:[],firstAsked:[],passed:[],queue:[],built:[],tutorialConstruction:{built:indices.slice(0,1),order:[...indices].reverse(),locked:false}};
 const paired=M.createPersistenceAPI(data,education.Q);assert(paired.restoreLesson(rawTutorial,education.content,education.state.progress));
 rawTutorial.tutorialConstruction.locked=true;assert.equal(paired.restoreLesson(rawTutorial,education.content,education.state.progress),null,'A world-only lock cannot fabricate a recorded tutorial response');

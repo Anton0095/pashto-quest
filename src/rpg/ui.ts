@@ -7,6 +7,7 @@ import {createChapterDirector} from './chapters';
 import {createStoryDirector} from './story';
 import {createChapterRoutes} from './routes';
 import {createPhaserWorld} from './phaser-world';
+import {dailySpawn,dailyGuidance} from './daily-flow';
 import {approachTiles,facingToward} from './movement';
 /* RPG profile adapters. Education remains authoritative; world state owns no rewards. */
 export function createRPG({state,content,progression,learning,ui,audio,storage,lessons,challenge,library}:EducationServices,dependencies:RPGDependencies) {
@@ -192,10 +193,33 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(!active()||now-lastMove<(immediate?100:150))return false;
     lastMove=now;return engine?.step(direction)??false;
   }
+  function guidanceLocation(actor:Actor):string {
+    const map=data.maps[actor.map],region=map.regions.find(r=>actor.x>=r.x&&actor.x<r.x+r.w&&actor.y>=r.y&&actor.y<r.y+r.h);
+    return (region?locationNames[region.id]??region.name:map.name)+' — '+actor.name;
+  }
+  function challengeTarget():string|undefined {
+    const target=chapter().challenge;
+    if(target)for(const map of target.map?[target.map]:chapter().maps){const actor=registry.npcs(current(),map).find(n=>n.id===target.npc);if(actor)return guidanceLocation(actor);}
+    return undefined;
+  }
+  function guidanceTargets():string[]{
+    const targets:string[]=[];
+    for(const id of chapter().lessons.filter(id=>!state.progress.complete[id])){
+      for(const map of chapter().maps){
+        const actor=registry.npcs(current(),map).find(n=>registry.event(n.event)?.actions.some(a=>a.type==='lesson'&&a.lessonId===id));
+        if(!actor)continue;
+        targets.push(guidanceLocation(actor));break;
+      }
+    }
+    return targets;
+  }
   function interact(){if(!active())return;held=null;const target=nearby();if(!target)return;
     if(target.schedule){target.facing=({up:'down',down:'up',left:'right',right:'left'} as const)[save.position.facing];facings.set(target.id,target.facing);save.npcFlags[target.characterId??target.id]=true;}
     if(target.event===chapter().openingEvent)chapters.opening();
-    const event=story.open(target.event);if(!event)return;
+    const original=story.open(target.event);
+    const guidance=target.characterId==='muhammad-jan'&&state.progress.tutorialDone?dailyGuidance(chapter(),state.progress,progression,guidanceTargets(),challengeTarget()):null;
+    const event=original?(guidance?{...original,lines:[...original.lines,guidance],messages:original.messages?[...original.messages,{speaker:target.name,characterId:target.characterId,text:guidance}]:undefined}:original):guidance?{speaker:target.name,characterId:target.characterId,lines:[guidance],actions:[]}:null;
+    if(!event)return;
     if(!state.progress.tutorialDone && target.event!==chapter().openingEvent&&!event.actions.some(a=>a.type==='tutorial'||a.type==='reference'))dialogue.open({speaker:target.name,lines:['Muhammad Jan is waiting at the Library. Complete your first hello with him, then we can study together.'],actions:[]});
     else dialogue.open(event,story.cursor?.index);
     dirty=true;
@@ -306,7 +330,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     try{
       if(!await persist())return;
       const previous={day:state.day,chapter:save.chapter,position:{...save.position}};
-      selectedDay=next.day;state.day=next.day;save.chapter=next.id;save.position={...next.start};delete save.dialogue;state.session=null;currentView='world';
+      selectedDay=next.day;state.day=next.day;save.chapter=next.id;save.position=dailySpawn(data);delete save.dialogue;state.session=null;currentView='world';
       if(!await persist()){selectedDay=previous.day;state.day=previous.day;save.chapter=previous.chapter;save.position=previous.position;currentView='complete';showCompletion();return;}
       startWorld();await persist();
     }finally{advancing=false;}

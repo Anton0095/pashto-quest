@@ -227,7 +227,7 @@ export function createPhaserWorld(options:WorldOptions):{step:(dir:Direction)=>b
   // ScaleManager.canvas is assigned during boot, after the Game constructor.
   // Mobile viewport events can arrive in that gap; apply the latest size on READY.
   let destroyed=false;
-  const resize=()=>{if(game.scale.canvas&&!destroyed)game.scale.resize(window.innerWidth<600?256:512,window.innerWidth<600?192:320);};
+  const resize=()=>{options.canvas.style.setProperty('--map-ratio',window.innerWidth<600?'1.3333333333':'1.6');if(game.scale.canvas&&!destroyed)game.scale.resize(window.innerWidth<600?256:512,window.innerWidth<600?192:320);};
   game.events.once(Phaser.Core.Events.READY,resize);
   return {step:dir=>scene.manual(dir),cancelRoute:()=>scene.cancelRoute(),relocate:()=>scene.relocate(),nearby:()=>scene.nearby(),sync:()=>scene.sync(),resize,destroy:()=>{destroyed=true;game.events.off(Phaser.Core.Events.READY,resize);game.destroy(false);},scene,game};
 }

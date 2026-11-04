@@ -39,7 +39,7 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     if(!['cardIndex','attemptId','answered','firstCorrect','earned','tutorialResponses','constructionCount'].every(k=>int(raw[k]??0)))return null;
     if(raw.mode==='tutorial'&&raw.cardIndex>=content.tutorialCards.length)return null;
     if(raw.tutorialConstruction){
-      const draft=raw.tutorialConstruction,card=content.tutorialCards.find(c=>c.kind==='tiles'),count=card?content.wordById[card.id]?.ps.split(' ').length:0;
+      const draft=raw.tutorialConstruction,card=content.tutorialCards.find(c=>c.kind==='tiles')??content.tutorialCards.find(c=>c.id==='g-how'),count=card?content.wordById[card.id]?.ps.split(' ').length:0;
       if(!count||!Array.isArray(draft.order)||draft.order.length!==count||new Set(draft.order).size!==count||draft.order.some(i=>!int(i,count-1))||!Array.isArray(draft.built)||new Set(draft.built).size!==draft.built.length||draft.built.some(i=>!draft.order.includes(i))||typeof draft.locked!=='boolean'||draft.locked&&(!Array.isArray(raw.passed)||!raw.passed.includes(card!.id)))return null;
     }
     if(raw.mode==='standard'&&raw.loc!==raw.id.split('-')[1])return null;

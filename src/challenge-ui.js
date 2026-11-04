@@ -237,6 +237,7 @@ function createChallengeUI({
     if (resuming && state.session.locked) renderRecordedResponse();
   }
   function renderQuestion(resuming) {
+    ui.$("questionBody").scrollTop=0;
     queueMicrotask(ui.readableQuizSurfaces);
     ui.$("lessonScreen").classList.remove("construction-active");
     audio.stopAudio();
@@ -304,7 +305,7 @@ function createChallengeUI({
     ui.$("quizPanel").querySelector(".quizword h3").textContent = reverse
         ? "Choose the correct Pashto"
         : "Choose the correct English meaning";
-    if (q.kind === "word" && q.unstudied) {
+    if (q.kind === "word" && q.unstudied && !q.recognition) {
       ui.$("quizPrompt").textContent = "Not previously studied. Type the English meaning if you already know it, or reveal it after submitting. Your first answer counts.";
       ui.$("quizPanel").querySelector(".quizword h3").textContent = "Recall without a translation clue";
       const form = document.createElement("form");
@@ -321,9 +322,11 @@ function createChallengeUI({
       });
       const submit = document.createElement("button");
       submit.type = "submit";
+      submit.className = "speaker";
       submit.textContent = "Submit meaning";
       const reveal = document.createElement("button");
       reveal.type = "button";
+      reveal.className = "speaker";
       reveal.textContent = "I don’t know — reveal meaning";
       reveal.addEventListener("click", () => answerChallenge(""));
       form.addEventListener("submit", (event) => {

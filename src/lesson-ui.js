@@ -8,7 +8,6 @@ function createLessons({
   ui,
   audio,
   storage,
-  narrative,
   tutorial,
   grammar,
   onWorld,
@@ -115,7 +114,6 @@ function createLessons({
           : content.curriculum.days[loop - 1].topic;
     ui.$("lessonIcon").textContent = content.zones[loc]?.icon || "📚";
     ui.setSpeaker(loop, loc, mode);
-    narrative.renderLessonExpression(loop, loc, mode);
     ui.hud();
     ui.view("lessonScreen");
     storage.save();
@@ -183,7 +181,8 @@ function createLessons({
     ui.$("teachPashto").textContent = w.ps;
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
-    ui.$("teachNote").textContent = w.note;
+    ui.$("teachNote").textContent = w.note?.startsWith("Base content user-approved;") ? "" : w.note;
+    ui.$("teachNote").classList.toggle("hidden", !ui.$("teachNote").textContent);
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
     const guidance = w.generated
       ? "Use the words and forms you studied to build this meaning. This example is composed from your unlocked grammar."
@@ -252,6 +251,7 @@ function createLessons({
     if (typeof RPG_ENABLED!=="undefined" && RPG_ENABLED) storage.save();
   }
   function showQuestion(restore=false) {
+    ui.$("questionBody").scrollTop=0;
     const s = state.session;
     if (!s) return;
     if (!s.queue.length && !(restore && s.activeItem)) {

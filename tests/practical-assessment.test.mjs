@@ -30,7 +30,7 @@ for(const pace of [0,4,8,12,16,20,24])for(const skip of [false,true]) {
     assert(c.generated.requiredGrammarIds.every(g=>t.state.progress.library.grammar[g]));
     assert(Object.values(c.generated.slots).every(r=>t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId)));
    }
-   if(q.kind==='word'&&q.unstudied){assert.equal(q.direction,'ps-en');assert(!q.choiceOrder.some(v=>t.Q.evaluate(q,w,v)));}
+   if(q.kind==='word'&&q.unstudied&&!q.recognition){assert.equal(q.direction,'ps-en');assert(!q.choiceOrder.some(v=>t.Q.evaluate(q,w,v)));}
   }
   const assignedIds=new Set(Object.values(plan.locationAssignments).flat());
   const current=t.learning.availableSentences(day).filter(c=>Object.values(c.generated.slots).some(r=>assignedIds.has(r.lemmaId)));

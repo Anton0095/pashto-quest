@@ -66,7 +66,6 @@
     ui,
     audio,
     storage,
-    narrative,
     tutorial,
     grammar,
     onWorld: () => world.startWorld(),

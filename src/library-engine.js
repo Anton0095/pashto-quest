@@ -528,9 +528,6 @@ const LibraryEngine = (() => {
     // consume lexical quotas, even when repeated at multiple locations.
     const greeting =
       narrative.expressions.find(
-        (p) => p.day === day && p.location === place && p.active,
-      ) ||
-      narrative.expressions.find(
         (p) => p.day === day && p.active,
       );
     const opening = greeting ? [...new Set([greeting.id, greeting.responsePhraseId].filter(Boolean))] : [];

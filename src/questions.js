@@ -210,8 +210,8 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
         q = {
           id: opening?.responsePhraseId || greeting.id,
           phrasePromptId: opening?.promptPhraseId,
-          kind: opening?.responsePhraseId && !isUnstudied(opening.responsePhraseId) ? "construct" : "word",
-          direction: opening?.responsePhraseId && !isUnstudied(opening.responsePhraseId) ? "en-ps" : "ps-en",
+          kind: "word",
+          direction: "ps-en",
           vocabularyOrigin: "daily-phrase",
         };
       else if (wanted === "word" && lexical.length)
@@ -307,6 +307,12 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
         q.unstudied = isUnstudied(q.id);
         if (q.unstudied) q.direction = "ps-en";
       }
+      // Recognition is an explicit presentation choice, not a claim of study.
+      if (content.wordById[q.id].type === "greeting") {
+        q.kind="word";q.direction="ps-en";q.recognition=true;
+      }
+      const previous=out[out.length-1];
+      if (q.kind==="word" && q.unstudied && (i<3 || previous?.kind==="word" && previous.unstudied && !previous.recognition)) q.recognition=true;
       if (["construct", "dialogue"].includes(q.kind)) {
         Object.assign(q, constructionQuestion(content.wordById[q.id], {question:q, withDuds:constructionIndex++ % 2 === 1, random}));
         q.tileSequence = QuestionEngine.shuffle(
@@ -321,7 +327,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
           q.direction,
           day,
           random,
-          q.unstudied,
+          q.unstudied && !q.recognition,
         );
       if (q.generated && q.kind === "sentence")
         q.choiceIds = originsForChoices(

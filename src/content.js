@@ -235,8 +235,8 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
     },
     {
       id: "g-how",
-      kind: "tiles",
-      help: "Arrange the words of this conventional greeting, taught as one fixed phrase.",
+      kind: "choice",
+      help: "Select the correct English translation of this conventional greeting.",
     },
     {
       id: "tutorial-language",

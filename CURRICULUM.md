@@ -10,7 +10,7 @@ The sequence below covers Days 1–14 in the educational engine. The playable RP
 
 | Day | Main focus | Normal narrative opening / key event |
 |---|---|---|
-| 1 | Greetings and descriptive vocabulary; tutorial of four question types; no newly taught lexical actions | Muhammad Jan in Library, then Home/Lake/Market/School; home handover |
+| 1 | Greetings and descriptive vocabulary; tutorial of four interactions; no newly taught lexical actions | Muhammad Jan in Library, then Home/Lake/Market/School; home handover |
 | 2 | He/she, first lexical actions, present verbs and subject–object–verb | Ms Hameed's School workshop; later village visits |
 | 3 | I, first-person present | Saleha at Lake; Edris's market/dinner conversation |
 | 4 | Informal singular you (`ته`), contrast with I, compound clauses | Muhammad Jan at Home |
@@ -25,7 +25,7 @@ The sequence below covers Days 1–14 in the educational engine. The playable RP
 | 13 | Time/manner/frequency adverbs | Saleha and Mina |
 | 14 | Cumulative investigation/scavenger hunt, no compulsory new words | Integrated four-district narrative and 25-question final |
 
-The four district IDs are `residential`, `nature`, `business` and `school`; player-facing map labels are Home, Lake, Market and School. Library offers reference and voluntary zero-XP practice, Hills is a Day 6 Nature story scene. Teacher identities, character relationships and speaker/addressee labels are authored. Day 1's mandatory Library tutorial teaches `سلام` (meaning choice), `څنګه یې؟` (Pashto tiles), the Pashto language-selection question `ته کومه ژبه زده کوې؟` (select `پښتو`), then `زما نوم څه دی؟` (type Muhammad Jan in English). The two authored questions are recorded in [TUTORIAL_PROMPTS.json](content/TUTORIAL_PROMPTS.json). Player name and gender are optional Library → Player Profile settings, not tutorial questions.
+The four district IDs are `residential`, `nature`, `business` and `school`; player-facing map labels are Home, Lake, Market and School. Library offers reference and voluntary zero-XP practice, Hills is a Day 6 Nature story scene. Teacher identities, character relationships and speaker/addressee labels are authored. Day 1's mandatory Library tutorial teaches `سلام` (meaning choice), `څنګه یې؟` (translation selection), the Pashto language-selection question `ته کومه ژبه زده کوې؟` (select `پښتو`), then `زما نوم څه دی؟` (type Muhammad Jan in English). The two authored questions are recorded in [TUTORIAL_PROMPTS.json](content/TUTORIAL_PROMPTS.json). Player name and gender are optional Library → Player Profile settings, not tutorial questions.
 
 Day 1 Home at default pace teaches house, door, room, big, window and open, plus the required evidenced feminine form. Agreement follows word study, then the engine composes house/big, door/open and window/open descriptions for study and tile construction. Other districts are unnecessary for this Home objective. Standard visits deduplicate complete sentence texts across locations and days; explicit revision/replay may repeat them. Later days request four generated study cards per visit when evidence and study permit, with current construction/person goals preferred and cumulative forms retained.
 
@@ -43,14 +43,11 @@ Day 1 Home at default pace teaches house, door, room, big, window and open, plus
 
 ## Greetings and contextual expressions
 
-`content/NARRATIVE_EXPRESSIONS.json` is the sole authored list of **17 contextual expression slots**. Fourteen exact user-approved Pashto expressions are active, without independent native certification:
+`content/NARRATIVE_EXPRESSIONS.json` is the sole authored list of **14 approved daily expressions**. Fourteen exact user-approved Pashto expressions are active, without independent native certification:
 
 | Day/location | Speaker | English context | Pashto status |
 |---|---|---|---|
 | 1 residential | Muhammad Jan | Welcome! | `ښه راغلاست` — user-approved |
-| 1 nature | Saleha | What is your name? | Pending approval |
-| 1 business | Edris | How much is this? | Pending approval |
-| 1 school | Ms Hameed | What is this? | Pending approval |
 | 2 school | Ms Hameed | Good morning! | `سهار مو پخیر!` — user-approved |
 | 3 nature | Saleha | It’s nice to see you | `خوشحاله یم چې تاسې وینم.` — user-approved |
 | 4 residential | Muhammad Jan | May you not be tired | `ستړي مه شئ.` — user-approved |
@@ -65,11 +62,11 @@ Day 1 Home at default pace teaches house, door, room, big, window and open, plus
 | 13 nature | Saleha | How is your day going? | `ورځ مو څنګه تېرېږي؟` — user-approved |
 | 14 residential | Muhammad Jan | Good luck! | `بریالي اوسئ!` — user-approved |
 
-A day's active expression (including the optional Day-14 greeting) is the **first study card** at each of the four location lessons; a local active expression (which may be explicitly provisional) has priority, otherwise the day's active opening expression repeats. An active greeting becomes the **first question** of that day's challenge, without increasing its question count or using its lexical quota. Visible presentation creates an encounter; challenge activation also makes missed location phrases available without practice grades. Availability does not claim actual phrase study or reveal its isolated English recall answer. Pending slots are contextual English dialogue, not acquired Pashto, and cannot receive audio or recognition questions as if translated. Old `مننه` (Thank you) and `خدای پامان` (Goodbye) tutorial cards were reassigned to Day 2 Market and Day 3 Home.
+A day's active expression (including the optional Day-14 greeting) is the **first study card** at each of the four location lessons; the same daily greeting is shared across the four locations. An active greeting becomes the **first question** of that day's challenge, without increasing its question count or using its lexical quota. Visible presentation creates an encounter; challenge activation also makes missed location phrases available without practice grades. Availability does not claim actual phrase study; new expression questions select English translations. The removed alternatives remain historical editorial evidence and are not lesson or Library entries. Old `مننه` (Thank you) and `خدای پامان` (Goodbye) tutorial cards were reassigned to Day 2 Market and Day 3 Home.
 
 ## Editorial activation rules
 
-Use `LANGUAGE_REVIEW.md` for exact review evidence. Native Laghman checking is still required for existing Week 1 language, all Week 2 drafts, the 301 provisional candidate entries, the 40 linked universal targets and three pending Day-1 expressions. The expansion records conventional written-Pashto editorial drafts with mechanical romanisation and explicit uncertainty. The canonical base entries now use `user_approved`; unshown forms remain provisional. Native approval still requires real reviewer/date/reference evidence.
+Use `LANGUAGE_REVIEW.md` for exact review evidence. Native Laghman checking is still required for existing Week 1 language, all Week 2 drafts, the 301 provisional candidate entries and the 40 linked universal targets. The expansion records conventional written-Pashto editorial drafts with mechanical romanisation and explicit uncertainty. The canonical base entries now use `user_approved`; unshown forms remain provisional. Native approval still requires real reviewer/date/reference evidence.
 
 ## Introductions, composition and retention
 
@@ -83,8 +80,11 @@ If a pace or skip route lacks studied forms, the interface reports the deficit a
 
 [Measured delivery](docs/grammar/INSTRUCTIONAL_DELIVERY_REPORT.md) reports actual rendered content; [capacity/gaps](docs/grammar/GENERATION_COVERAGE.md) separately reports potential compositions and exact excluded forms. Masculine cardinal One, feminine Two, counted Four/Five and arbitrary noun obliques remain excluded pending evidence. Base wording is user-approved; morphology and composed language remain provisional. Story openings, relationships, Hills, home award, graduation and cumulative revision remain intact.
 
-Optional English name/gender controls are implemented in Library Player Profile. A fuller Pashto profile conversation and contextual greeting sequence remain planned. Three Day-1 contextual slots remain pending approval; see [delivery status](README.md#product-goal-and-delivery-status). Pending English targets are not permission to teach or assess invented Pashto.
+Optional English name/gender controls are implemented in Library Player Profile. A fuller Pashto profile conversation and contextual greeting sequence remain planned. The three former Day-1 alternative slots have been removed; see [delivery status](README.md#product-goal-and-delivery-status). Pending English targets are not permission to teach or assess invented Pashto.
 
-Days 5 and 7 teach the peace exchange: the character says `السلام علیکم.` and the player replies `وعلیکم السلام.`. One response identity is introduced on Day 5 and reused on Day 7. Studied response assessments use Pashto construction; unseen skip targets retain uncued recognition without revealing their English answer. Neither increases challenge length or district quotas. The three remaining Day-1 contextual proposals are [inactive and awaiting review](docs/grammar/LANGUAGE_PROPOSALS.md). That document also retains two superseded profile-question proposals as historical evidence; they are separate from the approved replacement onboarding questions.
+Days 5 and 7 teach the peace exchange: the character says `السلام علیکم.` and the player replies `وعلیکم السلام.`. One response identity is introduced on Day 5 and reused on Day 7. New response assessments use Pashto-to-English translation selection, including unseen phrases. Neither increases challenge length or district quotas. The removed Day-1 contextual proposals remain [historical editorial evidence](docs/grammar/LANGUAGE_PROPOSALS.md). That document also retains two superseded profile-question proposals as historical evidence; they are separate from the approved replacement onboarding questions.
 
 All fourteen days assess practical Pashto rather than grammatical terminology. The Library Grammar Journal exposes all 33 concept explanations/worked analyses and all curriculum-day rules as read-only reference, without completing lessons or unlocking forms/grammar. Actual lesson study/workshops or explicit challenge activation license generated Pashto examples. When sentence supply is insufficient, vocabulary or approved phrases preserve assessment length; a small pool may repeat. Earlier English assessment-fallback instructions are superseded.
+
+
+New challenges open with three recognition/construction activities; fixed expressions always use English translation selection. Later unstudied lexical recall remains typed, with recognition used to separate adjacent typed items. Recognition does not claim prior study. Existing frozen attempts retain their exact questions until completed; the new rules apply to new attempts. Day transitions through bed/Quick travel wake beside the bed, while resuming retains the saved position. Muhammad Jan provides optional progress-sensitive guidance alongside his normal lessons. See [implementation and targeted validation](docs/rpg/DAILY_FLOW.md).

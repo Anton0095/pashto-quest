@@ -77,7 +77,7 @@ for(const width of [1280,375]){
   await fixture({passed:1});await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();
   await p.waitForFunction(k=>!!JSON.parse(localStorage.getItem(k)).sleepIntent,WORLD);await p.reload();
   await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 2 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});
-  assert.deepEqual(await d.pos(),{map:data.days[2].start.map,x:data.days[2].start.x,y:data.days[2].start.y},'Quick Travel and bed wake at the same chapter spawn');
+  assert.deepEqual(await d.pos(),{map:'house',x:17,y:10},'Quick Travel and bed wake at the same chapter spawn');
   await d.dialogue('Explore first');await d.durable();assert.equal((await p.evaluate(k=>JSON.parse(localStorage.getItem(k)),WORLD)).sleepIntent,undefined);
   await fixture({day:2,passed:2});await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').evaluate(b=>{b.click();b.click();b.click();});await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 3 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});assert(!await p.locator('#quickSleep').isVisible());await d.dialogue('Explore first');
   await fixture({day:2,passed:2,intent:{from:2,to:3}});await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 3 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});await d.dialogue('Explore first');await d.durable();await p.reload();await p.locator('#worldScreen').waitFor();assert((await activeDay()).includes('DAY 3 /'));

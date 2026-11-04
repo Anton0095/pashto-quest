@@ -49,7 +49,7 @@ async function play(route){
     assert((await p.locator('.rpg-day').innerText()).includes('DAY '+day+' /'),'Challenge pass keeps the active day');
     if(!await p.locator('#quickSleep').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();
     await p.locator('#rpgDialogue').waitFor();await p.locator('#sleepTransition').waitFor({state:'detached'});
-    await d.durable();assert.equal((await d.progress()).xp,xp,'Sleep awards no duplicate XP');const position=await d.pos();assert.deepEqual(position,{map:data.days[day+1].start.map,x:data.days[day+1].start.x,y:data.days[day+1].start.y});
+    await d.durable();assert.equal((await d.progress()).xp,xp,'Sleep awards no duplicate XP');const position=await d.pos();assert.deepEqual(position,{map:'house',x:17,y:10});
    }
    else{assert.equal(await p.locator('#rpgAdvance').count(),0);assert.equal(await p.locator('#resultHeading').innerText(),'Pashto Quest — Week 1 Complete');assert((await p.locator('#resultKnowledge').innerText()).includes('Level 10 · New Resident'));assert.equal(await p.locator('#resultXPLabel').innerText(),'Total XP');assert.equal(await p.locator('#resultKnowledgeLabel').innerText(),'Current level and title');assert.equal(s.challenges[7].best,25);assert(!s.challenges[8]);mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:`work/overhaul/graduation-${route}.png`,fullPage:true});await p.locator('#resultWorld').click();await p.locator('#rpgLibrary').click();await p.locator('#libraryClose').click();await d.durable();assert.equal((await d.progress()).xp,xp);}
    console.log('PASS public Week1',route,'day',day,'XP',(await d.progress()).xp);
