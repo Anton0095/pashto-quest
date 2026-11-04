@@ -16,7 +16,7 @@ The north, east and south roads terminate at visible barriers and signs. `reserv
 
 `content/RPG_WORLD.json` owns rectangular terrain rows, solid tile identities, optional collision rows, regions, buildings, scenery, transitions, chapter starts and conditional NPC placements. `world-data.ts` validates terrain/spawns/transitions and recovers invalid positions. `movement.ts` plans on the same walkability and actor occupancy used by the Phaser stepper; no second movement engine was added.
 
-`village-art.ts` draws deterministic pixel art from that registry. Ground, paving, water, shoreline, walls and barriers bake into one 1536×1024 texture. Building/prop textures are generated once per variant and reused on subsequent visits. Foreground sprites use their ground footpoint for depth ordering; buildings and market counters remain solid terrain. Textures belong to the Phaser game and are released on disposal. No atlas or reference-image download is needed in the offline release. Existing actor sprites, portraits, house art and other interiors are reused.
+`village-art.ts` draws deterministic pixel art from that registry. Ground, paving, water, shoreline, walls and barriers bake into one 1536×1024 texture. Building/prop textures are generated once per variant and reused on subsequent visits. Foreground sprites use their ground footpoint for depth ordering; buildings and market counters remain solid terrain. Textures belong to the Phaser game and are released on disposal. The covered village tilemap is hidden from drawing while retaining its collision data, avoiding a redundant terrain render behind the opaque baked ground. No atlas or reference-image download is needed in the offline release. Existing actor sprites, portraits, house art and other interiors are reused.
 
 `phaser-world.ts` retains the terrain physics layer, optional collision overlay, actor bodies, camera follow, movement tween, pointer routing and map lifecycle. It selects village artwork only for maps with the new scenery definitions; historical test profiles retain their original rendering path.
 
@@ -24,7 +24,7 @@ Educational content, quotas, XP, grading, SRS and challenge activation stay in t
 
 ## Existing saves
 
-Education schema 7 and world schema 1, storage keys and revision coordination are unchanged. Existing walkable positions remain valid. A position made impassable by the redesign deterministically recovers to that map's configured safe spawn (or its existing row-major safe-tile fallback). This uses the established `world-data.recover` path; no old-format adapter, educational reset, XP recalculation or invented study is involved. House/Library/Hills coordinates are unchanged except the Hills return arrival in the village.
+Education schema 7 and world schema 1, storage keys and revision coordination are unchanged. Existing walkable positions remain valid. A position made impassable by the redesign deterministically recovers to that map's configured safe spawn (or its existing row-major safe-tile fallback). The village collision overlay also excludes disconnected decorative margins and tiles beyond the future-road barriers, so recovery cannot strand a player in an isolated walkable pocket. This uses the established `world-data.recover` path; no old-format adapter, educational reset, XP recalculation or invented study is involved. House/Library/Hills coordinates are unchanged except the Hills return arrival in the village.
 
 ## Registering another map
 

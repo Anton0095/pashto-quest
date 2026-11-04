@@ -10,8 +10,9 @@ import tempfile
 ROOT=Path(__file__).resolve().parents[1]
 (ROOT / 'work').mkdir(exist_ok=True)
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--rpg',action='store_true',help='RPG type/build, map/state models, syntax and all RPG browsers; retains educational delivery evidence')
-parser.add_argument('--quick',action='store_true',help='Syntax, model, corpus and build checks only; browsers are explicitly unrun')
+mode=parser.add_mutually_exclusive_group()
+mode.add_argument('--rpg',action='store_true',help='RPG type/build, map/state models, syntax and all RPG browsers; retains educational delivery evidence')
+mode.add_argument('--quick',action='store_true',help='Syntax, model, corpus and build checks only; browsers are explicitly unrun')
 args=parser.parse_args()
 logs=Path(tempfile.mkdtemp(prefix='pashto-quest-checks-'))
 

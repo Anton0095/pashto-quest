@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync}from'node:fs';
 import {setup}from'./browser-fixture.mjs';
 for(const width of [375,1280]){
- const b=await setup({width,rpg:true,bridge:false,offline:true,transform:h=>h.replace('// @TEST_HOOK','window.__phaserDiagnostics=()=>rpg.diagnostics();window.__fixtureFence=saveFence; // @TEST_HOOK')});
+ const b=await setup({width,rpg:true,bridge:false,offline:true,transform:h=>h.replace('// @TEST_HOOK','const create=PashtoRPG.VillageScene.prototype.create;PashtoRPG.VillageScene.prototype.create=function(){create.call(this);window.__phaserTestScene=this;};window.__phaserDiagnostics=()=>rpg.diagnostics();window.__fixtureFence=saveFence; // @TEST_HOOK')});
  const p=b.page;
  try{
   await p.locator('#startTutorial').click();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser==='4.2.1');
@@ -10,7 +10,10 @@ for(const width of [375,1280]){
   const move=async(key,x,y)=>{await p.waitForTimeout(160);await p.keyboard.press(key);await p.waitForFunction(([x,y])=>+document.getElementById('rpgCanvas').dataset.x===x&&+document.getElementById('rpgCanvas').dataset.y===y,[x,y]);};
   const initial=await pos();await p.keyboard.press('ArrowRight');await p.waitForTimeout(180);assert.deepEqual(await pos(),initial,'Phaser NPC collision');
   const camera=await p.evaluate(()=>__phaserDiagnostics().camera);
-  const animated=p.waitForFunction(()=>__phaserDiagnostics().moving&&Number(__phaserDiagnostics().frame)%2===1);await p.waitForTimeout(160);await p.keyboard.press('ArrowDown');await animated;await p.waitForFunction(()=>+document.getElementById('rpgCanvas').dataset.y===19);const afterCamera=await p.evaluate(()=>__phaserDiagnostics().camera);assert(afterCamera.y>camera.y,'Phaser camera follows');assert(await p.locator('#rpgInteract').isDisabled(),'Interaction requires adjacency, not diagonal distance');
+  // Slow only this tween while observing animation: a loaded headless runner can
+  // otherwise skip the entire 115ms window. Other movement checks use real speed.
+  await p.evaluate(()=>__phaserTestScene.tweens.timeScale=.1);
+  const animated=p.waitForFunction(()=>__phaserDiagnostics().moving&&Number(__phaserDiagnostics().frame)%2===1);await p.waitForTimeout(160);await p.keyboard.press('ArrowDown');await animated;await p.evaluate(()=>__phaserTestScene.tweens.timeScale=1);await p.waitForFunction(()=>+document.getElementById('rpgCanvas').dataset.y===19);const afterCamera=await p.evaluate(()=>__phaserDiagnostics().camera);assert(afterCamera.y>camera.y,'Phaser camera follows');assert(await p.locator('#rpgInteract').isDisabled(),'Interaction requires adjacency, not diagonal distance');
   await move('ArrowLeft',21,19);await move('ArrowUp',21,18);await move('ArrowRight',22,18);
   await p.locator('#rpgInteract').click();await p.keyboard.down('ArrowDown');await p.waitForTimeout(350);await p.keyboard.up('ArrowDown');assert.deepEqual(await pos(),initial);assert(await p.evaluate(()=>__phaserDiagnostics().physicsPaused));
   await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();await p.locator('#rpgDialogue').getByRole('button',{name:'I will meet you at the Library',exact:true}).click();
