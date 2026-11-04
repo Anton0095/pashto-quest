@@ -34,6 +34,8 @@ Education schema 7 and world schema 1, storage keys and revision coordination ar
 4. To activate a reserved road, remove its barrier, replace its `reservedExits` entry with ordinary transition data and supply reviewed destination content. Do not increase curriculum quotas or chapter limits merely because a map exists.
 5. Run registry/model reachability, collision, recovery and browser transition/route tests; inspect camera and footpoint overlap at desktop/mobile sizes. Rebuild with `python3 tools/build.py`. See [current architecture](RPG_ARCHITECTURE.md) and [validation policy](../../tests/README.md#choose-validation-by-change-and-risk).
 
+The screenshots can be reproduced with `node tools/capture-village.mjs`. Rendering-only diagnostics use `node tools/village-render-performance.mjs --release index.html --output work/village-render.json`; pass a frozen baseline HTML to the same command for comparison. These tools use disposable test pages and do not add production debug controls.
+
 ## Running-game captures
 
 These show the actual Phaser game, including a test-only camera overview of the complete map. The reference image is not used for these captures.
@@ -48,3 +50,24 @@ These show the actual Phaser game, including a test-only camera overview of the 
 | School | [View](village/school-1280.png) | [View](village/school-375.png) |
 
 The procedural art interprets the reference at the established logical scale; it does not reproduce its dense illustrated shading or every textile motif. Mobile captures and checks use Chromium viewport/touch emulation, not physical iPhone Safari. Historical release reports and measurements remain evidence for their recorded builds.
+
+## Verification and measured limits
+
+Final strict typecheck and build consistency passed, along with nine world/chapter/movement/state model suites and all thirteen selected RPG browser suites. Both public routes completed Days 1–7, including real lessons/examinations, failure/retry, frozen reload, teacher relocations, Hills entry/return, sleep, graduation, dream selectors and reward locks. Fresh final-renderer captures and desktop/mobile dock/barrier/recovery checks passed. [Component output](village/validation.txt) records the actual checks.
+
+The initial parallel `python3 tools/verify.py --rpg` attempt was interrupted after a headless animation-observation timeout and while adapting the duplicate long route to the larger map. [Its partial output](village/verification-attempt.txt) is retained; it is not a claimed passing full invocation. The animation check subsequently passed at both sizes and with the optional collision layer. Public long trips now use the real lock-respecting Quick travel controls, with physical approaches/interiors/Hills and independent all-placement grid coverage retained. The final component runs all passed.
+
+The fourteen-day educational matrix and delivery-audit refresh were outside this map/art scope. Historical educational and performance reports retain their recorded hashes/results. A source comparison confirms unchanged narrative events, chapter rules, NPC identities/conditions and complete Home/Library interior definitions. Educational source and language data were untouched.
+
+Release HTML: **4,609,414 → 4,639,566 bytes** (0.65% larger); gzip: **1,728,591 → 1,733,371 bytes** (0.28% larger). Final release SHA-256: `0d139a94c6ce372543f1728169188a90cad887c540c4f6c4ebbc0de3c7378dda`.
+
+The rendering-only diagnostic was run sequentially after the route tests stopped. It uses three fresh world boots per profile and 120 animation-frame intervals; the world-start timer begins after document navigation, so it is not an end-to-end download/load metric. [Baseline data](village/render-baseline.json) and [final data](village/render-final.json) retain exact artifact fingerprints and texture dimensions.
+
+| Profile | Median Enter-village → scene ready | Average animation-frame rate |
+|---|---:|---:|
+| 1280px / 1× CPU | 590 → 516 ms | 50.7 → 60.0 |
+| 375px / 4× CPU | 1002 → 1314 ms | 57.6 → 55.0 |
+
+The logical sum of registered texture dimensions × four RGBA bytes rises from **5.47 to 12.22 MiB**. This is an estimated pixel extent, not measured GPU/total-process memory. The larger map needs an additional cached 1536×1024 ground surface and reusable scenery textures. Phaser's active update-list count stayed stable across ten Library round trips in the lifecycle checks.
+
+These small shared-host samples do not establish a universal speedup or regression. Startup/texture cost is a tradeoff of the larger map, and physical iPhone Safari, hardware audio/touch, GPU frame times and long-duration memory behavior remain manual checks. The fine painted shading and textile detail of the reference remain simplified at the existing tile scale.

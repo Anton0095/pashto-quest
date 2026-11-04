@@ -1,0 +1,503 @@
+{
+  "releaseSha256": "0d139a94c6ce372543f1728169188a90cad887c540c4f6c4ebbc0de3c7378dda",
+  "releaseBytes": 4639566,
+  "method": "Loopback Chromium, offline release, three world boots per profile; 120 requestAnimationFrame intervals, cached textures and scene objects. Mobile 375px with 4× CPU throttle. Shared-host diagnostic; not GPU timing or physical Safari. No educational state or grading fixture.",
+  "profiles": [
+    {
+      "width": 1280,
+      "cpuThrottle": 1,
+      "browser": "154.0.8037.57",
+      "boot": {
+        "samples": 3,
+        "medianMs": 516,
+        "p95Ms": 608
+      },
+      "frames": {
+        "samples": 120,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 16.700000000000273
+      },
+      "averageFps": 60.003000150007495,
+      "scene": {
+        "objects": 389,
+        "textures": [
+          {
+            "key": "6049757d-e3b6-497c-8c98-56387e4c0267",
+            "width": 256,
+            "height": 256
+          },
+          {
+            "key": "portrait:muhammad-jan:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:edris:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:saleha:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:hameed:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:mina:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "village-tiles",
+            "width": 352,
+            "height": 16
+          },
+          {
+            "key": "elder",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "saleha",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "edris",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "hameed",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "masculine",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "feminine",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "neutral",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "mina",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "afghan-village-ground",
+            "width": 1536,
+            "height": 1024
+          },
+          {
+            "key": "adobe-home-9-4-4",
+            "width": 160,
+            "height": 88
+          },
+          {
+            "key": "3b3b6c41-7746-40a7-be65-bd6baaf21d2a",
+            "width": 26,
+            "height": 14
+          },
+          {
+            "key": "adobe-home-10-5-5",
+            "width": 176,
+            "height": 104
+          },
+          {
+            "key": "adobe-home-7-6-3",
+            "width": 128,
+            "height": 120
+          },
+          {
+            "key": "adobe-home-8-6-4",
+            "width": 144,
+            "height": 120
+          },
+          {
+            "key": "adobe-home-9-5-4",
+            "width": 160,
+            "height": 104
+          },
+          {
+            "key": "adobe-library-8-4-3",
+            "width": 144,
+            "height": 88
+          },
+          {
+            "key": "5f13dcec-9cf1-4d23-8749-e044b2256c69",
+            "width": 40,
+            "height": 14
+          },
+          {
+            "key": "adobe-school-24-8-12",
+            "width": 400,
+            "height": 152
+          },
+          {
+            "key": "fc14b6dc-3d84-4820-87a6-2854525c218f",
+            "width": 35,
+            "height": 14
+          },
+          {
+            "key": "adobe-home-8-5-4",
+            "width": 144,
+            "height": 104
+          },
+          {
+            "key": "village-prop-poplar",
+            "width": 48,
+            "height": 64
+          },
+          {
+            "key": "village-prop-tree",
+            "width": 48,
+            "height": 64
+          },
+          {
+            "key": "village-prop-pot",
+            "width": 32,
+            "height": 40
+          },
+          {
+            "key": "village-prop-well",
+            "width": 32,
+            "height": 40
+          },
+          {
+            "key": "village-prop-reed",
+            "width": 32,
+            "height": 40
+          },
+          {
+            "key": "village-prop-stone",
+            "width": 32,
+            "height": 40
+          },
+          {
+            "key": "village-prop-sign",
+            "width": 32,
+            "height": 40
+          },
+          {
+            "key": "village-prop-stall",
+            "width": 88,
+            "height": 64
+          },
+          {
+            "key": "1ecf0c78-84af-45e0-a7b9-61955b5e17f3",
+            "width": 95,
+            "height": 24
+          },
+          {
+            "key": "0922b6e7-eeaa-40fb-9cbc-6c8e9a72b4d2",
+            "width": 95,
+            "height": 24
+          },
+          {
+            "key": "4bfb7135-c3d8-41e5-90b5-7e3f9e7ea4ea",
+            "width": 95,
+            "height": 24
+          },
+          {
+            "key": "cc839bd8-b9fc-4c51-910f-1cf39a5557a5",
+            "width": 26,
+            "height": 14
+          },
+          {
+            "key": "325db7d2-46d7-4d56-b2be-73072b86f778",
+            "width": 26,
+            "height": 14
+          },
+          {
+            "key": "591b2d59-0f50-4d3b-aeb3-ad29cda09221",
+            "width": 35,
+            "height": 14
+          },
+          {
+            "key": "7f70c832-2aed-49ce-8fc0-834dcbdec55d",
+            "width": 35,
+            "height": 14
+          },
+          {
+            "key": "2278dbf2-509a-4ab2-8980-c63cfef0184d",
+            "width": 40,
+            "height": 14
+          },
+          {
+            "key": "b490e938-01e3-4d85-85b0-b59a762bc95d",
+            "width": 69,
+            "height": 14
+          },
+          {
+            "key": "2344fc62-c64b-48e4-aa30-b317d35b3797",
+            "width": 7,
+            "height": 13
+          }
+        ],
+        "estimatedTextureRgbaBytes": 12817132
+      },
+      "errors": []
+    },
+    {
+      "width": 375,
+      "cpuThrottle": 4,
+      "browser": "154.0.8037.57",
+      "boot": {
+        "samples": 3,
+        "medianMs": 1314,
+        "p95Ms": 1495
+      },
+      "frames": {
+        "samples": 120,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 33.29999999999927
+      },
+      "averageFps": 54.96267118581963,
+      "scene": {
+        "objects": 389,
+        "textures": [
+          {
+            "key": "d7dce888-cf92-444b-9400-130740b48a5b",
+            "width": 256,
+            "height": 256
+          },
+          {
+            "key": "portrait:muhammad-jan:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:edris:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:saleha:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:hameed:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:mina:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "village-tiles",
+            "width": 352,
+            "height": 16
+          },
+          {
+            "key": "elder",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "saleha",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "edris",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "hameed",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "masculine",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "feminine",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "neutral",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "mina",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "afghan-village-ground",
+            "width": 1536,
+            "height": 1024
+          },
+          {
+            "key": "adobe-home-9-4-4",
+            "width": 160,
+            "height": 88
+          },
+          {
+            "key": "213c62f4-1d42-466d-b884-527e11f30844",
+            "width": 26,
+            "height": 14
+          },
+          {
+            "key": "adobe-home-10-5-5",
+            "width": 176,
+            "height": 104
+          },
+          {
+            "key": "adobe-home-7-6-3",
+            "width": 128,
+            "height": 120
+          },
+          {
+            "key": "adobe-home-8-6-4",
+            "width": 144,
+            "height": 120
+          },
+          {
+            "key": "adobe-home-9-5-4",
+            "width": 160,
+            "height": 104
+          },
+          {
+            "key": "adobe-library-8-4-3",
+            "width": 144,
+            "height": 88
+          },
+          {
+            "key": "12288fed-ca05-4c50-bdb8-ca8c69e0bf89",
+            "width": 40,
+            "height": 14
+          },
+          {
+            "key": "adobe-school-24-8-12",
+            "width": 400,
+            "height": 152
+          },
+          {
+            "key": "914ef1d3-d826-4cff-abe7-e8e3b10c4573",
+            "width": 35,
+            "height": 14
+          },
+          {
+            "key": "adobe-home-8-5-4",
+            "width": 144,
+            "height": 104
+          },
+          {
+            "key": "village-prop-poplar",
+            "width": 48,
+            "height": 64
+          },
+          {
+            "key": "village-prop-tree",
+            "width": 48,
+            "height": 64
+          },
+          {
+            "key": "village-prop-pot",
+            "width": 32,
+            "height": 40
+          },
+          {
+            "key": "village-prop-well",
+            "width": 32,
+            "height": 40
+          },
+          {
+            "key": "village-prop-reed",
+            "width": 32,
+            "height": 40
+          },
+          {
+            "key": "village-prop-stone",
+            "width": 32,
+            "height": 40
+          },
+          {
+            "key": "village-prop-sign",
+            "width": 32,
+            "height": 40
+          },
+          {
+            "key": "village-prop-stall",
+            "width": 88,
+            "height": 64
+          },
+          {
+            "key": "9cb848c1-c4e3-492f-9c86-35335a18f8ba",
+            "width": 95,
+            "height": 24
+          },
+          {
+            "key": "ace3df6c-9e12-4709-acab-ffbd499886fb",
+            "width": 95,
+            "height": 24
+          },
+          {
+            "key": "ca0d60c4-0aa4-499c-89e7-9f58e90eef85",
+            "width": 95,
+            "height": 24
+          },
+          {
+            "key": "b8435a93-0ed6-45a9-81fc-d0b911298015",
+            "width": 26,
+            "height": 14
+          },
+          {
+            "key": "a11b0c46-a265-43f9-a58e-f32ac8dda9cd",
+            "width": 26,
+            "height": 14
+          },
+          {
+            "key": "df387dba-47d0-4abc-8db7-d4a10a4be8c3",
+            "width": 35,
+            "height": 14
+          },
+          {
+            "key": "3b84296b-cde7-4d31-9dff-5fe877483c99",
+            "width": 35,
+            "height": 14
+          },
+          {
+            "key": "f489d73c-fe12-478c-9a69-80826c76e687",
+            "width": 40,
+            "height": 14
+          },
+          {
+            "key": "96af821b-09bb-4e5e-801b-433058e400b0",
+            "width": 69,
+            "height": 14
+          },
+          {
+            "key": "df7d9b1d-092e-44fe-a7b3-bb267f753d1d",
+            "width": 7,
+            "height": 13
+          }
+        ],
+        "estimatedTextureRgbaBytes": 12817132
+      },
+      "errors": []
+    }
+  ]
+}

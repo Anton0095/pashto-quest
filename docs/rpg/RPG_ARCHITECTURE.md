@@ -11,6 +11,7 @@ This is the current architecture after the merged Week 1, movement and house/sle
 | `content.ts` | Validated maps/identities/schedules/events, conditional choices and multi-speaker/listener DOM dialogue |
 | `ui.ts` | Selected RPG chapter, educational adapters, serialized chapter transfer, native overlays, keyboard/touch lifecycle and completion/history UI |
 | `phaser-world.ts` | Sole live world engine: tilemaps, collisions, bodies, sensors, movement/tweens/animation, camera, procedural textures and resource cleanup |
+| `village-art.ts` | Cached ground, adobe buildings, shoreline and environmental artwork; registry geometry and ground-footpoint depth; no movement or educational state |
 | `movement.ts` | A* paths, clear NPC interaction lines, automatic/manual instruction arbitration over the Phaser stepper |
 | `world-data.ts` | Static content validation, walkability for spawn/reachability and invalid-position recovery; no parallel movement engine |
 | `progression.ts` | Registered profile cap (Days 1–7); wraps existing educational eligibility, never recalculates rewards |
