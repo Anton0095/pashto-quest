@@ -1112,42 +1112,6 @@ header {
   gap: 8px;
   margin: 0 0 12px;
 }
-.interlocutor {
-  border: 1px solid #7296a5;
-  background: #284957;
-  border-radius: 12px;
-  padding: 8px 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  line-height: 1.4;
-}
-.interlocutor b {
-  display: block;
-  font-size: 13px;
-  color: #ffe0a9;
-}
-.interlocutor .portrait {
-  font-size: 23px;
-}
-.speaker-direction {
-  border: 1px solid #71919d;
-  background: #243e52;
-  border-radius: 11px;
-  padding: 10px 12px;
-  margin: 7px 0 10px;
-  font-size: 13px;
-  color: #f6e9cb;
-}
-.address-choice {
-  font-size: 18px;
-  text-align: center;
-}
-.respondent {
-  background: #355166;
-  border-color: #9bbfd0;
-}
 
 /* Week 2: keep Pashto genuinely legible in embedded prompts and all answer options. */
 .inline-pashto {
@@ -1400,7 +1364,6 @@ header {
 .choice.wrong::after { content: " ✗"; }
 
 /* Construction uses direct targets; village narrative remains on other surfaces. */
-.construction-active #addressTarget,
 .construction-active #guideMessage,
 .construction-active #challengeScene,
 .construction-active #lessonExpression { display: none; }
@@ -1472,8 +1435,6 @@ body:has(.rpg-world) .herochar .pill {display:inline-block;margin:5px 6px 0 0;fo
 .character-portrait {display:inline-flex;vertical-align:middle;flex:0 0 auto;align-items:center;justify-content:center;flex-direction:column;width:80px;height:80px;border:3px solid #b4a57c;background:#192c2b;color:#f4ead1;font:20px monospace;text-align:center;overflow:hidden;}
 .character-portrait img {display:block;width:100%;height:100%;object-fit:contain;image-rendering:pixelated;}
 .character-portrait small {font:9px/1.2 system-ui;max-width:70px;}
-.interlocutor .character-portrait {width:56px;height:56px;font-size:14px;}
-.interlocutor .character-portrait small {font-size:8px;}
 .speaker-note > #speakerIcon {font-size:inherit;}
 .quizword .label {margin-top:12px;}
 .question-meta {font-size:11px;gap:6px;}
@@ -1491,7 +1452,6 @@ body:has(.rpg-world) .herochar .pill {display:inline-block;margin:5px 6px 0 0;fo
 }
 
 /* Compact, reusable conversation context; obsolete summary bars stay absent. */
-#addressTarget {display:none!important;}
 #participants:empty {display:none;}
 #participants {border:0;padding:0;margin:0;display:flex;}
 .conversation-partner {display:flex;align-items:center;gap:8px;}

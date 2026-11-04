@@ -41,7 +41,7 @@ for (const width of [375,1280]) {
       const cards=t.learning.availableSentences(14);
       const families=new Map(cards.map(c=>[c.generated.family,c]));
       for(const c of families.values()) {
-        ui.sentenceContext(c,'Muhammad Jan',$('quizPanel'),'construct');
+        ui.setSentenceConversation(c,'Muhammad Jan');
         require(!$('quizPanel').querySelector('.sentence-scene'),'Removed visual preview returned');
         require($('speakerName').dataset.conversationPartner,'Missing conversation identity');
         require($('speakerName').textContent.includes('Muhammad Jan'),'Wrong speaker');
@@ -49,7 +49,7 @@ for (const width of [375,1280]) {
       for(const state of ['open']) {
         const c=cards.find(c=>c.generated.semanticArguments?.noun==='window'&&c.generated.semanticArguments?.adjective===state);
         require(c,'No actual '+state+' window composition');
-        ui.sentenceContext(c,'Muhammad Jan',$('quizPanel'),'study');
+        ui.setSentenceConversation(c,'Muhammad Jan');
         require(!$('quizPanel').querySelector('figure'),'Removed vocabulary illustration returned');
       }
       // Exercise construction feedback and reset through the real lesson UI.

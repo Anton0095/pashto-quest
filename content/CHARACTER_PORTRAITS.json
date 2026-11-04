@@ -1,12 +1,12 @@
 {
   "resolution": 560,
-  "notice": "Approved portraits extracted losslessly from the supplied dialogue screenshots on main; dialogue and controls remain DOM content.",
+  "notice": "Approved portrait crops, losslessly encoded as WebP with identical RGBA pixels; original supplied screenshots and crop provenance are retained. Dialogue and controls remain DOM content.",
   "characters": {
     "muhammad-jan": {
       "name": "Muhammad Jan",
       "appearance": "Afghan village elder, about 65, traditional clothing, white beard",
       "expressions": {
-        "neutral": "assets/portraits/muhammad-jan.png"
+        "neutral": "assets/portraits/muhammad-jan.webp"
       },
       "source": {
         "path": "public/assets/portraits/Muhammad Jan Portrait.png",
@@ -17,13 +17,14 @@
           842
         ],
         "method": "Original pixels, transparent padding, no resampling"
-      }
+      },
+      "pixelSha256": "80efaa9e7f22bf0bcebdcd67fd40cc7c44b67f81b19fc8235923dd0de2c7eee7"
     },
     "edris": {
       "name": "Edris",
       "appearance": "Adult Afghan market trader, traditional clothing and beard",
       "expressions": {
-        "neutral": "assets/portraits/edris.png"
+        "neutral": "assets/portraits/edris.webp"
       },
       "source": {
         "path": "public/assets/portraits/Edris Portrait.png",
@@ -34,13 +35,14 @@
           842
         ],
         "method": "Original pixels, transparent padding, no resampling"
-      }
+      },
+      "pixelSha256": "2f126bf4df6db53eaf2cc9ac8f905123166667ebb9aaa14ced77ade92e417073"
     },
     "saleha": {
       "name": "Saleha",
       "appearance": "Afghan woman in her 20s, wearing hijab",
       "expressions": {
-        "neutral": "assets/portraits/saleha.png"
+        "neutral": "assets/portraits/saleha.webp"
       },
       "source": {
         "path": "public/assets/portraits/Saleha Portrait.png",
@@ -51,13 +53,14 @@
           842
         ],
         "method": "Original pixels, transparent padding, no resampling"
-      }
+      },
+      "pixelSha256": "2346691087b2b356c0f360bdea087ad39ee8aa5e1bda91cb41b1477b2edcee43"
     },
     "hameed": {
       "name": "Ms Hameed",
       "appearance": "Afghan woman in her 40s, wearing hijab",
       "expressions": {
-        "neutral": "assets/portraits/hameed.png"
+        "neutral": "assets/portraits/hameed.webp"
       },
       "source": {
         "path": "public/assets/portraits/Ms Hameed Portrait.png",
@@ -68,13 +71,14 @@
           842
         ],
         "method": "Original pixels, transparent padding, no resampling"
-      }
+      },
+      "pixelSha256": "21e1df1476f753ce84800759ea4e890da92e957df4043877b5afdab16e61a0a7"
     },
     "mina": {
       "name": "Mina",
       "appearance": "Girl about 10, Saleha's younger sister, similar facial features, no hijab",
       "expressions": {
-        "neutral": "assets/portraits/mina.png"
+        "neutral": "assets/portraits/mina.webp"
       },
       "source": {
         "path": "public/assets/portraits/Mina Portrait.png",
@@ -85,7 +89,8 @@
           842
         ],
         "method": "Original pixels, transparent padding, no resampling"
-      }
+      },
+      "pixelSha256": "c18df453ab7e0cccf6e6189a0bfda8c7a63f86f5c757ade7cdaa48585cfdf9f2"
     }
   }
 }

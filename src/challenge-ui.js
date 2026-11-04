@@ -79,7 +79,6 @@ function createChallengeUI({
     ui.$("lessonEyebrow").textContent = `DAY ${snapshot.loop} · SAVED ASSESSMENT`;
     ui.$("lessonName").textContent = "Assessment format changed";
     ui.$("lessonDescription").textContent = `${snapshot.answered}/${snapshot.questions.length} answers recorded · saved score ${snapshot.correctCount}/${snapshot.questions.length}. Nothing has been regraded.`;
-    ui.$("addressTarget").classList.add("hidden");
     panel.replaceChildren(ui.node("h2", "Saved assessment uses retired rule questions"),
       ui.node("p", "Your saved questions, answers and scores have not been changed. Rule-analysis questions are no longer assessed. Keep this attempt paused, export it, or explicitly retire it and start practical Pashto practice. Your vocabulary plan, SRS, XP and past results stay intact."));
     panel.classList.remove("hidden");
@@ -228,14 +227,12 @@ function createChallengeUI({
   }
   function showChallengeQuestion(resuming = false) {
     if (hasRetiredQuestions(state.session)) {showRetiredAssessment(state.session);return;}
-    ui.clearSentenceScene();
     renderQuestion(resuming);
     const q = state.session?.questions[state.session.index];
     if (q?.phrasePromptId && !["construct", "dialogue"].includes(q.kind)) {
       const prompt = content.wordById[q.phrasePromptId];
       const host = q.speaker || content.teacherFor(state.session.loop, null, "challenge").name;
       ui.$("guideMessage").textContent = `${host}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). Recognise the conventional reply shown below.`;
-      ui.$("addressTarget").textContent = `${host} → Player · YOUR REPLY → ${host}`;
     }
     if (resuming && state.session.locked) renderRecordedResponse();
   }
@@ -273,11 +270,8 @@ function createChallengeUI({
         : `DAY ${state.session.loop} · QUESTION ${state.session.index + 1}/${state.session.questions.length} · SCORE ${state.session.correctCount}/${state.session.questions.length}`;
     ui.$("guideMessage").textContent =
       q.comment || content.curriculum.days[state.session.loop - 1].challenge;
-    const target = ui.$("addressTarget");
     const host = content.teacherFor(state.session.loop, null, "challenge");
     ui.setConversation({instructorId:host.name,speakerId:q.speaker||host.name,partnerId:q.dialogueContext?.responseAddressee || (q.recipient&&q.recipient!=='Player'?q.recipient:host.name)});
-    target.classList.remove("hidden");
-    target.textContent = `${host.name} → Player · YOUR ANSWER → ${host.name}`;
     if (["construct", "dialogue"].includes(q.kind)) {
       ui.construction.present(content.wordById[q.id], q, state.session.loop);
       if (!resuming) state.session.tileSequence = q.tileSequence;
@@ -400,7 +394,7 @@ function createChallengeUI({
     detail.textContent = `${w.ps} (${w.roman}) — ${w.en}. ${questions.explanation(q, w)}`;
     feedback.append(headline, detail);
     if (w.generated)
-      ui.sentenceContext(w, content.teacherFor(state.session.loop, null, "challenge").name, ui.$("quizPanel"), "study", q);
+      ui.setSentenceConversation(w, content.teacherFor(state.session.loop, null, "challenge").name, q);
     ui.$("quizSpeak").classList.remove("hidden");
     ui.$("quizNext").disabled = false;
   }

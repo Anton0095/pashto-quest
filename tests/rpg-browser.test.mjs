@@ -106,8 +106,8 @@ for(const width of [375,1280]) {
   const position=await pos();await durable();await p.reload();await p.locator('#worldScreen').waitFor({state:'visible'});assert.deepEqual(await pos(),position);assert.equal(await p.evaluate(k=>JSON.parse(localStorage.getItem(k)).appearance,WORLD),'feminine');
   await p.locator('#rpgLibrary').click();assert((await p.locator('#libraryBody').innerText()).includes('Vocabulary Bank'));await p.locator('[data-library-tab="grammar"]').click();assert((await p.locator('#libraryBody').innerText()).includes('Grammar Journal'));await p.locator('#libraryClose').click();
   await walk(10,11);await talk('Day 1 challenge · 15 questions');await assessment({reload:true});assert((await progress()).challenges[1].passed);
-  assert.equal(await p.locator('#resultHeading').innerText(),'Pashto Quest — RPG Prototype Complete');assert((await p.locator('#resultDescription').innerText()).includes('You have successfully completed Day 1.'));
-  const completedXP=(await progress()).xp;await durable();await p.reload();assert.equal(await p.locator('#resultHeading').innerText(),'Pashto Quest — RPG Prototype Complete');assert.equal((await progress()).xp,completedXP,'Reload does not repeat awards');
+  assert.equal(await p.locator('#resultHeading').innerText(),'Chapter complete');assert((await p.locator('#resultDescription').innerText()).includes('You have successfully completed Day 1.'));
+  const completedXP=(await progress()).xp;await durable();await p.reload();assert.equal(await p.locator('#resultHeading').innerText(),'Chapter complete');assert.equal((await progress()).xp,completedXP,'Reload does not repeat awards');
   mkdirSync('docs/rpg/screenshots',{recursive:true});await p.screenshot({path:`docs/rpg/screenshots/completion-${width}.png`,fullPage:true});
   await p.locator('#resultWorld').click();await p.screenshot({path:`docs/rpg/screenshots/village-${width}.png`,fullPage:true});
   // No chapter navigation or future-day restoration is exposed.

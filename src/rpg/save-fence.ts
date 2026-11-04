@@ -44,7 +44,10 @@ export function createSaveFence():SaveFence {
   },async commit(key,expected,next,read,write):Promise<CommitResult> {
     try{
       const db=await open();
-      const [before,after,current]=await Promise.all([hash(expected),hash(next),hash(read())]);
+      const currentRaw=read(),beforeHash=hash(expected);
+      const afterHash=next===expected?beforeHash:hash(next);
+      const currentHash=currentRaw===expected?beforeHash:currentRaw===next?afterHash:hash(currentRaw);
+      const [before,after,current]=await Promise.all([beforeHash,afterHash,currentHash]);
       if(current!==before)return 'conflict';
       const mode=await transaction(db,key,(head,store):'write'|'noop'|'conflict'=>{
         let token=head?.hash??current;

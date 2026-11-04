@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render committed raw Chromium benchmark measurements; never extrapolate samples."""
+"""Reproduce the historical P1 three-input report; current paired runs use audit-performance-report.py."""
 import argparse
 import csv
 import json

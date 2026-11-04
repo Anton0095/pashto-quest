@@ -13,7 +13,7 @@ for(const width of [1280,375]){
     for(let n=1;n<=passed;n++)t.progression.completeChallengeOnce(t.state.progress,n,t.progression.getChallengeSpec(n).questionCount);
     await t.storage.save();
     const raw=localStorage.getItem(WORLD),w={schemaVersion:1,chapter:data.days[day].id,position,appearance:'neutral',flags:{started:true,metGuide:true},npcFlags:{},triggers:{},view:'world',lesson:null,educationFingerprint:null,...(intent?{sleepIntent:intent}:{})};
-    for(const c of Object.values(data.days).filter(c=>c.day<=day))if(c.openingEvent)w.triggers[c.openingEvent]=true;
+    for(const c of Object.values(data.days).filter(c=>c.day<=day)){if(c.openingEvent)w.triggers[c.openingEvent]=true;if(c.day<=passed&&c.endingEvent)w.triggers[c.endingEvent]=true;if(c.day<=passed&&c.routes){(w.routes??={})[c.id]='skip';w.triggers[c.routes.skip.event]=true;}}
     await navigator.locks.request(WORLD,()=>__fence.commit(WORLD,raw,JSON.stringify(w),()=>localStorage.getItem(WORLD),()=>{localStorage.setItem(WORLD,JSON.stringify(w));return true;}));
    },{day,passed,position,intent,data,WORLD});
    await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);await p.locator('#worldScreen').waitFor();

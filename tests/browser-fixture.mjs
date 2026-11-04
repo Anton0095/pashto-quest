@@ -21,10 +21,12 @@ export async function setup({
   transform = (html) => html,
 } = {}) {
   mkdirSync("work", { recursive: true });
-  const html = transform(readFileSync(htmlPath, "utf8").replace("const RPG_ENABLED=true;", `const RPG_ENABLED=${rpg};`)).replace(
+  let html = transform(readFileSync(htmlPath, "utf8").replace("const RPG_ENABLED=true;", `const RPG_ENABLED=${rpg};`)).replace(
     "// @TEST_HOOK",
     bridge ? hook : "",
   );
+  if(!rpg) html=html.replace('  const world = createWorld({',
+    readFileSync(new URL('./fixtures/education-navigation.js',import.meta.url),'utf8')+'\n  const world = createEducationalNavigation({');
   const server = http.createServer((req, res) => {
     res.setHeader("Content-Type", "text/html;charset=utf-8");
     res.end(html);

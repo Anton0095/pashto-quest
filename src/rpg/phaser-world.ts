@@ -26,6 +26,7 @@ export class VillageScene extends Phaser.Scene {
   private marker?:Phaser.GameObjects.Text;
   private movement?:Phaser.Tweens.Tween;
   private actorSignature='';
+  private actors:Actor[]=[];
   private wasActive=false;
   private controller?:ReturnType<typeof createMovementController>;
   private pointer?: (event:PointerEvent)=>void;
@@ -150,7 +151,9 @@ export class VillageScene extends Phaser.Scene {
   sync():void {
     if(!this.player)return;
     if(this.mapId!==this.options.position().map){this.loadMap();return;}
-    const actors=this.options.actors(),signature=JSON.stringify(actors);
+    const actors=this.options.actors();this.actors=actors;
+    // Only the resolved placement/presentation affects bodies, not future schedules.
+    const signature=JSON.stringify(actors.map(actor=>({...actor,schedule:undefined})));
     if(signature!==this.actorSignature){
       this.npcGroup?.clear(true,true);this.sensors?.clear(true,true);
       for(const actor of actors){
@@ -169,7 +172,7 @@ export class VillageScene extends Phaser.Scene {
     const p=this.options.position(),[dx,dy]=directions[p.facing];
     const actors=this.physics.overlapRect(p.x*16-48,p.y*16-48,112,112,false,true).flatMap(body=>{
       const actor=body.gameObject.getData('actor') as Actor|undefined;
-      return actor&&canInteract(this.options.data,p,actor,this.options.actors())?[actor]:[];
+      return actor&&canInteract(this.options.data,p,actor,this.actors)?[actor]:[];
     });
     return actors.sort((a,b)=>Number(b.x===p.x+dx&&b.y===p.y+dy)-Number(a.x===p.x+dx&&a.y===p.y+dy))[0]??null;
   }

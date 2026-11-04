@@ -1,0 +1,103 @@
+{
+  "before": {
+    "index.html": {
+      "bytes": 5246845,
+      "gzipBytes": 2200131,
+      "sha256": "09a0d682c3c70a1d1327f1fe082c0e4c439d4b04b7e088160140cd728b9c7d19"
+    },
+    "generated/rpg.bundle.js": {
+      "bytes": 1457019,
+      "gzipBytes": 391705,
+      "sha256": "c6e71fe2ac7a1545db82edc57cb42568f41583182b462318134ceca0b07a5e96"
+    },
+    "node_modules/phaser/dist/phaser.min.js": {
+      "bytes": 1375976,
+      "gzipBytes": 352441,
+      "sha256": "66348b1b5141e49b7d5ebbe688cddcb502eab1cb00f21c538686a5b2c5abe4de"
+    },
+    "portraits": {
+      "assets/portraits/muhammad-jan.png": 353744,
+      "assets/portraits/mina.png": 334162,
+      "assets/portraits/saleha.png": 325157,
+      "assets/portraits/hameed.png": 357059,
+      "assets/portraits/edris.png": 265976
+    },
+    "sourcePortraits": {
+      "public/assets/portraits/.gitkeep": 1,
+      "public/assets/portraits/Muhammad Jan Portrait.png": 1643350,
+      "public/assets/portraits/Edris Portrait.png": 1492222,
+      "public/assets/portraits/Saleha Portrait.png": 1460543,
+      "public/assets/portraits/Ms Hameed Portrait.png": 1612296,
+      "public/assets/portraits/Mina Portrait.png": 1619370
+    }
+  },
+  "after": {
+    "index.html": {
+      "bytes": 4609414,
+      "gzipBytes": 1728591,
+      "sha256": "dac948d2a1e9fecc6dd36bc6c6b1996e35f24e56cf05687a29181f0022aeebaf"
+    },
+    "generated/rpg.bundle.js": {
+      "bytes": 1457150,
+      "gzipBytes": 391730,
+      "sha256": "69305e8ee7d8110c345781cb437d9a878b1c71edac92332092bbc03e18802289"
+    },
+    "node_modules/phaser/dist/phaser.min.js": {
+      "bytes": 1375976,
+      "gzipBytes": 352441,
+      "sha256": "66348b1b5141e49b7d5ebbe688cddcb502eab1cb00f21c538686a5b2c5abe4de"
+    },
+    "assets/portraits/mina.webp": {
+      "bytes": 238464
+    },
+    "assets/portraits/saleha.webp": {
+      "bytes": 235004
+    },
+    "assets/portraits/hameed.webp": {
+      "bytes": 257470
+    },
+    "assets/portraits/edris.webp": {
+      "bytes": 192316
+    },
+    "assets/portraits/muhammad-jan.webp": {
+      "bytes": 248574
+    }
+  },
+  "losslessPortraits": [
+    {
+      "file": "assets/portraits/muhammad-jan.png",
+      "pngBytes": 353744,
+      "webpBytes": 248574,
+      "pixelsEqual": true,
+      "rgbaSha256": "80efaa9e7f22bf0bcebdcd67fd40cc7c44b67f81b19fc8235923dd0de2c7eee7"
+    },
+    {
+      "file": "assets/portraits/mina.png",
+      "pngBytes": 334162,
+      "webpBytes": 238464,
+      "pixelsEqual": true,
+      "rgbaSha256": "c18df453ab7e0cccf6e6189a0bfda8c7a63f86f5c757ade7cdaa48585cfdf9f2"
+    },
+    {
+      "file": "assets/portraits/saleha.png",
+      "pngBytes": 325157,
+      "webpBytes": 235004,
+      "pixelsEqual": true,
+      "rgbaSha256": "2346691087b2b356c0f360bdea087ad39ee8aa5e1bda91cb41b1477b2edcee43"
+    },
+    {
+      "file": "assets/portraits/hameed.png",
+      "pngBytes": 357059,
+      "webpBytes": 257470,
+      "pixelsEqual": true,
+      "rgbaSha256": "21e1df1476f753ce84800759ea4e890da92e957df4043877b5afdab16e61a0a7"
+    },
+    {
+      "file": "assets/portraits/edris.png",
+      "pngBytes": 265976,
+      "webpBytes": 192316,
+      "pixelsEqual": true,
+      "rgbaSha256": "2f126bf4df6db53eaf2cc9ac8f905123166667ebb9aaa14ced77ade92e417073"
+    }
+  ]
+}

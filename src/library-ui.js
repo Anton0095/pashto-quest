@@ -99,7 +99,6 @@ function createLibraryUI({
           learning.surface(ex.id, "grammar-reference");
           const ps = ui.node("p", ex.ps, "library-pashto");ps.lang="ps";ps.dir="rtl";
           detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
-          ui.sentenceContext(ex, "", detail, "reference");
         } else detail.append(ui.node("p", "A Pashto example becomes available after compatible forms and grammar are unlocked through lessons or challenge activation."));
         root.append(detail);
       }
@@ -381,7 +380,6 @@ function createLibraryUI({
         ps.lang = "ps";
         ps.dir = "rtl";
         detail.append(ps, ui.node("p", ex.roman + " — " + ex.en));
-        ui.sentenceContext(ex, "", detail, "reference");
         detail.dataset.generatedExample = ex.id;
       }
     });
