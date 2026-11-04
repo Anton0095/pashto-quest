@@ -19,6 +19,9 @@ const state={day:8,progress:{}},learning={allowed:()=>true,placeAccessible:()=>t
 console.log('PASS Week1 registry, all seven normal/skip policies, legitimate-pass advancement, identity schedules, Mina timing, Hills reachability and Day8 boundary');
 // A future ordinary day, map and character register entirely as data; shipped cap remains seven.
 const fixture=JSON.parse(readFileSync('docs/rpg/day8-registration.example.json','utf8'));assert.equal(fixture.active,false);
+// Adapt historical example placements to the current village, preserving archived data.
+fixture.days[8].start={...data.days[3].start};
+for(const patch of fixture.npcSchedulePatches)for(const slot of patch.schedule)if(slot.map==='village'){slot.x=66;slot.y=18;}
 const expanded=structuredClone(data);Object.assign(expanded.days,fixture.days);Object.assign(expanded.events,fixture.events);for(const patch of fixture.npcSchedulePatches)expanded.npcs.find(n=>n.id===patch.id).schedule.push(...patch.schedule);
 expanded.maps.orchard={...structuredClone(expanded.maps.hills),name:'Fixture orchard'};expanded.days[8].maps.push('orchard');expanded.npcs.push({id:'guest',characterId:'guest',name:'Guest',sprite:'edris',event:'day8-opening',schedule:[{day:8,map:'orchard',x:4,y:12}]});expanded.days[8].activeNPCs.push('guest');M.validateChapters(expanded);const extended=M.createRPGRegistry(expanded,{});assert.equal(extended.npcs(8,'orchard')[0].characterId,'guest');assert(!policy.configured(8));
 console.log('PASS inactive Day8, new map and new NPC registration without engine or educational changes');

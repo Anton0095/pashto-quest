@@ -15,8 +15,8 @@ for(const width of [375,1280]){
   await p.locator('#rpgInteract').click();await p.keyboard.down('ArrowDown');await p.waitForTimeout(350);await p.keyboard.up('ArrowDown');assert.deepEqual(await pos(),initial);assert(await p.evaluate(()=>__phaserDiagnostics().physicsPaused));
   await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();await p.locator('#rpgDialogue').getByRole('button',{name:'I will meet you at the Library',exact:true}).click();
   async function placeFixture(position){await p.waitForTimeout(300);await p.evaluate(async position=>{const k='pashto-quest-rpg-world-v1',current=localStorage.getItem(k),w=JSON.parse(current);w.position=position;w.view='world';await navigator.locks.request(k,()=>__fixtureFence.commit(k,current,JSON.stringify(w),()=>localStorage.getItem(k),()=>{localStorage.setItem(k,JSON.stringify(w));return true;}));},position);await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser==='4.2.1');}
-  await placeFixture({map:'village',x:50,y:36,facing:'up'});const size=await p.locator('#rpgCanvas').evaluate(c=>({w:c.width,h:c.height}));await p.waitForFunction(({w,h})=>{const c=__phaserDiagnostics().camera;return c.x===832-w&&c.y===608-h;},size);
-  await placeFixture({map:'village',x:31,y:4,facing:'right'});await p.keyboard.press('ArrowRight');await p.waitForTimeout(200);assert.equal((await pos()).x,31,'Phaser tilemap water collision');assert((await p.evaluate(()=>__phaserDiagnostics())).colliders>=2);
+  await placeFixture({map:'village',x:92,y:60,facing:'up'});const size=await p.locator('#rpgCanvas').evaluate(c=>({w:c.width,h:c.height}));await p.waitForFunction(({w,h})=>{const c=__phaserDiagnostics().camera;return c.x===1536-w&&c.y===1024-h;},size);
+  await placeFixture({map:'village',x:60,y:8,facing:'right'});await p.keyboard.press('ArrowRight');await p.waitForTimeout(200);assert.equal((await pos()).x,60,'Phaser tilemap water collision');assert((await p.evaluate(()=>__phaserDiagnostics())).colliders>=2);
   await placeFixture({map:'village',x:24,y:16,facing:'up'});await p.keyboard.press('ArrowUp');await p.keyboard.press('l');await p.locator('#libraryDialog').waitFor({state:'visible'});await p.waitForTimeout(220);assert.deepEqual(await pos(),{map:'village',x:24,y:16},'Opening Library cancels an in-flight entrance step');assert.deepEqual((await p.evaluate(()=>__phaserDiagnostics())).player,{x:24,y:16});await p.locator('#libraryClose').click();await p.waitForTimeout(160);await p.keyboard.press('ArrowUp');await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.map==='library');
   await p.waitForTimeout(160);await p.keyboard.press('ArrowDown');await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.map==='village');
   await p.waitForTimeout(180);const baselineObjects=(await p.evaluate(()=>__phaserDiagnostics())).updateObjects;
@@ -48,7 +48,7 @@ for(const width of [375,1280]){
 
 const layered=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
 layered.maps.village.collision=layered.maps.village.tiles.map(row=>'0'.repeat(row.length));
-layered.maps.village.collision[19]='0'.repeat(22)+'1'+'0'.repeat(29);
+layered.maps.village.collision[19]='0'.repeat(22)+'1'+'0'.repeat(layered.maps.village.tiles[0].length-23);
 const extra=await setup({width:375,rpg:true,bridge:false,transform:h=>h.replace(/const RPG_WORLD_DATA=(\{.*?\});/s,()=> 'const RPG_WORLD_DATA='+JSON.stringify(layered)+';').replace('// @TEST_HOOK','window.__extraDiagnostics=()=>rpg.diagnostics(); // @TEST_HOOK')});
 try{
  const p=extra.page;await p.locator('#startTutorial').click();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser==='4.2.1');

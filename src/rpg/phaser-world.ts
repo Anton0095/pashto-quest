@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import {drawVillageArt} from './village-art';
 import {drawInteriorArt} from './house-art';
 import type {Actor,Appearance,Direction,Position,WorldData} from './types';
 import {createMovementController,canInteract,facingToward} from './movement';
@@ -126,7 +127,8 @@ export class VillageScene extends Phaser.Scene {
     }else this.extraCollision=undefined;
     const art=this.add.graphics().setDepth(1);
     if(p.map==='house'||definition.furniture?.length)drawInteriorArt(this,definition,p.map==='house');
-    for(const b of definition.buildings){
+    if(p.map==='village'&&definition.scenery)drawVillageArt(this,definition);
+    for(const b of (p.map==='village'&&definition.scenery?[]:definition.buildings)){
       const x=b.x*16,y=b.y*16,w=b.w*16,h=b.h*16;
       art.fillStyle(Phaser.Display.Color.HexStringToColor(b.color).color).fillRect(x,y+7,w,h-7);
       art.fillStyle(0xa4875d).fillRect(x-2,y,w+4,13);art.fillStyle(0xd4b582).fillRect(x,y+2,w,3);

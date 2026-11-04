@@ -50,6 +50,8 @@ Current educational components remain HTML/CSS above the paused world. Library, 
 
 ## Map hierarchy, portraits and movement
 
+The starting village now uses a 96×64 Afghan-inspired layout with northwest residential compounds, a northeast lake and dock, a school below the lake, southwest market and three barred future roads. See the [layout, rendering, save recovery and map extension guide](VILLAGE_REDESIGN.md).
+
 The RPG toolbar contains Library and Menu; duplicate header Library is hidden while exploring and remains available during educational overlays. The progress card follows the canvas. Regional notes and reset live inside Menu. Pashto recall prompts precede transliteration, audio and instructions; direct English construction targets remain unchanged to avoid revealing the answer. The shared English-choice formatter changes labels only; original values stay in `data-answer` and all scoring still uses them.
 
 `content/CHARACTER_PORTRAITS.json` maps immutable character IDs to named expressions. The five neutral expressions map to approved lossless WebP crops; future missing expressions use explicit fallback states. `src/character-portraits.js` renders portraits for both the shared educational UI and RPG dialogue; each story message may declare `characterId`/`expression`. Optimised lossless WebP assets under `assets/portraits/` (original screenshots remain under `public/assets/portraits/`; the manifest records crop provenance) are embedded by the builder, loaded by Phaser scene preload and resolved from its texture manager into the shared portrait component, preserving offline play. No backgrounds or screenshots are used as portraits.

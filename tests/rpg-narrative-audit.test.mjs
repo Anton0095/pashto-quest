@@ -32,9 +32,9 @@ for(let day=1;day<=7;day++){
   assert.equal(t.content.NARRATIVE_DATA.expressions.find(p=>p.day===day&&p.active).id,`phrase-day-${day}-opening`);
  }
  if(day===4)assert(cards.some(c=>c.generated.family==='coordinated_present'));
- if(day===5)assert.equal(registry(day).npcs(day,'village').filter(a=>a.x>=30&&a.y<=14).length,4,'All four adults gather at Lake');
+ if(day===5)assert.equal(registry(day).npcs(day,'village').filter(a=>a.x>=62&&a.y>=17&&a.y<=21).length,4,'All four adults gather at Lake');
  if(day===6){assert.equal(registry(day).npcs(day,'hills').length,2);assert(registry(day).npcs(day,'hills').some(n=>n.characterId==='mina'));}
- if(day===7)assert(registry(day).npcs(day,'village').some(n=>n.characterId==='hameed'&&n.x===39&&n.y===27),'Exam host returns to School');
+ if(day===7)assert(registry(day).npcs(day,'village').some(n=>n.characterId==='hameed'&&n.x===70&&n.y===44),'Exam host returns to School');
  const spec=t.progression.getChallengeSpec(day);assert.equal(spec.questionCount,day===7?25:15);assert.equal(spec.passCount,day===7?20:12);
  t.progression.completeChallengeOnce(t.state.progress,day,spec.passCount);assert(t.learning.allowed(day+1));
  const xp=t.state.progress.xp;t.progression.completeChallengeOnce(t.state.progress,day,spec.passCount);assert.equal(t.state.progress.xp,xp,'No duplicate rewards');

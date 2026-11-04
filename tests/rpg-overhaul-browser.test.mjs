@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {setup} from './browser-fixture.mjs';
 import {driver} from './rpg-week1-driver.mjs';
 for(const width of [375,1280]){
- const b=await setup({width,mobile:width===375,rpg:true,bridge:false,offline:true,transform:h=>h.replace('// @TEST_HOOK','window.__portrait=identity=>ui.portrait(identity);window.__diag=()=>rpg.diagnostics();window.__week1Inspect=__diag; // @TEST_HOOK')});
+ const b=await setup({width,mobile:width===375,rpg:true,bridge:false,offline:true,transform:h=>h.replace('// @TEST_HOOK','const create=PashtoRPG.VillageScene.prototype.create;PashtoRPG.VillageScene.prototype.create=function(){create.call(this);window.__pointerScene=this;};window.__portrait=identity=>ui.portrait(identity);window.__diag=()=>rpg.diagnostics();window.__week1Inspect=__diag; // @TEST_HOOK')});
  const p=b.page,d=driver(p);
  async function point(tile){return p.evaluate(tile=>{const c=document.getElementById('rpgCanvas'),r=c.getBoundingClientRect(),camera=__diag().camera;return{x:r.left+(tile.x*16+8-camera.x)*r.width/c.width,y:r.top+(tile.y*16+8-camera.y)*r.height/c.height};},tile);}
  async function select(tile){await p.locator('#rpgCanvas').scrollIntoViewIfNeeded();const at=await point(tile);if(width===375)await p.touchscreen.tap(at.x,at.y);else await p.mouse.click(at.x,at.y);}
@@ -14,6 +14,9 @@ for(const width of [375,1280]){
   assert(await p.evaluate(()=>__portrait('Library').classList.contains('hidden')),'World objects do not request NPC portraits');
   assert(!await p.locator('#navLibrary').isVisible());
   await p.locator('#rpgMenuButton').click();assert(await p.locator('#rpgMenu #dialectGuide').isVisible());await p.getByRole('button',{name:'Resume village',exact:true}).click();
+  // Pin this camera for deterministic rapid pointer coordinates; camera follow is
+  // independently exercised by the Phaser suite at both viewport sizes.
+  await p.evaluate(()=>__pointerScene.cameras.main.stopFollow());
   await select({x:22,y:20});await waitAt({x:22,y:20});
   // A new tap during a tween replans from the committed grid position.
   await select({x:25,y:20});await select({x:21,y:20});await waitAt({x:21,y:20});
@@ -23,6 +26,7 @@ for(const width of [375,1280]){
   await select({x:24,y:20});await p.locator('#rpgLibrary').click();const paused=await d.pos();await p.waitForTimeout(300);assert.deepEqual(await d.pos(),paused);await p.locator('#libraryClose').click();await p.waitForTimeout(300);assert.deepEqual(await d.pos(),paused,'Closing a modal does not restart an old route');
   // Select Jan's tile: path to an adjacent tile and automatically face/talk.
   await select({x:23,y:18});await p.locator('#rpgDialogue').waitFor();assert.equal(await p.locator('#rpgDialogue [data-character-id]').getAttribute('data-character-id'),'muhammad-jan');assert.equal(await p.locator('#rpgDialogue [data-portrait-status]').getAttribute('data-portrait-status'),'available');await p.getByRole('button',{name:'Back to village',exact:true}).click();
+  await p.evaluate(()=>__pointerScene.cameras.main.startFollow(__pointerScene.player,true,1,1));
   await d.tutorial();
   await p.getByText('Quick travel',{exact:true}).click();
   assert.deepEqual(await p.locator('[data-destination]').allTextContents(),['Home','Lake','Market','School']);
