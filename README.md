@@ -6,6 +6,8 @@ An offline, browser-based Pashto learning game set in a village in Laghman, Afgh
 
 ## RPG interface and Week 1
 
+The starting village now uses a 96×64 Afghan-inspired layout with northwest residential compounds, a northeast lake and dock, a school below the lake, southwest market and three barred future roads. See the [layout, rendering, save recovery and map extension guide](docs/rpg/VILLAGE_REDESIGN.md).
+
 The default release uses strict TypeScript and locally bundled Phaser 4.2.1. Click or tap to walk, select an NPC to approach and talk, or use arrows/WASD and the touch directions. The world appears first; Level, title, XP and encountered words sit below it. Menu contains the collapsible Laghman/pronunciation information. Library remains independently accessible.
 
 Quick travel names actual destinations, follows lesson locks and opens the same NPC conversations as walking. Visiting teachers move with the narrative; the Day 6 Nature finale appears as Hills. Days 1–6 retain 15 questions/pass 12; Day 7 retains the 25-question/pass-20 weekly examination. Normal and explicit early-challenge routes use the existing educational, audio, XP and save systems. Week 1 graduation is a milestone linked to `day-8`; the Day 8–14 RPG story registrations remain future work, while their educational backend remains intact.

@@ -1,0 +1,136 @@
+Final component verification record
+
+The initial parallel verify.py --rpg attempt was interrupted after an animation-observation timeout and while adapting the duplicate long-route run to public Quick travel. It is retained separately in verification-attempt.txt; it is not claimed as a passing invocation. The animation observer was made tolerant of dropped headless frames by slowing only its observed tween; all other movement checks retain real speed. Final component results follow.
+
+PASS node tests/rpg-browser.test.mjs (completed in the initial invocation)
+PASS node tests/rpg-concurrent-browser.test.mjs (completed in the initial invocation)
+PASS node tests/save-fence-browser.test.mjs (completed in the initial invocation)
+PASS node tests/rpg-foundation-browser.test.mjs (completed in the initial invocation)
+
+village-model-final.txt
+PASS npm run typecheck
+
+> pashto-quest-rpg@0.1.0 typecheck
+> tsc --noEmit
+
+
+PASS python3 tools/build.py --check
+Offline release synchronized.
+
+PASS node tests/village-redesign.test.mjs
+PASS 96×64 village: districts, every schedule, dock, water/solid collision, entrances, reserved boundaries and schema-1 recovery
+
+PASS node tests/house-sleep-dream.test.mjs
+PASS house reachability/collision across seven chapters, sleep-intent validation, isolated review snapshots/rewards, exact approved tutorial prompts and shared name validation
+
+PASS node tests/rpg-foundation.test.mjs
+PASS foundation chapters, inactive Day2 registration/events, prerequisites, terminal/nonterminal, stable identities, story flags/once-only/resumption, validated cursor and no-op writes
+PASS relocated stable character and rejected-lock retry without a poisoned world queue
+PASS tutorial draft permutation, partial restoration and recorded-response lock validation
+PASS optional default NPC location when no day-specific override exists
+PASS all inactive Day2 NPC lesson links resolve to Day2 curriculum IDs
+
+PASS node tests/rpg-week1.test.mjs
+PASS Week1 registry, all seven normal/skip policies, legitimate-pass advancement, identity schedules, Mina timing, Hills reachability and Day8 boundary
+PASS inactive Day8, new map and new NPC registration without engine or educational changes
+
+PASS node tests/rpg-narrative-audit.test.mjs
+PASS Days2–7 openings, teacher handoffs and relocations, greetings, productive person/number, compounds, Lake gathering, Mina/Hills, School exam, unlocks and once-only rewards
+
+PASS node tests/rpg-movement.test.mjs
+PASS A*, all Week1 actor approaches, collisions, boundaries, line of sight, interruption, latest input, tween gating and locked transitions
+
+PASS node tests/presentation.test.mjs
+PASS English choice capitalization without source mutation, word labels and approved extracted portrait manifest
+
+PASS node tests/rpg-world.test.mjs
+PASS RPG world: map definitions, schema recovery, registry/day boundary, full reachability
+
+PASS node tests/rpg-persistence.test.mjs
+PASS RPG persistence and policy: separate keys, competing writer protection, corrupted coordinates/schema recovery, Day 2 cap, data-driven expansion
+
+
+village-phaser-final.txt
+PASS Phaser 375 real tilemap, Arcade terrain/NPC collision, 4-way movement, camera, transitions, paused HTML overlay and offline bundle
+PASS Phaser touch emulation: 375px, DPR3, pointer capture and dialogue; not physical Safari
+PASS Phaser 1280 real tilemap, Arcade terrain/NPC collision, 4-way movement, camera, transitions, paused HTML overlay and offline bundle
+PASS Phaser optional collision layer blocks walkable terrain without changing tile art
+
+village-overhaul-recheck.txt
+PASS overhaul 375 mouse/touch routing, interrupt, modal pause, NPC approach, shared portraits, map hierarchy, Menu, Quick travel and Pashto prompt
+PASS overhaul 1280 mouse/touch routing, interrupt, modal pause, NPC approach, shared portraits, map hierarchy, Menu, Quick travel and Pashto prompt
+
+village-week1-final.txt
+START normal day 1
+START skip day 1
+PASS public lesson 1 residential
+PASS public lesson 1 nature
+PASS public Week1 skip day 1 XP 310
+START skip day 2
+PASS public lesson 1 business
+PASS public lesson 1 school
+PASS public Week1 normal day 1 XP 720
+START normal day 2
+PASS public lesson 2 business
+PASS public lesson 2 nature
+PASS public Week1 skip day 2 XP 555
+START skip day 3
+PASS public lesson 2 residential
+PASS public Week1 normal day 2 XP 1475
+START normal day 3
+PASS public Week1 skip day 3 XP 800
+START skip day 4
+PASS public lesson 3 residential
+PASS public Week1 skip day 4 XP 1045
+START skip day 5
+PASS public lesson 3 business
+PASS public lesson 3 school
+PASS public Week1 skip day 5 XP 1290
+START skip day 6
+PASS public Week1 normal day 3 XP 2260
+START normal day 4
+PASS public lesson 4 nature
+PASS public lesson 4 business
+PASS public Week1 skip day 6 XP 1600
+START skip day 7
+PASS public lesson 4 school
+PASS public Week1 normal day 4 XP 3025
+START normal day 5
+PASS public lesson 5 residential
+PASS public lesson 5 nature
+PASS public Week1 skip day 7 XP 1900
+PASS public lesson 5 business
+PASS public Week1 normal day 5 XP 3800
+START normal day 6
+PASS public lesson 6 residential
+PASS public lesson 6 business
+PASS public lesson 6 school
+PASS public Week1 normal day 6 XP 4665
+START normal day 7
+PASS public lesson 7 residential
+PASS public lesson 7 nature
+PASS public lesson 7 school
+PASS public Week1 normal day 7 XP 5500
+
+village-new-browser-release.txt
+PASS redesigned village browser 375 dock, water, three road barriers, old-position recovery and unchanged educational bytes
+PASS redesigned village browser 1280 dock, water, three road barriers, old-position recovery and unchanged educational bytes
+
+village-rpg-early-exam-browser-release.txt
+PASS early Day7 exam from visiting Ms Hameed: invitation, 25 questions, exact reload, genuine pass, graduation and reward lock
+
+village-portraits-browser-release.txt
+PASS approved portraits 375 five Phaser-loaded textures, dynamic speakers, original cropped pixels, offline delivery, no smoothing or overflow
+PASS approved portraits 1280 five Phaser-loaded textures, dynamic speakers, original cropped pixels, offline delivery, no smoothing or overflow
+
+village-house-sleep-dream-browser-release.txt
+PASS house/sleep/dream 1280 entrance/exit, keyboard/pointer/touch, collisions, shared Library/profile, blocked sleep, consecutive days, duplicate taps, reload recovery, terminal boundary, isolated full dream and portraits
+PASS house/sleep/dream 375 entrance/exit, keyboard/pointer/touch, collisions, shared Library/profile, blocked sleep, consecutive days, duplicate taps, reload recovery, terminal boundary, isolated full dream and portraits
+
+village-tutorial-profile-browser-release.txt
+PASS tutorial/profile 375 all four cards, post-answer romanisation, exact approved questions/audio control, incorrect/retry, name variant normalization, optional defaults and profile reload
+PASS tutorial/profile 1280 all four cards, post-answer romanisation, exact approved questions/audio control, incorrect/retry, name variant normalization, optional defaults and profile reload
+
+village-rpg-maintenance-browser-release.txt
+PASS maintenance 375 restored story/ending gates, genuine-pass sleep, unchanged rewards and pending-commit disposal
+PASS maintenance 1280 restored story/ending gates, genuine-pass sleep, unchanged rewards and pending-commit disposal
