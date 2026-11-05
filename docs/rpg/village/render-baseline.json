@@ -1,0 +1,303 @@
+{
+  "releaseSha256": "dac948d2a1e9fecc6dd36bc6c6b1996e35f24e56cf05687a29181f0022aeebaf",
+  "releaseBytes": 4609414,
+  "method": "Loopback Chromium, offline release, three world boots per profile; 120 requestAnimationFrame intervals, cached textures and scene objects. Mobile 375px with 4× CPU throttle. Shared-host diagnostic; not GPU timing or physical Safari. No educational state or grading fixture.",
+  "profiles": [
+    {
+      "width": 1280,
+      "cpuThrottle": 1,
+      "browser": "154.0.8037.57",
+      "boot": {
+        "samples": 3,
+        "medianMs": 590,
+        "p95Ms": 595
+      },
+      "frames": {
+        "samples": 120,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 50
+      },
+      "averageFps": 50.707796323684754,
+      "scene": {
+        "objects": 18,
+        "textures": [
+          {
+            "key": "947063f8-2dbe-49d3-8c46-cd0dc40e9420",
+            "width": 256,
+            "height": 256
+          },
+          {
+            "key": "portrait:muhammad-jan:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:edris:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:saleha:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:hameed:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:mina:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "village-tiles",
+            "width": 288,
+            "height": 16
+          },
+          {
+            "key": "elder",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "saleha",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "edris",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "hameed",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "masculine",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "feminine",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "neutral",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "mina",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "d029b751-a79c-4136-911c-4303c0eba07f",
+            "width": 20,
+            "height": 10
+          },
+          {
+            "key": "114cee1a-6e24-445a-abca-a952d5fb5695",
+            "width": 34,
+            "height": 10
+          },
+          {
+            "key": "19c1a74e-a622-4e93-9d51-a062bf39263b",
+            "width": 29,
+            "height": 10
+          },
+          {
+            "key": "63f2a9e2-3a99-4977-9ac7-ecbc658d7f87",
+            "width": 26,
+            "height": 14
+          },
+          {
+            "key": "cc708460-b6d1-46ea-a66f-bde92b103846",
+            "width": 26,
+            "height": 14
+          },
+          {
+            "key": "24e41655-7481-4819-8ee9-f70c684a3f52",
+            "width": 35,
+            "height": 14
+          },
+          {
+            "key": "83889301-8d81-4ca2-bf97-9bb5a5116e7e",
+            "width": 35,
+            "height": 14
+          },
+          {
+            "key": "230f614f-616d-480d-bd55-c8c6fa6d33bd",
+            "width": 40,
+            "height": 14
+          },
+          {
+            "key": "fcffbf73-585b-48fc-8529-11d7bcc68cb4",
+            "width": 40,
+            "height": 14
+          },
+          {
+            "key": "62f9172d-a6be-4522-bc8f-68c3fb823f97",
+            "width": 7,
+            "height": 13
+          }
+        ],
+        "estimatedTextureRgbaBytes": 5737108
+      },
+      "errors": []
+    },
+    {
+      "width": 375,
+      "cpuThrottle": 4,
+      "browser": "154.0.8037.57",
+      "boot": {
+        "samples": 3,
+        "medianMs": 1002,
+        "p95Ms": 1154
+      },
+      "frames": {
+        "samples": 120,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 16.799999999999272
+      },
+      "averageFps": 57.603686635944705,
+      "scene": {
+        "objects": 18,
+        "textures": [
+          {
+            "key": "8fa9a11b-a621-4783-8309-5598d9ad0ac9",
+            "width": 256,
+            "height": 256
+          },
+          {
+            "key": "portrait:muhammad-jan:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:edris:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:saleha:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:hameed:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "portrait:mina:neutral",
+            "width": 480,
+            "height": 560
+          },
+          {
+            "key": "village-tiles",
+            "width": 288,
+            "height": 16
+          },
+          {
+            "key": "elder",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "saleha",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "edris",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "hameed",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "masculine",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "feminine",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "neutral",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "mina",
+            "width": 32,
+            "height": 64
+          },
+          {
+            "key": "d39bbcb0-7e08-4c18-8f69-eb2ebc9d07a7",
+            "width": 20,
+            "height": 10
+          },
+          {
+            "key": "1db78b60-062f-42f9-b272-8428ae36a95c",
+            "width": 34,
+            "height": 10
+          },
+          {
+            "key": "547cfff9-2520-4f7d-a706-c9569a4aa2bb",
+            "width": 29,
+            "height": 10
+          },
+          {
+            "key": "c06d0c81-1dc3-4c67-be75-ac491524fb4c",
+            "width": 26,
+            "height": 14
+          },
+          {
+            "key": "7700ded7-499b-4671-9347-346b931f1db7",
+            "width": 26,
+            "height": 14
+          },
+          {
+            "key": "a180e947-3ee3-4427-9d47-d3b8ccf709c3",
+            "width": 35,
+            "height": 14
+          },
+          {
+            "key": "debfa229-bdf5-4f8d-aecb-85f1afb27b2f",
+            "width": 35,
+            "height": 14
+          },
+          {
+            "key": "6ab5f6ed-c595-473a-ad71-042ed9fe0e7f",
+            "width": 40,
+            "height": 14
+          },
+          {
+            "key": "cf99ad55-7f46-481e-965e-441906da89a9",
+            "width": 40,
+            "height": 14
+          },
+          {
+            "key": "0e9d6c09-c8c3-4a44-a6dc-4549c3dacde0",
+            "width": 7,
+            "height": 13
+          }
+        ],
+        "estimatedTextureRgbaBytes": 5737108
+      },
+      "errors": []
+    }
+  ]
+}

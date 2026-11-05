@@ -12,6 +12,7 @@ This is the current architecture after the merged Week 1, movement and house/sle
 | `ui.ts` | Selected RPG chapter, educational adapters, serialized chapter transfer, contextual dialogs, keyboard/touch lifecycle and completion/history UI |
 | `layout.ts` | DOM placement of existing screens, persistent HUD and contextual panel; observed panel bounds for dialogs and canvas sizing |
 | `phaser-world.ts` | Sole live world engine: tilemaps, collisions, bodies, sensors, movement/tweens/animation, camera, procedural textures and resource cleanup |
+| `village-art.ts` | Cached ground, adobe buildings, shoreline and environmental artwork; registry geometry and ground-footpoint depth; no movement or educational state |
 | `movement.ts` | A* paths, clear NPC interaction lines, automatic/manual instruction arbitration over the Phaser stepper |
 | `world-data.ts` | Static content validation, walkability for spawn/reachability and invalid-position recovery; no parallel movement engine |
 | `progression.ts` | Registered profile cap (Days 1–7); wraps existing educational eligibility, never recalculates rewards |
@@ -52,6 +53,8 @@ A chapter transfer is serialized: persist the completed chapter, write the targe
 Current educational components remain the same HTML/CSS nodes in the contextual panel beside the paused world (stacked below it on narrow screens). Library, optional audio fallback, RTL/LTR tiles, focus and touch cancellation are retained. Native Quick travel remains available after Canvas failure. Disposal aborts scoped global listeners, removes dialogs, restores service wrappers and destroys Phaser resources. The existing scene/map lifecycle tests remain intact.
 
 ## Map hierarchy, portraits and movement
+
+The starting village now uses a 96×64 Afghan-inspired layout with northwest residential compounds, a northeast lake and dock, a school below the lake, southwest market and three barred future roads. See the [layout, rendering, save recovery and map extension guide](VILLAGE_REDESIGN.md).
 
 The RPG toolbar, day/title and progress card persist in the sidebar. Library and Menu use native dialogs bounded to the contextual area, with transparent backdrops so the world stays visible. The duplicate global header is hidden during gameplay; the existing return-to-world control moves into the sidebar toolbar. Regional notes and reset live inside Menu. Pashto recall prompts precede transliteration, audio and instructions; direct English construction targets remain unchanged to avoid revealing the answer. The shared English-choice formatter changes labels only; original values stay in `data-answer` and all scoring still uses them.
 
