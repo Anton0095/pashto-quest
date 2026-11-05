@@ -4,6 +4,10 @@
 
 An offline, browser-based Pashto learning game set in a village in Laghman, Afghanistan. Four teaching districts (Home, Lake, Market and School), a reference Library and a recurring cast support a Days 1–14 curriculum and educational engine. The playable RPG currently covers Days 1–7; Days 8–14 require additional narrative, map and event registration. Base entries and registered phrases are user-approved; grammar and inflected forms remain drafts, without independent native certification.
 
+## Approved character expansion (pending implementation)
+
+The next character update renames **Saleha → Deena** (light brown hair, blue eyes) and **Mina → Medina**, and introduces **Bilal** (young lakeside fisherman investigating a mysterious catch), **Zamir** (market stall owner who patrols his stalls), and village children **Nayab, Sara, Omar, Afiya and Sanaa**. These are approved **design targets**, not claims that the existing `main` game already includes them. The implementation and acceptance specification is [Character expansion](docs/rpg/CHARACTER_EXPANSION.md). Current runtime IDs, events and assets still use the previous names until the implementation branch is merged.
+
 ## RPG interface and Week 1
 
 The starting village now uses a 96×64 Afghan-inspired layout with northwest residential compounds, a northeast lake and dock, a school below the lake, southwest market and three barred future roads. See the [layout, rendering, save recovery and map extension guide](docs/rpg/VILLAGE_REDESIGN.md).
