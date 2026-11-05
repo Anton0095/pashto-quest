@@ -4,6 +4,8 @@
 
 Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CURRICULUM.md` for lessons/characters/vocabulary, `LANGUAGE_REVIEW.md` for Pashto/audio, and `tests/README.md` for verification **only when relevant**. `docs/reference/` contains historical editorial plans, not active instructions. Inspect current source to establish implemented behaviour; a discrepancy does not automatically redefine the product goal. See the [documentation roles](README.md#documentation-roles-and-precedence).
 
+**Pending approved character design:** Read [the character expansion specification](docs/rpg/CHARACTER_EXPANSION.md) when touching NPCs, narrative, portraits or village movement. New visible names are Deena (formerly Saleha) and Medina (formerly Mina); Bilal, Zamir and five children are additions, not yet implemented on main. Do not change runtime/source just to make documentation appear shipped. Preserve historical audit wording.
+
 ## Single sources of authority
 
 - Edit `src/` and playable `content/*.json`, never generated `index.html` directly. Regenerate with `python3 tools/build.py`.
