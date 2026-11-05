@@ -1527,3 +1527,74 @@ body:has(#worldScreen:not(.hidden)) #libraryDialog nav button {padding:8px;font-
   body.rpg-overlay-active #lessonScreen,body.rpg-overlay-active #resultScreen {padding:8px;}
   body.rpg-overlay-active .lesson-title h2 {font-size:17px;}
 }
+
+/* Learning occupies the viewport; the original Phaser scene stays mounted. */
+.rpg-learning-header {display:none;}
+body.rpg-overlay-active .app {padding:8px;overflow:hidden;}
+body.rpg-overlay-active #worldScreen.rpg-world {display:flex;flex-direction:column;gap:6px;}
+body.rpg-overlay-active .rpg-world-pane,body.rpg-overlay-active .rpg-persistent {display:none;}
+body.rpg-overlay-active .rpg-sidebar {flex:1;min-height:0;}
+body.rpg-overlay-active .rpg-learning-header {display:flex;align-items:center;gap:16px;min-height:40px;flex:none;padding:0 12px;}
+.rpg-learning-header strong {color:var(--gold);font-size:14px;white-space:nowrap;}
+.rpg-learning-header span {font-size:12px;color:var(--muted);}
+.rpg-learning-header button {margin-left:auto;padding:8px 12px;min-height:40px;}
+body.rpg-overlay-active #lessonScreen {max-width:1360px;margin:auto;padding:12px 20px;}
+body.rpg-overlay-active #resultScreen {max-width:1100px;margin:auto;}
+body.rpg-overlay-active .lesson-title h2 {font-size:22px;}
+body.rpg-overlay-active .lesson-title .icon {font-size:24px;}
+body.rpg-overlay-active #questionBody {display:grid;grid-template-columns:minmax(240px,.85fr) minmax(0,1.15fr);gap:20px;align-items:center;}
+body.rpg-overlay-active .quizword {grid-column:1;grid-row:1;}
+body.rpg-overlay-active #choices,body.rpg-overlay-active #constructionPanel {grid-column:2;grid-row:1;}
+body.rpg-overlay-active #choices {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+body.rpg-overlay-active #choices form {grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;}
+body.rpg-overlay-active #choices input {width:100%;min-height:44px;}
+body.rpg-overlay-active #quizPanel > .feedback {height:210px;min-height:210px;flex-direction:row;align-items:flex-end;border-top:1px solid var(--edge);padding-top:10px;}
+body.rpg-overlay-active #quizFeedback {flex:1;max-height:195px;min-width:0;}
+body.rpg-overlay-active #quizNext {align-self:flex-end;}
+body.rpg-overlay-active .pashto {font-size:clamp(34px,4.8vh,52px);}
+body.rpg-overlay-active .english-question {font-size:clamp(24px,3.5vh,34px);}
+body.rpg-overlay-active #teachPanel {flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto minmax(0,1fr) auto;gap:10px 22px;}
+body.rpg-overlay-active #lessonStages {grid-column:1/-1;}
+body.rpg-overlay-active .teach-card {grid-column:1;grid-row:2;align-self:center;}
+body.rpg-overlay-active #tutorialInteraction {grid-column:2;grid-row:2;align-self:center;max-height:100%;overflow:auto;margin:0;padding:12px;}
+body.rpg-overlay-active #teachPanel:not(:has(#tutorialInteraction:not(.hidden))) .teach-card {grid-column:1/-1;justify-self:center;width:min(100%,900px);}
+body.rpg-overlay-active .teach-actions {grid-column:1/-1;grid-row:3;position:static;justify-content:flex-end;}
+body.rpg-overlay-active #grammarPanel {flex:1;}
+body.rpg-overlay-active .grammar-area {max-width:1100px;margin:auto;padding:12px;}
+body.rpg-overlay-active .grammar-area p {margin:6px 0;}
+body.rpg-overlay-active .grammar-area h4 {margin:10px 0 4px;}
+body.rpg-overlay-active .grammar-area .buttons {position:sticky;bottom:0;background:var(--p);padding:8px 0;}
+/* Library reference remains contextual; entering voluntary practice expands it. */
+body:has(.rpg-world):has(#libraryDialog[open][data-practice="true"]) #worldScreen {visibility:hidden;}
+body:has(#worldScreen) #libraryDialog[open][data-practice="true"] {inset:8px;width:calc(100% - 16px);height:calc(100vh - 16px);height:calc(100dvh - 16px);max-height:none;display:flex;flex-direction:column;overflow:hidden;visibility:visible;}
+body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryBody {min-height:0;overflow:auto;overscroll-behavior:contain;}
+body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryClose {position:absolute;top:12px;right:12px;}
+body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryTitle {font-size:20px;margin:0 150px 8px 0;}
+body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryBody > article {max-width:1100px;margin:12px auto;}
+@media(max-width:800px){
+  body.rpg-overlay-active #lessonScreen {padding:10px;}
+  body.rpg-overlay-active .rpg-learning-header {padding:0 4px;gap:8px;flex-wrap:wrap;}
+  .rpg-learning-header span {font-size:10px;flex:1;}
+  body.rpg-overlay-active .lesson-title h2 {font-size:19px;}
+  body.rpg-overlay-active #questionBody {display:flex;flex-direction:column;align-items:stretch;gap:6px;}
+  body.rpg-overlay-active #choices {gap:6px;}
+  body.rpg-overlay-active #quizPanel > .feedback {height:180px;min-height:180px;flex-direction:column;align-items:stretch;}
+  body.rpg-overlay-active #quizFeedback {max-height:120px;flex:1;min-height:0;}
+  body.rpg-overlay-active #teachPanel {display:flex;flex-direction:column;gap:8px;}
+  body.rpg-overlay-active .teach-card {align-self:stretch;}
+  body.rpg-overlay-active .teach-actions {position:sticky;bottom:0;flex:none;}
+  body.rpg-overlay-active .pashto {font-size:34px;}
+  body.rpg-overlay-active .meaning {font-size:21px;}
+  body.rpg-overlay-active #tutorialInteraction {flex-shrink:0;max-height:none;}
+}
+@media(min-width:801px){
+  body.rpg-overlay-active .lesson-title > div {display:flex;align-items:center;flex-wrap:wrap;gap:0 14px;}
+  body.rpg-overlay-active .lesson-title .question-context {flex-basis:100%;}
+}
+
+body.rpg-overlay-active:has(#dreamExit) #navWorld {display:none;}
+@media(max-height:600px){
+  body.rpg-overlay-active #quizPanel > .feedback {height:clamp(100px,22vh,180px);min-height:clamp(100px,22vh,180px);}
+  body.rpg-overlay-active #quizFeedback {max-height:calc(clamp(100px,22vh,180px) - 60px);}
+}
+body.rpg-overlay-active:has(#worldScreen:not(.hidden)) :is(#rpgDialogue,#rpgMenu,#dreamMenu) {max-width:720px;left:max(var(--rpg-context-left),calc((100vw - 720px)/2));}

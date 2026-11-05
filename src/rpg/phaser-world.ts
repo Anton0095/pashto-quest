@@ -235,10 +235,12 @@ export function createPhaserWorld(options:WorldOptions):{step:(dir:Direction)=>b
   let destroyed=false;
   const resize=()=>{
     if(!game.scale.canvas||destroyed)return;
+    const parent=options.canvas.parentElement;
+    if(!parent?.clientWidth||!parent.clientHeight)return; // Keep the mounted scene sized while learning hides it.
     const small=window.innerWidth<600,width=small?256:512,height=small?192:320;
     if(game.scale.width!==width||game.scale.height!==height){game.scale.resize(width,height);scene.resizeCamera();}
-    const parent=options.canvas.parentElement;
-    if(parent){const ratio=width/height,size=Math.max(1,Math.min(parent.clientWidth,parent.clientHeight*ratio));options.canvas.style.width=size+'px';options.canvas.style.height=size/ratio+'px';}
+    const ratio=width/height,size=Math.max(1,Math.min(parent.clientWidth,parent.clientHeight*ratio));
+    options.canvas.style.width=size+'px';options.canvas.style.height=size/ratio+'px';
   };
   game.events.once(Phaser.Core.Events.READY,resize);
   return {step:dir=>scene.manual(dir),cancelRoute:()=>scene.cancelRoute(),relocate:()=>scene.relocate(),nearby:()=>scene.nearby(),sync:()=>scene.sync(),resize,destroy:()=>{destroyed=true;game.events.off(Phaser.Core.Events.READY,resize);game.destroy(false);},scene,game};

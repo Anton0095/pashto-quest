@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {mkdirSync} from 'node:fs';
 import {setup} from './browser-fixture.mjs';
-mkdirSync('docs/rpg/two-column',{recursive:true});
+const captures='docs/rpg/fullscreen-learning';mkdirSync(captures,{recursive:true});
 for(const [width,height] of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,844]]){
  const b=await setup({width,rpg:true,mobile:width===390,transform:h=>h.replace('// @TEST_HOOK','window.__layoutDiagnostics=()=>rpg.diagnostics(); // @TEST_HOOK')});const p=b.page;
  try{
@@ -16,9 +16,10 @@ for(const [width,height] of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,8
   assert((await p.evaluate(()=>__layoutDiagnostics().camera)).y>camera.y,'Camera follows movement');
   async function clickTile(x,y){const point=await p.locator('#rpgCanvas').evaluate((c,{x,y})=>{const b=c.getBoundingClientRect(),camera=__layoutDiagnostics().camera;return {x:b.x+(x*16+8-camera.x)*b.width/c.width,y:b.y+(y*16+8-camera.y)*b.height/c.height};},{x,y});if(width===390)await p.touchscreen.tap(point.x,point.y);else await p.mouse.click(point.x,point.y);}
   await clickTile(initial.x,initial.y);await p.waitForFunction(({x,y})=>{const c=document.querySelector('#rpgCanvas');return +c.dataset.x===x&&+c.dataset.y===y;},initial);
+  await p.screenshot({path:`${captures}/exploration-${width}.png`});
   await p.locator('#rpgInteract').click();await bounded('#rpgDialogue');assert(await p.locator('#rpgDialogue .portrait').count()||await p.locator('#rpgDialogue .rpg-dialogue-portrait').isVisible());
   assert.deepEqual(await p.locator('#rpgCanvas').boundingBox(),world,'Dialogue leaves the world in place');
-  await p.screenshot({path:`docs/rpg/two-column/dialogue-${width}.png`});
+  await p.screenshot({path:`${captures}/dialogue-${width}.png`});
   await p.keyboard.press('ArrowDown');await p.waitForTimeout(180);assert.deepEqual(await pos(),initial,'Modal interaction pauses world movement');await p.keyboard.press('Escape');
   await p.locator('#rpgMenuButton').click();await bounded('#rpgMenu');await p.locator('#rpgMenu').getByRole('button',{name:'Resume village',exact:true}).click();
   await p.locator('#rpgLibrary').click();await bounded('#libraryDialog');await p.locator('#libraryClose').click();assert(await p.locator('#rpgLibrary').evaluate(e=>e===document.activeElement),'Library restores focus');

@@ -12,7 +12,7 @@ Existing frozen challenge attempts keep their original questions, scores and dra
 
 Each chapter's `guidance` declares its introductory lesson, destination, character and before/after/pass text. Muhammad Jan's existing interaction receives the current guidance without losing its normal lesson actions, including Day 4. Available remaining destinations resolve through live NPC schedules and event eligibility, so visiting teachers are named at their actual location. Missing guidance uses remaining activities or a home/sleep fallback. Guidance does not grade answers or write a separate progression store.
 
-The [two-column interface follow-up](TWO_COLUMN_INTERFACE.md) now places these same learning panels beside the world (stacked on narrow screens). It adds a persistent HUD, contextual native dialogs and container-aware Phaser sizing. The screenshots and checks below record the original six-fix checkpoint; the linked follow-up records the latest layout validation.
+The [two-column interface follow-up](TWO_COLUMN_INTERFACE.md) now places these same learning panels beside the world (stacked on narrow screens). It adds a persistent exploration HUD, contextual native dialogs and container-aware Phaser sizing. The subsequent [Learning Mode follow-up](FULLSCREEN_LEARNING.md) expands learning to the viewport while hiding the mounted world. The screenshots and checks below record the original six-fix checkpoint; the linked follow-up records the latest layout validation.
 
 ## Original six-fix validation
 

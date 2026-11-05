@@ -33,7 +33,7 @@ commands += [['python3','tests/approved-language.test.py'],['node','tests/practi
 commands += [['node','--check',str(path.relative_to(ROOT))] for directory,pattern in [('src','*.js'),('tools','*.mjs'),('tests','*.mjs')] for path in sorted((ROOT/directory).glob(pattern))]
 if args.rpg:
     commands=[['npm','run','typecheck'],['python3','tools/build.py','--check']]
-    commands += [['node','tests/'+name+'.test.mjs'] for name in ['village-redesign','house-sleep-dream','rpg-foundation','rpg-week1','rpg-narrative-audit','rpg-movement','presentation','rpg-world','rpg-persistence']]
+    commands += [['node','tests/'+name+'.test.mjs'] for name in ['village-redesign','daily-flow','house-sleep-dream','rpg-foundation','rpg-week1','rpg-narrative-audit','rpg-movement','presentation','rpg-world','rpg-persistence']]
     commands += [['node','--check',str(path.relative_to(ROOT))] for directory,pattern in [('src','*.js'),('tools','*.mjs'),('tests','*.mjs')] for path in sorted((ROOT/directory).glob(pattern))]
 passed=True
 for command in commands:passed=run(command) and passed
@@ -42,9 +42,9 @@ compiled=subprocess.run(['node','--check'],input=script,text=True,capture_output
 passed=compiled.returncode==0 and passed
 print('PASS compiled release syntax' if compiled.returncode==0 else compiled.stderr)
 if not args.quick:
-    browsers=[['node','tests/'+name+'.test.mjs'] for name in ['assessment-randomness-browser','location-assessment-browser','construction-completion-browser','practical-assessment-browser','choice-quality-browser','approved-flow-browser','concurrent-save-browser','audit-teaching-browser','audit-tabs','narrative-feedback','p1-browser','cleanup-browser','generated-learning','resume-behaviour','challenge-disclosure','independent-browser','full-curriculum','rpg-browser','phaser-browser','rpg-concurrent-browser','save-fence-browser','rpg-foundation-browser','rpg-week1-browser','rpg-overhaul-browser','rpg-early-exam-browser','portraits-browser','house-sleep-dream-browser','tutorial-profile-browser','rpg-maintenance-browser','daily-flow-browser','daily-lesson-browser','two-column-browser','village-redesign-browser']]
+    browsers=[['node','tests/'+name+'.test.mjs'] for name in ['assessment-randomness-browser','location-assessment-browser','construction-completion-browser','practical-assessment-browser','choice-quality-browser','approved-flow-browser','concurrent-save-browser','audit-teaching-browser','audit-tabs','narrative-feedback','p1-browser','cleanup-browser','generated-learning','resume-behaviour','challenge-disclosure','independent-browser','full-curriculum','rpg-browser','phaser-browser','rpg-concurrent-browser','save-fence-browser','rpg-foundation-browser','rpg-week1-browser','rpg-overhaul-browser','rpg-early-exam-browser','portraits-browser','house-sleep-dream-browser','tutorial-profile-browser','rpg-maintenance-browser','daily-flow-browser','daily-lesson-browser','two-column-browser','fullscreen-learning-browser','village-redesign-browser']]
     if args.rpg:
-        browsers=[command for command in browsers if Path(command[1]).stem.removesuffix('.test').startswith(('rpg-','phaser-','save-fence-','portraits-','house-sleep-','tutorial-profile-','village-redesign-','daily-flow-','daily-lesson-','two-column-'))]
+        browsers=[command for command in browsers if Path(command[1]).stem.removesuffix('.test').startswith(('rpg-','phaser-','save-fence-','portraits-','house-sleep-','tutorial-profile-','village-redesign-','daily-flow-','daily-lesson-','two-column-','fullscreen-learning-'))]
     with ThreadPoolExecutor(max_workers=2) as executor:
         passed=all(list(executor.map(run,browsers))) and passed
     if passed and not args.rpg:

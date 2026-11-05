@@ -46,12 +46,12 @@ for(const width of [1280,375]){
   await p.locator('#libraryClose').click();assert.deepEqual(await d.pos(),shelf);await d.durable();await p.reload();await p.locator('#rpgCanvas[data-map=house]').waitFor();
   assert.deepEqual(await d.pos(),shelf);assert.equal((await d.progress()).playerProfile.name,'Laghman learner');assert.equal((await d.progress()).playerProfile.gender,'female');
   // Pixel-art screenshots of the actual playable scene, not design mockups.
-  await d.pathTo({map:'house',x:12,y:15},1);mkdirSync('docs/rpg/house',{recursive:true});await p.screenshot({path:`docs/rpg/house/interior-${width}.png`,fullPage:true});
+  await d.pathTo({map:'house',x:12,y:15},1);mkdirSync('work/rpg-house',{recursive:true});await p.screenshot({path:`work/rpg-house/interior-${width}.png`,fullPage:true});
   await fixture({passed:1});await p.evaluate(()=>__test.challenge.startChallenge(1));await p.locator('#quizPanel').waitFor();await p.locator('#navWorld').click();
   await bed('Sleep — Begin the next day');assert((await p.locator('#rpgDialogue').innerText()).includes('paused challenge'));await closeDialog();assert((await activeDay()).includes('DAY 1 /'));assert((await d.progress()).activeChallenge);
   await fixture({passed:1});const beforeSleep=await d.progress();assert((await activeDay()).includes('DAY 1 /'),'A recorded pass does not auto-advance');
   await bed('Dream — Review previous lessons');await p.locator('#dreamMenu').waitFor();assert.deepEqual(await p.locator('[data-dream-day]').evaluateAll(bs=>bs.map(b=>b.dataset.dreamDay)),['1']);
-  await p.locator('[data-dream-day="1"]').click();await p.locator('[data-dream-lesson="1-residential"]').click();await p.locator('#lessonScreen').waitFor();assert((await p.locator('#lessonEyebrow').innerText()).includes('DREAM'));
+  await p.locator('[data-dream-day="1"]').click();await p.locator('[data-dream-lesson="1-residential"]').click();await p.locator('#lessonScreen').waitFor();assert((await p.locator('#lessonEyebrow').innerText()).includes('DREAM'));assert((await p.locator('#rpgLearningHeader').innerText()).includes('DREAM · DAY 1'));assert.equal(await p.locator('#rpgCanvas').isVisible(),false);
   const campaign=await p.evaluate(k=>localStorage.getItem(k),EDU),dayBefore=await activeDay(),worldBefore=await p.evaluate(k=>localStorage.getItem(k),WORLD);
   let count=0,constructed=0;
   while(await p.locator('#lessonScreen').isVisible()){
@@ -98,6 +98,7 @@ for(const width of [1280,375]){
   await p.locator('#navWorld').click();await fixture({day:7,passed:7});
   // Reusable participant roles render one/two portraits dynamically, without redundant cards.
   await p.evaluate(()=>{__test.lessons.begin('1-residential');__ui.setConversation({instructorId:'Muhammad Jan',speakerId:'Saleha',partnerId:'Saleha'});});
+  await p.locator('#lessonScreen .question-context > summary').click();
   assert.equal(await p.locator('#speakerIcon [data-character-id]').getAttribute('data-character-id'),'muhammad-jan');assert.equal(await p.locator('#participants [data-character-id]').getAttribute('data-character-id'),'saleha');assert((await p.locator('#participants').innerText()).includes('speaking'));
   await p.evaluate(()=>__ui.setConversation({instructorId:'Muhammad Jan',speakerId:'Muhammad Jan',partnerId:'Muhammad Jan'}));assert.equal(await p.locator('#participants [data-character-id]').count(),0);assert(!await p.locator('#addressTarget').isVisible());
   assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2));assert.deepEqual(b.errors,[]);

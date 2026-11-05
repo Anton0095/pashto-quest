@@ -33,7 +33,7 @@ for(const width of [375,1280]) {
    }
    const end=await pos();if(!map.transitions.some(t=>t.x===x&&t.y===y))assert.deepEqual([end.x,end.y],[x,y]);
   }
-  async function talk(label){await p.locator('#rpgInteract').click();await p.locator('#rpgDialogue').getByRole('button',{name:label,exact:true}).click();}
+  async function talk(label){await p.locator('#rpgInteract').click();while(await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).count())await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();await p.locator('#rpgDialogue').getByRole('button',{name:label,exact:true}).click();}
   async function tutorial(){
    await p.locator('#startTutorial').click();
    const start=await pos();await p.locator('[data-direction=down]').click();await p.waitForFunction(y=>+document.getElementById('rpgCanvas').dataset.y===y,start.y+1);await p.locator('[data-direction=up]').click();await p.waitForFunction(y=>+document.getElementById('rpgCanvas').dataset.y===y,start.y);assert.deepEqual(await pos(),start);
@@ -106,8 +106,8 @@ for(const width of [375,1280]) {
   await walk(10,11);await talk('Day 1 challenge · 15 questions');await assessment({reload:true});assert((await progress()).challenges[1].passed);
   assert.equal(await p.locator('#resultHeading').innerText(),'Chapter complete');assert((await p.locator('#resultDescription').innerText()).includes('You have successfully completed Day 1.'));
   const completedXP=(await progress()).xp;await durable();await p.reload();assert.equal(await p.locator('#resultHeading').innerText(),'Chapter complete');assert.equal((await progress()).xp,completedXP,'Reload does not repeat awards');
-  mkdirSync('docs/rpg/screenshots',{recursive:true});await p.screenshot({path:`docs/rpg/screenshots/completion-${width}.png`,fullPage:true});
-  await p.locator('#resultWorld').click();await p.screenshot({path:`docs/rpg/screenshots/village-${width}.png`,fullPage:true});
+  mkdirSync('work/rpg-browser',{recursive:true});await p.screenshot({path:`work/rpg-browser/completion-${width}.png`,fullPage:true});
+  await p.locator('#resultWorld').click();await p.screenshot({path:`work/rpg-browser/village-${width}.png`,fullPage:true});
   // No chapter navigation or future-day restoration is exposed.
   assert.equal(await p.locator('#chapterButtons').count(),0);assert.equal((await progress()).challenges[2],undefined);
   p.once('dialog',d=>d.accept());await p.locator('#rpgMenuButton').click();await p.locator('#resetProgress').click();tutorialDone=false;await tutorial();

@@ -1,8 +1,8 @@
-# Two-column RPG interface
+# Two-column RPG exploration interface
 
 The RPG uses a CSS Grid world/sidebar layout above 1000 CSS pixels. The world receives approximately 65% of the width; the sidebar receives approximately 35%, with a 390px minimum for readable activities. At 1000px and below, the world sits above the sidebar. This breakpoint leaves room for the map plus a usable learning panel, rather than two narrow columns.
 
-The sidebar keeps day/title, Level, XP, word encounters, Library and Menu visible. Its contextual area hosts exploration controls/Quick travel, the existing lesson and result elements, and native dialogue/Library/Menu/dream dialogs. Learning keeps the world in place and pauses movement through the existing activity rules. Native dialogs retain modal focus, Escape and existing focus restoration while their transparent backdrops keep the map visible. The same behavior applies when the layout is stacked.
+The sidebar keeps day/title, Level, XP, word encounters, Library and Menu visible. Its contextual area hosts exploration controls/Quick travel and native dialogue/Library/Menu/dream dialogs. The later [Learning Mode follow-up](FULLSCREEN_LEARNING.md) expands the existing lesson/result elements to the viewport and hides the mounted world; voluntary Library practice also expands. Native dialogs retain modal focus, Escape and existing focus restoration while their transparent backdrops keep the map visible. The same behavior applies when the layout is stacked.
 
 `src/rpg/layout.ts` owns DOM placement and observes container dimensions, without storing gameplay state. It moves the existing learning/result nodes and return-to-world control rather than duplicating them. Supporting teacher/listener, scene and audio notes remain available in the existing expandable lesson details. `src/rpg/ui.ts` owns the normal activity lifecycle. `src/app.css` owns the grid, bounded contextual panels, readable Pashto, internal overflow and feedback/Next footer. Long feedback scrolls internally; the success-only sentence-audio control appears near the top so it remains accessible. Study continuation uses an internal sticky footer.
 
@@ -10,7 +10,9 @@ The sidebar keeps day/title, Level, XP, word encounters, Library and Menu visibl
 
 The educational engine, translations, challenge ordering, yellow meaning controls, daily spawn/guidance rules, save formats and reward identities are unchanged by this layout follow-up. Ordinary resumption still retains position. Existing frozen challenges retain their exact questions.
 
-## Focused validation
+## Original two-column checkpoint validation
+
+The captures and results below describe commit `0ff951b`, before the village synchronization and full-screen Learning Mode follow-up. They retain their original scope; current evidence is in the linked follow-up.
 
 | Viewport | Behavior | Captures |
 |---|---|---|

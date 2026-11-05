@@ -162,6 +162,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(name==='resultScreen'){ui.$('resultXPLabel').textContent='XP gained';ui.$('resultKnowledgeLabel').textContent='Items practised';ui.$('resultScreen').querySelector<HTMLElement>('.eyebrow')!.textContent='LESSON FINISHED';}
     if(state.reviewCampaign){ui.$('lessonEyebrow').textContent='DREAM · DAY '+dreamDay+' · NO CAMPAIGN XP';ui.$('resultWorld').textContent='Return to house';}
     currentView=name==='worldScreen'?'world':name==='lessonScreen'?'lesson':name==='resultScreen'?'result':'intro';
+    text(day,state.reviewCampaign?'DREAM · DAY '+dreamDay:'DAY '+current()+' / '+chapter().name.toUpperCase());
     oldView(name);ui.$('navLibrary').classList.toggle('hidden',name==='worldScreen'||name==='introScreen');
     const overlay=name==='lessonScreen'||name==='resultScreen';document.body.classList.toggle('rpg-overlay-active',overlay);if(overlay)root.classList.remove('hidden');
     layout.resize();
@@ -325,7 +326,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
       dreamMenu.close();if(!await persist())return;
       state.reviewCampaign=state.progress;state.progress=JSON.parse(JSON.stringify(state.progress));state.progress.reviewOnly=true;dreamDay=day;
       lessons.begin(id);
-      const exit=ui.button('Exit dream — Return to house',()=>startWorld());exit.id='dreamExit';ui.$('lessonScreen').prepend(exit);
+      const exit=ui.button('Exit dream — Return to house',()=>startWorld());exit.id='dreamExit';ui.$('rpgLearningHeader').append(exit);
     }finally{reviewLaunching=false;}
   }
   async function enterChapter(day:number){

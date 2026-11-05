@@ -21,11 +21,16 @@ function createLibraryUI({
   function closeLibrary() {
     ui.$("libraryDialog").close();
   }
+  function libraryPracticeMode(active) {
+    ui.$("libraryDialog").dataset.practice = String(active);
+    ui.$("libraryTitle").textContent = active ? `Pashto Quest · Day ${state.day} · Library practice` : "📚 Village Library";
+  }
   function renderLibrary(tab) {
     audio.stopAudio();
     const root = ui.$("libraryBody");
     root.replaceChildren();
     ui.$("libraryDialog").dataset.tab = tab;
+    libraryPracticeMode(["sentences", "phrases"].includes(tab));
     for (const b of document.querySelectorAll("[data-library-tab]"))
       b.setAttribute("aria-pressed", String(b.dataset.libraryTab === tab));
     if(tab==='profile'){
@@ -403,6 +408,7 @@ function createLibraryUI({
     const r = state.progress.library.acquired[e.lemmaId],
       form = e.forms.find((f) => r.encounteredFormIds.includes(f.formId));
     if (!form) return;
+    libraryPracticeMode(true);
     const exercise = ui.node("div");
     exercise.append(ui.node("p", "Choose the meaning of " + form.pashto));
     const card = content.wordById["library-form:" + form.formId];

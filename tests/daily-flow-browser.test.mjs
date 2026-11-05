@@ -1,8 +1,9 @@
+async function assertNoOverflow(page){const overflow=await page.evaluate(()=>['lessonScreen','questionBody','quizFeedback'].filter(id=>{const el=document.getElementById(id);return el.scrollHeight>el.clientHeight+2||el.scrollWidth>el.clientWidth+2;}).map(id=>({id,height:document.getElementById(id).clientHeight,scroll:document.getElementById(id).scrollHeight})));assert.deepEqual(overflow,[],'Standard desktop questions and feedback fit without internal scrolling');}
 import assert from 'node:assert/strict';
 import {mkdirSync,readFileSync} from 'node:fs';
 import {setup}from'./browser-fixture.mjs';
 const WORLD='pashto-quest-rpg-world-v1',data=JSON.parse(readFileSync('content/RPG_WORLD.json'));
-const captures='docs/rpg/two-column';mkdirSync(captures,{recursive:true});
+const captures='docs/rpg/fullscreen-learning';mkdirSync(captures,{recursive:true});
 for(const [width,height]of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,844]].filter(([w])=>!process.env.DAILY_WIDTH||w===Number(process.env.DAILY_WIDTH))){
  const b=await setup({width,mobile:width===390,rpg:true,transform:h=>h.replace('// @TEST_HOOK','window.__dailyFence=saveFence; // @TEST_HOOK')});const p=b.page;
  try{
@@ -16,12 +17,12 @@ for(const [width,height]of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,84
   assert(!await p.getByText('Another location expression awaits an approved Pashto translation and cannot yet be studied.',{exact:true}).count());
   await p.screenshot({path:captures+'/study-1366.png',fullPage:true});await p.locator('#navWorld').click();
  }
- const worldBox=await p.locator('#rpgCanvas').boundingBox();
  await p.evaluate(()=>__test.challenge.startChallenge(1));await p.locator('#quizPanel').waitFor();
- assert.deepEqual(await p.locator('#rpgCanvas').boundingBox(),worldBox,'Learning leaves the world in place');
- const panel=await p.locator('#lessonScreen').boundingBox();assert(width>1000?panel.x>=worldBox.x+worldBox.width:panel.y>=worldBox.y+worldBox.height,'Responsive activity placement');
+ assert.equal(await p.locator('#rpgCanvas').isVisible(),false,'Learning hides the mounted world');
+ const panel=await p.locator('#lessonScreen').boundingBox();assert(panel.width>=Math.min(width-40,1300),'Learning uses viewport width');
  const start=await p.evaluate(()=>scrollY);let captured=false;let footer;
  for(let i=0;i<15;i++){
+  if(width>=1000)await assertNoOverflow(p);
   const box=await p.locator('#quizNext').boundingBox();assert(box.y+box.height<=height-4,'Next remains within viewport');if(footer!==undefined)assert(Math.abs(box.y-footer)<2,'Stable Next position');footer=box.y;
   const q=await p.evaluate(()=>{const t=__test,q=t.state.session.questions[t.state.session.index];return {...q,answer:t.content.wordById[q.id].en};});
   if(i<3)assert.equal(await p.locator('#unseenRecall').count(),0);
@@ -36,6 +37,8 @@ for(const [width,height]of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,84
   if(['construct','dialogue'].includes(q.kind)){
    const voice=await p.getByRole('button',{name:'Hear the correct sentence',exact:true}).boundingBox();assert(voice&&voice.y>=0&&voice.y+voice.height<=height-4,'Full-sentence audio stays reachable');
   }
+  if(width>=1000)await assertNoOverflow(p);
+  if(i===5)await p.screenshot({path:`${captures}/feedback-${width}.png`,fullPage:true});
   assert(Math.abs((await p.locator('#quizNext').boundingBox()).y-box.y)<2,'Feedback keeps Next stable');
   assert.equal(await p.evaluate(()=>scrollY),start);assert.equal(await p.evaluate(()=>document.documentElement.scrollHeight>innerHeight+2||document.documentElement.scrollWidth>innerWidth+2),false);
   await p.locator('#quizNext').click();
