@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Current character-name surfaces over stable lexical identities and immutable compiler proofs. This changes names only, not grammar, grading, SRS or stored snapshots.",
+  "approval": {
+    "status": "user_approved",
+    "reviewer": "Yaqub Forrest (project owner)",
+    "date": "2026-11-05",
+    "reference": "User replies on PR #36 character expansion task: مدینه is Medina in Pastho use this; دینه",
+    "scope": "Exact supplied Pashto name spellings and corresponding English identities only. Romanisation aids, case analysis, combinations and recordings remain provisional.",
+    "nativeCertificationClaimed": false
+  },
+  "characters": [
+    {
+      "characterId": "mina",
+      "lemmaId": "lemma:person:mina",
+      "previous": {"english": "Mina", "pashto": ["مینا"], "romanisation": ["meena"]},
+      "current": {"english": "Medina", "pashto": "مدینه", "romanisation": "madeena"},
+      "romanisationStatus": "editorial_pronunciation_aid_not_user_supplied_or_native_certified"
+    },
+    {
+      "characterId": "saleha",
+      "lemmaId": "lemma:person:saleha",
+      "previous": {"english": "Saleha", "pashto": ["صالحه", "صالحې"], "romanisation": ["saaleha", "saalehe"]},
+      "current": {"english": "Deena", "pashto": "دینه", "romanisation": "deena"},
+      "romanisationStatus": "editorial_pronunciation_aid_not_user_supplied_or_native_certified"
+    }
+  ]
+}

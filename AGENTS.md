@@ -4,7 +4,7 @@
 
 Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CURRICULUM.md` for lessons/characters/vocabulary, `LANGUAGE_REVIEW.md` for Pashto/audio, and `tests/README.md` for verification **only when relevant**. `docs/reference/` contains historical editorial plans, not active instructions. Inspect current source to establish implemented behaviour; a discrepancy does not automatically redefine the product goal. See the [documentation roles](README.md#documentation-roles-and-precedence).
 
-**Character system:** Read [the character specification](docs/rpg/CHARACTER_EXPANSION.md) when touching NPCs, narrative, portraits or village movement. Deena and Medina retain internal IDs `saleha` and `mina`; seven optional residents and bounded ambient routines are implemented in this branch. See [actual implementation and validation](docs/rpg/LIVING_VILLAGE.md). Preserve historical audit wording and immutable generated proofs; presentation resolves their former cast labels without rewriting saved questions.
+**Character system:** Read [the character specification](docs/rpg/CHARACTER_EXPANSION.md) when touching NPCs, narrative, portraits or village movement. Deena and Medina retain internal IDs `saleha` and `mina`; seven optional residents and bounded ambient routines are implemented in this branch. See [actual implementation and validation](docs/rpg/LIVING_VILLAGE.md). Preserve historical audit wording and immutable generated proofs. Owner-supplied current spellings are `دینه` / `مدینه` in [CHARACTER_NAMES.json](content/CHARACTER_NAMES.json); shared presentation resolves prior name tokens without rewriting saved questions. Pronunciation aids and case usage remain provisional.
 
 ## Single sources of authority
 

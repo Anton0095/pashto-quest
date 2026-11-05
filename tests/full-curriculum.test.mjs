@@ -113,7 +113,7 @@ try {
                     if (card) {
                       if (
                         document.querySelector("#teachPashto").textContent !==
-                        card.ps
+                        t.names.text(card.ps)
                       )
                         throw Error("Study surface mismatch");
                       observe(card);
@@ -146,7 +146,7 @@ try {
                     observe(card);
                     if (
                       document.querySelector("#quizPashto").textContent !==
-                      (item.kind === "construct" ? card.en : card.ps)
+                      t.names.text(item.kind === "construct" ? card.en : card.ps)
                     )
                       throw Error("Practice surface mismatch");
                     t.lessons.answer(
@@ -187,7 +187,7 @@ try {
                 if (q.answerPs !== card.ps)
                   throw Error("Uncompiled dialogue response");
               }
-              if (["construct","dialogue"].includes(q.kind) && document.querySelector("#quizPashto").textContent !== (q.answerEnglish || card.en))
+              if (["construct","dialogue"].includes(q.kind) && document.querySelector("#quizPashto").textContent !== t.names.text(q.answerEnglish || card.en))
                 throw Error("Construction must display the direct English target");
               if (q.kind === "word") {
                 const studied = new Set(Object.values(t.content.wordById).filter((c) => {
@@ -201,7 +201,7 @@ try {
                 for (const text of q.choiceOrder)
                   if (!studied.has(text) && !backup.has(text) && !["A different meaning", "Another response", "None of these"].includes(text))
                     throw Error("Distractor is neither studied nor Day-1 backup: " + text);
-                if (q.unstudied && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === card.en))
+                if (q.unstudied && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === t.names.text(card.en)))
                   throw Error("Unstudied target meaning offered as a clue");
               }
               if (["choice", "address"].includes(q.kind) || q.grammarConcept)
@@ -210,9 +210,9 @@ try {
                 if (
                   q.direction !== "ps-en" ||
                   document.querySelector("#quizPashto").textContent !==
-                    card.ps ||
+                    t.names.text(card.ps) ||
                   document.querySelector("#quizRoman").textContent !==
-                    card.roman + " · Not previously studied"
+                    t.names.text(card.roman) + " · Not previously studied"
                 )
                   throw Error("Unstudied word disclosed before answer");
               }
@@ -240,7 +240,7 @@ try {
                 card?.type === "sentence" &&
                 !document
                   .querySelector("#quizFeedback")
-                  .textContent.includes(card.ps)
+                  .textContent.includes(t.names.text(card.ps))
               )
                 throw Error("Unproven sentence feedback");
               const xp = t.state.progress.xp,

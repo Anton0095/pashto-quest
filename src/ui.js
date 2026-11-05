@@ -93,7 +93,7 @@ function createUI({ state, content, progression }) {
   /* Only the display text changes. Never embed markup from lesson/question data. */
   function renderMixedPashto(element, text) {
     const pattern = /([\u0600-\u06FF]+(?:\s+[\u0600-\u06FF]+)*)/gu;
-    const source = String(text ?? "");
+    const source = CharacterNames.text(text);
     element.replaceChildren();
     let last = 0;
     for (const match of source.matchAll(pattern)) {
@@ -135,7 +135,7 @@ function createUI({ state, content, progression }) {
   }
   function node(tag, text, cls) {
     const e = document.createElement(tag);
-    if (text !== undefined) e.textContent = playerVocabularyText(text);
+    if (text !== undefined) e.textContent = CharacterNames.text(playerVocabularyText(text));
     if (cls) e.className = cls;
     return e;
   }

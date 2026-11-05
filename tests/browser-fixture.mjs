@@ -1,6 +1,8 @@
 import { readFileSync, mkdirSync } from "node:fs";
 import { createRequire } from "node:module";
 import http from "node:http";
+import vm from "node:vm";
+export const displayCharacterText=vm.runInNewContext(readFileSync("src/character-names.js","utf8")+";CharacterNames.text",{CHARACTER_NAMES:JSON.parse(readFileSync("content/CHARACTER_NAMES.json","utf8"))});
 const require = createRequire(import.meta.url);
 let chromium;
 try {
@@ -10,7 +12,7 @@ try {
     chromium,
   } = require("/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright"));
 }
-export const hook = `window.__test={state,audio,content,progression,learning,questions,lessons,challenge,grammar,storage,world,library,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine,nextQuestion,reset(pace=24){state.progress=progression.fresh();state.progress.library.requestedDailyTarget=pace;state.session=null;state.day=1;storage.resetProblem();storage.save();ui.view('introScreen')},day(day){state.day=day;world.startWorld()}};`;
+export const hook = `window.__test={names:CharacterNames,state,audio,content,progression,learning,questions,lessons,challenge,grammar,storage,world,library,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine,nextQuestion,reset(pace=24){state.progress=progression.fresh();state.progress.library.requestedDailyTarget=pace;state.session=null;state.day=1;storage.resetProblem();storage.save();ui.view('introScreen')},day(day){state.day=day;world.startWorld()}};`;
 export async function setup({
   width = 375,
   mobile = false,
@@ -100,7 +102,7 @@ export async function answerCurrent(page) {
     };
   });
   if (q.unstudied && !q.recognition) {
-    await page.locator("#unseenRecall").fill(q.answer);
+    await page.locator("#unseenRecall").fill(displayCharacterText(q.answer));
     await page.getByRole("button", {name:"Submit meaning",exact:true}).click();
   } else if (["construct", "dialogue"].includes(q.kind)) {
     for (const token of q.answer
@@ -109,19 +111,19 @@ export async function answerCurrent(page) {
       .filter(Boolean))
       await page
         .locator("#wordTiles button:enabled")
-        .getByText(token, { exact: true })
+        .getByText(displayCharacterText(token), { exact: true })
         .first()
         .click();
     await page.locator("#checkBuild").click();
   } else if (q.kind === "address")
     await page
       .locator("#choices button")
-      .filter({ hasText: q.answer })
+      .filter({ hasText: displayCharacterText(q.answer) })
       .first()
       .click();
   else
     await page
       .locator("#choices button")
-      .getByText((q.answer).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true})
+      .getByText(displayCharacterText(q.answer).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true})
       .click();
 }

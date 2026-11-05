@@ -1,6 +1,6 @@
 # Character and village-life expansion — approved design (6 November 2026)
 
-**Status: runtime/art implemented on `feature/character-expansion`, pending review/merge and a language naming decision.** This document remains the canonical cast and behaviour specification. See [Living village](LIVING_VILLAGE.md) for the implementation, assets, save behaviour, actual validation, limits and the unresolved verified-name examples. `content/RPG_WORLD.json` remains the authority for actual NPCs/events; `content/CHARACTER_PORTRAITS.json` owns actual portrait assets. Days 8–14 RPG registrations and Bilal's catch reveal remain future work.
+**Status: runtime/art implemented on `feature/character-expansion`, pending review/merge.** This document remains the canonical cast and behaviour specification. See [Living village](LIVING_VILLAGE.md) for the implementation, assets, save behaviour, actual validation, limits and owner-approved Pashto name spellings. `content/RPG_WORLD.json` remains the authority for actual NPCs/events; `content/CHARACTER_PORTRAITS.json` owns actual portrait assets. Days 8–14 RPG registrations and Bilal's catch reveal remain future work.
 
 ## Character identity changes (mandatory)
 

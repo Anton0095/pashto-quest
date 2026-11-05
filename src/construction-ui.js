@@ -14,7 +14,7 @@ function createConstructionUI({ ui, audio }) {
       });
       b.className="built-token";b.lang="ps";b.dir="rtl";
       b.disabled=model.locked;
-      b.setAttribute("aria-label", `Remove word ${tiles[index].word}`);
+      b.setAttribute("aria-label", CharacterNames.text(`Remove word ${tiles[index].word}`));
       area.append(b);
     }
     for (const index of order) {
@@ -36,7 +36,7 @@ function createConstructionUI({ ui, audio }) {
   function present(card, q, day) {
     ui.$("lessonScreen").classList.add("construction-active");
     ui.$("quizType").textContent="BUILD A SENTENCE";
-    ui.$("quizPashto").textContent=q.answerEnglish || card.en;
+    ui.$("quizPashto").textContent=CharacterNames.text(q.answerEnglish || card.en);
     ui.$("quizPashto").lang="en";ui.$("quizPashto").dir="ltr";
     ui.$("quizPashto").classList.add("english-question");
     ui.$("quizRoman").textContent="";

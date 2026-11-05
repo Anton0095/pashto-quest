@@ -8,7 +8,7 @@ An offline, browser-based Pashto learning game set in a village in Laghman, Afgh
 
 **Deena** (stable ID `saleha`) and her younger sister **Medina** (`mina`, introduced Day 6) retain their teaching and story roles. Deena has a redesigned portrait and world sprite with visible light brown hair and blue eyes. **Bilal** fishes by the Lake and offers optional, unresolved hints about a mysterious catch. **Zamir** owns several Market stalls and walks an inspection circuit. **Nayab, Sara, Omar, Afiya and Sanaa** play in the School courtyard. These seven optional villagers grant no lessons, XP or required quests. See the [cast specification](docs/rpg/CHARACTER_EXPANSION.md) and [implementation, saves and validation](docs/rpg/LIVING_VILLAGE.md).
 
-Verified Pashto examples containing مینا (“Mina”) retain their exact spelling and gloss pending approved replacements; this remaining naming decision is recorded in the [implementation note](docs/rpg/LIVING_VILLAGE.md#open-language-naming-decision).
+The owner supplied **دینه** (Deena) and **مدینه** (Medina). [Current name surfaces](content/CHARACTER_NAMES.json) apply these spellings consistently in lessons, construction, feedback, Library and speech, while stable lexical identities and saved proofs remain exact. Pronunciation aids and grammatical case usage remain provisional; see [scope and validation](docs/rpg/LIVING_VILLAGE.md#approved-name-spellings).
 
 ## RPG interface and Week 1
 

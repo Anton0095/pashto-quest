@@ -208,12 +208,26 @@ def build(check_rpg=False):
     audio_ids = sorted(path.stem for path in audio_dir.glob('*.mp3')) if audio_dir.exists() else []
     # Explicit dependency order; modules use factories with injected services.
     modules = [
-        'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
+        'character-names', 'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
         'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'character-portraits', 'construction-ui', 'answer-feedback', 'ui',
         'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
         'world-ui', 'library-ui',
     ]
-    datasets = {'RPG_ENABLED': True, 'RPG_WORLD_DATA': json.loads(read('content/RPG_WORLD.json')), 'LIBRARY_DATA': library,
+    names=json.loads(read('content/CHARACTER_NAMES.json'))
+    if names['approval']['status']!='user_approved' or names['approval']['nativeCertificationClaimed'] is not False or {r['characterId']:r['current']['pashto'] for r in names['characters']} != json.loads(read('content/USER_LANGUAGE_APPROVALS.json'))['characterNameUpdates']['suppliedSpellings']:
+        raise ValueError('Character name spelling requires exact owner approval')
+    people={n['characterId']:n['name'] for n in json.loads(read('content/RPG_WORLD.json'))['npcs']}
+    entries={e['lemmaId']:e for e in library['entries']}
+    for n in names['characters']:
+        e=entries[n['lemmaId']]
+        if (n['current']['english']!=people[n['characterId']]
+                or e['displayLemmaPs'] not in n['previous']['pashto']
+                or n['previous']['english'] not in e['englishSenses']
+                or not n['current']['romanisation']
+                or n['romanisationStatus']!='editorial_pronunciation_aid_not_user_supplied_or_native_certified'
+                or any(not re.search(r'[\u0600-\u06ff]', value) for value in [n['current']['pashto']])):
+            raise ValueError('Invalid character identity/name presentation record')
+    datasets = {'CHARACTER_NAMES': names, 'RPG_ENABLED': True, 'RPG_WORLD_DATA': json.loads(read('content/RPG_WORLD.json')), 'LIBRARY_DATA': library,
                 'NARRATIVE_DATA': narrative, 'CHARACTER_PORTRAITS': json.loads(read('content/CHARACTER_PORTRAITS.json')), 'BUNDLED_AUDIO_IDS': audio_ids}
     portraits = datasets['CHARACTER_PORTRAITS']
     import base64

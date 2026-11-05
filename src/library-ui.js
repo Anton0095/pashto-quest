@@ -259,8 +259,7 @@ function createLibraryUI({
           r && (!unlockedFilter || unlockedFilter.includes(e.lemmaId)) &&
           (unlockedFilter || (e.vocabularyClass === "universal") === universal) &&
           (!query ||
-            [e.displayLemmaPs, e.romanisation, ...e.englishSenses]
-              .join(" ")
+            CharacterNames.text([e.displayLemmaPs, e.romanisation, ...e.englishSenses].join(" "))
               .toLocaleLowerCase()
               .includes(query)) &&
           (!pos.value || e.partOfSpeech === pos.value) &&
@@ -313,6 +312,7 @@ function createLibraryUI({
       ),
     );
     detail.append(heading);
+    if(CHARACTER_NAMES.characters.some(n=>n.lemmaId===e.lemmaId))detail.append(ui.node("p","Current name spelling supplied by the owner; pronunciation aids and use in case/compound forms remain provisional.","tiny"));
     const origin = r.unlock;
     const location = origin?.location === "universal" ? "Universal vocabulary" : ({residential:"Home",nature:"Lake",business:"Market",school:"School"}[origin?.location] || "Not recorded");
     detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-start" ? "Unlocked when starting the challenge" : origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.introducedFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
@@ -436,7 +436,7 @@ function createLibraryUI({
         ui.hud();
         const label = container.querySelector("summary span:last-child");
         if (label)
-          label.textContent = ` ${e.romanisation} · ${e.englishSenses.join("; ")} · ${e.partOfSpeech} · ${LibraryEngine.status(state.progress.library.acquired[e.lemmaId])}`;
+          label.textContent = CharacterNames.text(` ${e.romanisation} · ${e.englishSenses.join("; ")} · ${e.partOfSpeech} · ${LibraryEngine.status(state.progress.library.acquired[e.lemmaId])}`);
         const feedback=ui.node('div');exercise.append(feedback);
         ui.renderAnswerFeedback(feedback,card,{},correct);
       });

@@ -3953,5 +3953,16 @@
   "stillUntranslatedTutorialProposals": [
     "proposal:tutorial-gender",
     "proposal:tutorial-name"
-  ]
+  ],
+  "characterNameUpdates": {
+    "reference": "content/CHARACTER_NAMES.json",
+    "date": "2026-11-05",
+    "reviewer": "Yaqub Forrest (project owner)",
+    "suppliedSpellings": {
+      "mina": "مدینه",
+      "saleha": "دینه"
+    },
+    "scope": "Exact current character-name spelling/English identity only; existing lexical/proof IDs and earlier evidence remain unchanged. Romanisation aids, morphology, generated combinations and audio are not newly approved.",
+    "nativeCertificationClaimed": false
+  }
 }

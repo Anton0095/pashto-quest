@@ -287,7 +287,7 @@ function createChallengeUI({
           ? "🧠 WORD RECALL"
           : "📖 SENTENCE RECALL";
     const reverse = q.direction === "en-ps";
-    ui.$("quizPashto").textContent = reverse ? w.en : w.ps;
+    ui.$("quizPashto").textContent = CharacterNames.text(reverse ? w.en : w.ps);
     ui.$("quizPashto").setAttribute("dir", reverse ? "ltr" : "rtl");
     ui.$("quizPashto").setAttribute("lang", reverse ? "en" : "ps");
     ui.$("quizPashto").classList.toggle("english-question", reverse);
@@ -340,7 +340,7 @@ function createChallengeUI({
         const b = document.createElement("button");
         b.type = "button";
         b.className = "choice";
-        b.textContent = reverse ? value : ui.englishChoice(value);
+        b.textContent = CharacterNames.text(reverse ? value : ui.englishChoice(value));
         b.dataset.answer = value;
         if (reverse) {
           b.lang = "ps";
@@ -366,6 +366,7 @@ function createChallengeUI({
   }
   function answerChallenge(value) {
     queueMicrotask(ui.readableQuizSurfaces);
+    value = CharacterNames.storedAnswer(value);
     const result = learning.submitChallenge(value);
     if (!result) return;
     const { q, w, correct } = result;

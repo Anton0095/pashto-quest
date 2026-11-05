@@ -51,7 +51,7 @@ function renderCharacterPortrait(identity, expression = "neutral") {
 
 /* Display formatting never changes IDs, stored answers, senses or evaluation. */
 function formatEnglishChoice(value) {
-  return String(value).replace(/^(\s*["“'‘(\[]*)([a-z][A-Za-z]*)/, (_, prefix, word) => prefix + (/[A-Z]/.test(word) ? word : word[0].toUpperCase() + word.slice(1)));
+  return (typeof CharacterNames!=="undefined"?CharacterNames.text(value):String(value)).replace(/^(\s*["“'‘(\[]*)([a-z][A-Za-z]*)/, (_, prefix, word) => prefix + (/[A-Z]/.test(word) ? word : word[0].toUpperCase() + word.slice(1)));
 }
 function playerVocabularyText(value) {
   return String(value).replace(/\b(content )?lemmas?\b/gi, match => /^[A-Z]/.test(match) ? (match.toLowerCase().endsWith("s") ? "Words" : "Word") : (match.endsWith("s") ? "words" : "word"));
