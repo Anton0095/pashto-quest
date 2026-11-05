@@ -6,23 +6,25 @@ The fixed teaching sequence lives in `content/LEARNING_CURRICULUM.json`; lexical
 
 The sequence below covers Days 1–14 in the educational engine. The playable RPG registers Days 1–7 only; Days 8–14 still require narrative, map and event registration. A challenge pass grants educational completion/access; the active RPG chapter advances only through sleep after narrative acknowledgements and successor eligibility, with no paused retry. Dream practice rehearses passed, registered days in a disposable copy and grants no persistent learning or campaign progress. See [mechanics](GAME_SPEC.md#rpg-house-sleep-and-dream-review), [world architecture](docs/rpg/RPG_ARCHITECTURE.md) and [maintenance findings](docs/maintenance/POST_MERGE_AUDIT.md).
 
+**Character naming update (approved design, not yet in the playable runtime):** Deena is renamed **Deena** (light brown hair, blue eyes), and Medina is renamed **Medina** (Deena's younger sister). Character interactions below use the **target names**; current JSON events and portrait assets retain old names until implementation. Bilal (fisherman, mysterious catch), Zamir (inspecting market stalls) and children Nayab, Sara, Omar, Afiya and Sanaa are optional village-life NPCs, not new lesson teachers. Refer to [character expansion](docs/rpg/CHARACTER_EXPANSION.md) for implementation rules.
+
 ## Learning sequence
 
 | Day | Main focus | Normal narrative opening / key event |
 |---|---|---|
 | 1 | Greetings and descriptive vocabulary; tutorial of four interactions; no newly taught lexical actions | Muhammad Jan in Library, then Home/Lake/Market/School; home handover |
 | 2 | He/she, first lexical actions, present verbs and subject–object–verb | Ms Hameed's School workshop; later village visits |
-| 3 | I, first-person present | Saleha at Lake; Edris's market/dinner conversation |
+| 3 | I, first-person present | Deena at Lake; Edris's market/dinner conversation |
 | 4 | Informal singular you (`ته`), contrast with I, compound clauses | Muhammad Jan at Home |
 | 5 | Respectful/plural you (`تاسې`/`تاسو`), audience selection | Ms Hameed at School; gathering near Lake |
-| 6 | We (`موږ`/`مونږ`), compound subjects and contrast with you all | Saleha introduces sister Mina at Lake; Hills final |
+| 6 | We (`موږ`/`مونږ`), compound subjects and contrast with you all | Deena introduces sister Medina at Lake; Hills final |
 | 7 | They (`هغوی`), observed third-person plural, Week 1 synthesis | Edris at Market; Ms Hameed's 25-question Week 1 exam |
-| 8 | This/that demonstratives | Saleha at Lake |
+| 8 | This/that demonstratives | Deena at Lake |
 | 9 | Noun plurals, agreement and quantities 1–5 | Edris at Market |
-| 10 | Here/there/where and spatial expressions | Mina's misplaced notebook |
+| 10 | Here/there/where and spatial expressions | Medina's misplaced notebook |
 | 11 | Possession: my/your/our and named possessors | Muhammad Jan at Home |
 | 12 | Who/what/which/where/how many | Ms Hameed at School |
-| 13 | Time/manner/frequency adverbs | Saleha and Mina |
+| 13 | Time/manner/frequency adverbs | Deena and Medina |
 | 14 | Cumulative investigation/scavenger hunt, no compulsory new words | Integrated four-district narrative and 25-question final |
 
 The four district IDs are `residential`, `nature`, `business` and `school`; player-facing map labels are Home, Lake, Market and School. Library offers reference and voluntary zero-XP practice, Hills is a Day 6 Nature story scene. Teacher identities, character relationships and speaker/addressee labels are authored. Day 1's mandatory Library tutorial teaches `سلام` (meaning choice), `څنګه یې؟` (translation selection), the Pashto language-selection question `ته کومه ژبه زده کوې؟` (select `پښتو`), then `زما نوم څه دی؟` (type Muhammad Jan in English). The two authored questions are recorded in [TUTORIAL_PROMPTS.json](content/TUTORIAL_PROMPTS.json). Player name and gender are optional Library → Player Profile settings, not tutorial questions.
@@ -49,17 +51,17 @@ Day 1 Home at default pace teaches house, door, room, big, window and open, plus
 |---|---|---|---|
 | 1 residential | Muhammad Jan | Welcome! | `ښه راغلاست` — user-approved |
 | 2 school | Ms Hameed | Good morning! | `سهار مو پخیر!` — user-approved |
-| 3 nature | Saleha | It’s nice to see you | `خوشحاله یم چې تاسې وینم.` — user-approved |
+| 3 nature | Deena | It’s nice to see you | `خوشحاله یم چې تاسې وینم.` — user-approved |
 | 4 residential | Muhammad Jan | May you not be tired | `ستړي مه شئ.` — user-approved |
 | 5 school | Ms Hameed | Peace be upon you | `السلام علیکم.` — user-approved |
-| 6 nature | Mina | Nice to meet you | `ستاسې په لیدو خوشحاله شوم.` — user-approved |
+| 6 nature | Medina | Nice to meet you | `ستاسې په لیدو خوشحاله شوم.` — user-approved |
 | 7 business | Edris | And peace be upon you | `وعلیکم السلام.` — user-approved |
-| 8 nature | Saleha | Where have you been? | `چېرته وئ؟` — user-approved |
+| 8 nature | Deena | Where have you been? | `چېرته وئ؟` — user-approved |
 | 9 business | Edris | Please, come in | `مهرباني وکړئ، دننه راشئ.` — user-approved |
-| 10 nature | Mina | Excuse me | `وبخښئ.` — user-approved |
+| 10 nature | Medina | Excuse me | `وبخښئ.` — user-approved |
 | 11 residential | Muhammad Jan | Make yourself at home | `دا خپل کور وګڼئ.` — user-approved |
 | 12 school | Ms Hameed | May I ask a question? | `اجازه شته چې یوه پوښتنه وکړم؟` — user-approved |
-| 13 nature | Saleha | How is your day going? | `ورځ مو څنګه تېرېږي؟` — user-approved |
+| 13 nature | Deena | How is your day going? | `ورځ مو څنګه تېرېږي؟` — user-approved |
 | 14 residential | Muhammad Jan | Good luck! | `بریالي اوسئ!` — user-approved |
 
 A day's active expression (including the optional Day-14 greeting) is the **first study card** at each of the four location lessons; the same daily greeting is shared across the four locations. An active greeting becomes the **first question** of that day's challenge, without increasing its question count or using its lexical quota. Visible presentation creates an encounter; challenge activation also makes missed location phrases available without practice grades. Availability does not claim actual phrase study; new expression questions select English translations. The removed alternatives remain historical editorial evidence and are not lesson or Library entries. Old `مننه` (Thank you) and `خدای پامان` (Goodbye) tutorial cards were reassigned to Day 2 Market and Day 3 Home.
