@@ -25,7 +25,7 @@ for(const width of [375,1280]) {
   await p.evaluate(()=>__test.challenge.startChallenge(1));
   const unknown=await p.evaluate(()=>{
    const t=__test,s=t.state.session;
-   s.index=s.questions.findIndex(q=>q.unstudied);s.answered=s.index;t.challenge.showChallengeQuestion();
+   s.index=s.questions.findIndex(q=>q.unstudied&&!q.recognition);s.answered=s.index;t.challenge.showChallengeQuestion();
    return {q:s.questions[s.index],card:t.content.wordById[s.questions[s.index].id]};
   });
   await p.locator("#quizPanel").screenshot({path:`docs/maintenance/p1/uncued-recall-${width}.png`});

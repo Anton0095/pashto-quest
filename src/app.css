@@ -1365,28 +1365,13 @@ header {
 
 /* Construction uses direct targets; village narrative remains on other surfaces. */
 .construction-active #guideMessage,
-.construction-active #challengeScene,
-.construction-active #lessonExpression { display: none; }
+.construction-active #challengeScene { display: none; }
 .construction-practice { margin-block: 1rem; }
 .construction-practice .word-tiles { margin-block: 1rem; }
 
-/* RPG profile: compact village shell; educational panels retain their RTL styles. */
-body:has(.rpg-world) {background:#192c2b;}
-body:has(.rpg-world) .app {max-width:1060px;}
-body:has(.rpg-world) .herochar {padding:14px 20px;margin-bottom:14px;}
-body:has(.rpg-world) .herochar .avatar {font-size:30px;}
-body:has(.rpg-world) .herochar h1 {font-size:20px;}
-body:has(.rpg-world) .dialect-note {font-size:12px;}
-.rpg-world {padding:20px;background:#233e3b;border-color:#77927a;}
-.rpg-heading {display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px;margin-bottom:14px;}
-.rpg-heading .eyebrow {flex-basis:60%;margin:0;color:#d6c78e;}
-.rpg-heading h2 {margin:0;flex:1;font-family:monospace;font-size:25px;color:#f1e7c8;}
-.rpg-day {font:11px monospace;color:#bed1b3;margin-left:auto;}
-.rpg-tools {gap:7px;}
-.rpg-tools button {font-size:13px;padding:10px;}
+/* Shared RPG controls and conversation presentation. */
 .rpg-viewport {background:#263e35;border:5px solid #a59870;box-shadow:0 0 0 2px #172b29;overflow:hidden;}
 #rpgCanvas {display:block;width:100%;height:auto;image-rendering:pixelated;outline-offset:-3px;touch-action:none;}
-.rpg-location-note {font-size:13px;min-height:38px;color:#e9dcb4;margin:12px 0;}
 .rpg-controls {display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
 .rpg-dpad {display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(2,44px);gap:4px;touch-action:none;}
 .rpg-dpad button {padding:0;font-size:22px;user-select:none;touch-action:none;border-radius:6px;}
@@ -1396,72 +1381,146 @@ body:has(.rpg-world) .dialect-note {font-size:12px;}
 .rpg-dpad [data-direction=right] {grid-row:2;grid-column:3;}
 #rpgInteract {min-height:54px;max-width:200px;flex:1;}
 .rpg-controls .tiny {flex:1;min-width:150px;}
-.rpg-visits {display:flex;gap:12px;flex-wrap:wrap;border-top:1px solid #617b63;padding-top:14px;margin-top:15px;font:13px monospace;color:#d5d4a9;}
 .rpg-dialogue {max-width:540px;width:calc(100% - 32px);border:3px solid #b4a57c;border-radius:8px;background:#263f3b;color:#f4ead1;padding:24px;box-shadow:0 16px 80px #0008;}
 .rpg-dialogue::backdrop {background:#132725b5;}
 .rpg-dialogue h2 {font-family:monospace;color:#ebd39c;}
 .rpg-dialogue p {line-height:1.7;}
-.rpg-dialogue .buttons {display:flex;flex-wrap:wrap;gap:10px;}
+.rpg-dialogue .buttons {display:flex;flex-wrap:wrap;gap:10px;clear:both;}
 .rpg-dialogue fieldset {margin:16px 0;display:flex;gap:8px;flex-wrap:wrap;border-color:#8a946f;}
 .rpg-dialogue button[aria-pressed=true] {border-color:#f3d290;background:#59664a;}
-body:has(.rpg-world) header .brand {font-size:16px;}
-@media(max-width:500px){.rpg-world{padding:10px}.rpg-heading h2{font-size:20px}.rpg-heading .eyebrow{flex-basis:100%}.rpg-day{margin-left:0}.rpg-controls{gap:12px}.rpg-controls .tiny{flex-basis:100%;margin:0}.rpg-dialogue{padding:16px}body:has(.rpg-world) .herochar{padding:10px}body:has(.rpg-world) header .brand small{display:none}}
-
-/* Existing HTML learning panels above a paused Phaser canvas. */
-body.rpg-overlay-active #lessonScreen, body.rpg-overlay-active #resultScreen {
-  position:fixed;inset:5vh max(12px,calc((100vw - 1000px)/2));z-index:50;
-  overflow:auto;overscroll-behavior:contain;max-height:90vh;margin:0;
-  box-shadow:0 0 0 100vmax #102322bd;
-}
-body.rpg-overlay-active #navWorld {position:fixed;right:24px;top:5px;z-index:60;}
-body.rpg-overlay-active #worldScreen {pointer-events:none;}
-body.rpg-overlay-active dialog {z-index:80;}
-@supports(height:100dvh){body.rpg-overlay-active #lessonScreen,body.rpg-overlay-active #resultScreen{max-height:90dvh;}}
-
-#rpgCanvas {width:100% !important;height:auto !important;}
-
-/* World first: one progress card under the map, regional notes inside Menu. */
-body:has(.rpg-world) header {margin-bottom:8px;}
-body:has(.rpg-world) .herochar {padding:10px 12px;margin:10px 0;gap:12px;}
-body:has(.rpg-world) .herochar h1 {font-size:17px;margin:0;}
-body:has(.rpg-world) .herochar .pill {display:inline-block;margin:5px 6px 0 0;font-size:12px;}
-.rpg-world {padding:12px;}
-.rpg-heading {margin-bottom:10px;gap:6px 12px;}
-.rpg-location-note {min-height:0;margin:8px 0;}
-.rpg-visits {margin-top:8px;padding-top:8px;}
-.rpg-dialogue {max-height:88vh;overflow:auto;overscroll-behavior:contain;}
 .rpg-dialogue-portrait {float:left;margin:0 14px 8px 0;}
-.rpg-dialogue .buttons {clear:both;}
 .character-portrait {display:inline-flex;vertical-align:middle;flex:0 0 auto;align-items:center;justify-content:center;flex-direction:column;width:80px;height:80px;border:3px solid #b4a57c;background:#192c2b;color:#f4ead1;font:20px monospace;text-align:center;overflow:hidden;}
 .character-portrait img {display:block;width:100%;height:100%;object-fit:contain;image-rendering:pixelated;}
 .character-portrait small {font:9px/1.2 system-ui;max-width:70px;}
 .speaker-note > #speakerIcon {font-size:inherit;}
-.quizword .label {margin-top:12px;}
 .question-meta {font-size:11px;gap:6px;}
 .question-context {font-size:12px;}
 .question-context summary {cursor:pointer;}
 #quizPanel .quizword [lang=ps] {font-size:clamp(30px,5vw,46px);line-height:1.8;}
-@media(max-width:600px){
-  body:has(.rpg-world){padding:8px 6px 20px;}
-  .rpg-heading h2 {font-size:19px;}
-  .rpg-dialogue {padding:14px;width:calc(100% - 16px);}
-  .character-portrait {width:64px;height:64px;font-size:17px;}
-  .rpg-dialogue h2 {font-size:19px;}
-  .rpg-controls {gap:10px;}
-  .rpg-controls .tiny {margin:4px 0;}
-}
-
-/* Compact, reusable conversation context; obsolete summary bars stay absent. */
 #participants:empty {display:none;}
 #participants {border:0;padding:0;margin:0;display:flex;}
 .conversation-partner {display:flex;align-items:center;gap:8px;}
 .speaker-note {flex-wrap:wrap;}
-.sentence-answer-line {display:flex;align-items:baseline;justify-content:center;gap:8px 20px;flex-wrap:wrap;}
-.sentence-answer-line p {margin:6px 0;}
-.sentence-roman {direction:ltr;overflow-wrap:anywhere;color:var(--muted);}
-#libraryProfile input,#libraryProfile select {font:inherit;padding:10px;max-width:100%;}
-#libraryProfile label {display:block;margin:12px 0;}
 
-.sleep-transition {position:fixed;inset:0;z-index:10000;background:#101f2df2;display:grid;place-content:center;color:#ffe0a2;font-size:24px;animation:sleep-fade .35s ease;}
-@keyframes sleep-fade {from{opacity:0;}to{opacity:1;}}
-#dreamMenu button {display:block;margin:8px 0;max-width:100%;}
+/* Exploration: one bounded world and one contextual interface. */
+body:has(.rpg-world) {background:#192c2b;height:100vh;height:100dvh;overflow:hidden;padding:0;}
+body:has(.rpg-world) .app {max-width:none;box-sizing:border-box;height:100vh;height:100dvh;padding:10px;overflow:auto;}
+body:has(.rpg-world) .footer,body:has(#worldScreen:not(.hidden)) header {display:none;}
+#worldScreen.rpg-world {display:grid;grid-template-columns:minmax(0,65fr) minmax(390px,35fr);gap:14px;height:100%;padding:0;margin:0;border:0;background:transparent;}
+.rpg-world-pane,.rpg-sidebar,.rpg-context {min-width:0;min-height:0;}
+.rpg-world-pane {display:flex;align-items:stretch;}
+.rpg-world-pane .rpg-viewport {width:100%;min-width:0;min-height:0;display:grid;place-items:center;border-radius:12px;}
+.rpg-sidebar {display:flex;flex-direction:column;gap:8px;}
+.rpg-persistent {flex:none;padding:10px 12px;background:#233e3b;border:1px solid #77927a;border-radius:12px;}
+.rpg-heading {display:grid;gap:5px;margin:0;}
+.rpg-heading .eyebrow {display:none;}
+.rpg-heading h2 {font:18px monospace;color:#f1e7c8;margin:0;}
+.rpg-day {font:11px monospace;color:#bed1b3;}
+.rpg-tools {margin:0;display:flex;flex-wrap:wrap;gap:6px;}
+.rpg-tools button {padding:8px;font-size:12px;}
+body:has(.rpg-world) .herochar {margin:6px 0 0;padding:6px 0 0;border:0;border-top:1px solid #617b63;border-radius:0;background:none;box-shadow:none;gap:8px;}
+body:has(.rpg-world) .herochar .avatar,body:has(.rpg-world) #characterSubtitle {display:none;}
+body:has(.rpg-world) .herochar h1 {font-size:16px;margin:0;}
+body:has(.rpg-world) .herochar .bar-label {margin-top:4px;}
+body:has(.rpg-world) .herochar .pill {display:inline-block;margin:4px 6px 0 0;font-size:11px;}
+.rpg-context {flex:1;position:relative;overflow:hidden;border:1px solid #526e7c;border-radius:12px;background:var(--p);}
+.rpg-exploration {height:100%;overflow:auto;padding:12px;overscroll-behavior:contain;}
+.rpg-location-note {font-size:13px;color:#e9dcb4;margin:8px 0;}
+.rpg-visits {display:flex;gap:12px;flex-wrap:wrap;border-top:1px solid #617b63;padding-top:8px;margin-top:8px;font:13px monospace;color:#d5d4a9;}
+/* Native dialogs retain focus and Escape, bounded to their contextual panel. */
+body:has(#worldScreen:not(.hidden)) :is(.rpg-dialogue,#libraryDialog) {position:fixed;inset:auto;top:var(--rpg-context-top);left:var(--rpg-context-left);width:var(--rpg-context-width);max-width:none;max-height:var(--rpg-context-height);margin:0;padding:14px;border-radius:12px;overflow:auto;overscroll-behavior:contain;box-shadow:none;}
+body:has(#worldScreen:not(.hidden)) :is(.rpg-dialogue,#libraryDialog)::backdrop {background:transparent;}
+body:has(#worldScreen:not(.hidden)) #libraryDialog {height:var(--rpg-context-height);}
+body:has(#worldScreen:not(.hidden)) #libraryDialog nav {gap:4px;margin:8px 0;}
+body:has(#worldScreen:not(.hidden)) #libraryDialog nav button {padding:8px;font-size:12px;}
+/* Learning: intrinsic rows; only the active content surface may scroll. */
+.rpg-learning-header {display:none;}
+body.rpg-overlay-active .app {padding:8px;overflow:hidden;}
+body.rpg-overlay-active #worldScreen.rpg-world {display:flex;flex-direction:column;gap:6px;}
+body.rpg-overlay-active .rpg-world-pane,body.rpg-overlay-active .rpg-persistent,body.rpg-overlay-active .rpg-exploration {display:none;}
+body.rpg-overlay-active .rpg-sidebar {flex:1;}
+body.rpg-overlay-active .rpg-learning-header {display:flex;align-items:center;gap:16px;min-height:40px;flex:none;padding:0 12px;}
+.rpg-learning-header strong {color:var(--gold);font-size:14px;white-space:nowrap;}
+.rpg-learning-header span {font-size:12px;color:var(--muted);}
+.rpg-learning-header button {margin-left:auto;padding:8px 12px;min-height:40px;}
+body.rpg-overlay-active #lessonScreen,body.rpg-overlay-active #resultScreen {position:static;inset:auto;width:100%;height:100%;max-height:none;overflow:auto;box-sizing:border-box;margin:0 auto;padding:12px 20px;border:0;box-shadow:none;overscroll-behavior:contain;}
+body.rpg-overlay-active #lessonScreen {display:flex;flex-direction:column;gap:8px;max-width:1360px;}
+body.rpg-overlay-active #resultScreen {max-width:1100px;}
+body.rpg-overlay-active #lessonScreen:has(#quizPanel:not(.hidden)) {overflow:hidden;}
+body.rpg-overlay-active #lessonScreen:has(.question-context[open]) {overflow:auto;}
+body.rpg-overlay-active #lessonScreen:has(.question-context[open]) #quizPanel {flex:none;grid-template-rows:auto auto auto;}
+body.rpg-overlay-active #lessonScreen:has(.question-context[open]) #questionBody {overflow:visible;}
+body.rpg-overlay-active .lesson-title {flex:none;margin:0;gap:6px;}
+body.rpg-overlay-active .lesson-title > div {display:flex;align-items:center;flex-wrap:wrap;gap:0 14px;}
+body.rpg-overlay-active .lesson-title h2 {font-size:22px;margin:4px 0;}
+body.rpg-overlay-active .lesson-title .icon {font-size:24px;}
+body.rpg-overlay-active .lesson-title .eyebrow {margin:0;}
+body.rpg-overlay-active .question-context {flex-basis:100%;}
+body.rpg-overlay-active #quizPanel {display:grid;grid-template-rows:auto minmax(0,1fr) auto;flex:1;min-height:0;gap:8px;}
+body.rpg-overlay-active .question-meta {margin:0;}
+body.rpg-overlay-active #questionBody {display:grid;grid-template-columns:minmax(240px,.85fr) minmax(0,1.15fr);gap:20px;align-items:safe center;min-height:0;overflow:auto;overscroll-behavior:contain;}
+body.rpg-overlay-active .quizword {grid-column:1;grid-row:1;padding:8px;margin:0;}
+body.rpg-overlay-active #choices,body.rpg-overlay-active #constructionPanel {grid-column:2;grid-row:1;}
+body.rpg-overlay-active #choices {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0;}
+body.rpg-overlay-active #choices button {padding:10px;min-height:44px;overflow-wrap:anywhere;}
+body.rpg-overlay-active #choices form {grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;}
+body.rpg-overlay-active #choices input {width:100%;max-width:100%;min-height:44px;}
+body.rpg-overlay-active #quizPanel > .feedback {display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:10px;min-height:64px;margin:0;padding:8px 0 0;border-top:1px solid var(--edge);position:sticky;bottom:0;background:var(--p);}
+body.rpg-overlay-active #quizFeedback {min-width:0;}
+body.rpg-overlay-active #quizNext {position:static;min-height:44px;}
+.answer-feedback {display:grid;gap:6px;align-content:start;}
+.answer-feedback strong {font-size:15px;}
+.answer-translation {font-size:16px;line-height:1.6;overflow-wrap:anywhere;}
+.answer-translation [lang=ps] {font-size:26px;}
+.answer-feedback > button {justify-self:start;min-height:44px;}
+body.rpg-overlay-active .pashto {font-size:clamp(34px,4.8vh,52px);margin:6px 0;}
+body.rpg-overlay-active .english-question {font-size:clamp(24px,3.5vh,34px);}
+body.rpg-overlay-active .roman {font-size:17px;margin:5px 0;}
+body.rpg-overlay-active .built-sentence {min-height:60px;padding:8px;}
+body.rpg-overlay-active .word-tiles {margin:8px 0;gap:6px;}
+body.rpg-overlay-active .word-tile,body.rpg-overlay-active .built-token {font-size:clamp(26px,3.4vw,34px);line-height:1.5;min-height:48px;padding:4px 9px;}
+body.rpg-overlay-active .build-caption {margin:6px 0;}
+body.rpg-overlay-active #teachPanel {flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto minmax(min-content,1fr) auto;gap:10px 22px;}
+body.rpg-overlay-active #lessonStages {grid-column:1/-1;margin:0;}
+body.rpg-overlay-active .stage {padding:6px;}
+body.rpg-overlay-active .teach-card {grid-column:1;grid-row:2;align-self:center;padding:8px;margin:0;}
+body.rpg-overlay-active #tutorialInteraction {grid-column:2;grid-row:2;align-self:center;margin:0;padding:12px;}
+body.rpg-overlay-active #teachPanel:not(:has(#tutorialInteraction:not(.hidden))) .teach-card {grid-column:1/-1;justify-self:center;width:min(100%,900px);}
+body.rpg-overlay-active .teach-actions {grid-column:1/-1;grid-row:3;position:sticky;bottom:0;justify-content:flex-end;padding:8px 0;margin:0;background:var(--p);}
+body.rpg-overlay-active #grammarPanel {flex:1;}
+body.rpg-overlay-active .grammar-area {max-width:1100px;margin:auto;padding:12px;}
+body.rpg-overlay-active .grammar-area p {margin:6px 0;}
+body.rpg-overlay-active .grammar-area h4 {margin:10px 0 4px;}
+body.rpg-overlay-active .grammar-area .buttons {position:sticky;bottom:0;background:var(--p);padding:8px 0;}
+body.rpg-overlay-active:has(#dreamExit) #navWorld {display:none;}
+body.rpg-overlay-active:has(#worldScreen:not(.hidden)) :is(#rpgDialogue,#rpgMenu,#dreamMenu) {max-width:720px;left:max(var(--rpg-context-left),calc((100vw - 720px)/2));}
+/* Voluntary practice uses one Library-body scroller, retaining reference navigation. */
+body:has(.rpg-world):has(#libraryDialog[open][data-practice="true"]) #worldScreen {visibility:hidden;}
+body:has(#worldScreen) #libraryDialog[open][data-practice="true"] {inset:8px;width:calc(100% - 16px);height:calc(100vh - 16px);height:calc(100dvh - 16px);max-height:none;display:flex;flex-direction:column;overflow:hidden;visibility:visible;}
+body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryBody {min-height:0;overflow:auto;overscroll-behavior:contain;}
+body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryClose {position:absolute;top:12px;right:12px;}
+body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryTitle {font-size:20px;margin:0 150px 8px 0;}
+body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryBody > article {max-width:1100px;margin:12px auto;}
+@media(max-width:1000px){
+  body:has(.rpg-world) .app {padding:6px;}
+  #worldScreen.rpg-world {grid-template-columns:minmax(0,1fr);grid-template-rows:clamp(110px,23vh,240px) minmax(0,1fr);grid-template-rows:clamp(110px,23dvh,240px) minmax(0,1fr);gap:6px;}
+  .rpg-sidebar {gap:6px;}.rpg-persistent {padding:6px 10px;}
+  .rpg-heading {grid-template-columns:1fr auto;gap:3px 8px;}.rpg-heading .rpg-day {grid-column:1/-1;}.rpg-heading h2 {font-size:16px;}
+  .rpg-tools button {padding:7px;font-size:11px;min-height:36px;}
+}
+@media(max-width:800px){
+  body.rpg-overlay-active #lessonScreen {padding:10px;}
+  body.rpg-overlay-active .rpg-learning-header {padding:0 4px;gap:8px;flex-wrap:wrap;}
+  .rpg-learning-header span {font-size:10px;flex:1;}
+  body.rpg-overlay-active .lesson-title h2 {font-size:19px;}
+  body.rpg-overlay-active .lesson-title > div {display:block;}
+  body.rpg-overlay-active #questionBody {display:flex;flex-direction:column;align-items:stretch;gap:6px;}
+  body.rpg-overlay-active #choices {gap:6px;}
+  body.rpg-overlay-active #quizPanel > .feedback {grid-template-columns:minmax(0,1fr);gap:6px;}
+  body.rpg-overlay-active #quizNext {justify-self:end;}
+  body.rpg-overlay-active #teachPanel {display:flex;flex-direction:column;gap:8px;}
+  body.rpg-overlay-active .teach-card {align-self:stretch;}
+  body.rpg-overlay-active .pashto {font-size:34px;}
+  body.rpg-overlay-active .meaning {font-size:21px;}
+  .character-portrait {width:64px;height:64px;}
+}

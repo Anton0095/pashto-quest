@@ -43,15 +43,8 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
           );
           // Expressions grant no XP. Repeated display preserves the first encounter.
           storage.save();
-          box.append(
-            ui.node(
-              "p",
-              correct
-                ? "Correct. Recognition recorded; no XP awarded."
-                : "Meaning: " + phrase.english + ". " + QuestionEngine.explanation({kind:"word"}, content.wordById[phrase.id]),
-              "notice",
-            ),
-          );
+          const feedback=ui.node('div');box.append(feedback);
+          ui.renderAnswerFeedback(feedback,content.wordById[phrase.id],{},correct);
         });
       button.dataset.answer = option;
       box.append(button);
@@ -73,17 +66,6 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
         "eyebrow",
       ),
     );
-    if (!phrase.active) {
-      card.append(ui.node("p", `${phrase.speaker}: “${phrase.english}”`));
-      card.append(
-        ui.node(
-          "p",
-          "Pashto teaching for this expression is pending translation and grammatical review. It is not acquired, assessed or counted as a new word.",
-          "tiny",
-        ),
-      );
-      return card;
-    }
     if (phrase.promptPhraseId && phrase.id === phrase.responsePhraseId) {
       const prompt = content.wordById[phrase.promptPhraseId];
       const line = ui.node("p", `${phrase.speaker}: ${prompt.ps} (${prompt.roman} — ${prompt.en})`);
@@ -141,34 +123,10 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
     );
     if (phrase) root.append(expressionDialogue(phrase, "day-opening"));
   }
-  function renderLessonExpression(day, location, mode) {
-    let root = ui.$("lessonExpression");
-    if (!root) {
-      root = ui.node("div");
-      root.id = "lessonExpression";
-      ui.$("audioStatus").after(root);
-    }
-    root.replaceChildren();
-    if (mode !== "standard") return;
-    // An active greeting is shown by the standard study/recall sequence.
-    // Inactive expressions cannot appear as Pashto teaching or challenge items.
-    const pending = content.NARRATIVE_DATA.expressions.find(
-      (p) => p.day === day && p.location === location && !p.active,
-    );
-    if (pending)
-      root.append(
-        ui.node(
-          "p",
-          "Another location expression awaits an approved Pashto translation and cannot yet be studied.",
-          "tiny muted",
-        ),
-      );
-  }
 
   return {
     appendPhrasePractice,
     expressionDialogue,
     renderDayExpression,
-    renderLessonExpression,
   };
 }

@@ -235,8 +235,8 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
     },
     {
       id: "g-how",
-      kind: "tiles",
-      help: "Arrange the words of this conventional greeting, taught as one fixed phrase.",
+      kind: "choice",
+      help: "Select the correct English translation of this conventional greeting.",
     },
     {
       id: "tutorial-language",
@@ -249,21 +249,6 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       help: "Muhammad Jan asks his name. Type his name in English.",
     },
   ];
-  for (const [id, en] of [
-    ["tutorial-gender", "Your gender preference"],
-    ["tutorial-name", "Your player name"],
-  ]) {
-    wordById[id] = {
-      id,
-      type: "profile",
-      loop: 0,
-      ps: "",
-      roman: "",
-      en,
-      note: "English profile setting",
-    };
-    LIBRARY_DATA.cardTypes[id] = "profile";
-  }
   // Onboarding-only response cards: not lexical acquisitions or generation exceptions.
   // Exact native questions are separately approved onboarding prompts, never generation targets.
   wordById["tutorial-language"]={id:"tutorial-language",type:"profile",loop:0,

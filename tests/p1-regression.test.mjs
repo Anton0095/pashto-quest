@@ -36,7 +36,7 @@ if(mode==='all') {
    const target=t.content.wordById[q.id];
    const legitimate=new Set(Object.values(t.content.wordById).filter(c=>introduced(c)||t.state.progress.library.phrases[c.id]).map(c=>c.en));
    for(const meaning of q.choiceOrder) assert(neutral.has(meaning)||legitimate.has(meaning)||fallback.has(meaning),`Unstudied meaning ${meaning} day ${day}`);
-   if(q.unstudied)assert(!q.choiceOrder.includes(target.en));
+   if(q.unstudied&&!q.recognition)assert(!q.choiceOrder.includes(target.en));
   }
   const saved=plain(qs);t.storage.save();const loaded=t.storage.load();t.state.progress=loaded;t.state.session=null;
   assert.deepEqual(plain(t.questions.selectChallenge(day)),saved,'Reload never rerolls frozen choices');

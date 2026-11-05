@@ -20,6 +20,6 @@ t.content.registerGenerated(prior);assert.equal(t.content.wordById[prior.id].rom
 t.content.registerGenerated(current);assert.equal(t.content.wordById[current.id].roman,current.roman,'explicit new generation uses approved pronunciation');
 for(const day of [5,7]) {
  t.state.day=day;t.state.progress.library.phrases['phrase-day-7-opening']={day:5,source:'lesson'};
- const qs=t.questions.selectChallenge(day);assert.equal(qs.length,day===7?25:15);assert.equal(qs[0].id,'phrase-day-7-opening');assert.equal(qs[0].kind,'construct');assert.equal(qs[0].phrasePromptId,'phrase-day-5-opening');
+ const qs=t.questions.selectChallenge(day);assert.equal(qs.length,day===7?25:15);assert.equal(qs[0].id,'phrase-day-7-opening');assert.equal(qs[0].kind,'word');assert.equal(qs[0].phrasePromptId,'phrase-day-5-opening');
 }
-console.log('PASS approved nun in new composition, exact attested prior snapshot display, arbitrary pronunciation rejection, Day-5/7 response construction');
+console.log('PASS approved nun in new composition, exact attested prior snapshot display, arbitrary pronunciation rejection, Day-5/7 response translation selection');

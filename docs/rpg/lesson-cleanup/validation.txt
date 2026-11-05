@@ -1,0 +1,147 @@
+Lesson UI/feedback/entry cleanup: targeted validation on the existing PR branch.
+Main a193937 was already incorporated. Full seven-day and fourteen-day browser suites, delivery refresh and benchmarks were not rerun.
+The review-focused rerun includes actual Menu → Due review completion and preservation of the paused challenge.
+Obsolete tutorial profile IDs/tile drafts are rejected; no migration adapters or schema bump.
+
+cleanup-static-models.txt
+PASS npm run typecheck
+
+> pashto-quest-rpg@0.1.0 typecheck
+> tsc --noEmit
+
+
+PASS python3 tools/build.py --check
+Offline release synchronized.
+
+PASS node tests/choice-quality.test.mjs
+PASS same-lesson/mixed-POS priority, real Day1 fallback, unchanged acquisition, accepted-sense/variant exclusions, 33 Journal reference concepts, frozen retired snapshots and blocked grading
+
+PASS node tests/approved-sentences.test.mjs
+PASS approved nun in new composition, exact attested prior snapshot display, arbitrary pronunciation rejection, Day-5/7 response translation selection
+
+PASS node tests/daily-flow.test.mjs
+PASS new openings, typed spacing, phrase translations, small/default pools, frozen attempts and current-save validation
+PASS central bed spawn and configured/fallback progress-sensitive guidance
+
+PASS node tests/rpg-foundation.test.mjs
+PASS foundation chapters, inactive Day2 registration/events, prerequisites, terminal/nonterminal, stable identities, story flags/once-only/resumption, validated cursor and no-op writes
+PASS relocated stable character and rejected-lock retry without a poisoned world queue
+PASS current tutorial drafts and clean rejection of obsolete profile/tile drafts
+PASS optional default NPC location when no day-specific override exists
+PASS all inactive Day2 NPC lesson links resolve to Day2 curriculum IDs
+
+PASS node tests/rpg-persistence.test.mjs
+PASS RPG persistence and policy: separate keys, competing writer protection, corrupted coordinates/schema recovery, Day 2 cap, data-driven expansion
+
+PASS node tests/rpg-world.test.mjs
+PASS RPG world: map definitions, schema recovery, registry/day boundary, full reachability
+
+PASS node tests/rpg-week1.test.mjs
+PASS Week1 registry, all seven normal/skip policies, legitimate-pass advancement, identity schedules, Mina timing, Hills reachability and Day8 boundary
+PASS inactive Day8, new map and new NPC registration without engine or educational changes
+
+PASS node tests/rpg-narrative-audit.test.mjs
+PASS Days2–7 openings, teacher handoffs and relocations, greetings, productive person/number, compounds, Lake gathering, Mina/Hills, School exam, unlocks and once-only rewards
+
+PASS node tests/house-sleep-dream.test.mjs
+PASS house reachability/collision across seven chapters, sleep-intent validation, isolated review snapshots/rewards, exact approved tutorial prompts and shared name validation
+
+PASS node tests/audio.test.mjs
+Audio: 7 restoration groups + both active expression IDs (MP3 priority, device voice, failed MP3 fallback) + cancellation passed. Mocked APIs; physical devices unverified.
+
+PASS node --check src/answer-feedback.js
+
+PASS node --check src/challenge-ui.js
+
+PASS node --check src/construction-ui.js
+
+PASS node --check src/content.js
+
+PASS node --check src/lesson-ui.js
+
+PASS node --check src/library-ui.js
+
+PASS node --check src/narrative-ui.js
+
+PASS node --check src/question-engine.js
+
+PASS node --check src/questions.js
+
+PASS node --check src/tutorial-ui.js
+
+PASS node --check src/ui.js
+
+PASS node --check tests/choice-quality.test.mjs
+
+PASS node --check tests/daily-flow-browser.test.mjs
+
+PASS node --check tests/daily-lesson-browser.test.mjs
+
+PASS node --check tests/house-sleep-dream-browser.test.mjs
+
+PASS node --check tests/house-sleep-dream.test.mjs
+
+PASS node --check tests/rpg-early-exam-browser.test.mjs
+
+PASS node --check tests/rpg-foundation.test.mjs
+
+PASS node --check tests/rpg-maintenance-browser.test.mjs
+
+PASS node --check tests/rpg-overhaul-browser.test.mjs
+
+PASS node --check tests/rpg-week1-browser.test.mjs
+
+PASS node --check tests/rpg-week1-driver.mjs
+
+PASS node --check tests/lesson-cleanup-browser.test.mjs
+
+PASS python3 -m py_compile tools/verify.py
+
+PASS git diff --check
+
+
+
+cleanup-entry-final.txt
+PASS lesson cleanup 1920 1080 manual Day2 entry/decline, locked/direct Quick travel, Day4 teacher, no return auto-dialogue, compact correct/incorrect actual-question feedback, desktop fit; NPC/Quick progress and XP parity at 1920
+PASS lesson cleanup 1366 768 manual Day2 entry/decline, locked/direct Quick travel, Day4 teacher, no return auto-dialogue, compact correct/incorrect actual-question feedback, desktop fit; NPC/Quick progress and XP parity at 1920
+PASS lesson cleanup 390 844 manual Day2 entry/decline, locked/direct Quick travel, Day4 teacher, no return auto-dialogue, compact correct/incorrect actual-question feedback, desktop fit; NPC/Quick progress and XP parity at 1920
+
+
+cleanup-review-final.txt
+PASS lesson cleanup 1920 1080 manual Day2 entry/decline, locked/direct Quick travel, Day4 teacher, no return auto-dialogue, compact correct/incorrect actual-question feedback, desktop fit; NPC/Quick progress and XP parity at 1920
+
+
+cleanup-lessons.txt
+PASS complete Home lesson 1920 1080 NPC lesson, real study/grammar/generated sentences, answers and feedback without internal/page scrolling, correct position on return
+PASS complete Home lesson 1366 768 NPC lesson, real study/grammar/generated sentences, answers and feedback without internal/page scrolling, correct position on return
+PASS complete Home lesson 1280 720 NPC lesson, real study/grammar/generated sentences, answers and feedback without internal/page scrolling, correct position on return
+
+
+cleanup-challenge-final.txt
+PASS 1920 1080 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 1366 768 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 1280 720 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 768 1024 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 390 844 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+
+
+cleanup-lifecycle-final.txt
+PASS full-screen lifecycle 1366 768 mandatory exit guard, mounted scene identity, typed-draft reload/frozen questions, correct world return, reference/practice modes, all three Library practice types and no XP
+PASS full-screen lifecycle 390 844 mandatory exit guard, mounted scene identity, typed-draft reload/frozen questions, correct world return, reference/practice modes, all three Library practice types and no XP
+
+
+cleanup-maintenance.txt
+PASS maintenance 375 restored story/ending gates, genuine-pass sleep, unchanged rewards and pending-commit disposal
+PASS maintenance 1280 restored story/ending gates, genuine-pass sleep, unchanged rewards and pending-commit disposal
+
+
+cleanup-tutorial.txt
+PASS tutorial/profile 375 all four cards, post-answer romanisation, exact approved questions/audio control, incorrect/retry, name variant normalization, optional defaults and profile reload
+PASS tutorial/profile 1280 all four cards, post-answer romanisation, exact approved questions/audio control, incorrect/retry, name variant normalization, optional defaults and profile reload
+
+
+cleanup-phaser.txt
+PASS Phaser 375 real tilemap, Arcade terrain/NPC collision, 4-way movement, camera, transitions, paused full-screen learning panel and offline bundle
+PASS Phaser touch emulation: 375px, DPR3, pointer capture and dialogue; not physical Safari
+PASS Phaser 1280 real tilemap, Arcade terrain/NPC collision, 4-way movement, camera, transitions, paused full-screen learning panel and offline bundle
+PASS Phaser optional collision layer blocks walkable terrain without changing tile art

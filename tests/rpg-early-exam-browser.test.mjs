@@ -7,7 +7,7 @@ const fixture=`if(!state.progress.tutorialDone){state.progress=progression.fresh
 const b=await setup({width:375,mobile:true,rpg:true,bridge:false,offline:true,transform:h=>h.replace('const rpg = RPG_ENABLED ?',fixture+'const rpg = RPG_ENABLED ?').replace('// @TEST_HOOK','window.__week1Inspect=()=>rpg.diagnostics(); // @TEST_HOOK')});
 const p=b.page,d=driver(p);
 try{
- await p.locator('#rpgDialogue').waitFor();await d.dialogue('Explore first');
+ await p.locator('#rpgCanvas').waitFor();assert(!await p.locator('#rpgDialogue').isVisible(),'No automatic day-opening dialogue');
  assert(!Object.keys((await d.progress()).complete).some(id=>id.startsWith('7-')));
  await d.actor('hameed',7);await d.talk('Day 7 challenge · 25 questions');
  await d.dialogue('Start early challenge');await p.locator('#quizPanel').waitFor();

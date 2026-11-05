@@ -39,7 +39,7 @@ for(const width of [375,1280]) {
   const expected=[7,14].includes(day)?25:15;
   for(let n=0;n<expected;n++) {
    const q=await p.evaluate(()=>__test.state.session.questions[__test.state.session.index]);assert(!['choice','address'].includes(q.kind));
-   if(q.unstudied){const text=await p.locator('#choices').innerText();const en=await p.evaluate(()=>__test.content.wordById[__test.state.session.questions[__test.state.session.index].id].en);assert(!text.includes(en));}
+   if(q.unstudied&&!q.recognition){const text=await p.locator('#choices').innerText();const en=await p.evaluate(()=>__test.content.wordById[__test.state.session.questions[__test.state.session.index].id].en);assert(!text.includes(en));}
    await answerCurrent(p);await p.locator('#quizNext').click();
   }
   assert(await p.locator('#resultScreen').isVisible());assert.equal(await p.evaluate(day=>__test.state.progress.challenges[day].best,day),expected);

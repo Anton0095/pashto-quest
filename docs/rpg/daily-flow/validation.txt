@@ -1,0 +1,69 @@
+daily-validation-complete.txt
+PASS npm run typecheck
+
+> pashto-quest-rpg@0.1.0 typecheck
+> tsc --noEmit
+
+
+PASS python3 tools/build.py --check
+Offline release synchronized.
+
+PASS node tests/daily-flow.test.mjs
+PASS new openings, typed spacing, phrase translations, small/default pools, frozen attempts and current-save validation
+PASS central bed spawn and configured/fallback progress-sensitive guidance
+
+PASS node tests/rpg-foundation.test.mjs
+PASS foundation chapters, inactive Day2 registration/events, prerequisites, terminal/nonterminal, stable identities, story flags/once-only/resumption, validated cursor and no-op writes
+PASS relocated stable character and rejected-lock retry without a poisoned world queue
+PASS tutorial draft permutation, partial restoration and recorded-response lock validation
+PASS optional default NPC location when no day-specific override exists
+PASS all inactive Day2 NPC lesson links resolve to Day2 curriculum IDs
+
+PASS node tests/rpg-persistence.test.mjs
+PASS RPG persistence and policy: separate keys, competing writer protection, corrupted coordinates/schema recovery, Day 2 cap, data-driven expansion
+
+PASS node tests/house-sleep-dream.test.mjs
+PASS house reachability/collision across seven chapters, sleep-intent validation, isolated review snapshots/rewards, exact approved tutorial prompts and shared name validation
+
+PASS node tests/audio.test.mjs
+Audio: 7 restoration groups + both active expression IDs (MP3 priority, device voice, failed MP3 fallback) + cancellation passed. Mocked APIs; physical devices unverified.
+
+PASS node tests/approved-sentences.test.mjs
+PASS approved nun in new composition, exact attested prior snapshot display, arbitrary pronunciation rejection, Day-5/7 response translation selection
+
+PASS python3 tests/district-content.test.py
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.249s
+
+OK
+
+
+
+daily-flow-acceptance.txt
+PASS 1920 1080 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 1366 768 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 768 1024 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 375 812 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+
+
+daily-flow-final-integration.txt
+PASS 1366 768 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+
+
+daily-lessons.txt
+PASS complete Home lesson 1920 1080 real study, grammar, generated sentences, word/construct answers, feedback and return without document scrolling
+PASS complete Home lesson 1366 768 real study, grammar, generated sentences, word/construct answers, feedback and return without document scrolling
+
+
+daily-tutorial-regression.txt
+PASS tutorial/profile 375 all four cards, post-answer romanisation, exact approved questions/audio control, incorrect/retry, name variant normalization, optional defaults and profile reload
+PASS tutorial/profile 1280 all four cards, post-answer romanisation, exact approved questions/audio control, incorrect/retry, name variant normalization, optional defaults and profile reload
+
+Additional model regressions
+PASS node tests/curriculum-expansion.test.mjs: district drafts, seven paces, action guards, frozen plans, introductions, reserves and SRS
+PASS node tests/practical-assessment.test.mjs: 196 attempts, 392 model visits, 14 days × 7 paces × normal/skip, thresholds, practical question types, eligibility, masking and frozen restoration
+
+challenge-disclosure.test.mjs (rerun with local-server network permission after test-helper recognition fix)
+PASS disclosure 375 unseen words/phrases masked, activation-licensed sentences, first feedback reveals meaning, reload preserves direction, no additional introductions on submission
+PASS disclosure 1280 unseen words/phrases masked, activation-licensed sentences, first feedback reveals meaning, reload preserves direction, no additional introductions on submission

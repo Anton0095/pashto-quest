@@ -16,7 +16,7 @@ function createChallengeUI({
     if (!panel) {
       panel = document.createElement("div");
       panel.id = "challengeScene";
-      ui.$("lessonScreen").insertBefore(panel, document.querySelector(".speaker-note"));
+      document.querySelector(".speaker-note").before(panel);
     }
     panel.replaceChildren();
     panel.classList.toggle("hidden", day < 6 && day !== 1);
@@ -237,6 +237,7 @@ function createChallengeUI({
     if (resuming && state.session.locked) renderRecordedResponse();
   }
   function renderQuestion(resuming) {
+    ui.$("questionBody").scrollTop=0;
     queueMicrotask(ui.readableQuizSurfaces);
     ui.$("lessonScreen").classList.remove("construction-active");
     audio.stopAudio();
@@ -304,7 +305,7 @@ function createChallengeUI({
     ui.$("quizPanel").querySelector(".quizword h3").textContent = reverse
         ? "Choose the correct Pashto"
         : "Choose the correct English meaning";
-    if (q.kind === "word" && q.unstudied) {
+    if (q.kind === "word" && q.unstudied && !q.recognition) {
       ui.$("quizPrompt").textContent = "Not previously studied. Type the English meaning if you already know it, or reveal it after submitting. Your first answer counts.";
       ui.$("quizPanel").querySelector(".quizword h3").textContent = "Recall without a translation clue";
       const form = document.createElement("form");
@@ -321,9 +322,11 @@ function createChallengeUI({
       });
       const submit = document.createElement("button");
       submit.type = "submit";
+      submit.className = "speaker";
       submit.textContent = "Submit meaning";
       const reveal = document.createElement("button");
       reveal.type = "button";
+      reveal.className = "speaker";
       reveal.textContent = "I don’t know — reveal meaning";
       reveal.addEventListener("click", () => answerChallenge(""));
       form.addEventListener("submit", (event) => {
@@ -365,7 +368,7 @@ function createChallengeUI({
     queueMicrotask(ui.readableQuizSurfaces);
     const result = learning.submitChallenge(value);
     if (!result) return;
-    const { q, w, correct, gain } = result;
+    const { q, w, correct } = result;
     for (const control of ui.$("choices").querySelectorAll("input, button")) control.disabled = true;
     if (q.generated) learning.surface(q.id, "assessment-feedback");
     storage.save();
@@ -373,26 +376,12 @@ function createChallengeUI({
     if (["construct", "dialogue"].includes(q.kind)) {
       renderBuiltSentence();
       ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
-      ui.construction.feedback(ui.$("quizFeedback"), w, q, correct, gain ? `+${gain} XP` : "Already rewarded");
+      ui.construction.feedback(ui.$("quizFeedback"), w, q, correct);
       ui.$("quizNext").disabled = false;
       return;
     }
     ui.showAnswerFeedback(ui.$("choices"), q.direction === "ps-en" ? w.en : w.ps, value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
-    const feedback = ui.$("quizFeedback");
-    feedback.replaceChildren();
-    const headline = document.createElement("strong");
-    headline.className = correct ? "good" : "bad";
-    headline.textContent =
-      state.session.loop === 3
-        ? correct
-          ? `✓ Edris: “Excellent! ${gain ? `+${gain} XP` : "You remember!"}”`
-          : "✗ Edris: “Nearly! Let me show you the right way.”"
-        : correct
-          ? `✓ Correct! ${gain ? `+${gain} XP` : "Well remembered!"}`
-          : "✗ Not quite — this word is now due for review";
-    const detail = document.createElement("div");
-    detail.textContent = `${w.ps} (${w.roman}) — ${w.en}. ${questions.explanation(q, w)}`;
-    feedback.append(headline, detail);
+    ui.renderAnswerFeedback(ui.$("quizFeedback"),w,q,correct);
     if (w.generated)
       ui.setSentenceConversation(w, content.teacherFor(state.session.loop, null, "challenge").name, q);
     ui.$("quizSpeak").classList.remove("hidden");
@@ -472,18 +461,13 @@ function createChallengeUI({
     if (["construct", "dialogue"].includes(q.kind)) {
       renderBuiltSentence();
       ui.$("builtSentence").classList.add(correct ? "build-success" : "build-error");
-      ui.construction.feedback(ui.$("quizFeedback"), w, q, correct, "First answer already recorded");
+      ui.construction.feedback(ui.$("quizFeedback"), w, q, correct);
       ui.$("quizNext").disabled=false;
       return;
-    } else if (!q.unstudied) {
+    } else {
       ui.showAnswerFeedback(ui.$("choices"), q.correct || (q.direction === "en-ps" ? w?.ps : w?.en), value, {accepts:v => QuestionEngine.evaluate(q, w, v)});
     }
-    ui.$("quizFeedback").textContent =
-      "Recorded response: " +
-      (q.answerPs ||
-        q.correct ||
-        (w ? w.ps + (q.kind === "word" ? " — " + w.en : "") : "")) +
-      ". Your first submitted answer is already recorded. " + questions.explanation(q, w);
+    ui.renderAnswerFeedback(ui.$("quizFeedback"),w,q,correct);
     ui.$("quizNext").disabled = false;
   }
   function resumeChallenge() {

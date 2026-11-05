@@ -8,7 +8,6 @@ function createLessons({
   ui,
   audio,
   storage,
-  narrative,
   tutorial,
   grammar,
   onWorld,
@@ -115,7 +114,6 @@ function createLessons({
           : content.curriculum.days[loop - 1].topic;
     ui.$("lessonIcon").textContent = content.zones[loc]?.icon || "📚";
     ui.setSpeaker(loop, loc, mode);
-    narrative.renderLessonExpression(loop, loc, mode);
     ui.hud();
     ui.view("lessonScreen");
     storage.save();
@@ -183,7 +181,8 @@ function createLessons({
     ui.$("teachPashto").textContent = w.ps;
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
-    ui.$("teachNote").textContent = w.note;
+    ui.$("teachNote").textContent = w.note?.startsWith("Base content user-approved;") ? "" : w.note;
+    ui.$("teachNote").classList.toggle("hidden", !ui.$("teachNote").textContent);
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
     const guidance = w.generated
       ? "Use the words and forms you studied to build this meaning. This example is composed from your unlocked grammar."
@@ -252,6 +251,7 @@ function createLessons({
     if (typeof RPG_ENABLED!=="undefined" && RPG_ENABLED) storage.save();
   }
   function showQuestion(restore=false) {
+    ui.$("questionBody").scrollTop=0;
     const s = state.session;
     if (!s) return;
     if (!s.queue.length && !(restore && s.activeItem)) {
@@ -326,7 +326,7 @@ function createLessons({
     if (restore && s.locked) {
       for (const b of ui.$("choices").children) b.disabled=true;
       if (build) {renderBuild();ui.construction.feedback(ui.$("quizFeedback"),w,s.activeItem,QuestionEngine.evaluate(s.activeItem,w,s.submittedAnswer || ""));}
-      else {ui.showAnswerFeedback(ui.$("choices"),w.en,s.submittedAnswer);ui.$("quizFeedback").textContent=s.feedbackText || "Your first response is recorded.";}
+      else {ui.showAnswerFeedback(ui.$("choices"),w.en,s.submittedAnswer);ui.renderAnswerFeedback(ui.$("quizFeedback"),w,s.activeItem,QuestionEngine.evaluate(s.activeItem,w,s.submittedAnswer));}
       ui.$("quizNext").disabled=false;
     }
     storage.save();
@@ -335,7 +335,7 @@ function createLessons({
     const result = learning.submitLesson(value);
     if (!result) return;
     state.session.submittedAnswer=value;
-    const { w, correct, gain } = result;
+    const { w, correct } = result;
     learning.surface(w.id, "lesson-feedback");
     storage.save();
     ui.hud();
@@ -350,11 +350,9 @@ function createLessons({
     ui.$("checkBuild").disabled = true;
     ui.$("undoTile").disabled = true;
     ui.$("clearTiles").disabled = true;
-    ui.$("quizFeedback").textContent =
-      `${correct ? "✓ Correct" : "Not yet — try again shortly"} · +${gain} XP · ${w.ps} (${w.roman}) — ${w.en}. ${QuestionEngine.explanation({kind:state.session.activeItem.kind || "word"}, w)}`;
-    if (state.session.activeItem.kind === "construct") ui.construction.feedback(ui.$("quizFeedback"), w, state.session.activeItem, correct, `+${gain} XP`);
+    if (state.session.activeItem.kind === "construct") ui.construction.feedback(ui.$("quizFeedback"),w,state.session.activeItem,correct);
+    else ui.renderAnswerFeedback(ui.$("quizFeedback"),w,state.session.activeItem,correct);
     ui.$("quizNext").disabled = false;
-    state.session.feedbackText=ui.$("quizFeedback").textContent;
     ui.$("quizNext").textContent = state.session.queue.length
       ? "Next →"
       : "Finish lesson →";

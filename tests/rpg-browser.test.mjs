@@ -33,7 +33,7 @@ for(const width of [375,1280]) {
    }
    const end=await pos();if(!map.transitions.some(t=>t.x===x&&t.y===y))assert.deepEqual([end.x,end.y],[x,y]);
   }
-  async function talk(label){await p.locator('#rpgInteract').click();await p.locator('#rpgDialogue').getByRole('button',{name:label,exact:true}).click();}
+  async function talk(label){await p.locator('#rpgInteract').click();while(await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).count())await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();await p.locator('#rpgDialogue').getByRole('button',{name:label,exact:true}).click();}
   async function tutorial(){
    await p.locator('#startTutorial').click();
    const start=await pos();await p.locator('[data-direction=down]').click();await p.waitForFunction(y=>+document.getElementById('rpgCanvas').dataset.y===y,start.y+1);await p.locator('[data-direction=up]').click();await p.waitForFunction(y=>+document.getElementById('rpgCanvas').dataset.y===y,start.y);assert.deepEqual(await pos(),start);
@@ -44,9 +44,7 @@ for(const width of [375,1280]) {
    await walk(24,15);assert.equal((await pos()).map,'library');await walk(6,6);
    await talk('Begin Library tutorial');
    await p.locator('#tutorialInteraction button').getByText('Hello',{exact:true}).click();await p.locator('#teachNext').click();
-   await p.locator('#tutorialInteraction button').getByText('څنګه',{exact:true}).click();
-   await durable();const tutorialDraft=await p.locator('#tutorialInteraction .built-sentence').innerText();await p.reload();await p.locator('#tutorialInteraction .built-sentence').waitFor();assert.equal(await p.locator('#tutorialInteraction .built-sentence').innerText(),tutorialDraft,'Exact tutorial tile draft restores');
-   for(const text of ['یې؟','Check sentence'])await p.locator('#tutorialInteraction button').getByText(text,{exact:true}).click();
+   await durable();await p.reload();await p.locator('#tutorialInteraction button').getByText('How are you?',{exact:true}).click();
    await durable();const tutorialXP=(await progress()).xp;await p.reload();await p.locator('#teachNext:enabled').waitFor();assert.equal((await progress()).xp,tutorialXP,'Correct tutorial reload never scores twice');
    await p.locator('#teachNext').click();await p.locator('#tutorialInteraction button').getByText('پښتو',{exact:true}).click();await p.locator('#teachNext').click();
    await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();tutorialDone=true;
@@ -83,7 +81,7 @@ for(const width of [375,1280]) {
    for(let i=0;i<15;i++){
     const saved=await progress();assert(saved.activeChallenge);oracle.content.restoreGenerated(saved);
     const q=saved.activeChallenge.questions[saved.activeChallenge.index];
-    if(q.unstudied){assert(!(await p.locator('#choices').innerText()).includes(answerFor(q)));await p.locator('#unseenRecall').fill(fail?'deliberately incorrect':answerFor(q));await p.getByRole('button',{name:'Submit meaning',exact:true}).click();}
+    if(q.unstudied&&!q.recognition){assert(!(await p.locator('#choices').innerText()).includes(answerFor(q)));await p.locator('#unseenRecall').fill(fail?'deliberately incorrect':answerFor(q));await p.getByRole('button',{name:'Submit meaning',exact:true}).click();}
     else if(['construct','dialogue'].includes(q.kind)){
      if(fail){const tiles=p.locator('#wordTiles button:enabled');while(await tiles.count()){await tiles.last().click();if(q.duds?.length)break;}}
      else for(const token of answerFor(q).replace(/[.!؟،]/g,'').split(/\s+/).filter(Boolean))await p.locator('#wordTiles button:enabled').getByText(token,{exact:true}).first().click();
@@ -108,8 +106,8 @@ for(const width of [375,1280]) {
   await walk(10,11);await talk('Day 1 challenge · 15 questions');await assessment({reload:true});assert((await progress()).challenges[1].passed);
   assert.equal(await p.locator('#resultHeading').innerText(),'Chapter complete');assert((await p.locator('#resultDescription').innerText()).includes('You have successfully completed Day 1.'));
   const completedXP=(await progress()).xp;await durable();await p.reload();assert.equal(await p.locator('#resultHeading').innerText(),'Chapter complete');assert.equal((await progress()).xp,completedXP,'Reload does not repeat awards');
-  mkdirSync('docs/rpg/screenshots',{recursive:true});await p.screenshot({path:`docs/rpg/screenshots/completion-${width}.png`,fullPage:true});
-  await p.locator('#resultWorld').click();await p.screenshot({path:`docs/rpg/screenshots/village-${width}.png`,fullPage:true});
+  mkdirSync('work/rpg-browser',{recursive:true});await p.screenshot({path:`work/rpg-browser/completion-${width}.png`,fullPage:true});
+  await p.locator('#resultWorld').click();await p.screenshot({path:`work/rpg-browser/village-${width}.png`,fullPage:true});
   // No chapter navigation or future-day restoration is exposed.
   assert.equal(await p.locator('#chapterButtons').count(),0);assert.equal((await progress()).challenges[2],undefined);
   p.once('dialog',d=>d.accept());await p.locator('#rpgMenuButton').click();await p.locator('#resetProgress').click();tutorialDone=false;await tutorial();

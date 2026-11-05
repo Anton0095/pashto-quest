@@ -26,10 +26,10 @@ assert.equal(t.progression.awardXP(t.state.progress,'dream-test',100),0);assert.
 assert.deepEqual(JSON.parse(t.storage.snapshot()),original);assert.deepEqual(plain(t.state.reviewCampaign),original);
 const oldTutorial={mode:'tutorial',id:'tutorial',loop:0,phase:'tutorial',cardIndex:3,attemptId:0,locked:false,profileGender:'unspecified',profileName:'Old name',required:['g-hello','g-how','tutorial-gender','tutorial-name'],studyWords:[],greetingCards:[],studySentences:[],firstAsked:['g-hello','g-how','tutorial-gender'],passed:['g-hello','g-how','tutorial-gender'],queue:[],built:[],earned:30};
 const restored=P.restoreLesson(oldTutorial,t.content,t.state.reviewCampaign);
-assert(restored);assert(!('profileName' in restored));assert(!('profileGender' in restored));assert.equal(restored.cardIndex,2);assert.equal(restored.earned,30);assert.deepEqual([...restored.required],['g-hello','g-how','tutorial-language','tutorial-guide-name']);assert.deepEqual([...restored.passed],['g-hello','g-how']);
+assert.equal(restored,null,'Obsolete tutorial drafts are rejected without migration');
 // Current snapshots omit tutorial profile fields; invalid retained fields stay rejected.
 const currentTutorial={...oldTutorial,required:['g-hello','g-how','tutorial-language','tutorial-guide-name'],cardIndex:2};
-delete currentTutorial.profileName;delete currentTutorial.profileGender;
+delete currentTutorial.profileName;delete currentTutorial.profileGender;currentTutorial.firstAsked=['g-hello','g-how'];currentTutorial.passed=['g-hello','g-how'];
 assert(P.restoreLesson(currentTutorial,t.content,t.state.reviewCampaign));
 assert.equal(P.restoreLesson({...currentTutorial,profileName:42},t.content,t.state.reviewCampaign),null);
 assert.equal(P.restoreLesson({...currentTutorial,profileGender:['male']},t.content,t.state.reviewCampaign),null);

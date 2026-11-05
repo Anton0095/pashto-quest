@@ -1,0 +1,79 @@
+Two-column follow-up: targeted validation; full browser delivery matrix and physical devices not tested.
+
+two-column-model.txt
+PASS npm run typecheck
+
+> pashto-quest-rpg@0.1.0 typecheck
+> tsc --noEmit
+
+
+PASS python3 tools/build.py --check
+Offline release synchronized.
+
+PASS node tests/daily-flow.test.mjs
+PASS new openings, typed spacing, phrase translations, small/default pools, frozen attempts and current-save validation
+PASS central bed spawn and configured/fallback progress-sensitive guidance
+
+PASS node tests/rpg-foundation.test.mjs
+PASS foundation chapters, inactive Day2 registration/events, prerequisites, terminal/nonterminal, stable identities, story flags/once-only/resumption, validated cursor and no-op writes
+PASS relocated stable character and rejected-lock retry without a poisoned world queue
+PASS tutorial draft permutation, partial restoration and recorded-response lock validation
+PASS optional default NPC location when no day-specific override exists
+PASS all inactive Day2 NPC lesson links resolve to Day2 curriculum IDs
+
+PASS node tests/rpg-persistence.test.mjs
+PASS RPG persistence and policy: separate keys, competing writer protection, corrupted coordinates/schema recovery, Day 2 cap, data-driven expansion
+
+PASS node tests/house-sleep-dream.test.mjs
+PASS house reachability/collision across seven chapters, sleep-intent validation, isolated review snapshots/rewards, exact approved tutorial prompts and shared name validation
+
+PASS node tests/audio.test.mjs
+Audio: 7 restoration groups + both active expression IDs (MP3 priority, device voice, failed MP3 fallback) + cancellation passed. Mocked APIs; physical devices unverified.
+
+PASS node tests/approved-sentences.test.mjs
+PASS approved nun in new composition, exact attested prior snapshot display, arbitrary pronunciation rejection, Day-5/7 response translation selection
+
+PASS python3 tests/district-content.test.py
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.258s
+
+OK
+
+
+
+two-column-layout.txt
+PASS two-column layout 1920 1080 aspect ratio, keyboard/pointer/touch mapping, collision/camera, right-panel portraits/dialogue, focus/escape, Menu/Library/Quick travel and responsive resize
+PASS two-column layout 1366 768 aspect ratio, keyboard/pointer/touch mapping, collision/camera, right-panel portraits/dialogue, focus/escape, Menu/Library/Quick travel and responsive resize
+PASS two-column layout 1280 720 aspect ratio, keyboard/pointer/touch mapping, collision/camera, right-panel portraits/dialogue, focus/escape, Menu/Library/Quick travel and responsive resize
+PASS two-column layout 768 1024 aspect ratio, keyboard/pointer/touch mapping, collision/camera, right-panel portraits/dialogue, focus/escape, Menu/Library/Quick travel and responsive resize
+PASS two-column layout 390 844 aspect ratio, keyboard/pointer/touch mapping, collision/camera, right-panel portraits/dialogue, focus/escape, Menu/Library/Quick travel and responsive resize
+
+
+two-column-challenge.txt
+PASS 1920 1080 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 1366 768 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 1280 720 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 768 1024 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+PASS 390 844 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn
+
+
+two-column-lessons.txt
+PASS complete Home lesson 1920 1080 real study, grammar, generated sentences, word/construct answers, feedback and return without document scrolling
+PASS complete Home lesson 1366 768 real study, grammar, generated sentences, word/construct answers, feedback and return without document scrolling
+
+
+two-column-phaser.txt
+PASS Phaser 375 real tilemap, Arcade terrain/NPC collision, 4-way movement, camera, transitions, paused contextual learning panel and offline bundle
+PASS Phaser touch emulation: 375px, DPR3, pointer capture and dialogue; not physical Safari
+PASS Phaser 1280 real tilemap, Arcade terrain/NPC collision, 4-way movement, camera, transitions, paused contextual learning panel and offline bundle
+PASS Phaser optional collision layer blocks walkable terrain without changing tile art
+
+
+two-column-portraits.txt
+PASS approved portraits 375 five Phaser-loaded textures, dynamic speakers, original cropped pixels, offline delivery, no smoothing or overflow
+PASS approved portraits 1280 five Phaser-loaded textures, dynamic speakers, original cropped pixels, offline delivery, no smoothing or overflow
+
+
+two-column-mobile-final.txt
+PASS 390 844 tutorial, complete challenge, recognition/recall, yellow controls, bounded page and shared sleep spawn

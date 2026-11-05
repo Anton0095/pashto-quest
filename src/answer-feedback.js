@@ -13,3 +13,15 @@
       else if (value === submitted) b.setAttribute("aria-label", value + " · Incorrect answer");
     }
   }
+
+/* Presentation only; answer acceptance and rewards remain in their owners. */
+function renderAnswerFeedback(root, card, question, correct, onSpeak) {
+  root.replaceChildren();
+  root.classList.add('answer-feedback');
+  const status=document.createElement('strong');status.className=correct?'good':'bad';status.textContent=correct?'✓ Correct':'✗ Incorrect';
+  const translation=document.createElement('div');translation.className='answer-translation';
+  const pashto=document.createElement('bdi');pashto.lang='ps';pashto.dir='rtl';pashto.textContent=question.answerPs||card.ps;
+  const meaning=document.createElement('bdi');meaning.dir='ltr';meaning.textContent=` (${card.roman}) — ${question.answerEnglish||card.en}`;
+  translation.append(pashto,meaning);root.append(status,translation);
+  if(correct&&onSpeak){const button=document.createElement('button');button.type='button';button.className='speaker';button.textContent='Hear the correct sentence';button.addEventListener('click',onSpeak);root.append(button);}
+}

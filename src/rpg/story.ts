@@ -15,8 +15,6 @@ export function createStoryDirector({value,event,eligible,changed}:{value:()=>Wo
     index(index:number){if(value().dialogue)value().dialogue!.index=index;changed();},
     choose(action:Action):boolean {if(!eligible(action.condition))return false;finish();const s=value();delete s.dialogue;
       if(action.type==='flag')s.flags[action.flag]=true;
-      if(action.type==='lesson'&&action.resumeEvent)s.dialogue={event:action.resumeEvent,index:0,resumeEvent:action.resumeEvent};
       changed();return true;},
-    close(){delete value().dialogue;changed();},
-    resume(){const c=value().dialogue;return c?resolve(c.event):undefined;}};
+    close(){delete value().dialogue;changed();}};
 }

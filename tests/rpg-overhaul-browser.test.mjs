@@ -9,7 +9,7 @@ for(const width of [375,1280]){
  async function waitAt(tile){await p.waitForFunction(tile=>{const c=document.getElementById('rpgCanvas');return +c.dataset.x===tile.x&&+c.dataset.y===tile.y;},tile);}
  try{
   await p.locator('#startTutorial').click();await p.waitForFunction(()=>__diag()?.version);
-  assert(await p.evaluate(()=>document.querySelector('.herochar').getBoundingClientRect().top>document.getElementById('rpgCanvas').getBoundingClientRect().bottom));
+  assert(await p.evaluate(()=>document.querySelector('.herochar').closest('.rpg-persistent')!==null && document.getElementById('rpgCanvas').closest('.rpg-world-pane')!==null));
   assert.equal(await p.locator('header #xpPill,header #knownPill').count(),0);
   assert(await p.evaluate(()=>__portrait('Library').classList.contains('hidden')),'World objects do not request NPC portraits');
   assert(!await p.locator('#navLibrary').isVisible());
@@ -30,7 +30,7 @@ for(const width of [375,1280]){
   await d.tutorial();
   await p.getByText('Quick travel',{exact:true}).click();
   assert.deepEqual(await p.locator('[data-destination]').allTextContents(),['Home','Lake','Market','School']);
-  await p.locator('[data-destination=nature]').click();await p.locator('#rpgDialogue').waitFor();assert.equal(await p.locator('#rpgDialogue [data-character-id]').getAttribute('data-character-id'),'saleha');await p.getByRole('button',{name:'Back to village',exact:true}).click();
+  await p.locator('[data-destination=nature]').click();await p.locator('#teachPanel').waitFor();assert(!await p.locator('#rpgDialogue').isVisible());assert.equal(await p.locator('#speakerIcon [data-character-id]').getAttribute('data-character-id'),'saleha');await p.locator('#navWorld').click();
   await p.getByRole('button',{name:'Day 1 challenge',exact:true}).click();await p.locator('#quizPanel').waitFor();
   const order=await p.evaluate(()=>['quizPashto','quizRoman','quizSpeak','quizPrompt'].map(id=>document.getElementById(id).getBoundingClientRect().top));assert(order.every((y,i)=>i===0||y>=order[i-1]),'Pashto, transliteration, audio, instructions order');
   const options=await p.locator('#choices button[data-answer]').evaluateAll(bs=>bs.map(b=>({text:b.textContent,answer:b.dataset.answer})));

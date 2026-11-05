@@ -94,13 +94,6 @@ const QuestionEngine = (() => {
     // Conservative exclusions do not add accepted synonyms or inflect words.
     return englishAnswers(card).map(v => englishKey(v).replace(/^to /, ""));
   }
-  function explanation(q, card) {
-    if (["choice", "address"].includes(q.kind) || q.grammarConcept) return "This saved rule-analysis question is retired. Its original answer and score are preserved; explicitly retire the attempt to start practical language practice.";
-    if (q.explanation || q.reference) return q.explanation || q.reference;
-    if (q.kind === "word") return `For this exact form, the listed meaning is ${card.en}. Listed senses and explicit accepted alternatives are equivalent answers; another word's meaning is not.`;
-    if (q.kind === "dialogue") return "The reply must preserve the question's referent and requested information, using the studied forms and their agreement.";
-    return "Use the same referents and meaning, with the studied word order and matching noun, adjective, equative or verb features.";
-  }
   function evaluate(q, card, value) {
     if (q.kind === "dialogue") return isDialogueAnswerCorrect(q, value);
     if (["choice", "address"].includes(q.kind) || q.grammarConcept) return false;
@@ -129,7 +122,6 @@ const QuestionEngine = (() => {
   return {
     englishAnswers,
     meaningKeys,
-    explanation,
     normalizeAnswer,
     normalizePashtoResponse,
     getAnswerTiles,

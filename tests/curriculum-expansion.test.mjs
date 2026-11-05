@@ -166,9 +166,9 @@ for (let day = 1; day <= 13; day++)
   ).flat().length;
 assert.equal(312 - assignedCount, 4);
 // Pending phrase slots are explicit editorial targets, never acquired by a plan.
-assert.equal(narrative.expressions.length, 17);
+assert.equal(narrative.expressions.length, 14);
 assert.equal(narrative.expressions.filter((e) => e.active).length, 14);
-assert.equal(narrative.expressions.filter((e) => e.day === 1).length, 4);
+assert.equal(narrative.expressions.filter((e) => e.day === 1).length, 1);
 const speakers = [
   "Ms Hameed",
   "Saleha",

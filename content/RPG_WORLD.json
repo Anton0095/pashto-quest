@@ -3012,7 +3012,7 @@
     "library": {
       "speaker": "Muhammad Jan",
       "lines": [
-        "Our Library holds everything you learn. Let us practise choosing a meaning, arranging Pashto words, choosing your gender preference, and giving your name."
+        "Our Library holds everything you learn. Let us practise recognising two greetings, selecting Pashto, and identifying my name. Your own name and gender are optional Library profile settings."
       ],
       "actions": [
         {
@@ -4458,10 +4458,17 @@
       "nextChapter": "day-2",
       "objective": "Home ↖  ·  Lake ↗  ·  Market ↙  ·  School ↘  ·  Library ↑",
       "endingEvent": "day1-ending",
-      "openingMode": "interaction",
       "intro": "Muhammad Jan will guide you to the Library for your first four activities. Then explore Home, Lake, Market and School in any order. Pass the Day 1 challenge to begin your first week.",
       "presentation": {
         "completeTitle": "Day 1 complete"
+      },
+      "guidance": {
+        "introLessonId": "1-residential",
+        "destination": "Home",
+        "character": "Muhammad Jan",
+        "before": "Go to Home and speak with Muhammad Jan for today’s introductory lesson.",
+        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
     },
     "2": {
@@ -4490,7 +4497,6 @@
         "edris",
         "hameed"
       ],
-      "openingMode": "automatic",
       "openingEvent": "day2-opening",
       "lessons": [
         "2-school",
@@ -4526,6 +4532,14 @@
       "presentation": {
         "completeTitle": "Day 2 complete",
         "terminalTitle": "Pashto Quest — Week 1 Complete"
+      },
+      "guidance": {
+        "introLessonId": "2-school",
+        "destination": "School",
+        "character": "Ms Hameed",
+        "before": "Go to School and speak with Ms Hameed for today’s introductory lesson.",
+        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
     },
     "3": {
@@ -4554,7 +4568,6 @@
         "edris",
         "hameed"
       ],
-      "openingMode": "automatic",
       "openingEvent": "day3-opening",
       "lessons": [
         "3-nature",
@@ -4590,6 +4603,14 @@
       "presentation": {
         "completeTitle": "Day 3 complete",
         "terminalTitle": "Pashto Quest — Week 1 Complete"
+      },
+      "guidance": {
+        "introLessonId": "3-nature",
+        "destination": "Lake",
+        "character": "Saleha",
+        "before": "Go to Lake and speak with Saleha for today’s introductory lesson.",
+        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
     },
     "4": {
@@ -4618,7 +4639,6 @@
         "edris",
         "hameed"
       ],
-      "openingMode": "automatic",
       "openingEvent": "day4-opening",
       "lessons": [
         "4-residential",
@@ -4654,6 +4674,14 @@
       "presentation": {
         "completeTitle": "Day 4 complete",
         "terminalTitle": "Pashto Quest — Week 1 Complete"
+      },
+      "guidance": {
+        "introLessonId": "4-residential",
+        "destination": "Home",
+        "character": "Muhammad Jan",
+        "before": "Go to Home and speak with Muhammad Jan for today’s introductory lesson.",
+        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
     },
     "5": {
@@ -4682,7 +4710,6 @@
         "edris",
         "hameed"
       ],
-      "openingMode": "automatic",
       "openingEvent": "day5-opening",
       "lessons": [
         "5-school",
@@ -4718,6 +4745,14 @@
       "presentation": {
         "completeTitle": "Day 5 complete",
         "terminalTitle": "Pashto Quest — Week 1 Complete"
+      },
+      "guidance": {
+        "introLessonId": "5-school",
+        "destination": "School",
+        "character": "Ms Hameed",
+        "before": "Go to School and speak with Ms Hameed for today’s introductory lesson.",
+        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
     },
     "6": {
@@ -4748,7 +4783,6 @@
         "hameed",
         "mina"
       ],
-      "openingMode": "automatic",
       "openingEvent": "day6-opening",
       "lessons": [
         "6-nature",
@@ -4789,6 +4823,14 @@
         "hills": [
           "day6-arrival"
         ]
+      },
+      "guidance": {
+        "introLessonId": "6-nature",
+        "destination": "Lake",
+        "character": "Saleha and Mina",
+        "before": "Go to Lake and speak with Saleha and Mina for today’s introductory lesson.",
+        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
     },
     "7": {
@@ -4819,7 +4861,6 @@
         "hameed",
         "mina"
       ],
-      "openingMode": "automatic",
       "openingEvent": "day7-opening",
       "lessons": [
         "7-business",
@@ -4856,6 +4897,14 @@
         "completeTitle": "Week 1 completed",
         "terminalTitle": "Pashto Quest — Week 1 Complete",
         "milestoneTitle": "Pashto Quest — Week 1 Complete"
+      },
+      "guidance": {
+        "introLessonId": "7-business",
+        "destination": "Market",
+        "character": "Edris",
+        "before": "Go to Market and speak with Edris for today’s introductory lesson.",
+        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
     }
   }

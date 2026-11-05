@@ -9,7 +9,9 @@ async function play(route){
   for(let day=1;day<=7;day++){
    const c=data.days[day];assert((await p.locator('#rpgCanvas').getAttribute('data-map')));console.log('START',route,'day',day);
    if(day>1){
-    await p.locator('#rpgDialogue').waitFor();if(day===2){await d.durable();const before=await p.locator('#rpgDialogue').innerText();await p.reload();await p.locator('#rpgDialogue').waitFor();assert.equal(await p.locator('#rpgDialogue').innerText(),before,'Opening dialogue resumes without duplicate dispatch');}
+    assert(!await p.locator('#rpgDialogue').isVisible(),'New days start quietly');
+    const host=data.events[c.openingEvent].characterId,npc=data.npcs.find(n=>n.characterId===host&&n.schedule.some(s=>s.day===day&&s.map==='village'));await d.actor(npc.id,day);await p.locator('#rpgInteract').click();
+    if(day===2){await d.durable();const before=await p.locator('#rpgDialogue').innerText();await p.reload();assert(!await p.locator('#rpgDialogue').isVisible());await p.locator('#rpgInteract').click();assert.equal(await p.locator('#rpgDialogue').innerText(),before,'Opening dialogue resumes without duplicate dispatch');}
     if(day===6)assert((await p.locator('#rpgDialogue').innerText()).includes('Mina'));
     if(route==='normal'){await d.dialogue(`Begin Day ${day} ${{school:'School',nature:'Lake',residential:'Home',business:'Market'}[c.lessons.find(id=>id.endsWith({2:'school',3:'nature',4:'residential',5:'school',6:'nature',7:'business'}[day])).split('-')[1]]} lesson`);await d.lesson({reload:day===2});}
     else {await d.dialogue('Explore first');if(day===2){assert(await p.locator('[data-destination=school]').isEnabled());for(const loc of ['residential','nature','business'])assert(await p.locator('[data-destination='+loc+']').isDisabled(),'Quick travel preserves the School opening lock');}}
@@ -21,7 +23,7 @@ async function play(route){
     }
     const s=await d.progress();for(const id of c.lessons)assert(s.complete[id]);
    }else{const s=await d.progress();assert(c.lessons.every(id=>!s.complete[id]),'Skip creates no early visit completion');}
-   if(day===6&&route==='normal')assert.equal(await p.locator('[data-destination=nature]').textContent(),'Hills');
+   if(day===6&&route==='normal')assert((await p.locator('[data-destination=nature]').textContent()).includes('Lake'));
    const hostMap=c.challenge.map??'village';await d.actor(c.challenge.npc,day,hostMap);
    if(day===2){
     // Stress the unresolved School interaction using the real completed/reloaded route.
@@ -48,8 +50,8 @@ async function play(route){
     assert.equal((await d.pos()).map,'house');
     assert((await p.locator('.rpg-day').innerText()).includes('DAY '+day+' /'),'Challenge pass keeps the active day');
     if(!await p.locator('#quickSleep').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();
-    await p.locator('#rpgDialogue').waitFor();await p.locator('#sleepTransition').waitFor({state:'detached'});
-    await d.durable();assert.equal((await d.progress()).xp,xp,'Sleep awards no duplicate XP');const position=await d.pos();assert.deepEqual(position,{map:data.days[day+1].start.map,x:data.days[day+1].start.x,y:data.days[day+1].start.y});
+    await p.locator('#sleepTransition').waitFor({state:'detached'});assert(!await p.locator('#rpgDialogue').isVisible());
+    await d.durable();assert.equal((await d.progress()).xp,xp,'Sleep awards no duplicate XP');const position=await d.pos();assert.deepEqual(position,{map:'house',x:17,y:10});
    }
    else{assert.equal(await p.locator('#rpgAdvance').count(),0);assert.equal(await p.locator('#resultHeading').innerText(),'Pashto Quest — Week 1 Complete');assert((await p.locator('#resultKnowledge').innerText()).includes('Level 10 · New Resident'));assert.equal(await p.locator('#resultXPLabel').innerText(),'Total XP');assert.equal(await p.locator('#resultKnowledgeLabel').innerText(),'Current level and title');assert.equal(s.challenges[7].best,25);assert(!s.challenges[8]);mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:`work/overhaul/graduation-${route}.png`,fullPage:true});await p.locator('#resultWorld').click();await p.locator('#rpgLibrary').click();await p.locator('#libraryClose').click();await d.durable();assert.equal((await d.progress()).xp,xp);}
    console.log('PASS public Week1',route,'day',day,'XP',(await d.progress()).xp);

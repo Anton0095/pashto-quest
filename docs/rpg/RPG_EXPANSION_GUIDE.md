@@ -17,3 +17,5 @@ Known predicates include onboarding, `allLessons`/`not-allLessons`, `complete:<l
 Run `npm ci`, strict typecheck, build/check, registry/model/Phaser/public-route tests, then full verification for broad changes. Benchmark the exact artifact with `RPG_RELEASE=path/to/frozen.html node tools/rpg-performance.mjs` when comparing releases. Preserve historical audits; only the full successful verifier refreshes delivery measurements.
 
 The [foundation expansion guide](FOUNDATION_EXPANSION_GUIDE.md) and inactive Day 2 example are historical compatibility references. They do not describe which days are active in this release. Physical Safari/device audio and new language approvals still require actual review.
+
+Opening and follow-up events are interaction-driven. Supply stable character IDs, a lesson action on the teacher and optional `resumeEvent` metadata for its next explicit conversation. Do not add an automatic opening mode, map-entry lesson hook or queued return cursor. Quick Travel resolves the same lesson actions and uses the shared starter. Map-scoped arrival metadata is presented on interaction with its matching character.
