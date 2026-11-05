@@ -16,7 +16,7 @@ function createChallengeUI({
     if (!panel) {
       panel = document.createElement("div");
       panel.id = "challengeScene";
-      ui.$("lessonScreen").insertBefore(panel, document.querySelector(".speaker-note"));
+      document.querySelector(".speaker-note").before(panel);
     }
     panel.replaceChildren();
     panel.classList.toggle("hidden", day < 6 && day !== 1);

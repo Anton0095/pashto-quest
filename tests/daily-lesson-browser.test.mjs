@@ -5,7 +5,10 @@ for(const [width,height]of [[1920,1080],[1366,768]]){
  const b=await setup({width,rpg:true});const p=b.page;
  try{
   await p.setViewportSize({width,height});await p.locator('#startTutorial').click();
+  const world=await p.locator('#rpgCanvas').boundingBox();
   await p.evaluate(()=>{window.__documentScrolls=[];window.addEventListener('scroll',()=>__documentScrolls.push(scrollY));__test.state.progress.tutorialDone=true;__test.lessons.begin('1-residential');});
+  assert.deepEqual(await p.locator('#rpgCanvas').boundingBox(),world,'Lesson does not reposition the world');
+  assert((await p.locator('#lessonScreen').boundingBox()).x>=world.x+world.width,'Learning occupies right column');
   await driver(p).lesson();
   assert(await p.evaluate(()=>__test.state.progress.complete['1-residential']));
   assert.equal(await p.evaluate(()=>scrollY),0);assert((await p.evaluate(()=>__documentScrolls)).every(n=>n===0));

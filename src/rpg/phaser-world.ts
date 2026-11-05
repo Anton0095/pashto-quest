@@ -143,10 +143,14 @@ export class VillageScene extends Phaser.Scene {
     if(this.extraCollision)this.physics.add.collider(this.player,this.extraCollision);
     this.physics.add.collider(this.player,this.npcGroup);
     this.physics.world.setBounds(0,0,definition.tiles[0].length*16,definition.tiles.length*16);
-    const mapWidth=definition.tiles[0].length*16,mapHeight=definition.tiles.length*16;
-    this.cameras.main.setBounds(Math.min(0,(mapWidth-this.scale.width)/2),Math.min(0,(mapHeight-this.scale.height)/2),Math.max(mapWidth,this.scale.width),Math.max(mapHeight,this.scale.height)).startFollow(this.player,true,1,1).setRoundPixels(true);
+    this.resizeCamera();
     this.marker=this.add.text(0,0,'!',{fontFamily:'monospace',fontSize:'10px',color:'#69593e',backgroundColor:'#fff0b9'}).setOrigin(.5,1).setDepth(10000);
     this.actorSignature='';this.sync();
+  }
+  resizeCamera():void {
+    if(!this.player)return;
+    const definition=this.options.data.maps[this.options.position().map],mapWidth=definition.tiles[0].length*16,mapHeight=definition.tiles.length*16;
+    this.cameras.main.setBounds(Math.min(0,(mapWidth-this.scale.width)/2),Math.min(0,(mapHeight-this.scale.height)/2),Math.max(mapWidth,this.scale.width),Math.max(mapHeight,this.scale.height)).startFollow(this.player,true,1,1).setRoundPixels(true);
   }
   sync():void {
     if(!this.player)return;
@@ -227,7 +231,13 @@ export function createPhaserWorld(options:WorldOptions):{step:(dir:Direction)=>b
   // ScaleManager.canvas is assigned during boot, after the Game constructor.
   // Mobile viewport events can arrive in that gap; apply the latest size on READY.
   let destroyed=false;
-  const resize=()=>{options.canvas.style.setProperty('--map-ratio',window.innerWidth<600?'1.3333333333':'1.6');if(game.scale.canvas&&!destroyed)game.scale.resize(window.innerWidth<600?256:512,window.innerWidth<600?192:320);};
+  const resize=()=>{
+    if(!game.scale.canvas||destroyed)return;
+    const small=window.innerWidth<600,width=small?256:512,height=small?192:320;
+    if(game.scale.width!==width||game.scale.height!==height){game.scale.resize(width,height);scene.resizeCamera();}
+    const parent=options.canvas.parentElement;
+    if(parent){const ratio=width/height,size=Math.max(1,Math.min(parent.clientWidth,parent.clientHeight*ratio));options.canvas.style.width=size+'px';options.canvas.style.height=size/ratio+'px';}
+  };
   game.events.once(Phaser.Core.Events.READY,resize);
   return {step:dir=>scene.manual(dir),cancelRoute:()=>scene.cancelRoute(),relocate:()=>scene.relocate(),nearby:()=>scene.nearby(),sync:()=>scene.sync(),resize,destroy:()=>{destroyed=true;game.events.off(Phaser.Core.Events.READY,resize);game.destroy(false);},scene,game};
 }

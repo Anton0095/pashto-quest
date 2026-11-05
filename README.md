@@ -6,7 +6,7 @@ An offline, browser-based Pashto learning game set in a village in Laghman, Afgh
 
 ## RPG interface and Week 1
 
-The default release uses strict TypeScript and locally bundled Phaser 4.2.1. Click or tap to walk, select an NPC to approach and talk, or use arrows/WASD and the touch directions. The world appears first; Level, title, XP and encountered words sit below it. Menu contains the collapsible Laghman/pronunciation information. Library remains independently accessible.
+The default release uses strict TypeScript and locally bundled Phaser 4.2.1. Click or tap to walk, select an NPC to approach and talk, or use arrows/WASD and the touch directions. On wide screens the world occupies the left column (approximately 65%); day/title, Level, XP, encountered words and the contextual interface occupy the right column. At widths of 1000 CSS pixels or less, the world sits above the interface. Lessons and dialogue keep the world visible; overflowing activities scroll internally. Menu contains the collapsible Laghman/pronunciation information. Library remains independently accessible. See the [two-column layout and validation](docs/rpg/TWO_COLUMN_INTERFACE.md).
 
 Quick travel names actual destinations, follows lesson locks and opens the same NPC conversations as walking. Visiting teachers move with the narrative; the Day 6 Nature finale appears as Hills. Days 1–6 retain 15 questions/pass 12; Day 7 retains the 25-question/pass-20 weekly examination. Normal and explicit early-challenge routes use the existing educational, audio, XP and save systems. Week 1 graduation is a milestone linked to `day-8`; the Day 8–14 RPG story registrations remain future work, while their educational backend remains intact.
 

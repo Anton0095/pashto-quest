@@ -9,7 +9,7 @@ for(const width of [375,1280]){
  async function waitAt(tile){await p.waitForFunction(tile=>{const c=document.getElementById('rpgCanvas');return +c.dataset.x===tile.x&&+c.dataset.y===tile.y;},tile);}
  try{
   await p.locator('#startTutorial').click();await p.waitForFunction(()=>__diag()?.version);
-  assert(await p.evaluate(()=>document.querySelector('.herochar').getBoundingClientRect().top>document.getElementById('rpgCanvas').getBoundingClientRect().bottom));
+  assert(await p.evaluate(()=>document.querySelector('.herochar').closest('.rpg-persistent')!==null && document.getElementById('rpgCanvas').closest('.rpg-world-pane')!==null));
   assert.equal(await p.locator('header #xpPill,header #knownPill').count(),0);
   assert(await p.evaluate(()=>__portrait('Library').classList.contains('hidden')),'World objects do not request NPC portraits');
   assert(!await p.locator('#navLibrary').isVisible());

@@ -12,7 +12,9 @@ Existing frozen challenge attempts keep their original questions, scores and dra
 
 Each chapter's `guidance` declares its introductory lesson, destination, character and before/after/pass text. Muhammad Jan's existing interaction receives the current guidance without losing its normal lesson actions, including Day 4. Available remaining destinations resolve through live NPC schedules and event eligibility, so visiting teachers are named at their actual location. Missing guidance uses remaining activities or a home/sleep fallback. Guidance does not grade answers or write a separate progression store.
 
-## Validation
+The [two-column interface follow-up](TWO_COLUMN_INTERFACE.md) now places these same learning panels beside the world (stacked on narrow screens). It adds a persistent HUD, contextual native dialogs and container-aware Phaser sizing. The screenshots and checks below record the original six-fix checkpoint; the linked follow-up records the latest layout validation.
+
+## Original six-fix validation
 
 Targeted model checks cover low/default supply on Days 1/2/7, opening restrictions, typed spacing, phrase selection with exactly one accepted option, frozen snapshots/current-save validation, bed placement and configured/fallback guidance. Browser checks cover 1920×1080, 1366×768, 768×1024 and 375×812: the revised tutorial, a complete challenge, later typed recall, shared button styles, stable document scroll position and Day 2 bed spawn. Complete Home lessons at both desktop and laptop sizes also exercise actual study, grammar, generated sentences, word/construction answers, feedback and return without document scrolling. Additional laptop checks exercise guidance before/after the introductory lesson and after passing, Day 4's required lesson, saved-position resumption, and bed collision/interaction after resizing. Ready-for-challenge guidance also names the live challenge host and destination.
 
