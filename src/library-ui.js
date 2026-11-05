@@ -58,7 +58,7 @@ function createLibraryUI({
         learning.surface(card.id,"library-construction");
         ui.construction.mount(exercise,card,questions.constructionQuestion(card,{withDuds:i % 2 === 0}),{onAnswer(correct) {
           LibraryEngine.practise(state.progress,content.LIBRARY_DATA,card.id,correct,{day:state.day,location:"library",source:"library",eventId:"library-practice:" + ++state.progress.library.attemptSequence});
-          storage.save();ui.hud();return "Library review · no XP";
+          storage.save();ui.hud();
         }});
         root.append(exercise);
       }
@@ -437,14 +437,8 @@ function createLibraryUI({
         const label = container.querySelector("summary span:last-child");
         if (label)
           label.textContent = ` ${e.romanisation} · ${e.englishSenses.join("; ")} · ${e.partOfSpeech} · ${LibraryEngine.status(state.progress.library.acquired[e.lemmaId])}`;
-        exercise.append(
-          ui.node(
-            "p",
-            correct
-              ? "Correct. Practice recorded; no XP is awarded for Library review."
-              : "Review: " + form.englishGloss + ". " + QuestionEngine.explanation({kind:"word"}, card),
-          ),
-        );
+        const feedback=ui.node('div');exercise.append(feedback);
+        ui.renderAnswerFeedback(feedback,card,{},correct);
       });
       b.classList.add("choice");
       b.dataset.answer = option;

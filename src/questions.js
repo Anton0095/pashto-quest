@@ -389,7 +389,6 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
   return {
     selectChallenge,
     constructionQuestion,
-    explanation: (q, w) => QuestionEngine.explanation(q, w),
     distractors: (w) => answerChoices(w, "ps-en"),
     buildTiles: (w, q = state.session?.questions?.[state.session.index]) =>
       QuestionEngine.buildTiles(w, q, state.session?.loop),

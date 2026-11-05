@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdirSync,readFileSync} from 'node:fs';
 import {setup}from'./browser-fixture.mjs';
 const WORLD='pashto-quest-rpg-world-v1',data=JSON.parse(readFileSync('content/RPG_WORLD.json'));
-const captures='docs/rpg/fullscreen-learning';mkdirSync(captures,{recursive:true});
+const captures='docs/rpg/lesson-cleanup';mkdirSync(captures,{recursive:true});
 for(const [width,height]of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,844]].filter(([w])=>!process.env.DAILY_WIDTH||w===Number(process.env.DAILY_WIDTH))){
  const b=await setup({width,mobile:width===390,rpg:true,transform:h=>h.replace('// @TEST_HOOK','window.__dailyFence=saveFence; // @TEST_HOOK')});const p=b.page;
  try{

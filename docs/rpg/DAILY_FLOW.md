@@ -1,5 +1,7 @@
 # Responsive learning and daily flow
 
+This records the earlier implementation checkpoint. [Current lesson layout, concise feedback, explicit entry and save impact](LESSON_UI_AND_ENTRY.md) supersede its fixed-footer, automatic-opening and legacy tutorial-draft behavior. The screenshots and verification below retain their original release scope.
+
 The application uses a viewport-bounded shell and height-aware canvas sizing. Canvas dimensions retain their logical aspect ratio; small screens scroll the learning panel internally. A shared scrollable question body keeps the feedback/Next footer at a stable viewport position. Height rules include `vh` fallbacks for browsers without dynamic viewport units. The typed-recall Submit/reveal controls reuse `.speaker`, including its interaction states.
 
 The base-approval study notice and unavailable-expression notice are removed from learning presentation. Verification metadata remains intact. The three untranslated Day 1 alternative location slots have been removed from playable narrative data and their exclusive renderer/lesson dependency has been deleted. The approved Welcome and daily greetings remain; ordinary location words and positional grammar are unchanged. Historical editorial proposals remain evidence, not teaching content.

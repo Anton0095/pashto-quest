@@ -47,15 +47,15 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
     const p = document.createElement("p");
     p.className = "tutorial-instructions";
     p.textContent = c.help;
-    const feedback = document.createElement("p");
+    const feedback = document.createElement("div");
     feedback.id = "tutorialFeedback";
     feedback.className = "tutorial-feedback";
     feedback.setAttribute("role", "status");
     area.append(p);
-    const done = (message) => {
+    const done = () => {
       if (state.session.passed.has(c.id)) return;
       tutorialAnswer(true);
-      feedback.textContent = message || "✓ Correct. Continue.";
+      ui.renderAnswerFeedback(feedback,w,{},true);
       for (const el of area.querySelectorAll("button,input"))
         el.disabled = true;
     };
@@ -78,37 +78,23 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
             )
           ) {
             b.classList.add("correct");
-            done(
-              "✓ Correct translation. Continue.",
-            );
+            done();
           } else {
             tutorialAnswer(false);
-            feedback.textContent = "Not quite. Try again.";
+            ui.renderAnswerFeedback(feedback,w,{},false);
           }
         });
         choices.append(b);
       }
       area.append(choices);
-    } else if (c.kind === "tiles") {
-      ui.$("lessonScreen").classList.add("construction-active");
-      ui.$("teachSpeak").classList.add("hidden");
-      for (const id of ["teachPashto", "teachRoman", "teachEnglish", "teachNote"]) ui.$(id).textContent="";
-      p.remove();
-      const draft=state.session.tutorialConstruction ||= {built:[],locked:false};
-      ui.construction.mount(area,w,{kind:"construct"},{retry:true,draft,onChange:()=>storage.save(),
-        tiles:w.ps.split(" ").map((word,index)=>({word,index})),
-        onAnswer(correct) {
-          if (correct) done();
-          else tutorialAnswer(false);
-        }});
     } else if (c.kind === "pashto-choice") {
       const choices=document.createElement("div");choices.className="choices tutorial-choices";
       for(const answer of QuestionEngine.shuffle(w.choices)){
         const b=ui.button(answer,()=>{
           const correct=QuestionEngine.evaluate({kind:"word",direction:"en-ps"},{ps:w.answerPs},answer);
           b.classList.add(correct?"correct":"wrong");
-          if(correct)done("✓ پښتو — Pashto. Continue.");
-          else{tutorialAnswer(false);feedback.textContent="Not quite. Choose the Pashto name for Pashto and try again.";}
+          if(correct)done();
+          else{tutorialAnswer(false);ui.renderAnswerFeedback(feedback,w,{},false);}
         });
         b.classList.add("pashto-option");b.lang="ps";b.dir="rtl";b.dataset.answer=answer;choices.append(b);
       }
@@ -122,15 +108,15 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
       row.addEventListener("submit",event=>{
         event.preventDefault();
         const correct=QuestionEngine.evaluate({kind:"word",direction:"ps-en"},{en:w.answerEnglish,acceptedEnglishAnswers:w.acceptedEnglishAnswers},field.value);
-        if(correct)done("✓ Muhammad Jan. You can set your own name and gender in Library → Player Profile whenever you like.");
-        else{tutorialAnswer(false);feedback.textContent="Not quite. His name is Muhammad Jan. Try again.";}
+        if(correct)done();
+        else{tutorialAnswer(false);ui.renderAnswerFeedback(feedback,w,{},false);}
       });
       row.append(field,b);area.append(row);
     }
     area.append(feedback);
     if (state.session.passed.has(c.id)) {
       ui.$("teachNext").disabled=false;
-      feedback.textContent="Your response is recorded. Continue when ready.";
+      ui.renderAnswerFeedback(feedback,w,{},true);
       for (const el of area.querySelectorAll("button,input")) el.disabled=true;
     }
   }

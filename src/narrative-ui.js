@@ -43,15 +43,8 @@ function createNarrative({ state, content, ui, audio, storage, questions }) {
           );
           // Expressions grant no XP. Repeated display preserves the first encounter.
           storage.save();
-          box.append(
-            ui.node(
-              "p",
-              correct
-                ? "Correct. Recognition recorded; no XP awarded."
-                : "Meaning: " + phrase.english + ". " + QuestionEngine.explanation({kind:"word"}, content.wordById[phrase.id]),
-              "notice",
-            ),
-          );
+          const feedback=ui.node('div');box.append(feedback);
+          ui.renderAnswerFeedback(feedback,content.wordById[phrase.id],{},correct);
         });
       button.dataset.answer = option;
       box.append(button);

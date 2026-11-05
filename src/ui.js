@@ -163,6 +163,7 @@ function createUI({ state, content, progression }) {
     node,
     button,
     showAnswerFeedback,
+    renderAnswerFeedback,
     setSentenceConversation,
     $,
   };

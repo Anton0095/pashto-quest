@@ -326,7 +326,7 @@ function createLessons({
     if (restore && s.locked) {
       for (const b of ui.$("choices").children) b.disabled=true;
       if (build) {renderBuild();ui.construction.feedback(ui.$("quizFeedback"),w,s.activeItem,QuestionEngine.evaluate(s.activeItem,w,s.submittedAnswer || ""));}
-      else {ui.showAnswerFeedback(ui.$("choices"),w.en,s.submittedAnswer);ui.$("quizFeedback").textContent=s.feedbackText || "Your first response is recorded.";}
+      else {ui.showAnswerFeedback(ui.$("choices"),w.en,s.submittedAnswer);ui.renderAnswerFeedback(ui.$("quizFeedback"),w,s.activeItem,QuestionEngine.evaluate(s.activeItem,w,s.submittedAnswer));}
       ui.$("quizNext").disabled=false;
     }
     storage.save();
@@ -335,7 +335,7 @@ function createLessons({
     const result = learning.submitLesson(value);
     if (!result) return;
     state.session.submittedAnswer=value;
-    const { w, correct, gain } = result;
+    const { w, correct } = result;
     learning.surface(w.id, "lesson-feedback");
     storage.save();
     ui.hud();
@@ -350,11 +350,9 @@ function createLessons({
     ui.$("checkBuild").disabled = true;
     ui.$("undoTile").disabled = true;
     ui.$("clearTiles").disabled = true;
-    ui.$("quizFeedback").textContent =
-      `${correct ? "✓ Correct" : "Not yet — try again shortly"} · +${gain} XP · ${w.ps} (${w.roman}) — ${w.en}. ${QuestionEngine.explanation({kind:state.session.activeItem.kind || "word"}, w)}`;
-    if (state.session.activeItem.kind === "construct") ui.construction.feedback(ui.$("quizFeedback"), w, state.session.activeItem, correct, `+${gain} XP`);
+    if (state.session.activeItem.kind === "construct") ui.construction.feedback(ui.$("quizFeedback"),w,state.session.activeItem,correct);
+    else ui.renderAnswerFeedback(ui.$("quizFeedback"),w,state.session.activeItem,correct);
     ui.$("quizNext").disabled = false;
-    state.session.feedbackText=ui.$("quizFeedback").textContent;
     ui.$("quizNext").textContent = state.session.queue.length
       ? "Next →"
       : "Finish lesson →";

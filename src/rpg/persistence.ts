@@ -20,7 +20,7 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     if(typeof raw.educationFingerprint==='string')out.educationFingerprint=raw.educationFingerprint;
     if(object(raw.lesson))out.lesson=raw.lesson;
     const cursor=raw.dialogue;
-    if(cursor&&typeof cursor.event==='string'&&data.events[cursor.event]&&Number.isInteger(cursor.index)&&cursor.index>=0&&cursor.index<1000&&(!cursor.resumeEvent||data.events[cursor.resumeEvent]))out.dialogue={event:cursor.event,index:cursor.index,...(cursor.resumeEvent?{resumeEvent:cursor.resumeEvent}:{})};
+    if(cursor&&typeof cursor.event==='string'&&data.events[cursor.event]&&Number.isInteger(cursor.index)&&cursor.index>=0&&cursor.index<1000)out.dialogue={event:cursor.event,index:cursor.index};
     return out;
   }
   function lessonSnapshot(s:Session|null):unknown {
@@ -38,31 +38,17 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     const int=(v:unknown,max=1000000):v is number=>typeof v==='number'&&Number.isInteger(v)&&v>=0&&v<=max;
     if(!['cardIndex','attemptId','answered','firstCorrect','earned','tutorialResponses','constructionCount'].every(k=>int(raw[k]??0)))return null;
     if(raw.mode==='tutorial'&&raw.cardIndex>=content.tutorialCards.length)return null;
-    if(raw.tutorialConstruction){
-      const draft=raw.tutorialConstruction,card=content.tutorialCards.find(c=>c.kind==='tiles')??content.tutorialCards.find(c=>c.id==='g-how'),count=card?content.wordById[card.id]?.ps.split(' ').length:0;
-      if(!count||!Array.isArray(draft.order)||draft.order.length!==count||new Set(draft.order).size!==count||draft.order.some(i=>!int(i,count-1))||!Array.isArray(draft.built)||new Set(draft.built).size!==draft.built.length||draft.built.some(i=>!draft.order.includes(i))||typeof draft.locked!=='boolean'||draft.locked&&(!Array.isArray(raw.passed)||!raw.passed.includes(card!.id)))return null;
-    }
     if(raw.mode==='standard'&&raw.loc!==raw.id.split('-')[1])return null;
     if(raw.attemptId>progress.library.attemptSequence || typeof raw.locked!=='boolean')return null;
     for(const field of ['required','studyWords','greetingCards','studySentences','firstAsked','passed'])if(!Array.isArray(raw[field])||(raw[field] as string[]).length>1000||(raw[field] as string[]).some(id=>!content.wordById[id]))return null;
+    if(raw.tutorialConstruction||raw.profileGender!==undefined||raw.profileName!==undefined)return null;
     if(!Array.isArray(raw.queue)||raw.queue.length>1000||raw.queue.some(q=>!q||!content.wordById[q.id]||!['word','construct'].includes(q.kind)||!int(q.retries)))return null;
     if(raw.activeItem && (!content.wordById[raw.activeItem.id] || !['word','construct'].includes(raw.activeItem.kind)))return null;
     if(raw.phase==='quiz'&&(!raw.activeItem||!Array.isArray(raw.tileOrder)))return null;
     if(!Array.isArray(raw.built)||new Set(raw.built).size!==raw.built.length)return null;
     if(raw.tileOrder!==undefined){if(!Array.isArray(raw.tileOrder)||!raw.activeItem)return null;const tiles=QuestionEngine.buildTiles(content.wordById[raw.activeItem?.id],raw.activeItem,raw.loop);if(raw.tileOrder.length!==tiles.length || new Set(raw.tileOrder).size!==tiles.length || raw.tileOrder.some(i=>!int(i,tiles.length-1)) || raw.built.some(i=>!raw.tileOrder?.includes(i)))return null;}
     if(raw.choices && (!Array.isArray(raw.choices)||raw.choices.some(c=>typeof c!=='string'||c.length>1000)))return null;
-    // Older supported format-7 snapshots may carry the retired tutorial fields.
-    if(raw.profileGender!==undefined&&(typeof raw.profileGender!=='string'||!['male','female','unspecified'].includes(raw.profileGender)))return null;
-    if(raw.profileName!==undefined&&(typeof raw.profileName!=='string'||raw.profileName.length>40))return null;
     const s=JSON.parse(JSON.stringify(raw)) as LessonSession;
-    delete s.profileName;delete s.profileGender;
-    // Reconcile only the superseded profile steps of a valid, paused format-7 tutorial.
-    // Keep retained greeting responses and earned XP; do not repeat completed tutorials.
-    if(s.mode==='tutorial'&&s.required.some(id=>['tutorial-gender','tutorial-name'].includes(id))){
-      s.required=content.tutorialCards.map(c=>c.id);s.cardIndex=Math.min(s.cardIndex,2);
-      s.passed=(s.passed as unknown as string[]).filter(id=>!['tutorial-gender','tutorial-name'].includes(id)) as unknown as Set<string>;
-      s.firstAsked=(s.firstAsked as unknown as string[]).filter(id=>!['tutorial-gender','tutorial-name'].includes(id)) as unknown as Set<string>;
-    }
     for(const field of ['firstAsked','passed'])s[field as 'firstAsked'|'passed']=new Set(s[field] as unknown as string[]);return s;
   }
   function create(data:WorldData,backend?:Pick<Storage,'getItem'|'setItem'>,fence?:SaveFence) {

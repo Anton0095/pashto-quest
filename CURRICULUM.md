@@ -88,3 +88,5 @@ All fourteen days assess practical Pashto rather than grammatical terminology. T
 
 
 New challenges open with three recognition/construction activities; fixed expressions always use English translation selection. Later unstudied lexical recall remains typed, with recognition used to separate adjacent typed items. Recognition does not claim prior study. Existing frozen attempts retain their exact questions until completed; the new rules apply to new attempts. Day transitions through bed/Quick travel wake beside the bed, while resuming retains the saved position. Muhammad Jan provides optional progress-sensitive guidance alongside his normal lessons. See [implementation and targeted validation](docs/rpg/DAILY_FLOW.md).
+
+Daily opening content belongs to the designated NPC interaction, with an explicit study/explore choice. It does not run on waking or area entry. Quick Travel can begin an unlocked lesson directly; it uses the same course pool, eligibility and rewards as the NPC choice. Completed lessons are labelled as reviews. Existing follow-up dialogue remains available when the player next speaks with its teacher.

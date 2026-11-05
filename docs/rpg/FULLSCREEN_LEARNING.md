@@ -1,5 +1,7 @@
 # Full-screen learning and main synchronization
 
+This records the earlier implementation checkpoint. [Current lesson layout, concise feedback, explicit entry and save impact](LESSON_UI_AND_ENTRY.md) supersede its fixed-footer, automatic-opening and legacy tutorial-draft behavior. The screenshots and verification below retain their original release scope.
+
 PR #35 continues on `fix/ui-challenges-daily-flow`. Merge commit `6b5af7c` incorporates `origin/main` at `a193937` (merged PR #34, the 96×64 village redesign) without rewriting the shared branch. Conflict resolution retained both the village documentation/rendering and the UI branch's six fixes, two-column exploration and tests; generated files were rebuilt from the combined sources. The village model, browser collision/recovery checks, build and TypeScript checks passed before Learning Mode was changed.
 
 ## Presentation modes

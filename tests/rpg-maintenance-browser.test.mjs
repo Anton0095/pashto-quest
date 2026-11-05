@@ -22,7 +22,7 @@ for(const width of [375,1280]){
   if(!await p.locator('#quickSleep').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();
   await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 3 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});
   assert.deepEqual(await p.evaluate(()=>({xp:__test.state.progress.xp,challenges:JSON.stringify(__test.state.progress.challenges)})),before,'Acknowledgement and sleep never fabricate grades/rewards');
-  await p.getByRole('button',{name:'Explore first',exact:true}).click();await p.evaluate(()=>__rpg.flush());
+  assert(!await p.locator('#rpgDialogue').isVisible(),'Wake does not auto-open a lesson');await p.evaluate(()=>__rpg.flush());
   // Dispose while a world commit is pending; its continuation must not reopen a removed dialog.
   await p.evaluate(()=>{
    const commit=__fence.commit.bind(__fence);let delayed=false;

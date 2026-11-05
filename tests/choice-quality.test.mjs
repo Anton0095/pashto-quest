@@ -62,5 +62,5 @@ t.storage.save();t.state.progress=t.storage.load();assert.equal(t.storage.proble
 const ungraded=plain(t.state.progress),score=s.correctCount;
 assert.equal(t.learning.submitChallenge(alternative),null,'retired rule items cannot be scored');
 assert.equal(s.correctCount,score);assert.deepEqual(plain(t.state.progress),ungraded);
-assert(t.Q.explanation(q,null).includes('retired'));
+
 console.log('PASS same-lesson/mixed-POS priority, real Day1 fallback, unchanged acquisition, accepted-sense/variant exclusions, 33 Journal reference concepts, frozen retired snapshots and blocked grading');

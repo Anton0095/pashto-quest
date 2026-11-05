@@ -71,19 +71,19 @@ for(const width of [1280,375]){
   // Reload discards an unfinished dream while restoring the exact house tile.
   await bed('Dream — Review previous lessons');await p.locator('#dreamMenu').waitFor();await p.locator('[data-dream-day="1"]').click();await p.locator('[data-dream-lesson="1-residential"]').click();await p.reload();await p.locator('#worldScreen').waitFor();assert.equal((await d.pos()).map,'house');assert.equal(await p.locator('#dreamExit').count(),0);
   // Shared bed/Quick Travel transition, repeated clicks and interrupted intent.
-  await bed('Sleep — Begin the next day');await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 2 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});assert.equal((await d.progress()).xp,beforeSleep.xp);await d.dialogue('Explore first');
+  await bed('Sleep — Begin the next day');await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 2 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});assert.equal((await d.progress()).xp,beforeSleep.xp);assert(!await p.locator('#rpgDialogue').isVisible(),'Wake/arrival stays quiet');
   assert.equal((await d.progress()).challenges[2],undefined);await p.reload();await p.locator('#worldScreen').waitFor();assert((await activeDay()).includes('DAY 2 /'));
   // Interrupt a real shared sleep after its marker is durable, before its animation finishes.
   await fixture({passed:1});await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();
   await p.waitForFunction(k=>!!JSON.parse(localStorage.getItem(k)).sleepIntent,WORLD);await p.reload();
   await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 2 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});
   assert.deepEqual(await d.pos(),{map:'house',x:17,y:10},'Quick Travel and bed wake at the same chapter spawn');
-  await d.dialogue('Explore first');await d.durable();assert.equal((await p.evaluate(k=>JSON.parse(localStorage.getItem(k)),WORLD)).sleepIntent,undefined);
-  await fixture({day:2,passed:2});await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').evaluate(b=>{b.click();b.click();b.click();});await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 3 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});assert(!await p.locator('#quickSleep').isVisible());await d.dialogue('Explore first');
-  await fixture({day:2,passed:2,intent:{from:2,to:3}});await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 3 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});await d.dialogue('Explore first');await d.durable();await p.reload();await p.locator('#worldScreen').waitFor();assert((await activeDay()).includes('DAY 3 /'));
+  assert(!await p.locator('#rpgDialogue').isVisible(),'Wake/arrival stays quiet');await d.durable();assert.equal((await p.evaluate(k=>JSON.parse(localStorage.getItem(k)),WORLD)).sleepIntent,undefined);
+  await fixture({day:2,passed:2});await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').evaluate(b=>{b.click();b.click();b.click();});await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 3 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});assert(!await p.locator('#quickSleep').isVisible());assert(!await p.locator('#rpgDialogue').isVisible(),'Wake/arrival stays quiet');
+  await fixture({day:2,passed:2,intent:{from:2,to:3}});await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 3 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});assert(!await p.locator('#rpgDialogue').isVisible(),'Wake/arrival stays quiet');await d.durable();await p.reload();await p.locator('#worldScreen').waitFor();assert((await activeDay()).includes('DAY 3 /'));
   await fixture({day:3,passed:2});assert((await activeDay()).includes('DAY 3 /'),'Existing already-advanced save remains on its active day');
   await fixture({day:7,passed:7});await bed('Sleep — Begin the next day');assert((await p.locator('#rpgDialogue').innerText()).includes('available story'));assert((await activeDay()).includes('DAY 7 /'));await closeDialog();
-  // A valid older in-progress tutorial with a blank profile resumes after defaulting.
+  // Obsolete paused tutorial drafts are rejected; campaign progress stays available.
   await fixture();
   await p.evaluate(async({WORLD})=>{
     const t=__test;t.lessons.begin('tutorial');const lesson=JSON.parse(JSON.stringify(t.state.session,(_key,v)=>v instanceof Set?[...v]:v));
@@ -93,9 +93,8 @@ for(const width of [1280,375]){
     const raw=localStorage.getItem(WORLD),w=JSON.parse(raw);Object.assign(w,{view:'lesson',lesson,educationFingerprint:(hash>>>0).toString(16)+':'+education.length});
     await navigator.locks.request(WORLD,()=>__fence.commit(WORLD,raw,JSON.stringify(w),()=>localStorage.getItem(WORLD),()=>{localStorage.setItem(WORLD,JSON.stringify(w));return true;}));
   },{WORLD});
-  await p.reload();await p.locator('#lessonScreen').waitFor();assert((await p.locator('#teachCount').innerText()).includes('CARD 3/4'));
-  assert.equal(await p.locator('#teachPashto').innerText(),'ته کومه ژبه زده کوې؟');assert.equal(await p.evaluate(()=>__test.state.session.earned),30);assert.equal(await p.evaluate(()=>__test.state.progress.playerProfile.name),'Player');
-  await p.locator('#navWorld').click();await fixture({day:7,passed:7});
+  await p.reload();await p.locator('#worldScreen').waitFor();assert(!await p.locator('#lessonScreen').isVisible());
+  await fixture({day:7,passed:7});
   // Reusable participant roles render one/two portraits dynamically, without redundant cards.
   await p.evaluate(()=>{__test.lessons.begin('1-residential');__ui.setConversation({instructorId:'Muhammad Jan',speakerId:'Saleha',partnerId:'Saleha'});});
   await p.locator('#lessonScreen .question-context > summary').click();

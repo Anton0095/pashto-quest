@@ -26,7 +26,7 @@ const events={intro:{speaker:'Saleha',lines:['First','Second'],once:true,setFlag
 const story=M.createStoryDirector({value:()=>save,event:id=>events[id],eligible:c=>!c||!!save.flags[c],changed:()=>writes++});
 assert(story.open('intro'));story.index(1);save=P.validate(data,{...save,dialogue:undefined}); // actual registered cursor validation below
 save=P.fresh(data);story.open('intro');story.index(1);
-const copy=JSON.parse(JSON.stringify(save));save=copy;assert.equal(story.cursor.index,1);assert(story.choose(events.intro.actions[0]));assert(save.flags.heard);assert(save.triggers.intro);assert.equal(story.resume().speaker,'Saleha');assert(!story.open('intro'),'once-only event');
+const copy=JSON.parse(JSON.stringify(save));save=copy;assert.equal(story.cursor.index,1);assert(story.choose(events.intro.actions[0]));assert(save.flags.heard);assert(save.triggers.intro);assert.equal(story.cursor,undefined,'Choosing a lesson must not queue an automatic follow-up');assert(!story.open('intro'),'once-only event');
 assert(!story.choose({type:'flag',flag:'forbidden',condition:'missing',label:'No'}));assert(!save.flags.forbidden);story.close();assert.equal(story.cursor,undefined);assert(writes>0);
 const validCursor=P.validate(data,{...P.fresh(data),dialogue:{event:'welcome',index:1}});assert.equal(validCursor.dialogue.index,1);assert(!P.validate(data,{...validCursor,dialogue:{event:'missing',index:0}}).dialogue);
 // No-op writes do not re-write localStorage; rejected locks remain retryable.
@@ -42,12 +42,10 @@ try{
 console.log('PASS relocated stable character and rejected-lock retry without a poisoned world queue');
 // Corrupt optional world drafts may be discarded; they never create a recorded answer.
 const {runtime}=await import('./runtime-fixture.mjs');const education=runtime();
-const tileCard=education.content.tutorialCards.find(c=>c.id==='g-how');const indices=education.content.wordById[tileCard.id].ps.split(' ').map((_w,i)=>i);
-const rawTutorial={mode:'tutorial',id:'tutorial',loop:0,phase:'tutorial',cardIndex:1,attemptId:0,locked:false,profileGender:'unspecified',profileName:'',required:[],studyWords:[],greetingCards:[],studySentences:[],firstAsked:[],passed:[],queue:[],built:[],tutorialConstruction:{built:indices.slice(0,1),order:[...indices].reverse(),locked:false}};
+const rawTutorial={mode:'tutorial',id:'tutorial',loop:0,phase:'tutorial',cardIndex:1,attemptId:0,locked:false,required:education.content.tutorialCards.map(c=>c.id),studyWords:[],greetingCards:[],studySentences:[],firstAsked:[],passed:[],queue:[],built:[]};
 const paired=M.createPersistenceAPI(data,education.Q);assert(paired.restoreLesson(rawTutorial,education.content,education.state.progress));
-rawTutorial.tutorialConstruction.locked=true;assert.equal(paired.restoreLesson(rawTutorial,education.content,education.state.progress),null,'A world-only lock cannot fabricate a recorded tutorial response');
-rawTutorial.passed=[tileCard.id];assert(paired.restoreLesson(rawTutorial,education.content,education.state.progress));rawTutorial.tutorialConstruction.order=[0,0];assert.equal(paired.restoreLesson(rawTutorial,education.content,education.state.progress),null);
-console.log('PASS tutorial draft permutation, partial restoration and recorded-response lock validation');
+for(const obsolete of [{profileGender:'unspecified'},{profileName:''},{tutorialConstruction:{built:[],order:[],locked:false}},{required:['tutorial-gender']}])assert.equal(paired.restoreLesson({...rawTutorial,...obsolete},education.content,education.state.progress),null,'Obsolete tutorial drafts are rejected without adapters');
+console.log('PASS current tutorial drafts and clean rejection of obsolete profile/tile drafts');
 
 const defaults=structuredClone(data);defaults.npcs.find(n=>n.id==='hameed').defaultLocation={map:'library',x:4,y:4};defaults.days['1'].activeNPCs=['hameed'];defaults.npcs.find(n=>n.id==='hameed').schedule=[];assert.equal(M.createRPGRegistry(defaults,{}).npcs(1,'library')[0].characterId,'hameed');
 console.log('PASS optional default NPC location when no day-specific override exists');

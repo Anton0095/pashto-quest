@@ -45,14 +45,8 @@ function createConstructionUI({ ui, audio }) {
     ui.$("quizSpeak").classList.add("hidden");
     ui.$("constructionPanel").classList.remove("hidden");
   }
-  function feedback(root, card, q, correct, reward = "") {
-    root.replaceChildren();
-    root.append(ui.node("strong", (correct ? "✓ Correct" : "✗ Not quite") + (reward ? " · " + reward : ""), correct ? "good" : "bad"));
-    const ps=ui.node("p", q.answerPs || card.ps, "library-pashto");ps.lang="ps";ps.dir="rtl";
-    const line=ui.node("div",undefined,"sentence-answer-line");
-    line.append(ps,ui.node("p",card.roman,"sentence-roman"));
-    root.append(line, ui.node("p", q.answerEnglish || card.en), ui.node("p", QuestionEngine.explanation({kind:"construct"}, card)));
-    if (correct) root.append(ui.button("Hear the correct sentence", () => audio.speak(card.id)));
+  function feedback(root, card, q, correct) {
+    ui.renderAnswerFeedback(root,card,q,correct,()=>audio.speak(card.id));
   }
   // Standalone instances share rendering/feedback but keep their own answer locks.
   function mount(root, card, q, {onAnswer = () => {}, retry = false, tiles: suppliedTiles, draft, onChange = () => {}} = {}) {
@@ -69,9 +63,9 @@ function createConstructionUI({ ui, audio }) {
       if (model.locked || !ready(tiles,model.built)) return;
       const value=model.built.map(i=>tiles[i].word).join(" "), correct=QuestionEngine.evaluate(q,card,value);
       model.locked=correct || !retry;
-      const reward=onAnswer(correct,value);
+      onAnswer(correct,value);
       render();area.classList.add(correct?"build-success":"build-error");
-      feedback(result,card,q,correct,reward);
+      feedback(result,card,q,correct);
     });
     check.className="primary";
     const render=()=>{area.classList.remove("build-success","build-error");draw({area,bank,undo,clear,check},model,tiles,order,render);onChange();};

@@ -22,14 +22,14 @@ export function createChapterDirector({data,state,learning,progression,eligible,
   const chapter=(day=state.day):Chapter=>{const c=data.days[String(day)];if(!c)throw Error('Unregistered chapter');return c;};
   const active=(c:Chapter)=>c.day>=data.firstDay&&c.day<=data.lastDay;
   function ready(c:Chapter){return active(c)&&c.prerequisites.every(eligible);}
-  function emit(kind:'opening'|'ending'){
+  function emit(kind:'opening'|'ending',present=true){
     const c=chapter(),key=c.id+'-'+kind,event=kind==='opening'?c.openingEvent:c.endingEvent;
     if(!ready(c)||triggers()[key]||event&&!eligible(data.events[event].condition))return false;
     if(kind==='ending'&&!complete())return false;
-    triggers()[key]=true;if(event)dispatch(event);return true;
+    triggers()[key]=true;if(event&&present)dispatch(event);return true;
   }
   function complete(){const c=chapter();return active(c)&&routeComplete()&&progression.passedChallenge(state.progress,c.completion.challengePassed??c.day)&&c.mandatoryEvents.every(e=>!!triggers()[e]);}
-  return {chapter,ready,opening:()=>emit('opening'),ending:()=>emit('ending'),complete,
+  return {chapter,ready,opening:(present=true)=>emit('opening',present),ending:()=>emit('ending'),complete,
     challengeAvailable(){const c=chapter();return ready(c)&&!!c.challenge&&learning.allowed(c.challenge.day)&&(c.challenge.conditions??[]).every(eligible);},
     next(){const c=chapter();if(!complete()||c.completion.terminal)return null;return Object.values(data.days).find(n=>n.id===c.nextChapter&&ready(n)&&learning.allowed(n.day))??null;}};
 }

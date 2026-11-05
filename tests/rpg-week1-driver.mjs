@@ -25,26 +25,23 @@ export function driver(p){
  }
  async function mapTo(map,day){let current=await pos();if(current.map===map)return;if(current.map!=='village'){await pathTo({...data.maps[current.map].transitions[0],map:current.map},day);current=await pos();}if(map!=='village'){const t=data.maps.village.transitions.find(t=>t.to===map);assert(t);await pathTo({...t,map:'village'},day);}if(await p.locator('#rpgDialogue').isVisible())await dialogue('Follow the trail');}
  async function actor(id,day,map='village'){await mapTo(map,day);const s=await progress(),w=await p.evaluate(k=>JSON.parse(localStorage.getItem(k)||'{}'),WORLD),npc=data.npcs.find(n=>n.id===id),slot=npc.schedule.find(n=>n.day===day&&n.map===map&&condition(n.condition,day,s,w));assert(slot,id+' absent');
-  // Large outdoor maps use the public, lock-respecting travel control for long
-  // teaching trips. Physical approaches, interiors and Hills still use the D-pad;
-  // every scheduled placement also has an independent full-grid path assertion.
-  const at=await pos(),action=data.events[slot.event??npc.event].actions.find(a=>a.type==='lesson'&&a.lessonId.startsWith(day+'-'));
-  if(map==='village'&&action&&Math.abs(at.x-slot.x)+Math.abs(at.y-slot.y)>24){
-   const destination=p.locator('[data-destination='+action.lessonId.split('-')[1]+']');
-   if(await destination.count()&&await destination.isEnabled()){
-    if(!await destination.isVisible())await p.getByText('Quick travel',{exact:true}).click();
-    await destination.click();await p.locator('#rpgDialogue').waitFor();
-    await p.locator('#rpgDialogue').getByRole('button',{name:'Back to village',exact:true}).click();
-   }
-  }
   for(const[dx,dy]of[[0,1],[1,0],[-1,0],[0,-1]])if(data.tiles[data.maps[map].tiles[slot.y+dy]?.[slot.x+dx]]?.walkable){await pathTo({map,x:slot.x+dx,y:slot.y+dy},day);break;}await p.locator('#rpgInteract:enabled').waitFor();}
- async function talk(label){await p.locator('#rpgInteract').click();await dialogue(label);}
+ async function talk(label){
+  for(let attempt=0;attempt<3;attempt++){
+   await p.locator('#rpgInteract').click();
+   while(await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).count())await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();
+   if(await p.locator('#rpgDialogue').getByRole('button',{name:label,exact:true}).count()){await dialogue(label);return;}
+   const followup=p.locator('#rpgDialogue').getByRole('button',{name:/^(Return to village|Follow the trail)$/});
+   if(await followup.count()){await followup.click();continue;}await dialogue(label);
+  }throw Error('No requested action after explicit follow-up interactions: '+label);
+ }
+
  async function tutorial(){if(await p.locator('#startTutorial').isVisible())await p.locator('#startTutorial').click();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);await actor('jan-welcome',1);await talk('I will meet you at the Library');await actor('jan-library',1,'library');await talk('Begin Library tutorial');await p.locator('#tutorialInteraction button').getByText('Hello',{exact:true}).click();await p.locator('#teachNext').click();for(const text of ['How are you?'])await p.locator('#tutorialInteraction button').getByText(text,{exact:true}).click();await p.locator('#teachNext').click();await p.locator('[data-answer="پښتو"]').click();await p.locator('#teachNext').click();await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();await p.locator('#resultWorld').click();await durable();}
  async function lesson({reload=false,onStep=async()=>{}}={}){let count=0,reloaded=false;
   while(await p.locator('#lessonScreen').isVisible()){assert(++count<160,'Lesson stalled');await onStep();if(await p.locator('#teachPanel').isVisible()){known.set(await p.locator('#teachPashto').innerText(),await p.locator('#teachEnglish').innerText());await p.locator('#teachNext').click();}else if(await p.locator('#grammarPanel').isVisible())await p.locator('#grammarNext').click();else{
    if(await p.locator('#constructionPanel').isVisible()){let target=await p.locator('#quizPashto').innerText(),answer=[...known].find(([_ps,en])=>en===target)?.[0];assert(answer,'No studied construction for '+target);for(const [i,token]of answer.replace(/[.!؟،]/g,'').split(/\s+/).entries()){await p.locator('#wordTiles button:enabled').getByText(token,{exact:true}).first().click();if(reload&&!reloaded&&i===0){await durable();const before=await p.locator('#builtSentence').innerText();await p.reload();await p.locator('#constructionPanel').waitFor();assert.equal(await p.locator('#builtSentence').innerText(),before);reloaded=true;}}await p.locator('#checkBuild').click();}
    else {const ps=await p.locator('#quizPashto').innerText();assert(known.has(ps),'Unknown study question '+ps);await p.locator('#choices button').getByText((known.get(ps)).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true}).click();}await onStep();await p.locator('#quizNext').click();
-  }}await p.locator('#resultWorld').click();if(await p.locator('#rpgDialogue').isVisible())await dialogue('Return to village');await durable();
+  }}await p.locator('#resultWorld').click();assert(!await p.locator('#rpgDialogue').isVisible(),'Lesson return stays quiet');await durable();
  }
  async function assessment(day,{fail=false,reload=false}={}){const count=day===7?25:15;
   for(let i=0;i<count;i++){await p.waitForFunction(([key,i])=>{const s=JSON.parse(localStorage.getItem(key));return s?.activeChallenge?.index===i;},[EDU,i]);let saved=await progress(),q=saved.activeChallenge.questions[i];oracle.content.restoreGenerated(saved);const w=oracle.content.wordById[q.id],answer=q.answerPs||q.correct||(q.direction==='en-ps'?w.ps:w.en);
