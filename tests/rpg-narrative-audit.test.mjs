@@ -4,7 +4,7 @@ import {createRequire} from 'node:module';
 import {runtime,reset,study} from './runtime-fixture.mjs';
 const M=createRequire(import.meta.url)('../work/rpg-model.cjs'),world=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
 const t=runtime();reset(t);
-const expected={2:['school','Ms Hameed',3,'singular'],3:['nature','Saleha',1,'singular'],4:['residential','Muhammad Jan',2,'singular'],5:['school','Ms Hameed',2,'plural'],6:['nature','Saleha',1,'plural'],7:['business','Edris',3,'plural']};
+const expected={2:['school','Ms Hameed',3,'singular'],3:['nature','Deena',1,'singular'],4:['residential','Muhammad Jan',2,'singular'],5:['school','Ms Hameed',2,'plural'],6:['nature','Deena',1,'plural'],7:['business','Edris',3,'plural']};
 function eligible(c,day){
  if(!c)return true;
  if(c.startsWith('all:'))return c.slice(4).split('|').every(c=>eligible(c,day));
@@ -40,4 +40,4 @@ for(let day=1;day<=7;day++){
  const xp=t.state.progress.xp;t.progression.completeChallengeOnce(t.state.progress,day,spec.passCount);assert.equal(t.state.progress.xp,xp,'No duplicate rewards');
 }
 assert.equal(t.progression.characterStatus(t.state.progress).title,'New Resident');
-console.log('PASS Days2–7 openings, teacher handoffs and relocations, greetings, productive person/number, compounds, Lake gathering, Mina/Hills, School exam, unlocks and once-only rewards');
+console.log('PASS Days2–7 openings, teacher handoffs and relocations, greetings, productive person/number, compounds, Lake gathering, Medina/Hills, School exam, unlocks and once-only rewards');

@@ -260,9 +260,9 @@ try {
               throw Error("Home award lost");
             if (
               day === 6 &&
-              !document.querySelector("#challengeScene svg[aria-label*=Mina]")
+              !document.querySelector("#challengeScene svg[aria-label*=Medina]")
             )
-              throw Error("Hills scene or Mina introduction lost");
+              throw Error("Hills scene or Medina introduction lost");
             if (!t.content.zoneKeys.every(loc=>t.state.progress.complete[day+'-'+loc]))
               throw Error("Passed challenge failed to complete locations");
             if (day === 14 && taughtCount() !== oldCount)

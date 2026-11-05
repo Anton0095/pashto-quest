@@ -40,7 +40,7 @@ for(const width of [375,1280]){
    assert.deepEqual(outcome,{correct:1,wrong:right?0:1,locked:true,xp:0});await p.locator('#libraryClose').click();
   }
   await p.evaluate(()=>{const t=__test;for(let n=1;n<=14;n++)t.E.unlock(t.state.progress,n,'fixture');for(const e of t.content.LIBRARY_DATA.entries)for(const f of e.forms)t.E.encounter(t.state.progress,t.content.LIBRARY_DATA,{lemmaId:e.lemmaId,formId:f.formId},{day:14,source:'fixture',introduce:true});const cards=t.S.available(t.state.progress,t.content.LIBRARY_DATA,t.content.LIBRARY_DATA.sentenceFrames,14);window.sceneCards={informal:cards.find(c=>c.generated.register==='informal'),polite:cards.find(c=>c.generated.register==='polite_or_plural')};});
-  for(const [kind,recipient] of [['informal','Saleha'],['polite','Ms Hameed'],['polite','Saleha and Mina']]){
+  for(const [kind,recipient] of [['informal','Deena'],['polite','Ms Hameed'],['polite','Deena and Medina']]){
    await p.evaluate(({kind,recipient})=>__ui.setSentenceConversation(window.sceneCards[kind],'Muhammad Jan',{recipient}),{kind,recipient});
    assert((await p.locator('#speakerName').innerText()).includes('Muhammad Jan'));assert((await p.locator('#speakerName').getAttribute('data-conversation-partner'))===recipient,JSON.stringify({kind,recipient,label:await p.locator('#speakerName').innerText(),card:await p.evaluate(kind=>window.sceneCards[kind]?.generated,kind)}));
   }

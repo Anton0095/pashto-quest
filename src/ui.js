@@ -13,7 +13,7 @@ function createUI({ state, content, progression }) {
           : content.zones[loc].name;
   }
   const conversation={instructorId:'Muhammad Jan',speakerId:'Muhammad Jan',partnerId:'Muhammad Jan'};
-  function personName(id){return CHARACTER_PORTRAITS.characters[id]?.name || content.peopleByName[id]?.name || id;}
+  function personName(id){const name=currentCharacterName(id);return CHARACTER_PORTRAITS.characters[id]?.name || content.peopleByName[name]?.name || name;}
   function setConversation(context){
     Object.assign(conversation,context);
     const instructor=personName(conversation.instructorId),speaker=personName(conversation.speakerId),partner=personName(conversation.partnerId);

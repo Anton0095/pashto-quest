@@ -3,7 +3,8 @@ import { readFileSync } from "node:fs";
 import { runtime, plain, reset } from "./runtime-fixture.mjs";
 const t = runtime(),
   { content: c, progression: P, E } = t;
-const contract = JSON.parse(readFileSync("tests/world-contract.json", "utf8"));
+// Keep the release fixture exact; only its renamed English cast presentation differs.
+const contract = JSON.parse(readFileSync("tests/world-contract.json", "utf8").replace(/\bSaleha\b/g,"Deena").replace(/\bMina\b/g,"Medina"));
 for (const old of contract.days) {
   const day = old.day,
     spec = P.getChallengeSpec(day);

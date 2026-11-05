@@ -436,7 +436,7 @@ function createLessons({
     if (s.loop >= 6)
       follow =
         s.loop === 6
-          ? "Practise the other town locations, or join Saleha and Mina in the Hills: 15 turns, 12 correct to pass."
+          ? "Practise the other town locations, or join Deena and Medina in the Hills: 15 turns, 12 correct to pass."
           : "Practise the other locations, or take Ms Hameed’s separate School examination: 25 turns, 20 correct to pass.";
     if (s.loop >= 8)
       follow = `Practise the other locations, or take the ${progression.getChallengeSpec(s.loop).questionCount}-question final challenge. Week 2 remains draft content for native review.`;

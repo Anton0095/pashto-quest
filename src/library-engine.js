@@ -368,7 +368,7 @@ const LibraryEngine = (() => {
       sceneId: "nature",
       districtId: "nature",
       displayName: "Lake",
-      participants: ["Saleha"],
+      participants: ["Deena"],
     },
     business: {
       sceneId: "business",
@@ -392,7 +392,7 @@ const LibraryEngine = (() => {
       sceneId: "hills",
       districtId: "nature",
       displayName: "Hills",
-      participants: ["Saleha", "Mina"],
+      participants: ["Deena", "Medina"],
     },
     bakery: {
       sceneId: "bakery",

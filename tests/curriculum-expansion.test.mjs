@@ -171,17 +171,17 @@ assert.equal(narrative.expressions.filter((e) => e.active).length, 14);
 assert.equal(narrative.expressions.filter((e) => e.day === 1).length, 1);
 const speakers = [
   "Ms Hameed",
-  "Saleha",
+  "Deena",
   "Muhammad Jan",
   "Ms Hameed",
-  "Mina",
+  "Medina",
   "Edris",
-  "Saleha",
+  "Deena",
   "Edris",
-  "Mina",
+  "Medina",
   "Muhammad Jan",
   "Ms Hameed",
-  "Saleha",
+  "Deena",
   "Muhammad Jan",
 ];
 for (let day = 2; day <= 14; day++)

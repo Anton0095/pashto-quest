@@ -1,5 +1,8 @@
 # Inactive wording proposals
 
+> Historical cast wording is retained. See [the subsequent character expansion](../rpg/LIVING_VILLAGE.md) for Deena/Medina and the optional villagers; its validation is separate from this record.
+
+
 The first table contains three pending Day-1 contextual proposals and two superseded profile-question proposals. Those exact proposed wordings are not registered in the runtime, assessed or given audio; the separately approved replacement onboarding questions are recorded below. Existing generation cannot safely substitute the pending clauses on Day 1: its question grammar and requisite forms are taught later. Approval of the 473 bases and eighteen phrases does not cover these clauses.
 
 | Pending identity | Proposed Pashto | Proposed transliteration | Intended sense/context |

@@ -16,7 +16,8 @@ for e,r in zip(l['entries'],a['lemmas']):
 assert next(e for e in l['entries'] if e['displayLemmaPs']=='نن')['romanisation']=='nun'
 assert len(p['phrases'])==18 and all(is_user_approved(x) for x in p['phrases'])
 assert len([e for e in n['expressions'] if e['active']])==14
-assert {e['id'] for e in n['expressions'] if not e['active']}==set(a['stillUntranslatedPhraseIds'])
+# These historical pending slots were removed in the onboarding cleanup; they must stay absent.
+assert set(a['stillUntranslatedPhraseIds']).isdisjoint({e['id'] for e in n['expressions']} | {e['id'] for e in p['phrases']})
 assert next(x for x in p['phrases'] if x['id']=='phrase-day-7-opening')['day']==5
 assert all(not x.get('userVerified') for x in read('DISTRICT_VOCABULARY_CANDIDATES')['candidates'])
 build.build()

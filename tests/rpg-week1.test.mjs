@@ -16,7 +16,7 @@ for(let day=1;day<=7;day++){
 assert(!registry.npcs(5,'village').some(n=>n.characterId==='mina'));assert(registry.npcs(6,'village').some(n=>n.characterId==='mina'));assert(registry.npcs(6,'hills').some(n=>n.characterId==='mina'));assert.equal(data.days[6].lessons.filter(id=>id.endsWith('nature')).length,1);
 const malformed=structuredClone(data);malformed.days[6].mapEvents.hills=['missing'];assert.throws(()=>M.createRPGRegistry(malformed,{}));
 const state={day:8,progress:{}},learning={allowed:()=>true,placeAccessible:()=>true},policy=M.createRPGProgression({state,data,learning,progression:{passedChallenge:()=>true}});assert.equal(policy.current(),7);assert(!learning.allowed(8));assert(!policy.lessonAllowed('8-school'));
-console.log('PASS Week1 registry, all seven normal/skip policies, legitimate-pass advancement, identity schedules, Mina timing, Hills reachability and Day8 boundary');
+console.log('PASS Week1 registry, all seven normal/skip policies, legitimate-pass advancement, identity schedules, Medina timing, Hills reachability and Day8 boundary');
 // A future ordinary day, map and character register entirely as data; shipped cap remains seven.
 const fixture=JSON.parse(readFileSync('docs/rpg/day8-registration.example.json','utf8'));assert.equal(fixture.active,false);
 // Adapt historical example placements to the current village, preserving archived data.
