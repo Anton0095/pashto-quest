@@ -178,9 +178,9 @@ function createLessons({
       `${s.phase === "sentence" ? "BUILDING SENTENCES" : s.phase === "greeting" ? "FIXED EXPRESSIONS" : "WORDS AND FORMS"} · CARD ${s.cardIndex + 1}/${studyList().length}`;
     ui.$("teachType").textContent =
       w.type === "sentence" ? "Generated sentence" : w.type;
-    ui.$("teachPashto").textContent = CharacterNames.text(w.ps);
-    ui.$("teachRoman").textContent = CharacterNames.text(w.roman);
-    ui.$("teachEnglish").textContent = CharacterNames.text(w.en);
+    ui.$("teachPashto").textContent = w.ps;
+    ui.$("teachRoman").textContent = w.roman;
+    ui.$("teachEnglish").textContent = w.en;
     ui.$("teachNote").textContent = w.note?.startsWith("Base content user-approved;") ? "" : w.note;
     ui.$("teachNote").classList.toggle("hidden", !ui.$("teachNote").textContent);
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
@@ -292,7 +292,7 @@ function createLessons({
     ui.$("quizType").textContent = build
       ? "BUILD A SENTENCE"
       : "WORD / FORM RECALL";
-    ui.$("quizPashto").textContent = CharacterNames.text(build ? w.en : w.ps);
+    ui.$("quizPashto").textContent = build ? w.en : w.ps;
     ui.$("quizPashto").dir = build ? "ltr" : "rtl";
     ui.$("quizPashto").lang = build ? "en" : "ps";
     ui.$("quizPashto").classList.toggle("english-question", build);
@@ -424,7 +424,7 @@ function createLessons({
           : s.loop === 2
             ? learning.completeRound(2)
               ? "Your village visits are complete. Muhammad Jan is ready for your check-in."
-              : "In the regular story path, visit the market and lake after school, then go home. You can also try Muhammad Jan’s challenge now."
+              : "After School, Home is available immediately. Market and Lake are optional visits before or after Home. Muhammad Jan’s challenge is also available."
             : s.loop === 3
               ? learning.completeRound(3)
                 ? "Your Day 3 visits are complete. Speak with Edris about dinner in your final challenge."

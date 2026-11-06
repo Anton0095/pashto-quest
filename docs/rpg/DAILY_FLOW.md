@@ -1,5 +1,8 @@
 # Responsive learning and daily flow
 
+> This records the preceding release. The subsequent [lesson/progression fixes](LESSON_PROGRESSION_FIXES.md) supersede name projection, Day 2 ordering, pace and save-format statements where applicable; original validation remains release-specific.
+
+
 This records the earlier implementation checkpoint. [Current lesson layout, concise feedback, explicit entry and save impact](LESSON_UI_AND_ENTRY.md) supersede its fixed-footer, automatic-opening and legacy tutorial-draft behavior. The screenshots and verification below retain their original release scope.
 
 The application uses a viewport-bounded shell and height-aware canvas sizing. Canvas dimensions retain their logical aspect ratio; small screens scroll the learning panel internally. A shared scrollable question body keeps the feedback/Next footer at a stable viewport position. Height rules include `vh` fallbacks for browsers without dynamic viewport units. The typed-recall Submit/reveal controls reuse `.speaker`, including its interaction states.

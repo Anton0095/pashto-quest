@@ -13,6 +13,7 @@ export function validateChapters(data:WorldData):void {
     for(const id of [c.openingEvent,c.endingEvent,c.routes?.normal.opening,c.routes?.normal.finale,c.routes?.skip.event])if(id&&!data.events[id])throw Error('Invalid chapter event: '+id);
     if(c.challenge?.map&&!c.maps.includes(c.challenge.map))throw Error('Invalid challenge map: '+key);
     if(c.lessons.some(id=>!id.startsWith(c.day+'-'))||c.challenge&&(c.challenge.day!==c.day||!data.npcs.some(n=>n.id===c.challenge?.npc)))throw Error('Invalid chapter curriculum: '+key);
+    if(c.requiredLessons?.some(id=>!c.lessons.includes(id)))throw Error('Invalid required lesson: '+key);
     if(c.completion.challengePassed!==c.day||c.completion.terminal&&c.nextChapter!==null||!c.completion.terminal&&!c.nextChapter)throw Error('Invalid chapter completion: '+key);
   }
   // Future chapters may refer to the next unregistered chapter by stable ID.

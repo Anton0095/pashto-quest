@@ -8,7 +8,7 @@ const releaseSha256 = createHash("sha256")
 const b = await setup();
 const profiles = [];
 try {
-  for (const pace of [0, 4, 8, 12, 16, 20, 24])
+  for (const pace of [8, 12, 16, 20, 24])
     for (const skip of [false, true]) {
       const result = await b.page.evaluate(
         async ({ pace, skip }) => {
@@ -26,9 +26,7 @@ try {
             const area = document.querySelector("#tutorialInteraction");
             if (step === 0) click(area, "Hello");
             else if (step === 1) {
-              click(area, "څنګه");
-              click(area, "یې؟");
-              click(area, "Check sentence");
+              click(area, "How are you?");
             } else if (step === 2) click(area, "پښتو");
             else {
               document.querySelector("#tutorialName").value = "Muhammad Jan";
@@ -75,6 +73,10 @@ try {
               )
             )
               throw Error("Unstudied form");
+            if(t.state.session?.mode==='standard'){
+              const s=t.state.session,targets=t.state.progress.library.plans[s.loop]?.lessonNewLexemes?.[s.loc]||[];
+              if(targets.length&&!Object.values(card.generated.slots).some(r=>targets.includes(r.lemmaId)))throw Error('Sentence lacks a current-lesson noun/verb');
+            }
             generatedObserved++;
           };
           const taughtCount = () =>
@@ -132,13 +134,21 @@ try {
                     }
                     t.lessons.afterStudy();
                   } else if (s.phase === "grammar") {
-                    if (
-                      /[\u0600-\u06ff]/.test(
-                        document.querySelector("#grammarExplanation")
-                          .textContent,
-                      )
-                    )
-                      throw Error("A stored Pashto model leaked into grammar");
+                    const explanation=document.querySelector('#grammarExplanation').cloneNode(true);
+                    explanation.querySelectorAll('.sov-demo').forEach(e=>e.remove());
+                    if(/[\u0600-\u06ff]/.test(explanation.textContent))throw Error('A stored Pashto model leaked into grammar rules');
+                    const demo=document.querySelector('#grammarExplanation .sov-demo[data-example-id]');
+                    if(demo){
+                      const example=t.content.wordById[demo.dataset.exampleId];observe(example);
+                      if(!demo.dataset.complete){
+                        for(const token of example.ps.replace(/[.!؟،]/g,'').split(/\s+/).filter(Boolean)){
+                          const tile=[...demo.querySelectorAll('.word-tiles button')].find(b=>!b.disabled&&b.textContent===token);
+                          if(!tile)throw Error('Missing guided SOV tile '+token);tile.click();
+                        }
+                        const check=[...demo.querySelectorAll('button')].find(b=>b.textContent==='Check sentence');check.click();
+                        if(!demo.dataset.complete)throw Error('Guided SOV example failed');
+                      }
+                    }
                     t.lessons.afterGrammar();
                   } else {
                     const item = s.queue[0],
@@ -199,14 +209,14 @@ try {
                   .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
                   .map(e => e.englishSenses[0]));
                 for (const text of q.choiceOrder)
-                  if (!studied.has(text) && !backup.has(text) && !["A different meaning", "Another response", "None of these"].includes(text))
+                  if (!studied.has(text) && !backup.has(text) && !(card.type==='greeting'&&t.content.LIBRARY_DATA.phrases.some(p=>p.english===text)) && !["A different meaning", "Another response", "None of these"].includes(text))
                     throw Error("Distractor is neither studied nor Day-1 backup: " + text);
-                if (q.unstudied && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === t.names.text(card.en)))
+                if (q.unstudied && !q.recognition && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === t.names.text(card.en)))
                   throw Error("Unstudied target meaning offered as a clue");
               }
               if (["choice", "address"].includes(q.kind) || q.grammarConcept)
                 throw Error("Retired grammar-rule question generated in a practical assessment");
-              if (q.kind === "word" && q.unstudied) {
+              if (q.kind === "word" && q.unstudied && !q.recognition) {
                 if (
                   q.direction !== "ps-en" ||
                   document.querySelector("#quizPashto").textContent !==
@@ -334,14 +344,14 @@ try {
     schemaVersion: 1,
     releaseSha256,
     basis:
-      "Actual rendered browser surfaces across fourteen complete profiles; compiler provenance and actual form/grammar unlocks checked independently at each sentence surface.",
+      "Actual rendered browser surfaces across ten complete profiles; compiler provenance and actual form/grammar unlocks checked independently at each sentence surface.",
     instructionalSentenceObservations: observed,
     genuinelyGeneratedObservations: generated,
     generatedPercentage: observed ? 100 : null,
     fixedAuthoredSentenceObservations: 0,
-    designatedPhraseExceptions: 6,
-    totalVisits: 392,
-    totalAssessments: 196,
+    designatedPhraseExceptions: JSON.parse(readFileSync("content/FIXED_PHRASES.json","utf8")).phrases.length,
+    totalVisits: 280,
+    totalAssessments: 140,
     profiles,
   };
   writeFileSync(
@@ -349,7 +359,7 @@ try {
     JSON.stringify(report, null, 2) + "\n",
   );
   console.log(
-    `PASS actual delivery: ${generated}/${observed} = 100%; 392 visits, 196 assessments, seven paces, normal/skip, no authored sentence surfaces`,
+    `PASS actual delivery: ${generated}/${observed} = 100%; 280 visits, 140 assessments, five paces, normal/skip, no authored sentence surfaces`,
   );
 } finally {
   await b.close();

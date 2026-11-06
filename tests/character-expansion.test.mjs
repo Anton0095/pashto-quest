@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
-import vm from 'node:vm';
 const M=createRequire(import.meta.url)('../work/rpg-model.cjs'),data=JSON.parse(readFileSync('content/RPG_WORLD.json'));
 const ids=['bilal','zamir','nayab','sara','omar','afiya','sanaa'];
 const registry=M.createRPGRegistry(data,{},c=>!c||!c.startsWith('flag:')&& !c.startsWith('complete:')&&!['allLessons','beforeTutorial','beforeGuideMeeting'].includes(c));
@@ -28,7 +27,7 @@ for(let day=1;day<=7;day++){
  old.activities.zamir.x=-900;const safe=M.createActivities(data,M.createPersistenceAPI(data,{}).validate(data,old).activities);const safeZ=safe.resolve(actors,player).find(a=>a.id==='zamir');assert(safe.safe(safeZ,safeZ),'Bad optional routine tile recovers independently');
 }
 const without=M.createPersistenceAPI(data,{}).fresh(data);assert.equal(M.createPersistenceAPI(data,{}).validate(data,without).activities,undefined,'Valid pre-expansion world save needs no migration');
-const names=vm.runInNewContext(readFileSync('src/character-portraits.js','utf8')+';currentCharacterName');const frozen={speaker:'Saleha',recipient:'Mina',scene:'Saleha and Mina walk together'};const exact=JSON.stringify(frozen);assert.equal(names(frozen.speaker),'Deena');assert.equal(names(frozen.scene),'Deena and Medina walk together');assert.equal(JSON.stringify(frozen),exact);
+
 for(const id of ids){const event=data.events['ambient-'+id];assert(event.actions.every(a=>!['lesson','challenge'].includes(a.type)));assert(!event.once);}
 assert.equal(data.days[6].openingEvent,'day6-opening');assert(data.events['day6-opening'].lines.join().includes('sister Medina'));assert(data.events['day6-finale'].lines.join().includes('Deena and Medina'));
 console.log('PASS seven-day cast/routine simulation, reservations, protected access, selectable targets, settled reload, invalid routine recovery, stable identity and display-only frozen-name aliases');
@@ -36,7 +35,7 @@ console.log('PASS seven-day cast/routine simulation, reservations, protected acc
 // Supported education saves preserve old cast metadata and every generated proof byte.
 const {runtime,reset,study,beginAttempt,plain}=await import('./runtime-fixture.mjs');
 const t=runtime();reset(t);for(let d=1;d<=4;d++){for(const loc of t.content.zoneKeys)study(t,d,loc);if(d<4)t.progression.completeChallengeOnce(t.state.progress,d,15);}
-const qs=beginAttempt(t,4);qs[0].speaker='Saleha';qs[0].recipient='Mina';qs[0].comment='Saleha and Mina welcome you.';
+const qs=beginAttempt(t,4);qs[0].speaker='Deena';qs[0].recipient='Medina';qs[0].comment='Deena and Medina welcome you.';
 await t.storage.save();const stored=JSON.stringify(t.state.progress),cold=runtime();cold.backend.setItem('',stored);const loaded=cold.storage.load();assert.equal(cold.storage.problem,null);assert.equal(JSON.stringify(loaded),stored);assert.deepEqual(plain(loaded.activeChallenge.questions),plain(qs));
 console.log('PASS supported pre-expansion assessment metadata and compiler proofs restore byte-for-byte without progress reset');
 

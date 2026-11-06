@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runtime,reset,study,plain,beginAttempt,correctAnswer} from './runtime-fixture.mjs';
 let attempts=0,visits=0;
-for(const pace of [0,4,8,12,16,20,24])for(const skip of [false,true]) {
+for(const pace of [8,12,16,20,24])for(const skip of [false,true]) {
  const t=runtime();reset(t,pace);
  for(let day=1;day<=14;day++) {
   t.state.day=day;
@@ -42,10 +42,10 @@ for(const pace of [0,4,8,12,16,20,24])for(const skip of [false,true]) {
   t.progression.completeChallengeOnce(t.state.progress,day,[7,14].includes(day)?25:15);
  }
 }
-console.log(`PASS practical assessments: ${attempts} attempts, ${visits} model visits, all 14 days × 7 paces × normal/skip, exact thresholds, no rule quizzes, eligibility, masking and frozen restoration`);
+console.log(`PASS practical assessments: ${attempts} attempts, ${visits} model visits, all 14 days × 5 paces × normal/skip, exact thresholds, no rule quizzes, eligibility, masking and frozen restoration`);
 
 // Exact old current-schema rule snapshots remain readable for explicit retirement.
-const legacy=runtime();reset(legacy,0);for(let day=1;day<14;day++)legacy.progression.completeChallengeOnce(legacy.state.progress,day,[7,14].includes(day)?25:15);
+const legacy=runtime();reset(legacy,8);for(let day=1;day<14;day++)legacy.progression.completeChallengeOnce(legacy.state.progress,day,[7,14].includes(day)?25:15);
 legacy.state.day=14;beginAttempt(legacy,14);
 const fixtures=JSON.parse(readFileSync('tests/retired-rule-fixtures.json','utf8')).concepts;
 for(const c of fixtures){

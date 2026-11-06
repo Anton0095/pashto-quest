@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "notice": "Mechanical editorial audit, not native Laghman verification. Null traits are unknown, not asserted defaults.",
-  "lemmaCount": 473,
-  "formCount": 607,
+  "lemmaCount": 474,
+  "formCount": 614,
   "compositionExcludedFormIds": [
     "lemma:v-open:form:0",
     "lemma:v-drink:form:0",
@@ -429,7 +429,8 @@
     "lemma:universal:connectors-2:citation",
     "lemma:universal:connectors-3:citation",
     "lemma:universal:connectors-4:citation",
-    "lemma:universal:connectors-5:citation"
+    "lemma:universal:connectors-5:citation",
+    "lemma:v-have:infinitive"
   ],
   "records": [
     {
@@ -1045,11 +1046,11 @@
         },
         {
           "exampleId": "w6-house-mina-door",
-          "pashto": "مینا او زه دروازه خلاصوو.",
-          "romanisation": "meena aw za darwaaza khlaasawo",
-          "english": "Mina and I open the door.",
+          "pashto": "مدینه او زه دروازه خلاصوو.",
+          "romanisation": "madeena aw za darwaaza khlaasawo",
+          "english": "Medina and I open the door.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "residential",
           "reviewStatus": "needsReview",
@@ -1523,7 +1524,7 @@
           "romanisation": "moong koṭa paakawo",
           "english": "We clean the room.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "residential",
           "reviewStatus": "needsReview",
@@ -1553,7 +1554,7 @@
           "romanisation": "ta koṭa paakawey aw za par tsawkay kenam",
           "english": "You clean the room, and I sit on the chair.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -1951,7 +1952,7 @@
               "reason": "Existing romanisation describes a whole sentence, not this form"
             }
           ],
-          "contextRomanisation": "meena aw za darwaaza khlaasawo",
+          "contextRomanisation": "madeena aw za darwaaza khlaasawo",
           "firstAllowedDay": 6,
           "composition": {
             "enabled": true,
@@ -1959,12 +1960,12 @@
               "verb"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w6-house-mina-door",
+            "evidenceSourceId": "name-update:w6-house-mina-door",
             "english": "To open — first person"
           },
           "grammarFirstDay": 6,
           "featureEvidence": {
-            "sourceId": "w6-house-mina-door",
+            "sourceId": "name-update:w6-house-mina-door",
             "pashtoSpan": "خلاصوو",
             "romanisationSpan": "khlaasawo",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
@@ -2249,11 +2250,11 @@
         },
         {
           "exampleId": "w6-house-mina-door",
-          "pashto": "مینا او زه دروازه خلاصوو.",
-          "romanisation": "meena aw za darwaaza khlaasawo",
-          "english": "Mina and I open the door.",
+          "pashto": "مدینه او زه دروازه خلاصوو.",
+          "romanisation": "madeena aw za darwaaza khlaasawo",
+          "english": "Medina and I open the door.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "residential",
           "reviewStatus": "needsReview",
@@ -2268,7 +2269,7 @@
           "romanisation": "taase dwaara khpal kitaaboona khlaasawey",
           "english": "You both open your books.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -3227,7 +3228,7 @@
           "romanisation": "taase dwaara da seend tar tsang gardzey",
           "english": "You both walk beside the river.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -3242,7 +3243,7 @@
           "romanisation": "za seend weenam aw moong ghuṇḍay weeno",
           "english": "I see the river, and we see the hills.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -3257,7 +3258,7 @@
           "romanisation": "hagha seend plan day",
           "english": "That river is wide.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 8,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -3272,7 +3273,7 @@
           "romanisation": "kab pa seend ke day",
           "english": "The fish is in the river.",
           "speaker": "Player",
-          "recipient": "Mina",
+          "recipient": "Medina",
           "day": 10,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -4199,7 +4200,7 @@
           "romanisation": "daa oba saṛe dee",
           "english": "This water is cold.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 8,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -4214,7 +4215,7 @@
           "romanisation": "zmoong oba saṛe dee",
           "english": "Our water is cold.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 11,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -5892,7 +5893,7 @@
           "romanisation": "taase dwaara khpal kitaaboona khlaasawey",
           "english": "You both open your books.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -5907,7 +5908,7 @@
           "romanisation": "haghoy kitaaboona lwalee",
           "english": "They read books.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -5922,7 +5923,7 @@
           "romanisation": "taase kitaaboona lwaley",
           "english": "You all read books.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -5937,7 +5938,7 @@
           "romanisation": "taase kitaaboona lwaley aw moong jumle leeko",
           "english": "You all read books, and we write sentences.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -6287,9 +6288,9 @@
         },
         {
           "exampleId": "w2-d10-school-5",
-          "pashto": "مینا ښوونځي ته ځي.",
-          "romanisation": "meena khowandzee ta dzee",
-          "english": "Mina goes to school.",
+          "pashto": "مدینه ښوونځي ته ځي.",
+          "romanisation": "madeena khowandzee ta dzee",
+          "english": "Medina goes to school.",
           "speaker": "Player",
           "recipient": "Ms Hameed",
           "day": 10,
@@ -7864,7 +7865,7 @@
       "introduction": {
         "day": 3,
         "district": "residential",
-        "teachingOrder": 38,
+        "teachingOrder": 39,
         "requiredGrammarIds": [
           "grammar-day-2"
         ],
@@ -8101,7 +8102,7 @@
           "romanisation": "daa kab kochnay day",
           "english": "This fish is small.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 8,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -8146,7 +8147,7 @@
           "romanisation": "daa teeghe kochnay dee",
           "english": "These stones are small.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 9,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -8451,7 +8452,7 @@
           "romanisation": "daa kab kochnay day",
           "english": "This fish is small.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 8,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -8466,7 +8467,7 @@
           "romanisation": "kab pa seend ke day",
           "english": "The fish is in the river.",
           "speaker": "Player",
-          "recipient": "Mina",
+          "recipient": "Medina",
           "day": 10,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -11008,9 +11009,9 @@
         },
         {
           "exampleId": "w2-d11-school-2",
-          "pashto": "هغه د صالحې قلم دی.",
-          "romanisation": "hagha da saalehe qalam day",
-          "english": "That is Saleha’s pen.",
+          "pashto": "هغه د دینې قلم دی.",
+          "romanisation": "hagha da deene qalam day",
+          "english": "That is Deena’s pen.",
           "speaker": "Player",
           "recipient": "Ms Hameed",
           "day": 11,
@@ -11369,7 +11370,7 @@
               "reason": "Existing romanisation describes a whole sentence, not this form"
             }
           ],
-          "contextRomanisation": "saaleha aw za jumle leeko",
+          "contextRomanisation": "deena aw za jumle leeko",
           "firstAllowedDay": 6,
           "composition": {
             "enabled": true,
@@ -11377,12 +11378,12 @@
               "verb"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w6-school-saleha-write",
+            "evidenceSourceId": "name-update:w6-school-saleha-write",
             "english": "To write — first person"
           },
           "grammarFirstDay": 6,
           "featureEvidence": {
-            "sourceId": "w6-school-saleha-write",
+            "sourceId": "name-update:w6-school-saleha-write",
             "pashtoSpan": "لیکو",
             "romanisationSpan": "leeko",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
@@ -11637,9 +11638,9 @@
         },
         {
           "exampleId": "w6-school-saleha-write",
-          "pashto": "صالحه او زه جملې لیکو.",
-          "romanisation": "saaleha aw za jumle leeko",
-          "english": "Saleha and I write sentences.",
+          "pashto": "دینه او زه جملې لیکو.",
+          "romanisation": "deena aw za jumle leeko",
+          "english": "Deena and I write sentences.",
           "speaker": "Player",
           "recipient": "Ms Hameed",
           "day": 6,
@@ -11656,7 +11657,7 @@
           "romanisation": "haghoy jumle leekee",
           "english": "They write sentences.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -11671,7 +11672,7 @@
           "romanisation": "za kitaab lwalam aw ta jumla leekey",
           "english": "I read the book, and you write a sentence.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -11686,7 +11687,7 @@
           "romanisation": "taase kitaaboona lwaley aw moong jumle leeko",
           "english": "You all read books, and we write sentences.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -12165,7 +12166,7 @@
       "introduction": {
         "day": 3,
         "district": "residential",
-        "teachingOrder": 48,
+        "teachingOrder": 49,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
@@ -12643,7 +12644,7 @@
           "romanisation": "moong koṭa paakawo",
           "english": "We clean the room.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "residential",
           "reviewStatus": "needsReview",
@@ -12673,7 +12674,7 @@
           "romanisation": "ta koṭa paakawey aw za par tsawkay kenam",
           "english": "You clean the room, and I sit on the chair.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -12745,14 +12746,14 @@
         "transitivity": null
       },
       "introduction": {
-        "day": 2,
+        "day": 3,
         "district": "residential",
-        "teachingOrder": 36,
+        "teachingOrder": 37,
         "requiredGrammarIds": [
           "grammar-day-2"
         ],
         "verifiedStatus": "editorial_draft",
-        "rationale": "Explicit Issue 18 curriculum: actions and third-person SOV"
+        "rationale": "Retained for later Home lessons; Day 2 Home introduces to have instead."
       },
       "firstIntroductionConstraints": {
         "earliestDay": 2,
@@ -12940,7 +12941,7 @@
       "introduction": {
         "day": 3,
         "district": "residential",
-        "teachingOrder": 49,
+        "teachingOrder": 50,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
@@ -13813,7 +13814,7 @@
           "romanisation": "haghoy pukhtano ta dzawaaboona warkawee",
           "english": "They answer questions.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -14655,7 +14656,7 @@
           "romanisation": "haghoy pakhto zda kawee",
           "english": "They learn Pashto.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -14945,7 +14946,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 63,
+        "teachingOrder": 64,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
@@ -15132,7 +15133,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 64,
+        "teachingOrder": 65,
         "requiredGrammarIds": [
           "grammar-day-2"
         ],
@@ -15246,7 +15247,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 65,
+        "teachingOrder": 66,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
@@ -15454,7 +15455,7 @@
           "romanisation": "moong yaw dzay chaay ts-kho",
           "english": "We drink tea together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "residential",
           "reviewStatus": "needsReview",
@@ -15693,12 +15694,12 @@
               "verb"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w2-d10-school-5",
+            "evidenceSourceId": "name-update:w2-d10-school-5",
             "english": "To go — third person"
           },
           "grammarFirstDay": 2,
           "featureEvidence": {
-            "sourceId": "w2-d10-school-5",
+            "sourceId": "name-update:w2-d10-school-5",
             "pashtoSpan": "ځي",
             "romanisationSpan": "dzee",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
@@ -15959,9 +15960,9 @@
         },
         {
           "exampleId": "w2-d10-school-5",
-          "pashto": "مینا ښوونځي ته ځي.",
-          "romanisation": "meena khowandzee ta dzee",
-          "english": "Mina goes to school.",
+          "pashto": "مدینه ښوونځي ته ځي.",
+          "romanisation": "madeena khowandzee ta dzee",
+          "english": "Medina goes to school.",
           "speaker": "Player",
           "recipient": "Ms Hameed",
           "day": 10,
@@ -15974,11 +15975,11 @@
         },
         {
           "exampleId": "w2-d13-river-1",
-          "pashto": "مینا ورو ورو ځي.",
-          "romanisation": "meena wro wro dzee",
-          "english": "Mina walks slowly.",
+          "pashto": "مدینه ورو ورو ځي.",
+          "romanisation": "madeena wro wro dzee",
+          "english": "Medina walks slowly.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 13,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -15989,11 +15990,11 @@
         },
         {
           "exampleId": "w2-d14-river-1",
-          "pashto": "مینا ورو ورو ځي.",
-          "romanisation": "meena wro wro dzee",
-          "english": "Mina walks slowly.",
+          "pashto": "مدینه ورو ورو ځي.",
+          "romanisation": "madeena wro wro dzee",
+          "english": "Medina walks slowly.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 14,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -17048,7 +17049,7 @@
           "romanisation": "haghoy pakhto zda kawee",
           "english": "They learn Pashto.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -17465,7 +17466,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 75,
+        "teachingOrder": 76,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
@@ -17601,7 +17602,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 76,
+        "teachingOrder": 77,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
@@ -18264,7 +18265,7 @@
           "romanisation": "haghoy khpale kitaabche khlaasawee",
           "english": "They open their notebooks.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -18279,7 +18280,7 @@
           "romanisation": "kitaabcha dalta da",
           "english": "The notebook is here.",
           "speaker": "Player",
-          "recipient": "Mina",
+          "recipient": "Medina",
           "day": 10,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -18293,7 +18294,7 @@
           "pashto": "کتابچه چېرته ده؟",
           "romanisation": "kitaabcha cherta da",
           "english": "Where is the notebook?",
-          "speaker": "Mina",
+          "speaker": "Medina",
           "recipient": "Player",
           "day": 10,
           "location": "nature",
@@ -18335,9 +18336,9 @@
         },
         {
           "exampleId": "w2-d11-school-1",
-          "pashto": "دا د مینا کتابچه ده.",
-          "romanisation": "daa da meena kitaabcha da",
-          "english": "This is Mina’s notebook.",
+          "pashto": "دا د مدینه کتابچه ده.",
+          "romanisation": "daa da madeena kitaabcha da",
+          "english": "This is Medina’s notebook.",
           "speaker": "Player",
           "recipient": "Ms Hameed",
           "day": 11,
@@ -18692,7 +18693,7 @@
       "introduction": {
         "day": 6,
         "district": "residential",
-        "teachingOrder": 83,
+        "teachingOrder": 84,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
@@ -18854,7 +18855,7 @@
       "introduction": {
         "day": 6,
         "district": "residential",
-        "teachingOrder": 84,
+        "teachingOrder": 85,
         "requiredGrammarIds": [
           "grammar-day-2"
         ],
@@ -18952,7 +18953,7 @@
       "introduction": {
         "day": 6,
         "district": "residential",
-        "teachingOrder": 85,
+        "teachingOrder": 86,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
@@ -19133,7 +19134,7 @@
           "romanisation": "moong dwa marghaan weeno",
           "english": "We see two birds.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -19161,9 +19162,9 @@
           "exampleId": "w7-you-bird",
           "pashto": "ته مرغۍ وینې.",
           "romanisation": "ta marghay weeney",
-          "english": "You see the bird (Saleha).",
+          "english": "You see the bird (Deena).",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -19178,7 +19179,7 @@
           "romanisation": "hagha marghay wane ta negde da",
           "english": "That bird is near the tree.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 8,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -19193,7 +19194,7 @@
           "romanisation": "daa yawa marghay da",
           "english": "This is one bird.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 9,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -19208,7 +19209,7 @@
           "romanisation": "hagha dwa marghaan dee",
           "english": "Those are two birds.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 9,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -19223,7 +19224,7 @@
           "romanisation": "haghoy marghaan weenee",
           "english": "They see the birds.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 9,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -19237,7 +19238,7 @@
           "pashto": "کومه مرغۍ اوبو ته نږدې ده؟",
           "romanisation": "kooma marghay obo ta negde da",
           "english": "Which bird is near the water?",
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 12,
           "location": "nature",
@@ -19253,7 +19254,7 @@
           "romanisation": "hagha marghaan seend ta negde dee",
           "english": "Those birds are near the river.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 14,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -20123,7 +20124,7 @@
       "introduction": {
         "day": 1,
         "district": "residential",
-        "teachingOrder": 61,
+        "teachingOrder": 62,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
@@ -20616,7 +20617,7 @@
           "romanisation": "taase dwaara da seend tar tsang gardzey",
           "english": "You both walk beside the river.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -20646,7 +20647,7 @@
           "romanisation": "moong da jaheel tar tsang yaw dzay gardzo",
           "english": "We walk together beside the lake.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -20657,11 +20658,11 @@
         },
         {
           "exampleId": "w6-mina-walk",
-          "pashto": "مینا او زه یو ځای ګرځو.",
-          "romanisation": "meena aw za yaw dzay gardzo",
-          "english": "Mina and I walk together.",
+          "pashto": "مدینه او زه یو ځای ګرځو.",
+          "romanisation": "madeena aw za yaw dzay gardzo",
+          "english": "Medina and I walk together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -21466,7 +21467,7 @@
           "romanisation": "moong katsoṛa wro",
           "english": "We carry the bag.",
           "speaker": "Player",
-          "recipient": "Mina",
+          "recipient": "Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -21507,11 +21508,11 @@
         },
         {
           "exampleId": "w2-d11-river-2",
-          "pashto": "هغه د صالحې کڅوړه ده.",
-          "romanisation": "hagha da saalehe katsoṛa da",
-          "english": "That is Saleha’s bag.",
+          "pashto": "هغه د دینې کڅوړه ده.",
+          "romanisation": "hagha da deene katsoṛa da",
+          "english": "That is Deena’s bag.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 11,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -21537,10 +21538,10 @@
         },
         {
           "exampleId": "w2-d14-river-3",
-          "pashto": "د صالحې کڅوړه چېرته ده؟",
-          "romanisation": "da saalehe katsoṛa cherta da",
-          "english": "Where is Saleha’s bag?",
-          "speaker": "Saleha",
+          "pashto": "د دینې کڅوړه چېرته ده؟",
+          "romanisation": "da deene katsoṛa cherta da",
+          "english": "Where is Deena’s bag?",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 14,
           "location": "nature",
@@ -22166,7 +22167,7 @@
               "reason": "Existing romanisation describes a whole sentence, not this form"
             }
           ],
-          "contextRomanisation": "meena aw za ṭokray wro",
+          "contextRomanisation": "madeena aw za ṭokray wro",
           "firstAllowedDay": 6,
           "composition": {
             "enabled": true,
@@ -22174,12 +22175,12 @@
               "verb"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w6-market-baskets",
+            "evidenceSourceId": "name-update:w6-market-baskets",
             "english": "To carry / take — first person"
           },
           "grammarFirstDay": 6,
           "featureEvidence": {
-            "sourceId": "w6-market-baskets",
+            "sourceId": "name-update:w6-market-baskets",
             "pashtoSpan": "وړو",
             "romanisationSpan": "wro",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
@@ -22389,9 +22390,9 @@
         },
         {
           "exampleId": "w6-market-baskets",
-          "pashto": "مینا او زه ټوکرۍ وړو.",
-          "romanisation": "meena aw za ṭokray wro",
-          "english": "Mina and I carry baskets.",
+          "pashto": "مدینه او زه ټوکرۍ وړو.",
+          "romanisation": "madeena aw za ṭokray wro",
+          "english": "Medina and I carry baskets.",
           "speaker": "Player",
           "recipient": "Muhammad Jan",
           "day": 6,
@@ -22408,7 +22409,7 @@
           "romanisation": "taase dwaara khwaaṛa wrey",
           "english": "You both carry the food.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "business",
           "reviewStatus": "needsReview",
@@ -22453,7 +22454,7 @@
           "romanisation": "taase dwaara oba wrey",
           "english": "You both carry the water.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -22468,7 +22469,7 @@
           "romanisation": "moong katsoṛa wro",
           "english": "We carry the bag.",
           "speaker": "Player",
-          "recipient": "Mina",
+          "recipient": "Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -23619,7 +23620,7 @@
           "romanisation": "daa teegha da obo tar tsang da",
           "english": "This stone is beside the water.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 8,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -23841,7 +23842,7 @@
           "romanisation": "ta koṭa paakawey aw za par tsawkay kenam",
           "english": "You clean the room, and I sit on the chair.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -23960,7 +23961,7 @@
       "introduction": {
         "day": 4,
         "district": "residential",
-        "teachingOrder": 57,
+        "teachingOrder": 58,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
@@ -24198,9 +24199,9 @@
         },
         {
           "exampleId": "w6-market-baskets",
-          "pashto": "مینا او زه ټوکرۍ وړو.",
-          "romanisation": "meena aw za ṭokray wro",
-          "english": "Mina and I carry baskets.",
+          "pashto": "مدینه او زه ټوکرۍ وړو.",
+          "romanisation": "madeena aw za ṭokray wro",
+          "english": "Medina and I carry baskets.",
           "speaker": "Player",
           "recipient": "Muhammad Jan",
           "day": 6,
@@ -24728,9 +24729,9 @@
         },
         {
           "exampleId": "w6-school-saleha-write",
-          "pashto": "صالحه او زه جملې لیکو.",
-          "romanisation": "saaleha aw za jumle leeko",
-          "english": "Saleha and I write sentences.",
+          "pashto": "دینه او زه جملې لیکو.",
+          "romanisation": "deena aw za jumle leeko",
+          "english": "Deena and I write sentences.",
           "speaker": "Player",
           "recipient": "Ms Hameed",
           "day": 6,
@@ -24747,7 +24748,7 @@
           "romanisation": "haghoy jumle leekee",
           "english": "They write sentences.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -24762,7 +24763,7 @@
           "romanisation": "za kitaab lwalam aw ta jumla leekey",
           "english": "I read the book, and you write a sentence.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -24777,7 +24778,7 @@
           "romanisation": "taase kitaaboona lwaley aw moong jumle leeko",
           "english": "You all read books, and we write sentences.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -25064,7 +25065,7 @@
           "romanisation": "moong dwa marghaan weeno",
           "english": "We see two birds.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -25079,7 +25080,7 @@
           "romanisation": "moong oba ts-kho",
           "english": "We drink water.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -25094,7 +25095,7 @@
           "romanisation": "moong koṭa paakawo",
           "english": "We clean the room.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "residential",
           "reviewStatus": "needsReview",
@@ -25109,7 +25110,7 @@
           "romanisation": "moong yaw dzay chaay ts-kho",
           "english": "We drink tea together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "residential",
           "reviewStatus": "needsReview",
@@ -25287,11 +25288,11 @@
       "examples": [
         {
           "exampleId": "w6-river-mina-run",
-          "pashto": "مینا او زه یو ځای منډې وهو.",
-          "romanisation": "meena aw za yaw dzay mande waho",
-          "english": "Mina and I run together.",
+          "pashto": "مدینه او زه یو ځای منډې وهو.",
+          "romanisation": "madeena aw za yaw dzay mande waho",
+          "english": "Medina and I run together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -25306,7 +25307,7 @@
           "romanisation": "moong yaw dzay chaay ts-kho",
           "english": "We drink tea together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "residential",
           "reviewStatus": "needsReview",
@@ -25366,7 +25367,7 @@
           "romanisation": "moong da jaheel tar tsang yaw dzay gardzo",
           "english": "We walk together beside the lake.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -25377,11 +25378,11 @@
         },
         {
           "exampleId": "w6-mina-walk",
-          "pashto": "مینا او زه یو ځای ګرځو.",
-          "romanisation": "meena aw za yaw dzay gardzo",
-          "english": "Mina and I walk together.",
+          "pashto": "مدینه او زه یو ځای ګرځو.",
+          "romanisation": "madeena aw za yaw dzay gardzo",
+          "english": "Medina and I walk together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -25396,7 +25397,7 @@
           "romanisation": "moong yaw dzay mande waho",
           "english": "We run together.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -25411,7 +25412,7 @@
           "romanisation": "moong yaw dzay mande waho",
           "english": "We run together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 13,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -26051,12 +26052,12 @@
               "verb"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w2-d13-river-2",
+            "evidenceSourceId": "name-update:w2-d13-river-2",
             "english": "To run — third person"
           },
           "grammarFirstDay": 2,
           "featureEvidence": {
-            "sourceId": "w2-d13-river-2",
+            "sourceId": "name-update:w2-d13-river-2",
             "pashtoSpan": "منډې وهي",
             "romanisationSpan": "mande wahee",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
@@ -26109,7 +26110,7 @@
               "reason": "Existing romanisation describes a whole sentence, not this form"
             }
           ],
-          "contextRomanisation": "meena aw za yaw dzay mande waho",
+          "contextRomanisation": "madeena aw za yaw dzay mande waho",
           "firstAllowedDay": 6,
           "composition": {
             "enabled": true,
@@ -26117,12 +26118,12 @@
               "verb"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w6-river-mina-run",
+            "evidenceSourceId": "name-update:w6-river-mina-run",
             "english": "To run — first person"
           },
           "grammarFirstDay": 6,
           "featureEvidence": {
-            "sourceId": "w6-river-mina-run",
+            "sourceId": "name-update:w6-river-mina-run",
             "pashtoSpan": "منډې وهو",
             "romanisationSpan": "mande waho",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
@@ -26210,7 +26211,7 @@
           "romanisation": "za da jaheel tar tsang mande waham",
           "english": "I run beside the lake.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -26221,11 +26222,11 @@
         },
         {
           "exampleId": "w6-river-mina-run",
-          "pashto": "مینا او زه یو ځای منډې وهو.",
-          "romanisation": "meena aw za yaw dzay mande waho",
-          "english": "Mina and I run together.",
+          "pashto": "مدینه او زه یو ځای منډې وهو.",
+          "romanisation": "madeena aw za yaw dzay mande waho",
+          "english": "Medina and I run together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -26255,7 +26256,7 @@
           "romanisation": "moong yaw dzay mande waho",
           "english": "We run together.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -26269,7 +26270,7 @@
           "pashto": "د جهیل تر څنګ څوک منډې وهي؟",
           "romanisation": "da jaheel tar tsang tsok mande wahee",
           "english": "Who is running beside the lake?",
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 12,
           "location": "nature",
@@ -26281,11 +26282,11 @@
         },
         {
           "exampleId": "w2-d13-river-2",
-          "pashto": "صالحه ژر منډې وهي.",
-          "romanisation": "saaleha zhar mande wahee",
-          "english": "Saleha runs quickly.",
+          "pashto": "دینه ژر منډې وهي.",
+          "romanisation": "deena zhar mande wahee",
+          "english": "Deena runs quickly.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 13,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -26300,7 +26301,7 @@
           "romanisation": "moong yaw dzay mande waho",
           "english": "We run together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 13,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -26314,7 +26315,7 @@
           "pashto": "څوک ژر منډې وهي؟",
           "romanisation": "tsok zhar mande wahee",
           "english": "Who runs quickly?",
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 14,
           "location": "nature",
@@ -26461,7 +26462,7 @@
           "romanisation": "za seend weenam aw moong ghuṇḍay weeno",
           "english": "I see the river, and we see the hills.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -26598,7 +26599,7 @@
           "romanisation": "moong dwa marghaan weeno",
           "english": "We see two birds.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -26643,7 +26644,7 @@
           "romanisation": "hagha dwa marghaan dee",
           "english": "Those are two birds.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 9,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -26909,7 +26910,7 @@
           "romanisation": "taase dwaara la muhammad jaan sara mrasta kawey",
           "english": "You both help Muhammad Jan.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "residential",
           "reviewStatus": "needsReview",
@@ -26968,7 +26969,7 @@
       "introduction": {
         "day": 6,
         "district": "residential",
-        "teachingOrder": 94,
+        "teachingOrder": 95,
         "requiredGrammarIds": [
           "grammar-day-2"
         ],
@@ -27182,7 +27183,7 @@
           "romanisation": "haghoy pukhtano ta dzawaaboona warkawee",
           "english": "They answer questions.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 7,
           "location": "school",
           "reviewStatus": "needsReview",
@@ -28320,7 +28321,7 @@
           "romanisation": "hagha marghay wane ta negde da",
           "english": "That bird is near the tree.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 8,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -28334,7 +28335,7 @@
           "pashto": "کومه مرغۍ اوبو ته نږدې ده؟",
           "romanisation": "kooma marghay obo ta negde da",
           "english": "Which bird is near the water?",
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 12,
           "location": "nature",
@@ -28350,7 +28351,7 @@
           "romanisation": "hagha marghaan seend ta negde dee",
           "english": "Those birds are near the river.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 14,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -28620,11 +28621,11 @@
       "examples": [
         {
           "exampleId": "w6-river-mina-run",
-          "pashto": "مینا او زه یو ځای منډې وهو.",
-          "romanisation": "meena aw za yaw dzay mande waho",
-          "english": "Mina and I run together.",
+          "pashto": "مدینه او زه یو ځای منډې وهو.",
+          "romanisation": "madeena aw za yaw dzay mande waho",
+          "english": "Medina and I run together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -28639,7 +28640,7 @@
           "romanisation": "moong yaw dzay chaay ts-kho",
           "english": "We drink tea together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "residential",
           "reviewStatus": "needsReview",
@@ -28699,7 +28700,7 @@
           "romanisation": "moong da jaheel tar tsang yaw dzay gardzo",
           "english": "We walk together beside the lake.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -28710,11 +28711,11 @@
         },
         {
           "exampleId": "w6-mina-walk",
-          "pashto": "مینا او زه یو ځای ګرځو.",
-          "romanisation": "meena aw za yaw dzay gardzo",
-          "english": "Mina and I walk together.",
+          "pashto": "مدینه او زه یو ځای ګرځو.",
+          "romanisation": "madeena aw za yaw dzay gardzo",
+          "english": "Medina and I walk together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -28729,7 +28730,7 @@
           "romanisation": "moong yaw dzay mande waho",
           "english": "We run together.",
           "speaker": "Player",
-          "recipient": "Saleha and Mina",
+          "recipient": "Deena and Medina",
           "day": 6,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -28744,7 +28745,7 @@
           "romanisation": "moong yaw dzay mande waho",
           "english": "We run together.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 13,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -28969,7 +28970,7 @@
           "romanisation": "moong dre kabaan weeno",
           "english": "We see three fish.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 9,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -29335,7 +29336,7 @@
           "romanisation": "kitaabcha dalta da",
           "english": "The notebook is here.",
           "speaker": "Player",
-          "recipient": "Mina",
+          "recipient": "Medina",
           "day": 10,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -29346,11 +29347,11 @@
         },
         {
           "exampleId": "w2-d10-river-2",
-          "pashto": "مینا دلته ده.",
-          "romanisation": "meena dalta da",
-          "english": "Mina is here.",
+          "pashto": "مدینه دلته ده.",
+          "romanisation": "madeena dalta da",
+          "english": "Medina is here.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 10,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -29732,7 +29733,7 @@
           "pashto": "کتابچه چېرته ده؟",
           "romanisation": "kitaabcha cherta da",
           "english": "Where is the notebook?",
-          "speaker": "Mina",
+          "speaker": "Medina",
           "recipient": "Player",
           "day": 10,
           "location": "nature",
@@ -29819,10 +29820,10 @@
         },
         {
           "exampleId": "w2-d12-river-4",
-          "pashto": "مینا چېرته ده؟",
-          "romanisation": "meena cherta da",
-          "english": "Where is Mina?",
-          "speaker": "Saleha",
+          "pashto": "مدینه چېرته ده؟",
+          "romanisation": "madeena cherta da",
+          "english": "Where is Medina?",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 12,
           "location": "nature",
@@ -29864,10 +29865,10 @@
         },
         {
           "exampleId": "w2-d14-river-3",
-          "pashto": "د صالحې کڅوړه چېرته ده؟",
-          "romanisation": "da saalehe katsoṛa cherta da",
-          "english": "Where is Saleha’s bag?",
-          "speaker": "Saleha",
+          "pashto": "د دینې کڅوړه چېرته ده؟",
+          "romanisation": "da deene katsoṛa cherta da",
+          "english": "Where is Deena’s bag?",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 14,
           "location": "nature",
@@ -30271,7 +30272,7 @@
           "romanisation": "daa staase teeghe dee",
           "english": "These are your stones.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 11,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -30489,7 +30490,7 @@
           "romanisation": "zmoong oba saṛe dee",
           "english": "Our water is cold.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 11,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -30504,7 +30505,7 @@
           "romanisation": "za zmoong malgaree weenam",
           "english": "I see our friends.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 11,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -30679,7 +30680,7 @@
           "pashto": "د جهیل تر څنګ څوک منډې وهي؟",
           "romanisation": "da jaheel tar tsang tsok mande wahee",
           "english": "Who is running beside the lake?",
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 12,
           "location": "nature",
@@ -30709,7 +30710,7 @@
           "pashto": "څوک ژر منډې وهي؟",
           "romanisation": "tsok zhar mande wahee",
           "english": "Who runs quickly?",
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 14,
           "location": "nature",
@@ -30899,7 +30900,7 @@
           "pashto": "ته څه وینې؟",
           "romanisation": "ta tsa weeney",
           "english": "What do you see?",
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 12,
           "location": "nature",
@@ -31118,9 +31119,9 @@
         },
         {
           "exampleId": "w2-d14-school-5",
-          "pashto": "کوم کتاب د مینا دی؟",
-          "romanisation": "koom kitaab da meena day",
-          "english": "Which book belongs to Mina?",
+          "pashto": "کوم کتاب د مدینه دی؟",
+          "romanisation": "koom kitaab da madeena day",
+          "english": "Which book belongs to Medina?",
           "speaker": "Ms Hameed",
           "recipient": "Player",
           "day": 14,
@@ -31292,7 +31293,7 @@
           "pashto": "موږ څو کبان وینو؟",
           "romanisation": "moong tso kabaan weeno",
           "english": "How many fish do we see?",
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 12,
           "location": "nature",
@@ -31460,7 +31461,7 @@
           "romanisation": "nan moong oba ts-kho",
           "english": "Today we drink water.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 13,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -31635,13 +31636,13 @@
               "adverb"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w2-d13-river-2",
+            "evidenceSourceId": "name-update:w2-d13-river-2",
             "adverbClass": "quick",
             "english": "quickly"
           },
           "grammarFirstDay": 13,
           "featureEvidence": {
-            "sourceId": "w2-d13-river-2",
+            "sourceId": "name-update:w2-d13-river-2",
             "pashtoSpan": "ژر",
             "romanisationSpan": "zhar",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
@@ -31661,11 +31662,11 @@
       "examples": [
         {
           "exampleId": "w2-d13-river-2",
-          "pashto": "صالحه ژر منډې وهي.",
-          "romanisation": "saaleha zhar mande wahee",
-          "english": "Saleha runs quickly.",
+          "pashto": "دینه ژر منډې وهي.",
+          "romanisation": "deena zhar mande wahee",
+          "english": "Deena runs quickly.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 13,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -31679,7 +31680,7 @@
           "pashto": "څوک ژر منډې وهي؟",
           "romanisation": "tsok zhar mande wahee",
           "english": "Who runs quickly?",
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "recipient": "Player",
           "day": 14,
           "location": "nature",
@@ -31948,13 +31949,13 @@
               "adverb"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w2-d13-river-1",
+            "evidenceSourceId": "name-update:w2-d13-river-1",
             "adverbClass": "slow",
             "english": "slowly"
           },
           "grammarFirstDay": 13,
           "featureEvidence": {
-            "sourceId": "w2-d13-river-1",
+            "sourceId": "name-update:w2-d13-river-1",
             "pashtoSpan": "ورو ورو",
             "romanisationSpan": "wro wro",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
@@ -31974,11 +31975,11 @@
       "examples": [
         {
           "exampleId": "w2-d13-river-1",
-          "pashto": "مینا ورو ورو ځي.",
-          "romanisation": "meena wro wro dzee",
-          "english": "Mina walks slowly.",
+          "pashto": "مدینه ورو ورو ځي.",
+          "romanisation": "madeena wro wro dzee",
+          "english": "Medina walks slowly.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 13,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -32019,11 +32020,11 @@
         },
         {
           "exampleId": "w2-d14-river-1",
-          "pashto": "مینا ورو ورو ځي.",
-          "romanisation": "meena wro wro dzee",
-          "english": "Mina walks slowly.",
+          "pashto": "مدینه ورو ورو ځي.",
+          "romanisation": "madeena wro wro dzee",
+          "english": "Medina walks slowly.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 14,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -32169,7 +32170,7 @@
           "romanisation": "haghoy kala kala da jaheel tar tsang kenee",
           "english": "They sometimes sit beside the lake.",
           "speaker": "Player",
-          "recipient": "Saleha",
+          "recipient": "Deena",
           "day": 13,
           "location": "nature",
           "reviewStatus": "needsReview",
@@ -32529,7 +32530,7 @@
       "introduction": {
         "day": 1,
         "district": "residential",
-        "teachingOrder": 95,
+        "teachingOrder": 96,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -32640,7 +32641,7 @@
       "introduction": {
         "day": 1,
         "district": "residential",
-        "teachingOrder": 96,
+        "teachingOrder": 97,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -32751,7 +32752,7 @@
       "introduction": {
         "day": 1,
         "district": "residential",
-        "teachingOrder": 97,
+        "teachingOrder": 98,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -32862,7 +32863,7 @@
       "introduction": {
         "day": 1,
         "district": "residential",
-        "teachingOrder": 98,
+        "teachingOrder": 99,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -32973,7 +32974,7 @@
       "introduction": {
         "day": 1,
         "district": "residential",
-        "teachingOrder": 99,
+        "teachingOrder": 100,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -33084,7 +33085,7 @@
       "introduction": {
         "day": 1,
         "district": "residential",
-        "teachingOrder": 100,
+        "teachingOrder": 101,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -33195,7 +33196,7 @@
       "introduction": {
         "day": 2,
         "district": "residential",
-        "teachingOrder": 101,
+        "teachingOrder": 102,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -33306,7 +33307,7 @@
       "introduction": {
         "day": 2,
         "district": "residential",
-        "teachingOrder": 102,
+        "teachingOrder": 103,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -33417,7 +33418,7 @@
       "introduction": {
         "day": 2,
         "district": "residential",
-        "teachingOrder": 103,
+        "teachingOrder": 104,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -33528,7 +33529,7 @@
       "introduction": {
         "day": 2,
         "district": "residential",
-        "teachingOrder": 104,
+        "teachingOrder": 105,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -33639,7 +33640,7 @@
       "introduction": {
         "day": 2,
         "district": "residential",
-        "teachingOrder": 105,
+        "teachingOrder": 106,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -33750,7 +33751,7 @@
       "introduction": {
         "day": 2,
         "district": "residential",
-        "teachingOrder": 106,
+        "teachingOrder": 107,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -33861,7 +33862,7 @@
       "introduction": {
         "day": 3,
         "district": "residential",
-        "teachingOrder": 107,
+        "teachingOrder": 108,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -33972,7 +33973,7 @@
       "introduction": {
         "day": 3,
         "district": "residential",
-        "teachingOrder": 108,
+        "teachingOrder": 109,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -34083,7 +34084,7 @@
       "introduction": {
         "day": 3,
         "district": "residential",
-        "teachingOrder": 109,
+        "teachingOrder": 110,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -34194,7 +34195,7 @@
       "introduction": {
         "day": 3,
         "district": "residential",
-        "teachingOrder": 110,
+        "teachingOrder": 111,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -34305,7 +34306,7 @@
       "introduction": {
         "day": 3,
         "district": "residential",
-        "teachingOrder": 111,
+        "teachingOrder": 112,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -34416,7 +34417,7 @@
       "introduction": {
         "day": 3,
         "district": "residential",
-        "teachingOrder": 112,
+        "teachingOrder": 113,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -34527,7 +34528,7 @@
       "introduction": {
         "day": 4,
         "district": "residential",
-        "teachingOrder": 113,
+        "teachingOrder": 114,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -34638,7 +34639,7 @@
       "introduction": {
         "day": 4,
         "district": "residential",
-        "teachingOrder": 114,
+        "teachingOrder": 115,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -34749,7 +34750,7 @@
       "introduction": {
         "day": 4,
         "district": "residential",
-        "teachingOrder": 115,
+        "teachingOrder": 116,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -34860,7 +34861,7 @@
       "introduction": {
         "day": 4,
         "district": "residential",
-        "teachingOrder": 116,
+        "teachingOrder": 117,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -34971,7 +34972,7 @@
       "introduction": {
         "day": 4,
         "district": "residential",
-        "teachingOrder": 117,
+        "teachingOrder": 118,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -35082,7 +35083,7 @@
       "introduction": {
         "day": 4,
         "district": "residential",
-        "teachingOrder": 118,
+        "teachingOrder": 119,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -35193,7 +35194,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 119,
+        "teachingOrder": 120,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -35304,7 +35305,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 120,
+        "teachingOrder": 121,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -35415,7 +35416,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 121,
+        "teachingOrder": 122,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -35526,7 +35527,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 122,
+        "teachingOrder": 123,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -35637,7 +35638,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 123,
+        "teachingOrder": 124,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -35748,7 +35749,7 @@
       "introduction": {
         "day": 5,
         "district": "residential",
-        "teachingOrder": 124,
+        "teachingOrder": 125,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -35859,7 +35860,7 @@
       "introduction": {
         "day": 6,
         "district": "residential",
-        "teachingOrder": 125,
+        "teachingOrder": 126,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -35970,7 +35971,7 @@
       "introduction": {
         "day": 6,
         "district": "residential",
-        "teachingOrder": 126,
+        "teachingOrder": 127,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -36081,7 +36082,7 @@
       "introduction": {
         "day": 6,
         "district": "residential",
-        "teachingOrder": 127,
+        "teachingOrder": 128,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -36192,7 +36193,7 @@
       "introduction": {
         "day": 6,
         "district": "residential",
-        "teachingOrder": 128,
+        "teachingOrder": 129,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -36303,7 +36304,7 @@
       "introduction": {
         "day": 6,
         "district": "residential",
-        "teachingOrder": 129,
+        "teachingOrder": 130,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -36414,7 +36415,7 @@
       "introduction": {
         "day": 6,
         "district": "residential",
-        "teachingOrder": 130,
+        "teachingOrder": 131,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -36525,7 +36526,7 @@
       "introduction": {
         "day": 7,
         "district": "residential",
-        "teachingOrder": 131,
+        "teachingOrder": 132,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -36636,7 +36637,7 @@
       "introduction": {
         "day": 7,
         "district": "residential",
-        "teachingOrder": 132,
+        "teachingOrder": 133,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -36747,7 +36748,7 @@
       "introduction": {
         "day": 7,
         "district": "residential",
-        "teachingOrder": 133,
+        "teachingOrder": 134,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -36858,7 +36859,7 @@
       "introduction": {
         "day": 7,
         "district": "residential",
-        "teachingOrder": 134,
+        "teachingOrder": 135,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -36969,7 +36970,7 @@
       "introduction": {
         "day": 7,
         "district": "residential",
-        "teachingOrder": 135,
+        "teachingOrder": 136,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -37080,7 +37081,7 @@
       "introduction": {
         "day": 7,
         "district": "residential",
-        "teachingOrder": 136,
+        "teachingOrder": 137,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -37191,7 +37192,7 @@
       "introduction": {
         "day": 8,
         "district": "residential",
-        "teachingOrder": 137,
+        "teachingOrder": 138,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -37302,7 +37303,7 @@
       "introduction": {
         "day": 8,
         "district": "residential",
-        "teachingOrder": 138,
+        "teachingOrder": 139,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -37413,7 +37414,7 @@
       "introduction": {
         "day": 8,
         "district": "residential",
-        "teachingOrder": 139,
+        "teachingOrder": 140,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -37524,7 +37525,7 @@
       "introduction": {
         "day": 8,
         "district": "residential",
-        "teachingOrder": 140,
+        "teachingOrder": 141,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -37635,7 +37636,7 @@
       "introduction": {
         "day": 8,
         "district": "residential",
-        "teachingOrder": 141,
+        "teachingOrder": 142,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -37746,7 +37747,7 @@
       "introduction": {
         "day": 8,
         "district": "residential",
-        "teachingOrder": 142,
+        "teachingOrder": 143,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -37857,7 +37858,7 @@
       "introduction": {
         "day": 9,
         "district": "residential",
-        "teachingOrder": 143,
+        "teachingOrder": 144,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -37968,7 +37969,7 @@
       "introduction": {
         "day": 9,
         "district": "residential",
-        "teachingOrder": 144,
+        "teachingOrder": 145,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -38079,7 +38080,7 @@
       "introduction": {
         "day": 9,
         "district": "residential",
-        "teachingOrder": 145,
+        "teachingOrder": 146,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -38190,7 +38191,7 @@
       "introduction": {
         "day": 9,
         "district": "residential",
-        "teachingOrder": 146,
+        "teachingOrder": 147,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -38301,7 +38302,7 @@
       "introduction": {
         "day": 9,
         "district": "residential",
-        "teachingOrder": 147,
+        "teachingOrder": 148,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -38412,7 +38413,7 @@
       "introduction": {
         "day": 9,
         "district": "residential",
-        "teachingOrder": 148,
+        "teachingOrder": 149,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -38523,7 +38524,7 @@
       "introduction": {
         "day": 10,
         "district": "residential",
-        "teachingOrder": 149,
+        "teachingOrder": 150,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -38634,7 +38635,7 @@
       "introduction": {
         "day": 10,
         "district": "residential",
-        "teachingOrder": 150,
+        "teachingOrder": 151,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -38745,7 +38746,7 @@
       "introduction": {
         "day": 10,
         "district": "residential",
-        "teachingOrder": 151,
+        "teachingOrder": 152,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -38856,7 +38857,7 @@
       "introduction": {
         "day": 10,
         "district": "residential",
-        "teachingOrder": 152,
+        "teachingOrder": 153,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -38967,7 +38968,7 @@
       "introduction": {
         "day": 10,
         "district": "residential",
-        "teachingOrder": 153,
+        "teachingOrder": 154,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -39078,7 +39079,7 @@
       "introduction": {
         "day": 10,
         "district": "residential",
-        "teachingOrder": 154,
+        "teachingOrder": 155,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -39189,7 +39190,7 @@
       "introduction": {
         "day": 11,
         "district": "residential",
-        "teachingOrder": 155,
+        "teachingOrder": 156,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -39300,7 +39301,7 @@
       "introduction": {
         "day": 11,
         "district": "residential",
-        "teachingOrder": 156,
+        "teachingOrder": 157,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -39411,7 +39412,7 @@
       "introduction": {
         "day": 11,
         "district": "residential",
-        "teachingOrder": 157,
+        "teachingOrder": 158,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -39522,7 +39523,7 @@
       "introduction": {
         "day": 11,
         "district": "residential",
-        "teachingOrder": 158,
+        "teachingOrder": 159,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -39633,7 +39634,7 @@
       "introduction": {
         "day": 11,
         "district": "residential",
-        "teachingOrder": 159,
+        "teachingOrder": 160,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -39744,7 +39745,7 @@
       "introduction": {
         "day": 11,
         "district": "residential",
-        "teachingOrder": 160,
+        "teachingOrder": 161,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -39855,7 +39856,7 @@
       "introduction": {
         "day": 12,
         "district": "residential",
-        "teachingOrder": 161,
+        "teachingOrder": 162,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -39966,7 +39967,7 @@
       "introduction": {
         "day": 12,
         "district": "residential",
-        "teachingOrder": 162,
+        "teachingOrder": 163,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -40077,7 +40078,7 @@
       "introduction": {
         "day": 12,
         "district": "residential",
-        "teachingOrder": 163,
+        "teachingOrder": 164,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -40188,7 +40189,7 @@
       "introduction": {
         "day": 12,
         "district": "residential",
-        "teachingOrder": 164,
+        "teachingOrder": 165,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -40299,7 +40300,7 @@
       "introduction": {
         "day": 12,
         "district": "residential",
-        "teachingOrder": 165,
+        "teachingOrder": 166,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -40410,7 +40411,7 @@
       "introduction": {
         "day": 12,
         "district": "residential",
-        "teachingOrder": 166,
+        "teachingOrder": 167,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -40521,7 +40522,7 @@
       "introduction": {
         "day": 13,
         "district": "residential",
-        "teachingOrder": 167,
+        "teachingOrder": 168,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -40632,7 +40633,7 @@
       "introduction": {
         "day": 13,
         "district": "residential",
-        "teachingOrder": 168,
+        "teachingOrder": 169,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -40743,7 +40744,7 @@
       "introduction": {
         "day": 13,
         "district": "residential",
-        "teachingOrder": 169,
+        "teachingOrder": 170,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -40854,7 +40855,7 @@
       "introduction": {
         "day": 13,
         "district": "residential",
-        "teachingOrder": 170,
+        "teachingOrder": 171,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -40965,7 +40966,7 @@
       "introduction": {
         "day": 13,
         "district": "residential",
-        "teachingOrder": 171,
+        "teachingOrder": 172,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -41076,7 +41077,7 @@
       "introduction": {
         "day": 13,
         "district": "residential",
-        "teachingOrder": 172,
+        "teachingOrder": 173,
         "requiredGrammarIds": [],
         "verifiedStatus": "editorial_draft",
         "rationale": "Complete-vocabulary expansion; provisional playable citation form"
@@ -70476,10 +70477,10 @@
     },
     {
       "lemmaId": "lemma:person:mina",
-      "displayLemmaPs": "مینا",
-      "romanisation": "meena",
+      "displayLemmaPs": "مدینه",
+      "romanisation": "madeena",
       "englishSenses": [
-        "Mina"
+        "Medina"
       ],
       "partOfSpeech": "noun",
       "countsTowardDailyQuota": false,
@@ -70488,9 +70489,9 @@
       "forms": [
         {
           "formId": "lemma:person:mina:licensed:0",
-          "pashto": "مینا",
-          "romanisation": "meena",
-          "englishGloss": "Mina",
+          "pashto": "مدینه",
+          "romanisation": "madeena",
+          "englishGloss": "Medina",
           "morphology": {
             "gender": "feminine",
             "number": "singular",
@@ -70505,7 +70506,9 @@
             "grammar-day-6"
           ],
           "audioContentId": null,
-          "metadataUncertainty": [],
+          "metadataUncertainty": [
+            "Current name spelling supplied by owner; romanisation and inflected case forms remain provisional."
+          ],
           "firstAllowedDay": 6,
           "grammarFirstDay": 6,
           "composition": {
@@ -70514,14 +70517,14 @@
               "subject"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w2-d13-river-1",
+            "evidenceSourceId": "name-update:w2-d13-river-1",
             "subjectPerson": 3,
-            "english": "Mina"
+            "english": "Medina"
           },
           "featureEvidence": {
-            "sourceId": "w2-d13-river-1",
-            "pashtoSpan": "مینا",
-            "romanisationSpan": "meena",
+            "sourceId": "name-update:w2-d13-river-1",
+            "pashtoSpan": "مدینه",
+            "romanisationSpan": "madeena",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
             "features": {
               "gender": "feminine",
@@ -70537,9 +70540,9 @@
         },
         {
           "formId": "lemma:person:mina:licensed:1",
-          "pashto": "د مینا",
-          "romanisation": "da meena",
-          "englishGloss": "Mina’s",
+          "pashto": "د مدینه",
+          "romanisation": "da madeena",
+          "englishGloss": "Medina’s",
           "morphology": {
             "gender": null,
             "number": null,
@@ -70554,7 +70557,9 @@
             "grammar-day-11"
           ],
           "audioContentId": null,
-          "metadataUncertainty": [],
+          "metadataUncertainty": [
+            "Current name spelling supplied by owner; romanisation and inflected case forms remain provisional."
+          ],
           "firstAllowedDay": 11,
           "grammarFirstDay": 11,
           "composition": {
@@ -70563,13 +70568,13 @@
               "possessive"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w2-d11-school-1",
-            "english": "Mina’s"
+            "evidenceSourceId": "name-update:w2-d11-school-1",
+            "english": "Medina’s"
           },
           "featureEvidence": {
-            "sourceId": "w2-d11-school-1",
-            "pashtoSpan": "د مینا",
-            "romanisationSpan": "da meena",
+            "sourceId": "name-update:w2-d11-school-1",
+            "pashtoSpan": "د مدینه",
+            "romanisationSpan": "da madeena",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
             "features": {
               "gender": null,
@@ -70585,9 +70590,9 @@
         },
         {
           "formId": "lemma:person:mina:coordinated-with-player",
-          "pashto": "مینا او زه",
-          "romanisation": "meena aw za",
-          "englishGloss": "Mina and I",
+          "pashto": "مدینه او زه",
+          "romanisation": "madeena aw za",
+          "englishGloss": "Medina and I",
           "morphology": {
             "gender": null,
             "number": "plural",
@@ -70603,7 +70608,9 @@
             "grammar-day-6"
           ],
           "audioContentId": null,
-          "metadataUncertainty": [],
+          "metadataUncertainty": [
+            "Current name spelling supplied by owner; romanisation and inflected case forms remain provisional."
+          ],
           "firstAllowedDay": 6,
           "grammarFirstDay": 6,
           "composition": {
@@ -70612,14 +70619,14 @@
               "subject"
             ],
             "reason": "Whole attested coordinated subject explicitly includes the speaker",
-            "evidenceSourceId": "w6-house-mina-door",
-            "english": "Mina and I",
+            "evidenceSourceId": "name-update:w6-house-mina-door",
+            "english": "Medina and I",
             "subjectPerson": 1
           },
           "featureEvidence": {
-            "sourceId": "w6-house-mina-door",
-            "pashtoSpan": "مینا او زه",
-            "romanisationSpan": "meena aw za",
+            "sourceId": "name-update:w6-house-mina-door",
+            "pashtoSpan": "مدینه او زه",
+            "romanisationSpan": "madeena aw za",
             "features": {
               "gender": null,
               "number": "plural",
@@ -70636,9 +70643,9 @@
       "examples": [
         {
           "exampleId": "w2-d13-river-1",
-          "pashto": "مینا ورو ورو ځي.",
-          "romanisation": "meena wro wro dzee",
-          "english": "Mina walks slowly.",
+          "pashto": "مدینه ورو ورو ځي.",
+          "romanisation": "madeena wro wro dzee",
+          "english": "Medina walks slowly.",
           "speaker": "Player",
           "recipient": "Ms Hameed",
           "day": 6,
@@ -70690,28 +70697,32 @@
         ],
         "proper": true,
         "countability": "proper",
-        "singular": "Mina",
+        "singular": "Medina",
         "plural": null
       },
       "userApproval": {
         "type": "explicit_user_confirmation",
         "reviewer": "Yaqub Forrest (project owner)",
-        "date": "2026-10-31",
+        "date": "2026-11-05",
         "reference": "content/USER_LANGUAGE_APPROVALS.json",
-        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "scope": "Owner-supplied current name spelling and English identity only; romanisation, inflection, combined clauses and recordings remain provisional.",
         "nativeCertificationClaimed": false
       },
       "mappedSourceIds": [
         "w6-house-mina-door"
       ],
-      "findings": []
+      "findings": [
+        "lemma:person:mina:licensed:0:uncertain-morphology-or-romanisation",
+        "lemma:person:mina:licensed:1:uncertain-morphology-or-romanisation",
+        "lemma:person:mina:coordinated-with-player:uncertain-morphology-or-romanisation"
+      ]
     },
     {
       "lemmaId": "lemma:person:saleha",
-      "displayLemmaPs": "صالحه",
-      "romanisation": "saaleha",
+      "displayLemmaPs": "دینه",
+      "romanisation": "deena",
       "englishSenses": [
-        "Saleha"
+        "Deena"
       ],
       "partOfSpeech": "noun",
       "countsTowardDailyQuota": false,
@@ -70720,9 +70731,9 @@
       "forms": [
         {
           "formId": "lemma:person:saleha:licensed:0",
-          "pashto": "صالحه",
-          "romanisation": "saaleha",
-          "englishGloss": "Saleha",
+          "pashto": "دینه",
+          "romanisation": "deena",
+          "englishGloss": "Deena",
           "morphology": {
             "gender": "feminine",
             "number": "singular",
@@ -70737,7 +70748,9 @@
             "grammar-day-2"
           ],
           "audioContentId": null,
-          "metadataUncertainty": [],
+          "metadataUncertainty": [
+            "Current name spelling supplied by owner; romanisation and inflected case forms remain provisional."
+          ],
           "firstAllowedDay": 2,
           "grammarFirstDay": 2,
           "composition": {
@@ -70746,14 +70759,14 @@
               "subject"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w2-d13-river-2",
+            "evidenceSourceId": "name-update:w2-d13-river-2",
             "subjectPerson": 3,
-            "english": "Saleha"
+            "english": "Deena"
           },
           "featureEvidence": {
-            "sourceId": "w2-d13-river-2",
-            "pashtoSpan": "صالحه",
-            "romanisationSpan": "saaleha",
+            "sourceId": "name-update:w2-d13-river-2",
+            "pashtoSpan": "دینه",
+            "romanisationSpan": "deena",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
             "features": {
               "gender": "feminine",
@@ -70769,9 +70782,9 @@
         },
         {
           "formId": "lemma:person:saleha:licensed:1",
-          "pashto": "د صالحې",
-          "romanisation": "da saalehe",
-          "englishGloss": "Saleha’s",
+          "pashto": "د دینې",
+          "romanisation": "da deene",
+          "englishGloss": "Deena’s",
           "morphology": {
             "gender": null,
             "number": null,
@@ -70786,7 +70799,9 @@
             "grammar-day-11"
           ],
           "audioContentId": null,
-          "metadataUncertainty": [],
+          "metadataUncertainty": [
+            "Current name spelling supplied by owner; romanisation and inflected case forms remain provisional."
+          ],
           "firstAllowedDay": 11,
           "grammarFirstDay": 11,
           "composition": {
@@ -70795,13 +70810,13 @@
               "possessive"
             ],
             "reason": "Exact authored surface/romanisation span plus typed grammar license; provisional, not native approval",
-            "evidenceSourceId": "w2-d11-school-2",
-            "english": "Saleha’s"
+            "evidenceSourceId": "name-update:w2-d11-school-2",
+            "english": "Deena’s"
           },
           "featureEvidence": {
-            "sourceId": "w2-d11-school-2",
-            "pashtoSpan": "د صالحې",
-            "romanisationSpan": "da saalehe",
+            "sourceId": "name-update:w2-d11-school-2",
+            "pashtoSpan": "د دینې",
+            "romanisationSpan": "da deene",
             "basis": "Authored contextual analysis; docs/grammar/PASHTO_GENERATION_RULES.md. No inferred stem or suffix; pronunciation is a provisional extracted aid.",
             "features": {
               "gender": null,
@@ -70817,9 +70832,9 @@
         },
         {
           "formId": "lemma:person:saleha:coordinated-with-player",
-          "pashto": "صالحه او زه",
-          "romanisation": "saaleha aw za",
-          "englishGloss": "Saleha and I",
+          "pashto": "دینه او زه",
+          "romanisation": "deena aw za",
+          "englishGloss": "Deena and I",
           "morphology": {
             "gender": null,
             "number": "plural",
@@ -70835,7 +70850,9 @@
             "grammar-day-6"
           ],
           "audioContentId": null,
-          "metadataUncertainty": [],
+          "metadataUncertainty": [
+            "Current name spelling supplied by owner; romanisation and inflected case forms remain provisional."
+          ],
           "firstAllowedDay": 6,
           "grammarFirstDay": 6,
           "composition": {
@@ -70844,14 +70861,14 @@
               "subject"
             ],
             "reason": "Whole attested coordinated subject explicitly includes the speaker",
-            "evidenceSourceId": "w6-school-saleha-write",
-            "english": "Saleha and I",
+            "evidenceSourceId": "name-update:w6-school-saleha-write",
+            "english": "Deena and I",
             "subjectPerson": 1
           },
           "featureEvidence": {
-            "sourceId": "w6-school-saleha-write",
-            "pashtoSpan": "صالحه او زه",
-            "romanisationSpan": "saaleha aw za",
+            "sourceId": "name-update:w6-school-saleha-write",
+            "pashtoSpan": "دینه او زه",
+            "romanisationSpan": "deena aw za",
             "features": {
               "gender": null,
               "number": "plural",
@@ -70868,9 +70885,9 @@
       "examples": [
         {
           "exampleId": "w2-d13-river-2",
-          "pashto": "صالحه ژر منډې وهي.",
-          "romanisation": "saaleha zhar mande wahee",
-          "english": "Saleha runs quickly.",
+          "pashto": "دینه ژر منډې وهي.",
+          "romanisation": "deena zhar mande wahee",
+          "english": "Deena runs quickly.",
           "speaker": "Player",
           "recipient": "Ms Hameed",
           "day": 2,
@@ -70922,21 +70939,25 @@
         ],
         "proper": true,
         "countability": "proper",
-        "singular": "Saleha",
+        "singular": "Deena",
         "plural": null
       },
       "userApproval": {
         "type": "explicit_user_confirmation",
         "reviewer": "Yaqub Forrest (project owner)",
-        "date": "2026-10-31",
+        "date": "2026-11-05",
         "reference": "content/USER_LANGUAGE_APPROVALS.json",
-        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
+        "scope": "Owner-supplied current name spelling and English identity only; romanisation, inflection, combined clauses and recordings remain provisional.",
         "nativeCertificationClaimed": false
       },
       "mappedSourceIds": [
         "w6-school-saleha-write"
       ],
-      "findings": []
+      "findings": [
+        "lemma:person:saleha:licensed:0:uncertain-morphology-or-romanisation",
+        "lemma:person:saleha:licensed:1:uncertain-morphology-or-romanisation",
+        "lemma:person:saleha:coordinated-with-player:uncertain-morphology-or-romanisation"
+      ]
     },
     {
       "lemmaId": "lemma:person:muhammad-jan",
@@ -71299,14 +71320,536 @@
       },
       "mappedSourceIds": [],
       "findings": []
+    },
+    {
+      "lemmaId": "lemma:v-have",
+      "displayLemmaPs": "لرل",
+      "romanisation": "laral",
+      "englishSenses": [
+        "To have"
+      ],
+      "partOfSpeech": "verb",
+      "countsTowardDailyQuota": true,
+      "reviewStatus": "user_approved",
+      "forms": [
+        {
+          "formId": "lemma:v-have:infinitive",
+          "pashto": "لرل",
+          "romanisation": "laral",
+          "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+          "englishGloss": "To have",
+          "morphology": {
+            "gender": null,
+            "number": null,
+            "case": null,
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "infinitive",
+            "tense": "present",
+            "allowedNumbers": [],
+            "register": null,
+            "mood": "indicative"
+          },
+          "reviewStatus": "provisional_playable",
+          "prerequisiteGrammarIds": [
+            "grammar-day-2"
+          ],
+          "sourceExampleId": "s2-house-clean",
+          "metadataUncertainty": [
+            "Dictionary-researched written-Pashto draft; native Laghman pronunciation and contextual possession review pending."
+          ],
+          "contextRomanisation": "hagha kota paakawi",
+          "firstAllowedDay": 2,
+          "composition": {
+            "enabled": false,
+            "reason": "Infinitive citation, not a finite clause predicate"
+          },
+          "grammarFirstDay": 2,
+          "featureEvidence": {
+            "sourceId": "reviewed-form:lemma:v-have:infinitive",
+            "pashtoSpan": "لرل",
+            "romanisationSpan": "laral",
+            "basis": "Explicit dictionary present-imperfective conjugation table; editorial romanisation. https://en.wiktionary.org/wiki/لرل",
+            "features": {
+              "gender": null,
+              "number": null,
+              "case": null,
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "infinitive",
+              "tense": "present",
+              "allowedNumbers": [],
+              "register": null,
+              "mood": "indicative"
+            }
+          },
+          "userVerified": false
+        },
+        {
+          "formId": "lemma:v-have:1sg",
+          "pashto": "لرم",
+          "romanisation": "laram",
+          "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+          "englishGloss": "I have",
+          "morphology": {
+            "gender": null,
+            "number": "singular",
+            "case": null,
+            "person": 1,
+            "aspect": "imperfective",
+            "transitivity": "transitive",
+            "form": "finite",
+            "tense": "present",
+            "allowedNumbers": [
+              "singular"
+            ],
+            "register": null,
+            "mood": "indicative"
+          },
+          "reviewStatus": "provisional_playable",
+          "prerequisiteGrammarIds": [
+            "grammar-day-3"
+          ],
+          "sourceExampleId": "s2-house-clean",
+          "metadataUncertainty": [
+            "Dictionary-researched written-Pashto draft; native Laghman pronunciation and contextual possession review pending."
+          ],
+          "contextRomanisation": "hagha kota paakawi",
+          "firstAllowedDay": 3,
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "verb"
+            ],
+            "reason": "Explicit finite form from the referenced conjugation table; no suffix algorithm or native certification.",
+            "evidenceSourceId": "reviewed-form:lemma:v-have:1sg",
+            "english": "To have"
+          },
+          "grammarFirstDay": 3,
+          "featureEvidence": {
+            "sourceId": "reviewed-form:lemma:v-have:1sg",
+            "pashtoSpan": "لرم",
+            "romanisationSpan": "laram",
+            "basis": "Explicit dictionary present-imperfective conjugation table; editorial romanisation. https://en.wiktionary.org/wiki/لرل",
+            "features": {
+              "gender": null,
+              "number": "singular",
+              "case": null,
+              "person": 1,
+              "aspect": "imperfective",
+              "transitivity": "transitive",
+              "form": "finite",
+              "tense": "present",
+              "allowedNumbers": [
+                "singular"
+              ],
+              "register": null,
+              "mood": "indicative"
+            }
+          },
+          "userVerified": false
+        },
+        {
+          "formId": "lemma:v-have:2sg",
+          "pashto": "لرې",
+          "romanisation": "lare",
+          "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+          "englishGloss": "You have",
+          "morphology": {
+            "gender": null,
+            "number": "singular",
+            "case": null,
+            "person": 2,
+            "aspect": "imperfective",
+            "transitivity": "transitive",
+            "form": "finite",
+            "tense": "present",
+            "allowedNumbers": [
+              "singular"
+            ],
+            "register": null,
+            "mood": "indicative"
+          },
+          "reviewStatus": "provisional_playable",
+          "prerequisiteGrammarIds": [
+            "grammar-day-4"
+          ],
+          "sourceExampleId": "s2-house-clean",
+          "metadataUncertainty": [
+            "Dictionary-researched written-Pashto draft; native Laghman pronunciation and contextual possession review pending."
+          ],
+          "contextRomanisation": "hagha kota paakawi",
+          "firstAllowedDay": 4,
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "verb"
+            ],
+            "reason": "Explicit finite form from the referenced conjugation table; no suffix algorithm or native certification.",
+            "evidenceSourceId": "reviewed-form:lemma:v-have:2sg",
+            "english": "To have"
+          },
+          "grammarFirstDay": 4,
+          "featureEvidence": {
+            "sourceId": "reviewed-form:lemma:v-have:2sg",
+            "pashtoSpan": "لرې",
+            "romanisationSpan": "lare",
+            "basis": "Explicit dictionary present-imperfective conjugation table; editorial romanisation. https://en.wiktionary.org/wiki/لرل",
+            "features": {
+              "gender": null,
+              "number": "singular",
+              "case": null,
+              "person": 2,
+              "aspect": "imperfective",
+              "transitivity": "transitive",
+              "form": "finite",
+              "tense": "present",
+              "allowedNumbers": [
+                "singular"
+              ],
+              "register": null,
+              "mood": "indicative"
+            }
+          },
+          "userVerified": false
+        },
+        {
+          "formId": "lemma:v-have:3sg",
+          "pashto": "لري",
+          "romanisation": "lari",
+          "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+          "englishGloss": "He/she has",
+          "morphology": {
+            "gender": null,
+            "number": "singular",
+            "case": null,
+            "person": 3,
+            "aspect": "imperfective",
+            "transitivity": "transitive",
+            "form": "finite",
+            "tense": "present",
+            "allowedNumbers": [
+              "singular"
+            ],
+            "register": null,
+            "mood": "indicative"
+          },
+          "reviewStatus": "provisional_playable",
+          "prerequisiteGrammarIds": [
+            "grammar-day-2"
+          ],
+          "sourceExampleId": "s2-house-clean",
+          "metadataUncertainty": [
+            "Dictionary-researched written-Pashto draft; native Laghman pronunciation and contextual possession review pending."
+          ],
+          "contextRomanisation": "hagha kota paakawi",
+          "firstAllowedDay": 2,
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "verb"
+            ],
+            "reason": "Explicit finite form from the referenced conjugation table; no suffix algorithm or native certification.",
+            "evidenceSourceId": "reviewed-form:lemma:v-have:3sg",
+            "english": "To have"
+          },
+          "grammarFirstDay": 2,
+          "featureEvidence": {
+            "sourceId": "reviewed-form:lemma:v-have:3sg",
+            "pashtoSpan": "لري",
+            "romanisationSpan": "lari",
+            "basis": "Explicit dictionary present-imperfective conjugation table; editorial romanisation. https://en.wiktionary.org/wiki/لرل",
+            "features": {
+              "gender": null,
+              "number": "singular",
+              "case": null,
+              "person": 3,
+              "aspect": "imperfective",
+              "transitivity": "transitive",
+              "form": "finite",
+              "tense": "present",
+              "allowedNumbers": [
+                "singular"
+              ],
+              "register": null,
+              "mood": "indicative"
+            }
+          },
+          "userVerified": false
+        },
+        {
+          "formId": "lemma:v-have:1pl",
+          "pashto": "لرو",
+          "romanisation": "laro",
+          "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+          "englishGloss": "We have",
+          "morphology": {
+            "gender": null,
+            "number": "plural",
+            "case": null,
+            "person": 1,
+            "aspect": "imperfective",
+            "transitivity": "transitive",
+            "form": "finite",
+            "tense": "present",
+            "allowedNumbers": [
+              "plural"
+            ],
+            "register": null,
+            "mood": "indicative"
+          },
+          "reviewStatus": "provisional_playable",
+          "prerequisiteGrammarIds": [
+            "grammar-day-6"
+          ],
+          "sourceExampleId": "s2-house-clean",
+          "metadataUncertainty": [
+            "Dictionary-researched written-Pashto draft; native Laghman pronunciation and contextual possession review pending."
+          ],
+          "contextRomanisation": "hagha kota paakawi",
+          "firstAllowedDay": 6,
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "verb"
+            ],
+            "reason": "Explicit finite form from the referenced conjugation table; no suffix algorithm or native certification.",
+            "evidenceSourceId": "reviewed-form:lemma:v-have:1pl",
+            "english": "To have"
+          },
+          "grammarFirstDay": 6,
+          "featureEvidence": {
+            "sourceId": "reviewed-form:lemma:v-have:1pl",
+            "pashtoSpan": "لرو",
+            "romanisationSpan": "laro",
+            "basis": "Explicit dictionary present-imperfective conjugation table; editorial romanisation. https://en.wiktionary.org/wiki/لرل",
+            "features": {
+              "gender": null,
+              "number": "plural",
+              "case": null,
+              "person": 1,
+              "aspect": "imperfective",
+              "transitivity": "transitive",
+              "form": "finite",
+              "tense": "present",
+              "allowedNumbers": [
+                "plural"
+              ],
+              "register": null,
+              "mood": "indicative"
+            }
+          },
+          "userVerified": false
+        },
+        {
+          "formId": "lemma:v-have:2pl",
+          "pashto": "لرئ",
+          "romanisation": "laray",
+          "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+          "englishGloss": "You all have",
+          "morphology": {
+            "gender": null,
+            "number": "plural",
+            "case": null,
+            "person": 2,
+            "aspect": "imperfective",
+            "transitivity": "transitive",
+            "form": "finite",
+            "tense": "present",
+            "allowedNumbers": [
+              "plural"
+            ],
+            "register": null,
+            "mood": "indicative"
+          },
+          "reviewStatus": "provisional_playable",
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "sourceExampleId": "s2-house-clean",
+          "metadataUncertainty": [
+            "Dictionary-researched written-Pashto draft; native Laghman pronunciation and contextual possession review pending."
+          ],
+          "contextRomanisation": "hagha kota paakawi",
+          "firstAllowedDay": 5,
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "verb"
+            ],
+            "reason": "Explicit finite form from the referenced conjugation table; no suffix algorithm or native certification.",
+            "evidenceSourceId": "reviewed-form:lemma:v-have:2pl",
+            "english": "To have"
+          },
+          "grammarFirstDay": 5,
+          "featureEvidence": {
+            "sourceId": "reviewed-form:lemma:v-have:2pl",
+            "pashtoSpan": "لرئ",
+            "romanisationSpan": "laray",
+            "basis": "Explicit dictionary present-imperfective conjugation table; editorial romanisation. https://en.wiktionary.org/wiki/لرل",
+            "features": {
+              "gender": null,
+              "number": "plural",
+              "case": null,
+              "person": 2,
+              "aspect": "imperfective",
+              "transitivity": "transitive",
+              "form": "finite",
+              "tense": "present",
+              "allowedNumbers": [
+                "plural"
+              ],
+              "register": null,
+              "mood": "indicative"
+            }
+          },
+          "userVerified": false
+        },
+        {
+          "formId": "lemma:v-have:3pl",
+          "pashto": "لري",
+          "romanisation": "lari",
+          "romanisationNote": "Full source sentence pronunciation aid below; isolated form pronunciation pending review.",
+          "englishGloss": "They have",
+          "morphology": {
+            "gender": null,
+            "number": "plural",
+            "case": null,
+            "person": 3,
+            "aspect": "imperfective",
+            "transitivity": "transitive",
+            "form": "finite",
+            "tense": "present",
+            "allowedNumbers": [
+              "plural"
+            ],
+            "register": null,
+            "mood": "indicative"
+          },
+          "reviewStatus": "provisional_playable",
+          "prerequisiteGrammarIds": [
+            "grammar-day-7"
+          ],
+          "sourceExampleId": "s2-house-clean",
+          "metadataUncertainty": [
+            "Dictionary-researched written-Pashto draft; native Laghman pronunciation and contextual possession review pending."
+          ],
+          "contextRomanisation": "hagha kota paakawi",
+          "firstAllowedDay": 7,
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "verb"
+            ],
+            "reason": "Explicit finite form from the referenced conjugation table; no suffix algorithm or native certification.",
+            "evidenceSourceId": "reviewed-form:lemma:v-have:3pl",
+            "english": "To have"
+          },
+          "grammarFirstDay": 7,
+          "featureEvidence": {
+            "sourceId": "reviewed-form:lemma:v-have:3pl",
+            "pashtoSpan": "لري",
+            "romanisationSpan": "lari",
+            "basis": "Explicit dictionary present-imperfective conjugation table; editorial romanisation. https://en.wiktionary.org/wiki/لرل",
+            "features": {
+              "gender": null,
+              "number": "plural",
+              "case": null,
+              "person": 3,
+              "aspect": "imperfective",
+              "transitivity": "transitive",
+              "form": "finite",
+              "tense": "present",
+              "allowedNumbers": [
+                "plural"
+              ],
+              "register": null,
+              "mood": "indicative"
+            }
+          },
+          "userVerified": false
+        }
+      ],
+      "examples": [],
+      "suitableDistricts": [
+        "residential"
+      ],
+      "primaryDistrict": "residential",
+      "vocabularyClass": "district",
+      "grammaticalRoles": [
+        "verb"
+      ],
+      "traits": {
+        "gender": null,
+        "number": null,
+        "case": null,
+        "person": null,
+        "aspect": null,
+        "transitivity": null
+      },
+      "introduction": {
+        "day": 2,
+        "district": "residential",
+        "teachingOrder": 36,
+        "requiredGrammarIds": [
+          "grammar-day-2"
+        ],
+        "verifiedStatus": "editorial_draft",
+        "rationale": "Owner-requested Day 2 Home replacement for to clean; explicit present possession forms."
+      },
+      "firstIntroductionConstraints": {
+        "earliestDay": 2,
+        "latestDay": 13
+      },
+      "pedagogicalFunctions": [
+        "district-quota"
+      ],
+      "generationSemantics": {
+        "base": "have",
+        "third": "has",
+        "valency": "transitive",
+        "predicateType": "simple",
+        "objectClasses": [
+          "ownable"
+        ],
+        "classes": [
+          "possession-state"
+        ],
+        "adverbs": [],
+        "senseNote": "Possession with an ordinary present transitive SOV clause; not an auxiliary, action or progressive having."
+      },
+      "userVerified": true,
+      "userApproval": {
+        "type": "explicit_user_confirmation",
+        "reviewer": "Yaqub Forrest (project owner)",
+        "date": "2026-11-06",
+        "reference": "content/USER_LANGUAGE_APPROVALS.json",
+        "scope": "Owner supplied exact base لرل, English to have, transliteration laral. Finite forms, syntax and combinations remain provisional.",
+        "nativeCertificationClaimed": false
+      },
+      "sourceContentIds": [],
+      "mappedSourceIds": [],
+      "findings": [
+        "missing-contextual-example",
+        "lemma:v-have:infinitive:uncertain-morphology-or-romanisation",
+        "lemma:v-have:1sg:uncertain-morphology-or-romanisation",
+        "lemma:v-have:2sg:uncertain-morphology-or-romanisation",
+        "lemma:v-have:3sg:uncertain-morphology-or-romanisation",
+        "lemma:v-have:1pl:uncertain-morphology-or-romanisation",
+        "lemma:v-have:2pl:uncertain-morphology-or-romanisation",
+        "lemma:v-have:3pl:uncertain-morphology-or-romanisation"
+      ]
     }
   ],
   "audioFindings": [],
   "archivedAuthoredSentenceCount": 330,
+  "currentReviewedLanguageSpanCount": 29,
   "playableAuthoredSentenceCount": 0,
   "runtimeSentenceSource": "productive_engine_only",
   "nativeCertifiedLemmas": 0,
-  "userApprovedBaseLemmas": 473,
+  "userApprovedBaseLemmas": 474,
   "sourceMappingCorrections": [
     {
       "sourceId": "w6-river-mina-run",

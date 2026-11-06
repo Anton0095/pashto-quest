@@ -8,7 +8,7 @@ const E = vm.runInNewContext(read("src/library-engine.js") + ";LibraryEngine");
 const current = () => ({ library: E.state() });
 const canonical = ["residential", "nature", "business", "school"];
 assert.deepEqual([...E.places].sort(), [...canonical].sort());
-for (const target of [4, 8, 12, 16, 20, 24]) {
+for (const target of [8, 12, 16, 20, 24]) {
   const p = current();
   assert(E.setPace(p, target, 1).ok);
   const day = E.ensurePlan(p, data, 1);
@@ -116,7 +116,7 @@ assert(
   ),
 );
 const report = inventory(data, backlog, read("src/library-engine.js"));
-assert.equal(report.activatedContentLemmas, 400);
+assert.equal(report.activatedContentLemmas, 401);
 assert.equal(report.inactiveCandidates, 59);
 assert.deepEqual(report.candidateDisposition, {
   promoted: 301,
@@ -124,11 +124,11 @@ assert.deepEqual(report.candidateDisposition, {
   rejected: 59,
   replaced: 0,
 });
-assert.equal(report.byReviewStatus.user_approved, 473);
+assert.equal(report.byReviewStatus.user_approved, 474);
 assert.equal(report.duplicateLemmaIds.length, 0);
 assert(report.schedules.every((s) => s.days[13].assigned === 0));
 console.log(
-  "PASS current schema: seven pacing options, canonical districts, one form SRS, idempotent events, mastery, 14-day generated-only curriculum and inactive candidate gates",
+  "PASS current schema: five pacing options, canonical districts, one form SRS, idempotent events, mastery, 14-day generated-only curriculum and inactive candidate gates",
 );
 
 const P = models();

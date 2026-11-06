@@ -139,7 +139,7 @@ assert.equal(t.backend.getItem(), old);
 t.storage.resetProblem();
 t.state.progress = t.progression.fresh();
 t.storage.save();
-assert.equal(JSON.parse(t.backend.getItem()).saveSchemaVersion, 7);
+assert.equal(JSON.parse(t.backend.getItem()).saveSchemaVersion, 8);
 assert(
   t.Q.evaluate({ kind: "construct" }, { ps: "کور لوی دی." }, "کور لوی دی"),
 );
@@ -147,7 +147,7 @@ assert(
   !t.Q.evaluate({ kind: "construct" }, { ps: "کور لوی دی." }, "دی لوی کور"),
 );
 console.log(
-  "PASS state: schema 7, partial/locked generated snapshots, all " +
+  "PASS state: schema 8, partial/locked generated snapshots, all " +
     families.size +
     " families including composite AST restoration, slots/romanisation/tile tamper rejection, first-answer lock, non-farmable XP, cold-load shared-meaning SRS and explicit old-save reset",
 );

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';import {readFileSync}from'node:fs';import{createRequire}from'node:module';
 const M=createRequire(import.meta.url)('../work/rpg-model.cjs'),data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
-const registry=M.createRPGRegistry(data,{'not-complete:6-nature':()=>true,'not-complete:7-school':()=>true,'not-allLessons':()=>true,afterTutorial:()=>true,beforeTutorial:()=>false,beforeGuideMeeting:()=>false,allLessons:()=>true,passed:()=>false,notPassed:()=>true});
+const registry=M.createRPGRegistry(data,{'not-complete:6-nature':()=>true,'not-complete:7-school':()=>true,'not-allLessons':()=>true,afterTutorial:()=>true,beforeTutorial:()=>false,beforeGuideMeeting:()=>false,'all:complete:2-school|complete:2-residential':()=>true,allLessons:()=>true,passed:()=>false,notPassed:()=>true});
 assert.equal(data.lastDay,7);assert.equal(Object.keys(data.days).length,7);assert(!registry.day(8));assert(!data.days['1'].completion.terminal);assert(!data.days['7'].completion.terminal);
 for(let day=1;day<=7;day++){
  const c=data.days[day];assert.equal(c.day,day);assert.equal(new Set(c.lessons).size,4);assert.equal(c.challenge.day,day);assert.equal(c.nextChapter,'day-'+(day+1));

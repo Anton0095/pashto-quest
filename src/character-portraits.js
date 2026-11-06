@@ -8,7 +8,6 @@ function registerPortraitTexture(key, source) {
 }
 /* One character-identity portrait renderer for educational and RPG dialogue. */
 function renderCharacterPortrait(identity, expression = "neutral") {
-  identity = currentCharacterName(identity);
   const entries = Object.entries(CHARACTER_PORTRAITS.characters);
   const [id, character] = entries.find(([id, p]) => id === identity || p.name === identity) || [identity, {name: identity, expressions: {}}];
   const frame = document.createElement("span");
@@ -51,13 +50,8 @@ function renderCharacterPortrait(identity, expression = "neutral") {
 
 /* Display formatting never changes IDs, stored answers, senses or evaluation. */
 function formatEnglishChoice(value) {
-  return (typeof CharacterNames!=="undefined"?CharacterNames.text(value):String(value)).replace(/^(\s*["“'‘(\[]*)([a-z][A-Za-z]*)/, (_, prefix, word) => prefix + (/[A-Z]/.test(word) ? word : word[0].toUpperCase() + word.slice(1)));
+  return String(value).replace(/^(\s*["“'‘(\[]*)([a-z][A-Za-z]*)/, (_, prefix, word) => prefix + (/[A-Z]/.test(word) ? word : word[0].toUpperCase() + word.slice(1)));
 }
 function playerVocabularyText(value) {
   return String(value).replace(/\b(content )?lemmas?\b/gi, match => /^[A-Z]/.test(match) ? (match.toLowerCase().endsWith("s") ? "Words" : "Word") : (match.endsWith("s") ? "words" : "word"));
-}
-
-// Presentation aliases for supported frozen attempts; stored questions/proofs stay exact.
-function currentCharacterName(value) {
-  return String(value ?? "").replace(/\bSaleha\b/g,"Deena").replace(/\bMina\b/g,"Medina");
 }

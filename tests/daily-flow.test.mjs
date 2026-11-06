@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {runtime,reset,beginAttempt,plain}from'./runtime-fixture.mjs';
 const t=runtime({seedSource:()=>12345});
-for(const pace of [0,24])for(const day of [1,2,7]){
+for(const pace of [8,24])for(const day of [1,2,7]){
  reset(t,pace);t.state.day=day;
  for(let d=1;d<day;d++)t.progression.completeChallengeOnce(t.state.progress,d,t.progression.getChallengeSpec(d).questionCount);
  beginAttempt(t,day);const qs=t.state.session.questions;

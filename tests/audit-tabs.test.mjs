@@ -8,7 +8,7 @@ const b=await setup({bridge:false,width,transform:h=>h.replace("// @TEST_HOOK","
  const read=page=>page.evaluate(()=>JSON.parse(localStorage.getItem('pashto-town-days-v1')));
  await a.waitForFunction(()=>JSON.parse(localStorage.getItem("pashto-town-days-v1"))?.xp===65);
  await a.evaluate(()=>__awaitSaved());const before=await read(a);assert.equal(before.xp,65);assert(before.tutorialDone);
- await stale.locator('[data-onboarding-pace="4"]').click();await stale.evaluate(()=>__awaitSaved());assert.deepEqual(await read(a),before);assert(await stale.locator('#saveWarning').isVisible());
+ await stale.locator('[data-onboarding-pace="8"]').click();await stale.evaluate(()=>__awaitSaved());assert.deepEqual(await read(a),before);assert(await stale.locator('#saveWarning').isVisible());
  await stale.screenshot({path:`docs/maintenance/audit/tab-conflict-${width}.png`,fullPage:true});
  await a.reload();await a.evaluate(()=>__awaitSaved());const resumed=await read(a);assert.equal(resumed.xp,65);assert(resumed.tutorialDone);assert.deepEqual(resumed.rewards,before.rewards);assert.deepEqual(resumed.library.units,before.library.units);assert.equal(resumed.library.requestedDailyTarget,24);assert(await a.locator('#worldScreen').isVisible());
  await stale.reload();await stale.evaluate(()=>__awaitSaved());assert.deepEqual(await read(stale),resumed);assert(!(await stale.locator('#saveWarning').isVisible()));

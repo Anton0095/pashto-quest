@@ -99,7 +99,7 @@ function createAudio({
     }
     const voice = await waitForPashtoVoice();
     if (request !== audioRequest || currentSpoken !== w.id) return;
-    const utterance = new SpeechSynthesisUtterance(typeof CharacterNames!=="undefined"?CharacterNames.text(w.ps):w.ps);
+    const utterance = new SpeechSynthesisUtterance(w.ps);
     activeUtterance = utterance; // Keep the utterance alive until playback finishes.
     utterance.lang = "ps-AF";
     if (voice) utterance.voice = voice;
@@ -149,7 +149,7 @@ function createAudio({
     const request = audioRequest;
     currentSpoken = w.id;
     audioStatus("Preparing Pashto pronunciation… Playback has not started.");
-    if ((typeof CharacterNames!=="undefined" && CharacterNames.text(w.ps)!==w.ps) || !bundledAudioIds.has(w.audioContentId || w.id)) {
+    if (!bundledAudioIds.has(w.audioContentId || w.id)) {
       void speakWithBrowserVoice(w, request);
       return;
     }

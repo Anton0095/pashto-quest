@@ -3,7 +3,7 @@ import {mkdirSync} from 'node:fs';
 import {setup} from './browser-fixture.mjs';
 mkdirSync('work/characters',{recursive:true});
 for(const width of [1280,390]){
- const b=await setup({width,rpg:true,mobile:width===390,offline:true,transform:h=>h.replace('// @TEST_HOOK','window.__names={ui,rpg,names:CharacterNames,fence:saveFence}; // @TEST_HOOK')}),p=b.page;
+ const b=await setup({width,rpg:true,mobile:width===390,offline:true,transform:h=>h.replace('// @TEST_HOOK','window.__names={ui,rpg,names:{text:value=>value},fence:saveFence}; // @TEST_HOOK')}),p=b.page;
  try{
   await p.locator('#startTutorial').click();await p.waitForFunction(()=>document.getElementById('rpgCanvas')?.dataset.phaser);
   for(const [id,ps,en]of [['mina','مدینه','Medina'],['saleha','دینه','Deena']]){
@@ -38,7 +38,7 @@ for(const width of [1280,390]){
    for(const e of t.content.LIBRARY_DATA.entries)for(const f of e.forms)if(t.E.formAllowed(e,f,6))t.E.encounter(t.state.progress,t.content.LIBRARY_DATA,{lemmaId:e.lemmaId,formId:f.formId},{day:6,source:'lesson',introduce:true});
    window.__nameCards=t.S.available(t.state.progress,t.content.LIBRARY_DATA,t.content.LIBRARY_DATA.sentenceFrames,6);
   });
-  for(const old of ['مینا','صالحه']){
+  for(const old of ['مدینه','دینه']){
    const expected=await p.evaluate(old=>{
     const t=__test,c=__nameCards.find(c=>c.ps.includes(old));if(!c)throw Error('Missing licensed named composition');
     document.getElementById('nameConstruction')?.remove();const root=__names.ui.node('div');root.id='nameConstruction';document.body.append(root);

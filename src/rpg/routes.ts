@@ -1,7 +1,7 @@
 import type {Chapter,ChapterRoute,Progress,WorldSave} from './types';
 /** Narrative routes record actual event choices, never educational visits or grades. */
 export function createChapterRoutes({chapter,progress,save}:{chapter:()=>Chapter;progress:()=>Progress;save:()=>WorldSave}) {
-  const visited=()=>chapter().lessons.every(id=>progress().complete[id]);
+  const visited=()=>(chapter().requiredLessons??chapter().lessons).every(id=>progress().complete[id]);
   function resolved(route:ChapterRoute){const rules=chapter().routes;if(!rules)return true;
     const event=route==='normal'?rules.normal.finale:rules.skip.event;
     return (!event||!!save().triggers[event])&&(route!=='normal'||!rules.normal.opening||!!save().triggers[rules.normal.opening]);

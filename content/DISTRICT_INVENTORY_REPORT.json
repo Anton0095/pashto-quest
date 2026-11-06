@@ -71,7 +71,7 @@
         "locationAssignments": {
           "residential": [
             "lemma:v-open",
-            "lemma:v-clean",
+            "lemma:v-have",
             "lemma:expansion:noun:grandfather",
             "lemma:expansion:noun:uncle",
             "lemma:expansion:noun:aunt",
@@ -123,11 +123,11 @@
         "locationAssignments": {
           "residential": [
             "lemma:a-small",
+            "lemma:v-clean",
             "lemma:v-live",
             "lemma:n-table",
             "lemma:a-old",
-            "lemma:expansion:noun:husband",
-            "lemma:expansion:noun:wife"
+            "lemma:expansion:noun:husband"
           ],
           "business": [
             "lemma:v-buy",
@@ -724,13 +724,13 @@
   "universalLemmas": 73,
   "targetInventory": {
     "perDistrict": 100,
-    "total": 400,
-    "currentlyPlayable": 400,
+    "total": 401,
+    "currentlyPlayable": 401,
     "missingPlayableToTarget": 0,
     "intensiveScheduledIntroductions": 312,
-    "minimumCurrentShortfall": -88,
+    "minimumCurrentShortfall": 0,
     "idealTargetIncidentalMarginPerDistrict": 22,
-    "note": "The active inventory includes clearly labelled provisional drafts. Each district retains 22 entries beyond the 78 scheduled maximum-pace introductions."
+    "note": "The active inventory includes clearly labelled provisional drafts. Home retains 23 entries and the other districts 22 beyond the 78 scheduled maximum-pace introductions. Home includes the extra Have lemma; Clean is retained."
   },
   "authoredExampleSceneCoverage": {
     "residential": 103,
@@ -742,10 +742,10 @@
     "neighbourHome": 0
   },
   "schemaVersion": 1,
-  "activatedLemmas": 473,
-  "activatedContentLemmas": 400,
+  "activatedLemmas": 474,
+  "activatedContentLemmas": 401,
   "nativeApprovedContentLemmas": 0,
-  "userApprovedBaseLemmas": 473,
+  "userApprovedBaseLemmas": 474,
   "inactiveCandidates": 59,
   "candidateDisposition": {
     "promoted": 301,
@@ -756,23 +756,23 @@
   "aliasCandidates": 7,
   "eligibleForPromotion": 0,
   "byPrimaryDistrict": {
-    "residential": 100,
+    "residential": 101,
     "nature": 100,
     "business": 100,
     "school": 100
   },
   "byPartOfSpeech": {
     "noun": 250,
-    "verb": 97,
+    "verb": 98,
     "adjective": 53
   },
   "byReviewStatus": {
-    "user_approved": 473
+    "user_approved": 474
   },
   "byDifficulty": {
-    "not assessed": 473
+    "not assessed": 474
   },
-  "formCount": 607,
+  "formCount": 614,
   "duplicateLemmaIds": [],
   "sameHeadwordForEditorialReview": [
     [
@@ -934,796 +934,6 @@
   },
   "schedules": [
     {
-      "pace": 0,
-      "reviewExams": false,
-      "days": [
-        {
-          "day": 1,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 2,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 3,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 4,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 5,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 6,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 7,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 8,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 9,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 10,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 11,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 12,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 13,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 14,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        }
-      ],
-      "encountered": 0
-    },
-    {
-      "pace": 4,
-      "reviewExams": false,
-      "days": [
-        {
-          "day": 1,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:n-house"
-            ],
-            "business": [
-              "lemma:n-market"
-            ],
-            "nature": [
-              "lemma:n-water"
-            ],
-            "school": [
-              "lemma:n-book"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 2,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:v-open"
-            ],
-            "business": [
-              "lemma:v-eat"
-            ],
-            "nature": [
-              "lemma:v-drink"
-            ],
-            "school": [
-              "lemma:v-read"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 3,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:a-small"
-            ],
-            "business": [
-              "lemma:v-buy"
-            ],
-            "nature": [
-              "lemma:n-pond"
-            ],
-            "school": [
-              "lemma:a-good"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 4,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:n-chair4"
-            ],
-            "business": [
-              "lemma:n-money"
-            ],
-            "nature": [
-              "lemma:v-swim"
-            ],
-            "school": [
-              "lemma:v-learn"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 5,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:n-family"
-            ],
-            "business": [
-              "lemma:n-fruit"
-            ],
-            "nature": [
-              "lemma:n-tea"
-            ],
-            "school": [
-              "lemma:n-language"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 6,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:n-children"
-            ],
-            "business": [
-              "lemma:n-people"
-            ],
-            "nature": [
-              "lemma:n-bird3"
-            ],
-            "school": [
-              "lemma:a-important"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 7,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:noun:soap"
-            ],
-            "business": [
-              "lemma:vocab7-market-customers"
-            ],
-            "nature": [
-              "lemma:vocab7-river-bottles"
-            ],
-            "school": [
-              "lemma:expansion:noun:screen"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 8,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:noun:spoon"
-            ],
-            "business": [
-              "lemma:expansion:noun:grape"
-            ],
-            "nature": [
-              "lemma:expansion:noun:butterfly"
-            ],
-            "school": [
-              "lemma:expansion:noun:graph"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 9,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:noun:broom"
-            ],
-            "business": [
-              "lemma:expansion:noun:nut"
-            ],
-            "nature": [
-              "lemma:expansion:noun:spider"
-            ],
-            "school": [
-              "lemma:expansion:noun:colour"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 10,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:verb:wake"
-            ],
-            "business": [
-              "lemma:expansion:verb:pack"
-            ],
-            "nature": [
-              "lemma:expansion:verb:float"
-            ],
-            "school": [
-              "lemma:expansion:verb:explain"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 11,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:verb:stir"
-            ],
-            "business": [
-              "lemma:expansion:verb:charge"
-            ],
-            "nature": [
-              "lemma:expansion:verb:dig"
-            ],
-            "school": [
-              "lemma:expansion:verb:sort"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 12,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:verb:fold"
-            ],
-            "business": [
-              "lemma:expansion:adjective:stale"
-            ],
-            "nature": [
-              "lemma:expansion:adjective:slippery"
-            ],
-            "school": [
-              "lemma:expansion:verb:correct"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 13,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:adjective:comfortable"
-            ],
-            "business": [
-              "lemma:n-bread"
-            ],
-            "nature": [
-              "lemma:expansion:adjective:grassy"
-            ],
-            "school": [
-              "lemma:expansion:adjective:incorrect"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 14,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        }
-      ],
-      "encountered": 52
-    },
-    {
       "pace": 8,
       "reviewExams": false,
       "days": [
@@ -1777,7 +987,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:v-open",
-              "lemma:v-clean"
+              "lemma:v-have"
             ],
             "business": [
               "lemma:v-eat",
@@ -1813,7 +1023,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:a-small",
-              "lemma:v-live"
+              "lemma:v-clean"
             ],
             "business": [
               "lemma:v-buy",
@@ -2280,7 +1490,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:v-open",
-              "lemma:v-clean",
+              "lemma:v-have",
               "lemma:expansion:noun:grandfather"
             ],
             "business": [
@@ -2320,8 +1530,8 @@
           "locationAssignments": {
             "residential": [
               "lemma:a-small",
-              "lemma:v-live",
-              "lemma:n-table"
+              "lemma:v-clean",
+              "lemma:v-live"
             ],
             "business": [
               "lemma:v-buy",
@@ -2835,7 +2045,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:v-open",
-              "lemma:v-clean",
+              "lemma:v-have",
               "lemma:expansion:noun:grandfather",
               "lemma:expansion:noun:uncle"
             ],
@@ -2879,9 +2089,9 @@
           "locationAssignments": {
             "residential": [
               "lemma:a-small",
+              "lemma:v-clean",
               "lemma:v-live",
-              "lemma:n-table",
-              "lemma:a-old"
+              "lemma:n-table"
             ],
             "business": [
               "lemma:v-buy",
@@ -3442,7 +2652,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:v-open",
-              "lemma:v-clean",
+              "lemma:v-have",
               "lemma:expansion:noun:grandfather",
               "lemma:expansion:noun:uncle",
               "lemma:expansion:noun:aunt"
@@ -3490,10 +2700,10 @@
           "locationAssignments": {
             "residential": [
               "lemma:a-small",
+              "lemma:v-clean",
               "lemma:v-live",
               "lemma:n-table",
-              "lemma:a-old",
-              "lemma:expansion:noun:husband"
+              "lemma:a-old"
             ],
             "business": [
               "lemma:v-buy",
@@ -4101,7 +3311,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:v-open",
-              "lemma:v-clean",
+              "lemma:v-have",
               "lemma:expansion:noun:grandfather",
               "lemma:expansion:noun:uncle",
               "lemma:expansion:noun:aunt",
@@ -4153,11 +3363,11 @@
           "locationAssignments": {
             "residential": [
               "lemma:a-small",
+              "lemma:v-clean",
               "lemma:v-live",
               "lemma:n-table",
               "lemma:a-old",
-              "lemma:expansion:noun:husband",
-              "lemma:expansion:noun:wife"
+              "lemma:expansion:noun:husband"
             ],
             "business": [
               "lemma:v-buy",
@@ -4739,788 +3949,6 @@
       "encountered": 312
     },
     {
-      "pace": 0,
-      "reviewExams": true,
-      "days": [
-        {
-          "day": 1,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 2,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 3,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 4,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 5,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 6,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 7,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 8,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 9,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 10,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 11,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 12,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 13,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 14,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        }
-      ],
-      "encountered": 0
-    },
-    {
-      "pace": 4,
-      "reviewExams": true,
-      "days": [
-        {
-          "day": 1,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:n-house"
-            ],
-            "business": [
-              "lemma:n-market"
-            ],
-            "nature": [
-              "lemma:n-water"
-            ],
-            "school": [
-              "lemma:n-book"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 2,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:v-open"
-            ],
-            "business": [
-              "lemma:v-eat"
-            ],
-            "nature": [
-              "lemma:v-drink"
-            ],
-            "school": [
-              "lemma:v-read"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 3,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:a-small"
-            ],
-            "business": [
-              "lemma:v-buy"
-            ],
-            "nature": [
-              "lemma:n-pond"
-            ],
-            "school": [
-              "lemma:a-good"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 4,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:n-chair4"
-            ],
-            "business": [
-              "lemma:n-money"
-            ],
-            "nature": [
-              "lemma:v-swim"
-            ],
-            "school": [
-              "lemma:v-learn"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 5,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:n-family"
-            ],
-            "business": [
-              "lemma:n-fruit"
-            ],
-            "nature": [
-              "lemma:n-tea"
-            ],
-            "school": [
-              "lemma:n-language"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 6,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:n-children"
-            ],
-            "business": [
-              "lemma:n-people"
-            ],
-            "nature": [
-              "lemma:n-bird3"
-            ],
-            "school": [
-              "lemma:a-important"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 7,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        },
-        {
-          "day": 8,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:noun:spoon"
-            ],
-            "business": [
-              "lemma:expansion:noun:grape"
-            ],
-            "nature": [
-              "lemma:expansion:noun:butterfly"
-            ],
-            "school": [
-              "lemma:expansion:noun:graph"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 9,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:noun:broom"
-            ],
-            "business": [
-              "lemma:expansion:noun:nut"
-            ],
-            "nature": [
-              "lemma:expansion:noun:spider"
-            ],
-            "school": [
-              "lemma:expansion:noun:colour"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 10,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:verb:wake"
-            ],
-            "business": [
-              "lemma:expansion:verb:pack"
-            ],
-            "nature": [
-              "lemma:expansion:verb:float"
-            ],
-            "school": [
-              "lemma:expansion:verb:explain"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 11,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:verb:stir"
-            ],
-            "business": [
-              "lemma:expansion:verb:charge"
-            ],
-            "nature": [
-              "lemma:expansion:verb:dig"
-            ],
-            "school": [
-              "lemma:expansion:verb:sort"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 12,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:verb:fold"
-            ],
-            "business": [
-              "lemma:expansion:adjective:stale"
-            ],
-            "nature": [
-              "lemma:expansion:adjective:slippery"
-            ],
-            "school": [
-              "lemma:expansion:verb:correct"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 13,
-          "requested": 4,
-          "assigned": 4,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [
-              "lemma:expansion:adjective:comfortable"
-            ],
-            "business": [
-              "lemma:n-bread"
-            ],
-            "nature": [
-              "lemma:expansion:adjective:grassy"
-            ],
-            "school": [
-              "lemma:expansion:adjective:incorrect"
-            ]
-          },
-          "perDistrict": {
-            "residential": 1,
-            "business": 1,
-            "nature": 1,
-            "school": 1
-          }
-        },
-        {
-          "day": 14,
-          "requested": 0,
-          "assigned": 0,
-          "feasible": true,
-          "shortfalls": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          },
-          "locationAssignments": {
-            "residential": [],
-            "business": [],
-            "nature": [],
-            "school": []
-          },
-          "perDistrict": {
-            "residential": 0,
-            "business": 0,
-            "nature": 0,
-            "school": 0
-          }
-        }
-      ],
-      "encountered": 48
-    },
-    {
       "pace": 8,
       "reviewExams": true,
       "days": [
@@ -5574,7 +4002,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:v-open",
-              "lemma:v-clean"
+              "lemma:v-have"
             ],
             "business": [
               "lemma:v-eat",
@@ -5610,7 +4038,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:a-small",
-              "lemma:v-live"
+              "lemma:v-clean"
             ],
             "business": [
               "lemma:v-buy",
@@ -6065,7 +4493,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:v-open",
-              "lemma:v-clean",
+              "lemma:v-have",
               "lemma:expansion:noun:grandfather"
             ],
             "business": [
@@ -6105,8 +4533,8 @@
           "locationAssignments": {
             "residential": [
               "lemma:a-small",
-              "lemma:v-live",
-              "lemma:n-table"
+              "lemma:v-clean",
+              "lemma:v-live"
             ],
             "business": [
               "lemma:v-buy",
@@ -6604,7 +5032,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:v-open",
-              "lemma:v-clean",
+              "lemma:v-have",
               "lemma:expansion:noun:grandfather",
               "lemma:expansion:noun:uncle"
             ],
@@ -6648,9 +5076,9 @@
           "locationAssignments": {
             "residential": [
               "lemma:a-small",
+              "lemma:v-clean",
               "lemma:v-live",
-              "lemma:n-table",
-              "lemma:a-old"
+              "lemma:n-table"
             ],
             "business": [
               "lemma:v-buy",
@@ -7191,7 +5619,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:v-open",
-              "lemma:v-clean",
+              "lemma:v-have",
               "lemma:expansion:noun:grandfather",
               "lemma:expansion:noun:uncle",
               "lemma:expansion:noun:aunt"
@@ -7239,10 +5667,10 @@
           "locationAssignments": {
             "residential": [
               "lemma:a-small",
+              "lemma:v-clean",
               "lemma:v-live",
               "lemma:n-table",
-              "lemma:a-old",
-              "lemma:expansion:noun:husband"
+              "lemma:a-old"
             ],
             "business": [
               "lemma:v-buy",
@@ -7826,7 +6254,7 @@
           "locationAssignments": {
             "residential": [
               "lemma:v-open",
-              "lemma:v-clean",
+              "lemma:v-have",
               "lemma:expansion:noun:grandfather",
               "lemma:expansion:noun:uncle",
               "lemma:expansion:noun:aunt",
@@ -7878,11 +6306,11 @@
           "locationAssignments": {
             "residential": [
               "lemma:a-small",
+              "lemma:v-clean",
               "lemma:v-live",
               "lemma:n-table",
               "lemma:a-old",
-              "lemma:expansion:noun:husband",
-              "lemma:expansion:noun:wife"
+              "lemma:expansion:noun:husband"
             ],
             "business": [
               "lemma:v-buy",

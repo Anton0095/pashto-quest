@@ -14,9 +14,9 @@ if (report.releaseSha256 !== hash)
     "Delivery results do not match this release; rerun the full browser-inclusive verification.",
   );
 if (
-  report.totalVisits !== 392 ||
-  report.totalAssessments !== 196 ||
-  report.profiles.length !== 14 ||
+  report.totalVisits !== 280 ||
+  report.totalAssessments !== 140 ||
+  report.profiles.length !== 10 ||
   report.instructionalSentenceObservations < 1 ||
   report.genuinelyGeneratedObservations !==
     report.instructionalSentenceObservations ||
@@ -68,11 +68,11 @@ const lines = [
   "",
   report.navigationProfile,
   "",
-  `Release SHA-256: \`${report.releaseSha256}\`. The complete browser matrix covered 392 normal district visits and 196 assessments, all fourteen days, seven paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.`,
+  `Release SHA-256: \`${report.releaseSha256}\`. The complete browser matrix covered 280 normal district visits and 140 assessments, all fourteen days, five paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.`,
   ``,
   "## Day 1 Home: before and after",
   "",
-  "Before this revision, the default Home visit taught two stored cards, then displayed the same two texts again as generated cards: four sentence-study cards, two unique propositions. Grammar came before word study. The archived sources remain proof/fixtures, not runtime language content.",
+  "Before the original generated-delivery redesign, the default Home visit taught two stored cards, then displayed the same two texts again as generated cards: four sentence-study cards, two unique propositions. Grammar came before word study. The archived sources remain proof/fixtures, not runtime language content.",
   "",
   "| Before: sentence-study order | Pashto | Source |",
   "|---:|---|---|",
@@ -80,13 +80,13 @@ const lines = [
   "| 2 | دروازه خلاصه ده. | Stored authored card s-it-door |",
   "| 3–4 | Same two texts | Duplicate generated cards |",
   "",
-  "After this revision: Library onboarding is separate (two fixed greetings and two separately owner-approved authored questions). At Home, the player studies exactly six assigned district lemmas plus the required feminine adjective form, reads the agreement rule, then receives these engine-composed descriptions and practises them with shuffled indexed word tiles:",
+  "In the current release: Library onboarding is separate (two fixed greetings and two separately owner-approved authored questions). At Home, the player studies exactly six assigned district lemmas plus the required feminine adjective form, reads the agreement rule, then receives these engine-composed descriptions and practises them with shuffled indexed word tiles:",
   "",
   "| Pashto | English | Origin |",
   "|---|---|---|",
   ...home.map((t) => `| ${t.pashto} | ${t.english} | productive engine |`),
   "",
-  "Default Home needs no other district visit and introduces no action verb. The window/open pairing is composed from independently licensed noun and adjective features; the complete output is not an authored target. At paces 0 and 4, fewer than two compositions are available from the prescribed district words. Visits and assessments adapt with explicit vocabulary/approved phrase tasks, without extra district lemmas or a fixed-sentence substitution.",
+  "Default Home needs no other district visit and introduces no action verb. The window/open pairing is composed from independently licensed noun and adjective features; the complete output is not an authored target. Supported paces are 8/12/16/20/24. If the licensed pool cannot supply a compatible clause, visits and assessments adapt with vocabulary/approved phrase tasks, without extra district lemmas or a fixed-sentence substitution.",
   "",
   "![Generated Home study on mobile](demonstration/day1-generated-study.png)",
   "",
@@ -120,7 +120,7 @@ const lines = [
   "",
   "## Architecture and limits",
   "",
-  "The standard curriculum contains no authored sentence cards, lesson sentence targets or fixed grammar models; only explicitly registered conventional expressions have fixed conversational responses. It builds no sentence catalogue before study or explicit challenge activation. Templates compile against the current introduced forms and actual grammar; typed dialogues join compatible generated questions and responses, presented as direct English construction targets. Challenge activation unlocks the frozen current-day location material before question generation, with honest provenance and no fabricated study grades. Current-day vocabulary is preferred alongside cumulative revision; active attempts remain frozen. Frozen attempts retain complete text/gloss, indices, choices, scene, speaker/recipient, source forms and ASTs. A generated label alone is insufficient: bodies are recomposed and checked. Standard visits exclude earlier studied sentence texts; explicit revision/replay handles repetition.",
+  "The standard curriculum contains no authored sentence cards, lesson sentence targets or fixed grammar models; only explicitly registered conventional expressions have fixed conversational responses. It builds no sentence catalogue before study or explicit challenge activation. Templates compile against the current introduced forms and actual grammar; typed dialogues join compatible generated questions and responses, presented as direct English construction targets. Challenge activation unlocks the frozen current-day location material before question generation, with honest provenance and no fabricated study grades. Current-day vocabulary is preferred alongside cumulative revision; active attempts remain frozen. Frozen attempts retain complete text/gloss, indices, choices, scene, speaker/recipient, source forms and ASTs. A generated label alone is insufficient: bodies are recomposed and checked. Standard visits exclude earlier studied sentence texts and require a noun/verb first introduced by that lesson when available; no compatible binding uses a bounded vocabulary/form fallback. Explicit revision/replay handles repetition and historical lesson pools.",
   "",
   "[Capacity and exact missing forms/features](GENERATION_COVERAGE.md) are separate diagnostics. Unattested inflections, missing counted numeral constructions and unlicensed obliques remain excluded. Base entries and conventional expressions are user-approved; inflections, grammar and composed language remain provisional; automated consistency, Chromium/mobile layouts and mocked audio are not native Laghman review or physical iPhone/Windows testing.",
   "",

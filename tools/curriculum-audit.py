@@ -22,7 +22,8 @@ def rendered():
     # Validate the complete evidence corpus; it is not embedded as teaching data.
     result = audit(raw)
     result["audioFindings"] = []  # evidence audio IDs were checked by build()
-    result["archivedAuthoredSentenceCount"] = len(raw["generationAttestations"])
+    result["archivedAuthoredSentenceCount"] = sum(not a.get("nameUpdateOf") and not a.get("researchedFormOf") for a in raw["generationAttestations"])
+    result["currentReviewedLanguageSpanCount"] = sum(bool(a.get("nameUpdateOf") or a.get("researchedFormOf")) for a in raw["generationAttestations"])
     result["playableAuthoredSentenceCount"] = 0
     result["runtimeSentenceSource"] = "productive_engine_only"
     result["nativeCertifiedLemmas"] = sum(is_native_approved(e) for e in data["entries"])

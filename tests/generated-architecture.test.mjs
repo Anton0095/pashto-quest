@@ -142,7 +142,7 @@ for (const pace of t.E.presets)
     );
     assert(t.progression.characterStatus(t.state.progress).level === 10);
   }
-assert.equal(lessons.size, 392);
+assert.equal(lessons.size, 280);
 // Source evidence is not a playable alias; invented targets and unseen forms fail at the surface boundary.
 reset(t);
 assert.throws(() => t.learning.surface("s3-house", "study"));
@@ -158,7 +158,7 @@ const unintroduced = Object.values(c.wordById).find(
 );
 assert(unintroduced);
 assert.throws(() => t.learning.surface(unintroduced.id, "study"));
-for (const pace of [0, 4]) {
+for (const pace of [8]) {
   reset(t, pace);
   const s = study(t, 1, "residential");
   assert(s.studySentences.length < 2);
@@ -169,5 +169,5 @@ for (const pace of [0, 4]) {
   );
 }
 console.log(
-  "PASS generated-only architecture: Day 1 Home >=2, three pairings, 392 model visits / 196 assessments, every day/pace/skip, no authored targets, no unseen forms, explicit low-pace adaptation",
+  "PASS generated-only architecture: Day 1 Home >=2, three pairings, 280 model visits / 140 assessments, every day/pace/skip, no authored targets, no unseen forms, explicit low-pace adaptation",
 );

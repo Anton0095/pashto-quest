@@ -1524,3 +1524,24 @@ body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryBody > article
   body.rpg-overlay-active .meaning {font-size:21px;}
   .character-portrait {width:64px;height:64px;}
 }
+
+.sov-demo { margin-block:.5rem; }
+.sov-demo h4 { margin-block:.35rem; }
+.sov-roles { display:flex; gap:.5rem; justify-content:center; margin-top:.4rem; }
+.sov-part { display:flex; flex-direction:column; padding:.25rem .6rem; border:2px solid #8fbca1; border-radius:.5rem; }
+.sov-part[data-role=noun] { border-color:#9dc5e9; }
+.sov-part[data-role=verb] { border-color:#e5ba7d; }
+.sov-part small { font-size:.75rem; }
+
+.sov-demo .construction-practice { margin-block:.35rem; }
+.sov-demo .word-tiles { margin-block:.35rem; }
+.sov-demo .built-sentence { min-height:48px; padding:4px; }
+.sov-demo .word-tile,.sov-demo .built-token { min-height:44px; padding:5px 10px; font-size:22px; }
+.sov-demo .build-actions { padding:0; gap:6px; }
+.sov-demo .build-actions button { min-height:44px; padding:7px; font-size:14px; }
+.sov-demo .answer-feedback { margin-block:.35rem; }
+.sov-demo[data-complete=true] .built-sentence,
+.sov-demo[data-complete=true] .word-tiles,
+.sov-demo[data-complete=true] .build-actions,
+.sov-demo[data-complete=true] .construction-practice>h4,
+.sov-demo[data-complete=true] .construction-practice>p { display:none; }

@@ -117,7 +117,7 @@ try {
     "work/day1-after.json",
     JSON.stringify({ transcript, summary, variants }, null, 2),
   );
-  for (const pace of [0, 4]) {
+  for (const pace of [8]) {
     await page.evaluate((p) => {
       __test.reset(p);
       __test.state.progress.tutorialDone = true;

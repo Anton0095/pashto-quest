@@ -1,6 +1,6 @@
 /* Pure vocabulary state and planning. Content identities are editorial, never stems/glosses. */
 const LibraryEngine = (() => {
-  const presets = [0, 4, 8, 12, 16, 20, 24],
+  const presets = [8, 12, 16, 20, 24],
     places = ["residential", "business", "nature", "school"];
   const matchesPlace = (entry, place) =>
     !!entry?.suitableDistricts.includes(scene(place)?.districtId || place);
@@ -77,6 +77,7 @@ const LibraryEngine = (() => {
       }
       r.introducedFormIds = unique([...r.introducedFormIds, ref.formId]);
       if (!challengeUnlock) {
+        if(!r.formallyIntroducedDay&&context.lessonId)r.firstStudyLesson=context.lessonId;
         r.formallyIntroducedDay ??= context.day;
         if (r.formUnlocks?.[ref.formId]) r.formUnlocks[ref.formId].studiedDay ??= context.day;
       }

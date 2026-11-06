@@ -54,7 +54,7 @@ assert.equal(d.grammarReference.concepts.length,33);assert(!d.grammarAssessment)
 for(const c of d.grammarReference.concepts){assert(c.explanation&&c.workedExample.scenario&&c.workedExample.analysis);assert(!c.options&&!c.correct);}
 // Freeze an old ambiguous item and prove no choice regeneration, reset or
 // retrospective grading is needed. Retired questions are no longer gradable.
-reset(t,0);beginAttempt(t,1);const s=t.state.session,idx=0;
+reset(t,8);beginAttempt(t,1);const s=t.state.session,idx=0;
 const q=s.questions[idx]={id:'grammar:1:0',kind:'choice',direction:'en-ps',grammarConcept:'feminine-description',correct:'Feminine singular adjective + feminine singular equative',options:['Feminine singular adjective + feminine singular equative','Masculine singular adjective + feminine singular equative','Feminine singular adjective + plural equative','Masculine singular adjective + masculine singular equative'],grammarDays:[]};q.choiceOrder=[...q.options];q.prompt='Choose the matching grammatical roles. The described noun is feminine singular. Which pair agrees?';delete q.explanation;
 s.index=idx;s.answered=idx;const frozen=plain(s.questions),alternative=q.choiceOrder.find(v=>v==='Masculine singular adjective + feminine singular equative');assert(alternative);
 assert(!t.Q.evaluate(q,null,alternative));assert.equal(q.choiceOrder.filter(v=>t.Q.evaluate(q,null,v)).length,0);

@@ -1,8 +1,7 @@
 import { readFileSync, mkdirSync } from "node:fs";
 import { createRequire } from "node:module";
 import http from "node:http";
-import vm from "node:vm";
-export const displayCharacterText=vm.runInNewContext(readFileSync("src/character-names.js","utf8")+";CharacterNames.text",{CHARACTER_NAMES:JSON.parse(readFileSync("content/CHARACTER_NAMES.json","utf8"))});
+export const displayCharacterText=value=>String(value??'');
 const require = createRequire(import.meta.url);
 let chromium;
 try {
@@ -12,7 +11,7 @@ try {
     chromium,
   } = require("/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright"));
 }
-export const hook = `window.__test={names:CharacterNames,state,audio,content,progression,learning,questions,lessons,challenge,grammar,storage,world,library,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine,nextQuestion,reset(pace=24){state.progress=progression.fresh();state.progress.library.requestedDailyTarget=pace;state.session=null;state.day=1;storage.resetProblem();storage.save();ui.view('introScreen')},day(day){state.day=day;world.startWorld()}};`;
+export const hook = `window.__test={names:{text:value=>String(value??'')},state,audio,content,progression,learning,questions,lessons,challenge,grammar,storage,world,library,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine,nextQuestion,reset(pace=24){state.progress=progression.fresh();state.progress.library.requestedDailyTarget=pace;state.session=null;state.day=1;storage.resetProblem();storage.save();ui.view('introScreen')},day(day){state.day=day;world.startWorld()}};`;
 export async function setup({
   width = 375,
   mobile = false,

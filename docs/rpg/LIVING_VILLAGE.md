@@ -1,5 +1,8 @@
 # Character expansion and living village
 
+> This records the preceding release. The subsequent [lesson/progression fixes](LESSON_PROGRESSION_FIXES.md) supersede name projection, Day 2 ordering, pace and save-format statements where applicable; original validation remains release-specific.
+
+
 Implemented on `feature/character-expansion` from main `fa02231`, pending review and merge. The [approved cast specification](CHARACTER_EXPANSION.md) remains the narrative/design authority; [RPG_WORLD.json](../../content/RPG_WORLD.json) owns actual NPCs, chapter presence, English dialogue and activity configuration. [CHARACTER_PORTRAITS.json](../../content/CHARACTER_PORTRAITS.json) owns actual portrait files/provenance. [Architecture](RPG_ARCHITECTURE.md) maps the runtime services; [CURRICULUM](../../CURRICULUM.md) and [GAME_SPEC](../../GAME_SPEC.md) retain teaching and progression authority.
 
 ## Cast and art

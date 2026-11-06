@@ -1,6 +1,6 @@
 /* Save factory, XP, assessment outcomes and access rules. No DOM or storage. */
 function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA }, libraryEngine) {
-  const SAVE_VERSION = 7;
+  const SAVE_VERSION = 8;
   const XP_STEP = 200;
   const XP_FLOORS = {
     1: 200,
@@ -150,10 +150,6 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     if (!allowed(progress, day)) return false;
     if (day === 2) {
       if (!progress.complete["2-school"]) return place === "school";
-      if (place === "residential")
-        return (
-          !!progress.complete["2-business"] && !!progress.complete["2-nature"]
-        );
     }
     if (day === 1 || day === 2) return true;
     const opening = curriculum.days[day - 1].opening;

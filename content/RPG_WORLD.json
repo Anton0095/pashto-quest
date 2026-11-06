@@ -3420,7 +3420,7 @@
     "day2-finale": {
       "speaker": "Muhammad Jan",
       "listener": "Player",
-      "condition": "allLessons",
+      "condition": "all:complete:2-school|complete:2-residential",
       "once": true,
       "lines": [
         "Tell Muhammad Jan about your practice today."
@@ -3481,7 +3481,7 @@
       "speaker": "Muhammad Jan",
       "listener": "Player",
       "lines": [
-        "We can practise Day 2 here at Home."
+        "After School you can study here at Home immediately. Market and Lake are optional visits, before or after Home."
       ],
       "actions": [
         {
@@ -3494,7 +3494,7 @@
           "label": "Join Muhammad Jan’s check-in",
           "type": "event",
           "event": "day2-finale",
-          "condition": "allLessons"
+          "condition": "all:complete:2-school|complete:2-residential"
         },
         {
           "label": "Day 2 challenge · 15 questions",
@@ -4916,7 +4916,7 @@
       },
       "endingEvent": "day2-ending",
       "nextChapter": "day-3",
-      "objective": "Normal: begin at School, visit four districts, then Muhammad Jan’s check-in. Early challenge: speak to Muhammad Jan at Home.",
+      "objective": "Normal: complete School, then study at Home immediately for Muhammad Jan’s check-in. Market and Lake are optional before or after Home. The early challenge remains available at Home.",
       "routes": {
         "normal": {
           "opening": "day2-opening",
@@ -4935,9 +4935,13 @@
         "destination": "School",
         "character": "Ms Hameed",
         "before": "Go to School and speak with Ms Hameed for today’s introductory lesson.",
-        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "after": "Home is available immediately after School. Market and Lake are optional before or after Home; the challenge is also available.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
-      }
+      },
+      "requiredLessons": [
+        "2-school",
+        "2-residential"
+      ]
     },
     "3": {
       "id": "day-3",

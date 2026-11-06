@@ -232,7 +232,7 @@ function createChallengeUI({
     if (q?.phrasePromptId && !["construct", "dialogue"].includes(q.kind)) {
       const prompt = content.wordById[q.phrasePromptId];
       const host = q.speaker || content.teacherFor(state.session.loop, null, "challenge").name;
-      ui.$("guideMessage").textContent = `${currentCharacterName(host)}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). Recognise the conventional reply shown below.`;
+      ui.$("guideMessage").textContent = `${host}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). Recognise the conventional reply shown below.`;
     }
     if (resuming && state.session.locked) renderRecordedResponse();
   }
@@ -270,7 +270,7 @@ function createChallengeUI({
         ? `EDRIS · DINNER CONVERSATION ${state.session.index + 1}/${state.session.questions.length} · SCORE ${state.session.correctCount}/${state.session.questions.length}`
         : `DAY ${state.session.loop} · QUESTION ${state.session.index + 1}/${state.session.questions.length} · SCORE ${state.session.correctCount}/${state.session.questions.length}`;
     ui.$("guideMessage").textContent =
-      currentCharacterName(q.comment || content.curriculum.days[state.session.loop - 1].challenge);
+      q.comment || content.curriculum.days[state.session.loop - 1].challenge;
     const host = content.teacherFor(state.session.loop, null, "challenge");
     ui.setConversation({instructorId:host.name,speakerId:q.speaker||host.name,partnerId:q.dialogueContext?.responseAddressee || (q.recipient&&q.recipient!=='Player'?q.recipient:host.name)});
     if (["construct", "dialogue"].includes(q.kind)) {
@@ -287,7 +287,7 @@ function createChallengeUI({
           ? "🧠 WORD RECALL"
           : "📖 SENTENCE RECALL";
     const reverse = q.direction === "en-ps";
-    ui.$("quizPashto").textContent = CharacterNames.text(reverse ? w.en : w.ps);
+    ui.$("quizPashto").textContent = reverse ? w.en : w.ps;
     ui.$("quizPashto").setAttribute("dir", reverse ? "ltr" : "rtl");
     ui.$("quizPashto").setAttribute("lang", reverse ? "en" : "ps");
     ui.$("quizPashto").classList.toggle("english-question", reverse);
@@ -340,7 +340,7 @@ function createChallengeUI({
         const b = document.createElement("button");
         b.type = "button";
         b.className = "choice";
-        b.textContent = CharacterNames.text(reverse ? value : ui.englishChoice(value));
+        b.textContent = reverse ? value : ui.englishChoice(value);
         b.dataset.answer = value;
         if (reverse) {
           b.lang = "ps";
@@ -366,7 +366,6 @@ function createChallengeUI({
   }
   function answerChallenge(value) {
     queueMicrotask(ui.readableQuizSurfaces);
-    value = CharacterNames.storedAnswer(value);
     const result = learning.submitChallenge(value);
     if (!result) return;
     const { q, w, correct } = result;

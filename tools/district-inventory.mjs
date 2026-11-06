@@ -169,13 +169,13 @@ export function inventory(data, backlog, engine, includeProjection = true) {
     ).length,
     targetInventory: {
       perDistrict: 100,
-      total: 400,
+      total: 401,
       currentlyPlayable: content.length,
-      missingPlayableToTarget: 400 - content.length,
+      missingPlayableToTarget: Math.max(0,401 - content.length),
       intensiveScheduledIntroductions: 13 * 24,
-      minimumCurrentShortfall: 13 * 24 - content.length,
+      minimumCurrentShortfall: Math.max(0,13 * 24 - content.length),
       idealTargetIncidentalMarginPerDistrict: 100 - 13 * 6,
-      note: "The active inventory includes clearly labelled provisional drafts. Each district retains 22 entries beyond the 78 scheduled maximum-pace introductions.",
+      note: "The active inventory includes clearly labelled provisional drafts. Home retains 23 entries and the other districts 22 beyond the 78 scheduled maximum-pace introductions. Home includes the extra Have lemma; Clean is retained.",
     },
     authoredExampleSceneCoverage: Object.fromEntries(
       [
