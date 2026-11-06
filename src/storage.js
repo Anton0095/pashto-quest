@@ -58,7 +58,7 @@ function createStorage({
       return p;
     } catch (error) {
       saveProblem =
-        "This save belongs to an older or incompatible version. This release uses save format 7 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
+        "This save belongs to an older or incompatible version. This release uses save format 8 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
       return progression.fresh();
     }
   }

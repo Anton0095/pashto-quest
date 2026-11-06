@@ -12,7 +12,7 @@ async function play(route){
     assert(!await p.locator('#rpgDialogue').isVisible(),'New days start quietly');
     const host=data.events[c.openingEvent].characterId,npc=data.npcs.find(n=>n.characterId===host&&n.schedule.some(s=>s.day===day&&s.map==='village'));await d.actor(npc.id,day);await p.locator('#rpgInteract').click();
     if(day===2){await d.durable();const before=await p.locator('#rpgDialogue').innerText();await p.reload();assert(!await p.locator('#rpgDialogue').isVisible());await p.locator('#rpgInteract').click();assert.equal(await p.locator('#rpgDialogue').innerText(),before,'Opening dialogue resumes without duplicate dispatch');}
-    if(day===6)assert((await p.locator('#rpgDialogue').innerText()).includes('Mina'));
+    if(day===6)assert((await p.locator('#rpgDialogue').innerText()).includes('Medina'));
     if(route==='normal'){await d.dialogue(`Begin Day ${day} ${{school:'School',nature:'Lake',residential:'Home',business:'Market'}[c.lessons.find(id=>id.endsWith({2:'school',3:'nature',4:'residential',5:'school',6:'nature',7:'business'}[day])).split('-')[1]]} lesson`);await d.lesson({reload:day===2});}
     else {await d.dialogue('Explore first');if(day===2){assert(await p.locator('[data-destination=school]').isEnabled());for(const loc of ['residential','nature','business'])assert(await p.locator('[data-destination='+loc+']').isDisabled(),'Quick travel preserves the School opening lock');}}
    }
@@ -32,7 +32,7 @@ async function play(route){
    if(day===6){mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:`work/overhaul/hills-${route}.png`,fullPage:true});const xpBefore=(await d.progress()).xp;await d.mapTo('village',day);assert.equal((await d.pos()).map,'village','Walking exit from Hills works');await d.actor(c.challenge.npc,day,'hills');assert(!await p.locator('#rpgDialogue').isVisible(),'Completed arrival does not replay on re-entry');assert.equal((await d.progress()).xp,xpBefore);}
    if(day>1&&route==='normal'){
     const label=data.events[`day${day}-${{2:'residential',3:'business',4:'residential',5:'nature',6:'hills',7:'school'}[day]}`]?.actions.find(a=>a.type==='event'&&a.event===c.routes.normal.finale)?.label;
-    assert(label);await p.locator('#rpgInteract').click();await d.dialogue(label);
+    assert(label);await d.talk(label);
     if([5,6,7].includes(day)){const speakers=[];while(await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).count()){speakers.push(await p.locator('#rpgDialogue h2').innerText());assert.equal(await p.locator('#rpgDialogue [data-character-id]').getAttribute('data-character-id'),portraitIds[speakers.at(-1).split(' → ')[0]]);await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();}speakers.push(await p.locator('#rpgDialogue h2').innerText());assert.equal(await p.locator('#rpgDialogue [data-character-id]').getAttribute('data-character-id'),portraitIds[speakers.at(-1).split(' → ')[0]]);assert(new Set(speakers).size>=2,'Multi-character scene');}
     if([5,7].includes(day)){mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:`work/overhaul/scene-day${day}.png`,fullPage:true});}
     await d.dialogue(`Start Day ${day} ${day===7?'examination':'challenge'}`);

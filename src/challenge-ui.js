@@ -53,7 +53,7 @@ function createChallengeUI({
       art.setAttribute("role", "img");
       art.setAttribute(
         "aria-label",
-        "Saleha, Mina and the player walk in the hills above the village",
+        "Deena, Medina and the player walk in the hills above the village",
       );
       art.style.width = "100%";
       art.style.maxHeight = "120px";
@@ -64,7 +64,7 @@ function createChallengeUI({
     const text = document.createElement("p");
     text.textContent =
       day === 6
-        ? "Saleha → Player: “Mina and I welcome you on our walk.” Mina → Player: “Tell us about the activities you remember, and respond when someone speaks to you.”"
+        ? "Deena → Player: “Medina and I welcome you on our walk.” Medina → Player: “Tell us about the activities you remember, and respond when someone speaks to you.”"
         : "Ms Hameed → Player: “This examination checks your first seven days: descriptions, pronouns, verb forms, sentence order, compounds and respectful conversations. Twenty correct answers out of twenty-five completes Week 1.”";
     panel.append(text);
   }
@@ -160,7 +160,7 @@ function createChallengeUI({
           : day === 4
             ? "Come in and sit down. We have talked as friends all day. Let us practise what YOU and I do, and join two clauses using او. When I say “you” informally, I am addressing you; when you do, you are addressing a familiar friend, not an elder."
             : day === 5
-              ? "Welcome to our gathering near the lake! Saleha, Edris, Ms Hameed and Muhammad Jan are all here. Listen to the speaker, look carefully at whom you are addressing, and choose informal ته or polite/plural تاسې."
+              ? "Welcome to our gathering near the lake! Deena, Edris, Ms Hameed and Muhammad Jan are all here. Listen to the speaker, look carefully at whom you are addressing, and choose informal ته or polite/plural تاسې."
               : `Welcome to Day ${day}! You need twelve correct answers to advance.`;
     if (day >= 6) {
       ui.$("lessonEyebrow").textContent =
@@ -416,8 +416,8 @@ function createChallengeUI({
           : "Ms Hameed: “Keep practising. Twenty correct answers are needed; you can try again.”"
         : day === 6
           ? passed
-            ? "Saleha and Mina → Player: “We enjoy walking with you! Your next day is open.”"
-            : "Saleha → Player: “Let us practise we and you both again.”"
+            ? "Deena and Medina → Player: “We enjoy walking with you! Your next day is open.”"
+            : "Deena → Player: “Let us practise we and you both again.”"
           : passed
             ? `You passed ${spec.resultTitle}. Day ${day + 1} is open!`
             : `You scored ${s.correctCount}/${s.questions.length}; ${spec.passCount} correct are needed. Practise in town or retry.`;

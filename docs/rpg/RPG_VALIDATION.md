@@ -1,5 +1,8 @@
 # Week 1 RPG validation
 
+> Historical release evidence: original cast names, screenshots, counts and measurements below are retained. See [the subsequent character expansion](LIVING_VILLAGE.md) for Deena/Medina, the added villagers and its separate validation.
+
+
 Branch `feature/rpg-week1`, source `04891a4a96e4bd8041361836ec57831958e832ba`. The current default release is Days 1–7; Day 7 is terminal and Day 8 remains inaccessible. Historical [foundation validation](FOUNDATION_VALIDATION.md), [foundation audit](FOUNDATION_AUDIT.md) and their logs retain their recorded release scope.
 
 ## Verification

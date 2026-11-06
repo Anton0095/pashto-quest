@@ -1,5 +1,8 @@
 # Post-merge code audit and maintenance
 
+> Historical release evidence: original cast names, screenshots, counts and measurements below are retained. See [the subsequent character expansion](../rpg/LIVING_VILLAGE.md) for Deena/Medina, the added villagers and its separate validation.
+
+
 Baseline: `main` at `63978a5` (PR #32), fetched before creating `maintenance/post-merge-cleanup`. The baseline release and all measurements are identified by SHA-256 in the attached JSON. Audit date: 3 November 2026, Australia/Sydney. No gameplay, vocabulary, grammar, narrative, dependency or reward redesign is included.
 
 ## Findings and disposition

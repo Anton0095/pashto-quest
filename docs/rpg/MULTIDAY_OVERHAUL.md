@@ -1,5 +1,8 @@
 # RPG multiday overhaul — implementation and audit
 
+> Historical release evidence: original cast names, screenshots, counts and measurements below are retained. See [the subsequent character expansion](LIVING_VILLAGE.md) for Deena/Medina, the added villagers and its separate validation.
+
+
 Branch `feature/rpg-multiday-overhaul`, based on main `5606c3602b90386e82cc8504d5e47818cc83d055`. The initial checkout was older; main was fetched and fast-forwarded before edits. No merge into main or hosting deployment is part of this change.
 
 ## A. Implementation summary

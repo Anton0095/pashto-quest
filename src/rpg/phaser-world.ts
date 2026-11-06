@@ -1,11 +1,13 @@
 import Phaser from 'phaser';
 import {drawVillageArt} from './village-art';
 import {drawInteriorArt} from './house-art';
-import type {Actor,Appearance,Direction,Position,WorldData} from './types';
+import type {Actor,ActivityState,Appearance,Direction,Point,Position,WorldData} from './types';
 import {createMovementController,canInteract,facingToward} from './movement';
+import {createActivities} from './activities';
 import {directions,recover} from './world-data';
 
 interface WorldOptions {
+  activityState?:Record<string,ActivityState>;onActivities(state:Record<string,ActivityState>):void;
   portraits?:{characters:Record<string,{expressions:Record<string,string|null>}>};portraitReady(key:string,source:string):void;
   canvas:HTMLCanvasElement;data:WorldData;allowedMaps?():string[];
   position():Position;actors():Actor[];appearance():Appearance;active():boolean;
@@ -15,6 +17,9 @@ const tileSize=16;
 const facingIndex:Record<Direction,number>={down:0,left:1,right:2,up:3};
 /** Phaser owns the live map, sprites, physics, tween movement, camera and sensors. */
 export class VillageScene extends Phaser.Scene {
+  private readonly activities;
+  private actorSprites=new Map<string,Phaser.Physics.Arcade.Sprite>();
+  private playerTarget?:Point;
   private mapId='';
   private map?:Phaser.Tilemaps.Tilemap;
   private terrain?:Phaser.Tilemaps.TilemapLayer|Phaser.Tilemaps.TilemapGPULayer;
@@ -31,7 +36,7 @@ export class VillageScene extends Phaser.Scene {
   private wasActive=false;
   private controller?:ReturnType<typeof createMovementController>;
   private pointer?: (event:PointerEvent)=>void;
-  constructor(private readonly options:WorldOptions){super('village');}
+  constructor(private readonly options:WorldOptions){super('village');this.activities=createActivities(options.data,options.activityState);}
   preload():void {
     for(const [id,character] of Object.entries(this.options.portraits?.characters??{}))for(const [expression,source] of Object.entries(character.expressions))if(source)this.load.image('portrait:'+id+':'+expression,source);
     this.load.on('loaderror',(file:{key:string})=>{if(file.key.startsWith('portrait:'))this.options.portraitReady(file.key.slice(9),'');});
@@ -46,7 +51,7 @@ export class VillageScene extends Phaser.Scene {
     }
     this.createArt();
     this.loadMap();
-    this.controller=createMovementController({data:this.options.data,position:this.options.position,actors:this.options.actors,allowedMaps:()=>this.options.allowedMaps?.()??Object.keys(this.options.data.maps),step:dir=>this.step(dir),moving:()=>!!this.movement,
+    this.controller=createMovementController({data:this.options.data,position:this.options.position,actors:()=>this.activities.occupancy(this.actors),allowedMaps:()=>this.options.allowedMaps?.()??Object.keys(this.options.data.maps),step:dir=>this.step(dir),moving:()=>!!this.movement,
       arrived:actor=>{const p=this.options.position();this.options.onMove({...p,facing:facingToward(p,actor)},false);this.player?.setFrame(facingIndex[facingToward(p,actor)]*2);this.options.onInteract(actor);}});
     this.pointer=event=>{
       if(!this.options.active()||!event.isPrimary||event.button!==0)return;
@@ -54,11 +59,12 @@ export class VillageScene extends Phaser.Scene {
       const bounds=this.options.canvas.getBoundingClientRect();
       const point=this.cameras.main.getWorldPoint((event.clientX-bounds.left)*this.scale.width/bounds.width,(event.clientY-bounds.top)*this.scale.height/bounds.height);
       const tile={x:Math.floor(point.x/tileSize),y:Math.floor(point.y/tileSize)};
-      const actor=this.options.actors().find(a=>{const b=a.interactionBounds;return b?tile.x>=b.x&&tile.x<b.x+b.w&&tile.y>=b.y&&tile.y<b.y+b.h:a.x===tile.x&&a.y===tile.y;});
+      const actor=this.actors.find(a=>{const b=a.interactionBounds,p=this.activities.visual(a);return b?tile.x>=b.x&&tile.x<b.x+b.w&&tile.y>=b.y&&tile.y<b.y+b.h:Math.round(p.x)===tile.x&&Math.round(p.y)===tile.y;});
+      this.activities.select(actor?.id);this.sync();
       this.options.canvas.dataset.route=this.controller!.navigate(tile,actor)?'moving':'unreachable';
     };
     this.options.canvas.addEventListener('pointerdown',this.pointer);
-    this.events.once(Phaser.Scenes.Events.SHUTDOWN,()=>{if(this.pointer)this.options.canvas.removeEventListener('pointerdown',this.pointer);this.controller?.cancel();});
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN,()=>{if(this.pointer)this.options.canvas.removeEventListener('pointerdown',this.pointer);this.controller?.cancel();this.activities.pause();this.actorSprites.clear();});
     this.physics.pause();
     this.game.canvas.dataset.phaser=Phaser.VERSION;
   }
@@ -84,19 +90,24 @@ export class VillageScene extends Phaser.Scene {
       }
     });
     graphics.generateTexture('village-tiles',Object.keys(this.options.data.tiles).length*16,16).clear();
-    const palettes:Record<string,[number,number]>={elder:[0xf0e5ce,0xf7f0d9],saleha:[0x316f74,0xeec970],edris:[0x9a613b,0xe4d1aa],hameed:[0x74618c,0xd6bfdf],masculine:[0x447b9b,0xd7e8e6],feminine:[0xae6380,0xf0c4ab],neutral:[0x6e7e50,0xdbe2bd],mina:[0x316f74,0x44332c]};
+    const palettes:Record<string,[number,number]>={elder:[0xf0e5ce,0xf7f0d9],saleha:[0x8f3742,0xa87645],edris:[0x9a613b,0xe4d1aa],hameed:[0x74618c,0xd6bfdf],masculine:[0x447b9b,0xd7e8e6],feminine:[0xae6380,0xf0c4ab],neutral:[0x6e7e50,0xdbe2bd],mina:[0x316f74,0x44332c],bilal:[0x377d80,0x493027],zamir:[0x34465b,0x292b2d],nayab:[0xa95732,0x30271e],sara:[0x874564,0x493126],omar:[0x6eabc4,0x3e2b23],afiya:[0x208378,0x242628],sanaa:[0xc79c3f,0x513527]};
     for(const [kind,[robe,head]] of Object.entries(palettes)){
       for(const [dir,idx]of Object.entries(facingIndex))for(let step=0;step<2;step++){
-        const x=step*16,y=idx*16;
-        graphics.fillStyle(0x344c45,.3).fillRect(x+3,y+13,11,3);
-        graphics.fillStyle(robe).fillRect(x+5,y+5,7,8).fillRect(x+4,y+8,2,4).fillRect(x+12,y+8,2,4);
+        const x=step*16,child=['mina','nayab','sara','omar','afiya','sanaa'].includes(kind),y=idx*16+(child?3:0);
+        if(child)graphics.fillStyle(0x344c45,.3).fillRect(x+4,idx*16+14,9,2);
+        graphics.fillStyle(0x344c45,.3).fillRect(x+3,idx*16+13,11,3);
+        graphics.fillStyle(robe).fillRect(x+5,y+5,7,child?5:8).fillRect(x+4,y+8,2,child?2:4).fillRect(x+12,y+8,2,child?2:4);
         graphics.fillStyle(0xbb895e).fillRect(x+5,y+1,7,5);
         graphics.fillStyle(head).fillRect(x+4,y,9,3);
-        if(['saleha','hameed','feminine'].includes(kind))graphics.fillRect(x+3,y+1,2,9).fillRect(x+11,y+1,2,9);
-        graphics.fillStyle(0x3e3b39).fillRect(x+5,y+13+step,3,2).fillRect(x+10,y+13-step,3,2);
-        if(dir!=='up')graphics.fillStyle(0x2f3232).fillRect(x+(dir==='left'?5:9),y+4,1,1);
+        if(['hameed','feminine'].includes(kind))graphics.fillRect(x+3,y+1,2,9).fillRect(x+11,y+1,2,9);
+        graphics.fillStyle(0x3e3b39).fillRect(x+5,idx*16+13+step,3,2).fillRect(x+10,idx*16+13-step,3,2);
+        if(dir!=='up')graphics.fillStyle(kind==='saleha'?0x70bbee:0x2f3232).fillRect(x+(dir==='left'?5:9),y+4,1,1);
         if(kind==='edris')graphics.fillStyle(0x48362c).fillRect(x+6,y+6,5,3);
-        if(kind==='mina')graphics.fillStyle(0x44332c).fillRect(x+3,y+1,2,7).fillRect(x+11,y+1,2,7);
+        if(['mina','sara','sanaa','saleha','afiya'].includes(kind))graphics.fillStyle(head).fillRect(x+3,y+1,2,child?5:7).fillRect(x+11,y+1,2,child?5:7);
+        if(kind==='zamir')graphics.fillStyle(0x292b2d).fillRect(x+6,y+6,5,2);
+        if(kind==='nayab')graphics.fillStyle(0x4b704b).fillRect(x+5,y+6,2,6);
+        if(kind==='sanaa')graphics.fillStyle(0xa44835).fillRect(x+4,y+5,2,2).fillRect(x+11,y+5,2,2);
+        if(kind==='afiya')graphics.fillStyle(0xd4b863).fillRect(x+8,y+6,1,4);
         if(kind==='elder')graphics.fillStyle(0xeee9d9).fillRect(x+6,y+6,5,3);
       }
       graphics.generateTexture(kind,32,64).clear();
@@ -107,7 +118,7 @@ export class VillageScene extends Phaser.Scene {
     graphics.destroy();
   }
   private loadMap():void {
-    this.controller?.cancel();this.movement?.stop();this.movement=undefined;
+    this.controller?.cancel();this.movement?.stop();this.movement=undefined;this.playerTarget=undefined;this.activities.select();this.activities.pause();this.options.onActivities(this.activities.snapshot());this.actorSprites.clear();
     this.physics.world.colliders.destroy();
     this.npcGroup?.destroy(true);this.sensors?.destroy(true);
     for(const object of this.children.getAll())object.destroy();this.map?.destroy();this.extraMap?.destroy();this.extraMap=undefined;
@@ -157,16 +168,20 @@ export class VillageScene extends Phaser.Scene {
   sync():void {
     if(!this.player)return;
     if(this.mapId!==this.options.position().map){this.loadMap();return;}
-    const actors=this.options.actors();this.actors=actors;
+    const actors=this.activities.resolve(this.options.actors(),this.options.position());this.actors=actors;
     // Only the resolved placement/presentation affects bodies, not future schedules.
-    const signature=JSON.stringify(actors.map(actor=>({...actor,schedule:undefined})));
+    const signature=JSON.stringify(actors.map(actor=>({...actor,schedule:undefined,...(actor.activity?{x:0,y:0,facing:undefined,stop:undefined,wait:undefined,turn:undefined}:{} )})));
     if(signature!==this.actorSignature){
-      this.npcGroup?.clear(true,true);this.sensors?.clear(true,true);
+      this.actorSprites.clear();this.npcGroup?.clear(true,true);this.sensors?.clear(true,true);
       for(const actor of actors){
-        if(actor.sprite){const sprite=this.physics.add.staticSprite(actor.x*16+8,actor.y*16+8,actor.sprite,facingIndex[actor.facing??'down']*2).setDepth(actor.y*16+16);sprite.setData('actor',actor);const animation=actor.animations?.[actor.facing??'down'];if(animation&&this.anims.exists(animation))sprite.play(animation);this.npcGroup?.add(sprite);}
+        if(actor.sprite){const sprite=this.physics.add.staticSprite(actor.x*16+8,actor.y*16+8,actor.sprite,facingIndex[actor.facing??'down']*2).setDepth(actor.y*16+16);sprite.setData('actor',actor);this.actorSprites.set(actor.id,sprite);const animation=actor.animations?.[actor.facing??'down'];if(animation&&this.anims.exists(animation))sprite.play(animation);this.npcGroup?.add(sprite);}
         else {const zone=this.add.zone(actor.x*16+8,actor.y*16+8,16,16);this.physics.add.existing(zone,true);zone.setData('actor',actor);this.sensors?.add(zone);}
       }
       this.actorSignature=signature;
+    }
+    for(const actor of actors){const sprite=this.actorSprites.get(actor.id);if(!sprite||!actor.activity)continue;const p=this.activities.visual(actor),direction=actor.facing??'down';
+      sprite.setPosition(p.x*16+8,p.y*16+8).setDepth(p.y*16+16);(sprite.body as Phaser.Physics.Arcade.StaticBody).updateFromGameObject();sprite.setData('actor',actor);
+      if(p.moving)sprite.play(actor.sprite+'-'+direction,true);else{sprite.anims.stop();sprite.setFrame(facingIndex[direction]*2);}
     }
     const position=this.options.position();
     if(!this.movement&&(this.player.x!==position.x*16+8||this.player.y!==position.y*16+8)){this.player.body?.reset(position.x*16+8,position.y*16+8);this.player.setDepth(position.y*16+16);}
@@ -183,10 +198,10 @@ export class VillageScene extends Phaser.Scene {
     return actors.sort((a,b)=>Number(b.x===p.x+dx&&b.y===p.y+dy)-Number(a.x===p.x+dx&&a.y===p.y+dy))[0]??null;
   }
   relocate():void {
-    this.controller?.cancel();this.movement?.stop();this.movement=undefined;this.player?.anims.stop();this.sync();
+    this.cancelRoute();this.activities.pause();this.movement?.stop();this.movement=undefined;this.playerTarget=undefined;this.player?.anims.stop();this.sync();
   }
-  cancelRoute():void {this.controller?.cancel();}
-  manual(direction:Direction):boolean {return this.controller?.manual(direction)??this.step(direction);}
+  cancelRoute():void {this.controller?.cancel();this.activities.select();}
+  manual(direction:Direction):boolean {this.activities.select();return this.controller?.manual(direction)??this.step(direction);}
   step(direction:Direction):boolean {
     if(!this.player||!this.probe||!this.terrain||this.movement||!this.options.active())return false;
     this.sync();
@@ -194,15 +209,15 @@ export class VillageScene extends Phaser.Scene {
     const tile=this.terrain.getTileAt(x,y),extra=this.extraCollision?.getTileAt(x,y);
     this.player.setFrame(facingIndex[direction]*2);
     this.probe.body?.reset(x*16+8,y*16+8);
-    if(!tile||tile.collides||extra?.collides||(this.npcGroup&&this.physics.overlap(this.probe,this.npcGroup))){this.options.onMove({...p,facing:direction},false);return false;}
+    if(this.activities.occupancy(this.actors).some(a=>a.x===x&&a.y===y)||!tile||tile.collides||extra?.collides||(this.npcGroup&&this.physics.overlap(this.probe,this.npcGroup))){this.options.onMove({...p,facing:direction},false);return false;}
     const transition=this.options.data.maps[p.map].transitions.find(t=>t.x===x&&t.y===y);
     if(transition&&this.options.allowedMaps&&!this.options.allowedMaps().includes(transition.to))return false;
-    const target={...p,x,y,facing:direction};
+    const target={...p,x,y,facing:direction};this.playerTarget={x,y};
     this.player.play(this.options.appearance()+'-'+direction,true);
     this.movement=this.tweens.add({targets:this.player,x:x*16+8,y:y*16+8,duration:115,
       onUpdate:()=>{if(this.player){this.player.body?.reset(this.player.x,this.player.y);this.player.setDepth(this.player.y+8);}},
       onComplete:()=>{
-        this.movement=undefined;this.player?.anims.stop();
+        this.movement=undefined;this.playerTarget=undefined;this.player?.anims.stop();
         if(!this.options.active()){this.player?.body?.reset(p.x*16+8,p.y*16+8);this.player?.setFrame(facingIndex[p.facing]*2);return;}
         this.player?.setFrame(facingIndex[direction]*2);
         const entrance=this.options.data.maps[p.map].transitions.find(t=>t.x===x&&t.y===y);
@@ -211,18 +226,22 @@ export class VillageScene extends Phaser.Scene {
       }});
     return true;
   }
-  inspect():{version:string;camera:{x:number;y:number};moving:boolean;physicsPaused:boolean;tilemap:string;frame:string|number;colliders:number;updateObjects:number;player:{x:number;y:number}} {
-    return {updateObjects:this.sys.updateList.getActive().length,player:{x:((this.player?.x??8)-8)/16,y:((this.player?.y??8)-8)/16},version:Phaser.VERSION,camera:{x:this.cameras.main?.scrollX??0,y:this.cameras.main?.scrollY??0},moving:!!this.movement,physicsPaused:this.physics.world?.isPaused??true,tilemap:this.map?.constructor.name??'',frame:this.player?.frame.name??'',colliders:this.physics.world?.colliders.getActive().length??0};
+  inspect():{actors:Array<{id:string;x:number;y:number;visual:Point;moving:boolean}>;version:string;camera:{x:number;y:number};moving:boolean;physicsPaused:boolean;tilemap:string;frame:string|number;colliders:number;updateObjects:number;player:{x:number;y:number}} {
+    return {actors:this.actors.map(a=>{const visual=this.activities.visual(a);return {id:a.id,x:a.x,y:a.y,visual,moving:visual.moving};}),updateObjects:this.sys.updateList.getActive().length,player:{x:((this.player?.x??8)-8)/16,y:((this.player?.y??8)-8)/16},version:Phaser.VERSION,camera:{x:this.cameras.main?.scrollX??0,y:this.cameras.main?.scrollY??0},moving:!!this.movement,physicsPaused:this.physics.world?.isPaused??true,tilemap:this.map?.constructor.name??'',frame:this.player?.frame.name??'',colliders:this.physics.world?.colliders.getActive().length??0};
   }
-  update():void {
+  resolveActors(actors:Actor[]):Actor[] {return this.activities.resolve(actors,this.options.position());}
+  resetActivities():void {this.activities.reset();this.sync();}
+  activitySnapshot():Record<string,ActivityState> {return this.activities.snapshot();}
+  update(_time:number,delta:number):void {
     const active=this.options.active();
     if(!active&&this.wasActive){
-      this.controller?.cancel();this.movement?.stop();this.movement=undefined;
+      this.cancelRoute();this.activities.pause();this.movement?.stop();this.movement=undefined;this.playerTarget=undefined;this.sync();
       const p=this.options.position();this.player?.body?.reset(p.x*16+8,p.y*16+8);this.player?.anims.stop();this.player?.setFrame(facingIndex[p.facing]*2);this.physics.pause();
     }else if(active&&!this.wasActive)this.physics.resume();
     this.wasActive=active;
-    if(active){this.sync();const target=this.nearby();this.marker?.setVisible(!!target);if(target)this.marker?.setPosition(target.x*16+8,target.y*16-5);}
+    if(active){this.sync();this.activities.tick(delta,this.actors,this.options.position(),this.playerTarget);this.sync();const target=this.nearby();this.marker?.setVisible(!!target);if(target)this.marker?.setPosition(target.x*16+8,target.y*16-5);}
     if(active)this.controller?.tick();else this.controller?.cancel();
+    if(!this.controller?.routing)this.activities.select();
     this.options.onFrame();
   }
 }

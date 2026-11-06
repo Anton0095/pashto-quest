@@ -1,4 +1,4 @@
-/* Schema-7 shape and compiler-proof validation. No persistence or DOM. */
+/* Schema-8 shape and compiler-proof validation. No persistence or DOM. */
 function createSaveValidator({ content, progression }) {
   function validOrder(order, size) {
     return (
@@ -35,6 +35,7 @@ function createSaveValidator({ content, progression }) {
           typeof r.firstEncounteredSource!=="string" || !strings(r.encounteredSourceIds) ||
           ![r.encounteredFormIds,r.introducedFormIds,r.practisedFormIds].every(strings) ||
           [...r.introducedFormIds,...r.practisedFormIds,...Object.keys(r.forms)].some(id=>!r.encounteredFormIds.includes(id))) return false;
+      if(r.firstStudyLesson!==undefined&&(typeof r.firstStudyLesson!=='string'||!/^(?:[1-9]|1[0-4])-(?:residential|nature|business|school)$/.test(r.firstStudyLesson)))return false;
       if (r.formallyIntroducedDay!==undefined && (!integer(r.formallyIntroducedDay)||r.formallyIntroducedDay<1||r.formallyIntroducedDay>14)) return false;
       const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass","challenge-start"].includes(v.source) && typeof v.location==="string" && (v.studiedDay===undefined || (integer(v.studiedDay)&&v.studiedDay>=1&&v.studiedDay<=14));
       if (r.unlock!==undefined && !origin(r.unlock)) return false;
@@ -55,7 +56,7 @@ function createSaveValidator({ content, progression }) {
     for (const r of Object.values(l.deliveries)) if (!object(r)||typeof r.id!=="string"||!integer(r.day)||r.day>14||typeof r.surface!=="string"||typeof r.mode!=="string"||(r.count!==undefined&&(!integer(r.count)||r.count<1))||(r.lastDay!==undefined&&(!integer(r.lastDay)||r.lastDay<r.day||r.lastDay>14))) return false;
     for (const plan of Object.values(l.plans)) {
       if (!object(plan)||!integer(plan.seed)||!object(plan.shortfalls)||typeof plan.notice!=="string"||typeof plan.contentGap!=="boolean"||
-          !(plan.effectiveDailyTarget===null||LibraryEngine.presets.includes(plan.effectiveDailyTarget))||
+          !(plan.effectiveDailyTarget===null||(plan.day===14&&plan.effectiveDailyTarget===0||LibraryEngine.presets.includes(plan.effectiveDailyTarget)))||
           !content.zoneKeys.every(k=>integer(plan.shortfalls[k])&&plan.shortfalls[k]<=6)) return false;
       if (plan.challengeActivation !== undefined) {
         const a=plan.challengeActivation;
@@ -207,7 +208,7 @@ function createSaveValidator({ content, progression }) {
         plan.day < 1 ||
         plan.day > 14 ||
         !object(plan.locationAssignments) ||
-        !LibraryEngine.presets.includes(plan.requestedDailyTarget)
+        !(plan.day===14&&plan.requestedDailyTarget===0||LibraryEngine.presets.includes(plan.requestedDailyTarget))
       )
         return false;
       if (

@@ -40,7 +40,7 @@ for(const width of [375,1280]) {
    const attempts=t.state.progress.library.acquired[inf.lemmaId].totalAttempts;buttons.find(b=>b.dataset.answer==='open').click();
    check(t.state.progress.library.acquired[inf.lemmaId].totalAttempts===attempts,'Library duplicate SRS');
    // Newly frozen practical choices and locks survive reload unchanged.
-   $('libraryDialog').close();t.reset(0);t.state.progress.tutorialDone=true;t.state.day=1;t.challenge.startChallenge(1);
+   $('libraryDialog').close();t.reset(8);t.state.progress.tutorialDone=true;t.state.day=1;t.challenge.startChallenge(1);
    const s=t.state.session,q=s.questions[0];t.challenge.answerChallenge(t.content.wordById[q.id].en);
    await t.storage.save();return {questions:s.questions,xp:t.state.progress.xp,score:s.correctCount};
   });

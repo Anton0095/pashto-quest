@@ -1,5 +1,8 @@
 # Playable RPG Week 1
 
+> Historical release evidence: original cast names, screenshots, counts and measurements below are retained. See [the subsequent character expansion](LIVING_VILLAGE.md) for Deena/Medina, the added villagers and its separate validation.
+
+
 > Historical Week 1 implementation record. The [multiday overhaul](MULTIDAY_OVERHAUL.md) supersedes the terminal Day 7 policy, interface, movement, teacher placements and portrait handling described below.
 
 Branch: `feature/rpg-week1`, based on reviewed foundation `04891a4a96e4bd8041361836ec57831958e832ba`. The default release now covers Days 1–7. Day 7 is terminal; the unchanged Days 8–14 educational curriculum remains available to regression tests, not the RPG player. Production main/Pages configuration is unchanged.

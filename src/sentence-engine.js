@@ -298,7 +298,7 @@ const SentenceEngine = (() => {
     ]);
     const addressee =
       slots.subject?.value.composition.register === "informal"
-        ? "Saleha"
+        ? "Deena"
         : "Ms Hameed";
     const details = lazy ? null : detailValues(frame, slots, copula);
     const generated = {
@@ -816,7 +816,7 @@ const SentenceEngine = (() => {
         scene: "Reply meaning: " + answer.en,
         request: "Describe this scene in Pashto using the forms you studied.",
         recipient:
-          answer.generated.register === "informal" ? "Saleha" : "Teacher",
+          answer.generated.register === "informal" ? "Deena" : "Teacher",
       });
     }
     return result;

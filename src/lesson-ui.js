@@ -424,7 +424,7 @@ function createLessons({
           : s.loop === 2
             ? learning.completeRound(2)
               ? "Your village visits are complete. Muhammad Jan is ready for your check-in."
-              : "In the regular story path, visit the market and lake after school, then go home. You can also try Muhammad Jan’s challenge now."
+              : "After School, Home is available immediately. Market and Lake are optional visits before or after Home. Muhammad Jan’s challenge is also available."
             : s.loop === 3
               ? learning.completeRound(3)
                 ? "Your Day 3 visits are complete. Speak with Edris about dinner in your final challenge."
@@ -436,7 +436,7 @@ function createLessons({
     if (s.loop >= 6)
       follow =
         s.loop === 6
-          ? "Practise the other town locations, or join Saleha and Mina in the Hills: 15 turns, 12 correct to pass."
+          ? "Practise the other town locations, or join Deena and Medina in the Hills: 15 turns, 12 correct to pass."
           : "Practise the other locations, or take Ms Hameed’s separate School examination: 25 turns, 20 correct to pass.";
     if (s.loop >= 8)
       follow = `Practise the other locations, or take the ${progression.getChallengeSpec(s.loop).questionCount}-question final challenge. Week 2 remains draft content for native review.`;

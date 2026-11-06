@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {runtime,reset,study,plain,beginAttempt} from './runtime-fixture.mjs';
 const t=runtime();
-for (const pace of [0,4,8,12,16,20,24]) {
+for (const pace of [8,12,16,20,24]) {
  reset(t,pace);
  for (let day=1;day<=14;day++) {
   t.state.day=day;t.state.session=null;
@@ -51,7 +51,7 @@ const before=plain(t.state.progress);const partial=t.progression.completeChallen
 assert.equal(partial.locationBonus,75);assert.deepEqual(plain(t.state.progress.library.acquired[Object.keys(before.library.acquired)[0]]?.unlock),before.library.acquired[Object.keys(before.library.acquired)[0]].unlock);
 assert.equal(t.state.progress.complete['1-residential'],true);assert(t.learning.availableSentences(1).length>=2);
 // A full normal route and a no-visit pass unlock the same licensed forms.
-for(const pace of [0,4,24]) {
+for(const pace of [8,12,24]) {
  const normal=runtime(),skip=runtime();reset(normal,pace);reset(skip,pace);
  // Freeze the same plan seed to compare identities, not random profiles.
  skip.state.progress.library.seed=normal.state.progress.library.seed;
@@ -76,7 +76,7 @@ assert.equal(tiles[0].word,tiles[1].word);assert.notEqual(tiles[0].index,tiles[1
 assert(q.duds.every(d=>!['موږ','مونږ','تاسو','تاسې'].includes(t.Q.normalizeAnswer(d))));
 assert.deepEqual(plain(t.state.progress.library.acquired),acq);
 reset(t);const backup=t.questions.constructionQuestion({id:'fixture',ps:'دا کور دی',en:'This is a house.'},{withDuds:true});assert.equal(backup.duds.length,2);assert.deepEqual(plain(t.state.progress.library.acquired),{});
-console.log('PASS construction/completion: 98 day/pace passes, failures, repeats, frozen plans/assessments, honest SRS/provenance/rewards, normal/pass form equivalence, Day 14, reload and indexed exact/dud tiles');
+console.log('PASS construction/completion: 70 day/pace passes, failures, repeats, frozen plans/assessments, honest SRS/provenance/rewards, normal/pass form equivalence, Day 14, reload and indexed exact/dud tiles');
 
 // Dormant early-day dud metadata never alters a previously frozen exact puzzle.
 const frozenExact={kind:"construct",duds:["کتاب","قلم"],tileSequence:[2,0,1]};

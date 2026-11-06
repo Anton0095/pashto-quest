@@ -2692,7 +2692,7 @@
     },
     {
       "id": "saleha",
-      "name": "Saleha",
+      "name": "Deena",
       "sprite": "saleha",
       "schedule": [
         {
@@ -2918,7 +2918,7 @@
     {
       "id": "mina",
       "characterId": "mina",
-      "name": "Mina",
+      "name": "Medina",
       "sprite": "mina",
       "interactionRange": 1,
       "event": "day6-opening",
@@ -2945,6 +2945,265 @@
           "event": "day7-nature"
         }
       ]
+    },
+    {
+      "id": "bilal",
+      "characterId": "bilal",
+      "name": "Bilal",
+      "sprite": "bilal",
+      "event": "ambient-bilal",
+      "defaultLocation": {
+        "map": "village",
+        "x": 76,
+        "y": 26
+      },
+      "schedule": []
+    },
+    {
+      "id": "zamir",
+      "characterId": "zamir",
+      "name": "Zamir",
+      "sprite": "zamir",
+      "event": "ambient-zamir",
+      "defaultLocation": {
+        "map": "village",
+        "x": 24,
+        "y": 41
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 23,
+          "y": 41,
+          "w": 6,
+          "h": 8
+        },
+        "stops": [
+          {
+            "x": 24,
+            "y": 41
+          },
+          {
+            "x": 28,
+            "y": 41
+          },
+          {
+            "x": 28,
+            "y": 46
+          },
+          {
+            "x": 24,
+            "y": 48
+          }
+        ],
+        "stepMs": 260,
+        "idleMs": 2400
+      }
+    },
+    {
+      "id": "nayab",
+      "characterId": "nayab",
+      "name": "Nayab",
+      "sprite": "nayab",
+      "event": "ambient-nayab",
+      "defaultLocation": {
+        "map": "village",
+        "x": 68,
+        "y": 49
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 66,
+          "y": 48,
+          "w": 15,
+          "h": 6
+        },
+        "stops": [
+          {
+            "x": 68,
+            "y": 49
+          },
+          {
+            "x": 67,
+            "y": 48
+          },
+          {
+            "x": 73,
+            "y": 51
+          },
+          {
+            "x": 69,
+            "y": 49
+          }
+        ],
+        "stepMs": 220,
+        "idleMs": 1520
+      }
+    },
+    {
+      "id": "sara",
+      "characterId": "sara",
+      "name": "Sara",
+      "sprite": "sara",
+      "event": "ambient-sara",
+      "defaultLocation": {
+        "map": "village",
+        "x": 72,
+        "y": 49
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 66,
+          "y": 48,
+          "w": 15,
+          "h": 6
+        },
+        "stops": [
+          {
+            "x": 72,
+            "y": 49
+          },
+          {
+            "x": 71,
+            "y": 48
+          },
+          {
+            "x": 73,
+            "y": 51
+          },
+          {
+            "x": 73,
+            "y": 49
+          }
+        ],
+        "stepMs": 150,
+        "idleMs": 1830
+      }
+    },
+    {
+      "id": "omar",
+      "characterId": "omar",
+      "name": "Omar",
+      "sprite": "omar",
+      "event": "ambient-omar",
+      "defaultLocation": {
+        "map": "village",
+        "x": 76,
+        "y": 50
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 66,
+          "y": 48,
+          "w": 15,
+          "h": 6
+        },
+        "stops": [
+          {
+            "x": 76,
+            "y": 50
+          },
+          {
+            "x": 75,
+            "y": 49
+          },
+          {
+            "x": 73,
+            "y": 51
+          },
+          {
+            "x": 77,
+            "y": 50
+          }
+        ],
+        "stepMs": 185,
+        "idleMs": 2140
+      }
+    },
+    {
+      "id": "afiya",
+      "characterId": "afiya",
+      "name": "Afiya",
+      "sprite": "afiya",
+      "event": "ambient-afiya",
+      "defaultLocation": {
+        "map": "village",
+        "x": 70,
+        "y": 52
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 66,
+          "y": 48,
+          "w": 15,
+          "h": 6
+        },
+        "stops": [
+          {
+            "x": 70,
+            "y": 52
+          },
+          {
+            "x": 69,
+            "y": 51
+          },
+          {
+            "x": 73,
+            "y": 51
+          },
+          {
+            "x": 71,
+            "y": 52
+          }
+        ],
+        "stepMs": 220,
+        "idleMs": 2450
+      }
+    },
+    {
+      "id": "sanaa",
+      "characterId": "sanaa",
+      "name": "Sanaa",
+      "sprite": "sanaa",
+      "event": "ambient-sanaa",
+      "defaultLocation": {
+        "map": "village",
+        "x": 78,
+        "y": 52
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 66,
+          "y": 48,
+          "w": 15,
+          "h": 6
+        },
+        "stops": [
+          {
+            "x": 78,
+            "y": 52
+          },
+          {
+            "x": 77,
+            "y": 51
+          },
+          {
+            "x": 73,
+            "y": 51
+          },
+          {
+            "x": 79,
+            "y": 52
+          }
+        ],
+        "stepMs": 150,
+        "idleMs": 2760
+      }
     }
   ],
   "objects": [
@@ -3059,7 +3318,7 @@
       "characterId": "muhammad-jan"
     },
     "lake": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "lines": [
         "Welcome to the lake. Let us learn the words for the world around us."
       ],
@@ -3161,7 +3420,7 @@
     "day2-finale": {
       "speaker": "Muhammad Jan",
       "listener": "Player",
-      "condition": "allLessons",
+      "condition": "all:complete:2-school|complete:2-residential",
       "once": true,
       "lines": [
         "Tell Muhammad Jan about your practice today."
@@ -3222,7 +3481,7 @@
       "speaker": "Muhammad Jan",
       "listener": "Player",
       "lines": [
-        "We can practise Day 2 here at Home."
+        "After School you can study here at Home immediately. Market and Lake are optional visits, before or after Home."
       ],
       "actions": [
         {
@@ -3235,7 +3494,7 @@
           "label": "Join Muhammad Jan’s check-in",
           "type": "event",
           "event": "day2-finale",
-          "condition": "allLessons"
+          "condition": "all:complete:2-school|complete:2-residential"
         },
         {
           "label": "Day 2 challenge · 15 questions",
@@ -3251,7 +3510,7 @@
       "characterId": "muhammad-jan"
     },
     "day2-nature": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 2 here at Lake."
@@ -3305,7 +3564,7 @@
       "characterId": "hameed"
     },
     "day3-opening": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "Tell us about yourself using I and the first-person forms you study today."
@@ -3327,7 +3586,7 @@
       "characterId": "saleha"
     },
     "day3-after-opening": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "lines": [
         "Continue practising with our neighbours, or choose the early challenge when you are ready."
       ],
@@ -3416,7 +3675,7 @@
       "characterId": "muhammad-jan"
     },
     "day3-nature": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 3 here at Lake."
@@ -3619,7 +3878,7 @@
       "characterId": "muhammad-jan"
     },
     "day4-nature": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 4 here at Lake."
@@ -3702,7 +3961,7 @@
       "characterId": "hameed"
     },
     "day5-finale": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "condition": "allLessons",
       "once": true,
@@ -3719,7 +3978,7 @@
       ],
       "messages": [
         {
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "listener": "Player",
           "text": "Join the neighbours at the Lake and consider who is speaking to a friend, an elder or a group.",
           "characterId": "saleha"
@@ -3731,7 +3990,7 @@
           "characterId": "muhammad-jan"
         },
         {
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "listener": "Player",
           "text": "Listen to each person and choose your words carefully. We will continue when you finish.",
           "characterId": "saleha"
@@ -3740,7 +3999,7 @@
       "characterId": "saleha"
     },
     "day5-skip": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "once": true,
       "lines": [
@@ -3767,7 +4026,7 @@
       "characterId": "saleha"
     },
     "day5-ending": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "once": true,
       "lines": [
@@ -3798,7 +4057,7 @@
       "characterId": "muhammad-jan"
     },
     "day5-nature": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 5 here at Lake."
@@ -3868,10 +4127,10 @@
       "characterId": "hameed"
     },
     "day6-opening": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
-        "This is my sister Mina. We will practise speaking about ourselves as a group, then meet in the Hills."
+        "This is my sister Medina. We will practise speaking about ourselves as a group, then meet in the Hills."
       ],
       "once": true,
       "actions": [
@@ -3889,13 +4148,13 @@
       ],
       "messages": [
         {
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "listener": "Player",
-          "text": "This is my sister Mina. We are learning together today.",
+          "text": "This is my sister Medina. We are learning together today.",
           "characterId": "saleha"
         },
         {
-          "speaker": "Mina",
+          "speaker": "Medina",
           "listener": "Player",
           "text": "Let us begin at the Lake. Later we can meet in the Hills.",
           "characterId": "mina"
@@ -3904,7 +4163,7 @@
       "characterId": "saleha"
     },
     "day6-after-opening": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "lines": [
         "Continue practising with our neighbours, or choose the early challenge when you are ready."
       ],
@@ -3927,12 +4186,12 @@
       "characterId": "saleha"
     },
     "day6-finale": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "condition": "allLessons",
       "once": true,
       "lines": [
-        "Saleha and Mina meet you in the Hills. Speak together using the group and compound-subject material you studied."
+        "Deena and Medina meet you in the Hills. Speak together using the group and compound-subject material you studied."
       ],
       "actions": [
         {
@@ -3944,19 +4203,19 @@
       ],
       "messages": [
         {
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "listener": "Player",
-          "text": "Saleha and Mina meet you in the Hills. Speak together using the group and compound-subject material you studied.",
+          "text": "Deena and Medina meet you in the Hills. Speak together using the group and compound-subject material you studied.",
           "characterId": "saleha"
         },
         {
-          "speaker": "Mina",
+          "speaker": "Medina",
           "listener": "Player and neighbours",
           "text": "We are ready to listen. Practise the words and sentences you have learned with us.",
           "characterId": "mina"
         },
         {
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "listener": "Player",
           "text": "Listen to each person and choose your words carefully. We will continue when you finish.",
           "characterId": "saleha"
@@ -3965,11 +4224,11 @@
       "characterId": "saleha"
     },
     "day6-skip": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "once": true,
       "lines": [
-        "You may take Day 6 without the visits or normal finale. Saleha introduces her sister Mina; they welcome you to the Hills. Starting makes today’s assigned material available for assessment. It does not record study, correct answers or practice activity."
+        "You may take Day 6 without the visits or normal finale. Deena introduces her sister Medina; they welcome you to the Hills. Starting makes today’s assigned material available for assessment. It does not record study, correct answers or practice activity."
       ],
       "actions": [
         {
@@ -3992,7 +4251,7 @@
       "characterId": "saleha"
     },
     "day6-ending": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "once": true,
       "lines": [
@@ -4007,7 +4266,7 @@
       "characterId": "saleha"
     },
     "day6-residential": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 6 here at Home."
@@ -4023,7 +4282,7 @@
       "characterId": "saleha"
     },
     "day6-nature": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 6 here at Lake."
@@ -4077,8 +4336,8 @@
       "characterId": "hameed"
     },
     "day6-hills": {
-      "speaker": "Saleha",
-      "listener": "Player and Mina",
+      "speaker": "Deena",
+      "listener": "Player and Medina",
       "lines": [
         "We are together in the Hills. This is part of the Nature district, with no extra vocabulary quota."
       ],
@@ -4098,7 +4357,7 @@
       "characterId": "saleha"
     },
     "day6-arrival": {
-      "speaker": "Mina",
+      "speaker": "Medina",
       "listener": "Player",
       "once": true,
       "lines": [
@@ -4299,7 +4558,7 @@
       "characterId": "edris"
     },
     "day7-school": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 7 here at School."
@@ -4366,7 +4625,7 @@
       "characterId": "hameed"
     },
     "day7-saleha-visit": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We have finished our School practice. Ms Hameed will lead your weekly examination when your visits are complete."
@@ -4406,6 +4665,130 @@
         {
           "type": "reference",
           "label": "Open Library"
+        }
+      ]
+    },
+    "ambient-bilal": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "I am Bilal. I fish here, but lately I have been looking for a catch unlike any I know. I have not found it yet."
+      ],
+      "actions": [
+        {
+          "type": "event",
+          "label": "Have you noticed anything unusual?",
+          "event": "bilal-ripples"
+        },
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ],
+      "messages": [
+        {
+          "speaker": "Bilal",
+          "characterId": "bilal",
+          "text": "I am Bilal. I fish here, but lately I have been looking for a catch unlike any I know. I have not found it yet.",
+          "condition": "not-flag:bilal-heard-ripples"
+        },
+        {
+          "speaker": "Bilal",
+          "characterId": "bilal",
+          "text": "Still no catch. Since we last spoke, I have been watching the quiet water near the reeds. A shadow slipped away before I could see it clearly. The search continues.",
+          "condition": "flag:bilal-heard-ripples"
+        }
+      ]
+    },
+    "ambient-zamir": {
+      "speaker": "Zamir",
+      "characterId": "zamir",
+      "lines": [
+        "I own several of these stalls. I am checking the baskets here, then I will inspect the next stand. Edris can help you with your lesson."
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "ambient-nayab": {
+      "speaker": "Nayab",
+      "characterId": "nayab",
+      "lines": [
+        "We are choosing a new place to gather. Can you see the others across the courtyard?"
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "ambient-sara": {
+      "speaker": "Sara",
+      "characterId": "sara",
+      "lines": [
+        "I like to stop here and watch everyone run past. Then it is my turn!"
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "ambient-omar": {
+      "speaker": "Omar",
+      "characterId": "omar",
+      "lines": [
+        "A short run, a quick turn, and back to the group. There is plenty of room here."
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "ambient-afiya": {
+      "speaker": "Afiya",
+      "characterId": "afiya",
+      "lines": [
+        "We take turns choosing where to meet next. I am waiting for the others."
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "ambient-sanaa": {
+      "speaker": "Sanaa",
+      "characterId": "sanaa",
+      "lines": [
+        "I was just catching up with the others. You can join us for a moment if you like."
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "bilal-ripples": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "Sometimes a ripple moves against the breeze. Another evening I heard a splash after the water had gone still. I am keeping watch; I cannot yet tell you what is out there."
+      ],
+      "actions": [
+        {
+          "type": "flag",
+          "flag": "bilal-heard-ripples",
+          "label": "I will listen by the water too"
         }
       ]
     }
@@ -4453,7 +4836,14 @@
         "jan-home",
         "saleha",
         "edris",
-        "hameed"
+        "hameed",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "nextChapter": "day-2",
       "objective": "Home ↖  ·  Lake ↗  ·  Market ↙  ·  School ↘  ·  Library ↑",
@@ -4495,7 +4885,14 @@
         "jan-home",
         "saleha",
         "edris",
-        "hameed"
+        "hameed",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day2-opening",
       "lessons": [
@@ -4519,7 +4916,7 @@
       },
       "endingEvent": "day2-ending",
       "nextChapter": "day-3",
-      "objective": "Normal: begin at School, visit four districts, then Muhammad Jan’s check-in. Early challenge: speak to Muhammad Jan at Home.",
+      "objective": "Normal: complete School, then study at Home immediately for Muhammad Jan’s check-in. Market and Lake are optional before or after Home. The early challenge remains available at Home.",
       "routes": {
         "normal": {
           "opening": "day2-opening",
@@ -4538,9 +4935,13 @@
         "destination": "School",
         "character": "Ms Hameed",
         "before": "Go to School and speak with Ms Hameed for today’s introductory lesson.",
-        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "after": "Home is available immediately after School. Market and Lake are optional before or after Home; the challenge is also available.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
-      }
+      },
+      "requiredLessons": [
+        "2-school",
+        "2-residential"
+      ]
     },
     "3": {
       "id": "day-3",
@@ -4566,7 +4967,14 @@
         "jan-home",
         "saleha",
         "edris",
-        "hameed"
+        "hameed",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day3-opening",
       "lessons": [
@@ -4607,8 +5015,8 @@
       "guidance": {
         "introLessonId": "3-nature",
         "destination": "Lake",
-        "character": "Saleha",
-        "before": "Go to Lake and speak with Saleha for today’s introductory lesson.",
+        "character": "Deena",
+        "before": "Go to Lake and speak with Deena for today’s introductory lesson.",
         "after": "Continue with the remaining activities, then attempt today’s challenge.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
@@ -4637,7 +5045,14 @@
         "jan-home",
         "saleha",
         "edris",
-        "hameed"
+        "hameed",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day4-opening",
       "lessons": [
@@ -4708,7 +5123,14 @@
         "jan-home",
         "saleha",
         "edris",
-        "hameed"
+        "hameed",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day5-opening",
       "lessons": [
@@ -4732,7 +5154,7 @@
       },
       "endingEvent": "day5-ending",
       "nextChapter": "day-6",
-      "objective": "Normal: begin at School, visit four districts, then Gathering at the Lake. Early challenge: speak to Saleha at Lake.",
+      "objective": "Normal: begin at School, visit four districts, then Gathering at the Lake. Early challenge: speak to Deena at Lake.",
       "routes": {
         "normal": {
           "opening": "day5-opening",
@@ -4759,7 +5181,7 @@
       "id": "day-6",
       "day": 6,
       "name": "Together",
-      "intro": "This is my sister Mina. We will practise speaking about ourselves as a group, then meet in the Hills.",
+      "intro": "This is my sister Medina. We will practise speaking about ourselves as a group, then meet in the Hills.",
       "maps": [
         "village",
         "library",
@@ -4781,7 +5203,14 @@
         "saleha",
         "edris",
         "hameed",
-        "mina"
+        "mina",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day6-opening",
       "lessons": [
@@ -4805,7 +5234,7 @@
       },
       "endingEvent": "day6-ending",
       "nextChapter": "day-7",
-      "objective": "Normal: begin at Lake, visit four districts, then Together in the Hills. Early challenge: speak to Saleha at Hills.",
+      "objective": "Normal: begin at Lake, visit four districts, then Together in the Hills. Early challenge: speak to Deena at Hills.",
       "routes": {
         "normal": {
           "opening": "day6-opening",
@@ -4827,8 +5256,8 @@
       "guidance": {
         "introLessonId": "6-nature",
         "destination": "Lake",
-        "character": "Saleha and Mina",
-        "before": "Go to Lake and speak with Saleha and Mina for today’s introductory lesson.",
+        "character": "Deena and Medina",
+        "before": "Go to Lake and speak with Deena and Medina for today’s introductory lesson.",
         "after": "Continue with the remaining activities, then attempt today’s challenge.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
@@ -4859,7 +5288,14 @@
         "saleha",
         "edris",
         "hameed",
-        "mina"
+        "mina",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day7-opening",
       "lessons": [

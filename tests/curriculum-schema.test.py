@@ -21,10 +21,10 @@ def data():
 class Schema(unittest.TestCase):
     def test_all_records(self):
         entries, forms = m.validate_curriculum(data())
-        self.assertEqual(len(entries), 473)
+        self.assertEqual(len(entries), 474)
         self.assertGreater(len(forms), 565)
         provisional = [e for e in entries.values() if e["reviewStatus"] == "user_approved"]
-        self.assertEqual(len(provisional), 473)
+        self.assertEqual(len(provisional), 474)
         self.assertTrue(all(e["userVerified"] is True for e in provisional))
 
     def test_rejections(self):

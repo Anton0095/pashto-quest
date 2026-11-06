@@ -98,6 +98,7 @@ function createLibraryUI({
             ui.node("p", "Worked analysis: " + concept.workedExample.analysis));
           detail.append(worked);
         }
+        if(rule.day===2)ui.sovDemo.mount(detail,Math.min(state.day,14));
         const ex = examples.find(c => c.generated.requiredGrammarIds.includes(grammarId));
         if (ex) {
           content.registerGenerated(ex);
@@ -259,8 +260,7 @@ function createLibraryUI({
           r && (!unlockedFilter || unlockedFilter.includes(e.lemmaId)) &&
           (unlockedFilter || (e.vocabularyClass === "universal") === universal) &&
           (!query ||
-            [e.displayLemmaPs, e.romanisation, ...e.englishSenses]
-              .join(" ")
+            [e.displayLemmaPs, e.romanisation, ...e.englishSenses].join(" ")
               .toLocaleLowerCase()
               .includes(query)) &&
           (!pos.value || e.partOfSpeech === pos.value) &&
@@ -313,6 +313,7 @@ function createLibraryUI({
       ),
     );
     detail.append(heading);
+    if(CHARACTER_NAMES.characters.some(n=>n.lemmaId===e.lemmaId))detail.append(ui.node("p","Current name spelling supplied by the owner; pronunciation aids and use in case/compound forms remain provisional.","tiny"));
     const origin = r.unlock;
     const location = origin?.location === "universal" ? "Universal vocabulary" : ({residential:"Home",nature:"Lake",business:"Market",school:"School"}[origin?.location] || "Not recorded");
     detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-start" ? "Unlocked when starting the challenge" : origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.introducedFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
@@ -526,7 +527,7 @@ function createLibraryUI({
         "p",
         "Available district-word paces: " +
           LibraryEngine.presets.join(" or ") +
-          "/day. Universal grammar words and forms are shown separately. At pace 0 or 4, Day 1 Home cannot yet make two sentences: word/grammar practice adapts without extra district words. Choose 0 for a review day.",
+          "/day. Universal grammar words and forms are shown separately. Choose 8, 12, 16, 20 or 24 words per day. Review remains available independently of pace.",
       ),
     );
     for (const target of LibraryEngine.presets) {

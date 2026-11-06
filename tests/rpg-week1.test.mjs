@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';import {readFileSync}from'node:fs';import{createRequire}from'node:module';
 const M=createRequire(import.meta.url)('../work/rpg-model.cjs'),data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
-const registry=M.createRPGRegistry(data,{'not-complete:6-nature':()=>true,'not-complete:7-school':()=>true,'not-allLessons':()=>true,afterTutorial:()=>true,beforeTutorial:()=>false,beforeGuideMeeting:()=>false,allLessons:()=>true,passed:()=>false,notPassed:()=>true});
+const registry=M.createRPGRegistry(data,{'not-complete:6-nature':()=>true,'not-complete:7-school':()=>true,'not-allLessons':()=>true,afterTutorial:()=>true,beforeTutorial:()=>false,beforeGuideMeeting:()=>false,'all:complete:2-school|complete:2-residential':()=>true,allLessons:()=>true,passed:()=>false,notPassed:()=>true});
 assert.equal(data.lastDay,7);assert.equal(Object.keys(data.days).length,7);assert(!registry.day(8));assert(!data.days['1'].completion.terminal);assert(!data.days['7'].completion.terminal);
 for(let day=1;day<=7;day++){
  const c=data.days[day];assert.equal(c.day,day);assert.equal(new Set(c.lessons).size,4);assert.equal(c.challenge.day,day);assert.equal(c.nextChapter,'day-'+(day+1));
@@ -16,7 +16,7 @@ for(let day=1;day<=7;day++){
 assert(!registry.npcs(5,'village').some(n=>n.characterId==='mina'));assert(registry.npcs(6,'village').some(n=>n.characterId==='mina'));assert(registry.npcs(6,'hills').some(n=>n.characterId==='mina'));assert.equal(data.days[6].lessons.filter(id=>id.endsWith('nature')).length,1);
 const malformed=structuredClone(data);malformed.days[6].mapEvents.hills=['missing'];assert.throws(()=>M.createRPGRegistry(malformed,{}));
 const state={day:8,progress:{}},learning={allowed:()=>true,placeAccessible:()=>true},policy=M.createRPGProgression({state,data,learning,progression:{passedChallenge:()=>true}});assert.equal(policy.current(),7);assert(!learning.allowed(8));assert(!policy.lessonAllowed('8-school'));
-console.log('PASS Week1 registry, all seven normal/skip policies, legitimate-pass advancement, identity schedules, Mina timing, Hills reachability and Day8 boundary');
+console.log('PASS Week1 registry, all seven normal/skip policies, legitimate-pass advancement, identity schedules, Medina timing, Hills reachability and Day8 boundary');
 // A future ordinary day, map and character register entirely as data; shipped cap remains seven.
 const fixture=JSON.parse(readFileSync('docs/rpg/day8-registration.example.json','utf8'));assert.equal(fixture.active,false);
 // Adapt historical example placements to the current village, preserving archived data.

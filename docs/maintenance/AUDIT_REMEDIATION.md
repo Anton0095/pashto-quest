@@ -1,5 +1,8 @@
 # Coordinated audit remediation
 
+> Historical cast wording is retained. See [the subsequent character expansion](../rpg/LIVING_VILLAGE.md) for Deena/Medina and the optional villagers; its validation is separate from this record.
+
+
 > **PR #23 implementation record.** Stages, test counts and benchmark figures below refer to the recorded releases and logs, not checks rerun for every later edit. “Stage 4 complete” means the planned implementation stage completed, not that all possible defects are closed. The concurrent-write issue documented at that checkpoint is addressed by the approved-language integration follow-up below. Current workflow and check selection are in [AGENTS](../../AGENTS.md) and the [validation policy](../../tests/README.md#choose-validation-by-change-and-risk).
 
 Starting remote main: `3d2896fa658be678fa0066635d4967821c0c6e43`. Branch: `review/audit-remediation`. Baseline full verification: exit 0, **76 checks**. No source edits preceded the completed baseline. [Original reproductions](audit/original-reproductions.txt).

@@ -4,9 +4,9 @@ import {directions,walkable} from './world-data';
 const key=(p:Point)=>p.x+','+p.y;
 const distance=(a:Point,b:Point)=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
 /** A* over the same grid and actor occupancy used by the Phaser stepper. */
-export function findPath(data:WorldData,start:Position,goals:Point[],actors:Actor[]=[],allowedMaps?:string[]):Point[]|null {
+export function findPath(data:WorldData,start:Position,goals:Point[],actors:Actor[]=[],allowedMaps?:string[],permit?:(p:Point)=>boolean):Point[]|null {
   const map=data.maps[start.map];
-  const permitted=(p:Point)=>walkable(data,start.map,p.x,p.y,actors)&&!map.transitions.some(t=>t.x===p.x&&t.y===p.y&&allowedMaps&&!allowedMaps.includes(t.to));
+  const permitted=(p:Point)=>(!permit||permit(p))&&walkable(data,start.map,p.x,p.y,actors)&&!map.transitions.some(t=>t.x===p.x&&t.y===p.y&&allowedMaps&&!allowedMaps.includes(t.to));
   const targets=goals.filter(permitted);if(!targets.length)return null;
   const heuristic=(p:Point)=>Math.min(...targets.map(g=>distance(p,g)));
   const open:Point[]=[start];const cost=new Map([[key(start),0]]),previous=new Map<string,Point>(),closed=new Set<string>();

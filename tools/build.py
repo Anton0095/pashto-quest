@@ -36,7 +36,7 @@ def validate_user_approval(record, authority, approved, fields):
         return
     if (not is_user_approved(record) or not approved
             or any(record['userApproval'].get(k) != v for k, v in
-                   dict(reviewer=authority['reviewer'], date=authority['recordedDate'],
+                   dict(reviewer=authority['reviewer'], date=approved.get('recordedDate',authority['recordedDate']),
                         reference='content/USER_LANGUAGE_APPROVALS.json').items())
             or any(record.get(k) != approved.get(v) for k, v in fields.items())):
         raise ValueError('User-approved content/evidence differs from authority: ' + str(record.get('lemmaId', record.get('id'))))
@@ -152,10 +152,14 @@ def build(check_rpg=False):
         for lesson in day['lessons']:
             for c in lesson['cards']:
                 authored[c['id']] = dict(ps=c['pashto'], en=c['english'], roman=c['romanization'])
+    reviewed=json.loads(read('content/REVIEWED_LANGUAGE_UPDATES.json'))['attestations']
     for a in library.get('generationAttestations', []):
-        w = authored.get(a['sourceId'])
-        if not w or (a['pashto'], a['english'], a['romanisation']) != (w['ps'], w['en'], w['roman']):
-            raise ValueError('Generation evidence differs from authored corpus: ' + a['sourceId'])
+        w=authored.get(a['sourceId'])
+        if a['sourceId'] in reviewed:
+            if a!=reviewed[a['sourceId']]:raise ValueError('Reviewed span differs from recorded draft: '+a['sourceId'])
+            continue
+        if not w or (a['pashto'],a['english'],a['romanisation'])!=(w['ps'],w['en'],w['roman']):
+            raise ValueError('Generation evidence differs from authored corpus: '+a['sourceId'])
     audio_sources = set(authored) | {q['id'] for d in archived2['days'] for q in d['dialogues']} | {w['id'] for d in archived2['days'] for w in d['vocabulary']}
     for e in library['entries']:
         for f in e['forms']:
@@ -210,10 +214,25 @@ def build(check_rpg=False):
     modules = [
         'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
         'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'character-portraits', 'construction-ui', 'answer-feedback', 'ui',
-        'narrative-ui', 'tutorial-ui', 'grammar-ui', 'lesson-ui', 'challenge-ui',
+        'narrative-ui', 'tutorial-ui', 'sov-demo', 'grammar-ui', 'lesson-ui', 'challenge-ui',
         'world-ui', 'library-ui',
     ]
-    datasets = {'RPG_ENABLED': True, 'RPG_WORLD_DATA': json.loads(read('content/RPG_WORLD.json')), 'LIBRARY_DATA': library,
+    names=json.loads(read('content/CHARACTER_NAMES.json'))
+    if names['approval']['status']!='user_approved' or names['approval']['nativeCertificationClaimed'] is not False or {r['characterId']:r['current']['pashto'] for r in names['characters']} != json.loads(read('content/USER_LANGUAGE_APPROVALS.json'))['characterNameUpdates']['suppliedSpellings']:
+        raise ValueError('Character name spelling requires exact owner approval')
+    people={n['characterId']:n['name'] for n in json.loads(read('content/RPG_WORLD.json'))['npcs']}
+    entries={e['lemmaId']:e for e in library['entries']}
+    for n in names['characters']:
+        e=entries[n['lemmaId']]
+        if (n['current']['english']!=people[n['characterId']]
+                or e['displayLemmaPs'] != n['current']['pashto']
+                or n['current']['english'] not in e['englishSenses']
+                or not n['current']['romanisation']
+                or n['romanisationStatus']!='editorial_pronunciation_aid_not_user_supplied_or_native_certified'
+                or any(not re.search(r'[\u0600-\u06ff]', value) for value in [n['current']['pashto']])):
+            raise ValueError('Invalid character identity/name presentation record')
+    names={**names,'characters':[{k:v for k,v in n.items() if k!='previous'} for n in names['characters']]}
+    datasets = {'CHARACTER_NAMES': names, 'RPG_ENABLED': True, 'RPG_WORLD_DATA': json.loads(read('content/RPG_WORLD.json')), 'LIBRARY_DATA': library,
                 'NARRATIVE_DATA': narrative, 'CHARACTER_PORTRAITS': json.loads(read('content/CHARACTER_PORTRAITS.json')), 'BUNDLED_AUDIO_IDS': audio_ids}
     portraits = datasets['CHARACTER_PORTRAITS']
     import base64
