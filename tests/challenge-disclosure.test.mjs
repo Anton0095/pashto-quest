@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import { setup, tutorial, answerCurrent } from "./browser-fixture.mjs";
 for (const width of [375, 1280]) {
-  const b = await setup({ width });
+  const b = await setup({ width, transform:h=>h.replace("const seed = seedSource();","const seed = 12345;") });
   try {
     const p = b.page;
     await tutorial(p);
-    await p.evaluate(() => __test.challenge.startChallenge(1));
+    await p.evaluate(() => {__test.state.progress.enableTypingChallenges=true;__test.challenge.startChallenge(1);});
     const qs = await p.evaluate(() => __test.state.session.questions);
     assert.equal(qs.length, 15);
     assert(
@@ -18,7 +18,7 @@ for (const width of [375, 1280]) {
       !(await p.evaluate(() => {
         const s = __test.state.session,
           q = s.questions[s.index];
-        return q.kind === "word" && q.unstudied && !q.recognition;
+        return q.kind === "word" && q.unstudied && q.answerFormat === "type" && q.direction === "ps-en";
       }))
     ) {
       await answerCurrent(p);

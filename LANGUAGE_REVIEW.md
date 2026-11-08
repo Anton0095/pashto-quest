@@ -85,3 +85,7 @@ Exact infinitive forms with unambiguous “To …” glosses now declare `accept
 The owner supplied `nun` for نن (“today”) in the implementation request. New lexical display and generated practice use it. Exact current-schema frozen assessments may retain the previously attested `nan` aid; the compiler validates the same complete proof and permits only that documented prior aid, without changing text, meaning, forms, grammar, answers or scores. Arbitrary pronunciation edits remain rejected. This is exact schema-8 snapshot preservation, not an old-schema migration.
 
 Grammar reference is now read-only Library material, not a source of assessed English rule/category answers. Approved lexical spelling/senses/transliteration remain unchanged. Terminology-heavy editorial glosses (for example person/gender labels) are not standalone assessment targets; evidenced forms can still participate in eligible generated language contexts. Journal reading itself grants no form study, lesson completion or generation unlocks.
+
+## Bilal narrative follow-up
+
+[Bilal's fixed narrative drafts and minimal fish-question fallback](docs/rpg/QUEST_IMPROVEMENTS.md#bilals-language-review) are explicitly separate from instructional generation and the owner-approved phrase inventory. They carry no invented native verification. Generated player replies still require actual licensed forms/grammar; the context-only bare-lemma fallback introduces no form unlock, assessment answer, mastery or XP. Audio uses the existing candid recording/device-voice fallback.

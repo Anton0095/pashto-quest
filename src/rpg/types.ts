@@ -6,12 +6,12 @@ export interface Point {x:number; y:number}
 export interface Position extends Point {map:string; facing:Direction}
 export interface Transition extends Point {to:string; spawn:Point}
 export interface WorldMap {scenery?:Array<Point&{kind:string;w?:number;h?:number}>;reservedExits?:Array<Point&{id:string;direction:'north'|'east'|'south'|'west';status:'reserved';approach:Point}>;furniture?:Array<Point&{kind:string;w:number;h:number}>;name:string; tiles:string[]; collision?:string[]; spawn:Point; transitions:Transition[]; regions:Array<Point & {id:string;name:string;w:number;h:number}>; buildings:Array<Point & {w:number;h:number;label:string;color:string;style?:string}>}
-export type Action = {label:string;condition?:string} & ({type:'flag';flag:string}|{type:'tutorial'|'reference'|'completion'|'sleep'|'dream'}|{type:'lesson';lessonId:string;resumeEvent?:string}|{type:'challenge';day:number;route?:'normal'|'skip'}|{type:'event';event:string}|{type:'explore'}|{type:'scene';position:Position});
-export interface StoryEvent {characterId?:string;expression?:string;listener?:string;trigger?:'interaction'|'map';speaker:string;lines:string[];messages?:Array<{characterId?:string;expression?:string;speaker:string;listener?:string;text:string;condition?:string}>;condition?:string;once?:boolean;setFlags?:string[];actions:Action[]}
+export type Action = {label:string;condition?:string} & ({type:'bilal-response';roman:string;card:Card}|{type:'flag';flag:string}|{type:'skip-tutorial'|'tutorial'|'reference'|'completion'|'sleep'|'dream'}|{type:'lesson';lessonId:string;resumeEvent?:string}|{type:'challenge';day:number;route?:'normal'|'skip'}|{type:'event';event:string}|{type:'explore'}|{type:'scene';position:Position});
+export interface StoryEvent {pashto?:{ps:string;roman:string;audioId:string};characterId?:string;expression?:string;listener?:string;trigger?:'interaction'|'map';speaker:string;lines:string[];messages?:Array<{characterId?:string;expression?:string;speaker:string;listener?:string;text:string;condition?:string}>;condition?:string;once?:boolean;setFlags?:string[];actions:Action[]}
 export interface Schedule extends Point {condition?:string;day:number;map:string;event?:string}
 export interface Activity {zone:Point&{w:number;h:number};stops:Point[];stepMs:number;idleMs:number}
 export interface ActivityState extends Position {stop:number;wait:number;turn:number}
-export interface NPC {activity?:Activity;defaultLocation?:Omit<Schedule,'day'>;characterId:string;interactionRange?:number;animations?:Partial<Record<Direction,string>>;id:string;name:string;sprite:string;condition?:string;event:string;schedule:Schedule[]}
+export interface NPC {gender?:'female'|'male';description?:string;activity?:Activity;defaultLocation?:Omit<Schedule,'day'>;characterId:string;interactionRange?:number;animations?:Partial<Record<Direction,string>>;id:string;name:string;sprite:string;condition?:string;event:string;schedule:Schedule[]}
 export interface WorldObject extends Point {interactionBounds?:Point&{w:number;h:number};id:string;name:string;map:string;event:string;condition?:string}
 export type Actor = WorldObject & {activity?:Activity;characterId?:string;interactionRange?:number;animations?:Partial<Record<Direction,string>>;sprite?:string;schedule?:Schedule[];facing?:Direction};
 export type ChapterRoute='normal'|'skip';
@@ -31,17 +31,17 @@ export type Session = LessonSession | ChallengeSession;
 export interface Progress {xp:number;tutorialDone:boolean;playerProfile:{name:string;gender:string};complete:Record<string,boolean>;challenges:Record<string,{best:number;passed:boolean;attempts:number}>;activeChallenge?:{loop:number};library:{attemptSequence:number;acquired:Record<string,unknown>;[key:string]:unknown};[key:string]:unknown}
 export interface State {day:number;progress:Progress;session:Session|null;reviewCampaign?:Progress;rpg?:{startWorld():void;navigatePlace():void;reset():void}}
 export interface Card {id:string;ps:string;en:string;[key:string]:unknown}
-export interface Content {zoneKeys:string[];libraryEntries:Record<string,{countsTowardDailyQuota:boolean}>;wordById:Record<string,Card>;tutorialCards:Array<{id:string;kind:string}>}
+export interface Content {LIBRARY_DATA:{phrases:Array<{id:string;day:number}>};zoneKeys:string[];libraryEntries:Record<string,{countsTowardDailyQuota:boolean}>;wordById:Record<string,Card>;tutorialCards:Array<{id:string;kind:string}>}
 export interface UI {
   $(id:string):HTMLElement;
   node<K extends keyof HTMLElementTagNameMap>(tag:K,text?:string,cls?:string):HTMLElementTagNameMap[K];
   button(text:string,fn:(event:MouseEvent)=>void):HTMLButtonElement;
   hud():void;view(name:string):void;portrait(identity:string,expression?:string):HTMLElement;usePhaserPortraits(enabled?:boolean):void;portraitReady(key:string,source:string):void;
 }
-export interface Learning {allowed(day:number):boolean;placeAccessible(day:number,place:string):boolean}
-export interface Progression {passedChallenge(progress:Progress,day:number):boolean;characterStatus(progress:Progress):{xp:number;level:number;title:string};getChallengeSpec(day:number):{passCount:number;questionCount:number}}
+export interface Learning {availableSentences(day:number):Card[];allowed(day:number):boolean;placeAccessible(day:number,place:string):boolean}
+export interface Progression {completeOnboarding(progress:Progress):boolean;passedChallenge(progress:Progress,day:number):boolean;characterStatus(progress:Progress):{xp:number;level:number;title:string};getChallengeSpec(day:number):{passCount:number;questionCount:number}}
 export interface EducationStorage {save():boolean|Promise<boolean>;settled():Promise<boolean>;snapshot():string;readonly problem:string|null;readonly persistenceProblem:string|null}
-export interface EducationServices {state:State;content:Content;progression:Progression;learning:Learning;ui:UI;audio:{stopAudio():void};storage:EducationStorage;world:{startWorld():void};lessons:{begin(id:string):void;resume(snapshot:LessonSession):void};challenge:{startChallenge(day:number,...args:unknown[]):void;resumeChallenge():boolean};library:{openLibrary():void}}
+export interface EducationServices {state:State;content:Content;progression:Progression;learning:Learning;ui:UI;audio:{stopAudio():void;speak(id:string,options?:{track:boolean}):void};storage:EducationStorage;world:{startWorld():void};lessons:{begin(id:string):void;resume(snapshot:LessonSession):void};challenge:{startChallenge(day:number,...args:unknown[]):void;resumeChallenge():boolean};library:{openLibrary():void}}
 export interface DialogueCursor {event:string;index:number}
 export interface WorldSave {activities?:Record<string,ActivityState>;sleepIntent?:{from:number;to:number};routes?:Record<string,ChapterRoute>;chapter?:string;dialogue?:DialogueCursor;schemaVersion:1;position:Position;appearance:Appearance;flags:Record<string,boolean>;npcFlags:Record<string,boolean>;triggers:Record<string,boolean>;view:'world'|'lesson'|'complete';lesson:unknown;educationFingerprint:string|null}
 export interface QuestionService {buildTiles(card:Card|undefined,question:Question|undefined,day:number):Array<{index:number;word:string}>}

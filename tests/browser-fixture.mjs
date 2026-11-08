@@ -92,6 +92,8 @@ export async function answerCurrent(page) {
       w = t.content.wordById[q.id];
     return {
       kind: q.kind,
+      answerFormat:q.answerFormat,
+      mode:s.mode,
       unstudied: q.unstudied,
       recognition: q.recognition,
       answer:
@@ -100,9 +102,9 @@ export async function answerCurrent(page) {
         (q.kind === "construct" ? w.ps : q.direction === "en-ps" ? w.ps : w.en),
     };
   });
-  if (q.unstudied && !q.recognition) {
-    await page.locator("#unseenRecall").fill(displayCharacterText(q.answer));
-    await page.getByRole("button", {name:"Submit meaning",exact:true}).click();
+  if (q.answerFormat === "type" || (!q.answerFormat && q.unstudied && !q.recognition)) {
+    await page.locator(q.mode === "challenge" ? "#unseenRecall" : "#lessonRecall").fill(displayCharacterText(q.answer));
+    await page.getByRole("button", {name:/^Submit (meaning|answer)$/,exact:true}).click();
   } else if (["construct", "dialogue"].includes(q.kind)) {
     for (const token of q.answer
       .replace(/[.!؟،]/g, "")

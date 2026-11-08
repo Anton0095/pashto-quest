@@ -72,9 +72,10 @@ function createLessons({
             ? "greeting"
             : "lexical",
       cardIndex: 0,
-      queue: pool.map((id) => ({
+      queue: pool.map((id,i) => ({
         id,
         retries: 0,
+        answerFormat: mode !== "tutorial" && state.progress.enableTypingChallenges === true && content.wordById[id].type !== "sentence" && i % 3 === 2 ? "type" : "select",
         kind: content.wordById[id].type === "sentence" ? "construct" : "word",
       })),
       answered: 0,
@@ -271,6 +272,7 @@ function createLessons({
     }
     s.locked = false;
     s.built = [];
+    s.recallDraft = "";
     const size = QuestionEngine.buildTiles(
       content.wordById[s.activeItem.id],
       s.activeItem,
@@ -314,7 +316,14 @@ function createLessons({
     ui.$("choices").replaceChildren();
     ui.$("constructionPanel").classList.toggle("hidden", !build);
     if (build) renderBuild();
-    else
+    else if(s.activeItem.answerFormat === "type") {
+      ui.$("quizType").textContent="TYPE THE CORRECT ANSWER";
+      ui.$("quizPrompt").textContent="Type the English meaning.";
+      const form=document.createElement("form"),input=document.createElement("input"),submit=ui.button("Submit answer",()=>{});
+      input.id="lessonRecall";input.className="recall-input";input.maxLength=160;input.autocomplete="off";input.setAttribute("aria-label","English meaning");input.value=s.recallDraft||"";
+      input.addEventListener("input",()=>{s.recallDraft=input.value;storage.save();});
+      submit.type="submit";form.addEventListener("submit",e=>{e.preventDefault();answer(input.value);});form.append(input,submit);ui.$("choices").append(form);
+    } else
       for (const choice of (s.choices = restore && s.choices ? s.choices : questions.distractors(w))) {
         const b = ui.button(ui.englishChoice(choice), () => answer(choice));
         b.className = "choice";
@@ -324,7 +333,7 @@ function createLessons({
     ui.$("quizFeedback").textContent = "Submit your answer to continue.";
     ui.$("quizNext").disabled = true;
     if (restore && s.locked) {
-      for (const b of ui.$("choices").children) b.disabled=true;
+      for (const b of ui.$("choices").querySelectorAll("button,input")) b.disabled=true;
       if (build) {renderBuild();ui.construction.feedback(ui.$("quizFeedback"),w,s.activeItem,QuestionEngine.evaluate(s.activeItem,w,s.submittedAnswer || ""));}
       else {ui.showAnswerFeedback(ui.$("choices"),w.en,s.submittedAnswer);ui.renderAnswerFeedback(ui.$("quizFeedback"),w,s.activeItem,QuestionEngine.evaluate(s.activeItem,w,s.submittedAnswer));}
       ui.$("quizNext").disabled=false;
@@ -336,6 +345,7 @@ function createLessons({
     if (!result) return;
     state.session.submittedAnswer=value;
     const { w, correct } = result;
+    for(const control of ui.$("choices").querySelectorAll("input,button"))control.disabled=true;
     learning.surface(w.id, "lesson-feedback");
     storage.save();
     ui.hud();

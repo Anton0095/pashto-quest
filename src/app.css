@@ -1545,3 +1545,7 @@ body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryBody > article
 .sov-demo[data-complete=true] .build-actions,
 .sov-demo[data-complete=true] .construction-practice>h4,
 .sov-demo[data-complete=true] .construction-practice>p { display:none; }
+
+.rpg-dialogue-roman {direction:ltr; font-size:1rem; color:var(--muted);}
+.rpg-response-roman {display:block; direction:ltr; font: .85rem/1.5 system-ui; margin-top:.35rem;}
+#rpgDialogue .buttons:has(.pashto-option) {display:grid;grid-template-columns:1fr;}

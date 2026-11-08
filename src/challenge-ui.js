@@ -180,21 +180,17 @@ function createChallengeUI({
         ? "Welcome back to the Library. Your home award is already recorded."
         : "Muhammad Jan → Player: Welcome to the Library. Twelve correct answers and I will give you the key to your home. You can take this challenge without any teaching visits.";
     }
-    const categories = {
-      word: "vocabulary/phrases",
-      construct: "construction",
-      dialogue: "construction",
-      sentence: "translation",
-    };
+    const categoryLabels={select:"Select the correct answer",build:"Build a sentence",type:"Type the correct answer"};
     const counts = items.reduce((out, question) => {
-      out[question.kind] = (out[question.kind] || 0) + 1;
+      const category=question.answerFormat || (["construct","dialogue"].includes(question.kind)?"build":question.unstudied&&!question.recognition?"type":"select");
+      out[category] = (out[category] || 0) + 1;
       return out;
     }, {});
     ui.$("lessonDescription").textContent =
       `${items.length} turns · ${spec.passCount}/${items.length} to pass · ${Object.entries(
         counts,
       )
-        .map(([kind, count]) => `${count} ${categories[kind]}`)
+        .map(([kind, count]) => `${count} ${categoryLabels[kind]}`)
         .join(" · ")}`;
     const plan = state.progress.library.plans[day];
     if (Object.values(plan.locationAssignments).some(ids => ids.length))
@@ -286,6 +282,7 @@ function createChallengeUI({
       q.kind === "word"
           ? "🧠 WORD RECALL"
           : "📖 SENTENCE RECALL";
+    if(q.answerFormat === "select")ui.$("quizType").textContent="SELECT THE CORRECT ANSWER";
     const reverse = q.direction === "en-ps";
     ui.$("quizPashto").textContent = reverse ? w.en : w.ps;
     ui.$("quizPashto").setAttribute("dir", reverse ? "ltr" : "rtl");
@@ -305,14 +302,16 @@ function createChallengeUI({
     ui.$("quizPanel").querySelector(".quizword h3").textContent = reverse
         ? "Choose the correct Pashto"
         : "Choose the correct English meaning";
-    if (q.kind === "word" && q.unstudied && !q.recognition) {
-      ui.$("quizPrompt").textContent = "Not previously studied. Type the English meaning if you already know it, or reveal it after submitting. Your first answer counts.";
-      ui.$("quizPanel").querySelector(".quizword h3").textContent = "Recall without a translation clue";
+    if (q.answerFormat === "type" || (!q.answerFormat && q.kind === "word" && q.unstudied && !q.recognition)) {
+      ui.$("quizType").textContent="TYPE THE CORRECT ANSWER";
+      ui.$("quizPrompt").textContent = reverse ? "Type this meaning in Pashto. Your first answer counts." : "Type the English meaning. Your first answer counts.";
+      ui.$("quizPanel").querySelector(".quizword h3").textContent = "Type the correct answer";
       const form = document.createElement("form");
       const input = document.createElement("input");
       input.id = "unseenRecall";
       input.className = "recall-input";
-      input.setAttribute("aria-label", "English meaning from memory");
+      input.setAttribute("aria-label", reverse ? "Pashto answer" : "English meaning from memory");
+      input.lang=reverse?"ps":"en";input.dir=reverse?"rtl":"ltr";
       input.autocomplete = "off";
       input.maxLength = 160;
       input.value = state.session.recallDraft || "";
@@ -323,7 +322,7 @@ function createChallengeUI({
       const submit = document.createElement("button");
       submit.type = "submit";
       submit.className = "speaker";
-      submit.textContent = "Submit meaning";
+      submit.textContent = q.answerFormat ? "Submit answer" : "Submit meaning";
       const reveal = document.createElement("button");
       reveal.type = "button";
       reveal.className = "speaker";

@@ -13,3 +13,5 @@ export {findPath,canInteract,approachTiles,createMovementController} from './mov
 export {dailySpawn,dailyGuidance} from './daily-flow';
 
 export {createActivities} from './activities';
+
+export {bilalResponses,bilalEventId} from './bilal';

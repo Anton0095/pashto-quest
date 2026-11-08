@@ -153,24 +153,18 @@
     },
     "nayab": {
       "name": "Nayab",
-      "appearance": "Village child, short dark hair, rust tunic and green vest",
+      "appearance": "Young Afghan girl with dark braids and green ribbons, rust embroidered tunic and green vest",
       "expressions": {
         "neutral": "assets/portraits/nayab.webp"
       },
       "source": {
-        "path": "public/assets/portraits/generated/village-cast.png",
-        "origin": "OpenAI image generation for this character expansion; not a screenshot crop",
-        "sourceSha256": "ba72fb4b270d7b9adbde0872dc4cb358038b8ed79e739ea8e854d3ba0a347e46",
-        "crop": [
-          1334,
-          4,
-          436,
-          439
-        ],
-        "preparation": "Cell crop, nearest-neighbour fit and transparent padding to 480x560, binary alpha threshold 50% for crisp pixel edges; lossless WebP"
+        "path": "public/assets/portraits/generated/nayab-girl.png",
+        "origin": "OpenAI image generation edit of prior Nayab portrait for the requested girl design; no screenshot-crop claim",
+        "sourceSha256": "91c057453d95d1522ac9a195268524fe349f0fb82c70739c99ebb6a787e455bf",
+        "preparation": "Nearest-neighbour fit, transparent 480x560 padding, binary alpha and transparent RGB zeroed; lossless WebP"
       },
-      "pixelSha256": "afbf8af6c1b56ae45ff5575b1fd19f8c28aaaaffc2c54ee7249968d5b6cd228a",
-      "fileSha256": "a76ad68e0924beee88125386e3d4d94bbf268ed5a629dafd014c1ea716d57167"
+      "pixelSha256": "811a59c33cb478bb8067d23d77fdc6ad9a1debf9a319d303f58fec3fc92349ab",
+      "fileSha256": "9f6fd6c4991b88598e66e910037c8a225a01dae10162559a13baab75b809a18c"
     },
     "sara": {
       "name": "Sara",

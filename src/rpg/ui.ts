@@ -1,4 +1,5 @@
 import type {EducationServices,RPGDependencies,Direction,Action,WorldSave,Actor} from './types';
+import {bilalResponses,bilalEventId,withBilalResponses} from './bilal';
 import {RPGWorldData} from './world-data';
 import {createRPGRegistry,createRPGDialogue} from './content';
 import {createRPGProgression} from './progression';
@@ -102,7 +103,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   const visits=ui.node('div',undefined,'rpg-visits');visits.id='rpgVisits';exploration.append(visits);
   const notice=ui.node('p','','tiny');notice.id='rpgSaveNotice';notice.setAttribute('role','status');exploration.append(notice);
   const dialogueDialog=document.createElement('dialog');dialogueDialog.id='rpgDialogue';dialogueDialog.className='rpg-dialogue';document.body.append(dialogueDialog);
-  const dialogue=createRPGDialogue({dialog:dialogueDialog,ui,onAction:act,onIndex:index=>story.index(index),eligible,onClose:()=>{story.close();held=null;dirty=true;canvas.focus();scheduleSave();}});
+  const dialogue=createRPGDialogue({dialog:dialogueDialog,ui,onAction:act,onSpeak:line=>{if(!content.wordById[line.audioId])content.wordById[line.audioId]={id:line.audioId,ps:line.ps,roman:line.roman,en:''};audio.speak(line.audioId,{track:false});},onIndex:index=>story.index(index),eligible,onClose:()=>{audio.stopAudio();story.close();held=null;dirty=true;canvas.focus();scheduleSave();}});
   const menu=document.createElement('dialog');menu.id='rpgMenu';menu.className='rpg-dialogue';menu.setAttribute('aria-label','Village menu');
   menu.append(ui.node('h2','Your journey'),ui.node('p','Explore at your own pace. Challenge access follows the current chapter and educational prerequisites.'));
   const appearance=ui.node('fieldset'),legend=ui.node('legend','Character appearance');appearance.append(legend);
@@ -245,15 +246,19 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   }
   function interact(){if(!active())return;held=null;const target=nearby();if(!target)return;
     if(target.schedule){target.facing=({up:'down',down:'up',left:'right',right:'left'} as const)[save.position.facing];facings.set(target.id,target.facing);save.npcFlags[target.characterId??target.id]=true;}
-    const eventId=interactionEvent(target);
+    const eventId=target.characterId==='bilal'?bilalEventId(current()):interactionEvent(target);
     if(eventId===chapter().openingEvent)chapters.opening(false);
     const resolved=story.open(eventId);
     const original=resolved?{...resolved,actions:resolved.actions.map(a=>a.type==='lesson'&&state.progress.complete[a.lessonId]?{...a,label:'Review · '+a.label}:a)}:undefined;
     const guidance=target.characterId==='muhammad-jan'&&state.progress.tutorialDone?dailyGuidance(chapter(),state.progress,progression,guidanceTargets(),challengeTarget()):null;
     const event=original?(guidance?{...original,lines:[...original.lines,guidance],messages:original.messages?[...original.messages,{speaker:target.name,characterId:target.characterId,text:guidance}]:undefined}:original):guidance?{speaker:target.name,characterId:target.characterId,lines:[guidance],actions:[]}:null;
     if(!event)return;
-    if(!state.progress.tutorialDone && eventId!==chapter().openingEvent&&!event.actions.some(a=>a.type==='tutorial'||a.type==='reference'))dialogue.open({speaker:target.name,lines:['Muhammad Jan is waiting at the Library. Complete your first hello with him, then we can study together.'],actions:[]});
-    else dialogue.open(event,story.cursor?.index);
+    if(target.characterId!=='bilal' && !state.progress.tutorialDone && eventId!==chapter().openingEvent&&!event.actions.some(a=>a.type==='tutorial'||a.type==='reference'))dialogue.open({speaker:target.name,lines:['Muhammad Jan is waiting at the Library. Complete your first hello with him, then we can study together.'],actions:[]});
+    else if(target.characterId==='bilal') {
+      const phrases=content.LIBRARY_DATA.phrases.filter(p=>p.day<=current()&&['g-hello','g-how','g-thanks','g-bye'].includes(p.id)).map(p=>content.wordById[p.id]);
+      const responses=bilalResponses(learning.availableSentences(current()),phrases,content.wordById['library-card:lemma:n-fish'],current(),Math.random);
+      dialogue.open(withBilalResponses(event,responses),story.cursor?.index);
+    } else dialogue.open(event,story.cursor?.index);
     dirty=true;
   }
   function act(action:Action){
@@ -261,6 +266,9 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(action.type==='lesson'){beginLesson(action.lessonId,eventId,action);return;}
     if(action.type==='tutorial'){beginLesson('tutorial',eventId,action);return;}
     if(!story.choose(action))return;
+    if(eventId==='onboarding-introduction'){state.progress.onboardingIntroductionPending=false;void storage.save();}
+    if(action.type==='bilal-response'){content.wordById[action.card.id]=action.card;audio.speak(action.card.id,{track:false});return;}
+    if(action.type==='skip-tutorial'){progression.completeOnboarding(state.progress);void storage.save();startWorld();return;}
     if(eventId===chapter().routes?.skip.event&&conditions.passed())routes.select('skip');
     if(action.type==='sleep')void sleep();
     if(action.type==='dream')void openDreamMenu();
@@ -372,6 +380,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     ui.$('rpgCompletionExtra')?.remove();ui.$('resultReplay').classList.remove('hidden');
     document.querySelector<HTMLElement>('.brand')!.textContent='✦ PASHTO QUEST · '+chapter().name;
     ui.hud();ui.view('worldScreen');canvas.focus();engine?.sync();draw();refreshAccess();
+    if(state.progress.onboardingIntroductionPending)openEvent('onboarding-introduction');
 
   }
   // Existing bound navigation callbacks delegate here as well.

@@ -1,12 +1,12 @@
 # Measured instructional sentence delivery
 
-**4436 / 4436 independently observed sentence surfaces were generated: 100%.** Zero authored curricular sentence surfaces were delivered. The two separately approved onboarding questions are outside this curricular denominator. The 18 designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.
+**4375 / 4375 independently observed sentence surfaces were generated: 100%.** Zero authored curricular sentence surfaces were delivered. The two separately approved onboarding questions are outside this curricular denominator. The 18 designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.
 
 Actual rendered browser surfaces across ten complete profiles; compiler provenance and actual form/grammar unlocks checked independently at each sentence surface.
 
 Test-only educational navigation harness: fourteen-day shared-engine regression matrix. The default release is a Days 1–7 RPG, verified separately by the public normal/skip routes in rpg-week1-browser.test.mjs and movement/interface checks at 375/1280px.
 
-Release SHA-256: `29a833be712e07e721aaec7b66d0e2637d4138b12e6da22a311aaf9d902d9674`. The complete browser matrix covered 280 normal district visits and 140 assessments, all fourteen days, five paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
+Release SHA-256: `0d80b73792fcf3538c3e9afdd898ae32d1fbe49efb5bcd2a30d2d32debe82727`. The complete browser matrix covered 280 normal district visits and 140 assessments, all fourteen days, five paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
 
 ## Day 1 Home: before and after
 
@@ -36,35 +36,35 @@ Default Home needs no other district visit and introduces no action verb. The wi
 
 | Day | Generated question/answer families | Dialogue families | Adapted tasks |
 |---|---|---|---:|
-| 1 | equative_descriptor | guided_scene | 0 |
-| 2 | present_attributive, present_transitive | guided_scene | 0 |
-| 3 | present_attributive, present_intransitive, present_transitive | guided_scene | 0 |
-| 4 | coordinated_present, present_attributive, present_transitive | guided_scene | 0 |
-| 5 | present_attributive, present_transitive | guided_scene | 0 |
-| 6 | present_attributive, present_compound_predicate, present_joint_action | guided_scene | 0 |
-| 7 | coordinated_present, present_attributive, present_compound_transitive, present_transitive | guided_scene | 0 |
-| 8 | attributive_equative, demonstrative_descriptor, demonstrative_transitive, equative_noun, present_attributive | guided_scene | 0 |
-| 9 | counted_equative, counted_transitive, present_transitive | guided_scene | 0 |
-| 10 | counted_transitive, demonstrative_transitive, location_adverb_equative, spatial_equative, where_question | guided_scene, where_question | 0 |
-| 11 | location_adverb_equative, possessive_descriptor, possessive_equative, possessive_spatial, present_attributive, present_transitive | guided_scene, where_question | 0 |
-| 12 | demonstrative_descriptor, how_many_question, possessive_equative, present_transitive, what_object_question, where_question, which_question, who_subject_question, whose_question | which_question, who_subject_question, whose_question | 0 |
-| 13 | demonstrative_descriptor, location_adverb_equative, present_intransitive_adverb, present_transitive, present_transitive_adverb | guided_scene, where_question, which_question | 0 |
-| 14 | count_location, counted_transitive, demonstrative_descriptor, demonstrative_transitive, equative_noun, how_many_question, location_adverb_equative, possessive_equative, possessive_spatial, present_attributive, present_compound_predicate, present_intransitive, present_joint_action, present_transitive, spatial_equative, what_object_question, whose_question | guided_scene, how_many_question, what_object_question, where_question, which_question, who_subject_question, whose_question | 0 |
+| 1 | equative_descriptor | None | 0 |
+| 2 | present_attributive, present_transitive | None | 0 |
+| 3 | present_attributive, present_intransitive, present_transitive | None | 0 |
+| 4 | coordinated_present, present_attributive, present_transitive | None | 0 |
+| 5 | present_attributive, present_transitive | None | 0 |
+| 6 | present_attributive, present_compound_predicate | None | 0 |
+| 7 | coordinated_present, present_compound_transitive, present_transitive | None | 0 |
+| 8 | attributive_equative, demonstrative_descriptor, demonstrative_transitive, equative_noun, present_attributive | None | 0 |
+| 9 | counted_equative, counted_transitive, present_attributive | None | 0 |
+| 10 | demonstrative_transitive, location_adverb_equative, spatial_equative, where_question | None | 0 |
+| 11 | possessive_descriptor, possessive_equative, possessive_spatial | None | 0 |
+| 12 | count_location, demonstrative_descriptor, how_many_question, location_adverb_equative, possessive_equative, where_question, which_question, who_subject_question, whose_question | None | 0 |
+| 13 | demonstrative_descriptor, location_adverb_equative, present_intransitive_adverb, present_transitive_adverb | None | 0 |
+| 14 | count_location, counted_equative, demonstrative_descriptor, demonstrative_transitive, how_many_question, location_adverb_equative, possessive_descriptor, possessive_equative, possessive_spatial, present_compound_predicate, present_compound_transitive, present_intransitive, present_transitive, what_object_question, where_question, which_question | None | 0 |
 
 ## All tested profiles
 
 | District pace | Route | Observed sentence surfaces | Generated |
 |---:|---|---:|---:|
-| 8 | Normal | 506 | 100% |
-| 8 | Skip | 330 | 100% |
-| 12 | Normal | 542 | 100% |
-| 12 | Skip | 344 | 100% |
-| 16 | Normal | 558 | 100% |
-| 16 | Skip | 352 | 100% |
-| 20 | Normal | 552 | 100% |
-| 20 | Skip | 352 | 100% |
-| 24 | Normal | 548 | 100% |
-| 24 | Skip | 352 | 100% |
+| 8 | Normal | 442 | 100% |
+| 8 | Skip | 341 | 100% |
+| 12 | Normal | 523 | 100% |
+| 12 | Skip | 331 | 100% |
+| 16 | Normal | 517 | 100% |
+| 16 | Skip | 376 | 100% |
+| 20 | Normal | 541 | 100% |
+| 20 | Skip | 406 | 100% |
+| 24 | Normal | 547 | 100% |
+| 24 | Skip | 351 | 100% |
 
 ## Fixed expression inventory
 

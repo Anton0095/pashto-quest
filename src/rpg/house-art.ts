@@ -30,6 +30,21 @@ export function drawInteriorArt(scene:Phaser.Scene,definition:WorldMap,house=fal
     if(medallion){diamond(x+w/2,y+h/2,Math.min(w,h)/3|0,0x613b36);diamond(x+w/2,y+h/2,Math.min(w,h)/4|0,0xd3a15f);diamond(x+w/2,y+h/2,Math.min(w,h)/7|0,0xa85b40);}
   };
   const width=definition.tiles[0].length*16,height=definition.tiles.length*16;
+  if(!house){
+    rect(0xc9a371,8,16,width-16,height-24);
+    for(let yy=47;yy<height-16;yy+=8)for(let xx=14;xx<width-12;xx+=11)
+      if((xx*7+yy*3)%13<3)rect(0xb99261,xx,yy,2,1);
+    rect(0xa37b51,8,13,width-16,34);rect(0xc6a073,12,20,width-24,24);
+    rect(0xe2c38e,12,43,width-24,3);
+    rect(0x65462e,0,0,width,7);rect(0x8e653f,0,7,width,7);
+    for(const xx of [0,width-9]){rect(0x805a3c,xx,10,9,height-10);rect(0xd8b47e,xx+3,17,3,height-30);}
+    const door=definition.transitions[0].x*16;
+    for(const [xx,ww] of [[0,door],[door+32,width-door-32]]){rect(0x88613f,xx,height-16,ww,16);rect(0xd3ae79,xx,height-16,ww,5);}
+    rect(0x65462e,door-2,height-18,3,18);rect(0x65462e,door+31,height-18,3,18);
+    rect(0xe4c18b,door,height-4,32,4);
+    // Pixel-stepped sunlight below the central timber-lattice window.
+    rect(0xdac08c,96,34,32,13);rect(0xd6b682,91,47,42,9);
+  }
   if(house){
     // Warm plaster, recessed rear wall and a heavy timber ceiling beam.
     rect(0xc29c69,8,16,width-16,height-24);
@@ -88,7 +103,7 @@ export function drawInteriorArt(scene:Phaser.Scene,definition:WorldMap,house=fal
         shadow(x,y,w,h);rect(0x62462e,x,y,w,h);rect(0x463e2b,x+5,y+9,w-10,h-15);
         rect(0x9b703e,x-2,y,w+4,7);rect(0xc29252,x,y+1,w,2);
         const colors=[0xb78c48,0x63846c,0x9c553d,0xc6aa69,0x4b7375,0x8b4f3b];
-        for(let shelf=0;shelf<3;shelf++){
+        for(let shelf=0;shelf<(h>=64?3:h>=44?2:1);shelf++){
           const base=y+27+shelf*22;let xx=x+7;
           for(let book=0;book<6;book++){
             const bw=5+(book+shelf)%3,bh=13+(book*3+shelf)%6;
@@ -104,8 +119,11 @@ export function drawInteriorArt(scene:Phaser.Scene,definition:WorldMap,house=fal
       case 'window':
         rect(0x815a36,x-3,y-2,w+6,h+5);rect(0xb88a51,x-1,y,w+2,h+1);
         rect(0x326568,x+3,y+3,w-6,h-6);rect(0x448486,x+5,y+4,w-10,h-8);
-        rect(0x518f8c,x+6,y+5,w-12,3);rect(0xd0ab70,x-2,y+h, w+4,3);
+        rect(0x518f8c,x+6,y+5,w-12,3);
+        for(let xx=x+8;xx<x+w-5;xx+=7)rect(0xa77b48,xx,y+3,2,h-6);
+        rect(0xc9a16c,x+3,y+h/2,w-6,2);rect(0xd0ab70,x-2,y+h, w+4,3);
         break;
+      case 'reading-table':
       case 'table': {
         rect(0xa17b52,x+7,y+h-7,w-8,8);
         for(const xx of [x+9,x+w-15]){rect(0x67472e,xx,y+15,6,h-11);rect(0x916037,xx+1,y+17,2,h-14);}
@@ -113,6 +131,12 @@ export function drawInteriorArt(scene:Phaser.Scene,definition:WorldMap,house=fal
         for(const [offset,inset,band] of [[0,14,2],[2,7,3],[5,3,4],[9,0,6],[15,3,4],[19,8,3],[22,15,3]])
           rect(offset<15?0xb57c42:0x88542e,x+inset,y+offset,w-inset*2,band);
         rect(0xc58e4d,x+15,y+2,w-30,2);rect(0xa66d39,x+8,y+15,w-16,2);
+        if(f.kind==='reading-table'){
+          rect(0x765032,x+6,y+6,w-12,10);rect(0xead6a6,x+7,y+4,w-14,10);
+          rect(0xbba375,x+w/2,y+4,1,10);
+          for(let yy=y+6;yy<y+12;yy+=3){rect(0x86704c,x+9,yy,4,1);rect(0x86704c,x+w/2+3,yy,4,1);}
+          rect(0xb38b52,x+4,y+17,w-8,3);rect(0xead6a6,x+6,y+16,w-12,2);break;
+        }
         // Jug, handle, neck and a separate tea cup.
         const jx=x+w/2-9;
         rect(0x425d58,jx-2,y-12,15,24);rect(0x74958a,jx,y-13,10,22);
@@ -161,5 +185,6 @@ export function drawInteriorArt(scene:Phaser.Scene,definition:WorldMap,house=fal
         break;
     }
   }
+  if(!house)scene.add.text((definition.transitions[0].x+1)*16,height-20,'EXIT',{fontFamily:'monospace',fontSize:'7px',color:'#fff0c9',backgroundColor:'#654a35'}).setOrigin(.5,1).setDepth(2);
   if(house)scene.add.text(12*16+8,height-22,'EXIT',{fontFamily:'monospace',fontSize:'7px',color:'#fff0c9',backgroundColor:'#654a35'}).setOrigin(.5,1).setDepth(2);
 }

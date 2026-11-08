@@ -200,16 +200,17 @@ try {
               if (["construct","dialogue"].includes(q.kind) && document.querySelector("#quizPashto").textContent !== t.names.text(q.answerEnglish || card.en))
                 throw Error("Construction must display the direct English target");
               if (q.kind === "word") {
+                const answerField=q.direction === "en-ps" ? "ps" : "en";
                 const studied = new Set(Object.values(t.content.wordById).filter((c) => {
                   const refs = t.content.LIBRARY_DATA.sourceMappings[c.id] || [];
                   return t.state.progress.library.phrases[c.id] || (refs.length && refs.every((r) =>
                     t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId)));
-                }).map((c) => c.en));
+                }).map((c) => c[answerField]));
                 const backup = new Set(t.content.LIBRARY_DATA.entries
                   .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
-                  .map(e => e.englishSenses[0]));
+                  .map(e => t.content.wordById["library-card:"+e.lemmaId][answerField]));
                 for (const text of q.choiceOrder)
-                  if (!studied.has(text) && !backup.has(text) && !(card.type==='greeting'&&t.content.LIBRARY_DATA.phrases.some(p=>p.english===text)) && !["A different meaning", "Another response", "None of these"].includes(text))
+                  if (!studied.has(text) && !backup.has(text) && !(card.type==='greeting'&&t.content.LIBRARY_DATA.phrases.some(p=>(answerField==="en"?p.english:p.pashto)===text)) && !["A different meaning", "Another response", "None of these"].includes(text))
                     throw Error("Distractor is neither studied nor Day-1 backup: " + text);
                 if (q.unstudied && !q.recognition && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === t.names.text(card.en)))
                   throw Error("Unstudied target meaning offered as a clue");

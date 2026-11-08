@@ -22,10 +22,10 @@ for(const width of [375,1280]) {
     for(const b of detail.lastElementChild.querySelectorAll('button'))if(!allowed.has(b.textContent)&&!['A different meaning','Another response','None of these'].includes(b.textContent))throw Error('Library leaked '+b.textContent);
     document.querySelector('#libraryDialog').close();
   });
-  await p.evaluate(()=>__test.challenge.startChallenge(1));
+  await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;__test.challenge.startChallenge(1);});
   const unknown=await p.evaluate(()=>{
    const t=__test,s=t.state.session;
-   s.index=s.questions.findIndex(q=>q.unstudied&&!q.recognition);s.answered=s.index;t.challenge.showChallengeQuestion();
+   s.index=s.questions.findIndex(q=>q.answerFormat==="type"&&q.direction==="ps-en"&&q.unstudied);s.answered=s.index;t.challenge.showChallengeQuestion();
    return {q:s.questions[s.index],card:t.content.wordById[s.questions[s.index].id]};
   });
   await p.locator("#quizPanel").screenshot({path:`docs/maintenance/p1/uncued-recall-${width}.png`});

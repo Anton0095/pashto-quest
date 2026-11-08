@@ -19,7 +19,7 @@ Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CUR
 - Four district keys: `residential`, `nature`, `business`, `school`. Library offers reference and voluntary zero-XP practice; Hills is a Nature scene.
 - Preserve 14 curriculum days, characters, normal/skip paths and current learning states. Day 1 excludes lexical action verbs; Day 14 has zero compulsory new lemmas.
 - Only **save schema 8** is supported. Do not add old-format migration/backfill/content-repair adapters or silent save resets. Unsupported/corrupt saves remain untouched until explicit user reset.
-- Do not add duplicate SRS/XP stores or replay-farmable rewards. Outside explicit recognition openings/spacing activities and fixed-expression translation selection, unstudied word-recall targets keep their English meanings hidden before submission; construction deliberately supplies a direct English sentence target.
+- Do not add duplicate SRS/XP stores or replay-farmable rewards. New assessments independently plan selection/construction/optional typing; typing defaults off and unstudied targets may use selection. Typed English recall keeps the English meaning hidden before submission; construction deliberately supplies a direct English sentence target.
 - Incomplete language candidates and pending expressions remain inactive. Mechanically complete lexical drafts may be `provisional_playable` only with explicit provenance, `userVerified: false`, and no native-approval claim. No invented native Laghman approval or audio recordings.
 - Preserve mobile/RTL interaction and candid audio fallback. Mocked browser testing is not physical-device verification.
 

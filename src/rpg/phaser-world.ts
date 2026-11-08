@@ -103,9 +103,9 @@ export class VillageScene extends Phaser.Scene {
         graphics.fillStyle(0x3e3b39).fillRect(x+5,idx*16+13+step,3,2).fillRect(x+10,idx*16+13-step,3,2);
         if(dir!=='up')graphics.fillStyle(kind==='saleha'?0x70bbee:0x2f3232).fillRect(x+(dir==='left'?5:9),y+4,1,1);
         if(kind==='edris')graphics.fillStyle(0x48362c).fillRect(x+6,y+6,5,3);
-        if(['mina','sara','sanaa','saleha','afiya'].includes(kind))graphics.fillStyle(head).fillRect(x+3,y+1,2,child?5:7).fillRect(x+11,y+1,2,child?5:7);
+        if(['mina','nayab','sara','sanaa','saleha','afiya'].includes(kind))graphics.fillStyle(head).fillRect(x+3,y+1,2,child?5:7).fillRect(x+11,y+1,2,child?5:7);
         if(kind==='zamir')graphics.fillStyle(0x292b2d).fillRect(x+6,y+6,5,2);
-        if(kind==='nayab')graphics.fillStyle(0x4b704b).fillRect(x+5,y+6,2,6);
+        if(kind==='nayab'){graphics.fillStyle(0x4b704b).fillRect(x+5,y+6,2,4);graphics.fillStyle(head).fillRect(x+3,y+5,2,4).fillRect(x+12,y+5,2,4);graphics.fillStyle(0x79a35c).fillRect(x+3,y+8,2,1).fillRect(x+12,y+8,2,1);}
         if(kind==='sanaa')graphics.fillStyle(0xa44835).fillRect(x+4,y+5,2,2).fillRect(x+11,y+5,2,2);
         if(kind==='afiya')graphics.fillStyle(0xd4b863).fillRect(x+8,y+6,1,4);
         if(kind==='elder')graphics.fillStyle(0xeee9d9).fillRect(x+6,y+6,5,3);
