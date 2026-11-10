@@ -1,5 +1,8 @@
 # TypeScript / Phaser Week 1 architecture
 
+See the [Sleep/Dream and authored-conversation follow-up](SLEEP_AND_CONVERSATIONS.md) for current transitions, Bilal's branching practice, actual Lake prerequisites and the authorized Day 2 form schedule. Earlier implementation and validation statements below describe their recorded release.
+
+
 Current follow-up: [Library, Nayab, shared onboarding, optional typing planner and Bilal dialogue](QUEST_IMPROVEMENTS.md) supersedes earlier mandatory-tutorial/typed-recall and English Bilal descriptions. The four teaching locations, learning authorities, save version and chapter boundary remain unchanged.
 
 This is the current architecture after the merged Week 1, movement and house/sleep/dream packages. The [post-merge audit](../maintenance/POST_MERGE_AUDIT.md) records the maintenance baseline and validation. Phaser 4.2.1 remains locally bundled; TypeScript RPG modules remain strict. The existing Python/esbuild pipeline and JavaScript educational authorities are retained. See the current [house/sleep/dream state handling](HOUSE_SLEEP_DREAM.md), [overhaul report](MULTIDAY_OVERHAUL.md) and historical [Week 1 implementation](WEEK1_IMPLEMENTATION.md) for registry, route flow, schedules and play instructions.

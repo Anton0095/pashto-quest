@@ -1,5 +1,8 @@
 # Pashto Quest
 
+Current follow-up: [Sleep/Dream transitions and authored Bilal Lake conversations](docs/rpg/SLEEP_AND_CONVERSATIONS.md) replace the earlier response sampler. The existing third-person “see” material is introduced in Day 2 Lake by explicit owner approval; first person remains Day 3. Narrative speech is an unverified editorial draft, and optional conversations grant no learning records or XP.
+
+
 > **Integrated user approval (31 October 2026):** [approval record](content/USER_LANGUAGE_APPROVALS.json) records the original 473 base lemmas and 18 conventional phrases. نن (“today”) uses the subsequently supplied `nun`. This approves exact base spelling, listed senses and supplied transliteration; inflections, grammatical analyses, generated combinations, recordings and 59 excluded candidates remain outside its scope. No independent native certification is claimed.
 
 An offline, browser-based Pashto learning game set in a village in Laghman, Afghanistan. Four teaching districts (Home, Lake, Market and School), a reference Library and a recurring cast support a Days 1–14 curriculum and educational engine. The playable RPG currently covers Days 1–7; Days 8–14 require additional narrative, map and event registration. Base entries and registered phrases are user-approved; grammar and inflected forms remain drafts, without independent native certification.

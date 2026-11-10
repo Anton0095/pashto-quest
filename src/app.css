@@ -1549,3 +1549,16 @@ body:has(.rpg-world) #libraryDialog[data-practice="true"] #libraryBody > article
 .rpg-dialogue-roman {direction:ltr; font-size:1rem; color:var(--muted);}
 .rpg-response-roman {display:block; direction:ltr; font: .85rem/1.5 system-ui; margin-top:.35rem;}
 #rpgDialogue .buttons:has(.pashto-option) {display:grid;grid-template-columns:1fr;}
+
+/* Modal, pixel-edged transition veil; no second renderer or gameplay timer. */
+dialog.rpg-transition {position:fixed;inset:0;margin:0;padding:0;border:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;background:transparent;color:#f6e5bb;overflow:hidden;pointer-events:all;}
+dialog.rpg-transition::backdrop {background:transparent;}
+.rpg-transition-sky {position:absolute;inset:0;background:#101826;display:grid;place-items:center;isolation:isolate;}
+.rpg-transition[data-kind^="dream"] .rpg-transition-sky {background:#252544;color:#e2dbff;}
+.rpg-transition-caption {font:700 clamp(1.8rem,6vw,3.6rem)/1.4 monospace;letter-spacing:.16em;text-align:center;z-index:2;text-shadow:3px 3px #080f20;}
+.rpg-transition-moon {position:absolute;top:21%;left:calc(50% - 16px);width:24px;height:24px;background:#e8d2a0;box-shadow:-6px 6px #e8d2a0,0 12px #e8d2a0,6px -6px #e8d2a0,12px 0 #101826,12px 6px #101826;}
+.rpg-transition-star {position:absolute;width:3px;height:3px;background:#b3c4df;box-shadow:0 -3px #b3c4df,0 3px #b3c4df,-3px 0 #b3c4df,3px 0 #b3c4df;}
+.rpg-transition-cloud {display:none;position:absolute;width:48px;height:10px;background:#77769d;box-shadow:8px -8px #77769d,16px -16px #77769d,32px -8px #77769d,8px 8px #77769d;opacity:.5;}
+.rpg-transition[data-kind^="dream"] .rpg-transition-moon {display:none;}
+.rpg-transition[data-kind^="dream"] .rpg-transition-cloud {display:block;}
+@media (prefers-reduced-motion:reduce) {.rpg-transition-star,.rpg-transition-cloud {transform:none!important;}}

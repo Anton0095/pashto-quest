@@ -55,13 +55,13 @@ for(const width of [1280,390]){
   }
   await p.locator('#lessonRecall').fill('Lesson draft');await p.evaluate(()=>__questRPG.flush());await p.reload();await p.locator('#lessonRecall').waitFor();assert.equal(await p.locator('#lessonRecall').inputValue(),'Lesson draft');
   await answerCurrent(p);assert(await p.locator('#lessonRecall').isDisabled());await p.evaluate(()=>__questRPG.flush());await p.reload();await p.locator('#lessonRecall').waitFor();assert(await p.locator('#lessonRecall').isDisabled());
-  for(const day of [1,2,3,4,7]){
+  for(const day of [1,2,3]){
    await fixture(day,{map:'village',x:76,y:27,facing:'up'});const before=await p.evaluate(()=>JSON.stringify(__test.state.progress));await p.locator('#rpgInteract').click();
-   const event=data.events['bilal-day-'+day];assert.equal(await p.locator('#rpgDialogue p').innerText(),event.pashto.ps);assert.equal(await p.locator('#rpgDialogue .rpg-dialogue-roman').innerText(),event.pashto.roman);
+   const event=data.events['ambient-bilal'];assert.equal(await p.locator('#rpgDialogue p').innerText(),event.pashto.ps);assert.equal(await p.locator('#rpgDialogue .rpg-dialogue-roman').innerText(),event.pashto.roman);
    assert(!await p.locator('#rpgDialogue').innerText().then(t=>t.includes(event.languageReview.englishReviewOnly)));
    assert(await p.getByRole('button',{name:'Hear Pashto',exact:true}).isVisible());await p.getByRole('button',{name:'Hear Pashto',exact:true}).click();
-   const responses=p.locator('#rpgDialogue .pashto-option');assert((await responses.count())>=3);if(day>=4)assert((await responses.allTextContents()).some(t=>t.includes('کب؟')));
-   await p.screenshot({path:`work/quest/bilal-day${day}-${width}.png`,fullPage:true});assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2));await responses.first().click();assert.equal(await p.evaluate(()=>JSON.stringify(__test.state.progress)),before);
+   assert.equal(await p.locator('#rpgDialogue .pashto-option').count(),0,'Activation alone does not start authored practice without the intended proposition');
+   await p.locator('#rpgDialogue').getByRole('button',{name:'Back to village',exact:true}).click();assert.equal(await p.evaluate(()=>JSON.stringify(__test.state.progress)),before);
   }
   assert.deepEqual(b.errors,[]);console.log('PASS quest public UI',width,'normal/skip shared introduction, reload, saved settings and typed drafts/locks, Library movement/features, progressive Pashto-only Bilal/audio and zero learning writes');
  }finally{await b.close();}

@@ -1,5 +1,8 @@
 # House, sleep and dream package
 
+See the [Sleep/Dream and authored-conversation follow-up](SLEEP_AND_CONVERSATIONS.md) for current transitions, Bilal's branching practice, actual Lake prerequisites and the authorized Day 2 form schedule. Earlier implementation and validation statements below describe their recorded release.
+
+
 This package builds on `feature/rpg-multiday-overhaul`. The latest base commits supplied the [approved interior reference](../design/house-interior-reference.png) during implementation; the room follows its bookshelf-left, bed-right, central rug/table/cushions, rear windows/textile/lantern and bottom-exit arrangement. Furniture is drawn as pixel art on the existing 16-pixel Phaser grid. UI text and controls remain live HTML.
 
 ## Implemented changes

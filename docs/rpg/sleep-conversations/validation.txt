@@ -1,0 +1,52 @@
+Sleep/Dream transitions and authored Lake conversations — focused validation
+
+node tests/authored-conversations.test.mjs
+PASS authored conversations: 22 playable / 13 language-guarded day/pace cases, exact intended replies, licensed distinct irrelevant alternatives, lesson/repeat/reaction gates, zero learning writes, frozen prior scheduling proof and Day-2 third-/Day-3 first-person boundary
+
+node tests/sleep-conversations-browser.test.mjs
+PASS sleep/dream and authored conversations 1280 normal transitions, single advancement, interruption/reload, exact dream isolation; seven actual Lake lessons, intended replies, distinct reactions/conclusions, repeat and reaction reload, Pashto/audio only
+PASS reduced-motion sleep/dream 1280
+PASS sleep/dream and authored conversations 390 normal transitions, single advancement, interruption/reload, exact dream isolation; seven actual Lake lessons, intended replies, distinct reactions/conclusions, repeat and reaction reload, Pashto/audio only
+PASS reduced-motion sleep/dream 390
+
+node tests/rpg-transitions-browser.test.mjs
+PASS transition lifecycle 1280 normal bounded DOM/animation tracks, five duplicate requests rejected, pre/post-commit interruption, no leaked veil or tracks
+PASS transition lifecycle 1280 reduced bounded DOM/animation tracks, five duplicate requests rejected, pre/post-commit interruption, no leaked veil or tracks
+PASS transition lifecycle 390 normal bounded DOM/animation tracks, five duplicate requests rejected, pre/post-commit interruption, no leaked veil or tracks
+PASS transition lifecycle 390 reduced bounded DOM/animation tracks, five duplicate requests rejected, pre/post-commit interruption, no leaked veil or tracks
+
+node tests/house-sleep-dream-browser.test.mjs
+PASS house/sleep/dream 1280 entrance/exit, keyboard/pointer/touch, collisions, shared Library/profile, blocked sleep, consecutive days, duplicate taps, reload recovery, terminal boundary, isolated full dream and portraits
+PASS house/sleep/dream 375 entrance/exit, keyboard/pointer/touch, collisions, shared Library/profile, blocked sleep, consecutive days, duplicate taps, reload recovery, terminal boundary, isolated full dream and portraits
+
+node tests/quest-improvements.test.mjs
+PASS quest improvements: shared honest onboarding, Library collision/reachability, Nayab identity, 15/25 quotas/directions, unique correct options, scarce-material fallbacks, frozen preference changes, seven-day licensed Bilal replies and honest narrative status
+
+node tests/quest-improvements-browser.test.mjs
+PASS quest public UI 1280 normal/skip shared introduction, reload, saved settings and typed drafts/locks, Library movement/features, progressive Pashto-only Bilal/audio and zero learning writes
+PASS quest public UI 390 normal/skip shared introduction, reload, saved settings and typed drafts/locks, Library movement/features, progressive Pashto-only Bilal/audio and zero learning writes
+
+node tests/practical-assessment.test.mjs
+PASS practical assessments: 140 attempts, 280 model visits, all 14 days × 5 paces × normal/skip, exact thresholds, no rule quizzes, eligibility, masking and frozen restoration
+PASS 33 exact retired rule snapshots remain readable and ungradable, without resets or rerolls
+PASS four-location targets before visits across every day/pace/route; balanced shortage recall; no base/form alias repeats; unchanged unlocks/rewards and exact old repeated-target attempt restore
+
+node tests/generation-cache.test.mjs --write
+WROTE current schema-8 output contract; historical contract retained
+
+node tests/generation-cache.test.mjs
+PASS cache: all 14 full card/20-seed/dialogue payload digests unchanged, one immutable lexical index, form/grammar invalidation, mutable data rebuilds
+
+node tests/lesson-progression-fixes.test.mjs
+PASS Day2 immediate Home, optional visits, five paces/default/old-save rejection, Have forms/allocation/semantics, per-lesson noun/verb targets and bounded/cumulative fallbacks
+PASS new lesson vocabulary separates availability from actual first study
+PASS interrupted lesson introductions are attributed to the actual first teaching visit
+
+node tests/rpg-narrative-audit.test.mjs
+PASS Days2–7 openings, teacher handoffs and relocations, greetings, productive person/number, compounds, Lake gathering, Medina/Hills, School exam, unlocks and once-only rewards
+
+Additional passed checks: npm run typecheck; python3 tools/build.py; python3 tools/build.py --check; Python curriculum/schema and approved-language tests; house-sleep-dream and rpg-persistence models; JavaScript syntax; curriculum/vocabulary/inventory/generation audit consistency; documentation relative links and final diff.
+The targeted tests were run during editing and relevant failures/setup races were corrected, including test setup with prior-day passes and a settled save baseline before zero-write comparisons. Final focused outcomes above pass.
+The full verifier and fourteen-day browser delivery matrix were intentionally not rerun: the user requested focused automated validation. Prior delivery evidence remains release-specific; no old hash is altered. The practical-assessment model and generation cache checks still exercise fourteen days without a manual or full browser playthrough.
+Native-language certification, native MP3 recordings and physical-device Safari/audio/performance remain unverified. Low-pace/frozen-plan profiles retain a greeting when the intended proposition is not licensed; no missing vocabulary is fabricated. Existing saves without an actual Lake completion flag can complete a real Lake review.
+Final HTML SHA-256: 6ce5fccf9618d77ab133d1411930ed5c1fc832a2c1fc84b7f75866973fc0d363

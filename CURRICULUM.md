@@ -1,5 +1,8 @@
 # Pashto Quest — Current curriculum and content status
 
+Current follow-up: [Sleep/Dream transitions and authored Bilal Lake conversations](docs/rpg/SLEEP_AND_CONVERSATIONS.md) replace the earlier response sampler. The existing third-person “see” material is introduced in Day 2 Lake by explicit owner approval; first person remains Day 3. Narrative speech is an unverified editorial draft, and optional conversations grant no learning records or XP.
+
+
 Current follow-up: [Library, Nayab, shared onboarding, optional typing planner and Bilal dialogue](docs/rpg/QUEST_IMPROVEMENTS.md) supersedes earlier mandatory-tutorial/typed-recall and English Bilal descriptions. The four teaching locations, learning authorities, save version and chapter boundary remain unchanged.
 
 > **Integrated user approval (31 October 2026):** [approval record](content/USER_LANGUAGE_APPROVALS.json) records the original 473 base lemmas and 18 conventional phrases. نن (“today”) uses the subsequently supplied `nun`. This approves exact base spelling, listed senses and supplied transliteration; inflections, grammatical analyses, generated combinations, recordings and 59 excluded candidates remain outside its scope. No independent native certification is claimed.
@@ -91,7 +94,7 @@ Days 5 and 7 teach the peace exchange: the character says `السلام علیک
 All fourteen days assess practical Pashto rather than grammatical terminology. The Library Grammar Journal exposes all 33 concept explanations/worked analyses and all curriculum-day rules as read-only reference, without completing lessons or unlocking forms/grammar. Actual lesson study/workshops or explicit challenge activation license generated Pashto examples. When sentence supply is insufficient, vocabulary or approved phrases preserve assessment length; a small pool may repeat. Earlier English assessment-fallback instructions are superseded.
 
 
-New challenges open with three recognition/construction activities; fixed expressions always use English translation selection. Later unstudied lexical recall remains typed, with recognition used to separate adjacent typed items. Recognition does not claim prior study. Existing frozen attempts retain their exact questions until completed; the new rules apply to new attempts. Day transitions through bed/Quick travel wake beside the bed, while resuming retains the saved position. Muhammad Jan provides optional progress-sensitive guidance alongside his normal lessons. See [implementation and targeted validation](docs/rpg/DAILY_FLOW.md).
+New challenges retain the prescribed opening expression and mix independently planned selection, construction and optional typing. Typing defaults off; its intended allocation becomes additional selection questions. Recognition does not claim prior study. Existing frozen attempts retain their exact questions until completed; the new rules apply to new attempts. Day transitions through bed/Quick travel wake beside the bed, while resuming retains the saved position. Muhammad Jan provides optional progress-sensitive guidance alongside his normal lessons. See [implementation and targeted validation](docs/rpg/DAILY_FLOW.md).
 
 Daily opening content belongs to the designated NPC interaction, with an explicit study/explore choice. It does not run on waking or area entry. Quick Travel can begin an unlocked lesson directly; it uses the same course pool, eligibility and rewards as the NPC choice. Completed lessons are labelled as reviews. Existing follow-up dialogue remains available when the player next speaks with its teacher.
 

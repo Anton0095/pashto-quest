@@ -24,6 +24,9 @@ export function createRPGRegistry(data:WorldData, conditions:Record<string,()=>b
     if(!e.speaker||!Array.isArray(e.lines)||!e.lines.length||e.lines.some(l=>typeof l!=='string')||!Array.isArray(e.actions))throw Error('Invalid story: '+id);
     for(const a of e.actions)if(a.type==='event'&&!data.events[a.event]||a.type==='lesson'&&a.resumeEvent&&!data.events[a.resumeEvent])throw Error('Invalid event link: '+id);
   }
+  for(const spec of Object.values(data.conversations??{}))for(const [day,c] of Object.entries(spec.days)){
+    if(!data.days[day]||![c.event,c.greetingEvent,c.repeatEvent,c.correctEvent,c.incorrectEvent,c.conclusionEvent].every(id=>data.events[id]?.characterId===spec.characterId)||!Number.isInteger(c.distractors.count)||c.distractors.count<0||c.distractors.count>3||!c.response.generatedId.startsWith('generated:'))throw Error('Invalid authored conversation: '+spec.characterId+' '+day);
+  }
   const eligible = resolveCondition??((condition?:string) => !condition || !!conditions[condition]?.());
   function npcs(day:number,map:string):Actor[] {
     return data.npcs.filter(n=>data.days[String(day)]?.activeNPCs.includes(n.id)&&eligible(n.condition)).flatMap(n=>{
@@ -62,7 +65,7 @@ export function createRPGDialogue({dialog,ui,onAction,onClose,onIndex,eligible,o
     if(index<messages.length-1) actions.append(ui.button('Continue',()=>{index++;render();}));
     else for(const action of current.actions.filter(a=>eligible(a.condition))) {
       const button=ui.button(action.label,()=>{if(!current||!eligible(action.condition))return;current=null;actionClose=true;dialog.close();onAction(action);});
-      if(action.type==='bilal-response'){button.lang='ps';button.dir='rtl';button.classList.add('pashto-option');button.append(ui.node('span',action.roman,'rpg-response-roman'));}
+      if(action.type==='conversation-response'){button.lang='ps';button.dir='rtl';button.classList.add('pashto-option');button.dataset.responseId=action.card.id;button.dataset.nextEvent=action.nextEvent;button.append(ui.node('span',action.roman,'rpg-response-roman'));}
       actions.append(button);
     }
   }

@@ -14,9 +14,9 @@ Inventory: 474 lemmas / 614 forms; 187 composition-eligible forms. 29 typed temp
 | demonstrative_descriptor | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 186 | 224 | 224 | 224 | 224 | 224 | 224 |
 | attributive_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 186 | 224 | 224 | 224 | 224 | 224 | 224 |
 | equative_noun | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 48 | 70 | 70 | 70 | 70 | 70 | 70 |
-| present_transitive | 0 | 84 | 275 | 384 | 523 | 819 | 894 | 894 | 1330 | 1330 | 1330 | 1330 | 1330 | 1330 |
+| present_transitive | 0 | 140 | 275 | 384 | 523 | 819 | 894 | 894 | 1330 | 1330 | 1330 | 1330 | 1330 | 1330 |
 | present_compound_transitive | 0 | 0 | 0 | 1 | 4 | 10 | 12 | 12 | 12 | 12 | 12 | 12 | 12 | 12 |
-| present_attributive | 0 | 200 | 980 | 1345 | 2150 | 3462 | 3777 | 3777 | 4667 | 4667 | 4667 | 4667 | 4667 | 4667 |
+| present_attributive | 0 | 300 | 980 | 1345 | 2150 | 3462 | 3777 | 3777 | 4667 | 4667 | 4667 | 4667 | 4667 | 4667 |
 | present_intransitive | 0 | 0 | 1 | 1 | 7 | 14 | 16 | 16 | 16 | 16 | 16 | 16 | 16 | 16 |
 | present_compound_predicate | 0 | 0 | 0 | 0 | 0 | 18 | 20 | 20 | 20 | 20 | 20 | 20 | 20 | 20 |
 | demonstrative_transitive | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1788 | 2660 | 2660 | 2660 | 2660 | 2660 | 2660 |
@@ -48,7 +48,7 @@ The JSON also separates new texts and exact archival-text matches for every base
 | Day | Base distinct Pashto | New texts | Archival text matches | Fixed authored fallbacks |
 |---:|---:|---:|---:|---:|
 | 1 | 28 | 17 | 11 | 0 |
-| 2 | 312 | 292 | 20 | 0 |
+| 2 | 468 | 447 | 21 | 0 |
 | 3 | 1315 | 1279 | 36 | 0 |
 | 4 | 1798 | 1750 | 48 | 0 |
 | 5 | 2773 | 2718 | 55 | 0 |

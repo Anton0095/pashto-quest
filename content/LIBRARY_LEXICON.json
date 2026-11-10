@@ -7695,7 +7695,7 @@
               "status": "needs_native_review"
             }
           ],
-          "firstAllowedDay": 3,
+          "firstAllowedDay": 2,
           "composition": {
             "enabled": false,
             "reason": "Incomplete or unvetted form features; authored reference only"
@@ -7709,7 +7709,8 @@
             "kind": "formatting_equivalence",
             "reference": "GAME_SPEC.md#english-answer-policy",
             "rationale": "Optional English infinitive marker on this explicitly infinitive form; no synonym or finite-person equivalence asserted."
-          }
+          },
+          "priorFirstAllowedDay": 3
         },
         {
           "formId": "lemma:v-see:present:0",
@@ -7875,7 +7876,7 @@
             }
           ],
           "contextRomanisation": "hagha kab weeni",
-          "firstAllowedDay": 3,
+          "firstAllowedDay": 2,
           "composition": {
             "enabled": true,
             "roles": [
@@ -7907,7 +7908,8 @@
               "mood": "indicative"
             }
           },
-          "userVerified": false
+          "userVerified": false,
+          "priorFirstAllowedDay": 3
         },
         {
           "formId": "lemma:v-see:present:3",
@@ -8300,14 +8302,14 @@
         "transitivity": null
       },
       "introduction": {
-        "day": 3,
+        "day": 2,
         "district": "nature",
-        "teachingOrder": 39,
+        "teachingOrder": 25,
         "requiredGrammarIds": [
           "grammar-day-2"
         ],
         "verifiedStatus": "editorial_draft",
-        "rationale": "Explicit Issue 18 curriculum: cumulative topic vocabulary at the stated grammar stage"
+        "rationale": "Owner-authorized 11 November follow-up: introduce the existing see base and third-person form in Day 2 Lake for Bilal; first person remains Day 3."
       },
       "firstIntroductionConstraints": {
         "earliestDay": 2,
@@ -8349,7 +8351,8 @@
         "reference": "content/USER_LANGUAGE_APPROVALS.json",
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
-      }
+      },
+      "priorIntroductionDay": 3
     },
     {
       "lemmaId": "lemma:a-clean",

@@ -1,5 +1,8 @@
 # Village, onboarding, assessments and Bilal
 
+See the [Sleep/Dream and authored-conversation follow-up](SLEEP_AND_CONVERSATIONS.md) for current transitions, Bilal's branching practice, actual Lake prerequisites and the authorized Day 2 form schedule. Earlier implementation and validation statements below describe their recorded release.
+
+
 This describes the follow-up to the existing character-expansion development work in PR #36. Earlier validation reports retain their release-specific claims. Educational save schema 8 and world schema 1 remain unchanged; optional preferences and presentation metadata are validated without migrations, resets or snapshot rewrites.
 
 ## Library and Nayab

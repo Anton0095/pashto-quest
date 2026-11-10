@@ -1,0 +1,63 @@
+{
+  "id": "generated:sov:lemma:person:saleha:licensed:0|lemma:v-see:present:2|lemma:n-fish:form:0",
+  "type": "sentence",
+  "ps": "دینه کب ویني.",
+  "en": "Deena sees a fish.",
+  "roman": "deena kab weeni.",
+  "loop": 3,
+  "place": "nature",
+  "speaker": "Player",
+  "recipient": "Ms Hameed",
+  "note": "Practice with studied forms; language and pronunciation remain provisional.",
+  "dialect": "",
+  "generated": {
+    "origin": "productive_engine",
+    "frameId": "sov",
+    "family": "present_transitive",
+    "bindingId": "lemma:person:saleha:licensed:0|lemma:v-see:present:2|lemma:n-fish:form:0",
+    "slots": {
+      "subject": {
+        "lemmaId": "lemma:person:saleha",
+        "formId": "lemma:person:saleha:licensed:0"
+      },
+      "verb": {
+        "lemmaId": "lemma:v-see",
+        "formId": "lemma:v-see:present:2"
+      },
+      "noun": {
+        "lemmaId": "lemma:n-fish",
+        "formId": "lemma:n-fish:form:0"
+      }
+    },
+    "requiredGrammarIds": [
+      "grammar-day-2"
+    ],
+    "terminals": [],
+    "sourceId": null,
+    "outputKind": "composed_draft",
+    "formEvidenceSourceIds": [
+      "name-update:w2-d13-river-2",
+      "s2-river-fish",
+      "w2-d8-river-3"
+    ],
+    "answerType": null,
+    "subjects": [
+      {
+        "person": 3,
+        "number": "singular",
+        "formId": "lemma:person:saleha:licensed:0"
+      }
+    ],
+    "semanticArguments": {
+      "subject": "Deena",
+      "verb": "To see — third person",
+      "noun": "fish"
+    },
+    "speaker": "Player",
+    "addressee": "Ms Hameed",
+    "register": null,
+    "reviewStatus": "needs_native_review",
+    "userVerified": false,
+    "pronunciationStatus": "provisional_authored_span"
+  }
+}

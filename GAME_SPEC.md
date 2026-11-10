@@ -1,5 +1,8 @@
 # Pashto Quest — Current game specification
 
+Current follow-up: [Sleep/Dream transitions and authored Bilal Lake conversations](docs/rpg/SLEEP_AND_CONVERSATIONS.md) replace the earlier response sampler. The existing third-person “see” material is introduced in Day 2 Lake by explicit owner approval; first person remains Day 3. Narrative speech is an unverified editorial draft, and optional conversations grant no learning records or XP.
+
+
 Current follow-up: [Library, Nayab, shared onboarding, optional typing planner and Bilal dialogue](docs/rpg/QUEST_IMPROVEMENTS.md) supersedes earlier mandatory-tutorial/typed-recall and English Bilal descriptions. The four teaching locations, learning authorities, save version and chapter boundary remain unchanged.
 
 **Status:** The curriculum and educational engine cover Days 1–14; the playable RPG currently covers Days 1–7. Days 8–14 require additional narrative, map and event registration in `content/RPG_WORLD.json`, not merely a higher day limit. Fourteen-day assessment and lesson rules below describe the educational backend, including its test-only navigation profile; they do not imply playable Week 2 RPG chapters. See [RPG architecture](docs/rpg/RPG_ARCHITECTURE.md) and the [post-merge audit](docs/maintenance/POST_MERGE_AUDIT.md). This specification describes implemented mechanics within those boundaries; pending product goals are explicitly separated in the [README](README.md#product-goal-and-delivery-status). Current implementation resides in `src/`, `content/LEARNING_CURRICULUM.json` and the lexical/phrase registries; resolve any discrepancy explicitly rather than restoring archived logic. For learning content see `CURRICULUM.md`; for acceptance and tests see `tests/README.md`.

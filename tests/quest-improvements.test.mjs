@@ -56,16 +56,16 @@ const scarce=runtime();reset(scarce,8);scarce.content.LIBRARY_DATA.sentenceFrame
 beginAttempt(scarce,1);assert(scarce.state.session.questions.every(q=>q.kind==='word'&&q.answerFormat==='select'));
 assert.equal(scarce.state.progress.library.plans[1].assessmentDeficit.distributionDeviations.length,5);
 // Narrative may be unfamiliar; selectable generated replies use the actual engine.
-const t=runtime();reset(t);const fish=t.content.wordById['library-card:lemma:n-fish'];
+const t=runtime();reset(t);
 for(let day=1;day<=7;day++){
  for(const loc of t.content.zoneKeys)study(t,day,loc);
- const pool=t.learning.availableSentences(day),phrases=['g-hello','g-how',...(day>=2?['g-thanks']:[]),...(day>=3?['g-bye']:[])].map(id=>t.content.wordById[id]);
- const snapshot=JSON.stringify(t.state.progress),options=M.bilalResponses(pool,phrases,fish,day,t.Q.randomFor(day));
+ const pool=t.learning.availableSentences(day);
+ const snapshot=JSON.stringify(t.state.progress),options=M.conversationChoices(data.conversations.bilal.days[day],pool,t.Q.randomFor(day));
  assert(options.length>=3&&options.length<=4);assert.equal(new Set(options.map(a=>a.label)).size,options.length);
- if(day>=4)assert(options.some(a=>a.label==='کب؟'));
+ if(day>=4)assert(options.some(a=>a.label===data.conversations.bilal.days[day].response.pashto));
  for(const a of options.filter(a=>a.card.generated))assert(pool.some(c=>c.id===a.card.id));
  assert.equal(JSON.stringify(t.state.progress),snapshot,'optional replies never write learning state');
- const event=data.events[M.bilalEventId(day)];assert(event.pashto.ps);assert(event.pashto.roman);assert.equal(event.languageReview.userVerified,false);
+ const event=data.events[data.conversations.bilal.days[day].event];assert(event.pashto.ps);assert(event.pashto.roman);assert.equal(event.languageReview.userVerified,false);
  if(day<=3)assert(!/myster|unusual|shadow/i.test(event.languageReview.englishReviewOnly));
 }
 console.log('PASS quest improvements: shared honest onboarding, Library collision/reachability, Nayab identity, 15/25 quotas/directions, unique correct options, scarce-material fallbacks, frozen preference changes, seven-day licensed Bilal replies and honest narrative status');

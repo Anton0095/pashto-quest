@@ -3,7 +3,8 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 const data=JSON.parse(readFileSync('index.html','utf8').match(/const LIBRARY_DATA=(\{.*?\});/s)[1]);
-// Current schema-8 contract. The pre-change contract remains archived unchanged.
+// Current schema-8 contract after the owner-authorized Day-2 Lake see schedule.
+// The preceding schema-8 payload digests remain in generation-output-contract-v8-before-lake-see.json.
 const frames=data.sentenceFrames;
 const freeze=value=>{if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(freeze);Object.freeze(value)}return value};
 freeze(frames);freeze(data.entries);freeze(data.generationEvidence);

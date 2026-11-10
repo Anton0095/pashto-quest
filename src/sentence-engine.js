@@ -620,7 +620,15 @@ const SentenceEngine = (() => {
     return f ? compose(data, f, { slots: snapshot.generated.slots }) : null;
   }
   function restoreCard(data, frames, snapshot) {
-    const card = restoreProof(data, frames, snapshot);
+    let card = restoreProof(data, frames, snapshot);
+    if(card && card.loop !== snapshot.loop && !card.generated.ast){
+      const frame=frames.frames.find(f=>f.id===card.generated.frameId);
+      const priorDay=Math.max(frame.earliestDay,...Object.values(card.generated.slots).map(ref=>{
+        const entry=data.entries.find(e=>e.lemmaId===ref.lemmaId),form=entry.forms.find(f=>f.formId===ref.formId);
+        return Math.max(entry.priorIntroductionDay ?? entry.introduction.day,form.priorFirstAllowedDay ?? form.firstAllowedDay);
+      }));
+      if(snapshot.loop===priorDay)card={...card,loop:priorDay};
+    }
     if (!card || card.roman === snapshot.roman) return card;
     // Current schema snapshots retain their exact displayed pronunciation aid.
     // Only stored, attested prior aids are eligible; no content/proof repair.
