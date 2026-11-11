@@ -126,3 +126,6 @@ Long public RPG routes keyboard-activate the real D-pad for deterministic one-ti
 
 
 `hills-expansion.test.mjs` and `hills-expansion-browser.test.mjs` cover [permanent Hills and Day 6](../docs/rpg/HILLS_EXPANSION.md): connected terrain, north/south travel, blocked eastern scree, seven-day access, one sister placement per map/state, saved invitation and shared introductory participants, either sister's unchanged Nature lesson, quiet return and the early challenge without invitation. Desktop/mobile checks include both tutorial routes, real sleep, controls/camera, saved positions, review reward locks and frozen challenge reload. Functional checks passed before cleanup; the relevant suites are repeated after cleanup. No complete seven-day route is required for this focused map/narrative change unless these checks reveal a broader regression.
+
+
+`hills-entrances-browser.test.mjs` checks all five northern and southern path lanes at desktop/mobile widths, matching safe arrival columns, unchanged educational records and the physical wooden sign’s exact wording after reload.

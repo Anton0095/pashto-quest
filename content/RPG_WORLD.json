@@ -324,11 +324,47 @@
           }
         },
         {
+          "x": 44,
+          "y": 0,
+          "to": "hills",
+          "spawn": {
+            "x": 30,
+            "y": 45
+          }
+        },
+        {
+          "x": 45,
+          "y": 0,
+          "to": "hills",
+          "spawn": {
+            "x": 31,
+            "y": 45
+          }
+        },
+        {
           "x": 46,
           "y": 0,
           "to": "hills",
           "spawn": {
             "x": 32,
+            "y": 45
+          }
+        },
+        {
+          "x": 47,
+          "y": 0,
+          "to": "hills",
+          "spawn": {
+            "x": 33,
+            "y": 45
+          }
+        },
+        {
+          "x": 48,
+          "y": 0,
+          "to": "hills",
+          "spawn": {
+            "x": 34,
             "y": 45
           }
         }
@@ -2486,10 +2522,10 @@
         "RggggggggggggggggggggggggggggggpppggggggggggggggggggggggggtggggR",
         "RggggggggggggggggggggggggggggggpppggggfggggggggggggggggggggggggR",
         "RggggggggggggggggggggggggggggggpppgggggggggfgggggggggggggggggggR",
-        "RggggfgggggggggggggggggggggggggpppggggggggggggggfggggggggggggggR",
-        "RgggggggggfggggggggggggggggggggpppgggggggggggggggggggfgggggggggR",
-        "RggggggggggggggfgggggggggggggggpppggggggggggggggggggggggggfggggR",
-        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRpRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
+        "RggggfggggggggggggggggggggggggpppppgggggggggggggfggggggggggggggR",
+        "RgggggggggfgggggggggggggggggggpppppggggggggggggggggggfgggggggggR",
+        "RggggggggggggggfggggggggggggggpppppgggggggggggggggggggggggfggggR",
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRpppppRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
       ],
       "spawn": {
         "x": 32,
@@ -2497,11 +2533,47 @@
       },
       "transitions": [
         {
+          "x": 30,
+          "y": 47,
+          "to": "village",
+          "spawn": {
+            "x": 44,
+            "y": 2
+          }
+        },
+        {
+          "x": 31,
+          "y": 47,
+          "to": "village",
+          "spawn": {
+            "x": 45,
+            "y": 2
+          }
+        },
+        {
           "x": 32,
           "y": 47,
           "to": "village",
           "spawn": {
             "x": 46,
+            "y": 2
+          }
+        },
+        {
+          "x": 33,
+          "y": 47,
+          "to": "village",
+          "spawn": {
+            "x": 47,
+            "y": 2
+          }
+        },
+        {
+          "x": 34,
+          "y": 47,
+          "to": "village",
+          "spawn": {
+            "x": 48,
             "y": 2
           }
         }
@@ -3447,11 +3519,12 @@
     },
     {
       "id": "hills-marker",
-      "name": "Hills trail marker",
+      "name": "Wooden trail sign",
       "map": "hills",
       "x": 30,
       "y": 43,
-      "event": "hills-reference"
+      "event": "hills-reference",
+      "signText": "Laghman Hills - South Laghman Village"
     },
     {
       "id": "house-bed",
@@ -4618,9 +4691,10 @@
       ]
     },
     "hills-reference": {
-      "speaker": "Trail marker",
+      "speaker": "Wooden trail sign",
       "lines": [
-        "The southern trail returns to the village. The eastern trail ends at loose scree; a future destination lies beyond. Enjoy the spring landscape. The Hills belongs to Nature, with no extra lesson quota."
+        "Laghman Hills - South Laghman Village",
+        "The southern path returns to the village. The eastern trail remains blocked by loose scree."
       ],
       "actions": [
         {

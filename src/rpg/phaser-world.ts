@@ -140,7 +140,7 @@ export class VillageScene extends Phaser.Scene {
     const art=this.add.graphics().setDepth(1);
     if(p.map==='house'||definition.furniture?.length)drawInteriorArt(this,definition,p.map==='house');
     if(p.map==='village'&&definition.scenery){drawVillageArt(this,definition);terrain.setVisible(false);} // Baked ground replaces tile drawing; collision data stays active.
-    if(p.map==='hills'){drawHillsArt(this,definition);terrain.setVisible(false);}
+    if(p.map==='hills'){drawHillsArt(this,definition,this.options.data.objects.filter(object=>object.map===p.map));terrain.setVisible(false);}
     for(const b of (p.map==='village'&&definition.scenery?[]:definition.buildings)){
       const x=b.x*16,y=b.y*16,w=b.w*16,h=b.h*16;
       art.fillStyle(Phaser.Display.Color.HexStringToColor(b.color).color).fillRect(x,y+7,w,h-7);
@@ -241,7 +241,7 @@ export class VillageScene extends Phaser.Scene {
       const p=this.options.position();this.player?.body?.reset(p.x*16+8,p.y*16+8);this.player?.anims.stop();this.player?.setFrame(facingIndex[p.facing]*2);this.physics.pause();
     }else if(active&&!this.wasActive)this.physics.resume();
     this.wasActive=active;
-    if(active){this.sync();this.activities.tick(delta,this.actors,this.options.position(),this.playerTarget);this.sync();const target=this.nearby();this.marker?.setVisible(!!target);if(target)this.marker?.setPosition(target.x*16+8,target.y*16-5);}
+    if(active){this.sync();this.activities.tick(delta,this.actors,this.options.position(),this.playerTarget);this.sync();const target=this.nearby();this.marker?.setVisible(!!target);if(target)this.marker?.setPosition(target.x*16+8,target.y*16-(target.signText?40:5));}
     if(active)this.controller?.tick();else this.controller?.cancel();
     if(!this.controller?.routing)this.activities.select();
     this.options.onFrame();

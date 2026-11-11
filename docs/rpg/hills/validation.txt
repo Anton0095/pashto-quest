@@ -114,3 +114,12 @@ Changed documentation links and git diff whitespace: PASS.
 Initial fixture expectations were corrected for the new northern road/sister introduction, acknowledged Sleep prerequisites and hidden Quick Travel text before the successful baseline.
 No full seven-day public route, fourteen-day browser delivery matrix or performance benchmark was run, following the requested focused scope. Maintained route-driver changes have syntax checks and shared helper coverage, not a claimed full-route pass.
 Screenshots are from the final focused browser run; the overview uses a test-only camera zoom. Chromium emulation is not physical-device or hardware-audio verification.
+
+Five-wide entrances and wooden-sign follow-up:
+PASS npm run typecheck; python3 tools/build.py; build consistency; affected JavaScript/Python syntax.
+PASS node tests/hills-expansion.test.mjs (2,615 reachable tiles, all five lane mappings, exact sign data).
+PASS node tests/village-redesign.test.mjs
+PASS node tests/rpg-movement.test.mjs
+PASS Hills entrances 1280 all five lanes in both directions, matching safe arrivals, zero educational writes and exact wooden-sign wording/reload
+PASS Hills entrances 390 all five lanes in both directions, matching safe arrivals, zero educational writes and exact wooden-sign wording/reload
+Visual review: wooden board/post and exact label visible; nearby interaction indicator moved above the board so it does not obscure the words. Final sign captures accompany this record; earlier captures/results retain their previous release scope.

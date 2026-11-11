@@ -12,7 +12,7 @@ export interface Schedule extends Point {condition?:string;day:number;map:string
 export interface Activity {zone:Point&{w:number;h:number};stops:Point[];stepMs:number;idleMs:number}
 export interface ActivityState extends Position {stop:number;wait:number;turn:number}
 export interface NPC {gender?:'female'|'male';description?:string;activity?:Activity;defaultLocation?:Omit<Schedule,'day'>;characterId:string;interactionRange?:number;animations?:Partial<Record<Direction,string>>;id:string;name:string;sprite:string;condition?:string;event:string;schedule:Schedule[]}
-export interface WorldObject extends Point {interactionBounds?:Point&{w:number;h:number};id:string;name:string;map:string;event:string;condition?:string}
+export interface WorldObject extends Point {signText?:string;interactionBounds?:Point&{w:number;h:number};id:string;name:string;map:string;event:string;condition?:string}
 export type Actor = WorldObject & {activity?:Activity;characterId?:string;interactionRange?:number;animations?:Partial<Record<Direction,string>>;sprite?:string;schedule?:Schedule[];facing?:Direction};
 export type ChapterRoute='normal'|'skip';
 export interface ChapterRoutes {normal:{opening?:string;finale?:string};skip:{event?:string}}

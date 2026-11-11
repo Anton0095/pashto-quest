@@ -4,11 +4,11 @@ Hills is now a 64×48 physical map within **Nature**, open on Days 1–7 immedia
 
 ## Connections and landscape
 
-The existing village northern path reaches `(46,0)` and enters Hills at its southern trail `(32,45)`. The Hills exit `(32,47)` returns to the village at `(46,2)`. The former eastern Hills spur is retired; Home and Library entrances remain unchanged. The village's east and south future roads remain blocked.
+All five northern path tiles `(44–48,0)` enter the five corresponding Hills entrance lanes `(30–34,45)`. All five southern Hills edge tiles `(30–34,47)` return to the matching village lanes `(44–48,2)`, preserving the player’s lane and avoiding immediate return transitions. The former eastern Hills spur is retired; Home and Library entrances remain unchanged. The village's east and south future roads remain blocked.
 
-The Hills trail winds through grassy slopes to the east. Loose scree at the eastern edge blocks the future route; there is no undefined destination or off-map crossing. A marker explains the obstruction. The southern marker explains the return path and Nature affiliation.
+The Hills trail winds through grassy slopes to the east. Loose scree at the eastern edge blocks the future route; there is no undefined destination or off-map crossing. A marker explains the obstruction. A physical wooden sign at the southern trail reads **Laghman Hills - South Laghman Village**, both on its board and when inspected.
 
-`RPG_WORLD.json` defines the terrain, rocks/trees, transitions, reserved route, markers and actor locations. `hills-art.ts` bakes a cached pixel landscape into the existing Phaser world: spring grass and wildflowers, rolling shaded slopes, exposed dirt and rock, shrubs, scattered trees, layered distant ridges, birds and a grazing goat/sheep. Wildlife is static incidental scenery, with no learning IDs, physics actors, rewards or extra animation loop. No settlement or new building is added. The existing terrain collision, A*, camera, keyboard, pointer/touch and directional controls remain authoritative. The new map has 2,611 connected walkable tiles.
+`RPG_WORLD.json` defines the terrain, rocks/trees, transitions, reserved route, markers and actor locations. `hills-art.ts` bakes a cached pixel landscape into the existing Phaser world: spring grass and wildflowers, rolling shaded slopes, exposed dirt and rock, shrubs, scattered trees, layered distant ridges, birds and a grazing goat/sheep. Wildlife is static incidental scenery, with no learning IDs, physics actors, rewards or extra animation loop. No settlement or new building is added. The existing terrain collision, A*, camera, keyboard, pointer/touch and directional controls remain authoritative. The new map has 2,615 connected walkable tiles.
 
 ## Day 6 flow
 
@@ -50,3 +50,6 @@ Running-game captures: [Hills overview, desktop](hills/overview-1280.png), [mobi
 The eastern trail has no destination yet; expanding it requires a registered map, safe two-way transitions and tests. Wildlife is decorative rather than simulated. Chromium desktop/mobile emulation does not establish physical-device Safari or hardware audio behavior. No new Pashto wording, morphology approval or recording is claimed. Prior language-review limitations remain.
 
 No full seven-day public playthrough, fourteen-day browser delivery matrix or performance benchmark was run, following the requested focused scope. The maintained full-route driver was adapted for the new Day 6 sequence and typed controls, but no complete-route pass is claimed. Existing delivery fingerprints, measurements and historical captures remain evidence for their recorded release and were not refreshed.
+
+
+The entrance-width/sign follow-up adds focused `hills-entrances-browser` coverage at 1280/390px: each of the five lanes crosses in both directions with matching safe arrivals and no educational writes; the exact sign wording survives reload. Earlier validation records and overview captures retain their recorded release scope. See the updated wooden sign [on desktop](hills/sign-1280.png) and [mobile emulation](hills/sign-390.png).

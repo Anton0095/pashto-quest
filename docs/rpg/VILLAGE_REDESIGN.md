@@ -11,7 +11,7 @@ The playable village is a 96×64 rectangular map on the existing 16-pixel moveme
 - Northeast: irregular lake, shallow shoreline highlights, reeds, stones, floating plants and an accessible wooden dock. A narrower river leaves the eastern boundary above the reserved east road. Water is impassable.
 - Southwest: open market aisles, striped woven awnings, baskets, crates and adobe buildings. Edris's ordinary placement is (20,46).
 - Southeast: a school directly below the lake, with a formal central entrance, blue geometric trim and a walled teaching courtyard. Ms Hameed's ordinary placement is (70,44).
-- Central packed-earth crossroads connect all districts. The northern path now enters Hills at (46,0), returning at (46,2). Hills remains accessible on all seven days after onboarding; the former eastern spur is retired.
+- Central packed-earth crossroads connect all districts. The northern path now enters Hills across all five tiles (44–48,0), returning to matching lanes (44–48,2). Hills remains accessible on all seven days after onboarding; the former eastern spur is retired.
 
 The east and south future roads terminate at visible barriers and signs; the northern road now connects to Hills. `reservedExits` records identity, boundary coordinate, direction and reachable approach; these are preparations, not active destinations. A physical map does not create a fifth teaching district or vocabulary quota.
 

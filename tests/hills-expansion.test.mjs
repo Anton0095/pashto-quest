@@ -13,8 +13,12 @@ function eligible(c){
 }
 const registry=M.createRPGRegistry(data,{},eligible),map=data.maps.hills;
 assert.equal(map.condition,'afterTutorial');assert.equal(t.content.zoneKeys.length,4);
-const north=data.maps.village.transitions.find(t=>t.to==='hills');assert.deepEqual([north.x,north.y],[46,0]);assert.equal(data.maps.village.transitions.filter(t=>t.to==='hills').length,1);
-assert.deepEqual(map.transitions,[{x:32,y:47,to:'village',spawn:{x:46,y:2}}]);
+const north=data.maps.village.transitions.find(t=>t.to==='hills'&&t.x===46);assert.deepEqual([north.x,north.y],[46,0]);assert.equal(data.maps.village.transitions.filter(t=>t.to==='hills').length,5);
+for(let lane=0;lane<5;lane++){
+ assert.deepEqual(data.maps.village.transitions.find(t=>t.x===44+lane&&t.y===0),{x:44+lane,y:0,to:'hills',spawn:{x:30+lane,y:45}});
+ assert.deepEqual(map.transitions[lane],{x:30+lane,y:47,to:'village',spawn:{x:44+lane,y:2}});
+}
+const sign=data.objects.find(o=>o.id==='hills-marker');assert.equal(sign.signText,'Laghman Hills - South Laghman Village');assert.equal(data.events[sign.event].lines[0],sign.signText);
 assert.equal(data.maps.village.reservedExits.some(e=>e.id==='north'),false);
 assert(!M.RPGWorldData.walkable(data,'hills',63,19));assert(map.reservedExits.some(e=>e.id==='east'));assert(!map.transitions.some(t=>t.to!=='village'));
 assert.equal(map.buildings.length,0);for(const kind of ['tree','shrub','bird','goat','sheep'])assert(map.scenery.some(s=>s.kind===kind));

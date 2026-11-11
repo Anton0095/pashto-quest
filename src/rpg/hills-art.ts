@@ -1,9 +1,9 @@
 import type Phaser from 'phaser';
-import type {WorldMap} from './types';
+import type {WorldMap,WorldObject} from './types';
 
 /** Cached integer-pixel spring landscape. Registry terrain alone owns collision.
  * Birds and grazing animals are incidental scenery, never learning encounters. */
-export function drawHillsArt(scene:Phaser.Scene,map:WorldMap):void {
+export function drawHillsArt(scene:Phaser.Scene,map:WorldMap,objects:WorldObject[]=[]):void {
   const width=map.tiles[0].length*16,height=map.tiles.length*16,key='spring-hills-ground';
   if(!scene.textures.exists(key)){
     const texture=scene.textures.createCanvas(key,width,height);if(!texture)throw Error('Hills texture unavailable');
@@ -43,4 +43,19 @@ export function drawHillsArt(scene:Phaser.Scene,map:WorldMap):void {
     texture.refresh();
   }
   scene.add.image(0,0,key).setOrigin(0).setDepth(1);
+  // Sign artwork shares the interactive object's position and label. Its post
+  // stays beside the path; footpoint depth lets players pass behind the board.
+  for(const sign of objects.filter(object=>object.signText)){
+    const x=sign.x*16+8,y=sign.y*16+16,depth=y;
+    const wood=scene.add.graphics().setDepth(depth);
+    wood.fillStyle(0x53442f).fillRect(x-3,y-29,6,29);
+    wood.fillStyle(0xa8824d).fillRect(x-2,y-29,2,28);
+    wood.fillStyle(0x4c3928).fillRect(x-46,y-49,92,32);
+    wood.fillStyle(0x967044).fillRect(x-44,y-47,88,28);
+    wood.fillStyle(0xc5a16b).fillRect(x-44,y-47,88,2);
+    wood.fillStyle(0x755231).fillRect(x-43,y-35,86,1);
+    scene.add.text(x,y-44,sign.signText!,{fontFamily:'monospace',fontSize:'7px',
+      color:'#fff0ca',align:'center',wordWrap:{width:84,useAdvancedWrap:true}})
+      .setOrigin(.5,0).setDepth(depth+1).setData('worldSignId',sign.id);
+  }
 }
