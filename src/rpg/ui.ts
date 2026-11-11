@@ -36,6 +36,9 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(condition==='notPassed')return !conditions.passed();
     return !!conditions[condition as keyof typeof conditions]?.();
   }
+  function availableMaps():string[] {
+    return chapter().maps.filter(map=>eligible(data.maps[map].condition));
+  }
   const registry=createRPGRegistry(data,conditions,eligible);
   const story=createStoryDirector({value:()=>save,event:registry.event,eligible,changed:()=>scheduleSave()});
   const chapters=createChapterDirector({data,state,learning,progression,eligible,triggers:()=>save.triggers,dispatch:id=>openEvent(id),routeComplete:()=>routes.complete()});
@@ -118,7 +121,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   function refreshAppearance(){for(const b of appearance.querySelectorAll('button'))b.setAttribute('aria-pressed',String(b.dataset.appearance===save.appearance));}refreshAppearance();
   let engine:ReturnType<typeof createPhaserWorld>|undefined;
   try {if(!canvas.getContext('2d'))throw Error('Canvas unavailable');
-  engine=createPhaserWorld({canvas,data,activityState:save.activities,onActivities:s=>{save.activities=s;},portraits:dependencies.portraits,portraitReady:ui.portraitReady,allowedMaps:()=>chapter().maps.filter(map=>eligible(data.maps[map].condition)),position:()=>save.position,actors:()=>registry.objects(current(),save.position.map).map(n=>({...n,facing:facings.get(n.id)||'down'})),appearance:()=>save.appearance,active,
+  engine=createPhaserWorld({canvas,data,activityState:save.activities,onActivities:s=>{save.activities=s;},portraits:dependencies.portraits,portraitReady:ui.portraitReady,allowedMaps:availableMaps,position:()=>save.position,actors:()=>registry.objects(current(),save.position.map).map(n=>({...n,facing:facings.get(n.id)||'down'})),appearance:()=>save.appearance,active,
     onInteract(){interact();},
     onMove(position,transition){const moved=save.position.x!==position.x||save.position.y!==position.y||save.position.map!==position.map;if(!moved&&save.position.facing===position.facing)return;save.position=position;if(moved)save.flags.moved=true;if(transition)held=null;dirty=true;scheduleSave();},
     onFrame(){if(!active()){held=null;return;}if(dirty)draw();const target=engine?.nearby()?.id||'';if(target!==lastTarget){lastTarget=target;dirty=true;}if(held)move(held,performance.now());if(dirty)draw();}});
@@ -134,7 +137,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
       if(actor){
         const region=data.maps[map].regions.find(r=>actor.x>=r.x&&actor.x<r.x+r.w&&actor.y>=r.y&&actor.y<r.y+r.h);
         const actual=region&&(locationNames[region.id]||region.name)||locationNames[loc];
-        return {label:actual+(actual!==locationNames[loc]?' · '+actor.name:''),actor};
+        return {label:actual===locationNames[loc]?actual:locationNames[loc]+' course · '+actual+' · '+actor.name,actor};
       }
     }
     return {label:locationNames[loc]};
@@ -236,7 +239,11 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   }
   function interactionEvent(target:Actor):string {
     const c=chapter(),opening=c.openingEvent?data.events[c.openingEvent]:undefined;
-    const arrival=(c.mapEvents?.[save.position.map]??[]).find(id=>!!target.characterId&&story.status(id)!=='completed'&&(registry.event(id)?.characterId===target.characterId||registry.event(id)?.participants?.includes(target.characterId)));
+    const arrival=(c.mapEvents?.[save.position.map]??[]).find(id=>{
+      const event=registry.event(id);
+      return !!target.characterId && story.status(id)!=='completed' && !!event &&
+        (event.characterId===target.characterId || !!event.participants?.includes(target.characterId));
+    });
     if(arrival)return arrival;
     if(target.characterId&&opening&&opening.characterId===target.characterId){
       const lesson=opening.actions.find((a):a is Extract<Action,{type:'lesson'}>=>a.type==='lesson');
@@ -314,7 +321,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   }
   async function travel(position:WorldSave['position']){
     if(disposed)return;
-    if(!chapter().maps.includes(position.map)||!eligible(data.maps[position.map].condition))return;
+    if(!availableMaps().includes(position.map))return;
     engine?.cancelRoute();
     save.position=RPGWorldData.recover(data,position);engine?.relocate();dirty=true;
     await persist();
@@ -412,7 +419,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(state.reviewCampaign&&!reviewLaunching){void exitDream();return;}
     endDream();
     audio.stopAudio();current();state.session=null;save.flags.started=true;
-    if(!chapter().maps.includes(save.position.map))save.position={...chapter().start};
+    if(!availableMaps().includes(save.position.map))save.position={...chapter().start};
     save.position=RPGWorldData.recover(data,save.position,npcs());
     ui.$('rpgCompletionExtra')?.remove();ui.$('resultReplay').classList.remove('hidden');
     document.querySelector<HTMLElement>('.brand')!.textContent='✦ PASHTO QUEST · '+chapter().name;

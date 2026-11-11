@@ -4403,19 +4403,6 @@
       ],
       "characterId": "saleha"
     },
-    "day6-after-opening": {
-      "speaker": "Deena",
-      "lines": [
-        "Continue practising with our neighbours. We will be here in the Hills when you return."
-      ],
-      "actions": [
-        {
-          "label": "Explore first",
-          "type": "explore"
-        }
-      ],
-      "characterId": "saleha"
-    },
     "day6-finale": {
       "speaker": "Deena",
       "listener": "Player",
@@ -4492,22 +4479,6 @@
         {
           "label": "Finish Day 6",
           "type": "explore"
-        }
-      ],
-      "characterId": "saleha"
-    },
-    "day6-residential": {
-      "speaker": "Deena",
-      "listener": "Player",
-      "lines": [
-        "We can practise Day 6 here at Home."
-      ],
-      "actions": [
-        {
-          "label": "Study at Home",
-          "type": "lesson",
-          "lessonId": "6-residential",
-          "condition": "lesson:6-residential"
         }
       ],
       "characterId": "saleha"

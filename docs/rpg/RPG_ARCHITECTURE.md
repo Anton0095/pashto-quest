@@ -1,5 +1,8 @@
 # TypeScript / Phaser Week 1 architecture
 
+Current map/schedule behavior: [permanent Hills and the Day 6 invitation](HILLS_EXPANSION.md) supersede the earlier eastern spur, Day 6-only access and Medina-at-Lake introduction. Historical verification figures below retain their original scope.
+
+
 See the [Sleep/Dream and authored-conversation follow-up](SLEEP_AND_CONVERSATIONS.md) for current transitions, Bilal's branching practice, actual Lake prerequisites and the authorized Day 2 form schedule. Earlier implementation and validation statements below describe their recorded release.
 
 

@@ -31,8 +31,8 @@ export function createRPGRegistry(data:WorldData, conditions:Record<string,()=>b
   function npcs(day:number,map:string):Actor[] {
     return data.npcs.filter(n=>data.days[String(day)]?.activeNPCs.includes(n.id)&&eligible(n.condition)).flatMap(n=>{
       const daily=n.schedule.filter(s=>s.day===day);
-      const slot=daily.find(s=>s.map===map&&eligible(s.condition))??(!daily.length&&n.defaultLocation?.map===map?n.defaultLocation:undefined);
-      return slot ? [{...n,...slot}] : [];
+      const slot=daily.find(s=>eligible(s.condition))??(!daily.length?n.defaultLocation:undefined);
+      return slot?.map===map ? [{...n,...slot}] : [];
     });
   }
   function objects(day:number,map:string):Actor[] { return [...npcs(day,map),...data.objects.filter(o=>o.map===map && eligible(o.condition))]; }

@@ -1,5 +1,8 @@
 # Extending the Week 1 RPG
 
+Current map/schedule behavior: [permanent Hills and the Day 6 invitation](HILLS_EXPANSION.md) supersede the earlier eastern spur, Day 6-only access and Medina-at-Lake introduction. Historical verification figures below retain their original scope.
+
+
 > Historical checkpoint document. Day limits, prototype controls and implementation status below describe its original checkpoint. Use [current architecture](RPG_ARCHITECTURE.md), [house/sleep/dream](HOUSE_SLEEP_DREAM.md) and the [post-merge audit](../maintenance/POST_MERGE_AUDIT.md) for the shipped game.
 
 Days 1–7 are playable on `feature/rpg-multiday-overhaul`. Day 7 is nonterminal and links to `day-8`; Day 8 remains unregistered. See the [current overhaul report](MULTIDAY_OVERHAUL.md). Use the [implementation walkthrough](WEEK1_IMPLEMENTATION.md#adding-day-8-and-future-content) and [inactive Day 8 registration](day8-registration.example.json); the Week 1 model test registers that fixture, a new map and a new NPC using data only.

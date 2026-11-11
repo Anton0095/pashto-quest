@@ -1,5 +1,8 @@
 # Pashto Quest — Current curriculum and content status
 
+Current world: [permanent Hills and the Day 6 invitation](docs/rpg/HILLS_EXPANSION.md). Follow the northern village path after onboarding on any playable day. Day 6 begins with Deena alone at Lake; accept her invitation and meet Medina in Hills. Nature's curriculum, four-district allocation and early challenge remain unchanged.
+
+
 Current behavior: [typed opt-out and Bilal completion repair](docs/rpg/TYPING_AND_BILAL_COMPLETION.md). A correct typed tutorial answer enables typing; “I cannot type” disables it there and skips ordinary typed questions for zero credit without changing the preference. Bilal's Day 1–7 exchanges unlock after Lake completion or a successful daily challenge, including sparse sentence pools.
 
 
@@ -25,7 +28,7 @@ The sequence below covers Days 1–14 in the educational engine. The playable RP
 | 3 | I, first-person present | Deena at Lake; Edris's market/dinner conversation |
 | 4 | Informal singular you (`ته`), contrast with I, compound clauses | Muhammad Jan at Home |
 | 5 | Respectful/plural you (`تاسې`/`تاسو`), audience selection | Ms Hameed at School; gathering near Lake |
-| 6 | We (`موږ`/`مونږ`), compound subjects and contrast with you all | Deena introduces sister Medina at Lake; Hills final |
+| 6 | We (`موږ`/`مونږ`), compound subjects and contrast with you all | Deena invites the player from Lake; younger sister Medina is introduced in Hills |
 | 7 | They (`هغوی`), observed third-person plural, Week 1 synthesis | Edris at Market; Ms Hameed's 25-question Week 1 exam |
 | 8 | This/that demonstratives | Deena at Lake |
 | 9 | Noun plurals, agreement and quantities 1–5 | Edris at Market |
@@ -35,7 +38,7 @@ The sequence below covers Days 1–14 in the educational engine. The playable RP
 | 13 | Time/manner/frequency adverbs | Deena and Medina |
 | 14 | Cumulative investigation/scavenger hunt, no compulsory new words | Integrated four-district narrative and 25-question final |
 
-The four district IDs are `residential`, `nature`, `business` and `school`; player-facing map labels are Home, Lake, Market and School. Library offers reference and voluntary zero-XP practice, Hills is a Day 6 Nature story scene. Teacher identities, character relationships and speaker/addressee labels are authored. Day 1's optional guided Library tutorial teaches `سلام` (meaning choice), `څنګه یې؟` (translation selection), the Pashto language-selection question `ته کومه ژبه زده کوې؟` (select `پښتو`), then `زما نوم څه دی؟` (type Muhammad Jan in English). The two authored questions are recorded in [TUTORIAL_PROMPTS.json](content/TUTORIAL_PROMPTS.json). Completing or skipping the tutorial reaches one shared four-area introduction and identical Day 1 access. Player name, gender and optional typing are Library → Player Profile settings; name and gender are not tutorial questions.
+The four district IDs are `residential`, `nature`, `business` and `school`; player-facing map labels are Home, Lake, Market and School. Library offers reference and voluntary zero-XP practice, Hills is a permanent physical area within Nature. Teacher identities, character relationships and speaker/addressee labels are authored. Day 1's optional guided Library tutorial teaches `سلام` (meaning choice), `څنګه یې؟` (translation selection), the Pashto language-selection question `ته کومه ژبه زده کوې؟` (select `پښتو`), then `زما نوم څه دی؟` (type Muhammad Jan in English). The two authored questions are recorded in [TUTORIAL_PROMPTS.json](content/TUTORIAL_PROMPTS.json). Completing or skipping the tutorial reaches one shared four-area introduction and identical Day 1 access. Player name, gender and optional typing are Library → Player Profile settings; name and gender are not tutorial questions.
 
 Day 1 Home at default pace teaches house, door, room, big, window and open, plus the required evidenced feminine form. Agreement follows word study, then the engine composes house/big, door/open and window/open descriptions for study and tile construction. Other districts are unnecessary for this Home objective. Standard visits deduplicate complete sentence texts across locations and days; explicit revision/replay may repeat them. Later days request four generated study cards per visit when evidence and study permit, with current construction/person goals preferred and cumulative forms retained.
 

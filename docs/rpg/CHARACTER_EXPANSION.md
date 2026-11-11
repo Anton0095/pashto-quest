@@ -1,5 +1,8 @@
 # Character and village-life expansion — approved design (6 November 2026)
 
+Current map/schedule behavior: [permanent Hills and the Day 6 invitation](HILLS_EXPANSION.md) supersede the earlier eastern spur, Day 6-only access and Medina-at-Lake introduction. Historical verification figures below retain their original scope.
+
+
 **Status: runtime/art implemented on `feature/character-expansion`, pending review/merge.** This document remains the canonical cast and behaviour specification. See [Living village](LIVING_VILLAGE.md) for the implementation, assets, save behaviour, actual validation, limits and owner-approved Pashto name spellings. `content/RPG_WORLD.json` remains the authority for actual NPCs/events; `content/CHARACTER_PORTRAITS.json` owns actual portrait assets. Days 8–14 RPG registrations and Bilal's catch reveal remain future work.
 
 See the [current dialogue and Nayab follow-up](QUEST_IMPROVEMENTS.md) for superseding narrative, gender/design and verification details.

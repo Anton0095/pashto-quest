@@ -1,5 +1,8 @@
 # Pashto Quest
 
+Current world: [permanent Hills and the Day 6 invitation](docs/rpg/HILLS_EXPANSION.md). Follow the northern village path after onboarding on any playable day. Day 6 begins with Deena alone at Lake; accept her invitation and meet Medina in Hills. Nature's curriculum, four-district allocation and early challenge remain unchanged.
+
+
 Current behavior: [typed opt-out and Bilal completion repair](docs/rpg/TYPING_AND_BILAL_COMPLETION.md). A correct typed tutorial answer enables typing; “I cannot type” disables it there and skips ordinary typed questions for zero credit without changing the preference. Bilal's Day 1–7 exchanges unlock after Lake completion or a successful daily challenge, including sparse sentence pools.
 
 
@@ -20,7 +23,7 @@ The owner supplied **دینه** (Deena) and **مدینه** (Medina). These are n
 
 ## RPG interface and Week 1
 
-The starting village now uses a 96×64 Afghan-inspired layout with northwest residential compounds, a northeast lake and dock, a school below the lake, southwest market and three barred future roads. See the [layout, rendering, save recovery and map extension guide](docs/rpg/VILLAGE_REDESIGN.md).
+The starting village now uses a 96×64 Afghan-inspired layout with northwest residential compounds, a northeast lake and dock, a school below the lake, southwest market and two barred future roads and an open northern Hills trail. See the [layout, rendering, save recovery and map extension guide](docs/rpg/VILLAGE_REDESIGN.md).
 
 The default release uses strict TypeScript and locally bundled Phaser 4.2.1. Click or tap to walk, select an NPC to approach and talk, or use arrows/WASD and the touch directions. On wide screens the world occupies the left column (approximately 65%); day/title, Level, XP, encountered words and the contextual interface occupy the right column. At widths of 1000 CSS pixels or less, the world sits above the interface. Exploration and dialogue keep the world visible. Tutorials, lessons, revision, dreams and challenges switch to viewport-filling Learning Mode with the mounted world hidden and paused; permitted return actions restore exploration at the saved position. Library reference remains contextual, while voluntary practice expands to the viewport. Menu contains the collapsible Laghman/pronunciation information. Library remains independently accessible. See [Exploration Mode](docs/rpg/TWO_COLUMN_INTERFACE.md), [Learning Mode](docs/rpg/FULLSCREEN_LEARNING.md) and [current lesson UI, feedback and entry rules](docs/rpg/LESSON_UI_AND_ENTRY.md).
 

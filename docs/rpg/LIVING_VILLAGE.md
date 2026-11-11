@@ -1,5 +1,8 @@
 # Character expansion and living village
 
+Current map/schedule behavior: [permanent Hills and the Day 6 invitation](HILLS_EXPANSION.md) supersede the earlier eastern spur, Day 6-only access and Medina-at-Lake introduction. Historical verification figures below retain their original scope.
+
+
 > This records the preceding release. The subsequent [lesson/progression fixes](LESSON_PROGRESSION_FIXES.md) supersede name projection, Day 2 ordering, pace and save-format statements where applicable; original validation remains release-specific.
 
 
@@ -7,7 +10,7 @@ Implemented on `feature/character-expansion` from main `fa02231`, pending review
 
 ## Cast and art
 
-Deena retains `saleha` and Medina retains `mina`, including event IDs, encounter flags and lesson/reward identities. Deena's new portrait and procedural world sprite show light brown hair and blue eyes. Medina retains her original portrait and young Afghan girl design without a hijab. Her Day 6 Lake introduction, sister relationship and Hills presence remain intact. Existing teachers, Day 5 gathering/relocations and Day 7 examination remain unchanged.
+Deena retains `saleha` and Medina retains `mina`, including event IDs, encounter flags and lesson/reward identities. Deena's new portrait and procedural world sprite show light brown hair and blue eyes. Medina retains her original portrait and young Afghan girl design without a hijab. She is introduced by her older sister Deena in Hills on Day 6, after the Lake invitation is accepted. Their relationship and appearances remain intact. Existing teachers, Day 5 gathering/relocations and Day 7 examination remain unchanged.
 
 Bilal (`bilal`) stands on the lakeshore beside the dock approach, without occupying the dock. His optional conversation leads to hints about ripples/splashes; acknowledging them changes a story flag, so a later conversation mentions a shadow. The catch remains unidentified. Zamir (`zamir`) owns several stalls and inspects a four-stop Market circuit independently of Edris. Nayab, Sara, Omar, Afiya and Sanaa each have a stable identity, distinct portrait/clothing/hair and short walking/running routines in the School's open courtyard. They gather near a shared meeting point with separate starting delays, speeds and pauses. No ages, family ties, religious traits or romance are invented for these five children.
 

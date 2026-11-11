@@ -35,6 +35,7 @@ const savedBefore=JSON.stringify(t.state.progress),story=M.createStoryDirector({
 story.open('day6-opening');assert(!registry.event('day6-opening').actions.some(a=>a.type==='lesson'));assert(story.choose(data.events['day6-opening'].actions.find(a=>a.type==='flag')));
 assert(world.flags[flag]);assert(!registry.npcs(6,'village').some(n=>['saleha','mina'].includes(n.characterId)));
 const sisters=registry.npcs(6,'hills').filter(n=>['saleha','mina'].includes(n.characterId));assert.equal(sisters.length,2);assert.equal(new Set(sisters.map(n=>n.characterId)).size,2);
+const ambiguous=structuredClone(data);ambiguous.npcs.find(n=>n.id==='saleha').schedule.filter(s=>s.day===6).forEach(s=>delete s.condition);const one=M.createRPGRegistry(ambiguous,{},eligible);assert.equal(data.days[6].maps.flatMap(map=>one.npcs(6,map)).filter(n=>n.characterId==='saleha').length,1,'one eligible schedule per identity across maps');
 for(const n of sisters){assert(M.findPath(data,start,M.approachTiles(data,'hills',n,sisters),sisters,data.days[6].maps));assert(registry.event(n.event).actions.some(a=>a.type==='lesson'&&a.lessonId==='6-nature'));}
 assert.deepEqual(data.events['day6-arrival'].participants,['saleha','mina']);assert(data.events['day6-arrival'].messages[0].text.includes('younger sister Medina'));
 story.open('day6-arrival');story.choose(data.events['day6-arrival'].actions.find(a=>a.type==='explore'));assert.equal(story.open('day6-arrival'),undefined,'acknowledged sister introduction is once-only');

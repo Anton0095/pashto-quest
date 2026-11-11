@@ -1,5 +1,8 @@
 # Pashto Quest — Current game specification
 
+Current world: [permanent Hills and the Day 6 invitation](docs/rpg/HILLS_EXPANSION.md). Follow the northern village path after onboarding on any playable day. Day 6 begins with Deena alone at Lake; accept her invitation and meet Medina in Hills. Nature's curriculum, four-district allocation and early challenge remain unchanged.
+
+
 Current behavior: [typed opt-out and Bilal completion repair](docs/rpg/TYPING_AND_BILAL_COMPLETION.md). A correct typed tutorial answer enables typing; “I cannot type” disables it there and skips ordinary typed questions for zero credit without changing the preference. Bilal's Day 1–7 exchanges unlock after Lake completion or a successful daily challenge, including sparse sentence pools.
 
 
@@ -14,7 +17,7 @@ Current follow-up: [Library, Nayab, shared onboarding, optional typing planner a
 
 ## Product and world
 
-A single-file, keyboard/mobile-aware, primarily text-and-map Pashto learning game. Four canonical teaching districts: `residential` (Home), `nature` (Lake), `business` (Market), `school` (School). Library is an always-open reference scene and does not count as a teaching visit, XP action or fifth quota. Hills is a Day 6 finale in the existing Nature teaching district. Physical maps, including interiors and Hills, do not create additional curriculum districts or vocabulary quotas. Characters may visit other districts from Day 5 onward. Muhammad Jan (village elder), Edris (shopkeeper), Deena (fellow student), Medina (Deena's sister, introduced Day 6) and Ms Hameed (teacher) retain their relationships and contextual speaker/addressee distinctions. Normal mode keeps each day's authored opening. Skip mode bypasses visits and normally forced openings.
+A single-file, keyboard/mobile-aware, primarily text-and-map Pashto learning game. Four canonical teaching districts: `residential` (Home), `nature` (Lake), `business` (Market), `school` (School). Library is an always-open reference scene and does not count as a teaching visit, XP action or fifth quota. Hills is a permanent explorable map in the existing Nature teaching district, including its Day 6 lesson and finale. Physical maps, including interiors and Hills, do not create additional curriculum districts or vocabulary quotas. Characters may visit other districts from Day 5 onward. Muhammad Jan (village elder), Edris (shopkeeper), Deena (fellow student), Medina (Deena's sister, introduced Day 6) and Ms Hameed (teacher) retain their relationships and contextual speaker/addressee distinctions. Normal mode keeps each day's authored opening. Skip mode bypasses visits and normally forced openings.
 
 ## Onboarding and navigation
 
