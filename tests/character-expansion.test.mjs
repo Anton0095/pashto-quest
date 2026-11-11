@@ -29,7 +29,7 @@ for(let day=1;day<=7;day++){
 const without=M.createPersistenceAPI(data,{}).fresh(data);assert.equal(M.createPersistenceAPI(data,{}).validate(data,without).activities,undefined,'Valid pre-expansion world save needs no migration');
 
 for(const id of ids){const event=data.events['ambient-'+id];assert(event.actions.every(a=>!['lesson','challenge'].includes(a.type)));assert(!event.once);}
-assert.equal(data.days[6].openingEvent,'day6-opening');assert(data.events['day6-opening'].lines.join().includes('sister Medina'));assert(data.events['day6-finale'].lines.join().includes('Deena and Medina'));
+assert.equal(data.days[6].openingEvent,'day6-opening');assert(data.events['day6-arrival'].lines.join().includes('younger sister Medina'));assert(data.events['day6-finale'].lines.join().includes('Deena and Medina'));
 console.log('PASS seven-day cast/routine simulation, reservations, protected access, selectable targets, settled reload, invalid routine recovery, stable identity and display-only frozen-name aliases');
 
 // Supported education saves preserve old cast metadata and every generated proof byte.

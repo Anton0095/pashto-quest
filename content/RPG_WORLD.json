@@ -103,7 +103,7 @@
       "name": "Laghman Village",
       "tiles": [
         "ttttttttttttttttttttttttttttttttttttttttttttpppppttttttttttttttttttttttttttttttttttttttttttttttt",
-        "tgggtgggggggggggtgggggggggggggggggggggggggggXXXXXtggggggggggggggtggtggggggggtggggggggtgggggtgggt",
+        "tgggtgggggggggggtgggggggggggggggggggggggggggppppptggggggggggggggtggtggggggggtggggggggtgggggtgggt",
         "tgBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBgggggpppppggggggggggggggggggggggggggggggggggggggggggggggt",
         "tgBcccccccccccccccccccccccccccccccccccBgggggpppppggggggggggggggggggggggggwggwggggggggggggggggggt",
         "ttBccbbbbbbbbbcccbbbbbbbbbbcccccccccccBgtgggpppppgggtggtggtggtggggggwwwwwwwwwwwwwwwggtggtggtgggt",
@@ -136,7 +136,7 @@
         "tpppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppXp",
         "tpppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppXp",
         "tpppppppppppppppppppppppppppppppppppppppppppppppppppppppppBBBBBBBBBBBppppppBBBBBBBBBBBBBppppppXp",
-        "tpppppppppppppppppppppppppppppppppppppppppppppppppppppppppBccccccccccccccccccccccccccccppppppppp",
+        "tpppppppppppppppppppppppppppppppppppppppppppppppppppppppppBccccccccccccccccccccccccccccpppppppRp",
         "tggggBBBBBBBBBBBBBpppppBBBBBBBBBBBBBBBggggggpppppgggggggggBcbbbbbbbbbbbbbbbbbbbbbbbbcccBpppppppt",
         "tggggBcccccccccccccccccccccccccccccccBggggggpppppgggggggggBcbbbbbbbbbbbbbbbbbbbbbbbbcccBgggggggt",
         "tgggtBcbbbbbbbbccccccccccccccccccccccBggggggppppptggtggtggBcbbbbbbbbbbbbbbbbbbbbbbbbcccBtggtgggt",
@@ -315,21 +315,21 @@
           }
         },
         {
-          "x": 94,
-          "y": 34,
-          "to": "hills",
-          "spawn": {
-            "x": 2,
-            "y": 12
-          }
-        },
-        {
           "x": 9,
           "y": 7,
           "to": "house",
           "spawn": {
             "x": 12,
             "y": 15
+          }
+        },
+        {
+          "x": 46,
+          "y": 0,
+          "to": "hills",
+          "spawn": {
+            "x": 32,
+            "y": 45
           }
         }
       ],
@@ -1450,11 +1450,6 @@
           "kind": "stone"
         },
         {
-          "x": 48,
-          "y": 3,
-          "kind": "sign"
-        },
-        {
           "x": 94,
           "y": 32,
           "kind": "sign"
@@ -2234,17 +2229,6 @@
       ],
       "reservedExits": [
         {
-          "id": "north",
-          "x": 46,
-          "y": 0,
-          "approach": {
-            "x": 46,
-            "y": 3
-          },
-          "direction": "north",
-          "status": "reserved"
-        },
-        {
           "id": "east",
           "x": 95,
           "y": 32,
@@ -2268,7 +2252,7 @@
         }
       ],
       "collision": [
-        "000000000000000000000000000000000000000000001111100000000000000000000000000000000000000000000000",
+        "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "011101111111111100000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
@@ -2455,59 +2439,239 @@
       ]
     },
     "hills": {
-      "name": "Hills · Nature district",
+      "name": "Spring Hills · Nature",
+      "condition": "afterTutorial",
       "tiles": [
-        "tttttttttttttttttttttttttttttttt",
-        "tggggtggggggggggggggggggggggtggt",
-        "tgggggggggtggggggggggggggggggggt",
-        "tggggggggbbbbbbbbbbggggggggggggt",
-        "tggggggggbbbbbbbbbbgtggggggggggt",
-        "tgtggggggbbbbbbbbbbggggggtgggggt",
-        "tggggggtgbbbbbbbbbbggggppgggggtt",
-        "tgggggggggggtggggggggggppggggggt",
-        "tggggggggggggggggtgggggppggggggt",
-        "tgggggggggggggggggggggtppggggggt",
-        "tgggtggggggggggggggggggppggtgggt",
-        "tggggggggtgggggggggggggppggggggt",
-        "tdpppppppppppppppppppppppppggggt",
-        "tppppppppppppppppppppppppppggggt",
-        "ttgggggggggggggggggggggppggggggt",
-        "tgggggtggggggggggggggggppggggtgt",
-        "tggggggggggtgggggggggggppggggggt",
-        "tgggggggggggggggtggggggppggggggt",
-        "tggggggggggggggggggggtgppggggggt",
-        "tggtggggggggggggggggggggggtggggt",
-        "tgggggggtggggggggggggggggggggggt",
-        "tggggggggggggtgggggggggggggggggt",
-        "tgggggggggggggggggtggggggggggggt",
-        "tttttttttttttttttttttttttttttttt"
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+        "RgggRRRRRRRRgggggggRRRRRRRRgggggggRRRRRRRRgggggggRRRRRRRRggggggR",
+        "RggggggggggggggggggggggggfgggggggggggggggggggggggggggggggggggggR",
+        "RgggggggggggggggggggggggggggggfggggggggggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggggggggggggfgggggggggggggggggggggggggggR",
+        "RgggggggggggggggggggggggggggggggggggggggfggggggggggggggggggggggR",
+        "RgfggggggggggggggggggggggggggggggggggggggggggfggtggggggggggggggR",
+        "RggggggtggggggggggggggggggggggggggggggggggggggggggfggggggggggggR",
+        "RgggggggggggfggggggggggggggggggggggggggggggggggggggggggfgggggggR",
+        "RgggggggggggggRggfggggggggggggggggggggggggggggggggggggggggggfggR",
+        "RgggggggggggggggggggggfggggggggggggggggggggggRgggggggggggggggggR",
+        "RggggggggggggggggggggggggggfgggggggggggggggggggggggggggggggggggR",
+        "RgggggggggggggggggggggggggggggggfggggggggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggggggggggggggfgggggggggggggggggggggggggR",
+        "RgggggggggggggggggggggggggggggggggggggggggfggggggggggggggggggRRR",
+        "RgggfggggggggggggtgggggggggggggggggggggggggggggfgppppppppppRpRRR",
+        "RggggggggfggggggggggggggggggggggggggggggggggggggpppppppppppppRRR",
+        "RgggggggggggggfggggggggggggggggggggggggggggggggppppppppppppppRRR",
+        "RggggggggggggggggggfgggggggggggggggggggggggggppppppggggggggggRRR",
+        "RgggggggggggggggggggggggfgggggggggpppppppgggppppppgggggggggggggR",
+        "RggggggggggggggggggggggggggggfgppppppppppppppppppggggggggggggggR",
+        "RgggggggggggggggggggggggggggggpppppppppppppppppggggggggggggggggR",
+        "RggggggggggggggggggggggggggpppppppppgggpppppppgggggggggggggggggR",
+        "RfggggggggggggggggggggggggpppppppgggggggggggfggggggggggggggggggR",
+        "RgggggfggRggggggggggggggggppppppgggggggggggggggggfgggggggggggggR",
+        "RggggggggggfggggggggggggggpppgggggggggggggggggggggggggfggggggggR",
+        "RgggggggggggggggfggggggggppppggggggggggggggggggggggggggggggfgggR",
+        "RggggggggggggggggggggfgggppppggggggggggggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggpppgggggggggggggggggggggggggggtgggggggR",
+        "RggggggggggggggggggggggggpppgggfggggggggRggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggppppgggggggfggggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggpppppgggggggggggfgggggggggggggggggggggR",
+        "RggfggggggggggggggggggggggpppppgggggggggggggggfggggggggggggggggR",
+        "RgggggggfggggggggggggggggggpppppgggggggggggggggggggfggRggggggggR",
+        "RggggggggggtgfggggggggggggggpppppgggggggggggggggggggggggfggggggR",
+        "RgggggggggggggggggfggggggggggpppppgggggggggggggggggggggggggggfgR",
+        "RggggggggggggggggggggggfggggggppppgggggggggtgggggggggggggggggggR",
+        "RgggggggggggggggggggRgggggggfggpppgggggggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggggggggpppggggggggggggggggggggggggtggggR",
+        "RggggggggggggggggggggggggggggggpppggggfggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggggggggpppgggggggggfgggggggggggggggggggR",
+        "RggggfgggggggggggggggggggggggggpppggggggggggggggfggggggggggggggR",
+        "RgggggggggfggggggggggggggggggggpppgggggggggggggggggggfgggggggggR",
+        "RggggggggggggggfgggggggggggggggpppggggggggggggggggggggggggfggggR",
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRpRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
       ],
       "spawn": {
-        "x": 2,
-        "y": 12
+        "x": 32,
+        "y": 45
       },
       "transitions": [
         {
-          "x": 1,
-          "y": 12,
+          "x": 32,
+          "y": 47,
           "to": "village",
           "spawn": {
-            "x": 93,
-            "y": 34
+            "x": 46,
+            "y": 2
           }
+        }
+      ],
+      "reservedExits": [
+        {
+          "id": "east",
+          "x": 63,
+          "y": 19,
+          "approach": {
+            "x": 59,
+            "y": 19
+          },
+          "direction": "east",
+          "status": "reserved"
         }
       ],
       "regions": [
         {
           "id": "hills",
           "name": "Hills · Nature",
-          "x": 17,
-          "y": 7,
-          "w": 11,
-          "h": 10
+          "x": 29,
+          "y": 20,
+          "w": 12,
+          "h": 9
         }
       ],
-      "buildings": []
+      "buildings": [],
+      "scenery": [
+        {
+          "x": 7,
+          "y": 10,
+          "kind": "tree"
+        },
+        {
+          "x": 17,
+          "y": 18,
+          "kind": "tree"
+        },
+        {
+          "x": 48,
+          "y": 9,
+          "kind": "tree"
+        },
+        {
+          "x": 55,
+          "y": 31,
+          "kind": "tree"
+        },
+        {
+          "x": 11,
+          "y": 37,
+          "kind": "tree"
+        },
+        {
+          "x": 43,
+          "y": 39,
+          "kind": "tree"
+        },
+        {
+          "x": 58,
+          "y": 41,
+          "kind": "tree"
+        },
+        {
+          "x": 14,
+          "y": 12,
+          "kind": "rock"
+        },
+        {
+          "x": 45,
+          "y": 13,
+          "kind": "rock"
+        },
+        {
+          "x": 9,
+          "y": 27,
+          "kind": "rock"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "kind": "rock"
+        },
+        {
+          "x": 54,
+          "y": 36,
+          "kind": "rock"
+        },
+        {
+          "x": 20,
+          "y": 40,
+          "kind": "rock"
+        },
+        {
+          "x": 59,
+          "y": 18,
+          "kind": "rock"
+        },
+        {
+          "x": 61,
+          "y": 19,
+          "kind": "rock"
+        },
+        {
+          "x": 62,
+          "y": 20,
+          "kind": "rock"
+        },
+        {
+          "x": 9,
+          "y": 18,
+          "kind": "shrub"
+        },
+        {
+          "x": 20,
+          "y": 25,
+          "kind": "shrub"
+        },
+        {
+          "x": 38,
+          "y": 15,
+          "kind": "shrub"
+        },
+        {
+          "x": 48,
+          "y": 33,
+          "kind": "shrub"
+        },
+        {
+          "x": 17,
+          "y": 36,
+          "kind": "shrub"
+        },
+        {
+          "x": 36,
+          "y": 39,
+          "kind": "shrub"
+        },
+        {
+          "x": 20,
+          "y": 15,
+          "kind": "bird"
+        },
+        {
+          "x": 43,
+          "y": 28,
+          "kind": "bird"
+        },
+        {
+          "x": 11,
+          "y": 31,
+          "kind": "bird"
+        },
+        {
+          "x": 49,
+          "y": 39,
+          "kind": "bird"
+        },
+        {
+          "x": 47,
+          "y": 34,
+          "kind": "goat"
+        },
+        {
+          "x": 49,
+          "y": 35,
+          "kind": "sheep"
+        }
+      ]
     },
     "house": {
       "name": "Your House",
@@ -2809,37 +2973,6 @@
           "event": "day5-nature"
         },
         {
-          "day": 6,
-          "map": "village",
-          "x": 66,
-          "y": 18,
-          "event": "day6-nature",
-          "condition": "not-complete:6-nature"
-        },
-        {
-          "day": 6,
-          "map": "village",
-          "x": 10,
-          "y": 10,
-          "event": "day6-residential",
-          "condition": "all:complete:6-nature|not-complete:6-residential"
-        },
-        {
-          "day": 6,
-          "map": "village",
-          "x": 66,
-          "y": 18,
-          "event": "day6-nature",
-          "condition": "complete:6-residential"
-        },
-        {
-          "day": 6,
-          "map": "hills",
-          "x": 23,
-          "y": 11,
-          "event": "day6-hills"
-        },
-        {
           "day": 7,
           "map": "village",
           "x": 70,
@@ -2854,6 +2987,22 @@
           "y": 18,
           "event": "day7-saleha-visit",
           "condition": "complete:7-school"
+        },
+        {
+          "day": 6,
+          "map": "village",
+          "x": 66,
+          "y": 18,
+          "event": "day6-nature",
+          "condition": "not-flag:day6-hills-invited"
+        },
+        {
+          "day": 6,
+          "map": "hills",
+          "x": 35,
+          "y": 23,
+          "event": "day6-hills",
+          "condition": "flag:day6-hills-invited"
         }
       ],
       "event": "lake",
@@ -3003,25 +3152,19 @@
       "event": "day6-opening",
       "schedule": [
         {
-          "day": 6,
-          "map": "village",
-          "x": 68,
-          "y": 18,
-          "event": "day6-opening"
-        },
-        {
-          "day": 6,
-          "map": "hills",
-          "x": 25,
-          "y": 11,
-          "event": "day6-hills"
-        },
-        {
           "day": 7,
           "map": "village",
           "x": 68,
           "y": 18,
           "event": "day7-nature"
+        },
+        {
+          "day": 6,
+          "map": "hills",
+          "x": 38,
+          "y": 23,
+          "event": "day6-hills-medina",
+          "condition": "flag:day6-hills-invited"
         }
       ]
     },
@@ -3306,8 +3449,8 @@
       "id": "hills-marker",
       "name": "Hills trail marker",
       "map": "hills",
-      "x": 5,
-      "y": 11,
+      "x": 30,
+      "y": 43,
       "event": "hills-reference"
     },
     {
@@ -3337,6 +3480,14 @@
         "w": 4,
         "h": 5
       }
+    },
+    {
+      "id": "hills-east-scree",
+      "name": "Eastern scree trail",
+      "map": "hills",
+      "x": 61,
+      "y": 19,
+      "event": "hills-east-blocked"
     }
   ],
   "events": {
@@ -4228,16 +4379,14 @@
       "speaker": "Deena",
       "listener": "Player",
       "lines": [
-        "This is my sister Medina. We will practise speaking about ourselves as a group, then meet in the Hills."
+        "I would like to take you to the Hills and introduce someone. Follow the village path north; I will meet you there."
       ],
       "once": true,
       "actions": [
         {
-          "label": "Begin Day 6 Lake lesson",
-          "type": "lesson",
-          "lessonId": "6-nature",
-          "resumeEvent": "day6-after-opening",
-          "condition": "lesson:6-nature"
+          "label": "I'll meet you in the Hills",
+          "type": "flag",
+          "flag": "day6-hills-invited"
         },
         {
           "label": "Explore first",
@@ -4247,15 +4396,9 @@
       "messages": [
         {
           "speaker": "Deena",
+          "characterId": "saleha",
           "listener": "Player",
-          "text": "This is my sister Medina. We are learning together today.",
-          "characterId": "saleha"
-        },
-        {
-          "speaker": "Medina",
-          "listener": "Player",
-          "text": "Let us begin at the Lake. Later we can meet in the Hills.",
-          "characterId": "mina"
+          "text": "I would like to take you to the Hills and introduce someone. Follow the village path north; I will meet you there."
         }
       ],
       "characterId": "saleha"
@@ -4263,22 +4406,12 @@
     "day6-after-opening": {
       "speaker": "Deena",
       "lines": [
-        "Continue practising with our neighbours, or choose the early challenge when you are ready."
+        "Continue practising with our neighbours. We will be here in the Hills when you return."
       ],
       "actions": [
         {
-          "label": "Return to village",
+          "label": "Explore first",
           "type": "explore"
-        },
-        {
-          "label": "Travel to the Hills",
-          "type": "scene",
-          "position": {
-            "map": "hills",
-            "x": 2,
-            "y": 12,
-            "facing": "right"
-          }
         }
       ],
       "characterId": "saleha"
@@ -4326,7 +4459,7 @@
       "listener": "Player",
       "once": true,
       "lines": [
-        "You may take Day 6 without the visits or normal finale. Deena introduces her sister Medina; they welcome you to the Hills. Starting makes today’s assigned material available for assessment. It does not record study, correct answers or practice activity."
+        "You may attempt Day 6 in the Hills without the invitation, visits or normal finale. Starting makes today’s assigned material available for assessment. It does not record study, correct answers or practice activity."
       ],
       "actions": [
         {
@@ -4383,20 +4516,23 @@
       "speaker": "Deena",
       "listener": "Player",
       "lines": [
-        "We can practise Day 6 here at Lake."
+        "The Hills are north of the village. Will you meet me there?"
       ],
       "actions": [
         {
-          "label": "Day opening",
-          "type": "event",
-          "event": "day6-opening",
-          "condition": "not-event:day6-opening"
+          "label": "I'll meet you in the Hills",
+          "type": "flag",
+          "flag": "day6-hills-invited"
         },
         {
-          "label": "Study at Lake",
+          "label": "Day 6 Nature lesson",
           "type": "lesson",
           "lessonId": "6-nature",
-          "condition": "lesson:6-nature"
+          "condition": "all:flag:day6-hills-invited|lesson:6-nature"
+        },
+        {
+          "label": "Explore first",
+          "type": "explore"
         }
       ],
       "characterId": "saleha"
@@ -4437,9 +4573,21 @@
       "speaker": "Deena",
       "listener": "Player and Medina",
       "lines": [
-        "We are together in the Hills. This is part of the Nature district, with no extra vocabulary quota."
+        "We can practise together here in the Hills. Choose a lesson, explore, or attempt the challenge when you are ready."
       ],
       "actions": [
+        {
+          "label": "Study in the Hills · Nature",
+          "type": "lesson",
+          "lessonId": "6-nature",
+          "condition": "lesson:6-nature"
+        },
+        {
+          "label": "Home course · Deena",
+          "type": "lesson",
+          "lessonId": "6-residential",
+          "condition": "lesson:6-residential"
+        },
         {
           "label": "Join Together in the Hills",
           "type": "event",
@@ -4450,29 +4598,58 @@
           "label": "Day 6 challenge · 15 questions",
           "type": "challenge",
           "day": 6
+        },
+        {
+          "label": "Explore first",
+          "type": "explore"
         }
       ],
       "characterId": "saleha"
     },
     "day6-arrival": {
-      "speaker": "Medina",
-      "listener": "Player",
+      "speaker": "Deena",
+      "characterId": "saleha",
+      "participants": [
+        "saleha",
+        "mina"
+      ],
+      "condition": "flag:day6-hills-invited",
       "once": true,
+      "listener": "Player",
       "lines": [
-        "Welcome to the Hills. Follow the path east to meet us. The western gate returns to the village."
+        "This is my younger sister Medina. We are learning together today."
+      ],
+      "messages": [
+        {
+          "speaker": "Deena",
+          "characterId": "saleha",
+          "listener": "Player",
+          "text": "This is my younger sister Medina. We are learning together today."
+        },
+        {
+          "speaker": "Medina",
+          "characterId": "mina",
+          "listener": "Player",
+          "text": "It is nice to meet you. Let us practise talking about what we do together."
+        }
       ],
       "actions": [
         {
-          "label": "Follow the trail",
+          "label": "Begin Day 6 Hills lesson",
+          "type": "lesson",
+          "lessonId": "6-nature",
+          "condition": "lesson:6-nature"
+        },
+        {
+          "label": "Explore first",
           "type": "explore"
         }
-      ],
-      "characterId": "mina"
+      ]
     },
     "hills-reference": {
       "speaker": "Trail marker",
       "lines": [
-        "Hills trail: west returns to the village. The Library and all four learning districts remain available."
+        "The southern trail returns to the village. The eastern trail ends at loose scree; a future destination lies beyond. Enjoy the spring landscape. The Hills belongs to Nature, with no extra lesson quota."
       ],
       "actions": [
         {
@@ -5717,6 +5894,43 @@
         "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
       },
       "actions": []
+    },
+    "day6-hills-medina": {
+      "speaker": "Medina",
+      "characterId": "mina",
+      "listener": "Player",
+      "lines": [
+        "We are here together. Would you like to practise with us?"
+      ],
+      "actions": [
+        {
+          "label": "Study in the Hills · Nature",
+          "type": "lesson",
+          "lessonId": "6-nature",
+          "condition": "lesson:6-nature"
+        },
+        {
+          "label": "Day 6 challenge · 15 questions",
+          "type": "challenge",
+          "day": 6
+        },
+        {
+          "label": "Explore first",
+          "type": "explore"
+        }
+      ]
+    },
+    "hills-east-blocked": {
+      "speaker": "Trail marker",
+      "lines": [
+        "Loose rocks block the eastern trail. There is no safe route beyond here yet. The southern path returns to the village."
+      ],
+      "actions": [
+        {
+          "label": "Return to the trail",
+          "type": "explore"
+        }
+      ]
     }
   },
   "days": {
@@ -5746,7 +5960,8 @@
       "maps": [
         "village",
         "library",
-        "house"
+        "house",
+        "hills"
       ],
       "start": {
         "map": "village",
@@ -5795,7 +6010,8 @@
       "maps": [
         "village",
         "library",
-        "house"
+        "house",
+        "hills"
       ],
       "start": {
         "map": "village",
@@ -5877,7 +6093,8 @@
       "maps": [
         "village",
         "library",
-        "house"
+        "house",
+        "hills"
       ],
       "start": {
         "map": "village",
@@ -5955,7 +6172,8 @@
       "maps": [
         "village",
         "library",
-        "house"
+        "house",
+        "hills"
       ],
       "start": {
         "map": "village",
@@ -6033,7 +6251,8 @@
       "maps": [
         "village",
         "library",
-        "house"
+        "house",
+        "hills"
       ],
       "start": {
         "map": "village",
@@ -6107,7 +6326,7 @@
       "id": "day-6",
       "day": 6,
       "name": "Together",
-      "intro": "This is my sister Medina. We will practise speaking about ourselves as a group, then meet in the Hills.",
+      "intro": "Deena is waiting alone at the Lake. Accept her invitation, follow the northern trail to the Hills, and meet her younger sister Medina there.",
       "maps": [
         "village",
         "library",
@@ -6115,10 +6334,10 @@
         "house"
       ],
       "start": {
-        "map": "village",
-        "x": 66,
-        "y": 19,
-        "facing": "up"
+        "map": "house",
+        "x": 17,
+        "y": 10,
+        "facing": "left"
       },
       "prerequisites": [
         "afterTutorial"
@@ -6160,7 +6379,7 @@
       },
       "endingEvent": "day6-ending",
       "nextChapter": "day-7",
-      "objective": "Normal: begin at Lake, visit four districts, then Together in the Hills. Early challenge: speak to Deena at Hills.",
+      "objective": "Meet Deena at Lake, then follow the northern village path to the Hills. Early challenge remains available in Quick travel.",
       "routes": {
         "normal": {
           "opening": "day6-opening",
@@ -6182,9 +6401,9 @@
       "guidance": {
         "introLessonId": "6-nature",
         "destination": "Lake",
-        "character": "Deena and Medina",
-        "before": "Go to Lake and speak with Deena and Medina for today’s introductory lesson.",
-        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "character": "Deena",
+        "before": "Go to Lake and speak with Deena. After accepting her invitation, follow the village path north to meet her in the Hills.",
+        "after": "Continue with the remaining courses. Deena offers the Home course in the Hills; Muhammad Jan is at Market and Ms Hameed is at School.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
     },

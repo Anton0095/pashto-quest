@@ -10,6 +10,8 @@ function eligible(c,day){
  if(c.startsWith('all:'))return c.slice(4).split('|').every(c=>eligible(c,day));
  if(c.startsWith('complete:'))return !!t.state.progress.complete[c.slice(9)];
  if(c.startsWith('not-complete:'))return !t.state.progress.complete[c.slice(13)];
+ if(c.startsWith('flag:'))return true;
+ if(c.startsWith('not-flag:'))return false;
  if(c==='allLessons')return world.days[day].lessons.every(id=>t.state.progress.complete[id]);
  if(c==='not-allLessons')return !eligible('allLessons',day);
  if(c==='afterTutorial')return true;
@@ -23,7 +25,7 @@ function checkTeacher(day,loc){
 }
 for(let day=1;day<=7;day++){
  const c=world.days[day],curriculum=t.content.curriculum.days[day-1];
- if(day>1){const [loc,teacher]=expected[day];assert.equal(curriculum.opening,loc);assert.equal(world.events[c.openingEvent].speaker,teacher);assert(registry(day).npcs(day,c.start.map).some(n=>n.name===teacher));}
+ if(day>1){const [loc,teacher]=expected[day];assert.equal(curriculum.opening,loc);assert.equal(world.events[c.openingEvent].speaker,teacher);if(day===6)assert.equal(c.start.map,'house');else assert(registry(day).npcs(day,c.start.map).some(n=>n.name===teacher));}
  if(day>1){const host=registry(day).npcs(day,c.challenge.map).find(n=>n.id===c.challenge.npc);assert(host&&world.events[host.event].actions.some(a=>a.type==='challenge'&&a.day===day),'Early challenge invitation follows the host before optional visits');}
  for(const id of c.lessons){const loc=id.split('-')[1];if(day>1)checkTeacher(day,loc);study(t,day,loc);}
  const cards=t.learning.availableSentences(day);

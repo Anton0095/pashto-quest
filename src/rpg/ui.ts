@@ -118,7 +118,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   function refreshAppearance(){for(const b of appearance.querySelectorAll('button'))b.setAttribute('aria-pressed',String(b.dataset.appearance===save.appearance));}refreshAppearance();
   let engine:ReturnType<typeof createPhaserWorld>|undefined;
   try {if(!canvas.getContext('2d'))throw Error('Canvas unavailable');
-  engine=createPhaserWorld({canvas,data,activityState:save.activities,onActivities:s=>{save.activities=s;},portraits:dependencies.portraits,portraitReady:ui.portraitReady,allowedMaps:()=>chapter().maps,position:()=>save.position,actors:()=>registry.objects(current(),save.position.map).map(n=>({...n,facing:facings.get(n.id)||'down'})),appearance:()=>save.appearance,active,
+  engine=createPhaserWorld({canvas,data,activityState:save.activities,onActivities:s=>{save.activities=s;},portraits:dependencies.portraits,portraitReady:ui.portraitReady,allowedMaps:()=>chapter().maps.filter(map=>eligible(data.maps[map].condition)),position:()=>save.position,actors:()=>registry.objects(current(),save.position.map).map(n=>({...n,facing:facings.get(n.id)||'down'})),appearance:()=>save.appearance,active,
     onInteract(){interact();},
     onMove(position,transition){const moved=save.position.x!==position.x||save.position.y!==position.y||save.position.map!==position.map;if(!moved&&save.position.facing===position.facing)return;save.position=position;if(moved)save.flags.moved=true;if(transition)held=null;dirty=true;scheduleSave();},
     onFrame(){if(!active()){held=null;return;}if(dirty)draw();const target=engine?.nearby()?.id||'';if(target!==lastTarget){lastTarget=target;dirty=true;}if(held)move(held,performance.now());if(dirty)draw();}});
@@ -133,17 +133,17 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
       const actor=registry.npcs(current(),map).find(a=>data.events[a.event]?.actions.some(action=>action.type==='lesson'&&action.lessonId===id));
       if(actor){
         const region=data.maps[map].regions.find(r=>actor.x>=r.x&&actor.x<r.x+r.w&&actor.y>=r.y&&actor.y<r.y+r.h);
-        const actual=region&&locationNames[region.id]||locationNames[loc];
+        const actual=region&&(locationNames[region.id]||region.name)||locationNames[loc];
         return {label:actual+(actual!==locationNames[loc]?' · '+actor.name:''),actor};
       }
     }
     return {label:locationNames[loc]};
   }
-  function lessonOffer(id:string):{eventId?:string;action:Action;actor?:Actor} {
+  function lessonOffer(id:string):{eventId?:string;action?:Action;actor?:Actor} {
     const actor=quickDestination(id).actor;
     const eventId=[chapter().openingEvent,actor?.event].find(event=>event&&(!data.events[event].once||story.status(event)!=='completed')&&registry.event(event)?.actions.some(a=>a.type==='lesson'&&a.lessonId===id));
-    const action=eventId?registry.event(eventId)!.actions.find(a=>a.type==='lesson'&&a.lessonId===id)!:{type:'lesson' as const,lessonId:id,label:'Study'};
-    return {eventId,action,actor};
+    const action=eventId?registry.event(eventId)!.actions.find(a=>a.type==='lesson'&&a.lessonId===id)!:actor?undefined:{type:'lesson' as const,lessonId:id,label:'Study'};
+    return {eventId:eventId??(actor?interactionEvent(actor):undefined),action,actor};
   }
   async function quickTravel(id:string){
     if(launching||!chapter().lessons.includes(id)||!lessonEligible(id)||!active()&&!(renderFailed&&currentView==='world'&&!document.querySelector('dialog[open]')))return;
@@ -154,7 +154,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
         const tile=approachTiles(data,target.map,target,registry.objects(current(),target.map))[0];if(!tile)return;
         await travel({map:target.map,x:tile.x,y:tile.y,facing:facingToward(tile,target)});
       }
-      if(!disposed)beginLesson(id,offer.eventId,offer.action);
+      if(!disposed){if(offer.action)beginLesson(id,offer.eventId,offer.action);else if(offer.eventId)openEvent(offer.eventId);}
     }finally{launching=false;}
   }
   function refreshAccess(){accessButtons.replaceChildren();
@@ -236,7 +236,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   }
   function interactionEvent(target:Actor):string {
     const c=chapter(),opening=c.openingEvent?data.events[c.openingEvent]:undefined;
-    const arrival=(c.mapEvents?.[save.position.map]??[]).find(id=>!!target.characterId&&story.status(id)!=='completed'&&registry.event(id)?.characterId===target.characterId);
+    const arrival=(c.mapEvents?.[save.position.map]??[]).find(id=>!!target.characterId&&story.status(id)!=='completed'&&(registry.event(id)?.characterId===target.characterId||registry.event(id)?.participants?.includes(target.characterId)));
     if(arrival)return arrival;
     if(target.characterId&&opening&&opening.characterId===target.characterId){
       const lesson=opening.actions.find((a):a is Extract<Action,{type:'lesson'}>=>a.type==='lesson');
@@ -286,7 +286,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(action.type==='explore'&&conditions.passed()&&(currentView==='result'||currentView==='complete')&&chapters.complete())showCompletion();
     if(action.type==='reference')openLibrary();
     if(action.type==='completion'&&conditions.passed())showCompletion();
-    scheduleSave();dirty=true;
+    refreshAccess();scheduleSave();dirty=true;
   }
   function openEvent(id:string){const event=story.open(id);if(event)dialogue.open(event,story.cursor?.index);}
   async function requestChallenge(action:Extract<Action,{type:'challenge'}>){
@@ -303,12 +303,18 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
       if(!routes.select(route))return;
       if(!await persist())return;
     }
-    challenge.startChallenge(action.day);
+    const map=chapter().challenge?.map;
+    if(map&&save.position.map!==map){
+      const actor=registry.npcs(current(),map).find(n=>n.id===chapter().challenge?.npc);
+      const tile=actor?approachTiles(data,map,actor,registry.objects(current(),map))[0]:data.maps[map].spawn;
+      if(tile)await travel({map,...tile,facing:actor?facingToward(tile,actor):'up'});
+    }
+    if(!disposed)challenge.startChallenge(action.day);
     }finally{launching=false;}
   }
   async function travel(position:WorldSave['position']){
     if(disposed)return;
-    if(!chapter().maps.includes(position.map))return;
+    if(!chapter().maps.includes(position.map)||!eligible(data.maps[position.map].condition))return;
     engine?.cancelRoute();
     save.position=RPGWorldData.recover(data,position);engine?.relocate();dirty=true;
     await persist();

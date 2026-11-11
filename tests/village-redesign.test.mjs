@@ -18,7 +18,7 @@ function reachable(start,actors=[]){
 }
 const seen=reachable({map:'village',...map.spawn});
 for(const t of map.transitions){assert(seen.has(`${t.x},${t.y}`));assert(W.walkable(data,t.to,t.spawn.x,t.spawn.y));}
-assert.equal(map.reservedExits.length,3);
+assert.equal(map.reservedExits.length,2);
 for(const e of map.reservedExits){assert(seen.has(`${e.approach.x},${e.approach.y}`));assert(!map.transitions.some(t=>t.x===e.x&&t.y===e.y));assert(!M.findPath(data,{map:'village',...map.spawn},[e]));}
 for(let y=0;y<64;y++)for(let x=0;x<96;x++){
  const tile=map.tiles[y][x];if(W.walkable(data,'village',x,y))assert(seen.has(`${x},${y}`),'No disconnected walkable pocket');if('wtbBRX'.includes(tile))assert(!W.walkable(data,'village',x,y));
@@ -31,7 +31,7 @@ for(const npc of data.npcs)for(const slot of npc.schedule){
 }
 // Existing schema-1 world state recovers deterministically; unrelated records survive.
 const P=M.createPersistenceAPI(data,{}),raw={schemaVersion:1,chapter:'day-6',appearance:'feminine',flags:{metGuide:true},triggers:{welcome:true},routes:{'day-6':'skip'},position:{map:'village',x:75,y:13,facing:'up'}};
-for(const [x,y]of [[46,0],[95,32],[32,24],[1,1]])assert.deepEqual(P.validate(data,{...raw,position:{map:'village',x,y}}).position,{map:'village',...map.spawn,facing:'down'});
+for(const [x,y]of [[95,32],[32,24],[1,1]])assert.deepEqual(P.validate(data,{...raw,position:{map:'village',x,y}}).position,{map:'village',...map.spawn,facing:'down'});
 const recovered=P.validate(data,raw);assert.deepEqual(recovered.position,{map:'village',...map.spawn,facing:'down'});for(const k of ['chapter','appearance','flags','triggers','routes'])assert.deepEqual(recovered[k],raw[k]);
 assert.deepEqual(P.validate(data,{...raw,position:{map:'house',x:12,y:15,facing:'up'}}).position,{map:'house',x:12,y:15,facing:'up'});
 console.log('PASS 96×64 village: districts, every schedule, dock, water/solid collision, entrances, reserved boundaries and schema-1 recovery');

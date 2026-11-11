@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import {drawVillageArt} from './village-art';
+import {drawHillsArt} from './hills-art';
 import {drawInteriorArt} from './house-art';
 import type {Actor,ActivityState,Appearance,Direction,Point,Position,WorldData} from './types';
 import {createMovementController,canInteract,facingToward} from './movement';
@@ -139,6 +140,7 @@ export class VillageScene extends Phaser.Scene {
     const art=this.add.graphics().setDepth(1);
     if(p.map==='house'||definition.furniture?.length)drawInteriorArt(this,definition,p.map==='house');
     if(p.map==='village'&&definition.scenery){drawVillageArt(this,definition);terrain.setVisible(false);} // Baked ground replaces tile drawing; collision data stays active.
+    if(p.map==='hills'){drawHillsArt(this,definition);terrain.setVisible(false);}
     for(const b of (p.map==='village'&&definition.scenery?[]:definition.buildings)){
       const x=b.x*16,y=b.y*16,w=b.w*16,h=b.h*16;
       art.fillStyle(Phaser.Display.Color.HexStringToColor(b.color).color).fillRect(x,y+7,w,h-7);

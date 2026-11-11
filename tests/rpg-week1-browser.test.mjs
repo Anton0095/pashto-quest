@@ -12,18 +12,23 @@ async function play(route){
     assert(!await p.locator('#rpgDialogue').isVisible(),'New days start quietly');
     const host=data.events[c.openingEvent].characterId,npc=data.npcs.find(n=>n.characterId===host&&n.schedule.some(s=>s.day===day&&s.map==='village'));await d.actor(npc.id,day);await p.locator('#rpgInteract').click();
     if(day===2){await d.durable();const before=await p.locator('#rpgDialogue').innerText();await p.reload();assert(!await p.locator('#rpgDialogue').isVisible());await p.locator('#rpgInteract').click();assert.equal(await p.locator('#rpgDialogue').innerText(),before,'Opening dialogue resumes without duplicate dispatch');}
-    if(day===6)assert((await p.locator('#rpgDialogue').innerText()).includes('Medina'));
+    if(day===6){
+     assert(!(await p.locator('#rpgDialogue').innerText()).includes('sister Medina'));
+     await d.dialogue("I'll meet you in the Hills");await d.actor('saleha',day,'hills');await p.locator('#rpgInteract').click();
+     if(route==='normal'){await d.dialogue('Begin Day 6 Hills lesson');await d.lesson();}else await d.dialogue('Explore first');
+    }else {
     if(route==='normal'){await d.dialogue(`Begin Day ${day} ${{school:'School',nature:'Lake',residential:'Home',business:'Market'}[c.lessons.find(id=>id.endsWith({2:'school',3:'nature',4:'residential',5:'school',6:'nature',7:'business'}[day])).split('-')[1]]} lesson`);await d.lesson({reload:day===2});}
     else {await d.dialogue('Explore first');if(day===2){assert(await p.locator('[data-destination=school]').isEnabled());for(const loc of ['residential','nature','business'])assert(await p.locator('[data-destination='+loc+']').isDisabled(),'Quick travel preserves the School opening lock');}}
+    }
    }
    if(route==='normal'){
     for(const id of c.lessons){const loc=id.split('-')[1];
      if((await d.progress()).complete[`${day}-${loc}`])continue;
-     const {npc,slot}=await d.lessonActor(id,day);await d.actor(npc.id,day);const event=slot.event??npc.event;await d.talk(data.events[event].actions.find(a=>a.type==='lesson'&&a.lessonId===`${day}-${loc}`).label);await d.lesson();console.log('PASS public lesson',day,loc);
+     const {npc,slot}=await d.lessonActor(id,day);await d.actor(npc.id,day,slot.map);const event=slot.event??npc.event;await d.talk(data.events[event].actions.find(a=>a.type==='lesson'&&a.lessonId===`${day}-${loc}`).label);await d.lesson();console.log('PASS public lesson',day,loc);
     }
     const s=await d.progress();for(const id of c.lessons)assert(s.complete[id]);
    }else{const s=await d.progress();assert(c.lessons.every(id=>!s.complete[id]),'Skip creates no early visit completion');}
-   if(day===6&&route==='normal')assert((await p.locator('[data-destination=nature]').textContent()).includes('Lake'));
+   if(day===6&&route==='normal')assert((await p.locator('[data-destination=nature]').textContent()).includes('Hills'));
    const hostMap=c.challenge.map??'village';await d.actor(c.challenge.npc,day,hostMap);
    if(day===2){
     // Stress the unresolved School interaction using the real completed/reloaded route.

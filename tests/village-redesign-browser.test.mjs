@@ -17,8 +17,8 @@ for(const width of [375,1280]){
  const education=await p.evaluate(k=>localStorage.getItem(k),EDU);await position(75,13);assert.deepEqual(await pos(),{x:22,y:18});assert.equal(await p.evaluate(k=>localStorage.getItem(k),EDU),education);
  // Actual Phaser dock movement and water collision, independent of model checks.
  await position(71,23);await step('ArrowUp');assert.deepEqual(await pos(),{x:71,y:22});await step('ArrowLeft');assert.deepEqual(await pos(),{x:70,y:22});await step('ArrowLeft');assert.deepEqual(await pos(),{x:70,y:22});
- // All three future roads have solid, visible barriers before their map boundaries.
- for(const [x,y,key]of [[46,2,'ArrowUp'],[93,32,'ArrowRight'],[46,61,'ArrowDown']]){await position(x,y);await step(key);assert.deepEqual(await pos(),{x,y});}
- assert.deepEqual(b.errors,[]);console.log('PASS redesigned village browser',width,'dock, water, three road barriers, old-position recovery and unchanged educational bytes');
+ // The two remaining future roads have solid, visible barriers before their map boundaries.
+ for(const [x,y,key]of [[93,32,'ArrowRight'],[46,61,'ArrowDown']]){await position(x,y);await step(key);assert.deepEqual(await pos(),{x,y});}
+ assert.deepEqual(b.errors,[]);console.log('PASS redesigned village browser',width,'dock, water, two road barriers, old-position recovery and unchanged educational bytes');
  }finally{await b.close();}
 }
