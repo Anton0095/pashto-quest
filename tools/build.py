@@ -213,7 +213,7 @@ def build(check_rpg=False):
     # Explicit dependency order; modules use factories with injected services.
     modules = [
         'library-engine', 'sentence-engine', 'progression', 'content', 'question-engine',
-        'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'character-portraits', 'construction-ui', 'answer-feedback', 'ui',
+        'assessment-content', 'learning', 'questions', 'save-schema', 'storage', 'audio', 'character-portraits', 'construction-ui', 'answer-feedback', 'ui', 'typed-answer-ui',
         'narrative-ui', 'tutorial-ui', 'sov-demo', 'grammar-ui', 'lesson-ui', 'challenge-ui',
         'world-ui', 'library-ui',
     ]

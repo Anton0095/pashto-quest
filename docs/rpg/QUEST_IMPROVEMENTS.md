@@ -1,5 +1,8 @@
 # Village, onboarding, assessments and Bilal
 
+Current typing opt-out and educational Bilal completion behavior is specified in [the completion repair](TYPING_AND_BILAL_COMPLETION.md). The validation numbers below describe this earlier follow-up's recorded release.
+
+
 See the [Sleep/Dream and authored-conversation follow-up](SLEEP_AND_CONVERSATIONS.md) for current transitions, Bilal's branching practice, actual Lake prerequisites and the authorized Day 2 form schedule. Earlier implementation and validation statements below describe their recorded release.
 
 

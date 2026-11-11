@@ -260,13 +260,17 @@ function createLearning({ state, content, progression }) {
     return word.loop === 0 ? state.progress.tutorialDone : allowed(word.loop);
   }
 
+  function itemCompleted(id) {
+    const s = state.session;
+    return !!(s?.passed?.has(id) || s?.skippedItems?.includes(id));
+  }
   function submitChallenge(value, { skipped = false } = {}) {
     const s = state.session;
     if (s?.mode !== "challenge" || s.locked || s.finished) return null;
     const q = s.questions[s.index],
       w = content.wordById[q.id];
     if (["choice", "address"].includes(q.kind) || q.grammarConcept) return null;
-    if (skipped && !(q.answerFormat === "type" || (!q.answerFormat && q.kind === "word" && q.unstudied && !q.recognition))) return null;
+    if (skipped && !QuestionEngine.isTyped(q)) return null;
     const correct = !skipped && QuestionEngine.evaluate(q, w, value);
     if (skipped) (s.skippedQuestions ||= []).push(s.index);
     if (!skipped) libraryPractice(
@@ -300,7 +304,7 @@ function createLearning({ state, content, progression }) {
       !s.queue.length
     )
       return null;
-    if (skipped && s.queue[0].answerFormat !== "type") return null;
+    if (skipped && !QuestionEngine.isTyped(s.queue[0])) return null;
     const item = s.queue.shift(),
       w = content.wordById[item.id],
       previous = stat(w.id);
@@ -351,11 +355,11 @@ function createLearning({ state, content, progression }) {
   }
   function submitTutorial(id, correct, { skipped = false } = {}) {
     const s = state.session;
-    if(s?.mode !== "tutorial" || s.passed.has(id) || s.skippedItems?.includes(id)) return null;
-    const typed = content.tutorialCards.find(c=>c.id===id)?.kind === "text";
-    if(skipped && !typed)return null;
-    if(typed && (correct || skipped))state.progress.enableTypingChallenges=!skipped;
-    if(skipped){correct=false;(s.skippedItems ||= []).push(id);}
+    if (s?.mode !== "tutorial" || itemCompleted(id)) return null;
+    const typed = content.tutorialCards.find(card => card.id === id)?.kind === "text";
+    if (skipped && !typed) return null;
+    if (typed && (correct || skipped)) state.progress.enableTypingChallenges = !skipped;
+    if (skipped) { correct = false; (s.skippedItems ||= []).push(id); }
     const first = !s.firstAsked.has(id);
     s.firstAsked.add(id);
     s.tutorialResponses++;
@@ -374,8 +378,9 @@ function createLearning({ state, content, progression }) {
     }
   }
   return {
+    itemCompleted,
     authoredResponse(id, day) {
-      const card=SentenceEngine.restoreId(content.LIBRARY_DATA,content.LIBRARY_DATA.sentenceFrames,id);
+      const card = SentenceEngine.restoreId(content.LIBRARY_DATA, content.LIBRARY_DATA.sentenceFrames, id);
       return card && card.loop <= day ? card : null;
     },
     availableSentences,

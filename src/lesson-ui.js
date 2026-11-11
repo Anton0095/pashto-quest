@@ -317,13 +317,16 @@ function createLessons({
     ui.$("choices").replaceChildren();
     ui.$("constructionPanel").classList.toggle("hidden", !build);
     if (build) renderBuild();
-    else if(s.activeItem.answerFormat === "type") {
+    else if(QuestionEngine.isTyped(s.activeItem)) {
       ui.$("quizType").textContent="TYPE THE CORRECT ANSWER";
       ui.$("quizPrompt").textContent="Type the English meaning.";
-      const form=document.createElement("form"),input=document.createElement("input"),submit=ui.button("Submit answer",()=>{});
-      input.id="lessonRecall";input.className="recall-input";input.maxLength=160;input.autocomplete="off";input.setAttribute("aria-label","English meaning");input.value=s.recallDraft||"";
-      input.addEventListener("input",()=>{s.recallDraft=input.value;storage.save();});
-      submit.type="submit";form.addEventListener("submit",e=>{e.preventDefault();answer(input.value);});const cannot=ui.button("I cannot type",()=>answer("",{skipped:true}));cannot.className="secondary";form.append(input,submit,cannot);ui.$("choices").append(form);
+      ui.typedAnswer.mount({
+        host: ui.$("choices"), id: "lessonRecall", label: "English meaning",
+        value: s.recallDraft || "",
+        onInput(value) { s.recallDraft = value; storage.save(); },
+        onSubmit: answer,
+        onSkip: () => answer("", { skipped: true }),
+      });
     } else
       for (const choice of (s.choices = restore && s.choices ? s.choices : questions.distractors(w))) {
         const b = ui.button(ui.englishChoice(choice), () => answer(choice));
@@ -399,7 +402,7 @@ function createLessons({
     ui.$("passUnlockNotice")?.remove();
     const s = state.session;
     const passedRequired = s.required.every((id) => s.passed.has(id));
-    const completedRequired = s.required.every(id=>s.passed.has(id)||s.skippedItems?.includes(id));
+    const completedRequired = s.required.every(learning.itemCompleted);
     if (s.mode === "tutorial" && !completedRequired) return;
     s.finished=true;
     const bonus = progression.completeLessonOnce(

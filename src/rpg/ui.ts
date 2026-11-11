@@ -1,6 +1,6 @@
 import type {EducationServices,RPGDependencies,Direction,Action,WorldSave,Actor} from './types';
 import {createRPGTransitions} from './transitions';
-import {conversationEvent,conversationCompleted} from './conversations';
+import {conversationEvent,conversationCompleted,conversationEligible} from './conversations';
 import {RPGWorldData} from './world-data';
 import {createRPGRegistry,createRPGDialogue} from './content';
 import {createRPGProgression} from './progression';
@@ -250,7 +250,11 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(target.schedule){target.facing=({up:'down',down:'up',left:'right',right:'left'} as const)[save.position.facing];facings.set(target.id,target.facing);save.npcFlags[target.characterId??target.id]=true;}
     const authored=Object.values(data.conversations??{}).find(c=>c.characterId===target.characterId);
     const spec=authored?.days[String(current())];
-    const resolvedConversation=spec?conversationEvent(spec,data.events,learning.availableSentences(current()),!!state.progress.complete[current()+"-nature"]||progression.passedChallenge(state.progress,current()),conversationCompleted(spec,save.triggers),story.cursor?.event,Math.random,learning.authoredResponse(spec.response.generatedId,current())):undefined;
+    const day=current(), eligible=conversationEligible(state.progress,day,progression);
+    const resolvedConversation=spec?conversationEvent(spec,data.events,
+      eligible?learning.availableSentences(day):[],eligible,
+      conversationCompleted(spec,save.triggers),story.cursor?.event,Math.random,
+      ()=>learning.authoredResponse(spec.response.generatedId,day)):undefined;
     const eventId=resolvedConversation?.id??interactionEvent(target);
     if(eventId===chapter().openingEvent)chapters.opening(false);
     const registered=story.open(eventId);

@@ -47,6 +47,7 @@
     Audio,
   });
   ui.construction = createConstructionUI({ui, audio});
+  ui.typedAnswer = createTypedAnswerUI({ ui });
   const learning = createLearning({ state, content, progression });
   ui.sovDemo=createSOVDemo({content,learning,ui});
   const questions = createQuestions({ state, content, progression });

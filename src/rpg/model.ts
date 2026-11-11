@@ -14,4 +14,4 @@ export {dailySpawn,dailyGuidance} from './daily-flow';
 
 export {createActivities} from './activities';
 
-export {conversationChoices,conversationEvent,conversationCompleted} from './conversations';
+export {conversationChoices,conversationEvent,conversationCompleted,conversationEligible} from './conversations';

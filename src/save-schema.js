@@ -264,7 +264,6 @@ function createSaveValidator({ content, progression }) {
     }
     if (p.activeChallenge) {
       const a = p.activeChallenge;
-      if(a.skippedQuestions!==undefined && (!Array.isArray(a.skippedQuestions)||new Set(a.skippedQuestions).size!==a.skippedQuestions.length||a.skippedQuestions.some(i=>!Number.isInteger(i)||i<0||i>=a.questions.length||i>=a.answered)||a.correctCount>a.answered-a.skippedQuestions.length))return false;
       if (
         !object(a) ||
         a.mode !== "challenge" ||
@@ -290,6 +289,13 @@ function createSaveValidator({ content, progression }) {
         (a.recallDraft !== undefined && (typeof a.recallDraft !== "string" || a.recallDraft.length > 160))
       )
         return false;
+      if (a.skippedQuestions !== undefined && (
+        !Array.isArray(a.skippedQuestions) ||
+        new Set(a.skippedQuestions).size !== a.skippedQuestions.length ||
+        a.skippedQuestions.some(i => !Number.isInteger(i) || i < 0 || i >= a.answered ||
+          !a.questions[i] || !QuestionEngine.isTyped(a.questions[i])) ||
+        a.correctCount > a.answered - a.skippedQuestions.length
+      )) return false;
       if (
         a.questions.some(
           (q) =>

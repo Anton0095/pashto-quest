@@ -303,39 +303,20 @@ function createChallengeUI({
     ui.$("quizPanel").querySelector(".quizword h3").textContent = reverse
         ? "Choose the correct Pashto"
         : "Choose the correct English meaning";
-    if (q.answerFormat === "type" || (!q.answerFormat && q.kind === "word" && q.unstudied && !q.recognition)) {
+    if (QuestionEngine.isTyped(q)) {
       ui.$("quizType").textContent="TYPE THE CORRECT ANSWER";
       ui.$("quizPrompt").textContent = reverse ? "Type this meaning in Pashto. Your first answer counts." : "Type the English meaning. Your first answer counts.";
       ui.$("quizPanel").querySelector(".quizword h3").textContent = "Type the correct answer";
-      const form = document.createElement("form");
-      const input = document.createElement("input");
-      input.id = "unseenRecall";
-      input.className = "recall-input";
-      input.setAttribute("aria-label", reverse ? "Pashto answer" : "English meaning from memory");
-      input.lang=reverse?"ps":"en";input.dir=reverse?"rtl":"ltr";
-      input.autocomplete = "off";
-      input.maxLength = 160;
-      input.value = state.session.recallDraft || "";
-      input.addEventListener("input", () => {
-        state.session.recallDraft = input.value;
-        storage.save();
+      ui.typedAnswer.mount({
+        host: ui.$("choices"), id: "unseenRecall",
+        label: reverse ? "Pashto answer" : "English meaning from memory",
+        lang: reverse ? "ps" : "en", value: state.session.recallDraft || "",
+        submitLabel: q.answerFormat ? "Submit answer" : "Submit meaning", submitClass: "speaker",
+        onInput(value) { state.session.recallDraft = value; storage.save(); },
+        onSubmit: answerChallenge,
+        onSkip: () => answerChallenge("", { skipped: true }),
+        reveal: { label: "I don’t know — reveal meaning", onClick: () => answerChallenge("") },
       });
-      const submit = document.createElement("button");
-      submit.type = "submit";
-      submit.className = "speaker";
-      submit.textContent = q.answerFormat ? "Submit answer" : "Submit meaning";
-      const reveal = document.createElement("button");
-      reveal.type = "button";
-      reveal.className = "speaker";
-      reveal.textContent = "I don’t know — reveal meaning";
-      reveal.addEventListener("click", () => answerChallenge(""));
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        answerChallenge(input.value);
-      });
-      const cannot=ui.button("I cannot type",()=>answerChallenge("",{skipped:true}));cannot.className="secondary";
-      form.append(input, submit, reveal, cannot);
-      ui.$("choices").append(form);
     } else
       for (const value of q.choiceOrder) {
         const b = document.createElement("button");

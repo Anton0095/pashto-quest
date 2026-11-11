@@ -17,15 +17,15 @@ for(const width of [1280,390])for(const reduced of [false,true]){
  const b=await setup({width,mobile:width===390,rpg:true,transform:h=>h.replace('// @TEST_HOOK','window.__sleepRPG=rpg;window.__sleepFence=saveFence; // @TEST_HOOK')}),p=b.page;
  try{
   await p.emulateMedia({reducedMotion:reduced?'reduce':'no-preference'});await p.locator('#startTutorial').click();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);
-  async function fixture(day,{house=false,passed=false,completedLake=false,position}={}){
-   await p.evaluate(async({day,profile,house,passed,completedLake,position,data,WORLD})=>{
+  async function fixture(day,{house=false,passed=false,position}={}){
+   await p.evaluate(async({day,profile,house,passed,position,data,WORLD})=>{
     const t=__test;t.state.session=null;t.state.progress=profile;
     if(passed)t.progression.completeChallengeOnce(t.state.progress,day,t.progression.getChallengeSpec(day).passCount);
     await t.storage.save();await __sleepRPG.flush();const raw=localStorage.getItem(WORLD);
-    const w={schemaVersion:1,chapter:data.days[day].id,position:position??(house?{map:'house',x:17,y:10,facing:'right'}:{map:'village',x:76,y:27,facing:'up'}),appearance:'neutral',flags:{started:true,metGuide:true,...(completedLake?{['lake-lesson-completed-'+day]:true}:{})},npcFlags:{},triggers:{},routes:{},view:'world',lesson:null,educationFingerprint:null};
+    const w={schemaVersion:1,chapter:data.days[day].id,position:position??(house?{map:'house',x:17,y:10,facing:'right'}:{map:'village',x:76,y:27,facing:'up'}),appearance:'neutral',flags:{started:true,metGuide:true},npcFlags:{},triggers:{},routes:{},view:'world',lesson:null,educationFingerprint:null};
     for(let d=1;d<=day;d++){const c=data.days[d];if(c.openingEvent)w.triggers[c.openingEvent]=true;if(d<day||passed){if(c.endingEvent)w.triggers[c.endingEvent]=true;if(c.routes){w.routes[c.id]='skip';w.triggers[c.routes.skip.event]=true;}}}
     const next=JSON.stringify(w);await navigator.locks.request(WORLD,()=>__sleepFence.commit(WORLD,raw,next,()=>localStorage.getItem(WORLD),()=>{localStorage.setItem(WORLD,next);return true;}));
-   },{day,profile:profiles[day],house,passed,completedLake,position,data,WORLD});
+   },{day,profile:profiles[day],house,passed,position,data,WORLD});
    await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);
   }
   const finishTransition=()=>p.locator('.rpg-transition').waitFor({state:'detached'});

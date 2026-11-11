@@ -119,7 +119,12 @@ const QuestionEngine = (() => {
       return seed / 4294967296;
     };
   }
+  function isTyped(question) {
+    return question.answerFormat === "type" || (!question.answerFormat &&
+      question.kind === "word" && question.unstudied && !question.recognition);
+  }
   return {
+    isTyped,
     englishAnswers,
     meaningKeys,
     normalizeAnswer,
