@@ -264,6 +264,7 @@ function createSaveValidator({ content, progression }) {
     }
     if (p.activeChallenge) {
       const a = p.activeChallenge;
+      if(a.skippedQuestions!==undefined && (!Array.isArray(a.skippedQuestions)||new Set(a.skippedQuestions).size!==a.skippedQuestions.length||a.skippedQuestions.some(i=>!Number.isInteger(i)||i<0||i>=a.questions.length||i>=a.answered)||a.correctCount>a.answered-a.skippedQuestions.length))return false;
       if (
         !object(a) ||
         a.mode !== "challenge" ||

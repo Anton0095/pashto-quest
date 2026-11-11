@@ -23,7 +23,7 @@ for(const width of [1280,390]){
    await p.getByRole('button',{name:'Explore the village',exact:true}).click();await p.evaluate(()=>__questRPG.flush());await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);assert(!await p.locator('#rpgDialogue').isVisible());
    assert.equal(await p.evaluate(()=>__test.state.progress.tutorialDone),true);assert.equal(await p.evaluate(()=>__test.state.progress.onboardingIntroductionPending),false);
    // User-facing setting persists, typed questions/drafts/locks stay frozen.
-   await p.locator('#rpgLibrary').click();await p.locator('[data-library-tab=profile]').click();assert(!await p.locator('#enableTypingChallenges').isChecked());await p.locator('#enableTypingChallenges').check();await p.getByRole('button',{name:'Save profile',exact:true}).click();await p.getByText('Profile saved.',{exact:true}).waitFor();await p.locator('#libraryClose').click();
+   await p.locator('#rpgLibrary').click();await p.locator('[data-library-tab=profile]').click();assert.equal(await p.locator('#enableTypingChallenges').isChecked(),!skip);await p.locator('#enableTypingChallenges').check();await p.getByRole('button',{name:'Save profile',exact:true}).click();await p.getByText('Profile saved.',{exact:true}).waitFor();await p.locator('#libraryClose').click();
    await p.evaluate(()=>__test.challenge.startChallenge(1));
    while(!await p.locator('#unseenRecall').count()){await answerCurrent(p);await p.locator('#quizNext').click();}
    await p.locator('#unseenRecall').fill('Draft to keep');const frozen=await p.evaluate(async()=>{await __questRPG.flush();return JSON.stringify(__test.state.session.questions);});

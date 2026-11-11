@@ -24,6 +24,7 @@ export interface Question {id:string;kind:'word'|'construct';retries:number;[key
 export interface LessonSession {
   mode:'tutorial'|'standard'|'review';id:string;loop:number;loc:string|null;phase:string;cardIndex:number;attemptId:number;
   answered:number;firstCorrect:number;earned:number;tutorialResponses:number;constructionCount:number;locked:boolean;finished?:boolean;
+  skippedItems?:string[];
   required:string[];studyWords:string[];greetingCards:string[];studySentences:string[];firstAsked:Set<string>;passed:Set<string>;
   queue:Question[];activeItem?:Question;built:number[];tileOrder?:number[];choices?:string[];
   [key:string]:unknown;
@@ -40,7 +41,7 @@ export interface UI {
   button(text:string,fn:(event:MouseEvent)=>void):HTMLButtonElement;
   hud():void;view(name:string):void;portrait(identity:string,expression?:string):HTMLElement;usePhaserPortraits(enabled?:boolean):void;portraitReady(key:string,source:string):void;
 }
-export interface Learning {availableSentences(day:number):Card[];allowed(day:number):boolean;placeAccessible(day:number,place:string):boolean}
+export interface Learning {authoredResponse(id:string,day:number):Card|null;availableSentences(day:number):Card[];allowed(day:number):boolean;placeAccessible(day:number,place:string):boolean}
 export interface Progression {completeOnboarding(progress:Progress):boolean;passedChallenge(progress:Progress,day:number):boolean;characterStatus(progress:Progress):{xp:number;level:number;title:string};getChallengeSpec(day:number):{passCount:number;questionCount:number}}
 export interface EducationStorage {save():boolean|Promise<boolean>;settled():Promise<boolean>;snapshot():string;readonly problem:string|null;readonly persistenceProblem:string|null}
 export interface EducationServices {state:State;content:Content;progression:Progression;learning:Learning;ui:UI;audio:{stopAudio():void;speak(id:string,options?:{track:boolean}):void};storage:EducationStorage;world:{startWorld():void};lessons:{begin(id:string):void;resume(snapshot:LessonSession):void};challenge:{startChallenge(day:number,...args:unknown[]):void;resumeChallenge():boolean};library:{openLibrary():void}}

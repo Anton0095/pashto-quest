@@ -11,6 +11,7 @@ function createLessons({
   tutorial,
   grammar,
   onWorld,
+  onAdvance,
   onLessonStart,
 }) {
   function begin(id) {
@@ -322,7 +323,7 @@ function createLessons({
       const form=document.createElement("form"),input=document.createElement("input"),submit=ui.button("Submit answer",()=>{});
       input.id="lessonRecall";input.className="recall-input";input.maxLength=160;input.autocomplete="off";input.setAttribute("aria-label","English meaning");input.value=s.recallDraft||"";
       input.addEventListener("input",()=>{s.recallDraft=input.value;storage.save();});
-      submit.type="submit";form.addEventListener("submit",e=>{e.preventDefault();answer(input.value);});form.append(input,submit);ui.$("choices").append(form);
+      submit.type="submit";form.addEventListener("submit",e=>{e.preventDefault();answer(input.value);});const cannot=ui.button("I cannot type",()=>answer("",{skipped:true}));cannot.className="secondary";form.append(input,submit,cannot);ui.$("choices").append(form);
     } else
       for (const choice of (s.choices = restore && s.choices ? s.choices : questions.distractors(w))) {
         const b = ui.button(ui.englishChoice(choice), () => answer(choice));
@@ -340,10 +341,11 @@ function createLessons({
     }
     storage.save();
   }
-  function answer(value) {
-    const result = learning.submitLesson(value);
+  function answer(value, options = {}) {
+    const result = learning.submitLesson(value, options);
     if (!result) return;
     state.session.submittedAnswer=value;
+    if(result.skipped){storage.save();ui.$("quizNext").disabled=false;onAdvance();storage.save();return;}
     const { w, correct } = result;
     for(const control of ui.$("choices").querySelectorAll("input,button"))control.disabled=true;
     learning.surface(w.id, "lesson-feedback");
@@ -397,14 +399,15 @@ function createLessons({
     ui.$("passUnlockNotice")?.remove();
     const s = state.session;
     const passedRequired = s.required.every((id) => s.passed.has(id));
-    if (s.mode === "tutorial" && !passedRequired) return;
+    const completedRequired = s.required.every(id=>s.passed.has(id)||s.skippedItems?.includes(id));
+    if (s.mode === "tutorial" && !completedRequired) return;
     s.finished=true;
     const bonus = progression.completeLessonOnce(
       state.progress,
       s.id,
       s.mode,
-      passedRequired,
-      s.required.length,
+      completedRequired,
+      passedRequired ? s.required.length : 0,
     );
     s.earned += bonus;
     storage.save();
@@ -412,7 +415,7 @@ function createLessons({
     let title, desc, follow;
     if (s.mode === "tutorial") {
       title = `Muhammad Jan welcomes ${state.progress.playerProfile.name}!`;
-      desc = `Welcome, ${state.progress.playerProfile.name}! You practised choosing a meaning, arranging words, selecting an answer, and typing a response. Day 1 is now open.`;
+      desc = `Welcome, ${state.progress.playerProfile.name}! You completed the guided conversation activities.${s.skippedItems?.length ? " Typing was skipped; typing challenges are off." : ""} Day 1 is now open.`;
       follow =
         "Explore home, market, lake and school in any order, or use “Skip to Muhammad Jan’s check-in” on the town screen. His 15-question Library home-award challenge is available now.";
     } else if (s.mode === "review") {

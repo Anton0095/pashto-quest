@@ -9,6 +9,7 @@ function createChallengeUI({
   audio,
   storage,
   onWorld,
+  onAdvance,
   libraryReview,
 }) {
   function showChallengeScene(day) {
@@ -332,7 +333,8 @@ function createChallengeUI({
         event.preventDefault();
         answerChallenge(input.value);
       });
-      form.append(input, submit, reveal);
+      const cannot=ui.button("I cannot type",()=>answerChallenge("",{skipped:true}));cannot.className="secondary";
+      form.append(input, submit, reveal, cannot);
       ui.$("choices").append(form);
     } else
       for (const value of q.choiceOrder) {
@@ -363,12 +365,13 @@ function createChallengeUI({
     ui.$("audioStatus").textContent =
       "🔊 Listen to Pashto for recognition questions, if an Afghan Pashto voice is available.";
   }
-  function answerChallenge(value) {
+  function answerChallenge(value, options = {}) {
     queueMicrotask(ui.readableQuizSurfaces);
-    const result = learning.submitChallenge(value);
+    const result = learning.submitChallenge(value, options);
     if (!result) return;
     const { q, w, correct } = result;
     for (const control of ui.$("choices").querySelectorAll("input, button")) control.disabled = true;
+    if(result.skipped){storage.save();ui.$("quizNext").disabled=false;onAdvance();storage.save();return;}
     if (q.generated) learning.surface(q.id, "assessment-feedback");
     storage.save();
     ui.hud();
@@ -455,6 +458,9 @@ function createChallengeUI({
     const q = state.session.questions[state.session.index],
       w = content.wordById[q.id];
     for (const b of ui.$("choices").querySelectorAll("input, button")) b.disabled = true;
+    if(state.session.skippedQuestions?.includes(state.session.index)){
+      ui.$("quizFeedback").textContent="Skipped — zero marks; no practice credit.";ui.$("quizNext").disabled=false;return;
+    }
     const value = state.session.submittedAnswer;
     const correct = QuestionEngine.evaluate(q, w, value);
     if (["construct", "dialogue"].includes(q.kind)) {

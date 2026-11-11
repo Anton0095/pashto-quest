@@ -183,10 +183,6 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     const overlay=name==='lessonScreen'||name==='resultScreen';document.body.classList.toggle('rpg-overlay-active',overlay);if(overlay)root.classList.remove('hidden');
     layout.resize();
     if(name==='lessonScreen'&&state.session?.mode==='challenge'&&state.session.loop===chapter().challenge?.day){const caption=ui.$('challengeScene')?.querySelector('.eyebrow');if(caption)caption.textContent='DAY '+current()+' · CHAPTER CHALLENGE';}
-    if(name==='resultScreen'&&!state.reviewCampaign&&state.session?.mode==='standard'&&state.session.finished){
-      for(const conversation of Object.values(data.conversations??{}))for(const spec of Object.values(conversation.days))
-        if(spec.requiredLessonId===state.session.id&&spec.lessonCompletedFlag)save.flags[spec.lessonCompletedFlag]=true;
-    }
     if(name==='resultScreen') {
       if(state.session?.mode==='challenge' && state.session.correctCount>=progression.getChallengeSpec(state.session.loop).passCount){if(chapters.complete())showCompletion();else if(chapter().routes?.skip.event)openEvent(chapter().routes!.skip.event!);}
       else if(state.session?.mode==='tutorial')ui.$('resultNext').textContent='Muhammad Jan: You can visit the Library any time to set your name and gender in Player Profile. Your first hello is complete — meet your neighbours when ready.';
@@ -254,7 +250,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(target.schedule){target.facing=({up:'down',down:'up',left:'right',right:'left'} as const)[save.position.facing];facings.set(target.id,target.facing);save.npcFlags[target.characterId??target.id]=true;}
     const authored=Object.values(data.conversations??{}).find(c=>c.characterId===target.characterId);
     const spec=authored?.days[String(current())];
-    const resolvedConversation=spec?conversationEvent(spec,data.events,learning.availableSentences(current()),!spec.lessonCompletedFlag||!!save.flags[spec.lessonCompletedFlag],conversationCompleted(spec,save.triggers),story.cursor?.event):undefined;
+    const resolvedConversation=spec?conversationEvent(spec,data.events,learning.availableSentences(current()),!!state.progress.complete[current()+"-nature"]||progression.passedChallenge(state.progress,current()),conversationCompleted(spec,save.triggers),story.cursor?.event,Math.random,learning.authoredResponse(spec.response.generatedId,current())):undefined;
     const eventId=resolvedConversation?.id??interactionEvent(target);
     if(eventId===chapter().openingEvent)chapters.opening(false);
     const registered=story.open(eventId);

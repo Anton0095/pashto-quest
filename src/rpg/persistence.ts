@@ -42,6 +42,7 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     if(raw.mode==='standard'&&raw.loc!==raw.id.split('-')[1])return null;
     if(raw.attemptId>progress.library.attemptSequence || typeof raw.locked!=='boolean')return null;
     for(const field of ['required','studyWords','greetingCards','studySentences','firstAsked','passed'])if(!Array.isArray(raw[field])||(raw[field] as string[]).length>1000||(raw[field] as string[]).some(id=>!content.wordById[id]))return null;
+    if(raw.skippedItems!==undefined&&(!Array.isArray(raw.skippedItems)||new Set(raw.skippedItems).size!==raw.skippedItems.length||raw.skippedItems.some(id=>typeof id!=="string"||!(raw.required as unknown as string[]).includes(id)||(raw.passed as unknown as string[]).includes(id))))return null;
     if(raw.tutorialConstruction||raw.profileGender!==undefined||raw.profileName!==undefined)return null;
     if(!Array.isArray(raw.queue)||raw.queue.length>1000||raw.queue.some(q=>!q||!content.wordById[q.id]||!['word','construct'].includes(q.kind)||!int(q.retries)))return null;
     if(raw.recallDraft!==undefined&&(typeof raw.recallDraft!=="string"||raw.recallDraft.length>160))return null;

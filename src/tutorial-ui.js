@@ -1,5 +1,5 @@
 /* Four authored onboarding interactions; ordinary shared learning records and rewards. */
-function createTutorial({ state, content, learning, ui, storage, questions }) {
+function createTutorial({ state, content, learning, ui, storage, questions, onAdvance }) {
   function tutorialAnswer(correct) {
     learning.submitTutorial(
       content.tutorialIds[state.session.cardIndex],
@@ -53,9 +53,10 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
     feedback.setAttribute("role", "status");
     area.append(p);
     const done = () => {
-      if (state.session.passed.has(c.id)) return;
+      if (state.session.passed.has(c.id) || state.session.skippedItems?.includes(c.id)) return;
       tutorialAnswer(true);
-      ui.renderAnswerFeedback(feedback,w,{},true);
+      if(state.session.skippedItems?.includes(c.id))feedback.textContent="Skipped — typing challenges are off.";
+      else ui.renderAnswerFeedback(feedback,w,{},true);
       for (const el of area.querySelectorAll("button,input"))
         el.disabled = true;
     };
@@ -111,12 +112,18 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
         if(correct)done();
         else{tutorialAnswer(false);ui.renderAnswerFeedback(feedback,w,{},false);}
       });
-      row.append(field,b);area.append(row);
+      const cannot=ui.button("I cannot type",()=>{
+        if(state.session.passed.has(c.id)||state.session.skippedItems?.includes(c.id))return;
+        learning.submitTutorial(c.id,false,{skipped:true});
+        ui.$("teachNext").disabled=false;storage.save();ui.hud();onAdvance();
+      });cannot.className="secondary";
+      row.append(field,b,cannot);area.append(row);
     }
     area.append(feedback);
-    if (state.session.passed.has(c.id)) {
+    if (state.session.passed.has(c.id) || state.session.skippedItems?.includes(c.id)) {
       ui.$("teachNext").disabled=false;
-      ui.renderAnswerFeedback(feedback,w,{},true);
+      if(state.session.skippedItems?.includes(c.id))feedback.textContent="Skipped — typing challenges are off.";
+      else ui.renderAnswerFeedback(feedback,w,{},true);
       for (const el of area.querySelectorAll("button,input")) el.disabled=true;
     }
   }
