@@ -65,7 +65,7 @@ function createLearning({ state, content, progression }) {
     if(!plan.lessonNewLexemes?.[place]){
       const pool=plan.studyPools?.[place]||LibraryEngine.lessonPool(state.progress,content.LIBRARY_DATA,content.NARRATIVE_DATA,day,place);
       (plan.lessonNewLexemes ||= {})[place]=[...new Set(pool.flatMap(id=>(content.LIBRARY_DATA.sourceMappings[id]||[]).map(r=>r.lemmaId)))].filter(id=>{
-        const entry=content.libraryEntries[id];return ['noun','verb'].includes(entry?.partOfSpeech)&&(state.reviewCampaign?(plan.locationAssignments[place]||[]).includes(id):!state.progress.library.acquired[id]?.formallyIntroducedDay);
+        const entry=content.libraryEntries[id],assigned=(plan.locationAssignments[place]||[]).includes(id),support=place==='school'&&entry?.vocabularyClass==='universal';return ['noun','verb','adjective'].includes(entry?.partOfSpeech)&&(assigned||support)&&(state.reviewCampaign?assigned:!state.progress.library.acquired[id]?.formallyIntroducedDay);
       });
     }
     if(state.reviewCampaign&&plan.studyPools?.[place])return [...plan.studyPools[place]];
@@ -152,12 +152,21 @@ function createLearning({ state, content, progression }) {
       const targets=lessonSentenceTargets(s);
       (plan.lessonNewLexemes ||= {})[s.loc]=targets;
       const qualifies=c=>Object.values(c.generated.slots).some(r=>targets.includes(r.lemmaId));
-      const selected = generatedPractice(
+      // Failed shortcut activation still licenses assessment material. Ordinary
+      // lessons reuse studied/passed words, including this lesson's word phase.
+      const lessonAvailable=c=>Object.values(c.generated.slots).every(r=>LibraryEngine.inBank(state.progress,r.lemmaId));
+      const preferred = generatedPractice(
         s.loop,
         plan.seed + s.attemptId,
         requested,
-        { excludeTexts: excluded, ...(targets.length?{filter:qualifies}:{}) },
+        { excludeTexts: excluded, filter:c=>lessonAvailable(c)&&(!targets.length||qualifies(c)) },
       );
+      const revision = preferred.length < requested ? generatedPractice(
+        s.loop, plan.seed + s.attemptId + 1, requested - preferred.length,
+        {excludeTexts:[...excluded,...preferred.map(c=>c.ps)],filter:lessonAvailable},
+      ) : [];
+      const selected = [...preferred,...revision];
+      const cumulativeFallback = targets.length > 0 && revision.length > 0;
       selections[s.loc] = selected.map((c) => c.id);
       (plan.generatedPracticeCards ||= {})[s.loc] = JSON.parse(
         JSON.stringify(selected),
@@ -167,9 +176,11 @@ function createLearning({ state, content, progression }) {
         available: selected.length,
         missing: Math.max(0, requested - selected.length),
         currentLessonLexemes: targets,
-        fallback: targets.length&&!selected.length?'no-compatible-current-lesson-sentence':null,
+        currentLessonSentenceCount: targets.length ? preferred.length : 0,
+        cumulativeSentenceCount: targets.length ? revision.length : selected.length,
+        fallback: cumulativeFallback ? "cumulative-practice" : targets.length&&!selected.length?'no-compatible-current-lesson-sentence':null,
         reason:
-          targets.length&&!selected.length ? "No licensed sentence includes a new noun or verb from this lesson. Continue vocabulary and form practice; no unrelated or invented clause is substituted." : selected.length < requested
+          cumulativeFallback ? "Sentence practice also reuses earlier vocabulary where the new words lack enough licensed combinations." : targets.length&&!selected.length ? "No licensed sentence includes a new word from this lesson. Continue vocabulary and form practice; no unrelated or invented clause is substituted." : selected.length < requested
             ? "Not enough distinct, previously unshown sentences from individually studied forms and unlocked grammar. Continue vocabulary/form and grammar practice; no fixed sentence is substituted."
             : null,
       };

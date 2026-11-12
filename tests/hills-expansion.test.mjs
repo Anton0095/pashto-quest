@@ -50,5 +50,5 @@ study(t,6,'nature');assert.equal(registry.npcs(6,'hills').filter(n=>['saleha','m
 assert(registry.event('day6-hills').actions.some(a=>a.type==='lesson'&&a.lessonId==='6-residential'));
 assert.deepEqual(plain(t.progression.getChallengeSpec(6)).questionCount,15);assert.equal(t.progression.getChallengeSpec(6).passCount,12);
 const q=plain(beginAttempt(t,6));t.storage.save();assert.equal(t.storage.problem,null);assert.deepEqual(plain(t.storage.load().activeChallenge.questions),q);
-assert.equal(data.days[6].challenge.map,'hills');assert.equal(data.days[6].guidance.character,'Deena');assert.deepEqual(data.days[6].start,M.dailySpawn(data));
+assert.equal(data.days[6].challenge.map,'hills');assert.equal(data.days[6].guidance.character,'Ms Hameed');assert.deepEqual(data.days[6].start,M.dailySpawn(data));
 console.log(`PASS Hills: ${walkable.length} reachable tiles, north/south transitions, eastern scree, seven-day access, incidental wildlife; invitation relocation/unique sisters, shared lesson, once-only introduction/reload, zero world rewards, preserved Day6 challenge/frozen snapshot`);

@@ -60,7 +60,14 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
     // frozen assignments so additional recall tasks stay balanced as well.
     const rows = QuestionEngine.shuffle(content.zoneKeys, random).map(place => QuestionEngine.shuffle(
       plan.locationAssignments[place] || [], random,
-    ).map(id => "library-card:" + id).filter(id =>
+    ).map(id => {
+      const base = "library-card:" + id;
+      if (practicalMeaning(base)) return base;
+      // A category-qualified lemma gloss can still have an evidenced practical
+      // form gloss (e.g. cooked). Retain its lemma identity and district coverage.
+      const entry=content.libraryEntries[id];
+      return entry.forms.map(f=>"library-form:"+f.formId).find(card=>LibraryEngine.cardAllowed(content.LIBRARY_DATA,card,day)&&practicalMeaning(card)) || base;
+    }).filter(id =>
       LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id)));
     const scheduled = [];
     for (let i = 0; i < Math.max(0, ...rows.map(row => row.length)); i++)
@@ -98,6 +105,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
     ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id));
   }
   function selectChallenge(day, { newAttempt = false } = {}) {
+    if (!progression.challengeAccessible(state.progress, day)) return [];
     const plan = LibraryEngine.ensurePlan(
       state.progress,
       content.LIBRARY_DATA,

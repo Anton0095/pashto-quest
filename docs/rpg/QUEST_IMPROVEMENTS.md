@@ -1,5 +1,6 @@
 # Village, onboarding, assessments and Bilal
 
+> Current ordering and tutorial policy: [School-first curriculum](../../CURRICULUM.md#daily-allocation) supersedes this checkpoint’s opening, optional-tutorial and equal-allocation rules. Historical validation below remains evidence for its recorded release.
 Current typing opt-out and educational Bilal completion behavior is specified in [the completion repair](TYPING_AND_BILAL_COMPLETION.md). The validation numbers below describe this earlier follow-up's recorded release.
 
 

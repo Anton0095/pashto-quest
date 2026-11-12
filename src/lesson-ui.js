@@ -113,7 +113,9 @@ function createLessons({
         ? "Four guided conversation activities"
         : mode === "review"
           ? "Previously studied material due for recall"
-          : content.curriculum.days[loop - 1].topic;
+          : loc !== "school" && !state.progress.library.plans[loop].locationAssignments[loc].length
+            ? "Review familiar words and sentence patterns. No new words are assigned to this lesson today."
+            : content.curriculum.days[loop - 1].lessons.find(l=>l.location===loc).introduction;
     ui.$("lessonIcon").textContent = content.zones[loc]?.icon || "📚";
     ui.setSpeaker(loop, loc, mode);
     ui.hud();
@@ -420,7 +422,7 @@ function createLessons({
       title = `Muhammad Jan welcomes ${state.progress.playerProfile.name}!`;
       desc = `Welcome, ${state.progress.playerProfile.name}! You completed the guided conversation activities.${s.skippedItems?.length ? " Typing was skipped; typing challenges are off." : ""} Day 1 is now open.`;
       follow =
-        "Explore home, market, lake and school in any order, or use “Skip to Muhammad Jan’s check-in” on the town screen. His 15-question Library home-award challenge is available now.";
+        "Complete School first. Then study Home, Nature and Market in any order before the challenge, or choose “Skip to daily challenge”.";
     } else if (s.mode === "review") {
       title = "Your memory is getting stronger!";
       desc =
@@ -432,30 +434,10 @@ function createLessons({
       if (!s.required.length)
         desc =
           "No new words, forms or due review were available. You reviewed the grammar guidance; no practice XP was awarded.";
-      follow =
-        s.loop === 1
-          ? learning.completeRound(1)
-            ? "Your four visits are complete. Muhammad Jan is ready for your 15-question check-in."
-            : "Explore the remaining locations, or try Muhammad Jan’s check-in now."
-          : s.loop === 2
-            ? learning.completeRound(2)
-              ? "Your village visits are complete. Muhammad Jan is ready for your check-in."
-              : "After School, Home is available immediately. Market and Lake are optional visits before or after Home. Muhammad Jan’s challenge is also available."
-            : s.loop === 3
-              ? learning.completeRound(3)
-                ? "Your Day 3 visits are complete. Speak with Edris about dinner in your final challenge."
-                : "Keep practising “I” sentences, or skip straight to Edris’s dinner-shopping conversation."
-              : learning.completeRound(s.loop)
-                ? `All four Day ${s.loop} visits completed! The 15-question Town Challenge is ready. Pass with 12/15 to unlock the next day.`
-                : "Visit the other locations to practise, or take the 15-question Town Challenge now.";
+      follow = learning.completeRound(s.loop)
+        ? `All four lessons are complete. Take the ${progression.getChallengeSpec(s.loop).questionCount}-question daily challenge.`
+        : 'Study Home, Nature and Market in any order, then take the challenge. You can also choose “Skip to daily challenge”. Review skipped vocabulary in the Library after passing.';
     }
-    if (s.loop >= 6)
-      follow =
-        s.loop === 6
-          ? "Practise the other town locations, or join Deena and Medina in the Hills: 15 turns, 12 correct to pass."
-          : "Practise the other locations, or take Ms Hameed’s separate School examination: 25 turns, 20 correct to pass.";
-    if (s.loop >= 8)
-      follow = `Practise the other locations, or take the ${progression.getChallengeSpec(s.loop).questionCount}-question final challenge. Week 2 remains draft content for native review.`;
     if (progression.characterStatus(state.progress).level > s.initialLevel)
       desc += ` ✨ Level ${progression.characterStatus(state.progress).level} reached!`;
     ui.$("resultHeading").textContent = title;

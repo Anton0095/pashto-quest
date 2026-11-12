@@ -69,7 +69,7 @@ for(const width of [375,1280]) {
        if(reload&&!reloaded&&i===0){await durable();const before=await p.locator('#builtSentence').innerText();await p.reload();await p.locator('#constructionPanel').waitFor({state:'visible'});assert.equal(await p.locator('#builtSentence').innerText(),before);reloaded=true;}
       }
       await p.locator('#checkBuild').click();
-     }else {const ps=await p.locator('#quizPashto').innerText();assert(known.has(ps),ps);await p.locator('#choices button').getByText((known.get(ps)).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true}).click();}
+     }else if(await p.locator('#lessonRecall').count()){const ps=await p.locator('#quizPashto').innerText();await p.locator('#lessonRecall').fill(known.get(ps));await p.getByRole('button',{name:'Submit answer',exact:true}).click();}else {const ps=await p.locator('#quizPashto').innerText();assert(known.has(ps),ps);await p.locator('#choices button').getByText((known.get(ps)).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true}).click();}
      await p.locator('#quizNext').click();
     }
    }
@@ -81,7 +81,7 @@ for(const width of [375,1280]) {
    for(let i=0;i<15;i++){
     const saved=await progress();assert(saved.activeChallenge);oracle.content.restoreGenerated(saved);
     const q=saved.activeChallenge.questions[saved.activeChallenge.index];
-    if(q.unstudied&&!q.recognition){assert(!(await p.locator('#choices').innerText()).includes(answerFor(q)));await p.locator('#unseenRecall').fill(fail?'deliberately incorrect':answerFor(q));await p.getByRole('button',{name:'Submit meaning',exact:true}).click();}
+    if(q.answerFormat==='type'||q.unstudied&&!q.recognition){assert(!(await p.locator('#choices').innerText()).includes(answerFor(q)));await p.locator('#unseenRecall').fill(fail?'deliberately incorrect':answerFor(q));await p.getByRole('button',{name:/^Submit (answer|meaning)$/,exact:true}).click();}
     else if(['construct','dialogue'].includes(q.kind)){
      if(fail){const tiles=p.locator('#wordTiles button:enabled');while(await tiles.count()){await tiles.last().click();if(q.duds?.length)break;}}
      else for(const token of answerFor(q).replace(/[.!؟،]/g,'').split(/\s+/).filter(Boolean))await p.locator('#wordTiles button:enabled').getByText(token,{exact:true}).first().click();
@@ -92,14 +92,14 @@ for(const width of [375,1280]) {
     await p.locator('#quizNext').click();
    }
   }
-  await tutorial();
+  await tutorial();await walk(39,28);await talk('Study at School');await finishLesson();await p.locator('#resultWorld').click();
   // Appearance and menu are independent of English gender preference.
   await p.locator('#rpgMenuButton').click();await p.locator('[data-appearance="feminine"]').click();await p.getByRole('button',{name:'Resume village',exact:true}).click();
   assert.equal((await progress()).playerProfile.gender,'unspecified');
   await walk(10,11);await talk('Study at Home');assert.equal(await finishLesson({reload:true}),3,'Authentic default Home generates three descriptions');await p.locator('#resultWorld').click();
   await walk(38,12);await talk('Study at the Lake');await finishLesson();await p.locator('#resultWorld').click();
   await walk(11,29);await talk('Study at the Market');await finishLesson();await p.locator('#resultWorld').click();
-  await walk(39,28);await talk('Study at School');await finishLesson();await p.locator('#resultWorld').click();
+  await walk(39,28);await talk('Review · Study at School');await finishLesson();await p.locator('#resultWorld').click();
   for(const loc of ['residential','nature','business','school'])assert((await progress()).complete['1-'+loc]);
   const position=await pos();await durable();await p.reload();await p.locator('#worldScreen').waitFor({state:'visible'});assert.deepEqual(await pos(),position);assert.equal(await p.evaluate(k=>JSON.parse(localStorage.getItem(k)).appearance,WORLD),'feminine');
   await p.locator('#rpgLibrary').click();assert((await p.locator('#libraryBody').innerText()).includes('Vocabulary Bank'));await p.locator('[data-library-tab="grammar"]').click();assert((await p.locator('#libraryBody').innerText()).includes('Grammar Journal'));await p.locator('#libraryClose').click();
@@ -110,9 +110,9 @@ for(const width of [375,1280]) {
   await p.locator('#resultWorld').click();await p.screenshot({path:`work/rpg-browser/village-${width}.png`,fullPage:true});
   // No chapter navigation or future-day restoration is exposed.
   assert.equal(await p.locator('#chapterButtons').count(),0);assert.equal((await progress()).challenges[2],undefined);
-  p.once('dialog',d=>d.accept());await p.locator('#rpgMenuButton').click();await p.locator('#resetProgress').click();tutorialDone=false;await tutorial();
-  await walk(10,11);assert.equal(Object.keys((await progress()).complete).filter(id=>id.startsWith('1-')).length,0);
-  await talk('Day 1 challenge · 15 questions');await assessment({fail:true,reload:true});assert(!(await progress()).challenges[1].passed);assert.equal(Object.keys((await progress()).complete).filter(id=>id.startsWith('1-')).length,0);
+  p.once('dialog',d=>d.accept());await p.locator('#rpgMenuButton').click();await p.locator('#resetProgress').click();tutorialDone=false;await tutorial();await walk(39,28);await talk('Study at School');await finishLesson();await p.locator('#resultWorld').click();
+  await walk(10,11);assert.equal(Object.keys((await progress()).complete).filter(id=>id.startsWith('1-')).length,1);
+  await talk('Skip to daily challenge');await assessment({fail:true,reload:true});assert(!(await progress()).challenges[1].passed);assert.equal(Object.keys((await progress()).complete).filter(id=>id.startsWith('1-')).length,1);
   await p.locator('#resultReplay').click();await assessment();const pass=await progress();assert(pass.challenges[1].passed);for(const loc of ['residential','nature','business','school'])assert(pass.complete['1-'+loc]);
   assert.equal(await p.evaluate(()=>localStorage.getItem('pashto-town-days-v1')),'production-save-sentinel');
   assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),'Mobile overflow');

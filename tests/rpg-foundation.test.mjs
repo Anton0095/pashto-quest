@@ -15,7 +15,7 @@ for(const mutate of [d=>d.days['1'].day=2,d=>d.days['1'].maps=['missing'],d=>d.d
  const bad=structuredClone(data);mutate(bad);assert.throws(()=>M.createRPGRegistry(bad,{}));
 }
 let flags={},triggers={},passed=false,eligible=true;const emitted=[];
-const state={day:2,progress:{}},learning={allowed:()=>true},progression={passedChallenge:()=>passed};
+const state={day:2,progress:{complete:{"2-school":true}}},learning={allowed:()=>true},progression={passedChallenge:()=>passed};
 const director=M.createChapterDirector({data:future,state,learning,progression,eligible:()=>eligible,dispatch:e=>emitted.push(e),triggers:()=>triggers});
 assert(!director.ready(future.days['2']),'registered future chapters remain inactive');assert(!director.opening());
 future.lastDay=2;eligible=false;assert(!director.opening());eligible=true;assert(director.opening());assert(!director.opening());assert.deepEqual(emitted,['day2-school-opening']);assert(director.challengeAvailable());assert(!director.ending());passed=true;assert(director.ending());assert(!director.ending());assert.equal(director.next(),null,'unregistered Day3 stays inaccessible');

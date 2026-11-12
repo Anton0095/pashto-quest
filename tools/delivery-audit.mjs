@@ -14,7 +14,7 @@ if (report.releaseSha256 !== hash)
     "Delivery results do not match this release; rerun the full browser-inclusive verification.",
   );
 if (
-  report.totalVisits !== 280 ||
+  report.totalVisits !== 350 ||
   report.totalAssessments !== 140 ||
   report.profiles.length !== 10 ||
   report.instructionalSentenceObservations < 1 ||
@@ -68,7 +68,7 @@ const lines = [
   "",
   report.navigationProfile,
   "",
-  `Release SHA-256: \`${report.releaseSha256}\`. The complete browser matrix covered 280 normal district visits and 140 assessments, all fourteen days, five paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.`,
+  `Release SHA-256: \`${report.releaseSha256}\`. The complete browser matrix covered 280 normal district visits and 70 School visits on shortcut routes and 140 assessments, all fourteen days, five paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.`,
   ``,
   "## Day 1 Home: before and after",
   "",
@@ -80,13 +80,13 @@ const lines = [
   "| 2 | دروازه خلاصه ده. | Stored authored card s-it-door |",
   "| 3–4 | Same two texts | Duplicate generated cards |",
   "",
-  "In the current release: Library onboarding is separate (two fixed greetings and two separately owner-approved authored questions). At Home, the player studies exactly six assigned district lemmas plus the required feminine adjective form, reads the agreement rule, then receives these engine-composed descriptions and practises them with shuffled indexed word tiles:",
+  "In the current release: Library onboarding is separate (two fixed greetings and two separately owner-approved authored questions). School first teaches Book/New and agreement. At Home, the player studies eight assigned district lemmas plus the required feminine adjective form, reviews agreement, then receives these engine-composed descriptions and practises them with shuffled indexed word tiles:",
   "",
   "| Pashto | English | Origin |",
   "|---|---|---|",
   ...home.map((t) => `| ${t.pashto} | ${t.english} | productive engine |`),
   "",
-  "Default Home needs no other district visit and introduces no action verb. The window/open pairing is composed from independently licensed noun and adjective features; the complete output is not an authored target. Supported paces are 8/12/16/20/24. If the licensed pool cannot supply a compatible clause, visits and assessments adapt with vocabulary/approved phrase tasks, without extra district lemmas or a fixed-sentence substitution.",
+  "Default Home needs only the compulsory School lesson and introduces no action verb. The window/open pairing is composed from independently licensed noun and adjective features; the complete output is not an authored target. Supported paces are 8/12/16/20/24. If new words lack enough licensed combinations, practice also uses eligible cumulative vocabulary. If the complete licensed pool cannot supply a compatible clause, visits and assessments adapt with vocabulary/approved phrase tasks, without extra district lemmas or a fixed-sentence substitution.",
   "",
   "![Generated Home study on mobile](demonstration/day1-generated-study.png)",
   "",

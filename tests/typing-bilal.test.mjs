@@ -53,7 +53,7 @@ let routes=0,sparse=0;
 for(const pace of [8,12,16,20,24])for(const route of ['lake','pass','failed','none']){
  const t=runtime();reset(t,pace);
  for(let day=1;day<=7;day++){
-  t.state.day=day;const spec=data.conversations.bilal.days[day];t.progression.activateChallenge(t.state.progress,day);
+  t.state.day=day;study(t,day,"school");const spec=data.conversations.bilal.days[day];t.progression.activateChallenge(t.state.progress,day);
   if(route==='lake')study(t,day,'nature');
   if(route==='pass'||route==='failed'){
    const before=plain(t.state.progress.library);t.progression.completeChallengeOnce(t.state.progress,day,route==='pass'?t.progression.getChallengeSpec(day).passCount:0);

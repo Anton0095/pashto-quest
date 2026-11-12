@@ -5,7 +5,7 @@ for (const width of [375, 1280]) {
   try {
     const p = b.page;
     await tutorial(p);
-    await p.evaluate(() => {__test.state.progress.enableTypingChallenges=true;__test.challenge.startChallenge(1);});
+    await p.evaluate(() => {__test.state.progress.enableTypingChallenges=true;(__test.studySchool(1),__test.challenge.startChallenge(1));});
     const qs = await p.evaluate(() => __test.state.session.questions);
     assert.equal(qs.length, 15);
     assert(

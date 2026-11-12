@@ -22,8 +22,8 @@ assert.equal(skip.progression.completeOnboarding(skip.state.progress),false);
 const normal=runtime();normal.progression.completeLessonOnce(normal.state.progress,'tutorial','tutorial',true,4);
 assert.equal(normal.state.progress.onboardingIntroductionPending,true);
 for(const loc of skip.content.zoneKeys)assert.equal(skip.learning.placeAccessible(1,loc),normal.learning.placeAccessible(1,loc));
-assert(data.events.welcome.actions.some(a=>a.type==='skip-tutorial'));
-assert(data.events['onboarding-introduction'].lines.join(' ').includes('typing'));
+assert(!data.events.welcome.actions.some(a=>a.type==='skip-tutorial'));
+assert(data.events['onboarding-introduction'].lines.join(' ').includes('School'));
 // Model map graph checks actual collision tiles, furniture and exits.
 M.RPGWorldData.validate(data);
 const start={map:'library',...data.maps.library.spawn,facing:'up'};

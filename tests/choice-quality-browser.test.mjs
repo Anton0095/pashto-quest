@@ -8,7 +8,7 @@ for(const width of [375,1280]) {
    const t=__test,ui=__ui,$=id=>document.getElementById(id),check=(ok,message)=>{if(!ok)throw Error(message)};
    // An ordinary/forced visit uses the same choices after actual word study,
    // without needing a correct response, reward or completion.
-   t.reset();t.state.progress.tutorialDone=true;t.lessons.begin('1-residential');
+   t.reset();t.state.progress.tutorialDone=true;(t.studySchool(1),t.lessons.begin('1-residential'));
    while(['greeting','lexical','sentence','grammar'].includes(t.state.session.phase)) {
     if(t.state.session.phase==='grammar')t.lessons.afterGrammar();else t.lessons.afterStudy();
    }
@@ -18,7 +18,7 @@ for(const width of [375,1280]) {
     s.queue=[{id:'library-card:lemma:a-big',kind:'word',retries:0}];t.lessons.showQuestion();
     const values=[...$('choices').querySelectorAll('button')].map(b=>b.dataset.answer);
     check(values.length===4&&!values.some(v=>['A different meaning','Another response','None of these'].includes(v)),'placeholder despite vocabulary supply');
-    check(values.some(v=>/house|door|room|window/i.test(v)),'no noun alternatives for adjective');
+    check(values.filter(v=>v!==t.content.wordById['library-card:lemma:a-big'].en).length>=3,'three distinct alternatives remain available');
     check(JSON.stringify(t.state.progress.library.acquired)===before,'display acquired distractors');
    }
    // One shared predicate marks every evaluator-accepted variant consistently.
@@ -40,7 +40,7 @@ for(const width of [375,1280]) {
    const attempts=t.state.progress.library.acquired[inf.lemmaId].totalAttempts;buttons.find(b=>b.dataset.answer==='open').click();
    check(t.state.progress.library.acquired[inf.lemmaId].totalAttempts===attempts,'Library duplicate SRS');
    // Newly frozen practical choices and locks survive reload unchanged.
-   $('libraryDialog').close();t.reset(8);t.state.progress.tutorialDone=true;t.state.day=1;t.challenge.startChallenge(1);
+   $('libraryDialog').close();t.reset(8);t.state.progress.tutorialDone=true;t.state.day=1;(t.studySchool(1),t.challenge.startChallenge(1));
    const s=t.state.session,q=s.questions[0];t.challenge.answerChallenge(t.content.wordById[q.id].en);
    await t.storage.save();return {questions:s.questions,xp:t.state.progress.xp,score:s.correctCount};
   });

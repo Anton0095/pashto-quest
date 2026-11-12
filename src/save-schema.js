@@ -57,7 +57,8 @@ function createSaveValidator({ content, progression }) {
     for (const plan of Object.values(l.plans)) {
       if (!object(plan)||!integer(plan.seed)||!object(plan.shortfalls)||typeof plan.notice!=="string"||typeof plan.contentGap!=="boolean"||
           !(plan.effectiveDailyTarget===null||(plan.day===14&&plan.effectiveDailyTarget===0||LibraryEngine.presets.includes(plan.effectiveDailyTarget)))||
-          !content.zoneKeys.every(k=>integer(plan.shortfalls[k])&&plan.shortfalls[k]<=6)) return false;
+          !content.zoneKeys.every(k=>integer(plan.shortfalls[k])&&plan.shortfalls[k]<=plan.requestedDailyTarget)) return false;
+      if (plan.allocationAdjusted !== undefined && typeof plan.allocationAdjusted !== "boolean") return false;
       if (plan.challengeActivation !== undefined) {
         const a=plan.challengeActivation;
         if (!object(a) || !strings(a.newlyUnlocked) || a.newlyUnlocked.some(id=>!content.libraryEntries[id]) || !object(a.locationItems) || !content.zoneKeys.every(loc=>integer(a.locationItems[loc]))) return false;
@@ -245,11 +246,11 @@ function createSaveValidator({ content, progression }) {
       )
         return false;
       const ids = Object.values(assignments).flat();
-      if (new Set(ids).size !== ids.length || (plan.day === 14 && ids.length))
+      if (new Set(ids).size !== ids.length || ids.length + content.zoneKeys.reduce((sum,k)=>sum+plan.shortfalls[k],0) !== plan.requestedDailyTarget || (plan.day === 14 && ids.length))
         return false;
       for (const [district, assigned] of Object.entries(assignments)) {
         if (
-          assigned.length > plan.requestedDailyTarget / 4 ||
+          assigned.length > plan.requestedDailyTarget ||
           assigned.some((id) => {
             const e = content.libraryEntries[id];
             return (

@@ -11,7 +11,21 @@ try {
     chromium,
   } = require("/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright"));
 }
-export const hook = `window.__test={names:{text:value=>String(value??'')},state,audio,content,progression,learning,questions,lessons,challenge,grammar,storage,world,library,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine,nextQuestion,reset(pace=24){state.progress=progression.fresh();state.progress.library.requestedDailyTarget=pace;state.session=null;state.day=1;storage.resetProblem();storage.save();ui.view('introScreen')},day(day){state.day=day;world.startWorld()}};`;
+export const hook = `window.__test={names:{text:value=>String(value??'')},state,audio,content,progression,learning,questions,lessons,challenge,grammar,storage,world,library,E:LibraryEngine,S:SentenceEngine,Q:QuestionEngine,nextQuestion,studySchool(day){
+ if(state.progress.complete[day+'-school'])return;
+ lessons.begin(day+'-school');
+ for(let n=0;n<500&&state.session?.id===day+'-school'&&!state.session.finished;n++){
+  const s=state.session;
+  if(['greeting','lexical','sentence'].includes(s.phase))lessons.afterStudy();
+  else if(s.phase==='grammar'){
+   const demo=document.querySelector('#grammarExplanation .sov-demo[data-example-id]:not([data-complete])');
+   if(demo){const c=content.wordById[demo.dataset.exampleId];for(const token of c.ps.replace(/[.!؟،]/g,'').split(/\s+/).filter(Boolean))[...demo.querySelectorAll('.word-tiles button')].find(b=>!b.disabled&&b.textContent===token).click();[...demo.querySelectorAll('button')].find(b=>b.textContent==='Check sentence').click();}
+   lessons.afterGrammar();
+  }else{const item=s.queue[0],c=content.wordById[item.id];lessons.answer(item.kind==='construct'?c.ps:c.en);nextQuestion();}
+ }
+ if(!state.progress.complete[day+'-school'])throw Error('School fixture did not finish');
+ world.startWorld();
+},reset(pace=24){state.progress=progression.fresh();state.progress.library.requestedDailyTarget=pace;state.session=null;state.day=1;storage.resetProblem();storage.save();ui.view('introScreen')},day(day){state.day=day;world.startWorld()}};`;
 export async function setup({
   width = 375,
   mobile = false,
@@ -127,4 +141,32 @@ export async function answerCurrent(page) {
       .locator("#choices button")
       .getByText(displayCharacterText(q.answer).replace(/^(\s*["“'‘(\[]*)([a-z])/, (_,prefix,c)=>prefix+c.toUpperCase()), {exact:true})
       .click();
+}
+// Complete the real Day-1 School prerequisite using public controls, including
+// in the independent suite where no injected grading bridge is available.
+export async function school(page) {
+  const quick=page.locator('[data-destination=school]');
+  if(await quick.count()){
+    if(!await quick.isVisible())await page.getByText('Quick travel',{exact:true}).click();
+    await quick.click();
+  }else await page.locator('.map-point[data-place=school]').click();
+  await page.locator("#lessonScreen").waitFor();
+  const known=new Map();
+  for(let n=0;await page.locator('#lessonScreen').isVisible();n++){
+    if(n>200)throw Error('School prerequisite stalled');
+    if(await page.locator('#teachPanel').isVisible()){
+      known.set(await page.locator('#teachPashto').innerText(),await page.locator('#teachEnglish').innerText());await page.locator('#teachNext').click();
+    }else if(await page.locator('#grammarPanel').isVisible())await page.locator('#grammarNext').click();
+    else {
+      const prompt=await page.locator('#quizPashto').innerText();
+      if(await page.locator('#constructionPanel').isVisible()){
+        const answer=[...known].find(([,en])=>en===prompt)?.[0];if(!answer)throw Error('Missing studied School sentence');
+        for(const token of answer.replace(/[.!؟،]/g,'').split(/\s+/))await page.locator('#wordTiles button:enabled').getByText(token,{exact:true}).first().click();await page.locator('#checkBuild').click();
+      }else if(await page.locator('#lessonRecall').count()){
+        await page.locator('#lessonRecall').fill(known.get(prompt));await page.getByRole('button',{name:'Submit answer',exact:true}).click();
+      }else await page.locator('#choices button').getByText(known.get(prompt).replace(/^(\s*["“'‘(\[]*)([a-z])/,(_,a,b)=>a+b.toUpperCase()),{exact:true}).click();
+      await page.locator('#quizNext').click();
+    }
+  }
+  await page.locator('#resultWorld').click();
 }

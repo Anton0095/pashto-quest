@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { setup, tutorial } from "./browser-fixture.mjs";
+import { setup, school, tutorial } from "./browser-fixture.mjs";
 const contract = JSON.parse(readFileSync("tests/world-contract.json", "utf8"));
 const captures = [];
 mkdirSync("docs/maintenance/cleanup", { recursive: true });
@@ -10,10 +10,10 @@ for (const width of [375, 1280]) {
   const p = b.page;
   try {
     const status = p.locator("#onboardingPaceFeedback");
-    assert.match(await status.innerText(), /24\/day.*6 per teaching location/);
+    assert.match(await status.innerText(), /24\/day.*allocated by lesson/);
     assert.match(
       await p.locator("#onboardingPace").innerText(),
-      /Default: 24\/day.*6 per teaching location/,
+      /Default: 24\/day.*allocated by lesson/,
     );
     assert.equal(
       await p
@@ -29,12 +29,12 @@ for (const width of [375, 1280]) {
       await p.locator(`[data-onboarding-pace="${target}"]`).click();
       assert.match(
         await status.innerText(),
-        new RegExp(`${target}/day.*${target / 4} per teaching location`),
+        new RegExp(`${target}/day.*allocated by lesson`),
       );
       await p.reload();
       assert.match(
         await status.innerText(),
-        new RegExp(`${target}/day.*${target / 4} per teaching location`),
+        new RegExp(`${target}/day.*allocated by lesson`),
       );
       assert.equal(
         await p
@@ -77,10 +77,10 @@ for (const width of [375, 1280]) {
       /Selected 8\/day, starting Day 1/,
     );
     await p.locator("#libraryClose").click();
-    assert.match(await status.innerText(), /8\/day.*2 per teaching location/);
+    assert.match(await status.innerText(), /8\/day.*allocated by lesson/);
     p.once("dialog", (d) => d.accept());
     await p.locator("#resetProgress").click();
-    assert.match(await status.innerText(), /24\/day.*6 per teaching location/);
+    assert.match(await status.innerText(), /24\/day.*allocated by lesson/);
     assert(
       await p
         .locator(".map-point:not(.library)")
@@ -106,6 +106,7 @@ for (const width of [375, 1280]) {
     );
     await p.locator("#libraryClose").click();
     // The quiz's Speak button must stay attached to the current item after queue.shift().
+    await school(p);
     await p.locator('.map-point[data-place="residential"]').click();
     await p.evaluate(() => {
       const t = __test;
@@ -144,7 +145,7 @@ for (const width of [375, 1280]) {
               prior === 7 ? 25 : 15,
             );
           t.state.day = day;
-          t.state.progress.complete[day + "-" + opening] = true;
+          t.studySchool(day);
           t.lessons.begin(day + "-" + location);
         },
         { day, location, opening: old.opening },
@@ -166,7 +167,7 @@ for (const width of [375, 1280]) {
           fullPage: true,
         });
     }
-    await p.evaluate(() => __test.challenge.startChallenge(7));
+    await p.evaluate(() => (__test.studySchool(7),__test.challenge.startChallenge(7)));
     const assessment = await p.evaluate(() => ({
       questions: __test.state.session.questions,
       caption: document.getElementById("lessonDescription").textContent,
@@ -204,7 +205,7 @@ for (const width of [375, 1280]) {
       const pool = t.learning.libraryLessonPool(14, "residential");
       if (pool.length) throw Error("Injected fallback into empty lesson");
       window.__emptyXP = t.state.progress.xp;
-      t.lessons.begin("14-residential");
+      t.lessons.begin("14-school");
     });
     assert(await p.locator("#grammarPanel").isVisible());
     assert.equal(
@@ -237,7 +238,7 @@ for (const width of [375, 1280]) {
       await p.evaluate(
         () =>
           __test.state.progress.xp === window.__emptyXP &&
-          __test.state.progress.complete["14-residential"],
+          __test.state.progress.complete["14-school"],
       ),
     );
     assert.equal(await p.locator("#resultXP").innerText(), "+0");
@@ -260,7 +261,7 @@ for (const width of [375, 1280]) {
     });
     assert.deepEqual(b.errors, []);
     console.log(
-      `PASS cleanup UI ${width}px: truthful 24/6 default, supported pace persistence, canonical POS/day filters, frozen pace, moved teachers, actual assessment counts, active-item audio, visible grammar catch-up and zero-XP empty visits`,
+      `PASS cleanup UI ${width}px: truthful School-first 24/day allocation, supported pace persistence, canonical POS/day filters, frozen pace, moved teachers, actual assessment counts, active-item audio, visible grammar catch-up and zero-XP empty visits`,
     );
   } finally {
     await b.close();

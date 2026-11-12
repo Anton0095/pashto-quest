@@ -43,7 +43,7 @@ for(const width of [1280,390]){
    await p.locator('#rpgLibrary').click();await p.locator('[data-library-tab=profile]').click();assert.equal(await p.locator('#enableTypingChallenges').isChecked(),!skip);await p.locator('#libraryClose').click();
   }
   await fixture(1);
-  await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;__test.challenge.startChallenge(1);});
+  await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;(__test.studySchool(1),__test.challenge.startChallenge(1));});
   let skipped=false,frozen,skippedIndex;
   while(await p.locator('#lessonScreen').isVisible()){
    if(!skipped&&await p.locator('#unseenRecall').count()){
@@ -60,7 +60,7 @@ for(const width of [1280,390]){
   assert(skipped);assert.equal(await p.locator('#resultAccuracy').innerText(),'14/15');const passXP=await p.evaluate(()=>__test.state.progress.xp);
   await p.evaluate(()=>__typingRPG.flush());await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);assert.equal(await p.evaluate(()=>__test.state.progress.xp),passXP);
   // Ordinary lesson uses the same no-credit transaction and advances without changing preference.
-  await fixture(1);await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;__test.state.progress.library.requestedDailyTarget=24;__test.lessons.begin('1-residential');});
+  await fixture(1);await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;__test.state.progress.library.requestedDailyTarget=24;(__test.studySchool(1),__test.lessons.begin('1-residential'));});
   for(let n=0;!await p.locator('#lessonRecall').count();n++){
    assert(n<100);if(await p.locator('#teachPanel').isVisible())await p.locator('#teachNext').click();else if(await p.locator('#grammarPanel').isVisible())await p.locator('#grammarNext').click();else{await answerCurrent(p);await p.locator('#quizNext').click();}
   }

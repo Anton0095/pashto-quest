@@ -3,13 +3,14 @@ import {setup} from './browser-fixture.mjs';
 import {driver} from './rpg-week1-driver.mjs';
 // Development-only fixture: prior days use real completion transactions. No day
 // selector, test bridge or unrestricted skipping is added to the production UI.
-const fixture=`if(!state.progress.tutorialDone){state.progress=progression.fresh();state.progress.tutorialDone=true;state.progress.playerProfile={name:'Exam fixture',gender:'unspecified'};for(let d=1;d<=6;d++)progression.completeChallengeOnce(state.progress,d,15);state.day=7;}`;
+const fixture=`if(!state.progress.tutorialDone){state.progress=progression.fresh();state.progress.tutorialDone=true;state.progress.playerProfile={name:'Exam fixture',gender:'unspecified'};for(let d=1;d<=6;d++)progression.completeChallengeOnce(state.progress,d,15);state.day=7;}RPG_WORLD_DATA.firstDay=7;`;
 const b=await setup({width:375,mobile:true,rpg:true,bridge:false,offline:true,transform:h=>h.replace('const rpg = RPG_ENABLED ?',fixture+'const rpg = RPG_ENABLED ?').replace('// @TEST_HOOK','window.__week1Inspect=()=>rpg.diagnostics(); // @TEST_HOOK')});
 const p=b.page,d=driver(p);
 try{
  await p.locator('#rpgCanvas').waitFor();assert(!await p.locator('#rpgDialogue').isVisible(),'No automatic day-opening dialogue');
  assert(!Object.keys((await d.progress()).complete).some(id=>id.startsWith('7-')));
- await d.actor('hameed',7);await d.talk('Day 7 challenge · 25 questions');
+ await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination=school]').click();await d.lesson();
+ await d.actor('hameed',7);await d.talk('Skip to daily challenge');
  await d.dialogue('Start early challenge');await p.locator('#quizPanel').waitFor();
  await p.waitForFunction(()=>JSON.parse(localStorage.getItem('pashto-quest-rpg-education-v1')).activeChallenge?.questions.length===25);
  assert.equal((await d.progress()).activeChallenge.questions.length,25);

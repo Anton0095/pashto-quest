@@ -9,22 +9,20 @@ for(const width of [1280,390]){
   const b=await setup({width,rpg:true,mobile:width===390,transform:h=>h.replace('// @TEST_HOOK','window.__questRPG=rpg;window.__questFence=saveFence; // @TEST_HOOK')}),p=b.page;
   try{
    await p.locator('#startTutorial').click();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);
-   if(skip){await p.locator('#rpgInteract').click();await p.getByRole('button',{name:'Continue',exact:true}).click();await p.getByRole('button',{name:'Skip tutorial',exact:true}).click();
-    assert.equal(await p.evaluate(()=>__test.state.progress.xp),0);assert.deepEqual(await p.evaluate(()=>__test.state.progress.library.acquired),{});
-   }else{
-    await p.getByText('Quick travel',{exact:true}).click();await p.getByRole('button',{name:'Begin Library tutorial',exact:true}).click();
-    await p.locator('#tutorialInteraction button').getByText('Hello',{exact:true}).click();await p.locator('#teachNext').click();
-    await p.locator('#tutorialInteraction button').getByText('How are you?',{exact:true}).click();await p.locator('#teachNext').click();await p.locator('[data-answer="پښتو"]').click();await p.locator('#teachNext').click();
-    await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();await p.locator('#resultWorld').click();
-   }
+   assert.equal(await p.getByRole('button',{name:'Skip tutorial',exact:true}).count(),0);
+   await p.getByText('Quick travel',{exact:true}).click();await p.getByRole('button',{name:'Begin Library tutorial',exact:true}).click();
+   await p.locator('#tutorialInteraction button').getByText('Hello',{exact:true}).click();await p.locator('#teachNext').click();
+   await p.locator('#tutorialInteraction button').getByText('How are you?',{exact:true}).click();await p.locator('#teachNext').click();await p.locator('[data-answer="پښتو"]').click();await p.locator('#teachNext').click();
+   if(skip)await p.getByRole('button',{name:'I cannot type',exact:true}).click();else {await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();}
+   if(!skip)await p.locator('#teachNext').click();await p.locator('#resultWorld').click();
    const intro=[];
    while(await p.getByRole('button',{name:'Continue',exact:true}).count()){intro.push(await p.locator('#rpgDialogue p').innerText());await p.getByRole('button',{name:'Continue',exact:true}).click();}
-   intro.push(await p.locator('#rpgDialogue p').innerText());assert(intro.join(' ').includes('typing'));if(skip)shared=intro;else assert.deepEqual(intro,shared);
+   intro.push(await p.locator('#rpgDialogue p').innerText());assert(intro.join(' ').includes('School'));if(skip)shared=intro;else assert.deepEqual(intro,shared);
    await p.getByRole('button',{name:'Explore the village',exact:true}).click();await p.evaluate(()=>__questRPG.flush());await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);assert(!await p.locator('#rpgDialogue').isVisible());
    assert.equal(await p.evaluate(()=>__test.state.progress.tutorialDone),true);assert.equal(await p.evaluate(()=>__test.state.progress.onboardingIntroductionPending),false);
    // User-facing setting persists, typed questions/drafts/locks stay frozen.
    await p.locator('#rpgLibrary').click();await p.locator('[data-library-tab=profile]').click();assert.equal(await p.locator('#enableTypingChallenges').isChecked(),!skip);await p.locator('#enableTypingChallenges').check();await p.getByRole('button',{name:'Save profile',exact:true}).click();await p.getByText('Profile saved.',{exact:true}).waitFor();await p.locator('#libraryClose').click();
-   await p.evaluate(()=>__test.challenge.startChallenge(1));
+   await p.evaluate(()=>(__test.studySchool(1),__test.challenge.startChallenge(1)));
    while(!await p.locator('#unseenRecall').count()){await answerCurrent(p);await p.locator('#quizNext').click();}
    await p.locator('#unseenRecall').fill('Draft to keep');const frozen=await p.evaluate(async()=>{await __questRPG.flush();return JSON.stringify(__test.state.session.questions);});
    await p.evaluate(async()=>{__test.state.progress.enableTypingChallenges=false;await __test.storage.save();await __questRPG.flush();});await p.reload();await p.locator('#unseenRecall').waitFor();assert.equal(await p.locator('#unseenRecall').inputValue(),'Draft to keep');assert.equal(await p.evaluate(()=>JSON.stringify(__test.state.session.questions)),frozen);
@@ -46,7 +44,7 @@ for(const width of [1280,390]){
   await p.locator('[data-direction=up]').press('Enter');await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.y==='7');
   await p.locator('#rpgLibrary').click();for(const tab of ['vocabulary','grammar','phrases','profile','sentences']){const button=p.locator(`[data-library-tab=${tab}]`);if(await button.count()){await button.click();assert(await p.locator('#libraryBody').innerText());}}await p.locator('#libraryClose').click();
   // Ordinary lessons opt into typed recall without altering tutorial mechanics.
-  await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;__test.lessons.begin('1-residential');});
+  await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;(__test.studySchool(1),__test.lessons.begin('1-residential'));});
   for(let n=0;!await p.locator('#lessonRecall').count();n++){
    assert(n<100);
    if(await p.locator('#teachPanel').isVisible())await p.locator('#teachNext').click();

@@ -165,14 +165,14 @@ function createLibraryUI({
     const encounteredUniversal = content.LIBRARY_DATA.entries.filter(
       (e) =>
         e.vocabularyClass === "universal" &&
-        state.progress.library.acquired[e.lemmaId],
+        LibraryEngine.inBank(state.progress,e.lemmaId),
     ).length;
     root.append(
       ui.node(
         "p",
         universal
-          ? `${encounteredUniversal} encountered universal words · ${sum.encountered + encounteredUniversal} distinct words overall. Universal words never consume district quotas.`
-          : `${sum.encountered} encountered · ${sum.practised} practised · ${sum.mastered} mastered words. ${encounteredUniversal} universal words appear separately. Inflections count under one entry.`,
+          ? `${encounteredUniversal} universal words in the Bank · ${sum.encountered + encounteredUniversal} distinct words overall. Universal words never consume district quotas.`
+          : `${sum.encountered} in the Bank · ${sum.practised} practised · ${sum.mastered} mastered words. ${encounteredUniversal} universal words appear separately. Inflections count under one entry.`,
         "notice",
       ),
     );
@@ -189,7 +189,7 @@ function createLibraryUI({
       root.append(
         ui.node(
           "p",
-          `Day ${state.day}: ${ids.length} scheduled · ${seen} scheduled words actually encountered. ${actual} incidental story words · ${tally.reviewedExistingLemmas.length} existing words revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap ? plan.notice : ""}`,
+          `Day ${state.day}: ${ids.length} scheduled · ${seen} scheduled words in the Bank. ${actual} incidental story words · ${tally.reviewedExistingLemmas.length} existing words revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap || plan.allocationAdjusted ? plan.notice : ""}`,
         ),
       );
     }
@@ -260,7 +260,7 @@ function createLibraryUI({
       let entries = content.LIBRARY_DATA.entries.filter((e) => {
         const r = state.progress.library.acquired[e.lemmaId];
         return (
-          r && (!unlockedFilter || unlockedFilter.includes(e.lemmaId)) &&
+          r && LibraryEngine.inBank(state.progress,e.lemmaId) && (!unlockedFilter || unlockedFilter.includes(e.lemmaId)) &&
           (unlockedFilter || (e.vocabularyClass === "universal") === universal) &&
           (!query ||
             [e.displayLemmaPs, e.romanisation, ...e.englishSenses].join(" ")
@@ -290,7 +290,7 @@ function createLibraryUI({
             "p",
             Object.keys(state.progress.library.acquired).length
               ? "No entries match these filters."
-              : "Your bank is empty. Words appear when you encounter them in a lesson or challenge; planning a day does not teach its words.",
+              : "Your bank is empty. Study words or pass the daily challenge to add them. Planning a day or starting a challenge does not award its assigned vocabulary.",
           ),
         );
       for (const e of entries) list.append(libraryEntry(e));
@@ -454,6 +454,7 @@ function createLibraryUI({
     const plan = state.progress.library.plans[state.day],
       current = plan?.effectiveDailyTarget;
     const next = LibraryEngine.nextUnstartedDay(state.progress, state.day);
+    if (plan?.allocationAdjusted) root.append(ui.node("p", plan.notice, "notice"));
     root.append(
       ui.node("h3", "Learning Pace"),
       ui.node(
@@ -506,7 +507,7 @@ function createLibraryUI({
     root.append(message);
   }
   function paceSummary(target) {
-    return `${target}/day requested · ${target / LibraryEngine.places.length} per teaching location`;
+    return `${target}/day requested · allocated by lesson`;
   }
   function renderOnboardingPace() {
     const choices = ui.$("onboardingPace") || ui.node("div");

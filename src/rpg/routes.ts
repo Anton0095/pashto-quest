@@ -9,6 +9,5 @@ export function createChapterRoutes({chapter,progress,save}:{chapter:()=>Chapter
   return {visited,resolved,
     selected:()=>save().routes?.[chapter().id],
     select(route:ChapterRoute){if(route==='normal'&&(!visited()||!resolved(route)))return false;if(route==='skip'&&!resolved(route))return false;(save().routes??={})[chapter().id]=route;return true;},
-    complete(){const rules=chapter().routes,route=save().routes?.[chapter().id];return !rules||!!route&&resolved(route);},
-    request(){return visited()&&resolved('normal')?'normal' as const:'skip' as const;}};
+    complete(){const rules=chapter().routes,route=save().routes?.[chapter().id];return !rules||!!route&&resolved(route);}};
 }

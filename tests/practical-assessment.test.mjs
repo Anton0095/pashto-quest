@@ -6,6 +6,7 @@ for(const pace of [8,12,16,20,24])for(const skip of [false,true]) {
  const t=runtime();reset(t,pace);
  for(let day=1;day<=14;day++) {
   t.state.day=day;
+  if(skip)study(t,day,"school");
   if(!skip)for(const place of t.content.zoneKeys){study(t,day,place);visits++;}
   t.state.session=null;
   const completion=plain(t.state.progress.complete),xp=t.state.progress.xp;
@@ -62,14 +63,14 @@ for(const introduced of [false,true]) {
  if(introduced)for(const id of t.learning.libraryLessonPool(1,'residential'))t.E.expose(t.state.progress,t.content.LIBRARY_DATA,id,{day:1,location:'residential',source:'lesson'});
  // Simulate an evidence shortage without revoking the activation policy.
  t.content.LIBRARY_DATA.sentenceFrames={...t.content.LIBRARY_DATA.sentenceFrames,frames:[],compositeFrames:[]};
- t.progression.activateChallenge(t.state.progress,1);
+ study(t,1,"school");t.state.session=null;t.progression.activateChallenge(t.state.progress,1);
  const before=plain(t.state.progress);const qs=beginAttempt(t,1),plan=t.state.progress.library.plans[1];
  const targets=qs.filter(q=>(t.content.LIBRARY_DATA.sourceMappings[q.id] || []).length);
  assert.equal(targets.length,14);assert(targets.every(q=>q.kind==='word'));
  const counts=t.content.zoneKeys.map(place=>targets.filter(q=>plan.locationAssignments[place].some(id=>(t.content.LIBRARY_DATA.sourceMappings[q.id] || []).some(ref=>ref.lemmaId===id))).length);
- assert.equal(counts.reduce((n,x)=>n+x,0),14);assert(Math.max(...counts)-Math.min(...counts)<=1);
+ assert.equal(counts.reduce((n,x)=>n+x,0),14);assert(counts.every((n,i)=>n>0&&n<=plan.locationAssignments[t.content.zoneKeys[i]].length));
  assert.equal(new Set(targets.map(q=>t.E.identity(t.content.LIBRARY_DATA,q.id))).size,14,'no repeated target or base/form alias while scheduled words remain');
- assert.deepEqual(plain(t.state.progress.library.acquired),before.library.acquired);assert.deepEqual(plain(t.state.progress.complete),{});assert.deepEqual(plain(t.state.progress.library.grammar),before.library.grammar);assert.equal(t.state.progress.xp,before.xp);
+ assert.deepEqual(plain(t.state.progress.library.acquired),before.library.acquired);assert.deepEqual(plain(t.state.progress.complete),before.complete);assert.deepEqual(plain(t.state.progress.library.grammar),before.library.grammar);assert.equal(t.state.progress.xp,before.xp);
  // Previously saved attempts, including repeated targets, are never rewritten.
  t.state.session.questions[5]=plain(t.state.session.questions[1]);
  const frozen=plain(t.state.session.questions);t.storage.save();const restored=t.storage.load();assert.equal(t.storage.problem,null);
