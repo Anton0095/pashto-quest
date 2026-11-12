@@ -1,0 +1,125 @@
+Permanent Hills / Day 6 — verification record
+
+Functional baseline: commit 8b63433, before cleanup.
+TypeScript and production build: PASS.
+Commands: node tests/NAME.test.mjs
+Models (12): hills-expansion, village-redesign, rpg-world, rpg-week1, rpg-movement, rpg-foundation, rpg-narrative-audit, daily-flow, character-expansion, rpg-persistence, house-sleep-dream, lesson-progression-fixes
+Browsers (5): hills-expansion-browser, house-sleep-dream-browser, quest-improvements-browser, character-expansion-browser, village-redesign-browser
+
+models-functional
+PASS Hills: 2611 reachable tiles, north/south transitions, eastern scree, seven-day access, incidental wildlife; invitation relocation/unique sisters, shared lesson, once-only introduction/reload, zero world rewards, preserved Day6 challenge/frozen snapshot
+PASS 96×64 village: districts, every schedule, dock, water/solid collision, entrances, reserved boundaries and schema-1 recovery
+PASS RPG world: map definitions, schema recovery, registry/day boundary, full reachability
+PASS Week1 registry, all seven normal/skip policies, legitimate-pass advancement, identity schedules, Medina timing, Hills reachability and Day8 boundary
+PASS inactive Day8, new map and new NPC registration without engine or educational changes
+PASS A*, all Week1 actor approaches, collisions, boundaries, line of sight, interruption, latest input, tween gating and locked transitions
+PASS foundation chapters, inactive Day2 registration/events, prerequisites, terminal/nonterminal, stable identities, story flags/once-only/resumption, validated cursor and no-op writes
+PASS relocated stable character and rejected-lock retry without a poisoned world queue
+PASS current tutorial drafts and clean rejection of obsolete profile/tile drafts
+PASS optional default NPC location when no day-specific override exists
+PASS all inactive Day2 NPC lesson links resolve to Day2 curriculum IDs
+PASS Days2–7 openings, teacher handoffs and relocations, greetings, productive person/number, compounds, Lake gathering, Medina/Hills, School exam, unlocks and once-only rewards
+PASS new openings, typed spacing, phrase translations, small/default pools, frozen attempts and current-save validation
+PASS central bed spawn and configured/fallback progress-sensitive guidance
+PASS seven-day cast/routine simulation, reservations, protected access, selectable targets, settled reload, invalid routine recovery, stable identity and display-only frozen-name aliases
+PASS supported pre-expansion assessment metadata and compiler proofs restore byte-for-byte without progress reset
+PASS surrounding optional routine state yields player escape without moving the player
+PASS RPG persistence and policy: separate keys, competing writer protection, corrupted coordinates/schema recovery, Day 2 cap, data-driven expansion
+PASS house reachability/collision across seven chapters, sleep-intent validation, isolated review snapshots/rewards, exact approved tutorial prompts and shared name validation
+PASS Day2 immediate Home, optional visits, five paces/default/old-save rejection, Have forms/allocation/semantics, per-lesson noun/verb targets and bounded/cumulative fallbacks
+PASS new lesson vocabulary separates availability from actual first study
+PASS interrupted lesson introductions are attributed to the actual first teaching visit
+FAILED []
+
+browser-functional-verified
+PASS Hills browser 1280 both tutorials/north/south, Day5 sleep → Home, guidance, Lake-only invitation/quick guard/reload, physical Hills travel, sister introduction, either sister/shared lesson/review/quiet return, pointer/touch/D-pad/camera/scree/reload, early 15-item challenge/frozen resume/pass without invented invitation
+PASS Hills browser 390 both tutorials/north/south, Day5 sleep → Home, guidance, Lake-only invitation/quick guard/reload, physical Hills travel, sister introduction, either sister/shared lesson/review/quiet return, pointer/touch/D-pad/camera/scree/reload, early 15-item challenge/frozen resume/pass without invented invitation
+
+house-functional
+PASS house/sleep/dream 1280 entrance/exit, keyboard/pointer/touch, collisions, shared Library/profile, blocked sleep, consecutive days, duplicate taps, reload recovery, terminal boundary, isolated full dream and portraits
+PASS house/sleep/dream 375 entrance/exit, keyboard/pointer/touch, collisions, shared Library/profile, blocked sleep, consecutive days, duplicate taps, reload recovery, terminal boundary, isolated full dream and portraits
+
+quest-functional
+PASS quest public UI 1280 normal/skip shared introduction, reload, saved settings and typed drafts/locks, Library movement/features, progressive Pashto-only Bilal/audio and zero learning writes
+PASS quest public UI 390 normal/skip shared introduction, reload, saved settings and typed drafts/locks, Library movement/features, progressive Pashto-only Bilal/audio and zero learning writes
+
+cast-functional
+PASS living village 1280 offline cast, moving-target approach, pause/resume, routine reload, optional Bilal thread, sister introduction, lesson/Hills, child animation stability and old saved presentation names
+PASS living village 390 offline cast, moving-target approach, pause/resume, routine reload, optional Bilal thread, sister introduction, lesson/Hills, child animation stability and old saved presentation names
+
+village-functional
+PASS redesigned village browser 375 dock, water, two road barriers, old-position recovery and unchanged educational bytes
+PASS redesigned village browser 1280 dock, water, two road barriers, old-position recovery and unchanged educational bytes
+
+After cleanup: same 17 suites, plus authored-conversations, typing-bilal and generation-cache.
+New assertions also check a single NPC placement under overlapping schedules, Hills keyboard/camera behavior and distinct relocated course labels.
+
+models-cleanup
+PASS Hills: 2611 reachable tiles, north/south transitions, eastern scree, seven-day access, incidental wildlife; invitation relocation/unique sisters, shared lesson, once-only introduction/reload, zero world rewards, preserved Day6 challenge/frozen snapshot
+PASS 96×64 village: districts, every schedule, dock, water/solid collision, entrances, reserved boundaries and schema-1 recovery
+PASS RPG world: map definitions, schema recovery, registry/day boundary, full reachability
+PASS Week1 registry, all seven normal/skip policies, legitimate-pass advancement, identity schedules, Medina timing, Hills reachability and Day8 boundary
+PASS inactive Day8, new map and new NPC registration without engine or educational changes
+PASS A*, all Week1 actor approaches, collisions, boundaries, line of sight, interruption, latest input, tween gating and locked transitions
+PASS foundation chapters, inactive Day2 registration/events, prerequisites, terminal/nonterminal, stable identities, story flags/once-only/resumption, validated cursor and no-op writes
+PASS relocated stable character and rejected-lock retry without a poisoned world queue
+PASS current tutorial drafts and clean rejection of obsolete profile/tile drafts
+PASS optional default NPC location when no day-specific override exists
+PASS all inactive Day2 NPC lesson links resolve to Day2 curriculum IDs
+PASS Days2–7 openings, teacher handoffs and relocations, greetings, productive person/number, compounds, Lake gathering, Medina/Hills, School exam, unlocks and once-only rewards
+PASS new openings, typed spacing, phrase translations, small/default pools, frozen attempts and current-save validation
+PASS central bed spawn and configured/fallback progress-sensitive guidance
+PASS seven-day cast/routine simulation, reservations, protected access, selectable targets, settled reload, invalid routine recovery, stable identity and display-only frozen-name aliases
+PASS supported pre-expansion assessment metadata and compiler proofs restore byte-for-byte without progress reset
+PASS surrounding optional routine state yields player escape without moving the player
+PASS RPG persistence and policy: separate keys, competing writer protection, corrupted coordinates/schema recovery, Day 2 cap, data-driven expansion
+PASS house reachability/collision across seven chapters, sleep-intent validation, isolated review snapshots/rewards, exact approved tutorial prompts and shared name validation
+PASS Day2 immediate Home, optional visits, five paces/default/old-save rejection, Have forms/allocation/semantics, per-lesson noun/verb targets and bounded/cumulative fallbacks
+PASS new lesson vocabulary separates availability from actual first study
+PASS interrupted lesson introductions are attributed to the actual first teaching visit
+PASS authored conversations: 22 playable / 13 language-guarded day/pace cases, exact intended replies, licensed distinct irrelevant alternatives, lesson/repeat/reaction gates, zero learning writes, frozen prior scheduling proof and Day-2 third-/Day-3 first-person boundary
+PASS typing/Bilal: tutorial correct/wrong/skip, 15/25 frozen skipped scoring/reload/duplicate guards, ordinary lesson no-write skip; 140 day/pace/eligibility routes and 70 intended-only sparse conversations
+PASS cache: all 14 full card/20-seed/dialogue payload digests unchanged, one immutable lexical index, form/grammar invalidation, mutable data rebuilds
+FAILED []
+
+browser-cleanup
+PASS Hills browser 1280 both tutorials/north/south, Day5 sleep → Home, guidance, Lake-only invitation/quick guard/reload, physical Hills travel, sister introduction, either sister/shared lesson/review/quiet return, pointer/touch/D-pad/camera/scree/reload, early 15-item challenge/frozen resume/pass without invented invitation
+PASS Hills browser 390 both tutorials/north/south, Day5 sleep → Home, guidance, Lake-only invitation/quick guard/reload, physical Hills travel, sister introduction, either sister/shared lesson/review/quiet return, pointer/touch/D-pad/camera/scree/reload, early 15-item challenge/frozen resume/pass without invented invitation
+
+browsers-cleanup
+PASS house/sleep/dream 1280 entrance/exit, keyboard/pointer/touch, collisions, shared Library/profile, blocked sleep, consecutive days, duplicate taps, reload recovery, terminal boundary, isolated full dream and portraits
+PASS house/sleep/dream 375 entrance/exit, keyboard/pointer/touch, collisions, shared Library/profile, blocked sleep, consecutive days, duplicate taps, reload recovery, terminal boundary, isolated full dream and portraits
+PASS quest public UI 1280 normal/skip shared introduction, reload, saved settings and typed drafts/locks, Library movement/features, progressive Pashto-only Bilal/audio and zero learning writes
+PASS quest public UI 390 normal/skip shared introduction, reload, saved settings and typed drafts/locks, Library movement/features, progressive Pashto-only Bilal/audio and zero learning writes
+PASS living village 1280 offline cast, moving-target approach, pause/resume, routine reload, optional Bilal thread, sister introduction, lesson/Hills, child animation stability and old saved presentation names
+PASS living village 390 offline cast, moving-target approach, pause/resume, routine reload, optional Bilal thread, sister introduction, lesson/Hills, child animation stability and old saved presentation names
+PASS redesigned village browser 375 dock, water, two road barriers, old-position recovery and unchanged educational bytes
+PASS redesigned village browser 1280 dock, water, two road barriers, old-position recovery and unchanged educational bytes
+FAILED []
+
+final-checks
+
+> pashto-quest-rpg@0.1.0 typecheck
+> tsc --noEmit
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+Offline release synchronized.
+PASS TypeScript/build consistency, affected test and compiled-release syntax, Python syntax; educational engines/lexicon/frames/curriculum unchanged from 4b72a2b
+
+Changed documentation links and git diff whitespace: PASS.
+Initial fixture expectations were corrected for the new northern road/sister introduction, acknowledged Sleep prerequisites and hidden Quick Travel text before the successful baseline.
+No full seven-day public route, fourteen-day browser delivery matrix or performance benchmark was run, following the requested focused scope. Maintained route-driver changes have syntax checks and shared helper coverage, not a claimed full-route pass.
+Screenshots are from the final focused browser run; the overview uses a test-only camera zoom. Chromium emulation is not physical-device or hardware-audio verification.
+
+Five-wide entrances and wooden-sign follow-up:
+PASS npm run typecheck; python3 tools/build.py; build consistency; affected JavaScript/Python syntax.
+PASS node tests/hills-expansion.test.mjs (2,615 reachable tiles, all five lane mappings, exact sign data).
+PASS node tests/village-redesign.test.mjs
+PASS node tests/rpg-movement.test.mjs
+PASS Hills entrances 1280 all five lanes in both directions, matching safe arrivals, zero educational writes and exact wooden-sign wording/reload
+PASS Hills entrances 390 all five lanes in both directions, matching safe arrivals, zero educational writes and exact wooden-sign wording/reload
+Visual review: wooden board/post and exact label visible; nearby interaction indicator moved above the board so it does not obscure the words. Final sign captures accompany this record; earlier captures/results retain their previous release scope.

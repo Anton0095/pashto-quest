@@ -47,17 +47,22 @@
     Audio,
   });
   ui.construction = createConstructionUI({ui, audio});
+  ui.typedAnswer = createTypedAnswerUI({ ui });
   const learning = createLearning({ state, content, progression });
+  ui.sovDemo=createSOVDemo({content,learning,ui});
   const questions = createQuestions({ state, content, progression });
   const narrative = createNarrative({ state, content, ui, audio, storage, questions });
-  const tutorial = createTutorial({ state, content, learning, ui, storage, questions });
+  const tutorial = createTutorial({
+    onAdvance:()=>lessons.afterStudy(), state, content, learning, ui, storage, questions });
   const grammar = createGrammar({
+    learning,
     state,
     content,
     ui,
     storage,
   });
   const lessons = createLessons({
+    onAdvance:nextQuestion,
     state,
     content,
     progression,
@@ -72,6 +77,7 @@
     onLessonStart: () => challenge.showChallengeScene(0),
   });
   const challenge = createChallengeUI({
+    onAdvance:nextQuestion,
     libraryReview: ids => library.openLibrary("vocabulary", ids),
     onWorld: () => world.startWorld(),
     state,

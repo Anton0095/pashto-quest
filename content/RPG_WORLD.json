@@ -103,7 +103,7 @@
       "name": "Laghman Village",
       "tiles": [
         "ttttttttttttttttttttttttttttttttttttttttttttpppppttttttttttttttttttttttttttttttttttttttttttttttt",
-        "tgggtgggggggggggtgggggggggggggggggggggggggggXXXXXtggggggggggggggtggtggggggggtggggggggtgggggtgggt",
+        "tgggtgggggggggggtgggggggggggggggggggggggggggppppptggggggggggggggtggtggggggggtggggggggtgggggtgggt",
         "tgBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBgggggpppppggggggggggggggggggggggggggggggggggggggggggggggt",
         "tgBcccccccccccccccccccccccccccccccccccBgggggpppppggggggggggggggggggggggggwggwggggggggggggggggggt",
         "ttBccbbbbbbbbbcccbbbbbbbbbbcccccccccccBgtgggpppppgggtggtggtggtggggggwwwwwwwwwwwwwwwggtggtggtgggt",
@@ -136,7 +136,7 @@
         "tpppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppXp",
         "tpppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppXp",
         "tpppppppppppppppppppppppppppppppppppppppppppppppppppppppppBBBBBBBBBBBppppppBBBBBBBBBBBBBppppppXp",
-        "tpppppppppppppppppppppppppppppppppppppppppppppppppppppppppBccccccccccccccccccccccccccccppppppppp",
+        "tpppppppppppppppppppppppppppppppppppppppppppppppppppppppppBccccccccccccccccccccccccccccpppppppRp",
         "tggggBBBBBBBBBBBBBpppppBBBBBBBBBBBBBBBggggggpppppgggggggggBcbbbbbbbbbbbbbbbbbbbbbbbbcccBpppppppt",
         "tggggBcccccccccccccccccccccccccccccccBggggggpppppgggggggggBcbbbbbbbbbbbbbbbbbbbbbbbbcccBgggggggt",
         "tgggtBcbbbbbbbbccccccccccccccccccccccBggggggppppptggtggtggBcbbbbbbbbbbbbbbbbbbbbbbbbcccBtggtgggt",
@@ -315,21 +315,57 @@
           }
         },
         {
-          "x": 94,
-          "y": 34,
-          "to": "hills",
-          "spawn": {
-            "x": 2,
-            "y": 12
-          }
-        },
-        {
           "x": 9,
           "y": 7,
           "to": "house",
           "spawn": {
             "x": 12,
             "y": 15
+          }
+        },
+        {
+          "x": 44,
+          "y": 0,
+          "to": "hills",
+          "spawn": {
+            "x": 30,
+            "y": 45
+          }
+        },
+        {
+          "x": 45,
+          "y": 0,
+          "to": "hills",
+          "spawn": {
+            "x": 31,
+            "y": 45
+          }
+        },
+        {
+          "x": 46,
+          "y": 0,
+          "to": "hills",
+          "spawn": {
+            "x": 32,
+            "y": 45
+          }
+        },
+        {
+          "x": 47,
+          "y": 0,
+          "to": "hills",
+          "spawn": {
+            "x": 33,
+            "y": 45
+          }
+        },
+        {
+          "x": 48,
+          "y": 0,
+          "to": "hills",
+          "spawn": {
+            "x": 34,
+            "y": 45
           }
         }
       ],
@@ -1450,11 +1486,6 @@
           "kind": "stone"
         },
         {
-          "x": 48,
-          "y": 3,
-          "kind": "sign"
-        },
-        {
           "x": 94,
           "y": 32,
           "kind": "sign"
@@ -2234,17 +2265,6 @@
       ],
       "reservedExits": [
         {
-          "id": "north",
-          "x": 46,
-          "y": 0,
-          "approach": {
-            "x": 46,
-            "y": 3
-          },
-          "direction": "north",
-          "status": "reserved"
-        },
-        {
           "id": "east",
           "x": 95,
           "y": 32,
@@ -2268,7 +2288,7 @@
         }
       ],
       "collision": [
-        "000000000000000000000000000000000000000000001111100000000000000000000000000000000000000000000000",
+        "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "011101111111111100000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
@@ -2338,14 +2358,14 @@
       "name": "Village Library",
       "tiles": [
         "bbbbbbbbbbbbbb",
-        "bssssbbssssssb",
-        "b............b",
-        "b............b",
-        "bs..........sb",
-        "bs..........sb",
-        "b............b",
-        "b.....rr.....b",
-        "b............b",
+        "bkkkkiiiikkkkb",
+        "bkkkkiiiikkkkb",
+        "biiiiiiiiiiqqb",
+        "biiiiiiiiiiqqb",
+        "biqqiiiiiiqqib",
+        "biqqiiiiiiqqib",
+        "biqqiiiiiiqqib",
+        "bqqiiiiiiiiqib",
         "bbbbbbddbbbbbb"
       ],
       "spawn": {
@@ -2373,62 +2393,357 @@
             "y": 16
           }
         }
+      ],
+      "furniture": [
+        {
+          "kind": "bookshelf",
+          "x": 1,
+          "y": 1,
+          "w": 4,
+          "h": 2
+        },
+        {
+          "kind": "bookshelf",
+          "x": 9,
+          "y": 1,
+          "w": 4,
+          "h": 2
+        },
+        {
+          "kind": "window",
+          "x": 6,
+          "y": 1,
+          "w": 2,
+          "h": 1
+        },
+        {
+          "kind": "rug",
+          "x": 4,
+          "y": 4,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "kind": "reading-table",
+          "x": 2,
+          "y": 5,
+          "w": 2,
+          "h": 2
+        },
+        {
+          "kind": "cushion",
+          "x": 2,
+          "y": 7,
+          "w": 2,
+          "h": 1
+        },
+        {
+          "kind": "reading-table",
+          "x": 10,
+          "y": 5,
+          "w": 2,
+          "h": 2
+        },
+        {
+          "kind": "cushion",
+          "x": 10,
+          "y": 7,
+          "w": 2,
+          "h": 1
+        },
+        {
+          "kind": "pottery",
+          "x": 11,
+          "y": 3,
+          "w": 2,
+          "h": 2
+        },
+        {
+          "kind": "chest",
+          "x": 1,
+          "y": 8,
+          "w": 2,
+          "h": 1
+        },
+        {
+          "kind": "basket",
+          "x": 11,
+          "y": 8,
+          "w": 1,
+          "h": 1
+        }
       ]
     },
     "hills": {
-      "name": "Hills · Nature district",
+      "name": "Spring Hills · Nature",
+      "condition": "afterTutorial",
       "tiles": [
-        "tttttttttttttttttttttttttttttttt",
-        "tggggtggggggggggggggggggggggtggt",
-        "tgggggggggtggggggggggggggggggggt",
-        "tggggggggbbbbbbbbbbggggggggggggt",
-        "tggggggggbbbbbbbbbbgtggggggggggt",
-        "tgtggggggbbbbbbbbbbggggggtgggggt",
-        "tggggggtgbbbbbbbbbbggggppgggggtt",
-        "tgggggggggggtggggggggggppggggggt",
-        "tggggggggggggggggtgggggppggggggt",
-        "tgggggggggggggggggggggtppggggggt",
-        "tgggtggggggggggggggggggppggtgggt",
-        "tggggggggtgggggggggggggppggggggt",
-        "tdpppppppppppppppppppppppppggggt",
-        "tppppppppppppppppppppppppppggggt",
-        "ttgggggggggggggggggggggppggggggt",
-        "tgggggtggggggggggggggggppggggtgt",
-        "tggggggggggtgggggggggggppggggggt",
-        "tgggggggggggggggtggggggppggggggt",
-        "tggggggggggggggggggggtgppggggggt",
-        "tggtggggggggggggggggggggggtggggt",
-        "tgggggggtggggggggggggggggggggggt",
-        "tggggggggggggtgggggggggggggggggt",
-        "tgggggggggggggggggtggggggggggggt",
-        "tttttttttttttttttttttttttttttttt"
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+        "RgggRRRRRRRRgggggggRRRRRRRRgggggggRRRRRRRRgggggggRRRRRRRRggggggR",
+        "RggggggggggggggggggggggggfgggggggggggggggggggggggggggggggggggggR",
+        "RgggggggggggggggggggggggggggggfggggggggggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggggggggggggfgggggggggggggggggggggggggggR",
+        "RgggggggggggggggggggggggggggggggggggggggfggggggggggggggggggggggR",
+        "RgfggggggggggggggggggggggggggggggggggggggggggfggtggggggggggggggR",
+        "RggggggtggggggggggggggggggggggggggggggggggggggggggfggggggggggggR",
+        "RgggggggggggfggggggggggggggggggggggggggggggggggggggggggfgggggggR",
+        "RgggggggggggggRggfggggggggggggggggggggggggggggggggggggggggggfggR",
+        "RgggggggggggggggggggggfggggggggggggggggggggggRgggggggggggggggggR",
+        "RggggggggggggggggggggggggggfgggggggggggggggggggggggggggggggggggR",
+        "RgggggggggggggggggggggggggggggggfggggggggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggggggggggggggfgggggggggggggggggggggggggR",
+        "RgggggggggggggggggggggggggggggggggggggggggfggggggggggggggggggRRR",
+        "RgggfggggggggggggtgggggggggggggggggggggggggggggfgppppppppppRpRRR",
+        "RggggggggfggggggggggggggggggggggggggggggggggggggpppppppppppppRRR",
+        "RgggggggggggggfggggggggggggggggggggggggggggggggppppppppppppppRRR",
+        "RggggggggggggggggggfgggggggggggggggggggggggggppppppggggggggggRRR",
+        "RgggggggggggggggggggggggfgggggggggpppppppgggppppppgggggggggggggR",
+        "RggggggggggggggggggggggggggggfgppppppppppppppppppggggggggggggggR",
+        "RgggggggggggggggggggggggggggggpppppppppppppppppggggggggggggggggR",
+        "RggggggggggggggggggggggggggpppppppppgggpppppppgggggggggggggggggR",
+        "RfggggggggggggggggggggggggpppppppgggggggggggfggggggggggggggggggR",
+        "RgggggfggRggggggggggggggggppppppgggggggggggggggggfgggggggggggggR",
+        "RggggggggggfggggggggggggggpppgggggggggggggggggggggggggfggggggggR",
+        "RgggggggggggggggfggggggggppppggggggggggggggggggggggggggggggfgggR",
+        "RggggggggggggggggggggfgggppppggggggggggggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggpppgggggggggggggggggggggggggggtgggggggR",
+        "RggggggggggggggggggggggggpppgggfggggggggRggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggppppgggggggfggggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggpppppgggggggggggfgggggggggggggggggggggR",
+        "RggfggggggggggggggggggggggpppppgggggggggggggggfggggggggggggggggR",
+        "RgggggggfggggggggggggggggggpppppgggggggggggggggggggfggRggggggggR",
+        "RggggggggggtgfggggggggggggggpppppgggggggggggggggggggggggfggggggR",
+        "RgggggggggggggggggfggggggggggpppppgggggggggggggggggggggggggggfgR",
+        "RggggggggggggggggggggggfggggggppppgggggggggtgggggggggggggggggggR",
+        "RgggggggggggggggggggRgggggggfggpppgggggggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggggggggpppggggggggggggggggggggggggtggggR",
+        "RggggggggggggggggggggggggggggggpppggggfggggggggggggggggggggggggR",
+        "RggggggggggggggggggggggggggggggpppgggggggggfgggggggggggggggggggR",
+        "RggggfggggggggggggggggggggggggpppppgggggggggggggfggggggggggggggR",
+        "RgggggggggfgggggggggggggggggggpppppggggggggggggggggggfgggggggggR",
+        "RggggggggggggggfggggggggggggggpppppgggggggggggggggggggggggfggggR",
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRpppppRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
       ],
       "spawn": {
-        "x": 2,
-        "y": 12
+        "x": 32,
+        "y": 45
       },
       "transitions": [
         {
-          "x": 1,
-          "y": 12,
+          "x": 30,
+          "y": 47,
           "to": "village",
           "spawn": {
-            "x": 93,
-            "y": 34
+            "x": 44,
+            "y": 2
           }
+        },
+        {
+          "x": 31,
+          "y": 47,
+          "to": "village",
+          "spawn": {
+            "x": 45,
+            "y": 2
+          }
+        },
+        {
+          "x": 32,
+          "y": 47,
+          "to": "village",
+          "spawn": {
+            "x": 46,
+            "y": 2
+          }
+        },
+        {
+          "x": 33,
+          "y": 47,
+          "to": "village",
+          "spawn": {
+            "x": 47,
+            "y": 2
+          }
+        },
+        {
+          "x": 34,
+          "y": 47,
+          "to": "village",
+          "spawn": {
+            "x": 48,
+            "y": 2
+          }
+        }
+      ],
+      "reservedExits": [
+        {
+          "id": "east",
+          "x": 63,
+          "y": 19,
+          "approach": {
+            "x": 59,
+            "y": 19
+          },
+          "direction": "east",
+          "status": "reserved"
         }
       ],
       "regions": [
         {
           "id": "hills",
           "name": "Hills · Nature",
-          "x": 17,
-          "y": 7,
-          "w": 11,
-          "h": 10
+          "x": 29,
+          "y": 20,
+          "w": 12,
+          "h": 9
         }
       ],
-      "buildings": []
+      "buildings": [],
+      "scenery": [
+        {
+          "x": 7,
+          "y": 10,
+          "kind": "tree"
+        },
+        {
+          "x": 17,
+          "y": 18,
+          "kind": "tree"
+        },
+        {
+          "x": 48,
+          "y": 9,
+          "kind": "tree"
+        },
+        {
+          "x": 55,
+          "y": 31,
+          "kind": "tree"
+        },
+        {
+          "x": 11,
+          "y": 37,
+          "kind": "tree"
+        },
+        {
+          "x": 43,
+          "y": 39,
+          "kind": "tree"
+        },
+        {
+          "x": 58,
+          "y": 41,
+          "kind": "tree"
+        },
+        {
+          "x": 14,
+          "y": 12,
+          "kind": "rock"
+        },
+        {
+          "x": 45,
+          "y": 13,
+          "kind": "rock"
+        },
+        {
+          "x": 9,
+          "y": 27,
+          "kind": "rock"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "kind": "rock"
+        },
+        {
+          "x": 54,
+          "y": 36,
+          "kind": "rock"
+        },
+        {
+          "x": 20,
+          "y": 40,
+          "kind": "rock"
+        },
+        {
+          "x": 59,
+          "y": 18,
+          "kind": "rock"
+        },
+        {
+          "x": 61,
+          "y": 19,
+          "kind": "rock"
+        },
+        {
+          "x": 62,
+          "y": 20,
+          "kind": "rock"
+        },
+        {
+          "x": 9,
+          "y": 18,
+          "kind": "shrub"
+        },
+        {
+          "x": 20,
+          "y": 25,
+          "kind": "shrub"
+        },
+        {
+          "x": 38,
+          "y": 15,
+          "kind": "shrub"
+        },
+        {
+          "x": 48,
+          "y": 33,
+          "kind": "shrub"
+        },
+        {
+          "x": 17,
+          "y": 36,
+          "kind": "shrub"
+        },
+        {
+          "x": 36,
+          "y": 39,
+          "kind": "shrub"
+        },
+        {
+          "x": 20,
+          "y": 15,
+          "kind": "bird"
+        },
+        {
+          "x": 43,
+          "y": 28,
+          "kind": "bird"
+        },
+        {
+          "x": 11,
+          "y": 31,
+          "kind": "bird"
+        },
+        {
+          "x": 49,
+          "y": 39,
+          "kind": "bird"
+        },
+        {
+          "x": 47,
+          "y": 34,
+          "kind": "goat"
+        },
+        {
+          "x": 49,
+          "y": 35,
+          "kind": "sheep"
+        }
+      ]
     },
     "house": {
       "name": "Your House",
@@ -2692,7 +3007,7 @@
     },
     {
       "id": "saleha",
-      "name": "Saleha",
+      "name": "Deena",
       "sprite": "saleha",
       "schedule": [
         {
@@ -2730,37 +3045,6 @@
           "event": "day5-nature"
         },
         {
-          "day": 6,
-          "map": "village",
-          "x": 66,
-          "y": 18,
-          "event": "day6-nature",
-          "condition": "not-complete:6-nature"
-        },
-        {
-          "day": 6,
-          "map": "village",
-          "x": 10,
-          "y": 10,
-          "event": "day6-residential",
-          "condition": "all:complete:6-nature|not-complete:6-residential"
-        },
-        {
-          "day": 6,
-          "map": "village",
-          "x": 66,
-          "y": 18,
-          "event": "day6-nature",
-          "condition": "complete:6-residential"
-        },
-        {
-          "day": 6,
-          "map": "hills",
-          "x": 23,
-          "y": 11,
-          "event": "day6-hills"
-        },
-        {
           "day": 7,
           "map": "village",
           "x": 70,
@@ -2775,6 +3059,22 @@
           "y": 18,
           "event": "day7-saleha-visit",
           "condition": "complete:7-school"
+        },
+        {
+          "day": 6,
+          "map": "village",
+          "x": 66,
+          "y": 18,
+          "event": "day6-nature",
+          "condition": "not-flag:day6-hills-invited"
+        },
+        {
+          "day": 6,
+          "map": "hills",
+          "x": 35,
+          "y": 23,
+          "event": "day6-hills",
+          "condition": "flag:day6-hills-invited"
         }
       ],
       "event": "lake",
@@ -2918,33 +3218,288 @@
     {
       "id": "mina",
       "characterId": "mina",
-      "name": "Mina",
+      "name": "Medina",
       "sprite": "mina",
       "interactionRange": 1,
       "event": "day6-opening",
       "schedule": [
-        {
-          "day": 6,
-          "map": "village",
-          "x": 68,
-          "y": 18,
-          "event": "day6-opening"
-        },
-        {
-          "day": 6,
-          "map": "hills",
-          "x": 25,
-          "y": 11,
-          "event": "day6-hills"
-        },
         {
           "day": 7,
           "map": "village",
           "x": 68,
           "y": 18,
           "event": "day7-nature"
+        },
+        {
+          "day": 6,
+          "map": "hills",
+          "x": 38,
+          "y": 23,
+          "event": "day6-hills-medina",
+          "condition": "flag:day6-hills-invited"
         }
       ]
+    },
+    {
+      "id": "bilal",
+      "characterId": "bilal",
+      "name": "Bilal",
+      "sprite": "bilal",
+      "event": "ambient-bilal",
+      "defaultLocation": {
+        "map": "village",
+        "x": 76,
+        "y": 26
+      },
+      "schedule": []
+    },
+    {
+      "id": "zamir",
+      "characterId": "zamir",
+      "name": "Zamir",
+      "sprite": "zamir",
+      "event": "ambient-zamir",
+      "defaultLocation": {
+        "map": "village",
+        "x": 24,
+        "y": 41
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 23,
+          "y": 41,
+          "w": 6,
+          "h": 8
+        },
+        "stops": [
+          {
+            "x": 24,
+            "y": 41
+          },
+          {
+            "x": 28,
+            "y": 41
+          },
+          {
+            "x": 28,
+            "y": 46
+          },
+          {
+            "x": 24,
+            "y": 48
+          }
+        ],
+        "stepMs": 260,
+        "idleMs": 2400
+      }
+    },
+    {
+      "id": "nayab",
+      "characterId": "nayab",
+      "name": "Nayab",
+      "sprite": "nayab",
+      "event": "ambient-nayab",
+      "defaultLocation": {
+        "map": "village",
+        "x": 68,
+        "y": 49
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 66,
+          "y": 48,
+          "w": 15,
+          "h": 6
+        },
+        "stops": [
+          {
+            "x": 68,
+            "y": 49
+          },
+          {
+            "x": 67,
+            "y": 48
+          },
+          {
+            "x": 73,
+            "y": 51
+          },
+          {
+            "x": 69,
+            "y": 49
+          }
+        ],
+        "stepMs": 220,
+        "idleMs": 1520
+      },
+      "gender": "female",
+      "description": "Young Afghan girl with dark braids, rust tunic and green vest; she plays with the courtyard children."
+    },
+    {
+      "id": "sara",
+      "characterId": "sara",
+      "name": "Sara",
+      "sprite": "sara",
+      "event": "ambient-sara",
+      "defaultLocation": {
+        "map": "village",
+        "x": 72,
+        "y": 49
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 66,
+          "y": 48,
+          "w": 15,
+          "h": 6
+        },
+        "stops": [
+          {
+            "x": 72,
+            "y": 49
+          },
+          {
+            "x": 71,
+            "y": 48
+          },
+          {
+            "x": 73,
+            "y": 51
+          },
+          {
+            "x": 73,
+            "y": 49
+          }
+        ],
+        "stepMs": 150,
+        "idleMs": 1830
+      }
+    },
+    {
+      "id": "omar",
+      "characterId": "omar",
+      "name": "Omar",
+      "sprite": "omar",
+      "event": "ambient-omar",
+      "defaultLocation": {
+        "map": "village",
+        "x": 76,
+        "y": 50
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 66,
+          "y": 48,
+          "w": 15,
+          "h": 6
+        },
+        "stops": [
+          {
+            "x": 76,
+            "y": 50
+          },
+          {
+            "x": 75,
+            "y": 49
+          },
+          {
+            "x": 73,
+            "y": 51
+          },
+          {
+            "x": 77,
+            "y": 50
+          }
+        ],
+        "stepMs": 185,
+        "idleMs": 2140
+      }
+    },
+    {
+      "id": "afiya",
+      "characterId": "afiya",
+      "name": "Afiya",
+      "sprite": "afiya",
+      "event": "ambient-afiya",
+      "defaultLocation": {
+        "map": "village",
+        "x": 70,
+        "y": 52
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 66,
+          "y": 48,
+          "w": 15,
+          "h": 6
+        },
+        "stops": [
+          {
+            "x": 70,
+            "y": 52
+          },
+          {
+            "x": 69,
+            "y": 51
+          },
+          {
+            "x": 73,
+            "y": 51
+          },
+          {
+            "x": 71,
+            "y": 52
+          }
+        ],
+        "stepMs": 220,
+        "idleMs": 2450
+      }
+    },
+    {
+      "id": "sanaa",
+      "characterId": "sanaa",
+      "name": "Sanaa",
+      "sprite": "sanaa",
+      "event": "ambient-sanaa",
+      "defaultLocation": {
+        "map": "village",
+        "x": 78,
+        "y": 52
+      },
+      "schedule": [],
+      "activity": {
+        "zone": {
+          "x": 66,
+          "y": 48,
+          "w": 15,
+          "h": 6
+        },
+        "stops": [
+          {
+            "x": 78,
+            "y": 52
+          },
+          {
+            "x": 77,
+            "y": 51
+          },
+          {
+            "x": 73,
+            "y": 51
+          },
+          {
+            "x": 79,
+            "y": 52
+          }
+        ],
+        "stepMs": 150,
+        "idleMs": 2760
+      }
     }
   ],
   "objects": [
@@ -2952,17 +3507,24 @@
       "id": "library-shelf",
       "name": "Reference shelves",
       "map": "library",
-      "x": 1,
-      "y": 4,
-      "event": "reference"
+      "x": 2,
+      "y": 2,
+      "event": "reference",
+      "interactionBounds": {
+        "x": 1,
+        "y": 1,
+        "w": 4,
+        "h": 2
+      }
     },
     {
       "id": "hills-marker",
-      "name": "Hills trail marker",
+      "name": "Wooden trail sign",
       "map": "hills",
-      "x": 5,
-      "y": 11,
-      "event": "hills-reference"
+      "x": 30,
+      "y": 43,
+      "event": "hills-reference",
+      "signText": "Laghman Hills - South Laghman Village"
     },
     {
       "id": "house-bed",
@@ -2991,6 +3553,14 @@
         "w": 4,
         "h": 5
       }
+    },
+    {
+      "id": "hills-east-scree",
+      "name": "Eastern scree trail",
+      "map": "hills",
+      "x": 61,
+      "y": 19,
+      "event": "hills-east-blocked"
     }
   ],
   "events": {
@@ -3002,9 +3572,15 @@
       ],
       "actions": [
         {
-          "label": "I will meet you at the Library",
+          "label": "Begin tutorial",
           "type": "flag",
-          "flag": "metGuide"
+          "flag": "metGuide",
+          "condition": "beforeTutorial"
+        },
+        {
+          "label": "Skip tutorial",
+          "type": "skip-tutorial",
+          "condition": "beforeTutorial"
         }
       ],
       "characterId": "muhammad-jan"
@@ -3012,12 +3588,17 @@
     "library": {
       "speaker": "Muhammad Jan",
       "lines": [
-        "Our Library holds everything you learn. Let us practise recognising two greetings, selecting Pashto, and identifying my name. Your own name and gender are optional Library profile settings."
+        "Our Library holds everything you learn. Practise four guided conversation activities, or skip them and explore the village."
       ],
       "actions": [
         {
-          "label": "Begin Library tutorial",
+          "label": "Begin tutorial",
           "type": "tutorial",
+          "condition": "beforeTutorial"
+        },
+        {
+          "label": "Skip tutorial",
+          "type": "skip-tutorial",
           "condition": "beforeTutorial"
         },
         {
@@ -3059,7 +3640,7 @@
       "characterId": "muhammad-jan"
     },
     "lake": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "lines": [
         "Welcome to the lake. Let us learn the words for the world around us."
       ],
@@ -3161,7 +3742,7 @@
     "day2-finale": {
       "speaker": "Muhammad Jan",
       "listener": "Player",
-      "condition": "allLessons",
+      "condition": "all:complete:2-school|complete:2-residential",
       "once": true,
       "lines": [
         "Tell Muhammad Jan about your practice today."
@@ -3222,7 +3803,7 @@
       "speaker": "Muhammad Jan",
       "listener": "Player",
       "lines": [
-        "We can practise Day 2 here at Home."
+        "After School you can study here at Home immediately. Market and Lake are optional visits, before or after Home."
       ],
       "actions": [
         {
@@ -3235,7 +3816,7 @@
           "label": "Join Muhammad Jan’s check-in",
           "type": "event",
           "event": "day2-finale",
-          "condition": "allLessons"
+          "condition": "all:complete:2-school|complete:2-residential"
         },
         {
           "label": "Day 2 challenge · 15 questions",
@@ -3251,7 +3832,7 @@
       "characterId": "muhammad-jan"
     },
     "day2-nature": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 2 here at Lake."
@@ -3305,7 +3886,7 @@
       "characterId": "hameed"
     },
     "day3-opening": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "Tell us about yourself using I and the first-person forms you study today."
@@ -3327,7 +3908,7 @@
       "characterId": "saleha"
     },
     "day3-after-opening": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "lines": [
         "Continue practising with our neighbours, or choose the early challenge when you are ready."
       ],
@@ -3416,7 +3997,7 @@
       "characterId": "muhammad-jan"
     },
     "day3-nature": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 3 here at Lake."
@@ -3619,7 +4200,7 @@
       "characterId": "muhammad-jan"
     },
     "day4-nature": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 4 here at Lake."
@@ -3702,7 +4283,7 @@
       "characterId": "hameed"
     },
     "day5-finale": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "condition": "allLessons",
       "once": true,
@@ -3719,7 +4300,7 @@
       ],
       "messages": [
         {
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "listener": "Player",
           "text": "Join the neighbours at the Lake and consider who is speaking to a friend, an elder or a group.",
           "characterId": "saleha"
@@ -3731,7 +4312,7 @@
           "characterId": "muhammad-jan"
         },
         {
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "listener": "Player",
           "text": "Listen to each person and choose your words carefully. We will continue when you finish.",
           "characterId": "saleha"
@@ -3740,7 +4321,7 @@
       "characterId": "saleha"
     },
     "day5-skip": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "once": true,
       "lines": [
@@ -3767,7 +4348,7 @@
       "characterId": "saleha"
     },
     "day5-ending": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "once": true,
       "lines": [
@@ -3798,7 +4379,7 @@
       "characterId": "muhammad-jan"
     },
     "day5-nature": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 5 here at Lake."
@@ -3868,19 +4449,17 @@
       "characterId": "hameed"
     },
     "day6-opening": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
-        "This is my sister Mina. We will practise speaking about ourselves as a group, then meet in the Hills."
+        "I would like to take you to the Hills and introduce someone. Follow the village path north; I will meet you there."
       ],
       "once": true,
       "actions": [
         {
-          "label": "Begin Day 6 Lake lesson",
-          "type": "lesson",
-          "lessonId": "6-nature",
-          "resumeEvent": "day6-after-opening",
-          "condition": "lesson:6-nature"
+          "label": "I'll meet you in the Hills",
+          "type": "flag",
+          "flag": "day6-hills-invited"
         },
         {
           "label": "Explore first",
@@ -3889,50 +4468,21 @@
       ],
       "messages": [
         {
-          "speaker": "Saleha",
+          "speaker": "Deena",
+          "characterId": "saleha",
           "listener": "Player",
-          "text": "This is my sister Mina. We are learning together today.",
-          "characterId": "saleha"
-        },
-        {
-          "speaker": "Mina",
-          "listener": "Player",
-          "text": "Let us begin at the Lake. Later we can meet in the Hills.",
-          "characterId": "mina"
-        }
-      ],
-      "characterId": "saleha"
-    },
-    "day6-after-opening": {
-      "speaker": "Saleha",
-      "lines": [
-        "Continue practising with our neighbours, or choose the early challenge when you are ready."
-      ],
-      "actions": [
-        {
-          "label": "Return to village",
-          "type": "explore"
-        },
-        {
-          "label": "Travel to the Hills",
-          "type": "scene",
-          "position": {
-            "map": "hills",
-            "x": 2,
-            "y": 12,
-            "facing": "right"
-          }
+          "text": "I would like to take you to the Hills and introduce someone. Follow the village path north; I will meet you there."
         }
       ],
       "characterId": "saleha"
     },
     "day6-finale": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "condition": "allLessons",
       "once": true,
       "lines": [
-        "Saleha and Mina meet you in the Hills. Speak together using the group and compound-subject material you studied."
+        "Deena and Medina meet you in the Hills. Speak together using the group and compound-subject material you studied."
       ],
       "actions": [
         {
@@ -3944,19 +4494,19 @@
       ],
       "messages": [
         {
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "listener": "Player",
-          "text": "Saleha and Mina meet you in the Hills. Speak together using the group and compound-subject material you studied.",
+          "text": "Deena and Medina meet you in the Hills. Speak together using the group and compound-subject material you studied.",
           "characterId": "saleha"
         },
         {
-          "speaker": "Mina",
+          "speaker": "Medina",
           "listener": "Player and neighbours",
           "text": "We are ready to listen. Practise the words and sentences you have learned with us.",
           "characterId": "mina"
         },
         {
-          "speaker": "Saleha",
+          "speaker": "Deena",
           "listener": "Player",
           "text": "Listen to each person and choose your words carefully. We will continue when you finish.",
           "characterId": "saleha"
@@ -3965,11 +4515,11 @@
       "characterId": "saleha"
     },
     "day6-skip": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "once": true,
       "lines": [
-        "You may take Day 6 without the visits or normal finale. Saleha introduces her sister Mina; they welcome you to the Hills. Starting makes today’s assigned material available for assessment. It does not record study, correct answers or practice activity."
+        "You may attempt Day 6 in the Hills without the invitation, visits or normal finale. Starting makes today’s assigned material available for assessment. It does not record study, correct answers or practice activity."
       ],
       "actions": [
         {
@@ -3992,7 +4542,7 @@
       "characterId": "saleha"
     },
     "day6-ending": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "once": true,
       "lines": [
@@ -4006,40 +4556,27 @@
       ],
       "characterId": "saleha"
     },
-    "day6-residential": {
-      "speaker": "Saleha",
-      "listener": "Player",
-      "lines": [
-        "We can practise Day 6 here at Home."
-      ],
-      "actions": [
-        {
-          "label": "Study at Home",
-          "type": "lesson",
-          "lessonId": "6-residential",
-          "condition": "lesson:6-residential"
-        }
-      ],
-      "characterId": "saleha"
-    },
     "day6-nature": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
-        "We can practise Day 6 here at Lake."
+        "The Hills are north of the village. Will you meet me there?"
       ],
       "actions": [
         {
-          "label": "Day opening",
-          "type": "event",
-          "event": "day6-opening",
-          "condition": "not-event:day6-opening"
+          "label": "I'll meet you in the Hills",
+          "type": "flag",
+          "flag": "day6-hills-invited"
         },
         {
-          "label": "Study at Lake",
+          "label": "Day 6 Nature lesson",
           "type": "lesson",
           "lessonId": "6-nature",
-          "condition": "lesson:6-nature"
+          "condition": "all:flag:day6-hills-invited|lesson:6-nature"
+        },
+        {
+          "label": "Explore first",
+          "type": "explore"
         }
       ],
       "characterId": "saleha"
@@ -4077,12 +4614,24 @@
       "characterId": "hameed"
     },
     "day6-hills": {
-      "speaker": "Saleha",
-      "listener": "Player and Mina",
+      "speaker": "Deena",
+      "listener": "Player and Medina",
       "lines": [
-        "We are together in the Hills. This is part of the Nature district, with no extra vocabulary quota."
+        "We can practise together here in the Hills. Choose a lesson, explore, or attempt the challenge when you are ready."
       ],
       "actions": [
+        {
+          "label": "Study in the Hills · Nature",
+          "type": "lesson",
+          "lessonId": "6-nature",
+          "condition": "lesson:6-nature"
+        },
+        {
+          "label": "Home course · Deena",
+          "type": "lesson",
+          "lessonId": "6-residential",
+          "condition": "lesson:6-residential"
+        },
         {
           "label": "Join Together in the Hills",
           "type": "event",
@@ -4093,29 +4642,59 @@
           "label": "Day 6 challenge · 15 questions",
           "type": "challenge",
           "day": 6
+        },
+        {
+          "label": "Explore first",
+          "type": "explore"
         }
       ],
       "characterId": "saleha"
     },
     "day6-arrival": {
-      "speaker": "Mina",
-      "listener": "Player",
+      "speaker": "Deena",
+      "characterId": "saleha",
+      "participants": [
+        "saleha",
+        "mina"
+      ],
+      "condition": "flag:day6-hills-invited",
       "once": true,
+      "listener": "Player",
       "lines": [
-        "Welcome to the Hills. Follow the path east to meet us. The western gate returns to the village."
+        "This is my younger sister Medina. We are learning together today."
+      ],
+      "messages": [
+        {
+          "speaker": "Deena",
+          "characterId": "saleha",
+          "listener": "Player",
+          "text": "This is my younger sister Medina. We are learning together today."
+        },
+        {
+          "speaker": "Medina",
+          "characterId": "mina",
+          "listener": "Player",
+          "text": "It is nice to meet you. Let us practise talking about what we do together."
+        }
       ],
       "actions": [
         {
-          "label": "Follow the trail",
+          "label": "Begin Day 6 Hills lesson",
+          "type": "lesson",
+          "lessonId": "6-nature",
+          "condition": "lesson:6-nature"
+        },
+        {
+          "label": "Explore first",
           "type": "explore"
         }
-      ],
-      "characterId": "mina"
+      ]
     },
     "hills-reference": {
-      "speaker": "Trail marker",
+      "speaker": "Wooden trail sign",
       "lines": [
-        "Hills trail: west returns to the village. The Library and all four learning districts remain available."
+        "Laghman Hills - South Laghman Village",
+        "The southern path returns to the village. The eastern trail remains blocked by loose scree."
       ],
       "actions": [
         {
@@ -4299,7 +4878,7 @@
       "characterId": "edris"
     },
     "day7-school": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We can practise Day 7 here at School."
@@ -4366,7 +4945,7 @@
       "characterId": "hameed"
     },
     "day7-saleha-visit": {
-      "speaker": "Saleha",
+      "speaker": "Deena",
       "listener": "Player",
       "lines": [
         "We have finished our School practice. Ms Hameed will lead your weekly examination when your visits are complete."
@@ -4408,6 +4987,995 @@
           "label": "Open Library"
         }
       ]
+    },
+    "ambient-bilal": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام!"
+      ],
+      "pashto": {
+        "ps": "سلام!",
+        "roman": "salaam!",
+        "audioId": "ambient-bilal"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello!",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "ambient-zamir": {
+      "speaker": "Zamir",
+      "characterId": "zamir",
+      "lines": [
+        "I own several of these stalls. I am checking the baskets here, then I will inspect the next stand. Edris can help you with your lesson."
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "ambient-nayab": {
+      "speaker": "Nayab",
+      "characterId": "nayab",
+      "lines": [
+        "We are choosing a new place to gather. Can you see the others across the courtyard?"
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "ambient-sara": {
+      "speaker": "Sara",
+      "characterId": "sara",
+      "lines": [
+        "I like to stop here and watch everyone run past. Then it is my turn!"
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "ambient-omar": {
+      "speaker": "Omar",
+      "characterId": "omar",
+      "lines": [
+        "A short run, a quick turn, and back to the group. There is plenty of room here."
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "ambient-afiya": {
+      "speaker": "Afiya",
+      "characterId": "afiya",
+      "lines": [
+        "We take turns choosing where to meet next. I am waiting for the others."
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "ambient-sanaa": {
+      "speaker": "Sanaa",
+      "characterId": "sanaa",
+      "lines": [
+        "I was just catching up with the others. You can join us for a moment if you like."
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "See you around"
+        }
+      ]
+    },
+    "bilal-ripples": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "ما په اوبو کې یو سیوری ولید. کب لا پټ دی."
+      ],
+      "pashto": {
+        "ps": "ما په اوبو کې یو سیوری ولید. کب لا پټ دی.",
+        "roman": "maa pu obo ke yaw seyori waleed. kab laa pat dey.",
+        "audioId": "bilal-day-5"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "I saw a shadow in the water. The fish is still hidden.",
+        "context": "Optional fisherman narrative, Bilal to player; never instructional or assessed",
+        "reference": "docs/rpg/QUEST_IMPROVEMENTS.md#bilals-language-review"
+      },
+      "actions": []
+    },
+    "onboarding-introduction": {
+      "speaker": "Muhammad Jan",
+      "characterId": "muhammad-jan",
+      "lines": [
+        "Welcome! Four learning areas are waiting for you: Home for household vocabulary and everyday activities; Lake for nature, water and outdoor vocabulary; Market for food, trading and everyday transactions; and School for learning, reading, writing and grammar.",
+        "Explore these areas and speak with the villagers. You can study at your own pace or try the daily challenge when you feel ready.",
+        "If you are comfortable typing in English or Pashto, enable optional typing challenges in the Library’s Player Profile settings. They are off by default. The Library also holds your Vocabulary Bank, Grammar Journal, expressions and voluntary review."
+      ],
+      "actions": [
+        {
+          "type": "explore",
+          "label": "Explore the village"
+        }
+      ]
+    },
+    "bilal-day-1": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! نن ښه ورځ ده. د جهیل اوبه څنګه دي؟"
+      ],
+      "pashto": {
+        "ps": "سلام! نن ښه ورځ ده. د جهیل اوبه څنګه دي؟",
+        "roman": "salaam! nun kha wraz da. du jaheel oba tsanga dee?",
+        "audioId": "bilal-day-1"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! It is a nice day. What is the lake water like?",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-2": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! دینه دلته ده. هغه په اوبو کې یو کب ویني."
+      ],
+      "pashto": {
+        "ps": "سلام! دینه دلته ده. هغه په اوبو کې یو کب ویني.",
+        "roman": "salaam! deena dulta da. hagha pu obo ke yaw kab weeni.",
+        "audioId": "bilal-day-2"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! Deena is here. She sees a fish in the water.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-3": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! په اوبو کې یو کب دی. ته څه وینې؟"
+      ],
+      "pashto": {
+        "ps": "سلام! په اوبو کې یو کب دی. ته څه وینې؟",
+        "roman": "salaam! pu obo ke yaw kab dey. ta tsu weeney?",
+        "audioId": "bilal-day-3"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! There is a fish in the water. What do you see?",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-4": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! زه د یوه عجیب کب په لټه کې یم. زه دلته یو کب وینم."
+      ],
+      "pashto": {
+        "ps": "سلام! زه د یوه عجیب کب په لټه کې یم. زه دلته یو کب وینم.",
+        "roman": "salaam! za du yuwa ajeeb kab pu lata ke yum. za dulta yaw kab weenum.",
+        "audioId": "bilal-day-4"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! I am looking for an unusual fish. I see a fish here.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-5": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! نور کلیوال هم دلته دي. موږ په اوبو کې یو کب وینو."
+      ],
+      "pashto": {
+        "ps": "سلام! نور کلیوال هم دلته دي. موږ په اوبو کې یو کب وینو.",
+        "roman": "salaam! nor kiliwaal ham dulta dee. moong pu obo ke yaw kab weeno.",
+        "audioId": "bilal-day-5"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! Other villagers are here too. We see a fish in the water.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-6": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! راځه، یو ځای اوبو ته وګورو. زه یو کب وینم."
+      ],
+      "pashto": {
+        "ps": "سلام! راځه، یو ځای اوبو ته وګورو. زه یو کب وینم.",
+        "roman": "salaam! raadza, yaw dzay obo ta wugoro. za yaw kab weenum.",
+        "audioId": "bilal-day-6"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! Let us look at the water together. I see a fish.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-7": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! کلیوال اوبو ته ګوري. هغوی یو کب ویني."
+      ],
+      "pashto": {
+        "ps": "سلام! کلیوال اوبو ته ګوري. هغوی یو کب ویني.",
+        "roman": "salaam! kiliwaal obo ta gori. haghoy yaw kab weeni.",
+        "audioId": "bilal-day-7"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! The villagers are looking at the water. They see a fish.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-1-correct": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "هو، د جهیل اوبه سړې دي."
+      ],
+      "pashto": {
+        "ps": "هو، د جهیل اوبه سړې دي.",
+        "roman": "ho, du jaheel oba saṛe dee.",
+        "audioId": "bilal-day-1-correct"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Yes, the lake water is cold.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-1-conclusion"
+        }
+      ]
+    },
+    "bilal-day-1-redirect": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "زه د جهیل په اړه خبرې کوم."
+      ],
+      "pashto": {
+        "ps": "زه د جهیل په اړه خبرې کوم.",
+        "roman": "za du jaheel pu ara khabare kawum.",
+        "audioId": "bilal-day-1-redirect"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "I am talking about the lake.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-1-conclusion"
+        }
+      ]
+    },
+    "bilal-day-1-conclusion": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "راځه، د اوبو تر څنګ لږ کښېنو."
+      ],
+      "pashto": {
+        "ps": "راځه، د اوبو تر څنګ لږ کښېنو.",
+        "roman": "raadza, du obo tur tsang lag kheno.",
+        "audioId": "bilal-day-1-conclusion"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Let us sit beside the water for a little while.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "explore",
+          "label": "Finish conversation"
+        }
+      ]
+    },
+    "bilal-day-1-repeat": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! بیا ښه راغلاست."
+      ],
+      "pashto": {
+        "ps": "سلام! بیا ښه راغلاست.",
+        "roman": "salaam! byaa kha raaghlaast.",
+        "audioId": "bilal-day-1-repeat"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! Welcome back.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-2-correct": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "هو، دینه کب ویني."
+      ],
+      "pashto": {
+        "ps": "هو، دینه کب ویني.",
+        "roman": "ho, deena kab weeni.",
+        "audioId": "bilal-day-2-correct"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Yes, Deena sees a fish.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-2-conclusion"
+        }
+      ]
+    },
+    "bilal-day-2-redirect": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "زه د جهیل په اړه خبرې کوم."
+      ],
+      "pashto": {
+        "ps": "زه د جهیل په اړه خبرې کوم.",
+        "roman": "za du jaheel pu ara khabare kawum.",
+        "audioId": "bilal-day-2-redirect"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "I am talking about the lake.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-2-conclusion"
+        }
+      ]
+    },
+    "bilal-day-2-conclusion": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "راځه، کب ته وګورو."
+      ],
+      "pashto": {
+        "ps": "راځه، کب ته وګورو.",
+        "roman": "raadza, kab ta wugoro.",
+        "audioId": "bilal-day-2-conclusion"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Let us look at the fish.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "explore",
+          "label": "Finish conversation"
+        }
+      ]
+    },
+    "bilal-day-2-repeat": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! بیا ښه راغلاست."
+      ],
+      "pashto": {
+        "ps": "سلام! بیا ښه راغلاست.",
+        "roman": "salaam! byaa kha raaghlaast.",
+        "audioId": "bilal-day-2-repeat"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! Welcome back.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-3-correct": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "هو، ته کب وینې."
+      ],
+      "pashto": {
+        "ps": "هو، ته کب وینې.",
+        "roman": "ho, ta kab weeney.",
+        "audioId": "bilal-day-3-correct"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Yes, you see a fish.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-3-conclusion"
+        }
+      ]
+    },
+    "bilal-day-3-redirect": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "زه د جهیل په اړه خبرې کوم."
+      ],
+      "pashto": {
+        "ps": "زه د جهیل په اړه خبرې کوم.",
+        "roman": "za du jaheel pu ara khabare kawum.",
+        "audioId": "bilal-day-3-redirect"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "I am talking about the lake.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-3-conclusion"
+        }
+      ]
+    },
+    "bilal-day-3-conclusion": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "کب بېرته اوبو ته لاړ."
+      ],
+      "pashto": {
+        "ps": "کب بېرته اوبو ته لاړ.",
+        "roman": "kab berta obo ta laaṛ.",
+        "audioId": "bilal-day-3-conclusion"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "The fish went back into the water.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "explore",
+          "label": "Finish conversation"
+        }
+      ]
+    },
+    "bilal-day-3-repeat": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! بیا ښه راغلاست."
+      ],
+      "pashto": {
+        "ps": "سلام! بیا ښه راغلاست.",
+        "roman": "salaam! byaa kha raaghlaast.",
+        "audioId": "bilal-day-3-repeat"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! Welcome back.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-4-correct": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "هو، زه کب وینم، خو نه پوهېږم چې هماغه کب دی که نه."
+      ],
+      "pashto": {
+        "ps": "هو، زه کب وینم، خو نه پوهېږم چې هماغه کب دی که نه.",
+        "roman": "ho, za kab weenum, kho na pohegum che hamagha kab dey ka na.",
+        "audioId": "bilal-day-4-correct"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Yes, I see a fish, but I do not know whether it is the same fish.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-4-conclusion"
+        }
+      ]
+    },
+    "bilal-day-4-redirect": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "زه د جهیل په اړه خبرې کوم."
+      ],
+      "pashto": {
+        "ps": "زه د جهیل په اړه خبرې کوم.",
+        "roman": "za du jaheel pu ara khabare kawum.",
+        "audioId": "bilal-day-4-redirect"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "I am talking about the lake.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-4-conclusion"
+        }
+      ]
+    },
+    "bilal-day-4-conclusion": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "د کب راز لا نه دی معلوم."
+      ],
+      "pashto": {
+        "ps": "د کب راز لا نه دی معلوم.",
+        "roman": "du kab raaz laa na dey maaloom.",
+        "audioId": "bilal-day-4-conclusion"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "The mystery of the fish is still unknown.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "explore",
+          "label": "Finish conversation"
+        }
+      ]
+    },
+    "bilal-day-4-repeat": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! لټون لا روان دی."
+      ],
+      "pashto": {
+        "ps": "سلام! لټون لا روان دی.",
+        "roman": "salaam! laṭoon laa rawaan dey.",
+        "audioId": "bilal-day-4-repeat"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! The search continues.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-5-correct": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "هو، موږ کب وینو. د هغه عجیب کب په اړه مو هم خبرې کړې دي."
+      ],
+      "pashto": {
+        "ps": "هو، موږ کب وینو. د هغه عجیب کب په اړه مو هم خبرې کړې دي.",
+        "roman": "ho, moong kab weeno. du hagha ajeeb kab pu ara mo ham khabare kaṛe dee.",
+        "audioId": "bilal-day-5-correct"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Yes, we see a fish. We have also talked about that unusual fish.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-5-conclusion"
+        }
+      ]
+    },
+    "bilal-day-5-redirect": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "زه د جهیل په اړه خبرې کوم."
+      ],
+      "pashto": {
+        "ps": "زه د جهیل په اړه خبرې کوم.",
+        "roman": "za du jaheel pu ara khabare kawum.",
+        "audioId": "bilal-day-5-redirect"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "I am talking about the lake.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-5-conclusion"
+        }
+      ]
+    },
+    "bilal-day-5-conclusion": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "لا هم نه پوهېږو چې هغه کب چېرته دی."
+      ],
+      "pashto": {
+        "ps": "لا هم نه پوهېږو چې هغه کب چېرته دی.",
+        "roman": "laa ham na pohegu che hagha kab cherta dey.",
+        "audioId": "bilal-day-5-conclusion"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "We still do not know where that fish is.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "explore",
+          "label": "Finish conversation"
+        }
+      ]
+    },
+    "bilal-day-5-repeat": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! لټون لا روان دی."
+      ],
+      "pashto": {
+        "ps": "سلام! لټون لا روان دی.",
+        "roman": "salaam! laṭoon laa rawaan dey.",
+        "audioId": "bilal-day-5-repeat"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! The search continues.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-6-correct": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "هو، موږ دواړه کب وینو."
+      ],
+      "pashto": {
+        "ps": "هو، موږ دواړه کب وینو.",
+        "roman": "ho, moong dwaara kab weeno.",
+        "audioId": "bilal-day-6-correct"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Yes, we both see a fish.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-6-conclusion"
+        }
+      ]
+    },
+    "bilal-day-6-redirect": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "زه د جهیل په اړه خبرې کوم."
+      ],
+      "pashto": {
+        "ps": "زه د جهیل په اړه خبرې کوم.",
+        "roman": "za du jaheel pu ara khabare kawum.",
+        "audioId": "bilal-day-6-redirect"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "I am talking about the lake.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-6-conclusion"
+        }
+      ]
+    },
+    "bilal-day-6-conclusion": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "زه به د هغه عجیب کب لټون ته دوام ورکړم."
+      ],
+      "pashto": {
+        "ps": "زه به د هغه عجیب کب لټون ته دوام ورکړم.",
+        "roman": "za ba du hagha ajeeb kab laṭoon ta dawaam warkṛum.",
+        "audioId": "bilal-day-6-conclusion"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "I will continue the search for that unusual fish.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "explore",
+          "label": "Finish conversation"
+        }
+      ]
+    },
+    "bilal-day-6-repeat": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! لټون لا روان دی."
+      ],
+      "pashto": {
+        "ps": "سلام! لټون لا روان دی.",
+        "roman": "salaam! laṭoon laa rawaan dey.",
+        "audioId": "bilal-day-6-repeat"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! The search continues.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "bilal-day-7-correct": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "هو، هغوی کب ویني."
+      ],
+      "pashto": {
+        "ps": "هو، هغوی کب ویني.",
+        "roman": "ho, haghoy kab weeni.",
+        "audioId": "bilal-day-7-correct"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Yes, they see a fish.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-7-conclusion"
+        }
+      ]
+    },
+    "bilal-day-7-redirect": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "زه د جهیل په اړه خبرې کوم."
+      ],
+      "pashto": {
+        "ps": "زه د جهیل په اړه خبرې کوم.",
+        "roman": "za du jaheel pu ara khabare kawum.",
+        "audioId": "bilal-day-7-redirect"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "I am talking about the lake.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "event",
+          "label": "Continue",
+          "event": "bilal-day-7-conclusion"
+        }
+      ]
+    },
+    "bilal-day-7-conclusion": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "خو د هغه عجیب کب راز لا نه دی معلوم. لټون به دوام ولري."
+      ],
+      "pashto": {
+        "ps": "خو د هغه عجیب کب راز لا نه دی معلوم. لټون به دوام ولري.",
+        "roman": "kho du hagha ajeeb kab raaz laa na dey maaloom. laṭoon ba dawaam walari.",
+        "audioId": "bilal-day-7-conclusion"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "But the unusual fish remains a mystery. The search will continue.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": [
+        {
+          "type": "explore",
+          "label": "Finish conversation"
+        }
+      ]
+    },
+    "bilal-day-7-repeat": {
+      "speaker": "Bilal",
+      "characterId": "bilal",
+      "lines": [
+        "سلام! لټون لا روان دی."
+      ],
+      "pashto": {
+        "ps": "سلام! لټون لا روان دی.",
+        "roman": "salaam! laṭoon laa rawaan dey.",
+        "audioId": "bilal-day-7-repeat"
+      },
+      "languageReview": {
+        "status": "editorial_narrative_draft",
+        "userVerified": false,
+        "englishReviewOnly": "Hello! The search continues.",
+        "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
+        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+      },
+      "actions": []
+    },
+    "day6-hills-medina": {
+      "speaker": "Medina",
+      "characterId": "mina",
+      "listener": "Player",
+      "lines": [
+        "We are here together. Would you like to practise with us?"
+      ],
+      "actions": [
+        {
+          "label": "Study in the Hills · Nature",
+          "type": "lesson",
+          "lessonId": "6-nature",
+          "condition": "lesson:6-nature"
+        },
+        {
+          "label": "Day 6 challenge · 15 questions",
+          "type": "challenge",
+          "day": 6
+        },
+        {
+          "label": "Explore first",
+          "type": "explore"
+        }
+      ]
+    },
+    "hills-east-blocked": {
+      "speaker": "Trail marker",
+      "lines": [
+        "Loose rocks block the eastern trail. There is no safe route beyond here yet. The southern path returns to the village."
+      ],
+      "actions": [
+        {
+          "label": "Return to the trail",
+          "type": "explore"
+        }
+      ]
     }
   },
   "days": {
@@ -4437,7 +6005,8 @@
       "maps": [
         "village",
         "library",
-        "house"
+        "house",
+        "hills"
       ],
       "start": {
         "map": "village",
@@ -4453,7 +6022,14 @@
         "jan-home",
         "saleha",
         "edris",
-        "hameed"
+        "hameed",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "nextChapter": "day-2",
       "objective": "Home ↖  ·  Lake ↗  ·  Market ↙  ·  School ↘  ·  Library ↑",
@@ -4479,7 +6055,8 @@
       "maps": [
         "village",
         "library",
-        "house"
+        "house",
+        "hills"
       ],
       "start": {
         "map": "village",
@@ -4495,7 +6072,14 @@
         "jan-home",
         "saleha",
         "edris",
-        "hameed"
+        "hameed",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day2-opening",
       "lessons": [
@@ -4519,7 +6103,7 @@
       },
       "endingEvent": "day2-ending",
       "nextChapter": "day-3",
-      "objective": "Normal: begin at School, visit four districts, then Muhammad Jan’s check-in. Early challenge: speak to Muhammad Jan at Home.",
+      "objective": "Normal: complete School, then study at Home immediately for Muhammad Jan’s check-in. Market and Lake are optional before or after Home. The early challenge remains available at Home.",
       "routes": {
         "normal": {
           "opening": "day2-opening",
@@ -4538,9 +6122,13 @@
         "destination": "School",
         "character": "Ms Hameed",
         "before": "Go to School and speak with Ms Hameed for today’s introductory lesson.",
-        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "after": "Home is available immediately after School. Market and Lake are optional before or after Home; the challenge is also available.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
-      }
+      },
+      "requiredLessons": [
+        "2-school",
+        "2-residential"
+      ]
     },
     "3": {
       "id": "day-3",
@@ -4550,7 +6138,8 @@
       "maps": [
         "village",
         "library",
-        "house"
+        "house",
+        "hills"
       ],
       "start": {
         "map": "village",
@@ -4566,7 +6155,14 @@
         "jan-home",
         "saleha",
         "edris",
-        "hameed"
+        "hameed",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day3-opening",
       "lessons": [
@@ -4607,8 +6203,8 @@
       "guidance": {
         "introLessonId": "3-nature",
         "destination": "Lake",
-        "character": "Saleha",
-        "before": "Go to Lake and speak with Saleha for today’s introductory lesson.",
+        "character": "Deena",
+        "before": "Go to Lake and speak with Deena for today’s introductory lesson.",
         "after": "Continue with the remaining activities, then attempt today’s challenge.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
@@ -4621,7 +6217,8 @@
       "maps": [
         "village",
         "library",
-        "house"
+        "house",
+        "hills"
       ],
       "start": {
         "map": "village",
@@ -4637,7 +6234,14 @@
         "jan-home",
         "saleha",
         "edris",
-        "hameed"
+        "hameed",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day4-opening",
       "lessons": [
@@ -4692,7 +6296,8 @@
       "maps": [
         "village",
         "library",
-        "house"
+        "house",
+        "hills"
       ],
       "start": {
         "map": "village",
@@ -4708,7 +6313,14 @@
         "jan-home",
         "saleha",
         "edris",
-        "hameed"
+        "hameed",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day5-opening",
       "lessons": [
@@ -4732,7 +6344,7 @@
       },
       "endingEvent": "day5-ending",
       "nextChapter": "day-6",
-      "objective": "Normal: begin at School, visit four districts, then Gathering at the Lake. Early challenge: speak to Saleha at Lake.",
+      "objective": "Normal: begin at School, visit four districts, then Gathering at the Lake. Early challenge: speak to Deena at Lake.",
       "routes": {
         "normal": {
           "opening": "day5-opening",
@@ -4759,7 +6371,7 @@
       "id": "day-6",
       "day": 6,
       "name": "Together",
-      "intro": "This is my sister Mina. We will practise speaking about ourselves as a group, then meet in the Hills.",
+      "intro": "Deena is waiting alone at the Lake. Accept her invitation, follow the northern trail to the Hills, and meet her younger sister Medina there.",
       "maps": [
         "village",
         "library",
@@ -4767,10 +6379,10 @@
         "house"
       ],
       "start": {
-        "map": "village",
-        "x": 66,
-        "y": 19,
-        "facing": "up"
+        "map": "house",
+        "x": 17,
+        "y": 10,
+        "facing": "left"
       },
       "prerequisites": [
         "afterTutorial"
@@ -4781,7 +6393,14 @@
         "saleha",
         "edris",
         "hameed",
-        "mina"
+        "mina",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day6-opening",
       "lessons": [
@@ -4805,7 +6424,7 @@
       },
       "endingEvent": "day6-ending",
       "nextChapter": "day-7",
-      "objective": "Normal: begin at Lake, visit four districts, then Together in the Hills. Early challenge: speak to Saleha at Hills.",
+      "objective": "Meet Deena at Lake, then follow the northern village path to the Hills. Early challenge remains available in Quick travel.",
       "routes": {
         "normal": {
           "opening": "day6-opening",
@@ -4827,9 +6446,9 @@
       "guidance": {
         "introLessonId": "6-nature",
         "destination": "Lake",
-        "character": "Saleha and Mina",
-        "before": "Go to Lake and speak with Saleha and Mina for today’s introductory lesson.",
-        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "character": "Deena",
+        "before": "Go to Lake and speak with Deena. After accepting her invitation, follow the village path north to meet her in the Hills.",
+        "after": "Continue with the remaining courses. Deena offers the Home course in the Hills; Muhammad Jan is at Market and Ms Hameed is at School.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       }
     },
@@ -4859,7 +6478,14 @@
         "saleha",
         "edris",
         "hameed",
-        "mina"
+        "mina",
+        "bilal",
+        "zamir",
+        "nayab",
+        "sara",
+        "omar",
+        "afiya",
+        "sanaa"
       ],
       "openingEvent": "day7-opening",
       "lessons": [
@@ -4905,6 +6531,154 @@
         "before": "Go to Market and speak with Edris for today’s introductory lesson.",
         "after": "Continue with the remaining activities, then attempt today’s challenge.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
+      }
+    }
+  },
+  "conversations": {
+    "bilal": {
+      "characterId": "bilal",
+      "speaker": "Bilal",
+      "days": {
+        "1": {
+          "event": "bilal-day-1",
+          "greetingEvent": "ambient-bilal",
+          "repeatEvent": "bilal-day-1-repeat",
+          "response": {
+            "generatedId": "generated:description:lemma:n-water:form:0|lemma:a-cold:variant:1",
+            "pashto": "اوبه سړې دي.",
+            "meaning": "The water is cold.",
+            "review": "Exact licensed compiler proposition; not a newly approved spelling or pronunciation"
+          },
+          "distractors": {
+            "count": 3,
+            "excludeLemmas": [
+              "lemma:n-water"
+            ]
+          },
+          "correctEvent": "bilal-day-1-correct",
+          "incorrectEvent": "bilal-day-1-redirect",
+          "conclusionEvent": "bilal-day-1-conclusion"
+        },
+        "2": {
+          "event": "bilal-day-2",
+          "greetingEvent": "ambient-bilal",
+          "repeatEvent": "bilal-day-2-repeat",
+          "response": {
+            "generatedId": "generated:sov:lemma:person:saleha:licensed:0|lemma:v-see:present:2|lemma:n-fish:form:0",
+            "pashto": "دینه کب ویني.",
+            "meaning": "Deena sees a fish.",
+            "review": "Exact licensed compiler proposition; not a newly approved spelling or pronunciation"
+          },
+          "distractors": {
+            "count": 3,
+            "excludeLemmas": [
+              "lemma:n-fish"
+            ]
+          },
+          "correctEvent": "bilal-day-2-correct",
+          "incorrectEvent": "bilal-day-2-redirect",
+          "conclusionEvent": "bilal-day-2-conclusion"
+        },
+        "3": {
+          "event": "bilal-day-3",
+          "greetingEvent": "ambient-bilal",
+          "repeatEvent": "bilal-day-3-repeat",
+          "response": {
+            "generatedId": "generated:sov:lemma:universal:pronouns-0:citation|lemma:v-see:present:0|lemma:n-fish:form:0",
+            "pashto": "زه کب وینم.",
+            "meaning": "I see a fish.",
+            "review": "Exact licensed compiler proposition; not a newly approved spelling or pronunciation"
+          },
+          "distractors": {
+            "count": 3,
+            "excludeLemmas": [
+              "lemma:n-fish"
+            ]
+          },
+          "correctEvent": "bilal-day-3-correct",
+          "incorrectEvent": "bilal-day-3-redirect",
+          "conclusionEvent": "bilal-day-3-conclusion"
+        },
+        "4": {
+          "event": "bilal-day-4",
+          "greetingEvent": "ambient-bilal",
+          "repeatEvent": "bilal-day-4-repeat",
+          "response": {
+            "generatedId": "generated:sov:lemma:universal:pronouns-1:citation|lemma:v-see:present:1|lemma:n-fish:form:0",
+            "pashto": "ته کب وینې.",
+            "meaning": "You see a fish.",
+            "review": "Exact licensed compiler proposition; not a newly approved spelling or pronunciation"
+          },
+          "distractors": {
+            "count": 3,
+            "excludeLemmas": [
+              "lemma:n-fish"
+            ]
+          },
+          "correctEvent": "bilal-day-4-correct",
+          "incorrectEvent": "bilal-day-4-redirect",
+          "conclusionEvent": "bilal-day-4-conclusion"
+        },
+        "5": {
+          "event": "bilal-day-5",
+          "greetingEvent": "ambient-bilal",
+          "repeatEvent": "bilal-day-5-repeat",
+          "response": {
+            "generatedId": "generated:sov:lemma:w6-you-all:form:0|lemma:v-see:present:4|lemma:n-fish:form:0",
+            "pashto": "تاسې کب وینئ.",
+            "meaning": "You see a fish. (polite/plural)",
+            "review": "Exact licensed compiler proposition; not a newly approved spelling or pronunciation"
+          },
+          "distractors": {
+            "count": 3,
+            "excludeLemmas": [
+              "lemma:n-fish"
+            ]
+          },
+          "correctEvent": "bilal-day-5-correct",
+          "incorrectEvent": "bilal-day-5-redirect",
+          "conclusionEvent": "bilal-day-5-conclusion"
+        },
+        "6": {
+          "event": "bilal-day-6",
+          "greetingEvent": "ambient-bilal",
+          "repeatEvent": "bilal-day-6-repeat",
+          "response": {
+            "generatedId": "generated:sov:lemma:w6-we:form:0|lemma:v-see:present:3|lemma:n-fish:form:0",
+            "pashto": "موږ کب وینو.",
+            "meaning": "We see a fish.",
+            "review": "Exact licensed compiler proposition; not a newly approved spelling or pronunciation"
+          },
+          "distractors": {
+            "count": 3,
+            "excludeLemmas": [
+              "lemma:n-fish"
+            ]
+          },
+          "correctEvent": "bilal-day-6-correct",
+          "incorrectEvent": "bilal-day-6-redirect",
+          "conclusionEvent": "bilal-day-6-conclusion"
+        },
+        "7": {
+          "event": "bilal-day-7",
+          "greetingEvent": "ambient-bilal",
+          "repeatEvent": "bilal-day-7-repeat",
+          "response": {
+            "generatedId": "generated:sov:lemma:universal:pronouns-2:citation|lemma:v-see:licensed:6|lemma:n-fish:form:0",
+            "pashto": "هغوی کب ویني.",
+            "meaning": "They see a fish.",
+            "review": "Exact licensed compiler proposition; not a newly approved spelling or pronunciation"
+          },
+          "distractors": {
+            "count": 3,
+            "excludeLemmas": [
+              "lemma:n-fish"
+            ]
+          },
+          "correctEvent": "bilal-day-7-correct",
+          "incorrectEvent": "bilal-day-7-redirect",
+          "conclusionEvent": "bilal-day-7-conclusion"
+        }
       }
     }
   }

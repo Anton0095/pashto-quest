@@ -60,9 +60,9 @@ for(const width of [1280,375]){
    else if(await p.locator('#grammarPanel').isVisible())await p.locator('#grammarNext').click();
    else{
     const construction=await p.locator('#constructionPanel').isVisible();
-    if(construction)assert.equal(await p.locator('#quizFeedback .sentence-roman').count(),0,'No full romanisation before submit');
+    if(construction)assert.equal(await p.locator('#quizFeedback .answer-translation').count(),0,'No full romanisation before submit');
     await answerCurrent(p);
-    if(construction){assert((await p.locator('#quizFeedback .sentence-roman').innerText()).length>0);constructed++;}
+    if(construction){assert((await p.locator('#quizFeedback .answer-translation').innerText()).length>0);constructed++;}
     await p.locator('#quizNext').click();
    }
   }
@@ -96,7 +96,7 @@ for(const width of [1280,375]){
   await p.reload();await p.locator('#worldScreen').waitFor();assert(!await p.locator('#lessonScreen').isVisible());
   await fixture({day:7,passed:7});
   // Reusable participant roles render one/two portraits dynamically, without redundant cards.
-  await p.evaluate(()=>{__test.lessons.begin('1-residential');__ui.setConversation({instructorId:'Muhammad Jan',speakerId:'Saleha',partnerId:'Saleha'});});
+  await p.evaluate(()=>{__test.lessons.begin('1-residential');__ui.setConversation({instructorId:'Muhammad Jan',speakerId:'Deena',partnerId:'Deena'});});
   await p.locator('#lessonScreen .question-context > summary').click();
   assert.equal(await p.locator('#speakerIcon [data-character-id]').getAttribute('data-character-id'),'muhammad-jan');assert.equal(await p.locator('#participants [data-character-id]').getAttribute('data-character-id'),'saleha');assert((await p.locator('#participants').innerText()).includes('speaking'));
   await p.evaluate(()=>__ui.setConversation({instructorId:'Muhammad Jan',speakerId:'Muhammad Jan',partnerId:'Muhammad Jan'}));assert.equal(await p.locator('#participants [data-character-id]').count(),0);assert(!await p.locator('#addressTarget').isVisible());

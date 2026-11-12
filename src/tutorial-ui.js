@@ -1,5 +1,5 @@
 /* Four authored onboarding interactions; ordinary shared learning records and rewards. */
-function createTutorial({ state, content, learning, ui, storage, questions }) {
+function createTutorial({ state, content, learning, ui, storage, questions, onAdvance }) {
   function tutorialAnswer(correct) {
     learning.submitTutorial(
       content.tutorialIds[state.session.cardIndex],
@@ -53,7 +53,7 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
     feedback.setAttribute("role", "status");
     area.append(p);
     const done = () => {
-      if (state.session.passed.has(c.id)) return;
+      if (learning.itemCompleted(c.id)) return;
       tutorialAnswer(true);
       ui.renderAnswerFeedback(feedback,w,{},true);
       for (const el of area.querySelectorAll("button,input"))
@@ -100,23 +100,30 @@ function createTutorial({ state, content, learning, ui, storage, questions }) {
       }
       area.append(choices);
     } else {
-      const row=document.createElement("form");row.className="tutorial-name-row";
-      const field=document.createElement("input");field.id="tutorialName";field.type="text";field.maxLength=40;
-      field.className="tutorial-name-input";field.autocomplete="off";field.placeholder="Type his name in English";
-      field.setAttribute("aria-label","Muhammad Jan’s name in English");
-      const b=document.createElement("button");b.type="submit";b.id="tutorialSaveName";b.className="primary";b.textContent="Check answer";
-      row.addEventListener("submit",event=>{
-        event.preventDefault();
-        const correct=QuestionEngine.evaluate({kind:"word",direction:"ps-en"},{en:w.answerEnglish,acceptedEnglishAnswers:w.acceptedEnglishAnswers},field.value);
-        if(correct)done();
-        else{tutorialAnswer(false);ui.renderAnswerFeedback(feedback,w,{},false);}
+      ui.typedAnswer.mount({
+        host: area, id: "tutorialName", label: "Muhammad Jan’s name in English",
+        inputClass: "tutorial-name-input", formClass: "tutorial-name-row",
+        maxLength: 40, placeholder: "Type his name in English",
+        submitId: "tutorialSaveName", submitClass: "primary", submitLabel: "Check answer",
+        onSubmit(value) {
+          const correct = QuestionEngine.evaluate({kind:"word", direction:"ps-en"},
+            {en:w.answerEnglish, acceptedEnglishAnswers:w.acceptedEnglishAnswers}, value);
+          if (correct) done();
+          else { tutorialAnswer(false); ui.renderAnswerFeedback(feedback,w,{},false); }
+        },
+        onSkip() {
+          if (learning.itemCompleted(c.id)) return;
+          learning.submitTutorial(c.id, false, { skipped: true });
+          ui.$("teachNext").disabled = false;
+          storage.save(); ui.hud(); onAdvance();
+        },
       });
-      row.append(field,b);area.append(row);
     }
     area.append(feedback);
-    if (state.session.passed.has(c.id)) {
+    if (learning.itemCompleted(c.id)) {
       ui.$("teachNext").disabled=false;
-      ui.renderAnswerFeedback(feedback,w,{},true);
+      if(state.session.skippedItems?.includes(c.id))feedback.textContent="Skipped — typing challenges are off.";
+      else ui.renderAnswerFeedback(feedback,w,{},true);
       for (const el of area.querySelectorAll("button,input")) el.disabled=true;
     }
   }

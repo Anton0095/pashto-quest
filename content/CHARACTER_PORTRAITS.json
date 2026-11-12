@@ -1,6 +1,6 @@
 {
   "resolution": 560,
-  "notice": "Approved portrait crops, losslessly encoded as WebP with identical RGBA pixels; original supplied screenshots and crop provenance are retained. Dialogue and controls remain DOM content.",
+  "notice": "Original screenshot crops and newly generated pixel-art portraits have separate per-character provenance. Neutral expressions are embedded lossless WebP; missing expressions fall back to neutral.",
   "characters": {
     "muhammad-jan": {
       "name": "Muhammad Jan",
@@ -39,22 +39,39 @@
       "pixelSha256": "2f126bf4df6db53eaf2cc9ac8f905123166667ebb9aaa14ced77ade92e417073"
     },
     "saleha": {
-      "name": "Saleha",
-      "appearance": "Afghan woman in her 20s, wearing hijab",
+      "name": "Deena",
+      "appearance": "Young Afghan woman with visible light brown hair, blue eyes and cream/burgundy embroidery",
       "expressions": {
-        "neutral": "assets/portraits/saleha.webp"
+        "neutral": "assets/portraits/deena.webp"
       },
       "source": {
-        "path": "public/assets/portraits/Saleha Portrait.png",
+        "path": "public/assets/portraits/generated/village-cast.png",
+        "origin": "OpenAI image generation for this character expansion; not a screenshot crop",
+        "sourceSha256": "ba72fb4b270d7b9adbde0872dc4cb358038b8ed79e739ea8e854d3ba0a347e46",
         "crop": [
-          90,
-          310,
-          545,
-          842
+          4,
+          4,
+          435,
+          439
         ],
-        "method": "Original pixels, transparent padding, no resampling"
+        "preparation": "Cell crop, nearest-neighbour fit and transparent padding to 480x560, binary alpha threshold 50% for crisp pixel edges; lossless WebP"
       },
-      "pixelSha256": "2346691087b2b356c0f360bdea087ad39ee8aa5e1bda91cb41b1477b2edcee43"
+      "pixelSha256": "2f75a73f5077695a7df9d79f5affca76bc8f725a39e19aaa0fc303f66182fbaa",
+      "previousPortrait": {
+        "asset": "assets/portraits/saleha.webp",
+        "source": {
+          "path": "public/assets/portraits/Saleha Portrait.png",
+          "crop": [
+            90,
+            310,
+            545,
+            842
+          ],
+          "method": "Original pixels, transparent padding, no resampling"
+        },
+        "pixelSha256": "2346691087b2b356c0f360bdea087ad39ee8aa5e1bda91cb41b1477b2edcee43"
+      },
+      "fileSha256": "8c3382f6f79c1160c146c4efc4f16d1d562d5642937c460e8ca4bbd1df4c5228"
     },
     "hameed": {
       "name": "Ms Hameed",
@@ -75,8 +92,8 @@
       "pixelSha256": "21e1df1476f753ce84800759ea4e890da92e957df4043877b5afdab16e61a0a7"
     },
     "mina": {
-      "name": "Mina",
-      "appearance": "Girl about 10, Saleha's younger sister, similar facial features, no hijab",
+      "name": "Medina",
+      "appearance": "Deena's younger sister, existing young Afghan girl appearance, no hijab",
       "expressions": {
         "neutral": "assets/portraits/mina.webp"
       },
@@ -91,6 +108,148 @@
         "method": "Original pixels, transparent padding, no resampling"
       },
       "pixelSha256": "c18df453ab7e0cccf6e6189a0bfda8c7a63f86f5c757ade7cdaa48585cfdf9f2"
+    },
+    "bilal": {
+      "name": "Bilal",
+      "appearance": "Young Afghan fisherman, dark brown hair and brown eyes",
+      "expressions": {
+        "neutral": "assets/portraits/bilal.webp"
+      },
+      "source": {
+        "path": "public/assets/portraits/generated/village-cast.png",
+        "origin": "OpenAI image generation for this character expansion; not a screenshot crop",
+        "sourceSha256": "ba72fb4b270d7b9adbde0872dc4cb358038b8ed79e739ea8e854d3ba0a347e46",
+        "crop": [
+          447,
+          4,
+          436,
+          439
+        ],
+        "preparation": "Cell crop, nearest-neighbour fit and transparent padding to 480x560, binary alpha threshold 50% for crisp pixel edges; lossless WebP"
+      },
+      "pixelSha256": "6fef34c202b4564ed8db0e7cfc52207b6e513837123b89a782933c7d4e71fb45",
+      "fileSha256": "29c9580b5aa2fceeb51be3cae0b8b8ea0d597b947699371c0537a4e4b9da67c4"
+    },
+    "zamir": {
+      "name": "Zamir",
+      "appearance": "Afghan market businessman, navy waistcoat, dark hair and beard",
+      "expressions": {
+        "neutral": "assets/portraits/zamir.webp"
+      },
+      "source": {
+        "path": "public/assets/portraits/generated/village-cast.png",
+        "origin": "OpenAI image generation for this character expansion; not a screenshot crop",
+        "sourceSha256": "ba72fb4b270d7b9adbde0872dc4cb358038b8ed79e739ea8e854d3ba0a347e46",
+        "crop": [
+          891,
+          4,
+          435,
+          439
+        ],
+        "preparation": "Cell crop, nearest-neighbour fit and transparent padding to 480x560, binary alpha threshold 50% for crisp pixel edges; lossless WebP"
+      },
+      "pixelSha256": "54612ce1c798145ebd98ce3a01be8ad13826827714d414941d3516e5513821a2",
+      "fileSha256": "77bf851236d06bde14ca306c10db8201d5f0409dac3acdcffea6962319dedd76"
+    },
+    "nayab": {
+      "name": "Nayab",
+      "appearance": "Young Afghan girl with dark braids and green ribbons, rust embroidered tunic and green vest",
+      "expressions": {
+        "neutral": "assets/portraits/nayab.webp"
+      },
+      "source": {
+        "path": "public/assets/portraits/generated/nayab-girl.png",
+        "origin": "OpenAI image generation edit of prior Nayab portrait for the requested girl design; no screenshot-crop claim",
+        "sourceSha256": "91c057453d95d1522ac9a195268524fe349f0fb82c70739c99ebb6a787e455bf",
+        "preparation": "Nearest-neighbour fit, transparent 480x560 padding, binary alpha and transparent RGB zeroed; lossless WebP"
+      },
+      "pixelSha256": "811a59c33cb478bb8067d23d77fdc6ad9a1debf9a319d303f58fec3fc92349ab",
+      "fileSha256": "9f6fd6c4991b88598e66e910037c8a225a01dae10162559a13baab75b809a18c"
+    },
+    "sara": {
+      "name": "Sara",
+      "appearance": "Village child, dark braid and plum tunic",
+      "expressions": {
+        "neutral": "assets/portraits/sara.webp"
+      },
+      "source": {
+        "path": "public/assets/portraits/generated/village-cast.png",
+        "origin": "OpenAI image generation for this character expansion; not a screenshot crop",
+        "sourceSha256": "ba72fb4b270d7b9adbde0872dc4cb358038b8ed79e739ea8e854d3ba0a347e46",
+        "crop": [
+          4,
+          451,
+          435,
+          432
+        ],
+        "preparation": "Cell crop, nearest-neighbour fit and transparent padding to 480x560, binary alpha threshold 50% for crisp pixel edges; lossless WebP"
+      },
+      "pixelSha256": "1456b0ef4e8dcaa41dddd523a57c93e5f0cf087081c8fdde9fb6f3d68ac337b6",
+      "fileSha256": "7a04cae6e96581f16bc6bd7a880c624e41ea68ace35edc34e1655bf701e6aceb"
+    },
+    "omar": {
+      "name": "Omar",
+      "appearance": "Village child, curly hair and light blue tunic",
+      "expressions": {
+        "neutral": "assets/portraits/omar.webp"
+      },
+      "source": {
+        "path": "public/assets/portraits/generated/village-cast.png",
+        "origin": "OpenAI image generation for this character expansion; not a screenshot crop",
+        "sourceSha256": "ba72fb4b270d7b9adbde0872dc4cb358038b8ed79e739ea8e854d3ba0a347e46",
+        "crop": [
+          447,
+          451,
+          436,
+          432
+        ],
+        "preparation": "Cell crop, nearest-neighbour fit and transparent padding to 480x560, binary alpha threshold 50% for crisp pixel edges; lossless WebP"
+      },
+      "pixelSha256": "c2d979bcd0a5d7c729ca85bedc980d7a4b23c05cea052127fa5220d0e91f3766",
+      "fileSha256": "6151bc89636dd48af2c3d7023d47d82b5e81cb0193d325003250a6541b950d13"
+    },
+    "afiya": {
+      "name": "Afiya",
+      "appearance": "Village child, black bob and teal tunic",
+      "expressions": {
+        "neutral": "assets/portraits/afiya.webp"
+      },
+      "source": {
+        "path": "public/assets/portraits/generated/village-cast.png",
+        "origin": "OpenAI image generation for this character expansion; not a screenshot crop",
+        "sourceSha256": "ba72fb4b270d7b9adbde0872dc4cb358038b8ed79e739ea8e854d3ba0a347e46",
+        "crop": [
+          891,
+          451,
+          435,
+          432
+        ],
+        "preparation": "Cell crop, nearest-neighbour fit and transparent padding to 480x560, binary alpha threshold 50% for crisp pixel edges; lossless WebP"
+      },
+      "pixelSha256": "7dab7fc5aa1ad596562f82df391b343984fb50a932e8444c2a5ffa70932fee1e",
+      "fileSha256": "f7f4915d8a94ca7605ac9c0da63983e35473b7c31b747ee7fd23bfd589b37cb3"
+    },
+    "sanaa": {
+      "name": "Sanaa",
+      "appearance": "Village child, two braids and mustard/red tunic",
+      "expressions": {
+        "neutral": "assets/portraits/sanaa.webp"
+      },
+      "source": {
+        "path": "public/assets/portraits/generated/village-cast.png",
+        "origin": "OpenAI image generation for this character expansion; not a screenshot crop",
+        "sourceSha256": "ba72fb4b270d7b9adbde0872dc4cb358038b8ed79e739ea8e854d3ba0a347e46",
+        "crop": [
+          1334,
+          451,
+          436,
+          432
+        ],
+        "preparation": "Cell crop, nearest-neighbour fit and transparent padding to 480x560, binary alpha threshold 50% for crisp pixel edges; lossless WebP"
+      },
+      "pixelSha256": "07d5ae677a0c686e9749ac89d5eb2e542d4db3f37507f49b6deb506271c395a2",
+      "fileSha256": "e094e0438df8d7f554f022c6134db06f1ed97e548fa3eb8fad09fa411bec343a"
     }
-  }
+  },
+  "pixelDigestFormat": "SHA-256 of decoded 480x560 RGBA8 in row-major order, with RGB zeroed for fully transparent pixels (Canvas-compatible)."
 }

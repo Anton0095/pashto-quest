@@ -1,0 +1,190 @@
+[
+  {
+    "width": 1280,
+    "reducedMotion": false,
+    "metrics": [
+      {
+        "kind": "sleep",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 13,
+        "maximumNodes": 18,
+        "elapsedMs": 1243,
+        "frameMedianMs": 17,
+        "frameP95Ms": 17,
+        "leaked": 0
+      },
+      {
+        "kind": "dream-enter",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 16,
+        "maximumNodes": 18,
+        "elapsedMs": 783,
+        "frameMedianMs": 17,
+        "frameP95Ms": 17,
+        "leaked": 0
+      },
+      {
+        "kind": "dream-exit",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 16,
+        "maximumNodes": 18,
+        "elapsedMs": 667,
+        "frameMedianMs": 17,
+        "frameP95Ms": 17,
+        "leaked": 0
+      }
+    ],
+    "aborted": false,
+    "afterCommit": false,
+    "abortedCommits": 1,
+    "leaked": 0,
+    "animations": 0
+  },
+  {
+    "width": 1280,
+    "reducedMotion": true,
+    "metrics": [
+      {
+        "kind": "sleep",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 0,
+        "maximumNodes": 0,
+        "elapsedMs": 8,
+        "frameMedianMs": 0,
+        "frameP95Ms": 0,
+        "leaked": 0
+      },
+      {
+        "kind": "dream-enter",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 0,
+        "maximumNodes": 0,
+        "elapsedMs": 4,
+        "frameMedianMs": 0,
+        "frameP95Ms": 0,
+        "leaked": 0
+      },
+      {
+        "kind": "dream-exit",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 0,
+        "maximumNodes": 0,
+        "elapsedMs": 3,
+        "frameMedianMs": 0,
+        "frameP95Ms": 0,
+        "leaked": 0
+      }
+    ],
+    "aborted": false,
+    "afterCommit": false,
+    "abortedCommits": 1,
+    "leaked": 0,
+    "animations": 0
+  },
+  {
+    "width": 390,
+    "reducedMotion": false,
+    "metrics": [
+      {
+        "kind": "sleep",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 13,
+        "maximumNodes": 18,
+        "elapsedMs": 1102,
+        "frameMedianMs": 17,
+        "frameP95Ms": 17,
+        "leaked": 0
+      },
+      {
+        "kind": "dream-enter",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 16,
+        "maximumNodes": 18,
+        "elapsedMs": 784,
+        "frameMedianMs": 17,
+        "frameP95Ms": 17,
+        "leaked": 0
+      },
+      {
+        "kind": "dream-exit",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 16,
+        "maximumNodes": 18,
+        "elapsedMs": 666,
+        "frameMedianMs": 17,
+        "frameP95Ms": 17,
+        "leaked": 0
+      }
+    ],
+    "aborted": false,
+    "afterCommit": false,
+    "abortedCommits": 1,
+    "leaked": 0,
+    "animations": 0
+  },
+  {
+    "width": 390,
+    "reducedMotion": true,
+    "metrics": [
+      {
+        "kind": "sleep",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 0,
+        "maximumNodes": 0,
+        "elapsedMs": 7,
+        "frameMedianMs": 0,
+        "frameP95Ms": 0,
+        "leaked": 0
+      },
+      {
+        "kind": "dream-enter",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 0,
+        "maximumNodes": 0,
+        "elapsedMs": 2,
+        "frameMedianMs": 0,
+        "frameP95Ms": 0,
+        "leaked": 0
+      },
+      {
+        "kind": "dream-exit",
+        "commits": 1,
+        "duplicates": false,
+        "completed": true,
+        "maximumAnimations": 0,
+        "maximumNodes": 0,
+        "elapsedMs": 1,
+        "frameMedianMs": 0,
+        "frameP95Ms": 0,
+        "leaked": 0
+      }
+    ],
+    "aborted": false,
+    "afterCommit": false,
+    "abortedCommits": 1,
+    "leaked": 0,
+    "animations": 0
+  }
+]

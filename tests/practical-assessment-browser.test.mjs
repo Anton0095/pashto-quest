@@ -15,7 +15,7 @@ for(const width of [375,1280]) {
  const exampleCheck=await p.evaluate(()=>{const t=__test,stamp=()=>JSON.stringify({grammar:t.state.progress.library.grammar,acquired:t.state.progress.library.acquired,complete:t.state.progress.complete,xp:t.state.progress.xp}),before=stamp();t.library.openLibrary('grammar');const examples=[...document.querySelectorAll('#libraryBody .library-pashto')].map(e=>e.textContent),licensed=t.learning.availableSentences(1);return {before,after:stamp(),count:examples.length,licensed:examples.every(ps=>licensed.some(c=>c.ps===ps))}});
  assert.equal(exampleCheck.before,exampleCheck.after);assert(exampleCheck.count>0&&exampleCheck.licensed);await p.locator('#libraryClose').click();
  const old=await p.evaluate(async()=>{
-  const t=__test;t.reset(0);t.state.progress.tutorialDone=true;t.challenge.startChallenge(1);
+  const t=__test;t.reset(8);t.state.progress.tutorialDone=true;t.challenge.startChallenge(1);
   const s=t.state.session;s.questions[0]={id:'grammar:1:0',kind:'choice',direction:'en-ps',prompt:'The described noun is feminine singular. Which pair agrees?',correct:'Feminine singular adjective + feminine singular equative',options:['Feminine singular adjective + feminine singular equative','Masculine singular adjective + feminine singular equative','Feminine singular adjective + plural equative','Masculine singular adjective + masculine singular equative'],grammarDays:[],grammarConcept:'feminine-description'};
   s.questions[0].choiceOrder=[...s.questions[0].options];s.locked=true;s.answered=1;s.submittedAnswer=s.questions[0].options[1];await t.storage.save();
   return {attempt:JSON.parse(localStorage.getItem('pashto-town-days-v1')).activeChallenge,plan:JSON.stringify(t.state.progress.library.plans[1].locationAssignments),xp:t.state.progress.xp,grammar:JSON.stringify(t.state.progress.library.grammar),acquired:JSON.stringify(t.state.progress.library.acquired)};
@@ -33,7 +33,7 @@ for(const width of [375,1280]) {
  await p.evaluate(()=>__test.library.openLibrary('grammar'));
  const archiveDownload=p.waitForEvent('download');await p.getByRole('button',{name:'Export retired assessment archive',exact:true}).click();
  assert.deepEqual(JSON.parse(readFileSync(await (await archiveDownload).path(),'utf8')),old.attempt);await p.locator('#libraryClose').click();
- for(const day of [1,6,7,14])for(const pace of [0,4,24]) {
+ for(const day of [1,6,7,14])for(const pace of [8,12,24]) {
   await p.evaluate(({day,pace})=>{const t=__test;t.reset(pace);t.state.progress.tutorialDone=true;for(let n=1;n<day;n++)t.progression.completeChallengeOnce(t.state.progress,n,[7,14].includes(n)?25:15);t.state.day=day;t.challenge.startChallenge(day)},{day,pace});
   if(day===6)assert(!/[موږتاسې]/.test((await p.locator("#challengeScene").innerText()).replace(/[A-Za-z]/g,"")),"no Pashto-to-English pronoun mapping in the Hills scene");
   const expected=[7,14].includes(day)?25:15;
@@ -44,6 +44,6 @@ for(const width of [375,1280]) {
   }
   assert(await p.locator('#resultScreen').isVisible());assert.equal(await p.evaluate(day=>__test.state.progress.challenges[day].best,day),expected);
  }
- assert.deepEqual(b.errors,[]);console.log(width,'PASS all 33 Journal worked references without unlocks; explicit old-attempt export/pause/retire; 1/6/7/14 × paces 0/4/24 public practical completion, thresholds and unknown-meaning masking');
+ assert.deepEqual(b.errors,[]);console.log(width,'PASS all 33 Journal worked references without unlocks; explicit old-attempt export/pause/retire; 1/6/7/14 × paces 8/12/24 public practical completion, thresholds and unknown-meaning masking');
  }finally{await b.close()}
 }

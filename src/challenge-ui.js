@@ -9,6 +9,7 @@ function createChallengeUI({
   audio,
   storage,
   onWorld,
+  onAdvance,
   libraryReview,
 }) {
   function showChallengeScene(day) {
@@ -53,7 +54,7 @@ function createChallengeUI({
       art.setAttribute("role", "img");
       art.setAttribute(
         "aria-label",
-        "Saleha, Mina and the player walk in the hills above the village",
+        "Deena, Medina and the player walk in the hills above the village",
       );
       art.style.width = "100%";
       art.style.maxHeight = "120px";
@@ -64,7 +65,7 @@ function createChallengeUI({
     const text = document.createElement("p");
     text.textContent =
       day === 6
-        ? "Saleha → Player: “Mina and I welcome you on our walk.” Mina → Player: “Tell us about the activities you remember, and respond when someone speaks to you.”"
+        ? "Deena → Player: “Medina and I welcome you on our walk.” Medina → Player: “Tell us about the activities you remember, and respond when someone speaks to you.”"
         : "Ms Hameed → Player: “This examination checks your first seven days: descriptions, pronouns, verb forms, sentence order, compounds and respectful conversations. Twenty correct answers out of twenty-five completes Week 1.”";
     panel.append(text);
   }
@@ -160,7 +161,7 @@ function createChallengeUI({
           : day === 4
             ? "Come in and sit down. We have talked as friends all day. Let us practise what YOU and I do, and join two clauses using او. When I say “you” informally, I am addressing you; when you do, you are addressing a familiar friend, not an elder."
             : day === 5
-              ? "Welcome to our gathering near the lake! Saleha, Edris, Ms Hameed and Muhammad Jan are all here. Listen to the speaker, look carefully at whom you are addressing, and choose informal ته or polite/plural تاسې."
+              ? "Welcome to our gathering near the lake! Deena, Edris, Ms Hameed and Muhammad Jan are all here. Listen to the speaker, look carefully at whom you are addressing, and choose informal ته or polite/plural تاسې."
               : `Welcome to Day ${day}! You need twelve correct answers to advance.`;
     if (day >= 6) {
       ui.$("lessonEyebrow").textContent =
@@ -180,21 +181,17 @@ function createChallengeUI({
         ? "Welcome back to the Library. Your home award is already recorded."
         : "Muhammad Jan → Player: Welcome to the Library. Twelve correct answers and I will give you the key to your home. You can take this challenge without any teaching visits.";
     }
-    const categories = {
-      word: "vocabulary/phrases",
-      construct: "construction",
-      dialogue: "construction",
-      sentence: "translation",
-    };
+    const categoryLabels={select:"Select the correct answer",build:"Build a sentence",type:"Type the correct answer"};
     const counts = items.reduce((out, question) => {
-      out[question.kind] = (out[question.kind] || 0) + 1;
+      const category=question.answerFormat || (["construct","dialogue"].includes(question.kind)?"build":question.unstudied&&!question.recognition?"type":"select");
+      out[category] = (out[category] || 0) + 1;
       return out;
     }, {});
     ui.$("lessonDescription").textContent =
       `${items.length} turns · ${spec.passCount}/${items.length} to pass · ${Object.entries(
         counts,
       )
-        .map(([kind, count]) => `${count} ${categories[kind]}`)
+        .map(([kind, count]) => `${count} ${categoryLabels[kind]}`)
         .join(" · ")}`;
     const plan = state.progress.library.plans[day];
     if (Object.values(plan.locationAssignments).some(ids => ids.length))
@@ -286,6 +283,7 @@ function createChallengeUI({
       q.kind === "word"
           ? "🧠 WORD RECALL"
           : "📖 SENTENCE RECALL";
+    if(q.answerFormat === "select")ui.$("quizType").textContent="SELECT THE CORRECT ANSWER";
     const reverse = q.direction === "en-ps";
     ui.$("quizPashto").textContent = reverse ? w.en : w.ps;
     ui.$("quizPashto").setAttribute("dir", reverse ? "ltr" : "rtl");
@@ -305,36 +303,20 @@ function createChallengeUI({
     ui.$("quizPanel").querySelector(".quizword h3").textContent = reverse
         ? "Choose the correct Pashto"
         : "Choose the correct English meaning";
-    if (q.kind === "word" && q.unstudied && !q.recognition) {
-      ui.$("quizPrompt").textContent = "Not previously studied. Type the English meaning if you already know it, or reveal it after submitting. Your first answer counts.";
-      ui.$("quizPanel").querySelector(".quizword h3").textContent = "Recall without a translation clue";
-      const form = document.createElement("form");
-      const input = document.createElement("input");
-      input.id = "unseenRecall";
-      input.className = "recall-input";
-      input.setAttribute("aria-label", "English meaning from memory");
-      input.autocomplete = "off";
-      input.maxLength = 160;
-      input.value = state.session.recallDraft || "";
-      input.addEventListener("input", () => {
-        state.session.recallDraft = input.value;
-        storage.save();
+    if (QuestionEngine.isTyped(q)) {
+      ui.$("quizType").textContent="TYPE THE CORRECT ANSWER";
+      ui.$("quizPrompt").textContent = reverse ? "Type this meaning in Pashto. Your first answer counts." : "Type the English meaning. Your first answer counts.";
+      ui.$("quizPanel").querySelector(".quizword h3").textContent = "Type the correct answer";
+      ui.typedAnswer.mount({
+        host: ui.$("choices"), id: "unseenRecall",
+        label: reverse ? "Pashto answer" : "English meaning from memory",
+        lang: reverse ? "ps" : "en", value: state.session.recallDraft || "",
+        submitLabel: q.answerFormat ? "Submit answer" : "Submit meaning", submitClass: "speaker",
+        onInput(value) { state.session.recallDraft = value; storage.save(); },
+        onSubmit: answerChallenge,
+        onSkip: () => answerChallenge("", { skipped: true }),
+        reveal: { label: "I don’t know — reveal meaning", onClick: () => answerChallenge("") },
       });
-      const submit = document.createElement("button");
-      submit.type = "submit";
-      submit.className = "speaker";
-      submit.textContent = "Submit meaning";
-      const reveal = document.createElement("button");
-      reveal.type = "button";
-      reveal.className = "speaker";
-      reveal.textContent = "I don’t know — reveal meaning";
-      reveal.addEventListener("click", () => answerChallenge(""));
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        answerChallenge(input.value);
-      });
-      form.append(input, submit, reveal);
-      ui.$("choices").append(form);
     } else
       for (const value of q.choiceOrder) {
         const b = document.createElement("button");
@@ -364,12 +346,13 @@ function createChallengeUI({
     ui.$("audioStatus").textContent =
       "🔊 Listen to Pashto for recognition questions, if an Afghan Pashto voice is available.";
   }
-  function answerChallenge(value) {
+  function answerChallenge(value, options = {}) {
     queueMicrotask(ui.readableQuizSurfaces);
-    const result = learning.submitChallenge(value);
+    const result = learning.submitChallenge(value, options);
     if (!result) return;
     const { q, w, correct } = result;
     for (const control of ui.$("choices").querySelectorAll("input, button")) control.disabled = true;
+    if(result.skipped){storage.save();ui.$("quizNext").disabled=false;onAdvance();storage.save();return;}
     if (q.generated) learning.surface(q.id, "assessment-feedback");
     storage.save();
     ui.hud();
@@ -416,8 +399,8 @@ function createChallengeUI({
           : "Ms Hameed: “Keep practising. Twenty correct answers are needed; you can try again.”"
         : day === 6
           ? passed
-            ? "Saleha and Mina → Player: “We enjoy walking with you! Your next day is open.”"
-            : "Saleha → Player: “Let us practise we and you both again.”"
+            ? "Deena and Medina → Player: “We enjoy walking with you! Your next day is open.”"
+            : "Deena → Player: “Let us practise we and you both again.”"
           : passed
             ? `You passed ${spec.resultTitle}. Day ${day + 1} is open!`
             : `You scored ${s.correctCount}/${s.questions.length}; ${spec.passCount} correct are needed. Practise in town or retry.`;
@@ -456,6 +439,9 @@ function createChallengeUI({
     const q = state.session.questions[state.session.index],
       w = content.wordById[q.id];
     for (const b of ui.$("choices").querySelectorAll("input, button")) b.disabled = true;
+    if(state.session.skippedQuestions?.includes(state.session.index)){
+      ui.$("quizFeedback").textContent="Skipped — zero marks; no practice credit.";ui.$("quizNext").disabled=false;return;
+    }
     const value = state.session.submittedAnswer;
     const correct = QuestionEngine.evaluate(q, w, value);
     if (["construct", "dialogue"].includes(q.kind)) {

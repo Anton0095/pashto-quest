@@ -24,7 +24,7 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
     },
     nature: {
       role: "Fellow student",
-      name: "Saleha",
+      name: "Deena",
       face: "👩‍🎓",
       description: "A fellow student from your school.",
     },
@@ -39,9 +39,9 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
     [
       ...Object.values(villagePeople),
       {
-        name: "Mina",
+        name: "Medina",
         face: "👧",
-        role: "Saleha’s sister",
+        role: "Deena’s sister",
       },
     ].map((p) => [p.name, p]),
   );

@@ -13,7 +13,7 @@ function createUI({ state, content, progression }) {
           : content.zones[loc].name;
   }
   const conversation={instructorId:'Muhammad Jan',speakerId:'Muhammad Jan',partnerId:'Muhammad Jan'};
-  function personName(id){return CHARACTER_PORTRAITS.characters[id]?.name || content.peopleByName[id]?.name || id;}
+  function personName(id){const name=id;return CHARACTER_PORTRAITS.characters[id]?.name || content.peopleByName[name]?.name || name;}
   function setConversation(context){
     Object.assign(conversation,context);
     const instructor=personName(conversation.instructorId),speaker=personName(conversation.speakerId),partner=personName(conversation.partnerId);
@@ -93,7 +93,7 @@ function createUI({ state, content, progression }) {
   /* Only the display text changes. Never embed markup from lesson/question data. */
   function renderMixedPashto(element, text) {
     const pattern = /([\u0600-\u06FF]+(?:\s+[\u0600-\u06FF]+)*)/gu;
-    const source = String(text ?? "");
+    const source = text;
     element.replaceChildren();
     let last = 0;
     for (const match of source.matchAll(pattern)) {

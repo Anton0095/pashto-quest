@@ -8,7 +8,7 @@ const releaseSha256 = createHash("sha256")
 const b = await setup();
 const profiles = [];
 try {
-  for (const pace of [0, 4, 8, 12, 16, 20, 24])
+  for (const pace of [8, 12, 16, 20, 24])
     for (const skip of [false, true]) {
       const result = await b.page.evaluate(
         async ({ pace, skip }) => {
@@ -26,9 +26,7 @@ try {
             const area = document.querySelector("#tutorialInteraction");
             if (step === 0) click(area, "Hello");
             else if (step === 1) {
-              click(area, "څنګه");
-              click(area, "یې؟");
-              click(area, "Check sentence");
+              click(area, "How are you?");
             } else if (step === 2) click(area, "پښتو");
             else {
               document.querySelector("#tutorialName").value = "Muhammad Jan";
@@ -75,6 +73,10 @@ try {
               )
             )
               throw Error("Unstudied form");
+            if(t.state.session?.mode==='standard'){
+              const s=t.state.session,targets=t.state.progress.library.plans[s.loop]?.lessonNewLexemes?.[s.loc]||[];
+              if(targets.length&&!Object.values(card.generated.slots).some(r=>targets.includes(r.lemmaId)))throw Error('Sentence lacks a current-lesson noun/verb');
+            }
             generatedObserved++;
           };
           const taughtCount = () =>
@@ -113,7 +115,7 @@ try {
                     if (card) {
                       if (
                         document.querySelector("#teachPashto").textContent !==
-                        card.ps
+                        t.names.text(card.ps)
                       )
                         throw Error("Study surface mismatch");
                       observe(card);
@@ -132,13 +134,21 @@ try {
                     }
                     t.lessons.afterStudy();
                   } else if (s.phase === "grammar") {
-                    if (
-                      /[\u0600-\u06ff]/.test(
-                        document.querySelector("#grammarExplanation")
-                          .textContent,
-                      )
-                    )
-                      throw Error("A stored Pashto model leaked into grammar");
+                    const explanation=document.querySelector('#grammarExplanation').cloneNode(true);
+                    explanation.querySelectorAll('.sov-demo').forEach(e=>e.remove());
+                    if(/[\u0600-\u06ff]/.test(explanation.textContent))throw Error('A stored Pashto model leaked into grammar rules');
+                    const demo=document.querySelector('#grammarExplanation .sov-demo[data-example-id]');
+                    if(demo){
+                      const example=t.content.wordById[demo.dataset.exampleId];observe(example);
+                      if(!demo.dataset.complete){
+                        for(const token of example.ps.replace(/[.!؟،]/g,'').split(/\s+/).filter(Boolean)){
+                          const tile=[...demo.querySelectorAll('.word-tiles button')].find(b=>!b.disabled&&b.textContent===token);
+                          if(!tile)throw Error('Missing guided SOV tile '+token);tile.click();
+                        }
+                        const check=[...demo.querySelectorAll('button')].find(b=>b.textContent==='Check sentence');check.click();
+                        if(!demo.dataset.complete)throw Error('Guided SOV example failed');
+                      }
+                    }
                     t.lessons.afterGrammar();
                   } else {
                     const item = s.queue[0],
@@ -146,7 +156,7 @@ try {
                     observe(card);
                     if (
                       document.querySelector("#quizPashto").textContent !==
-                      (item.kind === "construct" ? card.en : card.ps)
+                      t.names.text(item.kind === "construct" ? card.en : card.ps)
                     )
                       throw Error("Practice surface mismatch");
                     t.lessons.answer(
@@ -187,32 +197,33 @@ try {
                 if (q.answerPs !== card.ps)
                   throw Error("Uncompiled dialogue response");
               }
-              if (["construct","dialogue"].includes(q.kind) && document.querySelector("#quizPashto").textContent !== (q.answerEnglish || card.en))
+              if (["construct","dialogue"].includes(q.kind) && document.querySelector("#quizPashto").textContent !== t.names.text(q.answerEnglish || card.en))
                 throw Error("Construction must display the direct English target");
               if (q.kind === "word") {
+                const answerField=q.direction === "en-ps" ? "ps" : "en";
                 const studied = new Set(Object.values(t.content.wordById).filter((c) => {
                   const refs = t.content.LIBRARY_DATA.sourceMappings[c.id] || [];
                   return t.state.progress.library.phrases[c.id] || (refs.length && refs.every((r) =>
                     t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId)));
-                }).map((c) => c.en));
+                }).map((c) => c[answerField]));
                 const backup = new Set(t.content.LIBRARY_DATA.entries
                   .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
-                  .map(e => e.englishSenses[0]));
+                  .map(e => t.content.wordById["library-card:"+e.lemmaId][answerField]));
                 for (const text of q.choiceOrder)
-                  if (!studied.has(text) && !backup.has(text) && !["A different meaning", "Another response", "None of these"].includes(text))
+                  if (!studied.has(text) && !backup.has(text) && !(card.type==='greeting'&&t.content.LIBRARY_DATA.phrases.some(p=>(answerField==="en"?p.english:p.pashto)===text)) && !["A different meaning", "Another response", "None of these"].includes(text))
                     throw Error("Distractor is neither studied nor Day-1 backup: " + text);
-                if (q.unstudied && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === card.en))
+                if (q.unstudied && !q.recognition && [...document.querySelectorAll("#choices button")].some((b) => b.textContent.trim() === t.names.text(card.en)))
                   throw Error("Unstudied target meaning offered as a clue");
               }
               if (["choice", "address"].includes(q.kind) || q.grammarConcept)
                 throw Error("Retired grammar-rule question generated in a practical assessment");
-              if (q.kind === "word" && q.unstudied) {
+              if (q.kind === "word" && q.unstudied && !q.recognition) {
                 if (
                   q.direction !== "ps-en" ||
                   document.querySelector("#quizPashto").textContent !==
-                    card.ps ||
+                    t.names.text(card.ps) ||
                   document.querySelector("#quizRoman").textContent !==
-                    card.roman + " · Not previously studied"
+                    t.names.text(card.roman) + " · Not previously studied"
                 )
                   throw Error("Unstudied word disclosed before answer");
               }
@@ -240,7 +251,7 @@ try {
                 card?.type === "sentence" &&
                 !document
                   .querySelector("#quizFeedback")
-                  .textContent.includes(card.ps)
+                  .textContent.includes(t.names.text(card.ps))
               )
                 throw Error("Unproven sentence feedback");
               const xp = t.state.progress.xp,
@@ -260,9 +271,9 @@ try {
               throw Error("Home award lost");
             if (
               day === 6 &&
-              !document.querySelector("#challengeScene svg[aria-label*=Mina]")
+              !document.querySelector("#challengeScene svg[aria-label*=Medina]")
             )
-              throw Error("Hills scene or Mina introduction lost");
+              throw Error("Hills scene or Medina introduction lost");
             if (!t.content.zoneKeys.every(loc=>t.state.progress.complete[day+'-'+loc]))
               throw Error("Passed challenge failed to complete locations");
             if (day === 14 && taughtCount() !== oldCount)
@@ -334,14 +345,14 @@ try {
     schemaVersion: 1,
     releaseSha256,
     basis:
-      "Actual rendered browser surfaces across fourteen complete profiles; compiler provenance and actual form/grammar unlocks checked independently at each sentence surface.",
+      "Actual rendered browser surfaces across ten complete profiles; compiler provenance and actual form/grammar unlocks checked independently at each sentence surface.",
     instructionalSentenceObservations: observed,
     genuinelyGeneratedObservations: generated,
     generatedPercentage: observed ? 100 : null,
     fixedAuthoredSentenceObservations: 0,
-    designatedPhraseExceptions: 6,
-    totalVisits: 392,
-    totalAssessments: 196,
+    designatedPhraseExceptions: JSON.parse(readFileSync("content/FIXED_PHRASES.json","utf8")).phrases.length,
+    totalVisits: 280,
+    totalAssessments: 140,
     profiles,
   };
   writeFileSync(
@@ -349,7 +360,7 @@ try {
     JSON.stringify(report, null, 2) + "\n",
   );
   console.log(
-    `PASS actual delivery: ${generated}/${observed} = 100%; 392 visits, 196 assessments, seven paces, normal/skip, no authored sentence surfaces`,
+    `PASS actual delivery: ${generated}/${observed} = 100%; 280 visits, 140 assessments, five paces, normal/skip, no authored sentence surfaces`,
   );
 } finally {
   await b.close();

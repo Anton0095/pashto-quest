@@ -141,10 +141,10 @@ function createAudio({
       }
     }
   }
-  function speak(id) {
+  function speak(id, { track = true } = {}) {
     const w = wordById[id];
     if (!w?.ps) return;
-    onSpeak(id);
+    if (track) onSpeak(id);
     stopAudio();
     const request = audioRequest;
     currentSpoken = w.id;

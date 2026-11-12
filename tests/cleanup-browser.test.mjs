@@ -25,7 +25,7 @@ for (const width of [375, 1280]) {
       path: `docs/maintenance/cleanup/after-pace-${width}.png`,
       fullPage: true,
     });
-    for (const target of [0, 4, 24]) {
+    for (const target of [8, 12, 24]) {
       await p.locator(`[data-onboarding-pace="${target}"]`).click();
       assert.match(
         await status.innerText(),
@@ -43,7 +43,7 @@ for (const width of [375, 1280]) {
         "true",
       );
     }
-    await p.locator("#navLibrary").click();
+    await p.locator("#navLibrary:visible, .map-point.library:visible").first().click();
     const actual = await p.locator("#libraryPos option").evaluateAll((es) =>
       es
         .map((e) => e.value)
@@ -69,15 +69,15 @@ for (const width of [375, 1280]) {
     assert.equal(await p.locator('#libraryDay option[value="0"]').count(), 0);
     await p.keyboard.press("Escape");
     await p.waitForFunction(() => document.activeElement.id === "navLibrary");
-    await p.locator("#navLibrary").click();
+    await p.locator("#navLibrary:visible, .map-point.library:visible").first().click();
     await p.locator('[data-library-tab="pace"]').click();
-    await p.locator('[data-pace="4"]').click();
+    await p.locator('[data-pace="8"]').click();
     assert.match(
       await p.locator("#libraryPaceFeedback").innerText(),
-      /Selected 4\/day, starting Day 1/,
+      /Selected 8\/day, starting Day 1/,
     );
     await p.locator("#libraryClose").click();
-    assert.match(await status.innerText(), /4\/day.*1 per teaching location/);
+    assert.match(await status.innerText(), /8\/day.*2 per teaching location/);
     p.once("dialog", (d) => d.accept());
     await p.locator("#resetProgress").click();
     assert.match(await status.innerText(), /24\/day.*6 per teaching location/);
@@ -91,9 +91,9 @@ for (const width of [375, 1280]) {
     await tutorial(p);
     await p.locator("#resultWorld").click();
     assert(!/0\/0/.test(await p.locator("#placeCards").innerText()));
-    await p.locator("#navLibrary").click();
+    await p.locator("#navLibrary:visible, .map-point.library:visible").first().click();
     await p.locator('[data-library-tab="pace"]').click();
-    await p.locator('[data-pace="4"]').click();
+    await p.locator('[data-pace="8"]').click();
     assert.match(
       await p.locator("#libraryPaceFeedback").innerText(),
       /starting Day 2/,
@@ -151,11 +151,11 @@ for (const width of [375, 1280]) {
       );
       assert.equal(
         await p.locator("#speakerName").innerText(),
-        lesson.teacher + " · speaking",
+        lesson.teacher.replace(/\bSaleha\b/g, "Deena").replace(/\bMina\b/g, "Medina") + " · speaking",
       );
       assert(
         (await p.locator("#guideMessage").innerText()).startsWith(
-          lesson.teacher + ":",
+          lesson.teacher.replace(/\bSaleha\b/g, "Deena").replace(/\bMina\b/g, "Medina") + ":",
         ),
       );
       assert(!await p.locator("#addressTarget").isVisible());
@@ -190,7 +190,7 @@ for (const width of [375, 1280]) {
     // must still leave grammar untouched.
     await p.evaluate(() => {
       const t = __test;
-      t.reset(0);
+      t.reset(8);
       t.state.progress.tutorialDone = true;
       for (let day = 1; day < 14; day++)
         t.state.progress.challenges[day] = {passed:true, best:day === 7 ? 25 : 15, attempts:1};
@@ -260,7 +260,7 @@ for (const width of [375, 1280]) {
     });
     assert.deepEqual(b.errors, []);
     console.log(
-      `PASS cleanup UI ${width}px: truthful 24/6 default, 0/4 persistence, canonical POS/day filters, frozen pace, moved teachers, actual assessment counts, active-item audio, visible grammar catch-up and zero-XP empty visits`,
+      `PASS cleanup UI ${width}px: truthful 24/6 default, supported pace persistence, canonical POS/day filters, frozen pace, moved teachers, actual assessment counts, active-item audio, visible grammar catch-up and zero-XP empty visits`,
     );
   } finally {
     await b.close();

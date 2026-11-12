@@ -1,5 +1,8 @@
 # Afghan village layout and rendering
 
+Current map/schedule behavior: [permanent Hills and the Day 6 invitation](HILLS_EXPANSION.md) supersede the earlier eastern spur, Day 6-only access and Medina-at-Lake introduction. Historical verification figures below retain their original scope.
+
+
 The playable village is a 96×64 rectangular map on the existing 16-pixel movement grid. The supplied `public/assets/Afghan Village Hub Pixel Map.png` was visually inspected for its adobe compounds, irrigated greenery, lake, school, textile stalls and three barred roads. It is a reference, not a background or collision mask.
 
 ## Layout
@@ -8,15 +11,15 @@ The playable village is a 96×64 rectangular map on the existing 16-pixel moveme
 - Northeast: irregular lake, shallow shoreline highlights, reeds, stones, floating plants and an accessible wooden dock. A narrower river leaves the eastern boundary above the reserved east road. Water is impassable.
 - Southwest: open market aisles, striped woven awnings, baskets, crates and adobe buildings. Edris's ordinary placement is (20,46).
 - Southeast: a school directly below the lake, with a formal central entrance, blue geometric trim and a walled teaching courtyard. Ms Hameed's ordinary placement is (70,44).
-- Central packed-earth crossroads connect all districts. The separate Hills spur is at (94,34), below the east-road reservation. Existing chapter access still governs Hills.
+- Central packed-earth crossroads connect all districts. The northern path now enters Hills across all five tiles (44–48,0), returning to matching lanes (44–48,2). Hills remains accessible on all seven days after onboarding; the former eastern spur is retired.
 
-The north, east and south roads terminate at visible barriers and signs. `reservedExits` records identity, boundary coordinate, direction and reachable approach; these are preparations, not active destinations. A physical map does not create a fifth teaching district or vocabulary quota.
+The east and south future roads terminate at visible barriers and signs; the northern road now connects to Hills. `reservedExits` records identity, boundary coordinate, direction and reachable approach; these are preparations, not active destinations. A physical map does not create a fifth teaching district or vocabulary quota.
 
 ## Authorities and layers
 
 `content/RPG_WORLD.json` owns rectangular terrain rows, solid tile identities, optional collision rows, regions, buildings, scenery, transitions, chapter starts and conditional NPC placements. `world-data.ts` validates terrain/spawns/transitions and recovers invalid positions. `movement.ts` plans on the same walkability and actor occupancy used by the Phaser stepper; no second movement engine was added.
 
-`village-art.ts` draws deterministic pixel art from that registry. Ground, paving, water, shoreline, walls and barriers bake directly into one 1536×1024 Phaser CanvasTexture, avoiding a temporary Graphics command buffer and a second rasterisation/copy. Building/prop textures are generated once per variant and reused on subsequent visits. Foreground sprites use their ground footpoint for depth ordering; buildings and market counters remain solid terrain. Textures belong to the Phaser game and are released on disposal. The covered village tilemap is hidden from drawing while retaining its collision data, avoiding a redundant terrain render behind the opaque baked ground. No atlas or reference-image download is needed in the offline release. Existing actor sprites, portraits, house art and other interiors are reused.
+`village-art.ts` draws deterministic pixel art from that registry. Ground, paving, water, shoreline, walls and barriers bake directly into one 1536×1024 Phaser CanvasTexture, avoiding a temporary Graphics command buffer and a second rasterisation/copy. Building/prop textures are generated once per variant and reused on subsequent visits. Foreground sprites use their ground footpoint for depth ordering; buildings and market counters remain solid terrain. Textures belong to the Phaser game and are released on disposal. The covered village tilemap is hidden from drawing while retaining its collision data, avoiding a redundant terrain render behind the opaque baked ground. No atlas or reference-image download is needed in the offline release. House art and other interiors are reused. The subsequent [living-village expansion](LIVING_VILLAGE.md) adds portraits, distinct actor sprites and bounded routines; the release-specific measurements below predate it.
 
 `phaser-world.ts` retains the terrain physics layer, optional collision overlay, actor bodies, camera follow, movement tween, pointer routing and map lifecycle. It selects village artwork only for maps with the new scenery definitions; historical test profiles retain their original rendering path.
 
@@ -24,7 +27,7 @@ Educational content, quotas, XP, grading, SRS and challenge activation stay in t
 
 ## Existing saves
 
-Education schema 7 and world schema 1, storage keys and revision coordination are unchanged. Existing walkable positions remain valid. A position made impassable by the redesign deterministically recovers to that map's configured safe spawn (or its existing row-major safe-tile fallback). The village collision overlay also excludes disconnected decorative margins and tiles beyond the future-road barriers, so recovery cannot strand a player in an isolated walkable pocket. This uses the established `world-data.recover` path; no old-format adapter, educational reset, XP recalculation or invented study is involved. House/Library/Hills coordinates are unchanged except the Hills return arrival in the village.
+Education schema 7 and world schema 1, storage keys and revision coordination are unchanged. Existing walkable positions remain valid. A position made impassable by the redesign deterministically recovers to that map's configured safe spawn (or its existing row-major safe-tile fallback). The village collision overlay also excludes disconnected decorative margins and tiles beyond the future-road barriers, so recovery cannot strand a player in an isolated walkable pocket. This uses the established `world-data.recover` path; no old-format adapter, educational reset, XP recalculation or invented study is involved. House and Library geometry remains unchanged. Hills is now expanded with a southern entrance and the northern village return; see the current Hills follow-up for recovery behavior.
 
 ## Registering another map
 

@@ -2,7 +2,7 @@
 
 Diagnostic capacity under provisional form licenses. Runtime builds no sentence catalogue at startup: it compiles from forms/grammar licensed by study or explicit challenge activation. See INSTRUCTIONAL_DELIVERY_AUDIT.json for measured delivery. An exact match to an archived text is still dynamically composed from forms, never retrieved as a teaching target. Clause-pair capacity is algebraic, not an enumerated list or a native-language approval.
 
-Inventory: 473 lemmas / 607 forms; 181 composition-eligible forms. 29 typed templates across 28 families.
+Inventory: 474 lemmas / 614 forms; 187 composition-eligible forms. 29 typed templates across 28 families.
 
 **This is not the delivery percentage.** [The measured delivery report](INSTRUCTIONAL_DELIVERY_REPORT.md) checks actual lessons and assessments. There are zero playable authored sentence fallbacks; the [registered fixed expressions](FIXED_PHRASE_EXCEPTIONS.md) are the only whole-phrase exceptions.
 
@@ -14,14 +14,14 @@ Inventory: 473 lemmas / 607 forms; 181 composition-eligible forms. 29 typed temp
 | demonstrative_descriptor | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 186 | 224 | 224 | 224 | 224 | 224 | 224 |
 | attributive_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 186 | 224 | 224 | 224 | 224 | 224 | 224 |
 | equative_noun | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 48 | 70 | 70 | 70 | 70 | 70 | 70 |
-| present_transitive | 0 | 68 | 225 | 312 | 432 | 676 | 738 | 738 | 1090 | 1090 | 1090 | 1090 | 1090 | 1090 |
+| present_transitive | 0 | 140 | 275 | 384 | 523 | 819 | 894 | 894 | 1330 | 1330 | 1330 | 1330 | 1330 | 1330 |
 | present_compound_transitive | 0 | 0 | 0 | 1 | 4 | 10 | 12 | 12 | 12 | 12 | 12 | 12 | 12 | 12 |
-| present_attributive | 0 | 164 | 795 | 1075 | 1758 | 2835 | 3093 | 3093 | 3791 | 3791 | 3791 | 3791 | 3791 | 3791 |
+| present_attributive | 0 | 300 | 980 | 1345 | 2150 | 3462 | 3777 | 3777 | 4667 | 4667 | 4667 | 4667 | 4667 | 4667 |
 | present_intransitive | 0 | 0 | 1 | 1 | 7 | 14 | 16 | 16 | 16 | 16 | 16 | 16 | 16 | 16 |
 | present_compound_predicate | 0 | 0 | 0 | 0 | 0 | 18 | 20 | 20 | 20 | 20 | 20 | 20 | 20 | 20 |
-| demonstrative_transitive | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1476 | 2180 | 2180 | 2180 | 2180 | 2180 | 2180 |
+| demonstrative_transitive | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1788 | 2660 | 2660 | 2660 | 2660 | 2660 | 2660 |
 | counted_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 46 | 46 | 46 | 46 | 46 | 46 |
-| counted_transitive | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 831 | 831 | 831 | 831 | 831 | 831 |
+| counted_transitive | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1059 | 1059 | 1059 | 1059 | 1059 | 1059 |
 | spatial_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 68 | 68 | 68 | 68 | 68 |
 | location_adverb_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 70 | 70 | 70 | 70 | 70 |
 | possessive_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 308 | 308 | 308 | 308 |
@@ -32,12 +32,12 @@ Inventory: 473 lemmas / 607 forms; 181 composition-eligible forms. 29 typed temp
 | whose_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 44 | 44 | 44 |
 | how_many_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 22 | 22 | 22 |
 | what_object_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 24 | 24 | 24 |
-| who_subject_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 99 | 99 | 99 |
+| who_subject_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 119 | 119 | 119 |
 | present_intransitive_adverb | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 159 | 159 |
 | present_transitive_adverb | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5150 | 5150 |
 | present_joint_action | 0 | 0 | 0 | 0 | 0 | 236 | 300 | 300 | 438 | 438 | 438 | 438 | 438 | 438 |
 | count_location | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 46 | 46 | 46 |
-| coordinated_present | 0 | 0 | 0 | 8372 | 12656 | 12656 | 12656 | 12656 | 27722 | 27722 | 27722 | 27722 | 27722 | 27722 |
+| coordinated_present | 0 | 0 | 0 | 13340 | 19182 | 19182 | 19182 | 19182 | 42642 | 42642 | 42642 | 42642 | 42642 | 42642 |
 
 Coordinated-present counts are ordered pairs of distinct independently licensed singular first/second-person SOV clauses, joined by the studied conjunction. They are compiled on request and restored from an AST; no complete clause-pair list is embedded.
 
@@ -48,19 +48,19 @@ The JSON also separates new texts and exact archival-text matches for every base
 | Day | Base distinct Pashto | New texts | Archival text matches | Fixed authored fallbacks |
 |---:|---:|---:|---:|---:|
 | 1 | 28 | 17 | 11 | 0 |
-| 2 | 260 | 239 | 21 | 0 |
-| 3 | 1080 | 1044 | 36 | 0 |
-| 4 | 1456 | 1408 | 48 | 0 |
-| 5 | 2290 | 2235 | 55 | 0 |
-| 6 | 3882 | 3813 | 69 | 0 |
-| 7 | 4272 | 4195 | 77 | 0 |
-| 8 | 6168 | 6060 | 108 | 0 |
-| 9 | 9054 | 8923 | 131 | 0 |
-| 10 | 9227 | 9083 | 144 | 0 |
-| 11 | 10396 | 10235 | 161 | 0 |
-| 12 | 10722 | 10553 | 169 | 0 |
-| 13 | 15586 | 15411 | 175 | 0 |
-| 14 | 15586 | 15411 | 175 | 0 |
+| 2 | 468 | 447 | 21 | 0 |
+| 3 | 1315 | 1279 | 36 | 0 |
+| 4 | 1798 | 1750 | 48 | 0 |
+| 5 | 2773 | 2718 | 55 | 0 |
+| 6 | 4652 | 4583 | 69 | 0 |
+| 7 | 5112 | 5035 | 77 | 0 |
+| 8 | 7320 | 7212 | 108 | 0 |
+| 9 | 10878 | 10747 | 131 | 0 |
+| 10 | 11051 | 10907 | 144 | 0 |
+| 11 | 12220 | 12059 | 161 | 0 |
+| 12 | 12566 | 12397 | 169 | 0 |
+| 13 | 17430 | 17255 | 175 | 0 |
+| 14 | 17430 | 17255 | 175 | 0 |
 
 ## Blocked combinations
 

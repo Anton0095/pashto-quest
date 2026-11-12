@@ -11,6 +11,7 @@ function createLessons({
   tutorial,
   grammar,
   onWorld,
+  onAdvance,
   onLessonStart,
 }) {
   function begin(id) {
@@ -72,9 +73,10 @@ function createLessons({
             ? "greeting"
             : "lexical",
       cardIndex: 0,
-      queue: pool.map((id) => ({
+      queue: pool.map((id,i) => ({
         id,
         retries: 0,
+        answerFormat: mode !== "tutorial" && state.progress.enableTypingChallenges === true && content.wordById[id].type !== "sentence" && i % 3 === 2 ? "type" : "select",
         kind: content.wordById[id].type === "sentence" ? "construct" : "word",
       })),
       answered: 0,
@@ -271,6 +273,7 @@ function createLessons({
     }
     s.locked = false;
     s.built = [];
+    s.recallDraft = "";
     const size = QuestionEngine.buildTiles(
       content.wordById[s.activeItem.id],
       s.activeItem,
@@ -314,7 +317,17 @@ function createLessons({
     ui.$("choices").replaceChildren();
     ui.$("constructionPanel").classList.toggle("hidden", !build);
     if (build) renderBuild();
-    else
+    else if(QuestionEngine.isTyped(s.activeItem)) {
+      ui.$("quizType").textContent="TYPE THE CORRECT ANSWER";
+      ui.$("quizPrompt").textContent="Type the English meaning.";
+      ui.typedAnswer.mount({
+        host: ui.$("choices"), id: "lessonRecall", label: "English meaning",
+        value: s.recallDraft || "",
+        onInput(value) { s.recallDraft = value; storage.save(); },
+        onSubmit: answer,
+        onSkip: () => answer("", { skipped: true }),
+      });
+    } else
       for (const choice of (s.choices = restore && s.choices ? s.choices : questions.distractors(w))) {
         const b = ui.button(ui.englishChoice(choice), () => answer(choice));
         b.className = "choice";
@@ -324,18 +337,20 @@ function createLessons({
     ui.$("quizFeedback").textContent = "Submit your answer to continue.";
     ui.$("quizNext").disabled = true;
     if (restore && s.locked) {
-      for (const b of ui.$("choices").children) b.disabled=true;
+      for (const b of ui.$("choices").querySelectorAll("button,input")) b.disabled=true;
       if (build) {renderBuild();ui.construction.feedback(ui.$("quizFeedback"),w,s.activeItem,QuestionEngine.evaluate(s.activeItem,w,s.submittedAnswer || ""));}
       else {ui.showAnswerFeedback(ui.$("choices"),w.en,s.submittedAnswer);ui.renderAnswerFeedback(ui.$("quizFeedback"),w,s.activeItem,QuestionEngine.evaluate(s.activeItem,w,s.submittedAnswer));}
       ui.$("quizNext").disabled=false;
     }
     storage.save();
   }
-  function answer(value) {
-    const result = learning.submitLesson(value);
+  function answer(value, options = {}) {
+    const result = learning.submitLesson(value, options);
     if (!result) return;
     state.session.submittedAnswer=value;
+    if(result.skipped){storage.save();ui.$("quizNext").disabled=false;onAdvance();storage.save();return;}
     const { w, correct } = result;
+    for(const control of ui.$("choices").querySelectorAll("input,button"))control.disabled=true;
     learning.surface(w.id, "lesson-feedback");
     storage.save();
     ui.hud();
@@ -387,14 +402,15 @@ function createLessons({
     ui.$("passUnlockNotice")?.remove();
     const s = state.session;
     const passedRequired = s.required.every((id) => s.passed.has(id));
-    if (s.mode === "tutorial" && !passedRequired) return;
+    const completedRequired = s.required.every(learning.itemCompleted);
+    if (s.mode === "tutorial" && !completedRequired) return;
     s.finished=true;
     const bonus = progression.completeLessonOnce(
       state.progress,
       s.id,
       s.mode,
-      passedRequired,
-      s.required.length,
+      completedRequired,
+      passedRequired ? s.required.length : 0,
     );
     s.earned += bonus;
     storage.save();
@@ -402,7 +418,7 @@ function createLessons({
     let title, desc, follow;
     if (s.mode === "tutorial") {
       title = `Muhammad Jan welcomes ${state.progress.playerProfile.name}!`;
-      desc = `Welcome, ${state.progress.playerProfile.name}! You practised choosing a meaning, arranging words, selecting an answer, and typing a response. Day 1 is now open.`;
+      desc = `Welcome, ${state.progress.playerProfile.name}! You completed the guided conversation activities.${s.skippedItems?.length ? " Typing was skipped; typing challenges are off." : ""} Day 1 is now open.`;
       follow =
         "Explore home, market, lake and school in any order, or use “Skip to Muhammad Jan’s check-in” on the town screen. His 15-question Library home-award challenge is available now.";
     } else if (s.mode === "review") {
@@ -424,7 +440,7 @@ function createLessons({
           : s.loop === 2
             ? learning.completeRound(2)
               ? "Your village visits are complete. Muhammad Jan is ready for your check-in."
-              : "In the regular story path, visit the market and lake after school, then go home. You can also try Muhammad Jan’s challenge now."
+              : "After School, Home is available immediately. Market and Lake are optional visits before or after Home. Muhammad Jan’s challenge is also available."
             : s.loop === 3
               ? learning.completeRound(3)
                 ? "Your Day 3 visits are complete. Speak with Edris about dinner in your final challenge."
@@ -436,7 +452,7 @@ function createLessons({
     if (s.loop >= 6)
       follow =
         s.loop === 6
-          ? "Practise the other town locations, or join Saleha and Mina in the Hills: 15 turns, 12 correct to pass."
+          ? "Practise the other town locations, or join Deena and Medina in the Hills: 15 turns, 12 correct to pass."
           : "Practise the other locations, or take Ms Hameed’s separate School examination: 25 turns, 20 correct to pass.";
     if (s.loop >= 8)
       follow = `Practise the other locations, or take the ${progression.getChallengeSpec(s.loop).questionCount}-question final challenge. Week 2 remains draft content for native review.`;

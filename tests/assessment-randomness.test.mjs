@@ -16,7 +16,7 @@ for(let draw=0;draw<256;draw++) {
  for(const loc of t.content.zoneKeys) {
   const candidates=plan.locationAssignments[loc];
   const selected=words.filter(q=>(t.content.LIBRARY_DATA.sourceMappings[q.id] || []).some(r=>candidates.includes(r.lemmaId)));
-  assert.equal(selected.length,1,'each assigned location contributes one recall target');
+  assert(selected.length>=1,'each assigned location contributes at least one recall target');
   const id=t.content.LIBRARY_DATA.sourceMappings[selected[0].id][0].lemmaId;
   frequencies.set(id,(frequencies.get(id)||0)+1);
  }

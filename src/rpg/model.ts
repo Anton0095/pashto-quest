@@ -11,3 +11,7 @@ export {createChapterRoutes} from './routes';
 export {findPath,canInteract,approachTiles,createMovementController} from './movement';
 
 export {dailySpawn,dailyGuidance} from './daily-flow';
+
+export {createActivities} from './activities';
+
+export {conversationChoices,conversationEvent,conversationCompleted,conversationEligible} from './conversations';

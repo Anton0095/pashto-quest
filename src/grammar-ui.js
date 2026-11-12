@@ -1,5 +1,5 @@
 /* Grammar is prescribed as rules, never as stored Pashto example sentences. */
-function createGrammar({ state, content, ui, storage }) {
+function createGrammar({ state, content, ui, storage, learning }) {
   function showGrammar() {
     const s = state.session,
       day = content.curriculum.days[s.loop - 1];
@@ -28,11 +28,16 @@ function createGrammar({ state, content, ui, storage }) {
         d.day,
         "visible-prerequisite-workshop",
       );
-    ui.$("guideMessage").textContent = day.intro;
+    const teacher=content.teacherFor(s.loop,s.loc,s.mode).name,place=s.loc?ui.displayPlace(s.loc):"the Library";
+    ui.$("guideMessage").textContent = `${teacher}: Here at ${place}, we will practise ${day.topic} using the words you studied in this lesson.`;
     // The learner has studied this visit's words/forms before this rule is shown.
     LibraryEngine.unlock(state.progress, s.loop, "grammar-workshop");
     ui.$("grammarNext").disabled = false;
     ui.$("grammarNext").textContent = "Build sentences from my studied forms →";
+    if(s.loop===2){
+      const explanation=ui.$("grammarExplanation"),rules=ui.node('details');rules.append(ui.node('summary','Read the SOV rules'),...explanation.childNodes);explanation.replaceChildren(rules);
+      ui.$("grammarNext").textContent="Continue to sentence practice →";
+      const mounted=ui.sovDemo.mount(ui.$("grammarExplanation"),2,()=>{ui.$("grammarNext").disabled=false;},learning.lessonSentenceTargets(s));ui.$("grammarNext").disabled=mounted;}
     storage.save();
   }
   return { showGrammar };

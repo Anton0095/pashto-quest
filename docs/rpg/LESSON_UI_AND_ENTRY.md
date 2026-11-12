@@ -1,5 +1,8 @@
 # Lesson UI, feedback and explicit entry
 
+> This records the preceding release. The subsequent [lesson/progression fixes](LESSON_PROGRESSION_FIXES.md) supersede name projection, Day 2 ordering, pace and save-format statements where applicable; original validation remains release-specific.
+
+
 This follow-up continues PR #35 on `fix/ui-challenges-daily-flow`. `origin/main` was fetched before editing and was already included at `a193937`. The village, Phaser architecture, full-screen Learning Mode, two-column exploration and prior six fixes remain.
 
 ## Layout and feedback

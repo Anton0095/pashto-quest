@@ -38,6 +38,7 @@ function createLearning({ state, content, progression }) {
   function libraryContext(source, contentId) {
     return {
       day: state.session?.loop || state.day,
+      lessonId:state.session?.mode==='standard'?state.session.id:undefined,
       source,
       location:
         state.session?.loc ||
@@ -61,6 +62,12 @@ function createLearning({ state, content, progression }) {
   }
   function libraryLessonPool(day, place) {
     const plan=LibraryEngine.ensurePlan(state.progress,content.LIBRARY_DATA,day);
+    if(!plan.lessonNewLexemes?.[place]){
+      const pool=plan.studyPools?.[place]||LibraryEngine.lessonPool(state.progress,content.LIBRARY_DATA,content.NARRATIVE_DATA,day,place);
+      (plan.lessonNewLexemes ||= {})[place]=[...new Set(pool.flatMap(id=>(content.LIBRARY_DATA.sourceMappings[id]||[]).map(r=>r.lemmaId)))].filter(id=>{
+        const entry=content.libraryEntries[id];return ['noun','verb'].includes(entry?.partOfSpeech)&&(state.reviewCampaign?(plan.locationAssignments[place]||[]).includes(id):!state.progress.library.acquired[id]?.formallyIntroducedDay);
+      });
+    }
     if(state.reviewCampaign&&plan.studyPools?.[place])return [...plan.studyPools[place]];
     const pool=LibraryEngine.lessonPool(state.progress, content.LIBRARY_DATA, content.NARRATIVE_DATA, day, place);
     if(state.reviewCampaign){
@@ -125,6 +132,10 @@ function createLearning({ state, content, progression }) {
       .slice(0, count)
       .map((card) => content.registerGenerated(card));
   }
+  function lessonSentenceTargets(s=state.session) {
+    if(s?.mode!=='standard')return [];
+    return (state.progress.library.plans[s.loop]?.lessonNewLexemes?.[s.loc]||[]).filter(id=>state.reviewCampaign||state.progress.library.acquired[id]?.firstStudyLesson===s.id);
+  }
   function prepareSentences(s) {
     if (s.mode !== "standard" || s.generatedPrepared) return;
     s.generatedPrepared = true;
@@ -138,11 +149,14 @@ function createLearning({ state, content, progression }) {
       const excluded = prior
         .map((d) => content.wordById[d.id]?.ps)
         .filter(Boolean);
+      const targets=lessonSentenceTargets(s);
+      (plan.lessonNewLexemes ||= {})[s.loc]=targets;
+      const qualifies=c=>Object.values(c.generated.slots).some(r=>targets.includes(r.lemmaId));
       const selected = generatedPractice(
         s.loop,
         plan.seed + s.attemptId,
         requested,
-        { excludeTexts: excluded },
+        { excludeTexts: excluded, ...(targets.length?{filter:qualifies}:{}) },
       );
       selections[s.loc] = selected.map((c) => c.id);
       (plan.generatedPracticeCards ||= {})[s.loc] = JSON.parse(
@@ -152,8 +166,10 @@ function createLearning({ state, content, progression }) {
         requested,
         available: selected.length,
         missing: Math.max(0, requested - selected.length),
+        currentLessonLexemes: targets,
+        fallback: targets.length&&!selected.length?'no-compatible-current-lesson-sentence':null,
         reason:
-          selected.length < requested
+          targets.length&&!selected.length ? "No licensed sentence includes a new noun or verb from this lesson. Continue vocabulary and form practice; no unrelated or invented clause is substituted." : selected.length < requested
             ? "Not enough distinct, previously unshown sentences from individually studied forms and unlocked grammar. Continue vocabulary/form and grammar practice; no fixed sentence is substituted."
             : null,
       };
@@ -244,14 +260,20 @@ function createLearning({ state, content, progression }) {
     return word.loop === 0 ? state.progress.tutorialDone : allowed(word.loop);
   }
 
-  function submitChallenge(value) {
+  function itemCompleted(id) {
+    const s = state.session;
+    return !!(s?.passed?.has(id) || s?.skippedItems?.includes(id));
+  }
+  function submitChallenge(value, { skipped = false } = {}) {
     const s = state.session;
     if (s?.mode !== "challenge" || s.locked || s.finished) return null;
     const q = s.questions[s.index],
       w = content.wordById[q.id];
     if (["choice", "address"].includes(q.kind) || q.grammarConcept) return null;
-    const correct = QuestionEngine.evaluate(q, w, value);
-    libraryPractice(
+    if (skipped && !QuestionEngine.isTyped(q)) return null;
+    const correct = !skipped && QuestionEngine.evaluate(q, w, value);
+    if (skipped) (s.skippedQuestions ||= []).push(s.index);
+    if (!skipped) libraryPractice(
       q.id,
       correct,
       `challenge:${s.attemptId}:${s.index}`,
@@ -271,9 +293,9 @@ function createLearning({ state, content, progression }) {
         ? progression.awardXP(state.progress, key, 5)
         : 0;
     s.earned += gain;
-    return { q, w, correct, gain };
+    return { q, w, correct, gain, skipped };
   }
-  function submitLesson(value) {
+  function submitLesson(value, { skipped = false } = {}) {
     const s = state.session;
     if (
       !s ||
@@ -282,10 +304,11 @@ function createLearning({ state, content, progression }) {
       !s.queue.length
     )
       return null;
+    if (skipped && !QuestionEngine.isTyped(s.queue[0])) return null;
     const item = s.queue.shift(),
       w = content.wordById[item.id],
       previous = stat(w.id);
-    const correct = QuestionEngine.evaluate(
+    const correct = !skipped && QuestionEngine.evaluate(
       {
         kind: item.kind || "word",
         direction: item.kind === "construct" ? "en-ps" : "ps-en",
@@ -293,7 +316,8 @@ function createLearning({ state, content, progression }) {
       w,
       value,
     );
-    libraryPractice(
+    if (skipped && !(s.skippedItems ||= []).includes(w.id)) s.skippedItems.push(w.id);
+    if (!skipped) libraryPractice(
       w.id,
       correct,
       `lesson:${s.attemptId}:${s.answered}`,
@@ -319,7 +343,7 @@ function createLearning({ state, content, progression }) {
           7,
         );
       s.earned += gain;
-    } else
+    } else if (!skipped)
       s.queue.splice(Math.min(2, s.queue.length), 0, {
         ...item,
         id: w.id,
@@ -327,14 +351,19 @@ function createLearning({ state, content, progression }) {
       });
     s.answered++;
     s.locked = true;
-    return { w, correct, gain };
+    return { w, correct, gain, skipped };
   }
-  function submitTutorial(id, correct) {
+  function submitTutorial(id, correct, { skipped = false } = {}) {
     const s = state.session;
+    if (s?.mode !== "tutorial" || itemCompleted(id)) return null;
+    const typed = content.tutorialCards.find(card => card.id === id)?.kind === "text";
+    if (skipped && !typed) return null;
+    if (typed && (correct || skipped)) state.progress.enableTypingChallenges = !skipped;
+    if (skipped) { correct = false; (s.skippedItems ||= []).push(id); }
     const first = !s.firstAsked.has(id);
     s.firstAsked.add(id);
     s.tutorialResponses++;
-    if (content.wordById[id]?.type !== "profile")
+    if (!skipped && content.wordById[id]?.type !== "profile")
       libraryPractice(
         id,
         correct,
@@ -349,11 +378,17 @@ function createLearning({ state, content, progression }) {
     }
   }
   return {
+    itemCompleted,
+    authoredResponse(id, day) {
+      const card = SentenceEngine.restoreId(content.LIBRARY_DATA, content.LIBRARY_DATA.sentenceFrames, id);
+      return card && card.loop <= day ? card : null;
+    },
     availableSentences,
     surface,
     deliverySummary,
     generatedPractice,
     prepareSentences,
+    lessonSentenceTargets,
     duePool,
     libraryExpose,
     libraryLessonPool,

@@ -13,6 +13,7 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     if(raw.sleepIntent&&Number.isInteger(raw.sleepIntent.from)&&Number.isInteger(raw.sleepIntent.to)&&data.days[String(raw.sleepIntent.from)]&&data.days[String(raw.sleepIntent.to)]&&data.days[String(raw.sleepIntent.from)].nextChapter===data.days[String(raw.sleepIntent.to)].id)out.sleepIntent={...raw.sleepIntent};
     if(typeof raw.chapter==='string'&&Object.values(data.days).some(c=>c.id===raw.chapter))out.chapter=raw.chapter;
     if(raw.routes&&object(raw.routes))out.routes=Object.fromEntries(Object.entries(raw.routes).filter(([id,route])=>Object.values(data.days).some(c=>c.id===id)&&['normal','skip'].includes(route)));
+    if(raw.activities&&object(raw.activities))out.activities=Object.fromEntries(Object.entries(raw.activities).filter(([id,s])=>data.npcs.some(n=>n.id===id&&n.activity)&&s&&data.maps[s.map]&&Number.isInteger(s.x)&&Number.isInteger(s.y)&&['up','down','left','right'].includes(s.facing)&&Number.isInteger(s.stop)&&s.stop>=0&&s.stop<100&&Number.isFinite(s.wait)&&s.wait>=0&&s.wait<=60000&&Number.isInteger(s.turn)&&s.turn>=0&&s.turn<1000000).map(([id,s])=>[id,{map:s.map,x:s.x,y:s.y,facing:s.facing,stop:s.stop,wait:s.wait,turn:s.turn}]));
     out.position=RPGWorldData.recover(data,raw.position);
     if(['masculine','feminine','neutral'].includes(raw.appearance || ''))out.appearance=raw.appearance as Appearance;
     for(const field of ['flags','npcFlags','triggers'] as const) if(object(raw[field]))out[field]=Object.fromEntries(Object.entries(raw[field] || {}).filter(([k,v])=>/^[a-z0-9_-]{1,80}$/i.test(k)&&typeof v==='boolean').slice(0,200));
@@ -41,8 +42,16 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     if(raw.mode==='standard'&&raw.loc!==raw.id.split('-')[1])return null;
     if(raw.attemptId>progress.library.attemptSequence || typeof raw.locked!=='boolean')return null;
     for(const field of ['required','studyWords','greetingCards','studySentences','firstAsked','passed'])if(!Array.isArray(raw[field])||(raw[field] as string[]).length>1000||(raw[field] as string[]).some(id=>!content.wordById[id]))return null;
+    const requiredIds=raw.required, passedIds=raw.passed as unknown as string[];
+    if(raw.skippedItems!==undefined && (
+      !Array.isArray(raw.skippedItems) ||
+      new Set(raw.skippedItems).size!==raw.skippedItems.length ||
+      raw.skippedItems.some(id=>typeof id!=="string" || !requiredIds.includes(id) || passedIds.includes(id))
+    ))return null;
     if(raw.tutorialConstruction||raw.profileGender!==undefined||raw.profileName!==undefined)return null;
     if(!Array.isArray(raw.queue)||raw.queue.length>1000||raw.queue.some(q=>!q||!content.wordById[q.id]||!['word','construct'].includes(q.kind)||!int(q.retries)))return null;
+    if(raw.recallDraft!==undefined&&(typeof raw.recallDraft!=="string"||raw.recallDraft.length>160))return null;
+    if(raw.queue.some(q=>q.answerFormat!==undefined&&!["select","type"].includes(String(q.answerFormat))))return null;
     if(raw.activeItem && (!content.wordById[raw.activeItem.id] || !['word','construct'].includes(raw.activeItem.kind)))return null;
     if(raw.phase==='quiz'&&(!raw.activeItem||!Array.isArray(raw.tileOrder)))return null;
     if(!Array.isArray(raw.built)||new Set(raw.built).size!==raw.built.length)return null;

@@ -27,14 +27,15 @@ for(const fixture of fixtures.positiveAuthoredRegression) {
  const source=data.generationAttestations.find(a=>a.sourceId===fixture.sourceId);
  assert.equal(source.pashto,fixture.pashto,fixture.id);
  assert.equal(source.english,fixture.english,fixture.id);
- const card=catalog.find(c=>c.ps===fixture.pashto&&c.en===fixture.english);
+ const current=data.generationAttestations.find(a=>a.nameUpdateOf===fixture.sourceId)||source;
+ const card=catalog.find(c=>c.ps===current.pashto&&c.en===current.english);
  assert(card,fixture.id+' must be composed, not just parsed as a fixture');
  assert(card.loop>=fixture.dayMin);
  assert.equal(card.generated.family === "demonstrative_descriptor" ? "equative_descriptor" : card.generated.family,fixture.family);
  assert.equal(card.generated.userVerified,false);
  assert(card.generated.sourceId);
  const out=S.compose(data,byFrame.get(card.generated.frameId),{slots:card.generated.slots});
- assert.equal(out.ps,fixture.pashto);assert.equal(out.en,fixture.english);
+ assert.equal(out.ps,current.pashto);assert.equal(out.en,current.english);
  console.log('PASS fixture '+fixture.id+' (effective day '+card.loop+')');
 }
 const card=(ps)=>{const c=catalog.find(c=>c.ps===ps);assert(c,ps);return c};
@@ -43,8 +44,8 @@ const frameFor=(ps)=>plain(byFrame.get(card(ps).generated.frameId));
 const read1='زه کتاب لولم.', read3='هغه کتاب لولي.', readpl='هغوی کتابونه لولي.';
 const reject=(d,f,b,id)=>assert.equal(S.compose(d,f,b),null,id);
 // Each JSON negative case mutates actual compiler inputs, not a second fixture validator.
-assert(catalog.some(c=>c.en === "What does Mina read?"), "Proper names retain their English capitalisation");
-assert(catalog.some(c=>c.en === "What do Mina and I read?"), "Coordinated subjects retain the speaker and English I");
+assert(catalog.some(c=>c.en === "What does Medina read?"), "Proper names retain their English capitalisation");
+assert(catalog.some(c=>c.en === "What do Medina and I read?"), "Coordinated subjects retain the speaker and English I");
 const negatives={
  'NEG-D1-ACTION':()=>assert(!S.eligible(player(1),data,frames,1).some(c=>c.generated.family.startsWith('present'))),
  'NEG-NOUN-COPULA-GENDER':()=>{const f=frameFor('دا کوټه تیاره ده.');f.terminals=f.terminals.filter(t=>t.gender!=='feminine');reject(data,f,binding('دا کوټه تیاره ده.'),'gender')},

@@ -97,7 +97,7 @@ for (const width of [375,1280]) {
     // Save/reload must restore correct and wrong choice colours without reaward.
     for(const right of [false,true]) {
       const expected=await p.evaluate(right=>{
-        const t=__test;t.reset(0);t.state.progress.tutorialDone=true;t.learning.libraryExpose('phrase-d1-home-welcome','lesson');t.challenge.startChallenge(1);
+        const t=__test;t.reset(8);t.state.progress.tutorialDone=true;t.learning.libraryExpose('phrase-d1-home-welcome','lesson');t.challenge.startChallenge(1);
         const s=t.state.session;s.index=s.questions.findIndex(q=>q.kind==='word'&&!q.unstudied);s.answered=s.index;t.challenge.showChallengeQuestion();
         const q=s.questions[s.index],value=right?t.content.wordById[q.id].en:q.choiceOrder.find(x=>!t.Q.evaluate(q,t.content.wordById[q.id],x));
         [...document.querySelectorAll('#choices button')].find(b=>b.dataset.answer===value).click();

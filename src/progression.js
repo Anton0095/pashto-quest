@@ -1,6 +1,6 @@
 /* Save factory, XP, assessment outcomes and access rules. No DOM or storage. */
 function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA }, libraryEngine) {
-  const SAVE_VERSION = 7;
+  const SAVE_VERSION = 8;
   const XP_STEP = 200;
   const XP_FLOORS = {
     1: 200,
@@ -20,6 +20,7 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     complete: {},
     challenges: {},
     tutorialDone: false,
+    enableTypingChallenges: false,
     playerProfile: { name: "Player", gender: "unspecified" },
   });
   function highestClearedDay(p) {
@@ -110,10 +111,16 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     p.xp += amount;
     return amount;
   }
+  function completeOnboarding(p) {
+    if (p.reviewOnly || p.tutorialDone) return false;
+    p.tutorialDone = true;
+    p.onboardingIntroductionPending = true;
+    return true;
+  }
   function completeLessonOnce(p, id, mode, passed, itemCount) {
     if(p.reviewOnly)return 0;
     if (!passed) return 0;
-    if (mode === "tutorial" && !p.tutorialDone) p.tutorialDone = true;
+    if (mode === "tutorial" && !p.tutorialDone) completeOnboarding(p);
     else if (mode === "standard" && !p.complete[id]) p.complete[id] = true;
     else return 0;
     const bonus = itemCount > 0 ? 25 : 0;
@@ -150,10 +157,6 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     if (!allowed(progress, day)) return false;
     if (day === 2) {
       if (!progress.complete["2-school"]) return place === "school";
-      if (place === "residential")
-        return (
-          !!progress.complete["2-business"] && !!progress.complete["2-nature"]
-        );
     }
     if (day === 1 || day === 2) return true;
     const opening = curriculum.days[day - 1].opening;
@@ -161,6 +164,7 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
   }
 
   return {
+    completeOnboarding,
     SAVE_VERSION,
     XP_STEP,
     fresh,

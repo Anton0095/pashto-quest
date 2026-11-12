@@ -1,6 +1,11 @@
 # Character and village-life expansion — approved design (6 November 2026)
 
-**Status: approved narrative/character requirements, NOT yet implemented.** This document is the canonical **target cast and behaviour specification** for the next Codex implementation branch. The current playable world, portraits, schedules, save identities and story strings still reflect the pre-change cast until implementation is merged. `content/RPG_WORLD.json` remains the authority for *actual* registered NPCs and events; `content/CHARACTER_PORTRAITS.json` remains the authority for *actual* portrait assets. Do not confuse intended design with shipped status.
+Current map/schedule behavior: [permanent Hills and the Day 6 invitation](HILLS_EXPANSION.md) supersede the earlier eastern spur, Day 6-only access and Medina-at-Lake introduction. Historical verification figures below retain their original scope.
+
+
+**Status: runtime/art implemented on `feature/character-expansion`, pending review/merge.** This document remains the canonical cast and behaviour specification. See [Living village](LIVING_VILLAGE.md) for the implementation, assets, save behaviour, actual validation, limits and owner-approved Pashto name spellings. `content/RPG_WORLD.json` remains the authority for actual NPCs/events; `content/CHARACTER_PORTRAITS.json` owns actual portrait assets. Days 8–14 RPG registrations and Bilal's catch reveal remain future work.
+
+See the [current dialogue and Nayab follow-up](QUEST_IMPROVEMENTS.md) for superseding narrative, gender/design and verification details.
 
 ## Character identity changes (mandatory)
 
@@ -17,7 +22,7 @@ Use **Deena** and **Medina** consistently in all player-visible labels, dialogue
 | --- | --- | --- | --- |
 | **Bilal** | `bilal` | Young Afghan fisherman, dark brown hair, brown eyes. Searching for **a mysterious catch**. | Typically by the Lake and dock; can be approached for conversations that progressively hint at his search. Keep the identity of the catch unresolved for now; do not invent a canonical answer or force a quest completion. |
 | **Zamir** | `zamir` | Afghan businessman who **owns multiple market stalls**. | Walks around the Market inspecting his stalls, pausing at different stands. Interactable when stationary and moving; his patrol should look purposeful. Distinct from Edris, who remains a trader. |
-| **Nayab** | `nayab` | Village child; appearance not yet specified | Participates in a group of children playing in public, walkable village areas. |
+| **Nayab** | `nayab` | Young Afghan girl with dark braids, rust tunic and green vest | Participates in a group of children playing in public, walkable village areas. |
 | **Sara** | `sara` | Village child; appearance not yet specified | Same playing group; varied, age-appropriate activity and idle dialogue. |
 | **Omar** | `omar` | Village child; appearance not yet specified | Same playing group; varied, age-appropriate activity and idle dialogue. |
 | **Afiya** | `afiya` | Village child; appearance not yet specified | Same playing group; varied, age-appropriate activity and idle dialogue. |
@@ -28,7 +33,7 @@ The five children are **five distinct persistent characters**, not interchangeab
 ## Narrative integration and chapter continuity
 
 - **Days 1–2:** Introduce new background residents naturally (if present) without interrupting Muhammad Jan's tutorial or Ms Hameed's mandated School opening. Children provide atmospheric village activity rather than required lessons.
-- **Day 3:** **Deena** remains the Lake lesson-giver (first-person `I`). Bilal can be found near the lake/dock discussing an unusual catch; his optional conversation must not gate Deena or Edris's market challenge.
+- **Day 3:** **Deena** remains the Lake lesson-giver (first-person `I`). Bilal discusses everyday fishing here; the mysterious fish is first mentioned on Day 4; his optional conversation must not gate Deena or Edris's market challenge.
 - **Day 4:** Muhammad Jan remains the Home teacher. Existing Day 4 challenge remains intact.
 - **Day 5:** **Deena** participates in the Lake gathering and the established teacher/character movement. Background children and Bilal/Zamir remain optional and do not change the formal/plural `you` objective.
 - **Day 6:** **Deena introduces Medina**, her younger sister. Preserve the Lake lesson, Hills group activity and established `we` grammar objective.

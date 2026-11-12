@@ -16,7 +16,7 @@ for(const width of [375,1280]){
   const animated=p.waitForFunction(()=>__phaserDiagnostics().moving&&Number(__phaserDiagnostics().frame)%2===1);await p.waitForTimeout(160);await p.keyboard.press('ArrowDown');await animated;await p.evaluate(()=>__phaserTestScene.tweens.timeScale=1);await p.waitForFunction(()=>+document.getElementById('rpgCanvas').dataset.y===19);const afterCamera=await p.evaluate(()=>__phaserDiagnostics().camera);assert(afterCamera.y>camera.y,'Phaser camera follows');assert(await p.locator('#rpgInteract').isDisabled(),'Interaction requires adjacency, not diagonal distance');
   await move('ArrowLeft',21,19);await move('ArrowUp',21,18);await move('ArrowRight',22,18);
   await p.locator('#rpgInteract').click();await p.keyboard.down('ArrowDown');await p.waitForTimeout(350);await p.keyboard.up('ArrowDown');assert.deepEqual(await pos(),initial);assert(await p.evaluate(()=>__phaserDiagnostics().physicsPaused));
-  await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();await p.locator('#rpgDialogue').getByRole('button',{name:'I will meet you at the Library',exact:true}).click();
+  await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();await p.locator('#rpgDialogue').getByRole('button',{name:'Begin tutorial',exact:true}).click();
   async function placeFixture(position){await p.waitForTimeout(300);await p.evaluate(async position=>{const k='pashto-quest-rpg-world-v1',current=localStorage.getItem(k),w=JSON.parse(current);w.position=position;w.view='world';await navigator.locks.request(k,()=>__fixtureFence.commit(k,current,JSON.stringify(w),()=>localStorage.getItem(k),()=>{localStorage.setItem(k,JSON.stringify(w));return true;}));},position);await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser==='4.2.1');}
   await placeFixture({map:'village',x:92,y:60,facing:'up'});const size=await p.locator('#rpgCanvas').evaluate(c=>({w:c.width,h:c.height}));await p.waitForFunction(({w,h})=>{const c=__phaserDiagnostics().camera;return c.x===1536-w&&c.y===1024-h;},size);
   await placeFixture({map:'village',x:60,y:8,facing:'right'});await p.keyboard.press('ArrowRight');await p.waitForTimeout(200);assert.equal((await pos()).x,60,'Phaser tilemap water collision');assert((await p.evaluate(()=>__phaserDiagnostics())).colliders>=2);
@@ -31,7 +31,7 @@ for(const width of [375,1280]){
   // Re-enter Library, approach the tutorial NPC, and verify the contextual HTML learning panel retains the world.
   await p.waitForTimeout(160);await p.keyboard.press('ArrowUp');await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.map==='library');
   await move('ArrowLeft',5,8);await move('ArrowUp',5,7);await move('ArrowUp',5,6);await move('ArrowRight',6,6);
-  await p.locator('#rpgInteract').click();await p.getByRole('button',{name:'Begin Library tutorial',exact:true}).click();
+  await p.locator('#rpgInteract').click();await p.getByRole('button',{name:'Begin tutorial',exact:true}).click();
   assert(await p.locator('#lessonScreen').isVisible());assert.equal(await p.locator('#rpgCanvas').isVisible(),false);assert(await p.evaluate(()=>document.getElementById('lessonScreen').closest('#rpgContext')!==null));
   const paused=await pos();await p.keyboard.press('ArrowDown');await p.waitForTimeout(200);assert.deepEqual(await pos(),paused);assert(await p.evaluate(()=>__phaserDiagnostics().physicsPaused));
   assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2));assert.deepEqual(b.errors,[]);

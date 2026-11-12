@@ -22,10 +22,10 @@ for(const width of [375,1280]) {
     for(const b of detail.lastElementChild.querySelectorAll('button'))if(!allowed.has(b.textContent)&&!['A different meaning','Another response','None of these'].includes(b.textContent))throw Error('Library leaked '+b.textContent);
     document.querySelector('#libraryDialog').close();
   });
-  await p.evaluate(()=>__test.challenge.startChallenge(1));
+  await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;__test.challenge.startChallenge(1);});
   const unknown=await p.evaluate(()=>{
    const t=__test,s=t.state.session;
-   s.index=s.questions.findIndex(q=>q.unstudied&&!q.recognition);s.answered=s.index;t.challenge.showChallengeQuestion();
+   s.index=s.questions.findIndex(q=>q.answerFormat==="type"&&q.direction==="ps-en"&&q.unstudied);s.answered=s.index;t.challenge.showChallengeQuestion();
    return {q:s.questions[s.index],card:t.content.wordById[s.questions[s.index].id]};
   });
   await p.locator("#quizPanel").screenshot({path:`docs/maintenance/p1/uncued-recall-${width}.png`});
@@ -71,7 +71,7 @@ for(const width of [375,1280]) {
    Storage.prototype.setItem=()=>{throw Error('Intermittent')};__test.state.progress.xp+=9;await __test.storage.save();
   });await p.reload();assert.equal(await p.evaluate(()=>__test.state.progress.xp),xp+7);
   // Activation licenses current grammar; practical answers add no further unlocks.
-  await p.evaluate(()=>{const t=__test;t.reset(0);t.state.progress.tutorialDone=true;t.challenge.startChallenge(1);if(t.state.session.questions.some(q=>['choice','address'].includes(q.kind)))throw Error('Retired rule question generated')});
+  await p.evaluate(()=>{const t=__test;t.reset(8);t.state.progress.tutorialDone=true;t.challenge.startChallenge(1);if(t.state.session.questions.some(q=>['choice','address'].includes(q.kind)))throw Error('Retired rule question generated')});
   const grammarAtStart=await p.evaluate(()=>__test.state.progress.library.grammar);assert.equal(grammarAtStart['grammar-day-1'].source,'challenge-start');
   await answerCurrent(p);assert.deepEqual(await p.evaluate(()=>__test.state.progress.library.grammar),grammarAtStart);
   const frozenPrompt=await p.locator('#quizPrompt').innerText();await p.evaluate(()=>__test.storage.settled());await p.reload();assert.equal(await p.locator('#quizPrompt').innerText(),frozenPrompt);

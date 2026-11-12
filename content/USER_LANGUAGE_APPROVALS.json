@@ -3778,19 +3778,25 @@
     },
     {
       "lemmaId": "lemma:person:mina",
-      "pashto": "مینا",
+      "pashto": "مدینه",
       "englishSenses": [
-        "Mina"
+        "Medina"
       ],
-      "romanisation": "meena"
+      "romanisation": "madeena",
+      "romanisationStatus": "editorial aid, not supplied/approved pronunciation",
+      "nameSpellingApproval": "content/CHARACTER_NAMES.json",
+      "recordedDate": "2026-11-05"
     },
     {
       "lemmaId": "lemma:person:saleha",
-      "pashto": "صالحه",
+      "pashto": "دینه",
       "englishSenses": [
-        "Saleha"
+        "Deena"
       ],
-      "romanisation": "saaleha"
+      "romanisation": "deena",
+      "romanisationStatus": "editorial aid, not supplied/approved pronunciation",
+      "nameSpellingApproval": "content/CHARACTER_NAMES.json",
+      "recordedDate": "2026-11-05"
     },
     {
       "lemmaId": "lemma:person:muhammad-jan",
@@ -3807,6 +3813,17 @@
         "Edris"
       ],
       "romanisation": "edrees"
+    },
+    {
+      "lemmaId": "lemma:v-have",
+      "pashto": "لرل",
+      "englishSenses": [
+        "To have"
+      ],
+      "romanisation": "laral",
+      "reference": "Owner task: Pashto Quest — Lesson and Progression Fixes, Fix 6",
+      "scope": "Exact base only; finite forms and combinations remain provisional",
+      "recordedDate": "2026-11-06"
     }
   ],
   "phrases": [
@@ -3953,5 +3970,16 @@
   "stillUntranslatedTutorialProposals": [
     "proposal:tutorial-gender",
     "proposal:tutorial-name"
-  ]
+  ],
+  "characterNameUpdates": {
+    "reference": "content/CHARACTER_NAMES.json",
+    "date": "2026-11-05",
+    "reviewer": "Yaqub Forrest (project owner)",
+    "suppliedSpellings": {
+      "mina": "مدینه",
+      "saleha": "دینه"
+    },
+    "scope": "Exact current character-name spelling/English identity only; existing lexical/proof IDs and earlier evidence remain unchanged. Romanisation aids, morphology, generated combinations and audio are not newly approved.",
+    "nativeCertificationClaimed": false
+  }
 }

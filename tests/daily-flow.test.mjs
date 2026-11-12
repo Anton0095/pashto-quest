@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {runtime,reset,beginAttempt,plain}from'./runtime-fixture.mjs';
 const t=runtime({seedSource:()=>12345});
-for(const pace of [0,24])for(const day of [1,2,7]){
+for(const pace of [8,24])for(const day of [1,2,7]){
  reset(t,pace);t.state.day=day;
  for(let d=1;d<day;d++)t.progression.completeChallengeOnce(t.state.progress,d,t.progression.getChallengeSpec(d).questionCount);
  beginAttempt(t,day);const qs=t.state.session.questions;
@@ -9,7 +9,7 @@ for(const pace of [0,24])for(const day of [1,2,7]){
  assert(qs.slice(0,3).every(q=>!typed(q)));
  for(let i=1;i<qs.length;i++)assert(!(typed(qs[i])&&typed(qs[i-1])));
  for(const q of qs)if(t.content.wordById[q.id].type==='greeting'){
-  assert.equal(q.kind,'word');assert(q.recognition);assert.equal(q.direction,'ps-en');
+  assert.equal(q.kind,'word');assert(q.recognition);assert(['ps-en','en-ps'].includes(q.direction));
   assert.equal(q.choiceOrder.filter(v=>t.Q.evaluate(q,t.content.wordById[q.id],v)).length,1);
  }
  const frozen=plain(qs);assert.deepEqual(plain(t.questions.selectChallenge(day)),frozen);

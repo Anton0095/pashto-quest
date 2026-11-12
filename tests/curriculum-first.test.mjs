@@ -10,7 +10,7 @@ const { E, S } = vm.runInNewContext(
     ";({E:LibraryEngine,S:SentenceEngine})",
 );
 const plain = (x) => JSON.parse(JSON.stringify(x));
-assert.equal(data.entries.length, 473);
+assert.equal(data.entries.length, 474);
 assert(data.entries.every((e) => e.partOfSpeech !== "grammar"));
 const dark = data.entries.find((e) => e.lemmaId === "lemma:a-dark");
 assert.equal(dark.introduction.day, 5);
@@ -73,4 +73,4 @@ assert(catalog.some((c) => c.ps === "کور نوی دی."));
 assert(catalog.some((c) => c.ps === "کتاب لوی دی."));
 assert(catalog.every((c) => Object.values(c.generated.slots).every((r) =>
   p.library.acquired[r.lemmaId].introducedFormIds.includes(r.formId))));
-console.log("PASS curriculum-first: 473 identities, deliberate introductions/all paces, exposure vs introduction, productive unlocked form catalog");
+console.log("PASS curriculum-first: 474 identities, deliberate introductions/all paces, exposure vs introduction, productive unlocked form catalog");

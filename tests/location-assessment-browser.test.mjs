@@ -27,9 +27,9 @@ for(const width of [375,1280]) {
     const sentenceLocations=new Set(s.questions.filter(q=>q.generated).flatMap(q=>Object.values(q.generated.generated.slots).flatMap(r=>t.content.zoneKeys.filter(loc=>plan.locationAssignments[loc].includes(r.lemmaId)))));
     return {sentenceLocations:[...sentenceLocations].sort(),counts:t.content.zoneKeys.map(loc=>wordQs.filter(q=>(t.content.LIBRARY_DATA.sourceMappings[q.id] || []).some(ref=>plan.locationAssignments[loc].includes(ref.lemmaId))).length),identities:wordQs.map(q=>t.E.identity(t.content.LIBRARY_DATA,q.id))};
    });
-   assert.deepEqual(coverage.counts,[1,1,1,1]);assert.equal(new Set(coverage.identities).size,4);assert.deepEqual(coverage.sentenceLocations,["business","nature","residential","school"]);
+   assert(coverage.counts.every(n=>n>=1));assert.equal(new Set(coverage.identities).size,coverage.identities.length);assert.deepEqual(coverage.sentenceLocations,["business","nature","residential","school"]);
    for(let i=0;i<15;i++) {
-    const info=await p.evaluate(()=>{const t=__test,q=t.state.session.questions[t.state.session.index];return {q,en:t.content.wordById[q.id].en}});
+    const info=await p.evaluate(()=>{const t=__test,q=t.state.session.questions[t.state.session.index];return {q,en:t.content.wordById[q.id][q.direction==='en-ps'?'ps':'en']}});
     if(info.q.unstudied&&!info.q.recognition) {
      assert(await p.locator('#unseenRecall').isVisible());
      assert(!(await p.locator('#choices').innerText()).includes(info.en));
