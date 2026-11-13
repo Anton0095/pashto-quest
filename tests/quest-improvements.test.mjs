@@ -31,7 +31,7 @@ for(const target of [{x:6,y:4},{x:2,y:4},...data.maps.library.transitions])asser
 assert(data.maps.library.furniture.filter(f=>f.kind==='bookshelf').length>=2);
 assert.equal(data.npcs.find(n=>n.id==='nayab').gender,'female');
 for(const typing of [false,true])for(const day of [1,7,14]){
- const t=runtime({seedSource:()=>98765});reset(t);t.state.progress.enableTypingChallenges=typing;
+ const t=runtime({seedSource:()=>98765});reset(t);t.state.progress.typingPreferences={en:typing,ps:typing};
  for(let d=1;d<day;d++)t.progression.completeChallengeOnce(t.state.progress,d,t.progression.getChallengeSpec(d).questionCount);
  t.state.day=day;beginAttempt(t,day);const qs=t.state.session.questions;
  const counts=qs.reduce((r,q)=>(r[q.answerFormat]++,r),{select:0,build:0,type:0});
@@ -48,7 +48,7 @@ for(const typing of [false,true])for(const day of [1,7,14]){
   if(!typing)assert.notEqual(q.answerFormat,'type');
  }
  assert.equal(new Set(qs.filter(q=>q.generated).map(q=>q.generated.ps)).size,qs.filter(q=>q.generated).length);
- const frozen=plain(qs);t.storage.save();assert.equal(t.storage.problem,null);t.state.progress.enableTypingChallenges=!typing;
+ const frozen=plain(qs);t.storage.save();assert.equal(t.storage.problem,null);t.state.progress.typingPreferences={en:!typing,ps:!typing};
  assert.deepEqual(plain(t.questions.selectChallenge(day)),frozen);t.storage.save();const restored=t.storage.load();assert(restored);assert.equal(t.storage.problem,null);assert.deepEqual(plain(restored.activeChallenge.questions),frozen);
 }
 // No sentence material: explicit valid fallback and recorded quota deviations.

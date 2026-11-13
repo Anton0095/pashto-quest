@@ -10,14 +10,14 @@ for(const [width,height]of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,84
  await p.setViewportSize({width,height});await p.locator('#startTutorial').click();
  await p.evaluate(()=>__test.lessons.begin('tutorial'));
  for(const id of ['g-hello','g-how']){const en=await p.evaluate(id=>__test.content.wordById[id].en,id);await p.locator('#tutorialInteraction button').getByText(en,{exact:true}).click();await p.locator('#teachNext').click();}
- await p.locator('[data-answer="پښتو"]').click();await p.locator('#teachNext').click();await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();await p.locator('#resultWorld').click();while(await p.getByRole('button',{name:'Continue',exact:true}).count())await p.getByRole('button',{name:'Continue',exact:true}).click();await p.getByRole('button',{name:'Explore the village',exact:true}).click();
+ await p.locator('[data-answer="پښتو"]').click();await p.locator('#teachNext').click();if(await p.locator('#tutorialName').isVisible()){await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();}else await p.locator('#tutorialInteraction button').getByText('Muhammad Jan',{exact:true}).click();await p.locator('#teachNext').click();await p.locator('#resultWorld').click();while(await p.getByRole('button',{name:'Continue',exact:true}).count())await p.getByRole('button',{name:'Continue',exact:true}).click();await p.getByRole('button',{name:'Explore the village',exact:true}).click();
  if(width===1366){
   await p.evaluate(()=>(__test.studySchool(1),__test.lessons.begin('1-residential')));await p.locator('#teachPanel').waitFor();await p.locator('#teachNext').click();
   assert.equal(await p.locator('#teachNote').isVisible(),false,'Base approval notice is absent without blank space');
   assert(!await p.getByText('Another location expression awaits an approved Pashto translation and cannot yet be studied.',{exact:true}).count());
   await p.screenshot({path:captures+'/study-1366.png',fullPage:true});await p.locator('#navWorld').click();
  }
- await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=false;(__test.studySchool(1),__test.challenge.startChallenge(1));});await p.locator('#quizPanel').waitFor();
+ await p.evaluate(()=>{__test.state.progress.typingPreferences={en:false,ps:false};(__test.studySchool(1),__test.challenge.startChallenge(1));});await p.locator('#quizPanel').waitFor();
  assert.equal(await p.locator('#rpgCanvas').isVisible(),false,'Learning hides the mounted world');
  const panel=await p.locator('#lessonScreen').boundingBox();assert(panel.width>=Math.min(width-40,1300),'Learning uses viewport width');
  const start=await p.evaluate(()=>scrollY);let captured=false;let footer;

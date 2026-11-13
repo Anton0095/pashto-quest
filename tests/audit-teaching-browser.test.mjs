@@ -5,7 +5,7 @@ mkdirSync('docs/maintenance/audit',{recursive:true});
 for(const width of [375,1280]){
  const b=await setup({width,transform:html=>html.replace('// @TEST_HOOK','window.__ui=ui; // @TEST_HOOK')});const p=b.page;
  try{
-  await tutorial(p);await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;(__test.studySchool(1),__test.challenge.startChallenge(1));});
+  await tutorial(p);await p.evaluate(()=>{__test.state.progress.typingPreferences={en:true,ps:true};(__test.studySchool(1),__test.challenge.startChallenge(1));});
   for(let i=0;i<15&&!await p.locator('#unseenRecall').isVisible();i++){await answerCurrent(p);await p.locator('#quizNext').click();}
   await p.locator('#unseenRecall').fill('draft to preserve');
   const paused=await p.evaluate(()=>JSON.parse(JSON.stringify(__test.state.session)));

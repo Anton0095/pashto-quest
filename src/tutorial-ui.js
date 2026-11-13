@@ -25,7 +25,7 @@ function createTutorial({ state, content, learning, ui, storage, questions, onAd
       "Choose a meaning",
       "Select the correct translation",
       "Answer a question",
-      "Type a response",
+      QuestionEngine.typingPreferences(state.progress).en ? "Type a response" : "Choose a response",
     ][n];
     ui.$("teachPashto").textContent = w.ps;
     ui.$("teachRoman").textContent = w.roman;
@@ -99,6 +99,12 @@ function createTutorial({ state, content, learning, ui, storage, questions, onAd
         b.classList.add("pashto-option");b.lang="ps";b.dir="rtl";b.dataset.answer=answer;choices.append(b);
       }
       area.append(choices);
+    } else if (!QuestionEngine.typingPreferences(state.progress).en) {
+      const choices=QuestionEngine.shuffle([w.answerEnglish,"Ms Hameed","Edris","Deena"]);
+      for(const value of choices){const button=ui.button(value,()=>{
+        if(QuestionEngine.evaluate({kind:"word",direction:"ps-en"},{en:w.answerEnglish,acceptedEnglishAnswers:w.acceptedEnglishAnswers},value))done();
+        else {tutorialAnswer(false);ui.renderAnswerFeedback(feedback,w,{},false);}
+      });button.dataset.answer=value;area.append(button);}
     } else {
       ui.typedAnswer.mount({
         host: area, id: "tutorialName", label: "Muhammad Jan’s name in English",
@@ -113,9 +119,8 @@ function createTutorial({ state, content, learning, ui, storage, questions, onAd
         },
         onSkip() {
           if (learning.itemCompleted(c.id)) return;
-          learning.submitTutorial(c.id, false, { skipped: true });
-          ui.$("teachNext").disabled = false;
-          storage.save(); ui.hud(); onAdvance();
+          questions.disableTyping({direction:"ps-en"});
+          storage.save();renderTutorialStep();
         },
       });
     }

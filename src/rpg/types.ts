@@ -43,7 +43,7 @@ export interface UI {
 }
 export interface Learning {authoredResponse(id:string,day:number):Card|null;availableSentences(day:number):Card[];allowed(day:number):boolean;placeAccessible(day:number,place:string):boolean}
 export interface Progression {completeOnboarding(progress:Progress):boolean;passedChallenge(progress:Progress,day:number):boolean;characterStatus(progress:Progress):{xp:number;level:number;title:string};getChallengeSpec(day:number):{passCount:number;questionCount:number}}
-export interface EducationStorage {save():boolean|Promise<boolean>;settled():Promise<boolean>;snapshot():string;readonly problem:string|null;readonly persistenceProblem:string|null}
+export interface EducationStorage {save():boolean|Promise<boolean>;settled():Promise<boolean>;snapshot():string;pairingSnapshot?():string;readonly problem:string|null;readonly persistenceProblem:string|null}
 export interface EducationServices {state:State;content:Content;progression:Progression;learning:Learning;ui:UI;audio:{stopAudio():void;speak(id:string,options?:{track:boolean}):void};storage:EducationStorage;world:{startWorld():void};lessons:{begin(id:string):void;resume(snapshot:LessonSession):void};challenge:{startChallenge(day:number,...args:unknown[]):void;resumeChallenge():boolean};library:{openLibrary():void}}
 export interface DialogueCursor {event:string;index:number}
 export interface WorldSave {activities?:Record<string,ActivityState>;sleepIntent?:{from:number;to:number};routes?:Record<string,ChapterRoute>;chapter?:string;dialogue?:DialogueCursor;schemaVersion:1;position:Position;appearance:Appearance;flags:Record<string,boolean>;npcFlags:Record<string,boolean>;triggers:Record<string,boolean>;view:'world'|'lesson'|'complete';lesson:unknown;educationFingerprint:string|null}

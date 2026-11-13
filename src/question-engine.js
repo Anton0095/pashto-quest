@@ -124,6 +124,8 @@ const QuestionEngine = (() => {
       question.kind === "word" && question.unstudied && !question.recognition);
   }
   return {
+    typingPreferences: p => p.typingPreferences || {en:p.enableTypingChallenges === true,ps:p.enableTypingChallenges === true},
+    typingAllowed: (p,q) => (p.typingPreferences || {en:p.enableTypingChallenges === true,ps:p.enableTypingChallenges === true})[q.direction === "en-ps" ? "ps" : "en"] === true,
     isTyped,
     englishAnswers,
     meaningKeys,

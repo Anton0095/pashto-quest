@@ -94,8 +94,7 @@ export async function tutorial(page) {
     .getByText("پښتو", { exact: true })
     .click();
   await page.locator("#teachNext").click();
-  await page.locator("#tutorialName").fill("Muhammad Jan");
-  await page.locator("#tutorialSaveName").click();
+  if(await page.locator('#tutorialName').isVisible()){await page.locator('#tutorialName').fill('Muhammad Jan');await page.locator('#tutorialSaveName').click();}else await page.locator('#tutorialInteraction button').getByText('Muhammad Jan',{exact:true}).click();
   await page.locator("#teachNext").click();
 }
 export async function answerCurrent(page) {

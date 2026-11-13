@@ -234,6 +234,7 @@ function createChallengeUI({
     if (resuming && state.session.locked) renderRecordedResponse();
   }
   function renderQuestion(resuming) {
+    questions.adaptTyping();
     ui.$("questionBody").scrollTop=0;
     queueMicrotask(ui.readableQuizSurfaces);
     ui.$("lessonScreen").classList.remove("construction-active");
@@ -314,7 +315,7 @@ function createChallengeUI({
         submitLabel: q.answerFormat ? "Submit answer" : "Submit meaning", submitClass: "speaker",
         onInput(value) { state.session.recallDraft = value; storage.save(); },
         onSubmit: answerChallenge,
-        onSkip: () => answerChallenge("", { skipped: true }),
+        onSkip: () => {questions.disableTyping(q);questions.adaptTyping();state.session.recallDraft="";storage.save();renderQuestion(true);},
         reveal: { label: "I don’t know — reveal meaning", onClick: () => answerChallenge("") },
       });
     } else
@@ -352,7 +353,6 @@ function createChallengeUI({
     if (!result) return;
     const { q, w, correct } = result;
     for (const control of ui.$("choices").querySelectorAll("input, button")) control.disabled = true;
-    if(result.skipped){storage.save();ui.$("quizNext").disabled=false;onAdvance();storage.save();return;}
     if (q.generated) learning.surface(q.id, "assessment-feedback");
     storage.save();
     ui.hud();

@@ -20,7 +20,7 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     complete: {},
     challenges: {},
     tutorialDone: false,
-    enableTypingChallenges: false,
+    typingPreferences: {en:false,ps:false},
     playerProfile: { name: "Player", gender: "unspecified" },
   });
   function highestClearedDay(p) {

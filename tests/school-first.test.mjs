@@ -67,7 +67,7 @@ console.log(`PASS school-first: ${lessons} real model lessons, all 6 optional or
 {
  const t=runtime(),historical=JSON.parse(readFileSync('tests/fixtures/pre-school-first-save-v8.json'));
  t.backend.setItem('',JSON.stringify(historical));t.state.progress=t.storage.load();
- assert.equal(t.storage.problem,null);assert.deepEqual(plain(t.state.progress),historical);
+ assert.equal(t.storage.problem,null);assert.deepEqual(plain(t.state.progress),{...Object.fromEntries(Object.entries(historical).filter(([key])=>key!=="enableTypingChallenges")),typingPreferences:{en:false,ps:false}});
  const exact=plain(t.state.progress.activeChallenge.questions),assignments=plain(t.state.progress.library.plans[4].locationAssignments);
  assert(!t.progression.challengeAccessible(t.state.progress,4));
  study(t,4,'school');

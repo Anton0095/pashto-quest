@@ -275,16 +275,14 @@ function createLearning({ state, content, progression }) {
     const s = state.session;
     return !!(s?.passed?.has(id) || s?.skippedItems?.includes(id));
   }
-  function submitChallenge(value, { skipped = false } = {}) {
+  function submitChallenge(value) {
     const s = state.session;
     if (s?.mode !== "challenge" || s.locked || s.finished) return null;
     const q = s.questions[s.index],
       w = content.wordById[q.id];
     if (["choice", "address"].includes(q.kind) || q.grammarConcept) return null;
-    if (skipped && !QuestionEngine.isTyped(q)) return null;
-    const correct = !skipped && QuestionEngine.evaluate(q, w, value);
-    if (skipped) (s.skippedQuestions ||= []).push(s.index);
-    if (!skipped) libraryPractice(
+    const correct = QuestionEngine.evaluate(q, w, value);
+    libraryPractice(
       q.id,
       correct,
       `challenge:${s.attemptId}:${s.index}`,
@@ -304,9 +302,9 @@ function createLearning({ state, content, progression }) {
         ? progression.awardXP(state.progress, key, 5)
         : 0;
     s.earned += gain;
-    return { q, w, correct, gain, skipped };
+    return { q, w, correct, gain };
   }
-  function submitLesson(value, { skipped = false } = {}) {
+  function submitLesson(value) {
     const s = state.session;
     if (
       !s ||
@@ -315,11 +313,10 @@ function createLearning({ state, content, progression }) {
       !s.queue.length
     )
       return null;
-    if (skipped && !QuestionEngine.isTyped(s.queue[0])) return null;
     const item = s.queue.shift(),
       w = content.wordById[item.id],
       previous = stat(w.id);
-    const correct = !skipped && QuestionEngine.evaluate(
+    const correct = QuestionEngine.evaluate(
       {
         kind: item.kind || "word",
         direction: item.kind === "construct" ? "en-ps" : "ps-en",
@@ -327,8 +324,7 @@ function createLearning({ state, content, progression }) {
       w,
       value,
     );
-    if (skipped && !(s.skippedItems ||= []).includes(w.id)) s.skippedItems.push(w.id);
-    if (!skipped) libraryPractice(
+    libraryPractice(
       w.id,
       correct,
       `lesson:${s.attemptId}:${s.answered}`,
@@ -354,7 +350,7 @@ function createLearning({ state, content, progression }) {
           7,
         );
       s.earned += gain;
-    } else if (!skipped)
+    } else
       s.queue.splice(Math.min(2, s.queue.length), 0, {
         ...item,
         id: w.id,
@@ -362,19 +358,15 @@ function createLearning({ state, content, progression }) {
       });
     s.answered++;
     s.locked = true;
-    return { w, correct, gain, skipped };
+    return { w, correct, gain };
   }
-  function submitTutorial(id, correct, { skipped = false } = {}) {
+  function submitTutorial(id, correct) {
     const s = state.session;
     if (s?.mode !== "tutorial" || itemCompleted(id)) return null;
-    const typed = content.tutorialCards.find(card => card.id === id)?.kind === "text";
-    if (skipped && !typed) return null;
-    if (typed && (correct || skipped)) state.progress.enableTypingChallenges = !skipped;
-    if (skipped) { correct = false; (s.skippedItems ||= []).push(id); }
     const first = !s.firstAsked.has(id);
     s.firstAsked.add(id);
     s.tutorialResponses++;
-    if (!skipped && content.wordById[id]?.type !== "profile")
+    if (content.wordById[id]?.type !== "profile")
       libraryPractice(
         id,
         correct,

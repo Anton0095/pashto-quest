@@ -29,8 +29,7 @@ try {
               click(area, "How are you?");
             } else if (step === 2) click(area, "پښتو");
             else {
-              document.querySelector("#tutorialName").value = "Muhammad Jan";
-              click(area, "Check answer");
+              click(area, "Muhammad Jan");
             }
             t.lessons.afterStudy();
             await Promise.resolve();

@@ -32,7 +32,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
       (content.LIBRARY_DATA.phrases.some(p => p.id === c.id) || (content.LIBRARY_DATA.sourceMappings[c.id] || []).length) &&
       LibraryEngine.cardAllowed(content.LIBRARY_DATA, c.id, day));
     // Backup choices are display-only base forms, never an acquisition transaction.
-    const backup = w.type === "sentence" ? [] : content.LIBRARY_DATA.entries
+    const backup = content.LIBRARY_DATA.entries
       .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
       .map(e => content.wordById["library-card:" + e.lemmaId]);
     const meanings = new Set(QuestionEngine.meaningKeys(w));
@@ -119,7 +119,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
     progression.activateChallenge(state.progress, day);
     const random = QuestionEngine.randomFor(seed),
       blueprint = createAssessmentContent({ content, progression }).blueprint(
-        day, state.progress.enableTypingChallenges === true, random,
+        day, Object.values(QuestionEngine.typingPreferences(state.progress)).some(Boolean), random,
       );
     const pool = available(day);
     const goal = content.curriculum.days[day - 1];
@@ -236,7 +236,9 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
       }
       if (!q.generated) usedRecall.add(LibraryEngine.identity(content.LIBRARY_DATA,q.id));
       q.speaker=content.teacherFor(day,null,"challenge").name;q.recipient="Player";q.comment=blueprint.scenario;
-      q.answerFormat=format;q.requestedFormat=wanted;q.direction=blueprint.directions[i];
+      q.direction=blueprint.directions[i];
+      if(format === "type" && !QuestionEngine.typingAllowed(state.progress,q)){deviations.push({index:i,requested:format,actual:"select",reason:"Typing disabled for answer language"});format="select";}
+      q.answerFormat=format;q.requestedFormat=wanted;
       if (q.kind === "word") {q.unstudied=isUnstudied(q.id);q.recognition=format === "select";}
       if (format === "build") {
         Object.assign(q,constructionQuestion(content.wordById[q.id],{question:q,withDuds:constructionIndex++ % 2 === 1,random}));
@@ -299,6 +301,27 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
       .map((card) => content.registerGenerated(card));
   }
   return {
+    adaptTyping(session = state.session) {
+      if(!session)return;
+      const convertActive=!session.locked && session.activeItem && QuestionEngine.isTyped(session.activeItem) && !QuestionEngine.typingAllowed(state.progress,session.activeItem);
+      const rows=session.mode === "challenge" ? session.questions.slice(session.index) : session.queue || [];
+      for(const q of rows){
+        if(session.locked && (q===session.questions?.[session.index] || q===session.activeItem))continue;
+        if(QuestionEngine.isTyped(q)&&!QuestionEngine.typingAllowed(state.progress,q)){
+          q.answerFormat="select";if(q.kind==="word")q.recognition=true;
+          q.choiceOrder=answerChoices(content.wordById[q.id],q.direction || "ps-en",session.loop);
+          if(q.generated)q.choiceIds=originsForChoices(content.wordById[q.id],q.choiceOrder,q.direction,session.loop).map(c=>c.id);
+        }
+      }
+      if(convertActive){
+        session.activeItem.answerFormat="select";delete session.choices;session.recallDraft="";
+      }
+    },
+    disableTyping(q) {
+      const lang=q.direction === "en-ps" ? "ps" : "en";
+      state.progress.typingPreferences={...QuestionEngine.typingPreferences(state.progress),[lang]:false};
+      if(state.reviewCampaign)state.reviewCampaign.typingPreferences={...QuestionEngine.typingPreferences(state.reviewCampaign),[lang]:false};
+    },
     selectChallenge,
     constructionQuestion,
     distractors: (w) => answerChoices(w, "ps-en"),

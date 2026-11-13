@@ -8,6 +8,7 @@ function createLibraryUI({
   narrative,
   learning,
   questions,
+  onTypingChange = () => {},
 }) {
   let libraryLastFocus = null, unlockedFilter = null;
   function openLibrary(tab = "vocabulary", ids = null) {
@@ -39,13 +40,16 @@ function createLibraryUI({
       const gender=ui.node('select');gender.id='playerProfileGender';gender.setAttribute('aria-label','Gender preference');
       for(const [value,label] of [['male','Male'],['female','Female'],['unspecified','Prefer not to say']]){const option=ui.node('option',label);option.value=value;gender.append(option);}
       gender.value=state.progress.playerProfile.gender;
-      for(const [label,input] of [['Name',name],['Gender',gender]]){const row=ui.node('label',label+' ');row.append(input);box.append(row);}
-      const typing=ui.node('input');typing.type='checkbox';typing.id='enableTypingChallenges';typing.checked=state.progress.enableTypingChallenges === true;
-      const typingLabel=ui.node('label','Enable typing challenges ');typingLabel.append(typing);box.append(typingLabel);
-      box.append(ui.node('p','Optional English and Pashto typing. Saved challenges keep their original questions.','tiny'));
+      for(const [label,input] of [['Name',name],['Gender',gender]]){const row=ui.node('label',label+' ');row.style.display='block';row.style.marginBlock='0.5rem';row.append(input);box.append(row);}
+      const preferences=QuestionEngine.typingPreferences(state.progress),inputs={};
+      for(const [lang,label] of [["ps","Type answers in Pashto"],["en","Type answers in English"]]){
+        const input=ui.node('input');input.type='checkbox';input.id='typing-'+lang;input.checked=preferences[lang];inputs[lang]=input;
+        const row=ui.node('label',label+' ');row.style.display='block';row.style.marginBlock='0.5rem';row.append(input);box.append(row);
+      }
+      box.append(ui.node('p','Typing is optional in each answer language. Sentence building stays available.','tiny'));
       const feedback=ui.node('p');feedback.id='profileFeedback';feedback.setAttribute('role','status');
       const save=ui.button('Save profile',()=>{});save.type='submit';save.disabled=!!state.reviewCampaign;
-      box.addEventListener('submit',async event=>{event.preventDefault();if(state.reviewCampaign)return;state.progress.enableTypingChallenges=typing.checked;state.progress.playerProfile={name:name.value.trim()||'Player',gender:gender.value};save.disabled=true;const ok=await storage.save();save.disabled=false;ui.hud();feedback.textContent=ok?'Profile saved.':'Profile is in memory; saving failed. Use the save recovery controls and retry.';});
+      box.addEventListener('submit',async event=>{event.preventDefault();if(state.reviewCampaign)return;state.progress.typingPreferences={en:inputs.en.checked,ps:inputs.ps.checked};questions.adaptTyping();if(state.progress.activeChallenge)questions.adaptTyping(state.progress.activeChallenge);onTypingChange();state.progress.playerProfile={name:name.value.trim()||'Player',gender:gender.value};save.disabled=true;const ok=await storage.save();save.disabled=false;ui.hud();feedback.textContent=ok?'Profile saved.':'Profile is in memory; saving failed. Use the save recovery controls and retry.';});
       box.append(save,feedback);root.append(ui.node('h3','Player Profile'),ui.node('p',state.reviewCampaign?'Exit dream practice to edit your campaign profile.':'Optional settings. You can change these at any time.'),box);return;
     }
     if (tab === "pace") {

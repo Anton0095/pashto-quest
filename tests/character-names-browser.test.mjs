@@ -17,7 +17,7 @@ for(const width of [1280,390]){
     const next=JSON.stringify(w);await navigator.locks.request(key,()=>__names.fence.commit(key,raw,next,()=>localStorage.getItem(key),()=>{localStorage.setItem(key,next);return true;}));
    });await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas')?.dataset.phaser);
    const before=await p.evaluate(async id=>{
-    const t=__test;(t.studySchool(6),t.challenge.startChallenge(6));
+    const t=__test;t.state.progress.typingPreferences={en:true,ps:false};(t.studySchool(6),t.challenge.startChallenge(6));
     const e=t.content.libraryEntries['lemma:person:'+id],f=e.forms[0],card=t.content.wordById['library-form:'+f.formId];
     if(!card)throw Error('Missing registered name card');
     t.state.session.questions[0]={id:card.id,kind:'word',direction:'ps-en',unstudied:true,recognition:false,choiceOrder:[card.en,'Edris','Muhammad Jan']};

@@ -3,7 +3,7 @@
 Current world: [permanent Hills and the Day 6 invitation](docs/rpg/HILLS_EXPANSION.md). Follow the northern village path after onboarding on any playable day. Day 6 begins with Deena alone at Lake; accept her invitation and meet Medina in Hills. Hills remains a physical Nature scene; the School-first rules below govern lesson and challenge access.
 
 
-Current behavior: [typed opt-out and Bilal completion repair](docs/rpg/TYPING_AND_BILAL_COMPLETION.md). A correct typed tutorial answer enables typing; “I cannot type” disables it there and skips ordinary typed questions for zero credit without changing the preference. Bilal's Day 1–7 exchanges unlock after Lake completion or a successful daily challenge, including sparse sentence pools.
+Current behavior: [typed opt-out and Bilal completion repair](docs/rpg/TYPING_AND_BILAL_COMPLETION.md). Pashto and English typing are independently optional and default off. “Turn off Pashto/English typing” immediately converts unanswered typing questions in that answer language to selection, without changing scores or progress. The old shared setting migrates to both language settings. Bilal's Day 1–7 exchanges unlock after Lake completion or a successful daily challenge, including sparse sentence pools.
 
 
 Also implemented: [Sleep/Dream transitions and authored Bilal Lake conversations](docs/rpg/SLEEP_AND_CONVERSATIONS.md) replace the earlier response sampler. The existing third-person “see” material is introduced in Day 2 Lake by explicit owner approval; first person remains Day 3. Narrative speech is an unverified editorial draft, and optional conversations grant no learning records or XP.
@@ -13,7 +13,7 @@ Also implemented: [Sleep/Dream transitions and authored Bilal Lake conversations
 
 An offline, browser-based Pashto learning game set in a village in Laghman, Afghanistan. Four teaching districts (Home, Lake, Market and School), a reference Library and a recurring cast support a Days 1–14 curriculum and educational engine. The playable RPG currently covers Days 1–7; Days 8–14 require additional narrative, map and event registration. Base entries and registered phrases are user-approved; grammar and inflected forms remain drafts, without independent native certification.
 
-The current development follow-up adds a furnished Library interior, Nayab's girl design, a shared village introduction after the Day 1 tutorial, independent selection/construction/typing quotas, and progressive Pashto-only Bilal conversations. See [behavior, planner, save and language-review details](docs/rpg/QUEST_IMPROVEMENTS.md). Typing defaults off in Library → Player Profile; saved assessments retain their original presentation.
+The current development follow-up adds a furnished Library interior, Nayab's girl design, a shared village introduction after the Day 1 tutorial, independent selection/construction/typing quotas, and progressive Pashto-only Bilal conversations. See [behavior, planner, save and language-review details](docs/rpg/QUEST_IMPROVEMENTS.md). Typing defaults off in Library → Player Profile; saved assessments retain completed answers; disabled-language typing converts to selection.
 
 ## Village characters
 

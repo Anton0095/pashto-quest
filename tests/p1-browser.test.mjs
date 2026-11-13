@@ -22,7 +22,7 @@ for(const width of [375,1280]) {
     for(const b of detail.lastElementChild.querySelectorAll('button'))if(!allowed.has(b.textContent)&&!['A different meaning','Another response','None of these'].includes(b.textContent))throw Error('Library leaked '+b.textContent);
     document.querySelector('#libraryDialog').close();
   });
-  await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;(__test.studySchool(1),__test.challenge.startChallenge(1));});
+  await p.evaluate(()=>{__test.state.progress.typingPreferences={en:true,ps:true};(__test.studySchool(1),__test.challenge.startChallenge(1));});
   const unknown=await p.evaluate(()=>{
    const t=__test,s=t.state.session;
    s.index=s.questions.findIndex(q=>q.kind==="word"&&q.unstudied);Object.assign(s.questions[s.index],{answerFormat:"type",direction:"ps-en",choiceOrder:[],recognition:false});s.answered=s.index;t.challenge.showChallengeQuestion();

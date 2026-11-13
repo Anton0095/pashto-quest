@@ -133,3 +133,9 @@ Long public RPG routes keyboard-activate the real D-pad for deterministic one-ti
 
 
 `hills-entrances-browser.test.mjs` checks all five northern and southern path lanes at desktop/mobile widths, matching safe arrival columns, unchanged educational records and the physical wooden sign’s exact wording after reload.
+
+`typing-languages.test.mjs` and `typing-languages-browser.test.mjs` cover independent English/Pashto settings, answer-language filtering, old shared-preference migration, conversion of current and queued questions without progress/score changes, construction availability, tutorial conversion, settings and reload at 375/1280px. These replace the historical skip-only typing assertions; the Bilal eligibility coverage remains.
+
+`typing-migration-browser.test.mjs` exercises the shipped RPG settings, immediate typing replacement and re-enable, then reloads a paused lesson with the old shared-preference save and matching world fingerprint. It checks the lesson target, answered count and XP survive migration at 375/1280px.
+
+`locked-guidance-browser.test.mjs` moves the School prerequisite teacher to the Lake in a fixture, checks the actual locked conversation points there, then verifies Home is offered after completing School. School-first/Hills checks also cover the added prerequisite guidance before story actions.

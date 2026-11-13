@@ -21,7 +21,7 @@ function createTypedAnswerUI({ ui }) {
       button.className = "speaker";
       form.append(button);
     }
-    const skip = ui.button("I cannot type", onSkip);
+    const skip = ui.button(lang === "ps" ? "Turn off Pashto typing" : "Turn off English typing", onSkip);
     skip.className = "secondary";
     form.append(skip);
     host.append(form);

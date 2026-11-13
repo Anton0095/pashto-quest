@@ -76,7 +76,7 @@ function createLessons({
       queue: pool.map((id,i) => ({
         id,
         retries: 0,
-        answerFormat: mode !== "tutorial" && state.progress.enableTypingChallenges === true && content.wordById[id].type !== "sentence" && i % 3 === 2 ? "type" : "select",
+        answerFormat: mode !== "tutorial" && QuestionEngine.typingAllowed(state.progress,{direction:"ps-en"}) && content.wordById[id].type !== "sentence" && i % 3 === 2 ? "type" : "select",
         kind: content.wordById[id].type === "sentence" ? "construct" : "word",
       })),
       answered: 0,
@@ -258,6 +258,7 @@ function createLessons({
     ui.$("questionBody").scrollTop=0;
     const s = state.session;
     if (!s) return;
+    questions.adaptTyping(s);
     if (!s.queue.length && !(restore && s.activeItem)) {
       finish();
       return;
@@ -327,7 +328,7 @@ function createLessons({
         value: s.recallDraft || "",
         onInput(value) { s.recallDraft = value; storage.save(); },
         onSubmit: answer,
-        onSkip: () => answer("", { skipped: true }),
+        onSkip: () => { questions.disableTyping({direction:"ps-en"});questions.adaptTyping();delete state.session.choices;state.session.recallDraft="";storage.save();showQuestion(true); },
       });
     } else
       for (const choice of (s.choices = restore && s.choices ? s.choices : questions.distractors(w))) {
@@ -350,7 +351,6 @@ function createLessons({
     const result = learning.submitLesson(value, options);
     if (!result) return;
     state.session.submittedAnswer=value;
-    if(result.skipped){storage.save();ui.$("quizNext").disabled=false;onAdvance();storage.save();return;}
     const { w, correct } = result;
     for(const control of ui.$("choices").querySelectorAll("input,button"))control.disabled=true;
     learning.surface(w.id, "lesson-feedback");

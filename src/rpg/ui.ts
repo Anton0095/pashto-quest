@@ -176,7 +176,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   // Restore a paired lesson before the first educational snapshot compacts history.
   // Otherwise that snapshot would retire the lesson's deduplication events.
   const pairedLesson = !state.progress.activeChallenge && save.view==='lesson' &&
-    save.educationFingerprint===RPGPersistence.fingerprint(JSON.stringify(state.progress))
+    save.educationFingerprint===RPGPersistence.fingerprint(storage.pairingSnapshot?.()??JSON.stringify(state.progress))
       ? RPGPersistence.restoreLesson(save.lesson,content,state.progress) : null;
   if(pairedLesson) state.session=pairedLesson;
   const oldView=ui.view;
@@ -274,8 +274,8 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     const guidance=target.characterId==='muhammad-jan'&&state.progress.tutorialDone?dailyGuidance(chapter(),state.progress,progression,guidanceTargets(),challengeTarget()):null;
     const event=original?(guidance?{...original,lines:[...original.lines,guidance],messages:original.messages?[...original.messages,{speaker:target.name,characterId:target.characterId,text:guidance}]:undefined}:original):guidance?{speaker:target.name,characterId:target.characterId,lines:[guidance],actions:[]}:null;
     if(!event)return;
-    if(target.characterId!=='bilal' && !state.progress.tutorialDone && eventId!==chapter().openingEvent&&!event.actions.some(a=>a.type==='tutorial'||a.type==='reference'))dialogue.open({speaker:target.name,lines:['Muhammad Jan is waiting at the Library. Complete your first hello with him, then we can study together.'],actions:[]});
-    else dialogue.open(curriculumEvent(event),story.cursor?.index);
+    if(target.characterId!=='bilal' && !state.progress.tutorialDone && eventId!==chapter().openingEvent&&!event.actions.some(a=>a.type==='tutorial'||a.type==='reference'))dialogue.open({speaker:target.name,lines:[onboardingGuidance()],actions:[]});
+    else dialogue.open(curriculumEvent(event,target),story.cursor?.index);
     dirty=true;
   }
   function act(action:Action){
@@ -299,10 +299,21 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(action.type==='completion'&&conditions.passed())showCompletion();
     refreshAccess();scheduleSave();dirty=true;
   }
-  function curriculumEvent(event:import('./types').StoryEvent):import('./types').StoryEvent {
+  function onboardingGuidance():string {
+    const map=save.flags.metGuide?'library':'village';
+    const guide=registry.npcs(current(),map).find(a=>a.characterId==='muhammad-jan');
+    return guide?`Visit ${guidanceLocation(guide)} first. Complete the introductory conversation and Library activities before lessons.`:'Complete the introductory Library activities with Muhammad Jan first.';
+  }
+  function curriculumEvent(event:import('./types').StoryEvent,actor?:Actor):import('./types').StoryEvent {
     const schoolDone=!!state.progress.complete[`${current()}-school`],allDone=chapter().lessons.every(id=>state.progress.complete[id]);
-    const locked=state.progress.tutorialDone&&!schoolDone&&event.actions.some(a=>a.type==='lesson'&&a.lessonId!==`${current()}-school`||a.type==='challenge');
-    const message='Complete today’s School lesson first. You can still explore and talk to everyone.';
+    const sourceEvent=data.events[actor?.event??story.cursor?.event??''];
+    const sourceActions=[...event.actions,...(sourceEvent?.actions??[])];
+    const blocked=sourceActions.find(a=>a.type==='lesson'&&!state.progress.complete[a.lessonId]&&(!lessonEligible(a.lessonId)||!eligible(a.condition)||!eligible(sourceEvent?.condition)));
+    const locked=!!blocked || !schoolDone&&sourceActions.some(a=>a.type==='challenge'||a.type==='lesson'&&a.lessonId!==`${current()}-school`);
+    const prerequisite=[...(blocked?.condition??'').matchAll(/(?:^|[|:])complete:([0-9]+-(?:school|residential|nature|business))/g)].map(match=>match[1]).find(id=>!state.progress.complete[id]);
+    const nextId=!schoolDone?`${current()}-school`:prerequisite&&!state.progress.complete[prerequisite]?prerequisite:blocked?.type==='lesson'?blocked.lessonId:chapter().lessons.find(id=>!state.progress.complete[id]&&lessonEligible(id));
+    const destination=nextId?quickDestination(nextId):undefined;
+    const message=schoolDone&&destination?.actor?.id===actor?.id&&destination?.actor?`Continue the story interaction here at ${guidanceLocation(destination.actor)} before this lesson. Other available lessons can be studied in any order.`:destination?.actor?`Visit ${guidanceLocation(destination.actor)} first. ${!schoolDone?'School explains today’s sentence pattern.':'Speak with them to continue the story; available lessons may be studied in any order.'}`:'Explore and speak with the village teachers; this lesson is not available today.';
     return {...event,lines:locked?[...event.lines,message]:event.lines,
       messages:locked&&event.messages?[...event.messages,{speaker:event.speaker,characterId:event.characterId,text:message}]:event.messages,
       actions:event.actions.filter(a=>a.type!=='challenge'||chapters.challengeAvailable()&&(a.route!=='normal'||allDone)).map(a=>a.type==='challenge'&&!a.route&&!allDone?{...a,label:'Skip to daily challenge'}:a)};
