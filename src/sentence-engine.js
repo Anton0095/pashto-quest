@@ -393,7 +393,7 @@ const SentenceEngine = (() => {
     const { entry: e, value: f } = item;
     return (
       (e.firstIntroductionConstraints?.earliestDay ?? e.introduction.day) <= day &&
-      f.firstAllowedDay <= day &&
+      LibraryEngine.formAllowed(e,f,day) &&
       [...e.introduction.requiredGrammarIds, ...f.prerequisiteGrammarIds].every(
         (id) => p.library.grammar[id],
       ) &&

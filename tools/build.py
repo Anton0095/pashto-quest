@@ -136,7 +136,7 @@ def build(check_rpg=False):
             e['introduction'].update({k: row[k] for k in ['day', 'district', 'teachingOrder']})
             e['introduction']['verifiedStatus'] = 'human_curriculum_approved'
             for f in e['forms']:
-                f['firstAllowedDay'] = max(row['day'], f['grammarFirstDay'])
+                f['firstAllowedDay'] = max(e['firstIntroductionConstraints']['earliestDay'], f['grammarFirstDay'])
             # Authorial scheduling approval NEVER changes linguistic review status.
     library['sentenceFrames'] = json.loads(read('content/SENTENCE_FRAMES.json'))
     candidates = json.loads(read('content/DISTRICT_VOCABULARY_CANDIDATES.json'))

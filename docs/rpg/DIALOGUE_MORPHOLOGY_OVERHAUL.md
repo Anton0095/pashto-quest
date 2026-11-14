@@ -15,3 +15,9 @@ Educational schema 9 distinguishes encountered forms, generation availability an
 Plans freeze `firstFormSelections`, `studyPools`, generated activity IDs/proofs and grammar dependencies. RPG lesson snapshots retain the exact card index and acknowledged form IDs. School's concept acknowledgement precedes dependent flashcards; compulsory generated practice uses formally taught forms only. Additional inflections are capped at four per lesson; Day 14 adds none. Assessment lexical targets resolve to available forms, rather than assuming a citation form was taught.
 
 Focused checks: `form-lifecycle.test.mjs`, `challenge-activation.test.mjs`, noun audit, typing regression and strict TypeScript/build. New dictionary plurals also carry explicit English count semantics; no Pashto stem or suffix is generated.
+
+## Revised curriculum (Phase 4)
+
+Days 1–4 retain description/equative, SOV/third singular, first singular and informal second singular/coordination. Day 5 now explicitly teaches polite/plural second person and noun plurals. Days 6–7 continue first/third plural and plural agreement before the Week 1 exam. Days 8–13 teach demonstratives, numbers 1–5/quantity consolidation, spatial/case constructions, possession, questions and adverbs. Day 14 remains cumulative with no compulsory new lemmas or forms.
+
+Direct noun plurals and their evidenced adjective agreement forms now depend on `grammar-day-5`. Quantity frames/numerals still depend on Day 9; case and ownership requirements remain separate. A live form gate reads grammar prerequisites plus explicit curriculum restrictions; `firstAllowedDay` remains a derived audit projection, rather than a second schedule tied to an authored lemma day. Plural-first nouns require an already taught compatible plural adjective, with semantic agreement. Numbers four/five lack productive construction evidence and remain isolated word study/reference.

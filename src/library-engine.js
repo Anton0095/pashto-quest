@@ -8,7 +8,10 @@ const LibraryEngine = (() => {
   // Descriptions precede lexical actions. Fixed expressions have no component-verb mappings.
   const allowedOnDay = (entry, day) => !!entry && day >= (entry.firstIntroductionConstraints?.earliestDay ?? entry.introduction.day);
   function formAllowed(entry, value, day) {
-    return allowedOnDay(entry, day) && day >= value.firstAllowedDay;
+    // Grammar dependencies govern forms; an explicit restriction may impose a floor.
+    // firstAllowedDay is an audit projection, not a second live schedule.
+    return allowedOnDay(entry, day) && day >= (value.curriculumRestriction?.earliestDay || 1) &&
+      value.prerequisiteGrammarIds.every(id=>Number(id.slice(12))<=day);
   }
   function cardAllowed(data, id, day) {
     if ((data.cardDays?.[id] || 0) > day && data.cardTypes?.[id] === "sentence")
@@ -490,7 +493,7 @@ const LibraryEngine = (() => {
     return formAllowed(entry,form,day) && form.composition?.enabled &&
       form.prerequisiteGrammarIds.every(id=>p.library.grammar[id] || schoolConcept && id === 'grammar-day-'+day);
   }
-  function initialForm(p,entry,day,schoolConcept=false) {
+  function initialForm(p,entry,day,schoolConcept=false,data=null) {
     const eligible=entry.forms.filter(form=>eligibleForm(p,entry,form,day,schoolConcept));
     if(entry.partOfSpeech==='verb'){
       const person=day>=7?3:day>=6?1:day>=5?2:day===4?2:day===3?1:3,number=day>=5?'plural':'singular';
@@ -499,7 +502,11 @@ const LibraryEngine = (() => {
       const other=eligible.find(f=>f.composition.roles.includes('verb'));if(other)return other;
     }
     if(entry.partOfSpeech==='noun'&&p.library.grammar['grammar-day-5']){
-      const plural=eligible.find(f=>f.morphology.number==='plural'&&f.morphology.case==='direct'&&f.morphology.form!=='coordinated_subject');if(plural)return plural;
+      const plural=eligible.find(f=>f.morphology.number==='plural'&&f.morphology.case==='direct'&&f.morphology.form!=='coordinated_subject');
+      const agreement=plural&&data?.entries.some(adjective=>adjective.partOfSpeech==='adjective'&&adjective.forms.some(f=>
+        formallyTaught(p,f.formId)&&eligibleForm(p,adjective,f,day)&&f.morphology.number==='plural'&&f.morphology.gender===plural.morphology.gender&&
+        f.composition.appliesTo?.some(c=>entry.generationSemantics?.classes.includes(c))));
+      if(plural&&agreement)return plural;
     }
     return eligible.find(f=>f===entry.forms[0]) || eligible[0] || (formAllowed(entry,entry.forms[0],day)?entry.forms[0]:null);
   }
@@ -510,7 +517,7 @@ const LibraryEngine = (() => {
         day,
       ),
       assigned = plan.locationAssignments[place] || [];
-    const firstForms=(plan.firstFormSelections ||= {})[place] ||= assigned.map(id=>initialForm(p,data.entries.find(e=>e.lemmaId===id),day,place==='school')?.formId).filter(Boolean);
+    const firstForms=(plan.firstFormSelections ||= {})[place] ||= assigned.map(id=>initialForm(p,data.entries.find(e=>e.lemmaId===id),day,place==='school',data)?.formId).filter(Boolean);
     const lexical = firstForms.map(id=>"library-form:"+id);
     const universals = data.entries
       .filter(
@@ -544,7 +551,6 @@ const LibraryEngine = (() => {
               ? e.forms
                   .filter(
                     (f) =>
-                      f.formId !== e.forms[0].formId &&
                       f.composition.enabled &&
                       eligibleForm(p,e,f,day,place==='school') &&
                       !formallyTaught(p,f.formId) && !firstForms.includes(f.formId),
