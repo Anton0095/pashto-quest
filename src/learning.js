@@ -55,6 +55,7 @@ function createLearning({ state, content, progression }) {
     );
   }
   function acknowledgeForm(id) {
+    if(state.session?.mode!=='standard')return;
     LibraryEngine.expose(state.progress,content.LIBRARY_DATA,id,{...libraryContext('lesson',id),acknowledged:true});
   }
   function libraryPractice(id, correct, eventId, source) {
@@ -142,7 +143,7 @@ function createLearning({ state, content, progression }) {
       const qualifies=c=>Object.values(c.generated.slots).some(r=>targets.includes(r.lemmaId));
       // Failed shortcut activation still licenses assessment material. Ordinary
       // lessons reuse studied/passed words, including this lesson's word phase.
-      const lessonAvailable=c=>Object.values(c.generated.slots).every(r=>LibraryEngine.formallyTaught(state.progress,r.formId));
+      const lessonAvailable=c=>Object.values(c.generated.slots).every(r=>LibraryEngine.formallyTaught(state.progress,r.formId,r.lemmaId));
       const preferred = generatedPractice(
         s.loop,
         plan.seed + s.attemptId,

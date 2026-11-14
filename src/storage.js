@@ -1,4 +1,4 @@
-/* Current save validation, local storage and live assessment snapshots. Only the current schema-8 typing preference is normalised. */
+/* Current-schema validation, coordinated persistence and frozen assessment snapshots. */
 function createStorage({
   state,
   content,
@@ -11,7 +11,6 @@ function createStorage({
   const KEY = key;
   let saveProblem = null, persistenceProblem = null, readBlocked = false;
   let notifyPersistence = () => {};
-  let loadedPairingRaw = null, loadedPairingCurrent = null;
   let observed, conflict = false, revisionReset = false;
   try { observed = accessInitial(); } catch {}
   function accessInitial() { return (backend || globalThis.localStorage).getItem(KEY); }
@@ -56,14 +55,10 @@ function createStorage({
     try {
       const p = JSON.parse(raw);
       if (!currentSave(p)) throw Error("Unsupported or invalid save schema");
-      const previous = JSON.stringify(p);
-      p.typingPreferences ||= QuestionEngine.typingPreferences(p);
-      delete p.enableTypingChallenges;
-      loadedPairingRaw = previous;loadedPairingCurrent = JSON.stringify(p);
       return p;
     } catch (error) {
       saveProblem =
-        "This save belongs to an older or incompatible version. This release uses save format 8 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
+        "This save belongs to an older or incompatible version. This release uses save format 9 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
       return progression.fresh();
     }
   }
@@ -161,10 +156,6 @@ function createStorage({
     load,
     save,
     currentSave,
-    pairingSnapshot() {
-      const current=JSON.stringify(state.progress);
-      return current === loadedPairingCurrent ? loadedPairingRaw : current;
-    },
     snapshot,
     get pending() { return pending > 0; },
     settled() { return lastSave; },

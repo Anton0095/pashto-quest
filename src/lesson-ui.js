@@ -191,6 +191,7 @@ function createLessons({
     if(form){const features=Object.entries(form.morphology).filter(([,v])=>v!==null).map(([k,v])=>k+': '+v).join(' · ');ui.$('teachType').textContent=(LibraryEngine.formallyTaught(state.progress,form.formId)?'FORM REVISION':'NEW FORM · ACKNOWLEDGE TO LEARN')+' · '+features;}
 
     ui.$("teachNote").textContent = w.note?.startsWith("Base content user-approved;") ? "" : w.note;
+    if(form&&form.pashto!==entry.displayLemmaPs)ui.$("teachNote").textContent='Lemma: '+entry.displayLemmaPs+' ('+entry.romanisation+') · '+ui.$("teachNote").textContent;
     ui.$("teachNote").classList.toggle("hidden", !ui.$("teachNote").textContent);
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
     const guidance = w.generated
@@ -238,7 +239,7 @@ function createLessons({
     if (!["greeting", "lexical", "sentence"].includes(s.phase)) return;
     if(s.phase==='lexical'||s.phase==='greeting'){
       const id=studyList()[s.cardIndex];learning.acknowledgeForm(id);
-      s.formAcknowledgements = [...new Set([...(s.formAcknowledgements || []),...(content.LIBRARY_DATA.sourceMappings[id]||[]).map(ref=>ref.formId)])];
+      s.formAcknowledgements = [...new Set([...(s.formAcknowledgements || []),...(content.LIBRARY_DATA.sourceMappings[id]||[]).map(ref=>ref.formId).filter(formId=>LibraryEngine.formallyTaught(state.progress,formId))])];
     }
     if (++s.cardIndex < studyList().length) teachCard();
     else advancePhase();

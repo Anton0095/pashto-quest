@@ -2,8 +2,8 @@
   "schemaVersion": 2,
   "notice": "Diagnostic capacity under provisional form licenses. Runtime builds no sentence catalogue at startup: it compiles from forms/grammar licensed by study or explicit challenge activation. See INSTRUCTIONAL_DELIVERY_AUDIT.json for measured delivery. An exact match to an archived text is still dynamically composed from forms, never retrieved as a teaching target. Clause-pair capacity is algebraic, not an enumerated list or a native-language approval.",
   "lemmaCount": 474,
-  "formCount": 614,
-  "eligibleFormCount": 187,
+  "formCount": 667,
+  "eligibleFormCount": 215,
   "frameCount": 29,
   "familyCount": 28,
   "potentialByDay": [
@@ -953,16 +953,16 @@
     },
     {
       "day": 5,
-      "baseBindings": 2773,
-      "baseUniquePashto": 2773,
+      "baseBindings": 3980,
+      "baseUniquePashto": 3876,
       "byFamily": {
-        "equative_descriptor": 89,
+        "equative_descriptor": 112,
         "demonstrative_descriptor": 0,
         "attributive_equative": 0,
         "equative_noun": 0,
-        "present_transitive": 523,
+        "present_transitive": 994,
         "present_compound_transitive": 4,
-        "present_attributive": 2150,
+        "present_attributive": 2759,
         "present_intransitive": 7,
         "present_compound_predicate": 0,
         "demonstrative_transitive": 0,
@@ -983,15 +983,15 @@
         "present_transitive_adverb": 0,
         "present_joint_action": 0,
         "count_location": 0,
-        "coordinated_present": 19182
+        "coordinated_present": 70490
       },
-      "orderedClausePairs": 19182,
-      "baseNovelPashto": 2718,
-      "baseArchivalTextMatches": 55,
+      "orderedClausePairs": 70490,
+      "baseNovelPashto": 3818,
+      "baseArchivalTextMatches": 58,
       "byFamilyDetails": {
         "equative_descriptor": {
-          "eligibleUniquePashto": 89,
-          "newlyComposedTexts": 78,
+          "eligibleUniquePashto": 112,
+          "newlyComposedTexts": 101,
           "archivalTextMatches": 11,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1018,9 +1018,9 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive": {
-          "eligibleUniquePashto": 523,
-          "newlyComposedTexts": 483,
-          "archivalTextMatches": 40,
+          "eligibleUniquePashto": 994,
+          "newlyComposedTexts": 951,
+          "archivalTextMatches": 43,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
@@ -1032,8 +1032,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_attributive": {
-          "eligibleUniquePashto": 2150,
-          "newlyComposedTexts": 2148,
+          "eligibleUniquePashto": 2759,
+          "newlyComposedTexts": 2757,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1179,7 +1179,7 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "coordinated_present": {
-          "eligibleUniquePashto": 19182,
+          "eligibleUniquePashto": 70490,
           "newlyComposedTexts": null,
           "archivalTextMatches": null,
           "fixedAuthoredFallbacks": 0,
@@ -1189,16 +1189,16 @@
     },
     {
       "day": 6,
-      "baseBindings": 4652,
-      "baseUniquePashto": 4652,
+      "baseBindings": 6702,
+      "baseUniquePashto": 6512,
       "byFamily": {
-        "equative_descriptor": 93,
+        "equative_descriptor": 116,
         "demonstrative_descriptor": 0,
         "attributive_equative": 0,
         "equative_noun": 0,
-        "present_transitive": 819,
+        "present_transitive": 1553,
         "present_compound_transitive": 10,
-        "present_attributive": 3462,
+        "present_attributive": 4417,
         "present_intransitive": 14,
         "present_compound_predicate": 18,
         "demonstrative_transitive": 0,
@@ -1217,17 +1217,17 @@
         "who_subject_question": 0,
         "present_intransitive_adverb": 0,
         "present_transitive_adverb": 0,
-        "present_joint_action": 236,
+        "present_joint_action": 384,
         "count_location": 0,
-        "coordinated_present": 19182
+        "coordinated_present": 70490
       },
-      "orderedClausePairs": 19182,
-      "baseNovelPashto": 4583,
-      "baseArchivalTextMatches": 69,
+      "orderedClausePairs": 70490,
+      "baseNovelPashto": 6438,
+      "baseArchivalTextMatches": 74,
       "byFamilyDetails": {
         "equative_descriptor": {
-          "eligibleUniquePashto": 93,
-          "newlyComposedTexts": 82,
+          "eligibleUniquePashto": 116,
+          "newlyComposedTexts": 105,
           "archivalTextMatches": 11,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1254,9 +1254,9 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive": {
-          "eligibleUniquePashto": 819,
-          "newlyComposedTexts": 770,
-          "archivalTextMatches": 49,
+          "eligibleUniquePashto": 1553,
+          "newlyComposedTexts": 1499,
+          "archivalTextMatches": 54,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
@@ -1268,8 +1268,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_attributive": {
-          "eligibleUniquePashto": 3462,
-          "newlyComposedTexts": 3460,
+          "eligibleUniquePashto": 4417,
+          "newlyComposedTexts": 4415,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1401,8 +1401,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_joint_action": {
-          "eligibleUniquePashto": 236,
-          "newlyComposedTexts": 234,
+          "eligibleUniquePashto": 384,
+          "newlyComposedTexts": 382,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1415,7 +1415,7 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "coordinated_present": {
-          "eligibleUniquePashto": 19182,
+          "eligibleUniquePashto": 70490,
           "newlyComposedTexts": null,
           "archivalTextMatches": null,
           "fixedAuthoredFallbacks": 0,
@@ -1425,16 +1425,16 @@
     },
     {
       "day": 7,
-      "baseBindings": 5112,
-      "baseUniquePashto": 5112,
+      "baseBindings": 7377,
+      "baseUniquePashto": 7165,
       "byFamily": {
-        "equative_descriptor": 93,
+        "equative_descriptor": 116,
         "demonstrative_descriptor": 0,
         "attributive_equative": 0,
         "equative_noun": 0,
-        "present_transitive": 894,
+        "present_transitive": 1695,
         "present_compound_transitive": 12,
-        "present_attributive": 3777,
+        "present_attributive": 4817,
         "present_intransitive": 16,
         "present_compound_predicate": 20,
         "demonstrative_transitive": 0,
@@ -1453,17 +1453,17 @@
         "who_subject_question": 0,
         "present_intransitive_adverb": 0,
         "present_transitive_adverb": 0,
-        "present_joint_action": 300,
+        "present_joint_action": 489,
         "count_location": 0,
-        "coordinated_present": 19182
+        "coordinated_present": 70490
       },
-      "orderedClausePairs": 19182,
-      "baseNovelPashto": 5035,
-      "baseArchivalTextMatches": 77,
+      "orderedClausePairs": 70490,
+      "baseNovelPashto": 7079,
+      "baseArchivalTextMatches": 86,
       "byFamilyDetails": {
         "equative_descriptor": {
-          "eligibleUniquePashto": 93,
-          "newlyComposedTexts": 82,
+          "eligibleUniquePashto": 116,
+          "newlyComposedTexts": 105,
           "archivalTextMatches": 11,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1490,9 +1490,9 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive": {
-          "eligibleUniquePashto": 894,
-          "newlyComposedTexts": 840,
-          "archivalTextMatches": 54,
+          "eligibleUniquePashto": 1695,
+          "newlyComposedTexts": 1632,
+          "archivalTextMatches": 63,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
@@ -1504,8 +1504,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_attributive": {
-          "eligibleUniquePashto": 3777,
-          "newlyComposedTexts": 3775,
+          "eligibleUniquePashto": 4817,
+          "newlyComposedTexts": 4815,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1637,8 +1637,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_joint_action": {
-          "eligibleUniquePashto": 300,
-          "newlyComposedTexts": 297,
+          "eligibleUniquePashto": 489,
+          "newlyComposedTexts": 486,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1651,7 +1651,7 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "coordinated_present": {
-          "eligibleUniquePashto": 19182,
+          "eligibleUniquePashto": 70490,
           "newlyComposedTexts": null,
           "archivalTextMatches": null,
           "fixedAuthoredFallbacks": 0,
@@ -1661,19 +1661,19 @@
     },
     {
       "day": 8,
-      "baseBindings": 7320,
-      "baseUniquePashto": 7320,
+      "baseBindings": 11541,
+      "baseUniquePashto": 11145,
       "byFamily": {
-        "equative_descriptor": 93,
-        "demonstrative_descriptor": 186,
-        "attributive_equative": 186,
-        "equative_noun": 48,
-        "present_transitive": 894,
+        "equative_descriptor": 116,
+        "demonstrative_descriptor": 232,
+        "attributive_equative": 232,
+        "equative_noun": 126,
+        "present_transitive": 1695,
         "present_compound_transitive": 12,
-        "present_attributive": 3777,
+        "present_attributive": 4817,
         "present_intransitive": 16,
         "present_compound_predicate": 20,
-        "demonstrative_transitive": 1788,
+        "demonstrative_transitive": 3390,
         "counted_equative": 0,
         "counted_transitive": 0,
         "spatial_equative": 0,
@@ -1689,46 +1689,46 @@
         "who_subject_question": 0,
         "present_intransitive_adverb": 0,
         "present_transitive_adverb": 0,
-        "present_joint_action": 300,
+        "present_joint_action": 489,
         "count_location": 0,
-        "coordinated_present": 19182
+        "coordinated_present": 70490
       },
-      "orderedClausePairs": 19182,
-      "baseNovelPashto": 7212,
-      "baseArchivalTextMatches": 108,
+      "orderedClausePairs": 70490,
+      "baseNovelPashto": 11019,
+      "baseArchivalTextMatches": 126,
       "byFamilyDetails": {
         "equative_descriptor": {
-          "eligibleUniquePashto": 93,
-          "newlyComposedTexts": 82,
+          "eligibleUniquePashto": 116,
+          "newlyComposedTexts": 105,
           "archivalTextMatches": 11,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_descriptor": {
-          "eligibleUniquePashto": 186,
-          "newlyComposedTexts": 158,
-          "archivalTextMatches": 28,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 197,
+          "archivalTextMatches": 35,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "attributive_equative": {
-          "eligibleUniquePashto": 186,
-          "newlyComposedTexts": 186,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 232,
           "archivalTextMatches": 0,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "equative_noun": {
-          "eligibleUniquePashto": 48,
-          "newlyComposedTexts": 47,
-          "archivalTextMatches": 1,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 124,
+          "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive": {
-          "eligibleUniquePashto": 894,
-          "newlyComposedTexts": 840,
-          "archivalTextMatches": 54,
+          "eligibleUniquePashto": 1695,
+          "newlyComposedTexts": 1632,
+          "archivalTextMatches": 63,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
@@ -1740,8 +1740,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_attributive": {
-          "eligibleUniquePashto": 3777,
-          "newlyComposedTexts": 3775,
+          "eligibleUniquePashto": 4817,
+          "newlyComposedTexts": 4815,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1761,9 +1761,9 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_transitive": {
-          "eligibleUniquePashto": 1788,
-          "newlyComposedTexts": 1786,
-          "archivalTextMatches": 2,
+          "eligibleUniquePashto": 3390,
+          "newlyComposedTexts": 3387,
+          "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
@@ -1873,8 +1873,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_joint_action": {
-          "eligibleUniquePashto": 300,
-          "newlyComposedTexts": 297,
+          "eligibleUniquePashto": 489,
+          "newlyComposedTexts": 486,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1887,7 +1887,7 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "coordinated_present": {
-          "eligibleUniquePashto": 19182,
+          "eligibleUniquePashto": 70490,
           "newlyComposedTexts": null,
           "archivalTextMatches": null,
           "fixedAuthoredFallbacks": 0,
@@ -1897,21 +1897,21 @@
     },
     {
       "day": 9,
-      "baseBindings": 11274,
-      "baseUniquePashto": 10878,
+      "baseBindings": 13404,
+      "baseUniquePashto": 13008,
       "byFamily": {
-        "equative_descriptor": 112,
-        "demonstrative_descriptor": 224,
-        "attributive_equative": 224,
-        "equative_noun": 70,
-        "present_transitive": 1330,
+        "equative_descriptor": 116,
+        "demonstrative_descriptor": 232,
+        "attributive_equative": 232,
+        "equative_noun": 126,
+        "present_transitive": 1695,
         "present_compound_transitive": 12,
-        "present_attributive": 4667,
+        "present_attributive": 4817,
         "present_intransitive": 16,
         "present_compound_predicate": 20,
-        "demonstrative_transitive": 2660,
-        "counted_equative": 46,
-        "counted_transitive": 1059,
+        "demonstrative_transitive": 3390,
+        "counted_equative": 146,
+        "counted_transitive": 1717,
         "spatial_equative": 0,
         "location_adverb_equative": 0,
         "possessive_equative": 0,
@@ -1925,45 +1925,45 @@
         "who_subject_question": 0,
         "present_intransitive_adverb": 0,
         "present_transitive_adverb": 0,
-        "present_joint_action": 438,
+        "present_joint_action": 489,
         "count_location": 0,
-        "coordinated_present": 42642
+        "coordinated_present": 70490
       },
-      "orderedClausePairs": 42642,
-      "baseNovelPashto": 10747,
+      "orderedClausePairs": 70490,
+      "baseNovelPashto": 12877,
       "baseArchivalTextMatches": 131,
       "byFamilyDetails": {
         "equative_descriptor": {
-          "eligibleUniquePashto": 112,
-          "newlyComposedTexts": 101,
+          "eligibleUniquePashto": 116,
+          "newlyComposedTexts": 105,
           "archivalTextMatches": 11,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_descriptor": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 189,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 197,
           "archivalTextMatches": 35,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "attributive_equative": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 224,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 232,
           "archivalTextMatches": 0,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "equative_noun": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 68,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 124,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive": {
-          "eligibleUniquePashto": 1330,
-          "newlyComposedTexts": 1267,
+          "eligibleUniquePashto": 1695,
+          "newlyComposedTexts": 1632,
           "archivalTextMatches": 63,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1976,8 +1976,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_attributive": {
-          "eligibleUniquePashto": 4667,
-          "newlyComposedTexts": 4665,
+          "eligibleUniquePashto": 4817,
+          "newlyComposedTexts": 4815,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -1997,22 +1997,22 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_transitive": {
-          "eligibleUniquePashto": 2660,
-          "newlyComposedTexts": 2657,
+          "eligibleUniquePashto": 3390,
+          "newlyComposedTexts": 3387,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_equative": {
-          "eligibleUniquePashto": 46,
-          "newlyComposedTexts": 45,
+          "eligibleUniquePashto": 146,
+          "newlyComposedTexts": 145,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_transitive": {
-          "eligibleUniquePashto": 1059,
-          "newlyComposedTexts": 1055,
+          "eligibleUniquePashto": 1717,
+          "newlyComposedTexts": 1713,
           "archivalTextMatches": 4,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2109,8 +2109,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_joint_action": {
-          "eligibleUniquePashto": 438,
-          "newlyComposedTexts": 435,
+          "eligibleUniquePashto": 489,
+          "newlyComposedTexts": 486,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2123,7 +2123,7 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "coordinated_present": {
-          "eligibleUniquePashto": 42642,
+          "eligibleUniquePashto": 70490,
           "newlyComposedTexts": null,
           "archivalTextMatches": null,
           "fixedAuthoredFallbacks": 0,
@@ -2133,27 +2133,27 @@
     },
     {
       "day": 10,
-      "baseBindings": 11447,
-      "baseUniquePashto": 11051,
+      "baseBindings": 13672,
+      "baseUniquePashto": 13276,
       "byFamily": {
-        "equative_descriptor": 112,
-        "demonstrative_descriptor": 224,
-        "attributive_equative": 224,
-        "equative_noun": 70,
-        "present_transitive": 1330,
+        "equative_descriptor": 116,
+        "demonstrative_descriptor": 232,
+        "attributive_equative": 232,
+        "equative_noun": 126,
+        "present_transitive": 1695,
         "present_compound_transitive": 12,
-        "present_attributive": 4667,
+        "present_attributive": 4817,
         "present_intransitive": 16,
         "present_compound_predicate": 20,
-        "demonstrative_transitive": 2660,
-        "counted_equative": 46,
-        "counted_transitive": 1059,
-        "spatial_equative": 68,
-        "location_adverb_equative": 70,
+        "demonstrative_transitive": 3390,
+        "counted_equative": 146,
+        "counted_transitive": 1717,
+        "spatial_equative": 79,
+        "location_adverb_equative": 126,
         "possessive_equative": 0,
         "possessive_descriptor": 0,
         "possessive_spatial": 0,
-        "where_question": 35,
+        "where_question": 63,
         "which_question": 0,
         "whose_question": 0,
         "how_many_question": 0,
@@ -2161,45 +2161,45 @@
         "who_subject_question": 0,
         "present_intransitive_adverb": 0,
         "present_transitive_adverb": 0,
-        "present_joint_action": 438,
+        "present_joint_action": 489,
         "count_location": 0,
-        "coordinated_present": 42642
+        "coordinated_present": 70490
       },
-      "orderedClausePairs": 42642,
-      "baseNovelPashto": 10907,
+      "orderedClausePairs": 70490,
+      "baseNovelPashto": 13132,
       "baseArchivalTextMatches": 144,
       "byFamilyDetails": {
         "equative_descriptor": {
-          "eligibleUniquePashto": 112,
-          "newlyComposedTexts": 101,
+          "eligibleUniquePashto": 116,
+          "newlyComposedTexts": 105,
           "archivalTextMatches": 11,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_descriptor": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 189,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 197,
           "archivalTextMatches": 35,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "attributive_equative": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 224,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 232,
           "archivalTextMatches": 0,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "equative_noun": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 68,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 124,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive": {
-          "eligibleUniquePashto": 1330,
-          "newlyComposedTexts": 1267,
+          "eligibleUniquePashto": 1695,
+          "newlyComposedTexts": 1632,
           "archivalTextMatches": 63,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2212,8 +2212,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_attributive": {
-          "eligibleUniquePashto": 4667,
-          "newlyComposedTexts": 4665,
+          "eligibleUniquePashto": 4817,
+          "newlyComposedTexts": 4815,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2233,36 +2233,36 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_transitive": {
-          "eligibleUniquePashto": 2660,
-          "newlyComposedTexts": 2657,
+          "eligibleUniquePashto": 3390,
+          "newlyComposedTexts": 3387,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_equative": {
-          "eligibleUniquePashto": 46,
-          "newlyComposedTexts": 45,
+          "eligibleUniquePashto": 146,
+          "newlyComposedTexts": 145,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_transitive": {
-          "eligibleUniquePashto": 1059,
-          "newlyComposedTexts": 1055,
+          "eligibleUniquePashto": 1717,
+          "newlyComposedTexts": 1713,
           "archivalTextMatches": 4,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "spatial_equative": {
-          "eligibleUniquePashto": 68,
-          "newlyComposedTexts": 63,
+          "eligibleUniquePashto": 79,
+          "newlyComposedTexts": 74,
           "archivalTextMatches": 5,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "location_adverb_equative": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 67,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 123,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2289,8 +2289,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "where_question": {
-          "eligibleUniquePashto": 35,
-          "newlyComposedTexts": 30,
+          "eligibleUniquePashto": 63,
+          "newlyComposedTexts": 58,
           "archivalTextMatches": 5,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2345,8 +2345,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_joint_action": {
-          "eligibleUniquePashto": 438,
-          "newlyComposedTexts": 435,
+          "eligibleUniquePashto": 489,
+          "newlyComposedTexts": 486,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2359,7 +2359,7 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "coordinated_present": {
-          "eligibleUniquePashto": 42642,
+          "eligibleUniquePashto": 70490,
           "newlyComposedTexts": null,
           "archivalTextMatches": null,
           "fixedAuthoredFallbacks": 0,
@@ -2369,27 +2369,27 @@
     },
     {
       "day": 11,
-      "baseBindings": 12616,
-      "baseUniquePashto": 12220,
+      "baseBindings": 15205,
+      "baseUniquePashto": 14809,
       "byFamily": {
-        "equative_descriptor": 112,
-        "demonstrative_descriptor": 224,
-        "attributive_equative": 224,
-        "equative_noun": 70,
-        "present_transitive": 1330,
+        "equative_descriptor": 116,
+        "demonstrative_descriptor": 232,
+        "attributive_equative": 232,
+        "equative_noun": 126,
+        "present_transitive": 1695,
         "present_compound_transitive": 12,
-        "present_attributive": 4667,
+        "present_attributive": 4817,
         "present_intransitive": 16,
         "present_compound_predicate": 20,
-        "demonstrative_transitive": 2660,
-        "counted_equative": 46,
-        "counted_transitive": 1059,
-        "spatial_equative": 68,
-        "location_adverb_equative": 70,
-        "possessive_equative": 308,
-        "possessive_descriptor": 525,
-        "possessive_spatial": 336,
-        "where_question": 35,
+        "demonstrative_transitive": 3390,
+        "counted_equative": 146,
+        "counted_transitive": 1717,
+        "spatial_equative": 79,
+        "location_adverb_equative": 126,
+        "possessive_equative": 574,
+        "possessive_descriptor": 553,
+        "possessive_spatial": 406,
+        "where_question": 63,
         "which_question": 0,
         "whose_question": 0,
         "how_many_question": 0,
@@ -2397,45 +2397,45 @@
         "who_subject_question": 0,
         "present_intransitive_adverb": 0,
         "present_transitive_adverb": 0,
-        "present_joint_action": 438,
+        "present_joint_action": 489,
         "count_location": 0,
-        "coordinated_present": 42642
+        "coordinated_present": 70490
       },
-      "orderedClausePairs": 42642,
-      "baseNovelPashto": 12059,
+      "orderedClausePairs": 70490,
+      "baseNovelPashto": 14648,
       "baseArchivalTextMatches": 161,
       "byFamilyDetails": {
         "equative_descriptor": {
-          "eligibleUniquePashto": 112,
-          "newlyComposedTexts": 101,
+          "eligibleUniquePashto": 116,
+          "newlyComposedTexts": 105,
           "archivalTextMatches": 11,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_descriptor": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 189,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 197,
           "archivalTextMatches": 35,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "attributive_equative": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 224,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 232,
           "archivalTextMatches": 0,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "equative_noun": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 68,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 124,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive": {
-          "eligibleUniquePashto": 1330,
-          "newlyComposedTexts": 1267,
+          "eligibleUniquePashto": 1695,
+          "newlyComposedTexts": 1632,
           "archivalTextMatches": 63,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2448,8 +2448,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_attributive": {
-          "eligibleUniquePashto": 4667,
-          "newlyComposedTexts": 4665,
+          "eligibleUniquePashto": 4817,
+          "newlyComposedTexts": 4815,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2469,64 +2469,64 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_transitive": {
-          "eligibleUniquePashto": 2660,
-          "newlyComposedTexts": 2657,
+          "eligibleUniquePashto": 3390,
+          "newlyComposedTexts": 3387,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_equative": {
-          "eligibleUniquePashto": 46,
-          "newlyComposedTexts": 45,
+          "eligibleUniquePashto": 146,
+          "newlyComposedTexts": 145,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_transitive": {
-          "eligibleUniquePashto": 1059,
-          "newlyComposedTexts": 1055,
+          "eligibleUniquePashto": 1717,
+          "newlyComposedTexts": 1713,
           "archivalTextMatches": 4,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "spatial_equative": {
-          "eligibleUniquePashto": 68,
-          "newlyComposedTexts": 63,
+          "eligibleUniquePashto": 79,
+          "newlyComposedTexts": 74,
           "archivalTextMatches": 5,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "location_adverb_equative": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 67,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 123,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_equative": {
-          "eligibleUniquePashto": 308,
-          "newlyComposedTexts": 293,
+          "eligibleUniquePashto": 574,
+          "newlyComposedTexts": 559,
           "archivalTextMatches": 15,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_descriptor": {
-          "eligibleUniquePashto": 525,
-          "newlyComposedTexts": 524,
+          "eligibleUniquePashto": 553,
+          "newlyComposedTexts": 552,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_spatial": {
-          "eligibleUniquePashto": 336,
-          "newlyComposedTexts": 335,
+          "eligibleUniquePashto": 406,
+          "newlyComposedTexts": 405,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "where_question": {
-          "eligibleUniquePashto": 35,
-          "newlyComposedTexts": 30,
+          "eligibleUniquePashto": 63,
+          "newlyComposedTexts": 58,
           "archivalTextMatches": 5,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2581,8 +2581,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_joint_action": {
-          "eligibleUniquePashto": 438,
-          "newlyComposedTexts": 435,
+          "eligibleUniquePashto": 489,
+          "newlyComposedTexts": 486,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2595,7 +2595,7 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "coordinated_present": {
-          "eligibleUniquePashto": 42642,
+          "eligibleUniquePashto": 70490,
           "newlyComposedTexts": null,
           "archivalTextMatches": null,
           "fixedAuthoredFallbacks": 0,
@@ -2605,73 +2605,73 @@
     },
     {
       "day": 12,
-      "baseBindings": 12970,
-      "baseUniquePashto": 12566,
+      "baseBindings": 15785,
+      "baseUniquePashto": 15381,
       "byFamily": {
-        "equative_descriptor": 112,
-        "demonstrative_descriptor": 224,
-        "attributive_equative": 224,
-        "equative_noun": 70,
-        "present_transitive": 1330,
+        "equative_descriptor": 116,
+        "demonstrative_descriptor": 232,
+        "attributive_equative": 232,
+        "equative_noun": 126,
+        "present_transitive": 1695,
         "present_compound_transitive": 12,
-        "present_attributive": 4667,
+        "present_attributive": 4817,
         "present_intransitive": 16,
         "present_compound_predicate": 20,
-        "demonstrative_transitive": 2660,
-        "counted_equative": 46,
-        "counted_transitive": 1059,
-        "spatial_equative": 68,
-        "location_adverb_equative": 70,
-        "possessive_equative": 308,
-        "possessive_descriptor": 525,
-        "possessive_spatial": 336,
-        "where_question": 35,
+        "demonstrative_transitive": 3390,
+        "counted_equative": 146,
+        "counted_transitive": 1717,
+        "spatial_equative": 79,
+        "location_adverb_equative": 126,
+        "possessive_equative": 574,
+        "possessive_descriptor": 553,
+        "possessive_spatial": 406,
+        "where_question": 63,
         "which_question": 91,
-        "whose_question": 44,
-        "how_many_question": 22,
+        "whose_question": 82,
+        "how_many_question": 78,
         "what_object_question": 24,
-        "who_subject_question": 119,
+        "who_subject_question": 151,
         "present_intransitive_adverb": 0,
         "present_transitive_adverb": 0,
-        "present_joint_action": 438,
-        "count_location": 46,
-        "coordinated_present": 42642
+        "present_joint_action": 489,
+        "count_location": 146,
+        "coordinated_present": 70490
       },
-      "orderedClausePairs": 42642,
-      "baseNovelPashto": 12397,
+      "orderedClausePairs": 70490,
+      "baseNovelPashto": 15212,
       "baseArchivalTextMatches": 169,
       "byFamilyDetails": {
         "equative_descriptor": {
-          "eligibleUniquePashto": 112,
-          "newlyComposedTexts": 101,
+          "eligibleUniquePashto": 116,
+          "newlyComposedTexts": 105,
           "archivalTextMatches": 11,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_descriptor": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 189,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 197,
           "archivalTextMatches": 35,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "attributive_equative": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 224,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 232,
           "archivalTextMatches": 0,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "equative_noun": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 68,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 124,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive": {
-          "eligibleUniquePashto": 1330,
-          "newlyComposedTexts": 1267,
+          "eligibleUniquePashto": 1695,
+          "newlyComposedTexts": 1632,
           "archivalTextMatches": 63,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2684,8 +2684,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_attributive": {
-          "eligibleUniquePashto": 4667,
-          "newlyComposedTexts": 4665,
+          "eligibleUniquePashto": 4817,
+          "newlyComposedTexts": 4815,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2705,64 +2705,64 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_transitive": {
-          "eligibleUniquePashto": 2660,
-          "newlyComposedTexts": 2657,
+          "eligibleUniquePashto": 3390,
+          "newlyComposedTexts": 3387,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_equative": {
-          "eligibleUniquePashto": 46,
-          "newlyComposedTexts": 45,
+          "eligibleUniquePashto": 146,
+          "newlyComposedTexts": 145,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_transitive": {
-          "eligibleUniquePashto": 1059,
-          "newlyComposedTexts": 1055,
+          "eligibleUniquePashto": 1717,
+          "newlyComposedTexts": 1713,
           "archivalTextMatches": 4,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "spatial_equative": {
-          "eligibleUniquePashto": 68,
-          "newlyComposedTexts": 63,
+          "eligibleUniquePashto": 79,
+          "newlyComposedTexts": 74,
           "archivalTextMatches": 5,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "location_adverb_equative": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 67,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 123,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_equative": {
-          "eligibleUniquePashto": 308,
-          "newlyComposedTexts": 293,
+          "eligibleUniquePashto": 574,
+          "newlyComposedTexts": 559,
           "archivalTextMatches": 15,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_descriptor": {
-          "eligibleUniquePashto": 525,
-          "newlyComposedTexts": 524,
+          "eligibleUniquePashto": 553,
+          "newlyComposedTexts": 552,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_spatial": {
-          "eligibleUniquePashto": 336,
-          "newlyComposedTexts": 335,
+          "eligibleUniquePashto": 406,
+          "newlyComposedTexts": 405,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "where_question": {
-          "eligibleUniquePashto": 35,
-          "newlyComposedTexts": 30,
+          "eligibleUniquePashto": 63,
+          "newlyComposedTexts": 58,
           "archivalTextMatches": 5,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2775,15 +2775,15 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "whose_question": {
-          "eligibleUniquePashto": 44,
-          "newlyComposedTexts": 43,
+          "eligibleUniquePashto": 82,
+          "newlyComposedTexts": 81,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "how_many_question": {
-          "eligibleUniquePashto": 22,
-          "newlyComposedTexts": 20,
+          "eligibleUniquePashto": 78,
+          "newlyComposedTexts": 76,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2796,8 +2796,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "who_subject_question": {
-          "eligibleUniquePashto": 119,
-          "newlyComposedTexts": 118,
+          "eligibleUniquePashto": 151,
+          "newlyComposedTexts": 150,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2817,21 +2817,21 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_joint_action": {
-          "eligibleUniquePashto": 438,
-          "newlyComposedTexts": 435,
+          "eligibleUniquePashto": 489,
+          "newlyComposedTexts": 486,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "count_location": {
-          "eligibleUniquePashto": 46,
-          "newlyComposedTexts": 46,
+          "eligibleUniquePashto": 146,
+          "newlyComposedTexts": 146,
           "archivalTextMatches": 0,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "coordinated_present": {
-          "eligibleUniquePashto": 42642,
+          "eligibleUniquePashto": 70490,
           "newlyComposedTexts": null,
           "archivalTextMatches": null,
           "fixedAuthoredFallbacks": 0,
@@ -2841,73 +2841,73 @@
     },
     {
       "day": 13,
-      "baseBindings": 18591,
-      "baseUniquePashto": 17430,
+      "baseBindings": 22022,
+      "baseUniquePashto": 20810,
       "byFamily": {
-        "equative_descriptor": 112,
-        "demonstrative_descriptor": 224,
-        "attributive_equative": 224,
-        "equative_noun": 70,
-        "present_transitive": 1330,
+        "equative_descriptor": 116,
+        "demonstrative_descriptor": 232,
+        "attributive_equative": 232,
+        "equative_noun": 126,
+        "present_transitive": 1695,
         "present_compound_transitive": 12,
-        "present_attributive": 4667,
+        "present_attributive": 4817,
         "present_intransitive": 16,
         "present_compound_predicate": 20,
-        "demonstrative_transitive": 2660,
-        "counted_equative": 46,
-        "counted_transitive": 1059,
-        "spatial_equative": 68,
-        "location_adverb_equative": 70,
-        "possessive_equative": 308,
-        "possessive_descriptor": 525,
-        "possessive_spatial": 336,
-        "where_question": 35,
+        "demonstrative_transitive": 3390,
+        "counted_equative": 146,
+        "counted_transitive": 1717,
+        "spatial_equative": 79,
+        "location_adverb_equative": 126,
+        "possessive_equative": 574,
+        "possessive_descriptor": 553,
+        "possessive_spatial": 406,
+        "where_question": 63,
         "which_question": 91,
-        "whose_question": 44,
-        "how_many_question": 22,
+        "whose_question": 82,
+        "how_many_question": 78,
         "what_object_question": 24,
-        "who_subject_question": 119,
+        "who_subject_question": 151,
         "present_intransitive_adverb": 159,
-        "present_transitive_adverb": 5150,
-        "present_joint_action": 438,
-        "count_location": 46,
-        "coordinated_present": 42642
+        "present_transitive_adverb": 5766,
+        "present_joint_action": 489,
+        "count_location": 146,
+        "coordinated_present": 70490
       },
-      "orderedClausePairs": 42642,
-      "baseNovelPashto": 17255,
+      "orderedClausePairs": 70490,
+      "baseNovelPashto": 20635,
       "baseArchivalTextMatches": 175,
       "byFamilyDetails": {
         "equative_descriptor": {
-          "eligibleUniquePashto": 112,
-          "newlyComposedTexts": 101,
+          "eligibleUniquePashto": 116,
+          "newlyComposedTexts": 105,
           "archivalTextMatches": 11,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_descriptor": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 189,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 197,
           "archivalTextMatches": 35,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "attributive_equative": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 224,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 232,
           "archivalTextMatches": 0,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "equative_noun": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 68,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 124,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive": {
-          "eligibleUniquePashto": 1330,
-          "newlyComposedTexts": 1267,
+          "eligibleUniquePashto": 1695,
+          "newlyComposedTexts": 1632,
           "archivalTextMatches": 63,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2920,8 +2920,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_attributive": {
-          "eligibleUniquePashto": 4667,
-          "newlyComposedTexts": 4665,
+          "eligibleUniquePashto": 4817,
+          "newlyComposedTexts": 4815,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -2941,64 +2941,64 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_transitive": {
-          "eligibleUniquePashto": 2660,
-          "newlyComposedTexts": 2657,
+          "eligibleUniquePashto": 3390,
+          "newlyComposedTexts": 3387,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_equative": {
-          "eligibleUniquePashto": 46,
-          "newlyComposedTexts": 45,
+          "eligibleUniquePashto": 146,
+          "newlyComposedTexts": 145,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_transitive": {
-          "eligibleUniquePashto": 1059,
-          "newlyComposedTexts": 1055,
+          "eligibleUniquePashto": 1717,
+          "newlyComposedTexts": 1713,
           "archivalTextMatches": 4,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "spatial_equative": {
-          "eligibleUniquePashto": 68,
-          "newlyComposedTexts": 63,
+          "eligibleUniquePashto": 79,
+          "newlyComposedTexts": 74,
           "archivalTextMatches": 5,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "location_adverb_equative": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 67,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 123,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_equative": {
-          "eligibleUniquePashto": 308,
-          "newlyComposedTexts": 293,
+          "eligibleUniquePashto": 574,
+          "newlyComposedTexts": 559,
           "archivalTextMatches": 15,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_descriptor": {
-          "eligibleUniquePashto": 525,
-          "newlyComposedTexts": 524,
+          "eligibleUniquePashto": 553,
+          "newlyComposedTexts": 552,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_spatial": {
-          "eligibleUniquePashto": 336,
-          "newlyComposedTexts": 335,
+          "eligibleUniquePashto": 406,
+          "newlyComposedTexts": 405,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "where_question": {
-          "eligibleUniquePashto": 35,
-          "newlyComposedTexts": 30,
+          "eligibleUniquePashto": 63,
+          "newlyComposedTexts": 58,
           "archivalTextMatches": 5,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -3011,15 +3011,15 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "whose_question": {
-          "eligibleUniquePashto": 44,
-          "newlyComposedTexts": 43,
+          "eligibleUniquePashto": 82,
+          "newlyComposedTexts": 81,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "how_many_question": {
-          "eligibleUniquePashto": 22,
-          "newlyComposedTexts": 20,
+          "eligibleUniquePashto": 78,
+          "newlyComposedTexts": 76,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -3032,8 +3032,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "who_subject_question": {
-          "eligibleUniquePashto": 119,
-          "newlyComposedTexts": 118,
+          "eligibleUniquePashto": 151,
+          "newlyComposedTexts": 150,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -3046,28 +3046,28 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive_adverb": {
-          "eligibleUniquePashto": 5150,
-          "newlyComposedTexts": 5144,
+          "eligibleUniquePashto": 5766,
+          "newlyComposedTexts": 5760,
           "archivalTextMatches": 6,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_joint_action": {
-          "eligibleUniquePashto": 438,
-          "newlyComposedTexts": 435,
+          "eligibleUniquePashto": 489,
+          "newlyComposedTexts": 486,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "count_location": {
-          "eligibleUniquePashto": 46,
-          "newlyComposedTexts": 46,
+          "eligibleUniquePashto": 146,
+          "newlyComposedTexts": 146,
           "archivalTextMatches": 0,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "coordinated_present": {
-          "eligibleUniquePashto": 42642,
+          "eligibleUniquePashto": 70490,
           "newlyComposedTexts": null,
           "archivalTextMatches": null,
           "fixedAuthoredFallbacks": 0,
@@ -3077,73 +3077,73 @@
     },
     {
       "day": 14,
-      "baseBindings": 18591,
-      "baseUniquePashto": 17430,
+      "baseBindings": 22022,
+      "baseUniquePashto": 20810,
       "byFamily": {
-        "equative_descriptor": 112,
-        "demonstrative_descriptor": 224,
-        "attributive_equative": 224,
-        "equative_noun": 70,
-        "present_transitive": 1330,
+        "equative_descriptor": 116,
+        "demonstrative_descriptor": 232,
+        "attributive_equative": 232,
+        "equative_noun": 126,
+        "present_transitive": 1695,
         "present_compound_transitive": 12,
-        "present_attributive": 4667,
+        "present_attributive": 4817,
         "present_intransitive": 16,
         "present_compound_predicate": 20,
-        "demonstrative_transitive": 2660,
-        "counted_equative": 46,
-        "counted_transitive": 1059,
-        "spatial_equative": 68,
-        "location_adverb_equative": 70,
-        "possessive_equative": 308,
-        "possessive_descriptor": 525,
-        "possessive_spatial": 336,
-        "where_question": 35,
+        "demonstrative_transitive": 3390,
+        "counted_equative": 146,
+        "counted_transitive": 1717,
+        "spatial_equative": 79,
+        "location_adverb_equative": 126,
+        "possessive_equative": 574,
+        "possessive_descriptor": 553,
+        "possessive_spatial": 406,
+        "where_question": 63,
         "which_question": 91,
-        "whose_question": 44,
-        "how_many_question": 22,
+        "whose_question": 82,
+        "how_many_question": 78,
         "what_object_question": 24,
-        "who_subject_question": 119,
+        "who_subject_question": 151,
         "present_intransitive_adverb": 159,
-        "present_transitive_adverb": 5150,
-        "present_joint_action": 438,
-        "count_location": 46,
-        "coordinated_present": 42642
+        "present_transitive_adverb": 5766,
+        "present_joint_action": 489,
+        "count_location": 146,
+        "coordinated_present": 70490
       },
-      "orderedClausePairs": 42642,
-      "baseNovelPashto": 17255,
+      "orderedClausePairs": 70490,
+      "baseNovelPashto": 20635,
       "baseArchivalTextMatches": 175,
       "byFamilyDetails": {
         "equative_descriptor": {
-          "eligibleUniquePashto": 112,
-          "newlyComposedTexts": 101,
+          "eligibleUniquePashto": 116,
+          "newlyComposedTexts": 105,
           "archivalTextMatches": 11,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_descriptor": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 189,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 197,
           "archivalTextMatches": 35,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "attributive_equative": {
-          "eligibleUniquePashto": 224,
-          "newlyComposedTexts": 224,
+          "eligibleUniquePashto": 232,
+          "newlyComposedTexts": 232,
           "archivalTextMatches": 0,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "equative_noun": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 68,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 124,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive": {
-          "eligibleUniquePashto": 1330,
-          "newlyComposedTexts": 1267,
+          "eligibleUniquePashto": 1695,
+          "newlyComposedTexts": 1632,
           "archivalTextMatches": 63,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -3156,8 +3156,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_attributive": {
-          "eligibleUniquePashto": 4667,
-          "newlyComposedTexts": 4665,
+          "eligibleUniquePashto": 4817,
+          "newlyComposedTexts": 4815,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -3177,64 +3177,64 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "demonstrative_transitive": {
-          "eligibleUniquePashto": 2660,
-          "newlyComposedTexts": 2657,
+          "eligibleUniquePashto": 3390,
+          "newlyComposedTexts": 3387,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_equative": {
-          "eligibleUniquePashto": 46,
-          "newlyComposedTexts": 45,
+          "eligibleUniquePashto": 146,
+          "newlyComposedTexts": 145,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "counted_transitive": {
-          "eligibleUniquePashto": 1059,
-          "newlyComposedTexts": 1055,
+          "eligibleUniquePashto": 1717,
+          "newlyComposedTexts": 1713,
           "archivalTextMatches": 4,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "spatial_equative": {
-          "eligibleUniquePashto": 68,
-          "newlyComposedTexts": 63,
+          "eligibleUniquePashto": 79,
+          "newlyComposedTexts": 74,
           "archivalTextMatches": 5,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "location_adverb_equative": {
-          "eligibleUniquePashto": 70,
-          "newlyComposedTexts": 67,
+          "eligibleUniquePashto": 126,
+          "newlyComposedTexts": 123,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_equative": {
-          "eligibleUniquePashto": 308,
-          "newlyComposedTexts": 293,
+          "eligibleUniquePashto": 574,
+          "newlyComposedTexts": 559,
           "archivalTextMatches": 15,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_descriptor": {
-          "eligibleUniquePashto": 525,
-          "newlyComposedTexts": 524,
+          "eligibleUniquePashto": 553,
+          "newlyComposedTexts": 552,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "possessive_spatial": {
-          "eligibleUniquePashto": 336,
-          "newlyComposedTexts": 335,
+          "eligibleUniquePashto": 406,
+          "newlyComposedTexts": 405,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "where_question": {
-          "eligibleUniquePashto": 35,
-          "newlyComposedTexts": 30,
+          "eligibleUniquePashto": 63,
+          "newlyComposedTexts": 58,
           "archivalTextMatches": 5,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -3247,15 +3247,15 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "whose_question": {
-          "eligibleUniquePashto": 44,
-          "newlyComposedTexts": 43,
+          "eligibleUniquePashto": 82,
+          "newlyComposedTexts": 81,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "how_many_question": {
-          "eligibleUniquePashto": 22,
-          "newlyComposedTexts": 20,
+          "eligibleUniquePashto": 78,
+          "newlyComposedTexts": 76,
           "archivalTextMatches": 2,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -3268,8 +3268,8 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "who_subject_question": {
-          "eligibleUniquePashto": 119,
-          "newlyComposedTexts": 118,
+          "eligibleUniquePashto": 151,
+          "newlyComposedTexts": 150,
           "archivalTextMatches": 1,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
@@ -3282,28 +3282,28 @@
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_transitive_adverb": {
-          "eligibleUniquePashto": 5150,
-          "newlyComposedTexts": 5144,
+          "eligibleUniquePashto": 5766,
+          "newlyComposedTexts": 5760,
           "archivalTextMatches": 6,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "present_joint_action": {
-          "eligibleUniquePashto": 438,
-          "newlyComposedTexts": 435,
+          "eligibleUniquePashto": 489,
+          "newlyComposedTexts": 486,
           "archivalTextMatches": 3,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "count_location": {
-          "eligibleUniquePashto": 46,
-          "newlyComposedTexts": 46,
+          "eligibleUniquePashto": 146,
+          "newlyComposedTexts": 146,
           "archivalTextMatches": 0,
           "fixedAuthoredFallbacks": 0,
           "note": "Archival text matches are independently compiled, never fetched as targets."
         },
         "coordinated_present": {
-          "eligibleUniquePashto": 42642,
+          "eligibleUniquePashto": 70490,
           "newlyComposedTexts": null,
           "archivalTextMatches": null,
           "fixedAuthoredFallbacks": 0,
@@ -3335,6 +3335,32 @@
     }
   ],
   "formGaps": [
+    {
+      "lemmaId": "lemma:n-house",
+      "formId": "lemma:n-house:research:oblique:singular:13ac2b58",
+      "pashto": "کاله",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
+      "lemmaId": "lemma:n-house",
+      "formId": "lemma:n-house:research:oblique:plural:2879f53b",
+      "pashto": "کورو",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
     {
       "lemmaId": "lemma:n-door",
       "formId": "lemma:n-door:licensed:2",
@@ -3424,6 +3450,19 @@
         "form-specific compositional role and contextual evidence"
       ],
       "reason": "Incomplete or unvetted form features; authored reference only"
+    },
+    {
+      "lemmaId": "lemma:n-shop",
+      "formId": "lemma:n-shop:research:direct:plural:61de75e9",
+      "pashto": "دکاکين",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
     },
     {
       "lemmaId": "lemma:v-eat",
@@ -4188,6 +4227,20 @@
       "reason": "Incomplete or unvetted form features; authored reference only"
     },
     {
+      "lemmaId": "lemma:n-people",
+      "formId": "lemma:n-people:research:oblique:singular:13001912",
+      "pashto": "خلقه",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
       "lemmaId": "lemma:v-like",
       "formId": "lemma:v-like:form:0",
       "pashto": "خوښول",
@@ -4295,8 +4348,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Incomplete or unvetted form features; authored reference only"
     },
@@ -4913,8 +4965,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -4973,8 +5024,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -5063,8 +5113,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -5078,8 +5127,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -5279,6 +5327,34 @@
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
     {
+      "lemmaId": "lemma:expansion:noun:pillow",
+      "formId": "lemma:expansion:noun:pillow:research:direct:plural:cfca8419",
+      "pashto": "بالښتان",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:pillow",
+      "formId": "lemma:expansion:noun:pillow:research:direct:plural:4da27f2e",
+      "pashto": "بالښتونه",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
       "lemmaId": "lemma:expansion:noun:blanket",
       "formId": "lemma:expansion:noun:blanket:citation",
       "pashto": "کمبل",
@@ -5352,6 +5428,20 @@
         "sense-specific semantic/English argument metadata"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:curtain",
+      "formId": "lemma:expansion:noun:curtain:research:oblique:plural:dd03576f",
+      "pashto": "پردو",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
     },
     {
       "lemmaId": "lemma:expansion:noun:key",
@@ -5633,8 +5723,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -5663,8 +5752,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -6122,6 +6210,34 @@
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
     {
+      "lemmaId": "lemma:expansion:noun:tree",
+      "formId": "lemma:expansion:noun:tree:research:direct:plural:107ed257",
+      "pashto": "وني",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:tree",
+      "formId": "lemma:expansion:noun:tree:research:oblique:plural:f248e10d",
+      "pashto": "ونو",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
       "lemmaId": "lemma:expansion:noun:branch",
       "formId": "lemma:expansion:noun:branch:citation",
       "pashto": "څانګه",
@@ -6176,10 +6292,35 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:flower",
+      "formId": "lemma:expansion:noun:flower:research:oblique:singular:0af31e10",
+      "pashto": "ګله",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:flower",
+      "formId": "lemma:expansion:noun:flower:research:oblique:plural:8367cb91",
+      "pashto": "ګلو",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
     },
     {
       "lemmaId": "lemma:expansion:noun:seed",
@@ -6242,6 +6383,20 @@
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
     {
+      "lemmaId": "lemma:expansion:noun:mud",
+      "formId": "lemma:expansion:noun:mud:research:direct:plural:ebbe650e",
+      "pashto": "خټي",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
       "lemmaId": "lemma:expansion:noun:pebble",
       "formId": "lemma:expansion:noun:pebble:citation",
       "pashto": "کاڼی",
@@ -6266,10 +6421,35 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:mountain",
+      "formId": "lemma:expansion:noun:mountain:research:direct:plural:f62d900a",
+      "pashto": "غره",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:mountain",
+      "formId": "lemma:expansion:noun:mountain:research:oblique:singular:f62d900a",
+      "pashto": "غره",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
     },
     {
       "lemmaId": "lemma:expansion:noun:valley",
@@ -6311,10 +6491,22 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:field",
+      "formId": "lemma:expansion:noun:field:research:oblique:plural:74020553",
+      "pashto": "پټو",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
     },
     {
       "lemmaId": "lemma:expansion:noun:orchard",
@@ -6416,8 +6608,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -6465,6 +6656,20 @@
         "sense-specific semantic/English argument metadata"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:snow",
+      "formId": "lemma:expansion:noun:snow:research:direct:plural:9535d605",
+      "pashto": "واوري",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
     },
     {
       "lemmaId": "lemma:expansion:noun:ice",
@@ -6602,6 +6807,20 @@
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
     {
+      "lemmaId": "lemma:expansion:noun:goat",
+      "formId": "lemma:expansion:noun:goat:research:direct:plural:e07cc545",
+      "pashto": "وزې",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
       "lemmaId": "lemma:expansion:noun:sheep",
       "formId": "lemma:expansion:noun:sheep:citation",
       "pashto": "پسه",
@@ -6611,8 +6830,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -6656,10 +6874,22 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:donkey",
+      "formId": "lemma:expansion:noun:donkey:research:oblique:singular:d7f59ac3",
+      "pashto": "خره",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
     },
     {
       "lemmaId": "lemma:expansion:noun:chicken",
@@ -6671,8 +6901,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -6776,8 +7005,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -7394,10 +7622,22 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:receipt",
+      "formId": "lemma:expansion:noun:receipt:research:direct:plural:39daaed8",
+      "pashto": "رسيدات",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
     },
     {
       "lemmaId": "lemma:expansion:noun:bill",
@@ -7439,8 +7679,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -8613,6 +8852,34 @@
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
     {
+      "lemmaId": "lemma:expansion:noun:paragraph",
+      "formId": "lemma:expansion:noun:paragraph:research:direct:plural:50de984a",
+      "pashto": "فقرې",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:paragraph",
+      "formId": "lemma:expansion:noun:paragraph:research:direct:plural:90b42671",
+      "pashto": "فقرات",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
       "lemmaId": "lemma:expansion:noun:letter",
       "formId": "lemma:expansion:noun:letter:citation",
       "pashto": "توری",
@@ -8686,6 +8953,20 @@
         "sense-specific semantic/English argument metadata"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:sum",
+      "formId": "lemma:expansion:noun:sum:research:direct:plural:7c90f06e",
+      "pashto": "جمعي",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
     },
     {
       "lemmaId": "lemma:expansion:noun:equation",
@@ -8793,6 +9074,34 @@
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
     {
+      "lemmaId": "lemma:expansion:noun:subject",
+      "formId": "lemma:expansion:noun:subject:research:direct:plural:bab07f79",
+      "pashto": "مضمونه",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
+      "lemmaId": "lemma:expansion:noun:subject",
+      "formId": "lemma:expansion:noun:subject:research:direct:plural:070d8c89",
+      "pashto": "مضامين",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
       "lemmaId": "lemma:expansion:noun:recess",
       "formId": "lemma:expansion:noun:recess:citation",
       "pashto": "تفريح",
@@ -8883,6 +9192,20 @@
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
     {
+      "lemmaId": "lemma:expansion:noun:screen",
+      "formId": "lemma:expansion:noun:screen:research:oblique:plural:dd03576f",
+      "pashto": "پردو",
+      "compositionEligible": false,
+      "licensedRoles": [
+        "noun"
+      ],
+      "missing": [
+        "form-specific compositional role and contextual evidence",
+        "sense-specific semantic/English argument metadata"
+      ],
+      "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification"
+    },
+    {
       "lemmaId": "lemma:expansion:noun:projector",
       "formId": "lemma:expansion:noun:projector:citation",
       "pashto": "پروجکټور",
@@ -8922,8 +9245,7 @@
         "gender",
         "number",
         "case",
-        "form-specific compositional role and contextual evidence",
-        "sense-specific semantic/English argument metadata"
+        "form-specific compositional role and contextual evidence"
       ],
       "reason": "Isolated lexical draft; no productive morphology licensed"
     },
@@ -13172,13 +13494,6 @@
   ],
   "nounGaps": [
     {
-      "lemmaId": "lemma:n-house",
-      "pashto": "کور",
-      "missingDirectPlural": false,
-      "bareObliqueLicensed": false,
-      "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
-    },
-    {
       "lemmaId": "lemma:n-door",
       "pashto": "دروازه",
       "missingDirectPlural": false,
@@ -13223,7 +13538,7 @@
     {
       "lemmaId": "lemma:n-shop",
       "pashto": "دوکان",
-      "missingDirectPlural": true,
+      "missingDirectPlural": false,
       "bareObliqueLicensed": false,
       "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
     },
@@ -13370,13 +13685,6 @@
     {
       "lemmaId": "lemma:n-bird3",
       "pashto": "مرغان",
-      "missingDirectPlural": false,
-      "bareObliqueLicensed": false,
-      "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
-    },
-    {
-      "lemmaId": "lemma:n-people",
-      "pashto": "خلک",
       "missingDirectPlural": false,
       "bareObliqueLicensed": false,
       "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
@@ -13704,13 +14012,6 @@
       "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
     },
     {
-      "lemmaId": "lemma:expansion:noun:curtain",
-      "pashto": "پرده",
-      "missingDirectPlural": false,
-      "bareObliqueLicensed": false,
-      "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
-    },
-    {
       "lemmaId": "lemma:expansion:noun:key",
       "pashto": "کيلۍ",
       "missingDirectPlural": false,
@@ -13872,13 +14173,6 @@
       "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
     },
     {
-      "lemmaId": "lemma:expansion:noun:tree",
-      "pashto": "ونه",
-      "missingDirectPlural": false,
-      "bareObliqueLicensed": false,
-      "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
-    },
-    {
       "lemmaId": "lemma:expansion:noun:branch",
       "pashto": "څانګه",
       "missingDirectPlural": false,
@@ -13895,13 +14189,6 @@
     {
       "lemmaId": "lemma:expansion:noun:root",
       "pashto": "ريښه",
-      "missingDirectPlural": false,
-      "bareObliqueLicensed": false,
-      "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
-    },
-    {
-      "lemmaId": "lemma:expansion:noun:flower",
-      "pashto": "ګل",
       "missingDirectPlural": false,
       "bareObliqueLicensed": false,
       "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
@@ -13942,13 +14229,6 @@
       "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
     },
     {
-      "lemmaId": "lemma:expansion:noun:mountain",
-      "pashto": "غر",
-      "missingDirectPlural": false,
-      "bareObliqueLicensed": false,
-      "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
-    },
-    {
       "lemmaId": "lemma:expansion:noun:valley",
       "pashto": "دره",
       "missingDirectPlural": false,
@@ -13958,13 +14238,6 @@
     {
       "lemmaId": "lemma:expansion:noun:meadow",
       "pashto": "څړځای",
-      "missingDirectPlural": false,
-      "bareObliqueLicensed": false,
-      "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
-    },
-    {
-      "lemmaId": "lemma:expansion:noun:field",
-      "pashto": "پټی",
       "missingDirectPlural": false,
       "bareObliqueLicensed": false,
       "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
@@ -14119,13 +14392,6 @@
     {
       "lemmaId": "lemma:expansion:noun:horse",
       "pashto": "آس",
-      "missingDirectPlural": false,
-      "bareObliqueLicensed": false,
-      "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
-    },
-    {
-      "lemmaId": "lemma:expansion:noun:donkey",
-      "pashto": "خر",
       "missingDirectPlural": false,
       "bareObliqueLicensed": false,
       "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
@@ -14812,13 +15078,6 @@
     {
       "lemmaId": "lemma:expansion:noun:keyboard",
       "pashto": "کيبورډ",
-      "missingDirectPlural": false,
-      "bareObliqueLicensed": false,
-      "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."
-    },
-    {
-      "lemmaId": "lemma:expansion:noun:screen",
-      "pashto": "پرده",
       "missingDirectPlural": false,
       "bareObliqueLicensed": false,
       "required": "An attested spelling, own pronunciation aid and explicit gender/number/case features are required before another nominal cell can be used. A whole location/possession chunk does not license arbitrary obliques."

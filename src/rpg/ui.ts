@@ -1,6 +1,6 @@
 import type {EducationServices,RPGDependencies,Direction,Action,WorldSave,Actor} from './types';
 import {createRPGTransitions} from './transitions';
-import {conversationEvent,conversationCompleted,conversationEligible} from './conversations';
+import {conversationEvent,conversationEligible} from './conversations';
 import {RPGWorldData} from './world-data';
 import {createRPGRegistry,createRPGDialogue} from './content';
 import {createRPGProgression} from './progression';
@@ -134,14 +134,14 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     const loc=id.split('-')[1],c=chapter();
     if(current()===6&&['nature','residential'].includes(loc)&&!save.flags['day6-hills-invited']){
       const actor=registry.npcs(current(),'village').find(a=>a.characterId==='saleha');
-      if(actor)return {label:locationNames[loc]+' course · Lake invitation · Deena',actor};
+      if(actor)return {label:locationNames[loc]+' course · Lake invitation · '+ui.characterName?.('Deena'),actor};
     }
     for(const map of c.maps){
       const actor=registry.npcs(current(),map).find(a=>data.events[a.event]?.actions.some(action=>action.type==='lesson'&&action.lessonId===id));
       if(actor){
         const region=data.maps[map].regions.find(r=>actor.x>=r.x&&actor.x<r.x+r.w&&actor.y>=r.y&&actor.y<r.y+r.h);
         const actual=region&&(locationNames[region.id]||region.name)||locationNames[loc];
-        return {label:actual===locationNames[loc]?actual:locationNames[loc]+' course · '+actual+' · '+actor.name,actor};
+        return {label:actual===locationNames[loc]?actual:locationNames[loc]+' course · '+actual+' · '+ui.characterName?.(actor.name),actor};
       }
     }
     return {label:locationNames[loc]};
@@ -176,7 +176,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   // Restore a paired lesson before the first educational snapshot compacts history.
   // Otherwise that snapshot would retire the lesson's deduplication events.
   const pairedLesson = !state.progress.activeChallenge && save.view==='lesson' &&
-    save.educationFingerprint===RPGPersistence.fingerprint(storage.pairingSnapshot?.()??JSON.stringify(state.progress))
+    save.educationFingerprint===RPGPersistence.fingerprint(JSON.stringify(state.progress))
       ? RPGPersistence.restoreLesson(save.lesson,content,state.progress) : null;
   if(pairedLesson) state.session=pairedLesson;
   const oldView=ui.view;
@@ -215,9 +215,9 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     const near=nearby();
     canvas.dataset.map=save.position.map;canvas.dataset.x=String(save.position.x);canvas.dataset.y=String(save.position.y);canvas.dataset.facing=save.position.facing;
     text(title,data.maps[save.position.map].name);
-    interactButton.disabled=!near;text(interactButton,near?'Talk · '+near.name:'Interact · E');
+    interactButton.disabled=!near;text(interactButton,near?'Talk · '+(ui.characterName?.(near.name)??near.name):'Interact · E');
     locationNote.textContent=save.position.map==='house'?'Bookshelf ← · Bed → · Exit ↓':!state.progress.tutorialDone?(save.flags.metGuide?'Meet Muhammad Jan inside the Library, north of the village crossroads.':'Muhammad Jan is beside you. Approach him and press Interact.'):
-      conditions.passed()?'Day '+current()+' complete. Explore, revisit lessons or review your Library.':near?'Nearby: '+near.name+' · Press E or Interact.':chapter().objective;
+      conditions.passed()?'Day '+current()+' complete. Explore, revisit lessons or review your Library.':near?'Nearby: '+(ui.characterName?.(near.name)??near.name)+' · Press E or Interact.':chapter().objective;
     const status=content.zoneKeys.map(loc=>(state.progress.complete[current()+'-'+loc]?'✓ ':'○ ')+locationNames[loc]);
     if(visitStatus!==status.join('|')){visitStatus=status.join('|');visits.replaceChildren(...status.map(label=>ui.node('span',label)));}
     notice.textContent=persistence.problem||(renderFailed?'Map unavailable. Use Quick travel below.':'');dirty=false;
@@ -230,7 +230,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   }
   function guidanceLocation(actor:Actor):string {
     const map=data.maps[actor.map],region=map.regions.find(r=>actor.x>=r.x&&actor.x<r.x+r.w&&actor.y>=r.y&&actor.y<r.y+r.h);
-    return (region?locationNames[region.id]??region.name:map.name)+' — '+actor.name;
+    return (region?locationNames[region.id]??region.name:map.name)+' — '+(ui.characterName?.(actor.name)??actor.name);
   }
   function challengeTarget():string|undefined {
     const target=chapter().challenge;
@@ -271,7 +271,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     const day=current(), eligible=conversationEligible(state.progress,day,progression);
     const resolvedConversation=spec?conversationEvent(spec,data.events,
       eligible?learning.availableSentences(day):[],eligible,
-      conversationCompleted(spec,save.triggers),story.cursor?.event,Math.random,
+      story.cursor?.event,Math.random,
       ()=>learning.authoredResponse(spec.response.generatedId,day)):undefined;
     const eventId=resolvedConversation?.id??interactionEvent(target);
     if(eventId===chapter().openingEvent)chapters.opening(false);
@@ -284,7 +284,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(!event)return;
     if(spec&&save.flags['bilal-success-'+current()])event.conversationComplete=true;
     if(target.characterId!=='bilal' && !state.progress.tutorialDone && eventId!==chapter().openingEvent&&!event.actions.some(a=>a.type==='tutorial'||a.type==='reference'))dialogue.open({speaker:target.name,lines:[onboardingGuidance()],actions:[]});
-    else presentEvent(event,eventId,target);
+    else presentEvent(event,eventId);
     dirty=true;
   }
   function act(action:Action){
@@ -308,8 +308,8 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(action.type==='completion'&&conditions.passed())showCompletion();
     refreshAccess();scheduleSave();dirty=true;
   }
-  function presentEvent(event:import('./types').StoryEvent,id:string,actor?:Actor){
-    dialogue.open({...curriculumEvent(event,actor),interruptible:currentView==='world'&&!chapter().mandatoryEvents.includes(id)&&![chapter().openingEvent,chapter().endingEvent].includes(id)&&!state.progress.onboardingIntroductionPending&&state.progress.tutorialDone},story.cursor?.index);
+  function presentEvent(event:import('./types').StoryEvent,id:string){
+    dialogue.open({...curriculumEvent(event),interruptible:currentView==='world'&&!chapter().mandatoryEvents.includes(id)&&![chapter().openingEvent,chapter().endingEvent].includes(id)&&!state.progress.onboardingIntroductionPending&&state.progress.tutorialDone},story.cursor?.index);
   }
   function teacherGuidance():string {
     if(!state.progress.complete[`${current()}-school`]&&!progression.passedChallenge(state.progress,current())){
@@ -323,20 +323,11 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     const guide=registry.npcs(current(),map).find(a=>a.characterId==='muhammad-jan');
     return guide?`Visit ${guidanceLocation(guide)} first. Complete the introductory conversation and Library activities before lessons.`:'Complete the introductory Library activities with Muhammad Jan first.';
   }
-  function curriculumEvent(event:import('./types').StoryEvent,actor?:Actor):import('./types').StoryEvent {
-    const schoolDone=!!state.progress.complete[`${current()}-school`],allDone=chapter().lessons.every(id=>state.progress.complete[id]);
-    const sourceEvent=data.events[actor?.event??story.cursor?.event??''];
-    const sourceActions=[...event.actions,...(sourceEvent?.actions??[])];
-    const blocked=sourceActions.find(a=>a.type==='lesson'&&!state.progress.complete[a.lessonId]&&(!lessonEligible(a.lessonId)||!eligible(a.condition)||!eligible(sourceEvent?.condition)));
-    const locked=!!blocked || !schoolDone&&sourceActions.some(a=>a.type==='challenge'||a.type==='lesson'&&a.lessonId!==`${current()}-school`);
-    const prerequisite=[...(blocked?.condition??'').matchAll(/(?:^|[|:])complete:([0-9]+-(?:school|residential|nature|business))/g)].map(match=>match[1]).find(id=>!state.progress.complete[id]);
-    const nextId=!schoolDone?`${current()}-school`:prerequisite&&!state.progress.complete[prerequisite]?prerequisite:blocked?.type==='lesson'?blocked.lessonId:chapter().lessons.find(id=>!state.progress.complete[id]&&lessonEligible(id));
-    const destination=nextId?quickDestination(nextId):undefined;
-    const message=schoolDone&&destination?.actor?.id===actor?.id&&destination?.actor?`Continue the story interaction here at ${guidanceLocation(destination.actor)} before this lesson. Other available lessons can be studied in any order.`:destination?.actor?`Visit ${guidanceLocation(destination.actor)} first. ${!schoolDone?'School explains today’s sentence pattern.':'Speak with them to continue the story; available lessons may be studied in any order.'}`:'Explore and speak with the village teachers; this lesson is not available today.';
-    return {...event,lines:locked?[...event.lines,message]:event.lines,
-      messages:locked&&event.messages?[...event.messages,{speaker:event.speaker,characterId:event.characterId,text:message}]:event.messages,
-      actions:event.actions.filter(a=>a.type!=='challenge'||chapters.challengeAvailable()&&(a.route!=='normal'||allDone)).map(a=>a.type==='challenge'&&!a.route&&!allDone?{...a,label:'Skip to daily challenge'}:a)};
+  function curriculumEvent(event:import('./types').StoryEvent):import('./types').StoryEvent {
+    const allDone=chapter().lessons.every(id=>state.progress.complete[id]);
+    return {...event,actions:event.actions.filter(a=>a.type!=='challenge'||chapters.challengeAvailable()&&(a.route!=='normal'||allDone)).map(a=>a.type==='challenge'&&!a.route&&!allDone?{...a,label:'Skip to daily challenge'}:a)};
   }
+
   function openEvent(id:string){const event=story.open(id);if(event){
     const spec=data.conversations?.bilal?.days[String(current())];
     if(spec&&id===spec.incorrectEvent){
@@ -482,16 +473,10 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(disposed||!chapters.complete())return;
     current();document.querySelector<HTMLElement>('.brand')!.textContent='✦ PASHTO QUEST · '+chapter().name;currentView='complete';oldView('resultScreen');root.classList.remove('hidden');document.body.classList.add('rpg-overlay-active');layout.resize();
     ui.$('resultHeading').textContent=chapter().presentation?.milestoneTitle??(chapter().completion.terminal?(chapter().presentation?.terminalTitle??'Chapter complete'):(chapter().presentation?.completeTitle??'Day '+current()+' complete'));
-    const dispatched=chapters.ending(false);
-    void dispatched;
+    chapters.ending(false);
     if(chapter().endingEvent&&story.status(chapter().endingEvent!)!=='completed'){story.open(chapter().endingEvent!);story.choose({type:'explore',label:'Results acknowledged'});}
     const ending=chapter().endingEvent&&registry.event(chapter().endingEvent!);
-    // A one-line ending is presented in the results. Interactive/sequential
-    // endings keep the same dialogue lifecycle and its persistent effects.
-    if(ending&&!ending.actions.length&&!ending.messages&&ending.lines.length===1){
-      if(dialogueDialog.open)dialogueDialog.close();story.choose({type:'explore',label:'Return to results'});
-    }
-    ui.$('resultDescription').textContent=ending?ending.speaker+': '+ending.lines.join(' '):'Chapter complete.';
+    ui.$('resultDescription').textContent=ending?(ui.characterName?.(ending.speaker)??ending.speaker)+': '+ending.lines.join(' '):'Chapter complete.';
     ui.$('resultAccuracy').textContent=(state.session?.mode==='challenge'?state.session.correctCount:state.progress.challenges[current()]?.best??0)+'/'+progression.getChallengeSpec(current()).questionCount;
     ui.$('resultXPLabel').textContent='Total XP';ui.$('resultKnowledgeLabel').textContent='Current level and title';ui.$('resultScreen').querySelector<HTMLElement>('.eyebrow')!.textContent=(chapter().presentation?.completeTitle??'Chapter complete').toUpperCase();
     const status=progression.characterStatus(state.progress);ui.$('resultXP').textContent=status.xp+' XP';

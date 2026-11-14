@@ -45,17 +45,6 @@ for(const pace of [8,12,16,20,24])for(const skip of [false,true]) {
 }
 console.log(`PASS practical assessments: ${attempts} attempts, ${visits} model visits, all 14 days × 5 paces × normal/skip, exact thresholds, no rule quizzes, eligibility, masking and frozen restoration`);
 
-// Exact old current-schema rule snapshots remain readable for explicit retirement.
-const legacy=runtime();reset(legacy,8);for(let day=1;day<14;day++)legacy.progression.completeChallengeOnce(legacy.state.progress,day,[7,14].includes(day)?25:15);
-legacy.state.day=14;beginAttempt(legacy,14);
-const fixtures=JSON.parse(readFileSync('tests/retired-rule-fixtures.json','utf8')).concepts;
-for(const c of fixtures){
- const options=[c.correct,...c.misconceptions];
- legacy.state.session.questions[0]={id:'grammar:14:0',kind:'choice',direction:'en-ps',grammarConcept:c.id,prompt:c.case,correct:c.correct,options,choiceOrder:options,grammarDays:[]};
- legacy.storage.save();const restored=legacy.storage.load();assert.equal(legacy.storage.problem,null,c.id);assert.equal(restored.activeChallenge.questions[0].prompt,c.case);
- const before=plain(legacy.state.progress);assert.equal(legacy.learning.submitChallenge(c.correct),null);assert.deepEqual(plain(legacy.state.progress),before);
-}
-console.log('PASS 33 exact retired rule snapshots remain readable and ungradable, without resets or rerolls');
 
 // Shortage recall exhausts distinct scheduled words before aliases/revision.
 for(const introduced of [false,true]) {

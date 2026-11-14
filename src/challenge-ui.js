@@ -69,43 +69,10 @@ function createChallengeUI({
         : "Ms Hameed → Player: “This examination checks your first seven days: descriptions, pronouns, verb forms, sentence order, compounds and respectful conversations. Twenty correct answers out of twenty-five completes Week 1.”";
     panel.append(text);
   }
-  const hasRetiredQuestions = attempt => attempt?.questions?.some(q => ["choice", "address"].includes(q.kind) || q.grammarConcept);
-  function showRetiredAssessment(snapshot) {
-    ui.$("challengeMaterialNotice")?.remove();
-    state.session = snapshot;
-    state.day = snapshot.loop;
-    audio.stopAudio();
-    let panel = ui.$("retiredAssessmentNotice");
-    if (!panel) { panel=ui.node("article");panel.id="retiredAssessmentNotice";ui.$("lessonScreen").prepend(panel); }
-    ui.$("lessonEyebrow").textContent = `DAY ${snapshot.loop} · SAVED ASSESSMENT`;
-    ui.$("lessonName").textContent = "Assessment format changed";
-    ui.$("lessonDescription").textContent = `${snapshot.answered}/${snapshot.questions.length} answers recorded · saved score ${snapshot.correctCount}/${snapshot.questions.length}. Nothing has been regraded.`;
-    panel.replaceChildren(ui.node("h2", "Saved assessment uses retired rule questions"),
-      ui.node("p", "Your saved questions, answers and scores have not been changed. Rule-analysis questions are no longer assessed. Keep this attempt paused, export it, or explicitly retire it and start practical Pashto practice. Your vocabulary plan, SRS, XP and past results stay intact."));
-    panel.classList.remove("hidden");
-    panel.append(ui.button("Keep paused and return to town", () => { panel.classList.add("hidden");onWorld(); }),
-      ui.button("Export this saved attempt", () => {
-        const url=URL.createObjectURL(new Blob([JSON.stringify(snapshot,null,2)],{type:"application/json"}));
-        const a=document.createElement("a");a.href=url;a.download="pashto-retired-assessment.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-      }),
-      ui.button("Retire saved attempt and start practical assessment", () => {
-        // Exact archive, not a migration or an automatic reroll. Only this
-        // explicit action abandons the old active attempt; no result is graded.
-        state.progress.retiredRuleAssessmentJSON = JSON.stringify(snapshot);
-        delete state.progress.activeChallenge;
-        state.session=null;
-        panel.classList.add("hidden");
-        startChallenge(snapshot.loop);
-      }));
-    for (const id of ["teachPanel","grammarPanel","quizPanel","constructionPanel","lessonStages","challengeScene"]) ui.$(id)?.classList.add("hidden");
-    ui.view("lessonScreen");
-  }
   function startChallenge(day, snapshot = null) {
     if (!progression.challengeAccessible(state.progress, day)) return;
     if (!snapshot && state.progress.activeChallenge)
       return startChallenge(state.progress.activeChallenge.loop, JSON.parse(JSON.stringify(state.progress.activeChallenge)));
-    if (snapshot && hasRetiredQuestions(snapshot)) { showRetiredAssessment(snapshot);return; }
-    ui.$("retiredAssessmentNotice")?.classList.add("hidden");
     audio.stopAudio();
     ui.$("lessonExpression")?.replaceChildren();
     progression.activateChallenge(state.progress, day);
@@ -223,7 +190,6 @@ function createChallengeUI({
     storage.save();
   }
   function showChallengeQuestion(resuming = false) {
-    if (hasRetiredQuestions(state.session)) {showRetiredAssessment(state.session);return;}
     renderQuestion(resuming);
     const q = state.session?.questions[state.session.index];
     if (q?.phrasePromptId && !["construct", "dialogue"].includes(q.kind)) {

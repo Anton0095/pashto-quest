@@ -2,11 +2,14 @@
   "schemaVersion": 1,
   "notice": "Mechanical editorial audit, not native Laghman verification. Null traits are unknown, not asserted defaults.",
   "lemmaCount": 474,
-  "formCount": 614,
+  "formCount": 667,
   "compositionExcludedFormIds": [
+    "lemma:n-house:research:oblique:singular:13ac2b58",
+    "lemma:n-house:research:oblique:plural:2879f53b",
     "lemma:v-open:form:0",
     "lemma:v-drink:form:0",
     "lemma:a-cold:form:0",
+    "lemma:n-shop:research:direct:plural:61de75e9",
     "lemma:v-eat:form:0",
     "lemma:n-school:variant:1",
     "lemma:v-read:form:0",
@@ -53,6 +56,7 @@
     "lemma:n-bird3:form:0",
     "lemma:n-bird3:form:1",
     "lemma:n-people:form:0",
+    "lemma:n-people:research:oblique:singular:13001912",
     "lemma:v-like:form:0",
     "lemma:a-many:form:0",
     "lemma:v-walk3:form:0",
@@ -121,11 +125,14 @@
     "lemma:expansion:noun:fence:citation",
     "lemma:expansion:noun:garden:citation",
     "lemma:expansion:noun:pillow:citation",
+    "lemma:expansion:noun:pillow:research:direct:plural:cfca8419",
+    "lemma:expansion:noun:pillow:research:direct:plural:4da27f2e",
     "lemma:expansion:noun:blanket:citation",
     "lemma:expansion:noun:bed:citation",
     "lemma:expansion:noun:mattress:citation",
     "lemma:expansion:noun:carpet:citation",
     "lemma:expansion:noun:curtain:citation",
+    "lemma:expansion:noun:curtain:research:oblique:plural:dd03576f",
     "lemma:expansion:noun:key:citation",
     "lemma:expansion:noun:lock:citation",
     "lemma:expansion:noun:lamp:citation",
@@ -174,19 +181,27 @@
     "lemma:expansion:adjective:messy:citation",
     "lemma:expansion:noun:forest:citation",
     "lemma:expansion:noun:tree:citation",
+    "lemma:expansion:noun:tree:research:direct:plural:107ed257",
+    "lemma:expansion:noun:tree:research:oblique:plural:f248e10d",
     "lemma:expansion:noun:branch:citation",
     "lemma:expansion:noun:leaf:citation",
     "lemma:expansion:noun:root:citation",
     "lemma:expansion:noun:flower:citation",
+    "lemma:expansion:noun:flower:research:oblique:singular:0af31e10",
+    "lemma:expansion:noun:flower:research:oblique:plural:8367cb91",
     "lemma:expansion:noun:seed:citation",
     "lemma:expansion:noun:grass:citation",
     "lemma:expansion:noun:soil:citation",
     "lemma:expansion:noun:mud:citation",
+    "lemma:expansion:noun:mud:research:direct:plural:ebbe650e",
     "lemma:expansion:noun:pebble:citation",
     "lemma:expansion:noun:mountain:citation",
+    "lemma:expansion:noun:mountain:research:direct:plural:f62d900a",
+    "lemma:expansion:noun:mountain:research:oblique:singular:f62d900a",
     "lemma:expansion:noun:valley:citation",
     "lemma:expansion:noun:meadow:citation",
     "lemma:expansion:noun:field:citation",
+    "lemma:expansion:noun:field:research:oblique:plural:74020553",
     "lemma:expansion:noun:orchard:citation",
     "lemma:expansion:noun:stream:citation",
     "lemma:expansion:noun:waterfall:citation",
@@ -197,6 +212,7 @@
     "lemma:expansion:noun:fog:citation",
     "lemma:expansion:noun:wind:citation",
     "lemma:expansion:noun:snow:citation",
+    "lemma:expansion:noun:snow:research:direct:plural:9535d605",
     "lemma:expansion:noun:ice:citation",
     "lemma:expansion:noun:sunlight:citation",
     "lemma:expansion:noun:shade:citation",
@@ -206,10 +222,12 @@
     "lemma:expansion:noun:sky:citation",
     "lemma:expansion:noun:weather:citation",
     "lemma:expansion:noun:goat:citation",
+    "lemma:expansion:noun:goat:research:direct:plural:e07cc545",
     "lemma:expansion:noun:sheep:citation",
     "lemma:expansion:noun:cow:citation",
     "lemma:expansion:noun:horse:citation",
     "lemma:expansion:noun:donkey:citation",
+    "lemma:expansion:noun:donkey:research:oblique:singular:d7f59ac3",
     "lemma:expansion:noun:chicken:citation",
     "lemma:expansion:noun:rooster:citation",
     "lemma:expansion:noun:duck:citation",
@@ -257,6 +275,7 @@
     "lemma:expansion:noun:counter:citation",
     "lemma:expansion:noun:shelf:citation",
     "lemma:expansion:noun:receipt:citation",
+    "lemma:expansion:noun:receipt:research:direct:plural:39daaed8",
     "lemma:expansion:noun:bill:citation",
     "lemma:expansion:noun:change:citation",
     "lemma:expansion:noun:coin:citation",
@@ -335,11 +354,14 @@
     "lemma:expansion:noun:page:citation",
     "lemma:expansion:noun:chapter:citation",
     "lemma:expansion:noun:paragraph:citation",
+    "lemma:expansion:noun:paragraph:research:direct:plural:50de984a",
+    "lemma:expansion:noun:paragraph:research:direct:plural:90b42671",
     "lemma:expansion:noun:letter:citation",
     "lemma:expansion:noun:alphabet:citation",
     "lemma:expansion:noun:vowel:citation",
     "lemma:expansion:noun:consonant:citation",
     "lemma:expansion:noun:sum:citation",
+    "lemma:expansion:noun:sum:research:direct:plural:7c90f06e",
     "lemma:expansion:noun:equation:citation",
     "lemma:expansion:noun:exam:citation",
     "lemma:expansion:noun:quiz:citation",
@@ -347,12 +369,15 @@
     "lemma:expansion:noun:grade:citation",
     "lemma:expansion:noun:mark:citation",
     "lemma:expansion:noun:subject:citation",
+    "lemma:expansion:noun:subject:research:direct:plural:bab07f79",
+    "lemma:expansion:noun:subject:research:direct:plural:070d8c89",
     "lemma:expansion:noun:recess:citation",
     "lemma:expansion:noun:library:citation",
     "lemma:expansion:noun:dictionary:citation",
     "lemma:expansion:noun:computer:citation",
     "lemma:expansion:noun:keyboard:citation",
     "lemma:expansion:noun:screen:citation",
+    "lemma:expansion:noun:screen:research:oblique:plural:dd03576f",
     "lemma:expansion:noun:projector:citation",
     "lemma:expansion:noun:globe:citation",
     "lemma:expansion:noun:map:citation",
@@ -507,12 +532,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -538,6 +563,134 @@
             }
           },
           "userVerified": false
+        },
+        {
+          "formId": "lemma:n-house:research:oblique:singular:13ac2b58",
+          "pashto": "کاله",
+          "romanisation": "kālə́",
+          "englishGloss": "house",
+          "morphology": {
+            "gender": "masculine",
+            "number": "singular",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-10"
+          ],
+          "firstAllowedDay": 10,
+          "grammarFirstDay": 10,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=31894&how=0&let=%DA%A9&nons=1&what=0",
+              "statement": "Oblique: کاله [kālə́]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:n-house:research:oblique:singular:13ac2b58",
+            "english": "house"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:n-house:research:oblique:singular:13ac2b58",
+            "pashtoSpan": "کاله",
+            "romanisationSpan": "kālə́",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=31894&how=0&let=%DA%A9&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "singular",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:n-house:research:oblique:plural:2879f53b",
+          "pashto": "کورو",
+          "romanisation": "koró",
+          "englishGloss": "House",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=31894&how=0&let=%DA%A9&nons=1&what=0",
+              "statement": "Oblique plural: کورو [koró]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:n-house:research:oblique:plural:2879f53b",
+            "english": "house"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:n-house:research:oblique:plural:2879f53b",
+            "pashtoSpan": "کورو",
+            "romanisationSpan": "koró",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=31894&how=0&let=%DA%A9&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -772,7 +925,10 @@
         "w2-d11-house-1",
         "w2-d13-house-5"
       ],
-      "findings": []
+      "findings": [
+        "lemma:n-house:research:oblique:singular:13ac2b58:uncertain-morphology-or-romanisation",
+        "lemma:n-house:research:oblique:plural:2879f53b:uncertain-morphology-or-romanisation"
+      ]
     },
     {
       "lemmaId": "lemma:n-door",
@@ -857,7 +1013,7 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "metadataUncertainty": [
             {
@@ -870,7 +1026,7 @@
               "reason": "Missing own romanisation"
             }
           ],
-          "firstAllowedDay": 9,
+          "firstAllowedDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -880,7 +1036,7 @@
             "evidenceSourceId": "w2-d9-house-3",
             "english": "Door"
           },
-          "grammarFirstDay": 9,
+          "grammarFirstDay": 5,
           "featureEvidence": {
             "sourceId": "w2-d9-house-3",
             "pashtoSpan": "دروازې",
@@ -1325,12 +1481,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -1355,7 +1511,19 @@
               "form": "attested"
             }
           },
-          "userVerified": false
+          "userVerified": false,
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=31820&how=0&let=%DA%A9&nons=1&what=0",
+              "statement": "Plural: کوټې [koṭé]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ]
         },
         {
           "formId": "lemma:n-room:licensed:2",
@@ -2471,12 +2639,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -4800,6 +4968,155 @@
             }
           },
           "userVerified": false
+        },
+        {
+          "formId": "lemma:n-shop:research:direct:plural:6539af70",
+          "pashto": "دکانونه",
+          "romanisation": "dukānúna",
+          "englishGloss": "shops",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=22035&how=2&let=&nons=1&what=2",
+              "statement": "Plural: دکانونه [dukānúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=22035&how=2&let=&nons=1&what=2",
+              "statement": "Plural: دکانونه [dukaanuna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:n-shop:research:direct:plural:6539af70",
+            "english": "shop"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:n-shop:research:direct:plural:6539af70",
+            "pashtoSpan": "دکانونه",
+            "romanisationSpan": "dukānúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=22035&how=2&let=&nons=1&what=2",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:n-shop:research:direct:plural:61de75e9",
+          "pashto": "دکاکين",
+          "romanisation": "dakākín",
+          "englishGloss": "Shop",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Borrowed plural agreement and construction require review."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=22035&how=2&let=&nons=1&what=2",
+              "statement": "Plural (Arabic): دکاکين [dakākín]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Borrowed plural agreement and construction require review."
+              ]
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=22035&how=2&let=&nons=1&what=2",
+              "statement": "Plural (Arabic): دکاکين [dakaakin]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Borrowed plural agreement and construction require review.",
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:n-shop:research:direct:plural:61de75e9",
+            "english": "shop"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:n-shop:research:direct:plural:61de75e9",
+            "pashtoSpan": "دکاکين",
+            "romanisationSpan": "dakākín",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=22035&how=2&let=&nons=1&what=2",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -4939,7 +5256,9 @@
         "w2-d13-market-2",
         "w2-d13-reply-4"
       ],
-      "findings": []
+      "findings": [
+        "lemma:n-shop:research:direct:plural:61de75e9:uncertain-morphology-or-romanisation"
+      ]
     },
     {
       "lemmaId": "lemma:v-eat",
@@ -5391,12 +5710,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -5650,7 +5969,7 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": "n-books",
           "metadataUncertainty": [
@@ -5662,7 +5981,7 @@
               "status": "needs_native_review"
             }
           ],
-          "firstAllowedDay": 9,
+          "firstAllowedDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -5672,7 +5991,7 @@
             "evidenceSourceId": "w2-d9-school-2",
             "english": "Books"
           },
-          "grammarFirstDay": 9,
+          "grammarFirstDay": 5,
           "featureEvidence": {
             "sourceId": "w2-d9-school-2",
             "pashtoSpan": "کتابونه",
@@ -7179,12 +7498,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -8058,12 +8377,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -8296,12 +8615,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -8326,7 +8645,79 @@
               "form": "attested"
             }
           },
-          "userVerified": false
+          "userVerified": false,
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=30820&how=0&let=%DA%A9&nons=1&what=0",
+              "statement": "Plural (Western): کبان [kabā́n]",
+              "dialect": "Western variant; not verified for Laghman",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ]
+        },
+        {
+          "formId": "lemma:n-fish:research:direct:plural:3aa8f716",
+          "pashto": "کبونه",
+          "romanisation": "kabúna",
+          "englishGloss": "fish",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=30820&how=0&let=%DA%A9&nons=1&what=0",
+              "statement": "Plural: کبونه [kabúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:n-fish:research:direct:plural:3aa8f716",
+            "english": "fish"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:n-fish:research:direct:plural:3aa8f716",
+            "pashtoSpan": "کبونه",
+            "romanisationSpan": "kabúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=30820&how=0&let=%DA%A9&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -9577,7 +9968,7 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "metadataUncertainty": [
             {
@@ -9590,7 +9981,7 @@
               "reason": "Missing own romanisation"
             }
           ],
-          "firstAllowedDay": 9,
+          "firstAllowedDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -9600,7 +9991,7 @@
             "evidenceSourceId": "w2-d9-market-2",
             "english": "Apple"
           },
-          "grammarFirstDay": 9,
+          "grammarFirstDay": 5,
           "featureEvidence": {
             "sourceId": "w2-d9-market-2",
             "pashtoSpan": "مڼې",
@@ -17479,7 +17870,7 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": "vocab7-house-visitors",
           "metadataUncertainty": [
@@ -17491,12 +17882,12 @@
               "status": "needs_native_review"
             }
           ],
-          "firstAllowedDay": 9,
+          "firstAllowedDay": 5,
           "composition": {
             "enabled": false,
             "reason": "Incomplete or unvetted form features; authored reference only"
           },
-          "grammarFirstDay": 9
+          "grammarFirstDay": 5
         }
       ],
       "examples": [
@@ -18283,7 +18674,7 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": "vocab7-school-notebooks",
           "metadataUncertainty": [
@@ -18295,7 +18686,7 @@
               "status": "needs_native_review"
             }
           ],
-          "firstAllowedDay": 9,
+          "firstAllowedDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -18305,7 +18696,7 @@
             "evidenceSourceId": "w7-school-notebooks",
             "english": "Notebooks"
           },
-          "grammarFirstDay": 9,
+          "grammarFirstDay": 5,
           "featureEvidence": {
             "sourceId": "w7-school-notebooks",
             "pashtoSpan": "کتابچې",
@@ -19606,6 +19997,83 @@
             "reason": "Incomplete or unvetted form features; authored reference only"
           },
           "grammarFirstDay": 1
+        },
+        {
+          "formId": "lemma:n-people:research:oblique:singular:13001912",
+          "pashto": "خلقه",
+          "romanisation": "xálqa",
+          "englishGloss": "people",
+          "morphology": {
+            "gender": "masculine",
+            "number": "singular",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-10"
+          ],
+          "firstAllowedDay": 10,
+          "grammarFirstDay": 10,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=20732&how=0&let=&nons=0&what=1",
+              "statement": "Oblique: خلقه [xálqa]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=20732&how=0&let=&nons=0&what=1",
+              "statement": "Oblique: خلقه [xalqa]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed.",
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:n-people:research:oblique:singular:13001912",
+            "english": "people"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:n-people:research:oblique:singular:13001912",
+            "pashtoSpan": "خلقه",
+            "romanisationSpan": "xálqa",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=20732&how=0&let=&nons=0&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "singular",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -19672,7 +20140,8 @@
         "w2-d14-market-4"
       ],
       "findings": [
-        "lemma:n-people:form:0:uncertain-morphology-or-romanisation"
+        "lemma:n-people:form:0:uncertain-morphology-or-romanisation",
+        "lemma:n-people:research:oblique:singular:13001912:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -20158,12 +20627,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -21229,6 +21698,126 @@
             "reason": "Incomplete or unvetted form features; authored reference only"
           },
           "grammarFirstDay": 1
+        },
+        {
+          "formId": "lemma:n-potato3:research:direct:plural:c4bb5a45",
+          "pashto": "کچالوګان",
+          "romanisation": "kačālugā́n",
+          "englishGloss": "potatoes",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=30939&how=0&let=%DA%A9&nons=1&what=0",
+              "statement": "Plural: کچالوګان [kačālugā́n]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:n-potato3:research:direct:plural:c4bb5a45",
+            "english": "potatoes"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:n-potato3:research:direct:plural:c4bb5a45",
+            "pashtoSpan": "کچالوګان",
+            "romanisationSpan": "kačālugā́n",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=30939&how=0&let=%DA%A9&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:n-potato3:research:direct:plural:049329b1",
+          "pashto": "کچالان",
+          "romanisation": "kačālā́n",
+          "englishGloss": "potatoes",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=30939&how=0&let=%DA%A9&nons=1&what=0",
+              "statement": "Plural (alternative): کچالان [kačālā́n]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:n-potato3:research:direct:plural:049329b1",
+            "english": "potatoes"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:n-potato3:research:direct:plural:049329b1",
+            "pashtoSpan": "کچالان",
+            "romanisationSpan": "kačālā́n",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=30939&how=0&let=%DA%A9&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -21290,6 +21879,17 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 3,
+      "generationSemantics": {
+        "classes": [
+          "food",
+          "vegetable",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "potato",
+        "plural": "potatoes",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [
         "n-potato3",
         "s1-potatoes"
@@ -21493,7 +22093,7 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "metadataUncertainty": [
             {
@@ -21506,7 +22106,7 @@
               "reason": "Missing own romanisation"
             }
           ],
-          "firstAllowedDay": 9,
+          "firstAllowedDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -21516,7 +22116,7 @@
             "evidenceSourceId": "w2-d13-market-4",
             "english": "Bag"
           },
-          "grammarFirstDay": 9,
+          "grammarFirstDay": 5,
           "featureEvidence": {
             "sourceId": "w2-d13-market-4",
             "pashtoSpan": "کڅوړې",
@@ -23701,12 +24301,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -23911,12 +24511,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -24236,12 +24836,12 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": null,
           "metadataUncertainty": [],
-          "firstAllowedDay": 9,
-          "grammarFirstDay": 9,
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -24628,7 +25228,7 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": "vocab6-school-questions",
           "metadataUncertainty": [
@@ -24640,12 +25240,12 @@
               "status": "needs_native_review"
             }
           ],
-          "firstAllowedDay": 9,
+          "firstAllowedDay": 5,
           "composition": {
             "enabled": false,
             "reason": "Incomplete or unvetted form features; authored reference only"
           },
-          "grammarFirstDay": 9
+          "grammarFirstDay": 5
         }
       ],
       "examples": [
@@ -24817,7 +25417,7 @@
           },
           "reviewStatus": "needs_native_review",
           "prerequisiteGrammarIds": [
-            "grammar-day-9"
+            "grammar-day-5"
           ],
           "audioContentId": "vocab7-school-sentences",
           "metadataUncertainty": [
@@ -24829,7 +25429,7 @@
               "status": "needs_native_review"
             }
           ],
-          "firstAllowedDay": 9,
+          "firstAllowedDay": 5,
           "composition": {
             "enabled": true,
             "roles": [
@@ -24839,7 +25439,7 @@
             "evidenceSourceId": "w7-school-write",
             "english": "Sentences"
           },
-          "grammarFirstDay": 9,
+          "grammarFirstDay": 5,
           "featureEvidence": {
             "sourceId": "w7-school-write",
             "pashtoSpan": "جملې",
@@ -32895,6 +33495,78 @@
             "sourceId": "candidate:noun:brother",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:brother:research:direct:plural:0c49c524",
+          "pashto": "وروڼه",
+          "romanisation": "wrúṇa",
+          "englishGloss": "brothers",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=36747&how=1&let=&nons=0&what=2",
+              "statement": "Plural: وروڼه [wrúṇa]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=36747&how=0&let=r&nons=0&what=1",
+              "statement": "Plural: وروڼه [wrunna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:brother:research:direct:plural:0c49c524",
+            "english": "brother"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:brother:research:direct:plural:0c49c524",
+            "pashtoSpan": "وروڼه",
+            "romanisationSpan": "wrúṇa",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=36747&how=1&let=&nons=0&what=2",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -32956,6 +33628,16 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 1,
+      "generationSemantics": {
+        "classes": [
+          "person",
+          "human"
+        ],
+        "countability": "count",
+        "singular": "brother",
+        "plural": "brothers",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:brother:citation:uncertain-morphology-or-romanisation"
@@ -33347,6 +34029,150 @@
             "sourceId": "candidate:noun:grandfather",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:grandfather:research:direct:plural:842f1f33",
+          "pashto": "نيکونه",
+          "romanisation": "nikúna",
+          "englishGloss": "grandfathers",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=0&entry=35027&how=0&let=&nons=0&what=1",
+              "statement": "Plural: نيکونه [nikúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=35027&how=0&let=n&nons=0&what=1",
+              "statement": "Plural: نيکونه [nikuna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:grandfather:research:direct:plural:842f1f33",
+            "english": "grandfather"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:grandfather:research:direct:plural:842f1f33",
+            "pashtoSpan": "نيکونه",
+            "romanisationSpan": "nikúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=0&entry=35027&how=0&let=&nons=0&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:grandfather:research:direct:plural:26405139",
+          "pashto": "نيکه ګان",
+          "romanisation": "nikəgā́n",
+          "englishGloss": "grandfathers",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=0&entry=35027&how=0&let=&nons=0&what=1",
+              "statement": "Plural (alternative): نيکه ګان [nikəgā́n]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=35027&how=0&let=n&nons=0&what=1",
+              "statement": "Plural (alternative): نيکه ګان [nikygaan]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:grandfather:research:direct:plural:26405139",
+            "english": "grandfather"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:grandfather:research:direct:plural:26405139",
+            "pashtoSpan": "نيکه ګان",
+            "romanisationSpan": "nikəgā́n",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=0&entry=35027&how=0&let=&nons=0&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -33405,6 +34231,16 @@
         "reference": "content/USER_LANGUAGE_APPROVALS.json",
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
+      },
+      "generationSemantics": {
+        "classes": [
+          "person",
+          "human"
+        ],
+        "countability": "count",
+        "singular": "grandfather",
+        "plural": "grandfathers",
+        "objectArticle": "the"
       },
       "mappedSourceIds": [],
       "findings": [
@@ -34025,6 +34861,126 @@
             "sourceId": "candidate:noun:husband",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:husband:research:direct:plural:05fa0827",
+          "pashto": "مړونه",
+          "romanisation": "maṛúna",
+          "englishGloss": "husbands",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=38799&how=2&let=%D9%85&nons=1&what=0",
+              "statement": "Plural: مړونه [maṛúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:husband:research:direct:plural:05fa0827",
+            "english": "husband"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:husband:research:direct:plural:05fa0827",
+            "pashtoSpan": "مړونه",
+            "romanisationSpan": "maṛúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=38799&how=2&let=%D9%85&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:husband:research:direct:plural:c2f89ac7",
+          "pashto": "مېړونه",
+          "romanisation": "meṛúna",
+          "englishGloss": "husbands",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=38799&how=2&let=%D9%85&nons=1&what=0",
+              "statement": "Plural (alternative): مېړونه [meṛúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:husband:research:direct:plural:c2f89ac7",
+            "english": "husband"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:husband:research:direct:plural:c2f89ac7",
+            "pashtoSpan": "مېړونه",
+            "romanisationSpan": "meṛúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=38799&how=2&let=%D9%85&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -34087,6 +35043,16 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 3,
+      "generationSemantics": {
+        "classes": [
+          "person",
+          "human"
+        ],
+        "countability": "count",
+        "singular": "husband",
+        "plural": "husbands",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:husband:citation:uncertain-morphology-or-romanisation"
@@ -34138,6 +35104,66 @@
           "featureEvidence": {
             "sourceId": "candidate:noun:wife",
             "basis": "Citation form only; human review pending"
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:wife:research:direct:plural:9552f246",
+          "pashto": "مېرمني",
+          "romanisation": "mermə́ni",
+          "englishGloss": "wives",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=38796&how=2&let=%D9%85&nons=1&what=0",
+              "statement": "Plural: مېرمني [mermə́ni]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:wife:research:direct:plural:9552f246",
+            "english": "wife"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:wife:research:direct:plural:9552f246",
+            "pashtoSpan": "مېرمني",
+            "romanisationSpan": "mermə́ni",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=38796&how=2&let=%D9%85&nons=1&what=0",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
           }
         }
       ],
@@ -34201,6 +35227,16 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 3,
+      "generationSemantics": {
+        "classes": [
+          "person",
+          "human"
+        ],
+        "countability": "count",
+        "singular": "wife",
+        "plural": "wives",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:wife:citation:uncertain-morphology-or-romanisation"
@@ -35621,6 +36657,134 @@
             "sourceId": "candidate:noun:pillow",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:pillow:research:direct:plural:cfca8419",
+          "pashto": "بالښتان",
+          "romanisation": "baalishhtaan",
+          "englishGloss": "pillows",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Dictionary colloquial transcription is machine-generated and unreviewed."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=8436&how=0&let=b&nons=1&what=1",
+              "statement": "Plural: بالښتان [baalishhtaan]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:pillow:research:direct:plural:cfca8419",
+            "english": "pillow"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:pillow:research:direct:plural:cfca8419",
+            "pashtoSpan": "بالښتان",
+            "romanisationSpan": "baalishhtaan",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=8436&how=0&let=b&nons=1&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:pillow:research:direct:plural:4da27f2e",
+          "pashto": "بالښتونه",
+          "romanisation": "baalishhtuna",
+          "englishGloss": "pillows",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Dictionary colloquial transcription is machine-generated and unreviewed."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=8436&how=0&let=b&nons=1&what=1",
+              "statement": "Plural (alternative): بالښتونه [baalishhtuna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:pillow:research:direct:plural:4da27f2e",
+            "english": "pillow"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:pillow:research:direct:plural:4da27f2e",
+            "pashtoSpan": "بالښتونه",
+            "romanisationSpan": "baalishhtuna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=8436&how=0&let=b&nons=1&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -35685,7 +36849,9 @@
       "priorIntroductionDay": 5,
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:pillow:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:pillow:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:pillow:research:direct:plural:cfca8419:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:pillow:research:direct:plural:4da27f2e:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -36193,6 +37359,70 @@
           },
           "previousFirstAllowedDay": 6,
           "priorFirstAllowedDay": 6
+        },
+        {
+          "formId": "lemma:expansion:noun:curtain:research:oblique:plural:dd03576f",
+          "pashto": "پردو",
+          "romanisation": "pardó",
+          "englishGloss": "curtains",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=11264&how=0&let=&nons=1&what=2",
+              "statement": "Oblique plural: پردو [pardó]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:curtain:research:oblique:plural:dd03576f",
+            "english": "curtain"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:curtain:research:oblique:plural:dd03576f",
+            "pashtoSpan": "پردو",
+            "romanisationSpan": "pardó",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=11264&how=0&let=&nons=1&what=2",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -36257,7 +37487,8 @@
       "priorIntroductionDay": 6,
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:curtain:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:curtain:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:curtain:research:oblique:plural:dd03576f:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -38379,6 +39610,126 @@
           },
           "previousFirstAllowedDay": 9,
           "priorFirstAllowedDay": 9
+        },
+        {
+          "formId": "lemma:expansion:noun:shirt:research:direct:plural:82b33792",
+          "pashto": "کميسونه",
+          "romanisation": "kamisúna",
+          "englishGloss": "shirts",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=31617&how=0&let=%DA%A9&nons=1&what=0",
+              "statement": "Plural: کميسونه [kamisúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:shirt:research:direct:plural:82b33792",
+            "english": "shirt"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:shirt:research:direct:plural:82b33792",
+            "pashtoSpan": "کميسونه",
+            "romanisationSpan": "kamisúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=31617&how=0&let=%DA%A9&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:shirt:research:direct:plural:f4f4c8d2",
+          "pashto": "کميسان",
+          "romanisation": "kamisā́n",
+          "englishGloss": "shirts",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=31617&how=0&let=%DA%A9&nons=1&what=0",
+              "statement": "Plural (Western): کميسان [kamisā́n]",
+              "dialect": "Western variant; not verified for Laghman",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:shirt:research:direct:plural:f4f4c8d2",
+            "english": "shirt"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:shirt:research:direct:plural:f4f4c8d2",
+            "pashtoSpan": "کميسان",
+            "romanisationSpan": "kamisā́n",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=31617&how=0&let=%DA%A9&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -38441,6 +39792,17 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 9,
+      "generationSemantics": {
+        "classes": [
+          "clothing",
+          "object",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "shirt",
+        "plural": "shirts",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:shirt:citation:uncertain-morphology-or-romanisation"
@@ -38611,6 +39973,150 @@
           },
           "previousFirstAllowedDay": 9,
           "priorFirstAllowedDay": 9
+        },
+        {
+          "formId": "lemma:expansion:noun:shoe:research:direct:plural:4bc2f64f",
+          "pashto": "بوټونه",
+          "romanisation": "buṭúna",
+          "englishGloss": "shoes",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=9715&how=2&let=&nons=0&what=2",
+              "statement": "Plural: بوټونه [buṭúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=9715&how=0&let=b&nons=1&what=1",
+              "statement": "Plural: بوټونه [buttuna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:shoe:research:direct:plural:4bc2f64f",
+            "english": "shoe"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:shoe:research:direct:plural:4bc2f64f",
+            "pashtoSpan": "بوټونه",
+            "romanisationSpan": "buṭúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=9715&how=2&let=&nons=0&what=2",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:shoe:research:direct:plural:c070b7a1",
+          "pashto": "بوټان",
+          "romanisation": "buṭā́n",
+          "englishGloss": "shoes",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=9715&how=2&let=&nons=0&what=2",
+              "statement": "Plural (Western): بوټان [buṭā́n]",
+              "dialect": "Western variant; not verified for Laghman",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=9715&how=0&let=b&nons=1&what=1",
+              "statement": "Plural (Western): بوټان [buttaan]",
+              "dialect": "Western variant; not verified for Laghman",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:shoe:research:direct:plural:c070b7a1",
+            "english": "shoe"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:shoe:research:direct:plural:c070b7a1",
+            "pashtoSpan": "بوټان",
+            "romanisationSpan": "buṭā́n",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=9715&how=2&let=&nons=0&what=2",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -38673,6 +40179,17 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 9,
+      "generationSemantics": {
+        "classes": [
+          "clothing",
+          "object",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "shoe",
+        "plural": "shoes",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:shoe:citation:uncertain-morphology-or-romanisation"
@@ -41700,6 +43217,136 @@
             "sourceId": "candidate:noun:tree",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:tree:research:direct:plural:107ed257",
+          "pashto": "وني",
+          "romanisation": "wyni",
+          "englishGloss": "trees",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Dictionary colloquial transcription is machine-generated and unreviewed."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=37118&how=1&let=&nons=1&what=0",
+              "statement": "Plural: وني [wyni]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:tree:research:direct:plural:107ed257",
+            "english": "tree"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:tree:research:direct:plural:107ed257",
+            "pashtoSpan": "وني",
+            "romanisationSpan": "wyni",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=37118&how=1&let=&nons=1&what=0",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:tree:research:oblique:plural:f248e10d",
+          "pashto": "ونو",
+          "romanisation": "wuno",
+          "englishGloss": "trees",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Dictionary colloquial transcription is machine-generated and unreviewed.",
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=37118&how=1&let=&nons=1&what=0",
+              "statement": "Oblique plural: ونو [wuno]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed.",
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:tree:research:oblique:plural:f248e10d",
+            "english": "tree"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:tree:research:oblique:plural:f248e10d",
+            "pashtoSpan": "ونو",
+            "romanisationSpan": "wuno",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=37118&how=1&let=&nons=1&what=0",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -41761,7 +43408,9 @@
       },
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:tree:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:tree:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:tree:research:direct:plural:107ed257:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:tree:research:oblique:plural:f248e10d:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -42150,6 +43799,304 @@
             "sourceId": "candidate:noun:flower",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:flower:research:direct:plural:dbbafb14",
+          "pashto": "ګلان",
+          "romanisation": "gulā́n",
+          "englishGloss": "flowers",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=32632&how=0&let=%DA%AB&nons=0&what=1",
+              "statement": "Plural: ګلان [gulā́n]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=32632&how=0&let=&nons=1&what=0",
+              "statement": "Plural: ګلان [gulaan]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:flower:research:direct:plural:dbbafb14",
+            "english": "flower"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:flower:research:direct:plural:dbbafb14",
+            "pashtoSpan": "ګلان",
+            "romanisationSpan": "gulā́n",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=32632&how=0&let=%DA%AB&nons=0&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:flower:research:direct:plural:f358e433",
+          "pashto": "ګلونه",
+          "romanisation": "gulúna",
+          "englishGloss": "flowers",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=32632&how=0&let=%DA%AB&nons=0&what=1",
+              "statement": "Plural (alternative): ګلونه [gulúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=32632&how=0&let=&nons=1&what=0",
+              "statement": "Plural (alternative): ګلونه [guluna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:flower:research:direct:plural:f358e433",
+            "english": "flower"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:flower:research:direct:plural:f358e433",
+            "pashtoSpan": "ګلونه",
+            "romanisationSpan": "gulúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=32632&how=0&let=%DA%AB&nons=0&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:flower:research:oblique:singular:0af31e10",
+          "pashto": "ګله",
+          "romanisation": "gúla",
+          "englishGloss": "flower",
+          "morphology": {
+            "gender": "masculine",
+            "number": "singular",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-10"
+          ],
+          "firstAllowedDay": 10,
+          "grammarFirstDay": 10,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=32632&how=0&let=%DA%AB&nons=0&what=1",
+              "statement": "Oblique: ګله [gúla]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=32632&how=0&let=&nons=1&what=0",
+              "statement": "Oblique: ګله [gula]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed.",
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:flower:research:oblique:singular:0af31e10",
+            "english": "flower"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:flower:research:oblique:singular:0af31e10",
+            "pashtoSpan": "ګله",
+            "romanisationSpan": "gúla",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=32632&how=0&let=%DA%AB&nons=0&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "singular",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:flower:research:oblique:plural:8367cb91",
+          "pashto": "ګلو",
+          "romanisation": "guló",
+          "englishGloss": "flowers",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=32632&how=0&let=%DA%AB&nons=0&what=1",
+              "statement": "Oblique plural: ګلو [guló]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=32632&how=0&let=&nons=1&what=0",
+              "statement": "Oblique plural: ګلو [gulo]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed.",
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:flower:research:oblique:plural:8367cb91",
+            "english": "flower"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:flower:research:oblique:plural:8367cb91",
+            "pashtoSpan": "ګلو",
+            "romanisationSpan": "guló",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=32632&how=0&let=%DA%AB&nons=0&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -42211,9 +44158,22 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 1,
+      "generationSemantics": {
+        "classes": [
+          "plant",
+          "object",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "flower",
+        "plural": "flowers",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:flower:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:flower:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:flower:research:oblique:singular:0af31e10:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:flower:research:oblique:plural:8367cb91:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -42605,6 +44565,83 @@
             "sourceId": "candidate:noun:mud",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:mud:research:direct:plural:ebbe650e",
+          "pashto": "خټي",
+          "romanisation": "xáṭi",
+          "englishGloss": "mud",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Mass/abstract count usage requires contextual review."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=20255&how=0&let=&nons=1&what=1",
+              "statement": "Plural: خټي [xáṭi]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Mass/abstract count usage requires contextual review."
+              ]
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=20255&how=1&let=a&nons=1&what=0",
+              "statement": "Plural: خټي [xatti]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Mass/abstract count usage requires contextual review.",
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:mud:research:direct:plural:ebbe650e",
+            "english": "mud"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:mud:research:direct:plural:ebbe650e",
+            "pashtoSpan": "خټي",
+            "romanisationSpan": "xáṭi",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=20255&how=0&let=&nons=1&what=1",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -42669,7 +44706,8 @@
       "priorIntroductionDay": 2,
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:mud:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:mud:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:mud:research:direct:plural:ebbe650e:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -42833,6 +44871,232 @@
             "sourceId": "candidate:noun:mountain",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:mountain:research:direct:plural:cda0990c",
+          "pashto": "غرونه",
+          "romanisation": "γrúna",
+          "englishGloss": "mountains",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=29402&how=2&let=&nons=0&what=0",
+              "statement": "Plural: غرونه [γrúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=29402&how=0&let=&nons=1&what=1",
+              "statement": "Plural: غرونه [ghruna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:mountain:research:direct:plural:cda0990c",
+            "english": "mountain"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:mountain:research:direct:plural:cda0990c",
+            "pashtoSpan": "غرونه",
+            "romanisationSpan": "γrúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=29402&how=2&let=&nons=0&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:mountain:research:direct:plural:f62d900a",
+          "pashto": "غره",
+          "romanisation": "γrə",
+          "englishGloss": "mountains",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Dictionary native-speaker comment disputes this alternative plural; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=29402&how=2&let=&nons=0&what=0",
+              "statement": "Plural (alternative): غره [γrə]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary native-speaker comment disputes this alternative plural; reference only."
+              ]
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=29402&how=0&let=&nons=1&what=1",
+              "statement": "Plural (alternative): غره [ghry]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed.",
+                "Dictionary native-speaker comment disputes this alternative plural; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:mountain:research:direct:plural:f62d900a",
+            "english": "mountain"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:mountain:research:direct:plural:f62d900a",
+            "pashtoSpan": "غره",
+            "romanisationSpan": "γrə",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=29402&how=2&let=&nons=0&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:mountain:research:oblique:singular:f62d900a",
+          "pashto": "غره",
+          "romanisation": "γrə",
+          "englishGloss": "mountain",
+          "morphology": {
+            "gender": "masculine",
+            "number": "singular",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-10"
+          ],
+          "firstAllowedDay": 10,
+          "grammarFirstDay": 10,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=29402&how=2&let=&nons=0&what=0",
+              "statement": "Oblique: غره [γrə]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=29402&how=0&let=&nons=1&what=1",
+              "statement": "Oblique: غره [ghry]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed.",
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:mountain:research:oblique:singular:f62d900a",
+            "english": "mountain"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:mountain:research:oblique:singular:f62d900a",
+            "pashtoSpan": "غره",
+            "romanisationSpan": "γrə",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=29402&how=2&let=&nons=0&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "singular",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -42895,9 +45159,21 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 2,
+      "generationSemantics": {
+        "classes": [
+          "place",
+          "natural"
+        ],
+        "countability": "count",
+        "singular": "mountain",
+        "plural": "mountains",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:mountain:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:mountain:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:mountain:research:direct:plural:f62d900a:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:mountain:research:oblique:singular:f62d900a:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -43175,6 +45451,130 @@
             "sourceId": "candidate:noun:field",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:field:research:direct:plural:527a613f",
+          "pashto": "پټي",
+          "romanisation": "paṭí",
+          "englishGloss": "fields",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=11047&how=0&let=%D9%8A&nons=0&what=1",
+              "statement": "Plural: پټي [paṭí]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:field:research:direct:plural:527a613f",
+            "english": "field"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:field:research:direct:plural:527a613f",
+            "pashtoSpan": "پټي",
+            "romanisationSpan": "paṭí",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=11047&how=0&let=%D9%8A&nons=0&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:field:research:oblique:plural:74020553",
+          "pashto": "پټو",
+          "romanisation": "paṭó",
+          "englishGloss": "fields",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=11047&how=0&let=%D9%8A&nons=0&what=1",
+              "statement": "Oblique plural: پټو [paṭó]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:field:research:oblique:plural:74020553",
+            "english": "field"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:field:research:oblique:plural:74020553",
+            "pashtoSpan": "پټو",
+            "romanisationSpan": "paṭó",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=11047&how=0&let=%D9%8A&nons=0&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -43237,9 +45637,20 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 3,
+      "generationSemantics": {
+        "classes": [
+          "place",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "field",
+        "plural": "fields",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:field:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:field:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:field:research:oblique:plural:74020553:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -43973,6 +46384,78 @@
             "sourceId": "candidate:noun:cloud",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:cloud:research:direct:plural:9176e443",
+          "pashto": "ورېځې",
+          "romanisation": "wréje",
+          "englishGloss": "clouds",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=36791&how=1&let=&nons=1&what=0",
+              "statement": "Plural: ورېځې [wréje]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=36791&how=2&let=&nons=0&what=0",
+              "statement": "Plural: ورېځې [wredze]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:cloud:research:direct:plural:9176e443",
+            "english": "cloud"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:cloud:research:direct:plural:9176e443",
+            "pashtoSpan": "ورېځې",
+            "romanisationSpan": "wréje",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=36791&how=1&let=&nons=1&what=0",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -44035,6 +46518,15 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 4,
+      "generationSemantics": {
+        "classes": [
+          "natural"
+        ],
+        "countability": "count",
+        "singular": "cloud",
+        "plural": "clouds",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:cloud:citation:uncertain-morphology-or-romanisation"
@@ -44315,6 +46807,83 @@
             "sourceId": "candidate:noun:snow",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:snow:research:direct:plural:9535d605",
+          "pashto": "واوري",
+          "romanisation": "wā́wri",
+          "englishGloss": "snow",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Mass/abstract count usage requires contextual review."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=0&entry=36482&how=0&let=w&nons=0&what=1",
+              "statement": "Plural: واوري [wā́wri]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Mass/abstract count usage requires contextual review."
+              ]
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=36482&how=0&let=a&nons=1&what=2",
+              "statement": "Plural: واوري [waawri]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Mass/abstract count usage requires contextual review.",
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:snow:research:direct:plural:9535d605",
+            "english": "snow"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:snow:research:direct:plural:9535d605",
+            "pashtoSpan": "واوري",
+            "romanisationSpan": "wā́wri",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=0&entry=36482&how=0&let=w&nons=0&what=1",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -44379,7 +46948,8 @@
       "priorIntroductionDay": 5,
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:snow:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:snow:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:snow:research:direct:plural:9535d605:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -45349,6 +47919,70 @@
           },
           "previousFirstAllowedDay": 6,
           "priorFirstAllowedDay": 6
+        },
+        {
+          "formId": "lemma:expansion:noun:goat:research:direct:plural:e07cc545",
+          "pashto": "وزې",
+          "romanisation": "wze",
+          "englishGloss": "goats",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Dictionary colloquial transcription is machine-generated and unreviewed."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=36888&how=1&let=&nons=0&what=1",
+              "statement": "Plural: وزې [wze]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:goat:research:direct:plural:e07cc545",
+            "english": "goat"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:goat:research:direct:plural:e07cc545",
+            "pashtoSpan": "وزې",
+            "romanisationSpan": "wze",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=0&entry=36888&how=1&let=&nons=0&what=1",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -45413,7 +48047,8 @@
       "priorIntroductionDay": 6,
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:goat:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:goat:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:goat:research:direct:plural:e07cc545:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -45465,6 +48100,126 @@
           },
           "previousFirstAllowedDay": 6,
           "priorFirstAllowedDay": 6
+        },
+        {
+          "formId": "lemma:expansion:noun:sheep:research:direct:plural:ce7d4b24",
+          "pashto": "پسونه",
+          "romanisation": "psúna",
+          "englishGloss": "sheep",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=11688&how=1&let=%D9%BE&nons=0&what=0",
+              "statement": "Plural: پسونه [psúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:sheep:research:direct:plural:ce7d4b24",
+            "english": "sheep"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:sheep:research:direct:plural:ce7d4b24",
+            "pashtoSpan": "پسونه",
+            "romanisationSpan": "psúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=11688&how=1&let=%D9%BE&nons=0&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:sheep:research:direct:plural:fba29968",
+          "pashto": "پسان",
+          "romanisation": "psān",
+          "englishGloss": "sheep",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=11688&how=1&let=%D9%BE&nons=0&what=0",
+              "statement": "Plural (Western): پسان [psān]",
+              "dialect": "Western variant; not verified for Laghman",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:sheep:research:direct:plural:fba29968",
+            "english": "sheep"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:sheep:research:direct:plural:fba29968",
+            "pashtoSpan": "پسان",
+            "romanisationSpan": "psān",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=11688&how=1&let=%D9%BE&nons=0&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -45527,6 +48282,16 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 6,
+      "generationSemantics": {
+        "classes": [
+          "animal",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "sheep",
+        "plural": "sheep",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:sheep:citation:uncertain-morphology-or-romanisation"
@@ -45813,6 +48578,130 @@
           },
           "previousFirstAllowedDay": 7,
           "priorFirstAllowedDay": 7
+        },
+        {
+          "formId": "lemma:expansion:noun:donkey:research:direct:plural:d7f59ac3",
+          "pashto": "خره",
+          "romanisation": "xrə",
+          "englishGloss": "donkeys",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=20320&how=0&let=&nons=1&what=0",
+              "statement": "Plural: خره [xrə]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:donkey:research:direct:plural:d7f59ac3",
+            "english": "donkey"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:donkey:research:direct:plural:d7f59ac3",
+            "pashtoSpan": "خره",
+            "romanisationSpan": "xrə",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=20320&how=0&let=&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:donkey:research:oblique:singular:d7f59ac3",
+          "pashto": "خره",
+          "romanisation": "xrə",
+          "englishGloss": "donkey",
+          "morphology": {
+            "gender": "masculine",
+            "number": "singular",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-10"
+          ],
+          "firstAllowedDay": 10,
+          "grammarFirstDay": 10,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=20320&how=0&let=&nons=1&what=0",
+              "statement": "Oblique: خره [xrə]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:donkey:research:oblique:singular:d7f59ac3",
+            "english": "donkey"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:donkey:research:oblique:singular:d7f59ac3",
+            "pashtoSpan": "خره",
+            "romanisationSpan": "xrə",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=20320&how=0&let=&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "singular",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -45875,9 +48764,20 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 7,
+      "generationSemantics": {
+        "classes": [
+          "animal",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "donkey",
+        "plural": "donkeys",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:donkey:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:donkey:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:donkey:research:oblique:singular:d7f59ac3:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -45929,6 +48829,126 @@
           },
           "previousFirstAllowedDay": 7,
           "priorFirstAllowedDay": 7
+        },
+        {
+          "formId": "lemma:expansion:noun:chicken:research:direct:plural:673f4488",
+          "pashto": "چرګي",
+          "romanisation": "čə́rgi",
+          "englishGloss": "chickens",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=17741&how=0&let=%DA%86&nons=0&what=1",
+              "statement": "Plural: چرګي [čə́rgi]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:chicken:research:direct:plural:673f4488",
+            "english": "chicken"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:chicken:research:direct:plural:673f4488",
+            "pashtoSpan": "چرګي",
+            "romanisationSpan": "čə́rgi",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=17741&how=0&let=%DA%86&nons=0&what=1",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:chicken:research:direct:plural:8737119c",
+          "pashto": "چرګاني",
+          "romanisation": "čərgā́ni",
+          "englishGloss": "chickens",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=17741&how=0&let=%DA%86&nons=0&what=1",
+              "statement": "Plural: چرګاني [čərgā́ni]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:chicken:research:direct:plural:8737119c",
+            "english": "chicken"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:chicken:research:direct:plural:8737119c",
+            "pashtoSpan": "چرګاني",
+            "romanisationSpan": "čərgā́ni",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=17741&how=0&let=%DA%86&nons=0&what=1",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -45991,6 +49011,16 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 7,
+      "generationSemantics": {
+        "classes": [
+          "animal",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "chicken",
+        "plural": "chickens",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:chicken:citation:uncertain-morphology-or-romanisation"
@@ -46741,6 +49771,66 @@
           },
           "previousFirstAllowedDay": 8,
           "priorFirstAllowedDay": 8
+        },
+        {
+          "formId": "lemma:expansion:noun:rabbit:research:direct:plural:930c81ba",
+          "pashto": "سويان",
+          "romanisation": "soyā́n",
+          "englishGloss": "rabbits",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=27615&how=0&let=%D9%8A&nons=0&what=1",
+              "statement": "Plural: سويان [soyā́n]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:rabbit:research:direct:plural:930c81ba",
+            "english": "rabbit"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:rabbit:research:direct:plural:930c81ba",
+            "pashtoSpan": "سويان",
+            "romanisationSpan": "soyā́n",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=27615&how=0&let=%D9%8A&nons=0&what=1",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -46803,6 +49893,16 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 8,
+      "generationSemantics": {
+        "classes": [
+          "animal",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "rabbit",
+        "plural": "rabbits",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:rabbit:citation:uncertain-morphology-or-romanisation"
@@ -51190,6 +54290,130 @@
             "sourceId": "candidate:noun:receipt",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:receipt:research:direct:plural:f9e20a3e",
+          "pashto": "رسيدونه",
+          "romanisation": "rasidúna",
+          "englishGloss": "receipts",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=23701&how=0&let=%D8%B1&nons=0&what=0",
+              "statement": "Plural: رسيدونه [rasidúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:receipt:research:direct:plural:f9e20a3e",
+            "english": "receipt"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:receipt:research:direct:plural:f9e20a3e",
+            "pashtoSpan": "رسيدونه",
+            "romanisationSpan": "rasidúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=23701&how=0&let=%D8%B1&nons=0&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:receipt:research:direct:plural:39daaed8",
+          "pashto": "رسيدات",
+          "romanisation": "rasidā́t",
+          "englishGloss": "receipts",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Borrowed plural agreement and construction require review."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=23701&how=0&let=%D8%B1&nons=0&what=0",
+              "statement": "Plural (Arabic): رسيدات [rasidā́t]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Borrowed plural agreement and construction require review."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:receipt:research:direct:plural:39daaed8",
+            "english": "receipt"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:receipt:research:direct:plural:39daaed8",
+            "pashtoSpan": "رسيدات",
+            "romanisationSpan": "rasidā́t",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=23701&how=0&let=%D8%B1&nons=0&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -51251,9 +54475,21 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 2,
+      "generationSemantics": {
+        "classes": [
+          "object",
+          "document",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "receipt",
+        "plural": "receipts",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:receipt:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:receipt:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:receipt:research:direct:plural:39daaed8:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -51529,6 +54765,78 @@
             "sourceId": "candidate:noun:coin",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:coin:research:direct:plural:0e4afc48",
+          "pashto": "سکې",
+          "romanisation": "sikké",
+          "englishGloss": "coins",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=26941&how=0&let=&nons=1&what=2",
+              "statement": "Plural: سکې [sikké]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=26941&how=0&let=a&nons=1&what=2",
+              "statement": "Plural: سکې [sikke]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:coin:research:direct:plural:0e4afc48",
+            "english": "coin"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:coin:research:direct:plural:0e4afc48",
+            "pashtoSpan": "سکې",
+            "romanisationSpan": "sikké",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=26941&how=0&let=&nons=1&what=2",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -51590,6 +54898,17 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 3,
+      "generationSemantics": {
+        "classes": [
+          "object",
+          "money",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "coin",
+        "plural": "coins",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:coin:citation:uncertain-morphology-or-romanisation"
@@ -60107,6 +63426,136 @@
             "sourceId": "candidate:noun:paragraph",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:paragraph:research:direct:plural:50de984a",
+          "pashto": "فقرې",
+          "romanisation": "fiqre",
+          "englishGloss": "paragraphs",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Dictionary colloquial transcription is machine-generated and unreviewed."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=30095&how=0&let=a&nons=1&what=2",
+              "statement": "Plural: فقرې [fiqre]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:paragraph:research:direct:plural:50de984a",
+            "english": "paragraph"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:paragraph:research:direct:plural:50de984a",
+            "pashtoSpan": "فقرې",
+            "romanisationSpan": "fiqre",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=30095&how=0&let=a&nons=1&what=2",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:paragraph:research:direct:plural:90b42671",
+          "pashto": "فقرات",
+          "romanisation": "fiqraat",
+          "englishGloss": "paragraphs",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Borrowed plural agreement and construction require review.",
+            "Dictionary colloquial transcription is machine-generated and unreviewed."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=30095&how=0&let=a&nons=1&what=2",
+              "statement": "Plural (Arabic): فقرات [fiqraat]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Borrowed plural agreement and construction require review.",
+                "Dictionary colloquial transcription is machine-generated and unreviewed."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:paragraph:research:direct:plural:90b42671",
+            "english": "paragraph"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:paragraph:research:direct:plural:90b42671",
+            "pashtoSpan": "فقرات",
+            "romanisationSpan": "fiqraat",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=30095&how=0&let=a&nons=1&what=2",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -60171,7 +63620,9 @@
       "priorIntroductionDay": 4,
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:paragraph:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:paragraph:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:paragraph:research:direct:plural:50de984a:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:paragraph:research:direct:plural:90b42671:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -60677,6 +64128,70 @@
             "sourceId": "candidate:noun:sum",
             "basis": "Citation form only; human review pending"
           }
+        },
+        {
+          "formId": "lemma:expansion:noun:sum:research:direct:plural:7c90f06e",
+          "pashto": "جمعي",
+          "romanisation": "ǰámʿi",
+          "englishGloss": "sums",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Mass/abstract count usage requires contextual review."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=16891&how=1&let=%D8%AC&nons=0&what=0",
+              "statement": "Plural: جمعي [ǰámʿi]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Mass/abstract count usage requires contextual review."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:sum:research:direct:plural:7c90f06e",
+            "english": "sum"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:sum:research:direct:plural:7c90f06e",
+            "pashtoSpan": "جمعي",
+            "romanisationSpan": "ǰámʿi",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=16891&how=1&let=%D8%AC&nons=0&what=0",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -60741,7 +64256,8 @@
       "priorIntroductionDay": 4,
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:sum:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:sum:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:sum:research:direct:plural:7c90f06e:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -61477,6 +64993,134 @@
           },
           "previousFirstAllowedDay": 6,
           "priorFirstAllowedDay": 6
+        },
+        {
+          "formId": "lemma:expansion:noun:subject:research:direct:plural:bab07f79",
+          "pashto": "مضمونه",
+          "romanisation": "mazmunúna",
+          "englishGloss": "subjects",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Source spelling and pronunciation appear inconsistent; do not introduce."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=38616&how=2&let=%D9%85&nons=1&what=0",
+              "statement": "Plural: مضمونه [mazmunúna]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Source spelling and pronunciation appear inconsistent; do not introduce."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:subject:research:direct:plural:bab07f79",
+            "english": "subject"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:subject:research:direct:plural:bab07f79",
+            "pashtoSpan": "مضمونه",
+            "romanisationSpan": "mazmunúna",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=38616&how=2&let=%D9%85&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
+        },
+        {
+          "formId": "lemma:expansion:noun:subject:research:direct:plural:070d8c89",
+          "pashto": "مضامين",
+          "romanisation": "mazāmín",
+          "englishGloss": "subjects",
+          "morphology": {
+            "gender": "masculine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Borrowed plural agreement and construction require review."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=38616&how=2&let=%D9%85&nons=1&what=0",
+              "statement": "Plural (Arabic): مضامين [mazāmín]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Borrowed plural agreement and construction require review."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:subject:research:direct:plural:070d8c89",
+            "english": "subject"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:subject:research:direct:plural:070d8c89",
+            "pashtoSpan": "مضامين",
+            "romanisationSpan": "mazāmín",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=0&entry=38616&how=2&let=%D9%85&nons=1&what=0",
+            "features": {
+              "gender": "masculine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -61541,7 +65185,9 @@
       "priorIntroductionDay": 6,
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:subject:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:subject:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:subject:research:direct:plural:bab07f79:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:subject:research:direct:plural:070d8c89:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -62173,6 +65819,83 @@
           },
           "previousFirstAllowedDay": 7,
           "priorFirstAllowedDay": 7
+        },
+        {
+          "formId": "lemma:expansion:noun:screen:research:oblique:plural:dd03576f",
+          "pashto": "پردو",
+          "romanisation": "pardó",
+          "englishGloss": "screens",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "oblique",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [
+            "Case-specific construction has not yet been licensed; reference only."
+          ],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=11264&how=0&let=&nons=1&what=2",
+              "statement": "Oblique plural: پردو [pardó]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            },
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=3&dev=1&dir=1&entry=11264&how=0&let=a&nons=1&what=2",
+              "statement": "Oblique plural: پردو [pardo]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": [
+                "Dictionary colloquial transcription is machine-generated and unreviewed.",
+                "Case-specific construction has not yet been licensed; reference only."
+              ]
+            }
+          ],
+          "composition": {
+            "enabled": false,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:screen:research:oblique:plural:dd03576f",
+            "english": "screen"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:screen:research:oblique:plural:dd03576f",
+            "pashtoSpan": "پردو",
+            "romanisationSpan": "pardó",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=11264&how=0&let=&nons=1&what=2",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "oblique",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -62237,7 +65960,8 @@
       "priorIntroductionDay": 7,
       "mappedSourceIds": [],
       "findings": [
-        "lemma:expansion:noun:screen:citation:uncertain-morphology-or-romanisation"
+        "lemma:expansion:noun:screen:citation:uncertain-morphology-or-romanisation",
+        "lemma:expansion:noun:screen:research:oblique:plural:dd03576f:uncertain-morphology-or-romanisation"
       ]
     },
     {
@@ -62521,6 +66245,66 @@
           },
           "previousFirstAllowedDay": 7,
           "priorFirstAllowedDay": 7
+        },
+        {
+          "formId": "lemma:expansion:noun:map:research:direct:plural:14adba1e",
+          "pashto": "نقشې",
+          "romanisation": "naqšé",
+          "englishGloss": "maps",
+          "morphology": {
+            "gender": "feminine",
+            "number": "plural",
+            "case": "direct",
+            "person": null,
+            "aspect": null,
+            "transitivity": null,
+            "form": "attested_dictionary"
+          },
+          "reviewStatus": "needs_native_review",
+          "userVerified": false,
+          "prerequisiteGrammarIds": [
+            "grammar-day-5"
+          ],
+          "firstAllowedDay": 5,
+          "grammarFirstDay": 5,
+          "audioContentId": null,
+          "metadataUncertainty": [],
+          "morphologyResearch": [
+            {
+              "status": "dictionary_attested_written_form",
+              "linguisticReview": "researched_provisional",
+              "source": "https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=34580&how=1&let=&nons=1&what=0",
+              "statement": "Plural: نقشې [naqšé]",
+              "dialect": "general written record; local usage not certified",
+              "userApproved": false,
+              "nativeReviewed": false,
+              "restrictions": []
+            }
+          ],
+          "composition": {
+            "enabled": true,
+            "roles": [
+              "noun"
+            ],
+            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
+            "evidenceSourceId": "lemma:expansion:noun:map:research:direct:plural:14adba1e",
+            "english": "map"
+          },
+          "featureEvidence": {
+            "sourceId": "lemma:expansion:noun:map:research:direct:plural:14adba1e",
+            "pashtoSpan": "نقشې",
+            "romanisationSpan": "naqšé",
+            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/oped.php?alph=0&dev=1&dir=1&entry=34580&how=1&let=&nons=1&what=0",
+            "features": {
+              "gender": "feminine",
+              "number": "plural",
+              "case": "direct",
+              "person": null,
+              "aspect": null,
+              "transitivity": null,
+              "form": "attested_dictionary"
+            }
+          }
         }
       ],
       "examples": [
@@ -62583,6 +66367,17 @@
         "nativeCertificationClaimed": false
       },
       "priorIntroductionDay": 7,
+      "generationSemantics": {
+        "classes": [
+          "object",
+          "document",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "map",
+        "plural": "maps",
+        "objectArticle": "the"
+      },
       "mappedSourceIds": [],
       "findings": [
         "lemma:expansion:noun:map:citation:uncertain-morphology-or-romanisation"
@@ -73078,7 +76873,7 @@
     }
   ],
   "audioFindings": [],
-  "archivedAuthoredSentenceCount": 330,
+  "archivedAuthoredSentenceCount": 358,
   "currentReviewedLanguageSpanCount": 29,
   "playableAuthoredSentenceCount": 0,
   "runtimeSentenceSource": "productive_engine_only",

@@ -25,3 +25,9 @@ Direct noun plurals and their evidenced adjective agreement forms now depend on 
 ## Integration coverage (Phase 5)
 
 `form-dialogue-browser.test.mjs` drives the real RPG tutorial and School on desktop/mobile, checks an unacknowledged card across reload, reads Library future-form status, repeats School-unlocked Bilal with a durable tick, and initiates movement from ordinary dialogue. `rpg-week1-browser.test.mjs` retains public normal/shortcut playthroughs and now remembers all actually displayed glosses for a Pashto spelling, rather than assuming one spelling has one form/context. Portrait assertions check the stable English identity within the bilingual header. Lesson-pool deduplication uses the stable form identity, so citation and form aliases cannot teach the same form twice in a visit. Full final-suite results are recorded below after cleanup.
+
+## Targeted cleanup (Phase 6)
+
+Removed the shared typing-setting migration and pairing adapter, historical generated-card day/romanisation repair, retired English-rule assessment UI/archive handling, old schema-8 acceptance fixtures, and Bilal's `conversationCompleted`/`alreadySpoken` gate. Teacher navigation text now comes from the shared progression/location guidance; challenge-action filtering stays separate. Removed the redundant post-result conversation branch. Stable form IDs, approval records, dictionary evidence, current frozen proofs, active narrative/maps, SRS/XP transactions, audio and cross-tab coordination remain. Generation digest coverage has a new schema-9 contract; prior contracts remain identifiable historical evidence.
+
+The independent world position format stays at version 1; lesson snapshots are restored only when paired with a valid schema-9 educational fingerprint and pass current lesson validation. Incompatible educational data is preserved behind explicit export/reset handling. No migration or silent reset is performed.

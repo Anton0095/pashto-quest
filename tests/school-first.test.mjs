@@ -62,38 +62,5 @@ const world=JSON.parse(readFileSync('content/RPG_WORLD.json'));
 for(const c of Object.values(world.days)){assert.equal(c.guidance.introLessonId,c.day+'-school');assert.deepEqual(c.requiredLessons,c.lessons);}
 assert(world.days['6'].maps.includes('hills'));assert(world.events['day6-opening']);
 console.log(`PASS school-first: ${lessons} real model lessons, all 6 optional orders, 5 paces, 14 days, distinct POS allocation, independent generation, shortcut failure/pass/rewards/save and Hills registration`);
-// Exact schema-8 save from the immediately preceding curriculum, including
-// frozen Day-4 assignments and generated assessment proofs. No migration/reset.
-{
- const t=runtime(),historical=JSON.parse(readFileSync('tests/fixtures/pre-school-first-save-v8.json'));
- t.backend.setItem('',JSON.stringify(historical));t.state.progress=t.storage.load();
- assert.equal(t.storage.problem,null);assert.deepEqual(plain(t.state.progress),{...Object.fromEntries(Object.entries(historical).filter(([key])=>key!=="enableTypingChallenges")),typingPreferences:{en:false,ps:false}});
- const exact=plain(t.state.progress.activeChallenge.questions),assignments=plain(t.state.progress.library.plans[4].locationAssignments);
- assert(!t.progression.challengeAccessible(t.state.progress,4));
- study(t,4,'school');
- assert.deepEqual(plain(t.questions.selectChallenge(4)),exact,'School study never rerolls a saved attempt');
- assert.deepEqual(plain(t.state.progress.library.plans[4].locationAssignments),assignments,'Existing plans stay frozen');
- assert(t.storage.currentSave(plain(t.state.progress)));
- console.log('PASS exact pre-redesign schema-8 save, frozen assignments/proofs, explicit School catch-up and unchanged active questions');
-}
-// Every supported pace can continue each old frozen curriculum checkpoint,
-// including a maximum-pace profile that has already exhausted most verbs.
-{
- const profiles=JSON.parse(readFileSync('tests/fixtures/pre-school-first-assignments.json'));
- let adjusted=0,plans=0;
- for(const old of profiles)for(let cutoff=1;cutoff<=13;cutoff++)for(const pace of [8,12,16,20,24]){
-  const t=runtime();reset(t,pace);const p=t.state.progress;
-  p.library.plans=Object.fromEntries(Object.entries(plain(old.plans)).filter(([day])=>Number(day)<=cutoff));
-  const seen=new Set(Object.values(p.library.plans).flatMap(plan=>Object.values(plan.locationAssignments).flat()));
-  for(let day=cutoff+1;day<=14;day++){
-   const plan=t.E.ensurePlan(p,t.content.LIBRARY_DATA,day);plans++;
-   assert.equal(plan.contentGap,false,`old ${old.pace}, cutoff ${cutoff}, new ${pace}, day ${day}`);
-   assert.equal(Object.values(plan.locationAssignments).flat().length,day===14?0:pace);
-   if(plan.allocationAdjusted){adjusted++;assert(plan.notice.includes('Allocation adjusted'));}
-   for(const [loc,ids] of Object.entries(plan.locationAssignments))for(const id of ids){
-    assert(!seen.has(id));seen.add(id);if(day>=3)assert.equal(t.content.libraryEntries[id].partOfSpeech,{residential:'adjective',nature:'verb',business:'noun'}[loc]);
-   }
-  }
- }
- assert(adjusted>0);console.log(`PASS ${plans} future plans at every old checkpoint/new pace, exact distinct totals, specialised POS, explicit redistribution and no reset`);
-}
+// Earlier saves are intentionally unsupported and never silently overwritten.
+const old=runtime(),raw=JSON.stringify({saveSchemaVersion:8,xp:123});old.backend.setItem('',raw);old.storage.load();assert(old.storage.problem);assert.equal(old.storage.save(),false);assert.equal(old.backend.getItem(),raw);

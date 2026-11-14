@@ -79,12 +79,6 @@ function createLibraryUI({
           "All explanations and worked analyses are readable reference. Reading here does not complete lessons or unlock generation. Pashto examples require forms and grammar unlocked through lessons or challenge activation. Native Laghman review is pending.",
         ),
       );
-      if (state.progress.retiredRuleAssessmentJSON) root.append(
-        ui.node("p", "An earlier rule-analysis assessment was explicitly retired. Its original snapshot remains available for export."),
-        ui.button("Export retired assessment archive", () => {
-          const url=URL.createObjectURL(new Blob([state.progress.retiredRuleAssessmentJSON],{type:"application/json"}));
-          const a=document.createElement("a");a.href=url;a.download="pashto-retired-assessment.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-        }));
       const examples = learning.availableSentences(state.day);
       for (const rule of content.curriculum.days) {
         const grammarId = "grammar-day-" + rule.day;

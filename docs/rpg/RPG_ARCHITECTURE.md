@@ -1,5 +1,10 @@
 # TypeScript / Phaser Week 1 architecture
 
+Current form/dialogue release: [implementation and lifecycle](DIALOGUE_MORPHOLOGY_OVERHAUL.md). Educational schema 9 rejects earlier saves. `LibraryEngine` owns per-form encounter, availability, acknowledged teaching (day and lesson) and SRS; reference access derives from a taught/passed lemma. `firstFormSelections` and `studyPools` freeze the word-form sequence; RPG lesson snapshots retain `schoolConceptPending`, card index and `formAcknowledgements`, paired with the educational fingerprint. School concept acknowledgement precedes dependent cards. Generated normal practice uses formally taught forms; challenge activation is a separate availability transaction. Library reference/practice never introduces a form or licences generation.
+
+Canonical bilingual names come from `CHARACTER_NAMES.json`; portrait lookup and stable identity stay unchanged. Shared teacher guidance resolves current locations. Ordinary dialogue uses nonmodal presentation and one synchronous dismissal path for keyboard/pointer/touch navigation; assessments, onboarding and required story acknowledgements remain deliberate. Bilal successes are day-keyed world flags and grant zero XP. Challenge results acknowledge ending effects once without opening another conversation.
+
+
 Current map/schedule behavior: [permanent Hills and the Day 6 invitation](HILLS_EXPANSION.md) supersede the earlier eastern spur, Day 6-only access and Medina-at-Lake introduction. Historical verification figures below retain their original scope.
 
 

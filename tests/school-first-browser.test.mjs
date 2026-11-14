@@ -52,38 +52,3 @@ for(const [width,day] of [[1280,1],[1280,2],[1280,3],[1280,6],[375,1],[375,6]]){
   assert.deepEqual(b.errors,[]);console.log('PASS School-first browser',width,day,'NPC/direct/Quick gates, real lessons, challenge, reload, rewards, sleep and next-day School');
  }catch(e){console.error('School-first browser failure',day,width,await p.locator('body').innerText(),b.errors);throw e;}finally{await b.close();}
 }
-
-// Old active attempts remain paused and readable while the player catches up
-// School; boot must open the village, and resuming must keep the exact draw.
-{
- const old=JSON.parse(readFileSync('tests/fixtures/pre-school-first-save-v8.json'));
- const fixture=`state.progress=${JSON.stringify(old)};state.day=4;content.restoreGenerated(state.progress);RPG_WORLD_DATA.firstDay=4;`;
- const b=await setup({width:1280,rpg:true,transform:h=>h.replace('const rpg = RPG_ENABLED ?',fixture+'const rpg = RPG_ENABLED ?')});
- try{
-  const p=b.page;await p.locator('#worldScreen').waitFor();await p.getByText('Quick travel',{exact:true}).click();
-  assert(await p.locator('[data-destination=school]').isEnabled());assert(await p.locator('[data-destination=nature]').isDisabled());
-  assert.deepEqual(await p.evaluate(()=>__test.state.progress.activeChallenge.questions),old.activeChallenge.questions);
-  await p.evaluate(()=>__test.studySchool(4));
-  await p.getByRole('button',{name:'Skip to daily challenge',exact:true}).click();await p.locator('#quizPanel').waitFor();
-  assert.deepEqual(await p.evaluate(()=>__test.state.session.questions),old.activeChallenge.questions);assert.deepEqual(b.errors,[]);
-  console.log('PASS existing schema-8 active challenge boots into village, permits School catch-up and resumes the exact questions');
- }finally{await b.close();}
-}
-{
- const profiles=JSON.parse(readFileSync('tests/fixtures/pre-school-first-assignments.json'));
- const b=await setup({width:375});
- try{
-  const result=await b.page.evaluate(profiles=>{
-   const t=__test;t.reset(24);t.state.progress.tutorialDone=true;
-   t.state.progress.library.plans=Object.fromEntries(Object.entries(profiles.find(p=>p.pace===24).plans).filter(([day])=>Number(day)<=12));
-   for(let day=1;day<=12;day++)t.progression.completeChallengeOnce(t.state.progress,day,t.progression.getChallengeSpec(day).questionCount);
-   t.state.day=13;const plan=t.E.ensurePlan(t.state.progress,t.content.LIBRARY_DATA,13);t.library.openLibrary();
-   return {adjusted:plan.allocationAdjusted,total:Object.values(plan.locationAssignments).flat().length,xp:t.state.progress.xp};
-  },profiles);
-  assert(result.adjusted);assert.equal(result.total,24);
-  assert((await b.page.locator('#libraryBody').innerText()).includes('Allocation adjusted'));
-  await b.page.locator('[data-library-tab=pace]').click();assert((await b.page.locator('#libraryBody').innerText()).includes('Allocation adjusted'));
-  assert.equal(await b.page.evaluate(()=>__test.state.progress.xp),result.xp);assert.deepEqual(b.errors,[]);
-  console.log('PASS preserved late profile receives 24 distinct new words and an explicit adjusted-allocation notice in Library/pace, without extra XP');
- }finally{await b.close();}
-}
