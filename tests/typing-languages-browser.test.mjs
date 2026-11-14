@@ -9,7 +9,7 @@ for(const width of [375,1280]){
   await p.evaluate(()=>__test.lessons.begin('tutorial'));
   for(const value of ['Hello','How are you?','پښتو']){await p.locator('#tutorialInteraction button').getByText(value,{exact:true}).click();await p.locator('#teachNext').click();}
   const tutorialXP=await p.evaluate(()=>__test.state.progress.xp);
-  await p.getByRole('button',{name:'Turn off English typing',exact:true}).click();
+  await p.getByRole('button',{name:'I cannot type',exact:true}).click();
   assert.equal(await p.evaluate(()=>__test.state.progress.xp),tutorialXP);assert(await p.locator('#teachNext').isDisabled());
   await p.locator('#tutorialInteraction button').getByText('Muhammad Jan',{exact:true}).click();await p.locator('#teachNext').click();
   await p.evaluate(()=>{__test.state.progress.typingPreferences={en:true,ps:true};});

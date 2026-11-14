@@ -100,7 +100,7 @@
   },
   "maps": {
     "village": {
-      "name": "Laghman Village",
+      "name": "Saykanda",
       "tiles": [
         "ttttttttttttttttttttttttttttttttttttttttttttpppppttttttttttttttttttttttttttttttttttttttttttttttt",
         "tgggtgggggggggggtgggggggggggggggggggggggggggppppptggggggggggggggtggtggggggggtggggggggtgggggtgggt",
@@ -3524,7 +3524,7 @@
       "x": 30,
       "y": 43,
       "event": "hills-reference",
-      "signText": "Laghman Hills - South Laghman Village"
+      "signText": "Laghman Hills - South Saykanda"
     },
     {
       "id": "house-bed",
@@ -4683,7 +4683,7 @@
     "hills-reference": {
       "speaker": "Wooden trail sign",
       "lines": [
-        "Laghman Hills - South Laghman Village",
+        "Laghman Hills - South Saykanda",
         "The southern path returns to the village. The eastern trail remains blocked by loose scree."
       ],
       "actions": [

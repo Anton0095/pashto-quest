@@ -14,7 +14,7 @@ for(const width of [1280,390]){
    await p.getByText('Quick travel',{exact:true}).click();await p.getByRole('button',{name:'Begin Library tutorial',exact:true}).click();
    await p.locator('#tutorialInteraction button').getByText('Hello',{exact:true}).click();await p.locator('#teachNext').click();
    await p.locator('#tutorialInteraction button').getByText('How are you?',{exact:true}).click();await p.locator('#teachNext').click();await p.locator('[data-answer="پښتو"]').click();await p.locator('#teachNext').click();
-   if(skip){await p.getByRole('button',{name:'Turn off English typing',exact:true}).click();await p.locator('#tutorialInteraction button').getByText('Muhammad Jan',{exact:true}).click();}else {if(await p.locator('#tutorialName').isVisible()){await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();}else await p.locator('#tutorialInteraction button').getByText('Muhammad Jan',{exact:true}).click();}
+   if(skip){await p.getByRole('button',{name:'I cannot type',exact:true}).click();await p.locator('#tutorialInteraction button').getByText('Muhammad Jan',{exact:true}).click();}else {if(await p.locator('#tutorialName').isVisible()){await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();}else await p.locator('#tutorialInteraction button').getByText('Muhammad Jan',{exact:true}).click();}
    await p.locator('#teachNext').click();await p.locator('#resultWorld').click();
    const intro=[];
    while(await p.getByRole('button',{name:'Continue',exact:true}).count()){intro.push(await p.locator('#rpgDialogue p').innerText());await p.getByRole('button',{name:'Continue',exact:true}).click();}

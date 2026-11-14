@@ -80,7 +80,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   const challengeStart=challenge.startChallenge;challenge.startChallenge=(day,...args)=>{if(!state.reviewCampaign&&policy.configured(day)&&day===current()&&chapters.challengeAvailable())challengeStart(day,...args);};
   const root=ui.$('worldScreen');root.replaceChildren();root.className='rpg-world panel hidden';
   const heading=ui.node('div',undefined,'rpg-heading');
-  const title=ui.node('h2','Laghman Village');title.id='rpgLocation';
+  const title=ui.node('h2','Saykanda');title.id='rpgLocation';
   const day=ui.node('span','DAY '+current()+' / '+chapter().name.toUpperCase(),'rpg-day');
   heading.append(ui.node('div','PASHTO QUEST / RPG','eyebrow'),day,title);
   const tools=ui.node('div',undefined,'buttons rpg-tools');

@@ -106,6 +106,7 @@ function createSaveValidator({ content, progression }) {
       return false;
     if (p.retiredRuleAssessmentJSON !== undefined && typeof p.retiredRuleAssessmentJSON !== "string") return false;
     if (p.onboardingIntroductionPending !== undefined && typeof p.onboardingIntroductionPending !== "boolean") return false;
+    if (p.tutorialTypingDisabled !== undefined && typeof p.tutorialTypingDisabled !== "boolean") return false;
     if (p.typingPreferences !== undefined && (!object(p.typingPreferences) || typeof p.typingPreferences.en !== "boolean" || typeof p.typingPreferences.ps !== "boolean")) return false;
     if (p.enableTypingChallenges !== undefined && typeof p.enableTypingChallenges !== "boolean") return false;
     if (!content.restoreGenerated(p)) return false;

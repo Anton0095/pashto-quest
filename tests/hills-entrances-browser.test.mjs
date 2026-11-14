@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {mkdirSync} from 'node:fs';
 import {setup} from './browser-fixture.mjs';
-const WORLD='pashto-quest-rpg-world-v1',label='Laghman Hills - South Laghman Village';
+const WORLD='pashto-quest-rpg-world-v1',label='Laghman Hills - South Saykanda';
 mkdirSync('work/hills-entrances',{recursive:true});
 for(const width of [1280,390]){
  const b=await setup({width,mobile:width===390,rpg:true,transform:html=>html.replace('// @TEST_HOOK','window.__entranceRPG=rpg;window.__entranceFence=saveFence; // @TEST_HOOK')}),p=b.page;
