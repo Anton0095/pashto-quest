@@ -13,7 +13,8 @@ function createUI({ state, content, progression }) {
           : content.zones[loc].name;
   }
   const conversation={instructorId:'Muhammad Jan',speakerId:'Muhammad Jan',partnerId:'Muhammad Jan'};
-  function personName(id){const name=id;return CHARACTER_PORTRAITS.characters[id]?.name || content.peopleByName[name]?.name || name;}
+  function characterName(id){const person=CHARACTER_NAMES.characters.find(c=>c.characterId===id||c.current.english===id);return person?person.current.english+' — '+person.current.pashto:id;}
+  function personName(id){return CHARACTER_PORTRAITS.characters[id]?.name || content.peopleByName[id]?.name || id;}
   function setConversation(context){
     Object.assign(conversation,context);
     const instructor=personName(conversation.instructorId),speaker=personName(conversation.speakerId),partner=personName(conversation.partnerId);
@@ -21,7 +22,7 @@ function createUI({ state, content, progression }) {
     if(icon.dataset.person!==instructor){
       icon.replaceChildren(renderCharacterPortrait(instructor));icon.dataset.person=instructor;
     }
-    const label=instructor+(instructor===speaker?' · speaking':' · Instructor');
+    const label=characterName(instructor)+(instructor===speaker?' · speaking':' · Instructor');
     if(name.textContent!==label)name.textContent=label;
     if(partner&&partner!==instructor){
       let frame=root.firstElementChild;
@@ -29,7 +30,7 @@ function createUI({ state, content, progression }) {
         frame=node('div',undefined,'conversation-partner');frame.dataset.person=partner;
         frame.append(renderCharacterPortrait(partner),node('strong'));root.replaceChildren(frame);
       }
-      const label=partner+(partner===speaker?' · speaking':' · Your conversation partner');
+      const label=characterName(partner)+(partner===speaker?' · speaking':' · Your conversation partner');
       if(frame.lastElementChild.textContent!==label)frame.lastElementChild.textContent=label;
     }else if(root.childNodes.length)root.replaceChildren();
     if(name.dataset.activeSpeaker!==speaker)name.dataset.activeSpeaker=speaker;
@@ -148,6 +149,7 @@ function createUI({ state, content, progression }) {
 
 
   return {
+    characterName,
     portrait: renderCharacterPortrait,
     usePhaserPortraits,
     portraitReady: registerPortraitTexture,

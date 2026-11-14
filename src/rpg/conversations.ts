@@ -3,7 +3,7 @@ import type {Action,Card,ConversationDay,StoryEvent,Progress,Progression} from '
 type ResponseSource = Card | null | (() => Card | null);
 
 export function conversationEligible(progress:Progress,day:number,progression:Pick<Progression,'passedChallenge'>):boolean {
-  return !!progress.complete[`${day}-nature`] || progression.passedChallenge(progress,day);
+  return !!progress.complete[`${day}-school`] || !!progress.complete[`${day}-nature`] || progression.passedChallenge(progress,day);
 }
 
 /** Curated semantic target + compiler-generated, contextually wrong alternatives.
@@ -32,7 +32,7 @@ export function conversationChoices(spec:ConversationDay,pool:Card[],random:()=>
 }
 export function conversationEvent(spec:ConversationDay,events:Record<string,StoryEvent>,pool:Card[],eligible:boolean,alreadySpoken:boolean,pending?:string,random:()=>number=Math.random,fallback:ResponseSource=null):{id:string;event:StoryEvent} {
   if(pending&&[spec.event,spec.correctEvent,spec.incorrectEvent,spec.conclusionEvent].includes(pending)&&pending!==spec.event)return {id:pending,event:events[pending]};
-  if(alreadySpoken)return {id:spec.repeatEvent,event:events[spec.repeatEvent]};
+  void alreadySpoken; // Daily conversations are repeatable after either response.
   const actions=eligible?conversationChoices(spec,pool,random,fallback):[];
   const id=actions.length?spec.event:spec.greetingEvent;
   return {id,event:{...events[id],actions:actions.length?actions:events[id].actions}};

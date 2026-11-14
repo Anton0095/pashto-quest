@@ -58,7 +58,7 @@ export function createRPGDialogue({dialog,ui,onAction,onClose,onIndex,eligible,o
     const message=messages[index];const listener=message&&'listener' in message?message.listener:current.listener;
     const frame=ui.portrait(message?.characterId??(message?.speaker&&message.speaker!==current.speaker?message.speaker:current.characterId??current.speaker),message?.expression??current.expression);
     portrait.replaceChildren(frame);portrait.classList.toggle('hidden',frame.classList.contains('hidden'));
-    speaker.textContent=(message?.speaker??current.speaker)+(listener?' → '+listener:'');text.textContent=current.pashto?.ps??messages[index]?.text??'';
+    speaker.textContent=(current.conversationComplete?'✓ ':'')+(ui.characterName?.(message?.speaker??current.speaker)??message?.speaker??current.speaker)+(listener?' → '+(ui.characterName?.(listener)??listener):'');text.textContent=current.pashto?.ps??messages[index]?.text??'';
     text.lang=current.pashto?'ps':'en';text.dir=current.pashto?'rtl':'ltr';text.classList.toggle('library-pashto',!!current.pashto);
     roman.textContent=current.pashto?.roman??'';roman.lang='en';roman.dir='ltr';roman.hidden=!current.pashto;listen.hidden=!current.pashto;
     actions.replaceChildren();onIndex(index);
@@ -69,5 +69,5 @@ export function createRPGDialogue({dialog,ui,onAction,onClose,onIndex,eligible,o
       actions.append(button);
     }
   }
-  return {open(event:StoryEvent|undefined,startIndex=0){if(dialog.open || !event)return;current=event;index=startIndex;render();dialog.showModal();actions.querySelector('button')?.focus();},get isOpen(){return dialog.open;},dispose(){dialog.removeEventListener('close',closed);dialog.remove();}};
+  return {open(event:StoryEvent|undefined,startIndex=0){if(dialog.open || !event)return;current=event;index=startIndex;render();if(event.interruptible)dialog.show();else dialog.showModal();actions.querySelector('button')?.focus();},dismiss(){if(!dialog.open)return;current=null;actionClose=true;dialog.close();onClose();},get isOpen(){return dialog.open;},dispose(){dialog.removeEventListener('close',closed);dialog.remove();}};
 }

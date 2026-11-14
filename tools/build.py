@@ -218,11 +218,15 @@ def build(check_rpg=False):
         'world-ui', 'library-ui',
     ]
     names=json.loads(read('content/CHARACTER_NAMES.json'))
-    if names['approval']['status']!='user_approved' or names['approval']['nativeCertificationClaimed'] is not False or {r['characterId']:r['current']['pashto'] for r in names['characters']} != json.loads(read('content/USER_LANGUAGE_APPROVALS.json'))['characterNameUpdates']['suppliedSpellings']:
+    if names['approval']['status']!='user_approved' or names['approval']['nativeCertificationClaimed'] is not False or {r['characterId']:r['current']['pashto'] for r in names['characters'] if 'previous' in r} != json.loads(read('content/USER_LANGUAGE_APPROVALS.json'))['characterNameUpdates']['suppliedSpellings']:
         raise ValueError('Character name spelling requires exact owner approval')
     people={n['characterId']:n['name'] for n in json.loads(read('content/RPG_WORLD.json'))['npcs']}
     entries={e['lemmaId']:e for e in library['entries']}
     for n in names['characters']:
+        if not n.get('lemmaId'):
+            if n['current']['english']!=people[n['characterId']] or n.get('userVerified') is not False or not n.get('reviewStatus') or not re.search(r'[\u0600-\u06ff]',n['current']['pashto']):
+                raise ValueError('Invalid provisional display name')
+            continue
         e=entries[n['lemmaId']]
         if (n['current']['english']!=people[n['characterId']]
                 or e['displayLemmaPs'] != n['current']['pashto']

@@ -193,7 +193,7 @@ function createLessons({
       : w.type === "greeting"
         ? "Learn this conventional expression as a complete phrase."
         : "Study this word or individual form. It will remain available in later constructions.";
-    const voice = teacher.name + (s.mode === "review" ? " · Memory Trail" : "");
+    const voice = ui.characterName(teacher.name) + (s.mode === "review" ? " · Memory Trail" : "");
     ui.$("guideMessage").textContent =
       w.type === "greeting"
         ? `${voice}: “${w.en}” Listen to the expression, then practise saying it with me.`
@@ -203,7 +203,7 @@ function createLessons({
     ui.setSentenceConversation(w, teacher.name);
     if (w.phrasePromptId) {
       const prompt = content.wordById[w.phrasePromptId];
-      ui.$("guideMessage").textContent = `${teacher.name}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). You reply: ${w.ps} (${w.en}).`;
+      ui.$("guideMessage").textContent = `${ui.characterName(teacher.name)}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). You reply: ${w.ps} (${w.en}).`;
     }
     ui.$("teachNext").disabled = false;
     ui.$("teachNext").textContent =
@@ -314,7 +314,7 @@ function createLessons({
     ui.$("quizSpeak").classList.toggle("hidden", build);
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
     ui.setDialogueSpeaker(teacher.name);
-    ui.$("guideMessage").textContent = `${teacher.name}: “What does this mean? Choose your answer and we will check it together.”`;
+    ui.$("guideMessage").textContent = `${ui.characterName(teacher.name)}: “What does this mean? Choose your answer and we will check it together.”`;
     if (build) ui.construction.present(w, s.activeItem, s.loop);
     ui.$("builtSentence").classList.remove("build-success", "build-error");
     ui.$("choices").replaceChildren();
