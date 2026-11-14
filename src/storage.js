@@ -1,4 +1,4 @@
-/* Current save validation, local storage and live assessment snapshots. No migrations. */
+/* Current-schema validation, coordinated persistence and frozen assessment snapshots. */
 function createStorage({
   state,
   content,
@@ -58,7 +58,7 @@ function createStorage({
       return p;
     } catch (error) {
       saveProblem =
-        "This save belongs to an older or incompatible version. This release uses save format 8 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
+        "This save belongs to an older or incompatible version. This release uses save format 9 and does not convert old saves. Your stored data has not been changed. Reset it explicitly to start this version.";
       return progression.fresh();
     }
   }

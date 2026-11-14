@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {writeFileSync} from 'node:fs';
+import {writeFileSync,mkdirSync} from 'node:fs';
 import {build} from 'esbuild';
 import {setup} from './browser-fixture.mjs';
 const bundle=await build({entryPoints:['src/rpg/transitions.ts'],bundle:true,format:'iife',globalName:'TransitionFixture',write:false,target:'es2020'});
@@ -27,4 +27,4 @@ for(const width of [1280,390])for(const reduced of [false,true]){
   observations.push({width,reducedMotion:reduced,...result});console.log('PASS transition lifecycle',width,reduced?'reduced':'normal','bounded DOM/animation tracks, five duplicate requests rejected, pre/post-commit interruption, no leaked veil or tracks');
  }finally{await b.close();}
 }
-writeFileSync('work/sleep-bilal/transition-observations.json',JSON.stringify(observations,null,2)+'\n');
+mkdirSync('work/sleep-bilal',{recursive:true});writeFileSync('work/sleep-bilal/transition-observations.json',JSON.stringify(observations,null,2)+'\n');

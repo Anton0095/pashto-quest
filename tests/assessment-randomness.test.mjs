@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
-import {runtime,reset,plain,beginAttempt} from './runtime-fixture.mjs';
+import {runtime,reset,plain,beginAttempt,study} from './runtime-fixture.mjs';
 let entropyCalls=0;
 const master=runtime().Q.randomFor(982451653);
-const t=runtime({seedSource:()=>{entropyCalls++;return Math.floor(master()*0x100000000)}});reset(t);
+const t=runtime({seedSource:()=>{entropyCalls++;return Math.floor(master()*0x100000000)}});reset(t);study(t,1,"school");
 const frequencies=new Map(),wordSets=new Set(),sentenceSets=new Set();
 let planBefore;
 for(let draw=0;draw<256;draw++) {
@@ -26,7 +26,7 @@ for(let draw=0;draw<256;draw++) {
  for(const q of targets)for(const card of [q.generated,q.promptGenerated].filter(Boolean)) {
   assert(card.generated.requiredGrammarIds.every(g=>t.state.progress.library.grammar[g]));
   for(const r of Object.values(card.generated.slots)) {
-   assert(t.state.progress.library.acquired[r.lemmaId].introducedFormIds.includes(r.formId));
+   assert(t.state.progress.library.acquired[r.lemmaId].availableFormIds.includes(r.formId));
    for(const loc of t.content.zoneKeys)if(plan.locationAssignments[loc].includes(r.lemmaId))sentenceLocations.add(loc);
   }
  }
@@ -34,10 +34,10 @@ for(let draw=0;draw<256;draw++) {
  wordSets.add(words.map(q=>q.id).sort().join('|'));sentenceSets.add(targets.map(q=>q.generated.ps).sort().join('|'));
 }
 assert.equal(entropyCalls,256);assert(wordSets.size>100);assert(sentenceSets.size>200);
-assert.equal(frequencies.size,24,'all six assigned words in every location can be selected');
-for(const count of frequencies.values())assert(count>=15&&count<=80,'broad deterministic frequency guard detects selection bias');
+assert.equal(frequencies.size,24,'all 24 assigned words across the four locations can be selected');
+for(const [id,count] of frequencies){const cohort=Object.values(t.state.progress.library.plans[1].locationAssignments).find(ids=>ids.includes(id)),expected=256/cohort.length;assert(count>=expected*.4&&count<=expected*1.8,'frequency stays proportional to unequal cohort size');}
 // Same injected seed reproduces the draw, without making production reuse it.
-const a=runtime({seedSource:()=>123456789}),b=runtime({seedSource:()=>123456789});reset(a);reset(b);
+const a=runtime({seedSource:()=>123456789}),b=runtime({seedSource:()=>123456789});reset(a);reset(b);study(a,1,"school");study(b,1,"school");
 assert.deepEqual(plain(a.questions.selectChallenge(1)),plain(b.questions.selectChallenge(1)));
 // Reading an active snapshot consumes no new entropy, even after study/reload.
 beginAttempt(t,1);const frozen=plain(t.state.session.questions),calls=entropyCalls;

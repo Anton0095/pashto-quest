@@ -100,7 +100,7 @@
   },
   "maps": {
     "village": {
-      "name": "Laghman Village",
+      "name": "Saykanda",
       "tiles": [
         "ttttttttttttttttttttttttttttttttttttttttttttpppppttttttttttttttttttttttttttttttttttttttttttttttt",
         "tgggtgggggggggggtgggggggggggggggggggggggggggppppptggggggggggggggtggtggggggggtggggggggtgggggtgggt",
@@ -3524,7 +3524,7 @@
       "x": 30,
       "y": 43,
       "event": "hills-reference",
-      "signText": "Laghman Hills - South Laghman Village"
+      "signText": "Laghman Hills - South Saykanda"
     },
     {
       "id": "house-bed",
@@ -3576,11 +3576,6 @@
           "type": "flag",
           "flag": "metGuide",
           "condition": "beforeTutorial"
-        },
-        {
-          "label": "Skip tutorial",
-          "type": "skip-tutorial",
-          "condition": "beforeTutorial"
         }
       ],
       "characterId": "muhammad-jan"
@@ -3588,17 +3583,12 @@
     "library": {
       "speaker": "Muhammad Jan",
       "lines": [
-        "Our Library holds everything you learn. Practise four guided conversation activities, or skip them and explore the village."
+        "Our Library holds everything you learn. Complete four guided conversation activities, then visit School first."
       ],
       "actions": [
         {
           "label": "Begin tutorial",
           "type": "tutorial",
-          "condition": "beforeTutorial"
-        },
-        {
-          "label": "Skip tutorial",
-          "type": "skip-tutorial",
           "condition": "beforeTutorial"
         },
         {
@@ -3617,7 +3607,7 @@
     "home": {
       "speaker": "Muhammad Jan",
       "lines": [
-        "Welcome home. We can study descriptions together, or you can try the Day 1 challenge whenever you feel ready. You do not need to finish all four lessons first."
+        "Welcome home. After School, we can practise descriptions here. Study Home, Nature and Market in any order, or explicitly skip to the daily challenge after School."
       ],
       "actions": [
         {
@@ -3672,7 +3662,7 @@
     "school": {
       "speaker": "Ms Hameed",
       "lines": [
-        "Welcome to school. We will build on the words and forms you learn throughout the village."
+        "School comes first each day. We introduce today’s grammar and supporting words, then practise with vocabulary you already know."
       ],
       "actions": [
         {
@@ -3742,7 +3732,7 @@
     "day2-finale": {
       "speaker": "Muhammad Jan",
       "listener": "Player",
-      "condition": "all:complete:2-school|complete:2-residential",
+      "condition": "allLessons",
       "once": true,
       "lines": [
         "Tell Muhammad Jan about your practice today."
@@ -3803,7 +3793,7 @@
       "speaker": "Muhammad Jan",
       "listener": "Player",
       "lines": [
-        "After School you can study here at Home immediately. Market and Lake are optional visits, before or after Home."
+        "After School, study Home, Nature and Market in any order. You can also choose Skip to daily challenge."
       ],
       "actions": [
         {
@@ -3816,7 +3806,7 @@
           "label": "Join Muhammad Jan’s check-in",
           "type": "event",
           "event": "day2-finale",
-          "condition": "all:complete:2-school|complete:2-residential"
+          "condition": "allLessons"
         },
         {
           "label": "Day 2 challenge · 15 questions",
@@ -3867,7 +3857,7 @@
       "speaker": "Ms Hameed",
       "listener": "Player",
       "lines": [
-        "We can practise Day 2 here at School."
+        "School comes first each day. We introduce today’s grammar and supporting words, then practise with vocabulary you already know."
       ],
       "actions": [
         {
@@ -4054,7 +4044,7 @@
       "speaker": "Ms Hameed",
       "listener": "Player",
       "lines": [
-        "We can practise Day 3 here at School."
+        "School comes first each day. We introduce today’s grammar and supporting words, then practise with vocabulary you already know."
       ],
       "actions": [
         {
@@ -4235,7 +4225,7 @@
       "speaker": "Ms Hameed",
       "listener": "Player",
       "lines": [
-        "We can practise Day 4 here at School."
+        "School comes first each day. We introduce today’s grammar and supporting words, then practise with vocabulary you already know."
       ],
       "actions": [
         {
@@ -4430,7 +4420,7 @@
       "speaker": "Ms Hameed",
       "listener": "Player",
       "lines": [
-        "We can practise our School words together. When everyone is ready, I will join the Lake gathering."
+        "School comes first each day. We introduce today’s grammar and supporting words, then practise with vocabulary you already know."
       ],
       "actions": [
         {
@@ -4601,7 +4591,7 @@
       "speaker": "Ms Hameed",
       "listener": "Player",
       "lines": [
-        "We can practise Day 6 here at School."
+        "School comes first each day. We introduce today’s grammar and supporting words, then practise with vocabulary you already know."
       ],
       "actions": [
         {
@@ -4693,7 +4683,7 @@
     "hills-reference": {
       "speaker": "Wooden trail sign",
       "lines": [
-        "Laghman Hills - South Laghman Village",
+        "Laghman Hills - South Saykanda",
         "The southern path returns to the village. The eastern trail remains blocked by loose scree."
       ],
       "actions": [
@@ -4881,7 +4871,7 @@
       "speaker": "Deena",
       "listener": "Player",
       "lines": [
-        "We can practise Day 7 here at School."
+        "School comes first each day. We introduce today’s grammar and supporting words, then practise with vocabulary you already know."
       ],
       "actions": [
         {
@@ -5110,9 +5100,7 @@
       "speaker": "Muhammad Jan",
       "characterId": "muhammad-jan",
       "lines": [
-        "Welcome! Four learning areas are waiting for you: Home for household vocabulary and everyday activities; Lake for nature, water and outdoor vocabulary; Market for food, trading and everyday transactions; and School for learning, reading, writing and grammar.",
-        "Explore these areas and speak with the villagers. You can study at your own pace or try the daily challenge when you feel ready.",
-        "If you are comfortable typing in English or Pashto, enable optional typing challenges in the Library’s Player Profile settings. They are off by default. The Library also holds your Vocabulary Bank, Grammar Journal, expressions and voluntary review."
+        "Your first stop each day is School with Ms Hameed. Then study Home, Nature and Market in any order before the challenge. After School you may also choose Skip to daily challenge. Passing adds missed vocabulary to your Library; review it there."
       ],
       "actions": [
         {
@@ -5291,19 +5279,20 @@
       "speaker": "Bilal",
       "characterId": "bilal",
       "lines": [
-        "زه د جهیل په اړه خبرې کوم."
+        "له دینې سره خبرې وکړه. هغه مرسته کوي."
       ],
       "pashto": {
-        "ps": "زه د جهیل په اړه خبرې کوم.",
-        "roman": "za du jaheel pu ara khabare kawum.",
+        "ps": "له دینې سره خبرې وکړه. هغه مرسته کوي.",
+        "roman": "la deene sara khabare wakra. hagha mrasta kawi.",
         "audioId": "bilal-day-1-redirect"
       },
       "languageReview": {
-        "status": "editorial_narrative_draft",
+        "status": "researched_editorial_draft_pending_native_review",
         "userVerified": false,
-        "englishReviewOnly": "I am talking about the lake.",
+        "englishReviewOnly": "Talk with Deena. She helps.",
         "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
-        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+        "reference": "https://www.lingdocs.com/blog/pashto-compound-verbs/; https://dsal.uchicago.edu/dictionaries/heston/new_frontmatter.html",
+        "uncertainty": "Narrative only; imperative and name oblique analysis provisional; not an assessment/generator licence or Laghman certification."
       },
       "actions": [
         {
@@ -5388,19 +5377,20 @@
       "speaker": "Bilal",
       "characterId": "bilal",
       "lines": [
-        "زه د جهیل په اړه خبرې کوم."
+        "له دینې سره خبرې وکړه. هغه مرسته کوي."
       ],
       "pashto": {
-        "ps": "زه د جهیل په اړه خبرې کوم.",
-        "roman": "za du jaheel pu ara khabare kawum.",
+        "ps": "له دینې سره خبرې وکړه. هغه مرسته کوي.",
+        "roman": "la deene sara khabare wakra. hagha mrasta kawi.",
         "audioId": "bilal-day-2-redirect"
       },
       "languageReview": {
-        "status": "editorial_narrative_draft",
+        "status": "researched_editorial_draft_pending_native_review",
         "userVerified": false,
-        "englishReviewOnly": "I am talking about the lake.",
+        "englishReviewOnly": "Talk with Deena. She helps.",
         "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
-        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+        "reference": "https://www.lingdocs.com/blog/pashto-compound-verbs/; https://dsal.uchicago.edu/dictionaries/heston/new_frontmatter.html",
+        "uncertainty": "Narrative only; imperative and name oblique analysis provisional; not an assessment/generator licence or Laghman certification."
       },
       "actions": [
         {
@@ -5485,19 +5475,20 @@
       "speaker": "Bilal",
       "characterId": "bilal",
       "lines": [
-        "زه د جهیل په اړه خبرې کوم."
+        "له دینې سره خبرې وکړه. هغه مرسته کوي."
       ],
       "pashto": {
-        "ps": "زه د جهیل په اړه خبرې کوم.",
-        "roman": "za du jaheel pu ara khabare kawum.",
+        "ps": "له دینې سره خبرې وکړه. هغه مرسته کوي.",
+        "roman": "la deene sara khabare wakra. hagha mrasta kawi.",
         "audioId": "bilal-day-3-redirect"
       },
       "languageReview": {
-        "status": "editorial_narrative_draft",
+        "status": "researched_editorial_draft_pending_native_review",
         "userVerified": false,
-        "englishReviewOnly": "I am talking about the lake.",
+        "englishReviewOnly": "Talk with Deena. She helps.",
         "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
-        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+        "reference": "https://www.lingdocs.com/blog/pashto-compound-verbs/; https://dsal.uchicago.edu/dictionaries/heston/new_frontmatter.html",
+        "uncertainty": "Narrative only; imperative and name oblique analysis provisional; not an assessment/generator licence or Laghman certification."
       },
       "actions": [
         {
@@ -5582,19 +5573,20 @@
       "speaker": "Bilal",
       "characterId": "bilal",
       "lines": [
-        "زه د جهیل په اړه خبرې کوم."
+        "له دینې سره خبرې وکړه. هغه مرسته کوي."
       ],
       "pashto": {
-        "ps": "زه د جهیل په اړه خبرې کوم.",
-        "roman": "za du jaheel pu ara khabare kawum.",
+        "ps": "له دینې سره خبرې وکړه. هغه مرسته کوي.",
+        "roman": "la deene sara khabare wakra. hagha mrasta kawi.",
         "audioId": "bilal-day-4-redirect"
       },
       "languageReview": {
-        "status": "editorial_narrative_draft",
+        "status": "researched_editorial_draft_pending_native_review",
         "userVerified": false,
-        "englishReviewOnly": "I am talking about the lake.",
+        "englishReviewOnly": "Talk with Deena. She helps.",
         "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
-        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+        "reference": "https://www.lingdocs.com/blog/pashto-compound-verbs/; https://dsal.uchicago.edu/dictionaries/heston/new_frontmatter.html",
+        "uncertainty": "Narrative only; imperative and name oblique analysis provisional; not an assessment/generator licence or Laghman certification."
       },
       "actions": [
         {
@@ -5679,19 +5671,20 @@
       "speaker": "Bilal",
       "characterId": "bilal",
       "lines": [
-        "زه د جهیل په اړه خبرې کوم."
+        "له دینې سره خبرې وکړه. هغه مرسته کوي."
       ],
       "pashto": {
-        "ps": "زه د جهیل په اړه خبرې کوم.",
-        "roman": "za du jaheel pu ara khabare kawum.",
+        "ps": "له دینې سره خبرې وکړه. هغه مرسته کوي.",
+        "roman": "la deene sara khabare wakra. hagha mrasta kawi.",
         "audioId": "bilal-day-5-redirect"
       },
       "languageReview": {
-        "status": "editorial_narrative_draft",
+        "status": "researched_editorial_draft_pending_native_review",
         "userVerified": false,
-        "englishReviewOnly": "I am talking about the lake.",
+        "englishReviewOnly": "Talk with Deena. She helps.",
         "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
-        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+        "reference": "https://www.lingdocs.com/blog/pashto-compound-verbs/; https://dsal.uchicago.edu/dictionaries/heston/new_frontmatter.html",
+        "uncertainty": "Narrative only; imperative and name oblique analysis provisional; not an assessment/generator licence or Laghman certification."
       },
       "actions": [
         {
@@ -5776,19 +5769,20 @@
       "speaker": "Bilal",
       "characterId": "bilal",
       "lines": [
-        "زه د جهیل په اړه خبرې کوم."
+        "له دینې سره خبرې وکړه. هغه مرسته کوي."
       ],
       "pashto": {
-        "ps": "زه د جهیل په اړه خبرې کوم.",
-        "roman": "za du jaheel pu ara khabare kawum.",
+        "ps": "له دینې سره خبرې وکړه. هغه مرسته کوي.",
+        "roman": "la deene sara khabare wakra. hagha mrasta kawi.",
         "audioId": "bilal-day-6-redirect"
       },
       "languageReview": {
-        "status": "editorial_narrative_draft",
+        "status": "researched_editorial_draft_pending_native_review",
         "userVerified": false,
-        "englishReviewOnly": "I am talking about the lake.",
+        "englishReviewOnly": "Talk with Deena. She helps.",
         "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
-        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+        "reference": "https://www.lingdocs.com/blog/pashto-compound-verbs/; https://dsal.uchicago.edu/dictionaries/heston/new_frontmatter.html",
+        "uncertainty": "Narrative only; imperative and name oblique analysis provisional; not an assessment/generator licence or Laghman certification."
       },
       "actions": [
         {
@@ -5873,19 +5867,20 @@
       "speaker": "Bilal",
       "characterId": "bilal",
       "lines": [
-        "زه د جهیل په اړه خبرې کوم."
+        "له دینې سره خبرې وکړه. هغه مرسته کوي."
       ],
       "pashto": {
-        "ps": "زه د جهیل په اړه خبرې کوم.",
-        "roman": "za du jaheel pu ara khabare kawum.",
+        "ps": "له دینې سره خبرې وکړه. هغه مرسته کوي.",
+        "roman": "la deene sara khabare wakra. hagha mrasta kawi.",
         "audioId": "bilal-day-7-redirect"
       },
       "languageReview": {
-        "status": "editorial_narrative_draft",
+        "status": "researched_editorial_draft_pending_native_review",
         "userVerified": false,
-        "englishReviewOnly": "I am talking about the lake.",
+        "englishReviewOnly": "Talk with Deena. She helps.",
         "context": "Optional authored Lake conversation; never an assessed phrase or language unlock",
-        "reference": "docs/rpg/SLEEP_AND_CONVERSATIONS.md#language-review"
+        "reference": "https://www.lingdocs.com/blog/pashto-compound-verbs/; https://dsal.uchicago.edu/dictionaries/heston/new_frontmatter.html",
+        "uncertainty": "Narrative only; imperative and name oblique analysis provisional; not an assessment/generator licence or Laghman certification."
       },
       "actions": [
         {
@@ -5983,10 +5978,10 @@
       "openingEvent": "welcome",
       "tutorialLessonId": "tutorial",
       "lessons": [
+        "1-school",
         "1-residential",
         "1-nature",
-        "1-business",
-        "1-school"
+        "1-business"
       ],
       "challenge": {
         "day": 1,
@@ -6032,26 +6027,32 @@
         "sanaa"
       ],
       "nextChapter": "day-2",
-      "objective": "Home ↖  ·  Lake ↗  ·  Market ↙  ·  School ↘  ·  Library ↑",
+      "objective": "Complete School, then Home, Nature and Market in any order. The explicit challenge shortcut opens after School.",
       "endingEvent": "day1-ending",
-      "intro": "Muhammad Jan will guide you to the Library for your first four activities. Then explore Home, Lake, Market and School in any order. Pass the Day 1 challenge to begin your first week.",
+      "intro": "Complete Muhammad Jan’s four introductory activities at the Library, then School. Study Home, Nature and Market in any order before the daily challenge, or choose the shortcut after School.",
       "presentation": {
         "completeTitle": "Day 1 complete"
       },
       "guidance": {
-        "introLessonId": "1-residential",
-        "destination": "Home",
-        "character": "Muhammad Jan",
-        "before": "Go to Home and speak with Muhammad Jan for today’s introductory lesson.",
-        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "introLessonId": "1-school",
+        "destination": "School",
+        "character": "Ms Hameed",
+        "before": "Complete today’s School lesson with Ms Hameed first. You may explore and talk to everyone before studying.",
+        "after": "Study Home, Nature and Market in any order, then take the daily challenge. You can also choose “Skip to daily challenge”.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
-      }
+      },
+      "requiredLessons": [
+        "1-school",
+        "1-residential",
+        "1-nature",
+        "1-business"
+      ]
     },
     "2": {
       "id": "day-2",
       "day": 2,
       "name": "Back to School",
-      "intro": "We will use he and she with the first action verbs, placing the subject, object and verb in their licensed order.",
+      "intro": "Complete School first each day. We will use he and she with the first action verbs, placing the subject, object and verb in their licensed order.",
       "maps": [
         "village",
         "library",
@@ -6103,7 +6104,7 @@
       },
       "endingEvent": "day2-ending",
       "nextChapter": "day-3",
-      "objective": "Normal: complete School, then study at Home immediately for Muhammad Jan’s check-in. Market and Lake are optional before or after Home. The early challenge remains available at Home.",
+      "objective": "Complete School, then Home, Nature and Market in any order. The explicit challenge shortcut opens after School.",
       "routes": {
         "normal": {
           "opening": "day2-opening",
@@ -6121,12 +6122,14 @@
         "introLessonId": "2-school",
         "destination": "School",
         "character": "Ms Hameed",
-        "before": "Go to School and speak with Ms Hameed for today’s introductory lesson.",
-        "after": "Home is available immediately after School. Market and Lake are optional before or after Home; the challenge is also available.",
+        "before": "Complete today’s School lesson with Ms Hameed first. You may explore and talk to everyone before studying.",
+        "after": "Study Home, Nature and Market in any order, then take the daily challenge. You can also choose “Skip to daily challenge”.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
       },
       "requiredLessons": [
         "2-school",
+        "2-business",
+        "2-nature",
         "2-residential"
       ]
     },
@@ -6134,7 +6137,7 @@
       "id": "day-3",
       "day": 3,
       "name": "Speaking About Myself",
-      "intro": "Tell us about yourself using I and the first-person forms you study today.",
+      "intro": "Complete School first each day. Tell us about yourself using I and the first-person forms you study today.",
       "maps": [
         "village",
         "library",
@@ -6166,10 +6169,10 @@
       ],
       "openingEvent": "day3-opening",
       "lessons": [
+        "3-school",
         "3-nature",
         "3-residential",
-        "3-business",
-        "3-school"
+        "3-business"
       ],
       "challenge": {
         "day": 3,
@@ -6186,7 +6189,7 @@
       },
       "endingEvent": "day3-ending",
       "nextChapter": "day-4",
-      "objective": "Normal: begin at Lake, visit four districts, then Dinner shopping with Edris. Early challenge: speak to Edris at Market.",
+      "objective": "Complete School, then Home, Nature and Market in any order. The explicit challenge shortcut opens after School.",
       "routes": {
         "normal": {
           "opening": "day3-opening",
@@ -6201,19 +6204,25 @@
         "terminalTitle": "Pashto Quest — Week 1 Complete"
       },
       "guidance": {
-        "introLessonId": "3-nature",
-        "destination": "Lake",
-        "character": "Deena",
-        "before": "Go to Lake and speak with Deena for today’s introductory lesson.",
-        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "introLessonId": "3-school",
+        "destination": "School",
+        "character": "Ms Hameed",
+        "before": "Complete today’s School lesson with Ms Hameed first. You may explore and talk to everyone before studying.",
+        "after": "Study Home, Nature and Market in any order, then take the daily challenge. You can also choose “Skip to daily challenge”.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
-      }
+      },
+      "requiredLessons": [
+        "3-school",
+        "3-nature",
+        "3-residential",
+        "3-business"
+      ]
     },
     "4": {
       "id": "day-4",
       "day": 4,
       "name": "Talking to a Friend",
-      "intro": "Practise speaking to one friend with informal you, and combine the licensed I and you clauses.",
+      "intro": "Complete School first each day. Practise speaking to one friend with informal you, and combine the licensed I and you clauses.",
       "maps": [
         "village",
         "library",
@@ -6245,10 +6254,10 @@
       ],
       "openingEvent": "day4-opening",
       "lessons": [
+        "4-school",
         "4-residential",
         "4-nature",
-        "4-business",
-        "4-school"
+        "4-business"
       ],
       "challenge": {
         "day": 4,
@@ -6265,7 +6274,7 @@
       },
       "endingEvent": "day4-ending",
       "nextChapter": "day-5",
-      "objective": "Normal: begin at Home, visit four districts, then An informal conversation at Home. Early challenge: speak to Muhammad Jan at Home.",
+      "objective": "Complete School, then Home, Nature and Market in any order. The explicit challenge shortcut opens after School.",
       "routes": {
         "normal": {
           "opening": "day4-opening",
@@ -6280,19 +6289,25 @@
         "terminalTitle": "Pashto Quest — Week 1 Complete"
       },
       "guidance": {
-        "introLessonId": "4-residential",
-        "destination": "Home",
-        "character": "Muhammad Jan",
-        "before": "Go to Home and speak with Muhammad Jan for today’s introductory lesson.",
-        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "introLessonId": "4-school",
+        "destination": "School",
+        "character": "Ms Hameed",
+        "before": "Complete today’s School lesson with Ms Hameed first. You may explore and talk to everyone before studying.",
+        "after": "Study Home, Nature and Market in any order, then take the daily challenge. You can also choose “Skip to daily challenge”.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
-      }
+      },
+      "requiredLessons": [
+        "4-school",
+        "4-residential",
+        "4-nature",
+        "4-business"
+      ]
     },
     "5": {
       "id": "day-5",
       "day": 5,
       "name": "Speaking Respectfully",
-      "intro": "Today we address elders and groups respectfully. The existing lesson teaches the approved peace greeting and response.",
+      "intro": "Complete School first each day. Today we address elders and groups respectfully. The existing lesson teaches the approved peace greeting and response.",
       "maps": [
         "village",
         "library",
@@ -6344,7 +6359,7 @@
       },
       "endingEvent": "day5-ending",
       "nextChapter": "day-6",
-      "objective": "Normal: begin at School, visit four districts, then Gathering at the Lake. Early challenge: speak to Deena at Lake.",
+      "objective": "Complete School, then Home, Nature and Market in any order. The explicit challenge shortcut opens after School.",
       "routes": {
         "normal": {
           "opening": "day5-opening",
@@ -6362,16 +6377,22 @@
         "introLessonId": "5-school",
         "destination": "School",
         "character": "Ms Hameed",
-        "before": "Go to School and speak with Ms Hameed for today’s introductory lesson.",
-        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "before": "Complete today’s School lesson with Ms Hameed first. You may explore and talk to everyone before studying.",
+        "after": "Study Home, Nature and Market in any order, then take the daily challenge. You can also choose “Skip to daily challenge”.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
-      }
+      },
+      "requiredLessons": [
+        "5-school",
+        "5-residential",
+        "5-nature",
+        "5-business"
+      ]
     },
     "6": {
       "id": "day-6",
       "day": 6,
       "name": "Together",
-      "intro": "Deena is waiting alone at the Lake. Accept her invitation, follow the northern trail to the Hills, and meet her younger sister Medina there.",
+      "intro": "Complete School first each day. Deena is waiting alone at the Lake. Accept her invitation, follow the northern trail to the Hills, and meet her younger sister Medina there.",
       "maps": [
         "village",
         "library",
@@ -6404,10 +6425,10 @@
       ],
       "openingEvent": "day6-opening",
       "lessons": [
+        "6-school",
         "6-nature",
         "6-residential",
-        "6-business",
-        "6-school"
+        "6-business"
       ],
       "challenge": {
         "day": 6,
@@ -6424,7 +6445,7 @@
       },
       "endingEvent": "day6-ending",
       "nextChapter": "day-7",
-      "objective": "Meet Deena at Lake, then follow the northern village path to the Hills. Early challenge remains available in Quick travel.",
+      "objective": "Complete School, then Home, Nature and Market in any order. The explicit challenge shortcut opens after School. Meet Deena at Lake for the invitation to Hills.",
       "routes": {
         "normal": {
           "opening": "day6-opening",
@@ -6444,19 +6465,25 @@
         ]
       },
       "guidance": {
-        "introLessonId": "6-nature",
-        "destination": "Lake",
-        "character": "Deena",
-        "before": "Go to Lake and speak with Deena. After accepting her invitation, follow the village path north to meet her in the Hills.",
-        "after": "Continue with the remaining courses. Deena offers the Home course in the Hills; Muhammad Jan is at Market and Ms Hameed is at School.",
+        "introLessonId": "6-school",
+        "destination": "School",
+        "character": "Ms Hameed",
+        "before": "Complete today’s School lesson with Ms Hameed first. You may explore and talk to everyone before studying.",
+        "after": "Study Home, Nature and Market in any order, then take the daily challenge. You can also choose “Skip to daily challenge”.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
-      }
+      },
+      "requiredLessons": [
+        "6-school",
+        "6-nature",
+        "6-residential",
+        "6-business"
+      ]
     },
     "7": {
       "id": "day-7",
       "day": 7,
       "name": "Becoming a Resident",
-      "intro": "Review what you have learned this week, including they and third-person plural, before Ms Hameed’s examination.",
+      "intro": "Complete School first each day. Review what you have learned this week, including they and third-person plural, before Ms Hameed’s examination.",
       "maps": [
         "village",
         "library",
@@ -6489,10 +6516,10 @@
       ],
       "openingEvent": "day7-opening",
       "lessons": [
+        "7-school",
         "7-business",
         "7-residential",
-        "7-nature",
-        "7-school"
+        "7-nature"
       ],
       "challenge": {
         "day": 7,
@@ -6509,7 +6536,7 @@
       },
       "endingEvent": "day7-ending",
       "nextChapter": "day-8",
-      "objective": "Normal: begin at Market, visit four districts, then Week 1 examination. Early challenge: speak to Ms Hameed at School.",
+      "objective": "Complete School, then Home, Nature and Market in any order. The explicit challenge shortcut opens after School.",
       "routes": {
         "normal": {
           "opening": "day7-opening",
@@ -6525,13 +6552,19 @@
         "milestoneTitle": "Pashto Quest — Week 1 Complete"
       },
       "guidance": {
-        "introLessonId": "7-business",
-        "destination": "Market",
-        "character": "Edris",
-        "before": "Go to Market and speak with Edris for today’s introductory lesson.",
-        "after": "Continue with the remaining activities, then attempt today’s challenge.",
+        "introLessonId": "7-school",
+        "destination": "School",
+        "character": "Ms Hameed",
+        "before": "Complete today’s School lesson with Ms Hameed first. You may explore and talk to everyone before studying.",
+        "after": "Study Home, Nature and Market in any order, then take the daily challenge. You can also choose “Skip to daily challenge”.",
         "passed": "Today’s challenge is complete. Return home and sleep when you are ready."
-      }
+      },
+      "requiredLessons": [
+        "7-school",
+        "7-business",
+        "7-residential",
+        "7-nature"
+      ]
     }
   },
   "conversations": {

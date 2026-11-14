@@ -18,7 +18,7 @@ for(let lane=0;lane<5;lane++){
  assert.deepEqual(data.maps.village.transitions.find(t=>t.x===44+lane&&t.y===0),{x:44+lane,y:0,to:'hills',spawn:{x:30+lane,y:45}});
  assert.deepEqual(map.transitions[lane],{x:30+lane,y:47,to:'village',spawn:{x:44+lane,y:2}});
 }
-const sign=data.objects.find(o=>o.id==='hills-marker');assert.equal(sign.signText,'Laghman Hills - South Laghman Village');assert.equal(data.events[sign.event].lines[0],sign.signText);
+const sign=data.objects.find(o=>o.id==='hills-marker');assert.equal(sign.signText,'Laghman Hills - South Saykanda');assert.equal(data.events[sign.event].lines[0],sign.signText);
 assert.equal(data.maps.village.reservedExits.some(e=>e.id==='north'),false);
 assert(!M.RPGWorldData.walkable(data,'hills',63,19));assert(map.reservedExits.some(e=>e.id==='east'));assert(!map.transitions.some(t=>t.to!=='village'));
 assert.equal(map.buildings.length,0);for(const kind of ['tree','shrub','bird','goat','sheep'])assert(map.scenery.some(s=>s.kind===kind));
@@ -50,5 +50,5 @@ study(t,6,'nature');assert.equal(registry.npcs(6,'hills').filter(n=>['saleha','m
 assert(registry.event('day6-hills').actions.some(a=>a.type==='lesson'&&a.lessonId==='6-residential'));
 assert.deepEqual(plain(t.progression.getChallengeSpec(6)).questionCount,15);assert.equal(t.progression.getChallengeSpec(6).passCount,12);
 const q=plain(beginAttempt(t,6));t.storage.save();assert.equal(t.storage.problem,null);assert.deepEqual(plain(t.storage.load().activeChallenge.questions),q);
-assert.equal(data.days[6].challenge.map,'hills');assert.equal(data.days[6].guidance.character,'Deena');assert.deepEqual(data.days[6].start,M.dailySpawn(data));
+assert.equal(data.days[6].challenge.map,'hills');assert.equal(data.days[6].guidance.character,'Ms Hameed');assert.deepEqual(data.days[6].start,M.dailySpawn(data));
 console.log(`PASS Hills: ${walkable.length} reachable tiles, north/south transitions, eastern scree, seven-day access, incidental wildlife; invitation relocation/unique sisters, shared lesson, once-only introduction/reload, zero world rewards, preserved Day6 challenge/frozen snapshot`);

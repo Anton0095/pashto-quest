@@ -174,8 +174,8 @@ export function inventory(data, backlog, engine, includeProjection = true) {
       missingPlayableToTarget: Math.max(0,401 - content.length),
       intensiveScheduledIntroductions: 13 * 24,
       minimumCurrentShortfall: Math.max(0,13 * 24 - content.length),
-      idealTargetIncidentalMarginPerDistrict: 100 - 13 * 6,
-      note: "The active inventory includes clearly labelled provisional drafts. Home retains 23 entries and the other districts 22 beyond the 78 scheduled maximum-pace introductions. Home includes the extra Have lemma; Clean is retained.",
+      maximumPaceReserveByPartOfSpeech: {adjective:53-52,verb:98-85,noun:250-175},
+      note: "Primary districts retain semantic provenance; teaching assignments use School-first curated introductions. Unequal POS quotas support all five paces; Day 14 assigns zero. See CURRICULUM.md for the allocation table.",
     },
     authoredExampleSceneCoverage: Object.fromEntries(
       [
@@ -217,6 +217,7 @@ export function inventory(data, backlog, engine, includeProjection = true) {
       (c) => !activationProblems(c).length,
     ).length,
     byPrimaryDistrict: tally(content.map((e) => e.primaryDistrict)),
+    byTeachingDistrict: tally(content.map((e) => e.introduction.district)),
     byPartOfSpeech: tally(content.map((e) => e.partOfSpeech)),
     byReviewStatus: tally(data.entries.map((e) => e.reviewStatus)),
     byDifficulty: tally(

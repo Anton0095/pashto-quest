@@ -5,14 +5,14 @@ for (const width of [375, 1280]) {
   try {
     const p = b.page;
     await tutorial(p);
-    await p.evaluate(() => {__test.state.progress.enableTypingChallenges=true;__test.challenge.startChallenge(1);});
+    await p.evaluate(() => {__test.state.progress.typingPreferences={en:true,ps:true};(__test.studySchool(1),__test.challenge.startChallenge(1));});
     const qs = await p.evaluate(() => __test.state.session.questions);
     assert.equal(qs.length, 15);
     assert(
       qs.some((q) => q.generated),
       "Challenge activation must make the assigned forms available to construction",
     );
-    const introduced=await p.evaluate(()=>Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0));
+    const introduced=await p.evaluate(()=>Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.availableFormIds.length,0));
     assert(introduced>0);
     while (
       !(await p.evaluate(() => {
@@ -50,7 +50,7 @@ for (const width of [375, 1280]) {
     assert.equal(
       await p.evaluate(() =>
         Object.values(__test.state.progress.library.acquired).reduce(
-          (n, r) => n + r.introducedFormIds.length,
+          (n, r) => n + r.availableFormIds.length,
           0,
         ),
       ),

@@ -14,7 +14,7 @@ for (const target of [8, 12, 16, 20, 24]) {
   const day = E.ensurePlan(p, data, 1);
   assert.equal(Object.values(day.locationAssignments).flat().length, target);
   for (const [district, ids] of Object.entries(day.locationAssignments)) {
-    assert.equal(ids.length, target / 4);
+    assert.equal(ids.length, E.quotas(1,target)[district]);
     for (const id of ids)
       assert(
         data.entries
@@ -37,14 +37,15 @@ const sample = {
   cardTypes: { exercise: "verb" },
   sourceMappings: { exercise: [ref] },
 };
+for(const id of form.prerequisiteGrammarIds)E.unlock(p,Number(id.slice(12)),"acknowledged-test-concept");
 E.expose(p, sample, "exercise", {
   day: 3,
-  source: "lesson",
+  source: "lesson", acknowledged:true,lessonId:"3-nature",
   location: "nature",
 });
 E.expose(p, sample, "exercise", {
   day: 3,
-  source: "lesson",
+  source: "lesson", acknowledged:true,lessonId:"3-nature",
   location: "nature",
 });
 assert.equal(E.summary(p, data).encountered, 1);

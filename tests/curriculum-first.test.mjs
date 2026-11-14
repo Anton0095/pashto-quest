@@ -22,10 +22,10 @@ for (const pace of E.presets) {
     const plan = E.ensurePlan(p, data, day),
       frozen = JSON.stringify(plan);
     for (const [district, ids] of Object.entries(plan.locationAssignments)) {
-      assert(ids.length <= (day === 14 ? 0 : pace / 4));
+      assert(ids.length <= E.quotas(day,pace)[district]);
       assert.equal(
         plan.shortfalls[district],
-        (day === 14 ? 0 : pace / 4) - ids.length,
+        E.quotas(day,pace)[district] - ids.length,
       );
       const ranks = ids.map((id) => data.entries.find((e) => e.lemmaId === id));
       for (const e of ranks) {
@@ -72,5 +72,5 @@ assert(catalog.length > 1000);
 assert(catalog.some((c) => c.ps === "کور نوی دی."));
 assert(catalog.some((c) => c.ps === "کتاب لوی دی."));
 assert(catalog.every((c) => Object.values(c.generated.slots).every((r) =>
-  p.library.acquired[r.lemmaId].introducedFormIds.includes(r.formId))));
+  p.library.acquired[r.lemmaId].availableFormIds.includes(r.formId))));
 console.log("PASS curriculum-first: 474 identities, deliberate introductions/all paces, exposure vs introduction, productive unlocked form catalog");

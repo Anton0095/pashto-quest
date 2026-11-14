@@ -1,4 +1,4 @@
-/* Schema-8 shape and compiler-proof validation. No persistence or DOM. */
+/* Schema-9 shape and compiler-proof validation. No persistence or DOM. */
 function createSaveValidator({ content, progression }) {
   function validOrder(order, size) {
     return (
@@ -33,13 +33,13 @@ function createSaveValidator({ content, progression }) {
           !integer(r.totalAttempts) || !integer(r.correctAttempts) || r.correctAttempts>r.totalAttempts || !time(r.srsDueAt) ||
           !Number.isInteger(r.firstEncounteredDay) || r.firstEncounteredDay<1 || r.firstEncounteredDay>14 ||
           typeof r.firstEncounteredSource!=="string" || !strings(r.encounteredSourceIds) ||
-          ![r.encounteredFormIds,r.introducedFormIds,r.practisedFormIds].every(strings) ||
-          [...r.introducedFormIds,...r.practisedFormIds,...Object.keys(r.forms)].some(id=>!r.encounteredFormIds.includes(id))) return false;
+          ![r.encounteredFormIds,r.availableFormIds,r.practisedFormIds].every(strings) ||
+          [...r.availableFormIds,...r.practisedFormIds,...Object.keys(r.forms)].some(id=>!r.encounteredFormIds.includes(id))) return false;
       if(r.firstStudyLesson!==undefined&&(typeof r.firstStudyLesson!=='string'||!/^(?:[1-9]|1[0-4])-(?:residential|nature|business|school)$/.test(r.firstStudyLesson)))return false;
       if (r.formallyIntroducedDay!==undefined && (!integer(r.formallyIntroducedDay)||r.formallyIntroducedDay<1||r.formallyIntroducedDay>14)) return false;
-      const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass","challenge-start"].includes(v.source) && typeof v.location==="string" && (v.studiedDay===undefined || (integer(v.studiedDay)&&v.studiedDay>=1&&v.studiedDay<=14));
+      const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass","challenge-start"].includes(v.source) && typeof v.location==="string" && (v.studiedDay===undefined ? v.studiedLesson===undefined : (integer(v.studiedDay)&&v.studiedDay>=1&&v.studiedDay<=14&&typeof v.studiedLesson==="string"&&/^(?:[1-9]|1[0-4])-(?:residential|nature|business|school)$/.test(v.studiedLesson)));
       if (r.unlock!==undefined && !origin(r.unlock)) return false;
-      if (r.formUnlocks!==undefined && (!object(r.formUnlocks) || Object.entries(r.formUnlocks).some(([id,v]) => !r.introducedFormIds.includes(id) || !origin(v)))) return false;
+      if (r.formUnlocks!==undefined && (!object(r.formUnlocks) || Object.entries(r.formUnlocks).some(([id,v]) => !r.availableFormIds.includes(id) || !origin(v)))) return false;
       if (r.masteredAt!==undefined && !time(r.masteredAt)) return false;
     }
     for (const [day,r] of Object.entries(l.dayExposure)) {
@@ -57,12 +57,19 @@ function createSaveValidator({ content, progression }) {
     for (const plan of Object.values(l.plans)) {
       if (!object(plan)||!integer(plan.seed)||!object(plan.shortfalls)||typeof plan.notice!=="string"||typeof plan.contentGap!=="boolean"||
           !(plan.effectiveDailyTarget===null||(plan.day===14&&plan.effectiveDailyTarget===0||LibraryEngine.presets.includes(plan.effectiveDailyTarget)))||
-          !content.zoneKeys.every(k=>integer(plan.shortfalls[k])&&plan.shortfalls[k]<=6)) return false;
+          !content.zoneKeys.every(k=>integer(plan.shortfalls[k])&&plan.shortfalls[k]<=plan.requestedDailyTarget)) return false;
+      if (plan.allocationAdjusted !== undefined && typeof plan.allocationAdjusted !== "boolean") return false;
       if (plan.challengeActivation !== undefined) {
         const a=plan.challengeActivation;
         if (!object(a) || !strings(a.newlyUnlocked) || a.newlyUnlocked.some(id=>!content.libraryEntries[id]) || !object(a.locationItems) || !content.zoneKeys.every(loc=>integer(a.locationItems[loc]))) return false;
       }
       if(plan.studyPools!==undefined&&(!object(plan.studyPools)||Object.entries(plan.studyPools).some(([loc,ids])=>!content.zoneKeys.includes(loc)||!strings(ids)||ids.some(id=>!content.wordById[id]||content.wordById[id].type==='sentence'))))return false;
+      if(plan.studyPools && (!object(plan.formPrerequisites) || Object.entries(plan.studyPools).some(([loc,ids])=>{
+        const expected=Object.fromEntries(ids.flatMap(id=>(content.LIBRARY_DATA.sourceMappings[id]||[]).map(ref=>{
+          const form=content.libraryEntries[ref.lemmaId].forms.find(f=>f.formId===ref.formId);return [form.formId,form.prerequisiteGrammarIds];
+        })));
+        return JSON.stringify(plan.formPrerequisites[loc])!==JSON.stringify(expected);
+      })))return false;
       if (plan.generatedPracticeCards!==undefined && (!object(plan.generatedPracticeCards)||Object.values(plan.generatedPracticeCards).some(a=>!Array.isArray(a)))) return false;
       if (plan.challengeQuestions!==undefined && (!Array.isArray(plan.challengeQuestions)||plan.challengeQuestions.length!==progression.getChallengeSpec(plan.day).questionCount)) return false;
     }
@@ -103,24 +110,22 @@ function createSaveValidator({ content, progression }) {
       ].every((key) => object(p.library[key]))
     )
       return false;
-    if (p.retiredRuleAssessmentJSON !== undefined && typeof p.retiredRuleAssessmentJSON !== "string") return false;
     if (p.onboardingIntroductionPending !== undefined && typeof p.onboardingIntroductionPending !== "boolean") return false;
-    if (p.enableTypingChallenges !== undefined && typeof p.enableTypingChallenges !== "boolean") return false;
+    if (p.tutorialTypingDisabled !== undefined && typeof p.tutorialTypingDisabled !== "boolean") return false;
+    if (!object(p.typingPreferences) || typeof p.typingPreferences.en !== "boolean" || typeof p.typingPreferences.ps !== "boolean") return false;
+    if (p.enableTypingChallenges !== undefined || p.retiredRuleAssessmentJSON !== undefined) return false;
     if (!content.restoreGenerated(p)) return false;
     const questionValid = (q, day) => {
-      if (!object(q) || typeof q.id!=="string" || !["word","sentence","construct","dialogue","choice","address"].includes(q.kind)) return false;
+      if (!object(q) || typeof q.id!=="string" || !["word","sentence","construct","dialogue"].includes(q.kind)) return false;
       for (const key of ["speaker","recipient","comment","section","audioId","promptPs","promptEnglish","sceneEnglish"])
         if (q[key]!==undefined && q[key]!==null && typeof q[key]!=="string") return false;
       if (q.grammarDays!==undefined && (!Array.isArray(q.grammarDays)||q.grammarDays.some(n=>!Number.isInteger(n)||n<1||n>14))) return false;
       const w=content.wordById[q.id];
       if (q.phrasePromptId !== undefined && (q.phrasePromptId !== w?.phrasePromptId || !content.LIBRARY_DATA.phrases.some(p=>p.id===q.phrasePromptId))) return false;
-      if (!["choice","address"].includes(q.kind) && (!w || !LibraryEngine.cardAllowed(content.LIBRARY_DATA,q.id,day))) return false;
+      if (!w || !LibraryEngine.cardAllowed(content.LIBRARY_DATA,q.id,day)) return false;
       if (["word","sentence","construct"].includes(q.kind) && !["ps-en","en-ps"].includes(q.direction)) return false;
       if(q.recognition!==undefined && (typeof q.recognition!=="boolean" || q.recognition && (q.kind!=="word" || (q.direction!=="ps-en" && !q.answerFormat) || !Array.isArray(q.choiceOrder) || q.choiceOrder.filter(v=>QuestionEngine.evaluate(q,w,v)).length!==1)))return false;
       if (q.kind==="word" && (typeof q.unstudied!=="boolean" || (q.unstudied && q.direction!=="ps-en" && !q.answerFormat))) return false;
-      if (["choice","address"].includes(q.kind) && typeof q.correct!=="string") return false;
-      if (q.kind==="choice" && (typeof q.prompt!=="string" || !Array.isArray(q.options) || q.options.some(v=>typeof v!=="string") || !q.options.includes(q.correct))) return false;
-      if (q.kind==="address" && (!Array.isArray(q.addressOptions)||q.addressOptions.some(a=>!Array.isArray(a)||a.length!==2||a.some(v=>typeof v!=="string"))||!q.addressOptions.some(a=>a[1]===q.correct))) return false;
       if (q.choiceIds!==undefined && (!Array.isArray(q.choiceIds) || new Set(q.choiceIds).size!==q.choiceIds.length || q.choiceIds.some(id=>typeof id!=="string") || q.choiceIds.some(id=>!content.wordById[id]?.generated || !q.choiceOrder?.includes(content.wordById[id][q.direction === "en-ps" ? "ps" : "en"])))) return false;
       if (q.answerFormat!==undefined && (!["select","build","type"].includes(q.answerFormat) ||
           (q.answerFormat==="build") !== ["construct","dialogue"].includes(q.kind))) return false;
@@ -130,11 +135,10 @@ function createSaveValidator({ content, progression }) {
         try { if (!validOrder(q.tileSequence,QuestionEngine.buildTiles(w,q,day).length)) return false; } catch { return false; }
       } else if (q.answerFormat === "type") {if (!Array.isArray(q.choiceOrder) || q.choiceOrder.length) return false;}
       else if (!Array.isArray(q.choiceOrder)||!q.choiceOrder.length||q.choiceOrder.some(v=>typeof v!=="string")||new Set(q.choiceOrder).size!==q.choiceOrder.length) return false;
-      if (["choice","address"].includes(q.kind) && !q.choiceOrder.includes(q.correct)) return false;
       if (["sentence","construct","dialogue"].includes(q.kind) && w?.type==="sentence" && !q.generated) return false;
       for (const card of [q.generated,q.promptGenerated,...(q.choiceIds || []).map(id=>content.wordById[id])].filter(Boolean)) {
         if (!card.generated?.requiredGrammarIds?.every(g=>p.library.grammar[g]) ||
-            !Object.values(card.generated.slots).every(r=>p.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))) return false;
+            !Object.values(card.generated.slots).every(r=>p.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId))) return false;
       }
       return true;
     };
@@ -190,11 +194,11 @@ function createSaveValidator({ content, progression }) {
         !object(record.forms) ||
         !Array.isArray(record.encounteredFormIds) ||
         !Array.isArray(record.practisedFormIds) ||
-        !Array.isArray(record.introducedFormIds)
+        !Array.isArray(record.availableFormIds)
       )
         return false;
       if (
-        record.introducedFormIds.some(
+        record.availableFormIds.some(
           (id) => !record.encounteredFormIds.includes(id),
         )
       )
@@ -244,12 +248,15 @@ function createSaveValidator({ content, progression }) {
         )
       )
         return false;
+      if (plan.firstFormSelections !== undefined && (!object(plan.firstFormSelections) || Object.entries(plan.firstFormSelections).some(([place,forms])=>
+        !content.zoneKeys.includes(place) || !Array.isArray(forms) || forms.length!==assignments[place].length || new Set(forms).size!==forms.length ||
+        forms.some((id,i)=>!content.libraryEntries[assignments[place][i]]?.forms.some(f=>f.formId===id))))) return false;
       const ids = Object.values(assignments).flat();
-      if (new Set(ids).size !== ids.length || (plan.day === 14 && ids.length))
+      if (new Set(ids).size !== ids.length || ids.length + content.zoneKeys.reduce((sum,k)=>sum+plan.shortfalls[k],0) !== plan.requestedDailyTarget || (plan.day === 14 && ids.length))
         return false;
       for (const [district, assigned] of Object.entries(assignments)) {
         if (
-          assigned.length > plan.requestedDailyTarget / 4 ||
+          assigned.length > plan.requestedDailyTarget ||
           assigned.some((id) => {
             const e = content.libraryEntries[id];
             return (
@@ -304,12 +311,9 @@ function createSaveValidator({ content, progression }) {
               "word",
               "sentence",
               "construct",
-              "choice",
               "dialogue",
-              "address",
             ].includes(q.kind) ||
-            (!["choice", "dialogue", "address"].includes(q.kind) &&
-              !content.wordById[q.id]) ||
+            !content.wordById[q.id] ||
             !LibraryEngine.cardAllowed(content.LIBRARY_DATA, q.id, a.loop),
         )
       )
@@ -372,7 +376,7 @@ function createSaveValidator({ content, progression }) {
               (g) => p.library.grammar[g],
             ) ||
             !Object.values(item.generated.generated.slots).every((r) =>
-              p.library.acquired[r.lemmaId]?.introducedFormIds.includes(
+              p.library.acquired[r.lemmaId]?.availableFormIds.includes(
                 r.formId,
               ),
             )

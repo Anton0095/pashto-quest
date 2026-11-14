@@ -55,7 +55,7 @@ assert.deepEqual(
         Object.values(c.generated.slots).map((r) => r.lemmaId),
       ),
     ),
-  ].filter((id) => !assigned.has(id)),
+  ].filter((id) => !assigned.has(id)&&!t.state.progress.library.plans[1].locationAssignments.school.includes(id)),
   [],
 );
 assert(
@@ -81,8 +81,9 @@ for (const pace of t.E.presets)
     const seen = new Set();
     for (let day = 1; day <= 14; day++) {
       t.state.day = day;
+      study(t,day,"school");
       if (!skip)
-        for (const place of c.zoneKeys) {
+        for (const place of ["school",...c.zoneKeys.filter(p=>p!=="school")]) {
           const s = study(t, day, place);
           lessons.add(pace + ":" + day + ":" + place);
           for (const id of s.studySentences) {
@@ -93,7 +94,7 @@ for (const pace of t.E.presets)
           }
         }
       const before14 = Object.values(t.state.progress.library.acquired).reduce(
-        (n, r) => n + r.introducedFormIds.length,
+        (n, r) => n + r.availableFormIds.length,
         0,
       );
       const qs = beginAttempt(t, day);
@@ -127,7 +128,7 @@ for (const pace of t.E.presets)
       if (day === 14)
         assert.equal(
           Object.values(t.state.progress.library.acquired).reduce(
-            (n, r) => n + r.introducedFormIds.length,
+            (n, r) => n + r.availableFormIds.length,
             0,
           ),
           before14,
@@ -161,8 +162,8 @@ assert.throws(() => t.learning.surface(unintroduced.id, "study"));
 for (const pace of [8]) {
   reset(t, pace);
   const s = study(t, 1, "residential");
-  assert(s.studySentences.length < 2);
-  assert(s.generationDeficit.missing > 0);
+  assert(s.studySentences.length <= 3);
+  assert.equal(s.generationDeficit.missing,3-s.studySentences.length);
   assert.equal(
     t.state.progress.library.plans[1].locationAssignments.residential.length,
     pace / 4,

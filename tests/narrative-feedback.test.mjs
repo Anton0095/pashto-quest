@@ -56,7 +56,7 @@ for (const width of [375,1280]) {
       const target=cards.find(c=>c.loop===1&&c.generated.semanticArguments?.noun==='window'&&c.generated.semanticArguments?.adjective==='open');
       t.content.registerGenerated(target);
       for(const mode of ['standard','review'])for(const right of [false,true]) {
-        t.lessons.begin('1-residential');
+        (t.studySchool(1),t.lessons.begin('1-residential'));
         const s=t.state.session;s.mode=mode;s.phase='quiz';
         s.queue=[{id:target.id,kind:'construct',retries:0}];
         t.lessons.showQuestion();
@@ -85,7 +85,7 @@ for (const width of [375,1280]) {
         $('libraryDialog').close();
       }
       // Changing to a recognition question removes the prior answer picture.
-      t.challenge.startChallenge(14);
+      (t.studySchool(14),t.challenge.startChallenge(14));
       let s=t.state.session;
       s.index=s.questions.findIndex(q=>!['construct','dialogue'].includes(q.kind));s.answered=s.index;
       t.challenge.showChallengeQuestion();
@@ -97,7 +97,7 @@ for (const width of [375,1280]) {
     // Save/reload must restore correct and wrong choice colours without reaward.
     for(const right of [false,true]) {
       const expected=await p.evaluate(right=>{
-        const t=__test;t.reset(8);t.state.progress.tutorialDone=true;t.learning.libraryExpose('phrase-d1-home-welcome','lesson');t.challenge.startChallenge(1);
+        const t=__test;t.reset(8);t.state.progress.tutorialDone=true;t.learning.libraryExpose('phrase-d1-home-welcome','lesson');(t.studySchool(1),t.challenge.startChallenge(1));
         const s=t.state.session;s.index=s.questions.findIndex(q=>q.kind==='word'&&!q.unstudied);s.answered=s.index;t.challenge.showChallengeQuestion();
         const q=s.questions[s.index],value=right?t.content.wordById[q.id].en:q.choiceOrder.find(x=>!t.Q.evaluate(q,t.content.wordById[q.id],x));
         [...document.querySelectorAll('#choices button')].find(b=>b.dataset.answer===value).click();

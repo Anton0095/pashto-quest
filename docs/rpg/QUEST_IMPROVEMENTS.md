@@ -1,5 +1,8 @@
 # Village, onboarding, assessments and Bilal
 
+Current typing behaviour supersedes this historical report: Library Player Profile has independent English/Pashto typing settings (both default off). Disabling typing converts current and queued unanswered questions in that answer language to selection, preserving completed progress and scores. Existing shared preferences migrate to both settings.
+
+> Current ordering and tutorial policy: [School-first curriculum](../../CURRICULUM.md#daily-allocation) supersedes this checkpoint’s opening, optional-tutorial and equal-allocation rules. Historical validation below remains evidence for its recorded release.
 Current typing opt-out and educational Bilal completion behavior is specified in [the completion repair](TYPING_AND_BILAL_COMPLETION.md). The validation numbers below describe this earlier follow-up's recorded release.
 
 

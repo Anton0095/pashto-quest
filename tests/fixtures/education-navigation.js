@@ -34,60 +34,7 @@ function createEducationalNavigation({
     if (learning.placeAccessible(day, place)) onLesson(`${day}-${place}`);
   }
   function dayGuidance(day) {
-    if (day >= 8) {
-      const d = content.dayById[day];
-      return !state.progress.complete[`${day}-${d.opening}`]
-        ? `Normal route: meet ${content.teacherFor(day, d.opening, "standard").name} at ${ui.displayPlace(d.opening)} first, or skip directly to the final challenge.`
-        : learning.completeRound(day)
-          ? `All four visits complete. ${d.challenge}`
-          : "Visit the other three locations in any order, or take the final challenge now.";
-    }
-    if (day === 1)
-      return learning.completeRound(1)
-        ? "🏡 All four visits complete. Muhammad Jan is ready for your check-in."
-        : "🌿 Free roam: explore any location, or choose the Day 1 challenge now.";
-    if (day === 2) {
-      if (!state.progress.complete["2-school"])
-        return "🏫 Normal route: start at school with Ms Hameed for S–O–V, or skip directly to the challenge.";
-      if (
-        !state.progress.complete["2-business"] ||
-        !state.progress.complete["2-nature"]
-      )
-        return "🏪 🏞️ Visit Edris at the market and Saleha at the lake in either order.";
-      return "🏡 Return home to Muhammad Jan for practice and the final check-in.";
-    }
-    if (day === 3) {
-      if (!state.progress.complete["3-nature"])
-        return "🏞️ Normal route: meet Saleha at the lake to learn زه (I), or skip to Edris’s dinner challenge.";
-      return learning.completeRound(3)
-        ? "🏪 Edris is ready for the final dinner conversation."
-        : "🌿 Practise “I” at home, school and market. Then return to Edris.";
-    }
-    if (day === 4) {
-      if (!state.progress.complete["4-residential"])
-        return "🏡 Normal route: start at home with Muhammad Jan to learn informal ته (you) and combine clauses with او (and). Or skip to his challenge immediately.";
-      return learning.completeRound(4)
-        ? "🏡 Come home and have an informal end-of-day conversation with Muhammad Jan."
-        : "🌿 Practise with Edris, Saleha and Ms Hameed in any order; use both “I” and informal “you” in compound sentences.";
-    }
-    if (day === 5) {
-      if (!state.progress.complete["5-school"])
-        return "🏫 Normal route: meet Ms Hameed at school first to learn respectful/plural تاسې. The lake gathering challenge is available immediately as a skip.";
-      return learning.completeRound(5)
-        ? "🏞️ Everyone has gathered at the lake. Join the 15-part community conversation."
-        : "🌿 Explore the village; familiar people are moving between locations. Practise addressing friends, elders and groups.";
-    }
-    if (day === 6)
-      return !state.progress.complete["6-nature"]
-        ? "Normal route: meet Saleha and Mina at the lake first, or skip straight to the Hills."
-        : learning.completeRound(6)
-          ? "Your four visits are complete. Join Saleha and Mina in the Hills using the challenge button."
-          : "Explore Home, Market and School in any order, then take the Hills challenge.";
-    return !state.progress.complete["7-business"]
-      ? "Normal route: meet Edris at the market first, or skip to Ms Hameed’s weekly exam."
-      : learning.completeRound(7)
-        ? "All four visits complete. Take Ms Hameed’s separate weekly examination at School using the challenge button."
-        : "Visit Home, Lake and School in any order; then take the weekly examination.";
+    return !state.progress.complete[day+'-school'] ? 'Complete School first. You may explore and talk to everyone.' : learning.completeRound(day) ? 'All four lessons complete. Take the daily challenge.' : 'Study Home, Nature and Market in any order, or choose Skip to daily challenge.';
   }
   function startWorld() {
     audio.stopAudio();
@@ -107,7 +54,7 @@ function createEducationalNavigation({
   function renderSkipDayAction(day) {
     const passed = learning.passedChallenge(day),
       done = learning.completeRound(day);
-    ui.$("skipDayArea").classList.toggle("hidden", passed);
+    ui.$("skipDayArea").classList.toggle("hidden", passed || !state.progress.complete[day+"-school"]);
     if (passed) return;
     const who =
       day >= 8

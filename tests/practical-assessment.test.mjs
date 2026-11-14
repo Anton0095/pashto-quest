@@ -6,6 +6,7 @@ for(const pace of [8,12,16,20,24])for(const skip of [false,true]) {
  const t=runtime();reset(t,pace);
  for(let day=1;day<=14;day++) {
   t.state.day=day;
+  if(skip)study(t,day,"school");
   if(!skip)for(const place of t.content.zoneKeys){study(t,day,place);visits++;}
   t.state.session=null;
   const completion=plain(t.state.progress.complete),xp=t.state.progress.xp;
@@ -28,7 +29,7 @@ for(const pace of [8,12,16,20,24])for(const skip of [false,true]) {
    if(q.kind==="word")assert(!/\b(?:first|second|third)[ -]person\b|\b(?:masculine|feminine|singular|plural)\b/i.test(w.en),"no category labels as recall answers");
    if(q.generated)for(const c of [q.generated,q.promptGenerated].filter(Boolean)) {
     assert(c.generated.requiredGrammarIds.every(g=>t.state.progress.library.grammar[g]));
-    assert(Object.values(c.generated.slots).every(r=>t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId)));
+    assert(Object.values(c.generated.slots).every(r=>t.state.progress.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId)));
    }
    if(q.kind==='word'&&q.unstudied&&!q.recognition){assert.equal(q.direction,'ps-en');assert(!q.choiceOrder.some(v=>t.Q.evaluate(q,w,v)));}
   }
@@ -44,17 +45,6 @@ for(const pace of [8,12,16,20,24])for(const skip of [false,true]) {
 }
 console.log(`PASS practical assessments: ${attempts} attempts, ${visits} model visits, all 14 days × 5 paces × normal/skip, exact thresholds, no rule quizzes, eligibility, masking and frozen restoration`);
 
-// Exact old current-schema rule snapshots remain readable for explicit retirement.
-const legacy=runtime();reset(legacy,8);for(let day=1;day<14;day++)legacy.progression.completeChallengeOnce(legacy.state.progress,day,[7,14].includes(day)?25:15);
-legacy.state.day=14;beginAttempt(legacy,14);
-const fixtures=JSON.parse(readFileSync('tests/retired-rule-fixtures.json','utf8')).concepts;
-for(const c of fixtures){
- const options=[c.correct,...c.misconceptions];
- legacy.state.session.questions[0]={id:'grammar:14:0',kind:'choice',direction:'en-ps',grammarConcept:c.id,prompt:c.case,correct:c.correct,options,choiceOrder:options,grammarDays:[]};
- legacy.storage.save();const restored=legacy.storage.load();assert.equal(legacy.storage.problem,null,c.id);assert.equal(restored.activeChallenge.questions[0].prompt,c.case);
- const before=plain(legacy.state.progress);assert.equal(legacy.learning.submitChallenge(c.correct),null);assert.deepEqual(plain(legacy.state.progress),before);
-}
-console.log('PASS 33 exact retired rule snapshots remain readable and ungradable, without resets or rerolls');
 
 // Shortage recall exhausts distinct scheduled words before aliases/revision.
 for(const introduced of [false,true]) {
@@ -62,14 +52,14 @@ for(const introduced of [false,true]) {
  if(introduced)for(const id of t.learning.libraryLessonPool(1,'residential'))t.E.expose(t.state.progress,t.content.LIBRARY_DATA,id,{day:1,location:'residential',source:'lesson'});
  // Simulate an evidence shortage without revoking the activation policy.
  t.content.LIBRARY_DATA.sentenceFrames={...t.content.LIBRARY_DATA.sentenceFrames,frames:[],compositeFrames:[]};
- t.progression.activateChallenge(t.state.progress,1);
+ study(t,1,"school");t.state.session=null;t.progression.activateChallenge(t.state.progress,1);
  const before=plain(t.state.progress);const qs=beginAttempt(t,1),plan=t.state.progress.library.plans[1];
  const targets=qs.filter(q=>(t.content.LIBRARY_DATA.sourceMappings[q.id] || []).length);
  assert.equal(targets.length,14);assert(targets.every(q=>q.kind==='word'));
  const counts=t.content.zoneKeys.map(place=>targets.filter(q=>plan.locationAssignments[place].some(id=>(t.content.LIBRARY_DATA.sourceMappings[q.id] || []).some(ref=>ref.lemmaId===id))).length);
- assert.equal(counts.reduce((n,x)=>n+x,0),14);assert(Math.max(...counts)-Math.min(...counts)<=1);
+ assert.equal(counts.reduce((n,x)=>n+x,0),14);assert(counts.every((n,i)=>n>0&&n<=plan.locationAssignments[t.content.zoneKeys[i]].length));
  assert.equal(new Set(targets.map(q=>t.E.identity(t.content.LIBRARY_DATA,q.id))).size,14,'no repeated target or base/form alias while scheduled words remain');
- assert.deepEqual(plain(t.state.progress.library.acquired),before.library.acquired);assert.deepEqual(plain(t.state.progress.complete),{});assert.deepEqual(plain(t.state.progress.library.grammar),before.library.grammar);assert.equal(t.state.progress.xp,before.xp);
+ assert.deepEqual(plain(t.state.progress.library.acquired),before.library.acquired);assert.deepEqual(plain(t.state.progress.complete),before.complete);assert.deepEqual(plain(t.state.progress.library.grammar),before.library.grammar);assert.equal(t.state.progress.xp,before.xp);
  // Previously saved attempts, including repeated targets, are never rewritten.
  t.state.session.questions[5]=plain(t.state.session.questions[1]);
  const frozen=plain(t.state.session.questions);t.storage.save();const restored=t.storage.load();assert.equal(t.storage.problem,null);

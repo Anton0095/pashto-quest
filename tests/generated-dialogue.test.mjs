@@ -47,7 +47,7 @@ for (const pair of pairs) {
   for (const card of [q, a])
     for (const r of Object.values(card.generated.slots))
       assert(
-        t.state.progress.library.acquired[r.lemmaId].introducedFormIds.includes(
+        t.state.progress.library.acquired[r.lemmaId].availableFormIds.includes(
           r.formId,
         ),
       );

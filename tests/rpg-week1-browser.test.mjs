@@ -8,7 +8,8 @@ async function play(route){
   await p.evaluate(()=>localStorage.setItem('pashto-town-days-v1','untouched-production'));await d.tutorial();
   for(let day=1;day<=7;day++){
    const c=data.days[day];assert((await p.locator('#rpgCanvas').getAttribute('data-map')));console.log('START',route,'day',day);
-   if(day>1){
+   if(!await p.locator('[data-destination=school]').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination=school]').click();await d.lesson({reload:day===2});
+   if(day>1&&![2,5].includes(day)){
     assert(!await p.locator('#rpgDialogue').isVisible(),'New days start quietly');
     const host=data.events[c.openingEvent].characterId,npc=data.npcs.find(n=>n.characterId===host&&n.schedule.some(s=>s.day===day&&s.map==='village'));await d.actor(npc.id,day);await p.locator('#rpgInteract').click();
     if(day===2){await d.durable();const before=await p.locator('#rpgDialogue').innerText();await p.reload();assert(!await p.locator('#rpgDialogue').isVisible());await p.locator('#rpgInteract').click();assert.equal(await p.locator('#rpgDialogue').innerText(),before,'Opening dialogue resumes without duplicate dispatch');}
@@ -24,10 +25,10 @@ async function play(route){
    if(route==='normal'){
     for(const id of c.lessons){const loc=id.split('-')[1];
      if((await d.progress()).complete[`${day}-${loc}`])continue;
-     const {npc,slot}=await d.lessonActor(id,day);await d.actor(npc.id,day,slot.map);const event=slot.event??npc.event;await d.talk(data.events[event].actions.find(a=>a.type==='lesson'&&a.lessonId===`${day}-${loc}`).label);await d.lesson();console.log('PASS public lesson',day,loc);
+     if(!await p.locator('[data-destination='+loc+']').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination='+loc+']').click();await d.lesson();console.log('PASS public lesson',day,loc);
     }
     const s=await d.progress();for(const id of c.lessons)assert(s.complete[id]);
-   }else{const s=await d.progress();assert(c.lessons.every(id=>!s.complete[id]),'Skip creates no early visit completion');}
+   }else{const s=await d.progress();assert(s.complete[day+'-school']&&c.lessons.filter(id=>!id.endsWith('-school')).every(id=>!s.complete[id]),'Shortcut completes only School before the attempt');}
    if(day===6&&route==='normal')assert((await p.locator('[data-destination=nature]').textContent()).includes('Hills'));
    const hostMap=c.challenge.map??'village';await d.actor(c.challenge.npc,day,hostMap);
    if(day===2){
@@ -38,15 +39,15 @@ async function play(route){
    if(day>1&&route==='normal'){
     const label=data.events[`day${day}-${{2:'residential',3:'business',4:'residential',5:'nature',6:'hills',7:'school'}[day]}`]?.actions.find(a=>a.type==='event'&&a.event===c.routes.normal.finale)?.label;
     assert(label);await d.talk(label);
-    if([5,6,7].includes(day)){const speakers=[];while(await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).count()){speakers.push(await p.locator('#rpgDialogue h2').innerText());assert.equal(await p.locator('#rpgDialogue [data-character-id]').getAttribute('data-character-id'),portraitIds[speakers.at(-1).split(' → ')[0]]);await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();}speakers.push(await p.locator('#rpgDialogue h2').innerText());assert.equal(await p.locator('#rpgDialogue [data-character-id]').getAttribute('data-character-id'),portraitIds[speakers.at(-1).split(' → ')[0]]);assert(new Set(speakers).size>=2,'Multi-character scene');}
+    if([5,6,7].includes(day)){const speakers=[];while(await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).count()){speakers.push(await p.locator('#rpgDialogue h2').innerText());assert.equal(await p.locator('#rpgDialogue [data-character-id]').getAttribute('data-character-id'),portraitIds[speakers.at(-1).split(' → ')[0].replace(/^✓ /,'').split(' — ')[0]]);await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();}speakers.push(await p.locator('#rpgDialogue h2').innerText());assert.equal(await p.locator('#rpgDialogue [data-character-id]').getAttribute('data-character-id'),portraitIds[speakers.at(-1).split(' → ')[0].replace(/^✓ /,'').split(' — ')[0]]);assert(new Set(speakers).size>=2,'Multi-character scene');}
     if([5,7].includes(day)){mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:`work/overhaul/scene-day${day}.png`,fullPage:true});}
     await d.dialogue(`Start Day ${day} ${day===7?'examination':'challenge'}`);
    }else{
-    await d.talk(`Day ${day} challenge · ${day===7?25:15} questions`);if(day>1)await d.dialogue('Start early challenge');
+    await d.talk(route==='skip'?'Skip to daily challenge':`Day ${day} challenge · ${day===7?25:15} questions`);if(day>1)await d.dialogue('Start early challenge');
    }
    await p.locator('#quizPanel').waitFor();
    if(day===1&&route==='skip'){await p.locator('#quizSpeak').click();await p.waitForFunction(()=>document.getElementById('audioStatus').textContent.includes('Browser speech could not start'));}
-   if(route==='skip'&&[3,7].includes(day)){await d.assessment(day,{fail:true,reload:true});assert(!(await d.progress()).challenges[day].passed);for(const id of c.lessons)assert(!(await d.progress()).complete[id]);await p.locator('#resultReplay').click();}
+   if(route==='skip'&&[3,7].includes(day)){await d.assessment(day,{fail:true,reload:true});assert(!(await d.progress()).challenges[day].passed);for(const id of c.lessons.filter(id=>!id.endsWith('-school')))assert(!(await d.progress()).complete[id]);await p.locator('#resultReplay').click();}
    await d.assessment(day,{reload:[2,6,7].includes(day)});let s=await d.progress();assert(s.challenges[day].passed);for(const id of c.lessons)assert(s.complete[id]);
    if(day>1)await d.dialogue(day===7?'Finish Week 1':`Finish Day ${day}`);
    await d.durable();let xp=(await d.progress()).xp;await p.reload();await p.locator('#resultScreen').waitFor();assert.equal((await d.progress()).xp,xp);assert(!await p.locator('#rpgDialogue').isVisible(),'Completed ending never reopens');
@@ -54,7 +55,7 @@ async function play(route){
     await p.locator('#rpgCompletionExtra').getByRole('button',{name:'Go home',exact:true}).click();
     assert.equal((await d.pos()).map,'house');
     assert((await p.locator('.rpg-day').innerText()).includes('DAY '+day+' /'),'Challenge pass keeps the active day');
-    if(!await p.locator('#quickSleep').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();
+    if(!await p.locator('#quickSleep').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();await p.waitForFunction(day=>document.querySelector('.rpg-day')?.textContent.includes('DAY '+(day+1)+' /'),day);
     await p.locator('#sleepTransition').waitFor({state:'detached'});assert(!await p.locator('#rpgDialogue').isVisible());
     await d.durable();assert.equal((await d.progress()).xp,xp,'Sleep awards no duplicate XP');const position=await d.pos();assert.deepEqual(position,{map:'house',x:17,y:10});
    }

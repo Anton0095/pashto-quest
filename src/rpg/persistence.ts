@@ -57,6 +57,8 @@ export function createPersistenceAPI(RPG_WORLD_DATA:WorldData,QuestionEngine:Que
     if(!Array.isArray(raw.built)||new Set(raw.built).size!==raw.built.length)return null;
     if(raw.tileOrder!==undefined){if(!Array.isArray(raw.tileOrder)||!raw.activeItem)return null;const tiles=QuestionEngine.buildTiles(content.wordById[raw.activeItem?.id],raw.activeItem,raw.loop);if(raw.tileOrder.length!==tiles.length || new Set(raw.tileOrder).size!==tiles.length || raw.tileOrder.some(i=>!int(i,tiles.length-1)) || raw.built.some(i=>!raw.tileOrder?.includes(i)))return null;}
     if(raw.choices && (!Array.isArray(raw.choices)||raw.choices.some(c=>typeof c!=='string'||c.length>1000)))return null;
+    if(raw.schoolConceptPending!==undefined&&typeof raw.schoolConceptPending!=='boolean')return null;
+    if(raw.formAcknowledgements!==undefined&&(!Array.isArray(raw.formAcknowledgements)||new Set(raw.formAcknowledgements).size!==raw.formAcknowledgements.length||raw.formAcknowledgements.some(id=>!Object.values(progress.library.acquired).some(r=>(r as {formUnlocks?:Record<string,{studiedDay?:number}>}).formUnlocks?.[id]?.studiedDay!==undefined))))return null;
     const s=JSON.parse(JSON.stringify(raw)) as LessonSession;
     for(const field of ['firstAsked','passed'])s[field as 'firstAsked'|'passed']=new Set(s[field] as unknown as string[]);return s;
   }

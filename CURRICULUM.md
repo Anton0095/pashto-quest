@@ -1,15 +1,22 @@
 # Pashto Quest — Current curriculum and content status
 
-Current world: [permanent Hills and the Day 6 invitation](docs/rpg/HILLS_EXPANSION.md). Follow the northern village path after onboarding on any playable day. Day 6 begins with Deena alone at Lake; accept her invitation and meet Medina in Hills. Nature's curriculum, four-district allocation and early challenge remain unchanged.
+Current development release: [dialogue and morphology overhaul](docs/rpg/DIALOGUE_MORPHOLOGY_OVERHAUL.md). Educational **save schema 9 intentionally rejects earlier saves**; stored data stays untouched until explicit reset. World position schema 1 remains independent. This release adds bilingual character identities, repeatable School-unlocked Bilal exchanges with per-day success ticks, shared teacher guidance, movement dismissal of ordinary dialogue and results without a second completion conversation. Mandatory tutorial/story acknowledgements remain protected.
+
+Individual forms are formally taught only after their flashcard is acknowledged. The first eligible form introduces its lemma once, including finite-first verbs and supported plural-first nouns. All recorded forms then become Library reference; reading them grants no teaching, generation licence or mastery. The existing per-form records own study day/lesson, availability, practice and SRS. School concepts precede dependent flashcards; plans and RPG snapshots freeze selections, sequence, acknowledgements and generated activity proofs. Ordinary practice uses taught forms, while the explicit challenge shortcut activates material without inventing flashcard study. Additional inflections are limited to four per lesson, with none compulsory on Day 14.
+
+Noun plurals begin on **Day 5**, with Day 9 quantity/number consolidation. The [254-noun audit](docs/grammar/NOUN_MORPHOLOGY_RESEARCH.md) records 53 added forms (28 productive, 25 reference-only); 209 nouns still have unresolved plural records. Dictionary attestation is provisional language evidence, never native Laghman certification or owner approval of inflections.
 
 
-Current behavior: [typed opt-out and Bilal completion repair](docs/rpg/TYPING_AND_BILAL_COMPLETION.md). A correct typed tutorial answer enables typing; “I cannot type” disables it there and skips ordinary typed questions for zero credit without changing the preference. Bilal's Day 1–7 exchanges unlock after Lake completion or a successful daily challenge, including sparse sentence pools.
+Current world: [permanent Hills and the Day 6 invitation](docs/rpg/HILLS_EXPANSION.md). Follow the northern village path after onboarding on any playable day. Day 6 begins with Deena alone at Lake; accept her invitation and meet Medina in Hills. Hills remains a physical Nature scene; the School-first rules below govern lesson and challenge access.
+
+
+Current behavior: [typed opt-out and Bilal completion repair](docs/rpg/TYPING_AND_BILAL_COMPLETION.md). Pashto and English typing are independently optional and default off. “Turn off Pashto/English typing” immediately converts unanswered typing questions in that answer language to selection, without changing scores or progress. Typing preferences are stored directly in the current schema; obsolete shared-setting migration has been removed. Bilal's Day 1–7 exchanges unlock after School or Lake completion, or a successful daily challenge, including sparse sentence pools.
 
 
 Also implemented: [Sleep/Dream transitions and authored Bilal Lake conversations](docs/rpg/SLEEP_AND_CONVERSATIONS.md) replace the earlier response sampler. The existing third-person “see” material is introduced in Day 2 Lake by explicit owner approval; first person remains Day 3. Narrative speech is an unverified editorial draft, and optional conversations grant no learning records or XP.
 
 
-Current follow-up: [Library, Nayab, shared onboarding, optional typing planner and Bilal dialogue](docs/rpg/QUEST_IMPROVEMENTS.md) supersedes earlier mandatory-tutorial/typed-recall and English Bilal descriptions. The four teaching locations, learning authorities, save version and chapter boundary remain unchanged.
+The [Library, Nayab, optional typing planner and Bilal dialogue](docs/rpg/QUEST_IMPROVEMENTS.md) remain available. The School-first progression below supersedes that historical follow-up’s optional-tutorial and early-entry rules. The four teaching locations, learning authorities and chapter boundary remain; educational saves now use schema 9.
 
 > **Integrated user approval (31 October 2026):** [approval record](content/USER_LANGUAGE_APPROVALS.json) records the original 473 base lemmas and 18 conventional phrases. نن (“today”) uses the subsequently supplied `nun`. This approves exact base spelling, listed senses and supplied transliteration; inflections, grammatical analyses, generated combinations, recordings and 59 excluded candidates remain outside its scope. No independent native certification is claimed.
 
@@ -23,7 +30,7 @@ The sequence below covers Days 1–14 in the educational engine. The playable RP
 
 | Day | Main focus | Normal narrative opening / key event |
 |---|---|---|
-| 1 | Greetings and descriptive vocabulary; tutorial of four interactions; no newly taught lexical actions | Muhammad Jan in Library, then Home/Lake/Market/School; home handover |
+| 1 | Greetings and descriptive vocabulary; tutorial of four interactions; no newly taught lexical actions | Muhammad Jan in Library, then compulsory School; Home/Nature/Market in any order; home handover |
 | 2 | He/she, first lexical actions, present verbs and subject–object–verb | Ms Hameed's School workshop; later village visits |
 | 3 | I, first-person present | Deena at Lake; Edris's market/dinner conversation |
 | 4 | Informal singular you (`ته`), contrast with I, compound clauses | Muhammad Jan at Home |
@@ -38,18 +45,18 @@ The sequence below covers Days 1–14 in the educational engine. The playable RP
 | 13 | Time/manner/frequency adverbs | Deena and Medina |
 | 14 | Cumulative investigation/scavenger hunt, no compulsory new words | Integrated four-district narrative and 25-question final |
 
-The four district IDs are `residential`, `nature`, `business` and `school`; player-facing map labels are Home, Lake, Market and School. Library offers reference and voluntary zero-XP practice, Hills is a permanent physical area within Nature. Teacher identities, character relationships and speaker/addressee labels are authored. Day 1's optional guided Library tutorial teaches `سلام` (meaning choice), `څنګه یې؟` (translation selection), the Pashto language-selection question `ته کومه ژبه زده کوې؟` (select `پښتو`), then `زما نوم څه دی؟` (type Muhammad Jan in English). The two authored questions are recorded in [TUTORIAL_PROMPTS.json](content/TUTORIAL_PROMPTS.json). Completing or skipping the tutorial reaches one shared four-area introduction and identical Day 1 access. Player name, gender and optional typing are Library → Player Profile settings; name and gender are not tutorial questions.
+The four district IDs are `residential`, `nature`, `business` and `school`; player-facing map labels are Home, Lake, Market and School. Library offers reference and voluntary zero-XP practice, Hills is a permanent physical area within Nature. Teacher identities, character relationships and speaker/addressee labels are authored. Day 1's guided Library tutorial teaches `سلام` (meaning choice), `څنګه یې؟` (translation selection), the Pashto language-selection question `ته کومه ژبه زده کوې؟` (select `پښتو`), then `زما نوم څه دی؟` (type Muhammad Jan in English). The two authored questions are recorded in [TUTORIAL_PROMPTS.json](content/TUTORIAL_PROMPTS.json). Completing the tutorial reaches the shared village introduction and opens School. The tutorial is required only on Day 1. Player name, gender and optional typing are Library → Player Profile settings; name and gender are not tutorial questions.
 
-Day 1 Home at default pace teaches house, door, room, big, window and open, plus the required evidenced feminine form. Agreement follows word study, then the engine composes house/big, door/open and window/open descriptions for study and tile construction. Other districts are unnecessary for this Home objective. Standard visits deduplicate complete sentence texts across locations and days; explicit revision/replay may repeat them. Later days request four generated study cards per visit when evidence and study permit, with current construction/person goals preferred and cumulative forms retained.
+Day 1 School teaches Book/New and agreement first. Home then introduces eight nouns/adjectives at default pace, including house, door, room, big, window and open, plus the required evidenced feminine form. It reviews agreement and generates descriptions using its new words and School vocabulary. Other optional districts are unnecessary for this Home objective. Standard visits deduplicate complete sentence texts across locations and days; explicit revision/replay may repeat them. Later days request four generated study cards per visit when evidence and study permit, with current construction/person goals preferred and cumulative forms retained.
 
 ## Vocabulary allocation and identity
 
-- User-selectable daily district-lemma pace: **8, 12, 16, 20 or 24**; fresh-profile default 24. Schema 8 freezes new plans. Valid schema-8 progress is preserved; older schemas are not converted. Nonzero paces divide evenly among four districts. Day 1 maximum is **six distinct nouns/adjectives per district**; action verbs first become teachable on Day 2.
+- User-selectable daily district-lemma pace: **8, 12, 16, 20 or 24**; fresh-profile default 24. Schema 9 freezes new plans. Valid schema-9 progress is preserved; older schemas are not converted. School is compulsory before the other three lessons or any challenge. The three lessons can be completed in all six orders. Day 1 assigns nouns/adjectives only; Day 2 introduces actions in every district.
 - Every lexeme has one `lemmaId` and potentially multiple `formId`s. Inflections, universal vocabulary, expressions and sentence units are not counted as newly introduced district lemmas. Incidental story exposure is tracked separately from assigned and mastered entries.
 - Day 14 assigns **zero new compulsory district lemmas**. Insufficient evidenced, eligible vocabulary must be reported, never silently filled using repeated entries, English-only candidates or fake translations.
-- **Current playable inventory:** 474 lexical identities/614 forms: 401 district lemmas (101 for Home, 100 each for Lake, Market and School) and 73 universal lemmas. “Playable” does **not** mean native-certified.
+- **Current playable inventory:** 474 lexical identities/614 forms: 401 district lemmas (semantic primary districts remain provenance; curated teaching districts follow the specialisations) and 73 universal lemmas. “Playable” does **not** mean native-certified.
 - **Expansion disposition:** all 301 selected candidates were promoted as mechanically complete provisional drafts and their canonical base entries are now user-approved; 59 candidates remain rejected, including 7 existing-sense aliases. The canonical promoted base entries are user-approved; candidate/archive provenance is retained without relabelling excluded candidates. None is independently native-certified.
-- At 24/day, the planner schedules exactly **312** distinct district introductions: six per district on Days 1–13. Each district retains 22 additional entries, and Day 14 remains cumulative review with no compulsory vocabulary.
+- At 24/day, the planner schedules exactly **312** distinct district introductions on Days 1–13. Day 14 remains cumulative review with no compulsory vocabulary. School receives two starter lemmas on Days 1/2 and no artificial lexical quota thereafter. Function words, individually taught forms and fixed expressions stay outside the district-lemma total.
 - `content/UNIVERSAL_TEACHING_TARGETS.json` contains **40 proposed semantic teaching targets** (pronouns, numbers, question words, position, connectors etc.); they are not automatically 40 translated lexical records.
 
 `content/DISTRICT_INVENTORY_REPORT.json` and `node tools/district-inventory.mjs --check` quantify active capacity and projected expansions. Refresh the report after modifying planner/data identities. Mechanical completeness, evidence and grammar eligibility gate provisional lexical activation under [LANGUAGE_REVIEW.md](LANGUAGE_REVIEW.md#status-terms). Provisional activation is not native approval and does not activate incomplete candidates or pending phrases. Daily plans freeze vocabulary assignments and seeds. Assessments freeze presentation only for the current attempt: a paused attempt survives intervening study unchanged, while an explicitly new attempt activates the frozen day material before using licensed forms and grammar. A challenge response does not unlock a workshop. Challenge activation unlocks the day’s missed assigned material and prerequisite grammar, with challenge-start provenance and no invented study grades. A pass still controls location completion, bonuses and access to the next day.
@@ -97,13 +104,56 @@ Optional English name/gender controls are implemented in Library Player Profile.
 
 Days 5 and 7 teach the peace exchange: the character says `السلام علیکم.` and the player replies `وعلیکم السلام.`. One response identity is introduced on Day 5 and reused on Day 7. New response assessments use Pashto-to-English translation selection, including unseen phrases. Neither increases challenge length or district quotas. The removed Day-1 contextual proposals remain [historical editorial evidence](docs/grammar/LANGUAGE_PROPOSALS.md). That document also retains two superseded profile-question proposals as historical evidence; they are separate from the approved replacement onboarding questions.
 
-All fourteen days assess practical Pashto rather than grammatical terminology. The Library Grammar Journal exposes all 33 concept explanations/worked analyses and all curriculum-day rules as read-only reference, without completing lessons or unlocking forms/grammar. Actual lesson study/workshops or explicit challenge activation license generated Pashto examples. When sentence supply is insufficient, vocabulary or approved phrases preserve assessment length; a small pool may repeat. Earlier English assessment-fallback instructions are superseded.
+All fourteen days assess practical Pashto rather than grammatical terminology. The Library Grammar Journal exposes all concept explanations/worked analyses and all curriculum-day rules as read-only reference, without completing lessons or unlocking forms/grammar. Actual lesson study/workshops or explicit challenge activation license generated Pashto examples. When sentence supply is insufficient, vocabulary or approved phrases preserve assessment length; a small pool may repeat. Earlier English assessment-fallback instructions are superseded.
 
 
 New challenges retain the prescribed opening expression and mix independently planned selection, construction and optional typing. Typing defaults off; its intended allocation becomes additional selection questions. Recognition does not claim prior study. Existing frozen attempts retain their exact questions until completed; the new rules apply to new attempts. Day transitions through bed/Quick travel wake beside the bed, while resuming retains the saved position. Muhammad Jan provides optional progress-sensitive guidance alongside his normal lessons. See [implementation and targeted validation](docs/rpg/DAILY_FLOW.md).
 
 Daily opening content belongs to the designated NPC interaction, with an explicit study/explore choice. It does not run on waking or area entry. Quick Travel can begin an unlocked lesson directly; it uses the same course pool, eligibility and rewards as the NPC choice. Completed lessons are labelled as reviews. Existing follow-up dialogue remains available when the player next speaks with its teacher.
 
-Current lesson generation requires at least one noun or verb first introduced in that specific lesson. Earlier same-day study does not qualify. A lesson without new nouns/verbs remains cumulative; an incompatible target pool yields an explicit vocabulary/form-only fallback. Dream/replay uses the frozen historical lesson pool. Assessments and voluntary review remain cumulative.
+Lesson generation prefers nouns, adjectives and verbs first studied in that lesson; earlier same-day study is cumulative revision. When a new word lacks enough licensed combinations, the existing generator fills practice with compatible earlier vocabulary and the day’s grammar. The deficit record distinguishes current-lesson sentences from cumulative sentences. Only a shortage of all distinct eligible compositions produces vocabulary/form-only practice. A lesson without new lexical targets remains cumulative. Dream/replay uses the frozen historical lesson pool. Assessments and voluntary review remain cumulative.
 
-Day 2 requires School before normal visits; School immediately unlocks Home. Market and Lake are optional before/after Home. Home introduces **لرل / laral / to have**, with explicit provisional present forms; **to clean** remains scheduled from Day 3. The guided, unscored SOV tile demonstration appears at the Day 2 workshop and in the Library when compatible studied forms exist. See [implementation, language references and validation](docs/rpg/LESSON_PROGRESSION_FIXES.md).
+School introduces grammar every day, including the existing pronoun and later grammar objectives. Home, Nature and Market practise that grammar plus earlier patterns, using their own new words and previously studied material. From Day 3, Home introduces adjectives, Nature verbs and Market nouns. School uses previous-day vocabulary and its explicitly taught supporting function words/forms. Each optional-order lesson works immediately after School; later visits may additionally reuse words studied earlier that day. The generator and approved fixed expressions remain authoritative. Insufficient compatible compositions produce an explicit vocabulary/form fallback, never invented morphology or a fixed daily sentence bank.
+
+Day 1 School explicitly introduces Book and New for its first description; it needs no other lesson. Each other district begins with a relevant noun/adjective pair. Day 2 School explicitly introduces Read and Write before action practice; Home begins with Have/Open, Nature with See/Drink and Market with Eat/Sell. Repeated forms and verbs remain one lexical identity. Low paces retain the setting actions and reuse Day 1 vocabulary. The guided unscored SOV demonstration remains in School and the Library.
+
+### Daily allocation
+
+The table gives distinct assigned lemmas as **School / Home / Nature / Market**. School's later supporting function words and inflections do not consume lexical quotas.
+
+| Setting | Days 1–2 | Days 3–13 |
+|---|---|---|
+| 8 | 2 / 2 / 2 / 2 | 0 / 1 / 2 / 5 |
+| 12 | 2 / 4 / 3 / 3 | 0 / 2 / 3 / 7 |
+| 16 | 2 / 5 / 4 / 5 | 0 / 2 / 5 / 9 |
+| 20 | 2 / 6 / 6 / 6 | 0 / 3 / 6 / 11 |
+| 24 | 2 / 8 / 7 / 7 | 0 / 4 / 7 / 13 |
+
+Day 14 assigns zero at every setting. The approved inventory contains 53 district adjectives, 98 verbs and 250 nouns. The maximum schedule uses 8 starter adjectives plus 44 Home adjectives, 8 Day-2 verbs plus 77 Nature verbs, and 175 nouns: 312 distinct lemmas. The inventory report verifies fresh-profile capacity at every supported setting with no shortfalls. Unassigned active remainder entries are eligible from Day 3 in their specialised district, with all per-form grammar gates retained. If earlier study or preserved old plans exhaust a preferred word class, future plans redistribute its outstanding quota to eligible unused entries in the other vocabulary districts. A district with no remaining new entries uses cumulative practice. The selected distinct-lemma total stays unchanged, School receives no extra lexical quota, and the Library’s bank/pace panel explains the adjusted Home/Nature/Market allocation. No future-day form or unapproved candidate fills a gap. Forms/conjugations are never additional lemmas. A pace change applies to the next unstarted plan; existing assignments remain frozen.
+
+After School, **Skip to daily challenge** offers the early attempt explicitly. Normal challenge progression follows all three remaining lessons. Activation retains existing unseen-material availability/provenance for generation; it does not claim physical study or complete skipped lessons. Failure grants no completion/pass bonus. The first pass completes all four lessons, retains assigned vocabulary for Library review and unlocks Bilal's conversation; replay cannot award completion twice. The results screen acknowledges the day ending without an extra conversation; returning home and sleeping advances the RPG day. Hills remains a physical Nature scene; Day 6's invitation, sister introduction, teacher movements and finale remain.
+
+Schema 9 is the sole supported educational format. Earlier saves require an explicit reset; no conversion, historical scheduling repair or pronunciation backfill remains. Current plans, study pools and assessment proofs remain frozen and reload exactly. Unsupported/corrupt saves remain untouched until explicit reset.
+
+Challenge availability and Bank membership share the same acquisition store, without a second ledger. Activation-only words remain eligible for the generator and retain honest attempts/SRS; they enter the visible Vocabulary Bank after actual word/form study or a passed challenge. Failure alone does not bank skipped words. Incidental previews alone do not confer Bank membership.
+
+## Revised grammar schedule
+
+| Day | Focus |
+| --- | --- |
+| 1 | Nouns, descriptions, adjective agreement, present equatives |
+| 2 | SOV and third-person singular present verbs |
+| 3 | First-person singular |
+| 4 | Informal second-person singular; clause coordination |
+| 5 | Polite/plural second person; noun plurals |
+| 6 | First-person plural; continued plural noun practice |
+| 7 | Third-person plural; plural agreement; Week 1 examination |
+| 8 | Demonstratives and agreement |
+| 9 | Numbers 1–5, quantities and plural consolidation |
+| 10 | Spatial expressions and evidenced case forms |
+| 11 | Possession |
+| 12 | Questions and answers |
+| 13 | Time, manner and frequency adverbs |
+| 14 | Cumulative review; no compulsory new lemmas or forms |
+
+Numbers four/five are taught as isolated words; productive count constructions remain excluded until evidenced. Inherent plurals already licensed for Day 1 descriptions keep their existing status. No suffix rule manufactures a new plural; case, quantity, demonstrative and finite-verb dependencies remain independently checked. The first form of a new lemma consumes its existing district allocation once; subsequent forms have no vocabulary quota.

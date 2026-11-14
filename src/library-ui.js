@@ -8,6 +8,7 @@ function createLibraryUI({
   narrative,
   learning,
   questions,
+  onTypingChange = () => {},
 }) {
   let libraryLastFocus = null, unlockedFilter = null;
   function openLibrary(tab = "vocabulary", ids = null) {
@@ -39,13 +40,16 @@ function createLibraryUI({
       const gender=ui.node('select');gender.id='playerProfileGender';gender.setAttribute('aria-label','Gender preference');
       for(const [value,label] of [['male','Male'],['female','Female'],['unspecified','Prefer not to say']]){const option=ui.node('option',label);option.value=value;gender.append(option);}
       gender.value=state.progress.playerProfile.gender;
-      for(const [label,input] of [['Name',name],['Gender',gender]]){const row=ui.node('label',label+' ');row.append(input);box.append(row);}
-      const typing=ui.node('input');typing.type='checkbox';typing.id='enableTypingChallenges';typing.checked=state.progress.enableTypingChallenges === true;
-      const typingLabel=ui.node('label','Enable typing challenges ');typingLabel.append(typing);box.append(typingLabel);
-      box.append(ui.node('p','Optional English and Pashto typing. Saved challenges keep their original questions.','tiny'));
+      for(const [label,input] of [['Name',name],['Gender',gender]]){const row=ui.node('label',label+' ');row.style.display='block';row.style.marginBlock='0.5rem';row.append(input);box.append(row);}
+      const preferences=QuestionEngine.typingPreferences(state.progress),inputs={};
+      for(const [lang,label] of [["ps","Type answers in Pashto"],["en","Type answers in English"]]){
+        const input=ui.node('input');input.type='checkbox';input.id='typing-'+lang;input.checked=preferences[lang];inputs[lang]=input;
+        const row=ui.node('label',label+' ');row.style.display='block';row.style.marginBlock='0.5rem';row.append(input);box.append(row);
+      }
+      box.append(ui.node('p','Typing is optional in each answer language. Sentence building stays available.','tiny'));
       const feedback=ui.node('p');feedback.id='profileFeedback';feedback.setAttribute('role','status');
       const save=ui.button('Save profile',()=>{});save.type='submit';save.disabled=!!state.reviewCampaign;
-      box.addEventListener('submit',async event=>{event.preventDefault();if(state.reviewCampaign)return;state.progress.enableTypingChallenges=typing.checked;state.progress.playerProfile={name:name.value.trim()||'Player',gender:gender.value};save.disabled=true;const ok=await storage.save();save.disabled=false;ui.hud();feedback.textContent=ok?'Profile saved.':'Profile is in memory; saving failed. Use the save recovery controls and retry.';});
+      box.addEventListener('submit',async event=>{event.preventDefault();if(state.reviewCampaign)return;state.progress.typingPreferences={en:inputs.en.checked,ps:inputs.ps.checked};questions.adaptTyping();if(state.progress.activeChallenge)questions.adaptTyping(state.progress.activeChallenge);onTypingChange();state.progress.playerProfile={name:name.value.trim()||'Player',gender:gender.value};save.disabled=true;const ok=await storage.save();save.disabled=false;ui.hud();feedback.textContent=ok?'Profile saved.':'Profile is in memory; saving failed. Use the save recovery controls and retry.';});
       box.append(save,feedback);root.append(ui.node('h3','Player Profile'),ui.node('p',state.reviewCampaign?'Exit dream practice to edit your campaign profile.':'Optional settings. You can change these at any time.'),box);return;
     }
     if (tab === "pace") {
@@ -75,12 +79,6 @@ function createLibraryUI({
           "All explanations and worked analyses are readable reference. Reading here does not complete lessons or unlock generation. Pashto examples require forms and grammar unlocked through lessons or challenge activation. Native Laghman review is pending.",
         ),
       );
-      if (state.progress.retiredRuleAssessmentJSON) root.append(
-        ui.node("p", "An earlier rule-analysis assessment was explicitly retired. Its original snapshot remains available for export."),
-        ui.button("Export retired assessment archive", () => {
-          const url=URL.createObjectURL(new Blob([state.progress.retiredRuleAssessmentJSON],{type:"application/json"}));
-          const a=document.createElement("a");a.href=url;a.download="pashto-retired-assessment.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-        }));
       const examples = learning.availableSentences(state.day);
       for (const rule of content.curriculum.days) {
         const grammarId = "grammar-day-" + rule.day;
@@ -165,14 +163,14 @@ function createLibraryUI({
     const encounteredUniversal = content.LIBRARY_DATA.entries.filter(
       (e) =>
         e.vocabularyClass === "universal" &&
-        state.progress.library.acquired[e.lemmaId],
+        LibraryEngine.inBank(state.progress,e.lemmaId),
     ).length;
     root.append(
       ui.node(
         "p",
         universal
-          ? `${encounteredUniversal} encountered universal words · ${sum.encountered + encounteredUniversal} distinct words overall. Universal words never consume district quotas.`
-          : `${sum.encountered} encountered · ${sum.practised} practised · ${sum.mastered} mastered words. ${encounteredUniversal} universal words appear separately. Inflections count under one entry.`,
+          ? `${encounteredUniversal} universal words in the Bank · ${sum.encountered + encounteredUniversal} distinct words overall. Universal words never consume district quotas.`
+          : `${sum.encountered} in the Bank · ${sum.practised} practised · ${sum.mastered} mastered words. ${encounteredUniversal} universal words appear separately. Inflections count under one entry.`,
         "notice",
       ),
     );
@@ -189,7 +187,7 @@ function createLibraryUI({
       root.append(
         ui.node(
           "p",
-          `Day ${state.day}: ${ids.length} scheduled · ${seen} scheduled words actually encountered. ${actual} incidental story words · ${tally.reviewedExistingLemmas.length} existing words revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap ? plan.notice : ""}`,
+          `Day ${state.day}: ${ids.length} scheduled · ${seen} scheduled words in the Bank. ${actual} incidental story words · ${tally.reviewedExistingLemmas.length} existing words revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap || plan.allocationAdjusted ? plan.notice : ""}`,
         ),
       );
     }
@@ -260,7 +258,7 @@ function createLibraryUI({
       let entries = content.LIBRARY_DATA.entries.filter((e) => {
         const r = state.progress.library.acquired[e.lemmaId];
         return (
-          r && (!unlockedFilter || unlockedFilter.includes(e.lemmaId)) &&
+          r && LibraryEngine.inBank(state.progress,e.lemmaId) && (!unlockedFilter || unlockedFilter.includes(e.lemmaId)) &&
           (unlockedFilter || (e.vocabularyClass === "universal") === universal) &&
           (!query ||
             [e.displayLemmaPs, e.romanisation, ...e.englishSenses].join(" ")
@@ -290,7 +288,7 @@ function createLibraryUI({
             "p",
             Object.keys(state.progress.library.acquired).length
               ? "No entries match these filters."
-              : "Your bank is empty. Words appear when you encounter them in a lesson or challenge; planning a day does not teach its words.",
+              : "Your bank is empty. Study words or pass the daily challenge to add them. Planning a day or starting a challenge does not award its assigned vocabulary.",
           ),
         );
       for (const e of entries) list.append(libraryEntry(e));
@@ -319,7 +317,7 @@ function createLibraryUI({
     if(CHARACTER_NAMES.characters.some(n=>n.lemmaId===e.lemmaId))detail.append(ui.node("p","Current name spelling supplied by the owner; pronunciation aids and use in case/compound forms remain provisional.","tiny"));
     const origin = r.unlock;
     const location = origin?.location === "universal" ? "Universal vocabulary" : ({residential:"Home",nature:"Lake",business:"Market",school:"School"}[origin?.location] || "Not recorded");
-    detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-start" ? "Unlocked when starting the challenge" : origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.introducedFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
+    detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-start" ? "Unlocked when starting the challenge" : origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.availableFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
 
     detail.append(
       ui.node(
@@ -335,13 +333,14 @@ function createLibraryUI({
         "tiny",
       ),
     );
-    for (const f of e.forms.filter((f) =>
-      r.encounteredFormIds.includes(f.formId),
-    )) {
+    for (const f of e.forms) {
       const box = ui.node("div", undefined, "library-form"),
         text = ui.node("p", f.pashto, "library-pashto");
       text.lang = "ps";
       text.dir = "rtl";
+      const status=LibraryEngine.formStatus(state.progress,e,f);
+      box.append(ui.node('p',`Reference available · ${status.encountered?'Encountered':'Not encountered'} · ${status.practised?'Practised':'Not practised'} · SRS stage ${status.stage} · ${status.mastered?'Mastered':'Developing'} · ${status.available?'Available for generation/assessment':'Not unlocked for generation/assessment'} · ${status.reviewStatus}`, 'tiny'));
+      box.append(ui.node('p',status.formallyIntroduced?`Flashcard acknowledged: Day ${status.introducedDay} · ${status.introducedLesson}`:status.available?'Assessment activated · not formally taught':'Reference only · not formally taught', 'tiny'));
       box.append(
         text,
         ui.node(
@@ -373,6 +372,7 @@ function createLibraryUI({
         );
       const formOrigin=r.formUnlocks?.[f.formId];
       if (formOrigin) box.append(ui.node("p", `Form unlocked: Day ${formOrigin.day} · ${formOrigin.source === "challenge-start" ? "Challenge activation" : formOrigin.source === "challenge-pass" ? "Challenge pass" : "Study"}`, "tiny"));
+      if(f.composition.enabled)box.append(ui.button('Revise this form',()=>libraryVoluntaryPractice(e,detail,f)));
       detail.append(box);
     }
     detail.addEventListener("toggle", () => {
@@ -399,7 +399,7 @@ function createLibraryUI({
     );
     return detail;
   }
-  function libraryVoluntaryPractice(e, container) {
+  function libraryVoluntaryPractice(e, container, selectedForm) {
     if (!LibraryEngine.allowedOnDay(e, state.day)) {
       container.append(
         ui.node(
@@ -410,7 +410,7 @@ function createLibraryUI({
       return;
     }
     const r = state.progress.library.acquired[e.lemmaId],
-      form = e.forms.find((f) => r.encounteredFormIds.includes(f.formId));
+      form = selectedForm || e.forms.find((f) => r.encounteredFormIds.includes(f.formId));
     if (!form) return;
     libraryPracticeMode(true);
     const exercise = ui.node("div");
@@ -434,7 +434,7 @@ function createLibraryUI({
           content.LIBRARY_DATA,
           "library-form:" + form.formId,
           correct,
-          { day: state.day, source: "review", location: "library", eventId },
+          { day: state.day, source: "library-reference-practice", reference:true, location: "library", eventId },
         );
         storage.save();
         ui.hud();
@@ -454,6 +454,7 @@ function createLibraryUI({
     const plan = state.progress.library.plans[state.day],
       current = plan?.effectiveDailyTarget;
     const next = LibraryEngine.nextUnstartedDay(state.progress, state.day);
+    if (plan?.allocationAdjusted) root.append(ui.node("p", plan.notice, "notice"));
     root.append(
       ui.node("h3", "Learning Pace"),
       ui.node(
@@ -506,7 +507,7 @@ function createLibraryUI({
     root.append(message);
   }
   function paceSummary(target) {
-    return `${target}/day requested · ${target / LibraryEngine.places.length} per teaching location`;
+    return `${target}/day requested · allocated by lesson`;
   }
   function renderOnboardingPace() {
     const choices = ui.$("onboardingPace") || ui.node("div");

@@ -5,13 +5,13 @@ import {drawInteriorArt} from './house-art';
 import type {Actor,ActivityState,Appearance,Direction,Point,Position,WorldData} from './types';
 import {createMovementController,canInteract,facingToward} from './movement';
 import {createActivities} from './activities';
-import {directions,recover} from './world-data';
+import {walkable as mapWalkable,directions,recover} from './world-data';
 
 interface WorldOptions {
   activityState?:Record<string,ActivityState>;onActivities(state:Record<string,ActivityState>):void;
   portraits?:{characters:Record<string,{expressions:Record<string,string|null>}>};portraitReady(key:string,source:string):void;
   canvas:HTMLCanvasElement;data:WorldData;allowedMaps?():string[];
-  position():Position;actors():Actor[];appearance():Appearance;active():boolean;
+  onWalkInput?():boolean;position():Position;actors():Actor[];appearance():Appearance;active():boolean;
   onMove(position:Position,transition:boolean):void;onFrame():void;onInteract(actor:Actor):void;
 }
 const tileSize=16;
@@ -55,12 +55,13 @@ export class VillageScene extends Phaser.Scene {
     this.controller=createMovementController({data:this.options.data,position:this.options.position,actors:()=>this.activities.occupancy(this.actors),allowedMaps:()=>this.options.allowedMaps?.()??Object.keys(this.options.data.maps),step:dir=>this.step(dir),moving:()=>!!this.movement,
       arrived:actor=>{const p=this.options.position();this.options.onMove({...p,facing:facingToward(p,actor)},false);this.player?.setFrame(facingIndex[facingToward(p,actor)]*2);this.options.onInteract(actor);}});
     this.pointer=event=>{
-      if(!this.options.active()||!event.isPrimary||event.button!==0)return;
+      if(!event.isPrimary||event.button!==0)return;
       event.preventDefault();this.options.canvas.focus();
       const bounds=this.options.canvas.getBoundingClientRect();
       const point=this.cameras.main.getWorldPoint((event.clientX-bounds.left)*this.scale.width/bounds.width,(event.clientY-bounds.top)*this.scale.height/bounds.height);
       const tile={x:Math.floor(point.x/tileSize),y:Math.floor(point.y/tileSize)};
       const actor=this.actors.find(a=>{const b=a.interactionBounds,p=this.activities.visual(a);return b?tile.x>=b.x&&tile.x<b.x+b.w&&tile.y>=b.y&&tile.y<b.y+b.h:Math.round(p.x)===tile.x&&Math.round(p.y)===tile.y;});
+      if(!this.options.active()&&(!mapWalkable(this.options.data,this.mapId,tile.x,tile.y)||actor||!this.options.onWalkInput?.()))return;
       this.activities.select(actor?.id);this.sync();
       this.options.canvas.dataset.route=this.controller!.navigate(tile,actor)?'moving':'unreachable';
     };

@@ -29,8 +29,7 @@ try {
               click(area, "How are you?");
             } else if (step === 2) click(area, "پښتو");
             else {
-              document.querySelector("#tutorialName").value = "Muhammad Jan";
-              click(area, "Check answer");
+              if(document.querySelector("#tutorialName")){document.querySelector("#tutorialName").value="Muhammad Jan";click(area,"Check answer");}else click(area,"Muhammad Jan");
             }
             t.lessons.afterStudy();
             await Promise.resolve();
@@ -69,27 +68,27 @@ try {
               !Object.values(card.generated.slots).every((r) =>
                 t.state.progress.library.acquired[
                   r.lemmaId
-                ]?.introducedFormIds.includes(r.formId),
+                ]?.availableFormIds.includes(r.formId),
               )
             )
               throw Error("Unstudied form");
             if(t.state.session?.mode==='standard'){
               const s=t.state.session,targets=t.state.progress.library.plans[s.loop]?.lessonNewLexemes?.[s.loc]||[];
-              if(targets.length&&!Object.values(card.generated.slots).some(r=>targets.includes(r.lemmaId)))throw Error('Sentence lacks a current-lesson noun/verb');
+              if(targets.length&&!Object.values(card.generated.slots).some(r=>targets.includes(r.lemmaId))&&s.generationDeficit?.fallback!=='cumulative-practice')throw Error('Unexplained cumulative sentence fallback');
             }
             generatedObserved++;
           };
           const taughtCount = () =>
             Object.values(t.state.progress.library.acquired).reduce(
-              (n, r) => n + r.introducedFormIds.length,
+              (n, r) => n + r.availableFormIds.length,
               0,
             );
           for (let day = 1; day <= 14; day++) {
             t.day(day);
             const oldCount = taughtCount();
-            if (!skip) {
+            {
               const opening = t.content.curriculum.days[day - 1].opening;
-              const route =
+              const route = skip ? ["school"] :
                 day === 2
                   ? ["school", "nature", "business", "residential"]
                   : [
@@ -204,7 +203,7 @@ try {
                 const studied = new Set(Object.values(t.content.wordById).filter((c) => {
                   const refs = t.content.LIBRARY_DATA.sourceMappings[c.id] || [];
                   return t.state.progress.library.phrases[c.id] || (refs.length && refs.every((r) =>
-                    t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId)));
+                    t.state.progress.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId)));
                 }).map((c) => c[answerField]));
                 const backup = new Set(t.content.LIBRARY_DATA.entries
                   .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
@@ -217,7 +216,7 @@ try {
               }
               if (["choice", "address"].includes(q.kind) || q.grammarConcept)
                 throw Error("Retired grammar-rule question generated in a practical assessment");
-              if (q.kind === "word" && q.unstudied && !q.recognition) {
+              if (q.kind === "word" && q.unstudied && !q.recognition && q.direction === "ps-en") {
                 if (
                   q.direction !== "ps-en" ||
                   document.querySelector("#quizPashto").textContent !==
@@ -321,7 +320,7 @@ try {
         },
         { pace, skip },
       );
-      assert.equal(result.visits, skip ? 0 : 56);
+      assert.equal(result.visits, skip ? 14 : 56);
       assert.equal(result.assessments, 14);
       assert.equal(result.observedSentences, result.generatedObserved);
       assert.equal(
@@ -351,7 +350,7 @@ try {
     generatedPercentage: observed ? 100 : null,
     fixedAuthoredSentenceObservations: 0,
     designatedPhraseExceptions: JSON.parse(readFileSync("content/FIXED_PHRASES.json","utf8")).phrases.length,
-    totalVisits: 280,
+    totalVisits: 350,
     totalAssessments: 140,
     profiles,
   };
@@ -360,7 +359,7 @@ try {
     JSON.stringify(report, null, 2) + "\n",
   );
   console.log(
-    `PASS actual delivery: ${generated}/${observed} = 100%; 280 visits, 140 assessments, five paces, normal/skip, no authored sentence surfaces`,
+    `PASS actual delivery: ${generated}/${observed} = 100%; 350 visits, 140 assessments, five paces, normal/skip, no authored sentence surfaces`,
   );
 } finally {
   await b.close();

@@ -5,11 +5,11 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
   function isUnstudied(id) {
     const phrase = state.progress.library.phrases[id];
     if (content.LIBRARY_DATA.phrases.some(p => p.id === id))
-      return !phrase || (phrase.source === "challenge-start" && !phrase.studiedDay);
+      return !phrase || !phrase.studiedDay;
     return (content.LIBRARY_DATA.sourceMappings[id] || []).some(ref => {
       const r = state.progress.library.acquired[ref.lemmaId], origin = r?.formUnlocks?.[ref.formId];
-      return !r?.introducedFormIds.includes(ref.formId) ||
-        (origin?.source === "challenge-start" && !origin.studiedDay);
+      return !r?.availableFormIds.includes(ref.formId) ||
+        !origin?.studiedDay;
     });
   }
   function available(day) {
@@ -32,7 +32,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
       (content.LIBRARY_DATA.phrases.some(p => p.id === c.id) || (content.LIBRARY_DATA.sourceMappings[c.id] || []).length) &&
       LibraryEngine.cardAllowed(content.LIBRARY_DATA, c.id, day));
     // Backup choices are display-only base forms, never an acquisition transaction.
-    const backup = w.type === "sentence" ? [] : content.LIBRARY_DATA.entries
+    const backup = content.LIBRARY_DATA.entries
       .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
       .map(e => content.wordById["library-card:" + e.lemmaId]);
     const meanings = new Set(QuestionEngine.meaningKeys(w));
@@ -58,10 +58,19 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
     const plan = state.progress.library.plans[day];
     // Every location contributes regardless of visit completion. Interleave the
     // frozen assignments so additional recall tasks stay balanced as well.
+    const usableForm = (lemmaId, place) => {
+      const entry=content.libraryEntries[lemmaId],record=state.progress.library.acquired[lemmaId];
+      if(!entry||!record)return null;
+      const frozen=plan.firstFormSelections?.[place] || [];
+      return [...entry.forms].sort((a,b)=>Number(frozen.includes(b.formId))-Number(frozen.includes(a.formId)))
+        .map(f=>'library-form:'+f.formId).find(id=>{
+          const ref=content.LIBRARY_DATA.sourceMappings[id]?.[0];
+          return ref&&record.availableFormIds.includes(ref.formId)&&LibraryEngine.cardAllowed(content.LIBRARY_DATA,id,day)&&practicalMeaning(id);
+        }) || null;
+    };
     const rows = QuestionEngine.shuffle(content.zoneKeys, random).map(place => QuestionEngine.shuffle(
       plan.locationAssignments[place] || [], random,
-    ).map(id => "library-card:" + id).filter(id =>
-      LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id)));
+    ).map(id=>usableForm(id,place)).filter(Boolean));
     const scheduled = [];
     for (let i = 0; i < Math.max(0, ...rows.map(row => row.length)); i++)
       for (const row of rows) if (row[i]) scheduled.push(row[i]);
@@ -74,7 +83,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
       .filter(
         (e) => e.vocabularyClass === "universal" && e.introduction.day === day,
       )
-      .map((e) => "library-card:" + e.lemmaId), random);
+      .map((e) => usableForm(e.lemmaId)), random);
     const review = QuestionEngine.shuffle(
       content.LIBRARY_DATA.entries
         .filter(
@@ -82,7 +91,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
             e.introduction.day <= day &&
             (due.has(e.lemmaId) || state.progress.library.acquired[e.lemmaId]),
         )
-        .map((e) => "library-card:" + e.lemmaId),
+        .map((e) => usableForm(e.lemmaId)),
       random,
     );
     const phrases = QuestionEngine.shuffle(content.LIBRARY_DATA.phrases
@@ -95,9 +104,10 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
         ...review,
         ...phrases,
       ]),
-    ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id));
+    ].filter((id) => id && LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id));
   }
   function selectChallenge(day, { newAttempt = false } = {}) {
+    if (!progression.challengeAccessible(state.progress, day)) return [];
     const plan = LibraryEngine.ensurePlan(
       state.progress,
       content.LIBRARY_DATA,
@@ -111,7 +121,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
     progression.activateChallenge(state.progress, day);
     const random = QuestionEngine.randomFor(seed),
       blueprint = createAssessmentContent({ content, progression }).blueprint(
-        day, state.progress.enableTypingChallenges === true, random,
+        day, Object.values(QuestionEngine.typingPreferences(state.progress)).some(Boolean), random,
       );
     const pool = available(day);
     const goal = content.curriculum.days[day - 1];
@@ -174,7 +184,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
     );
     const lexical = lexicalPool(day, random);
     const studiedForms = QuestionEngine.shuffle(content.LIBRARY_DATA.entries.flatMap(e => e.forms
-      .filter(f => state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId))
+      .filter(f => state.progress.library.acquired[e.lemmaId]?.availableFormIds.includes(f.formId))
       .map(f => "library-form:" + f.formId)), random);
     const recallIdentities = new Set();
     const practical = [...lexical, ...studiedForms,
@@ -228,7 +238,9 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
       }
       if (!q.generated) usedRecall.add(LibraryEngine.identity(content.LIBRARY_DATA,q.id));
       q.speaker=content.teacherFor(day,null,"challenge").name;q.recipient="Player";q.comment=blueprint.scenario;
-      q.answerFormat=format;q.requestedFormat=wanted;q.direction=blueprint.directions[i];
+      q.direction=blueprint.directions[i];
+      if(format === "type" && !QuestionEngine.typingAllowed(state.progress,q)){deviations.push({index:i,requested:format,actual:"select",reason:"Typing disabled for answer language"});format="select";}
+      q.answerFormat=format;q.requestedFormat=wanted;
       if (q.kind === "word") {q.unstudied=isUnstudied(q.id);q.recognition=format === "select";}
       if (format === "build") {
         Object.assign(q,constructionQuestion(content.wordById[q.id],{question:q,withDuds:constructionIndex++ % 2 === 1,random}));
@@ -264,7 +276,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
     const excluded = new Set([card.ps, q.answerPs, ...(q.acceptedPs || [])].filter(Boolean).flatMap(a => key(a).split(" ")));
     const day=state.session?.loop || state.day;
     const introduced = content.LIBRARY_DATA.entries.flatMap(e => e.forms.filter(f =>
-      LibraryEngine.formAllowed(e,f,day) && state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId)).map(f => f.pashto));
+      LibraryEngine.formAllowed(e,f,day) && state.progress.library.acquired[e.lemmaId]?.availableFormIds.includes(f.formId)).map(f => f.pashto));
     const backup = content.LIBRARY_DATA.entries.filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1).map(e => e.forms[0].pashto);
     const duds=[];
     for (const group of [introduced, backup]) for (const token of QuestionEngine.shuffle(group,random)) {
@@ -291,6 +303,27 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
       .map((card) => content.registerGenerated(card));
   }
   return {
+    adaptTyping(session = state.session) {
+      if(!session)return;
+      const convertActive=!session.locked && session.activeItem && QuestionEngine.isTyped(session.activeItem) && !QuestionEngine.typingAllowed(state.progress,session.activeItem);
+      const rows=session.mode === "challenge" ? session.questions.slice(session.index) : session.queue || [];
+      for(const q of rows){
+        if(session.locked && (q===session.questions?.[session.index] || q===session.activeItem))continue;
+        if(QuestionEngine.isTyped(q)&&!QuestionEngine.typingAllowed(state.progress,q)){
+          q.answerFormat="select";if(q.kind==="word")q.recognition=true;
+          q.choiceOrder=answerChoices(content.wordById[q.id],q.direction || "ps-en",session.loop);
+          if(q.generated)q.choiceIds=originsForChoices(content.wordById[q.id],q.choiceOrder,q.direction,session.loop).map(c=>c.id);
+        }
+      }
+      if(convertActive){
+        session.activeItem.answerFormat="select";delete session.choices;session.recallDraft="";
+      }
+    },
+    disableTyping(q) {
+      const lang=q.direction === "en-ps" ? "ps" : "en";
+      state.progress.typingPreferences={...QuestionEngine.typingPreferences(state.progress),[lang]:false};
+      if(state.reviewCampaign)state.reviewCampaign.typingPreferences={...QuestionEngine.typingPreferences(state.reviewCampaign),[lang]:false};
+    },
     selectChallenge,
     constructionQuestion,
     distractors: (w) => answerChoices(w, "ps-en"),

@@ -1,12 +1,12 @@
 # Measured instructional sentence delivery
 
-**4375 / 4375 independently observed sentence surfaces were generated: 100%.** Zero authored curricular sentence surfaces were delivered. The two separately approved onboarding questions are outside this curricular denominator. The 18 designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.
+**6131 / 6131 independently observed sentence surfaces were generated: 100%.** Zero authored curricular sentence surfaces were delivered. The two separately approved onboarding questions are outside this curricular denominator. The 18 designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.
 
 Actual rendered browser surfaces across ten complete profiles; compiler provenance and actual form/grammar unlocks checked independently at each sentence surface.
 
 Test-only educational navigation harness: fourteen-day shared-engine regression matrix. The default release is a Days 1–7 RPG, verified separately by the public normal/skip routes in rpg-week1-browser.test.mjs and movement/interface checks at 375/1280px.
 
-Release SHA-256: `0d80b73792fcf3538c3e9afdd898ae32d1fbe49efb5bcd2a30d2d32debe82727`. The complete browser matrix covered 280 normal district visits and 140 assessments, all fourteen days, five paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
+Release SHA-256: `7e3e777c51325e004d5952779e56ce6e379b62d6dcceb48dac1f4b3ca2a98df4`. The complete browser matrix covered 280 normal district visits and 70 School visits on shortcut routes and 140 assessments, all fourteen days, five paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
 
 ## Day 1 Home: before and after
 
@@ -18,15 +18,15 @@ Before the original generated-delivery redesign, the default Home visit taught t
 | 2 | دروازه خلاصه ده. | Stored authored card s-it-door |
 | 3–4 | Same two texts | Duplicate generated cards |
 
-In the current release: Library onboarding is separate (two fixed greetings and two separately owner-approved authored questions). At Home, the player studies exactly six assigned district lemmas plus the required feminine adjective form, reads the agreement rule, then receives these engine-composed descriptions and practises them with shuffled indexed word tiles:
+In the current release: Library onboarding is separate (two fixed greetings and two separately owner-approved authored questions). School first teaches Book/New and agreement. At Home, the player studies eight assigned district lemmas plus the required feminine adjective form, reviews agreement, then receives these engine-composed descriptions and practises them with shuffled indexed word tiles:
 
 | Pashto | English | Origin |
 |---|---|---|
-| کړکۍ خلاصه ده. | The window is open. | productive engine |
-| کور لوی دی. | The house is big. | productive engine |
+| کور نوی دی. | The house is new. | productive engine |
+| کتاب خلاص دی. | The book is open. | productive engine |
 | دروازه خلاصه ده. | The door is open. | productive engine |
 
-Default Home needs no other district visit and introduces no action verb. The window/open pairing is composed from independently licensed noun and adjective features; the complete output is not an authored target. Supported paces are 8/12/16/20/24. If the licensed pool cannot supply a compatible clause, visits and assessments adapt with vocabulary/approved phrase tasks, without extra district lemmas or a fixed-sentence substitution.
+Default Home needs only the compulsory School lesson and introduces no action verb. The window/open pairing is composed from independently licensed noun and adjective features; the complete output is not an authored target. Supported paces are 8/12/16/20/24. If new words lack enough licensed combinations, practice also uses eligible cumulative vocabulary. If the complete licensed pool cannot supply a compatible clause, visits and assessments adapt with vocabulary/approved phrase tasks, without extra district lemmas or a fixed-sentence substitution.
 
 ![Generated Home study on mobile](demonstration/day1-generated-study.png)
 
@@ -38,33 +38,33 @@ Default Home needs no other district visit and introduces no action verb. The wi
 |---|---|---|---:|
 | 1 | equative_descriptor | None | 0 |
 | 2 | present_attributive, present_transitive | None | 0 |
-| 3 | present_attributive, present_intransitive, present_transitive | None | 0 |
+| 3 | present_attributive, present_transitive | None | 0 |
 | 4 | coordinated_present, present_attributive, present_transitive | None | 0 |
 | 5 | present_attributive, present_transitive | None | 0 |
-| 6 | present_attributive, present_compound_predicate | None | 0 |
-| 7 | coordinated_present, present_compound_transitive, present_transitive | None | 0 |
-| 8 | attributive_equative, demonstrative_descriptor, demonstrative_transitive, equative_noun, present_attributive | None | 0 |
-| 9 | counted_equative, counted_transitive, present_attributive | None | 0 |
-| 10 | demonstrative_transitive, location_adverb_equative, spatial_equative, where_question | None | 0 |
-| 11 | possessive_descriptor, possessive_equative, possessive_spatial | None | 0 |
-| 12 | count_location, demonstrative_descriptor, how_many_question, location_adverb_equative, possessive_equative, where_question, which_question, who_subject_question, whose_question | None | 0 |
-| 13 | demonstrative_descriptor, location_adverb_equative, present_intransitive_adverb, present_transitive_adverb | None | 0 |
-| 14 | count_location, counted_equative, demonstrative_descriptor, demonstrative_transitive, how_many_question, location_adverb_equative, possessive_descriptor, possessive_equative, possessive_spatial, present_compound_predicate, present_compound_transitive, present_intransitive, present_transitive, what_object_question, where_question, which_question | None | 0 |
+| 6 | equative_descriptor, present_attributive, present_transitive | None | 0 |
+| 7 | coordinated_present, present_attributive, present_compound_transitive, present_joint_action, present_transitive | None | 0 |
+| 8 | attributive_equative, demonstrative_descriptor, demonstrative_transitive, equative_noun, present_transitive | None | 0 |
+| 9 | counted_equative, counted_transitive | None | 0 |
+| 10 | counted_transitive, location_adverb_equative, spatial_equative, where_question | None | 0 |
+| 11 | location_adverb_equative, possessive_descriptor, possessive_equative, possessive_spatial, present_attributive | None | 0 |
+| 12 | demonstrative_descriptor, how_many_question, location_adverb_equative, possessive_equative, what_object_question, where_question, which_question, who_subject_question, whose_question | None | 0 |
+| 13 | count_location, demonstrative_descriptor, location_adverb_equative, possessive_equative, present_intransitive_adverb, present_transitive, present_transitive_adverb | None | 0 |
+| 14 | coordinated_present, count_location, counted_transitive, demonstrative_descriptor, demonstrative_transitive, location_adverb_equative, possessive_descriptor, possessive_equative, possessive_spatial, present_compound_transitive, present_intransitive, present_joint_action, present_transitive, which_question, who_subject_question, whose_question | None | 0 |
 
 ## All tested profiles
 
 | District pace | Route | Observed sentence surfaces | Generated |
 |---:|---|---:|---:|
-| 8 | Normal | 442 | 100% |
-| 8 | Skip | 341 | 100% |
-| 12 | Normal | 523 | 100% |
-| 12 | Skip | 331 | 100% |
-| 16 | Normal | 517 | 100% |
-| 16 | Skip | 376 | 100% |
-| 20 | Normal | 541 | 100% |
-| 20 | Skip | 406 | 100% |
-| 24 | Normal | 547 | 100% |
-| 24 | Skip | 351 | 100% |
+| 8 | Normal | 770 | 100% |
+| 8 | Skip | 447 | 100% |
+| 12 | Normal | 748 | 100% |
+| 12 | Skip | 463 | 100% |
+| 16 | Normal | 803 | 100% |
+| 16 | Skip | 453 | 100% |
+| 20 | Normal | 788 | 100% |
+| 20 | Skip | 423 | 100% |
+| 24 | Normal | 808 | 100% |
+| 24 | Skip | 428 | 100% |
 
 ## Fixed expression inventory
 

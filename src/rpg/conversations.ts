@@ -3,7 +3,7 @@ import type {Action,Card,ConversationDay,StoryEvent,Progress,Progression} from '
 type ResponseSource = Card | null | (() => Card | null);
 
 export function conversationEligible(progress:Progress,day:number,progression:Pick<Progression,'passedChallenge'>):boolean {
-  return !!progress.complete[`${day}-nature`] || progression.passedChallenge(progress,day);
+  return !!progress.complete[`${day}-school`] || !!progress.complete[`${day}-nature`] || progression.passedChallenge(progress,day);
 }
 
 /** Curated semantic target + compiler-generated, contextually wrong alternatives.
@@ -30,16 +30,9 @@ export function conversationChoices(spec:ConversationDay,pool:Card[],random:()=>
   for(let i=cards.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[cards[i],cards[j]]=[cards[j],cards[i]];}
   return cards.map(card=>({type:'conversation-response',label:card.ps,roman:String(card.roman),card,nextEvent:card.id===target.id?spec.correctEvent:spec.incorrectEvent}));
 }
-export function conversationEvent(spec:ConversationDay,events:Record<string,StoryEvent>,pool:Card[],eligible:boolean,alreadySpoken:boolean,pending?:string,random:()=>number=Math.random,fallback:ResponseSource=null):{id:string;event:StoryEvent} {
+export function conversationEvent(spec:ConversationDay,events:Record<string,StoryEvent>,pool:Card[],eligible:boolean,pending?:string,random:()=>number=Math.random,fallback:ResponseSource=null):{id:string;event:StoryEvent} {
   if(pending&&[spec.event,spec.correctEvent,spec.incorrectEvent,spec.conclusionEvent].includes(pending)&&pending!==spec.event)return {id:pending,event:events[pending]};
-  if(alreadySpoken)return {id:spec.repeatEvent,event:events[spec.repeatEvent]};
   const actions=eligible?conversationChoices(spec,pool,random,fallback):[];
   const id=actions.length?spec.event:spec.greetingEvent;
   return {id,event:{...events[id],actions:actions.length?actions:events[id].actions}};
-}
-
-export function conversationCompleted(spec:ConversationDay,triggers:Record<string,boolean>):boolean {
-  // Main event IDs already existed before authored response branches. Only a
-  // new acknowledged reaction/conclusion proves this conversation was completed.
-  return !!(triggers[spec.correctEvent]||triggers[spec.incorrectEvent]||triggers[spec.conclusionEvent]);
 }

@@ -63,6 +63,8 @@ function createLessons({
       loop,
       attemptId: ++state.progress.library.attemptSequence,
       required: [...pool],
+      schoolConceptPending: mode === "standard" && loc === "school" && !state.progress.library.grammar["grammar-day-"+loop],
+      formAcknowledgements: [],
       studyWords: mode === "tutorial" ? [] : lexical,
       greetingCards: phrases,
       studySentences: reviewSentences,
@@ -71,12 +73,12 @@ function createLessons({
           ? "tutorial"
           : phrases.length
             ? "greeting"
-            : "lexical",
+            : mode === "standard" && loc === "school" && !state.progress.library.grammar["grammar-day-"+loop] ? "grammar" : "lexical",
       cardIndex: 0,
       queue: pool.map((id,i) => ({
         id,
         retries: 0,
-        answerFormat: mode !== "tutorial" && state.progress.enableTypingChallenges === true && content.wordById[id].type !== "sentence" && i % 3 === 2 ? "type" : "select",
+        answerFormat: mode !== "tutorial" && QuestionEngine.typingAllowed(state.progress,{direction:"ps-en"}) && content.wordById[id].type !== "sentence" && i % 3 === 2 ? "type" : "select",
         kind: content.wordById[id].type === "sentence" ? "construct" : "word",
       })),
       answered: 0,
@@ -113,7 +115,9 @@ function createLessons({
         ? "Four guided conversation activities"
         : mode === "review"
           ? "Previously studied material due for recall"
-          : content.curriculum.days[loop - 1].topic;
+          : loc !== "school" && !state.progress.library.plans[loop].locationAssignments[loc].length
+            ? "Review familiar words and sentence patterns. No new words are assigned to this lesson today."
+            : content.curriculum.days[loop - 1].lessons.find(l=>l.location===loc).introduction;
     ui.$("lessonIcon").textContent = content.zones[loc]?.icon || "📚";
     ui.setSpeaker(loop, loc, mode);
     ui.hud();
@@ -152,7 +156,7 @@ function createLessons({
   function advancePhase() {
     const s = state.session;
     s.cardIndex = 0;
-    if (s.phase === "greeting") s.phase = "lexical";
+    if (s.phase === "greeting") s.phase = s.schoolConceptPending ? "grammar" : "lexical";
     else if (s.phase === "lexical")
       s.phase =
         s.mode === "standard"
@@ -171,7 +175,7 @@ function createLessons({
       return;
     }
     const w = learning.surface(id, "study");
-    learning.libraryExpose(id, s.mode === "review" ? "review" : "lesson");
+    learning.libraryExpose(id, "lesson-preview");
     storage.save();
     ui.$("teachSpeak").classList.remove("hidden");
     ui.$("teachPanel").classList.remove("hidden");
@@ -183,7 +187,11 @@ function createLessons({
     ui.$("teachPashto").textContent = w.ps;
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
+    const formRef=w.type!=="sentence"&&content.LIBRARY_DATA.sourceMappings[id]?.length===1?content.LIBRARY_DATA.sourceMappings[id][0]:null,entry=formRef&&content.libraryEntries[formRef.lemmaId],form=entry?.forms.find(f=>f.formId===formRef.formId);
+    if(form){const features=Object.entries(form.morphology).filter(([,v])=>v!==null).map(([k,v])=>k+': '+v).join(' · ');ui.$('teachType').textContent=(LibraryEngine.formallyTaught(state.progress,form.formId)?'FORM REVISION':'NEW FORM · ACKNOWLEDGE TO LEARN')+' · '+features;}
+
     ui.$("teachNote").textContent = w.note?.startsWith("Base content user-approved;") ? "" : w.note;
+    if(form&&form.pashto!==entry.displayLemmaPs)ui.$("teachNote").textContent='Lemma: '+entry.displayLemmaPs+' ('+entry.romanisation+') · '+ui.$("teachNote").textContent;
     ui.$("teachNote").classList.toggle("hidden", !ui.$("teachNote").textContent);
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
     const guidance = w.generated
@@ -191,7 +199,7 @@ function createLessons({
       : w.type === "greeting"
         ? "Learn this conventional expression as a complete phrase."
         : "Study this word or individual form. It will remain available in later constructions.";
-    const voice = teacher.name + (s.mode === "review" ? " · Memory Trail" : "");
+    const voice = ui.characterName(teacher.name) + (s.mode === "review" ? " · Memory Trail" : "");
     ui.$("guideMessage").textContent =
       w.type === "greeting"
         ? `${voice}: “${w.en}” Listen to the expression, then practise saying it with me.`
@@ -201,7 +209,7 @@ function createLessons({
     ui.setSentenceConversation(w, teacher.name);
     if (w.phrasePromptId) {
       const prompt = content.wordById[w.phrasePromptId];
-      ui.$("guideMessage").textContent = `${teacher.name}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). You reply: ${w.ps} (${w.en}).`;
+      ui.$("guideMessage").textContent = `${ui.characterName(teacher.name)}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). You reply: ${w.ps} (${w.en}).`;
     }
     ui.$("teachNext").disabled = false;
     ui.$("teachNext").textContent =
@@ -229,12 +237,19 @@ function createLessons({
       return;
     }
     if (!["greeting", "lexical", "sentence"].includes(s.phase)) return;
+    if(s.phase==='lexical'||s.phase==='greeting'){
+      const id=studyList()[s.cardIndex];learning.acknowledgeForm(id);
+      s.formAcknowledgements = [...new Set([...(s.formAcknowledgements || []),...(content.LIBRARY_DATA.sourceMappings[id]||[]).map(ref=>ref.formId).filter(formId=>LibraryEngine.formallyTaught(state.progress,formId))])];
+    }
     if (++s.cardIndex < studyList().length) teachCard();
     else advancePhase();
   }
   function afterGrammar() {
     const s = state.session;
     if (!s || s.phase !== "grammar" || ui.$("grammarNext").disabled) return;
+    if(s.schoolConceptPending){
+      LibraryEngine.unlock(state.progress,s.loop,'acknowledged-school-concept');s.schoolConceptPending=false;s.phase='lexical';s.cardIndex=0;storage.save();renderPhase();return;
+    }
     learning.prepareSentences(s);
     s.phase = "sentence";
     s.cardIndex = 0;
@@ -256,6 +271,7 @@ function createLessons({
     ui.$("questionBody").scrollTop=0;
     const s = state.session;
     if (!s) return;
+    questions.adaptTyping(s);
     if (!s.queue.length && !(restore && s.activeItem)) {
       finish();
       return;
@@ -311,7 +327,7 @@ function createLessons({
     ui.$("quizSpeak").classList.toggle("hidden", build);
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
     ui.setDialogueSpeaker(teacher.name);
-    ui.$("guideMessage").textContent = `${teacher.name}: “What does this mean? Choose your answer and we will check it together.”`;
+    ui.$("guideMessage").textContent = `${ui.characterName(teacher.name)}: “What does this mean? Choose your answer and we will check it together.”`;
     if (build) ui.construction.present(w, s.activeItem, s.loop);
     ui.$("builtSentence").classList.remove("build-success", "build-error");
     ui.$("choices").replaceChildren();
@@ -325,7 +341,7 @@ function createLessons({
         value: s.recallDraft || "",
         onInput(value) { s.recallDraft = value; storage.save(); },
         onSubmit: answer,
-        onSkip: () => answer("", { skipped: true }),
+        onSkip: () => { questions.disableTyping({direction:"ps-en"});questions.adaptTyping();delete state.session.choices;state.session.recallDraft="";storage.save();showQuestion(true); },
       });
     } else
       for (const choice of (s.choices = restore && s.choices ? s.choices : questions.distractors(w))) {
@@ -348,7 +364,6 @@ function createLessons({
     const result = learning.submitLesson(value, options);
     if (!result) return;
     state.session.submittedAnswer=value;
-    if(result.skipped){storage.save();ui.$("quizNext").disabled=false;onAdvance();storage.save();return;}
     const { w, correct } = result;
     for(const control of ui.$("choices").querySelectorAll("input,button"))control.disabled=true;
     learning.surface(w.id, "lesson-feedback");
@@ -420,7 +435,7 @@ function createLessons({
       title = `Muhammad Jan welcomes ${state.progress.playerProfile.name}!`;
       desc = `Welcome, ${state.progress.playerProfile.name}! You completed the guided conversation activities.${s.skippedItems?.length ? " Typing was skipped; typing challenges are off." : ""} Day 1 is now open.`;
       follow =
-        "Explore home, market, lake and school in any order, or use “Skip to Muhammad Jan’s check-in” on the town screen. His 15-question Library home-award challenge is available now.";
+        "Complete School first. Then study Home, Nature and Market in any order before the challenge, or choose “Skip to daily challenge”.";
     } else if (s.mode === "review") {
       title = "Your memory is getting stronger!";
       desc =
@@ -432,30 +447,10 @@ function createLessons({
       if (!s.required.length)
         desc =
           "No new words, forms or due review were available. You reviewed the grammar guidance; no practice XP was awarded.";
-      follow =
-        s.loop === 1
-          ? learning.completeRound(1)
-            ? "Your four visits are complete. Muhammad Jan is ready for your 15-question check-in."
-            : "Explore the remaining locations, or try Muhammad Jan’s check-in now."
-          : s.loop === 2
-            ? learning.completeRound(2)
-              ? "Your village visits are complete. Muhammad Jan is ready for your check-in."
-              : "After School, Home is available immediately. Market and Lake are optional visits before or after Home. Muhammad Jan’s challenge is also available."
-            : s.loop === 3
-              ? learning.completeRound(3)
-                ? "Your Day 3 visits are complete. Speak with Edris about dinner in your final challenge."
-                : "Keep practising “I” sentences, or skip straight to Edris’s dinner-shopping conversation."
-              : learning.completeRound(s.loop)
-                ? `All four Day ${s.loop} visits completed! The 15-question Town Challenge is ready. Pass with 12/15 to unlock the next day.`
-                : "Visit the other locations to practise, or take the 15-question Town Challenge now.";
+      follow = learning.completeRound(s.loop)
+        ? `All four lessons are complete. Take the ${progression.getChallengeSpec(s.loop).questionCount}-question daily challenge.`
+        : 'Study Home, Nature and Market in any order, then take the challenge. You can also choose “Skip to daily challenge”. Review skipped vocabulary in the Library after passing.';
     }
-    if (s.loop >= 6)
-      follow =
-        s.loop === 6
-          ? "Practise the other town locations, or join Deena and Medina in the Hills: 15 turns, 12 correct to pass."
-          : "Practise the other locations, or take Ms Hameed’s separate School examination: 25 turns, 20 correct to pass.";
-    if (s.loop >= 8)
-      follow = `Practise the other locations, or take the ${progression.getChallengeSpec(s.loop).questionCount}-question final challenge. Week 2 remains draft content for native review.`;
     if (progression.characterStatus(state.progress).level > s.initialLevel)
       desc += ` ✨ Level ${progression.characterStatus(state.progress).level} reached!`;
     ui.$("resultHeading").textContent = title;

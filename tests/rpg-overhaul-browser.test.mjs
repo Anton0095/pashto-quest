@@ -29,9 +29,10 @@ for(const width of [375,1280]){
   await p.evaluate(()=>__pointerScene.cameras.main.startFollow(__pointerScene.player,true,1,1));
   await d.tutorial();
   await p.getByText('Quick travel',{exact:true}).click();
-  assert.deepEqual(await p.locator('[data-destination]').allTextContents(),['Home','Lake','Market','School']);
+  assert.deepEqual(await p.locator('[data-destination]').allTextContents(),['School','Home','Lake','Market']);
+  assert(await p.locator('[data-destination=nature]').isDisabled());await p.locator('[data-destination=school]').click();await d.lesson();
   await p.locator('[data-destination=nature]').click();await p.locator('#teachPanel').waitFor();assert(!await p.locator('#rpgDialogue').isVisible());assert.equal(await p.locator('#speakerIcon [data-character-id]').getAttribute('data-character-id'),'saleha');await p.locator('#navWorld').click();
-  await p.getByRole('button',{name:'Day 1 challenge',exact:true}).click();await p.locator('#quizPanel').waitFor();
+  await p.getByRole('button',{name:'Skip to daily challenge',exact:true}).click();await p.locator('#quizPanel').waitFor();
   const order=await p.evaluate(()=>['quizPashto','quizRoman','quizSpeak','quizPrompt'].map(id=>document.getElementById(id).getBoundingClientRect().top));assert(order.every((y,i)=>i===0||y>=order[i-1]),'Pashto, transliteration, audio, instructions order');
   const options=await p.locator('#choices button[data-answer]').evaluateAll(bs=>bs.map(b=>({text:b.textContent,answer:b.dataset.answer})));
   for(const option of options)if(/^[a-z]/.test(option.answer))assert.equal(option.text[0],option.answer[0].toUpperCase());
