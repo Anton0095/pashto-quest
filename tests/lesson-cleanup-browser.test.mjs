@@ -24,11 +24,11 @@ for(const [width,height] of [[1920,1080],[1366,768],[390,844]].filter(([w])=>!pr
   await p.getByText('Quick travel',{exact:true}).click();for(const loc of ['residential','nature','business'])assert(await p.locator(`[data-destination=${loc}]`).isDisabled(),'Introductory lesson lock');
   await p.locator('[data-destination=school]').click();await p.locator('#teachPanel').waitFor();assert.equal(await p.locator('#rpgDialogue').isVisible(),false,'Quick travel starts without dialogue');assert.equal(await p.evaluate(()=>__test.state.session.id),'2-school');
   await p.locator('#navWorld').click();await noDialogue();
-  await fixture(4,{map:'village',x:10,y:11,facing:'up'});await p.locator('#rpgInteract').click();await d.dialogue('Begin Day 4 Home lesson');await p.locator('#teachPanel').waitFor();assert.equal(await p.evaluate(()=>__test.state.session.id),'4-residential');await p.locator('#navWorld').click();await noDialogue();
+  await fixture(4,{map:'village',x:10,y:11,facing:'up'});await p.evaluate(()=>__test.studySchool(4));await p.locator('#rpgInteract').click();await d.dialogue('Begin Day 4 Home lesson');await p.locator('#teachPanel').waitFor();assert.equal(await p.evaluate(()=>__test.state.session.id),'4-residential');await p.locator('#navWorld').click();await noDialogue();
   if(width===1920){
    const outcomes=[];
    for(const method of ['npc','quick']){
-    await fixture(1,{map:'village',x:10,y:11,facing:'up'});
+    await fixture(1,{map:'village',x:10,y:11,facing:'up'});await p.evaluate(()=>__test.studySchool(1));
     if(method==='npc'){await p.locator('#rpgInteract').click();await d.dialogue('Study at Home');}
     else{await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination=residential]').click();}
     await p.locator('#teachPanel').waitFor();const required=await p.evaluate(()=>__test.state.session.required),position=await p.evaluate(()=>__entryRPG.position);
@@ -39,7 +39,7 @@ for(const [width,height] of [[1920,1080],[1366,768],[390,844]].filter(([w])=>!pr
    }
    assert.deepEqual(outcomes[0],outcomes[1],'NPC and direct Quick travel have identical lesson pools, progress, forms and XP');
   }
-  await fixture(1,{map:'village',x:10,y:11,facing:'up'});await p.evaluate(()=>__test.challenge.startChallenge(1));
+  await fixture(1,{map:'village',x:10,y:11,facing:'up'});await p.evaluate(()=>(__test.studySchool(1),__test.challenge.startChallenge(1)));
   for(let i=0;i<6;i++){
    const q=await p.evaluate(()=>{const t=__test,q=t.state.session.questions[t.state.session.index];return {...q,card:t.content.wordById[q.id]};});
    const wrong=i===0||q.kind==='word'&&q.unstudied&&!q.recognition;

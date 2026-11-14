@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
-import {setup}from'./browser-fixture.mjs';
+import {setup,school}from'./browser-fixture.mjs';
 import {driver}from'./rpg-week1-driver.mjs';
 for(const [width,height]of [[1920,1080],[1366,768],[1280,720]]){
  const b=await setup({width,rpg:true});const p=b.page;
  try{
   await p.setViewportSize({width,height});await p.locator('#startTutorial').click();
   await p.evaluate(()=>{__test.state.progress.tutorialDone=true;__test.state.rpg.startWorld();window.__documentScrolls=[];window.addEventListener('scroll',()=>__documentScrolls.push(scrollY));});
-  await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination=residential]').click();
+  await school(p);if(!await p.locator('[data-destination=residential]').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination=residential]').click();
   await p.locator('#teachPanel').waitFor();
   const position=await p.evaluate(()=>{const p=JSON.parse(localStorage.getItem('pashto-quest-rpg-world-v1')).position;return {map:p.map,x:p.x,y:p.y};});
   assert.equal(await p.locator('#rpgDialogue').isVisible(),false,'Quick travel starts directly');

@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
-import { setup, tutorial } from "./browser-fixture.mjs";
+import { setup, school, tutorial } from "./browser-fixture.mjs";
 for (const width of [375, 1280]) {
   const b = await setup({ width, bridge: false });
   try {
     const p = b.page;
     await tutorial(p);
     await p.locator("#resultWorld").click();
+    await school(p);
     await p.locator('.map-point[data-place="residential"]').click();
     const known = new Map();
     let generated = 0;
@@ -38,6 +39,8 @@ for (const width of [375, 1280]) {
                 .first()
                 .click();
             await p.locator("#checkBuild").click();
+          } else if(await p.locator("#lessonRecall").count()){
+            await p.locator("#lessonRecall").fill(known.get(prompt));await p.getByRole("button",{name:"Submit answer",exact:true}).click();
           } else {
             const meaning = known.get(prompt);
             assert(meaning, prompt);

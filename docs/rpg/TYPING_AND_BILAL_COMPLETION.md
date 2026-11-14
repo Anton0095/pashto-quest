@@ -1,5 +1,7 @@
 # Typed opt-out and Bilal completion repair
 
+Current typing behaviour supersedes this historical report: Library Player Profile has independent English/Pashto typing settings (both default off). Disabling typing converts current and queued unanswered questions in that answer language to selection, preserving completed progress and scores. Existing shared preferences migrate to both settings.
+
 This follow-up supersedes the physical-Lake-only gate and missing-target greeting fallback described in the preceding [Sleep/Dream release](SLEEP_AND_CONVERSATIONS.md). It changes neither the curriculum nor the previously approved Day 2 third-person / Day 3 first-person schedule.
 
 ## Implemented behavior

@@ -20,7 +20,7 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     complete: {},
     challenges: {},
     tutorialDone: false,
-    enableTypingChallenges: false,
+    typingPreferences: {en:false,ps:false},
     playerProfile: { name: "Player", gender: "unspecified" },
   });
   function highestClearedDay(p) {
@@ -49,7 +49,7 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     };
   }
   function activateChallenge(p, day) {
-    if (!LIBRARY_DATA || !allowed(p, day)) return null;
+    if (!LIBRARY_DATA || !challengeAccessible(p, day)) return null;
     const plan = libraryEngine.ensurePlan(p, LIBRARY_DATA, day);
     // This persistent manifest keeps repeated activation/reload idempotent.
     plan.challengeActivation ||= libraryEngine.unlockDayMaterial(p, LIBRARY_DATA, NARRATIVE_DATA, day, "challenge-start");
@@ -155,12 +155,10 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
   function placeAccessible(progress, day, place) {
     if (place === "library") return true;
     if (!allowed(progress, day)) return false;
-    if (day === 2) {
-      if (!progress.complete["2-school"]) return place === "school";
-    }
-    if (day === 1 || day === 2) return true;
-    const opening = curriculum.days[day - 1].opening;
-    return place === opening || !!progress.complete[`${day}-${opening}`];
+    return zoneKeys.includes(place) && (place === "school" || !!progress.complete[`${day}-school`]);
+  }
+  function challengeAccessible(progress, day) {
+    return allowed(progress, day) && !!progress.complete[`${day}-school`];
   }
 
   return {
@@ -179,5 +177,6 @@ function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA 
     passedChallenge,
     allowed,
     placeAccessible,
+    challengeAccessible,
   };
 }

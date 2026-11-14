@@ -7,7 +7,7 @@ for(const width of [375,1280]) {
  try {
   await tutorial(p);
   await p.evaluate(async()=>{
-    const t=__test;t.lessons.begin('1-residential');let guard=0;
+    const t=__test;(t.studySchool(1),t.lessons.begin('1-residential'));let guard=0;
     while(!document.querySelector('#lessonScreen').classList.contains('hidden')){
       if(++guard>150)throw Error('Home stalled');const s=t.state.session;
       if(['greeting','lexical','sentence'].includes(s.phase))t.lessons.afterStudy();
@@ -15,17 +15,17 @@ for(const width of [375,1280]) {
       else{const item=s.queue[0],c=t.content.wordById[item.id];t.lessons.answer(item.kind==='construct'?c.ps:c.en);t.nextQuestion()}
       await Promise.resolve();
     }
-    if(t.content.zoneKeys.some(place=>place!=='residential'&&t.state.progress.complete['1-'+place]))throw Error('Unexpected district completion');
+    if(t.content.zoneKeys.some(place=>!['residential','school'].includes(place)&&t.state.progress.complete['1-'+place]))throw Error('Unexpected district completion');
     t.library.openLibrary();const detail=document.querySelector('.library-entry');detail.open=true;
     [...detail.querySelectorAll('button')].find(b=>b.textContent==='Practise an encountered form').click();
     const allowed=new Set(Object.values(t.content.wordById).filter(c=>(t.content.LIBRARY_DATA.sourceMappings[c.id]||[]).length&&t.content.LIBRARY_DATA.sourceMappings[c.id].every(r=>t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))).map(c=>c.en));
     for(const b of detail.lastElementChild.querySelectorAll('button'))if(!allowed.has(b.textContent)&&!['A different meaning','Another response','None of these'].includes(b.textContent))throw Error('Library leaked '+b.textContent);
     document.querySelector('#libraryDialog').close();
   });
-  await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;__test.challenge.startChallenge(1);});
+  await p.evaluate(()=>{__test.state.progress.typingPreferences={en:true,ps:true};(__test.studySchool(1),__test.challenge.startChallenge(1));});
   const unknown=await p.evaluate(()=>{
    const t=__test,s=t.state.session;
-   s.index=s.questions.findIndex(q=>q.answerFormat==="type"&&q.direction==="ps-en"&&q.unstudied);s.answered=s.index;t.challenge.showChallengeQuestion();
+   s.index=s.questions.findIndex(q=>q.kind==="word"&&q.unstudied);Object.assign(s.questions[s.index],{answerFormat:"type",direction:"ps-en",choiceOrder:[],recognition:false});s.answered=s.index;t.challenge.showChallengeQuestion();
    return {q:s.questions[s.index],card:t.content.wordById[s.questions[s.index].id]};
   });
   await p.locator("#quizPanel").screenshot({path:`docs/maintenance/p1/uncued-recall-${width}.png`});
@@ -71,8 +71,8 @@ for(const width of [375,1280]) {
    Storage.prototype.setItem=()=>{throw Error('Intermittent')};__test.state.progress.xp+=9;await __test.storage.save();
   });await p.reload();assert.equal(await p.evaluate(()=>__test.state.progress.xp),xp+7);
   // Activation licenses current grammar; practical answers add no further unlocks.
-  await p.evaluate(()=>{const t=__test;t.reset(8);t.state.progress.tutorialDone=true;t.challenge.startChallenge(1);if(t.state.session.questions.some(q=>['choice','address'].includes(q.kind)))throw Error('Retired rule question generated')});
-  const grammarAtStart=await p.evaluate(()=>__test.state.progress.library.grammar);assert.equal(grammarAtStart['grammar-day-1'].source,'challenge-start');
+  await p.evaluate(()=>{const t=__test;t.reset(8);t.state.progress.tutorialDone=true;(t.studySchool(1),t.challenge.startChallenge(1));if(t.state.session.questions.some(q=>['choice','address'].includes(q.kind)))throw Error('Retired rule question generated')});
+  const grammarAtStart=await p.evaluate(()=>__test.state.progress.library.grammar);assert.equal(grammarAtStart['grammar-day-1'].source,'visible-prerequisite-workshop');
   await answerCurrent(p);assert.deepEqual(await p.evaluate(()=>__test.state.progress.library.grammar),grammarAtStart);
   const frozenPrompt=await p.locator('#quizPrompt').innerText();await p.evaluate(()=>__test.storage.settled());await p.reload();assert.equal(await p.locator('#quizPrompt').innerText(),frozenPrompt);
   // Fill real Chromium localStorage to its native quota, then recover.

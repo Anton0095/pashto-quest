@@ -3,10 +3,10 @@ import {setup,tutorial,answerCurrent} from './browser-fixture.mjs';
 for(const width of [375,1280]) {
  const b=await setup({width});const p=b.page;
  try {
-  await tutorial(p);
+  await tutorial(p);await p.evaluate(()=>__test.studySchool(1));
   for(const partial of [false,true]) {
    if(partial) await p.evaluate(()=>{
-    const t=__test;t.reset();t.state.progress.tutorialDone=true;t.lessons.begin('1-residential');
+    const t=__test;t.reset();t.state.progress.tutorialDone=true;(t.studySchool(1),t.lessons.begin('1-residential'));
     let guard=0;
     while(t.state.session.phase!=='lexical' || t.state.session.cardIndex<t.state.session.studyWords.length-1) {
      if(++guard>100)throw Error('Partial study stalled');t.lessons.afterStudy();
@@ -14,12 +14,12 @@ for(const width of [375,1280]) {
     t.world.startWorld();
    });
    const before=await p.evaluate(()=>({introduced:Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0),complete:__test.state.progress.complete,grammar:__test.state.progress.library.grammar}));
-   assert.deepEqual(before.complete,{});assert.deepEqual(before.grammar,{});
-   await p.evaluate(()=>__test.challenge.startChallenge(1));
+   assert.deepEqual(before.complete,{'1-school':true});assert(before.grammar['grammar-day-1']);
+   await p.evaluate(()=>(__test.studySchool(1),__test.challenge.startChallenge(1)));
    if(!await p.locator(".question-context").evaluate(d=>d.open))await p.locator(".question-context summary").click();
    assert((await p.locator("#lessonDescription").innerText()).includes("Includes assigned vocabulary from unvisited or unfinished locations"));
    const activated=await p.evaluate(()=>({introduced:Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0),complete:__test.state.progress.complete,grammar:__test.state.progress.library.grammar}));
-   assert(activated.introduced>before.introduced);assert.deepEqual(activated.complete,{});assert(activated.grammar['grammar-day-1']);
+   assert(activated.introduced>before.introduced);assert.deepEqual(activated.complete,before.complete);assert(activated.grammar['grammar-day-1']);
    const frozen=await p.evaluate(()=>__test.state.session.questions);
    const coverage=await p.evaluate(()=>{
     const t=__test,s=t.state.session,plan=t.state.progress.library.plans[1];
@@ -38,7 +38,7 @@ for(const width of [375,1280]) {
      await p.evaluate(()=>__test.storage.settled());await p.reload();
      assert.deepEqual(await p.evaluate(()=>__test.state.session.questions),frozen);
     }
-    if(info.q.kind==='sentence') {
+    if(info.q.kind==='sentence'&&info.q.answerFormat!=='type') {
       const rendered=await p.locator('#choices button').allTextContents();
       assert(rendered.includes(info.en),JSON.stringify({partial,index:i,q:info.q,en:info.en,rendered}));
     }
@@ -53,7 +53,7 @@ for(const width of [375,1280]) {
   }
   // Restore an older word-only attempt without replacing its frozen questions.
   const old=await p.evaluate(async()=>{
-    const t=__test;t.reset();t.state.progress.tutorialDone=true;t.challenge.startChallenge(1);
+    const t=__test;t.reset();t.state.progress.tutorialDone=true;(t.studySchool(1),t.challenge.startChallenge(1));
     const s=t.state.session,word=s.questions.find(q=>q.kind==='word');
     s.questions=Array.from({length:15},()=>JSON.parse(JSON.stringify(word)));delete s.materialUnlockedAtStart;
     t.state.progress.library.acquired={};t.state.progress.library.grammar={};delete t.state.progress.library.plans[1].challengeActivation;

@@ -45,7 +45,7 @@ function createChallengeUI({
     title.className = "eyebrow";
     title.textContent =
       day === 6
-        ? "HILLS · WALK WITH SALEHA AND MINA"
+        ? "HILLS · WALK WITH DEENA AND MEDINA"
         : "SCHOOL · WEEK 1 EXAMINATION";
     panel.append(title);
     if (day === 6) {
@@ -101,7 +101,7 @@ function createChallengeUI({
     ui.view("lessonScreen");
   }
   function startChallenge(day, snapshot = null) {
-    if (!learning.allowed(day)) return;
+    if (!progression.challengeAccessible(state.progress, day)) return;
     if (!snapshot && state.progress.activeChallenge)
       return startChallenge(state.progress.activeChallenge.loop, JSON.parse(JSON.stringify(state.progress.activeChallenge)));
     if (snapshot && hasRetiredQuestions(snapshot)) { showRetiredAssessment(snapshot);return; }
@@ -155,7 +155,7 @@ function createChallengeUI({
     );
     ui.$("guideMessage").textContent =
       day <= 2
-        ? "Welcome home! Let us check what you know. You may take the challenge without visiting the other locations. Twelve correct answers unlock tomorrow."
+        ? "Welcome home! Let us check what you know. After School, you may skip the remaining lessons and take the challenge. Twelve correct answers unlock tomorrow."
         : day === 3
           ? "Salaam! It is nearly dinnertime. Let us shop for dinner and practise fifteen questions."
           : day === 4
@@ -234,6 +234,7 @@ function createChallengeUI({
     if (resuming && state.session.locked) renderRecordedResponse();
   }
   function renderQuestion(resuming) {
+    questions.adaptTyping();
     ui.$("questionBody").scrollTop=0;
     queueMicrotask(ui.readableQuizSurfaces);
     ui.$("lessonScreen").classList.remove("construction-active");
@@ -314,7 +315,7 @@ function createChallengeUI({
         submitLabel: q.answerFormat ? "Submit answer" : "Submit meaning", submitClass: "speaker",
         onInput(value) { state.session.recallDraft = value; storage.save(); },
         onSubmit: answerChallenge,
-        onSkip: () => answerChallenge("", { skipped: true }),
+        onSkip: () => {questions.disableTyping(q);questions.adaptTyping();state.session.recallDraft="";storage.save();renderQuestion(true);},
         reveal: { label: "I don’t know — reveal meaning", onClick: () => answerChallenge("") },
       });
     } else
@@ -352,7 +353,6 @@ function createChallengeUI({
     if (!result) return;
     const { q, w, correct } = result;
     for (const control of ui.$("choices").querySelectorAll("input, button")) control.disabled = true;
-    if(result.skipped){storage.save();ui.$("quizNext").disabled=false;onAdvance();storage.save();return;}
     if (q.generated) learning.surface(q.id, "assessment-feedback");
     storage.save();
     ui.hud();
@@ -421,7 +421,7 @@ function createChallengeUI({
     ui.$("passUnlockNotice")?.remove();
     if(firstPass&&reward.completedLocations?.length){
       const notice=ui.node("aside");notice.id="passUnlockNotice";
-      notice.append(ui.node("p","You have completed this day’s challenge. Words from the locations you skipped were unlocked when the challenge began and remain available for future activities. Visit the Library to review them."),ui.node("p",`Location completion rewards: +${reward.locationBonus} XP.`),ui.button("Review unlocked vocabulary",()=>libraryReview(reward.newlyUnlocked)));
+      notice.append(ui.node("p","You have completed this day’s challenge. Words from the locations you skipped have been added to your Vocabulary Bank. Visit the Library to review them."),ui.node("p",`Location completion rewards: +${reward.locationBonus} XP.`),ui.button("Review unlocked vocabulary",()=>libraryReview(reward.newlyUnlocked)));
       ui.$("resultDescription").after(notice);
     }
     ui.$("resultAccuracy").textContent =
@@ -459,7 +459,7 @@ function createChallengeUI({
   function resumeChallenge() {
     if (!state.progress.activeChallenge) return false;
     const snapshot = JSON.parse(JSON.stringify(state.progress.activeChallenge));
-    if (!learning.allowed(snapshot.loop)) return false;
+    if (!progression.challengeAccessible(state.progress,snapshot.loop)) return false;
     startChallenge(snapshot.loop, snapshot);
     storage.save();
     return true;

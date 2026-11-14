@@ -14,7 +14,7 @@ for (const target of [8, 12, 16, 20, 24]) {
   const day = E.ensurePlan(p, data, 1);
   assert.equal(Object.values(day.locationAssignments).flat().length, target);
   for (const [district, ids] of Object.entries(day.locationAssignments)) {
-    assert.equal(ids.length, target / 4);
+    assert.equal(ids.length, E.quotas(1,target)[district]);
     for (const id of ids)
       assert(
         data.entries

@@ -8,6 +8,7 @@ function createLibraryUI({
   narrative,
   learning,
   questions,
+  onTypingChange = () => {},
 }) {
   let libraryLastFocus = null, unlockedFilter = null;
   function openLibrary(tab = "vocabulary", ids = null) {
@@ -39,13 +40,16 @@ function createLibraryUI({
       const gender=ui.node('select');gender.id='playerProfileGender';gender.setAttribute('aria-label','Gender preference');
       for(const [value,label] of [['male','Male'],['female','Female'],['unspecified','Prefer not to say']]){const option=ui.node('option',label);option.value=value;gender.append(option);}
       gender.value=state.progress.playerProfile.gender;
-      for(const [label,input] of [['Name',name],['Gender',gender]]){const row=ui.node('label',label+' ');row.append(input);box.append(row);}
-      const typing=ui.node('input');typing.type='checkbox';typing.id='enableTypingChallenges';typing.checked=state.progress.enableTypingChallenges === true;
-      const typingLabel=ui.node('label','Enable typing challenges ');typingLabel.append(typing);box.append(typingLabel);
-      box.append(ui.node('p','Optional English and Pashto typing. Saved challenges keep their original questions.','tiny'));
+      for(const [label,input] of [['Name',name],['Gender',gender]]){const row=ui.node('label',label+' ');row.style.display='block';row.style.marginBlock='0.5rem';row.append(input);box.append(row);}
+      const preferences=QuestionEngine.typingPreferences(state.progress),inputs={};
+      for(const [lang,label] of [["ps","Type answers in Pashto"],["en","Type answers in English"]]){
+        const input=ui.node('input');input.type='checkbox';input.id='typing-'+lang;input.checked=preferences[lang];inputs[lang]=input;
+        const row=ui.node('label',label+' ');row.style.display='block';row.style.marginBlock='0.5rem';row.append(input);box.append(row);
+      }
+      box.append(ui.node('p','Typing is optional in each answer language. Sentence building stays available.','tiny'));
       const feedback=ui.node('p');feedback.id='profileFeedback';feedback.setAttribute('role','status');
       const save=ui.button('Save profile',()=>{});save.type='submit';save.disabled=!!state.reviewCampaign;
-      box.addEventListener('submit',async event=>{event.preventDefault();if(state.reviewCampaign)return;state.progress.enableTypingChallenges=typing.checked;state.progress.playerProfile={name:name.value.trim()||'Player',gender:gender.value};save.disabled=true;const ok=await storage.save();save.disabled=false;ui.hud();feedback.textContent=ok?'Profile saved.':'Profile is in memory; saving failed. Use the save recovery controls and retry.';});
+      box.addEventListener('submit',async event=>{event.preventDefault();if(state.reviewCampaign)return;state.progress.typingPreferences={en:inputs.en.checked,ps:inputs.ps.checked};questions.adaptTyping();if(state.progress.activeChallenge)questions.adaptTyping(state.progress.activeChallenge);onTypingChange();state.progress.playerProfile={name:name.value.trim()||'Player',gender:gender.value};save.disabled=true;const ok=await storage.save();save.disabled=false;ui.hud();feedback.textContent=ok?'Profile saved.':'Profile is in memory; saving failed. Use the save recovery controls and retry.';});
       box.append(save,feedback);root.append(ui.node('h3','Player Profile'),ui.node('p',state.reviewCampaign?'Exit dream practice to edit your campaign profile.':'Optional settings. You can change these at any time.'),box);return;
     }
     if (tab === "pace") {
@@ -165,14 +169,14 @@ function createLibraryUI({
     const encounteredUniversal = content.LIBRARY_DATA.entries.filter(
       (e) =>
         e.vocabularyClass === "universal" &&
-        state.progress.library.acquired[e.lemmaId],
+        LibraryEngine.inBank(state.progress,e.lemmaId),
     ).length;
     root.append(
       ui.node(
         "p",
         universal
-          ? `${encounteredUniversal} encountered universal words · ${sum.encountered + encounteredUniversal} distinct words overall. Universal words never consume district quotas.`
-          : `${sum.encountered} encountered · ${sum.practised} practised · ${sum.mastered} mastered words. ${encounteredUniversal} universal words appear separately. Inflections count under one entry.`,
+          ? `${encounteredUniversal} universal words in the Bank · ${sum.encountered + encounteredUniversal} distinct words overall. Universal words never consume district quotas.`
+          : `${sum.encountered} in the Bank · ${sum.practised} practised · ${sum.mastered} mastered words. ${encounteredUniversal} universal words appear separately. Inflections count under one entry.`,
         "notice",
       ),
     );
@@ -189,7 +193,7 @@ function createLibraryUI({
       root.append(
         ui.node(
           "p",
-          `Day ${state.day}: ${ids.length} scheduled · ${seen} scheduled words actually encountered. ${actual} incidental story words · ${tally.reviewedExistingLemmas.length} existing words revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap ? plan.notice : ""}`,
+          `Day ${state.day}: ${ids.length} scheduled · ${seen} scheduled words in the Bank. ${actual} incidental story words · ${tally.reviewedExistingLemmas.length} existing words revisited · ${tally.masteredLemmas.length} mastered. Story exposure is separate from your assigned target. ${plan.contentGap || plan.allocationAdjusted ? plan.notice : ""}`,
         ),
       );
     }
@@ -260,7 +264,7 @@ function createLibraryUI({
       let entries = content.LIBRARY_DATA.entries.filter((e) => {
         const r = state.progress.library.acquired[e.lemmaId];
         return (
-          r && (!unlockedFilter || unlockedFilter.includes(e.lemmaId)) &&
+          r && LibraryEngine.inBank(state.progress,e.lemmaId) && (!unlockedFilter || unlockedFilter.includes(e.lemmaId)) &&
           (unlockedFilter || (e.vocabularyClass === "universal") === universal) &&
           (!query ||
             [e.displayLemmaPs, e.romanisation, ...e.englishSenses].join(" ")
@@ -290,7 +294,7 @@ function createLibraryUI({
             "p",
             Object.keys(state.progress.library.acquired).length
               ? "No entries match these filters."
-              : "Your bank is empty. Words appear when you encounter them in a lesson or challenge; planning a day does not teach its words.",
+              : "Your bank is empty. Study words or pass the daily challenge to add them. Planning a day or starting a challenge does not award its assigned vocabulary.",
           ),
         );
       for (const e of entries) list.append(libraryEntry(e));
@@ -454,6 +458,7 @@ function createLibraryUI({
     const plan = state.progress.library.plans[state.day],
       current = plan?.effectiveDailyTarget;
     const next = LibraryEngine.nextUnstartedDay(state.progress, state.day);
+    if (plan?.allocationAdjusted) root.append(ui.node("p", plan.notice, "notice"));
     root.append(
       ui.node("h3", "Learning Pace"),
       ui.node(
@@ -506,7 +511,7 @@ function createLibraryUI({
     root.append(message);
   }
   function paceSummary(target) {
-    return `${target}/day requested · ${target / LibraryEngine.places.length} per teaching location`;
+    return `${target}/day requested · allocated by lesson`;
   }
   function renderOnboardingPace() {
     const choices = ui.$("onboardingPace") || ui.node("div");

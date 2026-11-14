@@ -45,7 +45,7 @@ const t=runtime();reset(t);for(let d=1;d<=3;d++){for(const loc of t.content.zone
 assert.deepEqual(plain(t.S.restoreCard(t.content.LIBRARY_DATA,t.content.LIBRARY_DATA.sentenceFrames,old)),old);
 beginAttempt(t,3);const q=t.state.session.questions.find(q=>q.generated&&q.kind==='sentence');assert(q);Object.assign(q,{id:old.id,generated:old});delete q.choiceIds;q.direction='ps-en';q.answerFormat='type';q.choiceOrder=[];
 t.storage.save();const saved=t.storage.load();assert.equal(t.storage.problem,null);assert.deepEqual(plain(saved.activeChallenge.questions.find(q=>q.id===old.id).generated),old);
-const fresh=runtime();reset(fresh);fresh.progression.completeChallengeOnce(fresh.state.progress,1,15);fresh.progression.activateChallenge(fresh.state.progress,2);
+const fresh=runtime();reset(fresh);fresh.progression.completeChallengeOnce(fresh.state.progress,1,15);study(fresh,2,"school");fresh.progression.activateChallenge(fresh.state.progress,2);
 assert(fresh.state.progress.library.acquired['lemma:v-see']?.introducedFormIds.includes('lemma:v-see:present:2'));
 assert(!fresh.state.progress.library.acquired['lemma:v-see']?.introducedFormIds.includes('lemma:v-see:present:0'));
 assert(!fresh.learning.availableSentences(1).some(c=>/see/.test(c.en)));
