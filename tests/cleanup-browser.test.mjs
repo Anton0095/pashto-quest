@@ -150,15 +150,10 @@ for (const width of [375, 1280]) {
         },
         { day, location, opening: old.opening },
       );
-      assert.equal(
-        await p.locator("#speakerName").innerText(),
-        await p.evaluate(name=>__test.names.text(name),lesson.teacher) + ' — ' + ({'Deena':'دینه','Medina':'مدینه','Muhammad Jan':'محمد جان','Edris':'ادریس','Ms Hameed':'حمید'}[lesson.teacher]) + " · speaking",
-      );
-      assert(
-        (await p.locator("#guideMessage").innerText()).startsWith(
-          lesson.teacher.replace(/\bSaleha\b/g, "Deena").replace(/\bMina\b/g, "Medina") + ":",
-        ),
-      );
+      const teacher=lesson.teacher.replace(/\bSaleha\b/g,"Deena").replace(/\bMina\b/g,"Medina");
+      const bilingualTeacher=teacher+' — '+({'Deena':'دینه','Medina':'مدینه','Muhammad Jan':'محمد جان','Edris':'ادریس','Ms Hameed':'حمید'}[teacher]);
+      assert.equal(await p.locator("#speakerName").innerText(),bilingualTeacher+" · speaking");
+      assert((await p.locator("#guideMessage").innerText()).startsWith(bilingualTeacher+":"));
       assert(!await p.locator("#addressTarget").isVisible());
       assert.equal(await p.locator("#participants [data-character-id]").count(),0,"Same instructor and partner share one portrait");
       if (day === 6)
@@ -220,7 +215,8 @@ for (const width of [375, 1280]) {
       await p.evaluate(() =>
         Object.keys(__test.state.progress.library.grammar).sort(),
       ),
-      Array.from({ length: 14 }, (_, i) => "grammar-day-" + (i + 1)).sort(),
+      [],
+      "Concept preview does not unlock grammar before acknowledgement",
     );
     assert.equal(
       await p
@@ -228,6 +224,9 @@ for (const width of [375, 1280]) {
         .evaluate((e) => e.querySelectorAll("p h4,p p").length),
       0,
     );
+    await p.locator("#grammarNext").click();
+    assert.deepEqual(await p.evaluate(()=>Object.keys(__test.state.progress.library.grammar).sort()),Array.from({length:14},(_,i)=>"grammar-day-"+(i+1)).sort());
+    assert(await p.locator("#grammarPanel").isVisible(),"The acknowledged catch-up concepts precede the normal workshop");
     await p.locator("#grammarNext").click();
     assert(await p.locator("#resultScreen").isVisible());
     assert.match(

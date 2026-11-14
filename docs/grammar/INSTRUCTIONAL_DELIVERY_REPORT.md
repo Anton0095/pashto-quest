@@ -1,12 +1,12 @@
 # Measured instructional sentence delivery
 
-**6275 / 6275 independently observed sentence surfaces were generated: 100%.** Zero authored curricular sentence surfaces were delivered. The two separately approved onboarding questions are outside this curricular denominator. The 18 designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.
+**6131 / 6131 independently observed sentence surfaces were generated: 100%.** Zero authored curricular sentence surfaces were delivered. The two separately approved onboarding questions are outside this curricular denominator. The 18 designated fixed expressions are excluded from this denominator; profiles that delivered no sentences are marked N/A rather than assigned a fictitious percentage.
 
 Actual rendered browser surfaces across ten complete profiles; compiler provenance and actual form/grammar unlocks checked independently at each sentence surface.
 
 Test-only educational navigation harness: fourteen-day shared-engine regression matrix. The default release is a Days 1–7 RPG, verified separately by the public normal/skip routes in rpg-week1-browser.test.mjs and movement/interface checks at 375/1280px.
 
-Release SHA-256: `ea87b9eb4ceebaaa220fd0a8d8a1985a0bdfc91a922fe12d41de3d97dd89fcb2`. The complete browser matrix covered 280 normal district visits and 70 School visits on shortcut routes and 140 assessments, all fourteen days, five paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
+Release SHA-256: `7e3e777c51325e004d5952779e56ce6e379b62d6dcceb48dac1f4b3ca2a98df4`. The complete browser matrix covered 280 normal district visits and 70 School visits on shortcut routes and 140 assessments, all fourteen days, five paces and normal/skip paths. Observer assertions compare rendered text and compiler reconstruction and check actual introduced forms and grammar.
 
 ## Day 1 Home: before and after
 
@@ -40,31 +40,31 @@ Default Home needs only the compulsory School lesson and introduces no action ve
 | 2 | present_attributive, present_transitive | None | 0 |
 | 3 | present_attributive, present_transitive | None | 0 |
 | 4 | coordinated_present, present_attributive, present_transitive | None | 0 |
-| 5 | present_transitive | None | 0 |
-| 6 | equative_descriptor, present_attributive | None | 0 |
-| 7 | coordinated_present, present_joint_action, present_transitive | None | 0 |
+| 5 | present_attributive, present_transitive | None | 0 |
+| 6 | equative_descriptor, present_attributive, present_transitive | None | 0 |
+| 7 | coordinated_present, present_attributive, present_compound_transitive, present_joint_action, present_transitive | None | 0 |
 | 8 | attributive_equative, demonstrative_descriptor, demonstrative_transitive, equative_noun, present_transitive | None | 0 |
-| 9 | counted_equative, counted_transitive, demonstrative_transitive | None | 0 |
-| 10 | attributive_equative, location_adverb_equative, spatial_equative, where_question | None | 0 |
-| 11 | demonstrative_transitive, location_adverb_equative, possessive_descriptor, possessive_equative, possessive_spatial | None | 0 |
-| 12 | demonstrative_descriptor, how_many_question, location_adverb_equative, possessive_equative, what_object_question, which_question, who_subject_question, whose_question | None | 0 |
-| 13 | demonstrative_descriptor, location_adverb_equative, possessive_equative, present_intransitive_adverb, present_transitive_adverb | None | 0 |
-| 14 | attributive_equative, count_location, counted_transitive, demonstrative_descriptor, how_many_question, location_adverb_equative, possessive_equative, present_attributive, present_compound_predicate, present_compound_transitive, present_joint_action, present_transitive, present_transitive_adverb, spatial_equative, what_object_question, who_subject_question | None | 0 |
+| 9 | counted_equative, counted_transitive | None | 0 |
+| 10 | counted_transitive, location_adverb_equative, spatial_equative, where_question | None | 0 |
+| 11 | location_adverb_equative, possessive_descriptor, possessive_equative, possessive_spatial, present_attributive | None | 0 |
+| 12 | demonstrative_descriptor, how_many_question, location_adverb_equative, possessive_equative, what_object_question, where_question, which_question, who_subject_question, whose_question | None | 0 |
+| 13 | count_location, demonstrative_descriptor, location_adverb_equative, possessive_equative, present_intransitive_adverb, present_transitive, present_transitive_adverb | None | 0 |
+| 14 | coordinated_present, count_location, counted_transitive, demonstrative_descriptor, demonstrative_transitive, location_adverb_equative, possessive_descriptor, possessive_equative, possessive_spatial, present_compound_transitive, present_intransitive, present_joint_action, present_transitive, which_question, who_subject_question, whose_question | None | 0 |
 
 ## All tested profiles
 
 | District pace | Route | Observed sentence surfaces | Generated |
 |---:|---|---:|---:|
-| 8 | Normal | 779 | 100% |
+| 8 | Normal | 770 | 100% |
 | 8 | Skip | 447 | 100% |
-| 12 | Normal | 818 | 100% |
-| 12 | Skip | 448 | 100% |
-| 16 | Normal | 793 | 100% |
-| 16 | Skip | 488 | 100% |
-| 20 | Normal | 783 | 100% |
-| 20 | Skip | 468 | 100% |
-| 24 | Normal | 793 | 100% |
-| 24 | Skip | 458 | 100% |
+| 12 | Normal | 748 | 100% |
+| 12 | Skip | 463 | 100% |
+| 16 | Normal | 803 | 100% |
+| 16 | Skip | 453 | 100% |
+| 20 | Normal | 788 | 100% |
+| 20 | Skip | 423 | 100% |
+| 24 | Normal | 808 | 100% |
+| 24 | Skip | 428 | 100% |
 
 ## Fixed expression inventory
 
