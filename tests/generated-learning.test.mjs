@@ -47,7 +47,7 @@ try {
           return Object.values(c.generated.slots).every((r) =>
             t.state.progress.library.acquired[
               r.lemmaId
-            ]?.introducedFormIds.includes(r.formId),
+            ]?.availableFormIds.includes(r.formId),
           );
         }, s.id);
         assert(check);

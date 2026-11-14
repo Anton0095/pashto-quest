@@ -58,7 +58,7 @@ const negatives={
  'NEG-UNKNOWN-GENDER':()=>{const d=cloneData(),b=binding('کور لوی دی.'),f=value(d,b.slots.noun);f.morphology.gender=null;f.featureEvidence.features.gender=null;reject(d,frameFor('کور لوی دی.'),b,'null gender')},
  'NEG-OBLIQUE-D10':()=>{const b=binding('کتاب پر مېز دی.');b.slots.location=formRef('lemma:n-table',f=>f.pashto==='مېز');reject(data,frameFor('کتاب پر مېز دی.'),b,'direct is not a chunk')},
  'NEG-COMPOUND-SPLIT':()=>{const d=cloneData(),b=binding('موږ یو ځای منډې وهو.'),f=value(d,b.slots.verb);f.pashto=f.pashto.split(' ').reverse().join(' ');f.featureEvidence.pashtoSpan=f.pashto;reject(d,frameFor('موږ یو ځای منډې وهو.'),b,'compound attestation')},
- 'NEG-UNSEEN-LEMMA':()=>{const p=player(14);p.library.acquired['lemma:a-dark'].introducedFormIds=[];assert(!S.eligible(p,data,frames,14).some(c=>Object.values(c.generated.slots).some(r=>r.lemmaId==='lemma:a-dark')))},
+ 'NEG-UNSEEN-LEMMA':()=>{const p=player(14);p.library.acquired['lemma:a-dark'].availableFormIds=[];assert(!S.eligible(p,data,frames,14).some(c=>Object.values(c.generated.slots).some(r=>r.lemmaId==='lemma:a-dark')))},
  'NEG-UNKNOWN-WORD-PROPOSAL':()=>{const d=cloneData(),b=binding('کور لوی دی.'),f=value(d,b.slots.noun);f.pashto=null;f.composition.enabled=true;reject(d,frameFor('کور لوی دی.'),b,'untranslated')},
  'NEG-PRONOUN-DEIXIS':()=>{const b=binding('هغه کتاب نوی دی.');b.slots.demonstrative=formRef('lemma:pronoun:third-person',()=>true);reject(data,frameFor('هغه کتاب نوی دی.'),b,'personal vs deictic')},
  'NEG-PAST-ERGATIVE':()=>{const d=cloneData(),b=binding(read1),f=value(d,b.slots.verb);f.morphology.tense='past';f.featureEvidence.features.tense='past';reject(d,frameFor(read1),b,'past')},
@@ -97,7 +97,7 @@ for(let seed=0;seed<1000;seed++) {
 assert(variants.size>100,'Seed-controlled variety must exceed nine tuples');
 for(let day=1;day<=14;day++) {
  const p=player(day),available=S.select(p,data,frames,day,40,42);
- for(const c of available)for(const r of Object.values(c.generated.slots))assert(p.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId));
+ for(const c of available)for(const r of Object.values(c.generated.slots))assert(p.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId));
  const locked=player(day);locked.library.grammar={};assert.equal(S.select(locked,data,frames,day,10,1).length,0);
 }
 for(const key of ['case','number','person','aspect','tense']) {

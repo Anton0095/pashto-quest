@@ -1,4 +1,4 @@
-/* Schema-8 shape and compiler-proof validation. No persistence or DOM. */
+/* Schema-9 shape and compiler-proof validation. No persistence or DOM. */
 function createSaveValidator({ content, progression }) {
   function validOrder(order, size) {
     return (
@@ -33,13 +33,13 @@ function createSaveValidator({ content, progression }) {
           !integer(r.totalAttempts) || !integer(r.correctAttempts) || r.correctAttempts>r.totalAttempts || !time(r.srsDueAt) ||
           !Number.isInteger(r.firstEncounteredDay) || r.firstEncounteredDay<1 || r.firstEncounteredDay>14 ||
           typeof r.firstEncounteredSource!=="string" || !strings(r.encounteredSourceIds) ||
-          ![r.encounteredFormIds,r.introducedFormIds,r.practisedFormIds].every(strings) ||
-          [...r.introducedFormIds,...r.practisedFormIds,...Object.keys(r.forms)].some(id=>!r.encounteredFormIds.includes(id))) return false;
+          ![r.encounteredFormIds,r.availableFormIds,r.practisedFormIds].every(strings) ||
+          [...r.availableFormIds,...r.practisedFormIds,...Object.keys(r.forms)].some(id=>!r.encounteredFormIds.includes(id))) return false;
       if(r.firstStudyLesson!==undefined&&(typeof r.firstStudyLesson!=='string'||!/^(?:[1-9]|1[0-4])-(?:residential|nature|business|school)$/.test(r.firstStudyLesson)))return false;
       if (r.formallyIntroducedDay!==undefined && (!integer(r.formallyIntroducedDay)||r.formallyIntroducedDay<1||r.formallyIntroducedDay>14)) return false;
-      const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass","challenge-start"].includes(v.source) && typeof v.location==="string" && (v.studiedDay===undefined || (integer(v.studiedDay)&&v.studiedDay>=1&&v.studiedDay<=14));
+      const origin = v => object(v) && integer(v.day) && v.day>=1 && v.day<=14 && ["study","challenge-pass","challenge-start"].includes(v.source) && typeof v.location==="string" && (v.studiedDay===undefined ? v.studiedLesson===undefined : (integer(v.studiedDay)&&v.studiedDay>=1&&v.studiedDay<=14&&typeof v.studiedLesson==="string"&&/^(?:[1-9]|1[0-4])-(?:residential|nature|business|school)$/.test(v.studiedLesson)));
       if (r.unlock!==undefined && !origin(r.unlock)) return false;
-      if (r.formUnlocks!==undefined && (!object(r.formUnlocks) || Object.entries(r.formUnlocks).some(([id,v]) => !r.introducedFormIds.includes(id) || !origin(v)))) return false;
+      if (r.formUnlocks!==undefined && (!object(r.formUnlocks) || Object.entries(r.formUnlocks).some(([id,v]) => !r.availableFormIds.includes(id) || !origin(v)))) return false;
       if (r.masteredAt!==undefined && !time(r.masteredAt)) return false;
     }
     for (const [day,r] of Object.entries(l.dayExposure)) {
@@ -137,7 +137,7 @@ function createSaveValidator({ content, progression }) {
       if (["sentence","construct","dialogue"].includes(q.kind) && w?.type==="sentence" && !q.generated) return false;
       for (const card of [q.generated,q.promptGenerated,...(q.choiceIds || []).map(id=>content.wordById[id])].filter(Boolean)) {
         if (!card.generated?.requiredGrammarIds?.every(g=>p.library.grammar[g]) ||
-            !Object.values(card.generated.slots).every(r=>p.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))) return false;
+            !Object.values(card.generated.slots).every(r=>p.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId))) return false;
       }
       return true;
     };
@@ -193,11 +193,11 @@ function createSaveValidator({ content, progression }) {
         !object(record.forms) ||
         !Array.isArray(record.encounteredFormIds) ||
         !Array.isArray(record.practisedFormIds) ||
-        !Array.isArray(record.introducedFormIds)
+        !Array.isArray(record.availableFormIds)
       )
         return false;
       if (
-        record.introducedFormIds.some(
+        record.availableFormIds.some(
           (id) => !record.encounteredFormIds.includes(id),
         )
       )
@@ -247,6 +247,9 @@ function createSaveValidator({ content, progression }) {
         )
       )
         return false;
+      if (plan.firstFormSelections !== undefined && (!object(plan.firstFormSelections) || Object.entries(plan.firstFormSelections).some(([place,forms])=>
+        !content.zoneKeys.includes(place) || !Array.isArray(forms) || forms.length!==assignments[place].length || new Set(forms).size!==forms.length ||
+        forms.some((id,i)=>!content.libraryEntries[assignments[place][i]]?.forms.some(f=>f.formId===id))))) return false;
       const ids = Object.values(assignments).flat();
       if (new Set(ids).size !== ids.length || ids.length + content.zoneKeys.reduce((sum,k)=>sum+plan.shortfalls[k],0) !== plan.requestedDailyTarget || (plan.day === 14 && ids.length))
         return false;
@@ -375,7 +378,7 @@ function createSaveValidator({ content, progression }) {
               (g) => p.library.grammar[g],
             ) ||
             !Object.values(item.generated.generated.slots).every((r) =>
-              p.library.acquired[r.lemmaId]?.introducedFormIds.includes(
+              p.library.acquired[r.lemmaId]?.availableFormIds.includes(
                 r.formId,
               ),
             )

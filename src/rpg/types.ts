@@ -22,7 +22,7 @@ export interface AuthoredConversation {characterId:string;speaker:string;days:Re
 export interface WorldData {conversations?:Record<string,AuthoredConversation>;schemaVersion:number;firstDay:number;lastDay:number;start:Position;tiles:Record<string,{walkable:boolean;kind:string}>;maps:Record<string,WorldMap>;npcs:NPC[];objects:WorldObject[];events:Record<string,StoryEvent>;days:Record<string,Chapter>}
 export interface Question {id:string;kind:'word'|'construct';retries:number;[key:string]:unknown}
 export interface LessonSession {
-  mode:'tutorial'|'standard'|'review';id:string;loop:number;loc:string|null;phase:string;cardIndex:number;attemptId:number;
+  schoolConceptPending?:boolean;formAcknowledgements?:string[];mode:'tutorial'|'standard'|'review';id:string;loop:number;loc:string|null;phase:string;cardIndex:number;attemptId:number;
   answered:number;firstCorrect:number;earned:number;tutorialResponses:number;constructionCount:number;locked:boolean;finished?:boolean;
   skippedItems?:string[];
   required:string[];studyWords:string[];greetingCards:string[];studySentences:string[];firstAsked:Set<string>;passed:Set<string>;

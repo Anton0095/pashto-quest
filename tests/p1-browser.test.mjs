@@ -18,7 +18,7 @@ for(const width of [375,1280]) {
     if(t.content.zoneKeys.some(place=>!['residential','school'].includes(place)&&t.state.progress.complete['1-'+place]))throw Error('Unexpected district completion');
     t.library.openLibrary();const detail=document.querySelector('.library-entry');detail.open=true;
     [...detail.querySelectorAll('button')].find(b=>b.textContent==='Practise an encountered form').click();
-    const allowed=new Set(Object.values(t.content.wordById).filter(c=>(t.content.LIBRARY_DATA.sourceMappings[c.id]||[]).length&&t.content.LIBRARY_DATA.sourceMappings[c.id].every(r=>t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))).map(c=>c.en));
+    const allowed=new Set(Object.values(t.content.wordById).filter(c=>(t.content.LIBRARY_DATA.sourceMappings[c.id]||[]).length&&t.content.LIBRARY_DATA.sourceMappings[c.id].every(r=>t.state.progress.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId))).map(c=>c.en));
     for(const b of detail.lastElementChild.querySelectorAll('button'))if(!allowed.has(b.textContent)&&!['A different meaning','Another response','None of these'].includes(b.textContent))throw Error('Library leaked '+b.textContent);
     document.querySelector('#libraryDialog').close();
   });

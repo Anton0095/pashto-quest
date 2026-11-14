@@ -4284,7 +4284,7 @@
           "formId": "lemma:n-shop:research:direct:plural:6539af70",
           "pashto": "دکانونه",
           "romanisation": "dukānúna",
-          "englishGloss": "Shop",
+          "englishGloss": "shops",
           "morphology": {
             "gender": "masculine",
             "number": "plural",
@@ -7762,7 +7762,7 @@
           "formId": "lemma:n-fish:research:direct:plural:3aa8f716",
           "pashto": "کبونه",
           "romanisation": "kabúna",
-          "englishGloss": "Fish",
+          "englishGloss": "fish",
           "morphology": {
             "gender": "masculine",
             "number": "plural",
@@ -20133,7 +20133,7 @@
           "formId": "lemma:n-potato3:research:direct:plural:c4bb5a45",
           "pashto": "کچالوګان",
           "romanisation": "kačālugā́n",
-          "englishGloss": "Potatoes",
+          "englishGloss": "potatoes",
           "morphology": {
             "gender": "masculine",
             "number": "plural",
@@ -20193,7 +20193,7 @@
           "formId": "lemma:n-potato3:research:direct:plural:049329b1",
           "pashto": "کچالان",
           "romanisation": "kačālā́n",
-          "englishGloss": "Potatoes",
+          "englishGloss": "potatoes",
           "morphology": {
             "gender": "masculine",
             "number": "plural",
@@ -20308,7 +20308,18 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 3
+      "priorIntroductionDay": 3,
+      "generationSemantics": {
+        "classes": [
+          "food",
+          "vegetable",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "potato",
+        "plural": "potatoes",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:n-onion3",
@@ -31244,7 +31255,17 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 1
+      "priorIntroductionDay": 1,
+      "generationSemantics": {
+        "classes": [
+          "person",
+          "human"
+        ],
+        "countability": "count",
+        "singular": "brother",
+        "plural": "brothers",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:sister",
@@ -31822,6 +31843,16 @@
         "reference": "content/USER_LANGUAGE_APPROVALS.json",
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
+      },
+      "generationSemantics": {
+        "classes": [
+          "person",
+          "human"
+        ],
+        "countability": "count",
+        "singular": "grandfather",
+        "plural": "grandfathers",
+        "objectArticle": "the"
       }
     },
     {
@@ -32599,7 +32630,17 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 3
+      "priorIntroductionDay": 3,
+      "generationSemantics": {
+        "classes": [
+          "person",
+          "human"
+        ],
+        "countability": "count",
+        "singular": "husband",
+        "plural": "husbands",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:wife",
@@ -32769,7 +32810,17 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 3
+      "priorIntroductionDay": 3,
+      "generationSemantics": {
+        "classes": [
+          "person",
+          "human"
+        ],
+        "countability": "count",
+        "singular": "wife",
+        "plural": "wives",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:kitchen",
@@ -37173,7 +37224,18 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 9
+      "priorIntroductionDay": 9,
+      "generationSemantics": {
+        "classes": [
+          "clothing",
+          "object",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "shirt",
+        "plural": "shirts",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:trousers",
@@ -37541,7 +37603,18 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 9
+      "priorIntroductionDay": 9,
+      "generationSemantics": {
+        "classes": [
+          "clothing",
+          "object",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "shoe",
+        "plural": "shoes",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:sock",
@@ -41383,7 +41456,18 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 1
+      "priorIntroductionDay": 1,
+      "generationSemantics": {
+        "classes": [
+          "plant",
+          "object",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "flower",
+        "plural": "flowers",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:seed",
@@ -42346,7 +42430,17 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 2
+      "priorIntroductionDay": 2,
+      "generationSemantics": {
+        "classes": [
+          "place",
+          "natural"
+        ],
+        "countability": "count",
+        "singular": "mountain",
+        "plural": "mountains",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:valley",
@@ -42800,7 +42894,17 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 3
+      "priorIntroductionDay": 3,
+      "generationSemantics": {
+        "classes": [
+          "place",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "field",
+        "plural": "fields",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:orchard",
@@ -43642,7 +43746,16 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 4
+      "priorIntroductionDay": 4,
+      "generationSemantics": {
+        "classes": [
+          "natural"
+        ],
+        "countability": "count",
+        "singular": "cloud",
+        "plural": "clouds",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:fog",
@@ -45343,7 +45456,17 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 6
+      "priorIntroductionDay": 6,
+      "generationSemantics": {
+        "classes": [
+          "animal",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "sheep",
+        "plural": "sheep",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:cow",
@@ -45803,7 +45926,17 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 7
+      "priorIntroductionDay": 7,
+      "generationSemantics": {
+        "classes": [
+          "animal",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "donkey",
+        "plural": "donkeys",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:chicken",
@@ -46035,7 +46168,17 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 7
+      "priorIntroductionDay": 7,
+      "generationSemantics": {
+        "classes": [
+          "animal",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "chicken",
+        "plural": "chickens",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:rooster",
@@ -46879,7 +47022,17 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 8
+      "priorIntroductionDay": 8,
+      "generationSemantics": {
+        "classes": [
+          "animal",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "rabbit",
+        "plural": "rabbits",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:frog",
@@ -51295,7 +51448,18 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 2
+      "priorIntroductionDay": 2,
+      "generationSemantics": {
+        "classes": [
+          "object",
+          "document",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "receipt",
+        "plural": "receipts",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:bill",
@@ -51694,7 +51858,18 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 3
+      "priorIntroductionDay": 3,
+      "generationSemantics": {
+        "classes": [
+          "object",
+          "money",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "coin",
+        "plural": "coins",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:bank",
@@ -62762,7 +62937,18 @@
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
       },
-      "priorIntroductionDay": 7
+      "priorIntroductionDay": 7,
+      "generationSemantics": {
+        "classes": [
+          "object",
+          "document",
+          "ownable"
+        ],
+        "countability": "count",
+        "singular": "map",
+        "plural": "maps",
+        "objectArticle": "the"
+      }
     },
     {
       "lemmaId": "lemma:expansion:noun:science",

@@ -323,7 +323,7 @@ function createLibraryUI({
     if(CHARACTER_NAMES.characters.some(n=>n.lemmaId===e.lemmaId))detail.append(ui.node("p","Current name spelling supplied by the owner; pronunciation aids and use in case/compound forms remain provisional.","tiny"));
     const origin = r.unlock;
     const location = origin?.location === "universal" ? "Universal vocabulary" : ({residential:"Home",nature:"Lake",business:"Market",school:"School"}[origin?.location] || "Not recorded");
-    detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-start" ? "Unlocked when starting the challenge" : origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.introducedFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
+    detail.append(ui.node("p", origin ? `Unlocked: Day ${origin.day} · ${location} · ${origin.source === "challenge-start" ? "Unlocked when starting the challenge" : origin.source === "challenge-pass" ? "Unlocked by passing the challenge" : "Introduced through study"}` : r.availableFormIds.length ? "Historical unlock day/location/source not recorded; no provenance has been guessed." : "Not yet unlocked for generation; encounter history is shown below.", "unlock-origin"));
 
     detail.append(
       ui.node(
@@ -339,13 +339,14 @@ function createLibraryUI({
         "tiny",
       ),
     );
-    for (const f of e.forms.filter((f) =>
-      r.encounteredFormIds.includes(f.formId),
-    )) {
+    for (const f of e.forms) {
       const box = ui.node("div", undefined, "library-form"),
         text = ui.node("p", f.pashto, "library-pashto");
       text.lang = "ps";
       text.dir = "rtl";
+      const status=LibraryEngine.formStatus(state.progress,e,f);
+      box.append(ui.node('p',`Reference available · ${status.encountered?'Encountered':'Not encountered'} · ${status.practised?'Practised':'Not practised'} · SRS stage ${status.stage} · ${status.reviewStatus}`, 'tiny'));
+      box.append(ui.node('p',status.formallyIntroduced?`Flashcard acknowledged: Day ${status.introducedDay} · ${status.introducedLesson}`:'Reference only · not formally taught', 'tiny'));
       box.append(
         text,
         ui.node(
@@ -377,6 +378,7 @@ function createLibraryUI({
         );
       const formOrigin=r.formUnlocks?.[f.formId];
       if (formOrigin) box.append(ui.node("p", `Form unlocked: Day ${formOrigin.day} · ${formOrigin.source === "challenge-start" ? "Challenge activation" : formOrigin.source === "challenge-pass" ? "Challenge pass" : "Study"}`, "tiny"));
+      if(f.composition.enabled)box.append(ui.button('Revise this form',()=>libraryVoluntaryPractice(e,detail,f)));
       detail.append(box);
     }
     detail.addEventListener("toggle", () => {
@@ -403,7 +405,7 @@ function createLibraryUI({
     );
     return detail;
   }
-  function libraryVoluntaryPractice(e, container) {
+  function libraryVoluntaryPractice(e, container, selectedForm) {
     if (!LibraryEngine.allowedOnDay(e, state.day)) {
       container.append(
         ui.node(
@@ -414,7 +416,7 @@ function createLibraryUI({
       return;
     }
     const r = state.progress.library.acquired[e.lemmaId],
-      form = e.forms.find((f) => r.encounteredFormIds.includes(f.formId));
+      form = selectedForm || e.forms.find((f) => r.encounteredFormIds.includes(f.formId));
     if (!form) return;
     libraryPracticeMode(true);
     const exercise = ui.node("div");
@@ -438,7 +440,7 @@ function createLibraryUI({
           content.LIBRARY_DATA,
           "library-form:" + form.formId,
           correct,
-          { day: state.day, source: "review", location: "library", eventId },
+          { day: state.day, source: "library-reference-practice", reference:true, location: "library", eventId },
         );
         storage.save();
         ui.hud();

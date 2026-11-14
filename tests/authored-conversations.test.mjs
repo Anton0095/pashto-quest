@@ -46,7 +46,7 @@ assert.deepEqual(plain(t.S.restoreCard(t.content.LIBRARY_DATA,t.content.LIBRARY_
 beginAttempt(t,3);const q=t.state.session.questions.find(q=>q.generated&&q.kind==='sentence');assert(q);Object.assign(q,{id:old.id,generated:old});delete q.choiceIds;q.direction='ps-en';q.answerFormat='type';q.choiceOrder=[];
 t.storage.save();const saved=t.storage.load();assert.equal(t.storage.problem,null);assert.deepEqual(plain(saved.activeChallenge.questions.find(q=>q.id===old.id).generated),old);
 const fresh=runtime();reset(fresh);fresh.progression.completeChallengeOnce(fresh.state.progress,1,15);study(fresh,2,"school");fresh.progression.activateChallenge(fresh.state.progress,2);
-assert(fresh.state.progress.library.acquired['lemma:v-see']?.introducedFormIds.includes('lemma:v-see:present:2'));
-assert(!fresh.state.progress.library.acquired['lemma:v-see']?.introducedFormIds.includes('lemma:v-see:present:0'));
+assert(fresh.state.progress.library.acquired['lemma:v-see']?.availableFormIds.includes('lemma:v-see:present:2'));
+assert(!fresh.state.progress.library.acquired['lemma:v-see']?.availableFormIds.includes('lemma:v-see:present:0'));
 assert(!fresh.learning.availableSentences(1).some(c=>/see/.test(c.en)));
 console.log(`PASS authored conversations: ${available} playable / ${guarded} language-guarded day/pace cases, exact intended replies, licensed distinct irrelevant alternatives, lesson/repeat/reaction gates, zero learning writes, frozen prior scheduling proof and Day-2 third-/Day-3 first-person boundary`);

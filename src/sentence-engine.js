@@ -397,7 +397,7 @@ const SentenceEngine = (() => {
       [...e.introduction.requiredGrammarIds, ...f.prerequisiteGrammarIds].every(
         (id) => p.library.grammar[id],
       ) &&
-      !!p.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId)
+      !!p.library.acquired[e.lemmaId]?.availableFormIds.includes(f.formId)
     );
   }
   function catalog(data, frames, p = null, day = 14) {
@@ -555,7 +555,7 @@ const SentenceEngine = (() => {
       Object.keys(p.library.grammar).sort().join(",") +
       ";" +
       Object.values(p.library.acquired)
-        .flatMap((r) => r.introducedFormIds)
+        .flatMap((r) => r.availableFormIds)
         .sort()
         .join(",");
     if (!data.generatedCatalog && data.eligibleCache?.signature !== signature)

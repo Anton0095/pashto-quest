@@ -7,3 +7,11 @@ Bilal accepts School, Lake or challenge eligibility, permits repeat responses, a
 Ordinary conversations are nonmodal and can be dismissed through the shared movement path. Tutorial, chapter opening/ending acknowledgements and active assessments remain protected. Ending text remains on results; chapter ending effects are acknowledged there rather than through an extra completion conversation.
 
 Focused milestone checks: strict TypeScript, rebuilt release, seven-day Bilal eligibility/repeat model, and shared bilingual lesson identity/review reward lock in a browser. Full integrated validation follows the morphology phases.
+
+## Individual forms (Phase 3)
+
+Educational schema 9 distinguishes encountered forms, generation availability and acknowledged flashcard study. `formUnlocks[formId].studiedDay/studiedLesson` records formal teaching; existing per-form SRS remains authoritative. Previewing an unacknowledged flashcard or reading Library reference never grants formal study. The first acknowledged eligible form introduces its lemma once, including finite-first verbs; every recorded form then becomes reference-readable. Voluntary reference practice changes only its practice/SRS record. Challenge activation/pass grants availability without manufacturing acknowledgement or mastery.
+
+Plans freeze `firstFormSelections`, `studyPools`, generated activity IDs/proofs and grammar dependencies. RPG lesson snapshots retain the exact card index and acknowledged form IDs. School's concept acknowledgement precedes dependent flashcards; compulsory generated practice uses formally taught forms only. Additional inflections are capped at four per lesson; Day 14 adds none. Assessment lexical targets resolve to available forms, rather than assuming a citation form was taught.
+
+Focused checks: `form-lifecycle.test.mjs`, `challenge-activation.test.mjs`, noun audit, typing regression and strict TypeScript/build. New dictionary plurals also carry explicit English count semantics; no Pashto stem or suffix is generated.

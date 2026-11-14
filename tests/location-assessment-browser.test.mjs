@@ -13,12 +13,12 @@ for(const width of [375,1280]) {
     }
     t.world.startWorld();
    });
-   const before=await p.evaluate(()=>({introduced:Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0),complete:__test.state.progress.complete,grammar:__test.state.progress.library.grammar}));
+   const before=await p.evaluate(()=>({introduced:Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.availableFormIds.length,0),complete:__test.state.progress.complete,grammar:__test.state.progress.library.grammar}));
    assert.deepEqual(before.complete,{'1-school':true});assert(before.grammar['grammar-day-1']);
    await p.evaluate(()=>(__test.studySchool(1),__test.challenge.startChallenge(1)));
    if(!await p.locator(".question-context").evaluate(d=>d.open))await p.locator(".question-context summary").click();
    assert((await p.locator("#lessonDescription").innerText()).includes("Includes assigned vocabulary from unvisited or unfinished locations"));
-   const activated=await p.evaluate(()=>({introduced:Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0),complete:__test.state.progress.complete,grammar:__test.state.progress.library.grammar}));
+   const activated=await p.evaluate(()=>({introduced:Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.availableFormIds.length,0),complete:__test.state.progress.complete,grammar:__test.state.progress.library.grammar}));
    assert(activated.introduced>before.introduced);assert.deepEqual(activated.complete,before.complete);assert(activated.grammar['grammar-day-1']);
    const frozen=await p.evaluate(()=>__test.state.session.questions);
    const coverage=await p.evaluate(()=>{
@@ -43,7 +43,7 @@ for(const width of [375,1280]) {
       assert(rendered.includes(info.en),JSON.stringify({partial,index:i,q:info.q,en:info.en,rendered}));
     }
     await answerCurrent(p);
-    const actual=await p.evaluate(()=>({introduced:Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0),complete:__test.state.progress.complete,grammar:__test.state.progress.library.grammar}));
+    const actual=await p.evaluate(()=>({introduced:Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.availableFormIds.length,0),complete:__test.state.progress.complete,grammar:__test.state.progress.library.grammar}));
     assert.deepEqual(actual,activated,'answering changes no activation licenses or completion flags before grading');
     await p.locator('#quizNext').click();
    }

@@ -31,7 +31,7 @@ for(const pace of [8,12,16,20,24])for(const order of orders){
   for(const card of school.generatedPractice)for(const r of Object.values(card.generated.slots))assert(!['residential','nature','business'].some(loc=>plan.locationAssignments[loc].includes(r.lemmaId)),'School does not borrow unfinished vocabulary');
   for(const loc of order){
    const s=study(t,day,loc);lessons++;
-   for(const c of s.generatedPractice){assert(c.generated.requiredGrammarIds.every(g=>t.state.progress.library.grammar[g]));for(const r of Object.values(c.generated.slots))assert(t.state.progress.library.acquired[r.lemmaId].introducedFormIds.includes(r.formId));}
+   for(const c of s.generatedPractice){assert(c.generated.requiredGrammarIds.every(g=>t.state.progress.library.grammar[g]));for(const r of Object.values(c.generated.slots))assert(t.state.progress.library.acquired[r.lemmaId].availableFormIds.includes(r.formId));}
   }
   assert(t.progression.completeRound(t.state.progress,day));
   t.progression.completeChallengeOnce(t.state.progress,day,t.progression.getChallengeSpec(day).questionCount);
@@ -54,7 +54,7 @@ for(const day of [1,2,3,6,7,14]){
  for(const loc of ['nature','business'])for(const id of plan.locationAssignments[loc])assert(!t.E.inBank(p,id),'Studying Home cannot award skipped Nature/Market words');
  const result=t.progression.completeChallengeOnce(p,day,t.progression.getChallengeSpec(day).passCount);
  assert(result.firstPass);for(const loc of t.content.zoneKeys)assert(p.complete[day+'-'+loc]);
- for(const id of assigned){assert(t.E.inBank(p,id));assert(p.library.acquired[id].introducedFormIds.length);if(!p.library.acquired[id].formallyIntroducedDay)assert.equal(p.library.acquired[id].totalAttempts,0);}
+ for(const id of assigned){assert(t.E.inBank(p,id));assert(p.library.acquired[id].availableFormIds.length);if(!p.library.acquired[id].formallyIntroducedDay)assert.equal(p.library.acquired[id].totalAttempts,0);}
  const xp=p.xp;t.progression.completeChallengeOnce(p,day,t.progression.getChallengeSpec(day).questionCount);assert.equal(p.xp,xp);
  assert(t.storage.currentSave(plain(p)));
 }

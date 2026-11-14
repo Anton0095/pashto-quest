@@ -12,7 +12,7 @@ for (const width of [375, 1280]) {
       qs.some((q) => q.generated),
       "Challenge activation must make the assigned forms available to construction",
     );
-    const introduced=await p.evaluate(()=>Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.introducedFormIds.length,0));
+    const introduced=await p.evaluate(()=>Object.values(__test.state.progress.library.acquired).reduce((n,r)=>n+r.availableFormIds.length,0));
     assert(introduced>0);
     while (
       !(await p.evaluate(() => {
@@ -50,7 +50,7 @@ for (const width of [375, 1280]) {
     assert.equal(
       await p.evaluate(() =>
         Object.values(__test.state.progress.library.acquired).reduce(
-          (n, r) => n + r.introducedFormIds.length,
+          (n, r) => n + r.availableFormIds.length,
           0,
         ),
       ),

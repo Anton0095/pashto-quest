@@ -68,7 +68,7 @@ try {
               !Object.values(card.generated.slots).every((r) =>
                 t.state.progress.library.acquired[
                   r.lemmaId
-                ]?.introducedFormIds.includes(r.formId),
+                ]?.availableFormIds.includes(r.formId),
               )
             )
               throw Error("Unstudied form");
@@ -80,7 +80,7 @@ try {
           };
           const taughtCount = () =>
             Object.values(t.state.progress.library.acquired).reduce(
-              (n, r) => n + r.introducedFormIds.length,
+              (n, r) => n + r.availableFormIds.length,
               0,
             );
           for (let day = 1; day <= 14; day++) {
@@ -203,7 +203,7 @@ try {
                 const studied = new Set(Object.values(t.content.wordById).filter((c) => {
                   const refs = t.content.LIBRARY_DATA.sourceMappings[c.id] || [];
                   return t.state.progress.library.phrases[c.id] || (refs.length && refs.every((r) =>
-                    t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId)));
+                    t.state.progress.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId)));
                 }).map((c) => c[answerField]));
                 const backup = new Set(t.content.LIBRARY_DATA.entries
                   .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)

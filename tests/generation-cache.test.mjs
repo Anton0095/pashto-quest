@@ -30,7 +30,7 @@ for(let day=1;day<=14;day++){
  const signature=data.eligibleCache.signature;
  const grammar=p.library.grammar['grammar-day-'+day];delete p.library.grammar['grammar-day-'+day];S.available(p,data,frames,day);assert.notEqual(data.eligibleCache.signature,signature);
  p.library.grammar['grammar-day-'+day]=grammar;
- const r=Object.values(p.library.acquired).find(r=>r.introducedFormIds.length);if(r){const forms=r.introducedFormIds;r.introducedFormIds=[];S.available(p,data,frames,day);assert.notEqual(data.eligibleCache.signature,signature);r.introducedFormIds=forms}
+ const r=Object.values(p.library.acquired).find(r=>r.availableFormIds.length);if(r){const forms=r.availableFormIds;r.availableFormIds=[];S.available(p,data,frames,day);assert.notEqual(data.eligibleCache.signature,signature);r.availableFormIds=forms}
 }
 const file='tests/generation-output-contract-v8.json';
 if(process.argv.includes('--write')){writeFileSync(file,JSON.stringify(actual,null,2)+'\n');console.log('WROTE current schema-8 output contract; historical contract retained')}

@@ -6,7 +6,7 @@ study(t,1,"school");const baseline=plain(t.state.progress);
 const plan=t.E.ensurePlan(t.state.progress,t.content.LIBRARY_DATA,1),assigned=plain(plan.locationAssignments),xp=t.state.progress.xp;
 const qs=t.questions.selectChallenge(1);
 assert.deepEqual(plain(plan.locationAssignments),assigned);assert.equal(t.state.progress.xp,xp);assert.deepEqual(plain(t.state.progress.complete),baseline.complete);assert.deepEqual(plain(t.state.progress.rewards),baseline.rewards);
-assert.equal(t.state.progress.library.grammar['grammar-day-1'].source,'visible-workshop-fixture');assert(!t.state.progress.library.grammar['grammar-day-2']);
+assert.equal(t.state.progress.library.grammar['grammar-day-1'].source,'acknowledged-school-concept');assert(!t.state.progress.library.grammar['grammar-day-2']);
 for(const [loc,ids] of Object.entries(assigned).filter(([loc])=>loc!=="school"))for(const id of ids){
  const r=t.state.progress.library.acquired[id];assert.equal(r.unlock.source,'challenge-start');assert.equal(r.unlock.location,loc);assert.equal(r.unlock.day,1);assert.equal(r.formallyIntroducedDay,undefined);assert.equal(r.masteredAt,undefined);assert.equal(r.totalAttempts,0);assert.equal(r.correctAttempts,0);assert.deepEqual(plain(r.practisedFormIds),[]);
  for(const f of Object.values(r.forms))assert.deepEqual(plain(f),{correctAttempts:0,totalAttempts:0,stage:0,srsDueAt:0});
@@ -23,7 +23,7 @@ t.state.session=null;delete t.state.progress.activeChallenge;
 study(t,1,'residential');t.state.session=null;const afterStudy=t.questions.selectChallenge(1,{newAttempt:true});
 assert(afterStudy.filter(q=>q.kind==='word'&&(t.content.LIBRARY_DATA.sourceMappings[q.id]||[]).some(r=>assigned.residential.includes(r.lemmaId))).every(q=>!q.unstudied));
 assert(afterStudy.some(q=>q.kind==='word'&&q.unstudied));
-const home=t.state.progress.library.acquired[assigned.residential[0]];assert.equal(home.unlock.source,'challenge-start');assert.equal(home.formUnlocks[home.introducedFormIds[0]].studiedDay,1);
+const home=t.state.progress.library.acquired[assigned.residential[0]];assert.equal(home.unlock.source,'challenge-start');assert.equal(home.formUnlocks[home.availableFormIds[0]].studiedDay,1);
 const beforeFailure=plain(t.state.progress);t.progression.completeChallengeOnce(t.state.progress,1,0);assert.deepEqual(plain(t.state.progress.library),beforeFailure.library);assert.deepEqual(plain(t.state.progress.complete),beforeFailure.complete);assert.equal(t.state.progress.xp,beforeFailure.xp);
 t.progression.completeChallengeOnce(t.state.progress,1,12);const day1Ids=new Set(Object.values(assigned).flat());t.state.day=2;study(t,2,"school");const day2=t.questions.selectChallenge(2,{newAttempt:true}),current=new Set(Object.values(t.state.progress.library.plans[2].locationAssignments).flat());
 assert(day2.some(q=>q.generated&&Object.values(q.generated.generated.slots).some(r=>current.has(r.lemmaId))));

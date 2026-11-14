@@ -32,7 +32,7 @@ for (const pace of [8,12,16,20,24]) {
   assert(t.state.progress.library.grammar['grammar-day-'+day]);
   if(day===14)assert.deepEqual(plain(t.state.progress.library.acquired),existing,'Day 14 introduces no forms');
   for(const [loc,ids] of Object.entries(assignments))for(const id of ids){
-   const r=t.state.progress.library.acquired[id];assert(r.introducedFormIds.length);assert.equal(r.unlock.day,day);assert.equal(r.unlock.location,loc);assert.equal(r.unlock.source,loc==='school'?'study':'challenge-start');
+   const r=t.state.progress.library.acquired[id];assert(r.availableFormIds.length);assert.equal(r.unlock.day,day);assert.equal(r.unlock.location,loc);assert.equal(r.unlock.source,loc==='school'?'study':'challenge-start');
   }
   for(const [id,r] of Object.entries(t.state.progress.library.acquired)) {
    assert.equal(r.totalAttempts,existing[id]?.totalAttempts || 0);
@@ -41,7 +41,7 @@ for (const pace of [8,12,16,20,24]) {
    if(!existing[id]) {assert.equal(r.formallyIntroducedDay,undefined);assert.equal(r.masteredAt,undefined);}
    for(const [fid,f] of Object.entries(r.forms))if(!existing[id]?.forms[fid])assert.deepEqual(plain(f),{correctAttempts:0,totalAttempts:0,stage:0,srsDueAt:0});
   }
-  for(const c of t.learning.availableSentences(day))for(const ref of Object.values(c.generated.slots)) assert(t.state.progress.library.acquired[ref.lemmaId].introducedFormIds.includes(ref.formId));
+  for(const c of t.learning.availableSentences(day))for(const ref of Object.values(c.generated.slots)) assert(t.state.progress.library.acquired[ref.lemmaId].availableFormIds.includes(ref.formId));
   const stable=plain(t.state.progress),again=t.progression.completeChallengeOnce(t.state.progress,day,[7,14].includes(day)?25:15);
   assert.equal(again.locationBonus,0);assert.deepEqual(plain(again.newlyUnlocked),[]);assert.equal(t.state.progress.xp,stable.xp);assert.deepEqual(plain(t.state.progress.library),stable.library);
   t.state.session.finished=true;t.storage.save();assert.equal(t.storage.problem,null);const restored=t.storage.load();assert.equal(t.storage.problem,null);assert.deepEqual(plain(restored.library.acquired),plain(t.state.progress.library.acquired));
@@ -61,7 +61,7 @@ for(const pace of [8,12,24]) {
   normal.state.session=null;
   normal.progression.completeChallengeOnce(normal.state.progress,day,[7,14].includes(day)?25:15);
   study(skip,day,"school");skip.progression.completeChallengeOnce(skip.state.progress,day,[7,14].includes(day)?25:15);
-  const forms=x=>Object.entries(x.state.progress.library.acquired).flatMap(([id,r])=>r.introducedFormIds.map(f=>id+':'+f)).sort();
+  const forms=x=>Object.entries(x.state.progress.library.acquired).flatMap(([id,r])=>r.availableFormIds.map(f=>id+':'+f)).sort();
   assert.deepEqual(plain(forms(normal)),plain(forms(skip)),`normal/pass availability ${pace}/${day}`);
  }
 }

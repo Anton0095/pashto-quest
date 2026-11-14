@@ -54,6 +54,9 @@ function createLearning({ state, content, progression }) {
       libraryContext(source, id),
     );
   }
+  function acknowledgeForm(id) {
+    LibraryEngine.expose(state.progress,content.LIBRARY_DATA,id,{...libraryContext('lesson',id),acknowledged:true});
+  }
   function libraryPractice(id, correct, eventId, source) {
     LibraryEngine.practise(state.progress, content.LIBRARY_DATA, id, correct, {
       ...libraryContext(source, id),
@@ -68,23 +71,8 @@ function createLearning({ state, content, progression }) {
         const entry=content.libraryEntries[id],assigned=(plan.locationAssignments[place]||[]).includes(id),support=place==='school'&&entry?.vocabularyClass==='universal';return ['noun','verb','adjective'].includes(entry?.partOfSpeech)&&(assigned||support)&&(state.reviewCampaign?assigned:!state.progress.library.acquired[id]?.formallyIntroducedDay);
       });
     }
-    if(state.reviewCampaign&&plan.studyPools?.[place])return [...plan.studyPools[place]];
+    if(plan.studyPools?.[place])return [...plan.studyPools[place]];
     const pool=LibraryEngine.lessonPool(state.progress, content.LIBRARY_DATA, content.NARRATIVE_DATA, day, place);
-    if(state.reviewCampaign){
-      // Current-format saves predating studyPools retain assignments and unlock provenance.
-      // Include their already-learned universal words and forms, bounded to the reviewed day.
-      for(const entry of content.LIBRARY_DATA.entries){
-        const record=state.progress.library.acquired[entry.lemmaId];
-        if(!record)continue;
-        for(const form of entry.forms){
-          const origin=record.formUnlocks?.[form.formId]||record.unlock;
-          if(!record.introducedFormIds.includes(form.formId)||!origin||origin.day>day||!LibraryEngine.formAllowed(entry,form,day))continue;
-          if(form===entry.forms[0]&&entry.vocabularyClass==='universal')pool.push('library-card:'+entry.lemmaId);
-          else if(form!==entry.forms[0])pool.push('library-form:'+form.formId);
-        }
-      }
-      return [...new Set(pool)];
-    }
     (plan.studyPools ||= {})[place] ||= [...pool];
     return pool;
   }
@@ -154,7 +142,7 @@ function createLearning({ state, content, progression }) {
       const qualifies=c=>Object.values(c.generated.slots).some(r=>targets.includes(r.lemmaId));
       // Failed shortcut activation still licenses assessment material. Ordinary
       // lessons reuse studied/passed words, including this lesson's word phase.
-      const lessonAvailable=c=>Object.values(c.generated.slots).every(r=>LibraryEngine.inBank(state.progress,r.lemmaId));
+      const lessonAvailable=c=>Object.values(c.generated.slots).every(r=>LibraryEngine.formallyTaught(state.progress,r.formId));
       const preferred = generatedPractice(
         s.loop,
         plan.seed + s.attemptId,
@@ -206,7 +194,7 @@ function createLearning({ state, content, progression }) {
         !Object.values(card.generated.slots).every((r) =>
           state.progress.library.acquired[
             r.lemmaId
-          ]?.introducedFormIds.includes(r.formId),
+          ]?.availableFormIds.includes(r.formId),
         )
       )
         throw Error(
@@ -394,6 +382,7 @@ function createLearning({ state, content, progression }) {
     lessonSentenceTargets,
     duePool,
     libraryExpose,
+    acknowledgeForm,
     libraryLessonPool,
     completeRound,
     passedChallenge,

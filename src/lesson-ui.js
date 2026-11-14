@@ -63,6 +63,8 @@ function createLessons({
       loop,
       attemptId: ++state.progress.library.attemptSequence,
       required: [...pool],
+      schoolConceptPending: mode === "standard" && loc === "school" && !state.progress.library.grammar["grammar-day-"+loop],
+      formAcknowledgements: [],
       studyWords: mode === "tutorial" ? [] : lexical,
       greetingCards: phrases,
       studySentences: reviewSentences,
@@ -71,7 +73,7 @@ function createLessons({
           ? "tutorial"
           : phrases.length
             ? "greeting"
-            : "lexical",
+            : mode === "standard" && loc === "school" && !state.progress.library.grammar["grammar-day-"+loop] ? "grammar" : "lexical",
       cardIndex: 0,
       queue: pool.map((id,i) => ({
         id,
@@ -154,7 +156,7 @@ function createLessons({
   function advancePhase() {
     const s = state.session;
     s.cardIndex = 0;
-    if (s.phase === "greeting") s.phase = "lexical";
+    if (s.phase === "greeting") s.phase = s.schoolConceptPending ? "grammar" : "lexical";
     else if (s.phase === "lexical")
       s.phase =
         s.mode === "standard"
@@ -173,7 +175,7 @@ function createLessons({
       return;
     }
     const w = learning.surface(id, "study");
-    learning.libraryExpose(id, s.mode === "review" ? "review" : "lesson");
+    learning.libraryExpose(id, "lesson-preview");
     storage.save();
     ui.$("teachSpeak").classList.remove("hidden");
     ui.$("teachPanel").classList.remove("hidden");
@@ -185,6 +187,9 @@ function createLessons({
     ui.$("teachPashto").textContent = w.ps;
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
+    const formRef=content.LIBRARY_DATA.sourceMappings[id]?.[0],entry=formRef&&content.libraryEntries[formRef.lemmaId],form=entry?.forms.find(f=>f.formId===formRef.formId);
+    if(form){const features=Object.entries(form.morphology).filter(([,v])=>v!==null).map(([k,v])=>k+': '+v).join(' · ');ui.$('teachType').textContent=(LibraryEngine.formallyTaught(state.progress,form.formId)?'FORM REVISION':'NEW FORM · ACKNOWLEDGE TO LEARN')+' · '+features;}
+
     ui.$("teachNote").textContent = w.note?.startsWith("Base content user-approved;") ? "" : w.note;
     ui.$("teachNote").classList.toggle("hidden", !ui.$("teachNote").textContent);
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
@@ -231,12 +236,19 @@ function createLessons({
       return;
     }
     if (!["greeting", "lexical", "sentence"].includes(s.phase)) return;
+    if(s.phase==='lexical'||s.phase==='greeting'){
+      const id=studyList()[s.cardIndex];learning.acknowledgeForm(id);
+      s.formAcknowledgements = [...new Set([...(s.formAcknowledgements || []),...(content.LIBRARY_DATA.sourceMappings[id]||[]).map(ref=>ref.formId)])];
+    }
     if (++s.cardIndex < studyList().length) teachCard();
     else advancePhase();
   }
   function afterGrammar() {
     const s = state.session;
     if (!s || s.phase !== "grammar" || ui.$("grammarNext").disabled) return;
+    if(s.schoolConceptPending){
+      LibraryEngine.unlock(state.progress,s.loop,'acknowledged-school-concept');s.schoolConceptPending=false;s.phase='lexical';s.cardIndex=0;storage.save();renderPhase();return;
+    }
     learning.prepareSentences(s);
     s.phase = "sentence";
     s.cardIndex = 0;

@@ -94,7 +94,7 @@ for (const pace of t.E.presets)
           }
         }
       const before14 = Object.values(t.state.progress.library.acquired).reduce(
-        (n, r) => n + r.introducedFormIds.length,
+        (n, r) => n + r.availableFormIds.length,
         0,
       );
       const qs = beginAttempt(t, day);
@@ -128,7 +128,7 @@ for (const pace of t.E.presets)
       if (day === 14)
         assert.equal(
           Object.values(t.state.progress.library.acquired).reduce(
-            (n, r) => n + r.introducedFormIds.length,
+            (n, r) => n + r.availableFormIds.length,
             0,
           ),
           before14,

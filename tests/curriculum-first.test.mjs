@@ -72,5 +72,5 @@ assert(catalog.length > 1000);
 assert(catalog.some((c) => c.ps === "کور نوی دی."));
 assert(catalog.some((c) => c.ps === "کتاب لوی دی."));
 assert(catalog.every((c) => Object.values(c.generated.slots).every((r) =>
-  p.library.acquired[r.lemmaId].introducedFormIds.includes(r.formId))));
+  p.library.acquired[r.lemmaId].availableFormIds.includes(r.formId))));
 console.log("PASS curriculum-first: 474 identities, deliberate introductions/all paces, exposure vs introduction, productive unlocked form catalog");

@@ -42,9 +42,9 @@ const LibraryEngine = (() => {
       e = data.entries.find((e) => e.lemmaId === ref.lemmaId);
     if (
       !e ||
-      !allowedOnDay(e, context.day) ||
+      !(context.reference && inBank(p,e.lemmaId)) && !allowedOnDay(e, context.day) ||
       !e.forms.some(
-        (f) => f.formId === ref.formId && formAllowed(e, f, context.day),
+        (f) => f.formId === ref.formId && (formAllowed(e, f, context.day) || context.reference && inBank(p,e.lemmaId)),
       )
     )
       return null;
@@ -53,7 +53,7 @@ const LibraryEngine = (() => {
       firstEncounteredSource: context.source,
       firstEncounteredLocation: context.location,
       encounteredFormIds: [],
-      introducedFormIds: [],
+      availableFormIds: [],
       practisedFormIds: [],
       correctAttempts: 0,
       totalAttempts: 0,
@@ -69,17 +69,17 @@ const LibraryEngine = (() => {
     );
     const challengeUnlock = ["challenge-pass", "challenge-start"].includes(context.source);
     if (context.introduce) {
-      if (!r.introducedFormIds.includes(ref.formId)) {
+      if (!r.availableFormIds.includes(ref.formId)) {
         const assigned = Object.values(s.plans).flatMap(plan => Object.entries(plan.locationAssignments)).find(([,ids]) => ids.includes(e.lemmaId))?.[0];
         const location = e.vocabularyClass === "universal" ? "universal" : assigned || (places.includes(context.location) ? context.location : "unrecorded");
         (r.formUnlocks ||= {})[ref.formId] = {day:context.day, source:challengeUnlock ? context.source : "study", location};
-        if (!r.introducedFormIds.length) r.unlock = {...r.formUnlocks[ref.formId]};
+        if (!r.availableFormIds.length) r.unlock = {...r.formUnlocks[ref.formId]};
       }
-      r.introducedFormIds = unique([...r.introducedFormIds, ref.formId]);
-      if (!challengeUnlock) {
+      r.availableFormIds = unique([...r.availableFormIds, ref.formId]);
+      if (!challengeUnlock && context.acknowledged) {
         if(!r.formallyIntroducedDay&&context.lessonId)r.firstStudyLesson=context.lessonId;
         r.formallyIntroducedDay ??= context.day;
-        if (r.formUnlocks?.[ref.formId]) r.formUnlocks[ref.formId].studiedDay ??= context.day;
+        if (r.formUnlocks?.[ref.formId]) {r.formUnlocks[ref.formId].studiedDay ??= context.day;r.formUnlocks[ref.formId].studiedLesson ??= context.lessonId || "library";}
       }
     }
     if (context.day > 0 && !challengeUnlock) {
@@ -122,7 +122,7 @@ const LibraryEngine = (() => {
         source: context.source,
         location: context.location,
       };
-      if (["lesson", "review", "library", "tutorial"].includes(context.source))
+      if (context.acknowledged === true)
         p.library.phrases[id].studiedDay ??= context.day;
       // Encountered but unpractised expressions are due too; optional recognition
       // can be skipped without removing the expression from later review.
@@ -140,7 +140,7 @@ const LibraryEngine = (() => {
         contentId: id,
         introduce:
           lexicalCard(data, id) &&
-          ["lesson", "review", "library", "tutorial"].includes(context.source),
+          context.acknowledged === true,
       });
   }
   function schedule(record, correct, now) {
@@ -224,7 +224,7 @@ const LibraryEngine = (() => {
     }
   }
   function practise(p, data, id, correct, context) {
-    if (!cardAllowed(data, id, context.day)) return false;
+    if (!cardAllowed(data, id, context.day) && !(context.reference && (data.sourceMappings[id]||[]).every(ref=>inBank(p,ref.lemmaId)))) return false;
     const event = context.eventId;
     const attempt = eventAttempt(event);
     if (attempt !== null && attempt <= (p.library.retiredAttemptSequence || 0) && !(p.library.protectedAttemptIds || []).includes(attempt)) return false;
@@ -262,7 +262,7 @@ const LibraryEngine = (() => {
         ? "mastered"
         : r.practisedFormIds.length
           ? "practised"
-          : r.introducedFormIds.length
+          : r.availableFormIds.length
             ? "introduced"
             : "encountered";
   }
@@ -271,8 +271,8 @@ const LibraryEngine = (() => {
     if (!record) return false;
     // Activation is a generation licence, not a vocabulary award. Keep its
     // availability/SRS records, and derive Bank membership from study or pass.
-    return !!record.formallyIntroducedDay || record.unlock?.source !== "challenge-start" ||
-      p.challenges?.[record.unlock.day]?.passed === true;
+    return !!record.formallyIntroducedDay || record.unlock?.source === "challenge-pass" ||
+      !!record.unlock && p.challenges?.[record.unlock.day]?.passed === true;
   }
   function summary(p, data) {
     const counts = { encountered: 0, practised: 0, mastered: 0 };
@@ -444,7 +444,7 @@ const LibraryEngine = (() => {
           ? e.forms
               .filter(
                 (f) =>
-                  (r.introducedFormIds.includes(f.formId) ||
+                  (r.availableFormIds.includes(f.formId) ||
                     r.forms[f.formId]?.totalAttempts > 0) &&
                   r.forms[f.formId]?.srsDueAt <= Date.now(),
               )
@@ -483,6 +483,26 @@ const LibraryEngine = (() => {
         .map((e) => e.lemmaId),
     };
   }
+  function formallyTaught(p, formId) {
+    return Object.values(p.library.acquired).some(record=>record.formUnlocks?.[formId]?.studiedDay !== undefined);
+  }
+  function eligibleForm(p,entry,form,day,schoolConcept=false) {
+    return formAllowed(entry,form,day) && form.composition?.enabled &&
+      form.prerequisiteGrammarIds.every(id=>p.library.grammar[id] || schoolConcept && id === 'grammar-day-'+day);
+  }
+  function initialForm(p,entry,day,schoolConcept=false) {
+    const eligible=entry.forms.filter(form=>eligibleForm(p,entry,form,day,schoolConcept));
+    if(entry.partOfSpeech==='verb'){
+      const person=day>=7?3:day>=6?1:day>=5?2:day===4?2:day===3?1:3,number=day>=5?'plural':'singular';
+      const finite=eligible.find(f=>f.morphology.person===person&&f.morphology.number===number&&f.composition.roles.includes('verb'));
+      if(finite)return finite;
+      const other=eligible.find(f=>f.composition.roles.includes('verb'));if(other)return other;
+    }
+    if(entry.partOfSpeech==='noun'&&p.library.grammar['grammar-day-5']){
+      const plural=eligible.find(f=>f.morphology.number==='plural'&&f.morphology.case==='direct'&&f.morphology.form!=='coordinated_subject');if(plural)return plural;
+    }
+    return eligible.find(f=>f===entry.forms[0]) || eligible[0] || (formAllowed(entry,entry.forms[0],day)?entry.forms[0]:null);
+  }
   function lessonPool(p, data, narrative, day, place) {
     const plan = ensurePlan(
         p,
@@ -490,7 +510,8 @@ const LibraryEngine = (() => {
         day,
       ),
       assigned = plan.locationAssignments[place] || [];
-    const lexical = assigned.map((id) => "library-card:" + id);
+    const firstForms=(plan.firstFormSelections ||= {})[place] ||= assigned.map(id=>initialForm(p,data.entries.find(e=>e.lemmaId===id),day,place==='school')?.formId).filter(Boolean);
+    const lexical = firstForms.map(id=>"library-form:"+id);
     const universals = data.entries
       .filter(
         (e) =>
@@ -499,12 +520,12 @@ const LibraryEngine = (() => {
           e.introduction.day <= day &&
           !p.library.acquired[
             e.lemmaId
-          ]?.introducedFormIds.includes(e.forms[0].formId),
+          ]?.availableFormIds.includes(e.forms[0].formId),
       )
       .map((e) => "library-card:" + e.lemmaId);
     const taught = new Set([
       ...Object.entries(p.library.acquired)
-        .filter(([id, record]) => record.introducedFormIds.length && inBank(p,id))
+        .filter(([id, record]) => record.availableFormIds.length && inBank(p,id))
         .map(([id]) => id),
       ...assigned,
       ...universals.flatMap((id) =>
@@ -525,27 +546,20 @@ const LibraryEngine = (() => {
                     (f) =>
                       f.formId !== e.forms[0].formId &&
                       f.composition.enabled &&
-                      formAllowed(e, f, day) &&
-                      f.prerequisiteGrammarIds.every(
-                        (id) =>
-                          p.library.grammar[id] ||
-                          id === "grammar-day-" + day,
-                      ) &&
-                      !p.library.acquired[
-                        e.lemmaId
-                      ]?.introducedFormIds.includes(f.formId),
+                      eligibleForm(p,e,f,day,place==='school') &&
+                      !formallyTaught(p,f.formId) && !firstForms.includes(f.formId),
                   )
                   .map((f) => "library-form:" + f.formId)
               : [],
-          );
+          ).slice(0,4);
     const review = dueForms(p, data)
       .filter(
         ({ entry, form }) =>
-          inBank(p,entry.lemmaId) && formAllowed(entry, form, day) &&
+          formallyTaught(p,form.formId) && formAllowed(entry, form, day) &&
           (day !== 14 ||
             p.library.acquired[
               entry.lemmaId
-            ]?.introducedFormIds.includes(form.formId)),
+            ]?.availableFormIds.includes(form.formId)),
       )
       .slice(0, 2)
       .map(({ form }) => "library-form:" + form.formId);
@@ -592,7 +606,7 @@ const LibraryEngine = (() => {
         }
         for (const ref of data.sourceMappings[id] || []) {
           const e = data.entries.find(e => e.lemmaId === ref.lemmaId);
-          if (p.library.acquired[e.lemmaId]?.introducedFormIds.includes(ref.formId) || day === 14) continue;
+          if (p.library.acquired[e.lemmaId]?.availableFormIds.includes(ref.formId) || day === 14) continue;
           const planned = Object.entries(p.library.plans[day].locationAssignments).find(([, ids]) => ids.includes(e.lemmaId))?.[0];
           const teachingLocation = e.vocabularyClass === "universal" ? "universal" : planned || e.introduction.district;
           const r = encounter(p, data, ref, {day, location:teachingLocation, source, introduce:true});
@@ -606,7 +620,12 @@ const LibraryEngine = (() => {
     if (day >= 1 && day <= 14)
       p.library.grammar["grammar-day-" + day] ||= { day, source };
   }
+  function formStatus(p,entry,form) {
+    const record=p.library.acquired[entry.lemmaId],origin=record?.formUnlocks?.[form.formId],stat=record?.forms?.[form.formId];
+    return {referenceAvailable:!!record&&inBank(p,entry.lemmaId),encountered:!!record?.encounteredFormIds.includes(form.formId),available:!!record?.availableFormIds.includes(form.formId),formallyIntroduced:origin?.studiedDay!==undefined,introducedDay:origin?.studiedDay,introducedLesson:origin?.studiedLesson,practised:(stat?.totalAttempts||0)>0,stage:stat?.stage||0,reviewStatus:form.reviewStatus};
+  }
   return {
+    formallyTaught,eligibleForm,initialForm,formStatus,
     quotas,
     inBank,
     unlockDayMaterial,

@@ -29,7 +29,7 @@ for(const pace of [8,12,16,20,24])for(const skip of [false,true]) {
    if(q.kind==="word")assert(!/\b(?:first|second|third)[ -]person\b|\b(?:masculine|feminine|singular|plural)\b/i.test(w.en),"no category labels as recall answers");
    if(q.generated)for(const c of [q.generated,q.promptGenerated].filter(Boolean)) {
     assert(c.generated.requiredGrammarIds.every(g=>t.state.progress.library.grammar[g]));
-    assert(Object.values(c.generated.slots).every(r=>t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId)));
+    assert(Object.values(c.generated.slots).every(r=>t.state.progress.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId)));
    }
    if(q.kind==='word'&&q.unstudied&&!q.recognition){assert.equal(q.direction,'ps-en');assert(!q.choiceOrder.some(v=>t.Q.evaluate(q,w,v)));}
   }

@@ -26,7 +26,7 @@ for(let draw=0;draw<256;draw++) {
  for(const q of targets)for(const card of [q.generated,q.promptGenerated].filter(Boolean)) {
   assert(card.generated.requiredGrammarIds.every(g=>t.state.progress.library.grammar[g]));
   for(const r of Object.values(card.generated.slots)) {
-   assert(t.state.progress.library.acquired[r.lemmaId].introducedFormIds.includes(r.formId));
+   assert(t.state.progress.library.acquired[r.lemmaId].availableFormIds.includes(r.formId));
    for(const loc of t.content.zoneKeys)if(plan.locationAssignments[loc].includes(r.lemmaId))sentenceLocations.add(loc);
   }
  }
