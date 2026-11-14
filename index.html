@@ -2782,7 +2782,8 @@ const LibraryEngine = (() => {
         ...review,
       ]),
     ].filter((id) => cardAllowed(data, id, day));
-    return pool;
+    const seen=new Set();
+    return pool.filter(id=>{const key=identity(data,id);if(seen.has(key))return false;seen.add(key);return true;});
   }
   // Both activation and pass completion use the same finite lesson material.
   // Availability never fabricates practice events or successful answers.
