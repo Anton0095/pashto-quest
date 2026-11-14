@@ -154,6 +154,14 @@ def build(check_rpg=False):
                 authored[c['id']] = dict(ps=c['pashto'], en=c['english'], roman=c['romanization'])
     reviewed=json.loads(read('content/REVIEWED_LANGUAGE_UPDATES.json'))['attestations']
     for a in library.get('generationAttestations', []):
+        if a.get('kind') == 'dictionary_inflection':
+            form=next((f for e in library['entries'] for f in e['forms'] if f['formId']==a['sourceId']),None)
+            if (not form or form.get('userVerified') is not False or a.get('userApproved') is not False or a.get('nativeCertificationClaimed') is not False
+                    or not a.get('sourceUrl','').startswith('https://oped.univie.ac.at/')
+                    or a['sourceUrl'] not in [r['source'] for r in form.get('morphologyResearch',[])]
+                    or (a['pashto'],a['romanisation']) != (form['pashto'],form['romanisation'])):
+                raise ValueError('Invalid dictionary inflection evidence: '+a['sourceId'])
+            continue
         w=authored.get(a['sourceId'])
         if a['sourceId'] in reviewed:
             if a!=reviewed[a['sourceId']]:raise ValueError('Reviewed span differs from recorded draft: '+a['sourceId'])
