@@ -46,9 +46,10 @@ export function createRPGRegistry(data:WorldData, conditions:Record<string,()=>b
 export function createRPGDialogue({dialog,ui,onAction,onClose,onIndex,eligible,onSpeak}:{dialog:HTMLDialogElement;ui:UI;onAction:(action:Action)=>void;onClose:()=>void;onIndex:(index:number)=>void;eligible:(condition?:string)=>boolean;onSpeak?:(line:{ps:string;roman:string;audioId:string})=>void}) {
   let current:StoryEvent|null=null,index=0,actionClose=false;
   const portrait=ui.node('div',undefined,'rpg-dialogue-portrait'), speaker=ui.node('h2'), text=ui.node('p'), roman=ui.node('div',undefined,'rpg-dialogue-roman'),listen=ui.button('Hear Pashto',()=>{if(current?.pashto)onSpeak?.(current.pashto);}), actions=ui.node('div',undefined,'buttons');
+  const guidance=ui.node('div',undefined,'rpg-lesson-guidance');guidance.hidden=true;
   text.setAttribute('aria-live','polite');
   const close=ui.button('Back to village',()=>dialog.close());close.className='ghost';
-  dialog.append(portrait,speaker,text,roman,listen,actions,close);
+  dialog.append(portrait,speaker,guidance,text,roman,listen,actions,close);
   const closed=()=>{if(!dialog.open)current=null;if(!actionClose)onClose();actionClose=false;};
   dialog.addEventListener('close',closed);
   function render() {
@@ -59,6 +60,7 @@ export function createRPGDialogue({dialog,ui,onAction,onClose,onIndex,eligible,o
     const frame=ui.portrait(message?.characterId??(message?.speaker&&message.speaker!==current.speaker?message.speaker:current.characterId??current.speaker),message?.expression??current.expression);
     portrait.replaceChildren(frame);portrait.classList.toggle('hidden',frame.classList.contains('hidden'));
     speaker.textContent=(current.conversationComplete?'✓ ':'')+(ui.characterName?.(message?.speaker??current.speaker)??message?.speaker??current.speaker)+(listener?' → '+(ui.characterName?.(listener)??listener):'');text.textContent=current.pashto?.ps??messages[index]?.text??'';
+    guidance.textContent=current.guidance??'';guidance.hidden=!current.guidance;
     text.lang=current.pashto?'ps':'en';text.dir=current.pashto?'rtl':'ltr';text.classList.toggle('library-pashto',!!current.pashto);
     roman.textContent=current.pashto?.roman??'';roman.lang='en';roman.dir='ltr';roman.hidden=!current.pashto;listen.hidden=!current.pashto;
     actions.replaceChildren();onIndex(index);

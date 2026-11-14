@@ -23,7 +23,7 @@ function createChallengeUI({
     panel.classList.toggle("hidden", day < 6 && day !== 1);
     if (day === 1) {
       panel.append(
-        ui.node("p", "LIBRARY · MUHAMMAD JAN’S HOME HANDOVER", "eyebrow"),
+        ui.node("p", "LIBRARY · "+ui.characterName("Muhammad Jan")+" · HOME HANDOVER", "eyebrow"),
         ui.node(
           "p",
           state.progress.homeGranted
@@ -231,7 +231,7 @@ function createChallengeUI({
     ui.$("builtSentence").classList.remove("build-success", "build-error");
     ui.$("quizCounter").textContent =
       state.session.loop === 3
-        ? `EDRIS · DINNER CONVERSATION ${state.session.index + 1}/${state.session.questions.length} · SCORE ${state.session.correctCount}/${state.session.questions.length}`
+        ? `${ui.characterName("Edris")} · DINNER CONVERSATION ${state.session.index + 1}/${state.session.questions.length} · SCORE ${state.session.correctCount}/${state.session.questions.length}`
         : `DAY ${state.session.loop} · QUESTION ${state.session.index + 1}/${state.session.questions.length} · SCORE ${state.session.correctCount}/${state.session.questions.length}`;
     ui.$("guideMessage").textContent =
       q.comment || content.curriculum.days[state.session.loop - 1].challenge;

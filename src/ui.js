@@ -13,7 +13,7 @@ function createUI({ state, content, progression }) {
           : content.zones[loc].name;
   }
   const conversation={instructorId:'Muhammad Jan',speakerId:'Muhammad Jan',partnerId:'Muhammad Jan'};
-  function characterName(id){const person=CHARACTER_NAMES.characters.find(c=>c.characterId===id||c.current.english===id);return person?person.current.english+' — '+person.current.pashto:id;}
+  function characterName(id){const person=CHARACTER_NAMES.characters.find(c=>c.characterId===id||c.current.english===id);if(person)return person.current.english+' — '+person.current.pashto;const group=String(id||'').split(/\s+and\s+|,\s*/);return group.length>1?group.map(characterName).join(' and '):id;}
   function personName(id){return CHARACTER_PORTRAITS.characters[id]?.name || content.peopleByName[id]?.name || id;}
   function setConversation(context){
     Object.assign(conversation,context);

@@ -61,8 +61,20 @@ for(const pace of [8,12,24]) {
   normal.state.session=null;
   normal.progression.completeChallengeOnce(normal.state.progress,day,[7,14].includes(day)?25:15);
   study(skip,day,"school");skip.progression.completeChallengeOnce(skip.state.progress,day,[7,14].includes(day)?25:15);
-  const forms=x=>Object.entries(x.state.progress.library.acquired).flatMap(([id,r])=>r.availableFormIds.map(f=>id+':'+f)).sort();
-  assert.deepEqual(plain(forms(normal)),plain(forms(skip)),`normal/pass availability ${pace}/${day}`);
+  assert.deepEqual(plain(normal.state.progress.library.plans[day].locationAssignments),plain(skip.state.progress.library.plans[day].locationAssignments),`normal/pass lemma allocation ${pace}/${day}`);
+  // Individual first/extra forms depend on actual prior study. Each route must
+  // honour its own frozen material, without inventing shortcut flashcards.
+  for(const profile of [normal,skip]){
+   const plan=profile.state.progress.library.plans[day];
+   for(const ids of Object.values(plan.studyPools))for(const id of ids)for(const ref of profile.content.LIBRARY_DATA.sourceMappings[id]||[])
+    assert(profile.state.progress.library.acquired[ref.lemmaId].availableFormIds.includes(ref.formId),'frozen route material is available after pass');
+   for(const [lemma,r] of Object.entries(profile.state.progress.library.acquired))for(const id of r.availableFormIds){
+    const form=profile.content.libraryEntries[lemma].forms.find(f=>f.formId===id);
+    assert(form.prerequisiteGrammarIds.every(g=>profile.state.progress.library.grammar[g]));
+    if(profile===normal)assert(profile.E.formallyTaught(profile.state.progress,id,lemma),'normal route acknowledges selected forms');
+    else if(r.formUnlocks[id].studiedDay)assert(r.formUnlocks[id].studiedLesson.endsWith('-school'),'shortcut never invents optional-lesson teaching');
+   }
+  }
  }
 }
 reset(t);study(t,1,'residential');
@@ -77,7 +89,7 @@ assert.equal(tiles[0].word,tiles[1].word);assert.notEqual(tiles[0].index,tiles[1
 assert(q.duds.every(d=>!['موږ','مونږ','تاسو','تاسې'].includes(t.Q.normalizeAnswer(d))));
 assert.deepEqual(plain(t.state.progress.library.acquired),acq);
 reset(t);const backup=t.questions.constructionQuestion({id:'fixture',ps:'دا کور دی',en:'This is a house.'},{withDuds:true});assert.equal(backup.duds.length,2);assert.deepEqual(plain(t.state.progress.library.acquired),{});
-console.log('PASS construction/completion: 70 day/pace passes, failures, repeats, frozen plans/assessments, honest SRS/provenance/rewards, normal/pass form equivalence, Day 14, reload and indexed exact/dud tiles');
+console.log('PASS construction/completion: 70 day/pace passes, failures, repeats, frozen plans/assessments, honest SRS/provenance/rewards, route-specific frozen forms and equal lemma allocation, Day 14, reload and indexed exact/dud tiles');
 
 // Dormant early-day dud metadata never alters a previously frozen exact puzzle.
 const frozenExact={kind:"construct",duds:["کتاب","قلم"],tileSequence:[2,0,1]};

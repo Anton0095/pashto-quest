@@ -40,7 +40,7 @@ for(const width of [1280,390]){
   }
   // Real shared Sleep transfer begins Day 6 beside the bed, with quiet entry.
   await place({map:'house',x:17,y:10,facing:'right'},{day:5,profile:day6});await p.emulateMedia({reducedMotion:'reduce'});await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 6 /'));assert.deepEqual(await d.pos(),{map:'house',x:17,y:10});assert(!await p.locator('#rpgDialogue').isVisible());
-  await place({map:'village',x:20,y:47,facing:'up'});await p.locator('#rpgInteract').click();await p.getByRole('button',{name:'Continue',exact:true}).click();assert((await p.locator('#rpgDialogue p').innerText()).includes('School lesson with Ms Hameed first'));await close();
+  await place({map:'village',x:20,y:47,facing:'up'});await p.locator('#rpgInteract').click();assert(/Visit School — Ms Hameed — حمید first/.test(await p.locator('#rpgDialogue').innerText()));await close();
   await p.evaluate(()=>__test.studySchool(6));
   await place({map:'village',x:66,y:19,facing:'up'});assert(!await p.evaluate(()=>__hillsRPG.diagnostics().actors.some(n=>n.id==='mina')));
   await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination=nature]').click();assert(!await p.locator('#lessonScreen').isVisible(),'Quick travel offers the invitation before beginning Nature');assert(!(await p.locator('#rpgDialogue').innerText()).includes('younger sister Medina'));

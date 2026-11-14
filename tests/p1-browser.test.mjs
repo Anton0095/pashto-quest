@@ -72,7 +72,7 @@ for(const width of [375,1280]) {
   });await p.reload();assert.equal(await p.evaluate(()=>__test.state.progress.xp),xp+7);
   // Activation licenses current grammar; practical answers add no further unlocks.
   await p.evaluate(()=>{const t=__test;t.reset(8);t.state.progress.tutorialDone=true;(t.studySchool(1),t.challenge.startChallenge(1));if(t.state.session.questions.some(q=>['choice','address'].includes(q.kind)))throw Error('Retired rule question generated')});
-  const grammarAtStart=await p.evaluate(()=>__test.state.progress.library.grammar);assert.equal(grammarAtStart['grammar-day-1'].source,'visible-prerequisite-workshop');
+  const grammarAtStart=await p.evaluate(()=>__test.state.progress.library.grammar);assert.equal(grammarAtStart['grammar-day-1'].source,'acknowledged-school-concept');
   await answerCurrent(p);assert.deepEqual(await p.evaluate(()=>__test.state.progress.library.grammar),grammarAtStart);
   const frozenPrompt=await p.locator('#quizPrompt').innerText();await p.evaluate(()=>__test.storage.settled());await p.reload();assert.equal(await p.locator('#quizPrompt').innerText(),frozenPrompt);
   // Fill real Chromium localStorage to its native quota, then recover.

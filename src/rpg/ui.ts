@@ -280,7 +280,8 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     const original=resolved?{...resolved,actions:resolved.actions.map(a=>a.type==='lesson'&&state.progress.complete[a.lessonId]?{...a,label:'Review · '+a.label}:a)}:undefined;
     const teacher=Object.values(data.events).some(e=>e.characterId===target.characterId&&e.actions.some(a=>a.type==='lesson'&&chapter().lessons.includes(a.lessonId)));
     const guidance=teacher&&state.progress.tutorialDone?teacherGuidance():null;
-    const event:import('./types').StoryEvent|null=original?(guidance?{...original,lines:[guidance,...original.lines],messages:original.messages?[{speaker:target.name,characterId:target.characterId,text:guidance},...original.messages]:undefined}:original):guidance?{speaker:target.name,characterId:target.characterId,lines:[guidance],actions:[]}:null;
+    const passed=progression.passedChallenge(state.progress,current());
+    const event:import('./types').StoryEvent|null=original?(guidance?{...original,guidance:passed?undefined:guidance,lines:passed?[guidance]:original.lines,messages:passed?undefined:original.messages}:original):guidance?{speaker:target.name,characterId:target.characterId,lines:[guidance],actions:[]}:null;
     if(!event)return;
     if(spec&&save.flags['bilal-success-'+current()])event.conversationComplete=true;
     if(target.characterId!=='bilal' && !state.progress.tutorialDone && eventId!==chapter().openingEvent&&!event.actions.some(a=>a.type==='tutorial'||a.type==='reference'))dialogue.open({speaker:target.name,lines:[onboardingGuidance()],actions:[]});

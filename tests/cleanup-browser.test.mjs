@@ -152,7 +152,7 @@ for (const width of [375, 1280]) {
       );
       assert.equal(
         await p.locator("#speakerName").innerText(),
-        lesson.teacher.replace(/\bSaleha\b/g, "Deena").replace(/\bMina\b/g, "Medina") + " · speaking",
+        await p.evaluate(name=>__test.names.text(name),lesson.teacher) + ' — ' + ({'Deena':'دینه','Medina':'مدینه','Muhammad Jan':'محمد جان','Edris':'ادریس','Ms Hameed':'حمید'}[lesson.teacher]) + " · speaking",
       );
       assert(
         (await p.locator("#guideMessage").innerText()).startsWith(

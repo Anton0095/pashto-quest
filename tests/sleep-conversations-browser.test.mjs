@@ -53,7 +53,7 @@ for(const width of [1280,390])for(const reduced of [false,true]){
   for(let day=1;day<=7;day++){
    const spec=data.conversations.bilal.days[day];await fixture(day);
    if(day<=3){
-    await p.locator('#rpgInteract').click();assert.equal(await p.locator('#rpgDialogue .pashto-option').count(),0);await close();
+    await p.locator('#rpgInteract').click();assert((await p.locator('#rpgDialogue .pashto-option').count())>0,'School already unlocks Bilal before Lake');await close();
    }
    await p.evaluate(day=>__test.lessons.begin(day+'-nature'),day);
    for(let n=0;await p.locator('#lessonScreen').isVisible();n++){

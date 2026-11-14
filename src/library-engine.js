@@ -638,7 +638,7 @@ const LibraryEngine = (() => {
   }
   function formStatus(p,entry,form) {
     const record=p.library.acquired[entry.lemmaId],origin=record?.formUnlocks?.[form.formId],stat=record?.forms?.[form.formId];
-    return {referenceAvailable:!!record&&inBank(p,entry.lemmaId),encountered:!!record?.encounteredFormIds.includes(form.formId),available:!!record?.availableFormIds.includes(form.formId),formallyIntroduced:origin?.studiedDay!==undefined,introducedDay:origin?.studiedDay,introducedLesson:origin?.studiedLesson,practised:(stat?.totalAttempts||0)>0,stage:stat?.stage||0,reviewStatus:form.reviewStatus};
+    return {referenceAvailable:!!record&&inBank(p,entry.lemmaId),encountered:!!record?.encounteredFormIds.includes(form.formId),available:!!record?.availableFormIds.includes(form.formId),formallyIntroduced:origin?.studiedDay!==undefined,introducedDay:origin?.studiedDay,introducedLesson:origin?.studiedLesson,practised:(stat?.totalAttempts||0)>0,stage:stat?.stage||0,mastered:(stat?.stage||0)>=3,reviewStatus:form.reviewStatus};
   }
   return {
     formallyTaught,eligibleForm,initialForm,formStatus,

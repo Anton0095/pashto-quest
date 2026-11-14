@@ -16,11 +16,11 @@ for(const [width,day] of [[1280,1],[1280,2],[1280,3],[1280,6],[375,1],[375,6]]){
   const blocked=await p.evaluate(day=>{const t=__test,before=t.state.session;t.lessons.begin(day+'-residential');t.challenge.startChallenge(day);return t.state.session===before&&!t.state.progress.activeChallenge;},day);assert(blocked,'Shared direct starters preserve School gate');
   // Before School, NPC conversation stays available without completing a lesson.
   await d.actor('jan-home',day);await p.locator('#rpgInteract').click();while(await p.getByRole('button',{name:'Continue',exact:true}).count())await p.getByRole('button',{name:'Continue',exact:true}).click();
-  assert((await p.locator('#rpgDialogue').innerText()).match(/Visit .+ — Ms Hameed first/));
+  assert((await p.locator('#rpgDialogue').innerText()).match(/Visit .+ — Ms Hameed — حمید first/));
   assert.equal(await p.locator('#rpgDialogue').getByRole('button',{name:'Study at Home',exact:true}).count(),0);
   await p.locator('#rpgDialogue').getByRole('button',{name:'Back to village',exact:true}).click();
   assert(!(await d.progress()).complete[day+'-school']);
-  await quick();await p.locator('[data-destination=school]').click();await p.locator('#teachPanel').waitFor();
+  await quick();await p.locator('[data-destination=school]').click();await p.locator('#lessonScreen').waitFor();
   await d.lesson({onStep:async()=>{assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2));}});
   const afterSchool=await d.progress();assert(afterSchool.complete[day+'-school']);for(const loc of ['residential','nature','business'])assert(!afterSchool.complete[day+'-'+loc]);
   await quick();for(const loc of ['residential','nature','business'])assert(await p.locator(`[data-destination=${loc}]`).isEnabled());

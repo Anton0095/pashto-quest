@@ -339,8 +339,8 @@ function createLibraryUI({
       text.lang = "ps";
       text.dir = "rtl";
       const status=LibraryEngine.formStatus(state.progress,e,f);
-      box.append(ui.node('p',`Reference available · ${status.encountered?'Encountered':'Not encountered'} · ${status.practised?'Practised':'Not practised'} · SRS stage ${status.stage} · ${status.reviewStatus}`, 'tiny'));
-      box.append(ui.node('p',status.formallyIntroduced?`Flashcard acknowledged: Day ${status.introducedDay} · ${status.introducedLesson}`:'Reference only · not formally taught', 'tiny'));
+      box.append(ui.node('p',`Reference available · ${status.encountered?'Encountered':'Not encountered'} · ${status.practised?'Practised':'Not practised'} · SRS stage ${status.stage} · ${status.mastered?'Mastered':'Developing'} · ${status.available?'Available for generation/assessment':'Not unlocked for generation/assessment'} · ${status.reviewStatus}`, 'tiny'));
+      box.append(ui.node('p',status.formallyIntroduced?`Flashcard acknowledged: Day ${status.introducedDay} · ${status.introducedLesson}`:status.available?'Assessment activated · not formally taught':'Reference only · not formally taught', 'tiny'));
       box.append(
         text,
         ui.node(

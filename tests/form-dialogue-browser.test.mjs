@@ -4,8 +4,9 @@ import {setup} from './browser-fixture.mjs';
 import {driver,data} from './rpg-week1-driver.mjs';
 mkdirSync('work/dialogue-morphology',{recursive:true});
 for(const width of [1280,375]){
- const b=await setup({width,mobile:width===375,rpg:true,transform:h=>h.replace('// @TEST_HOOK','window.__week1Inspect=window.__rpgInspect=()=>rpg.diagnostics(); // @TEST_HOOK')});const p=b.page,d=driver(p);
+ const b=await setup({width,mobile:width===375,rpg:true,transform:h=>h.replace('// @TEST_HOOK','window.__rpgDisplayName=ui.characterName;window.__week1Inspect=window.__rpgInspect=()=>rpg.diagnostics(); // @TEST_HOOK')});const p=b.page,d=driver(p);
  try{
+  assert.equal(await p.evaluate(()=>__rpgDisplayName('Deena and Medina')),'Deena — دینه and Medina — مدینه');
   await d.tutorial();if(!await p.locator('[data-destination=school]').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination=school]').click();let checked=false;
   await d.lesson({onStep:async()=>{
    if(checked||!await p.locator('#teachPanel').isVisible())return;

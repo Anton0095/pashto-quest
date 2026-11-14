@@ -1562,3 +1562,5 @@ dialog.rpg-transition::backdrop {background:transparent;}
 .rpg-transition[data-kind^="dream"] .rpg-transition-moon {display:none;}
 .rpg-transition[data-kind^="dream"] .rpg-transition-cloud {display:block;}
 @media (prefers-reduced-motion:reduce) {.rpg-transition-star,.rpg-transition-cloud {transform:none!important;}}
+
+.rpg-lesson-guidance {margin-block: .75rem; padding: .65rem; border-inline-start: 3px solid #ebd39c; background: #ffffff0c; line-height: 1.5;}

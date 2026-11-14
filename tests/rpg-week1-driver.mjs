@@ -1,8 +1,8 @@
 import {displayCharacterText} from './browser-fixture.mjs';
-import assert from 'node:assert/strict';import {readFileSync}from'node:fs';import{runtime}from'./runtime-fixture.mjs';
+import assert from 'node:assert/strict';import {readFileSync,mkdirSync}from'node:fs';import{runtime}from'./runtime-fixture.mjs';
 export const data=JSON.parse(readFileSync('content/RPG_WORLD.json','utf8'));
 export function driver(p){
- const EDU='pashto-quest-rpg-education-v1',WORLD='pashto-quest-rpg-world-v1',oracle=runtime(),known=new Map(),knownGlosses=new Map();
+ const EDU='pashto-quest-rpg-education-v1',WORLD='pashto-quest-rpg-world-v1',oracle=runtime(),known=new Map(),knownGlosses=new Map();let pluralCaptured=false,pluralSentenceCaptured=false;
  const pos=()=>p.locator('#rpgCanvas').evaluate(c=>({map:c.dataset.map,x:+c.dataset.x,y:+c.dataset.y}));
  const progress=()=>p.evaluate(k=>JSON.parse(localStorage.getItem(k)),EDU);
  async function durable(){await p.waitForFunction(key=>{const s=JSON.parse(localStorage.getItem(key)||'null');return s&&s.xp===Number(document.getElementById('xpPill').textContent.match(/\d+/)[0]);},EDU);await p.waitForTimeout(300);}
@@ -40,7 +40,12 @@ export function driver(p){
 
  async function tutorial(){if(await p.locator('#startTutorial').isVisible())await p.locator('#startTutorial').click();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);await actor('jan-welcome',1);await talk('Begin tutorial');await actor('jan-library',1,'library');await talk('Begin tutorial');await p.locator('#tutorialInteraction button').getByText('Hello',{exact:true}).click();await p.locator('#teachNext').click();for(const text of ['How are you?'])await p.locator('#tutorialInteraction button').getByText(text,{exact:true}).click();await p.locator('#teachNext').click();await p.locator('[data-answer="پښتو"]').click();await p.locator('#teachNext').click();if(await p.locator('#tutorialName').isVisible()){await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();}else await p.locator('#tutorialInteraction button').getByText('Muhammad Jan',{exact:true}).click();await p.locator('#teachNext').click();await p.locator('#resultWorld').click();await dialogue('Explore the village');await durable();}
  async function lesson({reload=false,onStep=async()=>{}}={}){await p.locator("#lessonScreen").waitFor();let count=0,reloaded=false;
-  while(await p.locator('#lessonScreen').isVisible()){assert(++count<160,'Lesson stalled');await onStep();if(await p.locator('#teachPanel').isVisible()){const ps=await p.locator('#teachPashto').innerText(),en=await p.locator('#teachEnglish').innerText();known.set(ps,en);knownGlosses.set(ps,[...new Set([...(knownGlosses.get(ps)||[]),en])]);await p.locator('#teachNext').click();}else if(await p.locator('#grammarPanel').isVisible()){
+  while(await p.locator('#lessonScreen').isVisible()){assert(++count<160,'Lesson stalled');await onStep();if(await p.locator('#teachPanel').isVisible()){const ps=await p.locator('#teachPashto').innerText(),en=await p.locator('#teachEnglish').innerText();if((await p.locator('.rpg-day').innerText()).startsWith('DAY 5 /')){
+    const type=await p.locator('#teachType').innerText(),pluralNouns=oracle.content.LIBRARY_DATA.entries.filter(e=>e.partOfSpeech==='noun').flatMap(e=>e.forms.filter(f=>f.morphology.number==='plural'&&f.prerequisiteGrammarIds.includes('grammar-day-5')));
+    const noun=pluralNouns.find(f=>f.pashto===ps),sentence=type.toLowerCase()==='generated sentence'&&pluralNouns.some(f=>ps.replace(/[.!؟،]/g,'').split(/\s+/).includes(f.pashto));
+    if(!pluralCaptured&&noun&&type.includes('NEW FORM')){mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:'work/overhaul/day5-plural-form-'+p.viewportSize().width+'.png'});pluralCaptured=true;}
+    if(!pluralSentenceCaptured&&sentence){mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:'work/overhaul/day5-plural-sentence-'+p.viewportSize().width+'.png'});pluralSentenceCaptured=true;}
+   }known.set(ps,en);knownGlosses.set(ps,[...new Set([...(knownGlosses.get(ps)||[]),en])]);await p.locator('#teachNext').click();}else if(await p.locator('#grammarPanel').isVisible()){
    const demo=p.locator('#grammarPanel .sov-demo[data-example-id]:not([data-complete])');
    if(await demo.count()){const id=await demo.getAttribute('data-example-id'),card=oracle.S.restoreId(oracle.content.LIBRARY_DATA,oracle.content.LIBRARY_DATA.sentenceFrames,id);for(const token of card.ps.replace(/[.!؟،]/g,'').split(/\s+/).filter(Boolean))await demo.locator('.word-tiles button:enabled').getByText(token,{exact:true}).first().click();await demo.getByRole('button',{name:'Check sentence',exact:true}).click();}
    await p.locator('#grammarNext').click();} else{

@@ -187,7 +187,7 @@ function createLessons({
     ui.$("teachPashto").textContent = w.ps;
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
-    const formRef=content.LIBRARY_DATA.sourceMappings[id]?.[0],entry=formRef&&content.libraryEntries[formRef.lemmaId],form=entry?.forms.find(f=>f.formId===formRef.formId);
+    const formRef=w.type!=="sentence"&&content.LIBRARY_DATA.sourceMappings[id]?.length===1?content.LIBRARY_DATA.sourceMappings[id][0]:null,entry=formRef&&content.libraryEntries[formRef.lemmaId],form=entry?.forms.find(f=>f.formId===formRef.formId);
     if(form){const features=Object.entries(form.morphology).filter(([,v])=>v!==null).map(([k,v])=>k+': '+v).join(' · ');ui.$('teachType').textContent=(LibraryEngine.formallyTaught(state.progress,form.formId)?'FORM REVISION':'NEW FORM · ACKNOWLEDGE TO LEARN')+' · '+features;}
 
     ui.$("teachNote").textContent = w.note?.startsWith("Base content user-approved;") ? "" : w.note;
