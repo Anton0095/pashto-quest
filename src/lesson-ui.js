@@ -1,4 +1,4 @@
-/* One teaching path: phrases/words/forms -> grammar -> compiled sentences -> recall. */
+/* Teaching path: daily greeting; School grammar concept before dependent form cards; acknowledged word/form study; grammar workshop; generated sentences and recall. */
 function createLessons({
   state,
   content,
