@@ -34,11 +34,11 @@ The sequence below covers Days 1–14 in the educational engine. The playable RP
 | 2 | He/she, first lexical actions, present verbs and subject–object–verb | Ms Hameed's School workshop; later village visits |
 | 3 | I, first-person present | Deena at Lake; Edris's market/dinner conversation |
 | 4 | Informal singular you (`ته`), contrast with I, compound clauses | Muhammad Jan at Home |
-| 5 | Respectful/plural you (`تاسې`/`تاسو`), audience selection | Ms Hameed at School; gathering near Lake |
-| 6 | We (`موږ`/`مونږ`), compound subjects and contrast with you all | Deena invites the player from Lake; younger sister Medina is introduced in Hills |
-| 7 | They (`هغوی`), observed third-person plural, Week 1 synthesis | Edris at Market; Ms Hameed's 25-question Week 1 exam |
+| 5 | Respectful/plural you (`تاسې`/`تاسو`), first noun plurals and agreement | Ms Hameed at School; gathering near Lake |
+| 6 | We (`موږ`/`مونږ`), compound subjects and continued plural-noun practice | Deena invites the player from Lake; younger sister Medina is introduced in Hills |
+| 7 | They (`هغوی`), plural agreement and Week 1 synthesis | Edris at Market; Ms Hameed's 25-question Week 1 exam |
 | 8 | This/that demonstratives | Deena at Lake |
-| 9 | Noun plurals, agreement and quantities 1–5 | Edris at Market |
+| 9 | Numbers 1–5, quantities and consolidation of plurals introduced on Day 5 | Edris at Market |
 | 10 | Here/there/where and spatial expressions | Medina's misplaced notebook |
 | 11 | Possession: my/your/our and named possessors | Muhammad Jan at Home |
 | 12 | Who/what/which/where/how many | Ms Hameed at School |
@@ -54,7 +54,7 @@ Day 1 School teaches Book/New and agreement first. Home then introduces eight no
 - User-selectable daily district-lemma pace: **8, 12, 16, 20 or 24**; fresh-profile default 24. Schema 9 freezes new plans. Valid schema-9 progress is preserved; older schemas are not converted. School is compulsory before the other three lessons or any challenge. The three lessons can be completed in all six orders. Day 1 assigns nouns/adjectives only; Day 2 introduces actions in every district.
 - Every lexeme has one `lemmaId` and potentially multiple `formId`s. Inflections, universal vocabulary, expressions and sentence units are not counted as newly introduced district lemmas. Incidental story exposure is tracked separately from assigned and mastered entries.
 - Day 14 assigns **zero new compulsory district lemmas**. Insufficient evidenced, eligible vocabulary must be reported, never silently filled using repeated entries, English-only candidates or fake translations.
-- **Current playable inventory:** 474 lexical identities/614 forms: 401 district lemmas (semantic primary districts remain provenance; curated teaching districts follow the specialisations) and 73 universal lemmas. “Playable” does **not** mean native-certified.
+- **Current playable inventory:** 474 lexical identities/667 recorded forms (215 composition-eligible): 401 district lemmas (semantic primary districts remain provenance; curated teaching districts follow the specialisations) and 73 universal lemmas. “Playable” does **not** mean native-certified.
 - **Expansion disposition:** all 301 selected candidates were promoted as mechanically complete provisional drafts and their canonical base entries are now user-approved; 59 candidates remain rejected, including 7 existing-sense aliases. The canonical promoted base entries are user-approved; candidate/archive provenance is retained without relabelling excluded candidates. None is independently native-certified.
 - At 24/day, the planner schedules exactly **312** distinct district introductions on Days 1–13. Day 14 remains cumulative review with no compulsory vocabulary. School receives two starter lemmas on Days 1/2 and no artificial lexical quota thereafter. Function words, individually taught forms and fixed expressions stay outside the district-lemma total.
 - `content/UNIVERSAL_TEACHING_TARGETS.json` contains **40 proposed semantic teaching targets** (pronouns, numbers, question words, position, connectors etc.); they are not automatically 40 translated lexical records.
