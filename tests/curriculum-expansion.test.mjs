@@ -94,7 +94,7 @@ E.encounter(p, data, uref, { day: 6, source: "lesson", location: "nature" });
 const record = JSON.stringify(p.library.acquired[u.lemmaId]);
 E.encounter(p, data, uref, { day: 7, source: "lesson", location: "business" });
 assert.equal(JSON.stringify(p.library.acquired[u.lemmaId]), record);
-assert.equal(E.summary(p, data).encountered, 1);
+assert.equal(E.summary(p, data).encountered, 0, "Incidental encounters are recorded without granting formal Bank membership");
 // A generated plan stays frozen on reload; current code never rewrites authored assignments.
 const planned = fresh();
 const frozen = JSON.stringify(E.ensurePlan(planned, data, 1));
@@ -152,7 +152,7 @@ assert.equal(E.cardStat(phraseProgress, activeData, morning.id).srsDueAt, 0);
 const encounter = JSON.parse(JSON.stringify(phraseProgress.library.phrases[morning.id]));
 E.expose(phraseProgress, activeData, morning.id, {
   day: 2,
-  source: "lesson",
+  source: "lesson", acknowledged:true,
   location: "school",
 });
 assert.deepEqual(

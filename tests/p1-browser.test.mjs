@@ -18,7 +18,7 @@ for(const width of [375,1280]) {
     if(t.content.zoneKeys.some(place=>!['residential','school'].includes(place)&&t.state.progress.complete['1-'+place]))throw Error('Unexpected district completion');
     t.library.openLibrary();const detail=document.querySelector('.library-entry');detail.open=true;
     [...detail.querySelectorAll('button')].find(b=>b.textContent==='Practise an encountered form').click();
-    const allowed=new Set(Object.values(t.content.wordById).filter(c=>(t.content.LIBRARY_DATA.sourceMappings[c.id]||[]).length&&t.content.LIBRARY_DATA.sourceMappings[c.id].every(r=>t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))).map(c=>c.en));
+    const allowed=new Set(Object.values(t.content.wordById).filter(c=>(t.content.LIBRARY_DATA.sourceMappings[c.id]||[]).length&&t.content.LIBRARY_DATA.sourceMappings[c.id].every(r=>t.state.progress.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId))).map(c=>c.en));
     for(const b of detail.lastElementChild.querySelectorAll('button'))if(!allowed.has(b.textContent)&&!['A different meaning','Another response','None of these'].includes(b.textContent))throw Error('Library leaked '+b.textContent);
     document.querySelector('#libraryDialog').close();
   });
@@ -72,7 +72,7 @@ for(const width of [375,1280]) {
   });await p.reload();assert.equal(await p.evaluate(()=>__test.state.progress.xp),xp+7);
   // Activation licenses current grammar; practical answers add no further unlocks.
   await p.evaluate(()=>{const t=__test;t.reset(8);t.state.progress.tutorialDone=true;(t.studySchool(1),t.challenge.startChallenge(1));if(t.state.session.questions.some(q=>['choice','address'].includes(q.kind)))throw Error('Retired rule question generated')});
-  const grammarAtStart=await p.evaluate(()=>__test.state.progress.library.grammar);assert.equal(grammarAtStart['grammar-day-1'].source,'visible-prerequisite-workshop');
+  const grammarAtStart=await p.evaluate(()=>__test.state.progress.library.grammar);assert.equal(grammarAtStart['grammar-day-1'].source,'acknowledged-school-concept');
   await answerCurrent(p);assert.deepEqual(await p.evaluate(()=>__test.state.progress.library.grammar),grammarAtStart);
   const frozenPrompt=await p.locator('#quizPrompt').innerText();await p.evaluate(()=>__test.storage.settled());await p.reload();assert.equal(await p.locator('#quizPrompt').innerText(),frozenPrompt);
   // Fill real Chromium localStorage to its native quota, then recover.

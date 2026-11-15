@@ -4,7 +4,7 @@
 
 Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CURRICULUM.md` for lessons/characters/vocabulary, `LANGUAGE_REVIEW.md` for Pashto/audio, and `tests/README.md` for verification **only when relevant**. `docs/reference/` contains historical editorial plans, not active instructions. Inspect current source to establish implemented behaviour; a discrepancy does not automatically redefine the product goal. See the [documentation roles](README.md#documentation-roles-and-precedence).
 
-**Current lesson/character system:** Read [the character specification](docs/rpg/CHARACTER_EXPANSION.md) and [lesson/progression fixes](docs/rpg/LESSON_PROGRESSION_FIXES.md). Deena/Medina retain internal IDs `saleha`/`mina`, but current lexical forms/compiler metadata use owner-supplied `دینه`/`مدینه` directly. No display-alias compatibility layer remains. Educational save schema 8 deliberately rejects older saves; no migration or silent reset. Seven optional residents/ambient routines remain. Historical reports retain their original release claims.
+**Current lesson/character system:** Read [the character specification](docs/rpg/CHARACTER_EXPANSION.md) and [lesson/progression fixes](docs/rpg/LESSON_PROGRESSION_FIXES.md). Deena/Medina retain internal IDs `saleha`/`mina`, but current lexical forms/compiler metadata use owner-supplied `دینه`/`مدینه` directly. No display-alias compatibility layer remains. Educational save schema 9 deliberately rejects older saves; no migration or silent reset. Seven optional residents/ambient routines remain. Historical reports retain their original release claims.
 
 ## Single sources of authority
 
@@ -18,7 +18,7 @@ Read `README.md` and this file first. Consult `GAME_SPEC.md` for mechanics, `CUR
 - `content/LEARNING_CURRICULUM.json`: fixed English teaching sequence; every instructional clause is compiled from licensed forms/grammar unlocked by study or explicit challenge activation. `content/FIXED_PHRASES.json` is the current eighteen-expression exception register; additions follow [phrase review](docs/grammar/FIXED_PHRASE_EXCEPTIONS.md#expanding-the-register). The two separately owner-approved authored onboarding questions in `content/TUTORIAL_PROMPTS.json` are limited to their recorded tutorial contexts and never enter ordinary generation. Authored archives are evidence/fixtures only, never teaching fallbacks.
 - Four district keys: `residential`, `nature`, `business`, `school`. Library offers reference and voluntary zero-XP practice; Hills is a permanent physical area within Nature, accessible after onboarding; see [the Day 6 invitation flow](docs/rpg/HILLS_EXPANSION.md).
 - Preserve 14 curriculum days, characters, normal/skip paths and current learning states. Day 1 excludes lexical action verbs; Day 14 has zero compulsory new lemmas.
-- Only **save schema 8** is supported. Do not add old-format migration/backfill/content-repair adapters or silent save resets. Unsupported/corrupt saves remain untouched until explicit user reset.
+- Only **save schema 9** is supported. Do not add old-format migration/backfill/content-repair adapters or silent save resets. Unsupported/corrupt saves remain untouched until explicit user reset.
 - Do not add duplicate SRS/XP stores or replay-farmable rewards. New assessments independently plan selection/construction/optional typing; typing defaults off and unstudied targets may use selection. Typed English recall keeps the English meaning hidden before submission; construction deliberately supplies a direct English sentence target.
 - Incomplete language candidates and pending expressions remain inactive. Mechanically complete lexical drafts may be `provisional_playable` only with explicit provenance, `userVerified: false`, and no native-approval claim. No invented native Laghman approval or audio recordings.
 - Preserve mobile/RTL interaction and candid audio fallback. Mocked browser testing is not physical-device verification.
@@ -35,7 +35,7 @@ Report changed files, actual checks, reasons for omitted checks, material limita
 
 ## Practical assessments and grammar reference
 
-`content/GRAMMAR_REFERENCE.json` belongs to the read-only Library Grammar Journal. All concept explanations and worked analyses are readable without generation unlocks. New daily/weekly assessments must contain only word/phrase recall, sentence meaning/construction or contextual dialogue; insufficient sentence supply uses vocabulary/approved phrases, never English rule/category quizzes. Old grammar-question instructions are superseded. Preserve retired format-8 attempts behind an explicit notice and archive/export them only after the player explicitly chooses retirement; never reroll or regrade them silently.
+`content/GRAMMAR_REFERENCE.json` belongs to the read-only Library Grammar Journal. All concept explanations and worked analyses are readable without generation unlocks. New daily/weekly assessments must contain only word/phrase recall, sentence meaning/construction or contextual dialogue; insufficient sentence supply uses vocabulary/approved phrases, never English rule/category quizzes. Old grammar-question instructions are superseded. Earlier format-8 attempts are unsupported in schema 9; retain safe export/reset handling, with no migration or silent reset.
 
 ## Shared construction and challenge completion
 

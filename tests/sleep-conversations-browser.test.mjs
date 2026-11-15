@@ -53,7 +53,7 @@ for(const width of [1280,390])for(const reduced of [false,true]){
   for(let day=1;day<=7;day++){
    const spec=data.conversations.bilal.days[day];await fixture(day);
    if(day<=3){
-    await p.locator('#rpgInteract').click();assert.equal(await p.locator('#rpgDialogue .pashto-option').count(),0);await close();
+    await p.locator('#rpgInteract').click();assert((await p.locator('#rpgDialogue .pashto-option').count())>0,'School already unlocks Bilal before Lake');await close();
    }
    await p.evaluate(day=>__test.lessons.begin(day+'-nature'),day);
    for(let n=0;await p.locator('#lessonScreen').isVisible();n++){
@@ -73,7 +73,7 @@ for(const width of [1280,390])for(const reduced of [false,true]){
    assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[spec.event].pashto.ps);assert(!(await p.locator('#rpgDialogue').innerText()).includes(data.events[spec.event].languageReview.englishReviewOnly));await p.getByRole('button',{name:'Hear Pashto',exact:true}).click();
    await correct.click();assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[spec.correctEvent].pashto.ps);
    await p.getByRole('button',{name:'Continue',exact:true}).click();assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[spec.conclusionEvent].pashto.ps);await close();
-   assert.equal(await p.evaluate(()=>JSON.stringify(__test.state.progress)),before);await p.locator('#rpgInteract').click();assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[spec.repeatEvent].pashto.ps);await close();
+   assert.equal(await p.evaluate(()=>JSON.stringify(__test.state.progress)),before);await p.locator('#rpgInteract').click();assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[spec.event].pashto.ps);await close();
    // Clear only the optional narrative cursor/seen flag for the alternate branch.
    await p.evaluate(async({ids,WORLD})=>{await __sleepRPG.flush();const raw=localStorage.getItem(WORLD),w=JSON.parse(raw);for(const id of ids)delete w.triggers[id];delete w.dialogue;const next=JSON.stringify(w);await navigator.locks.request(WORLD,()=>__sleepFence.commit(WORLD,raw,next,()=>localStorage.getItem(WORLD),()=>{localStorage.setItem(WORLD,next);return true;}));},{ids:[spec.event,spec.correctEvent,spec.incorrectEvent,spec.conclusionEvent],WORLD});await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);await p.locator('#rpgInteract').click();
    await p.locator('[data-response-id]').filter({hasNotText:spec.response.pashto}).first().click();assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[spec.incorrectEvent].pashto.ps);

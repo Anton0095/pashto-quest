@@ -80,9 +80,9 @@ for(const mode of ['desktop','mobile4x'].filter(m=>profile==='all'||m===profile)
      try{measure('storageWriteOnly',()=>localStorage.setItem(scratch,raw));}finally{localStorage.removeItem(scratch);}
      measure('completeSave',()=>t.storage.save());
      // Eligibility cache must observe both form and grammar unlock changes, never just day.
-     const acquired=Object.values(progress.library.acquired).find(r=>r.introducedFormIds.length);
+     const acquired=Object.values(progress.library.acquired).find(r=>r.availableFormIds.length);
      let formInvalidation=null;
-     if(acquired){const old=acquired.introducedFormIds;acquired.introducedFormIds=old.slice(1);const before=d.eligibleCache;t.S.available(progress,d,f,day);formInvalidation=before!==d.eligibleCache;acquired.introducedFormIds=old;t.S.available(progress,d,f,day)}
+     if(acquired){const old=acquired.availableFormIds;acquired.availableFormIds=old.slice(1);const before=d.eligibleCache;t.S.available(progress,d,f,day);formInvalidation=before!==d.eligibleCache;acquired.availableFormIds=old;t.S.available(progress,d,f,day)}
      const g='grammar-day-'+day,old=progress.library.grammar[g],before=d.eligibleCache;delete progress.library.grammar[g];t.S.available(progress,d,f,day);const grammarInvalidation=before!==d.eligibleCache;progress.library.grammar[g]=old;t.S.available(progress,d,f,day);
      const sizes={};for(const [key,value] of Object.entries(progress.library))sizes[key]=bytes(JSON.stringify(value));
      const snapshotBytes=Object.values(progress.library.plans).reduce((n,p)=>n+bytes(JSON.stringify(p.generatedPracticeCards||{}))+bytes(JSON.stringify(p.challengeQuestions||[])),0);

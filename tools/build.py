@@ -136,7 +136,7 @@ def build(check_rpg=False):
             e['introduction'].update({k: row[k] for k in ['day', 'district', 'teachingOrder']})
             e['introduction']['verifiedStatus'] = 'human_curriculum_approved'
             for f in e['forms']:
-                f['firstAllowedDay'] = max(row['day'], f['grammarFirstDay'])
+                f['firstAllowedDay'] = max(e['firstIntroductionConstraints']['earliestDay'], f['grammarFirstDay'])
             # Authorial scheduling approval NEVER changes linguistic review status.
     library['sentenceFrames'] = json.loads(read('content/SENTENCE_FRAMES.json'))
     candidates = json.loads(read('content/DISTRICT_VOCABULARY_CANDIDATES.json'))
@@ -154,6 +154,14 @@ def build(check_rpg=False):
                 authored[c['id']] = dict(ps=c['pashto'], en=c['english'], roman=c['romanization'])
     reviewed=json.loads(read('content/REVIEWED_LANGUAGE_UPDATES.json'))['attestations']
     for a in library.get('generationAttestations', []):
+        if a.get('kind') == 'dictionary_inflection':
+            form=next((f for e in library['entries'] for f in e['forms'] if f['formId']==a['sourceId']),None)
+            if (not form or form.get('userVerified') is not False or a.get('userApproved') is not False or a.get('nativeCertificationClaimed') is not False
+                    or not a.get('sourceUrl','').startswith('https://oped.univie.ac.at/')
+                    or a['sourceUrl'] not in [r['source'] for r in form.get('morphologyResearch',[])]
+                    or (a['pashto'],a['romanisation']) != (form['pashto'],form['romanisation'])):
+                raise ValueError('Invalid dictionary inflection evidence: '+a['sourceId'])
+            continue
         w=authored.get(a['sourceId'])
         if a['sourceId'] in reviewed:
             if a!=reviewed[a['sourceId']]:raise ValueError('Reviewed span differs from recorded draft: '+a['sourceId'])
@@ -218,11 +226,15 @@ def build(check_rpg=False):
         'world-ui', 'library-ui',
     ]
     names=json.loads(read('content/CHARACTER_NAMES.json'))
-    if names['approval']['status']!='user_approved' or names['approval']['nativeCertificationClaimed'] is not False or {r['characterId']:r['current']['pashto'] for r in names['characters']} != json.loads(read('content/USER_LANGUAGE_APPROVALS.json'))['characterNameUpdates']['suppliedSpellings']:
+    if names['approval']['status']!='user_approved' or names['approval']['nativeCertificationClaimed'] is not False or {r['characterId']:r['current']['pashto'] for r in names['characters'] if 'previous' in r} != json.loads(read('content/USER_LANGUAGE_APPROVALS.json'))['characterNameUpdates']['suppliedSpellings']:
         raise ValueError('Character name spelling requires exact owner approval')
     people={n['characterId']:n['name'] for n in json.loads(read('content/RPG_WORLD.json'))['npcs']}
     entries={e['lemmaId']:e for e in library['entries']}
     for n in names['characters']:
+        if not n.get('lemmaId'):
+            if n['current']['english']!=people[n['characterId']] or n.get('userVerified') is not False or not n.get('reviewStatus') or not re.search(r'[\u0600-\u06ff]',n['current']['pashto']):
+                raise ValueError('Invalid provisional display name')
+            continue
         e=entries[n['lemmaId']]
         if (n['current']['english']!=people[n['characterId']]
                 or e['displayLemmaPs'] != n['current']['pashto']

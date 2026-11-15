@@ -63,6 +63,8 @@ function createLessons({
       loop,
       attemptId: ++state.progress.library.attemptSequence,
       required: [...pool],
+      schoolConceptPending: mode === "standard" && loc === "school" && !state.progress.library.grammar["grammar-day-"+loop],
+      formAcknowledgements: [],
       studyWords: mode === "tutorial" ? [] : lexical,
       greetingCards: phrases,
       studySentences: reviewSentences,
@@ -71,7 +73,7 @@ function createLessons({
           ? "tutorial"
           : phrases.length
             ? "greeting"
-            : "lexical",
+            : mode === "standard" && loc === "school" && !state.progress.library.grammar["grammar-day-"+loop] ? "grammar" : "lexical",
       cardIndex: 0,
       queue: pool.map((id,i) => ({
         id,
@@ -154,7 +156,7 @@ function createLessons({
   function advancePhase() {
     const s = state.session;
     s.cardIndex = 0;
-    if (s.phase === "greeting") s.phase = "lexical";
+    if (s.phase === "greeting") s.phase = s.schoolConceptPending ? "grammar" : "lexical";
     else if (s.phase === "lexical")
       s.phase =
         s.mode === "standard"
@@ -173,7 +175,7 @@ function createLessons({
       return;
     }
     const w = learning.surface(id, "study");
-    learning.libraryExpose(id, s.mode === "review" ? "review" : "lesson");
+    learning.libraryExpose(id, "lesson-preview");
     storage.save();
     ui.$("teachSpeak").classList.remove("hidden");
     ui.$("teachPanel").classList.remove("hidden");
@@ -185,7 +187,11 @@ function createLessons({
     ui.$("teachPashto").textContent = w.ps;
     ui.$("teachRoman").textContent = w.roman;
     ui.$("teachEnglish").textContent = w.en;
+    const formRef=w.type!=="sentence"&&content.LIBRARY_DATA.sourceMappings[id]?.length===1?content.LIBRARY_DATA.sourceMappings[id][0]:null,entry=formRef&&content.libraryEntries[formRef.lemmaId],form=entry?.forms.find(f=>f.formId===formRef.formId);
+    if(form){const features=Object.entries(form.morphology).filter(([,v])=>v!==null).map(([k,v])=>k+': '+v).join(' · ');ui.$('teachType').textContent=(LibraryEngine.formallyTaught(state.progress,form.formId)?'FORM REVISION':'NEW FORM · ACKNOWLEDGE TO LEARN')+' · '+features;}
+
     ui.$("teachNote").textContent = w.note?.startsWith("Base content user-approved;") ? "" : w.note;
+    if(form&&form.pashto!==entry.displayLemmaPs)ui.$("teachNote").textContent='Lemma: '+entry.displayLemmaPs+' ('+entry.romanisation+') · '+ui.$("teachNote").textContent;
     ui.$("teachNote").classList.toggle("hidden", !ui.$("teachNote").textContent);
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
     const guidance = w.generated
@@ -193,7 +199,7 @@ function createLessons({
       : w.type === "greeting"
         ? "Learn this conventional expression as a complete phrase."
         : "Study this word or individual form. It will remain available in later constructions.";
-    const voice = teacher.name + (s.mode === "review" ? " · Memory Trail" : "");
+    const voice = ui.characterName(teacher.name) + (s.mode === "review" ? " · Memory Trail" : "");
     ui.$("guideMessage").textContent =
       w.type === "greeting"
         ? `${voice}: “${w.en}” Listen to the expression, then practise saying it with me.`
@@ -203,7 +209,7 @@ function createLessons({
     ui.setSentenceConversation(w, teacher.name);
     if (w.phrasePromptId) {
       const prompt = content.wordById[w.phrasePromptId];
-      ui.$("guideMessage").textContent = `${teacher.name}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). You reply: ${w.ps} (${w.en}).`;
+      ui.$("guideMessage").textContent = `${ui.characterName(teacher.name)}: ${prompt.ps} (${prompt.roman} — ${prompt.en}). You reply: ${w.ps} (${w.en}).`;
     }
     ui.$("teachNext").disabled = false;
     ui.$("teachNext").textContent =
@@ -231,12 +237,19 @@ function createLessons({
       return;
     }
     if (!["greeting", "lexical", "sentence"].includes(s.phase)) return;
+    if(s.phase==='lexical'||s.phase==='greeting'){
+      const id=studyList()[s.cardIndex];learning.acknowledgeForm(id);
+      s.formAcknowledgements = [...new Set([...(s.formAcknowledgements || []),...(content.LIBRARY_DATA.sourceMappings[id]||[]).map(ref=>ref.formId).filter(formId=>LibraryEngine.formallyTaught(state.progress,formId))])];
+    }
     if (++s.cardIndex < studyList().length) teachCard();
     else advancePhase();
   }
   function afterGrammar() {
     const s = state.session;
     if (!s || s.phase !== "grammar" || ui.$("grammarNext").disabled) return;
+    if(s.schoolConceptPending){
+      LibraryEngine.unlock(state.progress,s.loop,'acknowledged-school-concept');s.schoolConceptPending=false;s.phase='lexical';s.cardIndex=0;storage.save();renderPhase();return;
+    }
     learning.prepareSentences(s);
     s.phase = "sentence";
     s.cardIndex = 0;
@@ -314,7 +327,7 @@ function createLessons({
     ui.$("quizSpeak").classList.toggle("hidden", build);
     const teacher = content.teacherFor(s.loop, s.loc, s.mode);
     ui.setDialogueSpeaker(teacher.name);
-    ui.$("guideMessage").textContent = `${teacher.name}: “What does this mean? Choose your answer and we will check it together.”`;
+    ui.$("guideMessage").textContent = `${ui.characterName(teacher.name)}: “What does this mean? Choose your answer and we will check it together.”`;
     if (build) ui.construction.present(w, s.activeItem, s.loop);
     ui.$("builtSentence").classList.remove("build-success", "build-error");
     ui.$("choices").replaceChildren();

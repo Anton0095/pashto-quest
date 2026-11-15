@@ -27,7 +27,7 @@ for(const width of [375,1280]) {
    ui.showAnswerFeedback(root,w.en,'open',{accepts:v=>t.Q.evaluate({kind:'word',direction:'ps-en'},w,v)});
    check(root.querySelectorAll('.correct').length===2&&!root.querySelector('.wrong'),'accepted variant highlighted wrong');
    // Library uses the real form's accepted answers, not a reduced {en} object.
-   const inf=t.content.libraryEntries['lemma:v-open'];t.E.encounter(t.state.progress,t.content.LIBRARY_DATA,{lemmaId:inf.lemmaId,formId:inf.forms[0].formId},{day:2,source:'lesson',introduce:true});
+   t.E.unlock(t.state.progress,2,'acknowledged-concept');const inf=t.content.libraryEntries['lemma:v-open'];t.E.encounter(t.state.progress,t.content.LIBRARY_DATA,{lemmaId:inf.lemmaId,formId:inf.forms[0].formId},{day:2,source:'lesson',introduce:true,acknowledged:true,lessonId:'2-residential'});
    t.state.day=2;t.library.openLibrary();
    const detail=document.querySelector('[data-lemma="lemma:v-open"]');check(detail,'missing Library verb');
    const select=t.questions.distractors;t.questions.distractors=()=>['To open','open','House','Door'];

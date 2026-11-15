@@ -1,6 +1,6 @@
 /* Save factory, XP, assessment outcomes and access rules. No DOM or storage. */
 function createProgression({ curriculum, zoneKeys, LIBRARY_DATA, NARRATIVE_DATA }, libraryEngine) {
-  const SAVE_VERSION = 8;
+  const SAVE_VERSION = 9;
   const XP_STEP = 200;
   const XP_FLOORS = {
     1: 200,

@@ -13,7 +13,7 @@ for(const [width,height]of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,84
  await p.locator('[data-answer="پښتو"]').click();await p.locator('#teachNext').click();if(await p.locator('#tutorialName').isVisible()){await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();}else await p.locator('#tutorialInteraction button').getByText('Muhammad Jan',{exact:true}).click();await p.locator('#teachNext').click();await p.locator('#resultWorld').click();while(await p.getByRole('button',{name:'Continue',exact:true}).count())await p.getByRole('button',{name:'Continue',exact:true}).click();await p.getByRole('button',{name:'Explore the village',exact:true}).click();
  if(width===1366){
   await p.evaluate(()=>(__test.studySchool(1),__test.lessons.begin('1-residential')));await p.locator('#teachPanel').waitFor();await p.locator('#teachNext').click();
-  assert.equal(await p.locator('#teachNote').isVisible(),false,'Base approval notice is absent without blank space');
+  assert(!/Base content user-approved/i.test(await p.locator('#teachNote').textContent()),'The removed base-approval notice stays absent; form review/lemma context may be shown');
   assert(!await p.getByText('Another location expression awaits an approved Pashto translation and cannot yet be studied.',{exact:true}).count());
   await p.screenshot({path:captures+'/study-1366.png',fullPage:true});await p.locator('#navWorld').click();
  }

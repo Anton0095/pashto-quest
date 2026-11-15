@@ -7,7 +7,7 @@ if (['all','A'].includes(mode)) {
  const choices=t.questions.distractors(target);
  const studiedMeanings=new Set(Object.values(t.content.wordById).filter(c=>
    (t.content.LIBRARY_DATA.sourceMappings[c.id]||[]).length &&
-   t.content.LIBRARY_DATA.sourceMappings[c.id].every(r=>t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))
+   t.content.LIBRARY_DATA.sourceMappings[c.id].every(r=>t.state.progress.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId))
  ).map(c=>c.en));
  const leaks=choices.filter(c=>!studiedMeanings.has(c)&&!['A different meaning','Another response','None of these'].includes(c));
  console.log('A choices',choices,'unintroduced meanings',leaks);
@@ -30,7 +30,7 @@ if (['all','C'].includes(mode)) {
 }
 if(mode==='all') {
  const t=runtime(), neutral=new Set(['A different meaning','Another response','None of these']);
- function introduced(c){const refs=t.content.LIBRARY_DATA.sourceMappings[c.id]||[];return refs.length>0&&refs.every(r=>t.state.progress.library.acquired[r.lemmaId]?.introducedFormIds.includes(r.formId))}
+ function introduced(c){const refs=t.content.LIBRARY_DATA.sourceMappings[c.id]||[];return refs.length>0&&refs.every(r=>t.state.progress.library.acquired[r.lemmaId]?.availableFormIds.includes(r.formId))}
  function checkChoices(day){
   const qs=beginAttempt(t,day);for(const q of qs.filter(q=>q.kind==='word')){
    const target=t.content.wordById[q.id],field=q.direction==='en-ps'?'ps':'en';

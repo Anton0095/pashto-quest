@@ -5,11 +5,11 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
   function isUnstudied(id) {
     const phrase = state.progress.library.phrases[id];
     if (content.LIBRARY_DATA.phrases.some(p => p.id === id))
-      return !phrase || (phrase.source === "challenge-start" && !phrase.studiedDay);
+      return !phrase || !phrase.studiedDay;
     return (content.LIBRARY_DATA.sourceMappings[id] || []).some(ref => {
       const r = state.progress.library.acquired[ref.lemmaId], origin = r?.formUnlocks?.[ref.formId];
-      return !r?.introducedFormIds.includes(ref.formId) ||
-        (origin?.source === "challenge-start" && !origin.studiedDay);
+      return !r?.availableFormIds.includes(ref.formId) ||
+        !origin?.studiedDay;
     });
   }
   function available(day) {
@@ -58,17 +58,19 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
     const plan = state.progress.library.plans[day];
     // Every location contributes regardless of visit completion. Interleave the
     // frozen assignments so additional recall tasks stay balanced as well.
+    const usableForm = (lemmaId, place) => {
+      const entry=content.libraryEntries[lemmaId],record=state.progress.library.acquired[lemmaId];
+      if(!entry||!record)return null;
+      const frozen=plan.firstFormSelections?.[place] || [];
+      return [...entry.forms].sort((a,b)=>Number(frozen.includes(b.formId))-Number(frozen.includes(a.formId)))
+        .map(f=>'library-form:'+f.formId).find(id=>{
+          const ref=content.LIBRARY_DATA.sourceMappings[id]?.[0];
+          return ref&&record.availableFormIds.includes(ref.formId)&&LibraryEngine.cardAllowed(content.LIBRARY_DATA,id,day)&&practicalMeaning(id);
+        }) || null;
+    };
     const rows = QuestionEngine.shuffle(content.zoneKeys, random).map(place => QuestionEngine.shuffle(
       plan.locationAssignments[place] || [], random,
-    ).map(id => {
-      const base = "library-card:" + id;
-      if (practicalMeaning(base)) return base;
-      // A category-qualified lemma gloss can still have an evidenced practical
-      // form gloss (e.g. cooked). Retain its lemma identity and district coverage.
-      const entry=content.libraryEntries[id];
-      return entry.forms.map(f=>"library-form:"+f.formId).find(card=>LibraryEngine.cardAllowed(content.LIBRARY_DATA,card,day)&&practicalMeaning(card)) || base;
-    }).filter(id =>
-      LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id)));
+    ).map(id=>usableForm(id,place)).filter(Boolean));
     const scheduled = [];
     for (let i = 0; i < Math.max(0, ...rows.map(row => row.length)); i++)
       for (const row of rows) if (row[i]) scheduled.push(row[i]);
@@ -81,7 +83,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
       .filter(
         (e) => e.vocabularyClass === "universal" && e.introduction.day === day,
       )
-      .map((e) => "library-card:" + e.lemmaId), random);
+      .map((e) => usableForm(e.lemmaId)), random);
     const review = QuestionEngine.shuffle(
       content.LIBRARY_DATA.entries
         .filter(
@@ -89,7 +91,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
             e.introduction.day <= day &&
             (due.has(e.lemmaId) || state.progress.library.acquired[e.lemmaId]),
         )
-        .map((e) => "library-card:" + e.lemmaId),
+        .map((e) => usableForm(e.lemmaId)),
       random,
     );
     const phrases = QuestionEngine.shuffle(content.LIBRARY_DATA.phrases
@@ -102,7 +104,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
         ...review,
         ...phrases,
       ]),
-    ].filter((id) => LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id));
+    ].filter((id) => id && LibraryEngine.cardAllowed(content.LIBRARY_DATA, id, day) && practicalMeaning(id));
   }
   function selectChallenge(day, { newAttempt = false } = {}) {
     if (!progression.challengeAccessible(state.progress, day)) return [];
@@ -182,7 +184,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
     );
     const lexical = lexicalPool(day, random);
     const studiedForms = QuestionEngine.shuffle(content.LIBRARY_DATA.entries.flatMap(e => e.forms
-      .filter(f => state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId))
+      .filter(f => state.progress.library.acquired[e.lemmaId]?.availableFormIds.includes(f.formId))
       .map(f => "library-form:" + f.formId)), random);
     const recallIdentities = new Set();
     const practical = [...lexical, ...studiedForms,
@@ -274,7 +276,7 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
     const excluded = new Set([card.ps, q.answerPs, ...(q.acceptedPs || [])].filter(Boolean).flatMap(a => key(a).split(" ")));
     const day=state.session?.loop || state.day;
     const introduced = content.LIBRARY_DATA.entries.flatMap(e => e.forms.filter(f =>
-      LibraryEngine.formAllowed(e,f,day) && state.progress.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId)).map(f => f.pashto));
+      LibraryEngine.formAllowed(e,f,day) && state.progress.library.acquired[e.lemmaId]?.availableFormIds.includes(f.formId)).map(f => f.pashto));
     const backup = content.LIBRARY_DATA.entries.filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1).map(e => e.forms[0].pashto);
     const duds=[];
     for (const group of [introduced, backup]) for (const token of QuestionEngine.shuffle(group,random)) {

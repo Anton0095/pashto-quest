@@ -16,9 +16,9 @@ for(const width of [375,1280]){
   await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();await p.locator('#rpgDialogue').waitFor();
   assert((await p.locator('.rpg-day').innerText()).includes('DAY 2 /'));assert((await p.locator('#rpgDialogue').innerText()).includes('Acknowledge the alternate story route'));
   await p.getByRole('button',{name:'Acknowledge the alternate story route',exact:true}).click();
-  await p.locator('#quickSleep').click();await p.getByRole('button',{name:'Finish Day 2',exact:true}).waitFor();
-  assert((await p.locator('.rpg-day').innerText()).includes('DAY 2 /'),'Pending ending is presented before transfer');
-  await p.getByRole('button',{name:'Finish Day 2',exact:true}).click();await p.getByRole('button',{name:'Go home',exact:true}).click();
+  await p.locator('#quickSleep').click();await p.locator('#resultScreen').waitFor();assert(!await p.locator('#rpgDialogue').isVisible(),'Results replace the redundant completion conversation');
+  assert((await p.locator('.rpg-day').innerText()).includes('DAY 2 /'),'Results are presented before transfer');
+  await p.getByRole('button',{name:'Go home',exact:true}).click();
   if(!await p.locator('#quickSleep').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('#quickSleep').click();
   await p.waitForFunction(()=>document.querySelector('.rpg-day').textContent.includes('DAY 3 /'));await p.locator('#sleepTransition').waitFor({state:'detached'});
   assert.deepEqual(await p.evaluate(()=>({xp:__test.state.progress.xp,challenges:JSON.stringify(__test.state.progress.challenges)})),before,'Acknowledgement and sleep never fabricate grades/rewards');

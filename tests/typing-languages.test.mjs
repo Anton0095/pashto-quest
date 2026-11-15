@@ -18,11 +18,7 @@ for(const en of [false,true])for(const ps of [false,true]){
   assert.equal(t.state.session.answered,3);assert.equal(t.state.session.correctCount,2);assert.equal(t.state.session.earned,20);
  }
 }
-for(const enabled of [false,true]){
- const t=runtime(),p=JSON.parse(JSON.stringify(t.progression.fresh()));delete p.typingPreferences;p.enableTypingChallenges=enabled;
- t.backend.setItem('',JSON.stringify(p));const loaded=t.storage.load();assert.deepEqual(JSON.parse(JSON.stringify(loaded.typingPreferences)),{en:enabled,ps:enabled});assert.equal(t.storage.problem,null);t.state.progress=loaded;assert.equal(t.storage.pairingSnapshot(),JSON.stringify(p));loaded.xp++;assert.equal(t.storage.pairingSnapshot(),JSON.stringify(loaded));
-}
-console.log('PASS independent typing combinations, answer direction, selection replacement, progress, construction and legacy preference migration');
+console.log('PASS independent typing combinations, answer direction, selection replacement, progress, construction');
 
 {
  const t=runtime();reset(t);t.state.reviewCampaign=JSON.parse(JSON.stringify(t.state.progress));

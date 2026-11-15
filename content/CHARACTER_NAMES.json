@@ -13,16 +13,158 @@
     {
       "characterId": "mina",
       "lemmaId": "lemma:person:mina",
-      "previous": {"english": "Mina", "pashto": ["مینا"], "romanisation": ["meena"]},
-      "current": {"english": "Medina", "pashto": "مدینه", "romanisation": "madeena"},
+      "previous": {
+        "english": "Mina",
+        "pashto": [
+          "مینا"
+        ],
+        "romanisation": [
+          "meena"
+        ]
+      },
+      "current": {
+        "english": "Medina",
+        "pashto": "مدینه",
+        "romanisation": "madeena"
+      },
       "romanisationStatus": "editorial_pronunciation_aid_not_user_supplied_or_native_certified"
     },
     {
       "characterId": "saleha",
       "lemmaId": "lemma:person:saleha",
-      "previous": {"english": "Saleha", "pashto": ["صالحه", "صالحې"], "romanisation": ["saaleha", "saalehe"]},
-      "current": {"english": "Deena", "pashto": "دینه", "romanisation": "deena"},
+      "previous": {
+        "english": "Saleha",
+        "pashto": [
+          "صالحه",
+          "صالحې"
+        ],
+        "romanisation": [
+          "saaleha",
+          "saalehe"
+        ]
+      },
+      "current": {
+        "english": "Deena",
+        "pashto": "دینه",
+        "romanisation": "deena"
+      },
       "romanisationStatus": "editorial_pronunciation_aid_not_user_supplied_or_native_certified"
+    },
+    {
+      "characterId": "muhammad-jan",
+      "current": {
+        "english": "Muhammad Jan",
+        "pashto": "محمد جان"
+      },
+      "reviewStatus": "editorial_name_pending_review",
+      "sources": [],
+      "userVerified": false,
+      "uncertainty": "Name spelling only; no native Laghman or owner approval asserted. Ms is an English title, not part of the surname."
+    },
+    {
+      "characterId": "edris",
+      "current": {
+        "english": "Edris",
+        "pashto": "ادریس"
+      },
+      "reviewStatus": "editorial_name_pending_review",
+      "sources": [],
+      "userVerified": false,
+      "uncertainty": "Name spelling only; no native Laghman or owner approval asserted. Ms is an English title, not part of the surname."
+    },
+    {
+      "characterId": "hameed",
+      "current": {
+        "english": "Ms Hameed",
+        "pashto": "حمید"
+      },
+      "reviewStatus": "attested_name_pending_character_specific_review",
+      "sources": [
+        "https://www.pashtovoa.com/a/1880565.html"
+      ],
+      "userVerified": false,
+      "uncertainty": "Name spelling only; no native Laghman or owner approval asserted. Ms is an English title, not part of the surname."
+    },
+    {
+      "characterId": "bilal",
+      "current": {
+        "english": "Bilal",
+        "pashto": "بلال"
+      },
+      "reviewStatus": "attested_name_pending_character_specific_review",
+      "sources": [
+        "https://www.pashtovoa.com/a/1880565.html"
+      ],
+      "userVerified": false,
+      "uncertainty": "Name spelling only; no native Laghman or owner approval asserted. Ms is an English title, not part of the surname."
+    },
+    {
+      "characterId": "zamir",
+      "current": {
+        "english": "Zamir",
+        "pashto": "ضمیر"
+      },
+      "reviewStatus": "attested_name_pending_character_specific_review",
+      "sources": [
+        "https://www.pashtovoa.com/a/1880565.html"
+      ],
+      "userVerified": false,
+      "uncertainty": "Name spelling only; no native Laghman or owner approval asserted. Ms is an English title, not part of the surname."
+    },
+    {
+      "characterId": "nayab",
+      "current": {
+        "english": "Nayab",
+        "pashto": "نایاب"
+      },
+      "reviewStatus": "editorial_name_pending_review",
+      "sources": [],
+      "userVerified": false,
+      "uncertainty": "Name spelling only; no native Laghman or owner approval asserted. Ms is an English title, not part of the surname."
+    },
+    {
+      "characterId": "sara",
+      "current": {
+        "english": "Sara",
+        "pashto": "سارا"
+      },
+      "reviewStatus": "editorial_name_pending_review",
+      "sources": [],
+      "userVerified": false,
+      "uncertainty": "Name spelling only; no native Laghman or owner approval asserted. Ms is an English title, not part of the surname."
+    },
+    {
+      "characterId": "omar",
+      "current": {
+        "english": "Omar",
+        "pashto": "عمر"
+      },
+      "reviewStatus": "editorial_name_pending_review",
+      "sources": [],
+      "userVerified": false,
+      "uncertainty": "Name spelling only; no native Laghman or owner approval asserted. Ms is an English title, not part of the surname."
+    },
+    {
+      "characterId": "afiya",
+      "current": {
+        "english": "Afiya",
+        "pashto": "عافیه"
+      },
+      "reviewStatus": "editorial_name_pending_review",
+      "sources": [],
+      "userVerified": false,
+      "uncertainty": "Name spelling only; no native Laghman or owner approval asserted. Ms is an English title, not part of the surname."
+    },
+    {
+      "characterId": "sanaa",
+      "current": {
+        "english": "Sanaa",
+        "pashto": "ثناء"
+      },
+      "reviewStatus": "editorial_name_pending_review",
+      "sources": [],
+      "userVerified": false,
+      "uncertainty": "Name spelling only; no native Laghman or owner approval asserted. Ms is an English title, not part of the surname."
     }
   ]
 }

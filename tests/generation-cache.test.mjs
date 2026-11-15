@@ -3,7 +3,7 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 const data=JSON.parse(readFileSync('index.html','utf8').match(/const LIBRARY_DATA=(\{.*?\});/s)[1]);
-// Current schema-8 contract after the owner-authorized Day-2 Lake see schedule.
+// Current schema-9 contract after per-form teaching and Day-5 plural changes.
 // The preceding schema-8 payload digests remain in generation-output-contract-v8-before-lake-see.json.
 const frames=data.sentenceFrames;
 const freeze=value=>{if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(freeze);Object.freeze(value)}return value};
@@ -30,12 +30,12 @@ for(let day=1;day<=14;day++){
  const signature=data.eligibleCache.signature;
  const grammar=p.library.grammar['grammar-day-'+day];delete p.library.grammar['grammar-day-'+day];S.available(p,data,frames,day);assert.notEqual(data.eligibleCache.signature,signature);
  p.library.grammar['grammar-day-'+day]=grammar;
- const r=Object.values(p.library.acquired).find(r=>r.introducedFormIds.length);if(r){const forms=r.introducedFormIds;r.introducedFormIds=[];S.available(p,data,frames,day);assert.notEqual(data.eligibleCache.signature,signature);r.introducedFormIds=forms}
+ const r=Object.values(p.library.acquired).find(r=>r.availableFormIds.length);if(r){const forms=r.availableFormIds;r.availableFormIds=[];S.available(p,data,frames,day);assert.notEqual(data.eligibleCache.signature,signature);r.availableFormIds=forms}
 }
-const file='tests/generation-output-contract-v8.json';
-if(process.argv.includes('--write')){writeFileSync(file,JSON.stringify(actual,null,2)+'\n');console.log('WROTE current schema-8 output contract; historical contract retained')}
+const file='tests/generation-output-contract-v9.json';
+if(process.argv.includes('--write')){writeFileSync(file,JSON.stringify(actual,null,2)+'\n');console.log('WROTE current schema-9 output contract; historical contract retained')}
 else{
- assert.deepEqual(actual,JSON.parse(readFileSync(file,'utf8')),'Every card, dialogue and seeded draw matches the current schema-8 contract');
+ assert.deepEqual(actual,JSON.parse(readFileSync(file,'utf8')),'Every card, dialogue and seeded draw matches the current schema-9 contract');
  assert.equal(context.rebuilds,1,'One immutable index serves every day, eligibility change and selection view');
  const first=S.available({library:E.state()},data,frames,14);
  const mutable=JSON.parse(JSON.stringify(data));delete mutable.eligibleCache;

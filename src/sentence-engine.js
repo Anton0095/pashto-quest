@@ -393,11 +393,11 @@ const SentenceEngine = (() => {
     const { entry: e, value: f } = item;
     return (
       (e.firstIntroductionConstraints?.earliestDay ?? e.introduction.day) <= day &&
-      f.firstAllowedDay <= day &&
+      LibraryEngine.formAllowed(e,f,day) &&
       [...e.introduction.requiredGrammarIds, ...f.prerequisiteGrammarIds].every(
         (id) => p.library.grammar[id],
       ) &&
-      !!p.library.acquired[e.lemmaId]?.introducedFormIds.includes(f.formId)
+      !!p.library.acquired[e.lemmaId]?.availableFormIds.includes(f.formId)
     );
   }
   function catalog(data, frames, p = null, day = 14) {
@@ -555,7 +555,7 @@ const SentenceEngine = (() => {
       Object.keys(p.library.grammar).sort().join(",") +
       ";" +
       Object.values(p.library.acquired)
-        .flatMap((r) => r.introducedFormIds)
+        .flatMap((r) => r.availableFormIds)
         .sort()
         .join(",");
     if (!data.generatedCatalog && data.eligibleCache?.signature !== signature)
@@ -620,34 +620,7 @@ const SentenceEngine = (() => {
     return f ? compose(data, f, { slots: snapshot.generated.slots }) : null;
   }
   function restoreCard(data, frames, snapshot) {
-    let card = restoreProof(data, frames, snapshot);
-    if(card && card.loop !== snapshot.loop){
-      const frame=frames.frames.find(f=>f.id===card.generated.frameId);
-      // Exact, recorded scheduling checkpoints preserve current-schema proofs.
-      // This changes no stored language, bindings, answers or scores.
-      const checkpointDay = previous => Math.max(card.generated.ast ? 4 : frame.earliestDay,...Object.values(card.generated.slots).map(ref=>{
-        const entry=data.entries.find(e=>e.lemmaId===ref.lemmaId),form=entry.forms.find(f=>f.formId===ref.formId);
-        return previous
-          ? Math.max(entry.introduction.previousDay ?? entry.priorIntroductionDay ?? entry.introduction.day,form.previousFirstAllowedDay ?? form.priorFirstAllowedDay ?? form.firstAllowedDay)
-          : Math.max(entry.priorIntroductionDay ?? entry.introduction.day,form.priorFirstAllowedDay ?? form.firstAllowedDay);
-      }));
-      if([checkpointDay(true),checkpointDay(false)].includes(snapshot.loop))card={...card,loop:snapshot.loop};
-    }
-    if (!card || card.roman === snapshot.roman) return card;
-    // Current schema snapshots retain their exact displayed pronunciation aid.
-    // Only stored, attested prior aids are eligible; no content/proof repair.
-    const ids = new Set(Object.values(snapshot.generated.slots).map(r => r.formId));
-    const prior = data.entries.flatMap(e => e.forms).filter(f => ids.has(f.formId) && f.priorAttestedRomanisation);
-    if (!prior.length) return card;
-    const evidence = {...data.generationEvidence};
-    const entries = data.entries.map(e => ({...e, forms:e.forms.map(f => {
-      if (!prior.includes(f)) return f;
-      const romanisation = f.priorAttestedRomanisation;
-      if (evidence[f.formId]) evidence[f.formId] = {...evidence[f.formId], romanisation};
-      return {...f, romanisation, featureEvidence:{...f.featureEvidence, romanisationSpan:romanisation}};
-    })}));
-    const previous = restoreProof({...data, entries, generationEvidence:evidence}, frames, snapshot);
-    return previous?.roman === snapshot.roman ? previous : card;
+    return restoreProof(data,frames,snapshot);
   }
   function select(p, data, frames, day, count, seed, recent = []) {
     const lookup = index(data),

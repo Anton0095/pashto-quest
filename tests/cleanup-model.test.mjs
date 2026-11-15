@@ -62,7 +62,7 @@ assert(
 assert.equal(t.state.progress.xp, xp, "No completion XP without practice");
 assert(!("sovSeen" in P.fresh()) && !("personIntros" in P.fresh()));
 assert(t.storage.currentSave(P.fresh()));
-assert.equal(P.SAVE_VERSION, 8, "Cleanup alone does not reset current users");
+assert.equal(P.SAVE_VERSION, 9, "Per-form lifecycle deliberately breaks earlier saves");
 const first = c.LIBRARY_DATA.entries[0];
 assert.equal(
   E.encounter(
@@ -75,7 +75,7 @@ assert.equal(
   "Day 0 is phrases, not lexical introductions",
 );
 console.log(
-  "PASS cleanup model: all fourteen days preserve routes, teachers, participants, story, challenge destinations/counts; empty visits give no XP; schema 8 supported; no lexical Day-0 records",
+  "PASS cleanup model: all fourteen days preserve routes, teachers, participants, story, challenge destinations/counts; empty visits give no XP; schema 9 supported; no lexical Day-0 records",
 );
 
 // Historical fixtures protect linguistic evidence without loading it as playable content.

@@ -7,7 +7,7 @@ reset(t);const before=plain(t.state.progress),target=card('a-big');
 const early=t.questions.distractors(target);assert.equal(early.length,4);assert(early.every(v=>v===target.en||backup.has(v)));assert.deepEqual(plain(t.state.progress),before);
 // Three words studied in this lesson, without correct answers or completion,
 // must fill the alternatives ahead of any fallback, despite different POS.
-for(const id of ['n-house','n-door','n-room'])t.learning.libraryExpose(card(id).id,'lesson');
+t.state.session={mode:'standard',id:'1-residential',loop:1,loc:'residential'};t.E.unlock(t.state.progress,1,'acknowledged-concept');for(const id of ['n-house','n-door','n-room']){t.learning.libraryExpose(card(id).id,'lesson-preview');t.learning.acknowledgeForm(card(id).id);}
 const studied=t.questions.distractors(target);assert.deepEqual(new Set(studied.map(v=>v.toLowerCase())),new Set(['big','house','door','room']));
 assert.equal(Object.keys(t.state.progress.complete).length,0);assert.equal(t.state.progress.xp,0);
 const untouched=plain(t.state.progress);for(let i=0;i<30;i++)t.questions.distractors(target);assert.deepEqual(plain(t.state.progress),untouched);
@@ -52,15 +52,4 @@ assert.deepEqual(plain(t.state.progress),acquisition);
 // Grammar explanations now belong to the read-only Journal, never new exams.
 assert.equal(d.grammarReference.concepts.length,33);assert(!d.grammarAssessment);
 for(const c of d.grammarReference.concepts){assert(c.explanation&&c.workedExample.scenario&&c.workedExample.analysis);assert(!c.options&&!c.correct);}
-// Freeze an old ambiguous item and prove no choice regeneration, reset or
-// retrospective grading is needed. Retired questions are no longer gradable.
-reset(t,8);beginAttempt(t,1);const s=t.state.session,idx=0;
-const q=s.questions[idx]={id:'grammar:1:0',kind:'choice',direction:'en-ps',grammarConcept:'feminine-description',correct:'Feminine singular adjective + feminine singular equative',options:['Feminine singular adjective + feminine singular equative','Masculine singular adjective + feminine singular equative','Feminine singular adjective + plural equative','Masculine singular adjective + masculine singular equative'],grammarDays:[]};q.choiceOrder=[...q.options];q.prompt='Choose the matching grammatical roles. The described noun is feminine singular. Which pair agrees?';delete q.explanation;
-s.index=idx;s.answered=idx;const frozen=plain(s.questions),alternative=q.choiceOrder.find(v=>v==='Masculine singular adjective + feminine singular equative');assert(alternative);
-assert(!t.Q.evaluate(q,null,alternative));assert.equal(q.choiceOrder.filter(v=>t.Q.evaluate(q,null,v)).length,0);
-t.storage.save();t.state.progress=t.storage.load();assert.equal(t.storage.problem,null);assert.deepEqual(plain(t.state.progress.activeChallenge.questions),frozen);
-const ungraded=plain(t.state.progress),score=s.correctCount;
-assert.equal(t.learning.submitChallenge(alternative),null,'retired rule items cannot be scored');
-assert.equal(s.correctCount,score);assert.deepEqual(plain(t.state.progress),ungraded);
-
-console.log('PASS same-lesson/mixed-POS priority, real Day1 fallback, unchanged acquisition, accepted-sense/variant exclusions, 33 Journal reference concepts, frozen retired snapshots and blocked grading');
+console.log('PASS acknowledged same-lesson/mixed-POS priority, real Day1 fallback, unchanged acquisition, accepted-sense/variant exclusions and practical-only grading');

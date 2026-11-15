@@ -47,6 +47,7 @@ export function study(t, day, place) {
   // Model lesson journeys perform the real compulsory prerequisite first.
   if(place!=="school"&&!t.state.progress.complete[day+"-school"])study(t,day,"school");
   t.state.day = day;
+  if(place==='school')t.E.unlock(t.state.progress,day,'acknowledged-school-concept');
   const pool = t.learning.libraryLessonPool(day, place);
   const s = (t.state.session = {
     id: day + "-" + place,
@@ -66,7 +67,7 @@ export function study(t, day, place) {
   });
   for (const id of pool) {
     t.learning.surface(id, "study");
-    t.learning.libraryExpose(id, "lesson");
+    t.learning.libraryExpose(id, "lesson-preview");t.learning.acknowledgeForm(id);
   }
   for (let d = 1; d <= day; d++)
     t.E.unlock(t.state.progress, d, "visible-workshop-fixture");
