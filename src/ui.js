@@ -62,7 +62,7 @@ function createUI({ state, content, progression }) {
       content.LIBRARY_DATA,
     );
     $("knownPill").textContent =
-      `${bankCount.encountered} words encountered`;
+      `${bankCount.encountered} words in the Bank`;
     $("characterSubtitle").textContent =
       status.level === 10
         ? "Week 1 complete · New Resident"

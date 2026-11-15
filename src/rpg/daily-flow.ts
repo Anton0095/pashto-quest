@@ -9,7 +9,7 @@ export function dailySpawn(data:WorldData):Position {
 export function dailyGuidance(c:Chapter,p:Progress,progression:Progression,targets?:string[],challengeTarget?:string):string {
  const g=c.guidance;
  if(progression.passedChallenge(p,c.day))return g?.passed??'Return home and sleep when you are ready.';
- if(g&&!p.complete[g.introLessonId])return g.before||`Go to ${g.destination||'the introductory location'} and speak with ${g.character||'your teacher'}.`;
+ if(!p.complete[`${c.day}-school`])return g?.before??'Complete today’s School lesson with Ms Hameed first. You may explore and talk to everyone before studying.';
  const remaining=c.lessons.filter(id=>!p.complete[id]).map(id=>({residential:'Home',nature:'Lake',business:'Market',school:'School'}[id.split('-')[1]]??id));
  return remaining.length?(g?.after??'Continue today’s activities.')+' Remaining: '+(targets?.length?targets:remaining).join(', ')+'.':'You are ready for today’s challenge.'+(challengeTarget?' Go to '+challengeTarget+'.':'');
 }

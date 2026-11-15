@@ -2,13 +2,13 @@ import assert from 'node:assert/strict';
 import {setup} from './browser-fixture.mjs';
 const WORLD='pashto-quest-rpg-world-v1',EDU='pashto-quest-rpg-education-v1';
 for(const width of [375,1280]){
- const b=await setup({width,mobile:width===375,rpg:true,offline:true,transform:h=>h.replace('// @TEST_HOOK','window.__villageFence=saveFence;window.__villageInspect=()=>rpg.diagnostics(); // @TEST_HOOK')});
+ const b=await setup({width,mobile:width===375,rpg:true,offline:true,transform:h=>h.replace('// @TEST_HOOK','window.__villageRPG=rpg;window.__villageFence=saveFence;window.__villageInspect=()=>rpg.diagnostics(); // @TEST_HOOK')});
  const p=b.page;
  try{
  await p.locator('#startTutorial').click();await p.waitForFunction(()=>document.getElementById('rpgCanvas')?.dataset.phaser);
  await p.evaluate(async()=>{__test.state.progress.tutorialDone=true;__test.state.progress.xp=321;await __test.storage.save();});
  async function position(x,y){
-  await p.evaluate(async({x,y,WORLD})=>{await __test.storage.settled();const raw=localStorage.getItem(WORLD),w=JSON.parse(raw);Object.assign(w,{chapter:'day-1',position:{map:'village',x,y,facing:'up'},flags:{started:true,metGuide:true},triggers:{welcome:true},view:'world',lesson:null});delete w.dialogue;const next=JSON.stringify(w);await navigator.locks.request(WORLD,()=>__villageFence.commit(WORLD,raw,next,()=>localStorage.getItem(WORLD),()=>{localStorage.setItem(WORLD,next);return true;}));},{x,y,WORLD});
+  await p.evaluate(async({x,y,WORLD})=>{await __villageRPG.flush();const raw=localStorage.getItem(WORLD),w=JSON.parse(raw);Object.assign(w,{chapter:'day-1',position:{map:'village',x,y,facing:'up'},flags:{started:true,metGuide:true},triggers:{welcome:true},view:'world',lesson:null});delete w.dialogue;const next=JSON.stringify(w);await navigator.locks.request(WORLD,()=>__villageFence.commit(WORLD,raw,next,()=>localStorage.getItem(WORLD),()=>{localStorage.setItem(WORLD,next);return true;}));},{x,y,WORLD});
   await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas')?.dataset.phaser);await p.waitForTimeout(250);
  }
  const pos=()=>p.locator('#rpgCanvas').evaluate(c=>({x:+c.dataset.x,y:+c.dataset.y}));

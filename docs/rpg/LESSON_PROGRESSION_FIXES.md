@@ -1,5 +1,6 @@
 # Lesson and progression fixes — 6 November 2026
 
+> Current ordering and tutorial policy: [School-first curriculum](../../CURRICULUM.md#daily-allocation) supersedes this checkpoint’s opening, optional-tutorial and equal-allocation rules. Historical validation below remains evidence for its recorded release.
 This update remains on `feature/character-expansion` / PR #36 and does not merge automatically. Latest main `fa02231` is already an ancestor; the character expansion work is retained. The owner's latest instruction explicitly permits breaking old saves.
 
 ## Current behaviour

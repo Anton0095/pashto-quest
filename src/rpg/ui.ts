@@ -80,7 +80,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   const challengeStart=challenge.startChallenge;challenge.startChallenge=(day,...args)=>{if(!state.reviewCampaign&&policy.configured(day)&&day===current()&&chapters.challengeAvailable())challengeStart(day,...args);};
   const root=ui.$('worldScreen');root.replaceChildren();root.className='rpg-world panel hidden';
   const heading=ui.node('div',undefined,'rpg-heading');
-  const title=ui.node('h2','Laghman Village');title.id='rpgLocation';
+  const title=ui.node('h2','Saykanda');title.id='rpgLocation';
   const day=ui.node('span','DAY '+current()+' / '+chapter().name.toUpperCase(),'rpg-day');
   heading.append(ui.node('div','PASHTO QUEST / RPG','eyebrow'),day,title);
   const tools=ui.node('div',undefined,'buttons rpg-tools');
@@ -128,10 +128,14 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   }catch{ui.usePhaserPortraits(false);renderFailed=true;notice.textContent='The map could not start. Use Quick travel below; your learning progress remains available.';}
   const access=ui.node('details'),summary=ui.node('summary','Quick travel');access.append(summary);
   const accessButtons=ui.node('div',undefined,'buttons');
-  access.append(ui.node('p','Choose an available lesson to travel and begin directly. Speak with its teacher for the introduction. Story locks still apply.', 'tiny'),accessButtons);exploration.append(access);
+  access.append(ui.node('p','Complete School first, then Home, Nature and Market in any order. The challenge shortcut opens after School.', 'tiny'),accessButtons);exploration.append(access);
   const locationNames:Record<string,string>={residential:'Home',nature:'Lake',business:'Market',school:'School'};
   function quickDestination(id:string):{label:string;actor?:Actor} {
     const loc=id.split('-')[1],c=chapter();
+    if(current()===6&&['nature','residential'].includes(loc)&&!save.flags['day6-hills-invited']){
+      const actor=registry.npcs(current(),'village').find(a=>a.characterId==='saleha');
+      if(actor)return {label:locationNames[loc]+' course · Lake invitation · Deena',actor};
+    }
     for(const map of c.maps){
       const actor=registry.npcs(current(),map).find(a=>data.events[a.event]?.actions.some(action=>action.type==='lesson'&&action.lessonId===id));
       if(actor){
@@ -162,9 +166,9 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   }
   function refreshAccess(){accessButtons.replaceChildren();
     if(!state.progress.tutorialDone)accessButtons.append(ui.button('Begin Library tutorial',()=>beginLesson(chapter().tutorialLessonId??'tutorial')));
-    else for(const id of chapter().lessons){const destination=quickDestination(id);const b=ui.button((state.progress.complete[id]?'Review · ':'')+destination.label,()=>void quickTravel(id));b.dataset.destination=id.split('-')[1];b.disabled=!lessonEligible(id);accessButtons.append(b);}
+    else for(const id of chapter().lessons){const destination=quickDestination(id);const b=ui.button((state.progress.complete[id]?'Review · ':'')+destination.label,()=>void quickTravel(id));b.dataset.destination=id.split('-')[1];b.disabled=!lessonEligible(id);if(b.disabled)b.title='Complete today’s School lesson first.';accessButtons.append(b);}
     if(progression.passedChallenge(state.progress,current())){const sleepButton=ui.button('Sleep — Begin next day',()=>void sleep());sleepButton.id='quickSleep';accessButtons.append(sleepButton);}
-    if(chapters.challengeAvailable())accessButtons.append(ui.button('Day '+current()+' challenge',()=>act({label:'Challenge',type:'challenge',day:current()})));
+    if(chapters.challengeAvailable())accessButtons.append(ui.button(chapter().lessons.every(id=>state.progress.complete[id])?'Day '+current()+' challenge':'Skip to daily challenge',()=>act({label:'Challenge',type:'challenge',day:current()})));
     accessButtons.append(ui.button('Open Library',openLibrary));
   }
   canvas.addEventListener('contextlost',()=>{renderFailed=true;held=null;refreshAccess();access.open=true;notice.textContent='Map rendering was interrupted. Quick travel remains available.';},{signal:listeners.signal});
@@ -172,7 +176,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
   // Restore a paired lesson before the first educational snapshot compacts history.
   // Otherwise that snapshot would retire the lesson's deduplication events.
   const pairedLesson = !state.progress.activeChallenge && save.view==='lesson' &&
-    save.educationFingerprint===RPGPersistence.fingerprint(JSON.stringify(state.progress))
+    save.educationFingerprint===RPGPersistence.fingerprint(storage.pairingSnapshot?.()??JSON.stringify(state.progress))
       ? RPGPersistence.restoreLesson(save.lesson,content,state.progress) : null;
   if(pairedLesson) state.session=pairedLesson;
   const oldView=ui.view;
@@ -188,7 +192,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(name==='lessonScreen'&&state.session?.mode==='challenge'&&state.session.loop===chapter().challenge?.day){const caption=ui.$('challengeScene')?.querySelector('.eyebrow');if(caption)caption.textContent='DAY '+current()+' · CHAPTER CHALLENGE';}
     if(name==='resultScreen') {
       if(state.session?.mode==='challenge' && state.session.correctCount>=progression.getChallengeSpec(state.session.loop).passCount){if(chapters.complete())showCompletion();else if(chapter().routes?.skip.event)openEvent(chapter().routes!.skip.event!);}
-      else if(state.session?.mode==='tutorial')ui.$('resultNext').textContent='Muhammad Jan: You can visit the Library any time to set your name and gender in Player Profile. Your first hello is complete — meet your neighbours when ready.';
+      else if(state.session?.mode==='tutorial')ui.$('resultNext').textContent='Muhammad Jan: Your first hello is complete. Start with Ms Hameed’s School lesson today and every day; then study Home, Nature and Market in any order. Library Player Profile holds your name, gender and typing preference.';
     }
     ui.$('navWorld').classList.toggle('hidden',name==='worldScreen'||name==='introScreen');
     dirty=true;scheduleSave();
@@ -270,18 +274,18 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     const guidance=target.characterId==='muhammad-jan'&&state.progress.tutorialDone?dailyGuidance(chapter(),state.progress,progression,guidanceTargets(),challengeTarget()):null;
     const event=original?(guidance?{...original,lines:[...original.lines,guidance],messages:original.messages?[...original.messages,{speaker:target.name,characterId:target.characterId,text:guidance}]:undefined}:original):guidance?{speaker:target.name,characterId:target.characterId,lines:[guidance],actions:[]}:null;
     if(!event)return;
-    if(target.characterId!=='bilal' && !state.progress.tutorialDone && eventId!==chapter().openingEvent&&!event.actions.some(a=>a.type==='tutorial'||a.type==='reference'))dialogue.open({speaker:target.name,lines:['Muhammad Jan is waiting at the Library. Complete your first hello with him, then we can study together.'],actions:[]});
-    else dialogue.open(event,story.cursor?.index);
+    if(target.characterId!=='bilal' && !state.progress.tutorialDone && eventId!==chapter().openingEvent&&!event.actions.some(a=>a.type==='tutorial'||a.type==='reference'))dialogue.open({speaker:target.name,lines:[onboardingGuidance()],actions:[]});
+    else dialogue.open(curriculumEvent(event,target),story.cursor?.index);
     dirty=true;
   }
   function act(action:Action){
     const eventId=story.cursor?.event;
+    if(action.type==='challenge'&&(!chapters.challengeAvailable()||action.route==='normal'&&!chapter().lessons.every(id=>state.progress.complete[id])))return;
     if(action.type==='lesson'){beginLesson(action.lessonId,eventId,action);return;}
     if(action.type==='tutorial'){beginLesson('tutorial',eventId,action);return;}
     if(!story.choose(action))return;
     if(eventId==='onboarding-introduction'){state.progress.onboardingIntroductionPending=false;void storage.save();}
     if(action.type==='conversation-response'){content.wordById[action.card.id]=action.card;audio.speak(action.card.id,{track:false});openEvent(action.nextEvent);return;}
-    if(action.type==='skip-tutorial'){progression.completeOnboarding(state.progress);void storage.save();startWorld();return;}
     if(eventId===chapter().routes?.skip.event&&conditions.passed())routes.select('skip');
     if(action.type==='sleep')void sleep();
     if(action.type==='dream')void openDreamMenu();
@@ -295,7 +299,26 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
     if(action.type==='completion'&&conditions.passed())showCompletion();
     refreshAccess();scheduleSave();dirty=true;
   }
-  function openEvent(id:string){const event=story.open(id);if(event)dialogue.open(event,story.cursor?.index);}
+  function onboardingGuidance():string {
+    const map=save.flags.metGuide?'library':'village';
+    const guide=registry.npcs(current(),map).find(a=>a.characterId==='muhammad-jan');
+    return guide?`Visit ${guidanceLocation(guide)} first. Complete the introductory conversation and Library activities before lessons.`:'Complete the introductory Library activities with Muhammad Jan first.';
+  }
+  function curriculumEvent(event:import('./types').StoryEvent,actor?:Actor):import('./types').StoryEvent {
+    const schoolDone=!!state.progress.complete[`${current()}-school`],allDone=chapter().lessons.every(id=>state.progress.complete[id]);
+    const sourceEvent=data.events[actor?.event??story.cursor?.event??''];
+    const sourceActions=[...event.actions,...(sourceEvent?.actions??[])];
+    const blocked=sourceActions.find(a=>a.type==='lesson'&&!state.progress.complete[a.lessonId]&&(!lessonEligible(a.lessonId)||!eligible(a.condition)||!eligible(sourceEvent?.condition)));
+    const locked=!!blocked || !schoolDone&&sourceActions.some(a=>a.type==='challenge'||a.type==='lesson'&&a.lessonId!==`${current()}-school`);
+    const prerequisite=[...(blocked?.condition??'').matchAll(/(?:^|[|:])complete:([0-9]+-(?:school|residential|nature|business))/g)].map(match=>match[1]).find(id=>!state.progress.complete[id]);
+    const nextId=!schoolDone?`${current()}-school`:prerequisite&&!state.progress.complete[prerequisite]?prerequisite:blocked?.type==='lesson'?blocked.lessonId:chapter().lessons.find(id=>!state.progress.complete[id]&&lessonEligible(id));
+    const destination=nextId?quickDestination(nextId):undefined;
+    const message=schoolDone&&destination?.actor?.id===actor?.id&&destination?.actor?`Continue the story interaction here at ${guidanceLocation(destination.actor)} before this lesson. Other available lessons can be studied in any order.`:destination?.actor?`Visit ${guidanceLocation(destination.actor)} first. ${!schoolDone?'School explains today’s sentence pattern.':'Speak with them to continue the story; available lessons may be studied in any order.'}`:'Explore and speak with the village teachers; this lesson is not available today.';
+    return {...event,lines:locked?[...event.lines,message]:event.lines,
+      messages:locked&&event.messages?[...event.messages,{speaker:event.speaker,characterId:event.characterId,text:message}]:event.messages,
+      actions:event.actions.filter(a=>a.type!=='challenge'||chapters.challengeAvailable()&&(a.route!=='normal'||allDone)).map(a=>a.type==='challenge'&&!a.route&&!allDone?{...a,label:'Skip to daily challenge'}:a)};
+  }
+  function openEvent(id:string){const event=story.open(id);if(event)dialogue.open(curriculumEvent(event),story.cursor?.index);}
   async function requestChallenge(action:Extract<Action,{type:'challenge'}>){
     if(transitions.active||reviewLaunching||state.reviewCampaign||advancing||launching)return;launching=true;held=null;
     try{
@@ -305,8 +328,8 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
       challenge.resumeChallenge();return;
     }
     if(chapter().routes){
-      const route=action.route??routes.request();
-      if(!routes.resolved(route)){const alternative=chapter().routes?.skip.event;if(alternative)openEvent(alternative);return;}
+      const route=action.route??(routes.visited()?"normal":"skip");
+      if(!routes.resolved(route)){const rules=chapter().routes;const event=route==='normal'?(rules?.normal.opening&&!save.triggers[rules.normal.opening]?rules.normal.opening:rules?.normal.finale):rules?.skip.event;if(event)openEvent(event);return;}
       if(!routes.select(route))return;
       if(!await persist())return;
     }
@@ -487,7 +510,7 @@ export function createRPG({state,content,progression,learning,ui,audio,storage,l
 
     if(save.sleepIntent&&(current()!==save.sleepIntent.from||!progression.passedChallenge(state.progress,current()))){delete save.sleepIntent;}
     if(save.sleepIntent&&current()===save.sleepIntent.from&&progression.passedChallenge(state.progress,current())){restoring=false;void sleep();return;}
-    if(policy.configured(state.progress.activeChallenge?.loop??0))challenge.resumeChallenge();
+    if(policy.configured(state.progress.activeChallenge?.loop??0)&&chapters.challengeAvailable())challenge.resumeChallenge();
     else if(pairedLesson)lessons.resume(pairedLesson);
     else if(conditions.passed()&&save.view==='complete')showCompletion();
     else if(save.flags.started||state.progress.tutorialDone)startWorld();else ui.view('introScreen');

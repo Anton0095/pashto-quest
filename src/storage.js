@@ -1,4 +1,4 @@
-/* Current save validation, local storage and live assessment snapshots. No migrations. */
+/* Current save validation, local storage and live assessment snapshots. Only the current schema-8 typing preference is normalised. */
 function createStorage({
   state,
   content,
@@ -11,6 +11,7 @@ function createStorage({
   const KEY = key;
   let saveProblem = null, persistenceProblem = null, readBlocked = false;
   let notifyPersistence = () => {};
+  let loadedPairingRaw = null, loadedPairingCurrent = null;
   let observed, conflict = false, revisionReset = false;
   try { observed = accessInitial(); } catch {}
   function accessInitial() { return (backend || globalThis.localStorage).getItem(KEY); }
@@ -55,6 +56,10 @@ function createStorage({
     try {
       const p = JSON.parse(raw);
       if (!currentSave(p)) throw Error("Unsupported or invalid save schema");
+      const previous = JSON.stringify(p);
+      p.typingPreferences ||= QuestionEngine.typingPreferences(p);
+      delete p.enableTypingChallenges;
+      loadedPairingRaw = previous;loadedPairingCurrent = JSON.stringify(p);
       return p;
     } catch (error) {
       saveProblem =
@@ -156,6 +161,10 @@ function createStorage({
     load,
     save,
     currentSave,
+    pairingSnapshot() {
+      const current=JSON.stringify(state.progress);
+      return current === loadedPairingCurrent ? loadedPairingRaw : current;
+    },
     snapshot,
     get pending() { return pending > 0; },
     settled() { return lastSave; },

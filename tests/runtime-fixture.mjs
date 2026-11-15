@@ -44,6 +44,8 @@ export function reset(t, pace = 24) {
   t.storage.resetProblem();
 }
 export function study(t, day, place) {
+  // Model lesson journeys perform the real compulsory prerequisite first.
+  if(place!=="school"&&!t.state.progress.complete[day+"-school"])study(t,day,"school");
   t.state.day = day;
   const pool = t.learning.libraryLessonPool(day, place);
   const s = (t.state.session = {
@@ -86,6 +88,7 @@ export function study(t, day, place) {
   return s;
 }
 export function beginAttempt(t, day) {
+  if(!t.state.progress.complete[day+"-school"])study(t,day,"school");
   const items = t.questions.selectChallenge(day);
   t.state.day = day;
   t.state.session = {

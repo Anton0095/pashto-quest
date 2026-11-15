@@ -4,7 +4,7 @@ const b = await setup({ offline: true });
 try {
   const p = b.page;
   await tutorial(p);
-  await p.evaluate(() => __test.lessons.begin("1-residential"));
+  await p.evaluate(() => (__test.studySchool(1),__test.lessons.begin("1-residential")));
   await p.evaluate(() => {
     const t = __test;
     let guard = 0;
@@ -23,7 +23,7 @@ try {
         t.nextQuestion();
       }
     }
-    t.challenge.startChallenge(1);
+    (t.studySchool(1),t.challenge.startChallenge(1));
   });
   while (
     (await p.evaluate(
@@ -63,7 +63,7 @@ try {
     locked.events,
   );
   const frozen = await p.evaluate(() => __test.state.session.questions);
-  await p.evaluate(() => __test.challenge.startChallenge(1));
+  await p.evaluate(() => (__test.studySchool(1),__test.challenge.startChallenge(1)));
   assert.deepEqual(
     await p.evaluate(() => __test.state.session.questions),
     frozen,

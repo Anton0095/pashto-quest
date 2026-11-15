@@ -29,9 +29,9 @@ for (const old of contract.days) {
   for (const location of c.zoneKeys)
     assert.equal(
       P.placeAccessible(t.state.progress, day, location),
-      day === 1 || location === old.opening,
+      location === "school",
     );
-  t.state.progress.complete[`${day}-${old.opening}`] = true;
+  t.state.progress.complete[`${day}-school`] = true;
   for (const location of c.zoneKeys)
     assert.equal(
       P.placeAccessible(t.state.progress, day, location),

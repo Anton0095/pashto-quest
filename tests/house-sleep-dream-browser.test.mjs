@@ -47,7 +47,7 @@ for(const width of [1280,375]){
   assert.deepEqual(await d.pos(),shelf);assert.equal((await d.progress()).playerProfile.name,'Laghman learner');assert.equal((await d.progress()).playerProfile.gender,'female');
   // Pixel-art screenshots of the actual playable scene, not design mockups.
   await d.pathTo({map:'house',x:12,y:15},1);mkdirSync('work/rpg-house',{recursive:true});await p.screenshot({path:`work/rpg-house/interior-${width}.png`,fullPage:true});
-  await fixture({passed:1});await p.evaluate(()=>__test.challenge.startChallenge(1));await p.locator('#quizPanel').waitFor();await p.locator('#navWorld').click();
+  await fixture({passed:1});await p.evaluate(()=>(__test.studySchool(1),__test.challenge.startChallenge(1)));await p.locator('#quizPanel').waitFor();await p.locator('#navWorld').click();
   await bed('Sleep — Begin the next day');assert((await p.locator('#rpgDialogue').innerText()).includes('paused challenge'));await closeDialog();assert((await activeDay()).includes('DAY 1 /'));assert((await d.progress()).activeChallenge);
   await fixture({passed:1});const beforeSleep=await d.progress();assert((await activeDay()).includes('DAY 1 /'),'A recorded pass does not auto-advance');
   await bed('Dream — Review previous lessons');await p.locator('#dreamMenu').waitFor();assert.deepEqual(await p.locator('[data-dream-day]').evaluateAll(bs=>bs.map(b=>b.dataset.dreamDay)),['1']);
@@ -96,7 +96,7 @@ for(const width of [1280,375]){
   await p.reload();await p.locator('#worldScreen').waitFor();assert(!await p.locator('#lessonScreen').isVisible());
   await fixture({day:7,passed:7});
   // Reusable participant roles render one/two portraits dynamically, without redundant cards.
-  await p.evaluate(()=>{__test.lessons.begin('1-residential');__ui.setConversation({instructorId:'Muhammad Jan',speakerId:'Deena',partnerId:'Deena'});});
+  await p.evaluate(()=>{(__test.studySchool(1),__test.lessons.begin('1-residential'));__ui.setConversation({instructorId:'Muhammad Jan',speakerId:'Deena',partnerId:'Deena'});});
   await p.locator('#lessonScreen .question-context > summary').click();
   assert.equal(await p.locator('#speakerIcon [data-character-id]').getAttribute('data-character-id'),'muhammad-jan');assert.equal(await p.locator('#participants [data-character-id]').getAttribute('data-character-id'),'saleha');assert((await p.locator('#participants').innerText()).includes('speaking'));
   await p.evaluate(()=>__ui.setConversation({instructorId:'Muhammad Jan',speakerId:'Muhammad Jan',partnerId:'Muhammad Jan'}));assert.equal(await p.locator('#participants [data-character-id]').count(),0);assert(!await p.locator('#addressTarget').isVisible());

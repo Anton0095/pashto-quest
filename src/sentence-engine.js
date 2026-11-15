@@ -324,7 +324,7 @@ const SentenceEngine = (() => {
     generated.pronunciationStatus = "provisional_authored_span";
     const card = {id: `generated:${frame.id}:${bindingId}`, type: "sentence", ps, en};
     setDetail(card, "roman", details);
-    card.loop = Math.max(frame.earliestDay, ...Object.values(slots).map(({entry, value}) => Math.max(entry.introduction.day, value.firstAllowedDay)));
+    card.loop = Math.max(frame.earliestDay, ...Object.values(slots).map(({entry, value}) => Math.max(entry.firstIntroductionConstraints?.earliestDay ?? entry.introduction.day, value.firstAllowedDay)));
     card.place = (slots.noun || slots.verb || slots.subject).entry.primaryDistrict;
     card.speaker = "Player";
     card.recipient = addressee;
@@ -392,7 +392,7 @@ const SentenceEngine = (() => {
     if (!item) return false;
     const { entry: e, value: f } = item;
     return (
-      e.introduction.day <= day &&
+      (e.firstIntroductionConstraints?.earliestDay ?? e.introduction.day) <= day &&
       f.firstAllowedDay <= day &&
       [...e.introduction.requiredGrammarIds, ...f.prerequisiteGrammarIds].every(
         (id) => p.library.grammar[id],
@@ -621,13 +621,17 @@ const SentenceEngine = (() => {
   }
   function restoreCard(data, frames, snapshot) {
     let card = restoreProof(data, frames, snapshot);
-    if(card && card.loop !== snapshot.loop && !card.generated.ast){
+    if(card && card.loop !== snapshot.loop){
       const frame=frames.frames.find(f=>f.id===card.generated.frameId);
-      const priorDay=Math.max(frame.earliestDay,...Object.values(card.generated.slots).map(ref=>{
+      // Exact, recorded scheduling checkpoints preserve current-schema proofs.
+      // This changes no stored language, bindings, answers or scores.
+      const checkpointDay = previous => Math.max(card.generated.ast ? 4 : frame.earliestDay,...Object.values(card.generated.slots).map(ref=>{
         const entry=data.entries.find(e=>e.lemmaId===ref.lemmaId),form=entry.forms.find(f=>f.formId===ref.formId);
-        return Math.max(entry.priorIntroductionDay ?? entry.introduction.day,form.priorFirstAllowedDay ?? form.firstAllowedDay);
+        return previous
+          ? Math.max(entry.introduction.previousDay ?? entry.priorIntroductionDay ?? entry.introduction.day,form.previousFirstAllowedDay ?? form.priorFirstAllowedDay ?? form.firstAllowedDay)
+          : Math.max(entry.priorIntroductionDay ?? entry.introduction.day,form.priorFirstAllowedDay ?? form.firstAllowedDay);
       }));
-      if(snapshot.loop===priorDay)card={...card,loop:priorDay};
+      if([checkpointDay(true),checkpointDay(false)].includes(snapshot.loop))card={...card,loop:snapshot.loop};
     }
     if (!card || card.roman === snapshot.roman) return card;
     // Current schema snapshots retain their exact displayed pronunciation aid.

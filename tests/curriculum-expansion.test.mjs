@@ -65,7 +65,7 @@ for (const pace of E.presets) {
     ids = Object.values(plan.locationAssignments).flat();
   assert.equal(new Set(ids).size, pace);
   for (const district of places) {
-    assert.equal(plan.locationAssignments[district].length, pace / 4);
+    assert.equal(plan.locationAssignments[district].length, E.quotas(1,pace)[district]);
     assert(
       plan.locationAssignments[district].every((id) =>
         ["noun", "adjective"].includes(byId[id].partOfSpeech),
@@ -102,69 +102,12 @@ assert.equal(
   JSON.stringify(E.ensurePlan(JSON.parse(JSON.stringify(planned)), data, 1)),
   frozen,
 );
-// A synthetic identity-only test measures planner capacity, never promotes untranslated words.
-const synthetic = {
-  ...data,
-  entries: places.flatMap((d) =>
-    Array.from({ length: 100 }, (_, i) => ({
-      lemmaId: `fixture:${d}:${i}`,
-      primaryDistrict: d,
-      suitableDistricts: [d],
-      partOfSpeech: i % 2 ? "adjective" : "noun",
-      countsTowardDailyQuota: true,
-      introduction: { day: 1, district: d, teachingOrder: i },
-      forms: [{ formId: `fixture:${d}:${i}:form`, firstAllowedDay: 1 }],
-    })),
-  ),
-};
-const ideal = fresh();
-ideal.library.requestedDailyTarget = 24;
-// Exactly 22 incidental encounters per primary district exhaust the 88-word margin.
-for (const d of places)
-  for (let i = 0; i < 22; i++)
-    E.encounter(
-      ideal,
-      synthetic,
-      {
-        lemmaId: `fixture:${d}:${i}`,
-        formId: `fixture:${d}:${i}:form`,
-        firstAllowedDay: 1,
-      },
-      { day: 1, source: "fixture", introduce: true },
-    );
-const assigned = new Set();
-for (let day = 1; day <= 13; day++) {
-  const plan = E.ensurePlan(ideal, synthetic, day);
-  assert.equal(plan.contentGap, false);
-  for (const d of places) assert.equal(plan.locationAssignments[d].length, 6);
-  for (const id of Object.values(plan.locationAssignments).flat()) {
-    assert(!assigned.has(id));
-    assigned.add(id);
-  }
-}
-assert.equal(assigned.size, 312);
-assert.equal(E.ensurePlan(ideal, synthetic, 14).requestedDailyTarget, 0);
-// One additional incidental identity per district needs four reviewed replacements (101 each, balanced).
-const insufficient = fresh();
-insufficient.library.requestedDailyTarget = 24;
-for (const d of places)
-  for (let i = 0; i < 23; i++)
-    E.encounter(
-      insufficient,
-      synthetic,
-      {
-        lemmaId: `fixture:${d}:${i}`,
-        formId: `fixture:${d}:${i}:form`,
-        firstAllowedDay: 1,
-      },
-      { day: 1, source: "fixture", introduce: true },
-    );
-let assignedCount = 0;
-for (let day = 1; day <= 13; day++)
-  assignedCount += Object.values(
-    E.ensurePlan(insufficient, synthetic, day).locationAssignments,
-  ).flat().length;
-assert.equal(312 - assignedCount, 4);
+// Missing suitable inventory is explicit; no repeated or unreviewed filler.
+const insufficient=fresh(),empty={...data,entries:[]};
+const gap=E.ensurePlan(insufficient,empty,3);
+assert(gap.contentGap);assert.equal(gap.effectiveDailyTarget,null);
+assert.deepEqual(JSON.parse(JSON.stringify(gap.shortfalls)),{residential:4,business:13,nature:7,school:0});
+assert.equal(E.ensurePlan(insufficient,empty,14).requestedDailyTarget,0);
 // Pending phrase slots are explicit editorial targets, never acquired by a plan.
 assert.equal(narrative.expressions.length, 14);
 assert.equal(narrative.expressions.filter((e) => e.active).length, 14);
@@ -237,7 +180,7 @@ const actualAssigned = new Set();
 for (let day = 1; day <= 13; day++) {
   const plan = E.ensurePlan(maximum, data, day);
   assert.equal(plan.contentGap, false);
-  for (const d of places) assert.equal(plan.locationAssignments[d].length, 6);
+  for (const d of places) assert.equal(plan.locationAssignments[d].length, E.quotas(day,24)[d]);
   for (const id of Object.values(plan.locationAssignments).flat()) {
     assert(!actualAssigned.has(id));
     actualAssigned.add(id);
@@ -270,7 +213,7 @@ assert.equal(inventoryReport.targetProjection.missingScheduled, 0);
 assert(
   inventoryReport.targetProjection.days
     .slice(0, 13)
-    .every((d) => places.every((p) => d.perDistrict[p] === 6)),
+    .every((d) => places.every((p) => d.perDistrict[p] === E.quotas(d.day,24)[p])),
 );
 console.log(
   "PASS 40 universal semantic targets linked to explicit provisional identities",

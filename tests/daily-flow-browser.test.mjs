@@ -5,19 +5,19 @@ import {setup}from'./browser-fixture.mjs';
 const WORLD='pashto-quest-rpg-world-v1',data=JSON.parse(readFileSync('content/RPG_WORLD.json'));
 const captures='docs/rpg/lesson-cleanup';mkdirSync(captures,{recursive:true});
 for(const [width,height]of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,844]].filter(([w])=>!process.env.DAILY_WIDTH||w===Number(process.env.DAILY_WIDTH))){
- const b=await setup({width,mobile:width===390,rpg:true,transform:h=>h.replace('// @TEST_HOOK','window.__dailyFence=saveFence; // @TEST_HOOK')});const p=b.page;
+ const b=await setup({width,mobile:width===390,rpg:true,transform:h=>h.replace('// @TEST_HOOK','window.__dailyFence=saveFence;window.__dailyRPG=rpg; // @TEST_HOOK')});const p=b.page;
  try{
  await p.setViewportSize({width,height});await p.locator('#startTutorial').click();
  await p.evaluate(()=>__test.lessons.begin('tutorial'));
  for(const id of ['g-hello','g-how']){const en=await p.evaluate(id=>__test.content.wordById[id].en,id);await p.locator('#tutorialInteraction button').getByText(en,{exact:true}).click();await p.locator('#teachNext').click();}
- await p.locator('[data-answer="پښتو"]').click();await p.locator('#teachNext').click();await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();await p.locator('#teachNext').click();await p.locator('#resultWorld').click();while(await p.getByRole('button',{name:'Continue',exact:true}).count())await p.getByRole('button',{name:'Continue',exact:true}).click();await p.getByRole('button',{name:'Explore the village',exact:true}).click();
+ await p.locator('[data-answer="پښتو"]').click();await p.locator('#teachNext').click();if(await p.locator('#tutorialName').isVisible()){await p.locator('#tutorialName').fill('Muhammad Jan');await p.locator('#tutorialSaveName').click();}else await p.locator('#tutorialInteraction button').getByText('Muhammad Jan',{exact:true}).click();await p.locator('#teachNext').click();await p.locator('#resultWorld').click();while(await p.getByRole('button',{name:'Continue',exact:true}).count())await p.getByRole('button',{name:'Continue',exact:true}).click();await p.getByRole('button',{name:'Explore the village',exact:true}).click();
  if(width===1366){
-  await p.evaluate(()=>__test.lessons.begin('1-residential'));await p.locator('#teachPanel').waitFor();await p.locator('#teachNext').click();
+  await p.evaluate(()=>(__test.studySchool(1),__test.lessons.begin('1-residential')));await p.locator('#teachPanel').waitFor();await p.locator('#teachNext').click();
   assert.equal(await p.locator('#teachNote').isVisible(),false,'Base approval notice is absent without blank space');
   assert(!await p.getByText('Another location expression awaits an approved Pashto translation and cannot yet be studied.',{exact:true}).count());
   await p.screenshot({path:captures+'/study-1366.png',fullPage:true});await p.locator('#navWorld').click();
  }
- await p.evaluate(()=>__test.challenge.startChallenge(1));await p.locator('#quizPanel').waitFor();
+ await p.evaluate(()=>{__test.state.progress.typingPreferences={en:false,ps:false};(__test.studySchool(1),__test.challenge.startChallenge(1));});await p.locator('#quizPanel').waitFor();
  assert.equal(await p.locator('#rpgCanvas').isVisible(),false,'Learning hides the mounted world');
  const panel=await p.locator('#lessonScreen').boundingBox();assert(panel.width>=Math.min(width-40,1300),'Learning uses viewport width');
  const start=await p.evaluate(()=>scrollY);let captured=false;let footer;
@@ -51,11 +51,11 @@ for(const [width,height]of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,84
  if(width===1366){
   async function fixture(day,position,{school=false,passed=false}={}){
    await p.evaluate(async({day,position,school,passed,WORLD,data})=>{
-    const t=__test;t.state.session=null;
+    const t=__test;t.state.session=null;t.state.progress=t.progression.fresh();t.state.progress.tutorialDone=true;
     for(let d=1;d<day;d++)t.progression.completeChallengeOnce(t.state.progress,d,t.progression.getChallengeSpec(d).passCount);
-    if(school)t.state.progress.complete['2-school']=true;
+    if(school)t.state.progress.complete[day+'-school']=true;
     if(passed)t.progression.completeChallengeOnce(t.state.progress,day,t.progression.getChallengeSpec(day).passCount);
-    await t.storage.save();const raw=localStorage.getItem(WORLD),w=JSON.parse(raw);w.chapter=data.days[day].id;w.position=position;delete w.dialogue;w.view='world';w.triggers[data.days[day].openingEvent]=true;
+    await t.storage.save();await __dailyRPG.flush();const raw=localStorage.getItem(WORLD),w=JSON.parse(raw);w.chapter=data.days[day].id;w.position=position;delete w.dialogue;w.view='world';w.triggers[data.days[day].openingEvent]=true;
     const next=JSON.stringify(w);await navigator.locks.request(WORLD,()=>__dailyFence.commit(WORLD,raw,next,()=>localStorage.getItem(WORLD),()=>{localStorage.setItem(WORLD,next);return true;}));
    },{day,position,school,passed,WORLD,data});
    await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas')?.dataset.phaser);
@@ -64,20 +64,20 @@ for(const [width,height]of [[1920,1080],[1366,768],[1280,720],[768,1024],[390,84
   for(const options of [{},{school:true},{passed:true}]){
    await fixture(2,atJan,options);await p.locator('#rpgInteract').click();
    while(await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).count())await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();
-   const text=await p.locator('#rpgDialogue').innerText();assert(options.passed?text.includes('sleep'):options.school?text.includes('Remaining:'):text.includes('Ms Hameed')&&text.includes('School'));
+   const text=await p.locator('#rpgDialogue').innerText();assert(options.passed?text.includes('sleep'):options.school?text.includes('Remaining:'):text.includes('School')&&text.includes('first'),JSON.stringify({options,text,day:await p.evaluate(()=>__test.state.day)}));
    await p.locator('#rpgDialogue').getByRole('button',{name:'Back to village',exact:true}).click();
   }
-  await fixture(4,atJan);await p.locator('#rpgInteract').click();
+  await fixture(4,atJan,{school:true});await p.locator('#rpgInteract').click();
   const homeAction=data.events['day4-residential'].actions.find(a=>a.type==='lesson'&&a.lessonId==='4-residential');
   while(await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).count())await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();
   assert(await p.locator('#rpgDialogue').getByRole('button',{name:homeAction.label,exact:true}).count(),'Day4 required lesson preserved');
   await fixture(4,{map:'house',x:17,y:10,facing:'right'});assert.equal(await p.locator('#rpgCanvas').getAttribute('data-x'),'17');
   await p.setViewportSize({width:1000,height:650});await p.keyboard.press('ArrowRight');await p.waitForTimeout(220);assert.equal(await p.locator('#rpgCanvas').getAttribute('data-x'),'17','Bed collision after resize');await p.locator('#rpgInteract').click();assert(await p.locator('#rpgDialogue').isVisible(),'Bed object interaction after resize');
-  await fixture(1,{map:'house',x:17,y:10,facing:'right'});
+  await fixture(1,{map:'house',x:17,y:10,facing:'right'},{passed:true});
   await p.locator('#rpgInteract').click();
   while(await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).count())await p.locator('#rpgDialogue').getByRole('button',{name:'Continue',exact:true}).click();
   await p.locator('#rpgDialogue').getByRole('button',{name:data.events['house-bed'].actions.find(a=>a.type==='sleep').label,exact:true}).click();
-  await p.locator('#sleepTransition').waitFor({state:'detached'});
+  await p.waitForFunction(()=>JSON.parse(localStorage.getItem('pashto-quest-rpg-world-v1'))?.chapter==='day-2');await p.locator('#sleepTransition').waitFor({state:'detached'});
   assert.deepEqual(await p.evaluate(()=>JSON.parse(localStorage.getItem('pashto-quest-rpg-world-v1')).position),{map:'house',x:17,y:10,facing:'left'});
   await fixture(2,{map:'house',x:12,y:15,facing:'down'});assert.equal(await p.locator('#rpgCanvas').getAttribute('data-x'),'12');assert.equal(await p.locator('#rpgCanvas').getAttribute('data-y'),'15','Resume preserves the actual saved tile');
 

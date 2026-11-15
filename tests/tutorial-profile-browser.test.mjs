@@ -3,6 +3,7 @@ import {setup} from './browser-fixture.mjs';
 for(const width of [375,1280]){
  const b=await setup({width,transform:h=>h.replace('// @TEST_HOOK','window.__ui=ui; // @TEST_HOOK')});const p=b.page;
  try{
+  await p.evaluate(()=>__test.state.progress.typingPreferences={en:true,ps:false});
   await p.locator('#startTutorial').click();assert.equal(await p.locator('#participants [data-character-id]').count(),0);
   await p.locator('#tutorialInteraction button').getByText('Hello',{exact:true}).click();await p.locator('#teachNext').click();
   assert.equal(await p.locator('#tutorialInteraction .sentence-roman').count(),0);

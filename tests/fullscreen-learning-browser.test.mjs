@@ -15,7 +15,7 @@ for(const [width,height] of [[1366,768],[390,844]]){
 
   await p.evaluate(()=>__test.challenge.startChallenge(1));assert.equal(await p.evaluate(()=>__test.state.progress.tutorialDone),false);assert.equal(await p.locator('#quizPanel').isVisible(),false,'Exit cannot bypass mandatory tutorial');
   assert(await p.evaluate(()=>__sceneBefore===__learningScene&&__sceneCreates===1));assert.deepEqual(await position(),at);
-  await p.evaluate(()=>{__test.state.progress.tutorialDone=true;__test.state.progress.enableTypingChallenges=true;__test.state.rpg.startWorld();__test.challenge.startChallenge(1);});
+  await p.evaluate(()=>{__test.state.progress.tutorialDone=true;__test.state.progress.typingPreferences={en:true,ps:true};__test.state.rpg.startWorld();(__test.studySchool(1),__test.challenge.startChallenge(1));});
   if(width===1366){await p.setViewportSize({width:390,height:480});const next=await p.locator('#quizNext').boundingBox();assert(next.y+next.height<=480,'Short-screen fallback keeps Next visible');assert.equal(await p.evaluate(()=>scrollY),0);await p.setViewportSize({width,height});}
   while(!await p.locator('#unseenRecall').count()){await answerCurrent(p);await p.locator('#quizNext').click();}
   await p.locator('#unseenRecall').fill('unfinished recall');await p.evaluate(()=>__flushLearning());

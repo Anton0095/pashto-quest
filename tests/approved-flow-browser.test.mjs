@@ -18,7 +18,7 @@ for(const width of [375,1280]) {
     lessons++;
    }
    const plan=JSON.stringify(t.state.progress.library.plans[day].locationAssignments);
-   const qs=t.questions.selectChallenge(day);check(qs.length===([7,14].includes(day)?25:15),'changed assessment length');
+   const qs=(t.studySchool(day),t.questions.selectChallenge(day));check(qs.length===([7,14].includes(day)?25:15),'changed assessment length');
    check(qs[0].id===([5,7].includes(day)?'phrase-day-7-opening':expected),'wrong first daily challenge phrase');
    if([5,7].includes(day))check(qs[0].kind==='word'&&qs[0].recognition&&qs[0].phrasePromptId==='phrase-day-5-opening','must select peace response translation');
    check(plan===JSON.stringify(t.state.progress.library.plans[day].locationAssignments),'phrase altered frozen lemma plan');

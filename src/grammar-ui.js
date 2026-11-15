@@ -22,7 +22,7 @@ function createGrammar({ state, content, ui, storage, learning }) {
       ui.$("grammarExplanation").append(
         ...day.grammar.map((text) => ui.node("p", text)),
       );
-    for (const d of missing)
+    for (const d of s.loc === "school" ? missing : [])
       LibraryEngine.unlock(
         state.progress,
         d.day,
@@ -31,10 +31,10 @@ function createGrammar({ state, content, ui, storage, learning }) {
     const teacher=content.teacherFor(s.loop,s.loc,s.mode).name,place=s.loc?ui.displayPlace(s.loc):"the Library";
     ui.$("guideMessage").textContent = `${teacher}: Here at ${place}, we will practise ${day.topic} using the words you studied in this lesson.`;
     // The learner has studied this visit's words/forms before this rule is shown.
-    LibraryEngine.unlock(state.progress, s.loop, "grammar-workshop");
+    if (s.loc === "school") LibraryEngine.unlock(state.progress, s.loop, "grammar-workshop");
     ui.$("grammarNext").disabled = false;
     ui.$("grammarNext").textContent = "Build sentences from my studied forms →";
-    if(s.loop===2){
+    if(s.loop===2&&s.loc==="school"){
       const explanation=ui.$("grammarExplanation"),rules=ui.node('details');rules.append(ui.node('summary','Read the SOV rules'),...explanation.childNodes);explanation.replaceChildren(rules);
       ui.$("grammarNext").textContent="Continue to sentence practice →";
       const mounted=ui.sovDemo.mount(ui.$("grammarExplanation"),2,()=>{ui.$("grammarNext").disabled=false;},learning.lessonSentenceTargets(s));ui.$("grammarNext").disabled=mounted;}

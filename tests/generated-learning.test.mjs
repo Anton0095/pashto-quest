@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
 import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
-import { setup, tutorial, answerCurrent } from "./browser-fixture.mjs";
+import { setup, school, tutorial, answerCurrent } from "./browser-fixture.mjs";
 const b = await setup();
 try {
   const { page } = b;
   await tutorial(page);
   await page.locator("#resultWorld").click();
+  await school(page);
   await page.locator('.map-point[data-place="residential"]').click();
   const transcript = [];
   let guard = 0;
@@ -87,9 +88,9 @@ try {
   const sentences = transcript.filter((t) => t.phase === "sentence");
   assert(sentences.length >= 2);
   assert.equal(sentences.length, new Set(sentences.map((t) => t.pashto)).size);
-  assert(sentences.some((c) => c.pashto === "کور لوی دی."));
-  assert(sentences.some((c) => c.pashto === "دروازه خلاصه ده."));
-  assert(sentences.some((c) => c.pashto === "کړکۍ خلاصه ده."));
+  const eligible=await page.evaluate(()=>__test.learning.availableSentences(1).map(c=>c.ps));
+  for(const text of ['کور لوی دی.','دروازه خلاصه ده.','کړکۍ خلاصه ده.'])assert(eligible.includes(text));
+  assert(sentences.every(c=>eligible.includes(c.pashto)));
   assert(
     transcript.findIndex((t) => t.phase === "grammar") >
       transcript.map((t) => t.phase).lastIndexOf("lexical"),
@@ -102,7 +103,7 @@ try {
     acquired: Object.keys(__test.state.progress.library.acquired),
   }));
   assert(summary.home);
-  assert.equal(summary.assigned.length, 6);
+  assert.equal(summary.assigned.length, 8);
   assert.equal(summary.delivery.generatedPercent, 100);
   assert(summary.acquired.every((id) => !id.startsWith("lemma:v-")));
   const variants = await page.evaluate(() => {
@@ -121,7 +122,7 @@ try {
     await page.evaluate((p) => {
       __test.reset(p);
       __test.state.progress.tutorialDone = true;
-      __test.lessons.begin("1-residential");
+      (__test.studySchool(1),__test.lessons.begin("1-residential"));
     }, pace);
     await page.evaluate(() => {
       const t = __test;
@@ -146,13 +147,13 @@ try {
       p: __test.state.progress.library.plans[1],
       d: __test.state.progress.library.deficits["1-residential"],
     }));
-    assert.equal(result.p.locationAssignments.residential.length, pace / 4);
-    assert(result.d.available < 2);
-    assert(result.d.missing > 0);
+    assert.equal(result.p.locationAssignments.residential.length, ({8:2,12:4,16:5,20:6,24:8})[pace]);
+    assert(result.d.available <= 3);
+    assert.equal(result.d.missing,3-result.d.available);
   }
   assert.deepEqual(b.errors, []);
   console.log(
-    "PASS real Day 1 Home: Library onboarding, six quota lemmas, vocabulary -> grammar -> three generated descriptions -> tile construction, seed variation, low-pace deficits without extra lemmas, 100% generated sentence delivery, mobile screenshots",
+    "PASS real Day 1 Home: Library onboarding, eight Home quota lemmas after School, vocabulary -> grammar -> three generated descriptions -> tile construction, seed variation, low-pace deficits without extra lemmas, 100% generated sentence delivery, mobile screenshots",
   );
 } finally {
   await b.close();

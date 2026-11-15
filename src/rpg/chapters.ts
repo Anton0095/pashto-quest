@@ -31,6 +31,6 @@ export function createChapterDirector({data,state,learning,progression,eligible,
   }
   function complete(){const c=chapter();return active(c)&&routeComplete()&&progression.passedChallenge(state.progress,c.completion.challengePassed??c.day)&&c.mandatoryEvents.every(e=>!!triggers()[e]);}
   return {chapter,ready,opening:(present=true)=>emit('opening',present),ending:()=>emit('ending'),complete,
-    challengeAvailable(){const c=chapter();return ready(c)&&!!c.challenge&&learning.allowed(c.challenge.day)&&(c.challenge.conditions??[]).every(eligible);},
+    challengeAvailable(){const c=chapter();return ready(c)&&!!c.challenge&&learning.allowed(c.challenge.day)&&!!state.progress.complete[`${c.day}-school`]&&(c.challenge.conditions??[]).every(eligible);},
     next(){const c=chapter();if(!complete()||c.completion.terminal)return null;return Object.values(data.days).find(n=>n.id===c.nextChapter&&ready(n)&&learning.allowed(n.day))??null;}};
 }

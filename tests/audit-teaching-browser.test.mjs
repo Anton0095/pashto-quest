@@ -5,14 +5,14 @@ mkdirSync('docs/maintenance/audit',{recursive:true});
 for(const width of [375,1280]){
  const b=await setup({width,transform:html=>html.replace('// @TEST_HOOK','window.__ui=ui; // @TEST_HOOK')});const p=b.page;
  try{
-  await tutorial(p);await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;__test.challenge.startChallenge(1);});
+  await tutorial(p);await p.evaluate(()=>{__test.state.progress.typingPreferences={en:true,ps:true};(__test.studySchool(1),__test.challenge.startChallenge(1));});
   for(let i=0;i<15&&!await p.locator('#unseenRecall').isVisible();i++){await answerCurrent(p);await p.locator('#quizNext').click();}
   await p.locator('#unseenRecall').fill('draft to preserve');
   const paused=await p.evaluate(()=>JSON.parse(JSON.stringify(__test.state.session)));
-  await p.evaluate(async()=>{const t=__test;t.lessons.begin('1-residential');let guard=0;while(!document.querySelector('#lessonScreen').classList.contains('hidden')){if(++guard>200)throw Error('Lesson stalled');const s=t.state.session;if(['lexical','greeting','sentence'].includes(s.phase))t.lessons.afterStudy();else if(s.phase==='grammar')t.lessons.afterGrammar();else{const item=s.queue[0],w=t.content.wordById[item.id];t.lessons.answer(item.kind==='construct'?w.ps:w.en);t.nextQuestion()}await Promise.resolve()}t.challenge.startChallenge(1)});
+  await p.evaluate(async()=>{const t=__test;(t.studySchool(1),t.lessons.begin('1-residential'));let guard=0;while(!document.querySelector('#lessonScreen').classList.contains('hidden')){if(++guard>200)throw Error('Lesson stalled');const s=t.state.session;if(['lexical','greeting','sentence'].includes(s.phase))t.lessons.afterStudy();else if(s.phase==='grammar')t.lessons.afterGrammar();else{const item=s.queue[0],w=t.content.wordById[item.id];t.lessons.answer(item.kind==='construct'?w.ps:w.en);t.nextQuestion()}await Promise.resolve()}(t.studySchool(1),t.challenge.startChallenge(1))});
   assert.deepEqual(await p.evaluate(()=>__test.state.session.questions),paused.questions);assert.equal(await p.locator('#unseenRecall').inputValue(),'draft to preserve');
   await p.reload();assert.deepEqual(await p.evaluate(()=>__test.state.session.questions),paused.questions);
-  await p.evaluate(()=>{const t=__test;while(!t.state.session.finished){const s=t.state.session,q=s.questions[s.index],w=t.content.wordById[q.id];t.challenge.answerChallenge(q.answerPs||q.correct||(q.direction==='en-ps'?w.ps:w.en));t.nextQuestion()}t.challenge.startChallenge(1)});
+  await p.evaluate(()=>{const t=__test;while(!t.state.session.finished){const s=t.state.session,q=s.questions[s.index],w=t.content.wordById[q.id];t.challenge.answerChallenge(q.answerPs||q.correct||(q.direction==='en-ps'?w.ps:w.en));t.nextQuestion()}(t.studySchool(1),t.challenge.startChallenge(1))});
   assert(await p.evaluate(()=>__test.state.session.questions.some(q=>q.generated)));assert(!(await p.evaluate(()=>__test.state.session.questions[0].unstudied)));
   // Two open Library exercises may be answered in either order, with saves
   // between opening/submission; IDs belong to first responses, not open panels.

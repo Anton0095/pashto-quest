@@ -3,7 +3,7 @@ function createTypedAnswerUI({ ui }) {
   function mount({ host, id, label, value = "", lang = "en", maxLength = 160,
     inputClass = "recall-input", formClass = "", placeholder = "",
     submitLabel = "Submit answer", submitClass = "secondary", submitId,
-    onInput, onSubmit, onSkip, reveal }) {
+    onInput, onSubmit, onSkip, reveal, skipLabel }) {
     const form = document.createElement("form"), input = document.createElement("input");
     form.className = formClass;
     Object.assign(input, { id, type: "text", className: inputClass, value, lang,
@@ -21,7 +21,7 @@ function createTypedAnswerUI({ ui }) {
       button.className = "speaker";
       form.append(button);
     }
-    const skip = ui.button("I cannot type", onSkip);
+    const skip = ui.button(skipLabel || (lang === "ps" ? "Turn off Pashto typing" : "Turn off English typing"), onSkip);
     skip.className = "secondary";
     form.append(skip);
     host.append(form);

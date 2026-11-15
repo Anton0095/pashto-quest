@@ -73,7 +73,7 @@ for(const c of catalog) {
  assert.equal(g.reviewStatus,'needs_native_review');assert.equal(g.userVerified,false);
  for(const {e,f} of Object.values(s)) {
   assert(f.composition.enabled);assert(f.romanisation);assert(f.featureEvidence.sourceId);
-  assert(c.loop>=e.introduction.day&&c.loop>=f.firstAllowedDay);
+  assert(c.loop>=e.firstIntroductionConstraints.earliestDay&&c.loop>=f.firstAllowedDay);
  }
  if(s.noun&&s.adjective) for(const k of ['gender','number','case'])assert.equal(s.noun.f.morphology[k],s.adjective.f.morphology[k]);
  if(s.subject&&s.verb) {

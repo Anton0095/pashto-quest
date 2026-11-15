@@ -5,6 +5,7 @@ for (const pace of [8,12,16,20,24]) {
  reset(t,pace);
  for (let day=1;day<=14;day++) {
   t.state.day=day;t.state.session=null;
+  study(t,day,"school");t.state.session=null;
   const plan=t.E.ensurePlan(t.state.progress,t.content.LIBRARY_DATA,day), assignments=plain(plan.locationAssignments);
   const before=plain(t.state.progress);
   const failed=t.progression.completeChallengeOnce(t.state.progress,day,0);
@@ -31,7 +32,7 @@ for (const pace of [8,12,16,20,24]) {
   assert(t.state.progress.library.grammar['grammar-day-'+day]);
   if(day===14)assert.deepEqual(plain(t.state.progress.library.acquired),existing,'Day 14 introduces no forms');
   for(const [loc,ids] of Object.entries(assignments))for(const id of ids){
-   const r=t.state.progress.library.acquired[id];assert(r.introducedFormIds.length);assert.equal(r.unlock.day,day);assert.equal(r.unlock.location,loc);assert.equal(r.unlock.source,'challenge-start');
+   const r=t.state.progress.library.acquired[id];assert(r.introducedFormIds.length);assert.equal(r.unlock.day,day);assert.equal(r.unlock.location,loc);assert.equal(r.unlock.source,loc==='school'?'study':'challenge-start');
   }
   for(const [id,r] of Object.entries(t.state.progress.library.acquired)) {
    assert.equal(r.totalAttempts,existing[id]?.totalAttempts || 0);
@@ -48,7 +49,7 @@ for (const pace of [8,12,16,20,24]) {
 }
 reset(t);study(t,1,'residential');t.state.session=null;
 const before=plain(t.state.progress);const partial=t.progression.completeChallengeOnce(t.state.progress,1,12);
-assert.equal(partial.locationBonus,75);assert.deepEqual(plain(t.state.progress.library.acquired[Object.keys(before.library.acquired)[0]]?.unlock),before.library.acquired[Object.keys(before.library.acquired)[0]].unlock);
+assert.equal(partial.locationBonus,50);assert.deepEqual(plain(t.state.progress.library.acquired[Object.keys(before.library.acquired)[0]]?.unlock),before.library.acquired[Object.keys(before.library.acquired)[0]].unlock);
 assert.equal(t.state.progress.complete['1-residential'],true);assert(t.learning.availableSentences(1).length>=2);
 // A full normal route and a no-visit pass unlock the same licensed forms.
 for(const pace of [8,12,24]) {
@@ -59,7 +60,7 @@ for(const pace of [8,12,24]) {
   for(const loc of normal.content.zoneKeys)study(normal,day,loc);
   normal.state.session=null;
   normal.progression.completeChallengeOnce(normal.state.progress,day,[7,14].includes(day)?25:15);
-  skip.progression.completeChallengeOnce(skip.state.progress,day,[7,14].includes(day)?25:15);
+  study(skip,day,"school");skip.progression.completeChallengeOnce(skip.state.progress,day,[7,14].includes(day)?25:15);
   const forms=x=>Object.entries(x.state.progress.library.acquired).flatMap(([id,r])=>r.introducedFormIds.map(f=>id+':'+f)).sort();
   assert.deepEqual(plain(forms(normal)),plain(forms(skip)),`normal/pass availability ${pace}/${day}`);
  }

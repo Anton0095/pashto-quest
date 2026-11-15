@@ -10,7 +10,7 @@ for(const width of [375,1280]) {
   });
   await p.reload();await tutorial(p);
   const before=await p.evaluate(()=>window.assessmentEntropyCalls);
-  await p.evaluate(()=>{__test.state.progress.enableTypingChallenges=true;__test.challenge.startChallenge(1);});
+  await p.evaluate(()=>{__test.state.progress.typingPreferences={en:true,ps:true};(__test.studySchool(1),__test.challenge.startChallenge(1));});
   assert.equal(await p.evaluate(()=>window.assessmentEntropyCalls),before+1,'one fresh native entropy draw per new attempt');
   const questions=await p.evaluate(()=>__test.state.session.questions),assignments=await p.evaluate(()=>__test.state.progress.library.plans[1].locationAssignments);
   for(let i=0;i<15&&!await p.locator('#unseenRecall').isVisible();i++){await answerCurrent(p);await p.locator('#quizNext').click();}

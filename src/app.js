@@ -112,6 +112,13 @@
     narrative,
     learning,
     questions,
+    onTypingChange() {
+      const s=state.session;
+      if(!s || s.finished || ui.$("lessonScreen").classList.contains("hidden"))return;
+      if(s.mode === "challenge")challenge.showChallengeQuestion(true);
+      else if(s.mode === "tutorial")lessons.resume(s);
+      else if(!ui.$("quizPanel").classList.contains("hidden"))lessons.showQuestion(true);
+    },
   });
   function nextQuestion() {
     if (!state.session || ui.$("quizNext").disabled) return;
