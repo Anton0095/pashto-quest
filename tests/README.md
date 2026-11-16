@@ -51,8 +51,8 @@ When full verification is warranted, run `python3 tools/verify.py` from the repo
 | `resume-behaviour.test.mjs` | Offline HTML boot, partial/locked generated attempts, exact reload/retry, corrupt proof preservation and explicit reset |
 | `challenge-disclosure.test.mjs` | No generated unknown-form clauses on fresh skip; explicit adaptations; unseen word/phrase meanings hidden before submission, including reload |
 | `independent-browser.test.mjs` | Public controls without injected bridge: tutorial, actual Home study/construction, replay XP locks, Library, 375/1280 layouts and reload |
-| `full-curriculum.test.mjs` | Fourteen days × five paces × normal/skip; 280 visits and 140 assessments; independently checks rendered lesson/question/dialogue/feedback clauses against compiler and actual study; story/awards/exams |
-| `curriculum-first.test.mjs`, `curriculum-schema.test.py` | All 474 identities/614 forms; provisional/native status, curated schedule, five paces and study vs encounter |
+| `full-curriculum.test.mjs` | Fourteen days × five paces × normal/skip; 350 visits (280 normal + 70 shortcut School) and 140 assessments; independently checks rendered lesson/question/dialogue/feedback clauses against compiler and actual study; story/awards/exams |
+| `curriculum-first.test.mjs`, `curriculum-schema.test.py` | All 474 identities/667 forms; provisional/native status, curated schedule, five paces and study vs encounter |
 | `current-model.test.mjs`, `curriculum-expansion.test.mjs`, `district-content.test.py` | Planner, identity/SRS, draft activation and candidate constraints |
 | `audio.test.mjs` | Mocked MP3 preference, delayed Pashto voice discovery, fallback warnings and cancellation |
 
