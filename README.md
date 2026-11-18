@@ -42,6 +42,8 @@ See the [overhaul audit and delivery report](docs/rpg/MULTIDAY_OVERHAUL.md), [ar
 
 ## Product goal and delivery status
 
+The [Milestone A Week 1 language-review pack](docs/language-review/README.md) provides exact word/form, grammar and dialogue worksheets with human review instructions and sign-off criteria. It is prepared for independent review, **not native-certified**.
+
 The aim is cumulative Pashto learning through a coherent village story: recurring characters teach language that fits their scene, speaker and listener. Text, meaning and the surrounding story must agree. Supplementary illustrated vocabulary/sentence-preview boards have been removed in favor of compact activities. Correct and incorrect answer feedback should behave consistently on every lesson surface, including forced story lessons and optional expressions. These are general requirements, not exceptions for individual days.
 
 Onboarding now teaches two fixed greetings and two separately owner-approved Pashto questions: language selection and Muhammad Jan’s name. Optional player name/gender settings live in Library → Player Profile, defaulting to Player / Prefer not to say. The [two exact tutorial prompts and approval](content/TUTORIAL_PROMPTS.json) are distinct from the eighteen conventional expressions. The three pending Day-1 alternative location expressions have been removed from playable content.
