@@ -2,13 +2,13 @@
 
 **State: prepared for review, NOT linguistically approved.** This is a reviewer work package, not an importable language patch or a claim that any Pashto in the game has received independent certification.
 
-**Frozen source baseline:** \`main\` commit \`ef23d11e3408d019060530aa94321332acda7c29\` (18 November 2026 inspection); generated release SHA-256 \`22ca88de9568a70e9abe6570808251704ee4a33d7e88de1177d36feb3cab4fbf\`. Every populated review worksheet has the source commit on each row. Refresh the worksheets against the newer commit if the lexicon, curriculum, dialogue or generation rules change. Do not silently carry verdicts to changed wording or forms.
+**Frozen source baseline:** `main` commit `ef23d11e3408d019060530aa94321332acda7c29` (18 November 2026 inspection); generated release SHA-256 `22ca88de9568a70e9abe6570808251704ee4a33d7e88de1177d36feb3cab4fbf`. Every populated review worksheet has the source commit on each row. Refresh the worksheets against the newer commit if the lexicon, curriculum, dialogue or generation rules change. Do not silently carry verdicts to changed wording or forms.
 
 ## Scope and authority
 
 This is the **Week 1 (Days 1–7)** language component of Milestone A. It covers taught bases, their recorded forms, School grammar concepts, fixed expressions, onboarding questions, Bilal's optional dialogue, productive sentence constructions, and initial pronunciation review. It is intentionally distinct from physical-device testing and beginner usability testing, which are companion Milestone A workstreams.
 
-Read [LANGUAGE_REVIEW.md](../../LANGUAGE_REVIEW.md) before approving anything. The game's existing \`user_approved\` label approves scoped base entries and phrases **only**; it does not certify native Laghman speech, inflection, conjugation, naturalness, generated sentences, pronunciation, dialect or audio. \`native_approved\` requires genuine item-specific review evidence; neither a dictionary lookup nor passing automated tests supplies that evidence. Never overwrite author approval or mark unrelated forms as approved.
+Read [LANGUAGE_REVIEW.md](../../LANGUAGE_REVIEW.md) before approving anything. The game's existing `user_approved` label approves scoped base entries and phrases **only**; it does not certify native Laghman speech, inflection, conjugation, naturalness, generated sentences, pronunciation, dialect or audio. `native_approved` requires genuine item-specific review evidence; neither a dictionary lookup nor passing automated tests supplies that evidence. Never overwrite author approval or mark unrelated forms as approved.
 
 The target is Afghan Pashto appropriate to Laghman. Ask reviewers to distinguish **standard written Pashto**, **locally natural spoken Pashto**, and **acceptable alternatives**. Record genuine uncertainty rather than inferring morphology or dialect.
 
@@ -30,10 +30,10 @@ The target is Afghan Pashto appropriate to Laghman. Ask reviewers to distinguish
 
 ## What the worksheets mean
 
-- **Maximum-pace schedule:** district lemmas are the current *fresh-profile 24/day* projection from \`content/DISTRICT_INVENTORY_REPORT.json\`. Other paces, review histories, forced narrative encounters and shortcut routes can expose different items. The worksheet is a baseline, not a proof of exhaustive runtime exposure.
-- **Universal entries:** the 15 extra entries come from \`content/VOCABULARY_REVIEW.csv\` with planned day 1–7 and \`district=universal\`; they are not part of the 24 district-lemma quota or necessarily taught at School.
-- **Recorded forms:** all forms attached to those 183 lexemes were extracted from \`content/LIBRARY_LEXICON.json\` using stable \`formId\` values. \`WEEK1_PRODUCTIVE_ELIGIBLE\` means grammar-gate and composition-flag eligibility **in principle**, not that the player has seen the form or that a reviewer has verified it. \`WEEK1_REFERENCE_NONPRODUCTIVE\` and \`FUTURE_FORM_REFERENCE_ONLY\` are still visible reference candidates and must not be misrepresented as Week-1 productive teaching.
-- **Morphology:** the noun worksheet reports the existing research audit's direct-plural field, even where that field says \`Unresolved\`. A recorded written plural is not automatically a native-approved Laghman plural; an unknown oblique or class does not acquire a guessed value.
+- **Maximum-pace schedule:** district lemmas are the current *fresh-profile 24/day* projection from `content/DISTRICT_INVENTORY_REPORT.json`. Other paces, review histories, forced narrative encounters and shortcut routes can expose different items. The worksheet is a baseline, not a proof of exhaustive runtime exposure.
+- **Universal entries:** the 15 extra entries come from `content/VOCABULARY_REVIEW.csv` with planned day 1–7 and `district=universal`; they are not part of the 24 district-lemma quota or necessarily taught at School.
+- **Recorded forms:** all forms attached to those 183 lexemes were extracted from `content/LIBRARY_LEXICON.json` using stable `formId` values. `WEEK1_PRODUCTIVE_ELIGIBLE` means grammar-gate and composition-flag eligibility **in principle**, not that the player has seen the form or that a reviewer has verified it. `WEEK1_REFERENCE_NONPRODUCTIVE` and `FUTURE_FORM_REFERENCE_ONLY` are still visible reference candidates and must not be misrepresented as Week-1 productive teaching.
+- **Morphology:** the noun worksheet reports the existing research audit's direct-plural field, even where that field says `Unresolved`. A recorded written plural is not automatically a native-approved Laghman plural; an unknown oblique or class does not acquire a guessed value.
 - **Fixed dialogue:** the 37 authored Pashto-event records are separate from the seven compiler-licensed Bilal player replies. Some ambient/event records are conditional and have no single day assignment. Do not reclassify narrative speech as assessed vocabulary.
 - **Generated sentences:** every sentence reviewed must be copied from an actual lesson/challenge/Library generation state, with seed/route/form bindings or reproducible game steps. This pack deliberately does **not** invent a frozen sentence bank.
 
@@ -43,15 +43,15 @@ The target is Afghan Pashto appropriate to Laghman. Ask reviewers to distinguish
 2. Review Days 1–2 first: tutorial, School descriptions/SOV, associated bases/forms, greetings and Bilal replies.
 3. Review Days 3–4: first/second singular verb forms and compound-clause naturalness.
 4. Review Days 5–7: respectful/plural address, direct noun plurals, plural agreement, Hills dialogue, third plural and Week-1 assessment.
-5. Capture and review **actual** generated sentences using the [sampling protocol](GENERATED_SENTENCE_SAMPLING.md); record \`formId\`, \`generatedId\`/proof, English target, grammar context and alternatives.
+5. Capture and review **actual** generated sentences using the [sampling protocol](GENERATED_SENTENCE_SAMPLING.md); record `formId`, `generatedId`/proof, English target, grammar context and alternatives.
 6. Review pronunciation and recordings independently; a visually correct written form or simulated TTS test is not a recording approval.
-7. Triage every \`REVISE\`, \`REJECT\` or \`UNCERTAIN\` finding. Make code/content changes on a dedicated branch, retain old scoped owner approvals as historical records, rerun appropriate language/schema/generation and browser checks, then obtain reviewer confirmation for the *changed* item.
-8. Complete the [release gate](MILESTONE_A_LANGUAGE_GATE.md). Do not batch-stamp all forms or sentences as \`native_approved\`.
+7. Triage every `REVISE`, `REJECT` or `UNCERTAIN` finding. Make code/content changes on a dedicated branch, retain old scoped owner approvals as historical records, rerun appropriate language/schema/generation and browser checks, then obtain reviewer confirmation for the *changed* item.
+8. Complete the [release gate](MILESTONE_A_LANGUAGE_GATE.md). Do not batch-stamp all forms or sentences as `native_approved`.
 
 ## Source hierarchy and editing
 
-Authoritative sources: \`content/LIBRARY_LEXICON.json\`, \`content/LEARNING_CURRICULUM.json\`, \`content/GRAMMAR_REFERENCE.json\`, \`content/NARRATIVE_EXPRESSIONS.json\`, \`content/TUTORIAL_PROMPTS.json\`, \`content/RPG_WORLD.json\`; mechanical counts and research provenance: \`content/GENERATION_AUDIT.json\` and \`docs/grammar/NOUN_MORPHOLOGY_RESEARCH.md\`.
+Authoritative sources: `content/LIBRARY_LEXICON.json`, `content/LEARNING_CURRICULUM.json`, `content/GRAMMAR_REFERENCE.json`, `content/NARRATIVE_EXPRESSIONS.json`, `content/TUTORIAL_PROMPTS.json`, `content/RPG_WORLD.json`; mechanical counts and research provenance: `content/GENERATION_AUDIT.json` and `docs/grammar/NOUN_MORPHOLOGY_RESEARCH.md`.
 
-The CSV files in this folder are **reviewer worksheets**. They are not runtime data and changing them does not update the game. \`content/VOCABULARY_REVIEW.csv\` is generated and must not be hand-edited. Approved corrections belong in the specific authoritative JSON and approval/evidence record, under the existing \`LANGUAGE_REVIEW.md\` rules, followed by regenerated reports and relevant tests. Do not create a second lexical authority here.
+The CSV files in this folder are **reviewer worksheets**. They are not runtime data and changing them does not update the game. `content/VOCABULARY_REVIEW.csv` is generated and must not be hand-edited. Approved corrections belong in the specific authoritative JSON and approval/evidence record, under the existing `LANGUAGE_REVIEW.md` rules, followed by regenerated reports and relevant tests. Do not create a second lexical authority here.
 
 **Observed technical baseline:** the post-merge verification recorded 6,246/6,246 compiled instructional sentence surfaces across ten profiles. That demonstrates generation provenance, **not** spoken Pashto correctness. See [post-merge verification](../maintenance/POST_MERGE_MAIN_VERIFICATION.md) and [instructional delivery](../grammar/INSTRUCTIONAL_DELIVERY_REPORT.md).
