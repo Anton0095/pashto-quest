@@ -23,6 +23,7 @@ The target is Afghan Pashto appropriate to Laghman. Ask reviewers to distinguish
 | [WEEK1_GRAMMAR_REVIEW.csv](WEEK1_GRAMMAR_REVIEW.csv) | Seven days of curriculum rules and corresponding Grammar Journal concepts | **32 entries** |
 | [WEEK1_GENERATED_SENTENCE_REVIEW_TEMPLATE.csv](WEEK1_GENERATED_SENTENCE_REVIEW_TEMPLATE.csv) | Coverage target rows for the actual generated sentences captured from the game; these are **not** pre-approved or authored example sentences | **14 coverage-family targets** |
 | [WEEK1_DAILY_CHECKLIST.md](WEEK1_DAILY_CHECKLIST.md) | Day-by-day pedagogical and linguistic acceptance checklist with source-derived dialogue examples | Seven days |
+| [REVIEWER_HANDOUT.md](REVIEWER_HANDOUT.md) | Short, nontechnical instructions that can be sent directly to a Pashto-speaking reviewer | One-page introduction |
 | [REVIEWER_PROTOCOL.md](REVIEWER_PROTOCOL.md) | Review method, verdicts, severity, provenance, correction route and sign-off | Process |
 | [GENERATED_SENTENCE_SAMPLING.md](GENERATED_SENTENCE_SAMPLING.md) | Capture the exact rendered compiler outputs, forms and question contexts for human judgement | Protocol |
 | [PRONUNCIATION_AND_AUDIO_REVIEW.md](PRONUNCIATION_AND_AUDIO_REVIEW.md) | Human pronunciation and physical-device evidence records | Protocol |
