@@ -45,7 +45,7 @@ The release continues to use schema 9. A paused Day 1 assessment saved by the ba
 
 ## Generated artifacts
 
-The offline `index.html`, vocabulary CSV, curriculum audit, district inventory, generation audit, generated coverage report and schema-9 generation digests were refreshed. The active inventory contains 473 lexical identities, 665 forms and 214 composition-eligible forms. The Week 1 review worksheets and dictionary evidence remain linked to their original review baseline. [Vocabulary register](../../content/VOCABULARY_REVIEW.csv) · [Generation coverage](../grammar/GENERATION_COVERAGE.md)
+The offline `index.html`, vocabulary CSV, curriculum audit, district inventory, generation audit, generated coverage report, instructional delivery audit and schema-9 generation digests were refreshed. The active inventory contains 473 lexical identities, 665 forms and 214 composition-eligible forms. The Week 1 review worksheets and dictionary evidence remain linked to their original review baseline. [Vocabulary register](../../content/VOCABULARY_REVIEW.csv) · [Generation coverage](../grammar/GENERATION_COVERAGE.md)
 
 ## Validation and screenshots
 
@@ -57,6 +57,8 @@ The offline `index.html`, vocabulary CSV, curriculum audit, district inventory, 
 | Construction completion and practical assessment model suites | Passed. Covered 70 day/pace completion cases and 140 assessments across five paces and both routes, including frozen restores. |
 | Bilal browser suite | Passed at 1280 and 390 pixels. Verified both corrected Day 1 lines and dialogue reaction reload. |
 | Focused Library inspection | Passed at 1280 and 375 pixels using a model-generated Day 7 profile. Verified the five corrected citations, absent Parent, Fish forms, distinct Bag/Purse, and contextual Weigh scoring. |
+| Public Week 1 RPG | Passed at 1280 pixels on the normal route and 375 pixels on the early-challenge route. Both reached graduation and passed saved lesson, assessment and result reload checks. |
+| Full `python3 tools/verify.py` | Passed with 241 successful checks, including the delivery audit write and check. The fourteen-day browser matrix verified 6,211 generated surfaces across ten profiles, 350 visits and 140 assessments. |
 | Baseline save compatibility | Four fixtures verified. The unaffected paused Day 1 attempt reloads exactly. Each affected save remains intact, including after a save attempt. |
 
 Chromium captures from the desktop lessons and mobile-emulated Library and dialogue.
@@ -65,7 +67,7 @@ Chromium captures from the desktop lessons and mobile-emulated Library and dialo
 - [Bilal’s introduction](week1-language/week1-intro-390.png) · [Bilal’s correct response](week1-language/week1-correct-390.png)
 - [Fish plural in the Library](week1-language/fish-plural-375.png) · [Weigh recall scene](week1-language/weigh-recall-375.png)
 
-The initial public browser run completed both seven-day gameplay routes. Its desktop test then failed an assertion that expected a singular Wife flashcard in the maximum-pace Day 6 lesson. The regression now checks the corrected citation in the Library and preserves the existing plural-first lesson. The updated public suite and the full `python3 tools/verify.py` browser run are in progress.
+The initial public browser run completed both gameplay routes and exposed an incorrect test expectation that the maximum-pace Day 6 lesson would present the singular Wife citation. The updated regression checks the citation in the Library and passed the full run. [Instructional delivery report](../grammar/INSTRUCTIONAL_DELIVERY_REPORT.md)
 
 ## Open review
 
