@@ -3981,5 +3981,255 @@
     },
     "scope": "Exact current character-name spelling/English identity only; existing lexical/proof IDs and earlier evidence remain unchanged. Romanisation aids, morphology, generated combinations and audio are not newly approved.",
     "nativeCertificationClaimed": false
-  }
+  },
+  "week1OwnerReview": [
+    {
+      "ids": [
+        "lemma:expansion:noun:tree",
+        "lemma:expansion:noun:tree:citation"
+      ],
+      "reviewer": "Yaqub Forrest (project owner)",
+      "recordedDate": "2026-11-19",
+      "reference": "docs/language-review/DAY1_OWNER_REVIEW_2026-11-19.md",
+      "scope": "Exact base spelling, listed sense and citation transliteration.",
+      "before": {
+        "pashto": "ونه",
+        "romanisation": "ona",
+        "englishSenses": [
+          "Tree"
+        ]
+      },
+      "after": {
+        "pashto": "ونه",
+        "romanisation": "wona",
+        "englishSenses": [
+          "Tree"
+        ]
+      },
+      "nativeCertificationClaimed": false,
+      "kind": "base_correction"
+    },
+    {
+      "ids": [
+        "bilal-day-1"
+      ],
+      "reviewer": "Yaqub Forrest (project owner)",
+      "recordedDate": "2026-11-19",
+      "reference": "docs/language-review/DAY1_OWNER_REVIEW_2026-11-19.md",
+      "scope": "Exact authored Day 1 dialogue display.",
+      "before": {
+        "ps": "سلام! نن ښه ورځ ده. د جهیل اوبه څنګه دي؟",
+        "roman": "salaam! nun kha wraz da. du jaheel oba tsanga dee?",
+        "audioId": "bilal-day-1",
+        "english": "Hello! It is a nice day. What is the lake water like?"
+      },
+      "after": {
+        "ps": "سلام! نن ښه ورځ ده. د جهیل اوبه څنګه دي؟",
+        "roman": "salaam! nun kha wraz da. du jheel oba tsanga dee?",
+        "audioId": "bilal-day-1",
+        "english": "Hello! It is a nice day. What is the lake water like?"
+      },
+      "nativeCertificationClaimed": false,
+      "kind": "dialogue"
+    },
+    {
+      "ids": [
+        "bilal-day-1-correct"
+      ],
+      "reviewer": "Yaqub Forrest (project owner)",
+      "recordedDate": "2026-11-19",
+      "reference": "docs/language-review/DAY1_OWNER_REVIEW_2026-11-19.md",
+      "scope": "Exact authored Day 1 dialogue display.",
+      "before": {
+        "ps": "هو، د جهیل اوبه سړې دي.",
+        "roman": "ho, du jaheel oba saṛe dee.",
+        "audioId": "bilal-day-1-correct",
+        "english": "Yes, the lake water is cold."
+      },
+      "after": {
+        "ps": "هو، د جهیل اوبه سړې دي.",
+        "roman": "ho, du jheel oba saṛe dee.",
+        "audioId": "bilal-day-1-correct",
+        "english": "Yes, the lake water is cold."
+      },
+      "nativeCertificationClaimed": false,
+      "kind": "dialogue"
+    },
+    {
+      "ids": [
+        "lemma:expansion:noun:brother",
+        "lemma:expansion:noun:brother:citation"
+      ],
+      "reviewer": "Yaqub Forrest (project owner)",
+      "recordedDate": "2026-11-22",
+      "reference": "docs/language-review/DAY2_OWNER_REVIEW_2026-11-22.md",
+      "scope": "Exact base spelling, listed sense and citation transliteration.",
+      "before": {
+        "pashto": "ورور",
+        "romanisation": "oror",
+        "englishSenses": [
+          "Brother"
+        ]
+      },
+      "after": {
+        "pashto": "ورور",
+        "romanisation": "wror",
+        "englishSenses": [
+          "Brother"
+        ]
+      },
+      "nativeCertificationClaimed": false,
+      "kind": "base_correction"
+    },
+    {
+      "ids": [
+        "lemma:expansion:noun:flower",
+        "lemma:expansion:noun:flower:citation"
+      ],
+      "reviewer": "Yaqub Forrest (project owner)",
+      "recordedDate": "2026-11-22",
+      "reference": "docs/language-review/DAY2_OWNER_REVIEW_2026-11-22.md",
+      "scope": "Exact base spelling, listed sense and citation transliteration.",
+      "before": {
+        "pashto": "ګل",
+        "romanisation": "gl",
+        "englishSenses": [
+          "Flower"
+        ]
+      },
+      "after": {
+        "pashto": "ګل",
+        "romanisation": "gul",
+        "englishSenses": [
+          "Flower"
+        ]
+      },
+      "nativeCertificationClaimed": false,
+      "kind": "base_correction"
+    },
+    {
+      "ids": [
+        "lemma:expansion:noun:wife",
+        "lemma:expansion:noun:wife:citation"
+      ],
+      "reviewer": "Yaqub Forrest (project owner)",
+      "recordedDate": "2026-11-22",
+      "reference": "docs/language-review/DAY6_OWNER_REVIEW_2026-11-22.md",
+      "scope": "Exact base spelling, listed sense and citation transliteration.",
+      "before": {
+        "pashto": "مېرمن",
+        "romanisation": "mermn",
+        "englishSenses": [
+          "Wife"
+        ]
+      },
+      "after": {
+        "pashto": "مېرمن",
+        "romanisation": "merman",
+        "englishSenses": [
+          "Wife"
+        ]
+      },
+      "nativeCertificationClaimed": false,
+      "kind": "base_correction"
+    },
+    {
+      "ids": [
+        "lemma:expansion:noun:purse",
+        "lemma:expansion:noun:purse:citation"
+      ],
+      "reviewer": "Yaqub Forrest (project owner)",
+      "recordedDate": "2026-11-22",
+      "reference": "docs/language-review/DAY7_OWNER_REVIEW_2026-11-22.md",
+      "scope": "Exact base spelling, listed sense and citation transliteration.",
+      "before": {
+        "pashto": "کڅوړه",
+        "romanisation": "ktsora",
+        "englishSenses": [
+          "Purse"
+        ]
+      },
+      "after": {
+        "pashto": "همياني",
+        "romanisation": "humyani",
+        "englishSenses": [
+          "Purse"
+        ]
+      },
+      "nativeCertificationClaimed": false,
+      "kind": "base_correction"
+    },
+    {
+      "ids": [
+        "lemma:expansion:noun:parent",
+        "lemma:expansion:noun:parent:citation"
+      ],
+      "reviewer": "Yaqub Forrest (project owner)",
+      "recordedDate": "2026-11-22",
+      "reference": "docs/language-review/DAY4_OWNER_REVIEW_2026-11-22.md",
+      "scope": "Retire the separate Parent card. Mother and Father keep their independent Day 1 entries.",
+      "before": {
+        "pashto": "مور او پلار",
+        "romanisation": "mor ao plar",
+        "englishSenses": [
+          "Parent"
+        ]
+      },
+      "after": null,
+      "nativeCertificationClaimed": false,
+      "kind": "base_retirement"
+    },
+    {
+      "ids": [
+        "lemma:n-fish:research:direct:plural:3aa8f716",
+        "lemma:n-fish:licensed:1"
+      ],
+      "reviewer": "Yaqub Forrest (project owner)",
+      "recordedDate": "2026-11-22",
+      "reference": "docs/language-review/DAY5_OWNER_REVIEW_2026-11-22.md",
+      "scope": "Use only the approved direct plural of Fish in playable material.",
+      "before": {
+        "pashto": "کبونه",
+        "romanisation": "kabúna"
+      },
+      "after": {
+        "pashto": "کبان",
+        "romanisation": "kabaan"
+      },
+      "nativeCertificationClaimed": false,
+      "kind": "form_retirement"
+    },
+    {
+      "ids": [
+        "lemma:v-go",
+        "lemma:v-go:form:0",
+        "lemma:expansion:verb:weigh",
+        "lemma:expansion:verb:weigh:citation"
+      ],
+      "reviewer": "Yaqub Forrest (project owner)",
+      "recordedDate": "2026-11-22",
+      "reference": "docs/language-review/DAY7_OWNER_REVIEW_2026-11-22.md",
+      "scope": "Distinct citation senses with English recall context. Existing pronunciation aids and composition licenses are preserved.",
+      "before": {
+        "pashto": "تلل",
+        "englishSenses": [
+          "To go",
+          "Weigh"
+        ]
+      },
+      "after": {
+        "pashto": "تلل",
+        "englishSenses": [
+          "To go",
+          "Weigh"
+        ],
+        "recallContexts": {
+          "lemma:v-go:form:0": "Someone leaves home and heads to the market.",
+          "lemma:expansion:verb:weigh:citation": "A shopkeeper puts vegetables on a scale."
+        }
+      },
+      "nativeCertificationClaimed": false,
+      "kind": "recall_context"
+    }
+  ]
 }

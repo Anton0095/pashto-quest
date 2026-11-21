@@ -261,18 +261,20 @@ function createChallengeUI({
         : w.roman + (q.unstudied ? " · Not previously studied" : "");
     ui.$("quizPrompt").textContent = reverse
         ? "Which Pashto expression means this?"
-        : q.kind === "word"
+        : w.recallContext || (q.kind === "word"
           ? w.type === "greeting"
             ? "What does this greeting mean?"
             : "What does this word mean?"
-          : "What does this sentence mean?";
+          : "What does this sentence mean?");
     ui.$("quizSpeak").classList.toggle("hidden", reverse);
     ui.$("quizPanel").querySelector(".quizword h3").textContent = reverse
         ? "Choose the correct Pashto"
         : "Choose the correct English meaning";
     if (QuestionEngine.isTyped(q)) {
       ui.$("quizType").textContent="TYPE THE CORRECT ANSWER";
-      ui.$("quizPrompt").textContent = reverse ? "Type this meaning in Pashto. Your first answer counts." : "Type the English meaning. Your first answer counts.";
+      ui.$("quizPrompt").textContent = reverse
+        ? "Type this meaning in Pashto. Your first answer counts."
+        : w.recallContext || "Type the English meaning. Your first answer counts.";
       ui.$("quizPanel").querySelector(".quizword h3").textContent = "Type the correct answer";
       ui.typedAnswer.mount({
         host: ui.$("choices"), id: "unseenRecall",

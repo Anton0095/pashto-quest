@@ -7756,66 +7756,10 @@
               "nativeReviewed": false,
               "restrictions": []
             }
-          ]
-        },
-        {
-          "formId": "lemma:n-fish:research:direct:plural:3aa8f716",
-          "pashto": "کبونه",
-          "romanisation": "kabúna",
-          "englishGloss": "fish",
-          "morphology": {
-            "gender": "masculine",
-            "number": "plural",
-            "case": "direct",
-            "person": null,
-            "aspect": null,
-            "transitivity": null,
-            "form": "attested_dictionary"
-          },
-          "reviewStatus": "needs_native_review",
-          "userVerified": false,
-          "prerequisiteGrammarIds": [
-            "grammar-day-5"
           ],
-          "firstAllowedDay": 5,
-          "grammarFirstDay": 5,
-          "audioContentId": null,
-          "metadataUncertainty": [],
-          "morphologyResearch": [
-            {
-              "status": "dictionary_attested_written_form",
-              "linguisticReview": "researched_provisional",
-              "source": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=30820&how=0&let=%DA%A9&nons=1&what=0",
-              "statement": "Plural: کبونه [kabúna]",
-              "dialect": "general written record; local usage not certified",
-              "userApproved": false,
-              "nativeReviewed": false,
-              "restrictions": []
-            }
-          ],
-          "composition": {
-            "enabled": true,
-            "roles": [
-              "noun"
-            ],
-            "reason": "Explicit dictionary inflection, typed noun features and grammar gate; no suffix generation or native certification",
-            "evidenceSourceId": "lemma:n-fish:research:direct:plural:3aa8f716",
-            "english": "fish"
-          },
-          "featureEvidence": {
-            "sourceId": "lemma:n-fish:research:direct:plural:3aa8f716",
-            "pashtoSpan": "کبونه",
-            "romanisationSpan": "kabúna",
-            "basis": "Explicit per-entry OPED inflection statement, not an unchecked generated table cell. https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=30820&how=0&let=%DA%A9&nons=1&what=0",
-            "features": {
-              "gender": "masculine",
-              "number": "plural",
-              "case": "direct",
-              "person": null,
-              "aspect": null,
-              "transitivity": null,
-              "form": "attested_dictionary"
-            }
+          "ownerFormApproval": {
+            "date": "2026-11-22",
+            "reference": "docs/language-review/DAY5_OWNER_REVIEW_2026-11-22.md"
           }
         }
       ],
@@ -14829,7 +14773,8 @@
             "kind": "formatting_equivalence",
             "reference": "GAME_SPEC.md#english-answer-policy",
             "rationale": "Optional English infinitive marker on this explicitly infinitive form; no synonym or finite-person equivalence asserted."
-          }
+          },
+          "recallContext": "Someone leaves home and heads to the market."
         },
         {
           "formId": "lemma:v-go:present:2",
@@ -31079,7 +31024,7 @@
     {
       "lemmaId": "lemma:expansion:noun:brother",
       "displayLemmaPs": "ورور",
-      "romanisation": "oror",
+      "romanisation": "wror",
       "englishSenses": [
         "Brother"
       ],
@@ -31096,7 +31041,7 @@
         {
           "formId": "lemma:expansion:noun:brother:citation",
           "pashto": "ورور",
-          "romanisation": "oror",
+          "romanisation": "wror",
           "englishGloss": "Brother",
           "morphology": {
             "gender": null,
@@ -31201,7 +31146,7 @@
         {
           "exampleId": "example:lemma:expansion:noun:brother",
           "pashto": "ورور",
-          "romanisation": "oror",
+          "romanisation": "wror",
           "english": "Brother",
           "speaker": "Lesson teacher",
           "recipient": "Player",
@@ -31250,7 +31195,7 @@
       "userApproval": {
         "type": "explicit_user_confirmation",
         "reviewer": "Yaqub Forrest (project owner)",
-        "date": "2026-10-31",
+        "date": "2026-11-22",
         "reference": "content/USER_LANGUAGE_APPROVALS.json",
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
@@ -32293,116 +32238,6 @@
       "priorIntroductionDay": 2
     },
     {
-      "lemmaId": "lemma:expansion:noun:parent",
-      "displayLemmaPs": "مور او پلار",
-      "romanisation": "mor ao plar",
-      "englishSenses": [
-        "Parent"
-      ],
-      "partOfSpeech": "noun",
-      "countsTowardDailyQuota": true,
-      "reviewStatus": "user_approved",
-      "userVerified": true,
-      "provenance": {
-        "source": "OpenAI editorial draft prepared 2026-10-27",
-        "candidateId": "candidate:noun:parent",
-        "nativeApproved": false
-      },
-      "forms": [
-        {
-          "formId": "lemma:expansion:noun:parent:citation",
-          "pashto": "مور او پلار",
-          "romanisation": "mor ao plar",
-          "englishGloss": "Parent",
-          "morphology": {
-            "gender": null,
-            "number": null,
-            "case": null,
-            "person": null,
-            "aspect": null,
-            "transitivity": null,
-            "form": "citation"
-          },
-          "reviewStatus": "provisional_playable",
-          "prerequisiteGrammarIds": [],
-          "audioContentId": null,
-          "metadataUncertainty": [
-            "Provisional written-Pashto editorial draft; gender, inflection and Laghman usage require human review"
-          ],
-          "firstAllowedDay": 2,
-          "composition": {
-            "enabled": false,
-            "reason": "Isolated lexical draft; no productive morphology licensed"
-          },
-          "grammarFirstDay": 2,
-          "featureEvidence": {
-            "sourceId": "candidate:noun:parent",
-            "basis": "Citation form only; human review pending"
-          }
-        }
-      ],
-      "examples": [
-        {
-          "exampleId": "example:lemma:expansion:noun:parent",
-          "pashto": "مور او پلار",
-          "romanisation": "mor ao plar",
-          "english": "Parent",
-          "speaker": "Lesson teacher",
-          "recipient": "Player",
-          "day": 2,
-          "location": "residential",
-          "reviewStatus": "provisional_playable",
-          "constraints": {
-            "mode": "isolated vocabulary context",
-            "substitutions": []
-          }
-        }
-      ],
-      "suitableDistricts": [
-        "residential",
-        "business"
-      ],
-      "primaryDistrict": "residential",
-      "vocabularyClass": "district",
-      "grammaticalRoles": [
-        "noun"
-      ],
-      "traits": {
-        "gender": null,
-        "number": null,
-        "case": null,
-        "person": null,
-        "aspect": null,
-        "transitivity": null
-      },
-      "introduction": {
-        "day": 4,
-        "district": "business",
-        "teachingOrder": 86,
-        "requiredGrammarIds": [],
-        "verifiedStatus": "editorial_draft",
-        "rationale": "School-first curriculum: descriptive starters on Day 1, setting actions on Day 2, then Home adjectives / Nature verbs / Market nouns.",
-        "previousDay": 2
-      },
-      "firstIntroductionConstraints": {
-        "earliestDay": 2,
-        "latestDay": 13
-      },
-      "pedagogicalFunctions": [
-        "district-quota"
-      ],
-      "promotionCandidateId": "candidate:noun:parent",
-      "userApproval": {
-        "type": "explicit_user_confirmation",
-        "reviewer": "Yaqub Forrest (project owner)",
-        "date": "2026-10-31",
-        "reference": "content/USER_LANGUAGE_APPROVALS.json",
-        "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
-        "nativeCertificationClaimed": false
-      },
-      "priorIntroductionDay": 2
-    },
-    {
       "lemmaId": "lemma:expansion:noun:husband",
       "displayLemmaPs": "مېړه",
       "romanisation": "mera",
@@ -32645,7 +32480,7 @@
     {
       "lemmaId": "lemma:expansion:noun:wife",
       "displayLemmaPs": "مېرمن",
-      "romanisation": "mermn",
+      "romanisation": "merman",
       "englishSenses": [
         "Wife"
       ],
@@ -32662,7 +32497,7 @@
         {
           "formId": "lemma:expansion:noun:wife:citation",
           "pashto": "مېرمن",
-          "romanisation": "mermn",
+          "romanisation": "merman",
           "englishGloss": "Wife",
           "morphology": {
             "gender": null,
@@ -32755,7 +32590,7 @@
         {
           "exampleId": "example:lemma:expansion:noun:wife",
           "pashto": "مېرمن",
-          "romanisation": "mermn",
+          "romanisation": "merman",
           "english": "Wife",
           "speaker": "Lesson teacher",
           "recipient": "Player",
@@ -32805,7 +32640,7 @@
       "userApproval": {
         "type": "explicit_user_confirmation",
         "reviewer": "Yaqub Forrest (project owner)",
-        "date": "2026-10-31",
+        "date": "2026-11-22",
         "reference": "content/USER_LANGUAGE_APPROVALS.json",
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
@@ -40490,7 +40325,7 @@
     {
       "lemmaId": "lemma:expansion:noun:tree",
       "displayLemmaPs": "ونه",
-      "romanisation": "ona",
+      "romanisation": "wona",
       "englishSenses": [
         "Tree"
       ],
@@ -40507,7 +40342,7 @@
         {
           "formId": "lemma:expansion:noun:tree:citation",
           "pashto": "ونه",
-          "romanisation": "ona",
+          "romanisation": "wona",
           "englishGloss": "Tree",
           "morphology": {
             "gender": null,
@@ -40670,7 +40505,7 @@
         {
           "exampleId": "example:lemma:expansion:noun:tree",
           "pashto": "ونه",
-          "romanisation": "ona",
+          "romanisation": "wona",
           "english": "Tree",
           "speaker": "Lesson teacher",
           "recipient": "Player",
@@ -40718,7 +40553,7 @@
       "userApproval": {
         "type": "explicit_user_confirmation",
         "reviewer": "Yaqub Forrest (project owner)",
-        "date": "2026-10-31",
+        "date": "2026-11-19",
         "reference": "content/USER_LANGUAGE_APPROVALS.json",
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
@@ -41054,7 +40889,7 @@
     {
       "lemmaId": "lemma:expansion:noun:flower",
       "displayLemmaPs": "ګل",
-      "romanisation": "gl",
+      "romanisation": "gul",
       "englishSenses": [
         "Flower"
       ],
@@ -41071,7 +40906,7 @@
         {
           "formId": "lemma:expansion:noun:flower:citation",
           "pashto": "ګل",
-          "romanisation": "gl",
+          "romanisation": "gul",
           "englishGloss": "Flower",
           "morphology": {
             "gender": null,
@@ -41402,7 +41237,7 @@
         {
           "exampleId": "example:lemma:expansion:noun:flower",
           "pashto": "ګل",
-          "romanisation": "gl",
+          "romanisation": "gul",
           "english": "Flower",
           "speaker": "Lesson teacher",
           "recipient": "Player",
@@ -41451,7 +41286,7 @@
       "userApproval": {
         "type": "explicit_user_confirmation",
         "reviewer": "Yaqub Forrest (project owner)",
-        "date": "2026-10-31",
+        "date": "2026-11-22",
         "reference": "content/USER_LANGUAGE_APPROVALS.json",
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
@@ -52091,8 +51926,8 @@
     },
     {
       "lemmaId": "lemma:expansion:noun:purse",
-      "displayLemmaPs": "کڅوړه",
-      "romanisation": "ktsora",
+      "displayLemmaPs": "همياني",
+      "romanisation": "humyani",
       "englishSenses": [
         "Purse"
       ],
@@ -52108,8 +51943,8 @@
       "forms": [
         {
           "formId": "lemma:expansion:noun:purse:citation",
-          "pashto": "کڅوړه",
-          "romanisation": "ktsora",
+          "pashto": "همياني",
+          "romanisation": "humyani",
           "englishGloss": "Purse",
           "morphology": {
             "gender": null,
@@ -52133,16 +51968,16 @@
           },
           "grammarFirstDay": 3,
           "featureEvidence": {
-            "sourceId": "candidate:noun:purse",
-            "basis": "Citation form only; human review pending"
+            "sourceId": "docs/language-review/DAY7_OWNER_REVIEW_2026-11-22.md",
+            "basis": "Owner-confirmed citation spelling and transliteration only."
           }
         }
       ],
       "examples": [
         {
           "exampleId": "example:lemma:expansion:noun:purse",
-          "pashto": "کڅوړه",
-          "romanisation": "ktsora",
+          "pashto": "همياني",
+          "romanisation": "humyani",
           "english": "Purse",
           "speaker": "Lesson teacher",
           "recipient": "Player",
@@ -52191,7 +52026,7 @@
       "userApproval": {
         "type": "explicit_user_confirmation",
         "reviewer": "Yaqub Forrest (project owner)",
-        "date": "2026-10-31",
+        "date": "2026-11-22",
         "reference": "content/USER_LANGUAGE_APPROVALS.json",
         "scope": "Exact base spelling, listed senses and supplied transliteration only; morphology, recordings and composed sentences are not approved.",
         "nativeCertificationClaimed": false
@@ -56110,7 +55945,17 @@
             "basis": "Citation form only; human review pending"
           },
           "priorFirstAllowedDay": 9,
-          "previousFirstAllowedDay": 9
+          "previousFirstAllowedDay": 9,
+          "recallContext": "A shopkeeper puts vegetables on a scale.",
+          "acceptedEnglishAnswers": [
+            "To weigh",
+            "Weigh"
+          ],
+          "englishAnswerEvidence": {
+            "kind": "formatting_equivalence",
+            "reference": "GAME_SPEC.md#english-answer-policy",
+            "rationale": "Optional English infinitive marker on this explicitly infinitive form."
+          }
         }
       ],
       "examples": [
@@ -81451,16 +81296,6 @@
       "english": "Shop",
       "kind": "dictionary_inflection",
       "sourceUrl": "https://oped.univie.ac.at/oped.php?alph=1&dev=1&dir=1&entry=22035&how=2&let=&nons=1&what=2",
-      "userApproved": false,
-      "nativeCertificationClaimed": false
-    },
-    {
-      "sourceId": "lemma:n-fish:research:direct:plural:3aa8f716",
-      "pashto": "کبونه",
-      "romanisation": "kabúna",
-      "english": "Fish",
-      "kind": "dictionary_inflection",
-      "sourceUrl": "https://oped.univie.ac.at/gt23vd5npniqnz/index.php?alph=0&dev=0&dir=0&entry=30820&how=0&let=%DA%A9&nons=1&what=0",
       "userApproved": false,
       "nativeCertificationClaimed": false
     },

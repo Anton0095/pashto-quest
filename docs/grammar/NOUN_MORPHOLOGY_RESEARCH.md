@@ -262,3 +262,7 @@ OPED explicitly warns that generated paradigm cells may be unchecked; this audit
 | lemma:person:saleha | دینه | Deena | Unresolved | No reliable direct-plural paradigm established; no plural was manufactured.; oblique singular unresolved; oblique plural unresolved; Proper name: coordinated subjects/possessive chunks are not noun plurals. |
 | lemma:person:muhammad-jan | محمد جان | Muhammad Jan | Unresolved | No reliable direct-plural paradigm established; no plural was manufactured.; oblique singular unresolved; oblique plural unresolved; Proper name: coordinated subjects/possessive chunks are not noun plurals. |
 | lemma:person:edris | ادریس | Edris | Unresolved | No reliable direct-plural paradigm established; no plural was manufactured.; oblique singular unresolved; oblique plural unresolved; Proper name: coordinated subjects/possessive chunks are not noun plurals. |
+
+## Week 1 owner dispositions
+
+The game teaches **کب** and uses **کبان / kabaan** as its direct plural. The dictionary attestation for **کبونه / kabúna** remains in the historical research file. The separate Parent citation also remains historical. Purse now uses **همياني / humyani** with unresolved morphology. [Week 1 implementation](../maintenance/WEEK1_OWNER_LANGUAGE_IMPLEMENTATION.md)

@@ -54,8 +54,8 @@ Day 1 School teaches Book/New and agreement first. Home then introduces eight no
 - User-selectable daily district-lemma pace: **8, 12, 16, 20 or 24**; fresh-profile default 24. Schema 9 freezes new plans. Valid schema-9 progress is preserved; older schemas are not converted. School is compulsory before the other three lessons or any challenge. The three lessons can be completed in all six orders. Day 1 assigns nouns/adjectives only; Day 2 introduces actions in every district.
 - Every lexeme has one `lemmaId` and potentially multiple `formId`s. Inflections, universal vocabulary, expressions and sentence units are not counted as newly introduced district lemmas. Incidental story exposure is tracked separately from assigned and mastered entries.
 - Day 14 assigns **zero new compulsory district lemmas**. Insufficient evidenced, eligible vocabulary must be reported, never silently filled using repeated entries, English-only candidates or fake translations.
-- **Current playable inventory:** 474 lexical identities/667 recorded forms (215 composition-eligible): 401 district lemmas (semantic primary districts remain provenance; curated teaching districts follow the specialisations) and 73 universal lemmas. “Playable” does **not** mean native-certified.
-- **Expansion disposition:** all 301 selected candidates were promoted as mechanically complete provisional drafts and their canonical base entries are now user-approved; 59 candidates remain rejected, including 7 existing-sense aliases. The canonical promoted base entries are user-approved; candidate/archive provenance is retained without relabelling excluded candidates. None is independently native-certified.
+- **Current playable inventory:** 473 lexical identities/665 recorded forms (214 composition-eligible): 400 district lemmas (semantic primary districts remain provenance; curated teaching districts follow the specialisations) and 73 universal lemmas. “Playable” does **not** mean native-certified.
+- **Expansion disposition:** 301 selected candidates were originally promoted. Of those, 300 remain active and the separate Parent card is retired. The 59 previously excluded candidates remain inactive, including seven existing-sense aliases. The canonical promoted base entries are user-approved; candidate/archive provenance is retained without relabelling excluded candidates. None is independently native-certified.
 - At 24/day, the planner schedules exactly **312** distinct district introductions on Days 1–13. Day 14 remains cumulative review with no compulsory vocabulary. School receives two starter lemmas on Days 1/2 and no artificial lexical quota thereafter. Function words, individually taught forms and fixed expressions stay outside the district-lemma total.
 - `content/UNIVERSAL_TEACHING_TARGETS.json` contains **40 proposed semantic teaching targets** (pronouns, numbers, question words, position, connectors etc.); they are not automatically 40 translated lexical records.
 
@@ -86,7 +86,7 @@ A day's active expression (including the optional Day-14 greeting) is the **firs
 
 ## Editorial activation rules
 
-Use `LANGUAGE_REVIEW.md` for exact review evidence. Native Laghman checking is still required for existing Week 1 language, all Week 2 drafts, the 301 provisional candidate entries and the 40 linked universal targets. The expansion records conventional written-Pashto editorial drafts with mechanical romanisation and explicit uncertainty. The canonical base entries now use `user_approved`; unshown forms remain provisional. Native approval still requires real reviewer/date/reference evidence.
+Use `LANGUAGE_REVIEW.md` for exact review evidence. Native Laghman checking is still required for existing Week 1 language, all Week 2 drafts, the 300 active candidate-derived entries and the 40 linked universal targets. The expansion records conventional written-Pashto editorial drafts with mechanical romanisation and explicit uncertainty. The canonical base entries now use `user_approved`; unshown forms remain provisional. Native approval still requires real reviewer/date/reference evidence.
 
 ## Introductions, composition and retention
 
@@ -118,6 +118,8 @@ School introduces grammar every day, including the existing pronoun and later gr
 Day 1 School explicitly introduces Book and New for its first description; it needs no other lesson. Each other district begins with a relevant noun/adjective pair. Day 2 School explicitly introduces Read and Write before action practice; Home begins with Have/Open, Nature with See/Drink and Market with Eat/Sell. Repeated forms and verbs remain one lexical identity. Low paces retain the setting actions and reuse Day 1 vocabulary. The guided unscored SOV demonstration remains in School and the Library.
 
 ### Daily allocation
+
+Day 4 retains its five supported totals after the separate Parent card was retired. At 24 words, the existing Market planner takes the first eligible unused noun from an earlier scheduled day, Pan. Mother and Father retain their distinct Day 1 entries. [Week 1 implementation](docs/maintenance/WEEK1_OWNER_LANGUAGE_IMPLEMENTATION.md)
 
 The table gives distinct assigned lemmas as **School / Home / Nature / Market**. School's later supporting function words and inflections do not consume lexical quotas.
 

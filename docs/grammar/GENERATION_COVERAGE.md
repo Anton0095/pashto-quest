@@ -2,7 +2,7 @@
 
 Diagnostic capacity under provisional form licenses. Runtime builds no sentence catalogue at startup: it compiles from forms/grammar licensed by study or explicit challenge activation. See INSTRUCTIONAL_DELIVERY_AUDIT.json for measured delivery. An exact match to an archived text is still dynamically composed from forms, never retrieved as a teaching target. Clause-pair capacity is algebraic, not an enumerated list or a native-language approval.
 
-Inventory: 474 lemmas / 667 forms; 215 composition-eligible forms. 29 typed templates across 28 families.
+Inventory: 473 lemmas / 665 forms; 214 composition-eligible forms. 29 typed templates across 28 families.
 
 **This is not the delivery percentage.** [The measured delivery report](INSTRUCTIONAL_DELIVERY_REPORT.md) checks actual lessons and assessments. There are zero playable authored sentence fallbacks; the [registered fixed expressions](FIXED_PHRASE_EXCEPTIONS.md) are the only whole-phrase exceptions.
 
@@ -13,31 +13,31 @@ Inventory: 474 lemmas / 667 forms; 215 composition-eligible forms. 29 typed temp
 | equative_descriptor | 28 | 28 | 59 | 67 | 112 | 116 | 116 | 116 | 116 | 116 | 116 | 116 | 116 | 116 |
 | demonstrative_descriptor | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 232 | 232 | 232 | 232 | 232 | 232 | 232 |
 | attributive_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 232 | 232 | 232 | 232 | 232 | 232 | 232 |
-| equative_noun | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 126 | 126 | 126 | 126 | 126 | 126 | 126 |
-| present_transitive | 0 | 140 | 275 | 384 | 994 | 1553 | 1695 | 1695 | 1695 | 1695 | 1695 | 1695 | 1695 | 1695 |
+| equative_noun | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 124 | 124 | 124 | 124 | 124 | 124 |
+| present_transitive | 0 | 140 | 275 | 384 | 987 | 1542 | 1683 | 1683 | 1683 | 1683 | 1683 | 1683 | 1683 | 1683 |
 | present_compound_transitive | 0 | 0 | 0 | 1 | 4 | 10 | 12 | 12 | 12 | 12 | 12 | 12 | 12 | 12 |
 | present_attributive | 0 | 300 | 980 | 1345 | 2759 | 4417 | 4817 | 4817 | 4817 | 4817 | 4817 | 4817 | 4817 | 4817 |
 | present_intransitive | 0 | 0 | 1 | 1 | 7 | 14 | 16 | 16 | 16 | 16 | 16 | 16 | 16 | 16 |
 | present_compound_predicate | 0 | 0 | 0 | 0 | 0 | 18 | 20 | 20 | 20 | 20 | 20 | 20 | 20 | 20 |
-| demonstrative_transitive | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3390 | 3390 | 3390 | 3390 | 3390 | 3390 | 3390 |
-| counted_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 146 | 146 | 146 | 146 | 146 | 146 |
-| counted_transitive | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1717 | 1717 | 1717 | 1717 | 1717 | 1717 |
-| spatial_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 79 | 79 | 79 | 79 | 79 |
-| location_adverb_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 126 | 126 | 126 | 126 | 126 |
+| demonstrative_transitive | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3366 | 3366 | 3366 | 3366 | 3366 | 3366 | 3366 |
+| counted_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 142 | 142 | 142 | 142 | 142 | 142 |
+| counted_transitive | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1693 | 1693 | 1693 | 1693 | 1693 | 1693 |
+| spatial_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 78 | 78 | 78 | 78 | 78 |
+| location_adverb_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 124 | 124 | 124 | 124 | 124 |
 | possessive_equative | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 574 | 574 | 574 | 574 |
 | possessive_descriptor | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 553 | 553 | 553 | 553 |
 | possessive_spatial | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 406 | 406 | 406 | 406 |
-| where_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 63 | 63 | 63 | 63 | 63 |
+| where_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 62 | 62 | 62 | 62 | 62 |
 | which_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 91 | 91 | 91 |
 | whose_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 82 | 82 | 82 |
-| how_many_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 78 | 78 | 78 |
+| how_many_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 76 | 76 | 76 |
 | what_object_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 24 | 24 | 24 |
-| who_subject_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 151 | 151 | 151 |
+| who_subject_question | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 150 | 150 | 150 |
 | present_intransitive_adverb | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 159 | 159 |
-| present_transitive_adverb | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5766 | 5766 |
-| present_joint_action | 0 | 0 | 0 | 0 | 0 | 384 | 489 | 489 | 489 | 489 | 489 | 489 | 489 | 489 |
-| count_location | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 146 | 146 | 146 |
-| coordinated_present | 0 | 0 | 0 | 13340 | 70490 | 70490 | 70490 | 70490 | 70490 | 70490 | 70490 | 70490 | 70490 | 70490 |
+| present_transitive_adverb | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5713 | 5713 |
+| present_joint_action | 0 | 0 | 0 | 0 | 0 | 380 | 484 | 484 | 484 | 484 | 484 | 484 | 484 | 484 |
+| count_location | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 142 | 142 | 142 |
+| coordinated_present | 0 | 0 | 0 | 13340 | 69432 | 69432 | 69432 | 69432 | 69432 | 69432 | 69432 | 69432 | 69432 | 69432 |
 
 Coordinated-present counts are ordered pairs of distinct independently licensed singular first/second-person SOV clauses, joined by the studied conjunction. They are compiled on request and restored from an AST; no complete clause-pair list is embedded.
 
@@ -51,16 +51,16 @@ The JSON also separates new texts and exact archival-text matches for every base
 | 2 | 468 | 447 | 21 | 0 |
 | 3 | 1315 | 1279 | 36 | 0 |
 | 4 | 1798 | 1750 | 48 | 0 |
-| 5 | 3876 | 3818 | 58 | 0 |
-| 6 | 6512 | 6438 | 74 | 0 |
-| 7 | 7165 | 7079 | 86 | 0 |
-| 8 | 11145 | 11019 | 126 | 0 |
-| 9 | 13008 | 12877 | 131 | 0 |
-| 10 | 13276 | 13132 | 144 | 0 |
-| 11 | 14809 | 14648 | 161 | 0 |
-| 12 | 15381 | 15212 | 169 | 0 |
-| 13 | 20810 | 20635 | 175 | 0 |
-| 14 | 20810 | 20635 | 175 | 0 |
+| 5 | 3869 | 3811 | 58 | 0 |
+| 6 | 6497 | 6423 | 74 | 0 |
+| 7 | 7148 | 7062 | 86 | 0 |
+| 8 | 11102 | 10976 | 126 | 0 |
+| 9 | 12937 | 12806 | 131 | 0 |
+| 10 | 13201 | 13057 | 144 | 0 |
+| 11 | 14734 | 14573 | 161 | 0 |
+| 12 | 15299 | 15130 | 169 | 0 |
+| 13 | 20680 | 20505 | 175 | 0 |
+| 14 | 20680 | 20505 | 175 | 0 |
 
 ## Blocked combinations
 

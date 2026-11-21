@@ -127,6 +127,7 @@ export function inventory(data, backlog, engine, includeProjection = true) {
               {
                 formId: "projection-only:" + c.candidateId,
                 firstAllowedDay: c.partOfSpeech === "verb" ? 2 : 1,
+                prerequisiteGrammarIds: [],
               },
             ],
           })),

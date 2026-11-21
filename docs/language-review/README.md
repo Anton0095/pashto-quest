@@ -35,7 +35,7 @@ The project owner has now reviewed the **displayed base vocabulary, tutorial/dai
 
 **Implementation handover:** [Week 1 corrections for Codex](WEEK1_OWNER_CORRECTIONS_HANDOVER.md), including approved changes to Tree, Brother, Flower and Wife romanisation; Day 1 Bilal's `jheel`; removal of the separate Parent card and rejected fish plural `کبونه`; semantic distinction between `تلل` (Go/Weigh); and new Purse wording `همياني / humyani`.
 
-**Important:** These are scoped owner-review decisions, not independent native-language certification. The changes requested in the review worksheets **are not yet applied to playable game data**. The full form/paradigm review, captured generated-sentence review and actual audio review remain open.
+The runtime corrections and evidence are recorded in the [Week 1 implementation report](../maintenance/WEEK1_OWNER_LANGUAGE_IMPLEMENTATION.md). The worksheets retain their frozen baseline and the original owner verdicts. The full form and paradigm review, independent generated-sentence review and device audio review remain open.
 
 ## What the worksheets mean
 

@@ -104,7 +104,7 @@ const { activationProblems, inventory } = await import(
 );
 const backlog = JSON.parse(read("content/DISTRICT_VOCABULARY_CANDIDATES.json"));
 const promoted = backlog.candidates.filter((c) => c.promotedLemmaId);
-assert.equal(promoted.length, 301);
+assert.equal(promoted.length, 300);
 assert(
   promoted.every(
     (c) =>
@@ -117,15 +117,15 @@ assert(
   ),
 );
 const report = inventory(data, backlog, read("src/library-engine.js"));
-assert.equal(report.activatedContentLemmas, 401);
-assert.equal(report.inactiveCandidates, 59);
+assert.equal(report.activatedContentLemmas, 400);
+assert.equal(report.inactiveCandidates, 60);
 assert.deepEqual(report.candidateDisposition, {
-  promoted: 301,
+  promoted: 300,
   merged: 0,
-  rejected: 59,
+  rejected: 60,
   replaced: 0,
 });
-assert.equal(report.byReviewStatus.user_approved, 474);
+assert.equal(report.byReviewStatus.user_approved, 473);
 assert.equal(report.duplicateLemmaIds.length, 0);
 assert(report.schedules.every((s) => s.days[13].assigned === 0));
 console.log(

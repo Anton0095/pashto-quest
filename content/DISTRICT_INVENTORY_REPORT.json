@@ -187,11 +187,11 @@
             "lemma:expansion:noun:cafe",
             "lemma:expansion:noun:eraser",
             "lemma:expansion:noun:neighbour",
-            "lemma:expansion:noun:parent",
             "lemma:expansion:noun:pencil",
             "lemma:expansion:noun:restaurant",
             "lemma:expansion:noun:seed",
-            "lemma:expansion:noun:counter"
+            "lemma:expansion:noun:counter",
+            "candidate:noun:bakery"
           ],
           "nature": [
             "lemma:v-carry3",
@@ -703,19 +703,19 @@
     "school": 90
   },
   "selectedInactiveCandidatesByDistrict": {
-    "residential": 78,
+    "residential": 77,
     "nature": 73,
     "business": 71,
     "school": 79
   },
   "selectedInactiveCandidates": 0,
-  "excludedCandidates": 59,
+  "excludedCandidates": 60,
   "universalLemmas": 73,
   "targetInventory": {
     "perDistrict": 100,
     "total": 401,
-    "currentlyPlayable": 401,
-    "missingPlayableToTarget": 0,
+    "currentlyPlayable": 400,
+    "missingPlayableToTarget": 1,
     "intensiveScheduledIntroductions": 312,
     "minimumCurrentShortfall": 0,
     "maximumPaceReserveByPartOfSpeech": {
@@ -726,7 +726,7 @@
     "note": "Primary districts retain semantic provenance; teaching assignments use School-first curated introductions. Unequal POS quotas support all five paces; Day 14 assigns zero. See CURRICULUM.md for the allocation table."
   },
   "authoredExampleSceneCoverage": {
-    "residential": 103,
+    "residential": 102,
     "nature": 102,
     "business": 97,
     "school": 111,
@@ -735,21 +735,21 @@
     "neighbourHome": 0
   },
   "schemaVersion": 1,
-  "activatedLemmas": 474,
-  "activatedContentLemmas": 401,
+  "activatedLemmas": 473,
+  "activatedContentLemmas": 400,
   "nativeApprovedContentLemmas": 0,
-  "userApprovedBaseLemmas": 474,
-  "inactiveCandidates": 59,
+  "userApprovedBaseLemmas": 473,
+  "inactiveCandidates": 60,
   "candidateDisposition": {
-    "promoted": 301,
+    "promoted": 300,
     "merged": 0,
-    "rejected": 59,
+    "rejected": 60,
     "replaced": 0
   },
   "aliasCandidates": 7,
   "eligibleForPromotion": 0,
   "byPrimaryDistrict": {
-    "residential": 101,
+    "residential": 100,
     "nature": 100,
     "business": 100,
     "school": 100
@@ -757,21 +757,21 @@
   "byTeachingDistrict": {
     "residential": 61,
     "nature": 104,
-    "business": 232,
+    "business": 231,
     "school": 4
   },
   "byPartOfSpeech": {
-    "noun": 250,
+    "noun": 249,
     "verb": 98,
     "adjective": 53
   },
   "byReviewStatus": {
-    "user_approved": 474
+    "user_approved": 473
   },
   "byDifficulty": {
-    "not assessed": 474
+    "not assessed": 473
   },
-  "formCount": 667,
+  "formCount": 665,
   "duplicateLemmaIds": [],
   "sameHeadwordForEditorialReview": [
     [
@@ -807,13 +807,6 @@
       [
         "lemma:v-go",
         "lemma:expansion:verb:weigh"
-      ]
-    ],
-    [
-      "کڅوړه",
-      [
-        "lemma:n-bag3",
-        "lemma:expansion:noun:purse"
       ]
     ],
     [
@@ -928,7 +921,7 @@
     "source mappings": 360,
     "Pashto headword": 59,
     "romanisation": 59,
-    "documented qualified native sign-off or provisional status": 59,
+    "documented qualified native sign-off or provisional status": 60,
     "existing lemma alias, not a new entry": 7
   },
   "schedules": [
@@ -2120,7 +2113,7 @@
               "lemma:expansion:noun:cafe",
               "lemma:expansion:noun:eraser",
               "lemma:expansion:noun:neighbour",
-              "lemma:expansion:noun:parent"
+              "lemma:expansion:noun:pencil"
             ],
             "nature": [
               "lemma:v-carry3",
@@ -2725,9 +2718,9 @@
               "lemma:expansion:noun:cafe",
               "lemma:expansion:noun:eraser",
               "lemma:expansion:noun:neighbour",
-              "lemma:expansion:noun:parent",
               "lemma:expansion:noun:pencil",
-              "lemma:expansion:noun:restaurant"
+              "lemma:expansion:noun:restaurant",
+              "lemma:expansion:noun:seed"
             ],
             "nature": [
               "lemma:v-carry3",
@@ -3382,11 +3375,11 @@
               "lemma:expansion:noun:cafe",
               "lemma:expansion:noun:eraser",
               "lemma:expansion:noun:neighbour",
-              "lemma:expansion:noun:parent",
               "lemma:expansion:noun:pencil",
               "lemma:expansion:noun:restaurant",
               "lemma:expansion:noun:seed",
-              "lemma:expansion:noun:counter"
+              "lemma:expansion:noun:counter",
+              "lemma:expansion:noun:pan"
             ],
             "nature": [
               "lemma:v-carry3",
@@ -5054,7 +5047,7 @@
               "lemma:expansion:noun:cafe",
               "lemma:expansion:noun:eraser",
               "lemma:expansion:noun:neighbour",
-              "lemma:expansion:noun:parent"
+              "lemma:expansion:noun:pencil"
             ],
             "nature": [
               "lemma:v-carry3",
@@ -5640,9 +5633,9 @@
               "lemma:expansion:noun:cafe",
               "lemma:expansion:noun:eraser",
               "lemma:expansion:noun:neighbour",
-              "lemma:expansion:noun:parent",
               "lemma:expansion:noun:pencil",
-              "lemma:expansion:noun:restaurant"
+              "lemma:expansion:noun:restaurant",
+              "lemma:expansion:noun:seed"
             ],
             "nature": [
               "lemma:v-carry3",
@@ -6274,11 +6267,11 @@
               "lemma:expansion:noun:cafe",
               "lemma:expansion:noun:eraser",
               "lemma:expansion:noun:neighbour",
-              "lemma:expansion:noun:parent",
               "lemma:expansion:noun:pencil",
               "lemma:expansion:noun:restaurant",
               "lemma:expansion:noun:seed",
-              "lemma:expansion:noun:counter"
+              "lemma:expansion:noun:counter",
+              "lemma:expansion:noun:pan"
             ],
             "nature": [
               "lemma:v-carry3",

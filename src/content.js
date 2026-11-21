@@ -88,6 +88,7 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
       ps: form.pashto,
       roman: form.romanisation || "Romanisation pending native review",
       en: entry.englishSenses[0],
+      recallContext: form.recallContext,
       acceptedEnglishAnswers: [...new Set([...(form.acceptedEnglishAnswers || []), form.englishGloss])],
       note: entry.userVerified ? "Base content user-approved; grammar/forms remain provisional; no independent native certification." : "Provisional vocabulary; native review pending.",
     };
@@ -109,6 +110,7 @@ function createContent(LIBRARY_DATA, NARRATIVE_DATA) {
         ps: form.pashto,
         roman: form.romanisation || "Romanisation pending native review",
         en: form.englishGloss,
+        recallContext: form.recallContext,
         // Share the reviewed primary base sense only with this exact base form.
         // Do not copy aggregate plural/other-form senses onto inflections.
         acceptedEnglishAnswers: [...new Set([...(form.acceptedEnglishAnswers || []),

@@ -320,7 +320,7 @@ function createLessons({
       : w.roman;
     ui.$("quizPrompt").textContent = build
       ? "Construct this meaning in Pashto."
-      : "Choose the meaning of this word, form or fixed phrase.";
+      : w.recallContext || "Choose the meaning of this word, form or fixed phrase.";
     ui.$("quizPanel").querySelector(".quizword h3").textContent = build
       ? "Put the studied Pashto forms in order"
       : "Choose the correct meaning";
@@ -335,7 +335,7 @@ function createLessons({
     if (build) renderBuild();
     else if(QuestionEngine.isTyped(s.activeItem)) {
       ui.$("quizType").textContent="TYPE THE CORRECT ANSWER";
-      ui.$("quizPrompt").textContent="Type the English meaning.";
+      ui.$("quizPrompt").textContent=w.recallContext || "Type the English meaning.";
       ui.typedAnswer.mount({
         host: ui.$("choices"), id: "lessonRecall", label: "English meaning",
         value: s.recallDraft || "",
