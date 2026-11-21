@@ -9,6 +9,8 @@ Noun plurals begin on **Day 5**, with Day 9 quantity/number consolidation. The [
 
 > **Integrated user approval (31 October 2026):** [approval record](content/USER_LANGUAGE_APPROVALS.json) records the original 473 base lemmas and 18 conventional phrases. نن (“today”) uses the subsequently supplied `nun`. This approves exact base spelling, listed senses and supplied transliteration; inflections, grammatical analyses, generated combinations, recordings and 59 excluded candidates remain outside its scope. No independent native certification is claimed.
 
+**Milestone A reviewer pack:** [Week 1 source-derived review worksheets, day checklists, reviewer instructions and native sign-off gate](docs/language-review/README.md). These worksheets are pending human review; they do not create native certification or change live language data.
+
 **Status: not native-certified.** The game targets Afghan Pashto as spoken in **Laghman**. Conventional Pashto spelling is preferred when local variants are uncertain. Authored sentence evidence, inflections and grammar remain instructional drafts. Exact base entries and registered phrases have owner approval as scoped above; neither a browser voice nor passing tests establishes independent native-speaker review.
 
 ## Status terms
