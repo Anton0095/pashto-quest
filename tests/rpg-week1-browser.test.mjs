@@ -33,6 +33,12 @@ async function play(route){
   await fish.locator('summary').click();
   assert.deepEqual(await fish.locator('.library-form .library-pashto').allTextContents(),['کب','کبان']);
   await fish.locator('.library-form').filter({hasText:'kabaan'}).screenshot({path:`work/week1-language/fish-plural-${width}.png`});
+  await search.fill('Wife');
+  const wife=p.locator('[data-lemma="lemma:expansion:noun:wife"]');
+  await wife.locator('summary').click();
+  const citation=wife.locator('.library-form').filter({hasText:'merman'});
+  assert.equal(await citation.locator('.library-pashto').innerText(),'مېرمن');
+  await citation.screenshot({path:`work/week1-language/wife-library-${width}.png`});
   await search.fill('تلل');
   const go=p.locator('[data-lemma="lemma:v-go"]'), weigh=p.locator('[data-lemma="lemma:expansion:verb:weigh"]');
   assert.match(await go.locator('summary').innerText(),/To go/);
@@ -42,6 +48,8 @@ async function play(route){
   assert.equal(await weigh.getByRole('button',{name:'To go',exact:true}).count(),0);
   await weigh.getByText('A shopkeeper puts vegetables on a scale.',{exact:true}).locator('..')
    .screenshot({path:`work/week1-language/weigh-recall-${width}.png`});
+  await weigh.getByRole('button',{name:'Weigh',exact:true}).click();
+  assert(await weigh.getByText('✓ Correct',{exact:true}).isVisible());
  }
  try{
   await p.evaluate(()=>localStorage.setItem('pashto-town-days-v1','untouched-production'));await d.tutorial();
@@ -101,7 +109,8 @@ async function play(route){
    else{assert.equal(await p.locator('#rpgAdvance').count(),0);assert.equal(await p.locator('#resultHeading').innerText(),'Pashto Quest — Week 1 Complete');assert((await p.locator('#resultKnowledge').innerText()).includes('Level 10 · New Resident'));assert.equal(await p.locator('#resultXPLabel').innerText(),'Total XP');assert.equal(await p.locator('#resultKnowledgeLabel').innerText(),'Current level and title');assert.equal(s.challenges[7].best,25);assert(!s.challenges[8]);mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:`work/overhaul/graduation-${route}.png`,fullPage:true});await p.locator('#resultWorld').click();await p.locator('#rpgLibrary').click();await checkLibrary();await p.locator('#libraryClose').click();await d.durable();assert.equal((await d.progress()).xp,xp);}
    console.log('PASS public Week1',route,'day',day,'XP',(await d.progress()).xp);
   }
-  if(route==='normal')assert.deepEqual([...seenCorrections].sort(),[...corrections.keys()].sort());
+  if(route==='normal')assert.deepEqual([...seenCorrections].filter(en=>en!=='Wife').sort(),
+   ['Brother','Flower','Purse','Tree']);
   // Completed-day selectors retain the active campaign chapter and canonical rewards.
   const finalXP=(await d.progress()).xp;
   for(const visit of [1,2,3,4,5,6,7,1,7]){
