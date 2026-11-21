@@ -29,12 +29,20 @@ for(const width of [1280,390]){
    const eligible=['school','lake','pass'].includes(route);assert.equal(await p.locator('[data-response-id]').count()>0,eligible,`day ${day} ${route}`);
    if(!eligible){await p.getByRole('button',{name:'Back to village',exact:true}).click();continue;}
    assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[spec.event].pashto.ps);assert.equal(await p.locator('#rpgDialogue .rpg-dialogue-roman').innerText(),data.events[spec.event].pashto.roman);
+   if(day===1&&route==='school'){
+    assert.match(await p.locator('#rpgDialogue .rpg-dialogue-roman').innerText(),/\bjheel\b/);
+    await p.locator('#rpgDialogue').screenshot({path:`work/typing-bilal/week1-intro-${width}.png`});
+   }
    assert(!(await p.locator('#rpgDialogue').innerText()).includes(data.events[spec.event].languageReview.englishReviewOnly));await p.getByRole('button',{name:'Hear Pashto',exact:true}).click();
    const before=await p.evaluate(async()=>{await __typingRPG.flush();return JSON.stringify(__test.state.progress);});
    const wrong=p.locator('[data-response-id]').filter({hasNotText:spec.response.pashto});
    const inappropriate=route==='lake'&&await wrong.count()>0;
    if(inappropriate)await wrong.first().click();else await p.locator('[data-response-id]').filter({hasText:spec.response.pashto}).click();
    const reaction=inappropriate?spec.incorrectEvent:spec.correctEvent;assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[reaction].pashto.ps);
+   if(day===1&&route==='school'){
+    assert.match(await p.locator('#rpgDialogue .rpg-dialogue-roman').innerText(),/\bjheel\b/);
+    await p.locator('#rpgDialogue').screenshot({path:`work/typing-bilal/week1-correct-${width}.png`});
+   }
    await p.evaluate(()=>__typingRPG.flush());await p.reload();await p.waitForFunction(()=>document.getElementById('rpgCanvas').dataset.phaser);await p.locator('#rpgInteract').click();assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[reaction].pashto.ps);
    await p.getByRole('button',{name:'Continue',exact:true}).click();assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[spec.conclusionEvent].pashto.ps);await p.getByRole('button',{name:'Back to village',exact:true}).click();
    await p.locator('#rpgInteract').click();assert.equal(await p.locator('#rpgDialogue p').innerText(),data.events[spec.event].pashto.ps);await p.getByRole('button',{name:'Back to village',exact:true}).click();assert.equal(await p.evaluate(()=>JSON.stringify(__test.state.progress)),before);

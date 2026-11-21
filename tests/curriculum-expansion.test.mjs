@@ -17,18 +17,18 @@ const counts = (entries) =>
     ]),
   );
 assert.deepEqual(counts(data.entries.filter((e) => e.countsTowardDailyQuota)), {
-  residential: 101,
+  residential: 100,
   nature: 100,
   business: 100,
   school: 100,
 });
 assert.deepEqual(
   counts(backlog.candidates.filter((e) => e.selectedForExpansion)),
-  { residential: 78, nature: 73, business: 71, school: 79 },
+  { residential: 77, nature: 73, business: 71, school: 79 },
 );
 assert.equal(
   backlog.candidates.filter((c) => c.selectedForExpansion).length,
-  301,
+  300,
 );
 const selected = (en, pos) =>
   backlog.candidates.find(
@@ -189,7 +189,7 @@ for (let day = 1; day <= 13; day++) {
 assert.equal(actualAssigned.size, 312);
 assert.equal(E.ensurePlan(maximum, data, 14).requestedDailyTarget, 0);
 console.log(
-  "PASS curriculum expansion: 401 district lemmas, all five paces, action guards, frozen plans, 312 introductions, reserves, honest phrase slots, persistent SRS",
+  "PASS curriculum expansion: 400 district lemmas, all five paces, action guards, frozen plans, 312 introductions, reserves, honest phrase slots, persistent SRS",
 );
 
 const universalTargets = JSON.parse(

@@ -1,10 +1,10 @@
 # Week 1 owner-review correction and implementation handover (Days 1–7)
 
-**Status:** Source-derived reviewer records for Days 1–7 have been collected; **this is an implementation backlog, not a completed game patch**. The owner reviewed the displayed base vocabulary, daily greetings/Bilal dialogue and shown grammar explanations. Separately reviewed Day 5 plural *examples* are recorded, but the wider 343-form lexicon, other noun paradigms, generated sentences and spoken audio **are not globally certified**.
+**Status:** The scoped runtime corrections are implemented. The worksheets retain their frozen review evidence. See the [implementation report](../maintenance/WEEK1_OWNER_LANGUAGE_IMPLEMENTATION.md) for validation, screenshots, scheduling and save compatibility.
 
 **Review provenance:** ChatGPT project conversations 19 and 22 November 2026, documented in `DAY1_OWNER_REVIEW_2026-11-19.md` and `DAY2_OWNER_REVIEW_2026-11-22.md` through `DAY7_OWNER_REVIEW_2026-11-22.md`. Snapshot: `main` `ef23d11e3408d019060530aa94321332acda7c29`. PR #41 contains the reviewer worksheets. No unreviewed item must inherit `native_approved`.
 
-## Owner corrections to implement, in order
+## Owner corrections
 
 | Day | Item | Exact stable identifier | Action |
 | --- | --- | --- | --- |
@@ -20,7 +20,7 @@
 
 **Day 3:** all reviewed items approved, no changes.
 
-## Engineering task for Codex
+## Original engineering handover
 
 After PR #41 merges:
 

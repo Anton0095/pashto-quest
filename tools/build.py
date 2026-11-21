@@ -28,7 +28,21 @@ def read(name):
 def approval_records(kind):
     authority = json.loads(read('content/USER_LANGUAGE_APPROVALS.json'))
     key = 'lemmaId' if kind == 'lemmas' else 'id'
-    return authority, {r[key]: r for r in authority[kind]}
+    records = {r[key]: r for r in authority[kind]}
+    if kind == 'lemmas':
+        for decision in authority['week1OwnerReview']:
+            if decision['kind'] not in {'base_correction', 'base_retirement'}:
+                continue
+            identity = decision['ids'][0]
+            original = records[identity]
+            if any(original[field] != value for field, value in decision['before'].items()):
+                raise ValueError('Week 1 correction differs from original approval: ' + identity)
+            replacement = decision['after']
+            if replacement is None:
+                del records[identity]
+            else:
+                records[identity] = {**original, **replacement, 'recordedDate': decision['recordedDate']}
+    return authority, records
 
 
 def validate_user_approval(record, authority, approved, fields):

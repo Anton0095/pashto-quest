@@ -4,11 +4,50 @@ const portraitIds=Object.fromEntries(Object.entries(JSON.parse(readFileSync('con
 async function play(route){
  const width=route==='normal'?1280:375;
  const b=await setup({width,mobile:route==='skip',rpg:true,bridge:false,offline:true,transform:h=>h.replace('const audio = createAudio({',route==='skip'?"Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{cancel(){},getVoices(){return[];},speak(){throw Error('Unavailable');},addEventListener(){},removeEventListener(){}}});const audio = createAudio({":'const audio = createAudio({').replace('// @TEST_HOOK','window.__week1Inspect=()=>rpg.diagnostics();window.__inputLog=[];document.addEventListener("keydown",e=>{__inputLog.push({key:e.key,prevented:e.defaultPrevented,repeat:e.repeat,target:e.target.id,focus:document.hasFocus(),hidden:document.hidden});if(__inputLog.length>20)__inputLog.shift();}); // @TEST_HOOK')});const p=b.page,d=driver(p);
+ const corrections=new Map([
+  ['Tree',[1,'ونه','wona']],['Brother',[2,'ورور','wror']],['Flower',[2,'ګل','gul']],
+  ['Wife',[6,'مېرمن','merman']],['Purse',[7,'همياني','humyani']],
+ ]);
+ const seenCorrections=new Set();
+ async function checkLessonStep(day){
+  if(!await p.locator('#teachPanel').isVisible())return;
+  const ps=await p.locator('#teachPashto').innerText(), en=await p.locator('#teachEnglish').innerText();
+  assert.notEqual(en,'Parent');
+  assert(!ps.includes('کبونه'));
+  const correction=corrections.get(en);
+  if(correction?.[0]!==day || seenCorrections.has(en))return;
+  assert.equal(ps,correction[1]);
+  assert.equal(await p.locator('#teachRoman').innerText(),correction[2]);
+  seenCorrections.add(en);
+  mkdirSync('work/week1-language',{recursive:true});
+  await p.locator('#teachPanel').screenshot({path:`work/week1-language/${en.toLowerCase()}-${width}.png`});
+ }
+ const lesson=(day,options={})=>d.lesson({...options,onStep:()=>checkLessonStep(day)});
+ async function checkLibrary(){
+  mkdirSync('work/week1-language',{recursive:true});
+  const search=p.locator('#librarySearch');
+  await search.fill('Parent');
+  assert.equal(await p.locator('#libraryEntries [data-lemma]').count(),0);
+  await search.fill('Fish');
+  const fish=p.locator('[data-lemma="lemma:n-fish"]');
+  await fish.locator('summary').click();
+  assert.deepEqual(await fish.locator('.library-form .library-pashto').allTextContents(),['کب','کبان']);
+  await fish.locator('.library-form').filter({hasText:'kabaan'}).screenshot({path:`work/week1-language/fish-plural-${width}.png`});
+  await search.fill('تلل');
+  const go=p.locator('[data-lemma="lemma:v-go"]'), weigh=p.locator('[data-lemma="lemma:expansion:verb:weigh"]');
+  assert.match(await go.locator('summary').innerText(),/To go/);
+  await weigh.locator('summary').click();
+  await weigh.getByRole('button',{name:'Practise an encountered form'}).click();
+  assert(await weigh.getByText('A shopkeeper puts vegetables on a scale.',{exact:true}).isVisible());
+  assert.equal(await weigh.getByRole('button',{name:'To go',exact:true}).count(),0);
+  await weigh.getByText('A shopkeeper puts vegetables on a scale.',{exact:true}).locator('..')
+   .screenshot({path:`work/week1-language/weigh-recall-${width}.png`});
+ }
  try{
   await p.evaluate(()=>localStorage.setItem('pashto-town-days-v1','untouched-production'));await d.tutorial();
   for(let day=1;day<=7;day++){
    const c=data.days[day];assert((await p.locator('#rpgCanvas').getAttribute('data-map')));console.log('START',route,'day',day);
-   if(!await p.locator('[data-destination=school]').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination=school]').click();await d.lesson({reload:day===2});
+   if(!await p.locator('[data-destination=school]').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination=school]').click();await lesson(day,{reload:day===2});
    if(day>1&&![2,5].includes(day)){
     assert(!await p.locator('#rpgDialogue').isVisible(),'New days start quietly');
     const host=data.events[c.openingEvent].characterId,npc=data.npcs.find(n=>n.characterId===host&&n.schedule.some(s=>s.day===day&&s.map==='village'));await d.actor(npc.id,day);await p.locator('#rpgInteract').click();
@@ -16,16 +55,16 @@ async function play(route){
     if(day===6){
      assert(!(await p.locator('#rpgDialogue').innerText()).includes('sister Medina'));
      await d.dialogue("I'll meet you in the Hills");await d.actor('saleha',day,'hills');await p.locator('#rpgInteract').click();
-     if(route==='normal'){await d.dialogue('Begin Day 6 Hills lesson');await d.lesson();}else await d.dialogue('Explore first');
+     if(route==='normal'){await d.dialogue('Begin Day 6 Hills lesson');await lesson(day);}else await d.dialogue('Explore first');
     }else {
-    if(route==='normal'){await d.dialogue(`Begin Day ${day} ${{school:'School',nature:'Lake',residential:'Home',business:'Market'}[c.lessons.find(id=>id.endsWith({2:'school',3:'nature',4:'residential',5:'school',6:'nature',7:'business'}[day])).split('-')[1]]} lesson`);await d.lesson({reload:day===2});}
+    if(route==='normal'){await d.dialogue(`Begin Day ${day} ${{school:'School',nature:'Lake',residential:'Home',business:'Market'}[c.lessons.find(id=>id.endsWith({2:'school',3:'nature',4:'residential',5:'school',6:'nature',7:'business'}[day])).split('-')[1]]} lesson`);await lesson(day,{reload:day===2});}
     else {await d.dialogue('Explore first');if(day===2){assert(await p.locator('[data-destination=school]').isEnabled());for(const loc of ['residential','nature','business'])assert(await p.locator('[data-destination='+loc+']').isDisabled(),'Quick travel preserves the School opening lock');}}
     }
    }
    if(route==='normal'){
     for(const id of c.lessons){const loc=id.split('-')[1];
      if((await d.progress()).complete[`${day}-${loc}`])continue;
-     if(!await p.locator('[data-destination='+loc+']').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination='+loc+']').click();await d.lesson();console.log('PASS public lesson',day,loc);
+     if(!await p.locator('[data-destination='+loc+']').isVisible())await p.getByText('Quick travel',{exact:true}).click();await p.locator('[data-destination='+loc+']').click();await lesson(day);console.log('PASS public lesson',day,loc);
     }
     const s=await d.progress();for(const id of c.lessons)assert(s.complete[id]);
    }else{const s=await d.progress();assert(s.complete[day+'-school']&&c.lessons.filter(id=>!id.endsWith('-school')).every(id=>!s.complete[id]),'Shortcut completes only School before the attempt');}
@@ -59,9 +98,10 @@ async function play(route){
     await p.locator('#sleepTransition').waitFor({state:'detached'});assert(!await p.locator('#rpgDialogue').isVisible());
     await d.durable();assert.equal((await d.progress()).xp,xp,'Sleep awards no duplicate XP');const position=await d.pos();assert.deepEqual(position,{map:'house',x:17,y:10});
    }
-   else{assert.equal(await p.locator('#rpgAdvance').count(),0);assert.equal(await p.locator('#resultHeading').innerText(),'Pashto Quest — Week 1 Complete');assert((await p.locator('#resultKnowledge').innerText()).includes('Level 10 · New Resident'));assert.equal(await p.locator('#resultXPLabel').innerText(),'Total XP');assert.equal(await p.locator('#resultKnowledgeLabel').innerText(),'Current level and title');assert.equal(s.challenges[7].best,25);assert(!s.challenges[8]);mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:`work/overhaul/graduation-${route}.png`,fullPage:true});await p.locator('#resultWorld').click();await p.locator('#rpgLibrary').click();await p.locator('#libraryClose').click();await d.durable();assert.equal((await d.progress()).xp,xp);}
+   else{assert.equal(await p.locator('#rpgAdvance').count(),0);assert.equal(await p.locator('#resultHeading').innerText(),'Pashto Quest — Week 1 Complete');assert((await p.locator('#resultKnowledge').innerText()).includes('Level 10 · New Resident'));assert.equal(await p.locator('#resultXPLabel').innerText(),'Total XP');assert.equal(await p.locator('#resultKnowledgeLabel').innerText(),'Current level and title');assert.equal(s.challenges[7].best,25);assert(!s.challenges[8]);mkdirSync('work/overhaul',{recursive:true});await p.screenshot({path:`work/overhaul/graduation-${route}.png`,fullPage:true});await p.locator('#resultWorld').click();await p.locator('#rpgLibrary').click();await checkLibrary();await p.locator('#libraryClose').click();await d.durable();assert.equal((await d.progress()).xp,xp);}
    console.log('PASS public Week1',route,'day',day,'XP',(await d.progress()).xp);
   }
+  if(route==='normal')assert.deepEqual([...seenCorrections].sort(),[...corrections.keys()].sort());
   // Completed-day selectors retain the active campaign chapter and canonical rewards.
   const finalXP=(await d.progress()).xp;
   for(const visit of [1,2,3,4,5,6,7,1,7]){

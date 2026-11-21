@@ -10,7 +10,7 @@ const { E, S } = vm.runInNewContext(
     ";({E:LibraryEngine,S:SentenceEngine})",
 );
 const plain = (x) => JSON.parse(JSON.stringify(x));
-assert.equal(data.entries.length, 474);
+assert.equal(data.entries.length, 473);
 assert(data.entries.every((e) => e.partOfSpeech !== "grammar"));
 const dark = data.entries.find((e) => e.lemmaId === "lemma:a-dark");
 assert.equal(dark.introduction.day, 5);
@@ -21,6 +21,16 @@ for (const pace of E.presets) {
   for (let day = 1; day <= 14; day++) {
     const plan = E.ensurePlan(p, data, day),
       frozen = JSON.stringify(plan);
+    if (day === 1 && pace === 24) {
+      const ids = Object.values(plan.locationAssignments).flat();
+      for (const noun of ["mother", "father"]) assert(ids.includes("lemma:expansion:noun:" + noun));
+    }
+    if (day === 4) {
+      assert.equal(plan.effectiveDailyTarget, pace);
+      assert.equal(plan.contentGap, false);
+      assert(!Object.values(plan.locationAssignments).flat().some(id => /:parent$|:mother$|:father$/.test(id)));
+      if (pace === 24) assert(plan.locationAssignments.business.includes("lemma:expansion:noun:pan"));
+    }
     for (const [district, ids] of Object.entries(plan.locationAssignments)) {
       assert(ids.length <= E.quotas(day,pace)[district]);
       assert.equal(
@@ -73,4 +83,4 @@ assert(catalog.some((c) => c.ps === "کور نوی دی."));
 assert(catalog.some((c) => c.ps === "کتاب لوی دی."));
 assert(catalog.every((c) => Object.values(c.generated.slots).every((r) =>
   p.library.acquired[r.lemmaId].availableFormIds.includes(r.formId))));
-console.log("PASS curriculum-first: 474 identities, deliberate introductions/all paces, exposure vs introduction, productive unlocked form catalog");
+console.log("PASS curriculum-first: 473 identities, deliberate introductions/all paces, exposure vs introduction, productive unlocked form catalog");

@@ -36,6 +36,14 @@ function createQuestions({ state, content, progression, seedSource = QuestionEng
       .filter(e => e.introduction.day === 1 && e.forms[0].firstAllowedDay === 1)
       .map(e => content.wordById["library-card:" + e.lemmaId]);
     const meanings = new Set(QuestionEngine.meaningKeys(w));
+    if (w.recallContext) {
+      // Keep the other citation sense out of the options even when a finite
+      // form of that lemma carries the same English gloss.
+      for (const card of Object.values(content.wordById)) {
+        if (card.recallContext && card.ps === w.ps)
+          QuestionEngine.meaningKeys(card).forEach(key => meanings.add(key));
+      }
+    }
     const forms = new Set([QuestionEngine.normalizeAnswer(w.ps)]);
     const labels = new Set([w[field].normalize("NFC").trim().toLocaleLowerCase("en")]);
     const choices = [];

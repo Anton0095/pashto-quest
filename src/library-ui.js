@@ -362,7 +362,11 @@ function createLibraryUI({
           "p",
           f.romanisation || "Isolated-form romanisation pending review.",
         ),
-        ui.node("p", f.pashto === e.displayLemmaPs ? "Base wording user-approved; morphology and independent native review pending." : "Inflected form unreviewed; independent native review pending.", "tiny"),
+        ui.node("p", f.ownerFormApproval
+          ? "Exact form approved by the project owner. Independent native review pending."
+          : f.pashto === e.displayLemmaPs
+            ? "Base wording user-approved; morphology and independent native review pending."
+            : "Inflected form unreviewed; independent native review pending.", "tiny"),
       );
       if (f.audioContentId)
         box.append(
@@ -414,8 +418,9 @@ function createLibraryUI({
     if (!form) return;
     libraryPracticeMode(true);
     const exercise = ui.node("div");
-    exercise.append(ui.node("p", "Choose the meaning of " + form.pashto));
     const card = content.wordById["library-form:" + form.formId];
+    exercise.append(ui.node("p", "Choose the meaning of " + form.pashto));
+    if (card.recallContext) exercise.append(ui.node("p", card.recallContext));
     const options = questions.distractors(card);
     let answered = false;
     for (const option of QuestionEngine.shuffle(options)) {
